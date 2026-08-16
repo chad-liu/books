@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 個人知識庫，兩套獨立的內容各自有自己的建置腳本與輸出，**不要混用**：
 
 1. **電子書庫**：來源 EPUB 放在 `epub\`，經 `tools\build_library.py` 轉成單檔互動式 HTML 閱讀器，輸出到 `reader\`，產生 `reader\index.html`。
-2. **知識地圖首頁**：手工整理的哲學／歷史／宗教等主題 HTML 頁面放在 `html\`，經 `tools\build_html_index.py` 重建**根目錄** `index.html`（標題「Liu的雲端閱讀」）。
+2. **知識地圖首頁**：手工整理的哲學／歷史／宗教等主題 HTML 頁面放在 `html\`，經 `tools\build_html_index.py` 重建**根目錄** `index.html`（標題「Liu的知識圖譜」）。
 
 不是一般程式專案，沒有測試套件與建置系統，「跑一次腳本」就是建置動作。`Plan.md`／`plan1.md`／`plan2.md`／`booklist.md` 是對應兩套系統的需求筆記（plan1 對應書庫、plan2 對應知識地圖首頁）。
 

@@ -108,8 +108,8 @@ def build():
 
     out = ['<!DOCTYPE html>', '<html lang="zh-TW">', '<head>', '<meta charset="UTF-8">',
            '<meta name="viewport" content="width=device-width,initial-scale=1.0">',
-           '<title>Liu的雲端閱讀</title>', '<style>', CSS, '</style>',
-           '</head>', '<body>', '<header>', '<h1>Liu的雲端閱讀</h1>',
+           '<title>Liu的知識圖譜</title>', '<style>', CSS, '</style>',
+           '</head>', '<body>', '<header>', '<h1>Liu的知識圖譜</h1>',
            '<div class="sub">%d 個分類 · %d 個項目</div>' % (len(cards), total_items),
            '<div class="tools">']
 
