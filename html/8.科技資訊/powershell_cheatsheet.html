@@ -1,0 +1,337 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-mono);font-size:13px}
+.wrap{padding:1rem 0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem}
+.tab{padding:5px 14px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;font-size:12px;background:var(--color-background-primary);color:var(--color-text-secondary);font-family:var(--font-sans);transition:all .15s}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.section{display:none}
+.section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
+.card-title{font-size:12px;font-weight:500;color:var(--color-text-secondary);font-family:var(--font-sans);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.card-title i{font-size:14px}
+pre{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem 1rem;font-size:12px;line-height:1.6;overflow-x:auto;color:var(--color-text-primary);border:0.5px solid var(--color-border-tertiary)}
+.kw{color:#7F77DD}
+.cm{color:var(--color-text-tertiary)}
+.str{color:#1D9E75}
+.num{color:#BA7517}
+.fn{color:#185FA5}
+table{width:100%;font-size:12px;border-collapse:collapse;font-family:var(--font-sans)}
+th{text-align:left;padding:5px 8px;color:var(--color-text-secondary);font-weight:500;border-bottom:0.5px solid var(--color-border-tertiary)}
+td{padding:5px 8px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
+td:first-child{font-family:var(--font-mono);font-size:11px;color:#7F77DD;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:var(--border-radius-md);font-family:var(--font-sans);font-weight:500}
+.b-blue{background:#E6F1FB;color:#0C447C}
+.b-green{background:#EAF3DE;color:#3B6D11}
+.b-amber{background:#FAEEDA;color:#854F0B}
+@media(prefers-color-scheme:dark){.b-blue{background:#0C447C;color:#B5D4F4}.b-green{background:#27500A;color:#C0DD97}.b-amber{background:#633806;color:#FAC775}}
+</style>
+<div class="wrap">
+<h2 class="sr-only">PowerShell 速查表 — 五大類語法</h2>
+<div class="tabs" role="tablist">
+  <button class="tab active" onclick="show(0)" role="tab">變數・條件・迴圈</button>
+  <button class="tab" onclick="show(1)" role="tab">字串・陣列</button>
+  <button class="tab" onclick="show(2)" role="tab">檔案・系統</button>
+  <button class="tab" onclick="show(3)" role="tab">管線・篩選</button>
+  <button class="tab" onclick="show(4)" role="tab">函式・模組</button>
+</div>
+
+<div class="section active" id="s0">
+  <div class="grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-variable" aria-hidden="true"></i>變數</div>
+      <pre><span class="kw">$name</span> = <span class="str">"Chuck"</span>
+<span class="kw">$num</span>  = <span class="num">42</span>
+<span class="kw">$bool</span> = <span class="kw">$true</span>
+[int]<span class="kw">$x</span> = <span class="num">10</span>
+<span class="cm"># 查型別</span>
+<span class="kw">$num</span>.GetType()
+<span class="cm"># 特殊變數</span>
+<span class="kw">$_</span>            <span class="cm"># 管線當前物件</span>
+<span class="kw">$?</span>            <span class="cm"># 上一指令成功？</span>
+<span class="kw">$LASTEXITCODE</span> <span class="cm"># 外部程式結束碼</span>
+<span class="kw">$env:USERNAME</span> <span class="cm"># 環境變數</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-code-asterisk" aria-hidden="true"></i>比較運算子</div>
+      <table>
+        <tr><th>運算子</th><th>意義</th></tr>
+        <tr><td>-eq / -ne</td><td>等於 / 不等於</td></tr>
+        <tr><td>-gt / -lt</td><td>大於 / 小於</td></tr>
+        <tr><td>-ge / -le</td><td>≥ / ≤</td></tr>
+        <tr><td>-like</td><td>萬用字元比對</td></tr>
+        <tr><td>-match</td><td>正規表示式</td></tr>
+        <tr><td>-contains</td><td>陣列含此值</td></tr>
+        <tr><td>-and / -or / -not</td><td>邏輯運算</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-git-branch" aria-hidden="true"></i>條件判斷</div>
+      <pre><span class="kw">if</span> (<span class="kw">$x</span> -gt <span class="num">10</span>) { <span class="str">"大"</span> }
+<span class="kw">elseif</span> (<span class="kw">$x</span> -eq <span class="num">10</span>) { <span class="str">"等"</span> }
+<span class="kw">else</span> { <span class="str">"小"</span> }
+
+<span class="kw">switch</span> (<span class="kw">$day</span>) {
+  <span class="str">"Mon"</span> { <span class="str">"星期一"</span> }
+  <span class="str">"Sat"</span> { <span class="str">"星期六"</span> }
+  <span class="kw">default</span> { <span class="str">"其他"</span> }
+}</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-refresh" aria-hidden="true"></i>迴圈</div>
+      <pre><span class="kw">for</span> (<span class="kw">$i</span>=<span class="num">0</span>; <span class="kw">$i</span> -lt <span class="num">5</span>; <span class="kw">$i</span>++) { <span class="kw">$i</span> }
+
+<span class="kw">foreach</span> (<span class="kw">$n</span> <span class="kw">in</span> <span class="num">1</span>..<span class="num">5</span>) { <span class="kw">$n</span> }
+
+<span class="num">1</span>..<span class="num">5</span> | <span class="fn">ForEach-Object</span> { <span class="kw">$_</span> * <span class="num">2</span> }
+
+<span class="kw">while</span> (<span class="kw">$i</span> -lt <span class="num">3</span>) { <span class="kw">$i</span>++ }
+
+<span class="kw">do</span> { <span class="kw">$i</span>++ } <span class="kw">while</span> (<span class="kw">$i</span> -lt <span class="num">3</span>)
+
+<span class="kw">break</span>     <span class="cm"># 跳出</span>
+<span class="kw">continue</span>  <span class="cm"># 下一次</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s1">
+  <div class="grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-text-size" aria-hidden="true"></i>字串方法</div>
+      <pre><span class="kw">$s</span> = <span class="str">"Hello, PowerShell"</span>
+<span class="kw">$s</span>.Length          <span class="cm"># 17</span>
+<span class="kw">$s</span>.ToUpper()
+<span class="kw">$s</span>.ToLower()
+<span class="kw">$s</span>.Substring(<span class="num">7</span>,<span class="num">10</span>)
+<span class="kw">$s</span>.Replace(<span class="str">"Hello"</span>,<span class="str">"Hi"</span>)
+<span class="kw">$s</span>.Split(<span class="str">","</span>)
+<span class="kw">$s</span>.Trim()
+<span class="kw">$s</span>.Contains(<span class="str">"Power"</span>)
+<span class="kw">$s</span>.StartsWith(<span class="str">"Hello"</span>)
+<span class="str">"姓名:{0}"</span> -f <span class="str">"Chuck"</span>
+<span class="str">"=-"</span> * <span class="num">20</span>          <span class="cm"># 重複</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-list" aria-hidden="true"></i>陣列操作</div>
+      <pre><span class="kw">$arr</span> = @(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>)
+<span class="kw">$arr</span> = <span class="num">1</span>..<span class="num">5</span>       <span class="cm"># 範圍</span>
+<span class="kw">$arr</span>[<span class="num">0</span>]           <span class="cm"># 第一個</span>
+<span class="kw">$arr</span>[-<span class="num">1</span>]          <span class="cm"># 最後一個</span>
+<span class="kw">$arr</span>[<span class="num">1</span>..<span class="num">3</span>]        <span class="cm"># 切片</span>
+<span class="kw">$arr</span>.Count
+<span class="kw">$arr</span> += <span class="num">6</span>         <span class="cm"># 新增</span>
+<span class="kw">$arr</span> -contains <span class="num">3</span>
+<span class="kw">$arr</span> -join <span class="str">", "</span>   <span class="cm"># 轉字串</span>
+<span class="str">"a,b,c"</span> -split <span class="str">","</span> <span class="cm"># 轉陣列</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-database" aria-hidden="true"></i>ArrayList / Hashtable</div>
+      <pre><span class="cm"># ArrayList — 動態增刪</span>
+<span class="kw">$list</span> = [System.Collections.ArrayList]@()
+<span class="kw">$list</span>.Add(<span class="str">"Apple"</span>)
+<span class="kw">$list</span>.Remove(<span class="str">"Apple"</span>)
+<span class="kw">$list</span>.RemoveAt(<span class="num">0</span>)
+
+<span class="cm"># Hashtable</span>
+<span class="kw">$ht</span> = @{ Name=<span class="str">"Chuck"</span>; City=<span class="str">"KH"</span> }
+<span class="kw">$ht</span>[<span class="str">"Name"</span>]
+<span class="kw">$ht</span>.City
+<span class="kw">$ht</span>[<span class="str">"Email"</span>] = <span class="str">"x@y.com"</span>
+<span class="kw">$ht</span>.Remove(<span class="str">"Email"</span>)
+<span class="kw">$ht</span>.ContainsKey(<span class="str">"Name"</span>)</pre>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s2">
+  <div class="grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-file-text" aria-hidden="true"></i>檔案讀寫</div>
+      <pre><span class="fn">Get-Content</span> <span class="str">"file.txt"</span> -Encoding UTF8
+<span class="fn">Get-Content</span> <span class="str">"file.txt"</span> -Raw    <span class="cm"># 單一字串</span>
+<span class="fn">Set-Content</span> <span class="str">"out.txt"</span> <span class="str">"Hello"</span>  <span class="cm"># 覆蓋</span>
+<span class="fn">Add-Content</span> <span class="str">"out.txt"</span> <span class="str">"Line2"</span>  <span class="cm"># 附加</span>
+<span class="kw">$data</span> | <span class="fn">Out-File</span> <span class="str">"out.txt"</span> -Encoding UTF8</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-copy" aria-hidden="true"></i>檔案操作</div>
+      <pre><span class="fn">Copy-Item</span>   <span class="str">"src.txt"</span> <span class="str">"dst.txt"</span>
+<span class="fn">Move-Item</span>   <span class="str">"old.txt"</span> <span class="str">"new.txt"</span>
+<span class="fn">Remove-Item</span> <span class="str">"file.txt"</span>
+<span class="fn">Test-Path</span>   <span class="str">"file.txt"</span>        <span class="cm"># True/False</span>
+<span class="fn">New-Item</span>    <span class="str">"new.txt"</span> -ItemType File
+<span class="kw">$f</span> = <span class="fn">Get-Item</span> <span class="str">"file.txt"</span>
+<span class="kw">$f</span>.Name; <span class="kw">$f</span>.Length; <span class="kw">$f</span>.LastWriteTime</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-folder" aria-hidden="true"></i>目錄操作</div>
+      <pre><span class="fn">Get-ChildItem</span> <span class="str">"C:\data"</span> -Recurse
+<span class="fn">Get-ChildItem</span> <span class="str">"C:\data"</span> -Filter <span class="str">"*.txt"</span>
+<span class="fn">New-Item</span> <span class="str">"C:\dir"</span> -ItemType Directory
+<span class="fn">Remove-Item</span> <span class="str">"C:\dir"</span> -Recurse -Force
+<span class="fn">Set-Location</span> <span class="str">"C:\data"</span>  <span class="cm"># cd</span>
+<span class="fn">Get-Location</span>            <span class="cm"># pwd</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-route" aria-hidden="true"></i>路徑・系統</div>
+      <pre><span class="fn">Join-Path</span> <span class="str">"C:\data"</span> <span class="str">"file.txt"</span>
+<span class="fn">Split-Path</span> <span class="str">"C:\data\f.txt"</span> -Leaf    <span class="cm"># f.txt</span>
+<span class="fn">Split-Path</span> <span class="str">"C:\data\f.txt"</span> -Parent  <span class="cm"># C:\data</span>
+<span class="fn">Get-Process</span> | <span class="fn">Stop-Process</span> -Force
+<span class="fn">Get-Service</span> <span class="str">"wuauserv"</span>
+<span class="fn">Start-Service</span> / <span class="fn">Stop-Service</span>
+<span class="kw">$env:USERNAME</span>; <span class="kw">$env:TEMP</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s3">
+  <div class="grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-filter" aria-hidden="true"></i>Where-Object <span class="badge b-blue">?</span></div>
+      <pre><span class="fn">Get-Process</span> | <span class="fn">Where-Object</span> { <span class="kw">$_</span>.CPU -gt <span class="num">10</span> }
+<span class="fn">Get-Process</span> | <span class="fn">Where-Object</span> CPU -gt <span class="num">10</span>
+<span class="fn">Get-Service</span> | ? { <span class="kw">$_</span>.Name -like <span class="str">"w*"</span> }
+<span class="fn">Get-Service</span> | ? Status -eq <span class="str">"Running"</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-columns" aria-hidden="true"></i>Select-Object <span class="badge b-blue">select</span></div>
+      <pre><span class="fn">Get-Process</span> | <span class="fn">Select-Object</span> Name, CPU
+<span class="fn">Get-Process</span> | <span class="fn">Select-Object</span> -First <span class="num">5</span>
+<span class="fn">Get-Process</span> | <span class="fn">Select-Object</span> -Last <span class="num">5</span>
+<span class="fn">Get-Process</span> | <span class="fn">Select-Object</span> -Unique
+<span class="cm"># 計算欄位</span>
+<span class="fn">Select-Object</span> Name, @{
+  Name=<span class="str">"MB"</span>
+  Expression={ [math]::Round(<span class="kw">$_</span>.WorkingSet/<span class="num">1MB</span>,<span class="num">2</span>) }
+}</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-arrows-sort" aria-hidden="true"></i>Sort-Object</div>
+      <pre><span class="fn">Get-Process</span> | <span class="fn">Sort-Object</span> CPU
+<span class="fn">Get-Process</span> | <span class="fn">Sort-Object</span> CPU -Descending
+<span class="fn">Get-Process</span> | <span class="fn">Sort-Object</span> CPU -Descending, Name</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-transform" aria-hidden="true"></i>ForEach-Object <span class="badge b-blue">%</span></div>
+      <pre><span class="num">1</span>..<span class="num">5</span> | <span class="fn">ForEach-Object</span> { <span class="kw">$_</span> * <span class="num">2</span> }
+<span class="num">1</span>..<span class="num">5</span> | % { <span class="kw">$_</span> * <span class="num">2</span> }
+<span class="cm"># Begin/Process/End</span>
+<span class="num">1</span>..<span class="num">5</span> | <span class="fn">ForEach-Object</span> `
+  -Begin   { <span class="kw">$sum</span>=<span class="num">0</span> } `
+  -Process { <span class="kw">$sum</span>+=<span class="kw">$_</span> } `
+  -End     { <span class="str">"總和：<span class="kw">$sum</span>"</span> }</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-chart-bar" aria-hidden="true"></i>彙總・輸出</div>
+      <pre><span class="fn">Measure-Object</span> CPU -Sum -Average -Max -Min
+<span class="fn">Group-Object</span> Company
+<span class="fn">Format-Table</span> Name, CPU -AutoSize
+<span class="fn">Export-Csv</span> <span class="str">"out.csv"</span> -NoTypeInformation
+<span class="fn">Import-Csv</span> <span class="str">"data.csv"</span>
+<span class="fn">ConvertTo-Json</span>
+<span class="fn">ConvertFrom-Json</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-sparkles" aria-hidden="true"></i>組合範例</div>
+      <pre><span class="cm"># 記憶體前 5 的處理程序</span>
+<span class="fn">Get-Process</span> |
+  <span class="fn">Sort-Object</span> WorkingSet -Desc |
+  <span class="fn">Select-Object</span> -First <span class="num">5</span> |
+  <span class="fn">Select-Object</span> Name,
+    @{Name=<span class="str">"MB"</span>;Expression={
+      [math]::Round(<span class="kw">$_</span>.WorkingSet/<span class="num">1MB</span>,<span class="num">2</span>)}}</pre>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s4">
+  <div class="grid">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-function" aria-hidden="true"></i>函式定義・參數</div>
+      <pre><span class="kw">function</span> <span class="fn">Greet</span> {
+  <span class="kw">param</span>(
+    [Parameter(Mandatory)]
+    [string]<span class="kw">$Name</span>,
+    [string]<span class="kw">$City</span> = <span class="str">"Kaohsiung"</span>,
+    [ValidateSet(<span class="str">"Admin"</span>,<span class="str">"User"</span>)]
+    [string]<span class="kw">$Role</span> = <span class="str">"User"</span>,
+    [switch]<span class="kw">$IsActive</span>
+  )
+  <span class="str">"$Name / $City / $Role"</span>
+}
+<span class="fn">Greet</span> -Name <span class="str">"Chuck"</span> -IsActive</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-arrow-back-up" aria-hidden="true"></i>回傳值</div>
+      <pre><span class="cm"># 自動回傳（未捕捉的輸出）</span>
+<span class="kw">function</span> <span class="fn">Get-Square</span>(<span class="kw">$n</span>) { <span class="kw">$n</span> * <span class="kw">$n</span> }
+
+<span class="cm"># 明確 return</span>
+<span class="kw">function</span> <span class="fn">Get-Max</span>(<span class="kw">$a</span>,<span class="kw">$b</span>) {
+  <span class="kw">if</span> (<span class="kw">$a</span> -gt <span class="kw">$b</span>) { <span class="kw">return</span> <span class="kw">$a</span> }
+  <span class="kw">return</span> <span class="kw">$b</span>
+}
+
+<span class="cm"># 回傳多值</span>
+<span class="kw">$min</span>, <span class="kw">$max</span> = <span class="fn">Get-MinMax</span> @(<span class="num">3</span>,<span class="num">1</span>,<span class="num">9</span>)</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-plug" aria-hidden="true"></i>Pipeline 支援</div>
+      <pre><span class="kw">function</span> <span class="fn">Double-Value</span> {
+  <span class="kw">param</span>(
+    [Parameter(ValueFromPipeline)]
+    [int]<span class="kw">$Number</span>
+  )
+  <span class="kw">begin</span>   { <span class="cm"># 執行一次</span> }
+  <span class="kw">process</span> { <span class="kw">$Number</span> * <span class="num">2</span> }
+  <span class="kw">end</span>     { <span class="cm"># 結束後</span> }
+}
+<span class="num">1</span>..<span class="num">5</span> | <span class="fn">Double-Value</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-alert-triangle" aria-hidden="true"></i>錯誤處理</div>
+      <pre><span class="kw">try</span> {
+  <span class="fn">Get-Content</span> <span class="kw">$Path</span> -ErrorAction Stop
+}
+<span class="kw">catch</span> [System.IO.FileNotFoundException] {
+  <span class="fn">Write-Error</span> <span class="str">"找不到：<span class="kw">$Path</span>"</span>
+}
+<span class="kw">catch</span> {
+  <span class="fn">Write-Error</span> <span class="kw">$_</span>.Exception.Message
+}
+<span class="kw">finally</span> {
+  <span class="fn">Write-Host</span> <span class="str">"完畢"</span>
+}</pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-package" aria-hidden="true"></i>模組管理</div>
+      <pre><span class="fn">Get-Module</span> -ListAvailable
+<span class="fn">Import-Module</span> <span class="str">"ModuleName"</span>
+<span class="fn">Install-Module</span> <span class="str">"ModuleName"</span> -Scope CurrentUser
+<span class="fn">Update-Module</span>  <span class="str">"ModuleName"</span>
+<span class="fn">Remove-Module</span>  <span class="str">"ModuleName"</span>
+<span class="fn">Get-Command</span> -Module <span class="str">"ModuleName"</span></pre>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-terminal" aria-hidden="true"></i>腳本執行</div>
+      <pre>.\script.ps1
+.\script.ps1 -Name <span class="str">"Chuck"</span> -Env <span class="str">"prod"</span>
+<span class="fn">Get-ExecutionPolicy</span>
+<span class="fn">Set-ExecutionPolicy</span> RemoteSigned `
+  -Scope CurrentUser</pre>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+function show(idx){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  document.querySelectorAll('.section').forEach((s,i)=>s.classList.toggle('active',i===idx));
+}
+</script>

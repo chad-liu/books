@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梅迪奇家族 — 從藥商到佛羅倫斯之主</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        #f3ead7;
+    --paper-deep:   #ebe0c4;
+    --ink:          #1f1a14;
+    --ink-soft:     #4a3f30;
+    --ink-faint:    #8a7a5e;
+    --medici-red:   #8b1a1a;
+    --medici-deep:  #5e0f0f;
+    --gold:         #b8893a;
+    --gold-soft:    #d4b069;
+    --rule:         rgba(94, 15, 15, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Serif TC", "Cormorant Garamond", "Source Han Serif TC", serif;
+    font-weight: 400;
+    line-height: 1.85;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* 羊皮紙紋理 */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(184, 137, 58, 0.08), transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(139, 26, 26, 0.06), transparent 55%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.08 0 0 0 0.08 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============ 頭部 ============ */
+  header {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .palle {
+    display: inline-flex;
+    gap: 6px;
+    margin-bottom: 32px;
+    align-items: center;
+  }
+  .palle .ball {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #c33b3b 0%, var(--medici-red) 45%, var(--medici-deep) 100%);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset -1px -1px 2px rgba(0,0,0,0.3);
+  }
+  .palle .ball.center {
+    background: radial-gradient(circle at 35% 30%, #5a8fc9 0%, #2d5a8b 60%, #1a3a5e 100%);
+  }
+
+  .eyebrow {
+    font-family: "Cinzel", serif;
+    font-size: 11px;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: var(--medici-red);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: "Noto Serif TC", "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  h1 .accent {
+    color: var(--medici-red);
+    font-style: italic;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+  }
+
+  .subtitle {
+    font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .meta {
+    margin-top: 36px;
+    font-family: "Cinzel", serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .meta .dot {
+    margin: 0 12px;
+    color: var(--gold);
+  }
+
+  /* ============ 引言 ============ */
+  .lede {
+    font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    font-size: 1.35rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    text-align: center;
+    margin: 0 auto 100px;
+    max-width: 640px;
+    font-style: italic;
+    position: relative;
+    padding: 0 40px;
+  }
+  .lede::before, .lede::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+  .lede::before { left: -20px; }
+  .lede::after  { right: -20px; }
+
+  /* ============ 章節 ============ */
+  section.chapter {
+    margin-bottom: 88px;
+    position: relative;
+  }
+
+  .chapter-num {
+    font-family: "Cinzel", serif;
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .chapter-num::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .chapter-num::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold) 0%, transparent 100%);
+    opacity: 0.4;
+  }
+
+  h2 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.5vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--medici-deep);
+    margin-bottom: 32px;
+    letter-spacing: -0.005em;
+  }
+
+  h2 .years {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* 首章首字下沉 */
+  section.chapter:first-of-type p:first-of-type::first-letter {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: var(--medici-red);
+    font-size: 4.5em;
+    line-height: 0.85;
+    float: left;
+    padding: 6px 12px 0 0;
+    margin-top: 4px;
+  }
+
+  p {
+    margin-bottom: 1.3em;
+    text-align: justify;
+    text-justify: inter-ideograph;
+    hyphens: auto;
+  }
+
+  p strong {
+    font-weight: 600;
+    color: var(--medici-deep);
+  }
+
+  em {
+    font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  ul {
+    list-style: none;
+    margin: 1.2em 0 1.6em;
+    padding: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 0.7em;
+    line-height: 1.75;
+  }
+  ul li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0.85em;
+    width: 8px;
+    height: 8px;
+    background: var(--medici-red);
+    border-radius: 50%;
+    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.3);
+  }
+
+  /* 引用塊 */
+  blockquote {
+    font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    font-style: italic;
+    font-size: 1.18rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 2em 0;
+    padding: 0 0 0 28px;
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+
+  /* 章節間裝飾分隔 */
+  .ornament {
+    text-align: center;
+    margin: 60px 0;
+    color: var(--gold);
+    font-size: 22px;
+    letter-spacing: 1em;
+    opacity: 0.7;
+  }
+
+  /* ============ 結尾 ============ */
+  .epilogue {
+    margin-top: 100px;
+    padding-top: 60px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .epilogue .palle {
+    margin-bottom: 24px;
+  }
+
+  .epilogue p {
+    font-family: "Cinzel", serif;
+    font-size: 11px;
+    letter-spacing: 0.45em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .epilogue .motto {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--medici-red);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    margin-top: 16px;
+  }
+
+  /* ============ 響應式 ============ */
+  @media (max-width: 600px) {
+    .container { padding: 50px 24px 80px; }
+    body { font-size: 16.5px; line-height: 1.8; }
+    .lede { padding: 0; font-size: 1.15rem; }
+    .lede::before, .lede::after { display: none; }
+    section.chapter { margin-bottom: 64px; }
+    section.chapter:first-of-type p:first-of-type::first-letter {
+      font-size: 3.8em;
+    }
+  }
+
+  /* 進場動畫 */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  header, .lede, section.chapter, .epilogue {
+    animation: fadeUp 0.9s ease-out backwards;
+  }
+  header { animation-delay: 0.05s; }
+  .lede  { animation-delay: 0.25s; }
+  section.chapter:nth-of-type(1) { animation-delay: 0.4s; }
+  section.chapter:nth-of-type(2) { animation-delay: 0.5s; }
+  section.chapter:nth-of-type(3) { animation-delay: 0.6s; }
+  section.chapter:nth-of-type(4) { animation-delay: 0.65s; }
+  section.chapter:nth-of-type(5) { animation-delay: 0.7s; }
+  section.chapter:nth-of-type(6) { animation-delay: 0.75s; }
+  section.chapter:nth-of-type(7) { animation-delay: 0.8s; }
+  section.chapter:nth-of-type(8) { animation-delay: 0.85s; }
+  .epilogue { animation-delay: 0.95s; }
+
+  ::selection { background: var(--medici-red); color: var(--paper); }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="palle" aria-hidden="true">
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball center"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+      </div>
+      <div class="eyebrow">Casa de' Medici · Firenze</div>
+      <h1>梅迪奇家族<br><span class="accent">從藥商到佛羅倫斯之主</span></h1>
+      <p class="subtitle">一個托斯卡尼商人家族，如何用三百年時間，孵化整個歐洲的文藝復興</p>
+      <div class="meta">
+        <span>MCCCLX</span><span class="dot">✦</span><span>MDCCXLIII</span>
+      </div>
+    </header>
+
+    <p class="lede">
+      梅迪奇家族是文藝復興時代最具影響力的家族之一。他們從一個托斯卡尼的小商人崛起，靠著銀行業累積龐大財富，進而以「非正式統治者」的身分掌控佛羅倫斯共和國近三百年，又出了兩位法國王后、四位教宗、托斯卡尼大公數代。整個歐洲的文藝復興，幾乎可以說是在他們的金錢與品味之下被孵化出來的。
+    </p>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;I</div>
+      <h2>起源：來自穆杰羅的鄉下人<span class="years">13–14 世紀</span></h2>
+      <p>「Medici」這個姓氏的字源與義大利文「medico」（醫生）相關，家族盾徽上的紅色圓球（<em>palle</em>），一說即源自藥丸或硬幣的意象。家族原本住在佛羅倫斯北邊的穆杰羅（Mugello）山區，13 世紀左右遷入佛羅倫斯。早期的梅迪奇人多半從事羊毛貿易與小規模放貸，並非顯赫之家。</p>
+      <p>14 世紀末，家族中曾有一位 Salvestro de' Medici 在 1378 年的「梳毛工起義」（<em>Ciompi Revolt</em>）中扮演重要角色，但隨後家族在政治上沉寂了一段時間。真正讓家族脫胎換骨的，是下一代的喬凡尼。</p>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;II</div>
+      <h2>銀行帝國的奠基：喬凡尼·迪比奇<span class="years">1360 – 1429</span></h2>
+      <p>喬凡尼·迪比奇·德·梅迪奇（Giovanni di Bicci de' Medici）在 1397 年於佛羅倫斯創立梅迪奇銀行（<em>Banco dei Medici</em>）。這家銀行有幾個關鍵優勢：</p>
+      <ul>
+        <li>在羅馬、威尼斯、日內瓦、布魯日、倫敦等地設立分行，形成跨歐洲的金融網絡。</li>
+        <li>拿下了<strong>羅馬教廷</strong>的財務管理權，這是中世紀晚期歐洲最大、最穩定的金流之一。</li>
+        <li>採用較先進的複式簿記（<em>double-entry bookkeeping</em>），分散風險、控管帳務。</li>
+      </ul>
+      <p>喬凡尼為人謹慎、低調，遵守佛羅倫斯共和國「商人不干政」的潛規則。但他留給兒子科西莫的，不只是財富，還有一張遍布歐洲權力中心的人脈網。</p>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;III</div>
+      <h2>「祖國之父」：老科西莫<span class="years">1389 – 1464</span></h2>
+      <p>科西莫·德·梅迪奇（<em>Cosimo "il Vecchio"</em>）是家族第一位真正意義上的政治人物。他在 1434 年從短暫的流放中回到佛羅倫斯後，沒有奪取任何正式頭銜——他始終只是一個「平民」，但靠著精密的選舉操作、債務人情、姻親網絡，事實上掌控了共和國。</p>
+      <blockquote>他的統治方式是文藝復興政治史上的經典：統治於幕後。在他去世後，佛羅倫斯人在他的墓碑刻上「Pater Patriae」——祖國之父。</blockquote>
+      <p>文化上，科西莫是真正開創梅迪奇贊助傳統的人：</p>
+      <ul>
+        <li>資助布魯內列斯基（<em>Brunelleschi</em>）完成佛羅倫斯大教堂的圓頂。</li>
+        <li>贊助雕塑家多納太羅（<em>Donatello</em>）。</li>
+        <li>在卡雷吉別墅創立<strong>柏拉圖學院</strong>，找來費奇諾翻譯柏拉圖全集，把希臘哲學重新帶回西歐思想界。</li>
+        <li>蒐集古籍、建立公共圖書館的雛形（<em>Biblioteca Medicea</em>）。</li>
+      </ul>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;IV</div>
+      <h2>輝煌頂點：「偉大的羅倫佐」<span class="years">1449 – 1492</span></h2>
+      <p>科西莫的孫子——羅倫佐（<em>Lorenzo "il Magnifico"</em>）——是家族最廣為人知的人物。他不是最會做生意的梅迪奇（事實上，他在位期間銀行業務開始走下坡），但他是最會「演」君主的梅迪奇：詩人、外交家、藝術品味極高的贊助者。</p>
+      <p>他的時代有幾件大事：</p>
+      <p><strong>1478 年帕齊陰謀（Pazzi Conspiracy）。</strong>競爭對手帕齊家族聯合教宗西斯篤四世，在主教座堂裡刺殺羅倫佐與其弟朱利亞諾。朱利亞諾當場死亡，羅倫佐負傷逃脫。此後他用鐵腕鎮壓對手，並運用外交手腕周旋於那不勒斯、米蘭、羅馬之間，成為「義大利天平的指針」。</p>
+      <p><strong>藝術黃金時代。</strong>他的圈子裡有波提切利（<em>Botticelli</em>）、年輕的米開朗基羅（曾住在梅迪奇宅邸、與羅倫佐共餐）、年輕的達文西。羅倫佐死於 1492 年——同年哥倫布抵達美洲、西班牙完成收復失地運動，歐洲歷史進入新階段。</p>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;V</div>
+      <h2>流放、薩佛納羅拉、再回歸<span class="years">1494 – 1512</span></h2>
+      <p>羅倫佐死後，兒子皮耶羅二世（「不幸的皮耶羅」）無能應對法王查理八世入侵，於 1494 年被佛羅倫斯人趕出城。多明我會修士<strong>薩佛納羅拉</strong>（Savonarola）在城中發動道德革命，舉行著名的「虛榮之火」焚燒奢侈品與藝術品。直到 1498 年薩佛納羅拉本人被燒死，佛羅倫斯回到共和派手中。</p>
+      <p>1512 年，靠著教宗與西班牙軍隊的力量，梅迪奇家族重返佛羅倫斯。</p>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;VI</div>
+      <h2>梅迪奇教宗時代<span class="years">16 世紀</span></h2>
+      <p>家族在這時期出了兩位重要教宗：</p>
+      <p><strong>教宗利奧十世</strong>（Leo X，原名 Giovanni de' Medici，1513–1521 在位）：羅倫佐之子。據說他登基時對弟弟說：</p>
+      <blockquote>上帝既然給了我們教廷，就讓我們好好享用它。</blockquote>
+      <p>他鋪張地修建聖伯多祿大教堂與販售贖罪券，是引發馬丁路德 1517 年掀起宗教改革的直接導火線。</p>
+      <p><strong>教宗克勉七世</strong>（Clement VII，原名 Giulio de' Medici，1523–1534 在位）：羅倫佐遇刺弟弟朱利亞諾的私生子。他在位期間發生 1527 年羅馬之劫（神聖羅馬帝國軍隊洗劫羅馬），也是他拒絕英王亨利八世的離婚請求，導致英國國教與羅馬決裂。</p>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;VII</div>
+      <h2>托斯卡尼大公國<span class="years">1569 – 1737</span></h2>
+      <p>1530 年後，佛羅倫斯共和國正式變成公國；1569 年教宗庇護五世授予<strong>科西莫一世</strong>（Cosimo I）「托斯卡尼大公」的頭銜。從這時起，梅迪奇從「幕後的非正式統治者」變成正式的世襲君主。</p>
+      <p>這個時代值得記住的人物包括：</p>
+      <ul>
+        <li><strong>科西莫一世：</strong>建立行政體系、海軍、烏菲茲（<em>Uffizi</em>，原意為「辦公廳」，今為世界級美術館）。</li>
+        <li><strong>凱薩琳·德·梅迪奇</strong>（Catherine de' Medici）：嫁給法王亨利二世，後成為法國王太后，三個兒子先後當法王。1572 年聖巴托羅繆之夜屠殺新教徒，她是核心人物之一。</li>
+        <li><strong>瑪麗·德·梅迪奇</strong>（Marie de' Medici）：嫁給法王亨利四世，路易十三的母親，魯本斯為她畫了那組著名的二十四聯畫。</li>
+        <li><strong>斐迪南二世：</strong>贊助過晚年的伽利略。</li>
+      </ul>
+      <p>不過，到了 17 世紀後期，家族在政治、財政、生育各方面都同步衰敗。最後一位男性繼承人<strong>詹·加斯托內</strong>（Gian Gastone）於 1737 年無嗣而終，托斯卡尼大公國依條約轉給洛林家族（即後來的哈布斯堡-洛林家族）。</p>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CAPITOLO &nbsp;VIII</div>
+      <h2>最後的禮物：「家族契約」<span class="years">1737 – 1743</span></h2>
+      <p>家族的最後一位成員是詹·加斯托內的姊姊<strong>安娜·瑪麗亞·路易莎</strong>（Anna Maria Luisa de' Medici，1667–1743）。她在 1737 年與新統治者簽下著名的「家族契約」（<em>Patto di Famiglia</em>），規定梅迪奇家族累積的全部藝術收藏——包括烏菲茲、皮蒂宮、波波里花園的全部館藏——<strong>永遠不得移出佛羅倫斯</strong>。</p>
+      <blockquote>這紙契約是今天佛羅倫斯之所以還是佛羅倫斯的關鍵原因。可以說，梅迪奇家族在政治上滅亡之後，靠著這份遠見，把整座城市以美學的方式「永久化」了。</blockquote>
+    </section>
+
+    <div class="epilogue">
+      <div class="palle" aria-hidden="true">
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+        <span class="ball center"></span>
+        <span class="ball"></span>
+        <span class="ball"></span>
+      </div>
+      <p>Finis</p>
+      <p class="motto">— Festina Lente —</p>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -89,4 +89,17 @@ patch 有版本標記，重貼前會把舊區塊整段移除，所以可重複�
 
 Windows + PowerShell。簡繁轉換需要系統 Python 的 `opencc`（`s2twp`，台灣用語）；轉檔 skill 各自有獨立 venv，由其 `run.py` 自行管理。
 
-`reader\` 約 3 GB、單檔最大數百 MB，**不適合推上 GitHub**（單檔 100 MB 硬限制）。目前 `epub\`、`reader\`、`tools\` 都還沒進版控，且沒有 `.gitignore`。
+## 版控
+
+遠端是 `https://github.com/chad-liu/books`。**只有腳本與設定進版控，書籍本體不進**：
+
+| 進版控 | 不進版控（`.gitignore`） |
+|---|---|
+| `tools\build_library.py` | `epub\`（來源電子書） |
+| `tools\series.json`、`titles.json`、`text_fixes.json` | `reader\`（產出，約 3 GB，隨時可重新產生） |
+| `tools\library_changes.md`（書庫異動紀錄） | `tools\*.log`、`__pycache__\`、`*.twtmp`、`*.fixtmp` |
+| `index.html`、`Plan.md`、`booklist.md`、`plan1.md`、`CLAUDE.md` | |
+
+`reader\` 單檔可達數百 MB，超過 GitHub 單檔 100 MB 硬限制，**不要把它加進版控**。
+
+使用者也會直接在 GitHub 網頁上編輯 `index.html`（提交訊息為「Add files via upload」），所以**本機 main 常落後遠端數十筆**。動 git 之前先 `git status -sb` 看有沒有分岔；若本機的 `index.html` 修改其實與 `origin/main` 相同（用 `git diff origin/main -- index.html` 確認），還原後 `git pull --rebase` 即可，不必手動解衝突。

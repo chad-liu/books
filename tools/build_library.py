@@ -436,7 +436,9 @@ def epub_meta(path):
             mm = re.search(r'<%s[^>]*>(.*?)</%s>' % (tag, tag), opf, re.S)
         return re.sub(r'\s+', ' ', mm.group(1)).strip() if mm else ''
 
-    return clean_title(pick('title'), path.stem), pick('creator')
+    cleaned = _clean_title(pick('title'), path.stem)      # 尚未套用修正表的書名
+    ov = title_overrides().get(cleaned) or {}
+    return ov.get('title') or cleaned, (ov.get('author') or pick('creator'))
 
 
 TITLES_FILE = BOOKS_ROOT / 'tools' / 'titles.json'
@@ -444,21 +446,39 @@ _title_overrides = None
 
 
 def title_overrides():
+    """回傳 {原書名: {'title': 新書名, 'author': 新作者或 None}}。
+
+    titles.json 的值可以是字串（只改書名），也可以是
+    {"title": ..., "author": ...}（順便改作者，metadata 寫 Unknown 時用得到）。
+    """
     global _title_overrides
     if _title_overrides is None:
         _title_overrides = {}
         if TITLES_FILE.exists():
             try:
                 conf = json.loads(TITLES_FILE.read_text(encoding='utf-8'))
-                _title_overrides = {k: v for k, v in conf.items()
-                                    if not k.startswith('_') and isinstance(v, str)}
+                for k, v in conf.items():
+                    if k.startswith('_'):
+                        continue
+                    if isinstance(v, str):
+                        _title_overrides[k] = {'title': v, 'author': None}
+                    elif isinstance(v, dict) and v.get('title'):
+                        _title_overrides[k] = {'title': v['title'],
+                                               'author': v.get('author')}
             except Exception as e:
                 print('[警告] titles.json 讀取失敗，這次不套用書名修正：%s' % e)
     return _title_overrides
 
 
 def clean_title(title, stem):
-    """EPUB metadata 的書名常帶館藏編號或行銷用的版本括號，整理成適合列表顯示的樣子。"""
+    """整理書名並套用 titles.json 的修正。"""
+    t = _clean_title(title, stem)
+    ov = title_overrides().get(t)
+    return ov['title'] if ov else t
+
+
+def _clean_title(title, stem):
+    """只做通例整理，不套用修正表（修正表的鍵就是這一層的輸出）。"""
     if not title:
         return stem
     t = re.sub(r'^[A-Za-z]{1,2}\d{3,}[\s_-]+', '', title).strip()   # Y0035 初期大乘…
@@ -471,7 +491,22 @@ def clean_title(title, stem):
     # 但檔名長很多通常是夾雜來源雜訊（「… by 傅佩荣 (z-lib.org)」），那就維持 metadata
     if t in stem and 0 < len(stem) - len(t) <= 6:
         t = stem
-    return title_overrides().get(t, t)
+    return t
+
+
+def _raw_key(path):
+    """這本書在 titles.json 裡對應的鍵（即未套用修正表前的整理後書名）。"""
+    import zipfile
+    try:
+        with zipfile.ZipFile(path) as z:
+            container = z.read('META-INF/container.xml').decode('utf-8', 'replace')
+            m = re.search(r'full-path="([^"]+)"', container)
+            opf = z.read(m.group(1)).decode('utf-8', 'replace') if m else ''
+        mm = re.search(r'<dc:title[^>]*>(.*?)</dc:title>', opf, re.S)
+        raw = re.sub(r'\s+', ' ', mm.group(1)).strip() if mm else ''
+    except Exception:
+        raw = ''
+    return _clean_title(raw, path.stem)
 
 
 SHELF_ITEM_RE = re.compile(
@@ -549,7 +584,18 @@ window.addEventListener('load', function () {
 </script>"""
 
 PATCH_PREFIX = '<!--library-patch'
-PATCH_MARK = PATCH_PREFIX + ' v2-->'
+PATCH_MARK = PATCH_PREFIX + ' v3-->'
+
+
+def book_anchor(rel_key):
+    """這本書在首頁上的錨點 id。
+
+    用輸出檔相對路徑的雜湊，首頁與閱讀器兩邊各自算出同一個值，
+    不必把中文路徑塞進 id（會有跳脫與 CSS 選擇器的麻煩）。
+    """
+    import hashlib
+    key = str(rel_key).replace('\\', '/')
+    return 'bk-' + hashlib.md5(key.encode('utf-8')).hexdigest()[:10]
 
 
 def patch_output(out, is_shelf=None):
@@ -568,8 +614,10 @@ def patch_output(out, is_shelf=None):
         j = text.find('</body>', i)
         text = text[:i] + (text[j:] if j != -1 else '')
 
-    depth = len(out.relative_to(DST_ROOT).parts) - 1
-    back = '../' * depth + 'index.html'
+    rel = out.relative_to(DST_ROOT)
+    depth = len(rel.parts) - 1
+    # 帶錨點回首頁，才會回到剛才那本書的位置而不是整頁最上面
+    back = '../' * depth + 'index.html#' + book_anchor(rel)
     patch = '\n'.join([PATCH_MARK, BACK_LINK_CSS,
                        '<a class="lib-back" href="%s">← 書庫</a>' % back, DARK_SCRIPT]
                       + ([HASH_SCRIPT] if is_shelf else []))
@@ -590,11 +638,11 @@ CHILD_ENV = dict(os.environ, PYTHONIOENCODING='utf-8', PYTHONUTF8='1')
 def run_reader(src, out):
     cmd = [sys.executable, str(READER_RUN), 'main.py',
            '--input', str(src), '--output', str(out)]
-    # titles.json 有指定修正時，連閱讀器頁首的書名一起換掉，
+    # titles.json 有指定修正時，連閱讀器頁首一起換掉，
     # 才不會首頁寫「手沖」、打開書卻是「手衝」
-    raw, _ = epub_meta(src)
-    if raw in title_overrides().values():
-        cmd += ['--title', raw]
+    title, author = epub_meta(src)
+    if title_overrides().get(_raw_key(src)):
+        cmd += ['--title', title, '--author', author]
     return subprocess.run(cmd, capture_output=True, text=True,
                           encoding='utf-8', errors='replace', env=CHILD_ENV)
 
@@ -803,6 +851,9 @@ li.set a{color:#d8c187}
 .shelves a:hover{opacity:1;text-decoration:underline}
 .au{color:#6b7688;font-size:.78rem;margin-left:8px}
 .empty{color:#6b7688;text-align:center;padding:50px;display:none}
+li.jump-target > a{background:#1e3a5f;color:#c9a94f;
+box-shadow:inset 0 0 0 2px #c9a94f;transition:background .6s,box-shadow .6s}
+li.jump-target.fade > a{background:transparent;box-shadow:inset 0 0 0 2px transparent}
 footer{color:#6b7688;font-size:.8rem;padding:34px 32px 0;text-align:center}
 @media(max-width:600px){header{padding:20px}main{padding:8px 16px}}
 """
@@ -850,6 +901,25 @@ document.addEventListener('keydown', function (e) {
   if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
   if (e.key === 'Escape') { q.value = ''; run(); q.blur(); }
 });
+
+// 從閱讀器按「← 書庫」回來時，捲到剛才那本書並短暫highlight。
+// 不能只靠原生錨點跳轉：頂部是 sticky header，會把目標整個蓋住。
+function gotoBook() {
+  var m = /^#(bk-[0-9a-f]+)$/.exec(window.location.hash || '');
+  if (!m) return;
+  var li = document.getElementById(m[1]);
+  if (!li) return;
+  var top = li.getBoundingClientRect().top + window.pageYOffset
+            - document.querySelector('header').offsetHeight - 12;
+  window.scrollTo(0, Math.max(0, top));
+  document.querySelectorAll('li.jump-target').forEach(function (el) {
+    el.classList.remove('jump-target', 'fade');
+  });
+  li.classList.add('jump-target');
+  setTimeout(function () { li.classList.add('fade'); }, 1800);
+}
+window.addEventListener('load', gotoBook);
+window.addEventListener('hashchange', gotoBook);
 </script>"""
 
 
@@ -897,6 +967,7 @@ def build_index(manifest):
                 'title': b['title'], 'author': b.get('author', ''),
                 'href': url(key, b.get('anchor', '')),
                 'norm': norm_title(b['title']),
+                'file': key,
                 'shelf_key': key if multi else None,
             })
 
@@ -960,10 +1031,17 @@ def build_index(manifest):
                 out.append('<div class="shelves"><a href="%s">📚 %s</a></div>'
                            % (url(s['key']), escape(s['name'])))
             out.append('<ul>')
+            seen_files = set()
             for e in sorted(card['entries'], key=lambda x: x['title']):
                 au = '<span class="au">%s</span>' % escape(e['author']) if e['author'] else ''
-                out.append('<li%s data-t="%s"><a href="%s">%s%s</a></li>'
-                           % (' class="set"' if e['shelf_key'] else '',
+                # 每個輸出檔給一個錨點（書架的話落在該書架的第一本），
+                # 閱讀器的「← 書庫」就是連回這裡
+                anchor = ''
+                if e['file'] not in seen_files:
+                    seen_files.add(e['file'])
+                    anchor = ' id="%s"' % book_anchor(e['file'])
+                out.append('<li%s%s data-t="%s"><a href="%s">%s%s</a></li>'
+                           % (anchor, ' class="set"' if e['shelf_key'] else '',
                               escape('%s %s' % (e['title'], e['author'])),
                               e['href'], escape(e['title']), au))
             out.append('</ul></article>')
