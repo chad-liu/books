@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown 編輯器</title>
+
+<!-- Preview -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" disabled>
+<link id="hljs-dark"  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- CodeMirror 5 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/display/placeholder.min.js"></script>
+<!-- language modes for fenced code blocks -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/yaml/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/rust/rust.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/go/go.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/markdown/markdown.min.js"></script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #1e1e1e;
+  --bg-panel:  #252526;
+  --bg-header: #2d2d30;
+  --border:    #3e3e42;
+  --text:      #cccccc;
+  --text-dim:  #888888;
+  --accent:    #007acc;
+  --accent-h:  #1a8fd1;
+  --sel:       #094771;
+  --hover:     #2a2d2e;
+  --unsaved:   #e2c08d;
+}
+
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+  height: 42px;
+  flex-shrink: 0;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 10px;
+}
+header h1 { font-size: 14px; font-weight: 600; white-space: nowrap; }
+header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto; }
+
+/* ── Main ── */
+.main { flex: 1; display: flex; overflow: hidden; }
+
+/* ── Resizer ── */
+.resizer {
+  width: 3px;
+  background: var(--border);
+  cursor: col-resize;
+  flex-shrink: 0;
+  z-index: 20;
+  transition: background 0.15s;
+}
+.resizer:hover, .resizer.dragging { background: var(--accent); }
+
+/* ── Left panel ── */
+#panel-left {
+  width: 240px;
+  min-width: 140px;
+  flex-shrink: 0;
+  background: var(--bg-panel);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.panel-bar {
+  height: 34px;
+  flex-shrink: 0;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-dim);
+}
+.btn-open {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 9px;
+  font-size: 11px;
+  cursor: pointer;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.btn-open:hover { background: var(--accent-h); }
+.btn-open:disabled { background: #555; cursor: default; }
+
+.btn-icon {
+  background: #3a3d41;
+  color: var(--text);
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 0 7px;
+  font-size: 14px;
+  line-height: 22px;
+  height: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.btn-icon:hover { background: #4a4d51; }
+.btn-icon:disabled { opacity: 0.35; cursor: default; }
+.panel-bar-right { display: flex; align-items: center; gap: 4px; }
+
+.ti.drag-src  { opacity: 0.35; }
+.ti.drag-over { background: var(--sel) !important; outline: 1px dashed var(--accent); }
+
+.ti .ti-del {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 15px;
+  color: transparent;
+  cursor: pointer;
+}
+.ti:hover .ti-del { color: var(--text-dim); }
+.ti .ti-del:hover { background: rgba(201,48,44,.18); color: #e05252 !important; }
+
+#file-tree { flex: 1; overflow-y: auto; overflow-x: hidden; }
+#file-tree::-webkit-scrollbar { width: 6px; }
+#file-tree::-webkit-scrollbar-track { background: var(--bg-panel); }
+#file-tree::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+#file-tree::-webkit-scrollbar-thumb:hover { background: #555; }
+
+.tree-empty {
+  padding: 20px 14px;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.7;
+}
+.ti {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ti:hover { background: var(--hover); }
+.ti.active { background: var(--sel); color: #fff; }
+.ti .ti-arrow { flex-shrink: 0; font-size: 9px; color: #aaa; width: 12px; text-align: center; }
+.ti .ti-icon  { flex-shrink: 0; margin: 0 5px 0 2px; font-size: 13px; }
+.ti .ti-name  { overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Middle panel ── */
+#panel-middle {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+.editor-bar {
+  height: 34px;
+  flex-shrink: 0;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  justify-content: space-between;
+  gap: 8px;
+}
+.editor-bar .left { display: flex; align-items: center; gap: 6px; overflow: hidden; }
+#fname { font-size: 13px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#unsaved-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--unsaved);
+  flex-shrink: 0;
+  display: none;
+}
+#btn-save {
+  background: #3a3d41;
+  color: var(--text);
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+#btn-save:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: #fff; }
+#btn-save:disabled { opacity: 0.4; cursor: default; }
+
+#btn-saveas {
+  background: #3a3d41;
+  color: var(--text);
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+#btn-saveas:hover { background: #4a4d51; }
+
+#btn-wrap {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 3px 9px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+#btn-wrap:hover { background: var(--accent-h); border-color: var(--accent-h); }
+#btn-wrap.off {
+  background: #3a3d41;
+  color: var(--text-dim);
+  border-color: #555;
+}
+#btn-wrap.off:hover { background: #4a4d51; color: var(--text); }
+
+/* ── CodeMirror container ── */
+#cm-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+#cm-wrap .CodeMirror {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Source Code Pro', monospace;
+  font-size: 14px;
+  line-height: 1.65;
+}
+/* tighten gutter to match VS Code look */
+#cm-wrap .CodeMirror-gutters {
+  border-right: 1px solid #3d3f4e;
+  padding-right: 4px;
+}
+/* heading colors */
+#cm-wrap .cm-header { color: #ff9500 !important; font-weight: bold; }
+/* placeholder text */
+#cm-wrap .CodeMirror pre.CodeMirror-placeholder { color: #555; }
+
+/* ── Right panel ── */
+#panel-right {
+  width: 44%;
+  min-width: 200px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+}
+.preview-bar {
+  height: 34px;
+  flex-shrink: 0;
+  background: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #888;
+  gap: 8px;
+}
+.preview-bar .spacer { flex: 1; }
+#btn-preview-theme, #btn-copy {
+  background: #e8e8e8;
+  color: #444;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 3px 9px;
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  line-height: 1.5;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+#btn-preview-theme:hover, #btn-copy:hover { background: #d0d0d0; }
+#btn-copy.copied { background: #d4edda; border-color: #a8d5b5; color: #1a7a3a; }
+#preview {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+  color: #24292f;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+#preview::-webkit-scrollbar { width: 8px; }
+#preview::-webkit-scrollbar-track { background: #fafafa; }
+#preview::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+/* preview typography */
+#preview h1,#preview h2,#preview h3,#preview h4,#preview h5,#preview h6 {
+  font-weight: 600; line-height: 1.3; color: #1f2328; margin: 1.2em 0 .5em;
+}
+#preview h1 { font-size: 2em;   border-bottom: 1px solid #d0d7de; padding-bottom: .3em; }
+#preview h2 { font-size: 1.5em; border-bottom: 1px solid #d0d7de; padding-bottom: .3em; }
+#preview h3 { font-size: 1.25em; }
+#preview h4 { font-size: 1em; }
+#preview p  { margin: 0 0 .9em; }
+#preview a  { color: #0969da; text-decoration: none; }
+#preview a:hover { text-decoration: underline; }
+#preview ul,#preview ol { padding-left: 2em; margin: 0 0 .9em; }
+#preview li { margin: .25em 0; }
+#preview li > p { margin: 0; }
+#preview blockquote {
+  border-left: 4px solid #d0d7de;
+  padding: .5em 1em;
+  color: #57606a;
+  margin: 1em 0;
+}
+#preview blockquote p { margin: 0; }
+#preview code {
+  font-family: 'Cascadia Code','Fira Code',Consolas,monospace;
+  font-size: .875em;
+  background: #f6f8fa;
+  padding: .2em .4em;
+  border-radius: 6px;
+  color: #cf222e;
+}
+#preview pre {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  margin: 1em 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#preview pre code { background: none; padding: 0; border-radius: 0; color: inherit; font-size: inherit; }
+#preview table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: .9em; }
+#preview th,#preview td { border: 1px solid #d0d7de; padding: 6px 13px; }
+#preview th { background: #f6f8fa; font-weight: 600; }
+#preview tr:nth-child(even) td { background: #fafbfc; }
+#preview hr { border: none; border-top: 1px solid #d0d7de; margin: 1.5em 0; }
+#preview img { max-width: 100%; border-radius: 4px; }
+.yt-wrap { margin: 1em 0; }
+.yt-wrap iframe { width: 100%; height: 380px; border-radius: 6px; display: block; border: none; }
+.yt-link { display: inline-block; margin-top: 6px; font-size: 12px; color: #888; text-decoration: none; }
+.yt-link:hover { color: #c00; }
+#preview strong { font-weight: 600; }
+#preview del { text-decoration: line-through; color: #57606a; }
+
+.preview-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #bbb;
+  gap: 12px;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* ── Preview dark mode ── */
+#panel-right.dark { background: #1e1e1e; }
+#panel-right.dark .preview-bar { background: #2d2d30; border-bottom-color: #3e3e42; color: #777; }
+#panel-right.dark #btn-preview-theme { background: #3a3d41; color: #bbb; border-color: #555; }
+#panel-right.dark #btn-preview-theme:hover { background: #4a4d51; }
+#panel-right.dark #btn-copy { background: #3a3d41; color: #bbb; border-color: #555; }
+#panel-right.dark #btn-copy:hover { background: #4a4d51; }
+#panel-right.dark #btn-copy.copied { background: #1a3a28; border-color: #2a5c40; color: #6abf8a; }
+#panel-right.dark #preview { color: #ccc; }
+#panel-right.dark #preview::-webkit-scrollbar-track { background: #1e1e1e; }
+#panel-right.dark #preview::-webkit-scrollbar-thumb { background: #444; }
+#panel-right.dark #preview h1,#panel-right.dark #preview h2,
+#panel-right.dark #preview h3,#panel-right.dark #preview h4,
+#panel-right.dark #preview h5,#panel-right.dark #preview h6 { color: #ddd; }
+#panel-right.dark #preview h1,#panel-right.dark #preview h2 { border-bottom-color: #3e3e42; }
+#panel-right.dark #preview a { color: #4da6ff; }
+#panel-right.dark #preview blockquote { border-left-color: #555; color: #999; }
+#panel-right.dark #preview code { background: #2d2d30; color: #f48771; }
+#panel-right.dark #preview pre  { background: #1e1e1e; border-color: #3e3e42; }
+#panel-right.dark #preview pre code { background: none; color: inherit; }
+#panel-right.dark #preview table th { background: #2d2d30; }
+#panel-right.dark #preview table th,
+#panel-right.dark #preview table td { border-color: #3e3e42; color: #ccc; }
+#panel-right.dark #preview tr:nth-child(even) td { background: #252526; }
+#panel-right.dark #preview hr { border-top-color: #3e3e42; }
+#panel-right.dark #preview strong { color: #e0e0e0; }
+#panel-right.dark #preview del { color: #888; }
+#panel-right.dark .preview-empty { color: #444; }
+
+/* ── Status bar ── */
+#status-bar {
+  height: 22px;
+  flex-shrink: 0;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 18px;
+  font-size: 12px;
+  color: rgba(255,255,255,.9);
+}
+#status-bar span { white-space: nowrap; }
+#st-warn { margin-left: auto; color: #ffdd57; }
+
+.no-select { user-select: none !important; -webkit-user-select: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📝 Markdown 編輯器</h1>
+  <button class="btn-icon" id="btn-toggle-editor" onclick="toggleEditor()" title="切換編輯欄 (Ctrl+E)">隱藏編輯欄</button>
+  <span class="header-hint">Ctrl+O 開啟資料夾 &nbsp;|&nbsp; Ctrl+S 儲存 &nbsp;|&nbsp; Ctrl+E 切換編輯欄</span>
+</header>
+
+<div class="main">
+
+  <!-- ── Left: File Browser ── -->
+  <div id="panel-left">
+    <div class="panel-bar">
+      <span>檔案總管</span>
+      <div class="panel-bar-right">
+        <button class="btn-icon" id="btn-newfile" onclick="newFile()" title="在當前目錄新增 .md 檔案" disabled>+</button>
+        <button class="btn-icon" id="btn-refresh" onclick="refreshTree()" title="重新整理" disabled>↺</button>
+        <button class="btn-open" id="btn-open" onclick="openDirectory()">開啟資料夾</button>
+      </div>
+    </div>
+    <div id="file-tree">
+      <div class="tree-empty">點選「開啟資料夾」<br>瀏覽 .md 檔案</div>
+    </div>
+  </div>
+
+  <div class="resizer" id="res-l"></div>
+
+  <!-- ── Middle: Editor (CodeMirror) ── -->
+  <div id="panel-middle">
+    <div class="editor-bar">
+      <div class="left">
+        <span id="fname" title="">未開啟檔案</span>
+        <span id="unsaved-dot" title="有未儲存的變更"></span>
+      </div>
+      <button id="btn-wrap" onclick="toggleWrap()" title="切換自動換行">換行</button>
+      <button id="btn-save" disabled onclick="saveFile()">儲存 (Ctrl+S)</button>
+      <button id="btn-saveas" onclick="saveAsFile()">另存新檔</button>
+    </div>
+    <div id="cm-wrap"></div>
+  </div>
+
+  <div class="resizer" id="res-r"></div>
+
+  <!-- ── Right: Preview ── -->
+  <div id="panel-right" class="dark">
+    <div class="preview-bar">
+      <span>預覽</span>
+      <span class="spacer"></span>
+      <button id="btn-preview-theme" onclick="togglePreviewTheme()" title="切換預覽主題">☀️ 淺色</button>
+      <button id="btn-copy" onclick="copyPreview()">複製全部</button>
+    </div>
+    <div id="preview">
+      <div class="preview-empty">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+             stroke="#aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span>輸入內容後即可預覽</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="status-bar">
+  <span id="st-path">未開啟資料夾</span>
+  <span id="st-pos">行 1，列 1</span>
+  <span id="st-words">字數: 0</span>
+  <span id="st-warn"></span>
+</div>
+
+<script>
+'use strict';
+
+/* ── State ── */
+let rootHandle    = null;
+let fileHandle    = null;
+let isModified    = false;
+let activeRow     = null;
+let previewTimer  = null;
+let currentDir    = null;   // parent directory of the currently open .md file
+let blobUrls      = [];     // object URLs to revoke on next render
+let dragState     = null;   // { handle, name, parentDir } while dragging a file
+
+/* ── Elements ── */
+const $preview = document.getElementById('preview');
+const $tree    = document.getElementById('file-tree');
+const $fname   = document.getElementById('fname');
+const $dot     = document.getElementById('unsaved-dot');
+const $btnSave = document.getElementById('btn-save');
+const $stPath  = document.getElementById('st-path');
+const $stPos   = document.getElementById('st-pos');
+const $stWords = document.getElementById('st-words');
+const $stWarn  = document.getElementById('st-warn');
+const $btnOpen = document.getElementById('btn-open');
+const panelL   = document.getElementById('panel-left');
+const panelR   = document.getElementById('panel-right');
+
+/* ── CodeMirror setup ── */
+const cm = CodeMirror(document.getElementById('cm-wrap'), {
+  mode: 'markdown',
+  theme: 'dracula',
+  lineNumbers: true,
+  lineWrapping: true,
+  tabSize: 2,
+  indentWithTabs: false,
+  placeholder: '選擇左側 .md 檔案，或直接在此輸入 Markdown...',
+  extraKeys: {
+    'Ctrl-S': () => saveFile(),
+    'Cmd-S':  () => saveFile(),
+    'Tab':    cm  => cm.replaceSelection('  '),
+  },
+});
+
+cm.on('change', () => {
+  if (fileHandle) setModified(true);
+  renderPreview();
+});
+
+cm.on('cursorActivity', refreshStatus);
+
+/* ── IndexedDB helpers (persist last directory handle) ── */
+let _idb = null;
+function getIDB() {
+  if (_idb) return Promise.resolve(_idb);
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('md-editor', 1);
+    req.onupgradeneeded = e => e.target.result.createObjectStore('kv');
+    req.onsuccess    = e => { _idb = e.target.result; resolve(_idb); };
+    req.onerror      = e => reject(e.target.error);
+  });
+}
+async function idbGet(key) {
+  const db = await getIDB();
+  return new Promise((resolve, reject) => {
+    const req = db.transaction('kv').objectStore('kv').get(key);
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+async function idbSet(key, val) {
+  const db = await getIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('kv', 'readwrite');
+    tx.objectStore('kv').put(val, key);
+    tx.oncomplete = resolve;
+    tx.onerror    = e => reject(e.target.error);
+  });
+}
+
+/* ── marked setup ── */
+marked.setOptions({ gfm: true, breaks: true });
+
+/* ── API support check ── */
+if (!window.showDirectoryPicker) {
+  $stWarn.textContent = '⚠ 請使用 Chrome / Edge 瀏覽器以啟用檔案系統功能';
+  $btnOpen.disabled = true;
+}
+
+/* ══════════════════════════════════════════
+   FILE SYSTEM
+══════════════════════════════════════════ */
+
+async function openDirectory() {
+  if (!window.showDirectoryPicker) return;
+  let startIn = rootHandle;
+  if (!startIn) {
+    try { startIn = await idbGet('lastDir'); } catch {}
+  }
+  try {
+    rootHandle = await window.showDirectoryPicker({
+      mode: 'readwrite',
+      startIn: startIn || 'documents',
+    });
+    idbSet('lastDir', rootHandle).catch(() => {});
+  } catch (e) {
+    if (e.name !== 'AbortError') alert('無法開啟資料夾：' + e.message);
+    return;
+  }
+  $stPath.textContent = '📁 ' + rootHandle.name;
+  document.getElementById('btn-refresh').disabled = false;
+  document.getElementById('btn-newfile').disabled = false;
+  await refreshTree();
+}
+
+async function refreshTree() {
+  if (!rootHandle) return;
+  $tree.innerHTML = '';
+  await buildTree(rootHandle, $tree, 0);
+}
+
+async function buildTree(dirHandle, container, depth) {
+  const items = [];
+  for await (const [name, handle] of dirHandle.entries()) {
+    if (name.startsWith('.')) continue;
+    items.push({ name, handle });
+  }
+  items.sort((a, b) => {
+    if (a.handle.kind !== b.handle.kind)
+      return a.handle.kind === 'directory' ? -1 : 1;
+    return a.name.localeCompare(b.name, 'zh-TW', { numeric: true });
+  });
+
+  let found = false;
+  for (const { name, handle } of items) {
+    if (handle.kind === 'directory') {
+      found = true;
+      const { row, children } = makeDirRow(name, handle, depth);
+      container.appendChild(row);
+      container.appendChild(children);
+    } else if (handle.kind === 'file' && /\.md$/i.test(name)) {
+      found = true;
+      container.appendChild(makeFileRow(name, handle, dirHandle, depth));
+    } else if (handle.kind === 'file' && /\.(jpe?g|png|gif|webp|svg|bmp|avif)$/i.test(name)) {
+      found = true;
+      container.appendChild(makeImageRow(name, handle, dirHandle, depth));
+    }
+  }
+
+  if (!found && depth === 0) {
+    const msg = document.createElement('div');
+    msg.className = 'tree-empty';
+    msg.textContent = '此資料夾內沒有 .md 或圖片檔案';
+    container.appendChild(msg);
+  }
+}
+
+function makeDirRow(name, handle, depth) {
+  const row = document.createElement('div');
+  row.className = 'ti';
+  row.style.paddingLeft = (8 + depth * 16) + 'px';
+
+  const arrow = document.createElement('span');
+  arrow.className = 'ti-arrow';
+  arrow.textContent = '▶';
+
+  const icon = document.createElement('span');
+  icon.className = 'ti-icon';
+  icon.textContent = '📁';
+
+  const label = document.createElement('span');
+  label.className = 'ti-name';
+  label.textContent = name;
+
+  row.appendChild(arrow);
+  row.appendChild(icon);
+  row.appendChild(label);
+
+  const children = document.createElement('div');
+  children.style.display = 'none';
+
+  row.addEventListener('dragover', e => {
+    if (!dragState) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    row.classList.add('drag-over');
+  });
+  row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+  row.addEventListener('drop', async e => {
+    e.preventDefault();
+    row.classList.remove('drag-over');
+    if (!dragState) return;
+    const { handle: srcHandle, name: srcName, parentDir: srcDir } = dragState;
+    dragState = null;
+    const sameDir = await srcDir.isSameEntry(handle);
+    if (sameDir) return;
+    await moveFile(srcHandle, srcName, srcDir, handle);
+  });
+
+  let expanded = false, loaded = false;
+  row.addEventListener('click', async () => {
+    expanded = !expanded;
+    arrow.textContent = expanded ? '▼' : '▶';
+    icon.textContent  = expanded ? '📂' : '📁';
+    children.style.display = expanded ? 'block' : 'none';
+    if (expanded && !loaded) {
+      loaded = true;
+      await buildTree(handle, children, depth + 1);
+    }
+  });
+
+  return { row, children };
+}
+
+function makeFileRow(name, handle, parentDir, depth) {
+  const row = document.createElement('div');
+  row.className = 'ti';
+  row.style.paddingLeft = (8 + 12 + depth * 16) + 'px';
+
+  const icon = document.createElement('span');
+  icon.className = 'ti-icon';
+  icon.textContent = '📄';
+
+  const label = document.createElement('span');
+  label.className = 'ti-name';
+  label.textContent = name;
+
+  const del = document.createElement('span');
+  del.className = 'ti-del';
+  del.textContent = '×';
+  del.title = '刪除';
+  del.addEventListener('click', e => { e.stopPropagation(); deleteFile(handle, name, parentDir); });
+
+  row.appendChild(icon);
+  row.appendChild(label);
+  row.appendChild(del);
+  row.addEventListener('click', () => loadFile(handle, name, row, parentDir));
+
+  row.draggable = true;
+  row.addEventListener('dragstart', e => {
+    dragState = { handle, name, parentDir };
+    row.classList.add('drag-src');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', name);
+  });
+  row.addEventListener('dragend', () => {
+    row.classList.remove('drag-src');
+    dragState = null;
+  });
+
+  return row;
+}
+
+function makeImageRow(name, handle, parentDir, depth) {
+  const ext = name.split('.').pop().toLowerCase();
+  const icon = { svg: '🎨' }[ext] || '🖼️';
+
+  const row = document.createElement('div');
+  row.className = 'ti';
+  row.style.paddingLeft = (8 + 12 + depth * 16) + 'px';
+
+  const ic = document.createElement('span');
+  ic.className = 'ti-icon';
+  ic.textContent = icon;
+
+  const label = document.createElement('span');
+  label.className = 'ti-name';
+  label.textContent = name;
+
+  const del = document.createElement('span');
+  del.className = 'ti-del';
+  del.textContent = '×';
+  del.title = '刪除';
+  del.addEventListener('click', e => { e.stopPropagation(); deleteFile(handle, name, parentDir); });
+
+  row.appendChild(ic);
+  row.appendChild(label);
+  row.appendChild(del);
+  row.addEventListener('click', () => previewImage(handle, name, row));
+
+  row.draggable = true;
+  row.addEventListener('dragstart', e => {
+    dragState = { handle, name, parentDir };
+    row.classList.add('drag-src');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', name);
+  });
+  row.addEventListener('dragend', () => {
+    row.classList.remove('drag-src');
+    dragState = null;
+  });
+
+  return row;
+}
+
+async function previewImage(handle, name, row) {
+  try {
+    const file = await handle.getFile();
+    blobUrls.forEach(u => URL.revokeObjectURL(u));
+    blobUrls = [];
+    const url = URL.createObjectURL(file);
+    blobUrls.push(url);
+
+    $preview.innerHTML = `
+      <div style="padding:20px;text-align:center;">
+        <img src="${url}" alt="${name}"
+             style="max-width:100%;max-height:calc(100vh - 120px);
+                    border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.1);">
+        <p style="margin-top:10px;color:#888;font-size:12px;">${name}</p>
+      </div>`;
+
+    if (activeRow) activeRow.classList.remove('active');
+    activeRow = row;
+    row.classList.add('active');
+  } catch (e) {
+    alert('無法預覽圖片：' + e.message);
+  }
+}
+
+async function loadFile(handle, name, row, parentDir) {
+  if (isModified) {
+    if (!confirm('目前有未儲存的變更，確定要放棄並開啟新檔案？')) return;
+  }
+  try {
+    const file = await handle.getFile();
+    const text = await file.text();
+    cm.setValue(text);
+    cm.clearHistory();
+    fileHandle   = handle;
+    currentDir   = parentDir || rootHandle;
+    $fname.textContent = name;
+    $fname.title = name;
+    $btnSave.disabled = false;
+    setModified(false);
+    renderPreview();
+    refreshStatus();
+    if (activeRow) activeRow.classList.remove('active');
+    activeRow = row;
+    row.classList.add('active');
+    cm.focus();
+  } catch (e) {
+    alert('無法開啟檔案：' + e.message);
+  }
+}
+
+async function saveFile() {
+  if (!fileHandle) return;
+  try {
+    const writable = await fileHandle.createWritable();
+    await writable.write(cm.getValue());
+    await writable.close();
+    setModified(false);
+  } catch (e) {
+    alert('儲存失敗：' + e.message);
+  }
+}
+
+/* ══════════════════════════════════════════
+   EDITOR LOGIC
+══════════════════════════════════════════ */
+
+const YT_RE = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:[?&][^\s)\]]*)?/;
+
+function ytIframe(videoId) {
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0`;
+  const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+  return `<div class="yt-wrap">` +
+    `<iframe src="${embedUrl}" frameborder="0" ` +
+    `allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ` +
+    `referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>` +
+    `<a class="yt-link" href="${watchUrl}" target="_blank" rel="noopener">▶ 在 YouTube 開啟</a>` +
+    `</div>`;
+}
+
+function normalizeMarkdown(txt) {
+  // 1. Obsidian ![[path|alt]] → standard ![alt](path)
+  txt = txt.replace(/!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]/g,
+    (_, path, alt) => `![${alt || ''}](${path.trim()})`);
+
+  // 2. ![any](youtube_url) → iframe
+  txt = txt.replace(/!\[[^\]]*\]\(([^)]+)\)/g, (match, url) => {
+    const m = url.match(YT_RE);
+    return m ? ytIframe(m[1]) : match;
+  });
+
+  // 3. Bare YouTube URL on its own line → iframe
+  txt = txt.replace(/^[ \t]*((?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?(?:.*&)?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})[^\s]*)[ \t]*$/gm,
+    (_, _url, id) => ytIframe(id));
+
+  return txt;
+}
+
+function setModified(val) {
+  isModified = val;
+  $dot.style.display = val ? 'inline-block' : 'none';
+}
+
+function renderPreview() {
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(() => {
+    const txt = cm.getValue();
+    if (!txt.trim()) {
+      $preview.innerHTML = `
+        <div class="preview-empty">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
+               stroke="#aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <span>輸入內容後即可預覽</span>
+        </div>`;
+      return;
+    }
+    try {
+      blobUrls.forEach(u => URL.revokeObjectURL(u));
+      blobUrls = [];
+      $preview.innerHTML = marked.parse(normalizeMarkdown(txt));
+      $preview.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+      resolveImages();
+    } catch (e) {
+      $preview.textContent = '預覽錯誤：' + e.message;
+    }
+  }, 120);
+}
+
+async function resolveImages() {
+  const base = currentDir || rootHandle;
+  if (!base) return;
+  for (const img of $preview.querySelectorAll('img[src]')) {
+    const src = img.getAttribute('src');
+    if (!src || src.startsWith('data:') || /^https?:\/\//.test(src)) continue;
+    try {
+      const url = await resolveLocalImage(src, base);
+      if (url) { img.src = url; blobUrls.push(url); }
+    } catch { /* file not found, keep original src */ }
+  }
+}
+
+async function resolveLocalImage(src, base) {
+  const parts = src.split('/').filter(p => p && p !== '.');
+  let dir = base;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (parts[i] === '..') return null;
+    dir = await dir.getDirectoryHandle(parts[i]);
+  }
+  const fh = await dir.getFileHandle(parts[parts.length - 1]);
+  const file = await fh.getFile();
+  return URL.createObjectURL(file);
+}
+
+function refreshStatus() {
+  const cursor = cm.getCursor();
+  $stPos.textContent = `行 ${cursor.line + 1}，列 ${cursor.ch + 1}`;
+  const txt = cm.getValue();
+  const words = txt.trim() ? txt.trim().split(/\s+/).length : 0;
+  $stWords.textContent = `字數: ${words}`;
+}
+
+async function saveAsFile() {
+  if (!window.showSaveFilePicker) {
+    alert('此瀏覽器不支援另存新檔功能，請使用 Chrome / Edge');
+    return;
+  }
+  let newHandle;
+  try {
+    newHandle = await window.showSaveFilePicker({
+      suggestedName: $fname.textContent !== '未開啟檔案' ? $fname.textContent : 'untitled.md',
+      types: [{ description: 'Markdown 檔案', accept: { 'text/markdown': ['.md'] } }],
+    });
+  } catch (e) {
+    if (e.name !== 'AbortError') alert('另存失敗：' + e.message);
+    return;
+  }
+  try {
+    const writable = await newHandle.createWritable();
+    await writable.write(cm.getValue());
+    await writable.close();
+    fileHandle = newHandle;
+    const name = newHandle.name;
+    $fname.textContent = name;
+    $fname.title = name;
+    $btnSave.disabled = false;
+    setModified(false);
+  } catch (e) {
+    alert('寫入失敗：' + e.message);
+  }
+}
+
+async function moveFile(srcHandle, srcName, srcDir, destDir) {
+  try {
+    let exists = false;
+    try { await destDir.getFileHandle(srcName); exists = true; } catch {}
+    if (exists && !confirm(`目標資料夾已有「${srcName}」，要覆蓋嗎？`)) return;
+
+    const file = await srcHandle.getFile();
+    const buf  = await file.arrayBuffer();
+    const destHandle = await destDir.getFileHandle(srcName, { create: true });
+    const writable   = await destHandle.createWritable();
+    await writable.write(buf);
+    await writable.close();
+    await srcDir.removeEntry(srcName);
+
+    // If the moved file is currently open, update state to point to new location
+    const isCurrent = fileHandle && await srcHandle.isSameEntry(fileHandle);
+    if (isCurrent) {
+      fileHandle  = destHandle;
+      currentDir  = destDir;
+    }
+    if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+    await refreshTree();
+  } catch (e) {
+    alert('移動失敗：' + e.message);
+  }
+}
+
+async function deleteFile(handle, name, parentDir) {
+  if (!confirm(`確定要刪除「${name}」嗎？此操作無法復原。`)) return;
+  try {
+    await parentDir.removeEntry(name);
+
+    const isCurrent = fileHandle && await handle.isSameEntry(fileHandle);
+    if (isCurrent) {
+      fileHandle = null;
+      currentDir = null;
+      cm.setValue('');
+      cm.clearHistory();
+      $fname.textContent = '未開啟檔案';
+      $fname.title = '';
+      $btnSave.disabled = true;
+      setModified(false);
+      renderPreview();
+      refreshStatus();
+    }
+    if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+    await refreshTree();
+  } catch (e) {
+    alert('刪除失敗：' + e.message);
+  }
+}
+
+async function newFile() {
+  const base = currentDir || rootHandle;
+  if (!base) { alert('請先開啟資料夾'); return; }
+
+  let name = prompt('新檔案名稱：', 'untitled.md');
+  if (name === null) return;
+  name = name.trim();
+  if (!name) return;
+  if (!/\.md$/i.test(name)) name += '.md';
+
+  try {
+    let exists = false;
+    try { await base.getFileHandle(name); exists = true; } catch {}
+    if (exists && !confirm(`"${name}" 已存在，覆蓋它的內容？`)) return;
+
+    const fh = await base.getFileHandle(name, { create: true });
+    const writable = await fh.createWritable();
+    await writable.write('');
+    await writable.close();
+
+    if (isModified) {
+      if (!confirm('目前有未儲存的變更，確定要放棄並開啟新檔案？')) return;
+    }
+
+    if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
+    fileHandle  = fh;
+    currentDir  = base;
+    cm.setValue('');
+    cm.clearHistory();
+    $fname.textContent = name;
+    $fname.title = name;
+    $btnSave.disabled = false;
+    setModified(false);
+    renderPreview();
+    refreshStatus();
+    cm.focus();
+
+    refreshTree();
+  } catch (e) {
+    alert('新增失敗：' + e.message);
+  }
+}
+
+function togglePreviewTheme() {
+  const isDark = panelR.classList.toggle('dark');
+  document.getElementById('hljs-light').disabled = isDark;
+  document.getElementById('hljs-dark').disabled  = !isDark;
+  document.getElementById('btn-preview-theme').textContent = isDark ? '☀️ 淺色' : '🌙 深色';
+  localStorage.setItem('previewTheme', isDark ? 'dark' : 'light');
+  renderPreview();
+}
+
+function toggleEditor() {
+  const mid  = document.getElementById('panel-middle');
+  const resL = document.getElementById('res-l');
+  const resR = document.getElementById('res-r');
+  const btn  = document.getElementById('btn-toggle-editor');
+  const hiding = mid.style.display !== 'none';
+
+  mid.style.display  = hiding ? 'none' : '';
+  resL.style.display = hiding ? 'none' : '';
+  resR.style.display = hiding ? 'none' : '';
+  panelR.style.flex  = hiding ? '1'    : '';
+  btn.textContent    = hiding ? '顯示編輯欄' : '隱藏編輯欄';
+  btn.title          = hiding ? '顯示編輯欄 (Ctrl+E)' : '隱藏編輯欄 (Ctrl+E)';
+}
+
+function toggleWrap() {
+  const on = !cm.getOption('lineWrapping');
+  cm.setOption('lineWrapping', on);
+  const btn = document.getElementById('btn-wrap');
+  btn.classList.toggle('off', !on);
+  btn.title = on ? '切換自動換行（目前：開啟）' : '切換自動換行（目前：關閉）';
+}
+
+async function copyPreview() {
+  const el = document.getElementById('preview');
+  const btn = document.getElementById('btn-copy');
+  const html = el.innerHTML;
+  const text = el.innerText;
+
+  try {
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        'text/html':  new Blob([html], { type: 'text/html' }),
+        'text/plain': new Blob([text], { type: 'text/plain' }),
+      }),
+    ]);
+  } catch {
+    // fallback: select + execCommand
+    const sel = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+  }
+
+  btn.textContent = '已複製 ✓';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = '複製全部';
+    btn.classList.remove('copied');
+  }, 1500);
+}
+
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'o') {
+    e.preventDefault();
+    openDirectory();
+  }
+  if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+    e.preventDefault();
+    toggleEditor();
+  }
+});
+
+window.addEventListener('beforeunload', e => {
+  if (isModified) { e.preventDefault(); e.returnValue = ''; }
+});
+
+/* ══════════════════════════════════════════
+   RESIZABLE PANELS
+══════════════════════════════════════════ */
+
+function makeResizer(id, getW, applyW) {
+  const el = document.getElementById(id);
+  el.addEventListener('mousedown', e => {
+    const startX = e.clientX;
+    const startW = getW();
+    el.classList.add('dragging');
+    document.body.classList.add('no-select');
+
+    const onMove = e => applyW(startW, e.clientX - startX);
+    const onUp   = () => {
+      el.classList.remove('dragging');
+      document.body.classList.remove('no-select');
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup',   onUp);
+    };
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup',   onUp);
+    e.preventDefault();
+  });
+}
+
+makeResizer('res-l',
+  () => panelL.offsetWidth,
+  (w0, dx) => { panelL.style.width = Math.max(140, Math.min(520, w0 + dx)) + 'px'; }
+);
+
+makeResizer('res-r',
+  () => panelR.offsetWidth,
+  (w0, dx) => { panelR.style.width = Math.max(140, Math.min(900, w0 - dx)) + 'px'; }
+);
+
+/* ── Init ── */
+if (localStorage.getItem('previewTheme') === 'light') {
+  panelR.classList.remove('dark');
+  document.getElementById('hljs-light').disabled = false;
+  document.getElementById('hljs-dark').disabled  = true;
+  document.getElementById('btn-preview-theme').textContent = '🌙 深色';
+}
+renderPreview();
+</script>
+</body>
+</html>
