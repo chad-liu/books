@@ -12,6 +12,17 @@ header{background:linear-gradient(135deg,#0f3460,#16213e);padding:28px 32px 22px
 border-bottom:2px solid #c9a94f;position:sticky;top:0;z-index:50}
 h1{color:#c9a94f;font-size:1.7rem;letter-spacing:.08em}
 .sub{color:#9ba4b4;font-size:.9rem;margin-top:6px}
+.tools{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#cat{background:#16213e;border:1px solid #2d4a7a;border-radius:6px;color:#c9a94f;
+padding:9px 13px;font-size:.95rem;font-family:inherit;cursor:pointer;min-width:190px}
+#cat:focus{outline:none;border-color:#c9a94f}
+#cat option{background:#16213e;color:#e8d5b7}
+#q{flex:1;min-width:220px;max-width:420px;background:#16213e;border:1px solid #2d4a7a;
+border-radius:6px;color:#e8d5b7;padding:9px 13px;font-size:.95rem;font-family:inherit}
+#q:focus{outline:none;border-color:#c9a94f}
+#q::placeholder{color:#6b7688}
+.hint{color:#9ba4b4;font-size:.82rem}
+.empty{color:#6b7688;text-align:center;padding:50px;display:none}
 main{padding:8px 32px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-top:24px}
 .card{background:#16213e;border:1px solid #24365c;border-radius:9px;padding:15px 17px;
@@ -34,99 +45,151 @@ footer{color:#6b7688;font-size:.8rem;padding:34px 32px 0;text-align:center}
 <body>
 <header>
 <h1>Liu的雲端閱讀</h1>
-<div class="sub">7 個分類 · 59 個項目</div>
+<div class="sub">7 個分類 · 60 個項目</div>
+<div class="tools">
+<select id="cat"><option value="">📂 跳到分類…</option>
+<option value="cat-0">1.西方歷史（10 項）</option>
+<option value="cat-1">2.中國歷史（6 項）</option>
+<option value="cat-2">3-1.佛學（18 項）</option>
+<option value="cat-3">3.宗教（5 項）</option>
+<option value="cat-4">4.哲學思想（15 項）</option>
+<option value="cat-5">6.文學小說（5 項）</option>
+<option value="cat-6">8.科技資訊（1 項）</option>
+</select>
+<input id="q" type="search" placeholder="搜尋條目或分類…（按 / 快速聚焦）" autocomplete="off">
+<span class="hint">Esc 清除</span>
+</div>
 </header>
 <main>
 <div class="grid">
-<article class="card">
-<h3>1.西方歷史<span class="cnt">9 項</span></h3>
+<article class="card" id="cat-0" data-name="1.西方歷史">
+<h3>1.西方歷史<span class="cnt">10 項</span></h3>
 <ol>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%B8%8C%E8%87%98%E7%A5%9E%E8%A9%B1%E4%BA%BA%E7%89%A9%E7%B0%A1%E4%BB%8B%E8%88%87%E9%97%9C%E4%BF%82%E5%9C%96.html" target="_blank" rel="noopener">希臘神話人物簡介與關係圖</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%8C%97%E6%AD%90%E7%A5%9E%E8%A9%B1%E4%BA%BA%E7%89%A9%E7%B0%A1%E4%BB%8B%E8%88%87%E9%97%9C%E4%BF%82%E5%9C%96.html" target="_blank" rel="noopener">北歐神話人物簡介與關係圖</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E8%8D%B7%E9%A6%AC%E5%8F%B2%E8%A9%A9%E4%BA%BA%E7%89%A9%E9%97%9C%E4%BF%82%E5%9C%96.html" target="_blank" rel="noopener">荷馬史詩人物關係圖</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E6%96%87%E8%97%9D%E5%BE%A9%E8%88%88.html" target="_blank" rel="noopener">文藝復興</a></li>
-<li><a class="ext" href="https://notes-renaissance-query-app.vercel.app/" target="_blank" rel="noopener">文藝復興查詢系統</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E6%A2%85%E8%BF%AA%E5%A5%87%E5%AE%B6%E6%97%8F.html" target="_blank" rel="noopener">梅迪奇家族</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%AE%97%E6%95%99%E6%94%B9%E9%9D%A9.html" target="_blank" rel="noopener">宗教改革</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E7%A7%91%E5%AD%B8%E9%9D%A9%E5%91%BD.html" target="_blank" rel="noopener">科學革命</a></li>
-<li><a href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%95%9F%E8%92%99%E9%81%8B%E5%8B%95.html" target="_blank" rel="noopener">啟蒙運動</a></li>
+<li data-t="希臘神話人物簡介與關係圖"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%B8%8C%E8%87%98%E7%A5%9E%E8%A9%B1%E4%BA%BA%E7%89%A9%E7%B0%A1%E4%BB%8B%E8%88%87%E9%97%9C%E4%BF%82%E5%9C%96.html" target="_blank" rel="noopener">希臘神話人物簡介與關係圖</a></li>
+<li data-t="北歐神話人物簡介與關係圖"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%8C%97%E6%AD%90%E7%A5%9E%E8%A9%B1%E4%BA%BA%E7%89%A9%E7%B0%A1%E4%BB%8B%E8%88%87%E9%97%9C%E4%BF%82%E5%9C%96.html" target="_blank" rel="noopener">北歐神話人物簡介與關係圖</a></li>
+<li data-t="荷馬史詩人物關係圖"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E8%8D%B7%E9%A6%AC%E5%8F%B2%E8%A9%A9%E4%BA%BA%E7%89%A9%E9%97%9C%E4%BF%82%E5%9C%96.html" target="_blank" rel="noopener">荷馬史詩人物關係圖</a></li>
+<li data-t="波希戰爭"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E6%B3%A2%E5%B8%8C%E6%88%B0%E7%88%AD.html" target="_blank" rel="noopener">波希戰爭</a></li>
+<li data-t="文藝復興"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E6%96%87%E8%97%9D%E5%BE%A9%E8%88%88.html" target="_blank" rel="noopener">文藝復興</a></li>
+<li data-t="文藝復興查詢系統"><a class="ext" href="https://notes-renaissance-query-app.vercel.app/" target="_blank" rel="noopener">文藝復興查詢系統</a></li>
+<li data-t="梅迪奇家族"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E6%A2%85%E8%BF%AA%E5%A5%87%E5%AE%B6%E6%97%8F.html" target="_blank" rel="noopener">梅迪奇家族</a></li>
+<li data-t="宗教改革"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%AE%97%E6%95%99%E6%94%B9%E9%9D%A9.html" target="_blank" rel="noopener">宗教改革</a></li>
+<li data-t="科學革命"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E7%A7%91%E5%AD%B8%E9%9D%A9%E5%91%BD.html" target="_blank" rel="noopener">科學革命</a></li>
+<li data-t="啟蒙運動"><a class="" href="html/1.%E8%A5%BF%E6%96%B9%E6%AD%B7%E5%8F%B2/%E5%95%9F%E8%92%99%E9%81%8B%E5%8B%95.html" target="_blank" rel="noopener">啟蒙運動</a></li>
 </ol></article>
-<article class="card">
+<article class="card" id="cat-1" data-name="2.中國歷史">
 <h3>2.中國歷史<span class="cnt">6 項</span></h3>
 <ol>
-<li><a href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%85%88%E7%A7%A6%E8%AB%B8%E5%AD%90%E7%99%BE%E5%AE%B6.html" target="_blank" rel="noopener">先秦諸子百家</a></li>
-<li><a href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%85%A9%E6%BC%A2%E7%B6%93%E5%AD%B8.html" target="_blank" rel="noopener">兩漢經學</a></li>
-<li><a href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E9%AD%8F%E6%99%89%E7%8E%84%E5%AD%B8.html" target="_blank" rel="noopener">魏晉玄學</a></li>
-<li><a href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E7%8E%8B%E5%AE%89%E7%9F%B3%E8%AE%8A%E6%B3%95.html" target="_blank" rel="noopener">王安石變法</a></li>
-<li><a href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%8C%97%E5%AE%8B%E6%96%B0%E8%88%8A%E9%BB%A8%E4%BA%BA%E7%89%A9%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">北宋新舊黨人物光譜圖</a></li>
-<li><a href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%AE%8B%E6%98%8E%E7%90%86%E5%AD%B8%E4%BA%BA%E7%89%A9%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">宋明理學人物光譜圖</a></li>
+<li data-t="先秦諸子百家"><a class="" href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%85%88%E7%A7%A6%E8%AB%B8%E5%AD%90%E7%99%BE%E5%AE%B6.html" target="_blank" rel="noopener">先秦諸子百家</a></li>
+<li data-t="兩漢經學"><a class="" href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%85%A9%E6%BC%A2%E7%B6%93%E5%AD%B8.html" target="_blank" rel="noopener">兩漢經學</a></li>
+<li data-t="魏晉玄學"><a class="" href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E9%AD%8F%E6%99%89%E7%8E%84%E5%AD%B8.html" target="_blank" rel="noopener">魏晉玄學</a></li>
+<li data-t="王安石變法"><a class="" href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E7%8E%8B%E5%AE%89%E7%9F%B3%E8%AE%8A%E6%B3%95.html" target="_blank" rel="noopener">王安石變法</a></li>
+<li data-t="北宋新舊黨人物光譜圖"><a class="" href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%8C%97%E5%AE%8B%E6%96%B0%E8%88%8A%E9%BB%A8%E4%BA%BA%E7%89%A9%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">北宋新舊黨人物光譜圖</a></li>
+<li data-t="宋明理學人物光譜圖"><a class="" href="html/2.%E4%B8%AD%E5%9C%8B%E6%AD%B7%E5%8F%B2/%E5%AE%8B%E6%98%8E%E7%90%86%E5%AD%B8%E4%BA%BA%E7%89%A9%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">宋明理學人物光譜圖</a></li>
 </ol></article>
-<article class="card">
+<article class="card" id="cat-2" data-name="3-1.佛學">
 <h3>3-1.佛學<span class="cnt">18 項</span></h3>
 <ol>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8F%A4%E5%8D%B0%E5%BA%A6%E6%96%87%E6%98%8E%E8%88%87%E5%8E%9F%E5%A7%8B%E4%BD%9B%E6%95%99%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">古印度文明與原始佛教光譜圖</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8F%A4%E5%8D%B0%E5%BA%A6%E7%8E%8B%E6%9C%9D%E8%88%87%E4%BD%9B%E6%95%99%E7%9A%84%E9%97%9C%E4%BF%82.html" target="_blank" rel="noopener">古印度王朝與佛教的關係</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E9%83%A8%E6%B4%BE%E5%88%86%E8%A3%82%E5%9C%96.html" target="_blank" rel="noopener">印度佛教部派分裂圖</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8D%B0%E5%BA%A6%E9%83%A8%E6%B4%BE%E4%BD%9B%E6%95%99%E8%88%87%E5%A4%A7%E4%B9%98%E4%BD%9B%E6%95%99%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">印度部派佛教與大乘佛教光譜圖</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E9%87%8D%E8%A6%81%E4%BD%9B%E7%B6%93%E7%9A%84%E6%BA%90%E6%B5%81.html" target="_blank" rel="noopener">重要佛經的源流</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E4%B8%AD%E8%A7%80%E5%AD%B8%E6%B4%BE.html" target="_blank" rel="noopener">中觀學派</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%94%AF%E8%AD%98%E5%AD%B8%E6%B4%BE.html" target="_blank" rel="noopener">唯識學派</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E8%88%AC%E8%8B%A5%E8%88%87%E4%B8%AD%E8%A7%80%E7%B3%BB%E7%B6%93%E5%85%B8.html" target="_blank" rel="noopener">般若與中觀系經典</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E9%87%91%E5%89%9B%E7%B6%93%E8%88%87%E5%BF%83%E7%B6%93.html" target="_blank" rel="noopener">金剛經與心經</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E4%B8%AD%E5%9C%8B%E4%BD%9B%E6%95%99%E7%9A%84%E5%88%A4%E6%95%99%E8%88%87%E5%AE%97%E6%B4%BE.html" target="_blank" rel="noopener">中國佛教的判教與宗派</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E6%9D%B1%E6%99%89%E7%8E%84%E4%BD%9B%E5%90%88%E6%B5%81.html" target="_blank" rel="noopener">東晉玄佛合流</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8D%97%E5%8C%97%E6%9C%9D%E4%BD%9B%E6%95%99%E8%88%87%E5%88%A4%E6%95%99%E6%80%9D%E6%BD%AE.html" target="_blank" rel="noopener">南北朝佛教與判教思潮</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E9%9A%8B%E5%94%90%E4%B8%89%E8%AB%96%E5%AE%97%E8%88%87%E5%9C%B0%E8%AB%96%E5%AE%97.html" target="_blank" rel="noopener">隋唐三論宗與地論宗</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%AE%8B%E5%85%83%E6%98%8E%E6%B8%85%E7%9A%84%E7%A6%AA%E6%B7%A8%E5%90%88%E6%B5%81%E8%88%87%E5%B1%85%E5%A3%AB%E4%BD%9B%E6%95%99.html" target="_blank" rel="noopener">宋元明清的禪淨合流與居士佛教</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%94%AF%E8%AD%98%E5%AE%97.html" target="_blank" rel="noopener">唯識宗</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E8%8F%AF%E5%9A%B4%E5%AE%97.html" target="_blank" rel="noopener">華嚴宗</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E7%A6%AA%E5%AE%97.html" target="_blank" rel="noopener">禪宗</a></li>
-<li><a href="html/3-1.%E4%BD%9B%E5%AD%B8/%E4%BD%9B%E6%95%99%E5%82%B3%E7%B5%B1%E4%B8%AD%E7%9A%84%E5%84%AA%E8%B6%8A%E6%88%91%E6%85%A2.html" target="_blank" rel="noopener">佛教傳統中的優越我慢</a></li>
+<li data-t="古印度文明與原始佛教光譜圖"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8F%A4%E5%8D%B0%E5%BA%A6%E6%96%87%E6%98%8E%E8%88%87%E5%8E%9F%E5%A7%8B%E4%BD%9B%E6%95%99%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">古印度文明與原始佛教光譜圖</a></li>
+<li data-t="古印度王朝與佛教的關係"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8F%A4%E5%8D%B0%E5%BA%A6%E7%8E%8B%E6%9C%9D%E8%88%87%E4%BD%9B%E6%95%99%E7%9A%84%E9%97%9C%E4%BF%82.html" target="_blank" rel="noopener">古印度王朝與佛教的關係</a></li>
+<li data-t="印度佛教部派分裂圖"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E9%83%A8%E6%B4%BE%E5%88%86%E8%A3%82%E5%9C%96.html" target="_blank" rel="noopener">印度佛教部派分裂圖</a></li>
+<li data-t="印度部派佛教與大乘佛教光譜圖"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8D%B0%E5%BA%A6%E9%83%A8%E6%B4%BE%E4%BD%9B%E6%95%99%E8%88%87%E5%A4%A7%E4%B9%98%E4%BD%9B%E6%95%99%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">印度部派佛教與大乘佛教光譜圖</a></li>
+<li data-t="重要佛經的源流"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E9%87%8D%E8%A6%81%E4%BD%9B%E7%B6%93%E7%9A%84%E6%BA%90%E6%B5%81.html" target="_blank" rel="noopener">重要佛經的源流</a></li>
+<li data-t="中觀學派"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E4%B8%AD%E8%A7%80%E5%AD%B8%E6%B4%BE.html" target="_blank" rel="noopener">中觀學派</a></li>
+<li data-t="唯識學派"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%94%AF%E8%AD%98%E5%AD%B8%E6%B4%BE.html" target="_blank" rel="noopener">唯識學派</a></li>
+<li data-t="般若與中觀系經典"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E8%88%AC%E8%8B%A5%E8%88%87%E4%B8%AD%E8%A7%80%E7%B3%BB%E7%B6%93%E5%85%B8.html" target="_blank" rel="noopener">般若與中觀系經典</a></li>
+<li data-t="金剛經與心經"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E9%87%91%E5%89%9B%E7%B6%93%E8%88%87%E5%BF%83%E7%B6%93.html" target="_blank" rel="noopener">金剛經與心經</a></li>
+<li data-t="中國佛教的判教與宗派"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E4%B8%AD%E5%9C%8B%E4%BD%9B%E6%95%99%E7%9A%84%E5%88%A4%E6%95%99%E8%88%87%E5%AE%97%E6%B4%BE.html" target="_blank" rel="noopener">中國佛教的判教與宗派</a></li>
+<li data-t="東晉玄佛合流"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E6%9D%B1%E6%99%89%E7%8E%84%E4%BD%9B%E5%90%88%E6%B5%81.html" target="_blank" rel="noopener">東晉玄佛合流</a></li>
+<li data-t="南北朝佛教與判教思潮"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%8D%97%E5%8C%97%E6%9C%9D%E4%BD%9B%E6%95%99%E8%88%87%E5%88%A4%E6%95%99%E6%80%9D%E6%BD%AE.html" target="_blank" rel="noopener">南北朝佛教與判教思潮</a></li>
+<li data-t="隋唐三論宗與地論宗"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E9%9A%8B%E5%94%90%E4%B8%89%E8%AB%96%E5%AE%97%E8%88%87%E5%9C%B0%E8%AB%96%E5%AE%97.html" target="_blank" rel="noopener">隋唐三論宗與地論宗</a></li>
+<li data-t="宋元明清的禪淨合流與居士佛教"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%AE%8B%E5%85%83%E6%98%8E%E6%B8%85%E7%9A%84%E7%A6%AA%E6%B7%A8%E5%90%88%E6%B5%81%E8%88%87%E5%B1%85%E5%A3%AB%E4%BD%9B%E6%95%99.html" target="_blank" rel="noopener">宋元明清的禪淨合流與居士佛教</a></li>
+<li data-t="唯識宗"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E5%94%AF%E8%AD%98%E5%AE%97.html" target="_blank" rel="noopener">唯識宗</a></li>
+<li data-t="華嚴宗"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E8%8F%AF%E5%9A%B4%E5%AE%97.html" target="_blank" rel="noopener">華嚴宗</a></li>
+<li data-t="禪宗"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E7%A6%AA%E5%AE%97.html" target="_blank" rel="noopener">禪宗</a></li>
+<li data-t="佛教傳統中的優越我慢"><a class="" href="html/3-1.%E4%BD%9B%E5%AD%B8/%E4%BD%9B%E6%95%99%E5%82%B3%E7%B5%B1%E4%B8%AD%E7%9A%84%E5%84%AA%E8%B6%8A%E6%88%91%E6%85%A2.html" target="_blank" rel="noopener">佛教傳統中的優越我慢</a></li>
 </ol></article>
-<article class="card">
+<article class="card" id="cat-3" data-name="3.宗教">
 <h3>3.宗教<span class="cnt">5 項</span></h3>
 <ol>
-<li><a href="html/3.%E5%AE%97%E6%95%99/%E4%BA%9E%E4%BC%AF%E6%8B%89%E7%BD%95%E4%B8%89%E6%95%99%E7%B8%BD%E8%A6%BD%E5%B0%8D%E7%85%A7.html" target="_blank" rel="noopener">亞伯拉罕三教總覽對照</a></li>
-<li><a href="html/3.%E5%AE%97%E6%95%99/%E5%A9%86%E7%BE%85%E9%96%80%E6%95%99%E8%88%87%E5%8D%B0%E5%BA%A6%E6%95%99.html" target="_blank" rel="noopener">婆羅門教與印度教</a></li>
-<li><a href="html/3.%E5%AE%97%E6%95%99/%E7%8C%B6%E5%A4%AA%E6%95%99%E8%88%87%E5%B8%8C%E4%BC%AF%E4%BE%86%E8%81%96%E7%B6%93.html" target="_blank" rel="noopener">猶太教與希伯來聖經</a></li>
-<li><a href="html/3.%E5%AE%97%E6%95%99/%E5%9F%BA%E7%9D%A3%E6%95%99%E7%9A%84%E5%BD%A2%E6%88%90%E8%88%87%E6%97%A9%E6%9C%9F%E6%95%99%E7%BE%A9%E7%88%AD%E8%AB%96.html" target="_blank" rel="noopener">基督教的形成與早期教義爭論</a></li>
-<li><a href="html/3.%E5%AE%97%E6%95%99/%E4%BC%8A%E6%96%AF%E8%98%AD%E6%95%99.html" target="_blank" rel="noopener">伊斯蘭教</a></li>
+<li data-t="亞伯拉罕三教總覽對照"><a class="" href="html/3.%E5%AE%97%E6%95%99/%E4%BA%9E%E4%BC%AF%E6%8B%89%E7%BD%95%E4%B8%89%E6%95%99%E7%B8%BD%E8%A6%BD%E5%B0%8D%E7%85%A7.html" target="_blank" rel="noopener">亞伯拉罕三教總覽對照</a></li>
+<li data-t="婆羅門教與印度教"><a class="" href="html/3.%E5%AE%97%E6%95%99/%E5%A9%86%E7%BE%85%E9%96%80%E6%95%99%E8%88%87%E5%8D%B0%E5%BA%A6%E6%95%99.html" target="_blank" rel="noopener">婆羅門教與印度教</a></li>
+<li data-t="猶太教與希伯來聖經"><a class="" href="html/3.%E5%AE%97%E6%95%99/%E7%8C%B6%E5%A4%AA%E6%95%99%E8%88%87%E5%B8%8C%E4%BC%AF%E4%BE%86%E8%81%96%E7%B6%93.html" target="_blank" rel="noopener">猶太教與希伯來聖經</a></li>
+<li data-t="基督教的形成與早期教義爭論"><a class="" href="html/3.%E5%AE%97%E6%95%99/%E5%9F%BA%E7%9D%A3%E6%95%99%E7%9A%84%E5%BD%A2%E6%88%90%E8%88%87%E6%97%A9%E6%9C%9F%E6%95%99%E7%BE%A9%E7%88%AD%E8%AB%96.html" target="_blank" rel="noopener">基督教的形成與早期教義爭論</a></li>
+<li data-t="伊斯蘭教"><a class="" href="html/3.%E5%AE%97%E6%95%99/%E4%BC%8A%E6%96%AF%E8%98%AD%E6%95%99.html" target="_blank" rel="noopener">伊斯蘭教</a></li>
 </ol></article>
-<article class="card">
+<article class="card" id="cat-4" data-name="4.哲學思想">
 <h3>4.哲學思想<span class="cnt">15 項</span></h3>
 <ol>
-<li><a class="ext" href="https://philosophy-religion.vercel.app/index.html" target="_blank" rel="noopener">台大開放式課程：哲學講座</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%8F%A4%E5%B8%8C%E8%87%98%E5%93%B2%E5%AD%B8%E5%AE%B6%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">古希臘哲學家光譜圖</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E4%B8%AD%E4%B8%96%E7%B4%80%E5%93%B2%E5%AD%B8%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">中世紀哲學光譜圖</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%A4%A7%E9%99%B8%E7%90%86%E6%80%A7%E8%AB%96.html" target="_blank" rel="noopener">大陸理性論</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E8%8B%B1%E5%9C%8B%E7%B6%93%E9%A9%97%E8%AB%96.html" target="_blank" rel="noopener">英國經驗論</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%BE%B7%E6%84%8F%E5%BF%97%E8%A7%80%E5%BF%B5%E8%AB%96.html" target="_blank" rel="noopener">德意志觀念論</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%BA%B7%E5%BE%B7.html" target="_blank" rel="noopener">康德</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E9%BB%91%E6%A0%BC%E7%88%BE.html" target="_blank" rel="noopener">黑格爾</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%AD%98%E5%9C%A8%E4%B8%BB%E7%BE%A9.html" target="_blank" rel="noopener">存在主義</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%B0%BC%E9%87%87.html" target="_blank" rel="noopener">尼采</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E9%81%94%E7%88%BE%E6%96%87%E8%88%87%E6%BC%94%E5%8C%96%E8%AB%96.html" target="_blank" rel="noopener">達爾文與演化論</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E4%BD%9B%E6%B4%9B%E4%BC%8A%E5%BE%B7%E8%88%87%E7%B2%BE%E7%A5%9E%E5%88%86%E6%9E%90.html" target="_blank" rel="noopener">佛洛伊德與精神分析</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E9%A6%AC%E5%85%8B%E6%80%9D%E8%88%87%E6%AD%B7%E5%8F%B2%E5%94%AF%E7%89%A9%E8%AB%96.html" target="_blank" rel="noopener">馬克思與歷史唯物論</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E6%95%88%E7%9B%8A%E4%B8%BB%E7%BE%A9%E8%88%87%E5%AF%A6%E8%AD%89%E4%B8%BB%E7%BE%A9.html" target="_blank" rel="noopener">效益主義與實證主義</a></li>
-<li><a href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E4%BA%8C%E5%8D%81%E4%B8%96%E7%B4%80%E7%9A%84%E5%88%86%E6%9E%90%E5%93%B2%E5%AD%B8.html" target="_blank" rel="noopener">二十世紀的分析哲學</a></li>
+<li data-t="台大開放式課程：哲學講座"><a class="ext" href="https://philosophy-religion.vercel.app/index.html" target="_blank" rel="noopener">台大開放式課程：哲學講座</a></li>
+<li data-t="古希臘哲學家光譜圖"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%8F%A4%E5%B8%8C%E8%87%98%E5%93%B2%E5%AD%B8%E5%AE%B6%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">古希臘哲學家光譜圖</a></li>
+<li data-t="中世紀哲學光譜圖"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E4%B8%AD%E4%B8%96%E7%B4%80%E5%93%B2%E5%AD%B8%E5%85%89%E8%AD%9C%E5%9C%96.html" target="_blank" rel="noopener">中世紀哲學光譜圖</a></li>
+<li data-t="大陸理性論"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%A4%A7%E9%99%B8%E7%90%86%E6%80%A7%E8%AB%96.html" target="_blank" rel="noopener">大陸理性論</a></li>
+<li data-t="英國經驗論"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E8%8B%B1%E5%9C%8B%E7%B6%93%E9%A9%97%E8%AB%96.html" target="_blank" rel="noopener">英國經驗論</a></li>
+<li data-t="德意志觀念論"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%BE%B7%E6%84%8F%E5%BF%97%E8%A7%80%E5%BF%B5%E8%AB%96.html" target="_blank" rel="noopener">德意志觀念論</a></li>
+<li data-t="康德"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%BA%B7%E5%BE%B7.html" target="_blank" rel="noopener">康德</a></li>
+<li data-t="黑格爾"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E9%BB%91%E6%A0%BC%E7%88%BE.html" target="_blank" rel="noopener">黑格爾</a></li>
+<li data-t="存在主義"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%AD%98%E5%9C%A8%E4%B8%BB%E7%BE%A9.html" target="_blank" rel="noopener">存在主義</a></li>
+<li data-t="尼采"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%B0%BC%E9%87%87.html" target="_blank" rel="noopener">尼采</a></li>
+<li data-t="達爾文與演化論"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E9%81%94%E7%88%BE%E6%96%87%E8%88%87%E6%BC%94%E5%8C%96%E8%AB%96.html" target="_blank" rel="noopener">達爾文與演化論</a></li>
+<li data-t="佛洛伊德與精神分析"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E4%BD%9B%E6%B4%9B%E4%BC%8A%E5%BE%B7%E8%88%87%E7%B2%BE%E7%A5%9E%E5%88%86%E6%9E%90.html" target="_blank" rel="noopener">佛洛伊德與精神分析</a></li>
+<li data-t="馬克思與歷史唯物論"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E9%A6%AC%E5%85%8B%E6%80%9D%E8%88%87%E6%AD%B7%E5%8F%B2%E5%94%AF%E7%89%A9%E8%AB%96.html" target="_blank" rel="noopener">馬克思與歷史唯物論</a></li>
+<li data-t="效益主義與實證主義"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E6%95%88%E7%9B%8A%E4%B8%BB%E7%BE%A9%E8%88%87%E5%AF%A6%E8%AD%89%E4%B8%BB%E7%BE%A9.html" target="_blank" rel="noopener">效益主義與實證主義</a></li>
+<li data-t="二十世紀的分析哲學"><a class="" href="html/4.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E4%BA%8C%E5%8D%81%E4%B8%96%E7%B4%80%E7%9A%84%E5%88%86%E6%9E%90%E5%93%B2%E5%AD%B8.html" target="_blank" rel="noopener">二十世紀的分析哲學</a></li>
 </ol></article>
-<article class="card">
+<article class="card" id="cat-5" data-name="6.文學小說">
 <h3>6.文學小說<span class="cnt">5 項</span></h3>
 <ol>
-<li><a class="ext" href="https://notes-jin-yong.vercel.app/" target="_blank" rel="noopener">金庸書架</a></li>
-<li><a class="ext" href="https://notes-laugh.vercel.app/" target="_blank" rel="noopener">笑傲江湖查詢系統</a></li>
-<li><a class="ext" href="https://chad-liu.github.io/Notes-Laugh/" target="_blank" rel="noopener">天龍八部查詢系統</a></li>
-<li><a class="ext" href="https://textoria.cclin.cc/red-chamber-dream/" target="_blank" rel="noopener">紅樓夢知識圖譜</a></li>
-<li><a class="ext" href="https://middle-earth-interactive-map.web.app/" target="_blank" rel="noopener">魔戒中土世界</a></li>
+<li data-t="金庸書架"><a class="ext" href="https://notes-jin-yong.vercel.app/" target="_blank" rel="noopener">金庸書架</a></li>
+<li data-t="笑傲江湖查詢系統"><a class="ext" href="https://notes-laugh.vercel.app/" target="_blank" rel="noopener">笑傲江湖查詢系統</a></li>
+<li data-t="天龍八部查詢系統"><a class="ext" href="https://chad-liu.github.io/Notes-Laugh/" target="_blank" rel="noopener">天龍八部查詢系統</a></li>
+<li data-t="紅樓夢知識圖譜"><a class="ext" href="https://textoria.cclin.cc/red-chamber-dream/" target="_blank" rel="noopener">紅樓夢知識圖譜</a></li>
+<li data-t="魔戒中土世界"><a class="ext" href="https://middle-earth-interactive-map.web.app/" target="_blank" rel="noopener">魔戒中土世界</a></li>
 </ol></article>
-<article class="card">
+<article class="card" id="cat-6" data-name="8.科技資訊">
 <h3>8.科技資訊<span class="cnt">1 項</span></h3>
 <ol>
-<li><a href="html/8.%E7%A7%91%E6%8A%80%E8%B3%87%E8%A8%8A/powershell_cheatsheet.html" target="_blank" rel="noopener">powershell_cheatsheet</a></li>
+<li data-t="powershell_cheatsheet"><a class="" href="html/8.%E7%A7%91%E6%8A%80%E8%B3%87%E8%A8%8A/powershell_cheatsheet.html" target="_blank" rel="noopener">powershell_cheatsheet</a></li>
 </ol></article>
 </div>
+<div class="empty">找不到符合的項目</div>
 </main>
 <footer>檔案位置：D:\Books\　·　依 html\ 各資料夾的 order.md 排序</footer>
+<script>
+var cat = document.getElementById('cat');
+var q = document.getElementById('q');
+
+function run() {
+  var t = q.value.trim().toLowerCase();
+  var shown = 0;
+  document.querySelectorAll('.card').forEach(function (c) {
+    var hitCard = c.dataset.name.toLowerCase().indexOf(t) >= 0;
+    var any = hitCard;
+    c.querySelectorAll('li').forEach(function (li) {
+      var hit = !t || hitCard || li.dataset.t.toLowerCase().indexOf(t) >= 0;
+      li.style.display = hit ? '' : 'none';
+      if (hit) any = true;
+    });
+    c.style.display = (!t || any) ? '' : 'none';
+    if (!t || any) shown++;
+  });
+  document.querySelector('.empty').style.display = shown ? 'none' : 'block';
+}
+q.addEventListener('input', run);
+document.addEventListener('keydown', function (e) {
+  if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+  if (e.key === 'Escape') { q.value = ''; run(); q.blur(); }
+});
+
+cat.addEventListener('change', function () {
+  var card = document.getElementById(cat.value);
+  if (!card) return;
+  // 搜尋條件可能正把該分類整張卡片藏起來，先清掉才跳得過去
+  if (q.value.trim()) { q.value = ''; run(); }
+  var top = card.getBoundingClientRect().top + window.pageYOffset
+            - document.querySelector('header').offsetHeight - 8;
+  window.scrollTo(0, Math.max(0, top));
+  cat.selectedIndex = 0;
+});
+</script>
 </body>
 </html>
