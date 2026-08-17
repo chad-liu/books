@@ -5,6 +5,7 @@
 文藝復興
 文藝復興查詢系統(https://notes-renaissance-query-app.vercel.app/)
 梅迪奇家族
+達文西
 宗教改革
 科學革命
 啟蒙運動
