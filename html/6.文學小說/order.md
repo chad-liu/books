@@ -5,5 +5,3 @@
 魔戒中土世界(https://middle-earth-interactive-map.web.app/)
 伊利亞德(荷馬)
 奧德賽(荷馬)
-每個孩子都是全部，不是之一
-20260430台南培文課程
