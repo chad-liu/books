@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GDP的組成與計算知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#14171A;--paper:#1C2024;--ink:#EAE6DA;--muted:#9BA39B;
+    --rule:#333A34;--body:#D6D2C5;
+    --brass:#E0B45C;--copper:#E8946E;--steel:#7FB8E8;--verde:#7FCB9E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">國民所得・經濟規模</p>
+  <h1>GDP的組成與計算知識圖譜</h1>
+  <p class="lede">新聞常說「今年GDP成長2.5%」，但這串數字究竟是怎麼算出來的？答案其實有三種算法——從消費者花了多少錢算起、從企業生產了多少附加價值算起，或是從全民賺了多少所得算起——理論上殊途同歸，卻各自揭露了經濟體不同的切面。這份圖譜要梳理的，就是GDP的定義與計算方式，以及這個被全世界奉為經濟成績單的數字，究竟漏掉了哪些東西。</p>
+</header>
+
+<div class="callout">
+  <b>與前作的銜接</b><br>
+  見〈經濟指標〉與〈財政政策〉兩篇：前者將GDP列為核心的「產出與成長」指標卻未展開細節，後者談到的政府支出正是GDP支出面公式裡的G——本頁要把這條公式完整攤開，同時補上GDP這個指標本身的侷限。
+</div>
+
+<section>
+  <h2>其一 · GDP是什麼——衡量一國經濟規模的核心指標</h2>
+  <p class="sub">GDP是一把好用的尺，但它只量「規模」，不量「好壞」</p>
+  <div class="frame">
+<svg viewBox="0 0 940 398" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GDP基本概念結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">「經濟規模有多大」，全世界都用同一把尺——GDP</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">GDP（國內生產毛額）衡量一國一定期間內，境內生產的所有最終商品與服務的市場價值總和，是理解一國經濟規模最基礎、也最被廣泛使用的指標</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">GDP的定義</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#C4A972">經濟規模的尺度</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">一國一定期間內，境內生產的所</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">有最終商品與服務的市場價值總</text>
+  <text x="52" y="204" font-size="12" text-anchor="start" fill="#C4A972">和，是衡量經濟規模最核心的指</text>
+  <text x="52" y="220" font-size="12" text-anchor="start" fill="#C4A972">標</text>
+  <text x="140" y="236" font-size="11" text-anchor="middle" fill="#C4A972">通常以一季或一年為計算單位</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">名目GDP</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#C99178">未剔除物價變動</text>
+  <text x="272" y="172" font-size="12" text-anchor="start" fill="#C99178">以當期市場價格計算，未剔除物</text>
+  <text x="272" y="188" font-size="12" text-anchor="start" fill="#C99178">價變動的影響，數字容易受通膨</text>
+  <text x="272" y="204" font-size="12" text-anchor="start" fill="#C99178">推升而失真</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#C99178">漲價本身也能讓名目GDP變大</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">實質GDP</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#8FADC4">剔除物價變動</text>
+  <text x="492" y="172" font-size="12" text-anchor="start" fill="#8FADC4">以固定基期價格計算，剔除物價</text>
+  <text x="492" y="188" font-size="12" text-anchor="start" fill="#8FADC4">變動後的GDP，是判斷實際經</text>
+  <text x="492" y="204" font-size="12" text-anchor="start" fill="#8FADC4">濟成長率的關鍵依據</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#8FADC4">新聞說的經濟成長率通常指這個</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">為什麼只算「最終」商品</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#94BA9E">避免重複計算</text>
+  <text x="712" y="172" font-size="12" text-anchor="start" fill="#94BA9E">麵粉賣給麵包店是中間投入，不</text>
+  <text x="712" y="188" font-size="12" text-anchor="start" fill="#94BA9E">算GDP；麵包賣給消費者才是</text>
+  <text x="712" y="204" font-size="12" text-anchor="start" fill="#94BA9E">最終商品，才被計入GDP</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#94BA9E">避免同一份價值被重複計算多次</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">GDP是一把好用的尺，但它只量「規模」，不量「好壞」</text>
+<text x="92" y="321.2" font-size="12" text-anchor="start" fill="#D6D2C5">GDP告訴你一國一年創造了多少市場價值，卻不告訴你這些價值是怎麼分配的、犧牲了什麼代價換來的——這正是後續兩節要談的計算細節，</text>
+<text x="92" y="337.2" font-size="12" text-anchor="start" fill="#D6D2C5">以及最後一節要談的指標侷限</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#9BA39B">本頁後續三節，將分別談GDP的支出面計算、另外兩種算法，以及這個指標本身的侷限</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>其二 · GDP的支出面計算——C+I+G+NX</h2>
+  <p class="sub">GDP = C + I + G + NX，這個公式背後藏著整個經濟體的縮影</p>
+  <div class="frame">
+<svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GDP支出面計算結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">新聞最常引用的GDP算法，其實就是四個字母加起來</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">支出面是計算GDP最直覺、也最常被媒體引用的方式——把整個經濟體裡所有人的花費加總起來，就是這一期創造的GDP</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">民間消費C</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">家庭部門購買商品與服務的支出，通常是GDP中占比最大的組成部分，</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">反映消費者的購買力與信心</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">民間投資I</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">企業購置廠房設備、興建住宅、存貨變動等資本形成支出，是景氣循環中</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">波動最劇烈的一塊</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">政府支出G</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">政府購買商品與服務的支出（不含移轉性支付如社福津貼），是財政政策</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">刺激經濟時最直接發揮作用的環節</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">淨出口NX</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">出口減進口，反映一國與世界其他地區的貿易往來，對外貿依存度高的經</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">濟體此項占比格外重要</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">GDP = C + I + G + NX，這個公式背後藏著整個經濟體的縮影</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">民間消費通常是最大宗、也最穩定的一塊；投資波動最劇烈，是景氣循環的主要驅動力；政府支出是政策工具，淨出口則取決於一國的國際競爭</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">力——四個數字加總起來，就是整個經濟體一期的產出全貌</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">見〈財政政策〉篇：政府支出G正是財政政策刺激經濟時，最直接注入GDP公式的那個環節</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>其三 · GDP的另外兩種算法——生產面與所得面</h2>
+  <p class="sub">三種算法各自回答不同的問題，卻共用同一個答案</p>
+  <div class="frame">
+<svg viewBox="0 0 940 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GDP生產面與所得面結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">花掉的錢、生產的價值、賺到的所得，理論上是同一件事</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">除了支出面，GDP還可以從「生產了多少附加價值」與「賺到多少所得」兩個角度計算——三種算法理論上應該得出完全相同的數字</text>
+
+  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">生產面GDP</text>
+  <text x="175" y="156" font-size="11" text-anchor="middle" fill="#C4A972">從供給端計算</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">加總各產業（農業、工業、服務業）創造的附</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">加價值，反映GDP從供給端的產業結構組成</text>
+
+  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">所得面GDP</text>
+  <text x="470" y="156" font-size="11" text-anchor="middle" fill="#8FADC4">從分配端計算</text>
+  <text x="347" y="172" font-size="12" text-anchor="start" fill="#8FADC4">加總勞動所得（工資）、資本所得（利潤、利</text>
+  <text x="347" y="188" font-size="12" text-anchor="start" fill="#8FADC4">息、租金）等要素報酬，反映GDP最終分配</text>
+  <text x="347" y="204" font-size="12" text-anchor="start" fill="#8FADC4">到誰手上</text>
+
+  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">三面等價原則</text>
+  <text x="765" y="156" font-size="11" text-anchor="middle" fill="#C99178">理論上殊途同歸</text>
+  <text x="642" y="172" font-size="12" text-anchor="start" fill="#C99178">支出面、生產面、所得面理論上應該算出同一</text>
+  <text x="642" y="188" font-size="12" text-anchor="start" fill="#C99178">個GDP數字，這正是國民所得帳最基本的邏</text>
+  <text x="642" y="204" font-size="12" text-anchor="start" fill="#C99178">輯一致性檢驗</text>
+
+<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">三種算法各自回答不同的問題，卻共用同一個答案</text>
+<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#D6D2C5">支出面告訴你「錢花到哪裡去了」，生產面告訴你「價值是哪個產業創造的」，所得面告訴你「這些價值最後進了誰的口袋」——三種角度理論</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">上殊途同歸，但實務統計上常出現落差，各國通常以支出面作為主要公布數字</text>
+<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#9BA39B">這種「統計誤差」本身，也是判斷一國統計品質與資料完整度的參考指標之一</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>其四 · GDP指標的侷限與替代指標的討論</h2>
+  <p class="sub">GDP從來不是設計來衡量「幸福」的，這正是所有爭議的起點</p>
+  <div class="frame">
+<svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GDP侷限與替代指標結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">GDP能告訴你經濟規模，卻回答不了「日子過得好不好」</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">GDP自誕生以來就不斷被批評視野過於狹窄——它擅長衡量市場交易的總量，卻對所得分配、環境代價與非市場活動視而不見</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">不衡量所得分配</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">GDP成長不代表全民雨露均霑，貧富差距擴大時GDP數字依然可能亮</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">眼，掩蓋了社會內部的分配問題</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">不衡量環境與永續</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">污染治理、天災重建等破壞性活動反而可能推升GDP，卻是以犧牲環境</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">或民眾福祉為代價換來的數字</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">不衡量非市場活動</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">家務勞動、志工服務等未經市場交易的貢獻完全不被計入，低估了社會實</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">際產出與福祉的真實價值</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">替代指標的嘗試</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">人類發展指數(HDI)、幸福指數等嘗試納入健康、教育、環境等面向</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">，希望補足GDP的視野侷限</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">GDP從來不是設計來衡量「幸福」的，這正是所有爭議的起點</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">GDP之父顧志耐本人早在1930年代就提醒過，這個指標無法反映一國的福祉——但它的簡潔與可比較性，讓它成為至今無可取代的經濟成</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">績單，理解它的侷限，比全盤否定或盲目信奉它都更重要</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">見〈經濟指標〉篇：GDP只是眾多總體經濟指標之一，唯有搭配就業、物價等其他指標一起看，才能拼出完整的經濟圖像</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>GDP基本概念</h2><span class="tag">BASIC CONCEPTS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">GDP</div><p>一國一定期間內，境內生產的所有最終商品與服務的市場價值總和，是衡量經濟規模最核心的指標。</p></div>
+    <div class="card"><div class="nm">名目GDP</div><p>以當期市場價格計算，未剔除物價變動的影響，數字容易受通膨推升而失真。</p></div>
+    <div class="card"><div class="nm">實質GDP</div><p>以固定基期價格計算，剔除物價變動後的GDP，是判斷實際經濟成長率的關鍵依據。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>支出面的四大組成</h2><span class="tag">EXPENDITURE COMPONENTS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">民間消費<span class="yr">C</span></div><p>家庭部門購買商品與服務的支出，通常是GDP中占比最大的組成部分。</p></div>
+    <div class="card"><div class="nm">民間投資<span class="yr">I</span></div><p>企業購置廠房設備、興建住宅、存貨變動等資本形成支出，是景氣循環中波動最劇烈的一塊。</p></div>
+    <div class="card"><div class="nm">政府支出與淨出口<span class="yr">G／NX</span></div><p>政府購買商品服務的支出，加上出口減進口的貿易餘額，共同構成GDP的另外兩個組成部分。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>另外兩種計算方式</h2><span class="tag">ALTERNATIVE APPROACHES</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">生產面GDP</div><p>加總各產業創造的附加價值，反映GDP從供給端的產業結構組成。</p></div>
+    <div class="card"><div class="nm">所得面GDP</div><p>加總勞動所得、資本所得等要素報酬，反映GDP最終分配到誰手上。</p></div>
+    <div class="card"><div class="nm">三面等價原則</div><p>支出面、生產面、所得面理論上應算出同一個GDP數字，是國民所得帳最基本的邏輯一致性檢驗。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>GDP的侷限</h2><span class="tag">LIMITATIONS OF GDP</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">不衡量所得分配</div><p>GDP成長不代表全民雨露均霑，貧富差距擴大時GDP數字依然可能亮眼。</p></div>
+    <div class="card"><div class="nm">不衡量環境與永續</div><p>污染治理、天災重建等破壞性活動反而可能推升GDP，卻是以犧牲環境或福祉為代價。</p></div>
+    <div class="card"><div class="nm">替代指標的嘗試</div><p>人類發展指數(HDI)、幸福指數等嘗試納入健康、教育、環境等面向，補足GDP的視野侷限。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    它衡量了一切，除了讓生命值得活下去的那些東西。
+    <cite>羅伯特·甘迺迪（Robert F. Kennedy），1968年在堪薩斯大學的演講中，對國民生產毛額（GNP，GDP的前身）提出的著名批判。他列舉了空氣污染、香菸廣告、監獄與核彈頭等會計入GNP的項目，卻指出詩歌之美、婚姻的力量、公共辯論的智慧都不會被計入——這段演說至今仍是質疑「唯GDP論」時最常被引用的段落。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  GDP計算方法與統計慣例因國家而異，本頁採一般教科書通行架構，具體數字請另行查證各國統計機關官方公告。GDP侷限性的相關討論持續演進，本頁呈現的是較常被引用的批判觀點，不代表唯一定論。
+</footer>
+
+</div>
+</body>
+</html>
