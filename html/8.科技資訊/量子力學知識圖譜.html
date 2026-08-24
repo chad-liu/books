@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>量子力學知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#14171A;--paper:#1C2024;--ink:#EAE6DA;--muted:#9BA39B;
+    --rule:#333A34;--body:#D6D2C5;
+    --brass:#E0B45C;--copper:#E8946E;--steel:#7FB8E8;--verde:#7FCB9E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">量子物理・微觀世界</p>
+  <h1>量子力學知識圖譜</h1>
+  <p class="lede">一顆電子在被觀測之前，可以同時「在這裡」又「在那裡」——這不是比喻，而是量子力學一百多年來被反覆驗證的實驗事實。這套理論違背了幾乎所有日常直覺，卻又精確支撐著半導體、雷射與量子電腦等現代科技的運作。這份圖譜要梳理的，就是量子力學從何而來、它到底在說什麼，以及這些違反直覺的原理如何走進了每個人的口袋。</p>
+</header>
+
+<div class="callout">
+  <b>閱讀提示</b><br>
+  量子力學是一門數學形式極度成功、但物理詮釋至今仍有爭議的理論。本頁其一先談它誕生的歷史脈絡，其二整理核心原理，其三處理詮釋之爭，其四則回到它在現代科技中的具體應用——建議依序閱讀，後面章節會不斷回扣前面提過的概念。
+</div>
+
+<section>
+  <h2>其一 · 量子力學的誕生——古典物理解釋不了的現象</h2>
+  <p class="sub">短短二十多年，物理學的世界觀被徹底翻新了一遍</p>
+  <div class="frame">
+<svg viewBox="0 0 940 398" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子力學誕生歷程結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">20世紀初，幾個古典物理解釋不了的小問題，意外開啟了一整個新世界</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">量子力學不是憑空冒出來的理論，而是物理學家為了解決幾個古典物理怎麼算都算不出正確答案的具體問題，一步步被迫發展出來的</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">黑體輻射與量子假說</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#C4A972">普朗克，1900年</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">為解決「紫外災變」這個古典物</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">理無法解決的矛盾，蒲朗克提出</text>
+  <text x="52" y="204" font-size="12" text-anchor="start" fill="#C4A972">能量以離散單位（量子）存在的</text>
+  <text x="52" y="220" font-size="12" text-anchor="start" fill="#C4A972">假說</text>
+  <text x="140" y="236" font-size="11" text-anchor="middle" fill="#C4A972">量子力學由此正式誕生</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">光電效應與光子</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#C99178">愛因斯坦，1905年</text>
+  <text x="272" y="172" font-size="12" text-anchor="start" fill="#C99178">提出光以離散的能量包（光子）</text>
+  <text x="272" y="188" font-size="12" text-anchor="start" fill="#C99178">形式存在，成功解釋光電效應，</text>
+  <text x="272" y="204" font-size="12" text-anchor="start" fill="#C99178">因此獲得諾貝爾物理獎</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#C99178">光同時具有波動與粒子雙重性質</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">原子模型的量子化</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#8FADC4">波耳，1913年</text>
+  <text x="492" y="172" font-size="12" text-anchor="start" fill="#8FADC4">提出電子只能在特定量子化軌道</text>
+  <text x="492" y="188" font-size="12" text-anchor="start" fill="#8FADC4">上運行，成功解釋氫原子光譜的</text>
+  <text x="492" y="204" font-size="12" text-anchor="start" fill="#8FADC4">離散譜線</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#8FADC4">原子內部第一次被量子化描述</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">物質波假說</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#94BA9E">德布羅意，1924年</text>
+  <text x="712" y="172" font-size="12" text-anchor="start" fill="#94BA9E">提出物質粒子也具有波動性，波</text>
+  <text x="712" y="188" font-size="12" text-anchor="start" fill="#94BA9E">粒二象性從此成為量子力學的核</text>
+  <text x="712" y="204" font-size="12" text-anchor="start" fill="#94BA9E">心概念</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#94BA9E">不只是光所有物質都可能有波動性</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">短短二十多年，物理學的世界觀被徹底翻新了一遍</text>
+<text x="92" y="321.2" font-size="12" text-anchor="start" fill="#D6D2C5">從普朗克為了湊出正確公式而提出的權宜假設，到德布羅意大膽推論所有物質都具有波動性，這段時期的物理學家其實也不完全確定自己在做什</text>
+<text x="92" y="337.2" font-size="12" text-anchor="start" fill="#D6D2C5">麼——量子力學是被實驗結果一步步逼出來的理論，不是先有完整理論才去驗證</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#9BA39B">本頁後續三節，將分別談量子力學的核心原理、詮釋之爭，以及它今天的現代應用</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>其二 · 量子力學的核心原理</h2>
+  <p class="sub">這四個原理環環相扣，共同顛覆了古典物理「萬物皆有確定狀態」的假設</p>
+  <div class="frame">
+<svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子力學核心原理結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">量子力學最違反直覺的幾個概念，其實有清楚的實驗基礎</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">波粒二象性、測不準原理、疊加態、纏結——這些聽起來像哲學思辨的概念，背後其實都有具體、可重複驗證的實驗支撐</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">波粒二象性</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">電子、光子等微觀粒子同時具有粒子性與波動性，具體展現哪一種性質取</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">決於觀測方式</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">測不準原理</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">一個粒子的位置與動量無法同時被精確測量，這是自然的根本極限，而非</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">儀器精度不足</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">量子疊加態</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">觀測前，量子系統可以同時處於多個狀態的疊加，直到測量發生才「塌縮</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">」為確定的單一狀態</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">量子纏結</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">兩個粒子的量子態彼此關聯，即使相距遙遠，測量其中一個也會瞬間影響</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">另一個粒子的狀態</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">這四個原理環環相扣，共同顛覆了古典物理「萬物皆有確定狀態」的假設</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">古典物理假設一顆球在被看到之前，也一定「在某個確定位置」；量子力學卻主張，在測量發生之前，這個問題本身可能沒有明確答案——這種</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">根本性的世界觀轉變，正是量子力學至今仍讓許多人感到困惑的原因</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">這種違反直覺的性質，也讓量子力學的詮釋方式，成為物理學史上爭論最久的哲學問題之一</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>其三 · 量子力學的詭異之處——哲學與詮釋之爭</h2>
+  <p class="sub">這場詮釋之爭，某種程度上是物理學與哲學的邊界問題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子力學詮釋之爭結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">量子力學的數學算得出正確答案，但「它到底代表什麼」，物理學家吵了快一百年</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">量子力學的數學形式極其成功——預測精確到令人咋舌，但這些數學符號背後的物理意義究竟是什麼，至今仍沒有公認的標準答案</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">哥本哈根詮釋</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">主流詮釋主張測量會使波函數塌縮，量子態的機率性是自然本質，而非我</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">們知識的不足</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">多世界詮釋</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">主張測量時宇宙會分裂成多個平行世界，每種可能結果都在不同世界中真</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">實發生，沒有波函數塌縮</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">薛丁格的貓</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">用巨觀尺度的貓比喻量子疊加態的荒謬性，質疑哥本哈根詮釋將量子力學</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">直接套用到巨觀世界的合理性</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">EPR悖論</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">愛因斯坦質疑量子纏結違反局域性原理，稱其為「鬼魅般的超距作用」，</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">這場辯論延續了數十年</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">這場詮釋之爭，某種程度上是物理學與哲學的邊界問題</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">不同詮釋對量子力學的數學計算結果完全一致，差異只在於「這套數學到底在描述什麼樣的實在」——這已經超出了物理實驗能單獨回答的範圍</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">，也是為什麼這場辯論至今仍沒有終結</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">儘管詮釋上仍有分歧，這些數學形式本身的實用性，早已支撐起許多現代科技</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>其四 · 量子力學的現代應用</h2>
+  <p class="sub">不管詮釋之爭有沒有結論，量子力學早就悄悄運作在你我的口袋裡</p>
+  <div class="frame">
+<svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子力學現代應用結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">不管詮釋之爭有沒有結論，量子力學早就悄悄運作在你我的口袋裡</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">量子力學不只是抽象的哲學辯論，它的數學形式與實驗結果，已經支撐起現代文明最核心的幾項技術</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">半導體與電晶體</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">現代電子產業的基礎技術，其運作原理直接建立在量子力學對電子能帶結</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">構的描述上</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">雷射技術</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">基於受激輻射的量子力學原理，應用範圍從光纖通訊到醫療手術無所不在</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">量子電腦</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">利用量子疊加與量子纏結進行平行運算，理論上能在特定問題上遠遠超越</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">傳統電腦的運算能力</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">量子加密通訊</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">利用量子測量會擾動系統的特性，實現理論上無法被竊聽而不被發現的通</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">訊技術</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">從解釋黑體輻射的權宜假說，到支撐半導體與量子電腦的核心理論</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">量子力學的旅程，是科學史上理論與應用距離最遙遠、卻又最終緊密結合的例子之一——一百多年前物理學家為了解釋幾個看似細瑣的實驗異常</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">而發展出的理論，如今已成為現代科技文明運轉的地基</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">費曼那句「沒有人真正理解量子力學」，說的是哲學上的理解，而不是工程上的應用</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>關鍵歷史人物與突破</h2><span class="tag">KEY BREAKTHROUGHS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">普朗克<span class="yr">1900年</span></div><p>為解決黑體輻射的「紫外災變」矛盾，提出能量以離散單位（量子）存在的假說，量子力學由此誕生。</p></div>
+    <div class="card"><div class="nm">愛因斯坦<span class="yr">1905年</span></div><p>提出光以離散能量包（光子）形式存在，成功解釋光電效應，因此獲得諾貝爾物理獎。</p></div>
+    <div class="card"><div class="nm">波耳與德布羅意<span class="yr">1913-1924年</span></div><p>波耳提出電子軌道量子化解釋原子光譜，德布羅意進一步提出物質波假說，奠定波粒二象性。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心原理</h2><span class="tag">CORE PRINCIPLES</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">波粒二象性</div><p>微觀粒子同時具有粒子性與波動性，具體展現哪一種性質取決於觀測方式。</p></div>
+    <div class="card"><div class="nm">測不準原理</div><p>一個粒子的位置與動量無法同時被精確測量，這是自然的根本極限。</p></div>
+    <div class="card"><div class="nm">量子疊加態與纏結</div><p>觀測前系統可同時處於多個狀態的疊加；兩個纏結粒子的量子態則彼此關聯，即使相距遙遠。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>詮釋之爭</h2><span class="tag">INTERPRETATIONS</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">哥本哈根詮釋</div><p>主流詮釋主張測量會使波函數塌縮，量子態的機率性是自然本質。</p></div>
+    <div class="card"><div class="nm">多世界詮釋</div><p>主張測量時宇宙會分裂成多個平行世界，每種可能結果都真實發生。</p></div>
+    <div class="card"><div class="nm">薛丁格的貓與EPR悖論</div><p>前者質疑疊加態套用到巨觀世界的合理性，後者是愛因斯坦對量子纏結的著名質疑。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>現代應用</h2><span class="tag">MODERN APPLICATIONS</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">半導體與電晶體</div><p>現代電子產業的基礎技術，其運作原理直接建立在量子力學對電子能帶結構的描述上。</p></div>
+    <div class="card"><div class="nm">雷射技術</div><p>基於受激輻射的量子力學原理，應用範圍從光纖通訊到醫療手術無所不在。</p></div>
+    <div class="card"><div class="nm">量子電腦與量子加密</div><p>前者利用疊加與纏結進行平行運算，後者利用測量會擾動系統的特性實現無法被竊聽的通訊。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    我想我可以很有把握地說，沒有人真正理解量子力學。
+    <cite>理查·費曼，1965年諾貝爾物理獎得主，在其著名的量子電動力學（QED）科普演講中如此坦言。他指的並非數學計算或工程應用——這些早已被驗證得極其精確——而是量子世界背後那個違反日常直覺的「實在」，至今仍沒有一套詮釋能讓所有物理學家都心服口服。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁內容依主流量子力學教科書與科普敘述整理，著重呈現核心概念的歷史脈絡與邏輯關係，並非嚴謹的物理教材，數學細節與最新研究進展請另行查證專業文獻。
+</footer>
+
+</div>
+</body>
+</html>
