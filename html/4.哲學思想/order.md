@@ -1,6 +1,4 @@
-
 台大開放式課程：哲學講座(https://philosophy-religion.vercel.app/index.html)
-
 古希臘哲學家光譜圖
 中世紀哲學光譜圖
 大陸理性論

@@ -1,5 +1,3 @@
-量子力學知識圖譜
-量子電腦知識圖譜
 markdown編輯器(https://chad-liu.github.io/books/app/markdown-editor.html)
 taiwan.md(https://taiwan.md/)
 用數據看台灣(https://www.taiwanstat.com/realtime/)
