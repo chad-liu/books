@@ -1,5 +1,8 @@
 台大開放式課程：哲學講座(https://philosophy-religion.vercel.app/index.html)
 古希臘哲學家光譜圖
+蘇格拉底的光譜圖
+柏拉圖的光譜圖
+亞里士多德的光譜圖
 中世紀哲學光譜圖
 大陸理性論
 英國經驗論
