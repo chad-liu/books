@@ -9,52 +9,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#14171A;--paper:#1C2024;--ink:#EAE6DA;--muted:#9BA39B;
-    --rule:#333A34;--body:#D6D2C5;
-    --brass:#E0B45C;--copper:#E8946E;--steel:#7FB8E8;--verde:#7FCB9E;
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);
     font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     line-height:1.75;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
-  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
-  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
     letter-spacing:.5em;margin:0 0 10px}
   h1{font-family:"Noto Serif TC",serif;font-weight:700;
-    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
-  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
   h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
-    letter-spacing:.1em;margin:0 0 4px}
-  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
-  section{margin-bottom:56px}
-  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  /* 只有帶圖表的四節加編號圓圈；卡片區的 .band h2 維持原樣 */
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
     overflow-x:auto;-webkit-overflow-scrolling:touch}
   .frame svg{display:block;min-width:900px;width:100%;height:auto}
   .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-    border-top:1px solid var(--rule)}
-  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
   .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
   .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
   .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
-  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .ri .nm{color:var(--copper)} .re .nm{color:#8f5e14}
   .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
   .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
   .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
   .notes{margin-top:20px;display:grid;gap:14px;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .note{border-left:2px solid var(--brass);padding-left:14px}
-  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
-  .note span{font-size:13px;color:var(--muted)}
-  blockquote{margin:0;padding:16px 20px;background:var(--paper);
-    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
-    font-size:15px;letter-spacing:.04em}
+  .note{border-left:3px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px;color:var(--navy)}
+  .note span{font-size:13px;color:var(--body)}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
   blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
     font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
-  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
-    margin-bottom:40px;font-size:14px;text-align:left}
-  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
-  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#607d8b;font-size:12px}
 </style>
 </head>
 <body>
@@ -72,166 +85,166 @@
 </div>
 
 <section>
-  <h2>其一 · 匯率是什麼——兩種主要匯率制度</h2>
+  <h2>匯率是什麼——兩種主要匯率制度</h2>
   <p class="sub">從完全交給市場，到央行說了算，匯率決定機制其實有一整個光譜</p>
   <div class="frame">
 <svg viewBox="0 0 940 382" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="匯率制度結構圖">
-<rect x="40" y="30" width="860" height="71.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">匯率，就是一國貨幣「值多少」另一國貨幣</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">匯率是兩種貨幣之間的兌換比率，例如「1美元兌31元新台幣」；世界主要國家依匯率決定機制的不同，大致可分為浮動匯率與固定匯率兩大陣營，兩者對</text>
-<text x="52" y="86.5" font-size="12" text-anchor="start" fill="#D6D2C5">「誰來決定匯率」的答案完全不同</text>
+<rect x="40" y="30" width="860" height="71.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">匯率，就是一國貨幣「值多少」另一國貨幣</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">匯率是兩種貨幣之間的兌換比率，例如「1美元兌31元新台幣」；世界主要國家依匯率決定機制的不同，大致可分為浮動匯率與固定匯率兩大陣營，兩者對</text>
+<text x="52" y="86.5" font-size="12" text-anchor="start" fill="#546e7a">「誰來決定匯率」的答案完全不同</text>
 
-  <rect x="40" y="131.5" width="270" height="103.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="175" y="154" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">浮動匯率</text>
-  <text x="175" y="172" font-size="11" text-anchor="middle" fill="#C4A972">由市場供需決定</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">匯率完全由外匯市場的供給與需求決定，央行</text>
-  <text x="52" y="204" font-size="12" text-anchor="start" fill="#C4A972">原則上不干預，美元、歐元、日圓等主要貨幣</text>
-  <text x="52" y="220" font-size="12" text-anchor="start" fill="#C4A972">多採此制度</text>
+  <rect x="40" y="131.5" width="270" height="103.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="175" y="154" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">浮動匯率</text>
+  <text x="175" y="172" font-size="11" text-anchor="middle" fill="#8a6a35">由市場供需決定</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">匯率完全由外匯市場的供給與需求決定，央行</text>
+  <text x="52" y="204" font-size="12" text-anchor="start" fill="#8a6a35">原則上不干預，美元、歐元、日圓等主要貨幣</text>
+  <text x="52" y="220" font-size="12" text-anchor="start" fill="#8a6a35">多採此制度</text>
 
-  <rect x="335" y="131.5" width="270" height="103.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="470" y="154" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">管理浮動匯率</text>
-  <text x="470" y="172" font-size="11" text-anchor="middle" fill="#8FADC4">市場為主，央行適度干預</text>
-  <text x="347" y="188" font-size="12" text-anchor="start" fill="#8FADC4">匯率大致由市場決定，但央行會在匯率劇烈波</text>
-  <text x="347" y="204" font-size="12" text-anchor="start" fill="#8FADC4">動時進場調節，新台幣、人民幣等多數新興市</text>
-  <text x="347" y="220" font-size="12" text-anchor="start" fill="#8FADC4">場貨幣採此制度</text>
+  <rect x="335" y="131.5" width="270" height="103.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="470" y="154" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">管理浮動匯率</text>
+  <text x="470" y="172" font-size="11" text-anchor="middle" fill="#37607a">市場為主，央行適度干預</text>
+  <text x="347" y="188" font-size="12" text-anchor="start" fill="#37607a">匯率大致由市場決定，但央行會在匯率劇烈波</text>
+  <text x="347" y="204" font-size="12" text-anchor="start" fill="#37607a">動時進場調節，新台幣、人民幣等多數新興市</text>
+  <text x="347" y="220" font-size="12" text-anchor="start" fill="#37607a">場貨幣採此制度</text>
 
-  <rect x="630" y="131.5" width="270" height="103.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="765" y="154" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">固定匯率</text>
-  <text x="765" y="172" font-size="11" text-anchor="middle" fill="#C99178">釘住特定貨幣或一籃子貨幣</text>
-  <text x="642" y="188" font-size="12" text-anchor="start" fill="#C99178">央行承諾將本國貨幣匯率固定在某一水準（如</text>
-  <text x="642" y="204" font-size="12" text-anchor="start" fill="#C99178">港幣釘住美元），需持有充足外匯存底維持匯</text>
-  <text x="642" y="220" font-size="12" text-anchor="start" fill="#C99178">率穩定，一旦失守可能引發劇烈波動</text>
+  <rect x="630" y="131.5" width="270" height="103.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="765" y="154" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">固定匯率</text>
+  <text x="765" y="172" font-size="11" text-anchor="middle" fill="#96604f">釘住特定貨幣或一籃子貨幣</text>
+  <text x="642" y="188" font-size="12" text-anchor="start" fill="#96604f">央行承諾將本國貨幣匯率固定在某一水準（如</text>
+  <text x="642" y="204" font-size="12" text-anchor="start" fill="#96604f">港幣釘住美元），需持有充足外匯存底維持匯</text>
+  <text x="642" y="220" font-size="12" text-anchor="start" fill="#96604f">率穩定，一旦失守可能引發劇烈波動</text>
 
-<rect x="80" y="265" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="287.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">本頁聚焦的，是浮動與管理浮動制度下的匯率變動</text>
-<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">固定匯率下的匯率變動通常是政策決定的結果，而非市場自然波動；浮動與管理浮動制度下，匯率則會受到多重市場力量的持續拉扯，這正是本</text>
-<text x="92" y="321.5" font-size="12" text-anchor="start" fill="#D6D2C5">頁後續要談的重點</text>
-<text x="470" y="337.5" font-size="11" text-anchor="middle" fill="#9BA39B">新台幣目前採管理浮動匯率制度，由中央銀行視情況進場調節</text>
+<rect x="80" y="265" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="287.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">本頁聚焦的，是浮動與管理浮動制度下的匯率變動</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#546e7a">固定匯率下的匯率變動通常是政策決定的結果，而非市場自然波動；浮動與管理浮動制度下，匯率則會受到多重市場力量的持續拉扯，這正是本</text>
+<text x="92" y="321.5" font-size="12" text-anchor="start" fill="#546e7a">頁後續要談的重點</text>
+<text x="470" y="337.5" font-size="11" text-anchor="middle" fill="#59707b">新台幣目前採管理浮動匯率制度，由中央銀行視情況進場調節</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其二 · 匯率變動的主要原因</h2>
+  <h2>匯率變動的主要原因</h2>
   <p class="sub">利率差異、物價差異、貿易與資金流動、市場預期——四股力量常同時作用</p>
   <div class="frame">
 <svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="匯率變動原因結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">匯率每天都在動，背後拉扯的力量卻只有幾種</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">影響匯率變動的因素很多，但歸納起來大致可分為利率差異、物價差異、貿易與資金流動、市場預期四大類，彼此之間也會互相加乘</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">匯率每天都在動，背後拉扯的力量卻只有幾種</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">影響匯率變動的因素很多，但歸納起來大致可分為利率差異、物價差異、貿易與資金流動、市場預期四大類，彼此之間也會互相加乘</text>
 
-  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">利率差異</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">當一國升息、利率高於他國，會吸引資金流入追求更高報酬，推升該國貨</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">幣需求，使匯率升值；反之降息則可能導致資金外流、貨幣貶值</text>
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">利率差異</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#8a6a35">當一國升息、利率高於他國，會吸引資金流入追求更高報酬，推升該國貨</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">幣需求，使匯率升值；反之降息則可能導致資金外流、貨幣貶值</text>
 
-  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">物價與購買力差異</text>
-  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">根據購買力平價理論，通膨率較高的國家，其貨幣的實質購買力下降，長</text>
-  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">期而言匯率往往趨向貶值，以反映兩國物價水準的差異</text>
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">物價與購買力差異</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#96604f">根據購買力平價理論，通膨率較高的國家，其貨幣的實質購買力下降，長</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#96604f">期而言匯率往往趨向貶值，以反映兩國物價水準的差異</text>
 
-  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">貿易與資金流動</text>
-  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">出口暢旺、貿易順差會帶來大量外幣流入，推升本國貨幣需求；外資大舉</text>
-  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">匯入投資股市或房地產，同樣會推升匯率</text>
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">貿易與資金流動</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#37607a">出口暢旺、貿易順差會帶來大量外幣流入，推升本國貨幣需求；外資大舉</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#37607a">匯入投資股市或房地產，同樣會推升匯率</text>
 
-  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">市場預期與投機</text>
-  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">外匯市場高度受心理預期影響，一旦市場預期某國貨幣將貶值，投資人可</text>
-  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">能提前拋售，這種預期本身就足以造成匯率變動的自我實現</text>
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">市場預期與投機</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#446b53">外匯市場高度受心理預期影響，一旦市場預期某國貨幣將貶值，投資人可</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#446b53">能提前拋售，這種預期本身就足以造成匯率變動的自我實現</text>
 
-<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">這四股力量很少單獨發生，通常是同時交互作用</text>
-<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">央行升息既會直接吸引資金流入（利率差異），也可能改變市場對該國經濟前景的預期（市場預期），兩股力量往往同時推動匯率往同一個方向</text>
-<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">移動</text>
-<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">這也是為什麼每次央行議息，外匯市場的反應通常比想像中更劇烈</text>
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這四股力量很少單獨發生，通常是同時交互作用</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#546e7a">央行升息既會直接吸引資金流入（利率差異），也可能改變市場對該國經濟前景的預期（市場預期），兩股力量往往同時推動匯率往同一個方向</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#546e7a">移動</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這也是為什麼每次央行議息，外匯市場的反應通常比想像中更劇烈</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其三 · 匯率變動的影響——升值與貶值，各自的贏家與輸家</h2>
+  <h2>匯率變動的影響——升值與貶值，各自的贏家與輸家</h2>
   <p class="sub">出口商與進口商、物價與外債負擔，往往在同一次匯率變動中站在對立兩端</p>
   <div class="frame">
 <svg viewBox="0 0 940 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="匯率變動影響結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">貨幣升值或貶值，從來不是「對整體經濟有利」或「不利」這麼簡單</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">匯率變動對經濟體的影響因產業與角色而異——出口商與進口商、國內物價與外債負擔，往往在同一次匯率變動中站在對立的兩端</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">貨幣升值或貶值，從來不是「對整體經濟有利」或「不利」這麼簡單</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">匯率變動對經濟體的影響因產業與角色而異——出口商與進口商、國內物價與外債負擔，往往在同一次匯率變動中站在對立的兩端</text>
 
-  <rect x="60" y="115.5" width="380" height="103.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="250" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">貨幣升值的影響</text>
-  <text x="250" y="156" font-size="11" text-anchor="middle" fill="#94BA9E">本國貨幣變「值錢」</text>
-  <text x="72" y="172" font-size="12" text-anchor="start" fill="#94BA9E">出口商品在國際市場相對變貴，出口競爭力下降；但進口原物料與</text>
-  <text x="72" y="188" font-size="12" text-anchor="start" fill="#94BA9E">商品變便宜，有助於壓低國內進口性通膨，持有外債者償債負擔也</text>
-  <text x="72" y="204" font-size="12" text-anchor="start" fill="#94BA9E">隨之減輕</text>
+  <rect x="60" y="115.5" width="380" height="103.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="250" y="138" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">貨幣升值的影響</text>
+  <text x="250" y="156" font-size="11" text-anchor="middle" fill="#446b53">本國貨幣變「值錢」</text>
+  <text x="72" y="172" font-size="12" text-anchor="start" fill="#446b53">出口商品在國際市場相對變貴，出口競爭力下降；但進口原物料與</text>
+  <text x="72" y="188" font-size="12" text-anchor="start" fill="#446b53">商品變便宜，有助於壓低國內進口性通膨，持有外債者償債負擔也</text>
+  <text x="72" y="204" font-size="12" text-anchor="start" fill="#446b53">隨之減輕</text>
 
-  <rect x="500" y="115.5" width="380" height="103.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="690" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">貨幣貶值的影響</text>
-  <text x="690" y="156" font-size="11" text-anchor="middle" fill="#C99178">本國貨幣變「便宜」</text>
-  <text x="512" y="172" font-size="12" text-anchor="start" fill="#C99178">出口商品在國際市場相對變便宜，有利出口競爭力；但進口原物料</text>
-  <text x="512" y="188" font-size="12" text-anchor="start" fill="#C99178">與商品變貴，可能推升國內物價，持有外債者償債負擔也隨之加重</text>
+  <rect x="500" y="115.5" width="380" height="103.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="690" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">貨幣貶值的影響</text>
+  <text x="690" y="156" font-size="11" text-anchor="middle" fill="#96604f">本國貨幣變「便宜」</text>
+  <text x="512" y="172" font-size="12" text-anchor="start" fill="#96604f">出口商品在國際市場相對變便宜，有利出口競爭力；但進口原物料</text>
+  <text x="512" y="188" font-size="12" text-anchor="start" fill="#96604f">與商品變貴，可能推升國內物價，持有外債者償債負擔也隨之加重</text>
 
-<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">同一次匯率變動，出口商與進口商站在天平的兩端</text>
-<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#D6D2C5">這正是為什麼每次新台幣升貶，護國神山台積電與仰賴進口原物料的傳產業者，對匯率變動的期待往往完全相反，政府也很難制定出讓所有產業</text>
-<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">都滿意的匯率政策</text>
-<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#9BA39B">多數央行的匯率政策目標，因此是「穩定」而非「升值」或「貶值」本身</text>
+<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一次匯率變動，出口商與進口商站在天平的兩端</text>
+<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#546e7a">這正是為什麼每次新台幣升貶，護國神山台積電與仰賴進口原物料的傳產業者，對匯率變動的期待往往完全相反，政府也很難制定出讓所有產業</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#546e7a">都滿意的匯率政策</text>
+<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#59707b">多數央行的匯率政策目標，因此是「穩定」而非「升值」或「貶值」本身</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其四 · 一個完整案例——升息如何透過匯率影響貿易與物價</h2>
+  <h2>一個完整案例——升息如何透過匯率影響貿易與物價</h2>
   <p class="sub">央行升息→資金流入→匯率升值→出口競爭力下降→貿易順差縮小，環環相扣</p>
   <div class="frame">
 <svg viewBox="0 0 940 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="利率匯率貿易因果鏈結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">利率、匯率、貿易，三者之間有一條清楚的因果鏈</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">延續〈經濟指標〉篇談過的利率傳導機制，這裡補上匯率這個關鍵環節——央行升息不只影響投資消費，同時也會透過匯率，牽動出口產業的競爭力</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">利率、匯率、貿易，三者之間有一條清楚的因果鏈</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">延續〈經濟指標〉篇談過的利率傳導機制，這裡補上匯率這個關鍵環節——央行升息不只影響投資消費，同時也會透過匯率，牽動出口產業的競爭力</text>
 
-  <rect x="40" y="115.5" width="160" height="87.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="120" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">央行升息</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">央行調升政策利率，提高</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">持有本國貨幣資產的相對</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">報酬率</text>
+  <rect x="40" y="115.5" width="160" height="87.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="120" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">央行升息</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#8a6a35">央行調升政策利率，提高</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">持有本國貨幣資產的相對</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">報酬率</text>
 
-  <rect x="215" y="115.5" width="160" height="87.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="295" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">資金流入</text>
-  <text x="227" y="156" font-size="12" text-anchor="start" fill="#C99178">追求更高報酬的外資與熱</text>
-  <text x="227" y="172" font-size="12" text-anchor="start" fill="#C99178">錢流入，推升對本國貨幣</text>
-  <text x="227" y="188" font-size="12" text-anchor="start" fill="#C99178">的需求</text>
+  <rect x="215" y="115.5" width="160" height="87.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="295" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">資金流入</text>
+  <text x="227" y="156" font-size="12" text-anchor="start" fill="#96604f">追求更高報酬的外資與熱</text>
+  <text x="227" y="172" font-size="12" text-anchor="start" fill="#96604f">錢流入，推升對本國貨幣</text>
+  <text x="227" y="188" font-size="12" text-anchor="start" fill="#96604f">的需求</text>
 
-  <rect x="390" y="115.5" width="160" height="87.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">匯率升值</text>
-  <text x="402" y="156" font-size="12" text-anchor="start" fill="#8FADC4">本國貨幣兌外幣升值，換</text>
-  <text x="402" y="172" font-size="12" text-anchor="start" fill="#8FADC4">匯成本上升</text>
+  <rect x="390" y="115.5" width="160" height="87.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">匯率升值</text>
+  <text x="402" y="156" font-size="12" text-anchor="start" fill="#37607a">本國貨幣兌外幣升值，換</text>
+  <text x="402" y="172" font-size="12" text-anchor="start" fill="#37607a">匯成本上升</text>
 
-  <rect x="565" y="115.5" width="160" height="87.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="645" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">出口競爭力下降</text>
-  <text x="577" y="156" font-size="12" text-anchor="start" fill="#94BA9E">出口商品在國際市場相對</text>
-  <text x="577" y="172" font-size="12" text-anchor="start" fill="#94BA9E">變貴，訂單與出口值可能</text>
-  <text x="577" y="188" font-size="12" text-anchor="start" fill="#94BA9E">因此下滑</text>
+  <rect x="565" y="115.5" width="160" height="87.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="645" y="138" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">出口競爭力下降</text>
+  <text x="577" y="156" font-size="12" text-anchor="start" fill="#446b53">出口商品在國際市場相對</text>
+  <text x="577" y="172" font-size="12" text-anchor="start" fill="#446b53">變貴，訂單與出口值可能</text>
+  <text x="577" y="188" font-size="12" text-anchor="start" fill="#446b53">因此下滑</text>
 
-  <rect x="740" y="115.5" width="160" height="87.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="820" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">貿易順差縮小</text>
-  <text x="752" y="156" font-size="12" text-anchor="start" fill="#C4A972">出口減少、進口相對便宜</text>
-  <text x="752" y="172" font-size="12" text-anchor="start" fill="#C4A972">促使進口增加，貿易順差</text>
-  <text x="752" y="188" font-size="12" text-anchor="start" fill="#C4A972">因此收斂</text>
+  <rect x="740" y="115.5" width="160" height="87.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="820" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">貿易順差縮小</text>
+  <text x="752" y="156" font-size="12" text-anchor="start" fill="#8a6a35">出口減少、進口相對便宜</text>
+  <text x="752" y="172" font-size="12" text-anchor="start" fill="#8a6a35">促使進口增加，貿易順差</text>
+  <text x="752" y="188" font-size="12" text-anchor="start" fill="#8a6a35">因此收斂</text>
 
 <g>
-<text x="207.5" y="163.2" font-size="18" text-anchor="middle" fill="#7C8870">→</text>
-<text x="382.5" y="163.2" font-size="18" text-anchor="middle" fill="#7C8870">→</text>
-<text x="557.5" y="163.2" font-size="18" text-anchor="middle" fill="#7C8870">→</text>
-<text x="732.5" y="163.2" font-size="18" text-anchor="middle" fill="#7C8870">→</text>
+<text x="207.5" y="163.2" font-size="18" text-anchor="middle" fill="#5c7580">→</text>
+<text x="382.5" y="163.2" font-size="18" text-anchor="middle" fill="#5c7580">→</text>
+<text x="557.5" y="163.2" font-size="18" text-anchor="middle" fill="#5c7580">→</text>
+<text x="732.5" y="163.2" font-size="18" text-anchor="middle" fill="#5c7580">→</text>
 </g>
 
-<text x="60" y="229" font-size="12" fill="#9BA39B">貿易順差縮小最終會回頭反映在GDP成長率上，這正是央行升息時，除了壓抑通膨之外，也必須權衡的另一項副作用</text>
+<text x="60" y="229" font-size="12" fill="#59707b">貿易順差縮小最終會回頭反映在GDP成長率上，這正是央行升息時，除了壓抑通膨之外，也必須權衡的另一項副作用</text>
 
-<rect x="80" y="263" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="285.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">利率、匯率、貿易，三者環環相扣，牽一髮動全身</text>
-<text x="92" y="303.5" font-size="12" text-anchor="start" fill="#D6D2C5">央行每一次的利率決策，都不只是在調控物價與景氣，同時也在間接影響匯率，進而牽動出口產業的競爭力——這正是總體經濟政策最難兩全其</text>
-<text x="92" y="319.5" font-size="12" text-anchor="start" fill="#D6D2C5">美之處</text>
-<text x="470" y="335.5" font-size="11" text-anchor="middle" fill="#9BA39B">見〈經濟指標〉篇其三：這條鏈其實是該篇利率→GDP因果鏈的延伸分支，兩者共用同一個起點</text>
+<rect x="80" y="263" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="285.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">利率、匯率、貿易，三者環環相扣，牽一髮動全身</text>
+<text x="92" y="303.5" font-size="12" text-anchor="start" fill="#546e7a">央行每一次的利率決策，都不只是在調控物價與景氣，同時也在間接影響匯率，進而牽動出口產業的競爭力——這正是總體經濟政策最難兩全其</text>
+<text x="92" y="319.5" font-size="12" text-anchor="start" fill="#546e7a">美之處</text>
+<text x="470" y="335.5" font-size="11" text-anchor="middle" fill="#59707b">見〈經濟指標〉篇其三：這條鏈其實是該篇利率→GDP因果鏈的延伸分支，兩者共用同一個起點</text>
 </svg>
   </div>
 </section>

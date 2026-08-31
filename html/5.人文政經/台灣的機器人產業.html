@@ -9,54 +9,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#1A140F;--paper:#241C15;--ink:#F0E8DC;--muted:#A69686;
-    --amber:#E0923E;--steel:#5A94B8;--rose:#D6685A;--jade:#5AAE8C;
-    --rule:#4A3A2A;
+    --ground:#eef2f5;--paper:#ffffff;--ink:#f2f4f5;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;--shadow:0 3px 10px rgba(0,0,0,.08);
+    --amber:#9b5c19;--steel:#3b7092;--rose:#b43c2d;--jade:#31775b;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);
     font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     line-height:1.75;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
-  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
-  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--amber);
-    letter-spacing:.3em;margin:0 0 10px}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
   h1{font-family:"Noto Serif TC",serif;font-weight:700;
-    font-size:clamp(27px,4.8vw,38px);letter-spacing:.04em;margin:0 0 12px}
-  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
   h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
-    letter-spacing:.06em;margin:0 0 4px}
-  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
-  section{margin-bottom:56px}
-  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
     overflow-x:auto;-webkit-overflow-scrolling:touch}
   .frame svg{display:block;min-width:900px;width:100%;height:auto}
   .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-    border-top:1px solid var(--rule)}
-  .card{padding:15px 16px;border-bottom:1px solid rgba(74,58,42,.9)}
-  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.04em}
-  .card .it{font-family:"JetBrains Mono",monospace;font-size:12.5px;
-    color:var(--amber);margin-left:8px}
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-style:italic;color:var(--muted);margin-left:6px;font-size:13px}
   .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
-  .card p{margin:3px 0 0;font-size:13.5px;color:#DCD0C2}
-  .co .nm{color:var(--amber)} .ch .nm{color:var(--steel)}
-  .nt .nm{color:var(--jade)} .gl .nm{color:var(--rose)}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
   .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
-  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted);font-family:"JetBrains Mono",monospace}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
   .notes{margin-top:20px;display:grid;gap:14px;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .note{border-left:2px solid var(--amber);padding-left:14px}
-  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
-  .note span{font-size:13px;color:var(--muted)}
-  blockquote{margin:0;padding:16px 20px;background:var(--paper);
-    border-left:3px solid var(--steel);font-family:"Noto Serif TC",serif;
-    font-size:15px;letter-spacing:.02em}
+  .note{border-left:3px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px;color:var(--navy)}
+  .note span{font-size:13px;color:var(--body)}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--rose);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
   blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
     font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
-  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
-    margin-bottom:40px;font-size:14px}
-  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.02em;color:var(--amber)}
-  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--amber);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#607d8b;font-size:12px}
+  .co .nm{color:var(--amber)} .ch .nm{color:var(--steel)} .nt .nm{color:var(--jade)} .gl .nm{color:var(--rose)}
 </style>
 </head>
 <body>
@@ -74,187 +83,187 @@
 </div>
 
 <section>
-  <h2>其一 · 全球版圖：中國量產整機，台灣供應精密零件</h2>
+  <h2>全球版圖：中國量產整機，台灣供應精密零件</h2>
   <p class="sub">中國已經把工業機器人的裝機量做到全球第一，人形機器人也走向「不到五千美元」——台灣完全不打算在這個戰場上競爭</p>
   <div class="frame">
 <svg viewBox="0 0 940 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="全球機器人產業版圖與台灣定位">
-<rect x="40" y="30" width="860" height="110" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-<text x="60" y="56" font-size="12.5" fill="#D6685A" font-family="'Noto Serif TC',serif" font-weight="600">中國的規模優勢——這是台灣選擇不去正面競爭的市場</text>
-<text x="60" y="78" font-size="10" fill="#DCD0C2">2024年中國工廠內運作的機器人超過200萬台，全年新增裝機量達30萬台，穩居全球工業機器人生產與裝機量第一，同期</text>
-<text x="60" y="96" font-size="10" fill="#DCD0C2">日、美、韓、德四大市場裝機量反而全數下滑——這股優勢源自電動車產業的全產業鏈本土化，零組件廠商順勢轉型供應機器人</text>
-<text x="60" y="114" font-size="9.5" fill="#A69686">宇樹等中國新創企業量產人形機器人單價已不足五千美元，感測器、關節等核心零組件也已大致實現本土自製</text>
+<rect x="40" y="30" width="860" height="110" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+<text x="60" y="56" font-size="12.5" fill="#b43c2d" font-family="'Noto Serif TC',serif" font-weight="600">中國的規模優勢——這是台灣選擇不去正面競爭的市場</text>
+<text x="60" y="78" font-size="10" fill="#896438">2024年中國工廠內運作的機器人超過200萬台，全年新增裝機量達30萬台，穩居全球工業機器人生產與裝機量第一，同期</text>
+<text x="60" y="96" font-size="10" fill="#896438">日、美、韓、德四大市場裝機量反而全數下滑——這股優勢源自電動車產業的全產業鏈本土化，零組件廠商順勢轉型供應機器人</text>
+<text x="60" y="114" font-size="9.5" fill="#8c633a">宇樹等中國新創企業量產人形機器人單價已不足五千美元，感測器、關節等核心零組件也已大致實現本土自製</text>
 
 <g font-family="'Noto Serif TC',serif" text-anchor="middle">
-  <rect x="60" y="160" width="380" height="130" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="250" y="186" font-size="12.5" fill="#A69686" font-weight="700">中國模式：整機規模化量產</text>
-  <text x="80" y="212" font-size="9.5" fill="#DCD0C2" text-anchor="start">憑藉電動車供應鏈溢出效應，</text>
-  <text x="80" y="228" font-size="9.5" fill="#DCD0C2" text-anchor="start">從螺絲到鋰電池全面本土化，</text>
-  <text x="80" y="244" font-size="9.5" fill="#DCD0C2" text-anchor="start">主打價格與規模，場景多元、</text>
-  <text x="80" y="260" font-size="9.5" fill="#DCD0C2" text-anchor="start">價格分層是其市場策略特徵</text>
+  <rect x="60" y="160" width="380" height="130" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="250" y="186" font-size="12.5" fill="#8c633a" font-weight="700">中國模式：整機規模化量產</text>
+  <text x="80" y="212" font-size="9.5" fill="#896438" text-anchor="start">憑藉電動車供應鏈溢出效應，</text>
+  <text x="80" y="228" font-size="9.5" fill="#896438" text-anchor="start">從螺絲到鋰電池全面本土化，</text>
+  <text x="80" y="244" font-size="9.5" fill="#896438" text-anchor="start">主打價格與規模，場景多元、</text>
+  <text x="80" y="260" font-size="9.5" fill="#896438" text-anchor="start">價格分層是其市場策略特徵</text>
 
-  <rect x="500" y="160" width="380" height="130" rx="3" fill="#20281E" stroke="#3A5E48"/>
-  <text x="690" y="186" font-size="12.5" fill="#5AAE8C" font-weight="700">台灣模式：精密零組件供應</text>
-  <text x="520" y="212" font-size="9.5" fill="#DCD0C2" text-anchor="start">憑藉工具機、精密機械與電</text>
-  <text x="520" y="228" font-size="9.5" fill="#DCD0C2" text-anchor="start">動車傳動元件累積的技術基</text>
-  <text x="520" y="244" font-size="9.5" fill="#DCD0C2" text-anchor="start">礎，切入美系品牌供應鏈最</text>
-  <text x="520" y="260" font-size="9.5" fill="#DCD0C2" text-anchor="start">上游的關鍵傳動與感測元件</text>
+  <rect x="500" y="160" width="380" height="130" rx="3" fill="#f3f5f2" stroke="#b3c6bb"/>
+  <text x="690" y="186" font-size="12.5" fill="#31775b" font-weight="700">台灣模式：精密零組件供應</text>
+  <text x="520" y="212" font-size="9.5" fill="#896438" text-anchor="start">憑藉工具機、精密機械與電</text>
+  <text x="520" y="228" font-size="9.5" fill="#896438" text-anchor="start">動車傳動元件累積的技術基</text>
+  <text x="520" y="244" font-size="9.5" fill="#896438" text-anchor="start">礎，切入美系品牌供應鏈最</text>
+  <text x="520" y="260" font-size="9.5" fill="#896438" text-anchor="start">上游的關鍵傳動與感測元件</text>
 </g>
 
-<rect x="80" y="312" width="780" height="90" rx="3" fill="#20281E" stroke="#3A5E48"/>
-<text x="100" y="338" font-size="11.5" fill="#5AAE8C" font-family="'Noto Serif TC',serif" font-weight="600">這不是誰做得起機器人的問題，是「誰的機器人你信得過」的問題</text>
-<text x="100" y="360" font-size="9.5" fill="#DCD0C2">台灣廠商鎖定特斯拉、波士頓動力等美系整機大廠的供應鏈，這條路線與無人機產業「非紅供應鏈」的邏輯高度相似——</text>
-<text x="100" y="378" font-size="9.5" fill="#A69686">在西方陣營對中國製造供應鏈日益審慎的背景下，台灣的精密製造能力找到了一個具體的市場切入點</text>
+<rect x="80" y="312" width="780" height="90" rx="3" fill="#f3f5f2" stroke="#b3c6bb"/>
+<text x="100" y="338" font-size="11.5" fill="#31775b" font-family="'Noto Serif TC',serif" font-weight="600">這不是誰做得起機器人的問題，是「誰的機器人你信得過」的問題</text>
+<text x="100" y="360" font-size="9.5" fill="#896438">台灣廠商鎖定特斯拉、波士頓動力等美系整機大廠的供應鏈，這條路線與無人機產業「非紅供應鏈」的邏輯高度相似——</text>
+<text x="100" y="378" font-size="9.5" fill="#8c633a">在西方陣營對中國製造供應鏈日益審慎的背景下，台灣的精密製造能力找到了一個具體的市場切入點</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其二 · 黃金三角：關節、感測、大腦</h2>
+  <h2>黃金三角：關節、感測、大腦</h2>
   <p class="sub">四家台廠各據一角，卡進美系人形機器人最核心的技術位置</p>
   <div class="frame">
 <svg viewBox="0 0 940 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="台灣機器人黃金三角供應鏈圖">
-<text x="40" y="40" font-size="11" fill="#A69686">黃金三角：機器人關節、馬達、視覺與大腦的關鍵零組件——四家台廠因此最受國際市場矚目</text>
+<text x="40" y="40" font-size="11" fill="#8c633a">黃金三角：機器人關節、馬達、視覺與大腦的關鍵零組件——四家台廠因此最受國際市場矚目</text>
 
 <g font-family="'Noto Serif TC',serif" text-anchor="middle">
-  <rect x="40" y="56" width="410" height="140" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="245" y="82" font-size="13" fill="#E0923E" font-weight="700">上銀科技　關節傳動</text>
-  <text x="60" y="108" font-size="9.5" fill="#DCD0C2" text-anchor="start">滾珠螺桿、線性滑軌、諧波減速</text>
-  <text x="60" y="124" font-size="9.5" fill="#DCD0C2" text-anchor="start">機起家，已打入特斯拉Optimus</text>
-  <text x="60" y="140" font-size="9.5" fill="#DCD0C2" text-anchor="start">與波士頓動力供應鏈，機器人</text>
-  <text x="60" y="156" font-size="9.5" fill="#DCD0C2" text-anchor="start">營收占比已達整體營收約12%</text>
-  <text x="245" y="180" font-size="9" fill="#C4844E">目前公認的機器人賽道「真．龍頭」</text>
+  <rect x="40" y="56" width="410" height="140" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="245" y="82" font-size="13" fill="#9b5c19" font-weight="700">上銀科技　關節傳動</text>
+  <text x="60" y="108" font-size="9.5" fill="#896438" text-anchor="start">滾珠螺桿、線性滑軌、諧波減速</text>
+  <text x="60" y="124" font-size="9.5" fill="#896438" text-anchor="start">機起家，已打入特斯拉Optimus</text>
+  <text x="60" y="140" font-size="9.5" fill="#896438" text-anchor="start">與波士頓動力供應鏈，機器人</text>
+  <text x="60" y="156" font-size="9.5" fill="#896438" text-anchor="start">營收占比已達整體營收約12%</text>
+  <text x="245" y="180" font-size="9" fill="#955f31">目前公認的機器人賽道「真．龍頭」</text>
 
-  <rect x="490" y="56" width="410" height="140" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="695" y="82" font-size="13" fill="#E0923E" font-weight="700">和大集團　行星減速機</text>
-  <text x="510" y="108" font-size="9.5" fill="#DCD0C2" text-anchor="start">將電動車減速齒輪技術優勢，</text>
-  <text x="510" y="124" font-size="9.5" fill="#DCD0C2" text-anchor="start">全面延伸至人形機器人關節市</text>
-  <text x="510" y="140" font-size="9.5" fill="#DCD0C2" text-anchor="start">場，持續進行產品送樣與規格</text>
-  <text x="510" y="156" font-size="9.5" fill="#DCD0C2" text-anchor="start">訂定，正緊鑼密鼓籌備量產</text>
-  <text x="695" y="180" font-size="9" fill="#C4844E">從電動車零件跨足機器人的代表案例</text>
+  <rect x="490" y="56" width="410" height="140" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="695" y="82" font-size="13" fill="#9b5c19" font-weight="700">和大集團　行星減速機</text>
+  <text x="510" y="108" font-size="9.5" fill="#896438" text-anchor="start">將電動車減速齒輪技術優勢，</text>
+  <text x="510" y="124" font-size="9.5" fill="#896438" text-anchor="start">全面延伸至人形機器人關節市</text>
+  <text x="510" y="140" font-size="9.5" fill="#896438" text-anchor="start">場，持續進行產品送樣與規格</text>
+  <text x="510" y="156" font-size="9.5" fill="#896438" text-anchor="start">訂定，正緊鑼密鼓籌備量產</text>
+  <text x="695" y="180" font-size="9" fill="#955f31">從電動車零件跨足機器人的代表案例</text>
 </g>
 
 <g font-family="'Noto Serif TC',serif" text-anchor="middle">
-  <rect x="40" y="216" width="410" height="130" rx="3" fill="#1C2430" stroke="#3A5A70"/>
-  <text x="245" y="242" font-size="13" fill="#5A94B8" font-weight="700">富田電機　馬達系統</text>
-  <text x="60" y="268" font-size="9.5" fill="#DCD0C2" text-anchor="start">台灣馬達技術領航者，佈局從</text>
-  <text x="60" y="284" font-size="9.5" fill="#DCD0C2" text-anchor="start">「單一組件」轉向「系統整合」，</text>
-  <text x="60" y="300" font-size="9.5" fill="#DCD0C2" text-anchor="start">已延伸至機器人關節所需的多</text>
-  <text x="60" y="316" font-size="9.5" fill="#DCD0C2" text-anchor="start">關節馬達系統開發</text>
+  <rect x="40" y="216" width="410" height="130" rx="3" fill="#f1f3f6" stroke="#b0bfca"/>
+  <text x="245" y="242" font-size="13" fill="#3b7092" font-weight="700">富田電機　馬達系統</text>
+  <text x="60" y="268" font-size="9.5" fill="#896438" text-anchor="start">台灣馬達技術領航者，佈局從</text>
+  <text x="60" y="284" font-size="9.5" fill="#896438" text-anchor="start">「單一組件」轉向「系統整合」，</text>
+  <text x="60" y="300" font-size="9.5" fill="#896438" text-anchor="start">已延伸至機器人關節所需的多</text>
+  <text x="60" y="316" font-size="9.5" fill="#896438" text-anchor="start">關節馬達系統開發</text>
 
-  <rect x="490" y="216" width="410" height="130" rx="3" fill="#1C2430" stroke="#3A5A70"/>
-  <text x="695" y="242" font-size="13" fill="#5A94B8" font-weight="700">歐特明　視覺與大腦</text>
-  <text x="510" y="268" font-size="9.5" fill="#DCD0C2" text-anchor="start">將車用視覺AI技術跨足延伸至</text>
-  <text x="510" y="284" font-size="9.5" fill="#DCD0C2" text-anchor="start">機器人與無人載具領域，強調</text>
-  <text x="510" y="300" font-size="9.5" fill="#DCD0C2" text-anchor="start">將車規等級標準導入戶外機器</text>
-  <text x="510" y="316" font-size="9.5" fill="#DCD0C2" text-anchor="start">人市場，主打可靠性優勢</text>
+  <rect x="490" y="216" width="410" height="130" rx="3" fill="#f1f3f6" stroke="#b0bfca"/>
+  <text x="695" y="242" font-size="13" fill="#3b7092" font-weight="700">歐特明　視覺與大腦</text>
+  <text x="510" y="268" font-size="9.5" fill="#896438" text-anchor="start">將車用視覺AI技術跨足延伸至</text>
+  <text x="510" y="284" font-size="9.5" fill="#896438" text-anchor="start">機器人與無人載具領域，強調</text>
+  <text x="510" y="300" font-size="9.5" fill="#896438" text-anchor="start">將車規等級標準導入戶外機器</text>
+  <text x="510" y="316" font-size="9.5" fill="#896438" text-anchor="start">人市場，主打可靠性優勢</text>
 </g>
 
-<rect x="80" y="366" width="780" height="40" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-<text x="470" y="392" font-size="10.5" text-anchor="middle" fill="#DCD0C2">四家公司的共通點：都是把既有電動車或工具機技術「橫向遷移」到機器人賽道，不是從零開始的新創</text>
+<rect x="80" y="366" width="780" height="40" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+<text x="470" y="392" font-size="10.5" text-anchor="middle" fill="#896438">四家公司的共通點：都是把既有電動車或工具機技術「橫向遷移」到機器人賽道，不是從零開始的新創</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其三 · 供應鏈四層結構：誰先賺到錢，誰還在打樣</h2>
+  <h2>供應鏈四層結構：誰先賺到錢，誰還在打樣</h2>
   <p class="sub">上游零組件廠已進入客戶認證階段，下游組裝大廠現階段更像是「先卡位、還沒真正賺」</p>
   <div class="frame">
 <svg viewBox="0 0 940 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="機器人供應鏈四層結構與營收認列時序">
 <g font-family="'Noto Serif TC',serif" text-anchor="middle">
-  <rect x="40" y="30" width="410" height="110" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="245" y="56" font-size="12.5" fill="#E0923E" font-weight="700">①上游　精密傳動元件</text>
-  <text x="60" y="80" font-size="9.5" fill="#DCD0C2" text-anchor="start">滾珠螺桿、線性滑軌、減速機</text>
-  <text x="245" y="102" font-size="9" fill="#C4844E">已進入客戶認證，最先受益</text>
-  <text x="245" y="120" font-size="9" fill="#C4844E">代表：上銀、和大、大銀微系統</text>
+  <rect x="40" y="30" width="410" height="110" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="245" y="56" font-size="12.5" fill="#9b5c19" font-weight="700">①上游　精密傳動元件</text>
+  <text x="60" y="80" font-size="9.5" fill="#896438" text-anchor="start">滾珠螺桿、線性滑軌、減速機</text>
+  <text x="245" y="102" font-size="9" fill="#955f31">已進入客戶認證，最先受益</text>
+  <text x="245" y="120" font-size="9" fill="#955f31">代表：上銀、和大、大銀微系統</text>
 
-  <rect x="490" y="30" width="410" height="110" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="695" y="56" font-size="12.5" fill="#E0923E" font-weight="700">②上游　感測器與電源IC</text>
-  <text x="510" y="80" font-size="9.5" fill="#DCD0C2" text-anchor="start">力矩感測器、BLDC驅動IC</text>
-  <text x="695" y="102" font-size="9" fill="#C4844E">與傳動廠同步進入認證階段</text>
-  <text x="695" y="120" font-size="9" fill="#C4844E">代表：亞光、宇隆等鏡頭感測廠</text>
+  <rect x="490" y="30" width="410" height="110" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="695" y="56" font-size="12.5" fill="#9b5c19" font-weight="700">②上游　感測器與電源IC</text>
+  <text x="510" y="80" font-size="9.5" fill="#896438" text-anchor="start">力矩感測器、BLDC驅動IC</text>
+  <text x="695" y="102" font-size="9" fill="#955f31">與傳動廠同步進入認證階段</text>
+  <text x="695" y="120" font-size="9" fill="#955f31">代表：亞光、宇隆等鏡頭感測廠</text>
 </g>
 
 <g font-family="'Noto Serif TC',serif" text-anchor="middle">
-  <rect x="40" y="160" width="410" height="110" rx="3" fill="#1C2430" stroke="#3A5A70"/>
-  <text x="245" y="186" font-size="12.5" fill="#5A94B8" font-weight="700">③中游　系統整合</text>
-  <text x="60" y="210" font-size="9.5" fill="#DCD0C2" text-anchor="start">機械手臂模組、精密結構件加工</text>
-  <text x="245" y="232" font-size="9" fill="#4A84A8">認證時序次於上游零組件廠</text>
-  <text x="245" y="250" font-size="9" fill="#4A84A8">代表：富田、盟立等系統整合廠</text>
+  <rect x="40" y="160" width="410" height="110" rx="3" fill="#f1f3f6" stroke="#b0bfca"/>
+  <text x="245" y="186" font-size="12.5" fill="#3b7092" font-weight="700">③中游　系統整合</text>
+  <text x="60" y="210" font-size="9.5" fill="#896438" text-anchor="start">機械手臂模組、精密結構件加工</text>
+  <text x="245" y="232" font-size="9" fill="#3b7092">認證時序次於上游零組件廠</text>
+  <text x="245" y="250" font-size="9" fill="#3b7092">代表：富田、盟立等系統整合廠</text>
 
-  <rect x="490" y="160" width="410" height="110" rx="3" fill="#2C1418" stroke="#7A3A3A"/>
-  <text x="695" y="186" font-size="12.5" fill="#D6685A" font-weight="700">④下游　EMS整機代工</text>
-  <text x="510" y="210" font-size="9.5" fill="#E8C4C4" text-anchor="start">終端組裝與全球供應鏈整合</text>
-  <text x="695" y="232" font-size="9" fill="#B87A7A">能力預置，非立即貢獻營收</text>
-  <text x="695" y="250" font-size="9" fill="#B87A7A">代表：鴻海、和碩、廣達</text>
+  <rect x="490" y="160" width="410" height="110" rx="3" fill="#f7f0f1" stroke="#cbaeae"/>
+  <text x="695" y="186" font-size="12.5" fill="#b43c2d" font-weight="700">④下游　EMS整機代工</text>
+  <text x="510" y="210" font-size="9.5" fill="#a13f3f" text-anchor="start">終端組裝與全球供應鏈整合</text>
+  <text x="695" y="232" font-size="9" fill="#9f4141">能力預置，非立即貢獻營收</text>
+  <text x="695" y="250" font-size="9" fill="#9f4141">代表：鴻海、和碩、廣達</text>
 </g>
 
-<rect x="80" y="292" width="780" height="130" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-<text x="100" y="318" font-size="12" fill="#E0923E" font-family="'Noto Serif TC',serif" font-weight="600">「能力預置」與「立即貢獻」是兩回事——這是理解台廠財報時最容易搞混的一點</text>
-<text x="100" y="340" font-size="10" fill="#DCD0C2">鴻海已公開設立機器人事業群，和碩、廣達亦有相關技術投資與合作揭露，但這些三大EMS廠商的核心優勢在於生產規模</text>
-<text x="100" y="358" font-size="10" fill="#DCD0C2">彈性與全球供應鏈整合能力，現階段更多是為未來大量組裝做準備，而非現在就有實質營收貢獻——這與上銀等零組件廠</text>
-<text x="100" y="376" font-size="10" fill="#DCD0C2">已有12%營收占比的情況截然不同。特斯拉供應鏈的真正大交割，法人普遍預期落在2027年，2026年多仍屬研發送樣階段</text>
-<text x="100" y="398" font-size="9.5" fill="#A69686">台廠「以本業利潤養機器人新創事業」是目前普遍的健康結構：機器人營收占比雖低，但獲利品質不受單一賽道成敗綁架</text>
+<rect x="80" y="292" width="780" height="130" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+<text x="100" y="318" font-size="12" fill="#9b5c19" font-family="'Noto Serif TC',serif" font-weight="600">「能力預置」與「立即貢獻」是兩回事——這是理解台廠財報時最容易搞混的一點</text>
+<text x="100" y="340" font-size="10" fill="#896438">鴻海已公開設立機器人事業群，和碩、廣達亦有相關技術投資與合作揭露，但這些三大EMS廠商的核心優勢在於生產規模</text>
+<text x="100" y="358" font-size="10" fill="#896438">彈性與全球供應鏈整合能力，現階段更多是為未來大量組裝做準備，而非現在就有實質營收貢獻——這與上銀等零組件廠</text>
+<text x="100" y="376" font-size="10" fill="#896438">已有12%營收占比的情況截然不同。特斯拉供應鏈的真正大交割，法人普遍預期落在2027年，2026年多仍屬研發送樣階段</text>
+<text x="100" y="398" font-size="9.5" fill="#8c633a">台廠「以本業利潤養機器人新創事業」是目前普遍的健康結構：機器人營收占比雖低，但獲利品質不受單一賽道成敗綁架</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其四 · 2026：人形機器人的商用化元年</h2>
+  <h2>2026：人形機器人的商用化元年</h2>
   <p class="sub">特斯拉點火量產，台灣政府砸下百億預算——這一年被視為技術展示走向商業驗證的分水嶺</p>
   <div class="frame">
 <svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2026年人形機器人商用化元年時間軸">
-<line x1="60" y1="200" x2="900" y2="200" stroke="#A69686" stroke-width="1.2"/>
-<g stroke="#8C7C64" stroke-width="1">
+<line x1="60" y1="200" x2="900" y2="200" stroke="#8c633a" stroke-width="1.2"/>
+<g stroke="#8c6b39" stroke-width="1">
   <line x1="120" y1="200" x2="120" y2="214"/><line x1="300" y1="200" x2="300" y2="214"/>
   <line x1="480" y1="200" x2="480" y2="214"/><line x1="660" y1="200" x2="660" y2="214"/>
   <line x1="840" y1="200" x2="840" y2="214"/>
 </g>
-<g font-size="10" fill="#F0E8DC" text-anchor="middle">
+<g font-size="10" fill="#8c6b39" text-anchor="middle">
   <text x="120" y="232">2025年下半年</text><text x="300" y="232">2026上半年</text>
   <text x="480" y="232">2026年7-8月</text><text x="660" y="232">2026下半年</text>
   <text x="840" y="232">2027年</text>
 </g>
 
 <g font-family="'Noto Serif TC',serif" text-anchor="middle">
-  <rect x="40" y="60" width="160" height="130" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="120" y="86" font-size="11" fill="#E0923E" font-weight="700">國科會百億計畫</text>
-  <text x="120" y="112" font-size="8.5" fill="#DCD0C2">「AI智慧機器人</text>
-  <text x="120" y="128" font-size="8.5" fill="#DCD0C2">計畫」投入新台</text>
-  <text x="120" y="144" font-size="8.5" fill="#DCD0C2">幣100億元預算，</text>
-  <text x="120" y="160" font-size="8.5" fill="#DCD0C2">扶植機電整合能量</text>
+  <rect x="40" y="60" width="160" height="130" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="120" y="86" font-size="11" fill="#9b5c19" font-weight="700">國科會百億計畫</text>
+  <text x="120" y="112" font-size="8.5" fill="#896438">「AI智慧機器人</text>
+  <text x="120" y="128" font-size="8.5" fill="#896438">計畫」投入新台</text>
+  <text x="120" y="144" font-size="8.5" fill="#896438">幣100億元預算，</text>
+  <text x="120" y="160" font-size="8.5" fill="#896438">扶植機電整合能量</text>
 
-  <rect x="220" y="60" width="160" height="130" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="300" y="86" font-size="11" fill="#E0923E" font-weight="700">台廠財報質變</text>
-  <text x="300" y="112" font-size="8.5" fill="#DCD0C2">機器人概念股從</text>
-  <text x="300" y="128" font-size="8.5" fill="#DCD0C2">純題材炒作，轉為</text>
-  <text x="300" y="144" font-size="8.5" fill="#DCD0C2">第一季財報開始</text>
-  <text x="300" y="160" font-size="8.5" fill="#DCD0C2">出現實質獲利認列</text>
+  <rect x="220" y="60" width="160" height="130" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="300" y="86" font-size="11" fill="#9b5c19" font-weight="700">台廠財報質變</text>
+  <text x="300" y="112" font-size="8.5" fill="#896438">機器人概念股從</text>
+  <text x="300" y="128" font-size="8.5" fill="#896438">純題材炒作，轉為</text>
+  <text x="300" y="144" font-size="8.5" fill="#896438">第一季財報開始</text>
+  <text x="300" y="160" font-size="8.5" fill="#896438">出現實質獲利認列</text>
 
-  <rect x="400" y="60" width="160" height="130" rx="3" fill="#2C1418" stroke="#7A3A3A"/>
-  <text x="480" y="86" font-size="11" fill="#D6685A" font-weight="700">Optimus Gen3點火</text>
-  <text x="480" y="112" font-size="8.5" fill="#E8C4C4">首條量產線於加</text>
-  <text x="480" y="128" font-size="8.5" fill="#E8C4C4">州與德州超級工</text>
-  <text x="480" y="144" font-size="8.5" fill="#E8C4C4">廠啟動，馬斯克稱</text>
-  <text x="480" y="160" font-size="8.5" fill="#E8C4C4">未來將佔公司八成價值</text>
+  <rect x="400" y="60" width="160" height="130" rx="3" fill="#f7f0f1" stroke="#cbaeae"/>
+  <text x="480" y="86" font-size="11" fill="#b43c2d" font-weight="700">Optimus Gen3點火</text>
+  <text x="480" y="112" font-size="8.5" fill="#a13f3f">首條量產線於加</text>
+  <text x="480" y="128" font-size="8.5" fill="#a13f3f">州與德州超級工</text>
+  <text x="480" y="144" font-size="8.5" fill="#a13f3f">廠啟動，馬斯克稱</text>
+  <text x="480" y="160" font-size="8.5" fill="#a13f3f">未來將佔公司八成價值</text>
 
-  <rect x="580" y="60" width="160" height="130" rx="3" fill="#241C15" stroke="#4A3A2A"/>
-  <text x="660" y="86" font-size="11" fill="#E0923E" font-weight="700">台廠陸續出貨</text>
-  <text x="660" y="112" font-size="8.5" fill="#DCD0C2">上銀、和大、富</text>
-  <text x="660" y="128" font-size="8.5" fill="#DCD0C2">田、歐特明相繼</text>
-  <text x="660" y="144" font-size="8.5" fill="#DCD0C2">入列國際供應鏈，</text>
-  <text x="660" y="160" font-size="8.5" fill="#DCD0C2">準備躋身一線供應商</text>
+  <rect x="580" y="60" width="160" height="130" rx="3" fill="#f6f3f1" stroke="#c8bdb1"/>
+  <text x="660" y="86" font-size="11" fill="#9b5c19" font-weight="700">台廠陸續出貨</text>
+  <text x="660" y="112" font-size="8.5" fill="#896438">上銀、和大、富</text>
+  <text x="660" y="128" font-size="8.5" fill="#896438">田、歐特明相繼</text>
+  <text x="660" y="144" font-size="8.5" fill="#896438">入列國際供應鏈，</text>
+  <text x="660" y="160" font-size="8.5" fill="#896438">準備躋身一線供應商</text>
 
-  <rect x="760" y="60" width="140" height="130" rx="3" fill="#1C2430" stroke="#3A5A70"/>
-  <text x="830" y="86" font-size="11" fill="#5A94B8" font-weight="700">供應鏈大交割</text>
-  <text x="830" y="112" font-size="8.5" fill="#DCD0C2">法人普遍預期，</text>
-  <text x="830" y="128" font-size="8.5" fill="#DCD0C2">台廠機器人營收</text>
-  <text x="830" y="144" font-size="8.5" fill="#DCD0C2">真正大爆發將落</text>
-  <text x="830" y="160" font-size="8.5" fill="#DCD0C2">在此年發生</text>
+  <rect x="760" y="60" width="140" height="130" rx="3" fill="#f1f3f6" stroke="#b0bfca"/>
+  <text x="830" y="86" font-size="11" fill="#3b7092" font-weight="700">供應鏈大交割</text>
+  <text x="830" y="112" font-size="8.5" fill="#896438">法人普遍預期，</text>
+  <text x="830" y="128" font-size="8.5" fill="#896438">台廠機器人營收</text>
+  <text x="830" y="144" font-size="8.5" fill="#896438">真正大爆發將落</text>
+  <text x="830" y="160" font-size="8.5" fill="#896438">在此年發生</text>
 </g>
 
-<text x="60" y="270" font-size="10.5" fill="#A69686">美系業者的核心競爭點已從單純運動能力轉移至系統整合與場景落地——製造、物流乃至居家服務能否找到可持續的</text>
-<text x="60" y="292" font-size="10.5" fill="#A69686">應用模式，將決定產品能否從研發真正走向大規模商業部署，這正是2026年被稱為「場景切入分水嶺」的原因</text>
-<text x="60" y="318" font-size="10" fill="#8C7C64">※ 馬斯克預期硬體成本將隨諧波減速器、行星滾柱螺桿等關鍵組件量產，由5至6萬美元逐步下降至2至3萬美元</text>
+<text x="60" y="270" font-size="10.5" fill="#8c633a">美系業者的核心競爭點已從單純運動能力轉移至系統整合與場景落地——製造、物流乃至居家服務能否找到可持續的</text>
+<text x="60" y="292" font-size="10.5" fill="#8c633a">應用模式，將決定產品能否從研發真正走向大規模商業部署，這正是2026年被稱為「場景切入分水嶺」的原因</text>
+<text x="60" y="318" font-size="10" fill="#8c6b39">※ 馬斯克預期硬體成本將隨諧波減速器、行星滾柱螺桿等關鍵組件量產，由5至6萬美元逐步下降至2至3萬美元</text>
 </svg>
   </div>
 </section>

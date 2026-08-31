@@ -9,52 +9,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#14171A;--paper:#1C2024;--ink:#EAE6DA;--muted:#9BA39B;
-    --rule:#333A34;--body:#D6D2C5;
-    --brass:#E0B45C;--copper:#E8946E;--steel:#7FB8E8;--verde:#7FCB9E;
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);
     font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     line-height:1.75;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
-  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
-  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
     letter-spacing:.5em;margin:0 0 10px}
   h1{font-family:"Noto Serif TC",serif;font-weight:700;
-    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
-  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
   h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
-    letter-spacing:.1em;margin:0 0 4px}
-  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
-  section{margin-bottom:56px}
-  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  /* 只有帶圖表的四節加編號圓圈；卡片區的 .band h2 維持原樣 */
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
     overflow-x:auto;-webkit-overflow-scrolling:touch}
   .frame svg{display:block;min-width:900px;width:100%;height:auto}
   .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-    border-top:1px solid var(--rule)}
-  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
   .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
   .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
   .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
-  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .ri .nm{color:var(--copper)} .re .nm{color:#8f5e14}
   .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
   .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
   .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
   .notes{margin-top:20px;display:grid;gap:14px;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .note{border-left:2px solid var(--brass);padding-left:14px}
-  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
-  .note span{font-size:13px;color:var(--muted)}
-  blockquote{margin:0;padding:16px 20px;background:var(--paper);
-    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
-    font-size:15px;letter-spacing:.04em}
+  .note{border-left:3px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px;color:var(--navy)}
+  .note span{font-size:13px;color:var(--body)}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
   blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
     font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
-  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
-    margin-bottom:40px;font-size:14px;text-align:left}
-  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
-  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#607d8b;font-size:12px}
 </style>
 </head>
 <body>
@@ -72,161 +85,161 @@
 </div>
 
 <section>
-  <h2>其一 · 美元如何成為世界貨幣——從英鎊霸權到布雷頓森林體系</h2>
+  <h2>美元如何成為世界貨幣——從英鎊霸權到布雷頓森林體系</h2>
   <p class="sub">先靠制度設計取得核心地位，制度崩解後又靠能源貿易與市場信心撐住位置</p>
   <div class="frame">
 <svg viewBox="0 0 940 414" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="美元世界貨幣地位形成歷程結構圖">
-<rect x="40" y="30" width="860" height="71.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">美元的世界貨幣地位，是二戰後一步步建立起來的</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">一戰以前，英鎊才是全球公認的儲備貨幣；美元真正躍居國際貨幣體系核心，是二戰後布雷頓森林體系的產物，而後又歷經一次關鍵的制度重組，才形成今天</text>
-<text x="52" y="86.5" font-size="12" text-anchor="start" fill="#D6D2C5">的樣貌</text>
+<rect x="40" y="30" width="860" height="71.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美元的世界貨幣地位，是二戰後一步步建立起來的</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">一戰以前，英鎊才是全球公認的儲備貨幣；美元真正躍居國際貨幣體系核心，是二戰後布雷頓森林體系的產物，而後又歷經一次關鍵的制度重組，才形成今天</text>
+<text x="52" y="86.5" font-size="12" text-anchor="start" fill="#546e7a">的樣貌</text>
 
-  <rect x="40" y="131.5" width="200" height="135.2" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="140" y="154" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">英鎊時代</text>
-  <text x="140" y="172" font-size="11" text-anchor="middle" fill="#C4A972">一戰以前</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">英國憑藉其龐大的殖民貿易網絡</text>
-  <text x="52" y="204" font-size="12" text-anchor="start" fill="#C4A972">與金本位制度，使英鎊長期扮演</text>
-  <text x="52" y="220" font-size="12" text-anchor="start" fill="#C4A972">國際貿易與儲備的主要貨幣</text>
-  <text x="140" y="236" font-size="11" text-anchor="middle" fill="#C4A972">兩次大戰重創英國，英鎊地位動搖</text>
+  <rect x="40" y="131.5" width="200" height="135.2" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="140" y="154" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">英鎊時代</text>
+  <text x="140" y="172" font-size="11" text-anchor="middle" fill="#8a6a35">一戰以前</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">英國憑藉其龐大的殖民貿易網絡</text>
+  <text x="52" y="204" font-size="12" text-anchor="start" fill="#8a6a35">與金本位制度，使英鎊長期扮演</text>
+  <text x="52" y="220" font-size="12" text-anchor="start" fill="#8a6a35">國際貿易與儲備的主要貨幣</text>
+  <text x="140" y="236" font-size="11" text-anchor="middle" fill="#8a6a35">兩次大戰重創英國，英鎊地位動搖</text>
 
-  <rect x="260" y="131.5" width="200" height="135.2" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="360" y="154" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">布雷頓森林體系</text>
-  <text x="360" y="172" font-size="11" text-anchor="middle" fill="#8FADC4">1944年</text>
-  <text x="272" y="188" font-size="12" text-anchor="start" fill="#8FADC4">二戰後確立美元與黃金掛鉤（3</text>
-  <text x="272" y="204" font-size="12" text-anchor="start" fill="#8FADC4">5美元兌1盎司黃金），其他主</text>
-  <text x="272" y="220" font-size="12" text-anchor="start" fill="#8FADC4">要貨幣則釘住美元，美元自此躍</text>
-  <text x="272" y="236" font-size="12" text-anchor="start" fill="#8FADC4">居體系核心</text>
-  <text x="360" y="252" font-size="11" text-anchor="middle" fill="#8FADC4">美國以外等於間接錨定黃金</text>
+  <rect x="260" y="131.5" width="200" height="135.2" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="360" y="154" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">布雷頓森林體系</text>
+  <text x="360" y="172" font-size="11" text-anchor="middle" fill="#37607a">1944年</text>
+  <text x="272" y="188" font-size="12" text-anchor="start" fill="#37607a">二戰後確立美元與黃金掛鉤（3</text>
+  <text x="272" y="204" font-size="12" text-anchor="start" fill="#37607a">5美元兌1盎司黃金），其他主</text>
+  <text x="272" y="220" font-size="12" text-anchor="start" fill="#37607a">要貨幣則釘住美元，美元自此躍</text>
+  <text x="272" y="236" font-size="12" text-anchor="start" fill="#37607a">居體系核心</text>
+  <text x="360" y="252" font-size="11" text-anchor="middle" fill="#37607a">美國以外等於間接錨定黃金</text>
 
-  <rect x="480" y="131.5" width="200" height="135.2" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="580" y="154" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">尼克森衝擊</text>
-  <text x="580" y="172" font-size="11" text-anchor="middle" fill="#C99178">1971年</text>
-  <text x="492" y="188" font-size="12" text-anchor="start" fill="#C99178">美國總統尼克森宣布美元與黃金</text>
-  <text x="492" y="204" font-size="12" text-anchor="start" fill="#C99178">脫鉤，布雷頓森林體系正式瓦解</text>
-  <text x="492" y="220" font-size="12" text-anchor="start" fill="#C99178">，全球進入浮動匯率時代</text>
-  <text x="580" y="236" font-size="11" text-anchor="middle" fill="#C99178">美元改由市場信心支撐</text>
+  <rect x="480" y="131.5" width="200" height="135.2" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="580" y="154" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">尼克森衝擊</text>
+  <text x="580" y="172" font-size="11" text-anchor="middle" fill="#96604f">1971年</text>
+  <text x="492" y="188" font-size="12" text-anchor="start" fill="#96604f">美國總統尼克森宣布美元與黃金</text>
+  <text x="492" y="204" font-size="12" text-anchor="start" fill="#96604f">脫鉤，布雷頓森林體系正式瓦解</text>
+  <text x="492" y="220" font-size="12" text-anchor="start" fill="#96604f">，全球進入浮動匯率時代</text>
+  <text x="580" y="236" font-size="11" text-anchor="middle" fill="#96604f">美元改由市場信心支撐</text>
 
-  <rect x="700" y="131.5" width="200" height="135.2" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="800" y="154" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">石油美元協定</text>
-  <text x="800" y="172" font-size="11" text-anchor="middle" fill="#94BA9E">1970年代</text>
-  <text x="712" y="188" font-size="12" text-anchor="start" fill="#94BA9E">美國與沙烏地阿拉伯等產油國達</text>
-  <text x="712" y="204" font-size="12" text-anchor="start" fill="#94BA9E">成協議，石油交易以美元計價結</text>
-  <text x="712" y="220" font-size="12" text-anchor="start" fill="#94BA9E">算，進一步鞏固美元的國際需求</text>
-  <text x="800" y="236" font-size="11" text-anchor="middle" fill="#94BA9E">剛性需求深植於能源貿易</text>
+  <rect x="700" y="131.5" width="200" height="135.2" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="800" y="154" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">石油美元協定</text>
+  <text x="800" y="172" font-size="11" text-anchor="middle" fill="#446b53">1970年代</text>
+  <text x="712" y="188" font-size="12" text-anchor="start" fill="#446b53">美國與沙烏地阿拉伯等產油國達</text>
+  <text x="712" y="204" font-size="12" text-anchor="start" fill="#446b53">成協議，石油交易以美元計價結</text>
+  <text x="712" y="220" font-size="12" text-anchor="start" fill="#446b53">算，進一步鞏固美元的國際需求</text>
+  <text x="800" y="236" font-size="11" text-anchor="middle" fill="#446b53">剛性需求深植於能源貿易</text>
 
-<rect x="80" y="296.8" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="319.2" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">美元的地位，是一連串歷史選擇疊加的結果</text>
-<text x="92" y="337.2" font-size="12" text-anchor="start" fill="#D6D2C5">美元今天的地位，並不是天生的，而是這一連串歷史事件疊加後的結果——先靠制度設計取得核心地位，制度崩解後，又靠能源貿易與市場信心</text>
-<text x="92" y="353.2" font-size="12" text-anchor="start" fill="#D6D2C5">撐住了這個位置</text>
-<text x="470" y="369.2" font-size="11" text-anchor="middle" fill="#9BA39B">本頁後續三節，將分別談美元的核心功能、特殊地位，以及是否可能被取代</text>
+<rect x="80" y="296.8" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="319.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美元的地位，是一連串歷史選擇疊加的結果</text>
+<text x="92" y="337.2" font-size="12" text-anchor="start" fill="#546e7a">美元今天的地位，並不是天生的，而是這一連串歷史事件疊加後的結果——先靠制度設計取得核心地位，制度崩解後，又靠能源貿易與市場信心</text>
+<text x="92" y="353.2" font-size="12" text-anchor="start" fill="#546e7a">撐住了這個位置</text>
+<text x="470" y="369.2" font-size="11" text-anchor="middle" fill="#59707b">本頁後續三節，將分別談美元的核心功能、特殊地位，以及是否可能被取代</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其二 · 美元的三大核心功能——全球貿易、儲備資產、避險資產</h2>
+  <h2>美元的三大核心功能——全球貿易、儲備資產、避險資產</h2>
   <p class="sub">三種功能互相強化，形成一個自我鞏固的循環</p>
   <div class="frame">
 <svg viewBox="0 0 940 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="美元三大核心功能結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">美元同時扮演三個角色，這是其他貨幣很難同時做到的</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">多數貨幣頂多在其中一項功能上表現突出，美元卻同時是全球貿易的計價貨幣、各國央行的首選儲備資產，也是危機時刻資金湧入的避險標的</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美元同時扮演三個角色，這是其他貨幣很難同時做到的</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">多數貨幣頂多在其中一項功能上表現突出，美元卻同時是全球貿易的計價貨幣、各國央行的首選儲備資產，也是危機時刻資金湧入的避險標的</text>
 
-  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">國際貿易計價貨幣</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">石油、黃金等大宗商品及多數跨國貿易，普遍</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">以美元計價結算，是全球商業活動實質上的共</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">同語言</text>
+  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">國際貿易計價貨幣</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#8a6a35">石油、黃金等大宗商品及多數跨國貿易，普遍</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">以美元計價結算，是全球商業活動實質上的共</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">同語言</text>
 
-  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">全球主要儲備貨幣</text>
-  <text x="347" y="156" font-size="12" text-anchor="start" fill="#8FADC4">各國央行外匯存底中，美元長期占比最高，約</text>
-  <text x="347" y="172" font-size="12" text-anchor="start" fill="#8FADC4">六成左右，是多數國家管理外匯風險時的首選</text>
-  <text x="347" y="188" font-size="12" text-anchor="start" fill="#8FADC4">資產</text>
+  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">全球主要儲備貨幣</text>
+  <text x="347" y="156" font-size="12" text-anchor="start" fill="#37607a">各國央行外匯存底中，美元長期占比最高，約</text>
+  <text x="347" y="172" font-size="12" text-anchor="start" fill="#37607a">六成左右，是多數國家管理外匯風險時的首選</text>
+  <text x="347" y="188" font-size="12" text-anchor="start" fill="#37607a">資產</text>
 
-  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">危機時的避險資產</text>
-  <text x="642" y="156" font-size="12" text-anchor="start" fill="#94BA9E">每逢全球金融動盪，資金反而傾向湧入美元與</text>
-  <text x="642" y="172" font-size="12" text-anchor="start" fill="#94BA9E">美國公債尋求安全，形成獨特的「美元微笑」</text>
-  <text x="642" y="188" font-size="12" text-anchor="start" fill="#94BA9E">現象</text>
+  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">危機時的避險資產</text>
+  <text x="642" y="156" font-size="12" text-anchor="start" fill="#446b53">每逢全球金融動盪，資金反而傾向湧入美元與</text>
+  <text x="642" y="172" font-size="12" text-anchor="start" fill="#446b53">美國公債尋求安全，形成獨特的「美元微笑」</text>
+  <text x="642" y="188" font-size="12" text-anchor="start" fill="#446b53">現象</text>
 
-<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">三種功能互相強化，形成一個自我鞏固的循環</text>
-<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#D6D2C5">越多貿易用美元計價，各國就越需要持有美元儲備以應付貿易需求；越多人持有美元資產，危機時美元的避險屬性就越強——這個循環正是美元</text>
-<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">地位難以被輕易撼動的原因</text>
-<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#9BA39B">這種自我強化的循環，經濟學上常被稱為「網絡效應」——用的人越多，其他人越有理由跟著用</text>
+<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">三種功能互相強化，形成一個自我鞏固的循環</text>
+<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#546e7a">越多貿易用美元計價，各國就越需要持有美元儲備以應付貿易需求；越多人持有美元資產，危機時美元的避險屬性就越強——這個循環正是美元</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#546e7a">地位難以被輕易撼動的原因</text>
+<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#59707b">這種自我強化的循環，經濟學上常被稱為「網絡效應」——用的人越多，其他人越有理由跟著用</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其三 · 美元的特殊地位——「囂張的特權」與美國的兩難</h2>
+  <h2>美元的特殊地位——「囂張的特權」與美國的兩難</h2>
   <p class="sub">鑄幣稅特權與特里芬難題，其實是同一枚硬幣的兩面</p>
   <div class="frame">
 <svg viewBox="0 0 940 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="美元特殊地位與結構矛盾結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">美元霸權給美國帶來巨大好處，卻也不是完全沒有代價</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">身為世界貨幣的發行國，美國享有其他國家難以複製的特殊優勢，但這套體系本身，也內含一個至今無解的結構性矛盾</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美元霸權給美國帶來巨大好處，卻也不是完全沒有代價</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">身為世界貨幣的發行國，美國享有其他國家難以複製的特殊優勢，但這套體系本身，也內含一個至今無解的結構性矛盾</text>
 
-  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">鑄幣稅特權</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">美國能以近乎零成本印製的美元，換取全球實</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">質商品與服務，這種特權被法國前財長稱為「</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">囂張的特權」</text>
+  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">鑄幣稅特權</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#8a6a35">美國能以近乎零成本印製的美元，換取全球實</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">質商品與服務，這種特權被法國前財長稱為「</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">囂張的特權」</text>
 
-  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">特里芬難題</text>
-  <text x="347" y="156" font-size="12" text-anchor="start" fill="#8FADC4">美國須持續維持貿易逆差以供應全球美元流動</text>
-  <text x="347" y="172" font-size="12" text-anchor="start" fill="#8FADC4">性，但長期逆差又可能侵蝕市場對美元的信心</text>
-  <text x="347" y="188" font-size="12" text-anchor="start" fill="#8FADC4">，形成結構性矛盾</text>
+  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">特里芬難題</text>
+  <text x="347" y="156" font-size="12" text-anchor="start" fill="#37607a">美國須持續維持貿易逆差以供應全球美元流動</text>
+  <text x="347" y="172" font-size="12" text-anchor="start" fill="#37607a">性，但長期逆差又可能侵蝕市場對美元的信心</text>
+  <text x="347" y="188" font-size="12" text-anchor="start" fill="#37607a">，形成結構性矛盾</text>
 
-  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">美元的政治工具化</text>
-  <text x="642" y="156" font-size="12" text-anchor="start" fill="#C99178">美國藉由掌控美元清算系統(SWIFT)，</text>
-  <text x="642" y="172" font-size="12" text-anchor="start" fill="#C99178">可將特定國家排除在外實施金融制裁，這項能</text>
-  <text x="642" y="188" font-size="12" text-anchor="start" fill="#C99178">力近年爭議日增</text>
+  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">美元的政治工具化</text>
+  <text x="642" y="156" font-size="12" text-anchor="start" fill="#96604f">美國藉由掌控美元清算系統(SWIFT)，</text>
+  <text x="642" y="172" font-size="12" text-anchor="start" fill="#96604f">可將特定國家排除在外實施金融制裁，這項能</text>
+  <text x="642" y="188" font-size="12" text-anchor="start" fill="#96604f">力近年爭議日增</text>
 
-<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">特權與矛盾，其實是同一枚硬幣的兩面</text>
-<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#D6D2C5">美國能享有鑄幣稅特權，正是因為全世界都需要美元流動性；但供應這份流動性所需的持續逆差，長期而言又會累積成對美元信心的隱憂，這正</text>
-<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">是特里芬難題揮之不去的原因</text>
-<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#9BA39B">美元的政治工具化，近年也成為各國加速尋求替代方案的重要動機之一</text>
+<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">特權與矛盾，其實是同一枚硬幣的兩面</text>
+<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#546e7a">美國能享有鑄幣稅特權，正是因為全世界都需要美元流動性；但供應這份流動性所需的持續逆差，長期而言又會累積成對美元信心的隱憂，這正</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#546e7a">是特里芬難題揮之不去的原因</text>
+<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#59707b">美元的政治工具化，近年也成為各國加速尋求替代方案的重要動機之一</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其四 · 美元霸權會被挑戰嗎？——去美元化的討論與現實侷限</h2>
+  <h2>美元霸權會被挑戰嗎？——去美元化的討論與現實侷限</h2>
   <p class="sub">找不到能真正取代美元深度與信任度的替代方案，是去美元化至今的最大障礙</p>
   <div class="frame">
 <svg viewBox="0 0 940 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="去美元化討論與現實侷限結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">「去美元化」喊了很多年，但美元的地位至今沒有真正動搖</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">中國、金磚國家等都曾提出降低美元依賴的具體倡議，但這些嘗試至今都遇到同一個現實：短期內找不到能真正取代美元深度與信任度的替代方案</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「去美元化」喊了很多年，但美元的地位至今沒有真正動搖</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">中國、金磚國家等都曾提出降低美元依賴的具體倡議，但這些嘗試至今都遇到同一個現實：短期內找不到能真正取代美元深度與信任度的替代方案</text>
 
-  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">人民幣國際化</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C99178">中國推動跨境支付系統(CIPS)、與多國</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C99178">簽署本幣互換協議，試圖降低對美元體系的依</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C99178">賴</text>
+  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">人民幣國際化</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#96604f">中國推動跨境支付系統(CIPS)、與多國</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#96604f">簽署本幣互換協議，試圖降低對美元體系的依</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#96604f">賴</text>
 
-  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">金磚國家倡議</text>
-  <text x="347" y="156" font-size="12" text-anchor="start" fill="#8FADC4">金磚國家(BRICS)多次討論建立共同貨</text>
-  <text x="347" y="172" font-size="12" text-anchor="start" fill="#8FADC4">幣或擴大本幣結算機制，但受限於成員國經濟</text>
-  <text x="347" y="188" font-size="12" text-anchor="start" fill="#8FADC4">結構差異，進展有限</text>
+  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">金磚國家倡議</text>
+  <text x="347" y="156" font-size="12" text-anchor="start" fill="#37607a">金磚國家(BRICS)多次討論建立共同貨</text>
+  <text x="347" y="172" font-size="12" text-anchor="start" fill="#37607a">幣或擴大本幣結算機制，但受限於成員國經濟</text>
+  <text x="347" y="188" font-size="12" text-anchor="start" fill="#37607a">結構差異，進展有限</text>
 
-  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">美國公債市場的深度</text>
-  <text x="642" y="156" font-size="12" text-anchor="start" fill="#94BA9E">美元背後有全球規模最大、流動性最強的美國</text>
-  <text x="642" y="172" font-size="12" text-anchor="start" fill="#94BA9E">公債市場支撐，是短期內難以被任何單一貨幣</text>
-  <text x="642" y="188" font-size="12" text-anchor="start" fill="#94BA9E">取代的結構優勢</text>
+  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">美國公債市場的深度</text>
+  <text x="642" y="156" font-size="12" text-anchor="start" fill="#446b53">美元背後有全球規模最大、流動性最強的美國</text>
+  <text x="642" y="172" font-size="12" text-anchor="start" fill="#446b53">公債市場支撐，是短期內難以被任何單一貨幣</text>
+  <text x="642" y="188" font-size="12" text-anchor="start" fill="#446b53">取代的結構優勢</text>
 
-<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">美元地位靠的不是武力，是全球對美國金融市場的信任</text>
-<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#D6D2C5">這種信任建立在深厚的市場流動性、相對穩定的法治環境與長期的制度慣性之上，一旦動搖，重建的速度會比想像中更慢——這也是為什麼去美</text>
-<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">元化至今雷聲大雨點小</text>
-<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#9BA39B">見〈中央銀行的功能〉篇：美元背後的聯準會，正是支撐這份信任的關鍵制度基礎</text>
+<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美元地位靠的不是武力，是全球對美國金融市場的信任</text>
+<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#546e7a">這種信任建立在深厚的市場流動性、相對穩定的法治環境與長期的制度慣性之上，一旦動搖，重建的速度會比想像中更慢——這也是為什麼去美</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#546e7a">元化至今雷聲大雨點小</text>
+<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#59707b">見〈中央銀行的功能〉篇：美元背後的聯準會，正是支撐這份信任的關鍵制度基礎</text>
 </svg>
   </div>
 </section>

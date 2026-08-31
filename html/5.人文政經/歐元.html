@@ -9,52 +9,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#14171A;--paper:#1C2024;--ink:#EAE6DA;--muted:#9BA39B;
-    --rule:#333A34;--body:#D6D2C5;
-    --brass:#E0B45C;--copper:#E8946E;--steel:#7FB8E8;--verde:#7FCB9E;
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);
     font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     line-height:1.75;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
-  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
-  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
     letter-spacing:.5em;margin:0 0 10px}
   h1{font-family:"Noto Serif TC",serif;font-weight:700;
-    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
-  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
   h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
-    letter-spacing:.1em;margin:0 0 4px}
-  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
-  section{margin-bottom:56px}
-  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  /* 只有帶圖表的四節加編號圓圈；卡片區的 .band h2 維持原樣 */
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
     overflow-x:auto;-webkit-overflow-scrolling:touch}
   .frame svg{display:block;min-width:900px;width:100%;height:auto}
   .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-    border-top:1px solid var(--rule)}
-  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
   .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
   .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
   .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
-  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .ri .nm{color:var(--copper)} .re .nm{color:#8f5e14}
   .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
   .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
   .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
   .notes{margin-top:20px;display:grid;gap:14px;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .note{border-left:2px solid var(--brass);padding-left:14px}
-  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
-  .note span{font-size:13px;color:var(--muted)}
-  blockquote{margin:0;padding:16px 20px;background:var(--paper);
-    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
-    font-size:15px;letter-spacing:.04em}
+  .note{border-left:3px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px;color:var(--navy)}
+  .note span{font-size:13px;color:var(--body)}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
   blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
     font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
-  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
-    margin-bottom:40px;font-size:14px;text-align:left}
-  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
-  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#607d8b;font-size:12px}
 </style>
 </head>
 <body>
@@ -72,164 +85,164 @@
 </div>
 
 <section>
-  <h2>其一 · 歐元是什麼——一場史無前例的貨幣統一實驗</h2>
+  <h2>歐元是什麼——一場史無前例的貨幣統一實驗</h2>
   <p class="sub">貨幣統一了，但「國家」這個政治單位並沒有跟著統一</p>
   <div class="frame">
 <svg viewBox="0 0 940 382" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐元基本概念結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">19個主權國家，決定把貨幣主權交給同一家央行</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">1999年，歐元正式啟用，多個歐洲國家放棄了各自使用數百年的本國貨幣，改用單一貨幣——這是人類史上規模最大、也最具爭議的貨幣主權讓渡實驗</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">19個主權國家，決定把貨幣主權交給同一家央行</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">1999年，歐元正式啟用，多個歐洲國家放棄了各自使用數百年的本國貨幣，改用單一貨幣——這是人類史上規模最大、也最具爭議的貨幣主權讓渡實驗</text>
 
-  <rect x="40" y="115.5" width="200" height="119.2" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">歐元的誕生</text>
-  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#C4A972">1999年</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">正式啟用作為記帳貨幣，200</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">2年發行實體紙鈔與硬幣，多國</text>
-  <text x="52" y="204" font-size="12" text-anchor="start" fill="#C4A972">同步放棄本國貨幣</text>
-  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#C4A972">史上規模最大的貨幣主權讓渡實驗</text>
+  <rect x="40" y="115.5" width="200" height="119.2" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">歐元的誕生</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#8a6a35">1999年</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">正式啟用作為記帳貨幣，200</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">2年發行實體紙鈔與硬幣，多國</text>
+  <text x="52" y="204" font-size="12" text-anchor="start" fill="#8a6a35">同步放棄本國貨幣</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#8a6a35">史上規模最大的貨幣主權讓渡實驗</text>
 
-  <rect x="260" y="115.5" width="200" height="119.2" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">歐洲央行ECB</text>
-  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#C99178">法蘭克福總部</text>
-  <text x="272" y="172" font-size="12" text-anchor="start" fill="#C99178">負責統一制定歐元區貨幣政策，</text>
-  <text x="272" y="188" font-size="12" text-anchor="start" fill="#C99178">是歐元區唯一有權發行歐元、決</text>
-  <text x="272" y="204" font-size="12" text-anchor="start" fill="#C99178">定利率的機構</text>
-  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#C99178">法定目標是維持物價穩定</text>
+  <rect x="260" y="115.5" width="200" height="119.2" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">歐洲央行ECB</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#96604f">法蘭克福總部</text>
+  <text x="272" y="172" font-size="12" text-anchor="start" fill="#96604f">負責統一制定歐元區貨幣政策，</text>
+  <text x="272" y="188" font-size="12" text-anchor="start" fill="#96604f">是歐元區唯一有權發行歐元、決</text>
+  <text x="272" y="204" font-size="12" text-anchor="start" fill="#96604f">定利率的機構</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#96604f">法定目標是維持物價穩定</text>
 
-  <rect x="480" y="115.5" width="200" height="119.2" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">馬斯垂克標準</text>
-  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#8FADC4">加入門檻</text>
-  <text x="492" y="172" font-size="12" text-anchor="start" fill="#8FADC4">通膨率、財政赤字、公債占GD</text>
-  <text x="492" y="188" font-size="12" text-anchor="start" fill="#8FADC4">P比率、匯率穩定度等指標須符</text>
-  <text x="492" y="204" font-size="12" text-anchor="start" fill="#8FADC4">合門檻，才能加入歐元區</text>
-  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#8FADC4">門檻訂了執行時卻常打折扣</text>
+  <rect x="480" y="115.5" width="200" height="119.2" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">馬斯垂克標準</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#37607a">加入門檻</text>
+  <text x="492" y="172" font-size="12" text-anchor="start" fill="#37607a">通膨率、財政赤字、公債占GD</text>
+  <text x="492" y="188" font-size="12" text-anchor="start" fill="#37607a">P比率、匯率穩定度等指標須符</text>
+  <text x="492" y="204" font-size="12" text-anchor="start" fill="#37607a">合門檻，才能加入歐元區</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#37607a">門檻訂了執行時卻常打折扣</text>
 
-  <rect x="700" y="115.5" width="200" height="119.2" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">並非全歐盟都用歐元</text>
-  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#94BA9E">20／27個成員國</text>
-  <text x="712" y="172" font-size="12" text-anchor="start" fill="#94BA9E">目前歐盟27國中僅20國採用</text>
-  <text x="712" y="188" font-size="12" text-anchor="start" fill="#94BA9E">歐元，丹麥、瑞典等國選擇保留</text>
-  <text x="712" y="204" font-size="12" text-anchor="start" fill="#94BA9E">本國貨幣</text>
-  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#94BA9E">是否加入歐元區至今仍是政治選擇</text>
+  <rect x="700" y="115.5" width="200" height="119.2" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">並非全歐盟都用歐元</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#446b53">20／27個成員國</text>
+  <text x="712" y="172" font-size="12" text-anchor="start" fill="#446b53">目前歐盟27國中僅20國採用</text>
+  <text x="712" y="188" font-size="12" text-anchor="start" fill="#446b53">歐元，丹麥、瑞典等國選擇保留</text>
+  <text x="712" y="204" font-size="12" text-anchor="start" fill="#446b53">本國貨幣</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#446b53">是否加入歐元區至今仍是政治選擇</text>
 
-<rect x="80" y="264.8" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="287.2" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">貨幣統一了，但「國家」這個政治單位並沒有跟著統一</text>
-<text x="92" y="305.2" font-size="12" text-anchor="start" fill="#D6D2C5">歐元讓19個國家共用同一種貨幣、同一套利率，卻沒有讓它們共用同一個財政部、同一套稅制——這個看似技術性的落差，正是後續所有危機</text>
-<text x="92" y="321.2" font-size="12" text-anchor="start" fill="#D6D2C5">的根源</text>
-<text x="470" y="337.2" font-size="11" text-anchor="middle" fill="#9BA39B">本頁後續三節，將分別談這個結構性矛盾、它如何引爆歐債危機，以及歐元至今仍在摸索的整合之路</text>
+<rect x="80" y="264.8" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="287.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">貨幣統一了，但「國家」這個政治單位並沒有跟著統一</text>
+<text x="92" y="305.2" font-size="12" text-anchor="start" fill="#546e7a">歐元讓19個國家共用同一種貨幣、同一套利率，卻沒有讓它們共用同一個財政部、同一套稅制——這個看似技術性的落差，正是後續所有危機</text>
+<text x="92" y="321.2" font-size="12" text-anchor="start" fill="#546e7a">的根源</text>
+<text x="470" y="337.2" font-size="11" text-anchor="middle" fill="#59707b">本頁後續三節，將分別談這個結構性矛盾、它如何引爆歐債危機，以及歐元至今仍在摸索的整合之路</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其二 · 歐元最根本的結構性矛盾——統一貨幣，卻沒有統一財政</h2>
+  <h2>歐元最根本的結構性矛盾——統一貨幣，卻沒有統一財政</h2>
   <p class="sub">這正是〈財政政策〉篇提過的協調難題，被放大到整個大陸規模</p>
   <div class="frame">
 <svg viewBox="0 0 940 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐元結構性矛盾結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">同一套利率，套用在經濟體質完全不同的國家身上</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">歐元區最根本的設計缺陷，在於它只統一了貨幣政策，卻把財政政策留給各國自行決定——這種「半統一」的狀態，從一開始就埋下了隱憂</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一套利率，套用在經濟體質完全不同的國家身上</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">歐元區最根本的設計缺陷，在於它只統一了貨幣政策，卻把財政政策留給各國自行決定——這種「半統一」的狀態，從一開始就埋下了隱憂</text>
 
-  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">一個貨幣政策多套財政政策</text>
-  <text x="175" y="156" font-size="11" text-anchor="middle" fill="#C4A972">權力分裂</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">歐元區各國仍各自編列預算、決定稅收與支出</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">，只有貨幣政策交給歐洲央行統一制定</text>
+  <rect x="40" y="115.5" width="270" height="103.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="175" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">一個貨幣政策多套財政政策</text>
+  <text x="175" y="156" font-size="11" text-anchor="middle" fill="#8a6a35">權力分裂</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">歐元區各國仍各自編列預算、決定稅收與支出</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#8a6a35">，只有貨幣政策交給歐洲央行統一制定</text>
 
-  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">缺乏財政移轉機制</text>
-  <text x="470" y="156" font-size="11" text-anchor="middle" fill="#8FADC4">沒有安全網</text>
-  <text x="347" y="172" font-size="12" text-anchor="start" fill="#8FADC4">不同於美國聯邦財政體系可在各州間重分配資</text>
-  <text x="347" y="188" font-size="12" text-anchor="start" fill="#8FADC4">源，歐元區缺乏對應的財政移轉機制，成員國</text>
-  <text x="347" y="204" font-size="12" text-anchor="start" fill="#8FADC4">各自承擔風險</text>
+  <rect x="335" y="115.5" width="270" height="103.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="470" y="138" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">缺乏財政移轉機制</text>
+  <text x="470" y="156" font-size="11" text-anchor="middle" fill="#37607a">沒有安全網</text>
+  <text x="347" y="172" font-size="12" text-anchor="start" fill="#37607a">不同於美國聯邦財政體系可在各州間重分配資</text>
+  <text x="347" y="188" font-size="12" text-anchor="start" fill="#37607a">源，歐元區缺乏對應的財政移轉機制，成員國</text>
+  <text x="347" y="204" font-size="12" text-anchor="start" fill="#37607a">各自承擔風險</text>
 
-  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">一套利率適用所有國家</text>
-  <text x="765" y="156" font-size="11" text-anchor="middle" fill="#C99178">一體適用的兩難</text>
-  <text x="642" y="172" font-size="12" text-anchor="start" fill="#C99178">對德國合適的利率水準，對希臘可能完全不合</text>
-  <text x="642" y="188" font-size="12" text-anchor="start" fill="#C99178">適，卻只能適用同一套政策，難以因地制宜</text>
+  <rect x="630" y="115.5" width="270" height="103.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="765" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">一套利率適用所有國家</text>
+  <text x="765" y="156" font-size="11" text-anchor="middle" fill="#96604f">一體適用的兩難</text>
+  <text x="642" y="172" font-size="12" text-anchor="start" fill="#96604f">對德國合適的利率水準，對希臘可能完全不合</text>
+  <text x="642" y="188" font-size="12" text-anchor="start" fill="#96604f">適，卻只能適用同一套政策，難以因地制宜</text>
 
-<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">這正是〈財政政策〉篇提過的協調難題，被放大到整個大陸規模</text>
-<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#D6D2C5">在一般國家裡，財政與貨幣政策至少同屬一個主權範圍，協調起來還有商量空間；歐元區卻是一套貨幣政策要同時服務19個各自為政的財政體</text>
-<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#D6D2C5">系，協調難度呈指數放大</text>
-<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#9BA39B">見〈財政政策〉篇：財政與貨幣政策各司其職的正常分工，在歐元區變成了「一個央行、十九個財政部」的錯位結構</text>
+<rect x="80" y="249" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="271.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這正是〈財政政策〉篇提過的協調難題，被放大到整個大陸規模</text>
+<text x="92" y="289.5" font-size="12" text-anchor="start" fill="#546e7a">在一般國家裡，財政與貨幣政策至少同屬一個主權範圍，協調起來還有商量空間；歐元區卻是一套貨幣政策要同時服務19個各自為政的財政體</text>
+<text x="92" y="305.5" font-size="12" text-anchor="start" fill="#546e7a">系，協調難度呈指數放大</text>
+<text x="470" y="321.5" font-size="11" text-anchor="middle" fill="#59707b">見〈財政政策〉篇：財政與貨幣政策各司其職的正常分工，在歐元區變成了「一個央行、十九個財政部」的錯位結構</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其三 · 歐債危機——結構矛盾的總爆發</h2>
+  <h2>歐債危機——結構矛盾的總爆發</h2>
   <p class="sub">一句話，比任何實際政策都更快平息了市場恐慌</p>
   <div class="frame">
 <svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐債危機結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">當結構性矛盾遇上金融海嘯，總爆發只是時間問題</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">2008年金融海嘯衝擊全球，卻在歐元區暴露出更深層的問題——部分成員國的財政體質，遠比市場原先以為的更脆弱</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">當結構性矛盾遇上金融海嘯，總爆發只是時間問題</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">2008年金融海嘯衝擊全球，卻在歐元區暴露出更深層的問題——部分成員國的財政體質，遠比市場原先以為的更脆弱</text>
 
-  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">希臘主權債務危機</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">2009年希臘政府被揭露長期隱瞞真實財政赤字，引爆市場對其償債能</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">力的信心崩潰</text>
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">希臘主權債務危機</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#8a6a35">2009年希臘政府被揭露長期隱瞞真實財政赤字，引爆市場對其償債能</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">力的信心崩潰</text>
 
-  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">PIIGS危機蔓延</text>
-  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">葡萄牙、義大利、愛爾蘭、希臘、西班牙等南歐國家相繼陷入主權債信危</text>
-  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">機，公債殖利率飆升</text>
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">PIIGS危機蔓延</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#96604f">葡萄牙、義大利、愛爾蘭、希臘、西班牙等南歐國家相繼陷入主權債信危</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#96604f">機，公債殖利率飆升</text>
 
-  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">無法印鈔救急的困境</text>
-  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">陷入危機的國家不能像擁有主權貨幣的國家一樣透過貶值或印鈔紓緩債務</text>
-  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">壓力，只能靠撙節與外部紓困</text>
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">無法印鈔救急的困境</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#37607a">陷入危機的國家不能像擁有主權貨幣的國家一樣透過貶值或印鈔紓緩債務</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#37607a">壓力，只能靠撙節與外部紓困</text>
 
-  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">「不惜一切代價」的承諾</text>
-  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">2012年時任歐洲央行總裁德拉吉宣布將採取一切必要措施捍衛歐元，</text>
-  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">市場恐慌才逐漸平息</text>
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">「不惜一切代價」的承諾</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#446b53">2012年時任歐洲央行總裁德拉吉宣布將採取一切必要措施捍衛歐元，</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#446b53">市場恐慌才逐漸平息</text>
 
-<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">一句話，比任何實際政策都更快平息了市場恐慌</text>
-<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">德拉吉的「不惜一切代價」宣言，展現了央行「預期管理」的極致威力——市場相信央行有能力、也有決心捍衛歐元，恐慌本身就先消退了大半</text>
-<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">，這也是這場危機留給總體經濟學最重要的一堂課</text>
-<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">見〈中央銀行的功能〉篇：這正是央行「前瞻指引」這項貨幣政策工具，發揮到極致的經典案例</text>
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一句話，比任何實際政策都更快平息了市場恐慌</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#546e7a">德拉吉的「不惜一切代價」宣言，展現了央行「預期管理」的極致威力——市場相信央行有能力、也有決心捍衛歐元，恐慌本身就先消退了大半</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#546e7a">，這也是這場危機留給總體經濟學最重要的一堂課</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">見〈中央銀行的功能〉篇：這正是央行「前瞻指引」這項貨幣政策工具，發揮到極致的經典案例</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其四 · 歐元的現實定位與未來挑戰</h2>
+  <h2>歐元的現實定位與未來挑戰</h2>
   <p class="sub">歐元的未來，取決於歐洲能不能跨出財政整合的下一步</p>
   <div class="frame">
 <svg viewBox="0 0 940 426" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐元現實定位與未來挑戰結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">危機過去了，但催生危機的結構性矛盾，真的解決了嗎？</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">歐債危機後，歐盟嘗試建立更多財政協調機制，歐元也穩坐全球第二大儲備貨幣的地位——但距離真正解決最初的結構性矛盾，恐怕還有一段路要走</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">危機過去了，但催生危機的結構性矛盾，真的解決了嗎？</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#546e7a">歐債危機後，歐盟嘗試建立更多財政協調機制，歐元也穩坐全球第二大儲備貨幣的地位——但距離真正解決最初的結構性矛盾，恐怕還有一段路要走</text>
 
-  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">全球第二大儲備貨幣</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">歐元是僅次於美元的全球第二大外匯儲備貨幣與國際貿易計價貨幣，地位</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">穩固</text>
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">全球第二大儲備貨幣</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#8a6a35">歐元是僅次於美元的全球第二大外匯儲備貨幣與國際貿易計價貨幣，地位</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#8a6a35">穩固</text>
 
-  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">歐元區擴張的政治考量</text>
-  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">加入歐元區被視為深化歐洲一體化的重要象徵，但也讓後續加入國承擔了</text>
-  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">不小的政策彈性犧牲</text>
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">歐元區擴張的政治考量</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#96604f">加入歐元區被視為深化歐洲一體化的重要象徵，但也讓後續加入國承擔了</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#96604f">不小的政策彈性犧牲</text>
 
-  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">銀行聯盟與紓困機制</text>
-  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">歐債危機後，歐盟嘗試建立銀行聯盟、共同紓困基金等機制，逐步強化財</text>
-  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">政協調</text>
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">銀行聯盟與紓困機制</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#37607a">歐債危機後，歐盟嘗試建立銀行聯盟、共同紓困基金等機制，逐步強化財</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#37607a">政協調</text>
 
-  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">財政聯盟化的長期辯論</text>
-  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">部分經濟學家主張，若不能建立更完整的財政聯盟，歐元區的結構性矛盾</text>
-  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">終將再度引爆危機</text>
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">財政聯盟化的長期辯論</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#446b53">部分經濟學家主張，若不能建立更完整的財政聯盟，歐元區的結構性矛盾</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#446b53">終將再度引爆危機</text>
 
-<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">歐元的未來，取決於歐洲能不能跨出財政整合的下一步</text>
-<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">歐元證明了貨幣統一在技術上可行，卻也證明了沒有財政整合配套的貨幣聯盟，終究會在壓力測試下露出破綻——這場史無前例的實驗至今仍在</text>
-<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">進行中，答案還沒揭曉</text>
-<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">見〈美元〉篇：美元背後有統一的聯邦財政體系支撐，這正是歐元至今仍在追趕的那塊拼圖</text>
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">歐元的未來，取決於歐洲能不能跨出財政整合的下一步</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#546e7a">歐元證明了貨幣統一在技術上可行，卻也證明了沒有財政整合配套的貨幣聯盟，終究會在壓力測試下露出破綻——這場史無前例的實驗至今仍在</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#546e7a">進行中，答案還沒揭曉</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">見〈美元〉篇：美元背後有統一的聯邦財政體系支撐，這正是歐元至今仍在追趕的那塊拼圖</text>
 </svg>
   </div>
 </section>
