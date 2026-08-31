@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>萊布尼茲｜理性主義的「單子世界」</title>
+
+<style>
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+    margin:0;
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+    line-height:1.8;
+    background:#f4f1ea;
+    color:#292929;
+}
+
+header{
+    background:linear-gradient(135deg,#18202b,#657080);
+    color:white;
+    text-align:center;
+    padding:90px 20px;
+}
+
+header h1{
+    font-size:4rem;
+    letter-spacing:8px;
+    margin:0;
+}
+
+header p{
+    font-size:1.2rem;
+    margin:10px;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #ccc;
+}
+
+nav ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:11px 14px;
+    color:#333;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#e5e5e5;
+}
+
+main{
+    max-width:1350px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:#fff;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.hero{
+    text-align:center;
+    background:#fafafa;
+    border:2px solid #ddd;
+}
+
+h2{
+    margin-top:0;
+    border-left:7px solid #4d5968;
+    padding-left:15px;
+}
+
+h3{margin-top:0;}
+
+.big{
+    font-size:2rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card,.box{
+    background:#fafafa;
+    border:1px solid #ddd;
+    padding:25px;
+    border-radius:15px;
+}
+
+.quote{
+    background:#f1f1f1;
+    border-left:6px solid #596575;
+    padding:22px 28px;
+    border-radius:10px;
+    margin:25px 0;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    background:#eee;
+    border:1px solid #ccc;
+    padding:16px 22px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    font-size:1.7rem;
+    color:#555;
+}
+
+.formula{
+    background:#292929;
+    color:white;
+    text-align:center;
+    padding:30px;
+    border-radius:15px;
+    font-size:1.25rem;
+    margin:30px 0;
+}
+
+.keyword-box{
+    text-align:center;
+    padding:25px;
+    background:#f7f7f7;
+    border:1px solid #ddd;
+    border-radius:15px;
+}
+
+.keyword{
+    display:inline-block;
+    background:#dedede;
+    padding:8px 17px;
+    margin:6px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.timeline{
+    position:relative;
+    padding-left:75px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:28px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#bbb;
+}
+
+.timeline-item{
+    position:relative;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-60px;
+    top:28px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#555;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #aaa;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#444;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+.question{
+    background:#f6f6f6;
+    border-left:5px solid #596575;
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+@media(max-width:900px){
+    .grid{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:650px){
+    header h1{
+        font-size:2.5rem;
+        letter-spacing:4px;
+    }
+
+    section{padding:25px;}
+
+    .grid,.two{
+        grid-template-columns:1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>萊布尼茲</h1>
+
+<p>Gottfried Wilhelm Leibniz｜1646－1716</p>
+
+<p>理性主義、單子論、充分理由與「預定和諧」</p>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#intro">人物</a></li>
+<li><a href="#age">時代</a></li>
+<li><a href="#rationalism">理性主義</a></li>
+<li><a href="#truth">真理</a></li>
+<li><a href="#monad">單子</a></li>
+<li><a href="#harmony">預定和諧</a></li>
+<li><a href="#mindbody">心身問題</a></li>
+<li><a href="#reason">充分理由</a></li>
+<li><a href="#bestworld">最佳世界</a></li>
+<li><a href="#god">上帝</a></li>
+<li><a href="#math">數學</a></li>
+<li><a href="#logic">邏輯</a></li>
+<li><a href="#plato">哲學比較</a></li>
+<li><a href="#kant">走向康德</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="intro" class="hero">
+
+<h2>一、誰是萊布尼茲？</h2>
+
+<div class="big">
+
+「為什麼會有某個東西，而不是什麼都沒有？」
+
+</div>
+
+<p>
+
+萊布尼茲是17世紀歐洲最重要的理性主義哲學家之一。
+他同時也是數學家、邏輯學家、科學家、法學家與政治思想家。
+
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>出生</h3>
+<p>1646年</p>
+<p>德意志地區的萊比錫。</p>
+</div>
+
+<div class="card">
+<h3>死亡</h3>
+<p>1716年</p>
+<p>漢諾威。</p>
+</div>
+
+<div class="card">
+<h3>核心思想</h3>
+<p>單子論、充分理由、預定和諧。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section id="age">
+
+<h2>二、萊布尼茲所處的時代</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+笛卡兒
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+斯賓諾莎
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+萊布尼茲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+康德
+</div>
+
+</div>
+
+<p>
+
+這是一個科學、數學與哲學快速變化的時代。
+
+哥白尼、伽利略、克卜勒、牛頓等人的工作，
+正在重新改變人類理解宇宙的方式。
+
+</p>
+
+</section>
+
+
+<!-- 3 -->
+
+<section id="rationalism">
+
+<h2>三、萊布尼茲與理性主義</h2>
+
+<p>
+
+17世紀的理性主義哲學家相信：
+
+<strong>理性本身具有獲得某些必然真理的能力。</strong>
+
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>笛卡兒</h3>
+<p>從「我思」尋找確定性。</p>
+</div>
+
+<div class="card">
+<h3>斯賓諾莎</h3>
+<p>以幾何學式方法建構哲學。</p>
+</div>
+
+<div class="card">
+<h3>萊布尼茲</h3>
+<p>以邏輯、數學與形上學建構世界理論。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 4 -->
+
+<section>
+
+<h2>四、理性主義的核心問題</h2>
+
+<div class="formula">
+
+感官經驗
+
+↓
+
+我們看到「個別事物」
+
+↓
+
+理性
+
+↓
+
+尋找普遍、必然的真理
+
+</div>
+
+<p>
+
+例如：
+
+「2＋2＝4」
+
+不是因為我們觀察了一千次，
+才知道它是真的。
+
+</p>
+
+<p>
+
+它具有某種不依賴個別經驗的必然性。
+
+</p>
+
+</section>
+
+
+<!-- 5 -->
+
+<section id="truth">
+
+<h2>五、萊布尼茲的兩種真理</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>類型</th>
+<th>特徵</th>
+<th>例子</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>理性的真理</td>
+<td>具有必然性，否定會產生矛盾。</td>
+<td>2＋2＝4</td>
+</tr>
+
+<tr>
+<td>事實的真理</td>
+<td>事情實際上如此，但邏輯上可以想像其他可能。</td>
+<td>今天下雨。</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="quote">
+
+這個區分對後來的哲學非常重要：
+
+<strong>
+
+必然真理 ≠ 經驗事實
+
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- 6 -->
+
+<section>
+
+<h2>六、分析真理與「矛盾原理」</h2>
+
+<p>
+
+萊布尼茲認為，
+理性真理可以透過分析概念來理解。
+
+</p>
+
+<div class="formula">
+
+「三角形」
+
+↓
+
+分析其概念
+
+↓
+
+具有三個角
+
+↓
+
+因此：
+
+三角形具有三個角
+
+</div>
+
+<p>
+
+這類真理的否定會產生矛盾。
+
+</p>
+
+</section>
+
+
+<!-- 7 -->
+
+<section id="reason">
+
+<h2>七、充分理由律</h2>
+
+<div class="big">
+
+「沒有任何事情會沒有充分理由。」
+
+</div>
+
+<p>
+
+這是萊布尼茲最重要的哲學原則之一。
+
+</p>
+
+<div class="formula">
+
+某件事情存在
+
+↓
+
+為什麼？
+
+↓
+
+必須有充分理由
+
+↓
+
+追問：
+
+「為什麼是這樣？」
+
+「為什麼不是另一種情況？」
+
+</div>
+
+</section>
+
+
+<!-- 8 -->
+
+<section>
+
+<h2>八、從「充分理由」追問世界</h2>
+
+<div class="question">
+
+為什麼這棵樹存在？
+</div>
+
+<div class="question">
+
+為什麼這個世界存在？
+</div>
+
+<div class="question">
+
+為什麼宇宙是這種形式？
+</div>
+
+<div class="question">
+
+為什麼不是完全不同的宇宙？
+</div>
+
+<div class="question">
+
+為什麼會有「存在」，而不是「虛無」？
+</div>
+
+<div class="quote">
+
+最後一個問題，
+成為萊布尼茲哲學最深刻的問題之一。
+
+</div>
+
+</section>
+
+
+<!-- 9 -->
+
+<section id="monad">
+
+<h2>九、什麼是「單子」？</h2>
+
+<div class="big">
+
+Monad｜單子
+
+</div>
+
+<p>
+
+萊布尼茲認為，
+世界最根本的實在不是普通物質微粒，
+而是一種不可再分割的基本實體：
+
+<strong>單子。</strong>
+
+</p>
+
+<div class="formula">
+
+世界
+
+↓
+
+不是單純由「物質顆粒」構成
+
+↓
+
+而是由無數「單子」構成
+
+↓
+
+每一個單子都是一個獨特的中心
+
+</div>
+
+</section>
+
+
+<!-- 10 -->
+
+<section>
+
+<h2>十、單子有什麼特徵？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>不可分割</h3>
+
+<p>
+單子不是普通的物質小粒子，
+而是形上學上的簡單實體。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>各自獨特</h3>
+
+<p>
+沒有兩個完全相同的單子。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>具有內在狀態</h3>
+
+<p>
+每個單子都有自己的知覺與變化。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>沒有真正的外在互動</h3>
+
+<p>
+單子之間不是像撞球一樣直接互相推動。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>反映宇宙</h3>
+
+<p>
+每個單子都以自己的方式表現整個宇宙。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>具有發展</h3>
+
+<p>
+單子的狀態會按照自身內在原則展開。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 11 -->
+
+<section>
+
+<h2>十一、「沒有窗戶的單子」</h2>
+
+<div class="quote">
+
+萊布尼茲有一個著名的說法：
+
+<strong>
+
+「單子沒有窗戶。」
+
+</strong>
+
+</div>
+
+<p>
+
+意思不是說單子真的住在房子裡，
+而是：
+
+</p>
+
+<div class="formula">
+
+單子
+
+↓
+
+不是靠外部東西直接改變自己
+
+↓
+
+每個單子依照自身內在原則發展
+
+</div>
+
+</section>
+
+
+<!-- 12 -->
+
+<section>
+
+<h2>十二、每個單子都是一個「觀點」</h2>
+
+<p>
+
+可以把單子想像成：
+
+<strong>從不同位置觀看同一個世界的觀察者。</strong>
+
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+同一個宇宙
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+單子 A
+<br>
+一種觀點
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+單子 B
+<br>
+另一種觀點
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+單子 C
+<br>
+又一種觀點
+</div>
+
+</div>
+
+<p>
+
+每個單子都以不同程度反映整個宇宙。
+
+</p>
+
+</section>
+
+
+<!-- 13 -->
+
+<section id="harmony">
+
+<h2>十三、如果單子互不直接作用，世界怎麼協調？</h2>
+
+<div class="big">
+
+預定和諧
+
+<br>
+
+Pre-established Harmony
+
+</div>
+
+<p>
+
+這是萊布尼茲最著名的思想之一。
+
+</p>
+
+<div class="formula">
+
+單子 A
+
+↓
+
+按照自己的內在程序運作
+
+<br><br>
+
+單子 B
+
+↓
+
+按照自己的內在程序運作
+
+<br><br>
+
+單子 C
+
+↓
+
+按照自己的內在程序運作
+
+<br><br>
+
+但三者彼此協調
+
+↓
+
+因為它們從一開始就被安排在同一套秩序中
+
+</div>
+
+</section>
+
+
+<!-- 14 -->
+
+<section>
+
+<h2>十四、用兩只鐘理解「預定和諧」</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>鐘 A</h3>
+
+<p>
+
+它自己運作，
+每一秒按照自己的機械結構走。
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>鐘 B</h3>
+
+<p>
+
+它也自己運作，
+但時間卻與鐘 A 完全一致。
+
+</p>
+
+</div>
+
+</div>
+
+<p>
+
+這不是：
+
+<strong>A 推動 B。</strong>
+
+</p>
+
+<p>
+
+而是：
+
+<strong>
+
+兩個鐘從一開始就被精確調校，
+所以始終保持同步。
+
+</strong>
+
+</p>
+
+</section>
+
+
+<!-- 15 -->
+
+<section id="mindbody">
+
+<h2>十五、心與身的問題</h2>
+
+<p>
+
+笛卡兒提出：
+
+<strong>心靈與身體是兩種不同的實體，
+那麼兩者究竟如何互動？</strong>
+
+</p>
+
+<p>
+
+萊布尼茲的回答：
+
+</p>
+
+<div class="formula">
+
+心靈
+
+↓
+
+按照自己的內在狀態變化
+
+<br>
+
+身體
+
+↓
+
+按照自己的物理規律變化
+
+<br><br>
+
+兩者看起來彼此影響
+
+↓
+
+實際上
+
+↓
+
+彼此按照預定和諧同步
+
+</div>
+
+</section>
+
+
+<!-- 16 -->
+
+<section>
+
+<h2>十六、心身問題的三種經典回答</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>哲學家</th>
+<th>基本立場</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>笛卡兒</td>
+<td>心靈與身體是不同實體，存在互動問題。</td>
+</tr>
+
+<tr>
+<td>斯賓諾莎</td>
+<td>心與身是同一實體的不同屬性。</td>
+</tr>
+
+<tr>
+<td>萊布尼茲</td>
+<td>心與身是不同系列，靠預定和諧保持同步。</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 17 -->
+
+<section id="bestworld">
+
+<h2>十七、「最佳可能世界」</h2>
+
+<div class="big">
+
+這真的是一個「完美」的世界嗎？
+
+</div>
+
+<p>
+
+萊布尼茲認為，
+上帝是全知、全能、全善的。
+
+如果上帝創造世界，
+那麼這個世界應該是：
+
+<strong>
+
+所有可能世界中最適合實現整體善的世界。
+
+</strong>
+
+</p>
+
+</section>
+
+
+<!-- 18 -->
+
+<section>
+
+<h2>十八、「最佳世界」不是「沒有壞事」</h2>
+
+<div class="quote">
+
+重要：
+
+<strong>
+
+「最佳可能世界」並不等於「沒有痛苦、罪惡或災難的世界」。
+
+</strong>
+
+</div>
+
+<p>
+
+萊布尼茲認為，
+局部看似不好的事，
+可能在整體秩序中具有某種理由。
+
+</p>
+
+<div class="formula">
+
+局部
+
+↓
+
+看見痛苦／缺陷
+
+↓
+
+整體
+
+↓
+
+更大的秩序與善
+
+</div>
+
+</section>
+
+
+<!-- 19 -->
+
+<section>
+
+<h2>十九、著名的「樂觀主義」問題</h2>
+
+<p>
+
+萊布尼茲的思想常被稱為：
+
+<strong>哲學樂觀主義。</strong>
+
+</p>
+
+<p>
+
+但這種樂觀並不是：
+
+「世界上沒有問題。」
+
+</p>
+
+<p>
+
+而是：
+
+<strong>
+
+「即使存在惡與缺陷，
+整體宇宙仍可能具有充分理由與合理秩序。」
+
+</strong>
+
+</p>
+
+</section>
+
+
+<!-- 20 -->
+
+<section id="god">
+
+<h2>二十、萊布尼茲與上帝</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>全知</h3>
+
+<p>
+知道所有可能性。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>全能</h3>
+
+<p>
+具有實現世界的能力。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>全善</h3>
+
+<p>
+選擇最好的整體秩序。
+</p>
+
+</div>
+
+</div>
+
+<div class="formula">
+
+無限多可能世界
+
+↓
+
+上帝知道所有可能世界
+
+↓
+
+上帝選擇
+
+↓
+
+最適合整體善的世界
+
+</div>
+
+</section>
+
+
+<!-- 21 -->
+
+<section>
+
+<h2>二十一、為什麼「存在」而不是「虛無」？</h2>
+
+<div class="big">
+
+「為什麼有世界？」
+
+</div>
+
+<p>
+
+如果世界不是必然存在，
+那麼它存在的理由在哪裡？
+
+</p>
+
+<div class="formula">
+
+世界存在
+
+↓
+
+它不是邏輯上必然的
+
+↓
+
+因此需要充分理由
+
+↓
+
+不能只在世界內尋找
+
+↓
+
+最終理由
+
+↓
+
+上帝／必然存在者
+
+</div>
+
+</section>
+
+
+<!-- 22 -->
+
+<section id="math">
+
+<h2>二十二、萊布尼茲也是偉大的數學家</h2>
+
+<p>
+
+萊布尼茲與牛頓分別發展了微積分，
+並因此在數學史上留下重要地位。
+
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>微分</h3>
+
+<p>
+研究變化率。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>積分</h3>
+
+<p>
+研究累積與面積。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>符號</h3>
+
+<p>
+許多現代微積分符號與記法受到他的工作影響。
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+
+萊布尼茲的哲學與數學有一個共同特色：
+
+<strong>
+
+相信複雜現象可以透過清楚的結構與符號加以分析。
+
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- 23 -->
+
+<section>
+
+<h2>二十三、二進位與計算思想</h2>
+
+<p>
+
+萊布尼茲研究二進位數系，
+即只使用：
+
+</p>
+
+<div class="big">
+
+0 ＋ 1
+
+</div>
+
+<div class="formula">
+
+十進位
+
+↓
+
+0～9
+
+<br><br>
+
+二進位
+
+↓
+
+0、1
+
+<br><br>
+
+現代數位電腦
+
+↓
+
+以二進位為核心
+
+</div>
+
+<p>
+
+因此萊布尼茲在計算思想史上也具有重要地位。
+
+</p>
+
+</section>
+
+
+<!-- 24 -->
+
+<section id="logic">
+
+<h2>二十四、萊布尼茲與「通用語言」</h2>
+
+<p>
+
+萊布尼茲曾設想：
+
+是否可以建立一種精確的符號語言，
+把思想轉化成計算？
+
+</p>
+
+<div class="formula">
+
+概念
+
+↓
+
+符號
+
+↓
+
+規則
+
+↓
+
+計算
+
+↓
+
+解決爭論
+
+</div>
+
+<div class="quote">
+
+他的夢想之一是：
+
+<strong>
+
+讓哲學爭論變得像數學計算一樣精確。
+
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- 25 -->
+
+<section>
+
+<h2>二十五、萊布尼茲的「理性計算」夢想</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+定義概念
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+建立符號
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+制定規則
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+進行推理
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+得到結論
+</div>
+
+</div>
+
+<p>
+
+這種想法與後來的形式邏輯、符號邏輯，
+甚至計算科學的發展具有某種思想上的呼應。
+
+</p>
+
+</section>
+
+
+<!-- 26 -->
+
+<section>
+
+<h2>二十六、萊布尼茲的「同一律」</h2>
+
+<p>
+
+萊布尼茲提出：
+
+<strong>不可分辨者同一原理。</strong>
+
+</p>
+
+<div class="formula">
+
+如果 A 與 B
+
+在所有性質上完全相同
+
+↓
+
+那麼
+
+A = B
+
+</div>
+
+<p>
+
+也就是說，
+宇宙中不存在兩個在所有方面都完全不可區分的個體。
+
+</p>
+
+</section>
+
+
+<!-- 27 -->
+
+<section>
+
+<h2>二十七、萊布尼茲的世界觀</h2>
+
+<div class="formula">
+
+上帝
+
+↓
+
+無限多可能世界
+
+↓
+
+選擇最佳可能世界
+
+↓
+
+預定和諧
+
+↓
+
+無限多單子
+
+↓
+
+每個單子反映宇宙
+
+↓
+
+形成我們所經驗的世界
+
+</div>
+
+</section>
+
+
+<!-- 28 -->
+
+<section>
+
+<h2>二十八、笛卡兒 → 斯賓諾莎 → 萊布尼茲</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>哲學家</th>
+<th>核心概念</th>
+<th>世界觀</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>笛卡兒</td>
+
+<td>我思、心物二元論</td>
+
+<td>心靈與物質兩種實體</td>
+
+</tr>
+
+<tr>
+
+<td>斯賓諾莎</td>
+
+<td>唯一實體</td>
+
+<td>萬物是同一實體的樣態</td>
+
+</tr>
+
+<tr>
+
+<td>萊布尼茲</td>
+
+<td>單子</td>
+
+<td>無數單子構成多元宇宙</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 29 -->
+
+<section>
+
+<h2>二十九、三位理性主義者的世界</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+
+笛卡兒
+
+<br>
+
+兩種實體
+
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+
+斯賓諾莎
+
+<br>
+
+一種實體
+
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+
+萊布尼茲
+
+<br>
+
+無數單子
+
+</div>
+
+</div>
+
+<div class="quote">
+
+三人的共同問題：
+
+<strong>
+
+「世界最根本的實在究竟是什麼？」
+
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- 30 -->
+
+<section>
+
+<h2>三十、萊布尼茲與經驗主義</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>問題</th>
+<th>理性主義</th>
+<th>經驗主義</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>知識來源</td>
+<td>重視理性</td>
+<td>重視經驗</td>
+</tr>
+
+<tr>
+<td>數學真理</td>
+<td>具有必然性</td>
+<td>不能完全由感官經驗解釋</td>
+</tr>
+
+<tr>
+<td>天賦觀念</td>
+<td>傾向肯定某種先天能力／結構</td>
+<td>強調經驗形成觀念</td>
+</tr>
+
+<tr>
+<td>代表人物</td>
+<td>笛卡兒、斯賓諾莎、萊布尼茲</td>
+<td>洛克、貝克萊、休謨</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 31 -->
+
+<section>
+
+<h2>三十一、萊布尼茲反對「心靈是一張白紙」</h2>
+
+<p>
+
+洛克著名地把心靈比喻為：
+
+<strong>白板（Tabula Rasa）</strong>
+
+</p>
+
+<p>
+
+萊布尼茲則認為，
+心靈並非完全被動地接受經驗。
+
+</p>
+
+<div class="formula">
+
+經驗
+
+＋
+
+心靈本身的結構與傾向
+
+↓
+
+知識
+
+</div>
+
+<p>
+
+這個問題後來將成為康德哲學的重要背景。
+
+</p>
+
+</section>
+
+
+<!-- 32 -->
+
+<section id="kant">
+
+<h2>三十二、萊布尼茲 → 康德</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+
+理性主義
+
+<br>
+笛卡兒
+<br>
+斯賓諾莎
+<br>
+萊布尼茲
+
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+
+經驗主義
+
+<br>
+洛克
+<br>
+貝克萊
+<br>
+休謨
+
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+
+康德
+
+<br>
+
+綜合兩者
+
+</div>
+
+</div>
+
+<p>
+
+康德後來面對的核心問題之一：
+
+<strong>
+
+知識究竟來自經驗，
+還是來自理性與心靈自身的結構？
+
+</strong>
+
+</p>
+
+</section>
+
+
+<!-- 33 -->
+
+<section>
+
+<h2>三十三、從萊布尼茲到康德的哲學問題</h2>
+
+<div class="formula">
+
+萊布尼茲
+
+↓
+
+理性具有獲得必然真理的能力
+
+↓
+
+但世界也包含經驗事實
+
+↓
+
+那麼：
+
+理性究竟能知道世界多少？
+
+↓
+
+休謨的懷疑
+
+↓
+
+康德
+
+↓
+
+「先驗」結構
+
+</div>
+
+</section>
+
+
+<!-- 34 -->
+
+<section id="timeline">
+
+<h2>三十四、萊布尼茲人生與思想時間軸</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h3>1646</h3>
+
+<p>
+
+出生於萊比錫。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1661</h3>
+
+<p>
+
+進入萊比錫大學學習。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1666</h3>
+
+<p>
+
+完成博士相關研究，
+開始更加廣泛地研究法律、哲學與數學。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1672</h3>
+
+<p>
+
+前往巴黎，
+接觸當時重要的科學與數學思想。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1676</h3>
+
+<p>
+
+在歐洲思想圈中持續發展自己的數學與哲學思想。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1686</h3>
+
+<p>
+
+發表〈形上學論〉，
+發展實體、充分理由等思想。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1710</h3>
+
+<p>
+
+出版《神義論》，
+系統討論上帝、惡與最佳可能世界。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1714</h3>
+
+<p>
+
+完成《單子論》，
+進一步闡述單子與宇宙秩序。
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>1716</h3>
+
+<p>
+
+於漢諾威去世。
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 35 -->
+
+<section>
+
+<h2>三十五、萊布尼茲的核心概念總整理</h2>
+
+<div class="keyword-box">
+
+<span class="keyword">理性主義</span>
+<span class="keyword">必然真理</span>
+<span class="keyword">事實真理</span>
+<span class="keyword">矛盾原理</span>
+<span class="keyword">充分理由律</span>
+<span class="keyword">單子</span>
+<span class="keyword">知覺</span>
+<span class="keyword">預定和諧</span>
+<span class="keyword">最佳可能世界</span>
+<span class="keyword">上帝</span>
+<span class="keyword">不可分辨者同一</span>
+<span class="keyword">微積分</span>
+<span class="keyword">二進位</span>
+<span class="keyword">符號邏輯</span>
+
+</div>
+
+</section>
+
+
+<!-- 36 -->
+
+<section>
+
+<h2>三十六、一張圖看懂萊布尼茲</h2>
+
+<div class="formula">
+
+「為什麼有世界？」
+
+↓
+
+充分理由律
+
+↓
+
+世界不是必然存在
+
+↓
+
+必須有最終理由
+
+↓
+
+上帝
+
+↓
+
+無限多可能世界
+
+↓
+
+選擇最佳可能世界
+
+↓
+
+無限多單子
+
+↓
+
+每個單子反映宇宙
+
+↓
+
+單子彼此不直接作用
+
+↓
+
+預定和諧
+
+↓
+
+形成統一而有秩序的世界
+
+</div>
+
+</section>
+
+
+<!-- 37 -->
+
+<section>
+
+<h2>三十七、萊布尼茲最重要的三個問題</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>問題一</h3>
+
+<p>
+<strong>
+「為什麼有某個東西，而不是什麼都沒有？」
+</strong>
+</p>
+
+<p>
+→ 充分理由律
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>問題二</h3>
+
+<p>
+<strong>
+「世界最基本的實在是什麼？」
+</strong>
+</p>
+
+<p>
+→ 單子論
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>問題三</h3>
+
+<p>
+<strong>
+「世界為什麼能夠保持秩序？」
+</strong>
+</p>
+
+<p>
+→ 預定和諧
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 38 -->
+
+<section>
+
+<h2>三十八、把萊布尼茲放進西方哲學史</h2>
+
+<div class="formula">
+
+古希臘
+
+↓
+
+蘇格拉底
+
+↓
+
+柏拉圖
+
+↓
+
+亞里士多德
+
+↓
+
+中世紀哲學
+
+↓
+
+文藝復興
+
+↓
+
+科學革命
+
+↓
+
+笛卡兒
+
+↓
+
+斯賓諾莎
+
+↓
+
+<strong>萊布尼茲</strong>
+
+↓
+
+洛克
+
+↓
+
+休謨
+
+↓
+
+<strong>康德</strong>
+
+↓
+
+德意志觀念論
+
+↓
+
+存在主義
+
+</div>
+
+</section>
+
+
+<!-- 39 -->
+
+<section>
+
+<h2>三十九、亞里士多德 × 笛卡兒 × 萊布尼茲</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>哲學家</th>
+<th>核心問題</th>
+<th>世界觀</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>亞里士多德</td>
+<td>事物是什麼？如何變化？</td>
+<td>形式、質料、四因、潛能與現實。</td>
+</tr>
+
+<tr>
+<td>笛卡兒</td>
+<td>如何找到絕對確定的知識？</td>
+<td>我思、心靈與物質。</td>
+</tr>
+
+<tr>
+<td>萊布尼茲</td>
+<td>世界為什麼存在？世界如何保持秩序？</td>
+<td>單子、充分理由、預定和諧。</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 40 -->
+
+<section>
+
+<h2>四十、課堂思考題</h2>
+
+<div class="question">
+<strong>問題一：</strong>
+什麼是「理性主義」？萊布尼茲為什麼屬於理性主義？
+</div>
+
+<div class="question">
+<strong>問題二：</strong>
+「充分理由律」是在說什麼？
+</div>
+
+<div class="question">
+<strong>問題三：</strong>
+什麼是「單子」？它與普通的物質粒子有什麼不同？
+</div>
+
+<div class="question">
+<strong>問題四：</strong>
+為什麼萊布尼茲說「單子沒有窗戶」？
+</div>
+
+<div class="question">
+<strong>問題五：</strong>
+什麼是「預定和諧」？請用兩個生活中的例子說明。
+</div>
+
+<div class="question">
+<strong>問題六：</strong>
+「最佳可能世界」是否代表「世界沒有邪惡」？
+</div>
+
+<div class="question">
+<strong>問題七：</strong>
+萊布尼茲與洛克對「天賦觀念」的看法有什麼不同？
+</div>
+
+<div class="question">
+<strong>問題八：</strong>
+為什麼萊布尼茲的哲學可以看成笛卡兒與斯賓諾莎之後理性主義的重要發展？
+</div>
+
+<div class="question">
+<strong>問題九：</strong>
+如果世界上的每件事都有充分理由，
+那麼「自由意志」還存在嗎？
+</div>
+
+</section>
+
+
+<!-- 41 -->
+
+<section class="hero">
+
+<h2>四十一、萊布尼茲留給後世的問題</h2>
+
+<div class="formula">
+
+為什麼有世界？
+
+<br><br>
+
+世界由什麼構成？
+
+<br><br>
+
+為什麼世界具有秩序？
+
+<br><br>
+
+心靈與身體如何一致？
+
+<br><br>
+
+必然真理從何而來？
+
+<br><br>
+
+如果世界不是唯一可能的，
+
+那麼：
+
+<strong>
+
+「為什麼偏偏是這個世界？」
+
+</strong>
+
+</div>
+
+<div class="big">
+
+從「我思」走向「為什麼有存在？」
+</div>
+
+<p>
+
+萊布尼茲把17世紀的理性主義推向一個高度系統化的形上學世界。
+
+</p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>萊布尼茲｜Gottfried Wilhelm Leibniz</p>
+
+<p>
+理性主義 · 單子論 · 充分理由 · 預定和諧 · 最佳可能世界
+</p>
+
+</footer>
+
+
+</body>
+</html>
