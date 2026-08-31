@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>法國大革命｜教學互動時間軸</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#f4f6f8;
+    color:#263238;
+    line-height:1.8;
+}
+
+/* =========================
+   Header
+========================= */
+
+header{
+    background:linear-gradient(135deg,#263238,#455a64);
+    color:white;
+    text-align:center;
+    padding:75px 20px 65px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.2rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:15px 0 0;
+}
+
+header .sub{
+    margin-top:20px;
+    font-size:.95rem;
+    opacity:.85;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #d5dadd;
+}
+
+nav ul{
+    max-width:1250px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 15px;
+    text-decoration:none;
+    color:#37474f;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#eceff1;
+}
+
+/* =========================
+   Main
+========================= */
+
+main{
+    max-width:1250px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(30,50,60,.08);
+}
+
+h2{
+    color:#37474f;
+    border-left:7px solid #607d8b;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#455a64;
+}
+
+strong{
+    color:#263238;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero{
+    background:#f5f7f8;
+    border:2px solid #cfd8dc;
+    text-align:center;
+}
+
+.hero .big{
+    font-size:1.7rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.quote{
+    background:#f1f5f7;
+    border-left:6px solid #607d8b;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+/* =========================
+   Definition
+========================= */
+
+.definition{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.definition-card{
+    padding:25px;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd;
+}
+
+.definition-card:first-child{
+    border-top:6px solid #78909c;
+}
+
+.definition-card:last-child{
+    border-top:6px solid #546e7a;
+}
+
+/* =========================
+   Timeline
+========================= */
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:65px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#b0bec5;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafafa;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #e0e4e6;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-54px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#607d8b;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #90a4ae;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 13px;
+    background:#546e7a;
+    color:white;
+    border-radius:20px;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+/* =========================
+   Grid
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafafa;
+    border-radius:15px;
+    padding:25px;
+    border:1px solid #ddd;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.icon{
+    font-size:2rem;
+}
+
+/* =========================
+   Flow
+========================= */
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#eceff1;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #cfd8dc;
+}
+
+.arrow{
+    font-size:1.5rem;
+    color:#607d8b;
+}
+
+/* =========================
+   People
+========================= */
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#37474f;
+}
+
+.person-role{
+    display:inline-block;
+    margin:8px 0;
+    padding:3px 10px;
+    border-radius:15px;
+    background:#eceff1;
+    font-size:.85rem;
+}
+
+/* =========================
+   Three Estates
+========================= */
+
+.estates{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.estate{
+    padding:28px;
+    text-align:center;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd;
+}
+
+.estate .number{
+    font-size:2.5rem;
+    font-weight:bold;
+    color:#455a64;
+}
+
+.estate h3{
+    margin-top:5px;
+}
+
+/* =========================
+   Political Groups
+========================= */
+
+.groups{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.group{
+    padding:22px;
+    background:#fafafa;
+    border-radius:14px;
+    border:1px solid #ddd;
+}
+
+.group h3{
+    margin-top:0;
+}
+
+/* =========================
+   Table
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:780px;
+}
+
+th{
+    background:#455a64;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+tr:hover{
+    background:#eceff1;
+}
+
+/* =========================
+   Revolution stages
+========================= */
+
+.stage{
+    background:#f5f7f8;
+    border:2px solid #cfd8dc;
+}
+
+.stage-number{
+    font-size:3rem;
+    font-weight:bold;
+    text-align:center;
+    color:#455a64;
+}
+
+/* =========================
+   Questions
+========================= */
+
+.question{
+    background:#f5f7f8;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #78909c;
+    border-radius:8px;
+}
+
+/* =========================
+   Summary
+========================= */
+
+.summary{
+    background:linear-gradient(135deg,#eceff1,#f8fafb);
+    border-top:7px solid #607d8b;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    text-align:center;
+    background:white;
+    padding:18px 10px;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:950px){
+
+    .grid,
+    .people,
+    .estates{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .groups{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.1rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .definition,
+    .grid,
+    .people,
+    .estates{
+        grid-template-columns:1fr;
+    }
+
+    .groups{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>法國大革命</h1>
+
+<p>French Revolution｜1789–1799</p>
+
+<div class="sub">
+從舊制度、啟蒙思想到共和國與拿破崙
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#what">什麼是革命</a></li>
+<li><a href="#background">革命背景</a></li>
+<li><a href="#estates">三級制度</a></li>
+<li><a href="#timeline">完整時間軸</a></li>
+<li><a href="#declaration">人權宣言</a></li>
+<li><a href="#groups">政治派別</a></li>
+<li><a href="#terror">恐怖統治</a></li>
+<li><a href="#napoleon">拿破崙</a></li>
+<li><a href="#legacy">歷史影響</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero">
+
+<h2>一、什麼是「法國大革命」？</h2>
+
+<div class="big">
+為什麼一個國家會從「國王統治」，走向「共和國」，最後又出現拿破崙？
+</div>
+
+<p>
+<strong>法國大革命</strong>
+通常指1789年開始、並在1790年代持續發展的一連串政治與社會革命。
+</p>
+
+<p>
+它不只是推翻一位國王，
+而是對法國原有的：
+<strong>政治、社會、法律、經濟與權力結構</strong>
+進行重大改變。
+</p>
+
+<div class="quote">
+法國大革命最重要的歷史問題之一：
+「一個國家究竟應該由誰統治？權力從哪裡來？」
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section>
+
+<h2>二、革命前的法國：舊制度 Ancien Régime</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>舊制度的特徵</h3>
+
+<ul>
+<li>君主擁有重要政治權力</li>
+<li>社會具有身分等級</li>
+<li>貴族與教士享有特權</li>
+<li>第三身分承擔大量稅負</li>
+<li>政治代表制度十分有限</li>
+</ul>
+
+</div>
+
+
+<div class="definition-card">
+
+<h3>革命者要求什麼？</h3>
+
+<ul>
+<li>法律上的平等</li>
+<li>人民政治參與</li>
+<li>限制君主權力</li>
+<li>改革稅制</li>
+<li>保障自由與權利</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 3 Estates -->
+
+<section id="estates">
+
+<h2>三、法國「三級身分」</h2>
+
+<p>
+革命前的法國社會通常被分為三個身分。
+</p>
+
+<div class="estates">
+
+<div class="estate">
+
+<div class="number">第一身分</div>
+
+<h3>教士</h3>
+
+<p>
+天主教會的神職人員。
+</p>
+
+<p>
+擁有相當程度的社會與經濟特權。
+</p>
+
+</div>
+
+
+<div class="estate">
+
+<div class="number">第二身分</div>
+
+<h3>貴族</h3>
+
+<p>
+貴族階層。
+</p>
+
+<p>
+擁有許多傳統特權，
+部分稅負較輕。
+</p>
+
+</div>
+
+
+<div class="estate">
+
+<div class="number">第三身分</div>
+
+<h3>平民</h3>
+
+<p>
+包括資產階級、城市居民、工匠與農民等。
+</p>
+
+<p>
+人口占絕大多數，
+但政治與身分特權相對有限。
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+第三身分並不是單純的「窮人」，
+其中也包括擁有財富與教育的資產階級。
+因此，法國革命同時具有社會階級、政治權力與財政問題。
+</div>
+
+</section>
+
+
+<!-- 4 Background -->
+
+<section id="background">
+
+<h2>四、法國大革命為什麼爆發？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">💰</div>
+
+<h3>① 財政危機</h3>
+
+<p>
+法國政府長期財政困難，
+國家債務沉重。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚔️</div>
+
+<h3>② 戰爭支出</h3>
+
+<p>
+法國參與多場大型戰爭，
+軍事支出進一步加重財政壓力。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌾</div>
+
+<h3>③ 糧食危機</h3>
+
+<p>
+1780年代後期農業與糧食問題，
+造成麵包價格上升與民眾生活困難。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚖️</div>
+
+<h3>④ 身分不平等</h3>
+
+<p>
+第三身分對傳統特權制度不滿。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">💡</div>
+
+<h3>⑤ 啟蒙思想</h3>
+
+<p>
+自由、平等、人民主權與權利等思想，
+提供了批判舊制度的新語言。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🇺🇸</div>
+
+<h3>⑥ 美國革命影響</h3>
+
+<p>
+法國參與美國獨立戰爭，
+也讓自由與憲政思想更加受到關注。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 5 Timeline -->
+
+<section id="timeline">
+
+<h2>五、法國大革命完整時間軸</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<span class="year">1774</span>
+
+<h3>① 路易十六即位</h3>
+
+<p>
+路易十六成為法國國王。
+</p>
+
+<p>
+此時法國已面臨嚴重的財政問題。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1788</span>
+
+<h3>② 財政與糧食危機惡化</h3>
+
+<p>
+政府財政問題越來越嚴重，
+同時糧食價格與民眾生活壓力上升。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年5月</span>
+
+<h3>③ 召開三級會議</h3>
+
+<p>
+路易十六召集三級會議，
+希望處理國家財政危機。
+</p>
+
+<p>
+但代表權與投票方式很快成為爭議核心。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年6月</span>
+
+<h3>④ 第三身分宣布成立國民議會</h3>
+
+<p>
+第三身分代表認為自己代表法國人民，
+因此宣布成立<strong>國民議會</strong>。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年6月20日</span>
+
+<h3>⑤ 網球場宣誓</h3>
+
+<p>
+代表們發誓：
+在法國制定憲法以前，
+不解散國民議會。
+</p>
+
+<p>
+這象徵政治權力逐漸從國王轉向「國民」。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年7月14日</span>
+
+<h3>⑥ 攻陷巴士底監獄</h3>
+
+<p>
+巴黎民眾攻占巴士底監獄。
+</p>
+
+<p>
+這一天後來成為法國國慶日，
+也是法國大革命最具象徵性的事件之一。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年夏</span>
+
+<h3>⑦ 農村動盪與「大恐慌」</h3>
+
+<p>
+農村地區出現恐慌與暴動，
+封建權利制度受到強烈衝擊。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年8月4日</span>
+
+<h3>⑧ 廢除封建特權</h3>
+
+<p>
+國民制憲議會宣布廢除許多封建特權。
+</p>
+
+<p>
+法國傳統身分制度開始受到根本性破壞。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年8月26日</span>
+
+<h3>⑨ 《人權與公民權宣言》</h3>
+
+<p>
+提出自由、平等、人民主權等重要原則。
+</p>
+
+<p>
+成為法國革命的重要思想與政治文件。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789年10月</span>
+
+<h3>⑩ 婦女向凡爾賽進軍</h3>
+
+<p>
+巴黎民眾前往凡爾賽，
+要求解決糧食與生活問題。
+</p>
+
+<p>
+國王與王后最後被迫移居巴黎。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1791</span>
+
+<h3>⑪ 法國憲法與君主立憲</h3>
+
+<p>
+法國建立君主立憲制度。
+</p>
+
+<p>
+國王仍然存在，
+但權力受到憲法限制。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1791年6月</span>
+
+<h3>⑫ 瓦倫逃亡事件</h3>
+
+<p>
+國王一家試圖逃離巴黎，
+但在瓦倫被攔截並帶回。
+</p>
+
+<p>
+事件嚴重破壞人民對國王的信任。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1792</span>
+
+<h3>⑬ 法國與歐洲君主國開戰</h3>
+
+<p>
+法國革命政府與奧地利等國發生戰爭。
+</p>
+
+<p>
+外國干涉使革命更加激進。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1792年8月10日</span>
+
+<h3>⑭ 攻打杜樂麗宮</h3>
+
+<p>
+巴黎民眾與革命力量攻擊王宮。
+</p>
+
+<p>
+君主制實際上走向崩潰。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1792年9月</span>
+
+<h3>⑮ 法國成立共和國</h3>
+
+<p>
+國民公會宣布廢除君主制，
+建立<strong>法蘭西第一共和國</strong>。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1793年1月</span>
+
+<h3>⑯ 路易十六被處決</h3>
+
+<p>
+前國王路易十六被送上斷頭台。
+</p>
+
+<p>
+革命與歐洲君主國的衝突進一步加劇。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1793–1794</span>
+
+<h3>⑰ 恐怖統治</h3>
+
+<p>
+革命政府面對內亂與外國戰爭，
+採取高度強硬的政治措施。
+</p>
+
+<p>
+羅伯斯比爾與公共安全委員會成為重要權力中心。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1794年7月</span>
+
+<h3>⑱ 熱月政變</h3>
+
+<p>
+羅伯斯比爾被推翻並處決。
+</p>
+
+<p>
+恐怖統治逐漸結束。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1795</span>
+
+<h3>⑲ 督政府成立</h3>
+
+<p>
+法國進入督政府時期。
+</p>
+
+<p>
+政治仍然不穩定，
+戰爭與經濟問題持續存在。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1799</span>
+
+<h3>⑳ 拿破崙政變</h3>
+
+<p>
+拿破崙發動<strong>霧月政變</strong>，
+推翻督政府。
+</p>
+
+<p>
+法國大革命通常以此作為重要終點。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 6 Declaration -->
+
+<section id="declaration">
+
+<h2>六、《人權與公民權宣言》：革命的核心思想</h2>
+
+<p>
+1789年8月26日通過的
+<strong>《人權與公民權宣言》</strong>
+是法國大革命最重要的政治文件之一。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>自由</h3>
+<p>
+個人具有基本自由。
+</p>
+</div>
+
+<div class="card">
+<h3>平等</h3>
+<p>
+法律上的身分平等成為重要原則。
+</p>
+</div>
+
+<div class="card">
+<h3>人民主權</h3>
+<p>
+政治權力的正當性來自國民。
+</p>
+</div>
+
+<div class="card">
+<h3>法律</h3>
+<p>
+法律應具有普遍性。
+</p>
+</div>
+
+<div class="card">
+<h3>財產權</h3>
+<p>
+私人財產受到保障。
+</p>
+</div>
+
+<div class="card">
+<h3>言論與思想</h3>
+<p>
+思想與表達自由成為重要政治理念。
+</p>
+</div>
+
+</div>
+
+<div class="quote">
+它的重要性在於：把啟蒙時代的政治思想，
+轉化成一份具體的政治宣言。
+</div>
+
+</section>
+
+
+<!-- 7 Political groups -->
+
+<section id="groups">
+
+<h2>七、革命中的主要政治力量</h2>
+
+<div class="groups">
+
+<div class="group">
+
+<h3>保守派／君主派</h3>
+
+<p>
+希望保留君主制度，
+反對革命過度激進。
+</p>
+
+</div>
+
+
+<div class="group">
+
+<h3>吉倫特派</h3>
+
+<p>
+傾向共和，
+但對革命激進化與群眾政治有所警惕。
+</p>
+
+</div>
+
+
+<div class="group">
+
+<h3>雅各賓派</h3>
+
+<p>
+革命中的激進派，
+羅伯斯比爾是重要人物。
+</p>
+
+</div>
+
+
+<div class="group">
+
+<h3>無套褲漢</h3>
+
+<p>
+巴黎激進民眾的重要政治力量，
+支持革命更加徹底。
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+注意：革命中的「派別」不是永遠固定不變，
+不同時期的政治聯盟會不斷變化。
+</div>
+
+</section>
+
+
+<!-- 8 Revolution stages -->
+
+<section class="stage">
+
+<h2>八、法國大革命可以分成哪些階段？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+1789
+<br>
+革命爆發
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1791
+<br>
+君主立憲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1792
+<br>
+共和國
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1793–94
+<br>
+恐怖統治
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1795
+<br>
+督政府
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1799
+<br>
+拿破崙
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 9 Terror -->
+
+<section id="terror">
+
+<h2>九、恐怖統治：為什麼革命會走向暴力？</h2>
+
+<p>
+1793～1794年，
+法國面臨外國戰爭、內部反革命與政治鬥爭。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>外部威脅</h3>
+<p>
+歐洲多個君主國與革命法國交戰。
+</p>
+</div>
+
+<div class="card">
+<h3>內部叛亂</h3>
+<p>
+部分地區反對巴黎革命政府。
+</p>
+</div>
+
+<div class="card">
+<h3>政治鬥爭</h3>
+<p>
+革命派內部也存在激烈的權力競爭。
+</p>
+</div>
+
+</div>
+
+<div class="quote">
+革命者開始認為：
+「為了保衛革命，可以採取非常手段。」
+這使革命從「爭取自由」逐漸出現大量政治暴力。
+</div>
+
+</section>
+
+
+<!-- 10 Robespierre -->
+
+<section>
+
+<h2>十、羅伯斯比爾：革命理想與政治暴力</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>革命理想</h3>
+
+<ul>
+<li>共和國</li>
+<li>公民平等</li>
+<li>反對君主制</li>
+<li>保衛革命</li>
+<li>政治道德</li>
+</ul>
+
+</div>
+
+<div class="definition-card">
+
+<h3>歷史爭議</h3>
+
+<ul>
+<li>革命法庭</li>
+<li>政治清洗</li>
+<li>大量處決</li>
+<li>恐怖統治</li>
+<li>革命與暴力的矛盾</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="quote">
+法國大革命提出自由與人權，
+卻同時出現恐怖統治。
+這正是研究革命時最值得思考的歷史矛盾之一。
+</div>
+
+</section>
+
+
+<!-- 11 Napoleon -->
+
+<section id="napoleon">
+
+<h2>十一、拿破崙：革命的終結，還是革命成果的延續？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+法國大革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+共和國
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+督政府
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+拿破崙政變
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+帝國
+</div>
+
+</div>
+
+<p>
+1799年拿破崙掌握政權，
+革命的政治階段進入新的時期。
+</p>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>延續革命成果</h3>
+
+<ul>
+<li>法律制度改革</li>
+<li>行政制度現代化</li>
+<li>能力取代部分身分特權</li>
+<li>《拿破崙法典》</li>
+</ul>
+
+</div>
+
+<div class="definition-card">
+
+<h3>背離革命理想</h3>
+
+<ul>
+<li>權力集中</li>
+<li>個人統治</li>
+<li>帝制建立</li>
+<li>政治自由受到限制</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="quote">
+因此，拿破崙是一個值得討論的問題：
+<strong>他究竟是法國大革命的終結者，還是革命成果的傳播者？</strong>
+</div>
+
+</section>
+
+
+<!-- 12 Comparison -->
+
+<section>
+
+<h2>十二、革命前後的法國</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>比較</th>
+<th>革命前</th>
+<th>革命後的重要變化</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>政治</td>
+<td>君主制</td>
+<td>君主立憲 → 共和國 → 新的政治制度</td>
+</tr>
+
+<tr>
+<td>社會</td>
+<td>身分與特權</td>
+<td>法律平等觀念提高</td>
+</tr>
+
+<tr>
+<td>權力來源</td>
+<td>君主與傳統</td>
+<td>人民主權觀念</td>
+</tr>
+
+<tr>
+<td>法律</td>
+<td>身分差異明顯</td>
+<td>法律普遍性受到重視</td>
+</tr>
+
+<tr>
+<td>思想</td>
+<td>傳統與君權</td>
+<td>自由、平等、權利</td>
+</tr>
+
+<tr>
+<td>國家</td>
+<td>王國</td>
+<td>民族國家與公民概念更加突出</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- 13 Legacy -->
+
+<section id="legacy">
+
+<h2>十三、法國大革命對世界的影響</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 自由</h3>
+<p>
+個人自由成為現代政治的重要價值。
+</p>
+</div>
+
+<div class="card">
+<h3>② 平等</h3>
+<p>
+法律上的身分平等逐漸成為重要原則。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 人權</h3>
+<p>
+人權思想逐漸成為現代政治的重要基礎。
+</p>
+</div>
+
+<div class="card">
+<h3>④ 民族主義</h3>
+<p>
+「國民」與「民族」的政治概念更加突出。
+</p>
+</div>
+
+<div class="card">
+<h3>⑤ 憲政</h3>
+<p>
+政府權力受到憲法與法律限制的觀念擴大。
+</p>
+</div>
+
+<div class="card">
+<h3>⑥ 革命政治</h3>
+<p>
+革命成為19世紀政治變革的重要模式之一。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 14 Big chain -->
+
+<section>
+
+<h2>十四、從文藝復興到法國大革命</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+理性
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+自由・權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+憲政實踐
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+<br>
+政治革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代政治
+<br>
+人權・民主
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 15 Contradiction -->
+
+<section>
+
+<h2>十五、法國大革命最大的歷史矛盾</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>革命的理想</h3>
+
+<div class="center-message">
+自由<br>
+平等<br>
+博愛
+</div>
+
+</div>
+
+<div class="definition-card">
+
+<h3>革命的現實</h3>
+
+<div class="center-message">
+戰爭<br>
+暴力<br>
+恐怖統治
+</div>
+
+</div>
+
+</div>
+
+<div class="quote">
+法國大革命提醒我們：
+<strong>
+「追求理想」與「如何實現理想」是兩個不同的問題。
+</strong>
+</div>
+
+</section>
+
+
+<!-- 16 Questions -->
+
+<section id="questions">
+
+<h2>十六、課堂思考題</h2>
+
+<div class="question">
+<strong>問題一：</strong>
+法國大革命究竟是「人民反抗君主」，還是「整個社會結構的改革」？
+</div>
+
+<div class="question">
+<strong>問題二：</strong>
+為什麼第三身分對舊制度如此不滿？
+</div>
+
+<div class="question">
+<strong>問題三：</strong>
+為什麼1789年的巴士底監獄事件具有如此重要的象徵意義？
+</div>
+
+<div class="question">
+<strong>問題四：</strong>
+《人權與公民權宣言》如何受到啟蒙思想影響？
+</div>
+
+<div class="question">
+<strong>問題五：</strong>
+為什麼法國會從君主立憲走向共和國？
+</div>
+
+<div class="question">
+<strong>問題六：</strong>
+為什麼革命會出現「恐怖統治」？
+</div>
+
+<div class="question">
+<strong>問題七：</strong>
+羅伯斯比爾是革命英雄、獨裁者，還是兩者兼具？
+</div>
+
+<div class="question">
+<strong>問題八：</strong>
+拿破崙是「終結革命」還是「保存革命成果」？
+</div>
+
+<div class="question">
+<strong>問題九：</strong>
+「自由、平等、博愛」三個價值，在現代社會是否仍然重要？
+</div>
+
+</section>
+
+
+<!-- 17 Summary -->
+
+<section class="summary">
+
+<h2>十七、一張圖理解法國大革命</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>舊制度</strong>
+君主・特權
+</div>
+
+<div class="summary-card">
+<strong>危機</strong>
+財政・糧食
+</div>
+
+<div class="summary-card">
+<strong>1789</strong>
+革命爆發
+</div>
+
+<div class="summary-card">
+<strong>人權宣言</strong>
+自由・平等
+</div>
+
+<div class="summary-card">
+<strong>共和國</strong>
+人民主權
+</div>
+
+<div class="summary-card">
+<strong>恐怖統治</strong>
+革命暴力
+</div>
+
+<div class="summary-card">
+<strong>督政府</strong>
+政治不穩
+</div>
+
+<div class="summary-card">
+<strong>拿破崙</strong>
+革命新階段
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+法國大革命可以濃縮成一條歷史主線：
+</strong>
+
+<br><br>
+
+「舊制度的危機
+→ 啟蒙思想
+→ 人民要求政治權利
+→ 推翻君主制
+→ 建立共和國
+→ 革命激進化
+→ 恐怖統治
+→ 政治反轉
+→ 拿破崙崛起」
+
+</div>
+
+<div class="center-message">
+
+而它留下的核心問題直到今天仍然存在：
+
+<br>
+
+「誰應該擁有權力？
+政府為什麼有權統治？
+人民應該擁有哪些不可被剝奪的權利？」
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>法國大革命｜教學互動時間軸</p>
+
+<p>
+French Revolution · Liberty · Equality · Citizenship · Republic
+</p>
+
+</footer>
+
+</body>
+</html>

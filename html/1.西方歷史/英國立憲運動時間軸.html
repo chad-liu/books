@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>美國獨立｜教學互動時間軸</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#f4f6f8;
+    color:#263238;
+    line-height:1.8;
+}
+
+/* ===== Header ===== */
+
+header{
+    background:linear-gradient(135deg,#263238,#455a64);
+    color:white;
+    text-align:center;
+    padding:75px 20px 65px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.2rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:15px 0 0;
+}
+
+header .sub{
+    margin-top:20px;
+    font-size:.95rem;
+    opacity:.85;
+}
+
+/* ===== Navigation ===== */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #d5dadd;
+}
+
+nav ul{
+    max-width:1250px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 15px;
+    text-decoration:none;
+    color:#37474f;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#eceff1;
+}
+
+/* ===== Main ===== */
+
+main{
+    max-width:1250px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(30,50,60,.08);
+}
+
+h2{
+    color:#37474f;
+    border-left:7px solid #607d8b;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#455a64;
+}
+
+strong{
+    color:#263238;
+}
+
+/* ===== Hero ===== */
+
+.hero{
+    background:#f5f7f8;
+    border:2px solid #cfd8dc;
+    text-align:center;
+}
+
+.hero .big{
+    font-size:1.7rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.quote{
+    background:#f1f5f7;
+    border-left:6px solid #607d8b;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+/* ===== Definition ===== */
+
+.definition{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.definition-card{
+    padding:25px;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd;
+}
+
+.definition-card:first-child{
+    border-top:6px solid #78909c;
+}
+
+.definition-card:last-child{
+    border-top:6px solid #546e7a;
+}
+
+/* ===== Timeline ===== */
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:65px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#b0bec5;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafafa;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #e0e4e6;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-54px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#607d8b;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #90a4ae;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 13px;
+    background:#546e7a;
+    color:white;
+    border-radius:20px;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+/* ===== Grid ===== */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafafa;
+    border-radius:15px;
+    padding:25px;
+    border:1px solid #ddd;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.icon{
+    font-size:2rem;
+}
+
+/* ===== Flow ===== */
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#eceff1;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #cfd8dc;
+}
+
+.arrow{
+    font-size:1.5rem;
+    color:#607d8b;
+}
+
+/* ===== People ===== */
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#37474f;
+}
+
+.person-role{
+    display:inline-block;
+    margin:8px 0;
+    padding:3px 10px;
+    border-radius:15px;
+    background:#eceff1;
+    font-size:.85rem;
+}
+
+/* ===== Colonies ===== */
+
+.colonies{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.colony{
+    padding:25px;
+    background:#fafafa;
+    border-radius:15px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+.number{
+    font-size:2.5rem;
+    font-weight:bold;
+    color:#455a64;
+}
+
+/* ===== Causes ===== */
+
+.cause{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.cause-card{
+    padding:25px;
+    background:#fafafa;
+    border-radius:15px;
+    border:1px solid #ddd;
+}
+
+/* ===== Table ===== */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:780px;
+}
+
+th{
+    background:#455a64;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+tr:hover{
+    background:#eceff1;
+}
+
+/* ===== Declaration ===== */
+
+.declaration{
+    font-size:1.2rem;
+    text-align:center;
+    padding:35px;
+    background:#f5f7f8;
+    border:2px solid #cfd8dc;
+    border-radius:15px;
+}
+
+.keyword{
+    display:inline-block;
+    padding:8px 16px;
+    margin:6px;
+    background:#eceff1;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+/* ===== Questions ===== */
+
+.question{
+    background:#f5f7f8;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #78909c;
+    border-radius:8px;
+}
+
+/* ===== Summary ===== */
+
+.summary{
+    background:linear-gradient(135deg,#eceff1,#f8fafb);
+    border-top:7px solid #607d8b;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    text-align:center;
+    background:white;
+    padding:18px 10px;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+/* ===== Footer ===== */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:950px){
+
+    .grid,
+    .people,
+    .colonies{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.1rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .definition,
+    .grid,
+    .people,
+    .colonies,
+    .cause{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .timeline{
+        padding-left:50px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>美國獨立</h1>
+
+<p>American Revolution｜1775–1783</p>
+
+<div class="sub">
+從十三殖民地、啟蒙思想到美利堅合眾國
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#what">什麼是美國獨立</a></li>
+<li><a href="#colonies">十三殖民地</a></li>
+<li><a href="#background">革命背景</a></li>
+<li><a href="#timeline">完整時間軸</a></li>
+<li><a href="#declaration">獨立宣言</a></li>
+<li><a href="#people">重要人物</a></li>
+<li><a href="#war">獨立戰爭</a></li>
+<li><a href="#constitution">憲法</a></li>
+<li><a href="#impact">歷史影響</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero">
+
+<h2>一、什麼是「美國獨立」？</h2>
+
+<div class="big">
+為什麼北美十三個英國殖民地，
+最後會脫離大英帝國，建立一個新的國家？
+</div>
+
+<p>
+<strong>美國獨立</strong>
+是18世紀後期北美十三個英國殖民地反抗英國統治，
+並最終建立美利堅合眾國的歷史過程。
+</p>
+
+<p>
+它不只是一次軍事戰爭，
+也是一場與
+<strong>代表權、人民主權、自由、稅收與政治權利</strong>
+有關的革命。
+</p>
+
+<div class="quote">
+核心問題：
+<strong>「政府是否必須得到人民同意，才具有正當性？」</strong>
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section id="colonies">
+
+<h2>二、北美十三殖民地</h2>
+
+<p>
+18世紀中葉，大西洋沿岸存在十三個主要英國殖民地。
+它們後來成為美國獨立運動的核心地區。
+</p>
+
+<div class="colonies">
+
+<div class="colony">
+<div class="number">01</div>
+<h3>新罕布夏</h3>
+</div>
+
+<div class="colony">
+<div class="number">02</div>
+<h3>麻薩諸塞</h3>
+</div>
+
+<div class="colony">
+<div class="number">03</div>
+<h3>羅德島</h3>
+</div>
+
+<div class="colony">
+<div class="number">04</div>
+<h3>康乃狄克</h3>
+</div>
+
+<div class="colony">
+<div class="number">05</div>
+<h3>紐約</h3>
+</div>
+
+<div class="colony">
+<div class="number">06</div>
+<h3>新澤西</h3>
+</div>
+
+<div class="colony">
+<div class="number">07</div>
+<h3>賓夕法尼亞</h3>
+</div>
+
+<div class="colony">
+<div class="number">08</div>
+<h3>德拉瓦</h3>
+</div>
+
+<div class="colony">
+<div class="number">09</div>
+<h3>馬里蘭</h3>
+</div>
+
+<div class="colony">
+<div class="number">10</div>
+<h3>維吉尼亞</h3>
+</div>
+
+<div class="colony">
+<div class="number">11</div>
+<h3>北卡羅來納</h3>
+</div>
+
+<div class="colony">
+<div class="number">12</div>
+<h3>南卡羅來納</h3>
+</div>
+
+<div class="colony">
+<div class="number">13</div>
+<h3>喬治亞</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 3 -->
+
+<section id="background">
+
+<h2>三、美國獨立的背景</h2>
+
+<div class="cause">
+
+<div class="cause-card">
+
+<h3>① 七年戰爭後的財政問題</h3>
+
+<p>
+英國在七年戰爭後背負大量債務，
+希望殖民地分擔帝國防衛成本。
+</p>
+
+</div>
+
+
+<div class="cause-card">
+
+<h3>② 稅收問題</h3>
+
+<p>
+英國陸續對殖民地徵收新的稅項，
+引起殖民地居民強烈反彈。
+</p>
+
+</div>
+
+
+<div class="cause-card">
+
+<h3>③ 「無代表，不納稅」</h3>
+
+<p>
+殖民地居民認為：
+自己沒有在英國國會中獲得適當代表，
+因此反對由英國國會直接對殖民地課稅。
+</p>
+
+</div>
+
+
+<div class="cause-card">
+
+<h3>④ 殖民地自治傳統</h3>
+
+<p>
+殖民地已經發展出自己的議會與地方政治制度，
+因此對倫敦加強控制感到不滿。
+</p>
+
+</div>
+
+
+<div class="cause-card">
+
+<h3>⑤ 啟蒙思想</h3>
+
+<p>
+洛克等思想家的自然權利、
+社會契約與人民同意思想，
+提供了反抗專制統治的理論基礎。
+</p>
+
+</div>
+
+
+<div class="cause-card">
+
+<h3>⑥ 英國與殖民地的利益衝突</h3>
+
+<p>
+殖民地希望擴大自主權，
+英國則希望維持帝國的統一與控制。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 4 -->
+
+<section>
+
+<h2>四、革命導火線：從「課稅」到「反抗」</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+七年戰爭
+<br>
+1756–1763
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+英國財政壓力
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+殖民地課稅
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+殖民地抗議
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+政治衝突
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+獨立革命
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 5 Timeline -->
+
+<section id="timeline">
+
+<h2>五、美國獨立完整時間軸</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<span class="year">1763</span>
+
+<h3>① 七年戰爭結束</h3>
+
+<p>
+英法在北美等地的長期戰爭結束。
+</p>
+
+<p>
+英國取得更大的帝國版圖，
+但同時背負沉重的戰爭債務。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1765</span>
+
+<h3>② 印花稅法</h3>
+
+<p>
+英國對殖民地的印刷品徵收印花稅。
+</p>
+
+<p>
+殖民地抗議「沒有代表權卻被課稅」。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1767</span>
+
+<h3>③ 唐森德法案</h3>
+
+<p>
+英國對殖民地進口商品徵收新的關稅。
+</p>
+
+<p>
+殖民地抵制英國商品。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1770</span>
+
+<h3>④ 波士頓屠殺事件</h3>
+
+<p>
+英軍與殖民地居民衝突，
+造成數名殖民地居民死亡。
+</p>
+
+<p>
+事件被殖民地反英勢力廣泛宣傳。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1773</span>
+
+<h3>⑤ 波士頓茶黨事件</h3>
+
+<p>
+殖民地抗議英國茶葉政策，
+部分抗議者將茶葉倒入波士頓港。
+</p>
+
+<p>
+英國隨後採取更嚴厲的措施。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1774</span>
+
+<h3>⑥ 第一屆大陸會議</h3>
+
+<p>
+殖民地代表共同討論如何回應英國政策。
+</p>
+
+<p>
+殖民地之間的合作開始加強。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1775年4月</span>
+
+<h3>⑦ 列星頓與康科德戰役</h3>
+
+<p>
+英軍與殖民地民兵發生武裝衝突。
+</p>
+
+<p>
+美國獨立戰爭正式爆發。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1775年5月</span>
+
+<h3>⑧ 第二屆大陸會議</h3>
+
+<p>
+殖民地代表再次集會，
+並逐漸建立統一的革命政府架構。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1775</span>
+
+<h3>⑨ 華盛頓成為大陸軍總司令</h3>
+
+<p>
+喬治・華盛頓被任命為大陸軍總司令。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1776年7月4日</span>
+
+<h3>⑩ 《獨立宣言》</h3>
+
+<p>
+十三殖民地宣布脫離英國，
+成為獨立政治共同體。
+</p>
+
+<p>
+7月4日後來成為美國獨立紀念日。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1777</span>
+
+<h3>⑪ 薩拉托加戰役</h3>
+
+<p>
+美軍取得重要勝利。
+</p>
+
+<p>
+此戰有助於促使法國更加積極地支援美國革命。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1778</span>
+
+<h3>⑫ 法國正式參戰</h3>
+
+<p>
+法國與美國結盟，
+成為美國對抗英國的重要外援。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1781</span>
+
+<h3>⑬ 約克鎮戰役</h3>
+
+<p>
+美法聯軍迫使英軍重要部隊投降。
+</p>
+
+<p>
+成為獨立戰爭的關鍵轉折。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1783</span>
+
+<h3>⑭ 巴黎條約</h3>
+
+<p>
+英國正式承認美國獨立。
+</p>
+
+<p>
+美國獨立戰爭正式結束。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1787</span>
+
+<h3>⑮ 美國憲法制定</h3>
+
+<p>
+代表們制定新的聯邦憲法，
+建立較完整的聯邦政府架構。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789</span>
+
+<h3>⑯ 新政府開始運作</h3>
+
+<p>
+喬治・華盛頓成為美國第一任總統。
+</p>
+
+<p>
+美國開始進入新的共和國政治階段。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 6 Declaration -->
+
+<section id="declaration">
+
+<h2>六、《美國獨立宣言》</h2>
+
+<div class="declaration">
+
+<p>
+1776年7月4日，
+第二屆大陸會議通過《獨立宣言》。
+</p>
+
+<p>
+其思想受到自然權利與啟蒙思想的重要影響。
+</p>
+
+<div>
+
+<span class="keyword">生命</span>
+<span class="keyword">自由</span>
+<span class="keyword">追求幸福</span>
+<span class="keyword">人民同意</span>
+<span class="keyword">反抗暴政</span>
+
+</div>
+
+</div>
+
+<div class="quote">
+《獨立宣言》的重要性不只是「宣布獨立」，
+更在於它提出：
+<strong>政府存在的目的，是保障人民的基本權利。</strong>
+</div>
+
+</section>
+
+
+<!-- 7 Locke -->
+
+<section>
+
+<h2>七、約翰・洛克與美國獨立</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>洛克的思想</h3>
+
+<ul>
+<li>自然權利</li>
+<li>生命權</li>
+<li>自由權</li>
+<li>財產權</li>
+<li>社會契約</li>
+<li>人民同意</li>
+<li>反抗暴政的權利</li>
+</ul>
+
+</div>
+
+<div class="definition-card">
+
+<h3>美國革命的政治語言</h3>
+
+<ul>
+<li>自由</li>
+<li>人民主權</li>
+<li>共和政府</li>
+<li>代表制度</li>
+<li>權利保障</li>
+<li>限制政府權力</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+洛克
+<br>
+自然權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙思想
+<br>
+人民同意
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國革命
+<br>
+獨立宣言
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+憲法
+<br>
+限制政府
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 8 People -->
+
+<section id="people">
+
+<h2>八、美國獨立的重要人物</h2>
+
+<div class="people">
+
+<div class="person">
+
+<div class="person-name">喬治・華盛頓</div>
+
+<div class="person-role">軍事領袖・第一任總統</div>
+
+<p>
+大陸軍總司令。
+</p>
+
+<p>
+帶領殖民地軍隊對抗英軍，
+後來成為美國第一任總統。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">湯瑪斯・傑佛遜</div>
+
+<div class="person-role">《獨立宣言》主要起草者</div>
+
+<p>
+1776年《獨立宣言》的主要起草者之一。
+</p>
+
+<p>
+將自然權利與人民主權思想轉化為政治宣言。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">班傑明・富蘭克林</div>
+
+<div class="person-role">外交家・思想家</div>
+
+<p>
+在法國積極爭取外交與軍事援助。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">約翰・亞當斯</div>
+
+<div class="person-role">革命政治人物</div>
+
+<p>
+支持殖民地獨立，
+也是美國建國的重要政治人物。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">亞歷山大・漢密爾頓</div>
+
+<div class="person-role">建國政治人物</div>
+
+<p>
+參與革命與後來的聯邦政府建設，
+支持強而有力的聯邦政府。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">喬治三世</div>
+
+<div class="person-role">英國國王</div>
+
+<p>
+美國革命時期的英國君主。
+</p>
+
+<p>
+殖民地反抗者將英國王權視為政治衝突的重要象徵。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 9 War -->
+
+<section id="war">
+
+<h2>九、美國獨立戰爭：為什麼弱小殖民地能獲勝？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>① 地理因素</h3>
+
+<p>
+北美幅員廣大，
+英軍遠離本土作戰。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>② 地方民兵</h3>
+
+<p>
+殖民地具有地方武裝與民兵傳統。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>③ 法國援助</h3>
+
+<p>
+法國提供軍事、海軍與財政支援，
+對戰爭結果非常重要。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>④ 華盛頓的領導</h3>
+
+<p>
+美軍在困難環境下維持軍隊，
+並持續作戰。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>⑤ 英國戰略困難</h3>
+
+<p>
+英國需要跨越大西洋維持龐大軍事行動。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>⑥ 國際局勢</h3>
+
+<p>
+英國的歐洲敵手增加，
+使英國承受更大戰略壓力。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 10 Treaty -->
+
+<section>
+
+<h2>十、1783年：巴黎條約</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+1775
+<br>
+戰爭爆發
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1776
+<br>
+宣布獨立
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1777
+<br>
+薩拉托加
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1778
+<br>
+法國參戰
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1781
+<br>
+約克鎮
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+1783
+<br>
+英國承認獨立
+</div>
+
+</div>
+
+<p>
+1783年的巴黎條約正式確認美國獨立。
+</p>
+
+</section>
+
+
+<!-- 11 Constitution -->
+
+<section id="constitution">
+
+<h2>十一、獨立之後：美國為什麼還需要一部憲法？</h2>
+
+<p>
+獨立並不代表新國家已經穩定。
+</p>
+
+<div class="cause">
+
+<div class="cause-card">
+
+<h3>聯邦政府力量不足</h3>
+
+<p>
+早期邦聯制度下，
+中央政府權力較弱。
+</p>
+
+</div>
+
+<div class="cause-card">
+
+<h3>財政問題</h3>
+
+<p>
+政府需要穩定的財政與徵稅能力。
+</p>
+
+</div>
+
+<div class="cause-card">
+
+<h3>州與中央的關係</h3>
+
+<p>
+需要重新設計中央政府與各州之間的權力分配。
+</p>
+
+</div>
+
+<div class="cause-card">
+
+<h3>權力制衡</h3>
+
+<p>
+如何避免新的政府再次變成專制政府？
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 12 Constitution -->
+
+<section>
+
+<h2>十二、美國憲法：如何限制政府權力？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>立法權</h3>
+
+<p>
+國會制定法律。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>行政權</h3>
+
+<p>
+總統執行法律與領導行政機關。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>司法權</h3>
+
+<p>
+法院負責司法審判與憲法解釋。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>分權</h3>
+
+<p>
+不同政府部門掌握不同權力。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>制衡</h3>
+
+<p>
+不同權力彼此限制，
+避免權力過度集中。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>聯邦制度</h3>
+
+<p>
+中央政府與各州共同分享政治權力。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 13 Contradiction -->
+
+<section>
+
+<h2>十三、美國獨立的歷史矛盾</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>革命提出的理想</h3>
+
+<ul>
+<li>人人生而平等</li>
+<li>生命與自由</li>
+<li>人民主權</li>
+<li>政府應得到人民同意</li>
+</ul>
+
+</div>
+
+<div class="definition-card">
+
+<h3>當時的現實</h3>
+
+<ul>
+<li>奴隸制度仍然存在</li>
+<li>女性沒有完整政治權利</li>
+<li>原住民族受到壓迫與土地擴張影響</li>
+<li>政治權利並非真正普及</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="quote">
+這是教授美國獨立時非常重要的問題：
+<strong>
+「革命宣言中的『人人』，當時究竟包括哪些人？」
+</strong>
+</div>
+
+</section>
+
+
+<!-- 14 France -->
+
+<section>
+
+<h2>十四、美國獨立與法國大革命</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+啟蒙思想
+<br>
+洛克
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+1776
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國憲法
+<br>
+1787
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+<br>
+1789
+</div>
+
+</div>
+
+<div class="quote">
+美國獨立與法國大革命並不是彼此孤立的事件。
+它們都受到18世紀啟蒙思想影響，
+也彼此產生影響。
+</div>
+
+</section>
+
+
+<!-- 15 Comparison -->
+
+<section>
+
+<h2>十五、美國獨立 vs. 法國大革命</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>比較</th>
+<th>美國獨立</th>
+<th>法國大革命</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>時間</td>
+<td>約1775–1783</td>
+<td>約1789–1799</td>
+</tr>
+
+<tr>
+<td>主要問題</td>
+<td>殖民地與英國的政治衝突</td>
+<td>法國內部的政治與社會革命</td>
+</tr>
+
+<tr>
+<td>主要敵人</td>
+<td>英國政府與軍隊</td>
+<td>舊制度、君主制及革命內部的政治對手</td>
+</tr>
+
+<tr>
+<td>核心思想</td>
+<td>自由、代表權、人民同意</td>
+<td>自由、平等、人民主權</td>
+</tr>
+
+<tr>
+<td>結果</td>
+<td>建立美國</td>
+<td>君主制崩潰、共和國建立、拿破崙崛起</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- 16 Impact -->
+
+<section id="impact">
+
+<h2>十六、美國獨立的世界歷史影響</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 共和制度</h3>
+<p>
+提供近代共和政治的重要案例。
+</p>
+</div>
+
+<div class="card">
+<h3>② 成文憲法</h3>
+<p>
+1787年美國憲法成為近代成文憲法的重要歷史案例。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 人民主權</h3>
+<p>
+強化政府權力來自人民同意的政治觀念。
+</p>
+</div>
+
+<div class="card">
+<h3>④ 啟蒙思想實踐</h3>
+<p>
+把自然權利與人民同意等思想轉化成政治制度。
+</p>
+</div>
+
+<div class="card">
+<h3>⑤ 法國革命</h3>
+<p>
+法國曾援助美國革命，
+法國革命者也受到美國革命經驗影響。
+</p>
+</div>
+
+<div class="card">
+<h3>⑥ 近代民族國家</h3>
+<p>
+美國的建立成為近代民族國家發展的重要案例。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 17 Big Chain -->
+
+<section>
+
+<h2>十七、從文藝復興到美國獨立</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+理性
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+自然權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+洛克
+<br>
+人民同意
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+1776
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+憲法
+<br>
+1787
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+<br>
+1789
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 18 Questions -->
+
+<section id="questions">
+
+<h2>十八、課堂思考題</h2>
+
+<div class="question">
+<strong>問題一：</strong>
+為什麼英國在七年戰爭後開始加強對北美殖民地的課稅？
+</div>
+
+<div class="question">
+<strong>問題二：</strong>
+「無代表，不納稅」真正反映的是什麼政治問題？
+</div>
+
+<div class="question">
+<strong>問題三：</strong>
+波士頓茶黨事件為什麼會成為革命的重要象徵？
+</div>
+
+<div class="question">
+<strong>問題四：</strong>
+《獨立宣言》如何受到洛克自然權利思想影響？
+</div>
+
+<div class="question">
+<strong>問題五：</strong>
+美國為什麼能在軍事力量較弱的情況下獲得獨立？
+</div>
+
+<div class="question">
+<strong>問題六：</strong>
+法國為什麼願意支援美國革命？
+</div>
+
+<div class="question">
+<strong>問題七：</strong>
+美國革命所說的「人人平等」，
+是否真的適用於當時所有人？
+</div>
+
+<div class="question">
+<strong>問題八：</strong>
+為什麼美國獨立後還需要制定憲法？
+</div>
+
+<div class="question">
+<strong>問題九：</strong>
+美國獨立與法國大革命有什麼共同點？
+</div>
+
+</section>
+
+
+<!-- 19 Summary -->
+
+<section class="summary">
+
+<h2>十九、一張圖理解美國獨立</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>七年戰爭</strong>
+英國債務
+</div>
+
+<div class="summary-card">
+<strong>課稅</strong>
+殖民地反抗
+</div>
+
+<div class="summary-card">
+<strong>代表權</strong>
+無代表不納稅
+</div>
+
+<div class="summary-card">
+<strong>1775</strong>
+戰爭爆發
+</div>
+
+<div class="summary-card">
+<strong>1776</strong>
+獨立宣言
+</div>
+
+<div class="summary-card">
+<strong>1778</strong>
+法國援助
+</div>
+
+<div class="summary-card">
+<strong>1781</strong>
+約克鎮
+</div>
+
+<div class="summary-card">
+<strong>1783</strong>
+正式獨立
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+美國獨立可以濃縮成一條歷史主線：
+</strong>
+
+<br><br>
+
+「英國帝國財政危機
+→ 殖民地課稅
+→ 代表權爭議
+→ 啟蒙思想
+→ 殖民地反抗
+→ 獨立戰爭
+→ 《獨立宣言》
+→ 法國援助
+→ 英國承認獨立
+→ 憲法與共和國」
+
+</div>
+
+<div class="declaration">
+
+<h3>最核心的三個關鍵詞</h3>
+
+<span class="keyword">自由</span>
+<span class="keyword">人民主權</span>
+<span class="keyword">憲政</span>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>美國獨立｜世界史教學互動時間軸</p>
+
+<p>
+American Revolution · Independence · Enlightenment · Constitution
+</p>
+
+</footer>
+
+</body>
+</html>

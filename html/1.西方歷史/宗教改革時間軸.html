@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>宗教改革｜世界史教學互動 HTML</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#f4f1eb;
+    color:#332d28;
+    line-height:1.8;
+}
+
+header{
+    background:linear-gradient(135deg,#3e2723,#6d4c41);
+    color:white;
+    text-align:center;
+    padding:75px 20px 65px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.2rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.25rem;
+    margin:15px 0 0;
+}
+
+header .sub{
+    margin-top:18px;
+    opacity:.85;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #d6cec5;
+}
+
+nav ul{
+    max-width:1250px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 15px;
+    color:#4e342e;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#efebe9;
+}
+
+main{
+    max-width:1250px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(70,50,35,.08);
+}
+
+h2{
+    color:#4e342e;
+    border-left:7px solid #8d6e63;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#5d4037;
+}
+
+strong{
+    color:#3e2723;
+}
+
+.hero{
+    background:#faf7f2;
+    border:2px solid #d7ccc2;
+    text-align:center;
+}
+
+.hero .big{
+    font-size:1.65rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.quote{
+    background:#f5f1ec;
+    border-left:6px solid #8d6e63;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+.definition{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.definition-card{
+    padding:25px;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd4cc;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafafa;
+    border-radius:15px;
+    padding:25px;
+    border:1px solid #ddd4cc;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:65px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#c7b8ac;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafafa;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #ded5cd;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-54px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#795548;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #a1887f;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 13px;
+    background:#6d4c41;
+    color:white;
+    border-radius:20px;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#efebe9;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #d7ccc8;
+}
+
+.arrow{
+    font-size:1.5rem;
+    color:#795548;
+}
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fafafa;
+    border:1px solid #ddd4cc;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#4e342e;
+}
+
+.person-role{
+    display:inline-block;
+    margin:8px 0;
+    padding:3px 10px;
+    border-radius:15px;
+    background:#efebe9;
+    font-size:.85rem;
+}
+
+.reform-box{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.reform-card{
+    padding:25px;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd4cc;
+}
+
+.keyword{
+    display:inline-block;
+    padding:8px 16px;
+    margin:6px;
+    background:#efebe9;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.declaration{
+    text-align:center;
+    padding:35px;
+    background:#f7f3ee;
+    border:2px solid #d7ccc2;
+    border-radius:15px;
+}
+
+.question{
+    background:#f7f3ee;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #8d6e63;
+    border-radius:8px;
+}
+
+.summary{
+    background:linear-gradient(135deg,#eee8e1,#faf8f5);
+    border-top:7px solid #795548;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    text-align:center;
+    background:white;
+    padding:18px 10px;
+    border-radius:12px;
+    border:1px solid #ddd4cc;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#5d4037;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+footer{
+    background:#3e2723;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+@media(max-width:950px){
+
+    .grid,
+    .people{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.1rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .definition,
+    .grid,
+    .people,
+    .reform-box{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .timeline{
+        padding-left:50px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>宗教改革</h1>
+
+<p>Reformation｜16世紀歐洲宗教與社會的巨大轉變</p>
+
+<div class="sub">
+從教會改革、馬丁・路德，到新教世界的形成
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+<li><a href="#what">什麼是宗教改革</a></li>
+<li><a href="#background">時代背景</a></li>
+<li><a href="#causes">改革原因</a></li>
+<li><a href="#luther">馬丁・路德</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#branches">宗教改革分支</a></li>
+<li><a href="#catholic">天主教改革</a></li>
+<li><a href="#impact">歷史影響</a></li>
+<li><a href="#thinking">思考題</a></li>
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero">
+
+<h2>一、什麼是「宗教改革」？</h2>
+
+<div class="big">
+16世紀歐洲，
+為什麼西方基督教世界會發生劇烈分裂？
+</div>
+
+<p>
+<strong>宗教改革</strong>
+是16世紀開始於西歐的一系列宗教、政治與社會變革。
+</p>
+
+<p>
+改革者批評當時天主教會的部分制度與實踐，
+主張回到《聖經》與早期基督教信仰，
+並重新思考：
+<strong>「人如何獲得救贖？」</strong>
+以及
+<strong>「教會與國家、人民之間應該是什麼關係？」</strong>
+</p>
+
+<div class="quote">
+宗教改革不只是「宗教問題」，
+它同時改變了<strong>政治、經濟、教育、文化與歐洲國際關係</strong>。
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section id="background">
+
+<h2>二、宗教改革前的歐洲</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>① 天主教會</h3>
+
+<p>
+西歐大部分地區信奉天主教。
+教宗在宗教與政治上具有重要影響力。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>② 教會組織龐大</h3>
+
+<p>
+教宗、主教、神父與修道院構成複雜的教會體系。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>③ 教會掌握大量土地</h3>
+
+<p>
+教會是中世紀歐洲重要的土地擁有者與經濟力量。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>④ 宗教生活的重要性</h3>
+
+<p>
+宗教深刻影響出生、婚姻、死亡、教育與日常生活。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑤ 拉丁文教育</h3>
+
+<p>
+《聖經》與神學教育主要以拉丁文進行，
+一般民眾接觸宗教經典的能力有限。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑥ 教會內部也存在改革聲音</h3>
+
+<p>
+宗教改革並非突然出現，
+中世紀後期已經存在批評教會與要求改革的思想。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 3 -->
+
+<section id="causes">
+
+<h2>三、宗教改革為什麼會發生？</h2>
+
+<div class="reform-box">
+
+<div class="reform-card">
+
+<h3>① 教會腐敗與改革要求</h3>
+
+<p>
+部分神職人員的生活與行為受到批評，
+教會內部也有人要求改革。
+</p>
+
+</div>
+
+<div class="reform-card">
+
+<h3>② 贖罪券問題</h3>
+
+<p>
+贖罪券的販售與宣傳方式，
+成為宗教改革最著名的導火線之一。
+</p>
+
+</div>
+
+<div class="reform-card">
+
+<h3>③ 人文主義</h3>
+
+<p>
+文藝復興的人文主義者強調回到古典文獻原典，
+也促進了對宗教文本的重新研究。
+</p>
+
+</div>
+
+<div class="reform-card">
+
+<h3>④ 印刷術</h3>
+
+<p>
+活字印刷使宗教文章、聖經與改革思想能快速傳播。
+</p>
+
+</div>
+
+<div class="reform-card">
+
+<h3>⑤ 王權與國家力量</h3>
+
+<p>
+一些君主希望降低教宗對本國政治與經濟的影響。
+</p>
+
+</div>
+
+<div class="reform-card">
+
+<h3>⑥ 民族與地方利益</h3>
+
+<p>
+不同地區的政治與經濟利益，
+也使宗教改革獲得地方支持。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 4 -->
+
+<section>
+
+<h2>四、最重要的導火線：贖罪券</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+教會財政需求
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+推廣贖罪券
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教與道德爭議
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+馬丁・路德批判
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+</div>
+
+</div>
+
+<div class="quote">
+需要注意：
+<strong>
+贖罪券並不等於「花錢買罪免除」這麼簡單，
+但當時部分贖罪券的推廣方式確實引發強烈爭議。
+</strong>
+</div>
+
+</section>
+
+
+<!-- 5 Luther -->
+
+<section id="luther">
+
+<h2>五、馬丁・路德：宗教改革的關鍵人物</h2>
+
+<div class="people">
+
+<div class="person">
+
+<div class="person-name">
+馬丁・路德
+</div>
+
+<div class="person-role">
+Martin Luther
+</div>
+
+<p>
+德意志地區的神學家與修士。
+</p>
+
+<p>
+1517年提出著名的
+<strong>《九十五條論綱》</strong>，
+批評贖罪券等問題。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+約翰・加爾文
+</div>
+
+<div class="person-role">
+John Calvin
+</div>
+
+<p>
+日內瓦宗教改革的重要人物。
+</p>
+
+<p>
+強調上帝主權、
+預定論與嚴格的宗教生活。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+亨利八世
+</div>
+
+<div class="person-role">
+英格蘭國王
+</div>
+
+<p>
+英格蘭宗教改革的重要政治人物。
+</p>
+
+<p>
+英格蘭教會與羅馬教廷分離，
+形成英國國教的重要歷史背景。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 6 Timeline -->
+
+<section id="timeline">
+
+<h2>六、宗教改革完整時間軸</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<span class="year">約1450</span>
+
+<h3>① 古騰堡印刷術興起</h3>
+
+<p>
+活字印刷大幅降低書籍複製成本，
+為後來宗教思想的快速傳播提供技術條件。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1517</span>
+
+<h3>② 路德提出《九十五條論綱》</h3>
+
+<p>
+馬丁・路德公開批評贖罪券相關問題。
+</p>
+
+<p>
+這一年通常被視為宗教改革的重要起點。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1520</span>
+
+<h3>③ 路德與教廷關係惡化</h3>
+
+<p>
+路德公開挑戰教廷權威，
+最終與羅馬教會決裂。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1521</span>
+
+<h3>④ 沃木斯帝國議會</h3>
+
+<p>
+路德被要求撤回自己的主張。
+</p>
+
+<p>
+他拒絕放棄改革立場，
+之後受到帝國禁令。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1520s–1530s</span>
+
+<h3>⑤ 路德宗逐漸形成</h3>
+
+<p>
+路德的思想在德意志部分地區及北歐傳播。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1534</span>
+
+<h3>⑥ 英格蘭與羅馬教廷分離</h3>
+
+<p>
+英格蘭國王亨利八世時期，
+英格蘭教會逐漸脫離羅馬教廷控制。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1540</span>
+
+<h3>⑦ 耶穌會獲正式承認</h3>
+
+<p>
+耶穌會成為天主教改革的重要力量，
+積極投入教育與傳教。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1545–1563</span>
+
+<h3>⑧ 特倫托大公會議</h3>
+
+<p>
+天主教會針對教義、神職制度與教會改革進行重要調整。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1555</span>
+
+<h3>⑨ 奧格斯堡和約</h3>
+
+<p>
+神聖羅馬帝國內部，
+承認部分地區選擇天主教或路德宗的合法性。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1560s</span>
+
+<h3>⑩ 加爾文宗影響擴大</h3>
+
+<p>
+加爾文宗在瑞士、法國、荷蘭、蘇格蘭等地產生影響。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1618–1648</span>
+
+<h3>⑪ 三十年戰爭</h3>
+
+<p>
+宗教、政治與國際權力衝突交織，
+最終成為歐洲大規模戰爭。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1648</span>
+
+<h3>⑫ 威斯特伐利亞和約</h3>
+
+<p>
+三十年戰爭結束，
+歐洲政治秩序進一步改變。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 7 -->
+
+<section id="branches">
+
+<h2>七、宗教改革形成哪些主要教派？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>路德宗</h3>
+
+<p>
+以馬丁・路德思想為基礎。
+</p>
+
+<p>
+主要在德意志北部、斯堪地那維亞等地發展。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>加爾文宗</h3>
+
+<p>
+以約翰・加爾文思想為核心。
+</p>
+
+<p>
+在瑞士、荷蘭、法國、蘇格蘭等地具有影響。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>英國國教</h3>
+
+<p>
+英格蘭教會與羅馬教廷分離後形成的重要宗教體系。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>再洗禮派</h3>
+
+<p>
+主張成年信徒受洗，
+並強調較徹底的宗教共同體生活。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>清教徒</h3>
+
+<p>
+英國新教內部要求進一步改革教會的一股力量。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>天主教</h3>
+
+<p>
+羅馬教會並未因宗教改革消失，
+而是進行自身改革與反宗教改革。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 8 -->
+
+<section>
+
+<h2>八、宗教改革的核心思想比較</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>問題</th>
+<th>天主教傳統</th>
+<th>宗教改革者的重要主張</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>權威來源</td>
+<td>《聖經》＋教會傳統＋教會權威</td>
+<td>強調《聖經》的最高權威</td>
+</tr>
+
+<tr>
+<td>救贖</td>
+<td>信仰與聖禮、善行等教會生活</td>
+<td>路德強調「因信稱義」</td>
+</tr>
+
+<tr>
+<td>教宗地位</td>
+<td>具有最高教會權威</td>
+<td>改革者否定教宗對所有基督徒的普遍最高權威</td>
+</tr>
+
+<tr>
+<td>聖禮</td>
+<td>七件聖事</td>
+<td>多數新教傳統主要承認洗禮與聖餐</td>
+</tr>
+
+<tr>
+<td>神職與信徒</td>
+<td>神職人員具有重要宗教角色</td>
+<td>強調信徒與上帝之間直接的信仰關係</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 9 -->
+
+<section>
+
+<h2>九、三大宗教改革路線</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+德意志
+<br>
+路德宗
+</div>
+
+<div class="arrow">＋</div>
+
+<div class="flow-item">
+瑞士
+<br>
+加爾文宗
+</div>
+
+<div class="arrow">＋</div>
+
+<div class="flow-item">
+英格蘭
+<br>
+英國國教
+</div>
+
+</div>
+
+<div class="quote">
+三條路線有共同的「改革」背景，
+但<strong>改革原因、政治環境與神學主張並不完全相同。</strong>
+</div>
+
+</section>
+
+
+<!-- 10 Catholic -->
+
+<section id="catholic">
+
+<h2>十、天主教改革：天主教如何回應？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>特倫托大公會議</h3>
+
+<p>
+1545–1563年舉行，
+釐清重要教義並推動教會內部改革。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>耶穌會</h3>
+
+<p>
+重視教育、神學與海外傳教，
+成為天主教改革的重要力量。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>神職教育</h3>
+
+<p>
+加強神職人員訓練與紀律，
+改善教會內部管理。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>宗教藝術</h3>
+
+<p>
+巴洛克藝術成為天主教文化的重要表現形式之一。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>海外傳教</h3>
+
+<p>
+天主教積極向亞洲、美洲與其他地區傳播。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>反宗教改革</h3>
+
+<p>
+天主教積極回應新教擴張，
+因此形成「天主教改革」與「反宗教改革」等歷史概念。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 11 -->
+
+<section>
+
+<h2>十一、印刷術：為什麼宗教改革能快速傳播？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+印刷術
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+大量印刷
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+聖經與宗教小冊
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+一般民眾閱讀
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+思想快速擴散
+</div>
+
+</div>
+
+<div class="quote">
+如果沒有印刷術，
+路德的思想很可能不會以如此快速的速度傳遍歐洲。
+</div>
+
+</section>
+
+
+<!-- 12 -->
+
+<section>
+
+<h2>十二、宗教改革與民族國家的形成</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>宗教層面</h3>
+
+<p>
+歐洲不再由單一西方教會完全統一。
+</p>
+
+</div>
+
+<div class="definition-card">
+
+<h3>政治層面</h3>
+
+<p>
+一些君主與地方政府取得更大的宗教與政治自主權。
+</p>
+
+</div>
+
+<div class="definition-card">
+
+<h3>文化層面</h3>
+
+<p>
+聖經翻譯成各地語言，
+地方語言與識字教育的重要性提高。
+</p>
+
+</div>
+
+<div class="definition-card">
+
+<h3>國際關係</h3>
+
+<p>
+宗教衝突與國家利益交織，
+形成長期戰爭與外交變化。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 13 -->
+
+<section>
+
+<h2>十三、宗教改革與教育</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>聖經閱讀</h3>
+<p>
+新教傳統重視信徒直接閱讀《聖經》。
+</p>
+</div>
+
+<div class="card">
+<h3>識字</h3>
+<p>
+閱讀宗教文本的需求促進識字教育。
+</p>
+</div>
+
+<div class="card">
+<h3>學校</h3>
+<p>
+宗教改革者與天主教改革者都重視教育。
+</p>
+</div>
+
+<div class="card">
+<h3>大學</h3>
+<p>
+神學與人文學術在歐洲大學持續發展。
+</p>
+</div>
+
+<div class="card">
+<h3>翻譯</h3>
+<p>
+宗教文本被大量翻譯成地方語言。
+</p>
+</div>
+
+<div class="card">
+<h3>出版</h3>
+<p>
+宗教書籍與小冊子的出版量增加。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 14 -->
+
+<section>
+
+<h2>十四、宗教改革與科學革命</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+<br>
+重新檢視權威
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+觀察與理性
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+理性與自然權利
+</div>
+
+</div>
+
+<p>
+需要注意：
+<strong>
+不能把宗教改革直接等同於科學革命的原因。
+</strong>
+</p>
+
+<p>
+但從更廣的思想史角度來看，
+16–17世紀歐洲確實出現了重新思考權威、
+文本、自然與人類理性的巨大變化。
+</p>
+
+</section>
+
+
+<!-- 15 -->
+
+<section>
+
+<h2>十五、從中世紀到近代：一條歷史主線</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+中世紀
+<br>
+教會主導
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+<br>
+教會分裂
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+理性探索
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+理性與權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+1776
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+<br>
+1789
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 16 -->
+
+<section id="impact">
+
+<h2>十六、宗教改革的歷史影響</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 基督教世界分裂</h3>
+<p>
+西方基督教形成天主教與多個新教傳統並存的局面。
+</p>
+</div>
+
+<div class="card">
+<h3>② 國家權力增強</h3>
+<p>
+部分國家與君主擺脫或降低羅馬教廷的控制。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 教育與識字</h3>
+<p>
+宗教文本閱讀與教育受到更高度重視。
+</p>
+</div>
+
+<div class="card">
+<h3>④ 印刷文化發展</h3>
+<p>
+宗教小冊、聖經與政治論述大量流通。
+</p>
+</div>
+
+<div class="card">
+<h3>⑤ 宗教戰爭</h3>
+<p>
+歐洲多地發生宗教與政治交織的衝突。
+</p>
+</div>
+
+<div class="card">
+<h3>⑥ 宗教多元化</h3>
+<p>
+歐洲逐漸形成不同基督教傳統並存的格局。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 17 -->
+
+<section>
+
+<h2>十七、宗教改革的歷史矛盾</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>改革帶來的新可能</h3>
+
+<ul>
+<li>宗教選擇增加</li>
+<li>地方語言使用增加</li>
+<li>閱讀與教育受到重視</li>
+<li>部分地區政治自主性提高</li>
+</ul>
+
+</div>
+
+<div class="definition-card">
+
+<h3>改革帶來的新衝突</h3>
+
+<ul>
+<li>宗教戰爭</li>
+<li>政治迫害</li>
+<li>教派衝突</li>
+<li>宗教不寬容仍然存在</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="quote">
+<strong>
+宗教改革並不是一條單純的「進步路線」，
+而是一場同時帶來自由、分裂、戰爭與政治重組的巨大歷史轉變。
+</strong>
+</div>
+
+</section>
+
+
+<!-- 18 -->
+
+<section>
+
+<h2>十八、宗教改革的重要人物與關鍵字</h2>
+
+<div class="declaration">
+
+<span class="keyword">馬丁・路德</span>
+<span class="keyword">約翰・加爾文</span>
+<span class="keyword">亨利八世</span>
+<span class="keyword">教宗</span>
+<span class="keyword">贖罪券</span>
+<span class="keyword">九十五條論綱</span>
+<span class="keyword">因信稱義</span>
+<span class="keyword">印刷術</span>
+<span class="keyword">特倫托會議</span>
+<span class="keyword">耶穌會</span>
+
+</div>
+
+</section>
+
+
+<!-- 19 -->
+
+<section id="thinking">
+
+<h2>十九、課堂思考題</h2>
+
+<div class="question">
+<strong>問題一：</strong>
+為什麼16世紀的歐洲會出現宗教改革？
+</div>
+
+<div class="question">
+<strong>問題二：</strong>
+贖罪券為什麼會成為宗教改革的導火線？
+</div>
+
+<div class="question">
+<strong>問題三：</strong>
+馬丁・路德為什麼敢於挑戰教宗的權威？
+</div>
+
+<div class="question">
+<strong>問題四：</strong>
+如果沒有印刷術，宗教改革可能成功嗎？
+</div>
+
+<div class="question">
+<strong>問題五：</strong>
+宗教改革是純粹的宗教事件，還是政治事件？
+為什麼？
+</div>
+
+<div class="question">
+<strong>問題六：</strong>
+為什麼一些歐洲君主支持宗教改革？
+</div>
+
+<div class="question">
+<strong>問題七：</strong>
+宗教改革如何影響教育與識字？
+</div>
+
+<div class="question">
+<strong>問題八：</strong>
+宗教改革與文藝復興有什麼關係？
+</div>
+
+<div class="question">
+<strong>問題九：</strong>
+宗教改革如何間接影響後來的科學革命與啟蒙運動？
+</div>
+
+</section>
+
+
+<!-- 20 -->
+
+<section class="summary">
+
+<h2>二十、一張圖理解宗教改革</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>文藝復興</strong>
+人文主義
+</div>
+
+<div class="summary-card">
+<strong>印刷術</strong>
+思想傳播
+</div>
+
+<div class="summary-card">
+<strong>教會問題</strong>
+改革要求
+</div>
+
+<div class="summary-card">
+<strong>1517</strong>
+路德
+</div>
+
+<div class="summary-card">
+<strong>新教</strong>
+形成
+</div>
+
+<div class="summary-card">
+<strong>天主教改革</strong>
+回應
+</div>
+
+<div class="summary-card">
+<strong>宗教戰爭</strong>
+政治衝突
+</div>
+
+<div class="summary-card">
+<strong>近代歐洲</strong>
+形成
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>最重要的歷史主線：</strong>
+
+<br><br>
+
+「文藝復興的人文主義
+→ 印刷術
+→ 教會改革要求
+→ 贖罪券爭議
+→ 1517年路德改革
+→ 新教形成
+→ 天主教改革
+→ 宗教戰爭
+→ 國家權力重新分配
+→ 近代歐洲形成」
+
+</div>
+
+<div class="declaration">
+
+<h3>理解宗教改革的五個關鍵詞</h3>
+
+<span class="keyword">信仰</span>
+<span class="keyword">權威</span>
+<span class="keyword">印刷</span>
+<span class="keyword">國家</span>
+<span class="keyword">改革</span>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>宗教改革｜世界史教學互動 HTML</p>
+
+<p>
+Reformation · Luther · Calvin · Catholic Reform · Early Modern Europe
+</p>
+
+</footer>
+
+</body>
+</html>

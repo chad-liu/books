@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>科學革命｜世界史教學互動 HTML</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#eef3f7;
+    color:#263238;
+    line-height:1.8;
+}
+
+header{
+    background:linear-gradient(135deg,#172b4d,#405a78);
+    color:white;
+    text-align:center;
+    padding:80px 20px 70px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.4rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:15px 0;
+}
+
+header .sub{
+    opacity:.85;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #cfd8dc;
+}
+
+nav ul{
+    max-width:1400px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 14px;
+    color:#37474f;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#eceff1;
+}
+
+main{
+    max-width:1350px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 22px rgba(30,50,70,.08);
+}
+
+h2{
+    color:#29496b;
+    border-left:7px solid #52789d;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#405a78;
+}
+
+.hero{
+    background:#f7fafc;
+    border:2px solid #c8d4df;
+    text-align:center;
+}
+
+.hero .big{
+    font-size:1.7rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.quote{
+    background:#f1f5f8;
+    border-left:6px solid #52789d;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafcfd;
+    border:1px solid #d8e0e6;
+    border-radius:15px;
+    padding:25px;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.box{
+    padding:25px;
+    background:#fafcfd;
+    border:1px solid #d8e0e6;
+    border-radius:15px;
+}
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:75px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:27px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#a9b9c8;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafcfd;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #d8e0e6;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-59px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#52789d;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #8da4b8;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 14px;
+    background:#405a78;
+    color:white;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:.9rem;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#edf2f6;
+    border:1px solid #ccd7e0;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    color:#52789d;
+    font-size:1.5rem;
+}
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fafcfd;
+    border:1px solid #d8e0e6;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.35rem;
+    font-weight:bold;
+    color:#29496b;
+}
+
+.person-role{
+    display:inline-block;
+    padding:3px 10px;
+    margin:8px 0;
+    background:#e8eef3;
+    border-radius:15px;
+    font-size:.85rem;
+}
+
+.keyword-box{
+    text-align:center;
+    padding:30px;
+    background:#f7fafc;
+    border:2px solid #c8d4df;
+    border-radius:15px;
+}
+
+.keyword{
+    display:inline-block;
+    padding:8px 17px;
+    margin:6px;
+    background:#e6edf3;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#405a78;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+.question{
+    background:#f5f8fa;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #6c8ba7;
+    border-radius:8px;
+}
+
+.summary{
+    background:linear-gradient(135deg,#e9f0f5,#f8fafb);
+    border-top:7px solid #52789d;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    background:white;
+    border:1px solid #d8e0e6;
+    padding:18px 10px;
+    text-align:center;
+    border-radius:12px;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+footer{
+    background:#172b4d;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+@media(max-width:1000px){
+
+    .grid,
+    .people{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.2rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .grid,
+    .people,
+    .two{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .timeline{
+        padding-left:50px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>科學革命</h1>
+
+<p>Scientific Revolution｜約16～17世紀</p>
+
+<div class="sub">
+從「相信權威」走向「觀察、實驗與理性」
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#what">什麼是科學革命</a></li>
+<li><a href="#background">時代背景</a></li>
+<li><a href="#before">革命之前</a></li>
+<li><a href="#people">重要人物</a></li>
+<li><a href="#heliocentric">日心說</a></li>
+<li><a href="#method">科學方法</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#impact">歷史影響</a></li>
+<li><a href="#enlightenment">啟蒙運動</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero">
+
+<h2>一、什麼是「科學革命」？</h2>
+
+<div class="big">
+人類開始用新的方式理解自然世界。
+</div>
+
+<p>
+<strong>科學革命</strong>
+通常指16～17世紀歐洲在天文學、物理學、
+數學、生物學與自然哲學等領域所發生的一系列重大變化。
+</p>
+
+<p>
+它的重要性不只是「發現更多科學知識」，
+而是改變了人類取得知識的方法。
+</p>
+
+<div class="quote">
+
+<strong>核心轉變：</strong>
+
+<br><br>
+
+從：
+
+「古代權威說什麼？」
+
+<br><br>
+
+走向：
+
+「自然現象實際上是什麼？
+我們能不能觀察、測量、實驗並證明？」
+
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section id="background">
+
+<h2>二、科學革命發生的時代背景</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+印刷術
+<br>
+知識傳播
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+地理大發現
+<br>
+新世界
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+<br>
+挑戰權威
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+新方法
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+理性思考
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 3 -->
+
+<section id="before">
+
+<h2>三、科學革命以前：人們如何理解世界？</h2>
+
+<div class="two">
+
+<div class="box">
+
+<h3>傳統自然觀</h3>
+
+<ul>
+
+<li>高度依賴古代權威</li>
+
+<li>亞里斯多德的自然哲學影響深遠</li>
+
+<li>托勒密的地心說長期占有重要地位</li>
+
+<li>自然哲學與神學關係密切</li>
+
+<li>對自然的觀察與數學模型尚未完全結合</li>
+
+</ul>
+
+</div>
+
+
+<div class="box">
+
+<h3>新的思考方式</h3>
+
+<ul>
+
+<li>直接觀察自然</li>
+
+<li>使用數學描述現象</li>
+
+<li>設計實驗</li>
+
+<li>利用儀器提高觀察能力</li>
+
+<li>以證據檢驗理論</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="quote">
+
+注意：
+
+<strong>
+科學革命並不是「以前的人完全不懂科學」，
+也不是「宗教突然被科學打敗」。
+</strong>
+
+<br><br>
+
+它是一個長期、複雜而且逐步累積的知識轉變過程。
+
+</div>
+
+</section>
+
+
+<!-- 4 -->
+
+<section id="people">
+
+<h2>四、科學革命的重要人物</h2>
+
+<div class="people">
+
+
+<div class="person">
+
+<div class="person-name">
+哥白尼
+</div>
+
+<div class="person-role">
+天文學
+</div>
+
+<p>
+提出以太陽為中心的宇宙模型，
+挑戰長期占主流地位的地心說。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+第谷・布拉赫
+</div>
+
+<div class="person-role">
+天文觀測
+</div>
+
+<p>
+進行大量精密天文觀測，
+為後來的開普勒提供重要資料。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+克卜勒
+</div>
+
+<div class="person-role">
+天文學・數學
+</div>
+
+<p>
+提出行星運動三大定律，
+指出行星軌道是橢圓。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+伽利略
+</div>
+
+<div class="person-role">
+物理學・天文學
+</div>
+
+<p>
+利用望遠鏡觀測天空，
+並研究自由落體、運動等問題。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+培根
+</div>
+
+<div class="person-role">
+科學方法
+</div>
+
+<p>
+強調經驗、觀察與歸納，
+對近代科學方法的形成產生影響。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+笛卡兒
+</div>
+
+<div class="person-role">
+理性主義
+</div>
+
+<p>
+強調理性、懷疑與數學方法，
+對近代思想產生重要影響。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+牛頓
+</div>
+
+<div class="person-role">
+物理學・數學
+</div>
+
+<p>
+建立經典力學的重要理論，
+將天體運動與地面物體運動納入同一套物理框架。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+哈維
+</div>
+
+<div class="person-role">
+醫學
+</div>
+
+<p>
+透過觀察與實驗研究血液循環，
+推進現代生理學發展。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+波以耳
+</div>
+
+<div class="person-role">
+化學
+</div>
+
+<p>
+推動以實驗為基礎的近代化學研究。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 5 -->
+
+<section id="heliocentric">
+
+<h2>五、從「地心說」到「日心說」</h2>
+
+<div class="two">
+
+<div class="box">
+
+<h3>地心說</h3>
+
+<p>
+傳統宇宙模型認為：
+</p>
+
+<div class="keyword-box">
+
+<span class="keyword">地球居中</span>
+<span class="keyword">天體繞地球運動</span>
+<span class="keyword">托勒密</span>
+
+</div>
+
+</div>
+
+
+<div class="box">
+
+<h3>日心說</h3>
+
+<p>
+哥白尼提出新的宇宙模型：
+</p>
+
+<div class="keyword-box">
+
+<span class="keyword">太陽居中心</span>
+<span class="keyword">地球運動</span>
+<span class="keyword">哥白尼</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="flow">
+
+<div class="flow-item">
+托勒密
+<br>
+地心模型
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+哥白尼
+<br>
+日心模型
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+第谷
+<br>
+精密觀測
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+克卜勒
+<br>
+行星定律
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+伽利略
+<br>
+望遠鏡觀測
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 6 -->
+
+<section>
+
+<h2>六、為什麼望遠鏡如此重要？</h2>
+
+<p>
+伽利略改良望遠鏡後，
+能觀察到肉眼無法看見的天體現象。
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>月球</h3>
+
+<p>
+觀察到月面並非完美光滑，
+而具有山脈與地形。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>木星衛星</h3>
+
+<p>
+發現木星周圍存在衛星，
+顯示並非所有天體都繞著地球運行。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>金星盈虧</h3>
+
+<p>
+觀察到金星的盈虧現象，
+支持新的太陽中心宇宙模型。
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+儀器的進步，
+讓人類「看見」以前看不見的自然現象。
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- 7 -->
+
+<section id="method">
+
+<h2>七、科學革命最大的改變：科學方法</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+提出問題
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+觀察
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+提出假說
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+實驗
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+測量
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+分析
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+驗證
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<h3>觀察</h3>
+
+<p>
+不只依靠書本，
+而是直接觀察自然現象。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>實驗</h3>
+
+<p>
+主動控制條件，
+測試某個假說是否成立。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>數學</h3>
+
+<p>
+利用數學建立精確的自然法則。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>證據</h3>
+
+<p>
+理論必須能接受觀察與實驗的檢驗。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>可重複</h3>
+
+<p>
+研究結果應盡可能能被其他研究者檢驗。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>修正</h3>
+
+<p>
+新的證據出現時，
+理論可以被修正甚至推翻。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 8 -->
+
+<section>
+
+<h2>八、牛頓：把天空與地面連在一起</h2>
+
+<div class="quote">
+
+<strong>
+牛頓的重要性，不只是發現一個公式，
+而是建立一個可以同時解釋天體與地面運動的物理體系。
+</strong>
+
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+伽利略
+<br>
+研究地面運動
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+克卜勒
+<br>
+研究行星運動
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+牛頓
+<br>
+萬有引力與運動定律
+</div>
+
+</div>
+
+
+<div class="keyword-box">
+
+<span class="keyword">運動三定律</span>
+<span class="keyword">萬有引力</span>
+<span class="keyword">數學化自然</span>
+<span class="keyword">經典力學</span>
+
+</div>
+
+</section>
+
+
+<!-- 9 -->
+
+<section>
+
+<h2>九、科學革命不是只有天文學</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>天文學</h3>
+
+<p>
+哥白尼、克卜勒、伽利略
+重新理解宇宙。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>物理學</h3>
+
+<p>
+伽利略與牛頓研究運動與力。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>醫學</h3>
+
+<p>
+哈維研究血液循環，
+推進人體生理學。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>化學</h3>
+
+<p>
+波以耳等人強調實驗與物質研究。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>數學</h3>
+
+<p>
+數學逐漸成為描述自然的重要工具。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>儀器</h3>
+
+<p>
+望遠鏡、顯微鏡等工具擴大人類觀察能力。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 10 -->
+
+<section id="timeline">
+
+<h2>十、科學革命時間軸</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<span class="year">1543</span>
+
+<h3>哥白尼《天體運行論》</h3>
+
+<p>
+提出以太陽為中心的宇宙模型。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1570–1601</span>
+
+<h3>第谷・布拉赫的天文觀測</h3>
+
+<p>
+累積大量精密天文資料。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1609–1619</span>
+
+<h3>克卜勒行星運動定律</h3>
+
+<p>
+逐步建立描述行星運動的數學規律。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1609–1610</span>
+
+<h3>伽利略望遠鏡觀測</h3>
+
+<p>
+觀察月球、木星衛星與金星盈虧等現象。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1620</span>
+
+<h3>培根《新工具》</h3>
+
+<p>
+強調觀察、實驗與歸納。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1637</span>
+
+<h3>笛卡兒《方法論》</h3>
+
+<p>
+強調理性與數學方法。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1628</span>
+
+<h3>哈維《心血運動論》</h3>
+
+<p>
+提出血液循環的重要理論。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1660</s</span>
+
+<h3>皇家學會成立</h3>
+
+<p>
+英國皇家學會成為近代科學社群的重要機構。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1660s</span>
+
+<h3>近代科學社群發展</h3>
+
+<p>
+科學研究逐漸形成學術社群、
+出版與交流制度。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1687</span>
+
+<h3>牛頓《自然哲學的數學原理》</h3>
+
+<p>
+建立經典力學與萬有引力的重要理論體系。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 11 -->
+
+<section>
+
+<h2>十一、科學革命與宗教：是「科學打敗宗教」嗎？</h2>
+
+<div class="two">
+
+<div class="box">
+
+<h3>簡化說法</h3>
+
+<p>
+「科學革命讓科學與宗教完全對立。」
+</p>
+
+</div>
+
+<div class="box">
+
+<h3>比較準確的理解</h3>
+
+<p>
+科學革命涉及不同人物、
+不同宗教背景、不同政治環境與不同類型的衝突。
+</p>
+
+<p>
+伽利略事件確實成為科學與教會關係的重要象徵，
+但不能把整個科學革命簡化成
+「科學 vs. 宗教」。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 12 -->
+
+<section>
+
+<h2>十二、科學革命與宗教改革的共同點</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>宗教改革</h3>
+
+<p>
+重新思考：
+</p>
+
+<strong>
+「宗教真理由誰解釋？」
+</strong>
+
+</div>
+
+<div class="card">
+
+<h3>科學革命</h3>
+
+<p>
+重新思考：
+</p>
+
+<strong>
+「自然真理由誰判斷？」
+</strong>
+
+</div>
+
+<div class="card">
+
+<h3>共同精神</h3>
+
+<p>
+挑戰單一權威，
+強調個人閱讀、觀察、思考與證據。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 13 -->
+
+<section id="enlightenment">
+
+<h2>十三、科學革命 → 啟蒙運動</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+科學革命
+<br>
+自然有規律
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+理性
+<br>
+人可以理解世界
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+理性檢驗社會
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+政治思想
+<br>
+自由與權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+1776
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+<br>
+1789
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+重要觀念轉變：
+</strong>
+
+<br><br>
+
+如果自然界可以透過理性與方法找到規律，
+那麼人類社會是否也可以透過理性重新設計？
+
+</div>
+
+</section>
+
+
+<!-- 14 -->
+
+<section>
+
+<h2>十四、從「自然法則」到「社會法則」</h2>
+
+<div class="two">
+
+<div class="box">
+
+<h3>科學革命</h3>
+
+<ul>
+
+<li>自然是否存在客觀規律？</li>
+
+<li>如何透過觀察發現規律？</li>
+
+<li>如何用數學描述自然？</li>
+
+<li>如何用實驗驗證理論？</li>
+
+</ul>
+
+</div>
+
+
+<div class="box">
+
+<h3>啟蒙思想</h3>
+
+<ul>
+
+<li>社會是否存在合理的制度？</li>
+
+<li>政府權力應如何限制？</li>
+
+<li>人是否擁有自然權利？</li>
+
+<li>政治制度能否透過理性重新設計？</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 15 -->
+
+<section>
+
+<h2>十五、科學革命帶來的世界觀變化</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>傳統世界觀</th>
+<th>科學革命後的新趨勢</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>依賴古代權威</td>
+<td>重視觀察與證據</td>
+</tr>
+
+<tr>
+<td>自然被視為具有固定目的</td>
+<td>尋找自然運作的規律</td>
+</tr>
+
+<tr>
+<td>自然哲學與神學高度結合</td>
+<td>自然研究逐漸專業化</td>
+</tr>
+
+<tr>
+<td>天體與地面世界有明顯區別</td>
+<td>牛頓力學將兩者納入共同法則</td>
+</tr>
+
+<tr>
+<td>知識主要依靠經典著作</td>
+<td>實驗、測量與數學的重要性提高</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 16 -->
+
+<section id="impact">
+
+<h2>十六、科學革命的歷史影響</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>① 科學方法</h3>
+
+<p>
+觀察、實驗、測量與數學逐漸成為近代科學的重要方法。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>② 現代科學</h3>
+
+<p>
+建立近代自然科學的重要基礎。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>③ 技術發展</h3>
+
+<p>
+科學知識與工程、航海、醫學等領域逐漸產生更密切的關係。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>④ 啟蒙運動</h3>
+
+<p>
+理性與科學成為啟蒙思想的重要精神來源。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑤ 世界觀改變</h3>
+
+<p>
+人類逐漸相信自然世界可以被理解、測量與解釋。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑥ 現代化</h3>
+
+<p>
+為後來的工業革命與現代科技社會提供重要知識基礎。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 17 -->
+
+<section>
+
+<h2>十七、科學革命 → 工業革命</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+科學革命
+<br>
+理解自然
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+數學與實驗
+<br>
+建立知識
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+工程技術
+<br>
+改造自然
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+工業革命
+<br>
+18世紀後期
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代科技社會
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 18 -->
+
+<section>
+
+<h2>十八、一條完整的近代世界史主線</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>文藝復興</strong>
+人文主義
+</div>
+
+<div class="summary-card">
+<strong>宗教改革</strong>
+挑戰教會權威
+</div>
+
+<div class="summary-card">
+<strong>科學革命</strong>
+理性與證據
+</div>
+
+<div class="summary-card">
+<strong>啟蒙運動</strong>
+理性與自由
+</div>
+
+<div class="summary-card">
+<strong>美國獨立</strong>
+1776
+</div>
+
+<div class="summary-card">
+<strong>法國大革命</strong>
+1789
+</div>
+
+<div class="summary-card">
+<strong>工業革命</strong>
+科技與生產
+</div>
+
+<div class="summary-card">
+<strong>現代世界</strong>
+科學・民主・工業
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+這條歷史線可以濃縮成：
+</strong>
+
+<br><br>
+
+「重新思考權威
+→ 重新理解自然
+→ 重新思考社會
+→ 重新設計政治
+→ 改變人類的生產與生活方式」
+
+</div>
+
+</section>
+
+
+<!-- 19 -->
+
+<section id="questions">
+
+<h2>十九、課堂思考題</h2>
+
+<div class="question">
+
+<strong>問題一：</strong>
+
+為什麼16～17世紀會出現科學革命？
+
+</div>
+
+<div class="question">
+
+<strong>問題二：</strong>
+
+哥白尼的日心說為什麼具有革命性？
+
+</div>
+
+<div class="question">
+
+<strong>問題三：</strong>
+
+為什麼伽利略的望遠鏡觀測具有重要意義？
+
+</div>
+
+<div class="question">
+
+<strong>問題四：</strong>
+
+科學革命真正改變的是「知識內容」還是「取得知識的方法」？
+
+</div>
+
+<div class="question">
+
+<strong>問題五：</strong>
+
+科學革命是否等於「科學打敗宗教」？
+
+為什麼？
+
+</div>
+
+<div class="question">
+
+<strong>問題六：</strong>
+
+牛頓為什麼被視為科學革命的重要總結者之一？
+
+</div>
+
+<div class="question">
+
+<strong>問題七：</strong>
+
+如果自然界存在可以被發現的規律，
+這種觀念為什麼可能影響啟蒙思想？
+
+</div>
+
+<div class="question">
+
+<strong>問題八：</strong>
+
+科學革命與後來的工業革命有什麼關係？
+
+</div>
+
+</section>
+
+
+<!-- 20 -->
+
+<section class="summary">
+
+<h2>二十、一張圖理解科學革命</h2>
+
+<div class="keyword-box">
+
+<span class="keyword">哥白尼</span>
+<span class="keyword">日心說</span>
+<span class="keyword">克卜勒</span>
+<span class="keyword">伽利略</span>
+<span class="keyword">培根</span>
+<span class="keyword">笛卡兒</span>
+<span class="keyword">牛頓</span>
+<span class="keyword">觀察</span>
+<span class="keyword">實驗</span>
+<span class="keyword">數學</span>
+<span class="keyword">證據</span>
+<span class="keyword">理性</span>
+
+</div>
+
+
+<div class="quote">
+
+<strong>科學革命的核心：</strong>
+
+<br><br>
+
+「自然不是只能透過權威解釋的神秘世界，
+而是一個可以透過觀察、實驗、數學與理性，
+逐步理解其規律的世界。」
+
+</div>
+
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>科學革命｜世界史教學互動 HTML</p>
+
+<p>
+Scientific Revolution · Copernicus · Galileo · Kepler · Newton
+</p>
+
+</footer>
+
+</body>
+</html>

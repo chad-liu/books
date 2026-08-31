@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>文藝復興｜教學互動時間軸</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#f5f1e8;
+    color:#302a25;
+    line-height:1.8;
+}
+
+/* ===== Header ===== */
+
+header{
+    background:
+        linear-gradient(135deg,#4e342e,#795548);
+    color:white;
+    text-align:center;
+    padding:75px 20px 65px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.2rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:15px 0 0;
+}
+
+header .sub{
+    margin-top:20px;
+    font-size:.95rem;
+    opacity:.85;
+}
+
+/* ===== Navigation ===== */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #ddd;
+}
+
+nav ul{
+    max-width:1250px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 15px;
+    text-decoration:none;
+    color:#4e342e;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#efebe9;
+}
+
+/* ===== Main ===== */
+
+main{
+    max-width:1250px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(60,40,20,.08);
+}
+
+h2{
+    color:#5d4037;
+    border-left:7px solid #8d6e63;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#6d4c41;
+}
+
+strong{
+    color:#4e342e;
+}
+
+/* ===== Hero Question ===== */
+
+.hero-question{
+    text-align:center;
+    background:#fff8e1;
+    border:2px solid #d7b46a;
+}
+
+.hero-question .big{
+    font-size:1.7rem;
+    font-weight:bold;
+    color:#5d4037;
+    margin:25px 0;
+}
+
+.quote{
+    background:#faf3dd;
+    border-left:6px solid #c49a3a;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+/* ===== Definition ===== */
+
+.definition{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.definition-card{
+    padding:25px;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd;
+}
+
+.definition-card:first-child{
+    border-top:6px solid #8d6e63;
+}
+
+.definition-card:last-child{
+    border-top:6px solid #b08d57;
+}
+
+/* ===== Timeline ===== */
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:65px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#bcaaa4;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafafa;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #e0d9d3;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-54px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#795548;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #a1887f;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 13px;
+    background:#795548;
+    color:white;
+    border-radius:20px;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+/* ===== Cause Grid ===== */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafafa;
+    border-radius:15px;
+    padding:25px;
+    border:1px solid #ddd;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.icon{
+    font-size:2rem;
+}
+
+/* ===== Renaissance Humanism ===== */
+
+.center-message{
+    text-align:center;
+    font-size:1.4rem;
+    font-weight:bold;
+    margin:30px 0;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#efebe9;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    font-size:1.5rem;
+    color:#795548;
+}
+
+/* ===== People ===== */
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fffdf8;
+    border:1px solid #ddd;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#5d4037;
+}
+
+.person-role{
+    display:inline-block;
+    margin:8px 0;
+    padding:3px 10px;
+    border-radius:15px;
+    background:#efebe9;
+    font-size:.85rem;
+}
+
+/* ===== Art ===== */
+
+.art-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.art-card{
+    padding:25px;
+    background:#fafafa;
+    border-radius:15px;
+    border-left:6px solid #8d6e63;
+}
+
+.art-card ul{
+    padding-left:25px;
+}
+
+/* ===== Comparison ===== */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:750px;
+}
+
+th{
+    background:#5d4037;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+tr:hover{
+    background:#f3eee8;
+}
+
+/* ===== Printing ===== */
+
+.printing{
+    background:#fff8e1;
+    border:2px solid #d7b46a;
+    text-align:center;
+}
+
+.printing-number{
+    font-size:3rem;
+    font-weight:bold;
+    color:#795548;
+}
+
+/* ===== Connections ===== */
+
+.connection{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.connection-item{
+    text-align:center;
+    padding:20px;
+    background:#fafafa;
+    border-radius:13px;
+    border:1px solid #ddd;
+}
+
+.connection-item strong{
+    display:block;
+    margin-bottom:8px;
+}
+
+/* ===== Thought ===== */
+
+.question{
+    background:#f8f5f0;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #8d6e63;
+    border-radius:8px;
+}
+
+/* ===== Summary ===== */
+
+.summary{
+    background:linear-gradient(135deg,#efebe9,#fff8e1);
+    border-top:7px solid #795548;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    text-align:center;
+    background:white;
+    padding:18px 10px;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+/* ===== Footer ===== */
+
+footer{
+    background:#3e2723;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:950px){
+
+    .grid,
+    .people{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .connection{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.1rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .definition,
+    .grid,
+    .people,
+    .art-grid{
+        grid-template-columns:1fr;
+    }
+
+    .connection{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>文藝復興</h1>
+
+<p>Renaissance｜從中世紀走向近代世界的轉折</p>
+
+<div class="sub">
+14～16世紀｜義大利 → 歐洲｜人文主義・藝術・科學・印刷・探索
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#what">什麼是文藝復興</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#causes">興起原因</a></li>
+<li><a href="#humanism">人文主義</a></li>
+<li><a href="#people">代表人物</a></li>
+<li><a href="#art">藝術革命</a></li>
+<li><a href="#science">科學轉變</a></li>
+<li><a href="#printing">印刷術</a></li>
+<li><a href="#connections">歷史連鎖</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero-question">
+
+<h2>一、什麼是「文藝復興」？</h2>
+
+<div class="big">
+為什麼歐洲在14～16世紀突然開始重新研究古希臘、古羅馬？
+</div>
+
+<p>
+「文藝復興」Renaissance 原意具有
+<strong>「再生、復興」</strong>
+的意思。
+</p>
+
+<p>
+它最初興起於義大利，
+後來逐漸擴散到法國、德意志、尼德蘭、英格蘭、西班牙等地。
+</p>
+
+<div class="quote">
+文藝復興並不是「突然拋棄中世紀」，
+而是一場長期的思想、藝術、教育與知識轉變。
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section>
+
+<h2>二、文藝復興最重要的核心：重新「看見人」</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>中世紀的主要世界觀</h3>
+
+<ul>
+<li>宗教信仰占重要地位</li>
+<li>人生與來世密切相關</li>
+<li>知識主要依附於宗教與傳統</li>
+<li>社會具有明顯階層結構</li>
+</ul>
+
+</div>
+
+
+<div class="definition-card">
+
+<h3>文藝復興的新方向</h3>
+
+<ul>
+<li>重新研究古典文化</li>
+<li>重視人的理性與能力</li>
+<li>研究自然與人體</li>
+<li>鼓勵觀察、探索與創造</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="center-message">
+「人」重新成為思想與藝術的重要主角。
+</div>
+
+</section>
+
+
+<!-- 3 Timeline -->
+
+<section id="timeline">
+
+<h2>三、文藝復興歷史時間軸</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<span class="year">約1300年代</span>
+
+<h3>① 義大利城市興起</h3>
+
+<p>
+佛羅倫斯、威尼斯、熱那亞等城市因貿易與金融發展而富裕。
+</p>
+
+<p>
+富裕的商人與家族開始贊助藝術家、學者與建築師。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1304–1374</span>
+
+<h3>② 彼特拉克</h3>
+
+<p>
+彼特拉克被視為早期人文主義的重要人物之一。
+</p>
+
+<p>
+他重新研究古典拉丁文獻，
+並強調古典文化與人的價值。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1300年代</span>
+
+<h3>③ 薄伽丘</h3>
+
+<p>
+《十日談》描寫人的欲望、智慧、幽默與現實生活。
+</p>
+
+<p>
+文學開始更加關注具體的人與世俗生活。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">約1400–1500</span>
+
+<h3>④ 佛羅倫斯成為藝術中心</h3>
+
+<p>
+美第奇家族等富裕家族大量贊助藝術與學術。
+</p>
+
+<p>
+藝術家開始研究透視法、人體比例與自然。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1440年代</span>
+
+<h3>⑤ 古騰堡印刷術</h3>
+
+<p>
+活字印刷技術快速改變歐洲知識傳播方式。
+</p>
+
+<p>
+書籍更容易大量複製，
+思想可以跨越城市與國家快速傳播。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1452–1519</span>
+
+<h3>⑥ 達文西時代</h3>
+
+<p>
+達文西同時研究藝術、人體、工程、自然與科學。
+</p>
+
+<p>
+他成為「文藝復興人的典型」。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1475–1564</span>
+
+<h3>⑦ 米開朗基羅</h3>
+
+<p>
+創作《大衛像》、
+西斯汀禮拜堂天頂畫等重要作品。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1483–1520</span>
+
+<h3>⑧ 拉斐爾</h3>
+
+<p>
+以優雅、和諧的構圖聞名，
+成為文藝復興盛期的重要藝術家。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1492</span>
+
+<h3>⑨ 哥倫布抵達美洲</h3>
+
+<p>
+歐洲人的世界地理視野開始快速擴張。
+</p>
+
+<p>
+文藝復興與地理大發現共同推動歐洲進入新的時代。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1517</span>
+
+<h3>⑩ 宗教改革</h3>
+
+<p>
+馬丁・路德提出《九十五條論綱》。
+</p>
+
+<p>
+宗教改革進一步挑戰西歐原有的宗教權威結構。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1543</span>
+
+<h3>⑪ 科學革命的重要轉折</h3>
+
+<p>
+哥白尼出版《天體運行論》。
+</p>
+
+<p>
+日心說逐漸挑戰傳統的地心宇宙觀。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 4 Causes -->
+
+<section id="causes">
+
+<h2>四、為什麼文藝復興會在義大利興起？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">💰</div>
+
+<h3>① 商業與金融</h3>
+
+<p>
+義大利城市掌握地中海貿易，
+商業與銀行業蓬勃發展。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏙️</div>
+
+<h3>② 城市國家</h3>
+
+<p>
+佛羅倫斯、威尼斯、熱那亞等城市彼此競爭，
+形成藝術與文化贊助環境。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏛️</div>
+
+<h3>③ 古羅馬遺產</h3>
+
+<p>
+義大利本身保存大量古羅馬建築、雕塑與文化遺產。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📜</div>
+
+<h3>④ 古典文獻</h3>
+
+<p>
+學者重新整理與研究古希臘、羅馬文獻。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌍</div>
+
+<h3>⑤ 東西文化交流</h3>
+
+<p>
+十字軍、地中海貿易與拜占庭文化交流，
+促進知識流動。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎨</div>
+
+<h3>⑥ 贊助制度</h3>
+
+<p>
+富裕家族、教會與政治勢力贊助藝術家，
+形成良好的創作環境。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 5 Humanism -->
+
+<section id="humanism">
+
+<h2>五、人文主義：文藝復興的思想核心</h2>
+
+<p>
+文藝復興最重要的思想之一就是：
+<strong>人文主義 Humanism</strong>。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+古典文獻
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+研究人
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+重視理性
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+觀察自然
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+探索世界
+</div>
+
+</div>
+
+<div class="quote">
+人文主義並不等於「不要宗教」，
+而是強調人具有理性、尊嚴、能力與創造力，
+應該研究人的語言、歷史、道德與世界。
+</div>
+
+</section>
+
+
+<!-- 6 People -->
+
+<section id="people">
+
+<h2>六、文藝復興代表人物</h2>
+
+<div class="people">
+
+<div class="person">
+<div class="person-name">但丁</div>
+<span class="person-role">文學先驅</span>
+<p>
+《神曲》連結中世紀宗教世界與新的文學表達。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">彼特拉克</div>
+<span class="person-role">人文主義</span>
+<p>
+重新研究古典文獻，
+被視為人文主義的重要先驅。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">薄伽丘</div>
+<span class="person-role">文學</span>
+<p>
+《十日談》描寫人性的複雜與世俗生活。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">李奧納多・達文西</div>
+<span class="person-role">藝術・科學</span>
+<p>
+繪畫、解剖、工程、自然研究兼具，
+是「文藝復興人」的代表。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">米開朗基羅</div>
+<span class="person-role">雕塑・繪畫</span>
+<p>
+《大衛像》與西斯汀禮拜堂天頂畫是代表作。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">拉斐爾</div>
+<span class="person-role">繪畫</span>
+<p>
+以和諧、平衡與優美的構圖著稱。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">馬基維利</div>
+<span class="person-role">政治思想</span>
+<p>
+《君王論》重新思考政治權力與國家治理。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">哥白尼</div>
+<span class="person-role">天文學</span>
+<p>
+提出日心說，
+成為科學革命的重要起點之一。
+</p>
+</div>
+
+
+<div class="person">
+<div class="person-name">伽利略</div>
+<span class="person-role">科學</span>
+<p>
+以觀察、實驗與數學研究自然世界。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 7 Art -->
+
+<section id="art">
+
+<h2>七、文藝復興的藝術革命</h2>
+
+<div class="art-grid">
+
+<div class="art-card">
+
+<h3>① 透視法</h3>
+
+<p>
+藝術家嘗試用數學與幾何方式呈現三維空間。
+</p>
+
+<ul>
+<li>消失點</li>
+<li>空間深度</li>
+<li>比例關係</li>
+</ul>
+
+</div>
+
+
+<div class="art-card">
+
+<h3>② 人體研究</h3>
+
+<p>
+藝術家開始研究人體骨骼、肌肉與比例。
+</p>
+
+<p>
+人體不再只是宗教符號，
+而成為值得研究與表現的對象。
+</p>
+
+</div>
+
+
+<div class="art-card">
+
+<h3>③ 自然寫實</h3>
+
+<p>
+藝術家觀察光線、表情、植物、動物與自然環境。
+</p>
+
+</div>
+
+
+<div class="art-card">
+
+<h3>④ 古典復興</h3>
+
+<p>
+重新吸收古希臘、羅馬的雕塑、建築與比例觀念。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 8 Art comparison -->
+
+<section>
+
+<h2>八、中世紀藝術 vs. 文藝復興藝術</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+<tr>
+<th>比較</th>
+<th>中世紀藝術</th>
+<th>文藝復興藝術</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>主要關注</td>
+<td>宗教與神聖世界</td>
+<td>宗教＋人＋自然</td>
+</tr>
+
+<tr>
+<td>人物表現</td>
+<td>象徵性較強</td>
+<td>更加寫實</td>
+</tr>
+
+<tr>
+<td>空間</td>
+<td>較不重視科學透視</td>
+<td>重視透視與空間</td>
+</tr>
+
+<tr>
+<td>人體</td>
+<td>多具有象徵意義</td>
+<td>研究比例、肌肉與動態</td>
+</tr>
+
+<tr>
+<td>古典文化</td>
+<td>影響有限</td>
+<td>重新吸收希臘、羅馬文化</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- 9 Science -->
+
+<section id="science">
+
+<h2>九、文藝復興如何改變科學？</h2>
+
+<div class="center-message">
+從「相信權威」逐漸走向「觀察、實驗與證據」
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+古典知識
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+重新檢驗
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+觀察自然
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+實驗
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+數學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+</div>
+
+</div>
+
+<p>
+達文西的解剖研究、哥白尼的日心說、
+後來伽利略的觀察與實驗，
+都顯示歐洲知識文化逐漸發生重要變化。
+</p>
+
+</section>
+
+
+<!-- 10 Printing -->
+
+<section id="printing" class="printing">
+
+<h2>十、印刷術：為什麼它如此重要？</h2>
+
+<div class="printing-number">
+知識 × 大量複製 × 快速傳播
+</div>
+
+<p>
+15世紀中葉，古騰堡的活字印刷技術大幅提高書籍複製效率。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">手抄本</div>
+<div class="arrow">→</div>
+<div class="flow-item">活字印刷</div>
+<div class="arrow">→</div>
+<div class="flow-item">書籍增加</div>
+<div class="arrow">→</div>
+<div class="flow-item">識字人口增加</div>
+<div class="arrow">→</div>
+<div class="flow-item">思想快速傳播</div>
+
+</div>
+
+<div class="quote">
+印刷術讓「思想」第一次可以大規模、快速而相對低成本地跨越地域傳播。
+</div>
+
+</section>
+
+
+<!-- 11 Connection -->
+
+<section id="connections">
+
+<h2>十一、文藝復興如何連接到現代世界？</h2>
+
+<div class="connection">
+
+<div class="connection-item">
+<strong>文藝復興</strong>
+人文主義
+</div>
+
+<div class="connection-item">
+<strong>印刷術</strong>
+知識普及
+</div>
+
+<div class="connection-item">
+<strong>宗教改革</strong>
+挑戰權威
+</div>
+
+<div class="connection-item">
+<strong>地理大發現</strong>
+世界擴張
+</div>
+
+<div class="connection-item">
+<strong>科學革命</strong>
+觀察與實驗
+</div>
+
+<div class="connection-item">
+<strong>啟蒙運動</strong>
+理性與自由
+</div>
+
+<div class="connection-item">
+<strong>近代國家</strong>
+政治轉型
+</div>
+
+<div class="connection-item">
+<strong>現代世界</strong>
+科學・民主・全球化
+</div>
+
+</div>
+
+<div class="quote">
+
+文藝復興本身不是所有現代制度的直接起點，
+但它與印刷術、宗教改革、科學革命、地理大發現等變化互相連結，
+共同推動歐洲由中世紀逐步走向近代。
+
+</div>
+
+</section>
+
+
+<!-- 12 Big timeline -->
+
+<section>
+
+<h2>十二、從中世紀走向現代：一條大時間軸</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+中世紀
+<br>
+宗教與封建社會
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+印刷術
+<br>
+知識傳播
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+地理大發現
+<br>
+世界擴張
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+<br>
+挑戰權威
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+觀察與實驗
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+理性與自由
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 13 Important concept -->
+
+<section>
+
+<h2>十三、文藝復興的「六大關鍵字」</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 人文主義</h3>
+<p>重新思考人的價值與能力。</p>
+</div>
+
+<div class="card">
+<h3>② 古典復興</h3>
+<p>重新研究希臘、羅馬文化。</p>
+</div>
+
+<div class="card">
+<h3>③ 寫實藝術</h3>
+<p>透視、人體、自然與光影。</p>
+</div>
+
+<div class="card">
+<h3>④ 理性</h3>
+<p>重視思考、分析與人的理性能力。</p>
+</div>
+
+<div class="card">
+<h3>⑤ 探索</h3>
+<p>開始以新的方式觀察自然與世界。</p>
+</div>
+
+<div class="card">
+<h3>⑥ 傳播</h3>
+<p>印刷術讓知識突破地域限制。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 14 Questions -->
+
+<section id="questions">
+
+<h2>十四、課堂思考題</h2>
+
+<div class="question">
+<strong>問題一：</strong>
+為什麼文藝復興首先在義大利興起？
+</div>
+
+<div class="question">
+<strong>問題二：</strong>
+「文藝復興」究竟是在復興什麼？
+</div>
+
+<div class="question">
+<strong>問題三：</strong>
+為什麼人文主義不等於「反宗教」？
+</div>
+
+<div class="question">
+<strong>問題四：</strong>
+為什麼達文西可以同時成為藝術家與科學研究者？
+</div>
+
+<div class="question">
+<strong>問題五：</strong>
+如果沒有印刷術，文藝復興的思想能否快速傳遍歐洲？
+</div>
+
+<div class="question">
+<strong>問題六：</strong>
+透視法與人體解剖研究，為什麼可以被視為「科學精神」的一部分？
+</div>
+
+<div class="question">
+<strong>問題七：</strong>
+文藝復興、宗教改革與科學革命之間有什麼關係？
+</div>
+
+<div class="question">
+<strong>問題八：</strong>
+今天我們重視「個人、理性、創造力」，哪些觀念可以追溯到文藝復興？
+</div>
+
+</section>
+
+
+<!-- 15 Summary -->
+
+<section class="summary">
+
+<h2>十五、一張圖理解文藝復興</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>中世紀</strong>
+傳統與宗教
+</div>
+
+<div class="summary-card">
+<strong>義大利</strong>
+城市與商業
+</div>
+
+<div class="summary-card">
+<strong>文藝復興</strong>
+古典＋人文
+</div>
+
+<div class="summary-card">
+<strong>印刷術</strong>
+思想傳播
+</div>
+
+<div class="summary-card">
+<strong>科學革命</strong>
+觀察＋實驗
+</div>
+
+<div class="summary-card">
+<strong>近代世界</strong>
+理性＋探索
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+文藝復興不是單純「藝術變漂亮了」，
+而是歐洲人開始用新的方式重新思考：
+「人是誰？世界是什麼？我們如何知道真相？」
+</strong>
+
+</div>
+
+<p>
+因此，文藝復興可以被理解為一個重要的歷史轉折：
+</p>
+
+<div class="center-message">
+
+從「接受傳統」
+→
+「重新研究」
+→
+「觀察世界」
+→
+「提出問題」
+→
+「探索未知」
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>文藝復興｜教學互動時間軸</p>
+
+<p>
+Renaissance · Humanism · Art · Science · Printing · Exploration
+</p>
+
+</footer>
+
+</body>
+</html>
+

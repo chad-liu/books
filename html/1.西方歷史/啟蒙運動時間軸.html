@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>啟蒙運動｜教學互動時間軸</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#eef2f5;
+    color:#263238;
+    line-height:1.8;
+}
+
+/* =========================
+   Header
+========================= */
+
+header{
+    background:linear-gradient(135deg,#263238,#455a64,#607d8b);
+    color:white;
+    text-align:center;
+    padding:75px 20px 65px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.2rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:15px 0 0;
+}
+
+header .sub{
+    margin-top:20px;
+    font-size:.95rem;
+    opacity:.85;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #d5dadd;
+}
+
+nav ul{
+    max-width:1250px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 15px;
+    text-decoration:none;
+    color:#37474f;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#eceff1;
+}
+
+/* =========================
+   Main
+========================= */
+
+main{
+    max-width:1250px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(30,50,60,.08);
+}
+
+h2{
+    color:#37474f;
+    border-left:7px solid #607d8b;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#455a64;
+}
+
+strong{
+    color:#263238;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero{
+    background:#f5f7f8;
+    border:2px solid #cfd8dc;
+    text-align:center;
+}
+
+.hero .big{
+    font-size:1.7rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.quote{
+    background:#f1f5f7;
+    border-left:6px solid #607d8b;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+/* =========================
+   Definition
+========================= */
+
+.definition{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.definition-card{
+    padding:25px;
+    border-radius:15px;
+    background:#fafafa;
+    border:1px solid #ddd;
+}
+
+.definition-card:first-child{
+    border-top:6px solid #607d8b;
+}
+
+.definition-card:last-child{
+    border-top:6px solid #90a4ae;
+}
+
+/* =========================
+   Timeline
+========================= */
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:65px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#b0bec5;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafafa;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #e0e4e6;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-54px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#607d8b;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #90a4ae;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 13px;
+    background:#546e7a;
+    color:white;
+    border-radius:20px;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+/* =========================
+   Cards
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafafa;
+    border-radius:15px;
+    padding:25px;
+    border:1px solid #ddd;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.icon{
+    font-size:2rem;
+}
+
+/* =========================
+   Flow
+========================= */
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#eceff1;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #cfd8dc;
+}
+
+.arrow{
+    font-size:1.5rem;
+    color:#607d8b;
+}
+
+/* =========================
+   Thinkers
+========================= */
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#37474f;
+}
+
+.person-role{
+    display:inline-block;
+    margin:8px 0;
+    padding:3px 10px;
+    border-radius:15px;
+    background:#eceff1;
+    font-size:.85rem;
+}
+
+/* =========================
+   Ideas
+========================= */
+
+.idea-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.idea{
+    padding:25px;
+    background:#fafafa;
+    border-left:6px solid #78909c;
+    border-radius:12px;
+}
+
+.idea h3{
+    margin-top:0;
+}
+
+/* =========================
+   Comparison
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:780px;
+}
+
+th{
+    background:#455a64;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+tr:hover{
+    background:#eceff1;
+}
+
+/* =========================
+   Revolution
+========================= */
+
+.revolution{
+    background:#f5f7f8;
+    border:2px solid #cfd8dc;
+}
+
+.revolution-number{
+    font-size:3rem;
+    font-weight:bold;
+    text-align:center;
+    color:#455a64;
+}
+
+/* =========================
+   Connections
+========================= */
+
+.connection{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.connection-item{
+    text-align:center;
+    padding:20px;
+    background:#fafafa;
+    border-radius:13px;
+    border:1px solid #ddd;
+}
+
+.connection-item strong{
+    display:block;
+    margin-bottom:8px;
+}
+
+/* =========================
+   Questions
+========================= */
+
+.question{
+    background:#f5f7f8;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #78909c;
+    border-radius:8px;
+}
+
+/* =========================
+   Summary
+========================= */
+
+.summary{
+    background:linear-gradient(135deg,#eceff1,#f8fafb);
+    border-top:7px solid #607d8b;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    text-align:center;
+    background:white;
+    padding:18px 10px;
+    border-radius:12px;
+    border:1px solid #ddd;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:950px){
+
+    .grid,
+    .people{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .connection{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.1rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .definition,
+    .grid,
+    .people,
+    .idea-grid{
+        grid-template-columns:1fr;
+    }
+
+    .connection{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>啟蒙運動</h1>
+
+<p>Enlightenment｜理性、自由與現代世界的思想革命</p>
+
+<div class="sub">
+17～18世紀｜理性・科學・自然權利・自由・平等・民主
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#what">什麼是啟蒙</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#causes">背景</a></li>
+<li><a href="#reason">理性</a></li>
+<li><a href="#thinkers">思想家</a></li>
+<li><a href="#ideas">核心思想</a></li>
+<li><a href="#government">政府與權力</a></li>
+<li><a href="#revolutions">革命</a></li>
+<li><a href="#legacy">歷史影響</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero">
+
+<h2>一、什麼是「啟蒙運動」？</h2>
+
+<div class="big">
+如果人可以用自己的理性思考，那麼還需要無條件服從傳統與權威嗎？
+</div>
+
+<p>
+<strong>啟蒙運動（Enlightenment）</strong>
+是17～18世紀歐洲重要的思想運動。
+</p>
+
+<p>
+啟蒙思想家受到科學革命影響，
+開始相信：
+<strong>人可以透過理性、觀察、討論與教育來理解世界，
+並改善社會。</strong>
+</p>
+
+<div class="quote">
+啟蒙運動最核心的精神之一：
+「敢於運用自己的理性。」
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section>
+
+<h2>二、啟蒙運動到底「啟蒙」了什麼？</h2>
+
+<div class="definition">
+
+<div class="definition-card">
+
+<h3>傳統社會</h3>
+
+<ul>
+<li>傳統具有高度權威</li>
+<li>君主權力受到神授觀念支持</li>
+<li>社會階級具有固定性</li>
+<li>宗教權威影響公共生活</li>
+<li>知識受到傳統限制</li>
+</ul>
+
+</div>
+
+
+<div class="definition-card">
+
+<h3>啟蒙思想</h3>
+
+<ul>
+<li>理性可以檢驗傳統</li>
+<li>政府權力應受到限制</li>
+<li>人具有自然權利</li>
+<li>法律應具有普遍性</li>
+<li>教育與知識可以改善社會</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 3 Timeline -->
+
+<section id="timeline">
+
+<h2>三、啟蒙運動歷史時間軸</h2>
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<span class="year">1543</span>
+
+<h3>① 哥白尼《天體運行論》</h3>
+
+<p>
+日心說挑戰傳統宇宙觀。
+</p>
+
+<p>
+這是後來科學革命與理性思潮的重要背景。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1600年代</span>
+
+<h3>② 科學革命</h3>
+
+<p>
+伽利略、克卜勒、牛頓等人的研究，
+逐漸建立以數學、觀察與實驗理解自然世界的方法。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1687</span>
+
+<h3>③ 牛頓《自然哲學的數學原理》</h3>
+
+<p>
+牛頓以數學描述自然規律。
+</p>
+
+<p>
+「自然世界具有可以被理性理解的規律」，
+成為啟蒙思想的重要信念之一。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1689</span>
+
+<h3>④ 洛克《政府論》</h3>
+
+<p>
+約翰・洛克主張：
+政府的正當性來自人民同意，
+並提出生命、自由、財產等自然權利思想。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1689</span>
+
+<h3>⑤ 英國《權利法案》</h3>
+
+<p>
+限制君主權力，
+強化議會與法律的地位。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1748</span>
+
+<h3>⑥ 孟德斯鳩《論法的精神》</h3>
+
+<p>
+提出著名的：
+<strong>三權分立</strong>
+思想。
+</p>
+
+<p>
+行政、立法、司法權力彼此制衡，
+避免權力過度集中。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1751–1772</span>
+
+<h3>⑦ 《百科全書》</h3>
+
+<p>
+狄德羅等人編纂《百科全書》，
+試圖整理並傳播人類知識。
+</p>
+
+<p>
+知識逐漸成為公共討論的一部分。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1762</span>
+
+<h3>⑧ 盧梭《社會契約論》</h3>
+
+<p>
+提出：
+<strong>主權在民</strong>
+的重要思想。
+</p>
+
+<p>
+政府的合法性來自人民，
+而不是單純來自君主。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1776</span>
+
+<h3>⑨ 美國獨立宣言</h3>
+
+<p>
+美國獨立運動吸收自然權利與人民主權思想。
+</p>
+
+<p>
+「人人生而平等」成為重要政治理念。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1789</span>
+
+<h3>⑩ 法國大革命</h3>
+
+<p>
+法國革命提出：
+自由、平等、人民主權等重要政治理念。
+</p>
+
+<p>
+啟蒙思想開始直接轉化為政治革命。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">18～19世紀</span>
+
+<h3>⑪ 啟蒙思想持續擴散</h3>
+
+<p>
+自由主義、憲政、民主、人權與世俗政治等思想，
+逐漸影響世界各地。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 4 Background -->
+
+<section id="causes">
+
+<h2>四、啟蒙運動為什麼會出現？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">🔬</div>
+
+<h3>① 科學革命</h3>
+
+<p>
+牛頓等人的研究讓人相信：
+自然世界可以透過理性與數學理解。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📚</div>
+
+<h3>② 印刷與出版</h3>
+
+<p>
+書籍、報紙、期刊與小冊子增加，
+思想可以更快速傳播。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏙️</div>
+
+<h3>③ 城市與商業</h3>
+
+<p>
+商人與城市中產階級增加，
+新的社會群體開始參與公共討論。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🌍</div>
+
+<h3>④ 全球探索</h3>
+
+<p>
+地理大發現讓歐洲人接觸不同文明，
+開始重新思考文化與制度。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚔️</div>
+
+<h3>⑤ 宗教衝突</h3>
+
+<p>
+宗教改革後的宗教戰爭，
+促使人們重新思考宗教寬容與政治秩序。
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏛️</div>
+
+<h3>⑥ 政治問題</h3>
+
+<p>
+君主專制、特權階級與社會不平等，
+成為思想家批判的對象。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 5 Reason -->
+
+<section id="reason">
+
+<h2>五、啟蒙運動最重要的武器：理性</h2>
+
+<div class="center-message">
+理性不是「什麼都不相信」，而是「什麼都可以提出問題」。
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+傳統
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+提出問題
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+理性分析
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+尋找證據
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+形成判斷
+</div>
+
+</div>
+
+<div class="quote">
+啟蒙思想家希望把研究自然的理性方法，
+延伸到政治、法律、教育、宗教與社會制度。
+</div>
+
+</section>
+
+
+<!-- 6 Thinkers -->
+
+<section id="thinkers">
+
+<h2>六、啟蒙運動代表思想家</h2>
+
+<div class="people">
+
+
+<div class="person">
+
+<div class="person-name">
+約翰・洛克
+</div>
+
+<span class="person-role">
+自然權利
+</span>
+
+<p>
+主張生命、自由、財產等自然權利。
+</p>
+
+<p>
+政府的權力應得到人民同意。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+孟德斯鳩
+</div>
+
+<span class="person-role">
+三權分立
+</span>
+
+<p>
+提出權力分立與相互制衡的重要思想。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+伏爾泰
+</div>
+
+<span class="person-role">
+言論與宗教寬容
+</span>
+
+<p>
+批判宗教狂熱與專制，
+支持思想自由與宗教寬容。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+盧梭
+</div>
+
+<span class="person-role">
+人民主權
+</span>
+
+<p>
+提出社會契約與人民主權思想。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+狄德羅
+</div>
+
+<span class="person-role">
+百科全書
+</span>
+
+<p>
+主持《百科全書》的編纂，
+推動知識整理與傳播。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+亞當・斯密
+</div>
+
+<span class="person-role">
+經濟思想
+</span>
+
+<p>
+《國富論》探討分工、市場與經濟運作。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+康德
+</div>
+
+<span class="person-role">
+理性與啟蒙
+</span>
+
+<p>
+主張人應勇於運用自己的理性。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+牛頓
+</div>
+
+<span class="person-role">
+科學背景
+</span>
+
+<p>
+雖不屬於典型政治啟蒙思想家，
+但他的科學方法深刻影響啟蒙時代。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+班傑明・富蘭克林
+</div>
+
+<span class="person-role">
+科學・政治
+</span>
+
+<p>
+同時參與科學研究與美國建國政治。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 7 Ideas -->
+
+<section id="ideas">
+
+<h2>七、啟蒙運動的七大核心思想</h2>
+
+<div class="idea-grid">
+
+<div class="idea">
+<h3>① 理性</h3>
+<p>
+人可以使用理性分析世界，
+不必完全接受傳統權威。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>② 自然權利</h3>
+<p>
+人的基本權利不是政府賜予的，
+而具有自然與普遍的性質。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>③ 自由</h3>
+<p>
+包括思想、言論、宗教與政治參與等自由。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>④ 平等</h3>
+<p>
+法律應該具有普遍性，
+反對不合理的世襲特權。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>⑤ 人民主權</h3>
+<p>
+政治權力最終應具有人民的正當性來源。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>⑥ 權力制衡</h3>
+<p>
+政府權力不能無限制集中，
+需要制度性的制衡。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>⑦ 宗教寬容</h3>
+<p>
+不同信仰者應能和平共存，
+政府不應任意迫害異議者。
+</p>
+</div>
+
+
+<div class="idea">
+<h3>⑧ 教育與進步</h3>
+<p>
+知識與教育可以改善個人與社會。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 8 Government -->
+
+<section id="government">
+
+<h2>八、啟蒙思想如何重新思考「政府」？</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>問題</th>
+<th>傳統觀念</th>
+<th>啟蒙思想</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>權力從哪裡來？</td>
+<td>君權、傳統、神授</td>
+<td>人民同意、社會契約</td>
+</tr>
+
+<tr>
+<td>君主能否無限統治？</td>
+<td>權力可能高度集中</td>
+<td>政府權力應受法律限制</td>
+</tr>
+
+<tr>
+<td>法律為誰服務？</td>
+<td>階級與特權可能不同</td>
+<td>法律應具有普遍性</td>
+</tr>
+
+<tr>
+<td>人民有什麼權利？</td>
+<td>權利受到身分限制</td>
+<td>自然權利與公民權利</td>
+</tr>
+
+<tr>
+<td>如何防止濫權？</td>
+<td>依靠君主或傳統</td>
+<td>分權與制衡</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- 9 Separation -->
+
+<section>
+
+<h2>九、三權分立：孟德斯鳩的重要思想</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+立法權
+<br>
+制定法律
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="flow-item">
+行政權
+<br>
+執行法律
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="flow-item">
+司法權
+<br>
+解釋與適用法律
+</div>
+
+</div>
+
+<div class="quote">
+核心概念不是「三個機關各做各的」，
+而是透過權力分立與相互制衡，
+避免任何單一權力變得過於強大。
+</div>
+
+</section>
+
+
+<!-- 10 Revolutions -->
+
+<section id="revolutions" class="revolution">
+
+<h2>十、啟蒙思想如何變成政治革命？</h2>
+
+<div class="revolution-number">
+思想 → 政治 → 革命
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+自然權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+人民主權
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+憲政
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+政治革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代政治制度
+</div>
+
+</div>
+
+<h3>① 美國獨立</h3>
+
+<p>
+1776年《美國獨立宣言》吸收自然權利、
+平等與人民政治正當性的思想。
+</p>
+
+<h3>② 法國大革命</h3>
+
+<p>
+1789年法國大革命以自由、平等與人民主權等理念，
+挑戰舊制度。
+</p>
+
+<h3>③ 憲政思想</h3>
+
+<p>
+政府權力開始越來越需要透過憲法、法律與制度加以限制。
+</p>
+
+</section>
+
+
+<!-- 11 Comparison -->
+
+<section>
+
+<h2>十一、文藝復興 → 科學革命 → 啟蒙運動</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>階段</th>
+<th>核心問題</th>
+<th>主要精神</th>
+<th>代表人物</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>文藝復興</td>
+<td>「人是誰？」</td>
+<td>人文主義、古典復興</td>
+<td>達文西、米開朗基羅</td>
+</tr>
+
+<tr>
+<td>科學革命</td>
+<td>「自然如何運作？」</td>
+<td>觀察、實驗、數學</td>
+<td>哥白尼、伽利略、牛頓</td>
+</tr>
+
+<tr>
+<td>啟蒙運動</td>
+<td>「社會應該如何運作？」</td>
+<td>理性、自由、權利</td>
+<td>洛克、孟德斯鳩、盧梭</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="quote">
+可以把三者理解為：
+<strong>
+重新發現「人」 → 重新理解「自然」 → 重新設計「社會」
+</strong>
+</div>
+
+</section>
+
+
+<!-- 12 Historical Chain -->
+
+<section id="legacy">
+
+<h2>十二、啟蒙運動與現代世界</h2>
+
+<div class="connection">
+
+<div class="connection-item">
+<strong>文藝復興</strong>
+人文主義
+</div>
+
+<div class="connection-item">
+<strong>科學革命</strong>
+理性與證據
+</div>
+
+<div class="connection-item">
+<strong>啟蒙運動</strong>
+自由與權利
+</div>
+
+<div class="connection-item">
+<strong>美國獨立</strong>
+憲政實踐
+</div>
+
+<div class="connection-item">
+<strong>法國大革命</strong>
+平等與人民主權
+</div>
+
+<div class="connection-item">
+<strong>自由主義</strong>
+個人自由
+</div>
+
+<div class="connection-item">
+<strong>民主政治</strong>
+人民參與
+</div>
+
+<div class="connection-item">
+<strong>人權思想</strong>
+普遍權利
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 13 Modern -->
+
+<section>
+
+<h2>十三、今天的生活中，哪些地方仍然看得到啟蒙思想？</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>📜 憲法</h3>
+<p>
+限制政府權力並保障人民權利。
+</p>
+</div>
+
+<div class="card">
+<h3>⚖️ 法治</h3>
+<p>
+政府與人民都受到法律規範。
+</p>
+</div>
+
+<div class="card">
+<h3>🗳️ 選舉</h3>
+<p>
+人民透過制度參與政治。
+</p>
+</div>
+
+<div class="card">
+<h3>🗣️ 言論自由</h3>
+<p>
+人可以表達不同意見。
+</p>
+</div>
+
+<div class="card">
+<h3>⛪ 宗教自由</h3>
+<p>
+不同信仰可以和平共存。
+</p>
+</div>
+
+<div class="card">
+<h3>🎓 公共教育</h3>
+<p>
+相信知識與教育可以改善社會。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 14 Questions -->
+
+<section id="questions">
+
+<h2>十四、課堂思考題</h2>
+
+<div class="question">
+<strong>問題一：</strong>
+為什麼科學革命會成為啟蒙運動的重要思想背景？
+</div>
+
+<div class="question">
+<strong>問題二：</strong>
+「理性」與「傳統」一定是互相衝突的嗎？
+</div>
+
+<div class="question">
+<strong>問題三：</strong>
+如果政府是人民同意產生的，那麼人民是否可以推翻政府？
+</div>
+
+<div class="question">
+<strong>問題四：</strong>
+為什麼「三權分立」可以防止權力濫用？
+</div>
+
+<div class="question">
+<strong>問題五：</strong>
+「自由」與「平等」有時會發生衝突嗎？
+</div>
+
+<div class="question">
+<strong>問題六：</strong>
+美國獨立與法國大革命，都受到啟蒙思想影響嗎？
+兩者有什麼不同？
+</div>
+
+<div class="question">
+<strong>問題七：</strong>
+啟蒙思想是否真的讓「所有人」立即獲得自由與平等？
+</div>
+
+<div class="question">
+<strong>問題八：</strong>
+今天的民主社會，還需要啟蒙運動的精神嗎？
+</div>
+
+</section>
+
+
+<!-- 15 Big Timeline -->
+
+<section>
+
+<h2>十五、從文藝復興到現代民主：一條完整思想時間軸</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+理性與證據
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+自由與權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+憲政
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+法國大革命
+<br>
+平等與主權
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+自由主義
+<br>
+個人權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代民主
+<br>
+公民社會
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 16 Summary -->
+
+<section class="summary">
+
+<h2>十六、一張圖理解啟蒙運動</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>傳統</strong>
+權威
+</div>
+
+<div class="summary-card">
+<strong>科學革命</strong>
+證據
+</div>
+
+<div class="summary-card">
+<strong>啟蒙</strong>
+理性
+</div>
+
+<div class="summary-card">
+<strong>自然權利</strong>
+自由
+</div>
+
+<div class="summary-card">
+<strong>人民主權</strong>
+民主
+</div>
+
+<div class="summary-card">
+<strong>憲政</strong>
+制衡
+</div>
+
+<div class="summary-card">
+<strong>現代社會</strong>
+人權
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+啟蒙運動真正重要的問題，
+不是「哪一位思想家最偉大」，
+而是人開始相信：
+我們可以用自己的理性，
+重新思考政府、法律、宗教、教育與社會。
+</strong>
+
+</div>
+
+<p>
+
+如果用一句話總結：
+
+</p>
+
+<div class="center-message">
+
+「敢於思考 → 質疑權威 → 追求自由 → 保障權利 → 建立制度」
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>啟蒙運動｜教學互動時間軸</p>
+
+<p>
+Enlightenment · Reason · Liberty · Equality · Rights · Democracy
+</p>
+
+</footer>
+
+</body>
+</html>

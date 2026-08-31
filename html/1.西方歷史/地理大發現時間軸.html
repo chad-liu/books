@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>地理大發現｜世界史教學互動 HTML</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        "PingFang TC",
+        sans-serif;
+    background:#eef4f3;
+    color:#263238;
+    line-height:1.8;
+}
+
+header{
+    background:linear-gradient(135deg,#174a5b,#397083);
+    color:white;
+    text-align:center;
+    padding:80px 20px 70px;
+}
+
+header h1{
+    margin:0;
+    font-size:3.4rem;
+    letter-spacing:8px;
+}
+
+header p{
+    font-size:1.3rem;
+    margin:15px 0;
+}
+
+header .sub{
+    opacity:.88;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #cbd8da;
+}
+
+nav ul{
+    max-width:1400px;
+    margin:auto;
+    padding:0;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:12px 14px;
+    color:#34515a;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#e8eff0;
+}
+
+main{
+    max-width:1350px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    margin-bottom:35px;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 5px 22px rgba(30,60,70,.08);
+}
+
+h2{
+    color:#24586a;
+    border-left:7px solid #4f8998;
+    padding-left:15px;
+    margin-top:0;
+}
+
+h3{
+    color:#397083;
+}
+
+.hero{
+    background:#f7fbfb;
+    border:2px solid #c7d9dc;
+    text-align:center;
+}
+
+.hero .big{
+    font-size:1.7rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.quote{
+    background:#f1f7f7;
+    border-left:6px solid #4f8998;
+    padding:20px 25px;
+    margin:25px 0;
+    border-radius:10px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#fafcfc;
+    border:1px solid #d6e1e3;
+    border-radius:15px;
+    padding:25px;
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.box{
+    padding:25px;
+    background:#fafcfc;
+    border:1px solid #d6e1e3;
+    border-radius:15px;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    padding:15px 22px;
+    background:#edf4f4;
+    border:1px solid #cbdcde;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    color:#4f8998;
+    font-size:1.5rem;
+}
+
+.timeline{
+    position:relative;
+    margin:45px 0;
+    padding-left:75px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:27px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#a9c0c4;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:38px;
+    background:#fafcfc;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #d6e1e3;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-59px;
+    top:28px;
+    width:20px;
+    height:20px;
+    background:#4f8998;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #8daeb5;
+}
+
+.year{
+    display:inline-block;
+    padding:4px 14px;
+    background:#397083;
+    color:white;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:.9rem;
+}
+
+.people{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.person{
+    padding:25px;
+    background:#fafcfc;
+    border:1px solid #d6e1e3;
+    border-radius:15px;
+}
+
+.person-name{
+    font-size:1.35rem;
+    font-weight:bold;
+    color:#24586a;
+}
+
+.person-role{
+    display:inline-block;
+    padding:3px 10px;
+    margin:8px 0;
+    background:#e5eff0;
+    border-radius:15px;
+    font-size:.85rem;
+}
+
+.keyword-box{
+    text-align:center;
+    padding:30px;
+    background:#f7fbfb;
+    border:2px solid #c7d9dc;
+    border-radius:15px;
+}
+
+.keyword{
+    display:inline-block;
+    padding:8px 17px;
+    margin:6px;
+    background:#e4eeee;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.exchange{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.exchange-box{
+    padding:30px;
+    border-radius:15px;
+    background:#f8fafb;
+    border:1px solid #d6e1e3;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#397083;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#fafafa;
+}
+
+.question{
+    background:#f5f9f9;
+    padding:20px;
+    margin:15px 0;
+    border-left:5px solid #6b9aa5;
+    border-radius:8px;
+}
+
+.summary{
+    background:linear-gradient(135deg,#e7f0f1,#f8fbfb);
+    border-top:7px solid #4f8998;
+}
+
+.summary-flow{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.summary-card{
+    background:white;
+    border:1px solid #d6e1e3;
+    padding:18px 10px;
+    text-align:center;
+    border-radius:12px;
+}
+
+.summary-card strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+footer{
+    background:#174a5b;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+@media(max-width:1000px){
+
+    .grid,
+    .people{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:650px){
+
+    header h1{
+        font-size:2.2rem;
+        letter-spacing:4px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .grid,
+    .people,
+    .two,
+    .exchange{
+        grid-template-columns:1fr;
+    }
+
+    .summary-flow{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .timeline{
+        padding-left:50px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>地理大發現</h1>
+
+<p>Age of Discovery｜約15～17世紀</p>
+
+<div class="sub">
+從區域世界走向全球連結
+</div>
+
+</header>
+
+
+<nav>
+
+<ul>
+
+<li><a href="#what">什麼是地理大發現</a></li>
+<li><a href="#background">時代背景</a></li>
+<li><a href="#motives">航海動機</a></li>
+<li><a href="#technology">航海技術</a></li>
+<li><a href="#portugal">葡萄牙</a></li>
+<li><a href="#spain">西班牙</a></li>
+<li><a href="#people">重要人物</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#exchange">哥倫布大交換</a></li>
+<li><a href="#colonial">殖民與帝國</a></li>
+<li><a href="#impact">歷史影響</a></li>
+<li><a href="#questions">思考題</a></li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- 1 -->
+
+<section id="what" class="hero">
+
+<h2>一、什麼是「地理大發現」？</h2>
+
+<div class="big">
+歐洲航海家開始大規模跨越大西洋與印度洋，
+建立前所未有的全球航海網絡。
+</div>
+
+<p>
+<strong>地理大發現</strong>
+通常指15世紀末開始，
+歐洲航海家進行大規模遠洋探險、
+航路開拓與地理知識擴張的歷史過程。
+</p>
+
+<p>
+其中最重要的參與者是
+<strong>葡萄牙與西班牙</strong>。
+</p>
+
+<div class="quote">
+
+<strong>核心轉變：</strong>
+
+<br><br>
+
+「原本彼此相對隔離的區域，
+開始透過海洋形成持續而密切的全球連結。」
+
+</div>
+
+</section>
+
+
+<!-- 2 -->
+
+<section id="background">
+
+<h2>二、為什麼會出現地理大發現？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+知識與好奇心
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+奧斯曼勢力擴張
+<br>
+傳統貿易受影響
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+商業擴張
+<br>
+尋找新航路
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+航海技術進步
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+遠洋航行
+<br>
+成為可能
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 3 -->
+
+<section id="motives">
+
+<h2>三、歐洲人為什麼要出海？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>① 黃金</h3>
+
+<p>
+尋找貴金屬與新的財富來源，
+是重要動機之一。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>② 香料</h3>
+
+<p>
+胡椒、肉桂、丁香、肉豆蔻等香料
+在歐洲具有高度經濟價值。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>③ 新航路</h3>
+
+<p>
+希望避開中間貿易商，
+直接前往亞洲重要貿易地區。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>④ 宗教</h3>
+
+<p>
+部分航海與殖民活動也帶有
+傳播基督宗教的使命。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑤ 國家競爭</h3>
+
+<p>
+葡萄牙、西班牙以及後來的其他歐洲國家
+爭奪海外貿易與殖民地。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑥ 冒險與求知</h3>
+
+<p>
+探索未知地理與擴大世界知識，
+也是重要因素。
+</p>
+
+</div>
+
+</div>
+
+
+<div class="keyword-box">
+
+<span class="keyword">黃金</span>
+<span class="keyword">香料</span>
+<span class="keyword">航路</span>
+<span class="keyword">宗教</span>
+<span class="keyword">貿易</span>
+<span class="keyword">帝國</span>
+<span class="keyword">探索</span>
+
+</div>
+
+</section>
+
+
+<!-- 4 -->
+
+<section id="technology">
+
+<h2>四、航海技術的進步</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>航海羅盤</h3>
+
+<p>
+幫助航海者判斷方向，
+提高遠洋航行能力。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>改良船舶</h3>
+
+<p>
+例如葡萄牙發展的
+<strong>卡拉維爾帆船</strong>，
+適合探索海岸與遠洋航行。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>三角帆</h3>
+
+<p>
+有利於船隻逆風航行與操控。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>星盤等航海儀器</h3>
+
+<p>
+協助航海者利用天體判斷位置。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>地圖學</h3>
+
+<p>
+航海資料逐漸累積，
+地圖精度不斷提高。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>航海經驗</h3>
+
+<p>
+葡萄牙與其他航海者累積大量
+風向、洋流與海岸資訊。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 5 -->
+
+<section id="portugal">
+
+<h2>五、葡萄牙：率先探索非洲海岸</h2>
+
+<p>
+葡萄牙位於伊比利半島西側，
+面向大西洋，
+具有發展海洋航行的地理條件。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+葡萄牙
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+沿非洲西岸南下
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+繞過非洲南端
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+進入印度洋
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+抵達印度
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 6 -->
+
+<section>
+
+<h2>六、葡萄牙重要航海人物</h2>
+
+<div class="people">
+
+<div class="person">
+
+<div class="person-name">
+航海家恩里克
+</div>
+
+<div class="person-role">
+葡萄牙王子
+</div>
+
+<p>
+支持航海探險與航海知識累積，
+是葡萄牙早期海洋擴張的重要推動者之一。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+迪亞士
+</div>
+
+<div class="person-role">
+葡萄牙航海家
+</div>
+
+<p>
+1488年抵達非洲南端，
+最初稱為「風暴角」，
+後來改稱「好望角」。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+達伽馬
+</div>
+
+<div class="person-role">
+葡萄牙航海家
+</div>
+
+<p>
+1498年抵達印度，
+建立歐洲經好望角前往印度的新航路。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 7 -->
+
+<section id="spain">
+
+<h2>七、西班牙：向西航向亞洲</h2>
+
+<p>
+葡萄牙主要向東探索，
+西班牙則支持向西跨越大西洋的航行計畫。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+歐洲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+向西跨大西洋
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+抵達美洲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+建立殖民帝國
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 8 -->
+
+<section id="people">
+
+<h2>八、地理大發現的重要人物</h2>
+
+<div class="people">
+
+<div class="person">
+
+<div class="person-name">
+哥倫布
+</div>
+
+<div class="person-role">
+義大利出身・西班牙支持
+</div>
+
+<p>
+1492年橫渡大西洋，
+抵達加勒比海地區。
+</p>
+
+<p>
+他原本希望向西航行抵達亞洲，
+卻抵達了歐洲人此前未知的美洲地區。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+達伽馬
+</div>
+
+<div class="person-role">
+葡萄牙
+</div>
+
+<p>
+1498年抵達印度，
+打通歐洲經非洲南端前往印度的海路。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+麥哲倫
+</div>
+
+<div class="person-role">
+葡萄牙出身・西班牙遠征
+</div>
+
+<p>
+率領西班牙遠征隊向西航行，
+開啟首次環球航行。
+</p>
+
+<p>
+麥哲倫本人在菲律賓死亡，
+船隊最終完成環球航行。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+亞美利哥・韋斯普奇
+</div>
+
+<div class="person-role">
+探險家
+</div>
+
+<p>
+相關航行與書信促成歐洲人逐漸認識：
+這片土地並不是亞洲，
+而可能是一個新的大陸。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+巴爾沃亞
+</div>
+
+<div class="person-role">
+西班牙探險家
+</div>
+
+<p>
+1513年越過巴拿馬地峽，
+看到太平洋。
+</p>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-name">
+埃爾南・科爾特斯
+</div>
+
+<div class="person-role">
+西班牙征服者
+</div>
+
+<p>
+征服阿茲特克帝國，
+成為西班牙殖民擴張的重要人物。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 9 -->
+
+<section id="timeline">
+
+<h2>九、地理大發現重要時間軸</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<span class="year">1415</span>
+
+<h3>葡萄牙攻占休達</h3>
+
+<p>
+葡萄牙海外擴張的重要起點之一。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1488</span>
+
+<h3>迪亞士抵達非洲南端</h3>
+
+<p>
+繞過非洲南端的可能性獲得證實。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1492</span>
+
+<h3>哥倫布抵達加勒比海</h3>
+
+<p>
+開啟歐洲與美洲之間持續而大規模的交流。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1494</span>
+
+<h3>《托德西利亞斯條約》</h3>
+
+<p>
+西班牙與葡萄牙劃分部分海外勢力範圍。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1498</span>
+
+<h3>達伽馬抵達印度</h3>
+
+<p>
+歐洲經好望角前往印度的航路正式建立。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1513</span>
+
+<h3>巴爾沃亞看到太平洋</h3>
+
+<p>
+歐洲人對美洲地理的認識進一步擴大。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">1519–1522</span>
+
+<h3>首次環球航行</h3>
+
+<p>
+麥哲倫遠征隊出發，
+最終由埃爾卡諾率船隊完成環球航行。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">16世紀</span>
+
+<h3>西班牙與葡萄牙殖民帝國擴張</h3>
+
+<p>
+歐洲殖民、貿易與宗教傳播迅速擴張。
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<span class="year">17世紀</span>
+
+<h3>荷蘭、英國、法國加入海洋競爭</h3>
+
+<p>
+全球海洋貿易與殖民競爭進一步擴大。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 10 -->
+
+<section>
+
+<h2>十、麥哲倫的環球航行</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+西班牙
+<br>
+1519
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+大西洋
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+南美洲南端
+<br>
+麥哲倫海峽
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+太平洋
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+菲律賓
+<br>
+麥哲倫死亡
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+印度洋
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+西班牙
+<br>
+1522
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+重要觀念：
+</strong>
+
+<br><br>
+
+麥哲倫本人沒有完成環球航行。
+真正完成整個航程的是他的船隊，
+最後由<strong>胡安・塞巴斯蒂安・埃爾卡諾</strong>率領返回西班牙。
+
+</div>
+
+</section>
+
+
+<!-- 11 -->
+
+<section id="exchange">
+
+<h2>十一、哥倫布大交換</h2>
+
+<p>
+1492年之後，
+歐亞非與美洲之間出現前所未有的大規模生物、
+農作物、人口、疾病與文化交流。
+這個歷史現象後來被稱為
+<strong>哥倫布大交換</strong>。
+</p>
+
+<div class="exchange">
+
+<div class="exchange-box">
+
+<h3>美洲 → 歐亞非</h3>
+
+<div class="keyword-box">
+
+<span class="keyword">玉米</span>
+<span class="keyword">馬鈴薯</span>
+<span class="keyword">番茄</span>
+<span class="keyword">可可</span>
+<span class="keyword">辣椒</span>
+<span class="keyword">菸草</span>
+
+</div>
+
+</div>
+
+
+<div class="exchange-box">
+
+<h3>歐亞非 → 美洲</h3>
+
+<div class="keyword-box">
+
+<span class="keyword">小麥</span>
+<span class="keyword">稻米</span>
+<span class="keyword">甘蔗</span>
+<span class="keyword">馬</span>
+<span class="keyword">牛</span>
+<span class="keyword">豬</span>
+<span class="keyword">天花等疾病</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 12 -->
+
+<section>
+
+<h2>十二、哥倫布大交換為什麼重要？</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>農業</h3>
+
+<p>
+玉米、馬鈴薯、番茄等作物改變歐洲與其他地區的飲食與農業。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>人口</h3>
+
+<p>
+美洲原住民因戰爭、殖民與傳染病而遭受巨大人口損失。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>經濟</h3>
+
+<p>
+白銀、糖、煙草等商品進入跨洲貿易網絡。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>生態</h3>
+
+<p>
+不同大陸的植物、動物與微生物開始大規模跨洋移動。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>飲食</h3>
+
+<p>
+今天許多全球化飲食的食材，
+都與這次交換有關。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>全球化</h3>
+
+<p>
+世界不同區域開始形成持續的全球性經濟聯繫。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 13 -->
+
+<section id="colonial">
+
+<h2>十三、地理大發現與殖民帝國</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+航海探索
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+貿易據點
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+軍事控制
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+殖民統治
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+資源與人口流動
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+必須注意：
+「地理大發現」這個名稱主要從歐洲人的角度出發。
+</strong>
+
+<br><br>
+
+對美洲、非洲與亞洲原有社會而言，
+這些土地與文明本來就存在，
+並不是「被發現」才第一次出現。
+
+</div>
+
+</section>
+
+
+<!-- 14 -->
+
+<section>
+
+<h2>十四、殖民擴張帶來的雙面性</h2>
+
+<div class="two">
+
+<div class="box">
+
+<h3>對全球交流的影響</h3>
+
+<ul>
+
+<li>全球貿易網絡擴大</li>
+<li>不同大陸開始持續交流</li>
+<li>農作物跨洲傳播</li>
+<li>航海與地理知識增加</li>
+<li>全球市場逐漸形成</li>
+
+</ul>
+
+</div>
+
+
+<div class="box">
+
+<h3>殖民統治的代價</h3>
+
+<ul>
+
+<li>原住民族人口大量減少</li>
+<li>土地被征服與重新分配</li>
+<li>奴隸貿易擴張</li>
+<li>資源被殖民帝國控制</li>
+<li>文化與政治制度遭到破壞或改造</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 15 -->
+
+<section>
+
+<h2>十五、大西洋奴隸貿易</h2>
+
+<p>
+歐洲殖民擴張與美洲種植園經濟發展，
+推動了跨大西洋奴隸貿易的擴張。
+大量非洲人被強迫運往美洲，
+成為奴隸勞動者。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+歐洲
+<br>
+商品與武器
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+非洲
+<br>
+奴隸人口
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美洲
+<br>
+種植園與礦場
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+歐洲
+<br>
+糖、煙草等商品
+</div>
+
+</div>
+
+<div class="quote">
+
+這也是理解近代全球化的重要部分：
+
+<strong>
+全球貿易的形成同時伴隨著暴力、奴役與不平等。
+</strong>
+
+</div>
+
+</section>
+
+
+<!-- 16 -->
+
+<section>
+
+<h2>十六、葡萄牙與西班牙之後</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>國家</th>
+<th>主要發展</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>葡萄牙</td>
+<td>非洲、印度洋與亞洲海上貿易網絡</td>
+</tr>
+
+<tr>
+<td>西班牙</td>
+<td>美洲殖民帝國與太平洋航線</td>
+</tr>
+
+<tr>
+<td>荷蘭</td>
+<td>17世紀海上貿易與殖民擴張</td>
+</tr>
+
+<tr>
+<td>英國</td>
+<td>北美、加勒比海與亞洲殖民擴張</td>
+</tr>
+
+<tr>
+<td>法國</td>
+<td>北美、加勒比海與亞洲殖民活動</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 17 -->
+
+<section>
+
+<h2>十七、地理大發現與近代資本主義</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+遠洋航海
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+全球貿易
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+殖民地
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+白銀與商品
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+金融與商業擴張
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+近代資本主義發展
+</div>
+
+</div>
+
+<p>
+跨洲貿易的擴張促進商業、金融、
+保險與航運等制度發展，
+也為後來的近代世界經濟奠定重要基礎。
+</p>
+
+</section>
+
+
+<!-- 18 -->
+
+<section>
+
+<h2>十八、地理大發現與文藝復興、宗教改革、科學革命</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+<br>
+人文主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+地理大發現
+<br>
+世界擴張
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+<br>
+挑戰權威
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+<br>
+重新理解自然
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+<br>
+理性思考社會
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+15～18世紀歐洲發生的幾個巨大變化，
+其實彼此相互影響：
+</strong>
+
+<br><br>
+
+人重新思考「自己是誰」
+→
+
+重新認識「世界有多大」
+→
+
+重新思考「宗教權威」
+→
+
+重新理解「自然如何運作」
+→
+
+最後開始追問「政府應該如何統治人民」。
+
+</div>
+
+</section>
+
+
+<!-- 19 -->
+
+<section>
+
+<h2>十九、地理大發現如何走向全球化？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+15世紀
+<br>
+遠洋探索
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+16世紀
+<br>
+殖民與海上貿易
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+17世紀
+<br>
+全球商業網絡
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+18世紀
+<br>
+全球市場
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+19世紀
+<br>
+工業化與帝國主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代
+<br>
+全球化
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 20 -->
+
+<section>
+
+<h2>二十、地理大發現的歷史評價</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>面向</th>
+<th>正面影響</th>
+<th>負面影響</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>地理</td>
+<td>世界地理知識大幅增加</td>
+<td>「發現」往往忽略原有文明</td>
+</tr>
+
+<tr>
+<td>經濟</td>
+<td>全球貿易擴大</td>
+<td>殖民掠奪與不平等擴張</td>
+</tr>
+
+<tr>
+<td>農業</td>
+<td>農作物跨洲交流</td>
+<td>殖民經濟造成單一作物依賴</td>
+</tr>
+
+<tr>
+<td>文化</td>
+<td>不同文明接觸</td>
+<td>文化壓迫與宗教強制</td>
+</tr>
+
+<tr>
+<td>人口</td>
+<td>人口跨洲移動</td>
+<td>戰爭、疾病與奴隸貿易造成巨大傷亡</td>
+</tr>
+
+<tr>
+<td>全球化</td>
+<td>形成跨洲網絡</td>
+<td>全球不平等的歷史結構也因此形成</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<!-- 21 -->
+
+<section id="impact">
+
+<h2>二十一、地理大發現的世界歷史影響</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>① 全球化起點之一</h3>
+
+<p>
+不同大陸之間建立長期而持續的交流。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>② 世界經濟整合</h3>
+
+<p>
+商品、白銀、人口與資本跨洲流動。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>③ 殖民帝國</h3>
+
+<p>
+歐洲列強建立全球殖民與貿易網絡。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>④ 哥倫布大交換</h3>
+
+<p>
+植物、動物、疾病與人口跨越大洋。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑤ 地理知識革命</h3>
+
+<p>
+歐洲人的世界地圖與地理認知大幅改變。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⑥ 近代世界形成</h3>
+
+<p>
+為後來的資本主義、帝國主義與全球化奠定重要基礎。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 22 -->
+
+<section>
+
+<h2>二十二、從地理大發現到美國獨立</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+地理大發現
+<br>
+15～16世紀
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+殖民帝國
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+英國殖民北美
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+十三殖民地
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+英國課稅
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國獨立
+<br>
+1776
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 23 -->
+
+<section>
+
+<h2>二十三、一條完整的近代世界史主線</h2>
+
+<div class="summary-flow">
+
+<div class="summary-card">
+<strong>文藝復興</strong>
+人文主義
+</div>
+
+<div class="summary-card">
+<strong>地理大發現</strong>
+全球連結
+</div>
+
+<div class="summary-card">
+<strong>宗教改革</strong>
+挑戰權威
+</div>
+
+<div class="summary-card">
+<strong>科學革命</strong>
+理性與證據
+</div>
+
+<div class="summary-card">
+<strong>啟蒙運動</strong>
+自由與理性
+</div>
+
+<div class="summary-card">
+<strong>美國獨立</strong>
+1776
+</div>
+
+<div class="summary-card">
+<strong>法國大革命</strong>
+1789
+</div>
+
+<div class="summary-card">
+<strong>工業革命</strong>
+機器與工業
+</div>
+
+</div>
+
+<div class="quote">
+
+<strong>
+可以把近代世界史理解成一場巨大的「連鎖變化」：
+</strong>
+
+<br><br>
+
+人的思想改變
+→
+世界被重新連結
+→
+宗教權威受到挑戰
+→
+自然被重新理解
+→
+理性開始檢驗社會
+→
+政治革命爆發
+→
+工業化改變生產
+→
+現代全球化形成
+
+</div>
+
+</section>
+
+
+<!-- 24 -->
+
+<section id="questions">
+
+<h2>二十四、課堂思考題</h2>
+
+<div class="question">
+
+<strong>問題一：</strong>
+
+歐洲人為什麼要尋找前往亞洲的新航路？
+
+</div>
+
+<div class="question">
+
+<strong>問題二：</strong>
+
+葡萄牙與西班牙為什麼成為最早的海洋強權？
+
+</div>
+
+<div class="question">
+
+<strong>問題三：</strong>
+
+哥倫布真的「發現」了美洲嗎？
+從原住民族的角度應如何重新思考這個說法？
+
+</div>
+
+<div class="question">
+
+<strong>問題四：</strong>
+
+為什麼哥倫布大交換對世界歷史如此重要？
+
+</div>
+
+<div class="question">
+
+<strong>問題五：</strong>
+
+地理大發現與殖民帝國之間有什麼關係？
+
+</div>
+
+<div class="question">
+
+<strong>問題六：</strong>
+
+為什麼全球化的形成同時帶來交流與不平等？
+
+</div>
+
+<div class="question">
+
+<strong>問題七：</strong>
+
+地理大發現如何影響後來的資本主義發展？
+
+</div>
+
+<div class="question">
+
+<strong>問題八：</strong>
+
+地理大發現如何與後來的美國獨立產生關係？
+
+</div>
+
+</section>
+
+
+<!-- 25 -->
+
+<section class="summary">
+
+<h2>二十五、一張圖理解地理大發現</h2>
+
+<div class="keyword-box">
+
+<span class="keyword">航海</span>
+<span class="keyword">新航路</span>
+<span class="keyword">葡萄牙</span>
+<span class="keyword">西班牙</span>
+<span class="keyword">哥倫布</span>
+<span class="keyword">達伽馬</span>
+<span class="keyword">麥哲倫</span>
+<span class="keyword">殖民</span>
+<span class="keyword">全球貿易</span>
+<span class="keyword">哥倫布大交換</span>
+<span class="keyword">奴隸貿易</span>
+<span class="keyword">全球化</span>
+
+</div>
+
+<div class="quote">
+
+<strong>地理大發現的核心：</strong>
+
+<br><br>
+
+「15世紀以前，
+世界各大文明早已各自發展出高度複雜的社會；
+15世紀以後，
+海洋航線開始把這些原本相對分離的世界
+連成一個持續互動的全球網絡。」
+
+<br><br>
+
+<strong>
+但全球連結並不等於平等交流。
+</strong>
+
+<br><br>
+
+它同時帶來貿易、知識與作物的交流，
+也帶來殖民、奴隸制度、疾病、戰爭與資源掠奪。
+
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+地理大發現
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+全球交流
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+殖民帝國
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+全球貿易
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+近代資本主義
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代全球化
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>地理大發現｜世界史教學互動 HTML</p>
+
+<p>
+Age of Discovery · Columbus · Vasco da Gama · Magellan · Columbian Exchange
+</p>
+
+</footer>
+
+</body>
+</html>
