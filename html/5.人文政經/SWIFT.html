@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SWIFT知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--navy2);color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-style:italic;color:var(--muted);margin-left:6px;font-size:13px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ms .nm{color:var(--steel)} .cl .nm{color:#8f5e14}
+  .sa .nm{color:var(--copper)} .al .nm{color:var(--verde)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:3px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px;color:var(--navy)}
+  .note span{font-size:13px;color:var(--body)}
+  blockquote{margin:0;background:var(--paper);border:0;border-left:5px solid var(--copper);
+    border-radius:12px;padding:18px 22px;box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:0;border-left:5px solid var(--brass);border-radius:12px;
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">跨 境 支 付 ・ 金 融 基 礎 設 施</p>
+  <h1>SWIFT知識圖譜</h1>
+  <p class="lede">俄烏戰爭之後，「把某國踢出 SWIFT」成了新聞常用語，也讓很多人以為 SWIFT 是一套由美國掌控的國際清算系統。這兩件事其實都不太對——SWIFT 是一家設在比利時、由全球會員銀行共同持有的合作社，而且它根本不搬錢，只負責傳話。這份圖譜要梳理的，就是報文、清算、結算三件事怎麼分工，錢究竟是怎麼跨境移動的，以及「斷開 SWIFT」到底切斷了什麼、又切不斷什麼。</p>
+</header>
+
+<div class="callout">
+  <b>閱讀提示</b><br>
+  本頁刻意把「報文」與「清算」分開講，因為這是最常見的誤解來源。文中的機構數、報文量等數據為近年概略規模，各家統計口徑略有出入；制裁相關內容以公開的歐盟法規與 SWIFT 官方聲明為準，僅描述機制，不評價任何一方的立場。
+</div>
+
+<section>
+  <h2>SWIFT 到底是什麼——傳話的，不是搬錢的</h2>
+  <p class="sub">一筆跨境匯款要走三層，SWIFT 只負責最上面那一層</p>
+  <div class="frame">
+<svg viewBox="0 0 940 462" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="報文、清算、結算三層分工結構圖">
+
+<rect x="40" y="26" width="860" height="58" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">SWIFT 不持有資金、不記帳、不清算——它是一套加密的金融報文網路</text>
+<text x="52" y="68" font-size="12" text-anchor="start" fill="#546e7a">全名 Society for Worldwide Interbank Financial Telecommunication（環球銀行金融電信協會），1973 年由 15 國 239 家銀行共同創立，總部設於比利時 La Hulpe</text>
+
+<rect x="40" y="104" width="540" height="80" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="310" y="127" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">第一層　報文（Messaging）</text>
+<text x="52" y="147" font-size="12" text-anchor="start" fill="#37607a">銀行之間傳遞標準化的付款指令：誰要付多少錢給誰、走哪</text>
+<text x="52" y="163" font-size="12" text-anchor="start" fill="#37607a">個帳戶。這一層只搬「訊息」，不搬「錢」</text>
+<text x="310" y="178" font-size="11" text-anchor="middle" fill="#1f5c85">← SWIFT 的位置就在這裡，而且只在這裡</text>
+
+<rect x="612" y="104" width="288" height="80" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="756" y="127" font-size="12.5" text-anchor="middle" fill="#17324d" font-weight="600">實際擔任者</text>
+<text x="756" y="149" font-size="11.5" text-anchor="middle" fill="#546e7a">SWIFT（絕大多數跨境情境）</text>
+<text x="756" y="168" font-size="11.5" text-anchor="middle" fill="#546e7a">Telex、專線、其他報文網路</text>
+
+<rect x="40" y="196" width="540" height="80" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="310" y="219" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">第二層　清算（Clearing）</text>
+<text x="52" y="239" font-size="12" text-anchor="start" fill="#8a6a35">計算銀行彼此之間該收該付多少、進行軋差，得出最終應交</text>
+<text x="52" y="255" font-size="12" text-anchor="start" fill="#8a6a35">收的淨額。這一層由各幣別自己的系統負責</text>
+<text x="310" y="270" font-size="11" text-anchor="middle" fill="#8f5e14">每種貨幣都在自己的地盤上清算</text>
+
+<rect x="612" y="196" width="288" height="80" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="756" y="219" font-size="12.5" text-anchor="middle" fill="#17324d" font-weight="600">實際擔任者</text>
+<text x="756" y="241" font-size="11.5" text-anchor="middle" fill="#546e7a">美元 Fedwire、CHIPS</text>
+<text x="756" y="260" font-size="11.5" text-anchor="middle" fill="#546e7a">歐元 TARGET2　人民幣 CIPS</text>
+
+<rect x="40" y="288" width="540" height="80" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="310" y="311" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">第三層　結算（Settlement）</text>
+<text x="52" y="331" font-size="12" text-anchor="start" fill="#446b53">資金真正易手：在中央銀行的準備金帳戶上完成最終不可撤</text>
+<text x="52" y="347" font-size="12" text-anchor="start" fill="#446b53">銷的移轉。錢是在這一層才真的動的</text>
+<text x="310" y="362" font-size="11" text-anchor="middle" fill="#3d7a55">最終責任在各國央行，不在 SWIFT</text>
+
+<rect x="612" y="288" width="288" height="80" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="756" y="311" font-size="12.5" text-anchor="middle" fill="#17324d" font-weight="600">實際擔任者</text>
+<text x="756" y="333" font-size="11.5" text-anchor="middle" fill="#546e7a">各國中央銀行</text>
+<text x="756" y="352" font-size="11.5" text-anchor="middle" fill="#546e7a">代理行之間的往來帳戶</text>
+
+<rect x="40" y="386" width="860" height="58" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="408" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">所以「掌控 SWIFT」與「掌控美元清算」是兩件不同的事</text>
+<text x="52" y="428" font-size="12" text-anchor="start" fill="#546e7a">美國能對美元交易施加壓力，靠的是第二、三層的美元清算體系與代理行對美國法律的服從；SWIFT 則是比利時法人，受歐盟與比利時法律管轄</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>一個簡單的類比</b><span>SWIFT 之於跨境匯款，比較像掛號信與郵政系統之於一紙支票——它保證那張指令安全、格式正確、送到對的收件人手上，但支票能不能兌現、錢從哪個帳戶扣，完全是另一回事。</span></div>
+    <div class="note"><b>規模的意義在於網路效應</b><span>目前約有 200 多個國家與地區、逾一萬一千家金融機構接在這張網上，日均報文量以千萬則計。它的價值不在技術多先進，而在「大家都在上面」——這也是替代系統最難跨越的門檻。</span></div>
+    <div class="note"><b>它是合作社，不是公司</b><span>SWIFT 由會員金融機構共同持有，採合作社形式運作，理論上不以營利為目的；董事會席次依各國報文使用量分配，使用量大的國家席次較多。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>一筆跨境匯款怎麼走——代理行與往來帳戶</h2>
+  <p class="sub">兩家素不相識的銀行，靠一條「誰在誰那裡開戶」的鏈條把錢接上</p>
+  <div class="frame">
+<svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="跨境匯款流程與代理行鏈結構圖">
+<defs>
+  <marker id="sa1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#8fb4c9"/>
+  </marker>
+</defs>
+
+<rect x="40" y="26" width="860" height="52" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">問題：台北的銀行跟里斯本的銀行沒有帳戶關係，錢怎麼過去？</text>
+<text x="52" y="68" font-size="12" text-anchor="start" fill="#546e7a">答案是找一家雙方都有往來的大型銀行當中間人。這條鏈愈長，手續費愈高、到帳愈慢，也愈不透明——這正是跨境匯款慢又貴的結構性原因</text>
+
+<rect x="40" y="100" width="150" height="66" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="115" y="126" font-size="13" text-anchor="middle" fill="#17324d" font-weight="600">匯款人</text>
+<text x="115" y="147" font-size="10.5" text-anchor="middle" fill="#546e7a">台北的個人或企業</text>
+
+<rect x="226" y="100" width="150" height="66" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="301" y="126" font-size="13" text-anchor="middle" fill="#1f5c85" font-weight="700">匯出行</text>
+<text x="301" y="147" font-size="10.5" text-anchor="middle" fill="#37607a">送出 MT103 報文</text>
+
+<rect x="412" y="100" width="156" height="66" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="490" y="126" font-size="13" text-anchor="middle" fill="#8f5e14" font-weight="700">中間代理行</text>
+<text x="490" y="147" font-size="10.5" text-anchor="middle" fill="#8a6a35">可能不只一家</text>
+
+<rect x="604" y="100" width="150" height="66" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="679" y="126" font-size="13" text-anchor="middle" fill="#1f5c85" font-weight="700">收款行</text>
+<text x="679" y="147" font-size="10.5" text-anchor="middle" fill="#37607a">收到報文後入帳</text>
+
+<rect x="790" y="100" width="110" height="66" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="845" y="126" font-size="13" text-anchor="middle" fill="#17324d" font-weight="600">收款人</text>
+<text x="845" y="147" font-size="10.5" text-anchor="middle" fill="#546e7a">里斯本</text>
+
+<g stroke="#8fb4c9" stroke-width="1.4" fill="none" marker-end="url(#sa1)">
+  <line x1="190" y1="133" x2="222" y2="133"/>
+  <line x1="376" y1="133" x2="408" y2="133"/>
+  <line x1="568" y1="133" x2="600" y2="133"/>
+  <line x1="754" y1="133" x2="786" y2="133"/>
+</g>
+
+<rect x="226" y="192" width="528" height="30" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="490" y="212" font-size="11.5" text-anchor="middle" fill="#1f5c85">以上這一整段，SWIFT 傳遞的都只是「訊息」</text>
+
+<rect x="40" y="240" width="420" height="104" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="250" y="263" font-size="13" text-anchor="middle" fill="#17324d" font-weight="600">Nostro 帳戶（我們的帳戶）</text>
+<text x="52" y="285" font-size="11.5" text-anchor="start" fill="#546e7a">本國銀行開在外國銀行的帳戶，用來存放該國貨幣。</text>
+<text x="52" y="303" font-size="11.5" text-anchor="start" fill="#546e7a">台灣的銀行想付美元，就得在美國的代理行有一個</text>
+<text x="52" y="321" font-size="11.5" text-anchor="start" fill="#546e7a">美元 nostro 帳戶，錢從這裡扣。</text>
+<text x="250" y="338" font-size="10.5" text-anchor="middle" fill="#59707b">拉丁文 nostro ＝ ours</text>
+
+<rect x="480" y="240" width="420" height="104" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="690" y="263" font-size="13" text-anchor="middle" fill="#17324d" font-weight="600">Vostro 帳戶（你們的帳戶）</text>
+<text x="492" y="285" font-size="11.5" text-anchor="start" fill="#546e7a">同一個帳戶從對方角度看的稱呼：外國銀行寄放在</text>
+<text x="492" y="303" font-size="11.5" text-anchor="start" fill="#546e7a">我這裡的帳戶。同一筆餘額，兩邊各記一本，靠</text>
+<text x="492" y="321" font-size="11.5" text-anchor="start" fill="#546e7a">SWIFT 的報文核對是否一致。</text>
+<text x="690" y="338" font-size="10.5" text-anchor="middle" fill="#59707b">拉丁文 vostro ＝ yours</text>
+
+<rect x="40" y="362" width="860" height="66" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="385" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">被踢出 SWIFT，實際上被切斷的是什麼？</text>
+<text x="52" y="405" font-size="11.5" text-anchor="start" fill="#546e7a">代理行關係與 nostro 帳戶都還在，錢在理論上仍可移動——被拿走的是那條又快又標準化的溝通管道。改用電話、電郵或雙邊專線並非不可能，</text>
+<text x="52" y="422" font-size="11.5" text-anchor="start" fill="#546e7a">但速度、成本、可稽核性全面惡化，而且大型代理行往往會因為合規風險而主動終止往來，這才是真正的殺傷力所在</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>MT103 與 MT202 的差別</b><span>MT103 是「客戶匯款」，最終受益人是個人或企業；MT202 是「銀行間資金調撥」，兩端都是金融機構。一筆零售匯款背後，常常同時跑著這兩種報文。</span></div>
+    <div class="note"><b>正在換一套語言：ISO 20022</b><span>沿用數十年的 MT 格式正逐步汰換為結構化的 ISO 20022（MX）訊息，可攜帶更豐富的付款資訊，有助於制裁篩查與自動對帳。遷移採共存期分階段進行，是近年跨境支付最大的基礎工程。</span></div>
+    <div class="note"><b>BIC 就是俗稱的 SWIFT Code</b><span>八碼或十一碼，依序是銀行代碼、國別、地區與分行。它是這張網路上的地址，讓報文知道該送到哪個機構。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>誰能決定切斷誰——治理結構與制裁機制</h2>
+  <p class="sub">SWIFT 自己並不想當裁判，但它註冊在比利時，就得守歐盟的法律</p>
+  <div class="frame">
+<svg viewBox="0 0 940 442" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SWIFT治理結構與制裁決策鏈">
+<defs>
+  <marker id="sa2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#dda695"/>
+  </marker>
+</defs>
+
+<rect x="40" y="26" width="860" height="34" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">治理：由會員擁有，由央行監督</text>
+
+<rect x="40" y="76" width="270" height="88" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="175" y="99" font-size="13" text-anchor="middle" fill="#1f5c85" font-weight="700">會員金融機構</text>
+<text x="52" y="120" font-size="11.5" text-anchor="start" fill="#37607a">全球逾一萬一千家銀行、券商、</text>
+<text x="52" y="138" font-size="11.5" text-anchor="start" fill="#37607a">交易所與企業，共同持有這家合</text>
+<text x="52" y="156" font-size="11.5" text-anchor="start" fill="#37607a">作社</text>
+
+<rect x="335" y="76" width="270" height="88" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="470" y="99" font-size="13" text-anchor="middle" fill="#1f5c85" font-weight="700">董事會</text>
+<text x="347" y="120" font-size="11.5" text-anchor="start" fill="#37607a">二十餘席，席次依各國的報文使</text>
+<text x="347" y="138" font-size="11.5" text-anchor="start" fill="#37607a">用量分配，使用量愈大的國家可</text>
+<text x="347" y="156" font-size="11.5" text-anchor="start" fill="#37607a">提名愈多董事</text>
+
+<rect x="630" y="76" width="270" height="88" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="765" y="99" font-size="13" text-anchor="middle" fill="#8f5e14" font-weight="700">G-10 央行監督</text>
+<text x="642" y="120" font-size="11.5" text-anchor="start" fill="#8a6a35">十國集團央行與歐洲央行共同監</text>
+<text x="642" y="138" font-size="11.5" text-anchor="start" fill="#8a6a35">督，由比利時國家銀行擔任主要</text>
+<text x="642" y="156" font-size="11.5" text-anchor="start" fill="#8a6a35">監管者</text>
+
+<rect x="40" y="192" width="860" height="34" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="214" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">制裁：真正下令的不是 SWIFT，而是立法者</text>
+
+<rect x="40" y="242" width="192" height="76" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="136" y="266" font-size="12.5" text-anchor="middle" fill="#b8442a" font-weight="700">政治決定</text>
+<text x="136" y="287" font-size="10.5" text-anchor="middle" fill="#96604f">歐盟理事會通過制裁</text>
+<text x="136" y="305" font-size="10.5" text-anchor="middle" fill="#96604f">法規，列出對象名單</text>
+
+<rect x="266" y="242" width="192" height="76" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="362" y="266" font-size="12.5" text-anchor="middle" fill="#b8442a" font-weight="700">轉為法律義務</text>
+<text x="362" y="287" font-size="10.5" text-anchor="middle" fill="#96604f">法規對比利時法人</text>
+<text x="362" y="305" font-size="10.5" text-anchor="middle" fill="#96604f">直接生效，無裁量權</text>
+
+<rect x="492" y="242" width="192" height="76" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="588" y="266" font-size="12.5" text-anchor="middle" fill="#17324d" font-weight="600">SWIFT 執行</text>
+<text x="588" y="287" font-size="10.5" text-anchor="middle" fill="#546e7a">停止指定機構的連線</text>
+<text x="588" y="305" font-size="10.5" text-anchor="middle" fill="#546e7a">僅執行，不作判斷</text>
+
+<rect x="718" y="242" width="182" height="76" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="809" y="266" font-size="12.5" text-anchor="middle" fill="#3d7a55" font-weight="700">連帶效應</text>
+<text x="809" y="287" font-size="10.5" text-anchor="middle" fill="#446b53">代理行為避險而</text>
+<text x="809" y="305" font-size="10.5" text-anchor="middle" fill="#446b53">主動終止往來關係</text>
+
+<g stroke="#dda695" stroke-width="1.4" fill="none" marker-end="url(#sa2)">
+  <line x1="232" y1="280" x2="262" y2="280"/>
+  <line x1="458" y1="280" x2="488" y2="280"/>
+  <line x1="684" y1="280" x2="714" y2="280"/>
+</g>
+
+<rect x="40" y="340" width="860" height="82" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="363" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">兩次大規模斷線</text>
+<text x="52" y="384" font-size="11.5" text-anchor="start" fill="#546e7a">2012 年，歐盟制裁下切斷伊朗多家銀行，是史上第一次；2016 年伊朗核協議期間一度恢復，後又隨美方退出而再度受限。</text>
+<text x="52" y="402" font-size="11.5" text-anchor="start" fill="#546e7a">2022 年俄烏戰爭爆發後，歐盟分批將多家俄羅斯銀行排除在外——但刻意保留了部分涉及能源結算的銀行，因為歐洲自己還要付天然氣的錢。</text>
+<text x="470" y="418" font-size="11" text-anchor="middle" fill="#59707b">這個「留一手」的細節，最能說明金融制裁從來不是純技術問題</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>「金融核武」這個說法要打折</b><span>斷線確實痛，但它不像核武那樣一擊致命。被切斷的機構仍可透過未受制裁的第三方銀行、其他報文管道或替代系統迂迴，代價是更慢、更貴、更難稽核——是持續放血，不是瞬間死亡。</span></div>
+    <div class="note"><b>用得愈多，反彈愈大</b><span>每一次動用，都在提醒其他國家「這條管道可能被拿來當武器」，因而加速替代系統的投資。這是制裁工具的內在矛盾：威懾力來自不常用，而每次使用都會削弱下一次的威懾力。</span></div>
+    <div class="note"><b>SWIFT 自己的立場一向被動</b><span>官方多次聲明自己是中立的公用事業，斷線是遵守法律義務而非自主決策。這既是事實，也是它在地緣政治夾縫中保護自身正當性的必要姿態。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>替代系統的競賽——為什麼取代不了</h2>
+  <p class="sub">技術上複製一套報文網路並不難，難的是讓全世界都接上去</p>
+  <div class="frame">
+<svg viewBox="0 0 940 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SWIFT替代系統比較圖">
+
+<rect x="40" y="26" width="860" height="52" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">替代系統的真正瓶頸不是技術，是網路效應</text>
+<text x="52" y="68" font-size="12" text-anchor="start" fill="#546e7a">一張支付網路的價值，取決於上面有多少人。只有自己人在用的系統，能處理的是本來就會發生的雙邊貿易，撬不動第三方</text>
+
+<rect x="40" y="96" width="208" height="128" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="144" y="119" font-size="13.5" text-anchor="middle" fill="#8f5e14" font-weight="700">CIPS</text>
+<text x="144" y="137" font-size="10.5" text-anchor="middle" fill="#8a6a35">中國・2015 年上線</text>
+<text x="52" y="159" font-size="11" text-anchor="start" fill="#8a6a35">人民幣跨境支付系統。嚴格</text>
+<text x="52" y="176" font-size="11" text-anchor="start" fill="#8a6a35">說是清算系統而非報文網</text>
+<text x="52" y="193" font-size="11" text-anchor="start" fill="#8a6a35">路，且多數報文仍透過</text>
+<text x="52" y="210" font-size="11" text-anchor="start" fill="#8a6a35">SWIFT 傳遞</text>
+
+<rect x="264" y="96" width="208" height="128" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="368" y="119" font-size="13.5" text-anchor="middle" fill="#b8442a" font-weight="700">SPFS</text>
+<text x="368" y="137" font-size="10.5" text-anchor="middle" fill="#96604f">俄羅斯・2014 年後</text>
+<text x="276" y="159" font-size="11" text-anchor="start" fill="#96604f">克里米亞事件後為防斷線而</text>
+<text x="276" y="176" font-size="11" text-anchor="start" fill="#96604f">建。境內運作正常，境外參</text>
+<text x="276" y="193" font-size="11" text-anchor="start" fill="#96604f">與者少，且第三國銀行擔心</text>
+<text x="276" y="210" font-size="11" text-anchor="start" fill="#96604f">被次級制裁而卻步</text>
+
+<rect x="488" y="96" width="208" height="128" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="592" y="119" font-size="13.5" text-anchor="middle" fill="#17324d" font-weight="600">INSTEX</text>
+<text x="592" y="137" font-size="10.5" text-anchor="middle" fill="#59707b">歐盟・2019–2023</text>
+<text x="500" y="159" font-size="11" text-anchor="start" fill="#546e7a">歐洲為維持與伊朗的人道貿</text>
+<text x="500" y="176" font-size="11" text-anchor="start" fill="#546e7a">易而設的以物易物式結算機</text>
+<text x="500" y="193" font-size="11" text-anchor="start" fill="#546e7a">制。實際交易量極小，最終</text>
+<text x="500" y="210" font-size="11" text-anchor="start" fill="#546e7a">清算解散</text>
+
+<rect x="712" y="96" width="188" height="128" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="806" y="119" font-size="13.5" text-anchor="middle" fill="#3d7a55" font-weight="700">mBridge</text>
+<text x="806" y="137" font-size="10.5" text-anchor="middle" fill="#446b53">多邊央行・試驗中</text>
+<text x="724" y="159" font-size="11" text-anchor="start" fill="#446b53">以央行數位貨幣直接跨境</text>
+<text x="724" y="176" font-size="11" text-anchor="start" fill="#446b53">結算，繞過代理行鏈。是</text>
+<text x="724" y="193" font-size="11" text-anchor="start" fill="#446b53">最有可能改變結構的路</text>
+<text x="724" y="210" font-size="11" text-anchor="start" fill="#446b53">線，但仍在早期</text>
+
+<rect x="40" y="242" width="860" height="70" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="265" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">一個常見的混淆：CIPS 不是「中國版 SWIFT」</text>
+<text x="52" y="286" font-size="11.5" text-anchor="start" fill="#546e7a">CIPS 對應的是第二層的清算，SWIFT 是第一層的報文，兩者本來就不在同一層。CIPS 雖有自建的報文能力，但在實務上大量交易仍是</text>
+<text x="52" y="304" font-size="11.5" text-anchor="start" fill="#546e7a">「用 SWIFT 傳訊息、用 CIPS 清算人民幣」。真正要繞開 SWIFT，需要的是報文層的替代品，而那正是最難建立的一層</text>
+
+<rect x="40" y="330" width="860" height="76" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="470" y="353" font-size="13.5" text-anchor="middle" fill="#1f5c85" font-family="'Noto Serif TC',serif" font-weight="600">結構性的護城河</text>
+<text x="52" y="374" font-size="11.5" text-anchor="start" fill="#37607a">要取代 SWIFT，新系統得同時具備：足夠多的參與機構、被廣泛信任的中立性、成熟的報文標準、以及跨時區的全天候維運能力。</text>
+<text x="52" y="392" font-size="11.5" text-anchor="start" fill="#37607a">前三項都不是砸錢就能買到的——尤其「中立性」，恰恰是任何由單一國家主導的系統最難取得的一項</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心概念</h2><span class="tag">KEY CONCEPTS</span></div>
+  <div class="grid ms">
+    <div class="card"><div class="nm">報文網路<span class="it">Messaging Network</span></div><p>SWIFT 的本質。傳送格式標準化、經加密與驗證的付款指令，確保收送雙方對「誰付誰多少錢」有一致且可稽核的紀錄，但本身不涉及資金移動。</p></div>
+    <div class="card"><div class="nm">代理行關係<span class="it">Correspondent Banking</span></div><p>兩家沒有直接帳戶關係的銀行，透過雙方都有往來的第三家銀行完成資金移轉。這是跨境支付的實際骨架，也是手續費與延遲的主要來源。</p></div>
+    <div class="card"><div class="nm">Nostro / Vostro 帳戶</div><p>同一個往來帳戶的兩種視角：從開戶方看是 nostro（我們存在你那裡的），從受託方看是 vostro（你們存在我這裡的）。兩邊各記一本帳，靠報文核對。</p></div>
+    <div class="card"><div class="nm">BIC<span class="it">Bank Identifier Code</span></div><p>俗稱 SWIFT Code，八碼或十一碼，依序標示銀行、國別、地區與分行，是這張網路上的收件地址。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>常見報文類型</h2><span class="tag">MESSAGE TYPES</span></div>
+  <div class="grid cl">
+    <div class="card"><div class="nm">MT103<span class="yr">客戶匯款</span></div><p>最終受益人是個人或企業的單筆匯款指令，載明金額、幣別、收付雙方與費用分攤方式，是一般人跨境匯款時背後跑的報文。</p></div>
+    <div class="card"><div class="nm">MT202<span class="yr">銀行間調撥</span></div><p>兩端都是金融機構的資金移轉，常用於支應代理行往來帳戶的部位。一筆零售匯款背後往往同時觸發 MT103 與 MT202。</p></div>
+    <div class="card"><div class="nm">MT940 / MT950<span class="yr">帳戶報表</span></div><p>對帳用的日終或期間報表，讓持有 nostro 帳戶的銀行核對餘額與交易明細是否與對方記載一致。</p></div>
+    <div class="card"><div class="nm">ISO 20022（MX）<span class="yr">新一代標準</span></div><p>結構化的 XML 報文格式，可攜帶遠比 MT 豐富的付款資訊，有利自動化對帳與制裁篩查。跨境支付正以共存期方式分階段遷移。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>相關清算與替代系統</h2><span class="tag">CLEARING &amp; ALTERNATIVES</span></div>
+  <div class="grid al">
+    <div class="card"><div class="nm">Fedwire / CHIPS<span class="yr">美國</span></div><p>美元的兩大清算管道：Fedwire 為聯準會經營的即時全額結算系統，CHIPS 為民營的淨額清算系統。美國對美元交易的影響力主要來自這一層。</p></div>
+    <div class="card"><div class="nm">TARGET2<span class="yr">歐元區</span></div><p>歐洲央行體系經營的歐元即時全額結算系統，歐元區跨國支付的最終結算都在此完成。</p></div>
+    <div class="card"><div class="nm">CIPS<span class="yr">中國・2015</span></div><p>人民幣跨境支付系統，屬清算層而非報文層。雖具備自有報文能力，實務上大量交易仍是「SWIFT 傳訊息、CIPS 清人民幣」。</p></div>
+    <div class="card"><div class="nm">SPFS<span class="yr">俄羅斯・2014 後</span></div><p>克里米亞事件後為防範斷線而建立的報文系統。境內運作正常，但境外參與者有限，第三國機構多因擔心次級制裁而保持距離。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>關鍵事件</h2><span class="tag">TIMELINE</span></div>
+  <div class="grid sa">
+    <div class="card"><div class="nm">創立<span class="yr">1973</span></div><p>15 國 239 家銀行共同成立，目的是取代當時容易出錯、格式不一的 Telex 電報，建立一套標準化的銀行間報文語言。</p></div>
+    <div class="card"><div class="nm">首次用於制裁<span class="yr">2012</span></div><p>歐盟制裁架構下切斷伊朗多家銀行，是 SWIFT 史上第一次因政治決定而排除特定國家的機構，也自此讓它進入地緣政治的視野。</p></div>
+    <div class="card"><div class="nm">俄羅斯部分斷線<span class="yr">2022</span></div><p>俄烏戰爭後歐盟分批排除多家俄國銀行，但刻意保留部分涉及能源結算者，顯示制裁設計必須同時考慮發動方自身的經濟依賴。</p></div>
+    <div class="card"><div class="nm">ISO 20022 遷移<span class="yr">2023 起</span></div><p>跨境支付報文開始由 MT 格式轉向 ISO 20022，採共存期分階段推進，是這套基礎設施數十年來最大規模的一次改版。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    我們是一家中立的全球合作社，依據所在地法律運作。
+    <cite>SWIFT 在歷次制裁爭議中反覆重申的立場。這句話同時說明了它的兩種身分——技術上它確實只是傳話者、對報文內容不作判斷；但它註冊在比利時，也就無可避免地隨著歐盟的政治決定而行動。所謂中立，指的是不主動選邊，而非能夠置身事外。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  機構數、報文量等為近年概略規模，各家統計口徑與時點略有差異；制裁範圍與名單隨法規調整而變動，本頁僅說明機制與結構，不構成對任何一方立場的評價，也不作為實務操作依據。
+</footer>
+
+</div>
+</body>
+</html>
