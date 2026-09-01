@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>洛克｜經驗主義、白板說與自然權利</title>
+
+<style>
+*{box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+    margin:0;
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+    line-height:1.8;
+    background:#eef2f3;
+    color:#263238;
+}
+
+header{
+    background:linear-gradient(135deg,#173b4d,#39758a);
+    color:white;
+    text-align:center;
+    padding:85px 20px;
+}
+
+header h1{
+    margin:0;
+    font-size:4rem;
+    letter-spacing:10px;
+}
+
+header p{
+    margin:8px;
+    font-size:1.1rem;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #ccd5d8;
+}
+
+nav ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:#263238;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#dce8eb;
+}
+
+main{
+    max-width:1350px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    padding:40px;
+    margin-bottom:35px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.hero{
+    text-align:center;
+    background:#f8fbfc;
+    border:2px solid #c8d9de;
+}
+
+h2{
+    margin-top:0;
+    border-left:7px solid #39758a;
+    padding-left:15px;
+}
+
+h3{
+    margin-top:0;
+}
+
+.big{
+    font-size:2rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:#f7fafb;
+    border:1px solid #d4e0e3;
+    padding:25px;
+    border-radius:15px;
+}
+
+.quote{
+    background:#edf5f7;
+    border-left:6px solid #39758a;
+    padding:22px 28px;
+    border-radius:10px;
+    margin:25px 0;
+}
+
+.formula{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:30px;
+    border-radius:15px;
+    font-size:1.2rem;
+    margin:30px 0;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    background:#e8f0f2;
+    border:1px solid #bfd0d5;
+    padding:16px 22px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    font-size:1.7rem;
+    color:#39758a;
+}
+
+.timeline{
+    position:relative;
+    padding-left:75px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:28px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#bdd0d5;
+}
+
+.timeline-item{
+    position:relative;
+    background:#f8fafb;
+    border:1px solid #d4e0e3;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-60px;
+    top:28px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#39758a;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #9eb7bf;
+}
+
+.keyword-box{
+    text-align:center;
+    background:#f7fafb;
+    border:1px solid #d4e0e3;
+    border-radius:15px;
+    padding:25px;
+}
+
+.keyword{
+    display:inline-block;
+    background:#dce8eb;
+    padding:8px 17px;
+    margin:6px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.question{
+    background:#f4f8f9;
+    border-left:5px solid #39758a;
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#315d6c;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #d9e2e4;
+    vertical-align:top;
+}
+
+tr:nth-child(even){
+    background:#f7fafb;
+}
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+    header h1{
+        font-size:2.5rem;
+        letter-spacing:5px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    .grid,.two{
+        grid-template-columns:1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>洛克</h1>
+
+<p>John Locke｜1632－1704</p>
+
+<p>
+經驗主義・白板說・自然權利・政府契約・寬容
+</p>
+
+</header>
+
+
+<nav>
+
+<ul>
+<li><a href="#intro">人物</a></li>
+<li><a href="#age">時代</a></li>
+<li><a href="#empiricism">經驗主義</a></li>
+<li><a href="#tabula">白板說</a></li>
+<li><a href="#ideas">觀念</a></li>
+<li><a href="#knowledge">知識</a></li>
+<li><a href="#education">教育</a></li>
+<li><a href="#nature">自然狀態</a></li>
+<li><a href="#rights">自然權利</a></li>
+<li><a href="#government">政府</a></li>
+<li><a href="#revolution">革命</a></li>
+<li><a href="#america">美國</a></li>
+<li><a href="#tolerance">寬容</a></li>
+<li><a href="#comparison">比較</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#questions">大哉問</a></li>
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<section id="intro" class="hero">
+
+<h2>一、誰是洛克？</h2>
+
+<div class="big">
+「人的心靈，起初並不是裝滿知識的。」
+</div>
+
+<p>
+約翰・洛克是17世紀英國哲學家，
+也是近代<strong>經驗主義</strong>與<strong>自由主義政治思想</strong>的重要奠基者。
+</p>
+
+<p>
+他的思想同時影響：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>哲學</h3>
+<p>經驗主義、知識論。</p>
+</div>
+
+<div class="card">
+<h3>政治</h3>
+<p>自然權利、社會契約、有限政府。</p>
+</div>
+
+<div class="card">
+<h3>教育</h3>
+<p>環境、經驗與教育對人格形成的重要性。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="age">
+
+<h2>二、洛克生活在什麼時代？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+洛克
+<br>
+1632－1704
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+</div>
+
+</div>
+
+<p>
+洛克生活在科學革命、宗教衝突與英國政治劇烈變動的時代。
+</p>
+
+<p>
+這些背景深深影響他對：
+<strong>知識、宗教、自由與政府</strong>的思考。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三、洛克與17世紀英國</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>科學革命</h3>
+<p>
+培根、牛頓等人的新科學，
+強調觀察、實驗與經驗。
+</p>
+</div>
+
+<div class="card">
+<h3>宗教衝突</h3>
+<p>
+新教與不同宗派之間的衝突，
+引發宗教寬容問題。
+</p>
+</div>
+
+<div class="card">
+<h3>政治衝突</h3>
+<p>
+國王與議會之間的權力衝突，
+最終導向英國光榮革命。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="empiricism">
+
+<h2>四、什麼是經驗主義？</h2>
+
+<div class="big">
+Empiricism｜經驗主義
+</div>
+
+<p>
+經驗主義認為：
+<strong>
+人的知識主要來自感官經驗與後天經驗，
+而不是天生就已經存在於心中的完整知識。
+</strong>
+</p>
+
+<div class="formula">
+
+感官
+↓
+經驗
+↓
+觀念
+↓
+思考
+↓
+知識
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>五、洛克反對「天賦觀念」</h2>
+
+<p>
+洛克在《人類理解論》中反對一種觀點：
+</p>
+
+<div class="question">
+人出生時，是否已經具有某些普遍而清楚的觀念？
+</div>
+
+<p>
+洛克認為：
+不能因為成年人普遍知道某件事，
+就推論這件事一定是出生時就存在於心中的。
+</p>
+
+<div class="formula">
+
+不是：
+
+「出生 → 已經裝滿知識」
+
+而是：
+
+「出生 → 開始經驗 → 形成觀念 → 建構知識」
+
+</div>
+
+</section>
+
+
+<section id="tabula">
+
+<h2>六、白板說 Tabula Rasa</h2>
+
+<div class="big">
+心靈如同一張「白板」
+</div>
+
+<p>
+洛克最著名的思想之一就是：
+<strong>Tabula Rasa</strong>。
+</p>
+
+<div class="formula">
+
+出生
+<br>
+↓
+<br>
+<strong>尚未寫滿的心靈</strong>
+<br>
+↓
+<br>
+感覺
+＋
+反思
+<br>
+↓
+<br>
+簡單觀念
+<br>
+↓
+<br>
+複雜觀念
+<br>
+↓
+<br>
+知識
+
+</div>
+
+<p>
+這並不是說人完全沒有任何先天能力，
+而是說：
+<strong>
+具體的知識內容並不是出生時就已經完整存在。
+</strong>
+</p>
+
+</section>
+
+
+<section>
+
+<h2>七、白板說的教育意義</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>如果孩子天生就固定</h3>
+
+<p>
+教育似乎只能把原本已經存在的能力發揮出來。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>如果孩子受到經驗影響</h3>
+
+<p>
+教育、家庭、環境與社會經驗，
+就會深刻影響一個人的成長。
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+洛克因此非常重視教育，
+因為他認為人的發展與後天經驗具有高度關聯。
+</div>
+
+</section>
+
+
+<section id="ideas">
+
+<h2>八、經驗從哪裡來？</h2>
+
+<p>
+洛克主要區分兩種經驗來源：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 感覺 Sensation</h3>
+
+<p>
+我們透過感官接觸外在世界。
+</p>
+
+<p>
+例如：
+</p>
+
+<ul>
+<li>看到顏色</li>
+<li>聽到聲音</li>
+<li>感受到溫度</li>
+<li>觸摸物體</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>② 反思 Reflection</h3>
+
+<p>
+心靈對自己的活動進行觀察。
+</p>
+
+<p>
+例如：
+</p>
+
+<ul>
+<li>思考</li>
+<li>懷疑</li>
+<li>相信</li>
+<li>意願</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>兩者共同作用</h3>
+
+<p>
+感覺提供外在經驗，
+反思讓心靈觀察自己的活動。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>九、簡單觀念與複雜觀念</h2>
+
+<div class="formula">
+
+感覺
+↓
+<br>
+簡單觀念
+<br>
+↓
+<br>
+心靈進行組合、比較、抽象
+<br>
+↓
+<br>
+複雜觀念
+<br>
+↓
+<br>
+知識
+
+</div>
+
+<p>
+例如：
+「紅色」、「圓形」、「甜」等可以成為較基本的經驗內容，
+心靈再將不同觀念組合起來，
+形成更複雜的概念。
+</p>
+
+</section>
+
+
+<section id="knowledge">
+
+<h2>十、知識是什麼？</h2>
+
+<p>
+洛克認為，
+知識涉及心靈對觀念之間關係的理解。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>直覺</h3>
+<p>
+心靈直接看見觀念之間的關係。
+</p>
+</div>
+
+<div class="card">
+<h3>證明</h3>
+<p>
+透過中間步驟推導出關係。
+</p>
+</div>
+
+<div class="card">
+<h3>感覺知識</h3>
+<p>
+透過感官確認外在事物的存在。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十一、洛克的知識論核心</h2>
+
+<div class="formula">
+
+世界
+↓
+<br>
+感官經驗
+<br>
+↓
+<br>
+心靈形成觀念
+<br>
+↓
+<br>
+比較・組合・抽象
+<br>
+↓
+<br>
+知識
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十二、洛克的「第一性質」與「第二性質」</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>第一性質</th>
+<th>第二性質</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>
+物體本身具有的性質。
+</td>
+
+<td>
+物體刺激我們感官後所產生的感覺。
+</td>
+</tr>
+
+<tr>
+<td>
+例如：形狀、大小、運動、數量。</td>
+
+<td>
+例如：顏色、聲音、味道。</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="question">
+一顆蘋果的「紅色」，
+究竟是蘋果本身具有的東西，
+還是它對我們感官產生的感覺？
+</div>
+
+</section>
+
+
+<section id="education">
+
+<h2>十三、洛克的教育思想</h2>
+
+<p>
+洛克認為教育對人的形成具有極大的影響。
+</p>
+
+<div class="formula">
+
+習慣
+＋
+教育
+＋
+環境
+＋
+經驗
+<br>
+↓
+<br>
+人格與行為
+
+</div>
+
+<p>
+因此他非常重視：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>習慣</h3>
+<p>好的習慣需要從小培養。</p>
+</div>
+
+<div class="card">
+<h3>理性</h3>
+<p>教育應培養孩子思考與判斷。</p>
+</div>
+
+<div class="card">
+<h3>自律</h3>
+<p>教育不是單純灌輸知識。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十四、從「白板說」到現代教育</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+孩子
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+經驗
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+教育
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+習慣
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+人格
+</div>
+
+</div>
+
+<p>
+雖然現代心理學已經不接受簡化的「完全白板」觀點，
+但洛克的重要貢獻之一，
+是強調環境、經驗與教育對人的發展的重要性。
+</p>
+
+</section>
+
+
+<section id="nature">
+
+<h2>十五、洛克的政治哲學</h2>
+
+<div class="big">
+人為什麼需要政府？
+</div>
+
+<p>
+洛克不只是一位知識論哲學家，
+也是近代自由主義的重要思想家。
+</p>
+
+<p>
+他的政治哲學核心問題是：
+</p>
+
+<div class="question">
+「如果政府不是上帝給國王的，
+那麼政府的權力從哪裡來？」
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十六、自然狀態</h2>
+
+<div class="big">
+State of Nature｜自然狀態
+</div>
+
+<p>
+洛克想像：
+如果還沒有正式政府，
+人們會處於什麼狀態？
+</p>
+
+<p>
+他的答案與霍布斯不同。
+</p>
+
+<div class="two">
+
+<div class="card">
+
+<h3>霍布斯</h3>
+
+<p>
+自然狀態容易陷入：
+</p>
+
+<p>
+<strong>
+「所有人對所有人的戰爭」
+</strong>
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>洛克</h3>
+
+<p>
+自然狀態中，
+人仍然受到自然法約束，
+並享有自然權利。
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="rights">
+
+<h2>十七、自然權利</h2>
+
+<div class="big">
+生命・自由・財產
+</div>
+
+<p>
+洛克認為人具有先於政府存在的基本權利。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>生命</h3>
+<p>
+人有保護自己生命的權利。
+</p>
+</div>
+
+<div class="card">
+<h3>自由</h3>
+<p>
+人不是天生某個人的奴隸。
+</p>
+</div>
+
+<div class="card">
+<h3>財產</h3>
+<p>
+個人對合法取得的財產具有權利。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十八、為什麼財產是洛克的重要概念？</h2>
+
+<p>
+洛克把「勞動」與財產取得連結起來。
+</p>
+
+<div class="formula">
+
+自然界
+↓
+<br>
+個人投入勞動
+<br>
+↓
+<br>
+勞動與事物結合
+<br>
+↓
+<br>
+形成財產權
+
+</div>
+
+<p>
+這套思想後來對自由主義與財產權觀念產生巨大影響。
+</p>
+
+</section>
+
+
+<section id="government">
+
+<h2>十九、政府從哪裡得到權力？</h2>
+
+<div class="formula">
+
+自然人
+↓
+<br>
+享有自然權利
+<br>
+↓
+<br>
+人們同意建立政府
+<br>
+↓
+<br>
+政府取得合法權力
+<br>
+↓
+<br>
+保護生命、自由、財產
+</div>
+
+<p>
+這就是洛克政治思想中的<strong>同意</strong>概念。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十、政府不是主人，而是受託者</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>傳統君權神授</h3>
+
+<p>
+國王的權力來自上帝，
+人民服從國王。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>洛克</h3>
+
+<p>
+政治權力來自人民的同意，
+政府的目的在於保護人民權利。
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+因此：
+<strong>
+政府的存在，是為了人民，
+而不是人民為了政府而存在。
+</strong>
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十一、如果政府侵犯人民權利呢？</h2>
+
+<div class="formula">
+
+人民
+↓
+<br>
+授權政府
+<br>
+↓
+<br>
+政府濫權
+<br>
+↓
+<br>
+侵犯自然權利
+<br>
+↓
+<br>
+政府失去正當性
+<br>
+↓
+<br>
+<strong>
+人民具有抵抗與改變政府的權利
+</strong>
+
+</div>
+
+</section>
+
+
+<section id="revolution">
+
+<h2>二十二、洛克與英國光榮革命</h2>
+
+<p>
+1688年的英國光榮革命，
+與洛克的政治思想具有重要歷史關聯。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+君主權力
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+政治衝突
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+光榮革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+議會權力增強
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+有限政府
+</div>
+
+</div>
+
+<p>
+洛克後來發表的《政府論二篇》，
+成為自由主義政治思想的重要文本。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十三、洛克 vs 霍布斯</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>問題</th>
+<th>霍布斯</th>
+<th>洛克</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>自然狀態</td>
+<td>高度衝突</td>
+<td>具有自然法與權利</td>
+</tr>
+
+<tr>
+<td>人的基本狀態</td>
+<td>容易互相威脅</td>
+<td>具有理性與權利</td>
+</tr>
+
+<tr>
+<td>政府目的</td>
+<td>維持秩序與安全</td>
+<td>保護自然權利</td>
+</tr>
+
+<tr>
+<td>政府權力</td>
+<td>強而集中</td>
+<td>有限</td>
+</tr>
+
+<tr>
+<td>人民反抗</td>
+<td>非常有限</td>
+<td>具有抵抗暴政的權利</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section id="america">
+
+<h2>二十四、洛克與美國獨立</h2>
+
+<p>
+洛克的自然權利與政府同意思想，
+對18世紀英美政治思想具有重要影響。
+</p>
+
+<div class="formula">
+
+洛克
+<br>
+↓
+<br>
+自然權利
+<br>
+↓
+<br>
+生命・自由・財產
+<br>
+↓
+<br>
+政府必須得到人民同意
+<br>
+↓
+<br>
+政府侵犯權利 → 人民有權抵抗
+<br>
+↓
+<br>
+<strong>
+美國革命政治思想
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十五、洛克與美國《獨立宣言》</h2>
+
+<p>
+美國《獨立宣言》中的：
+</p>
+
+<div class="big">
+「生命、自由與追求幸福」
+</div>
+
+<p>
+常被拿來與洛克的：
+</p>
+
+<div class="formula">
+
+生命
+＋
+自由
+＋
+財產
+
+</div>
+
+<p>
+進行思想上的比較。
+</p>
+
+<p>
+兩者並非逐字相同，
+但洛克的自然權利思想，
+對美國革命時代的政治語言具有重要影響。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十六、洛克 → 啟蒙運動</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+洛克
+<br>
+1632－1704
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙思想
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+理性
+<br>
+自由
+<br>
+權利
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+美國革命
+<br>
+法國革命
+</div>
+
+</div>
+
+</section>
+
+
+<section id="tolerance">
+
+<h2>二十七、洛克與宗教寬容</h2>
+
+<p>
+洛克生活在宗教衝突非常劇烈的時代，
+因此非常關注宗教寬容問題。
+</p>
+
+<div class="formula">
+
+國家
+<br>
+↓
+<br>
+管理公共政治生活
+<br>
+<br>
+宗教
+<br>
+↓
+<br>
+涉及個人信仰
+<br>
+<br>
+因此：
+<br>
+<strong>
+政府不應任意強迫人民接受特定宗教信仰。
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十八、為什麼「寬容」很重要？</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>信仰不同</h3>
+<p>
+不同的人可能有不同宗教信念。
+</p>
+</div>
+
+<div class="card">
+<h3>政府有限</h3>
+<p>
+政治權力不應無限制進入個人信仰。
+</p>
+</div>
+
+<div class="card">
+<h3>和平共存</h3>
+<p>
+寬容可以降低宗教衝突。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十九、洛克的自由主義</h2>
+
+<div class="formula">
+
+個人
+<br>
+↓
+<br>
+擁有自然權利
+<br>
+↓
+<br>
+人民同意建立政府
+<br>
+↓
+<br>
+政府權力受到限制
+<br>
+↓
+<br>
+法律保障自由
+<br>
+↓
+<br>
+<strong>
+自由社會
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十、洛克思想的三大支柱</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 經驗主義</h3>
+<p>
+知識從經驗開始。
+</p>
+</div>
+
+<div class="card">
+<h3>② 自然權利</h3>
+<p>
+生命、自由、財產等權利先於政府存在。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 有限政府</h3>
+<p>
+政府權力必須受到人民同意與法律限制。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十一、洛克的兩條思想路線</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>認識論</h3>
+
+<div class="formula">
+
+經驗
+↓
+觀念
+↓
+知識
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>政治哲學</h3>
+
+<div class="formula">
+
+自然權利
+↓
+人民同意
+↓
+有限政府
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十二、洛克最重要的問題</h2>
+
+<div class="question">
+我們的知識從哪裡來？
+</div>
+
+<div class="question">
+人出生時是否已經擁有完整的知識？
+</div>
+
+<div class="question">
+政府的權力從哪裡來？
+</div>
+
+<div class="question">
+政府為什麼可以統治人民？
+</div>
+
+<div class="question">
+如果政府侵犯人民權利，
+人民是否可以反抗？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十三、洛克與笛卡兒</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>笛卡兒</th>
+<th>洛克</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>理性主義</td>
+<td>經驗主義</td>
+</tr>
+
+<tr>
+<td>重視理性與先天認知</td>
+<td>強調經驗的重要性</td>
+</tr>
+
+<tr>
+<td>「我思故我在」</td>
+<td>知識從經驗開始</td>
+</tr>
+
+<tr>
+<td>理性是可靠知識的重要來源</td>
+<td>感覺與反思提供觀念來源</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2>三十四、洛克與休謨</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+洛克
+<br>
+經驗
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+柏克萊
+<br>
+經驗與知覺
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+休謨
+<br>
+經驗與懷疑
+</div>
+
+</div>
+
+<p>
+洛克開啟的經驗主義傳統，
+後來經過柏克萊與休謨進一步發展。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十五、理性主義 vs 經驗主義</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>問題</th>
+<th>理性主義</th>
+<th>經驗主義</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>知識來源</td>
+<td>理性、先天結構</td>
+<td>經驗</td>
+</tr>
+
+<tr>
+<td>代表人物</td>
+<td>笛卡兒、史賓諾莎、萊布尼茲</td>
+<td>洛克、柏克萊、休謨</td>
+</tr>
+
+<tr>
+<td>關注</td>
+<td>理性可以知道什麼？</td>
+<td>經驗可以告訴我們什麼？</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2>三十六、洛克 → 休謨 → 康德</h2>
+
+<div class="formula">
+
+洛克
+<br>
+「知識從經驗開始」
+<br>
+↓
+<br>
+休謨
+<br>
+「經驗真的能保證因果與必然性嗎？」
+<br>
+↓
+<br>
+康德
+<br>
+「經驗與先天認知結構如何共同形成知識？」
+<br>
+↓
+<br>
+<strong>
+批判哲學
+</strong>
+
+</div>
+
+</section>
+
+
+<section id="timeline">
+
+<h2>三十七、洛克生平時間軸</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>1632</h3>
+<p>
+洛克出生於英國薩默塞特郡。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1640－1650年代</h3>
+<p>
+英國內戰與政治宗教衝突，
+深刻影響洛克所處的時代。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1660年代</h3>
+<p>
+洛克開始從事哲學與政治思想研究，
+並與沙夫茨伯里伯爵建立關係。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1683</h3>
+<p>
+因政治環境而流亡荷蘭。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1688</h3>
+<p>
+英國發生光榮革命。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1689</h3>
+<p>
+《政府論二篇》出版。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1690</h3>
+<p>
+《人類理解論》出版，
+經驗主義思想受到廣泛注意。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1704</h3>
+<p>
+洛克於英國逝世。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十八、洛克的重要著作</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>作品</th>
+<th>年份</th>
+<th>主題</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>《人類理解論》</td>
+<td>1690</td>
+<td>經驗主義與知識論。</td>
+</tr>
+
+<tr>
+<td>《政府論二篇》</td>
+<td>1689</td>
+<td>自然權利、政府同意與抵抗權。</td>
+</tr>
+
+<tr>
+<td>《論宗教寬容書》</td>
+<td>1689</td>
+<td>宗教自由與寬容。</td>
+</tr>
+
+<tr>
+<td>《教育漫話》</td>
+<td>1693</td>
+<td>教育、習慣與人格養成。</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2>三十九、洛克的歷史影響</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>哲學</h3>
+<p>
+經驗主義的重要奠基者。
+</p>
+</div>
+
+<div class="card">
+<h3>政治</h3>
+<p>
+自由主義與憲政思想的重要來源。
+</p>
+</div>
+
+<div class="card">
+<h3>革命</h3>
+<p>
+對英國與美國革命政治思想具有重要影響。
+</p>
+</div>
+
+<div class="card">
+<h3>教育</h3>
+<p>
+強調環境、習慣與教育。
+</p>
+</div>
+
+<div class="card">
+<h3>宗教</h3>
+<p>
+推動宗教寬容思想。
+</p>
+</div>
+
+<div class="card">
+<h3>啟蒙運動</h3>
+<p>
+成為18世紀啟蒙思想的重要思想來源之一。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十、從洛克到現代民主</h2>
+
+<div class="formula">
+
+洛克
+<br>
+↓
+<br>
+自然權利
+<br>
+↓
+<br>
+人民同意
+<br>
+↓
+<br>
+有限政府
+<br>
+↓
+<br>
+憲政
+<br>
+↓
+<br>
+權利保障
+<br>
+↓
+<br>
+<strong>
+現代自由民主政治
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十一、洛克思想的完整關係圖</h2>
+
+<div class="formula">
+
+<strong>科學革命</strong>
+<br>
+↓
+<br>
+觀察・實驗・經驗
+<br>
+↓
+<br>
+<strong>洛克</strong>
+<br>
+↓
+<br>
+心靈不是裝滿先天知識
+<br>
+↓
+<br>
+<strong>白板說</strong>
+<br>
+↓
+<br>
+感覺 ＋ 反思
+<br>
+↓
+<br>
+觀念
+<br>
+↓
+<br>
+知識
+<br>
+<br>
+────────────────
+<br>
+<br>
+<strong>政治哲學</strong>
+<br>
+↓
+<br>
+自然狀態
+<br>
+↓
+<br>
+自然權利
+<br>
+↓
+<br>
+生命・自由・財產
+<br>
+↓
+<br>
+人民同意
+<br>
+↓
+<br>
+有限政府
+<br>
+↓
+<br>
+政府侵犯權利
+<br>
+↓
+<br>
+<strong>抵抗權</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十二、洛克與現代生活</h2>
+
+<div class="question">
+一個人的個性，
+到底是天生的，還是後天環境形成的？
+</div>
+
+<div class="question">
+我們在網路上看到的資訊，
+究竟是真正的「知識」，
+還是只是大量經驗資料？
+</div>
+
+<div class="question">
+政府的權力是否應該受到限制？
+</div>
+
+<div class="question">
+如果政府侵犯人民基本權利，
+人民是否有權反抗？
+</div>
+
+<div class="question">
+教育究竟是在「灌輸知識」，
+還是在「塑造一個人」？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十三、課堂大哉問</h2>
+
+<div class="question">
+<strong>大哉問一：</strong>
+如果人的心靈像白板，
+那麼「天才」究竟是什麼？
+</div>
+
+<div class="question">
+<strong>大哉問二：</strong>
+如果知識來自經驗，
+我們能不能相信所有經驗？
+</div>
+
+<div class="question">
+<strong>大哉問三：</strong>
+如果政府的權力來自人民，
+政府可以做哪些事？
+又不能做哪些事？
+</div>
+
+<div class="question">
+<strong>大哉問四：</strong>
+人民為什麼要服從政府？
+</div>
+
+<div class="question">
+<strong>大哉問五：</strong>
+如果政府侵犯人民的自由，
+人民是否有權推翻政府？
+</div>
+
+<div class="question">
+<strong>大哉問六：</strong>
+「生命、自由、財產」是否都是不可侵犯的權利？
+</div>
+
+<div class="question">
+<strong>大哉問七：</strong>
+自由與安全發生衝突時，
+你會選擇哪一個？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十四、用三句話理解洛克</h2>
+
+<div class="big">
+① 知識從經驗開始。
+</div>
+
+<div class="big">
+② 人擁有先於政府存在的自然權利。
+</div>
+
+<div class="big">
+③ 政府的權力來自人民同意，且必須受到限制。
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十五、洛克核心關鍵字</h2>
+
+<div class="keyword-box">
+
+<span class="keyword">經驗主義</span>
+<span class="keyword">白板說</span>
+<span class="keyword">Tabula Rasa</span>
+<span class="keyword">感覺</span>
+<span class="keyword">反思</span>
+<span class="keyword">觀念</span>
+<span class="keyword">知識</span>
+<span class="keyword">自然狀態</span>
+<span class="keyword">自然法</span>
+<span class="keyword">自然權利</span>
+<span class="keyword">生命</span>
+<span class="keyword">自由</span>
+<span class="keyword">財產</span>
+<span class="keyword">社會契約</span>
+<span class="keyword">人民同意</span>
+<span class="keyword">有限政府</span>
+<span class="keyword">抵抗權</span>
+<span class="keyword">宗教寬容</span>
+<span class="keyword">啟蒙運動</span>
+<span class="keyword">美國獨立</span>
+
+</div>
+
+</section>
+
+
+<section class="hero">
+
+<h2>四十六、用一句話理解洛克</h2>
+
+<div class="big">
+
+「人的知識從經驗而來；
+政府的權力則來自人民的同意。」
+
+</div>
+
+<div class="formula">
+
+<strong>哲學上的洛克</strong>
+<br>
+經驗
+→
+觀念
+→
+知識
+<br><br>
+
+<strong>政治上的洛克</strong>
+<br>
+自然權利
+→
+人民同意
+→
+有限政府
+<br><br>
+
+<strong>歷史上的洛克</strong>
+<br>
+科學革命
+→
+啟蒙運動
+→
+自由主義
+→
+美國獨立與現代憲政
+
+</div>
+
+<p>
+洛克把「人如何知道世界」與「政府為什麼可以統治人」，
+變成近代哲學與政治思想的兩個核心問題。
+</p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>洛克｜John Locke</p>
+
+<p>
+1632－1704｜經驗主義・白板說・自然權利・有限政府
+</p>
+
+<p>
+西方哲學史教學 HTML 系列
+</p>
+
+</footer>
+
+</body>
+</html>

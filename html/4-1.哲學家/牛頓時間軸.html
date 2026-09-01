@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛頓｜科學革命與近代世界觀</title>
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+    color:#263238;
+    background:#eef2f5;
+    line-height:1.8;
+}
+
+header{
+    background:linear-gradient(135deg,#17202a,#455a64,#78909c);
+    color:white;
+    text-align:center;
+    padding:85px 20px;
+}
+
+header h1{
+    font-size:4rem;
+    letter-spacing:14px;
+    margin:0;
+}
+
+header p{
+    margin:8px;
+    font-size:1.1rem;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #cfd8dc;
+}
+
+nav ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:#263238;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#e5eaed;
+}
+
+main{
+    max-width:1350px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    padding:40px;
+    margin-bottom:35px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.hero{
+    text-align:center;
+    background:#f8fafb;
+    border:2px solid #cbd5da;
+}
+
+h2{
+    margin-top:0;
+    border-left:7px solid #546e7a;
+    padding-left:15px;
+}
+
+h3{
+    margin-top:0;
+}
+
+.big{
+    font-size:2rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:#f7f9fa;
+    border:1px solid #d4dde1;
+    padding:25px;
+    border-radius:15px;
+}
+
+.quote{
+    background:#edf2f4;
+    border-left:6px solid #546e7a;
+    padding:22px 28px;
+    border-radius:10px;
+    margin:25px 0;
+}
+
+.formula{
+    background:#263238;
+    color:white;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    margin:30px 0;
+    font-size:1.15rem;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    background:#e8edef;
+    border:1px solid #c3d0d5;
+    padding:16px 22px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    color:#546e7a;
+    font-size:1.7rem;
+}
+
+.question{
+    background:#f5f8f9;
+    border-left:5px solid #546e7a;
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+.timeline{
+    position:relative;
+    padding-left:75px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:28px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#c0ccd1;
+}
+
+.timeline-item{
+    position:relative;
+    background:#f8fafb;
+    border:1px solid #d5dfe2;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:30px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-60px;
+    top:28px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#546e7a;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #9daeb5;
+}
+
+.keyword-box{
+    text-align:center;
+    background:#f7f9fa;
+    border:1px solid #d4dde0;
+    border-radius:15px;
+    padding:25px;
+}
+
+.keyword{
+    display:inline-block;
+    background:#e0e7ea;
+    padding:8px 17px;
+    margin:6px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#455a64;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #d9e1e3;
+    vertical-align:top;
+}
+
+tr:nth-child(even){
+    background:#f7f9fa;
+}
+
+footer{
+    background:#263238;
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+@media(max-width:900px){
+    .grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:650px){
+    header h1{
+        font-size:2.5rem;
+        letter-spacing:7px;
+    }
+
+    section{padding:25px}
+
+    .grid,.two{
+        grid-template-columns:1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>牛頓</h1>
+
+<p>Isaac Newton｜1643－1727</p>
+
+<p>
+科學革命・萬有引力・三大運動定律・微積分・光學
+</p>
+
+</header>
+
+
+<nav>
+<ul>
+<li><a href="#intro">人物</a></li>
+<li><a href="#age">時代</a></li>
+<li><a href="#revolution">科學革命</a></li>
+<li><a href="#motion">運動定律</a></li>
+<li><a href="#gravity">萬有引力</a></li>
+<li><a href="#apple">蘋果故事</a></li>
+<li><a href="#math">微積分</a></li>
+<li><a href="#optics">光學</a></li>
+<li><a href="#universe">宇宙觀</a></li>
+<li><a href="#method">科學方法</a></li>
+<li><a href="#enlightenment">啟蒙運動</a></li>
+<li><a href="#philosophy">哲學影響</a></li>
+<li><a href="#timeline">時間軸</a></li>
+<li><a href="#questions">大哉問</a></li>
+</ul>
+</nav>
+
+
+<main>
+
+
+<section id="intro" class="hero">
+
+<h2>一、誰是牛頓？</h2>
+
+<div class="big">
+「自然界是否存在可以用數學描述的普遍規律？」
+</div>
+
+<p>
+艾薩克・牛頓是17～18世紀最具影響力的科學家之一。
+</p>
+
+<p>
+他把<strong>數學、物理學、天文學與實驗研究</strong>
+結合起來，建立一套能夠同時解釋地面物體與天體運動的力學體系。
+</p>
+
+<div class="quote">
+牛頓最重要的歷史意義，
+不只是發現幾條物理定律，
+而是建立了一種新的「宇宙可以被數學描述」的世界觀。
+</div>
+
+</section>
+
+
+<section id="age">
+
+<h2>二、牛頓生活在什麼時代？</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+文藝復興
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+宗教改革
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+地理大發現
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+牛頓
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+</div>
+
+</div>
+
+<p>
+牛頓出現在近代歐洲思想轉型的關鍵時期。
+</p>
+
+<p>
+哥白尼、克卜勒、伽利略等人已經逐步改變傳統宇宙觀，
+牛頓則把這些成果進一步整合成完整的數學物理體系。
+</p>
+
+</section>
+
+
+<section id="revolution">
+
+<h2>三、科學革命的思想接力</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+哥白尼
+<br>
+日心說
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+克卜勒
+<br>
+行星運動定律
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+伽利略
+<br>
+運動研究
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+牛頓
+<br>
+統一力學
+</div>
+
+</div>
+
+<div class="formula">
+
+哥白尼：
+<br>
+「地球不是宇宙中心」
+<br><br>
+克卜勒：
+<br>
+「行星運動具有數學規律」
+<br><br>
+伽利略：
+<br>
+「運動可以透過實驗與數學研究」
+<br><br>
+牛頓：
+<br>
+<strong>
+「地面與天空遵循同一套自然定律」
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四、牛頓最大的突破：統一天空與地面</h2>
+
+<p>
+古代思想常把「天上」與「地上」視為不同領域。
+</p>
+
+<div class="two">
+
+<div class="card">
+
+<h3>天上</h3>
+
+<ul>
+<li>月球</li>
+<li>行星</li>
+<li>彗星</li>
+<li>天體運動</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>地上</h3>
+
+<ul>
+<li>石頭落下</li>
+<li>砲彈飛行</li>
+<li>物體碰撞</li>
+<li>物體運動</li>
+</ul>
+
+</div>
+
+</div>
+
+<p>
+牛頓提出：
+</p>
+
+<div class="big">
+同一個自然法則，可以同時解釋天空與地面。
+</div>
+
+</section>
+
+
+<section id="motion">
+
+<h2>五、牛頓第一運動定律</h2>
+
+<div class="big">
+慣性定律
+</div>
+
+<div class="formula">
+
+如果物體不受外力作用，
+<br>
+它將保持靜止，
+<br>
+或以等速度直線運動。
+
+</div>
+
+<p>
+例如：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>桌上的書</h3>
+<p>
+沒有外力改變它，
+就維持靜止。
+</p>
+</div>
+
+<div class="card">
+<h3>滑冰</h3>
+<p>
+阻力越小，
+運動狀態越容易維持。
+</p>
+</div>
+
+<div class="card">
+<h3>太空船</h3>
+<p>
+遠離阻力時，
+不需要一直「踩油門」才能維持運動。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>六、牛頓第二運動定律</h2>
+
+<div class="big">
+F = ma
+</div>
+
+<div class="formula">
+
+力
+=
+質量
+×
+加速度
+
+<br><br>
+
+F = ma
+
+</div>
+
+<p>
+意思是：
+</p>
+
+<ul>
+<li>施加的力越大，加速度越大。</li>
+<li>物體質量越大，越難改變運動狀態。</li>
+</ul>
+
+<div class="question">
+為什麼推空紙箱比推裝滿書的箱子容易？
+</div>
+
+<p>
+因為在相同的力量下，
+質量越大的物體，加速度越小。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>七、牛頓第三運動定律</h2>
+
+<div class="big">
+作用力與反作用力
+</div>
+
+<div class="formula">
+
+A 對 B 施力
+<br>
+↓
+<br>
+B 同時對 A 施加大小相等、方向相反的力
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>走路</h3>
+<p>
+腳向後推地面，
+地面給腳向前的作用力。
+</p>
+</div>
+
+<div class="card">
+<h3>游泳</h3>
+<p>
+手臂向後推水，
+水提供向前的作用力。
+</p>
+</div>
+
+<div class="card">
+<h3>火箭</h3>
+<p>
+燃氣向後高速噴出，
+火箭受到向前的作用力。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="gravity">
+
+<h2>八、萬有引力</h2>
+
+<div class="big">
+「所有具有質量的物體，都會互相吸引。」
+</div>
+
+<div class="formula">
+
+F = G × (m₁m₂ / r²)
+
+</div>
+
+<p>
+其中：
+</p>
+
+<ul>
+<li><strong>F</strong>：引力</li>
+<li><strong>m₁、m₂</strong>：兩個物體的質量</li>
+<li><strong>r</strong>：兩物體中心之間的距離</li>
+<li><strong>G</strong>：萬有引力常數</li>
+</ul>
+
+</section>
+
+
+<section>
+
+<h2>九、為什麼東西會掉下來？</h2>
+
+<div class="formula">
+
+地球
+↓
+對物體產生引力
+↓
+物體受到加速度
+↓
+向地面運動
+↓
+我們看到「東西掉下來」
+
+</div>
+
+<p>
+更重要的是：
+</p>
+
+<div class="quote">
+讓蘋果掉下來的引力，
+與讓月球繞著地球運行的引力，
+本質上是同一種自然作用。
+</div>
+
+</section>
+
+
+<section id="apple">
+
+<h2>十、牛頓與「蘋果」的故事</h2>
+
+<div class="big">
+「蘋果落地 → 為什麼月亮不掉下來？」
+</div>
+
+<p>
+著名的蘋果故事經常被用來描述牛頓思考萬有引力的靈感。
+</p>
+
+<p>
+但歷史上不能把它簡化成：
+「看到蘋果掉下來，就立刻發現萬有引力。」
+</p>
+
+<p>
+真正重要的是牛頓進一步思考：
+</p>
+
+<div class="question">
+如果地球的引力可以拉下蘋果，
+那麼這個引力是否也能作用到很遠的月球？
+</div>
+
+<div class="formula">
+
+蘋果
+↓
+地球引力
+<br><br>
+月球
+↓
+地球引力
+<br><br>
+<strong>
+同一個引力法則
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十一、為什麼月亮沒有掉到地球上？</h2>
+
+<p>
+其實月球一直受到地球引力。
+</p>
+
+<p>
+但月球同時具有向前運動的速度。
+</p>
+
+<div class="formula">
+
+月球向前運動
+＋
+地球引力向內拉
+<br>
+↓
+<br>
+月球不斷「落向」地球
+<br>
+但又不直接撞上地球
+<br>
+↓
+<br>
+<strong>
+形成軌道運動
+</strong>
+
+</div>
+
+<p>
+這是牛頓力學非常重要的直觀圖像。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十二、牛頓真正完成的是「宇宙統一」</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+蘋果落地
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+月球繞地球
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+行星繞太陽
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+彗星運動
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="flow-item">
+<strong>
+萬有引力
+</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="math">
+
+<h2>十三、牛頓與微積分</h2>
+
+<p>
+牛頓為了處理運動與變化問題，
+發展了與現代微積分密切相關的方法。
+</p>
+
+<div class="two">
+
+<div class="card">
+
+<h3>微分</h3>
+
+<p>
+研究「變化有多快」。
+</p>
+
+<div class="formula">
+位置
+→
+速度
+→
+加速度
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>積分</h3>
+
+<p>
+研究如何從局部變化累積成整體。
+</p>
+
+<div class="formula">
+速度
+→
+位置
+</div>
+
+</div>
+
+</div>
+
+<p>
+牛頓的數學工具使運動定律可以被精確計算。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十四、牛頓與萊布尼茲</h2>
+
+<p>
+微積分的發展史中，
+牛頓與德國數學家萊布尼茲之間曾產生著名的優先權爭議。
+</p>
+
+<table>
+
+<thead>
+<tr>
+<th>牛頓</th>
+<th>萊布尼茲</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>發展流數法</td>
+<td>發展微積分記號</td>
+</tr>
+
+<tr>
+<td>主要服務於物理與運動問題</td>
+<td>建立更系統化的數學記號</td>
+</tr>
+
+<tr>
+<td>較早開始相關工作</td>
+<td>較早公開發表完整微積分方法</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<p>
+今天的微積分主要使用萊布尼茲所建立的記號體系，
+但牛頓與萊布尼茲都被視為微積分的重要奠基者。
+</p>
+
+</section>
+
+
+<section id="optics">
+
+<h2>十五、牛頓的光學研究</h2>
+
+<div class="big">
+「白光其實包含不同顏色的光。」
+</div>
+
+<p>
+牛頓使用三稜鏡研究白光。
+</p>
+
+<div class="formula">
+
+白光
+↓
+三稜鏡
+↓
+不同顏色的光
+<br>
+↓
+<strong>
+光譜
+</strong>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>紅</h3>
+</div>
+
+<div class="card">
+<h3>綠</h3>
+</div>
+
+<div class="card">
+<h3>藍</h3>
+</div>
+
+</div>
+
+<p>
+牛頓的研究顯示，
+白光並不是單純的一種「純白色」光，
+而可以被分解成不同顏色。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十六、牛頓與反射式望遠鏡</h2>
+
+<p>
+牛頓設計了早期重要的<strong>反射式望遠鏡</strong>。
+</p>
+
+<div class="formula">
+
+凹面鏡
+↓
+收集光線
+↓
+聚焦
+↓
+觀察天體
+
+</div>
+
+<p>
+相較於當時常見的折射式望遠鏡，
+反射鏡可以避免某些色差問題。
+</p>
+
+</section>
+
+
+<section id="universe">
+
+<h2>十七、牛頓的宇宙觀</h2>
+
+<div class="big">
+宇宙是一個可以用數學定律描述的巨大系統。
+</div>
+
+<div class="formula">
+
+物體
+↓
+受力
+↓
+產生加速度
+↓
+改變運動狀態
+↓
+遵循數學定律
+<br><br>
+<strong>
+從地面到宇宙
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十八、牛頓世界觀：宇宙像一座巨大機器？</h2>
+
+<p>
+牛頓力學後來促成一種強大的「機械論世界觀」：
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+物質
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+運動
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+力量
+</div>
+
+<div class="arrow">+</div>
+
+<div class="flow-item">
+數學定律
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+<strong>
+可預測的宇宙
+</strong>
+</div>
+
+</div>
+
+<p>
+後來的哲學家與科學家因此開始相信：
+如果知道所有初始條件與自然法則，
+也許就可以預測未來。
+</p>
+
+</section>
+
+
+<section id="method">
+
+<h2>十九、牛頓的科學方法</h2>
+
+<div class="formula">
+
+觀察
+↓
+實驗
+↓
+測量
+↓
+數學化
+↓
+建立定律
+↓
+預測
+↓
+再次驗證
+
+</div>
+
+<p>
+牛頓的成功，使「數學＋實驗＋自然定律」
+成為近代科學的重要典範。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十、《自然哲學的數學原理》</h2>
+
+<div class="big">
+Philosophiæ Naturalis Principia Mathematica
+<br>
+1687
+</div>
+
+<p>
+這部著作通常被稱為《原理》。
+</p>
+
+<p>
+其中系統建立：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>運動定律</h3>
+<p>建立經典力學基礎。</p>
+</div>
+
+<div class="card">
+<h3>萬有引力</h3>
+<p>解釋天體與地面物體的運動。</p>
+</div>
+
+<div class="card">
+<h3>數學方法</h3>
+<p>將自然現象轉化為可計算的模型。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十一、牛頓的「三大統一」</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>統一地面與天空</h3>
+<p>
+同一套力學可以解釋蘋果與月球。
+</p>
+</div>
+
+<div class="card">
+<h3>統一物理與數學</h3>
+<p>
+自然定律可以用數學方程式表達。
+</p>
+</div>
+
+<div class="card">
+<h3>統一天文與物理</h3>
+<p>
+行星運動不再只是天文觀測問題，
+而成為物理定律的結果。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="enlightenment">
+
+<h2>二十二、牛頓與啟蒙運動</h2>
+
+<p>
+牛頓的影響不只在物理學。
+</p>
+
+<p>
+他的自然科學成功使18世紀思想家開始思考：
+</p>
+
+<div class="question">
+如果自然界存在普遍而理性的規律，
+那麼人類社會是否也存在可以被理性發現的規律？
+</div>
+
+<div class="formula">
+
+牛頓
+<br>
+自然界有普遍規律
+<br>
+↓
+<br>
+啟蒙思想
+<br>
+人類社會也可以透過理性研究
+<br>
+↓
+<br>
+政治、經濟、法律、社會思想
+<br>
+↓
+<br>
+<strong>
+啟蒙時代
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十三、牛頓如何影響啟蒙思想？</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>伏爾泰</h3>
+<p>
+積極推廣牛頓思想，
+將牛頓視為理性科學的重要象徵。
+</p>
+</div>
+
+<div class="card">
+<h3>休謨</h3>
+<p>
+試圖將經驗研究的方法延伸到「人性科學」。
+</p>
+</div>
+
+<div class="card">
+<h3>康德</h3>
+<p>
+思考牛頓式自然科學為何能形成普遍有效的知識。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十四、牛頓與休謨</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+牛頓
+<br>
+自然界
+<br>
+↓
+<br>
+數學規律
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+休謨
+<br>
+人類如何知道
+<br>
+自然規律？
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+歸納問題
+<br>
+因果問題
+</div>
+
+</div>
+
+<p>
+這裡出現一個非常有趣的哲學問題：
+</p>
+
+<div class="question">
+牛頓可以成功描述自然規律，
+但我們憑什麼相信「未來的自然仍然會遵守同樣的規律」？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十五、牛頓與康德</h2>
+
+<p>
+康德非常重視牛頓式自然科學的成功。
+</p>
+
+<div class="formula">
+
+牛頓：
+<br>
+自然界具有普遍的因果規律
+<br>
+↓
+<br>
+康德：
+<br>
+<strong>
+人類心靈如何可能認識這些普遍規律？
+</strong>
+
+</div>
+
+<p>
+這成為康德「批判哲學」的重要背景之一。
+</p>
+
+</section>
+
+
+<section id="philosophy">
+
+<h2>二十六、牛頓不只是科學家</h2>
+
+<p>
+現代人常把牛頓想成純粹的物理學家，
+但他的興趣其實非常廣泛。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>物理學</h3>
+<p>力學、運動、引力。</p>
+</div>
+
+<div class="card">
+<h3>數學</h3>
+<p>微積分與數學方法。</p>
+</div>
+
+<div class="card">
+<h3>光學</h3>
+<p>光譜、色彩、望遠鏡。</p>
+</div>
+
+<div class="card">
+<h3>天文學</h3>
+<p>行星、彗星與天體運動。</p>
+</div>
+
+<div class="card">
+<h3>神學</h3>
+<p>牛頓也投入大量時間研究宗教與神學。</p>
+</div>
+
+<div class="card">
+<h3>煉金術</h3>
+<p>他也曾長期研究當時的煉金術文獻與實驗。</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十七、牛頓的歷史矛盾</h2>
+
+<div class="quote">
+現代人眼中的「科學巨人」，
+其實生活在一個科學、宗教、神學、煉金術彼此交織的時代。
+</div>
+
+<p>
+因此不能簡單用21世紀的「科學家」概念，
+完全套用在牛頓身上。
+</p>
+
+<p>
+對牛頓而言，
+研究自然秩序與思考宇宙背後的神聖秩序，
+並不一定互相衝突。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十八、牛頓的宇宙 vs 傳統宇宙</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>傳統自然觀</th>
+<th>牛頓式自然觀</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>天空與地面存在差異</td>
+<td>天空與地面遵循相同自然定律</td>
+</tr>
+
+<tr>
+<td>天體運動常被視為特殊領域</td>
+<td>天體運動可以用力學解釋</td>
+</tr>
+
+<tr>
+<td>自然哲學與數學相對分離</td>
+<td>自然定律高度數學化</td>
+</tr>
+
+<tr>
+<td>對自然現象的定性描述較多</td>
+<td>強調測量、計算與預測</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2>二十九、牛頓革命的核心</h2>
+
+<div class="formula">
+
+「自然不是一堆互不相關的事件。」
+<br><br>
+↓
+<br><br>
+「自然現象背後存在普遍規律。」
+<br><br>
+↓
+<br><br>
+「這些規律可以用數學表達。」
+<br><br>
+↓
+<br><br>
+「因此自然可以被預測。」
+<br><br>
+↓
+<br><br>
+<strong>
+近代科學世界觀
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十、牛頓之後的世界</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+牛頓力學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙運動
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+工業革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代科學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+工程與科技
+</div>
+
+</div>
+
+<p>
+牛頓力學成為後來工程、天文、機械與工業技術的重要基礎。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十一、牛頓與工業革命</h2>
+
+<p>
+牛頓本人並不是工業革命的直接發明者，
+但牛頓式的數學物理觀念對後來工程科學具有深遠影響。
+</p>
+
+<div class="formula">
+
+自然定律
+＋
+數學
+＋
+測量
+＋
+工程技術
+<br>
+↓
+<br>
+<strong>
+可設計、可計算、可預測的機械世界
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十二、牛頓之後：經典力學的極限</h2>
+
+<p>
+牛頓力學非常成功，
+但並不是最後的物理學。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+牛頓
+<br>
+經典力學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+19世紀
+<br>
+電磁學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+愛因斯坦
+<br>
+相對論
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+量子力學
+</div>
+
+</div>
+
+<p>
+因此：
+<strong>
+科學定律不是永遠不能修改，
+而是在特定範圍內具有極高的解釋與預測能力。
+</strong>
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十三、牛頓與愛因斯坦</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>牛頓</th>
+<th>愛因斯坦</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>絕對時間的經典觀念</td>
+<td>時間與空間與觀察者、重力狀態有關</td>
+</tr>
+
+<tr>
+<td>萬有引力</td>
+<td>廣義相對論中的時空幾何</td>
+</tr>
+
+<tr>
+<td>經典力學</td>
+<td>相對論力學</td>
+</tr>
+
+<tr>
+<td>適用於日常尺度與低速情況</td>
+<td>處理高速與強重力等情況</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="quote">
+愛因斯坦並沒有讓牛頓「錯掉」，
+而是說明牛頓理論具有適用範圍。
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十四、牛頓生平時間軸</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>1643</h3>
+<p>
+牛頓出生於英格蘭林肯郡。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1661</h3>
+<p>
+進入劍橋大學三一學院。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1665－1666</h3>
+<p>
+劍橋因疫情關閉期間，
+牛頓進行大量重要研究，
+涉及光學、數學與力學。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1669</h3>
+<p>
+成為劍橋大學盧卡斯數學教授。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1687</h3>
+<p>
+出版《自然哲學的數學原理》。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1703</h3>
+<p>
+成為英國皇家學會會長。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1705</h3>
+<p>
+被封為爵士。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1727</h3>
+<p>
+牛頓逝世，享年84歲。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十五、牛頓思想的完整關係圖</h2>
+
+<div class="formula">
+
+哥白尼
+<br>
+日心說
+<br>
+↓
+<br>
+克卜勒
+<br>
+行星運動定律
+<br>
+↓
+<br>
+伽利略
+<br>
+實驗與運動研究
+<br>
+↓
+<br>
+<strong>牛頓</strong>
+<br>
+三大運動定律＋萬有引力
+<br>
+↓
+<br>
+天空＋地面
+統一
+<br>
+↓
+<br>
+數學化自然
+<br>
+↓
+<br>
+<strong>
+近代科學世界觀
+</strong>
+<br>
+↓
+<br>
+啟蒙運動
+<br>
+↓
+<br>
+休謨
+<br>
+因果與歸納問題
+<br>
+↓
+<br>
+康德
+<br>
+批判哲學
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十六、牛頓的五大貢獻</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 三大運動定律</h3>
+<p>
+建立經典力學的基本架構。
+</p>
+</div>
+
+<div class="card">
+<h3>② 萬有引力</h3>
+<p>
+統一天體與地面物體的運動。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 微積分</h3>
+<p>
+提供研究連續變化的重要數學工具。
+</p>
+</div>
+
+<div class="card">
+<h3>④ 光學</h3>
+<p>
+研究白光、色彩與光譜。
+</p>
+</div>
+
+<div class="card">
+<h3>⑤ 科學世界觀</h3>
+<p>
+自然可以透過數學定律理解與預測。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="questions">
+
+<h2>三十七、課堂大哉問</h2>
+
+<div class="question">
+<strong>大哉問一：</strong>
+為什麼同一個引力可以解釋蘋果掉下來與月球繞地球？
+</div>
+
+<div class="question">
+<strong>大哉問二：</strong>
+如果宇宙遵循數學定律，
+人類是否可以「預測未來」？
+</div>
+
+<div class="question">
+<strong>大哉問三：</strong>
+牛頓的世界是否是一個完全決定論的世界？
+</div>
+
+<div class="question">
+<strong>大哉問四：</strong>
+如果牛頓定律如此成功，
+為什麼後來還需要愛因斯坦與量子力學？
+</div>
+
+<div class="question">
+<strong>大哉問五：</strong>
+牛頓發現的是「自然界本來就存在的規律」，
+還是人類用數學建立的模型？
+</div>
+
+<div class="question">
+<strong>大哉問六：</strong>
+休謨問：「我們憑什麼相信未來會像過去？」
+那麼牛頓的科學成功能否回答休謨？
+</div>
+
+<div class="question">
+<strong>大哉問七：</strong>
+如果自然可以用數學描述，
+那麼人類社會是否也能找到類似的「社會定律」？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十八、用三句話理解牛頓</h2>
+
+<div class="big">
+① 自然界存在普遍的運動規律。
+</div>
+
+<div class="big">
+② 天空與地面遵循同一套自然法則。
+</div>
+
+<div class="big">
+③ 自然現象可以透過數學描述、計算與預測。
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十九、牛頓關鍵字</h2>
+
+<div class="keyword-box">
+
+<span class="keyword">科學革命</span>
+<span class="keyword">經典力學</span>
+<span class="keyword">第一運動定律</span>
+<span class="keyword">第二運動定律</span>
+<span class="keyword">第三運動定律</span>
+<span class="keyword">F = ma</span>
+<span class="keyword">萬有引力</span>
+<span class="keyword">慣性</span>
+<span class="keyword">微積分</span>
+<span class="keyword">光學</span>
+<span class="keyword">光譜</span>
+<span class="keyword">三稜鏡</span>
+<span class="keyword">反射式望遠鏡</span>
+<span class="keyword">《原理》</span>
+<span class="keyword">數學化自然</span>
+<span class="keyword">機械論</span>
+<span class="keyword">啟蒙運動</span>
+<span class="keyword">休謨</span>
+<span class="keyword">康德</span>
+<span class="keyword">愛因斯坦</span>
+
+</div>
+
+</section>
+
+
+<section class="hero">
+
+<h2>四十、用一句話理解牛頓</h2>
+
+<div class="big">
+
+「牛頓把天空與地面放進同一套數學法則，
+讓宇宙第一次大規模成為一個可以計算、解釋與預測的系統。」
+
+</div>
+
+<div class="formula">
+
+哥白尼：
+<br>
+「地球繞著太陽」
+<br>
+↓
+<br>
+克卜勒：
+<br>
+「行星有數學規律」
+<br>
+↓
+<br>
+伽利略：
+<br>
+「運動可以實驗與數學化」
+<br>
+↓
+<br>
+<strong>牛頓：</strong>
+<br>
+「萬物遵循普遍自然定律」
+<br>
+↓
+<br>
+啟蒙運動：
+<br>
+「理性可以理解世界」
+<br>
+↓
+<br>
+休謨：
+<br>
+「但我們憑什麼知道這些規律必然有效？」
+<br>
+↓
+<br>
+康德：
+<br>
+「人類的心靈如何可能認識一個有普遍規律的世界？」
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>牛頓｜Isaac Newton</p>
+
+<p>
+1643－1727｜科學革命・經典力學・萬有引力・光學
+</p>
+
+<p>
+西方哲學與思想史教學 HTML 系列
+</p>
+
+</footer>
+
+</body>
+</html>

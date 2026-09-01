@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佛洛伊德｜精神分析與潛意識的發現</title>
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+    background:#f1f0ec;
+    color:#302d2a;
+    line-height:1.85;
+}
+
+header{
+    background:linear-gradient(135deg,#302b27,#5b5047,#8a7766);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+header h1{
+    font-size:4rem;
+    letter-spacing:12px;
+    margin:0;
+}
+
+header p{
+    margin:8px;
+    font-size:1.1rem;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #d5d0c9;
+}
+
+nav ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav a{
+    display:block;
+    padding:10px 14px;
+    text-decoration:none;
+    color:#51473f;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#ece8e3;
+}
+
+main{
+    max-width:1350px;
+    margin:40px auto;
+    padding:0 20px;
+}
+
+section{
+    background:white;
+    padding:40px;
+    margin-bottom:35px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.hero{
+    text-align:center;
+    background:#f8f6f2;
+    border:2px solid #d8d1c9;
+}
+
+h2{
+    margin-top:0;
+    border-left:7px solid #725f51;
+    padding-left:15px;
+}
+
+h3{margin-top:0}
+
+.big{
+    font-size:2rem;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:#f6f4f1;
+    border:1px solid #ddd7d0;
+    padding:25px;
+    border-radius:15px;
+}
+
+.quote{
+    background:#f1eeea;
+    border-left:6px solid #725f51;
+    padding:22px 28px;
+    border-radius:10px;
+    margin:25px 0;
+}
+
+.formula{
+    background:#38332f;
+    color:white;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    margin:30px 0;
+    font-size:1.15rem;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin:30px 0;
+}
+
+.flow-item{
+    background:#ebe7e2;
+    border:1px solid #d1c9c0;
+    padding:16px 22px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.arrow{
+    color:#725f51;
+    font-size:1.7rem;
+}
+
+.timeline{
+    position:relative;
+    padding-left:75px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:28px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#cfc7bf;
+}
+
+.timeline-item{
+    position:relative;
+    background:#f6f4f1;
+    border:1px solid #ddd7d0;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:30px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-60px;
+    top:28px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#725f51;
+    border:5px solid white;
+    box-shadow:0 0 0 2px #9d9187;
+}
+
+.mind{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:18px;
+    align-items:center;
+    text-align:center;
+}
+
+.mind-center{
+    background:#38332f;
+    color:white;
+    padding:35px;
+    border-radius:50%;
+    min-height:110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.mind-item{
+    background:#f1eeea;
+    border:1px solid #d7d0c8;
+    padding:25px;
+    border-radius:15px;
+}
+
+.question{
+    background:#f4f1ed;
+    border-left:5px solid #725f51;
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+.keyword-box{
+    text-align:center;
+    background:#f6f4f1;
+    border:1px solid #ddd7d0;
+    border-radius:15px;
+    padding:25px;
+}
+
+.keyword{
+    display:inline-block;
+    background:#e8e2dc;
+    padding:8px 17px;
+    margin:6px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#725f51;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #e0dbd5;
+    vertical-align:top;
+}
+
+tr:nth-child(even){
+    background:#faf9f7;
+}
+
+footer{
+    background:#38332f;
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+@media(max-width:900px){
+    .grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:650px){
+    header h1{
+        font-size:2.5rem;
+        letter-spacing:7px;
+    }
+
+    section{padding:25px}
+
+    .grid,.two,.mind{
+        grid-template-columns:1fr;
+    }
+
+    .flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>佛洛伊德</h1>
+
+<p>Sigmund Freud｜1856－1939</p>
+
+<p>
+潛意識・精神分析・夢・慾望・壓抑・人格結構
+</p>
+
+</header>
+
+
+<nav>
+<ul>
+<li><a href="#intro">人物</a></li>
+<li><a href="#context">時代</a></li>
+<li><a href="#unconscious">潛意識</a></li>
+<li><a href="#iceberg">冰山模型</a></li>
+<li><a href="#dream">夢</a></li>
+<li><a href="#repression">壓抑</a></li>
+<li><a href="#id-ego-superego">人格結構</a></li>
+<li><a href="#development">心理發展</a></li>
+<li><a href="#psychoanalysis">精神分析</a></li>
+<li><a href="#culture">文明</a></li>
+<li><a href="#influence">影響</a></li>
+<li><a href="#questions">大哉問</a></li>
+</ul>
+</nav>
+
+
+<main>
+
+
+<section id="intro" class="hero">
+
+<h2>一、誰是佛洛伊德？</h2>
+
+<div class="big">
+「人並不完全知道自己為什麼會做自己所做的事。」
+</div>
+
+<p>
+西格蒙德・佛洛伊德是奧地利神經科醫師，
+也是<strong>精神分析學（Psychoanalysis）</strong>的創始者。
+</p>
+
+<p>
+他最大的思想革命之一，
+是把人的心理世界從「意識」推向「潛意識」。
+</p>
+
+<div class="quote">
+佛洛伊德改變了一個重要問題：
+「人為什麼會這樣做？」
+不一定只能從理性、意識與道德來解釋，
+還必須追問——
+<strong>潛藏在意識之下的慾望與衝突。</strong>
+</div>
+
+</section>
+
+
+<section id="context">
+
+<h2>二、佛洛伊德所處的時代</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+啟蒙理性
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+科學革命
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+19世紀醫學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+心理學
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+<strong>佛洛伊德</strong>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代心理學與文化理論
+</div>
+
+</div>
+
+<p>
+19世紀末的歐洲，
+科學與理性已經取得巨大成功。
+</p>
+
+<p>
+然而佛洛伊德提出一個令人不安的問題：
+</p>
+
+<div class="question">
+<strong>
+如果人是理性的，
+為什麼人會做出自己也無法解釋的事情？
+</strong>
+</div>
+
+</section>
+
+
+<section id="unconscious">
+
+<h2>三、佛洛伊德最重要的發現：潛意識</h2>
+
+<div class="big">
+Unconscious｜無意識／潛意識
+</div>
+
+<p>
+佛洛伊德認為，
+人的心理活動並不全部存在於清楚的意識之中。
+</p>
+
+<div class="formula">
+
+意識
+<br>
+↓
+<br>
+<strong>
+前意識
+</strong>
+<br>
+↓
+<br>
+<strong>
+無意識
+</strong>
+
+</div>
+
+<p>
+人的慾望、記憶、衝突與情緒，
+有些可能被排除在意識之外，
+卻仍然影響人的行為。
+</p>
+
+</section>
+
+
+<section id="iceberg">
+
+<h2>四、著名的「冰山模型」</h2>
+
+<div class="formula">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☁ ☁ ☁
+<br><br>
+──────────── 海面
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意識
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;────────
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前意識
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;████████
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;████████
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;無意識
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;████████
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;████████
+
+</div>
+
+<p>
+這個「冰山」圖像非常適合教學，
+但需要注意：
+<strong>
+它是後來流行的教學比喻，
+不應直接當成佛洛伊德正式提出的固定模型。
+</strong>
+</p>
+
+</section>
+
+
+<section>
+
+<h2>五、「理性的人」可能只是一部分的自己</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>我們以為</h3>
+
+<ul>
+<li>我知道自己為什麼做這件事。</li>
+<li>我的決定是理性的。</li>
+<li>我的行為有清楚的理由。</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>佛洛伊德追問</h3>
+
+<ul>
+<li>真的只有這些原因嗎？</li>
+<li>是否存在被壓抑的慾望？</li>
+<li>是否存在自己不知道的心理衝突？</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="dream">
+
+<h2>六、夢：通往潛意識的道路</h2>
+
+<div class="big">
+Dream｜夢
+</div>
+
+<p>
+佛洛伊德認為，
+夢不是毫無意義的心理活動。
+</p>
+
+<p>
+夢可能反映被壓抑的慾望、
+衝突與心理內容。
+</p>
+
+<div class="formula">
+
+清醒狀態
+<br>
+↓
+<br>
+慾望／衝突
+<br>
+↓
+<br>
+心理防衛
+<br>
+↓
+<br>
+<strong>
+夢的形成
+</strong>
+<br>
+↓
+<br>
+象徵、變形與偽裝
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>七、《夢的解析》</h2>
+
+<p>
+1900年出版的《夢的解析》，
+是佛洛伊德最重要的作品之一。
+</p>
+
+<p>
+它把「夢」從神秘現象，
+轉變成一個可以進行心理分析的對象。
+</p>
+
+<div class="quote">
+對佛洛伊德而言，
+夢不是單純的胡思亂想，
+而可能是理解無意識的重要線索。
+</div>
+
+</section>
+
+
+<section>
+
+<h2>八、夢的「顯意」與「潛意」</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>顯意</h3>
+
+<p>
+夢者醒來後記得的故事、
+人物、場景與事件。
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>潛意</h3>
+
+<p>
+夢背後可能隱藏的慾望、
+衝突與心理內容。
+</p>
+
+</div>
+
+</div>
+
+<div class="formula">
+
+夢的表面故事
+<br>
+↓
+<br>
+象徵與變形
+<br>
+↓
+<br>
+<strong>
+潛在心理內容
+</strong>
+
+</div>
+
+</section>
+
+
+<section id="repression">
+
+<h2>九、壓抑：心理的「地下室」</h2>
+
+<div class="big">
+Repression｜壓抑
+</div>
+
+<p>
+如果某些慾望、記憶或衝動
+讓人感到無法接受，
+心理可能會把它們排除到意識之外。
+</p>
+
+<div class="formula">
+
+無法接受的心理內容
+<br>
+↓
+<br>
+<strong>
+壓抑
+</strong>
+<br>
+↓
+<br>
+進入無意識
+<br>
+↓
+<br>
+仍然可能影響行為
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十、壓抑不代表「消失」</h2>
+
+<p>
+佛洛伊德的觀點中，
+被壓抑的內容並不是完全消失。
+</p>
+
+<p>
+它可能透過不同形式重新出現：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>夢</h3>
+</div>
+
+<div class="card">
+<h3>口誤</h3>
+</div>
+
+<div class="card">
+<h3>症狀</h3>
+</div>
+
+<div class="card">
+<h3>幻想</h3>
+</div>
+
+<div class="card">
+<h3>行為</h3>
+</div>
+
+<div class="card">
+<h3>藝術創作</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十一、「佛洛伊德式口誤」</h2>
+
+<div class="big">
+Freudian Slip
+</div>
+
+<p>
+日常語言中常說的「佛洛伊德式口誤」，
+指的是一個人說錯話，
+卻可能意外暴露某些心理內容。
+</p>
+
+<div class="question">
+例如：
+一個人明明想說「歡迎大家」，
+卻不小心說成「歡送大家」。
+</div>
+
+<p>
+需要注意：
+這是後來流行文化對佛洛伊德思想的簡化，
+不能把所有口誤都視為潛意識慾望的證據。
+</p>
+
+</section>
+
+
+<section id="id-ego-superego">
+
+<h2>十二、人格結構：本我、自我、超我</h2>
+
+<div class="big">
+Id・Ego・Superego
+</div>
+
+<div class="mind">
+
+<div class="mind-item">
+<h3>本我 Id</h3>
+<p>
+慾望、衝動、立即滿足。
+</p>
+</div>
+
+<div class="mind-center">
+人格<br>
+心理系統
+</div>
+
+<div class="mind-item">
+<h3>超我 Superego</h3>
+<p>
+道德、規範、理想與內在要求。
+</p>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:20px;text-align:center;">
+<h3>自我 Ego</h3>
+<p>
+在現實世界中，
+協調本我、超我與外部環境。
+</p>
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十三、本我：我要！</h2>
+
+<div class="formula">
+
+本我
+<br>
+↓
+<br>
+慾望
+<br>
+↓
+<br>
+「現在就要滿足！」
+</div>
+
+<p>
+本我遵循的是：
+<strong>快樂原則（Pleasure Principle）</strong>。
+</p>
+
+<p>
+它追求立即滿足，
+不太考慮現實限制。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十四、超我：你應該！</h2>
+
+<div class="formula">
+
+超我
+<br>
+↓
+<br>
+道德規範
+<br>
+↓
+<br>
+「這樣做對不對？」
+<br>
+↓
+<br>
+罪惡感／理想自我
+</div>
+
+<p>
+超我受到家庭、教育、
+文化與社會規範的影響。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十五、自我：我要怎麼辦？</h2>
+
+<div class="formula">
+
+本我
+<br>
+「我想要！」
+<br>
+↓
+<br>
+<strong>自我</strong>
+<br>
+「現實允許嗎？」
+<br>
+↑
+<br>
+超我
+<br>
+「這樣做對嗎？」
+</div>
+
+<p>
+自我遵循的是：
+<strong>現實原則（Reality Principle）</strong>。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十六、三者之間的心理戰</h2>
+
+<div class="question">
+<strong>本我：</strong>
+「我要吃蛋糕！」
+</div>
+
+<div class="question">
+<strong>超我：</strong>
+「你今天已經吃很多了，不應該再吃。」
+</div>
+
+<div class="question">
+<strong>自我：</strong>
+「那我吃一小塊，明天再控制。」
+</div>
+
+<p>
+這個例子可以幫助學生理解：
+佛洛伊德的人格結構是一種
+<strong>心理衝突模型</strong>。
+</p>
+
+</section>
+
+
+<section id="development">
+
+<h2>十七、心理性發展理論</h2>
+
+<p>
+佛洛伊德提出著名的心理性發展階段。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+口腔期
+<br>
+0－1歲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+肛門期
+<br>
+1－3歲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+性器期
+<br>
+3－6歲
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+潛伏期
+<br>
+6－青春期
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+生殖期
+<br>
+青春期後
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>十八、童年經驗的重要性</h2>
+
+<p>
+佛洛伊德非常重視童年經驗，
+認為早期家庭關係與心理衝突
+可能影響成年後的人格。
+</p>
+
+<div class="formula">
+
+童年經驗
+<br>
+↓
+<br>
+心理衝突
+<br>
+↓
+<br>
+人格形成
+<br>
+↓
+<br>
+成年行為與關係
+
+</div>
+
+<p>
+這個思想對後來的心理治療、
+兒童心理學與發展心理學產生很大影響。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>十九、伊底帕斯情結</h2>
+
+<div class="big">
+Oedipus Complex｜伊底帕斯情結
+</div>
+
+<p>
+佛洛伊德提出兒童在心理性發展過程中，
+可能對父母產生複雜的情感與競爭。
+</p>
+
+<p>
+其中最著名的是「伊底帕斯情結」。
+</p>
+
+<div class="quote">
+這是佛洛伊德理論中爭議最大的部分之一，
+現代心理學並不把它視為已獲充分科學驗證的普遍發展法則。
+</div>
+
+</section>
+
+
+<section id="psychoanalysis">
+
+<h2>二十、什麼是精神分析？</h2>
+
+<div class="big">
+Psychoanalysis｜精神分析
+</div>
+
+<p>
+精神分析不只是研究「疾病」，
+而是試圖理解人的內在心理世界。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+症狀
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+心理衝突
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+無意識
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+理解
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+治療
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十一、自由聯想</h2>
+
+<div class="big">
+Free Association｜自由聯想
+</div>
+
+<p>
+佛洛伊德鼓勵患者說出腦中想到的內容，
+不要刻意篩選。
+</p>
+
+<div class="formula">
+
+想到什麼
+<br>
+↓
+<br>
+說什麼
+<br>
+↓
+<br>
+避免自我審查
+<br>
+↓
+<br>
+尋找反覆出現的內容
+<br>
+↓
+<br>
+<strong>
+探索無意識
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十二、精神分析中的「阻抗」</h2>
+
+<div class="big">
+Resistance｜阻抗
+</div>
+
+<p>
+當某些心理內容令人不舒服，
+人可能會避免談論它。
+</p>
+
+<p>
+佛洛伊德認為，
+這種「不想談」本身也可能具有心理意義。
+</p>
+
+<div class="question">
+為什麼某個話題讓一個人特別不想談？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十三、移情</h2>
+
+<div class="big">
+Transference｜移情
+</div>
+
+<p>
+患者可能把過去重要人物的情感、
+期待或衝突，
+投射到治療者身上。
+</p>
+
+<div class="formula">
+
+過去的重要關係
+<br>
+↓
+<br>
+未完成的情感
+<br>
+↓
+<br>
+治療關係
+<br>
+↓
+<br>
+<strong>
+移情
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十四、心理防衛機制</h2>
+
+<p>
+佛洛伊德及其後繼者發展出
+各種「防衛機制」概念，
+用來解釋人如何面對心理衝突。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>壓抑</h3>
+<p>
+把令人不舒服的內容排除出意識。
+</p>
+</div>
+
+<div class="card">
+<h3>否認</h3>
+<p>
+拒絕接受令人難以面對的現實。
+</p>
+</div>
+
+<div class="card">
+<h3>投射</h3>
+<p>
+把自己的感受歸因於他人。
+</p>
+</div>
+
+<div class="card">
+<h3>合理化</h3>
+<p>
+替自己的行為建立看似合理的理由。
+</p>
+</div>
+
+<div class="card">
+<h3>昇華</h3>
+<p>
+將衝動轉化為社會可以接受的活動。
+</p>
+</div>
+
+<div class="card">
+<h3>反向形成</h3>
+<p>
+以與原始衝動相反的方式表現。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十五、「昇華」：慾望可以轉化嗎？</h2>
+
+<div class="big">
+Sublimation｜昇華
+</div>
+
+<div class="formula">
+
+原始衝動
+<br>
+↓
+<br>
+轉化
+<br>
+↓
+<br>
+藝術／創作／工作／文化活動
+<br>
+↓
+<br>
+<strong>
+社會可接受的形式
+</strong>
+
+</div>
+
+<p>
+這個概念讓佛洛伊德的思想
+與藝術、文學、創造力產生重要連結。
+</p>
+
+</section>
+
+
+<section id="culture">
+
+<h2>二十六、從個人心理走向文明</h2>
+
+<p>
+佛洛伊德後來不只研究個人，
+也開始思考：
+<strong>文明本身是不是也存在心理衝突？</strong>
+</p>
+
+<div class="formula">
+
+個人慾望
+<br>
+↓
+<br>
+社會規範
+<br>
+↓
+<br>
+壓抑
+<br>
+↓
+<br>
+文明秩序
+<br>
+↓
+<br>
+<strong>
+代價：焦慮與不滿
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>二十七、《文明及其缺憾》</h2>
+
+<p>
+1930年的《文明及其缺憾》，
+探討個人慾望與文明秩序之間的矛盾。
+</p>
+
+<div class="question">
+如果文明要求人壓抑自己的部分慾望，
+那麼文明是不是必然伴隨某種程度的不幸福？
+</div>
+
+<p>
+這個問題使佛洛伊德從心理學家，
+進一步成為重要的文化思想家。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十八、生與死：兩種基本驅力</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>生命驅力</h3>
+
+<p>
+Eros
+</p>
+
+<ul>
+<li>愛</li>
+<li>性</li>
+<li>創造</li>
+<li>連結</li>
+<li>保存生命</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>死亡驅力</h3>
+
+<p>
+Thanatos
+</p>
+
+<ul>
+<li>攻擊</li>
+<li>破壞</li>
+<li>重複</li>
+<li>回到無機狀態的傾向</li>
+</ul>
+
+</div>
+
+</div>
+
+<p>
+「死亡驅力」是佛洛伊德後期理論的重要概念，
+也是最具爭議的部分之一。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>二十九、佛洛伊德眼中的人</h2>
+
+<div class="formula">
+
+慾望
+<br>
+＋
+<br>
+理性
+<br>
+＋
+<br>
+道德
+<br>
+＋
+<br>
+社會規範
+<br>
+＋
+<br>
+童年經驗
+<br>
+＋
+<br>
+無意識
+<br>
+↓
+<br>
+<strong>
+複雜的人
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十、佛洛伊德的「人性觀」</h2>
+
+<p>
+如果說啟蒙思想常強調：
+</p>
+
+<div class="question">
+「人可以透過理性理解世界。」
+</div>
+
+<p>
+佛洛伊德則提出另一個方向：
+</p>
+
+<div class="question">
+<strong>
+「人甚至不完全理解自己。」
+</strong>
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十一、佛洛伊德對「理性人」的挑戰</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+笛卡兒
+<br>
+「我思故我在」
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+啟蒙理性
+<br>
+理性的人
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+尼采
+<br>
+慾望與權力
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+<strong>佛洛伊德</strong>
+<br>
+無意識的人
+</div>
+
+</div>
+
+<p>
+因此，佛洛伊德常被放在
+現代思想對「理性主體」的批判脈絡中理解。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十二、佛洛伊德與尼采</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>尼采</th>
+<th>佛洛伊德</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>批判理性與傳統道德</td>
+<td>揭露理性背後的無意識</td>
+</tr>
+
+<tr>
+<td>重視生命衝動</td>
+<td>重視慾望與驅力</td>
+</tr>
+
+<tr>
+<td>權力意志</td>
+<td>心理驅力</td>
+</tr>
+
+<tr>
+<td>系譜學</td>
+<td>精神分析</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<p>
+兩人有重要思想上的相似性，
+但佛洛伊德並不等於「把尼采心理學化」。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十三、佛洛伊德與馬克思</h2>
+
+<div class="two">
+
+<div class="card">
+
+<h3>馬克思</h3>
+
+<p>
+關注：
+<strong>社會結構、階級與經濟。</strong>
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>佛洛伊德</h3>
+
+<p>
+關注：
+<strong>心理結構、慾望與無意識。</strong>
+</p>
+
+</div>
+
+</div>
+
+<div class="formula">
+
+馬克思
+<br>
+「人被什麼樣的社會結構塑造？」
+<br><br>
+佛洛伊德
+<br>
+「人被什麼樣的心理結構塑造？」
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十四、馬克思＋尼采＋佛洛伊德</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>馬克思</h3>
+<p>
+揭露「經濟與階級」背後的力量。
+</p>
+</div>
+
+<div class="card">
+<h3>尼采</h3>
+<p>
+揭露「道德與價值」背後的力量。
+</p>
+</div>
+
+<div class="card">
+<h3>佛洛伊德</h3>
+<p>
+揭露「意識與理性」背後的無意識。
+</p>
+</div>
+
+</div>
+
+<div class="quote">
+三人後來常被稱為現代思想中的「懷疑大師」或
+「揭露者」之一脈。
+不過這是後來的思想史概括，
+並非三人共同提出的學派。
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十五、佛洛伊德與文學</h2>
+
+<p>
+精神分析對20世紀文學產生巨大影響。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>人物</h3>
+<p>
+人物不再只是「善」或「惡」，
+而可能具有矛盾的心理。
+</p>
+</div>
+
+<div class="card">
+<h3>夢境</h3>
+<p>
+夢可以成為小說與電影的重要敘事元素。
+</p>
+</div>
+
+<div class="card">
+<h3>象徵</h3>
+<p>
+物件與行為可能具有多重心理意義。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>三十六、佛洛伊德與藝術</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+無意識
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+慾望
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+象徵
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+藝術
+</div>
+
+</div>
+
+<p>
+超現實主義等20世紀藝術運動，
+尤其受到夢、潛意識與自由聯想概念的啟發。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十七、佛洛伊德與電影</h2>
+
+<p>
+現代電影經常使用佛洛伊德式的敘事語言：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>夢中夢</h3>
+</div>
+
+<div class="card">
+<h3>童年創傷</h3>
+</div>
+
+<div class="card">
+<h3>壓抑記憶</h3>
+</div>
+
+<div class="card">
+<h3>人格分裂</h3>
+</div>
+
+<div class="card">
+<h3>潛意識</h3>
+</div>
+
+<div class="card">
+<h3>象徵性場景</h3>
+</div>
+
+</div>
+
+<p>
+不過，電影中的「佛洛伊德式」表現，
+往往是文化上的借用，
+不一定符合現代臨床心理學。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十八、精神分析與現代心理治療</h2>
+
+<p>
+現代心理治療已經遠遠超越佛洛伊德。
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+佛洛伊德
+<br>
+精神分析
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+心理動力取向
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+多元心理治療
+</div>
+
+</div>
+
+<p>
+今天的心理治療包含認知行為治療、
+人本治療、家庭治療、心理動力治療等多種取向。
+</p>
+
+</section>
+
+
+<section>
+
+<h2>三十九、佛洛伊德理論的科學爭議</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>影響巨大</h3>
+<p>
+改變心理學、文化與藝術。
+</p>
+</div>
+
+<div class="card">
+<h3>可驗證性問題</h3>
+<p>
+部分核心概念難以用現代實驗科學直接驗證。
+</p>
+</div>
+
+<div class="card">
+<h3>歷史價值</h3>
+<p>
+即使部分理論受到批評，
+精神分析仍是理解20世紀思想史的重要入口。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十、佛洛伊德哪些觀念仍值得保留？</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>無意識心理</h3>
+<p>
+人並非完全透明地知道自己。
+</p>
+</div>
+
+<div class="card">
+<h3>童年經驗</h3>
+<p>
+早期關係可能對人格與心理發展產生長期影響。
+</p>
+</div>
+
+<div class="card">
+<h3>心理防衛</h3>
+<p>
+人會使用不同方式面對令人不舒服的心理內容。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十一、佛洛伊德哪些地方需要批判？</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>理論泛化</h3>
+<p>
+部分理論容易被解釋成幾乎可以解釋所有事情。
+</p>
+</div>
+
+<div class="card">
+<h3>科學證據</h3>
+<p>
+部分概念缺乏現代科學要求的可重複驗證。
+</p>
+</div>
+
+<div class="card">
+<h3>性別觀點</h3>
+<p>
+部分早期性心理理論受到現代心理學與性別研究的批評。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十二、佛洛伊德的歷史地位</h2>
+
+<div class="formula">
+
+醫學
+<br>
+↓
+<br>
+心理學
+<br>
+↓
+<br>
+<strong>
+精神分析
+</strong>
+<br>
+↓
+<br>
+文學・藝術・電影
+<br>
+↓
+<br>
+文化研究
+<br>
+↓
+<br>
+20世紀現代思想
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十三、佛洛伊德思想的核心公式</h2>
+
+<div class="formula">
+
+<strong>
+慾望
+＋
+壓抑
+＋
+無意識
+＋
+心理衝突
+</strong>
+<br>
+↓
+<br>
+夢・症狀・口誤・幻想
+<br>
+↓
+<br>
+精神分析
+<br>
+↓
+<br>
+理解自己
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十四、如果把人的心理想像成一座城市</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>市中心</h3>
+<p>
+意識：
+我們現在知道自己正在想什麼。
+</p>
+</div>
+
+<div class="card">
+<h3>地下交通</h3>
+<p>
+無意識：
+大量心理活動在我們不知道的情況下運作。
+</p>
+</div>
+
+<div class="card">
+<h3>警察與法律</h3>
+<p>
+超我：
+規範、道德與內在要求。
+</p>
+</div>
+
+</div>
+
+<div class="quote">
+佛洛伊德最重要的貢獻之一，
+就是提醒我們：
+<strong>
+「人不是只有自己看得見的那一部分。」
+</strong>
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十五、佛洛伊德與現代人的日常生活</h2>
+
+<div class="question">
+為什麼我明明知道不該做，
+卻還是一直做？
+</div>
+
+<div class="question">
+為什麼我會對某些事情產生莫名強烈的情緒？
+</div>
+
+<div class="question">
+為什麼童年的某些經驗，
+多年後仍然影響我的人際關係？
+</div>
+
+<div class="question">
+為什麼人有時會做出自己也無法解釋的選擇？
+</div>
+
+<div class="question">
+我們真的完全知道「自己是誰」嗎？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十六、佛洛伊德思想時間軸</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>1856</h3>
+<p>
+佛洛伊德出生於奧匈帝國的弗賴貝格。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1873</h3>
+<p>
+進入維也納大學醫學系。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1885－1886</h3>
+<p>
+前往巴黎向神經科醫師沙可（Jean-Martin Charcot）學習，
+開始接觸催眠與歇斯底里症研究。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1890年代</h3>
+<p>
+逐漸發展自由聯想與精神分析方法。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1900</h3>
+<p>
+出版《夢的解析》。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1905</h3>
+<p>
+出版《性學三論》，
+系統討論性心理發展。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1910年代</h3>
+<p>
+精神分析逐漸形成國際性的思想與臨床運動。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1923</h3>
+<p>
+出版《自我與本我》，
+系統提出本我、自我、超我的人格結構模型。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1930</h3>
+<p>
+出版《文明及其缺憾》。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1938</h3>
+<p>
+因納粹統治離開維也納，
+移居倫敦。
+</p>
+</div>
+
+<div class="timeline-item">
+<h3>1939</h3>
+<p>
+佛洛伊德在倫敦逝世。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十七、佛洛伊德的重要著作</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>年代</th>
+<th>著作</th>
+<th>核心內容</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>1900</td>
+<td>《夢的解析》</td>
+<td>夢、潛意識與慾望</td>
+</tr>
+
+<tr>
+<td>1901</td>
+<td>《日常生活的心理病理學》</td>
+<td>口誤、遺忘與日常心理現象</td>
+</tr>
+
+<tr>
+<td>1905</td>
+<td>《性學三論》</td>
+<td>性心理與人格發展</td>
+</tr>
+
+<tr>
+<td>1915</td>
+<td>〈無意識〉等論文</td>
+<td>無意識理論</td>
+</tr>
+
+<tr>
+<td>1920</td>
+<td>《超越快樂原則》</td>
+<td>重複強迫與死亡驅力</td>
+</tr>
+
+<tr>
+<td>1923</td>
+<td>《自我與本我》</td>
+<td>本我、自我、超我</td>
+</tr>
+
+<tr>
+<td>1930</td>
+<td>《文明及其缺憾》</td>
+<td>個人慾望與文明衝突</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2>四十八、佛洛伊德的思想影響</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>心理學</h3>
+<p>
+推動對無意識、人格與心理治療的研究。
+</p>
+</div>
+
+<div class="card">
+<h3>文學</h3>
+<p>
+改變人物心理與夢境的敘事方式。
+</p>
+</div>
+
+<div class="card">
+<h3>藝術</h3>
+<p>
+影響超現實主義與現代藝術。
+</p>
+</div>
+
+<div class="card">
+<h3>電影</h3>
+<p>
+夢、記憶、創傷與潛意識成為重要敘事元素。
+</p>
+</div>
+
+<div class="card">
+<h3>哲學</h3>
+<p>
+深化對理性主體與自我透明性的批判。
+</p>
+</div>
+
+<div class="card">
+<h3>文化研究</h3>
+<p>
+影響性別、家庭、慾望與文化符號研究。
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>四十九、佛洛伊德與現代思想的連接</h2>
+
+<div class="flow">
+
+<div class="flow-item">
+笛卡兒
+<br>
+我思故我在
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+康德
+<br>
+理性與主體
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+尼采
+<br>
+慾望與價值
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+<strong>佛洛伊德</strong>
+<br>
+無意識
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+現代心理與文化理論
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>五十、思想史上的「三位揭露者」</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>馬克思</h3>
+<p>
+揭露：
+<strong>階級與經濟利益</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>尼采</h3>
+<p>
+揭露：
+<strong>價值與權力</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>佛洛伊德</h3>
+<p>
+揭露：
+<strong>無意識與慾望</strong>
+</p>
+</div>
+
+</div>
+
+<div class="formula">
+
+表面的意識
+<br>
+↓
+<br>
+「真正的力量在哪裡？」
+<br>
+↓
+<br>
+<strong>
+經濟・權力・慾望
+</strong>
+
+</div>
+
+</section>
+
+
+<section id="questions">
+
+<h2>五十一、課堂大哉問</h2>
+
+<div class="question">
+<strong>大哉問一：</strong>
+人真的知道自己為什麼做某件事嗎？
+</div>
+
+<div class="question">
+<strong>大哉問二：</strong>
+如果無意識會影響我們，
+「自由意志」還存在嗎？
+</div>
+
+<div class="question">
+<strong>大哉問三：</strong>
+童年經驗究竟可以多大程度決定一個人的成年？
+</div>
+
+<div class="question">
+<strong>大哉問四：</strong>
+夢究竟只是大腦活動，
+還是具有心理意義？
+</div>
+
+<div class="question">
+<strong>大哉問五：</strong>
+人類文明是不是建立在「壓抑慾望」之上？
+</div>
+
+<div class="question">
+<strong>大哉問六：</strong>
+如果我們一直欺騙自己，
+我們如何知道真正的自己？
+</div>
+
+<div class="question">
+<strong>大哉問七：</strong>
+佛洛伊德的理論即使部分不符合現代科學，
+為什麼仍然能影響整個20世紀文化？
+</div>
+
+<div class="question">
+<strong>大哉問八：</strong>
+AI時代的「人」，
+是否仍然是一個可以完全理解自己的理性主體？
+</div>
+
+</section>
+
+
+<section>
+
+<h2>五十二、用一句話理解佛洛伊德</h2>
+
+<div class="big">
+
+「人的心理並不是一個完全透明的房間；
+在意識的背後，還有一個龐大的無意識世界。」
+
+</div>
+
+<div class="formula">
+
+意識
+<br>
+＋
+<br>
+無意識
+<br>
+＋
+<br>
+慾望
+<br>
+＋
+<br>
+壓抑
+<br>
+＋
+<br>
+心理衝突
+<br>
+↓
+<br>
+<strong>
+「人」
+</strong>
+
+</div>
+
+</section>
+
+
+<section class="hero">
+
+<h2>五十三、佛洛伊德留下的最後問題</h2>
+
+<div class="big">
+
+如果我們甚至不能完全理解自己，
+<br>
+那麼——
+<br><br>
+<strong>
+「我」究竟是誰？
+</strong>
+
+</div>
+
+<p>
+這個問題，
+讓佛洛伊德從一位精神科醫師，
+走進了20世紀哲學、文學、藝術與文化思想史。
+</p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<p>佛洛伊德｜Sigmund Freud</p>
+
+<p>
+1856－1939｜潛意識・精神分析・夢・慾望・壓抑・人格結構
+</p>
+
+<p>
+西方哲學與思想史教學 HTML 系列
+</p>
+
+</footer>
+
+</body>
+</html>
