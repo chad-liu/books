@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#14171A;--paper:#1C2024;--ink:#EAE6DA;--muted:#9BA39B;
-    --rule:#333A34;--body:#D6D2C5;
-    --brass:#E0B45C;--copper:#E8946E;--steel:#7FB8E8;--verde:#7FCB9E;
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);
@@ -55,6 +55,40 @@
     margin-bottom:40px;font-size:14px;text-align:left}
   .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
   footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
 </style>
 </head>
 <body>
@@ -72,165 +106,165 @@
 </div>
 
 <section>
-  <h2>其一 · 量子電腦的基本概念——從位元到量子位元</h2>
+  <h2>量子電腦的基本概念——從位元到量子位元</h2>
   <p class="sub">量子位元不是「更快的位元」，而是完全不同的運算邏輯</p>
   <div class="frame">
 <svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子電腦基本概念結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">從位元到量子位元，是計算典範的根本轉移</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">量子電腦不是「更快的傳統電腦」，而是運算邏輯本身的根本改變，理解這個差異，是理解量子電腦一切的起點</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從位元到量子位元，是計算典範的根本轉移</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#7f6d34">量子電腦不是「更快的傳統電腦」，而是運算邏輯本身的根本改變，理解這個差異，是理解量子電腦一切的起點</text>
 
-  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">古典位元</text>
-  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#C4A972">二進位的基本邏輯</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">傳統電腦的最小運算單位是位元</text>
-  <text x="52" y="188" font-size="12" text-anchor="start" fill="#C4A972">，只能是0或1其中一種確定狀</text>
-  <text x="52" y="204" font-size="12" text-anchor="start" fill="#C4A972">態，不能同時並存</text>
-  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#C4A972">序列運算是傳統電腦的根本限制</text>
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">古典位元</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">二進位的基本邏輯</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#846a36">傳統電腦的最小運算單位是位元</text>
+  <text x="52" y="188" font-size="12" text-anchor="start" fill="#846a36">，只能是0或1其中一種確定狀</text>
+  <text x="52" y="204" font-size="12" text-anchor="start" fill="#846a36">態，不能同時並存</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">序列運算是傳統電腦的根本限制</text>
 
-  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">量子位元（qubit）</text>
-  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#C99178">疊加態的0與1</text>
-  <text x="272" y="172" font-size="12" text-anchor="start" fill="#C99178">量子位元可以同時處於0與1的</text>
-  <text x="272" y="188" font-size="12" text-anchor="start" fill="#C99178">疊加狀態，直到測量發生前機率</text>
-  <text x="272" y="204" font-size="12" text-anchor="start" fill="#C99178">分布始終同時存在</text>
-  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#C99178">量子電腦運算能力的最小單位</text>
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">量子位元（qubit）</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">疊加態的0與1</text>
+  <text x="272" y="172" font-size="12" text-anchor="start" fill="#995a3d">量子位元可以同時處於0與1的</text>
+  <text x="272" y="188" font-size="12" text-anchor="start" fill="#995a3d">疊加狀態，直到測量發生前機率</text>
+  <text x="272" y="204" font-size="12" text-anchor="start" fill="#995a3d">分布始終同時存在</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">量子電腦運算能力的最小單位</text>
 
-  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">量子閘與量子電路</text>
-  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#8FADC4">對疊加態進行操作</text>
-  <text x="492" y="172" font-size="12" text-anchor="start" fill="#8FADC4">量子閘用來操縱量子位元的疊加</text>
-  <text x="492" y="188" font-size="12" text-anchor="start" fill="#8FADC4">與糾纏狀態，多個量子閘串接組</text>
-  <text x="492" y="204" font-size="12" text-anchor="start" fill="#8FADC4">成量子電路完成運算</text>
-  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#8FADC4">是量子演算法的基本組成單位</text>
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">量子閘與量子電路</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">對疊加態進行操作</text>
+  <text x="492" y="172" font-size="12" text-anchor="start" fill="#3e7198">量子閘用來操縱量子位元的疊加</text>
+  <text x="492" y="188" font-size="12" text-anchor="start" fill="#3e7198">與糾纏狀態，多個量子閘串接組</text>
+  <text x="492" y="204" font-size="12" text-anchor="start" fill="#3e7198">成量子電路完成運算</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">是量子演算法的基本組成單位</text>
 
-  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">量子平行性</text>
-  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#94BA9E">疊加帶來指數級可能</text>
-  <text x="712" y="172" font-size="12" text-anchor="start" fill="#94BA9E">N個量子位元理論上可同時表示</text>
-  <text x="712" y="188" font-size="12" text-anchor="start" fill="#94BA9E">2的N次方種狀態，帶來指數級</text>
-  <text x="712" y="204" font-size="12" text-anchor="start" fill="#94BA9E">成長的平行運算潛力</text>
-  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#94BA9E">量子電腦被寄予厚望的核心原因</text>
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">量子平行性</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">疊加帶來指數級可能</text>
+  <text x="712" y="172" font-size="12" text-anchor="start" fill="#337d46">N個量子位元理論上可同時表示</text>
+  <text x="712" y="188" font-size="12" text-anchor="start" fill="#337d46">2的N次方種狀態，帶來指數級</text>
+  <text x="712" y="204" font-size="12" text-anchor="start" fill="#337d46">成長的平行運算潛力</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">量子電腦被寄予厚望的核心原因</text>
 
-<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">量子位元不是「更快的位元」，而是完全不同的運算邏輯</text>
-<text x="92" y="321.2" font-size="12" text-anchor="start" fill="#D6D2C5">古典電腦即使再快，本質上仍是一次處理一種可能性；量子電腦則試圖利用疊加態，讓一台機器同時探索大量可能性</text>
-<text x="92" y="337.2" font-size="12" text-anchor="start" fill="#D6D2C5">——這種差異不是速度上的量變，而是運算方式上的質變</text>
-<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#9BA39B">本頁後續三節，將分別談量子電腦的核心挑戰、技術路線，以及應用與現實侷限</text>
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">量子位元不是「更快的位元」，而是完全不同的運算邏輯</text>
+<text x="92" y="321.2" font-size="12" text-anchor="start" fill="#7f6d34">古典電腦即使再快，本質上仍是一次處理一種可能性；量子電腦則試圖利用疊加態，讓一台機器同時探索大量可能性</text>
+<text x="92" y="337.2" font-size="12" text-anchor="start" fill="#7f6d34">——這種差異不是速度上的量變，而是運算方式上的質變</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">本頁後續三節，將分別談量子電腦的核心挑戰、技術路線，以及應用與現實侷限</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其二 · 量子電腦的核心技術與挑戰</h2>
+  <h2>量子電腦的核心技術與挑戰</h2>
   <p class="sub">量子優越性只是起點，離真正實用的量子電腦還有很長一段路</p>
   <div class="frame">
 <svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子電腦核心技術與挑戰結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">疊加態很誘人，但要真正做出一台能用的量子電腦，挑戰遠比想像中多</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">從量子閘的精密操作，到對抗環境干擾造成的錯誤，量子電腦的工程挑戰，某種程度上比理論本身更困難</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">疊加態很誘人，但要真正做出一台能用的量子電腦，挑戰遠比想像中多</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#7f6d34">從量子閘的精密操作，到對抗環境干擾造成的錯誤，量子電腦的工程挑戰，某種程度上比理論本身更困難</text>
 
-  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">量子閘與量子電路</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">量子閘用來操縱量子位元的疊加與糾纏狀態，多個量子閘依序串接組成量</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">子電路，完成特定運算任務</text>
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">量子閘與量子電路</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#846a36">量子閘用來操縱量子位元的疊加與糾纏狀態，多個量子閘依序串接組成量</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#846a36">子電路，完成特定運算任務</text>
 
-  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">量子錯誤更正</text>
-  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">量子位元極易受環境干擾而出錯，需要大量實體量子位元組合，才能得到</text>
-  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">一個穩定可靠的邏輯量子位元</text>
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">量子錯誤更正</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#995a3d">量子位元極易受環境干擾而出錯，需要大量實體量子位元組合，才能得到</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#995a3d">一個穩定可靠的邏輯量子位元</text>
 
-  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">退相干（decoherence）</text>
-  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">量子系統與外界環境交互作用會使疊加態迅速瓦解，是目前量子電腦最主</text>
-  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">要的技術瓶頸之一</text>
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">退相干（decoherence）</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#3e7198">量子系統與外界環境交互作用會使疊加態迅速瓦解，是目前量子電腦最主</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#3e7198">要的技術瓶頸之一</text>
 
-  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">量子優越性</text>
-  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">指量子電腦在特定問題上運算速度超越最強傳統超級電腦的分水嶺，Go</text>
-  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">ogle於2019年首度宣稱達成</text>
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">量子優越性</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#337d46">指量子電腦在特定問題上運算速度超越最強傳統超級電腦的分水嶺，Go</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#337d46">ogle於2019年首度宣稱達成</text>
 
-<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">量子優越性只是起點，離真正實用的量子電腦還有很長一段路</text>
-<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">即使在特定問題上證明了運算優勢，這些示範問題往往缺乏實際應用價值——量子錯誤更正的成熟度，才是量子電腦能否真正</text>
-<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">走出實驗室、進入實用階段的關鍵指標</text>
-<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">為了克服這些挑戰，不同廠商發展出了截然不同的技術路線</text>
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">量子優越性只是起點，離真正實用的量子電腦還有很長一段路</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#7f6d34">即使在特定問題上證明了運算優勢，這些示範問題往往缺乏實際應用價值——量子錯誤更正的成熟度，才是量子電腦能否真正</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#7f6d34">走出實驗室、進入實用階段的關鍵指標</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">為了克服這些挑戰，不同廠商發展出了截然不同的技術路線</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其三 · 主流量子電腦技術路線</h2>
+  <h2>主流量子電腦技術路線</h2>
   <p class="sub">技術路線之爭，本質上是穩定性、規模化與運算速度之間的權衡</p>
   <div class="frame">
 <svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="主流量子電腦技術路線結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">沒有一種技術路線是公認的正解，各大廠商仍在同時押注不同賽道</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">要用什麼物理系統實現量子位元，至今沒有定於一尊的答案，不同技術路線各有優劣，也對應不同廠商的長期押注</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">沒有一種技術路線是公認的正解，各大廠商仍在同時押注不同賽道</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#7f6d34">要用什麼物理系統實現量子位元，至今沒有定於一尊的答案，不同技術路線各有優劣，也對應不同廠商的長期押注</text>
 
-  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">超導量子位元</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">以超導電路在極低溫環境下產生量子效應，是IBM、Google等主</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">流廠商目前採用的技術路線</text>
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">超導量子位元</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#846a36">以超導電路在極低溫環境下產生量子效應，是IBM、Google等主</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#846a36">流廠商目前採用的技術路線</text>
 
-  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">離子阱</text>
-  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">利用電磁場捕捉並精密操控帶電原子，具有相對較長的相干時間，Ion</text>
-  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">Q為代表性業者</text>
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">離子阱</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#995a3d">利用電磁場捕捉並精密操控帶電原子，具有相對較長的相干時間，Ion</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#995a3d">Q為代表性業者</text>
 
-  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">光子量子計算</text>
-  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">以光子作為量子位元的載體，理論上可在室溫下運作，Xanadu與P</text>
-  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">siQuantum為代表性業者</text>
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">光子量子計算</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#3e7198">以光子作為量子位元的載體，理論上可在室溫下運作，Xanadu與P</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#3e7198">siQuantum為代表性業者</text>
 
-  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">拓撲量子位元</text>
-  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">利用準粒子的拓撲特性天生抵抗環境干擾，理論上更穩定但技術難度也最</text>
-  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">高，微軟為主要推動者</text>
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">拓撲量子位元</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#337d46">利用準粒子的拓撲特性天生抵抗環境干擾，理論上更穩定但技術難度也最</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#337d46">高，微軟為主要推動者</text>
 
-<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">技術路線之爭，本質上是穩定性、規模化與運算速度之間的權衡</text>
-<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">超導路線目前規模領先但需要極低溫環境，離子阱與光子路線各自在相干時間與室溫運作上有優勢，拓撲量子位元則押注在</text>
-<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">長期的穩定性——這場競賽的贏家，很可能要到量子糾錯真正成熟後才會明朗</text>
-<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">不論最終哪條路線勝出，量子電腦的實際應用場景，才是這場競賽真正的目的</text>
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">技術路線之爭，本質上是穩定性、規模化與運算速度之間的權衡</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#7f6d34">超導路線目前規模領先但需要極低溫環境，離子阱與光子路線各自在相干時間與室溫運作上有優勢，拓撲量子位元則押注在</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#7f6d34">長期的穩定性——這場競賽的贏家，很可能要到量子糾錯真正成熟後才會明朗</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">不論最終哪條路線勝出，量子電腦的實際應用場景，才是這場競賽真正的目的</text>
 </svg>
   </div>
 </section>
 
 <section>
-  <h2>其四 · 量子電腦的應用與現實侷限</h2>
+  <h2>量子電腦的應用與現實侷限</h2>
   <p class="sub">量子電腦真正的威脅與機會，往往藏在它被過度炒作的期待之外</p>
   <div class="frame">
 <svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量子電腦應用與現實侷限結構圖">
-<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">量子電腦不是萬能電腦，它只在特定類型的問題上才具有優勢</text>
-<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#D6D2C5">量子電腦並非取代傳統電腦的通用工具，而是在密碼學、模擬與最佳化等特定問題類型上，展現出傳統電腦難以企及的潛力</text>
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">量子電腦不是萬能電腦，它只在特定類型的問題上才具有優勢</text>
+<text x="52" y="70.5" font-size="12" text-anchor="start" fill="#7f6d34">量子電腦並非取代傳統電腦的通用工具，而是在密碼學、模擬與最佳化等特定問題類型上，展現出傳統電腦難以企及的潛力</text>
 
-  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#2B2416" stroke="#7A6A40"/>
-  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#E0B45C" font-weight="700">破解密碼學（Shor演算法）</text>
-  <text x="52" y="156" font-size="12" text-anchor="start" fill="#C4A972">蕭爾演算法理論上能有效率分解大質數，對現行RSA等加密機制構成長</text>
-  <text x="52" y="172" font-size="12" text-anchor="start" fill="#C4A972">期的潛在威脅</text>
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">破解密碼學（Shor演算法）</text>
+  <text x="52" y="156" font-size="12" text-anchor="start" fill="#846a36">蕭爾演算法理論上能有效率分解大質數，對現行RSA等加密機制構成長</text>
+  <text x="52" y="172" font-size="12" text-anchor="start" fill="#846a36">期的潛在威脅</text>
 
-  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#2E1F1B" stroke="#7A4C40"/>
-  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#E8946E" font-weight="700">藥物與材料模擬</text>
-  <text x="502" y="156" font-size="12" text-anchor="start" fill="#C99178">量子電腦擅長模擬量子系統本身，在新藥研發與新材料設計上具有傳統電</text>
-  <text x="502" y="172" font-size="12" text-anchor="start" fill="#C99178">腦難以取代的獨特優勢</text>
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">藥物與材料模擬</text>
+  <text x="502" y="156" font-size="12" text-anchor="start" fill="#995a3d">量子電腦擅長模擬量子系統本身，在新藥研發與新材料設計上具有傳統電</text>
+  <text x="502" y="172" font-size="12" text-anchor="start" fill="#995a3d">腦難以取代的獨特優勢</text>
 
-  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#1B222B" stroke="#4B6E88"/>
-  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#7FB8E8" font-weight="700">量子退火與最佳化</text>
-  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#8FADC4">針對特定最佳化問題設計的量子運算路線，適用於物流調度等場景，D-</text>
-  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#8FADC4">Wave為代表性商用業者</text>
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">量子退火與最佳化</text>
+  <text x="52" y="247.5" font-size="12" text-anchor="start" fill="#3e7198">針對特定最佳化問題設計的量子運算路線，適用於物流調度等場景，D-</text>
+  <text x="52" y="263.5" font-size="12" text-anchor="start" fill="#3e7198">Wave為代表性商用業者</text>
 
-  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#1A2620" stroke="#4E7256"/>
-  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#7FCB9E" font-weight="700">NISQ時代的現實侷限</text>
-  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#94BA9E">目前的量子電腦仍處於含噪聲的中等規模量子（NISQ）階段，離大規</text>
-  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#94BA9E">模可靠應用仍有相當距離</text>
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">NISQ時代的現實侷限</text>
+  <text x="502" y="247.5" font-size="12" text-anchor="start" fill="#337d46">目前的量子電腦仍處於含噪聲的中等規模量子（NISQ）階段，離大規</text>
+  <text x="502" y="263.5" font-size="12" text-anchor="start" fill="#337d46">模可靠應用仍有相當距離</text>
 
-<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#1C2024" stroke="#333A34"/>
-<text x="470" y="331" font-size="14" text-anchor="middle" fill="#9BA39B" font-family="'Noto Serif TC',serif" font-weight="600">量子電腦真正的威脅與機會，往往藏在它被過度炒作的期待之外</text>
-<text x="92" y="349" font-size="12" text-anchor="start" fill="#D6D2C5">密碼學威脅催生了「後量子密碼學」的提前布局，藥物與材料模擬則可能是量子電腦最早展現實際商業價值的領域——比起</text>
-<text x="92" y="365" font-size="12" text-anchor="start" fill="#D6D2C5">取代傳統電腦，量子電腦更可能是與傳統電腦協同運作的特化工具</text>
-<text x="470" y="381" font-size="11" text-anchor="middle" fill="#9BA39B">見〈量子力學知識圖譜〉篇：量子電腦正是量子疊加與量子纏結原理最具體的工程實現</text>
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">量子電腦真正的威脅與機會，往往藏在它被過度炒作的期待之外</text>
+<text x="92" y="349" font-size="12" text-anchor="start" fill="#7f6d34">密碼學威脅催生了「後量子密碼學」的提前布局，藥物與材料模擬則可能是量子電腦最早展現實際商業價值的領域——比起</text>
+<text x="92" y="365" font-size="12" text-anchor="start" fill="#7f6d34">取代傳統電腦，量子電腦更可能是與傳統電腦協同運作的特化工具</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">見〈量子力學知識圖譜〉篇：量子電腦正是量子疊加與量子纏結原理最具體的工程實現</text>
 </svg>
   </div>
 </section>
