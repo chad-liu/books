@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金本位知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--navy2);color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-style:italic;color:var(--muted);margin-left:6px;font-size:13px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .fm .nm{color:#8f5e14} .mk .nm{color:var(--steel)}
+  .cr .nm{color:var(--copper)} .db .nm{color:var(--verde)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:3px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px;color:var(--navy)}
+  .note span{font-size:13px;color:var(--body)}
+  blockquote{margin:0;background:var(--paper);border:0;border-left:5px solid var(--copper);
+    border-radius:12px;padding:18px 22px;box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:0;border-left:5px solid var(--brass);border-radius:12px;
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  .callout a{color:var(--navy2)}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">貨 幣 制 度 ・ 國 際 金 融 史</p>
+  <h1>金本位知識圖譜</h1>
+  <p class="lede">每逢通膨升溫，總會有人主張「回到金本位」。但這句話其實沒有指明任何具體制度——歷史上被稱作金本位的，至少有三種，彼此對貨幣的約束強度差了好幾個量級。這份圖譜要梳理的，就是這三種制度分別綁住了誰、它本來設計成怎麼自動運作、兩次崩潰各自敗在哪裡，以及為什麼即使撇開政治意願，它在算術上也很難再回去。</p>
+</header>
+
+<div class="callout">
+  <b>與同資料夾其他頁面的分工</b><br>
+  〈<a href="美元.html">美元</a>〉從美元霸權的角度帶過布列敦森林與尼克森衝擊；〈<a href="匯率變動.html">匯率變動</a>〉則以三元悖論為全篇主軸。本頁不重複那兩條線，改從<strong>制度本身</strong>切入：金本位是什麼、怎麼運作、為何失效。文中的年份與金價依通行史料，各家敘述的分期略有出入。
+</div>
+
+<section>
+  <h2>「金本位」不是一種制度，而是三種</h2>
+  <p class="sub">差別在於：誰有權把紙換成金、換得到什麼、以及換不換得起</p>
+  <div class="frame">
+<svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三種金本位制度對照圖">
+
+<rect x="40" y="26" width="860" height="62" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">說「回到金本位」而不指明是哪一種，等於什麼都沒說</text>
+<text x="470" y="68" font-size="12" text-anchor="middle" fill="#546e7a">三者的共通點只有「貨幣對黃金有固定官價」；真正決定約束力強弱的，是兌換權開放給誰</text>
+<text x="470" y="83" font-size="11" text-anchor="middle" fill="#59707b">從左到右，紀律逐級放鬆，政府的操作空間逐級變大</text>
+
+<rect x="40" y="106" width="272" height="180" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="176" y="132" font-size="14.5" text-anchor="middle" fill="#8f5e14" font-weight="700">金幣本位</text>
+<text x="176" y="150" font-size="10.5" text-anchor="middle" fill="#8a6a35">約 1870s–1914　古典時期</text>
+<text x="176" y="176" font-size="10.5" text-anchor="middle" fill="#59707b">誰能兌換</text>
+<text x="176" y="193" font-size="11.5" text-anchor="middle" fill="#8a6a35">任何持有紙鈔的人</text>
+<text x="176" y="217" font-size="10.5" text-anchor="middle" fill="#59707b">換到什麼</text>
+<text x="176" y="234" font-size="11.5" text-anchor="middle" fill="#8a6a35">可自由流通的金幣</text>
+<text x="176" y="258" font-size="10.5" text-anchor="middle" fill="#59707b">約束力</text>
+<text x="176" y="275" font-size="11.5" text-anchor="middle" fill="#8f5e14" font-weight="600">最強：金幣就在日常流通</text>
+
+<rect x="334" y="106" width="272" height="180" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="470" y="132" font-size="14.5" text-anchor="middle" fill="#1f5c85" font-weight="700">金塊本位</text>
+<text x="470" y="150" font-size="10.5" text-anchor="middle" fill="#37607a">1920s　戰後重建期</text>
+<text x="470" y="176" font-size="10.5" text-anchor="middle" fill="#59707b">誰能兌換</text>
+<text x="470" y="193" font-size="11.5" text-anchor="middle" fill="#37607a">湊得出大額門檻的人</text>
+<text x="470" y="217" font-size="10.5" text-anchor="middle" fill="#59707b">換到什麼</text>
+<text x="470" y="234" font-size="11.5" text-anchor="middle" fill="#37607a">標準金塊，不鑄金幣</text>
+<text x="470" y="258" font-size="10.5" text-anchor="middle" fill="#59707b">約束力</text>
+<text x="470" y="275" font-size="11.5" text-anchor="middle" fill="#1f5c85" font-weight="600">中等：一般人實際換不到</text>
+
+<rect x="628" y="106" width="272" height="180" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="764" y="132" font-size="14.5" text-anchor="middle" fill="#b8442a" font-weight="700">金匯兌本位</text>
+<text x="764" y="150" font-size="10.5" text-anchor="middle" fill="#96604f">1944–1971　布列敦森林</text>
+<text x="764" y="176" font-size="10.5" text-anchor="middle" fill="#59707b">誰能兌換</text>
+<text x="764" y="193" font-size="11.5" text-anchor="middle" fill="#96604f">只有外國央行</text>
+<text x="764" y="217" font-size="10.5" text-anchor="middle" fill="#59707b">換到什麼</text>
+<text x="764" y="234" font-size="11.5" text-anchor="middle" fill="#96604f">向美國兌換黃金</text>
+<text x="764" y="258" font-size="10.5" text-anchor="middle" fill="#59707b">約束力</text>
+<text x="764" y="275" font-size="11.5" text-anchor="middle" fill="#b8442a" font-weight="600">最弱：只綁住一個國家</text>
+
+<rect x="40" y="304" width="860" height="72" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="327" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">關鍵差異：金匯兌本位下，只有美元真的錨定黃金</text>
+<text x="470" y="348" font-size="11.5" text-anchor="middle" fill="#546e7a">其他國家錨定的是美元，等於間接、也可撤銷地錨定黃金。所以 1971 年美國一關上兌換窗口，</text>
+<text x="470" y="366" font-size="11.5" text-anchor="middle" fill="#546e7a">整個體系當場失去錨點——這是它與前兩種制度在結構上最根本的不同</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>金幣本位的紀律來自「看得見」</b><span>當金幣真的在口袋裡流通、任何人都能拿鈔票去銀行換金幣時，超發的後果會立刻表現為擠兌。這種紀律不是靠法律，而是靠隨時可被檢驗。</span></div>
+    <div class="note"><b>金塊本位是為了省黃金</b><span>一戰後各國黃金存量相對膨脹的物價已顯不足，取消金幣流通、只保留大額兌換，等於在維持形式的同時大幅節省準備。代價是兌換權對一般人形同虛設。</span></div>
+    <div class="note"><b>三者常被混為一談</b><span>爭論「金本位能不能防通膨」時，若一方想的是金幣本位、另一方想的是布列敦森林，其實在講兩種約束力天差地遠的制度，結論當然對不上。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>它本來該怎麼自動運作</h2>
+  <p class="sub">物價—鑄幣流動機制：一套不需要央行決策就能自我修正的設計</p>
+  <div class="frame">
+<svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="物價鑄幣流動機制循環圖">
+<defs>
+  <marker id="ga" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#8fb4c9"/>
+  </marker>
+</defs>
+
+<rect x="40" y="26" width="860" height="56" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">休謨在 1752 年就描述了這個機制：貿易失衡會自己修正</text>
+<text x="470" y="69" font-size="11.5" text-anchor="middle" fill="#546e7a">前提是各國央行不干預黃金的進出，讓它直接影響國內貨幣數量——這被稱為「遊戲規則」</text>
+
+<rect x="40" y="104" width="164" height="72" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="122" y="130" font-size="12.5" text-anchor="middle" fill="#b8442a" font-weight="700">貿易逆差</text>
+<text x="122" y="152" font-size="10.5" text-anchor="middle" fill="#96604f">進口大於出口</text>
+
+<rect x="228" y="104" width="164" height="72" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="310" y="130" font-size="12.5" text-anchor="middle" fill="#8f5e14" font-weight="700">黃金外流</text>
+<text x="310" y="152" font-size="10.5" text-anchor="middle" fill="#8a6a35">以黃金支付差額</text>
+
+<rect x="416" y="104" width="164" height="72" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="498" y="130" font-size="12.5" text-anchor="middle" fill="#1f5c85" font-weight="700">貨幣供給收縮</text>
+<text x="498" y="152" font-size="10.5" text-anchor="middle" fill="#37607a">準備減少，發行跟著減</text>
+
+<rect x="604" y="104" width="164" height="72" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="686" y="130" font-size="12.5" text-anchor="middle" fill="#1f5c85" font-weight="700">國內物價下跌</text>
+<text x="686" y="152" font-size="10.5" text-anchor="middle" fill="#37607a">工資與物價同步走低</text>
+
+<rect x="736" y="196" width="164" height="72" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="818" y="222" font-size="12.5" text-anchor="middle" fill="#3d7a55" font-weight="700">出口回升</text>
+<text x="818" y="244" font-size="10.5" text-anchor="middle" fill="#446b53">商品變便宜，外銷轉強</text>
+
+<rect x="40" y="196" width="164" height="72" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="122" y="222" font-size="12.5" text-anchor="middle" fill="#3d7a55" font-weight="700">黃金回流</text>
+<text x="122" y="244" font-size="10.5" text-anchor="middle" fill="#446b53">失衡自行消除</text>
+
+<g stroke="#8fb4c9" stroke-width="1.4" fill="none" marker-end="url(#ga)">
+  <line x1="204" y1="140" x2="224" y2="140"/>
+  <line x1="392" y1="140" x2="412" y2="140"/>
+  <line x1="580" y1="140" x2="600" y2="140"/>
+  <line x1="818" y1="176" x2="818" y2="192"/>
+  <line x1="732" y1="232" x2="208" y2="232"/>
+  <line x1="122" y1="196" x2="122" y2="180"/>
+</g>
+<text x="470" y="226" font-size="10.5" text-anchor="middle" fill="#59707b">循環回到起點，不需要任何人做決策</text>
+
+<rect x="40" y="292" width="860" height="86" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="470" y="315" font-size="13.5" text-anchor="middle" fill="#b8442a" font-family="'Noto Serif TC',serif" font-weight="600">但現實中，幾乎沒有國家真的照規則玩</text>
+<text x="470" y="336" font-size="11.5" text-anchor="middle" fill="#96604f">黃金流入時，央行常以公開市場操作「沖銷」其影響，避免國內物價被推高；黃金流出時則設法拖延緊縮。</text>
+<text x="470" y="354" font-size="11.5" text-anchor="middle" fill="#96604f">結果是調整的負擔不對稱地落在逆差國身上——順差國可以不擴張，逆差國卻不得不緊縮。</text>
+<text x="470" y="371" font-size="11" text-anchor="middle" fill="#59707b">這個不對稱，正是後來兩次崩潰的共同伏筆</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>兩次崩潰，敗因不同</h2>
+  <p class="sub">第一次死於回歸時的錯誤定價，第二次死於發行國自身的矛盾</p>
+  <div class="frame">
+<svg viewBox="0 0 940 424" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="金本位兩次崩潰的歷史時序圖">
+<defs>
+  <marker id="gb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#c9b6b0"/>
+  </marker>
+</defs>
+
+<rect x="40" y="26" width="860" height="34" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">第一次崩潰：古典金本位 → 戰間期的失敗重建</text>
+
+<rect x="40" y="76" width="200" height="80" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="140" y="100" font-size="12.5" text-anchor="middle" fill="#17324d" font-weight="600">1914　一戰爆發</text>
+<text x="140" y="121" font-size="10.5" text-anchor="middle" fill="#546e7a">各國停止兌換以籌措軍費</text>
+<text x="140" y="139" font-size="10.5" text-anchor="middle" fill="#546e7a">古典金本位實質終結</text>
+
+<rect x="264" y="76" width="200" height="80" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="364" y="100" font-size="12.5" text-anchor="middle" fill="#b8442a" font-weight="700">1925　英國回歸</text>
+<text x="364" y="121" font-size="10.5" text-anchor="middle" fill="#96604f">邱吉爾選擇戰前平價</text>
+<text x="364" y="139" font-size="10.5" text-anchor="middle" fill="#96604f">英鎊被高估，出口受重創</text>
+
+<rect x="488" y="76" width="200" height="80" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="588" y="100" font-size="12.5" text-anchor="middle" fill="#b8442a" font-weight="700">1926　總罷工</text>
+<text x="588" y="121" font-size="10.5" text-anchor="middle" fill="#96604f">維持高匯率須壓低工資</text>
+<text x="588" y="139" font-size="10.5" text-anchor="middle" fill="#96604f">煤礦業衝突引爆全國罷工</text>
+
+<rect x="712" y="76" width="188" height="80" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="806" y="100" font-size="12.5" text-anchor="middle" fill="#3d7a55" font-weight="700">1931　英國脫離</text>
+<text x="806" y="121" font-size="10.5" text-anchor="middle" fill="#446b53">放棄兌換，英鎊貶值</text>
+<text x="806" y="139" font-size="10.5" text-anchor="middle" fill="#446b53">經濟反而較早復甦</text>
+
+<g stroke="#c9b6b0" stroke-width="1.3" fill="none" marker-end="url(#gb)">
+  <line x1="240" y1="116" x2="260" y2="116"/>
+  <line x1="464" y1="116" x2="484" y2="116"/>
+  <line x1="688" y1="116" x2="708" y2="116"/>
+</g>
+
+<rect x="40" y="172" width="860" height="52" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="194" font-size="12.5" text-anchor="middle" fill="#17324d" font-weight="600">歷史學者艾肯格林的統計發現：愈早脫離金本位的國家，愈早走出大蕭條</text>
+<text x="470" y="214" font-size="11" text-anchor="middle" fill="#546e7a">這把金本位從「穩定的象徵」重新定位成「傳導緊縮的枷鎖」，是當代主流的解釋</text>
+
+<rect x="40" y="240" width="860" height="34" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="262" font-size="13.5" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">第二次崩潰：布列敦森林的內在矛盾</text>
+
+<rect x="40" y="290" width="272" height="76" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="176" y="314" font-size="12.5" text-anchor="middle" fill="#1f5c85" font-weight="700">1944　建立</text>
+<text x="176" y="335" font-size="10.5" text-anchor="middle" fill="#37607a">美元固定為每盎司 35 美元</text>
+<text x="176" y="353" font-size="10.5" text-anchor="middle" fill="#37607a">他國貨幣則釘住美元</text>
+
+<rect x="334" y="290" width="272" height="76" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="470" y="314" font-size="12.5" text-anchor="middle" fill="#8f5e14" font-weight="700">1960s　特里芬難題浮現</text>
+<text x="470" y="335" font-size="10.5" text-anchor="middle" fill="#8a6a35">全球要美元就得美國逆差</text>
+<text x="470" y="353" font-size="10.5" text-anchor="middle" fill="#8a6a35">逆差久了又動搖兌換信心</text>
+
+<rect x="628" y="290" width="272" height="76" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="764" y="314" font-size="12.5" text-anchor="middle" fill="#b8442a" font-weight="700">1971　關閉黃金窗口</text>
+<text x="764" y="335" font-size="10.5" text-anchor="middle" fill="#96604f">境外美元遠超美國金儲</text>
+<text x="764" y="353" font-size="10.5" text-anchor="middle" fill="#96604f">尼克森宣布停止兌換</text>
+
+<text x="470" y="392" font-size="11" text-anchor="middle" fill="#59707b">兩次崩潰的共同點：問題都不出在黃金本身，而出在「固定價格」與「經濟現實」逐漸脫節，卻沒有調整的出口</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>1925 年的關鍵錯誤是價格，不是制度</b><span>英國選擇以戰前平價回歸，等於在戰時通膨之後仍宣稱英鎊值那麼多。凱因斯當時就撰文反對，指出這將迫使國內物價與工資全面下修，代價由勞工承擔。</span></div>
+    <div class="note"><b>特里芬難題是設計上的死結</b><span>布列敦森林要求美元同時扮演兩個角色：全球流動性的來源，以及可靠的黃金兌換承諾。前者要求美國持續輸出美元，後者要求美元別太多——兩者無法同時滿足。</span></div>
+    <div class="note"><b>1971 年之後金價才真正浮動</b><span>脫鉤後金價由市場決定，1970 年代大幅上漲。這也說明先前的 35 美元官價早已不反映實際供需，只是被行政力量維持著。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>為什麼很難再回去</h2>
+  <p class="sub">撇開政治意願不談，光是算術上就有幾道難關</p>
+  <div class="frame">
+<svg viewBox="0 0 940 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="金本位難以回歸的結構性障礙">
+
+<rect x="40" y="26" width="860" height="52" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="48" font-size="14" text-anchor="middle" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="600">支持與反對的分歧，其實不在「黃金好不好」，而在「要不要保留調整的手段」</text>
+<text x="470" y="69" font-size="11.5" text-anchor="middle" fill="#546e7a">金本位的優點與缺點是同一件事的兩面：它讓政府無法隨意增發，也讓政府在危機時無法應變</text>
+
+<rect x="40" y="98" width="272" height="118" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+<text x="176" y="124" font-size="13" text-anchor="middle" fill="#b8442a" font-weight="700">黃金存量追不上經濟</text>
+<text x="176" y="147" font-size="11" text-anchor="middle" fill="#96604f">全球黃金年產量相對於既有</text>
+<text x="176" y="165" font-size="11" text-anchor="middle" fill="#96604f">存量僅約百分之一二，遠低</text>
+<text x="176" y="183" font-size="11" text-anchor="middle" fill="#96604f">於實質經濟的成長速度</text>
+<text x="176" y="204" font-size="10.5" text-anchor="middle" fill="#b8442a">結果是長期的通縮偏誤</text>
+
+<rect x="334" y="98" width="272" height="118" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+<text x="470" y="124" font-size="13" text-anchor="middle" fill="#8f5e14" font-weight="700">最後貸款人失去彈藥</text>
+<text x="470" y="147" font-size="11" text-anchor="middle" fill="#8a6a35">銀行擠兌時央行必須能大量</text>
+<text x="470" y="165" font-size="11" text-anchor="middle" fill="#8a6a35">供給流動性，但兌換承諾恰</text>
+<text x="470" y="183" font-size="11" text-anchor="middle" fill="#8a6a35">恰限制了它能放出多少</text>
+<text x="470" y="204" font-size="10.5" text-anchor="middle" fill="#8f5e14">救銀行與守金價互相衝突</text>
+
+<rect x="628" y="98" width="272" height="118" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+<text x="764" y="124" font-size="13" text-anchor="middle" fill="#1f5c85" font-weight="700">產金分布帶來地緣風險</text>
+<text x="764" y="147" font-size="11" text-anchor="middle" fill="#37607a">貨幣基礎的增量將取決於少</text>
+<text x="764" y="165" font-size="11" text-anchor="middle" fill="#37607a">數產金國的產量與出口意願</text>
+<text x="764" y="183" font-size="11" text-anchor="middle" fill="#37607a">等於把貨幣主權外包出去</text>
+<text x="764" y="204" font-size="10.5" text-anchor="middle" fill="#1f5c85">這是十九世紀不存在的顧慮</text>
+
+<rect x="40" y="234" width="860" height="92" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+<text x="470" y="258" font-size="13.5" text-anchor="middle" fill="#3d7a55" font-family="'Noto Serif TC',serif" font-weight="600">但反方的核心關切並沒有被解決</text>
+<text x="470" y="279" font-size="11.5" text-anchor="middle" fill="#446b53">主張回歸金本位的人真正在意的，是法定貨幣缺少外部約束、發行量取決於當權者的自律。</text>
+<text x="470" y="297" font-size="11.5" text-anchor="middle" fill="#446b53">這個疑慮是真實的，現代的回應是用制度替代金屬：央行獨立性、通膨目標、財政紀律規則。</text>
+<text x="470" y="316" font-size="11" text-anchor="middle" fill="#59707b">換句話說，爭論從「用什麼綁住政府」轉成了「制度承諾夠不夠可信」</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>三種本位的關鍵差異</h2><span class="tag">THREE VARIANTS</span></div>
+  <div class="grid fm">
+    <div class="card"><div class="nm">金幣本位<span class="it">Gold Specie Standard</span></div><p>金幣實際在市面流通，任何人都能以固定官價把紙鈔換成金幣。約束力最強，因為超發會立刻反映為兌換壓力。約行於 1870 年代至一戰爆發。</p></div>
+    <div class="card"><div class="nm">金塊本位<span class="it">Gold Bullion Standard</span></div><p>不再鑄造流通金幣，只允許以大額門檻兌換標準金塊。形式上維持了兌換承諾，實際上一般民眾無從行使，是戰後為節省黃金準備的折衷。</p></div>
+    <div class="card"><div class="nm">金匯兌本位<span class="it">Gold Exchange Standard</span></div><p>只有一國貨幣直接錨定黃金，其餘國家錨定該貨幣。布列敦森林即屬此類——約束力最弱，且整個體系的信用集中懸繫於單一國家的承諾。</p></div>
+    <div class="card"><div class="nm">複本位與其終結<span class="it">Bimetallism</span></div><p>十九世紀中葉前，金銀同時作為法定貨幣基礎。但兩種金屬的市價比例會偏離法定比價，導致劣幣驅逐良幣，各國最終陸續轉向單一金本位。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>運作機制的核心概念</h2><span class="tag">MECHANISM</span></div>
+  <div class="grid mk">
+    <div class="card"><div class="nm">物價—鑄幣流動機制<span class="it">Price-Specie Flow</span></div><p>休謨提出的自動調整模型：逆差導致黃金外流，貨幣緊縮壓低物價，出口因此轉強、黃金回流。整個過程不需要任何政策決定。</p></div>
+    <div class="card"><div class="nm">遊戲規則<span class="it">Rules of the Game</span></div><p>要讓上述機制運作，央行必須讓黃金進出直接影響國內信用。但各國普遍以沖銷操作抵銷其影響，使自動調整長期失靈。</p></div>
+    <div class="card"><div class="nm">調整負擔的不對稱</div><p>逆差國會耗盡黃金而被迫緊縮，順差國卻沒有相應壓力必須擴張。緊縮的責任因此單向地壓在弱勢一方，是體系反覆積累張力的根源。</p></div>
+    <div class="card"><div class="nm">特里芬難題<span class="it">Triffin Dilemma</span></div><p>當一國貨幣同時作為全球儲備資產時，該國必須持續逆差以供應流動性，但長期逆差又會侵蝕其兌換承諾的可信度，兩個要求無法並存。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>關鍵事件</h2><span class="tag">TIMELINE</span></div>
+  <div class="grid cr">
+    <div class="card"><div class="nm">英國正式採行金本位<span class="yr">1816</span></div><p>以鑄幣法確立金本位。此前牛頓任皇家鑄幣廠長時所定的金銀比價，已使英國在實務上偏向黃金數十年。</p></div>
+    <div class="card"><div class="nm">德國轉向金本位<span class="yr">1871</span></div><p>普法戰爭後以法國賠款為基礎改採金本位，觸發歐洲各國跟進，古典金本位自此成為國際通行制度。</p></div>
+    <div class="card"><div class="nm">英國以戰前平價回歸<span class="yr">1925</span></div><p>財政大臣邱吉爾決定按戰前匯價恢復兌換，導致英鎊高估、出口衰退與長期通縮壓力，凱因斯撰文強烈反對。</p></div>
+    <div class="card"><div class="nm">美國禁止私人持有黃金<span class="yr">1933–34</span></div><p>行政命令要求民眾繳交黃金，隨後將官價由每盎司約 20.67 美元調升至 35 美元，等於一次性讓美元對黃金貶值。</p></div>
+    <div class="card"><div class="nm">布列敦森林體系成立<span class="yr">1944</span></div><p>確立以美元為中心的金匯兌本位，美元固定兌換黃金，其他貨幣釘住美元，同時設立國際貨幣基金與世界銀行。</p></div>
+    <div class="card"><div class="nm">尼克森關閉黃金窗口<span class="yr">1971</span></div><p>美國宣布停止外國央行以美元兌換黃金，體系失去錨點。此後主要貨幣陸續轉為浮動匯率，並於 1970 年代中期正式確立。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>常見主張與檢視</h2><span class="tag">ARGUMENTS</span></div>
+  <div class="grid db">
+    <div class="card"><div class="nm">「金本位能杜絕通膨」</div><p>它確實壓低了長期平均通膨，但代價是物價的短期波動更劇烈——新金礦發現會帶來通膨，經濟成長超前金礦供給則帶來通縮。穩定的是長期均值，不是過程。</p></div>
+    <div class="card"><div class="nm">「金本位時期經濟更穩定」</div><p>古典時期的金融恐慌其實相當頻繁。當時缺少存款保險與成熟的最後貸款人機制，銀行危機的破壞力往往更大，只是後果由當事人承擔而非由政策吸收。</p></div>
+    <div class="card"><div class="nm">「黃金是誠實的貨幣」</div><p>這句話指向的是對政府自律的不信任，關切本身合理。但歷史上政府同樣多次調整官價或直接中止兌換——金本位並非不可違背，只是違背的門檻較高、較顯眼。</p></div>
+    <div class="card"><div class="nm">「加密資產是數位黃金」</div><p>兩者都訴諸供給上限與不可任意增發。差別在於黃金有數千年的貨幣使用史與工業需求支撐，且各國央行仍持有大量實體儲備，兩者的制度地位並不對等。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    金本位已經是一件野蠻的遺物。
+    <cite>凱因斯《貨幣改革論》（1923）。他反對的並非黃金本身，而是把貨幣政策交給金礦產量與國際收支自動決定——在他看來，物價與就業的穩定應該是可以有意識地追求的目標，不該任由一項金屬的供需擺布。這句話與他兩年後反對英國以戰前平價回歸，出於同一個立場。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  年份與分期依通行史料，各家對「古典金本位」起訖的界定略有出入；金價、產量比例等為概略數量級，非精確統計。本頁僅梳理制度運作與歷史爭論，不構成任何投資判斷依據。
+</footer>
+
+</div>
+</body>
+</html>
