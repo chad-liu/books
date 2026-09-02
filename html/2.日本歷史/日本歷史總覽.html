@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本歷史總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">2 日本歷史 · 總覽</p>
+  <h1>日本歷史總覽</h1>
+  <p class="lede">中國史每隔兩三百年就要換一個朝代，改朝換代意味著舊皇室被徹底取代。日本沒有發生過這件事——<b>同一個皇室延續了一千五百年，卻在其中一千三百年裡幾乎沒有實際掌權過</b>。藤原氏、上皇、將軍、藩閥、軍部、內閣，權力反覆易主，但沒有任何一方試圖坐上那個位子；他們要的是「代天皇行使權力」這個名分。這一頁從這個裝置開始，看它如何決定了日本從古代到現代的每一次轉型形狀，包括明治維新為什麼可以叫做「王政復古」。</p>
+</header>
+
+<blockquote>
+  在日本，奪權的正確做法不是取代天皇，而是取得一個由天皇授予的頭銜。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>一千三百年不變的裝置：權威與權力分離</h2>
+  <p class="sub">左半是名分，右半是實力。注意最右欄——每一次改朝換代，換的其實只是這一欄。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 510" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="210" height="36" fill="#17324d"/>
+    <rect x="243" y="18" width="170" height="36" fill="#17324d"/>
+    <rect x="421" y="18" width="250" height="36" fill="#17324d"/>
+    <rect x="679" y="18" width="396" height="36" fill="#17324d"/>
+    <text x="130" y="42" text-anchor="middle" font-size="13" fill="#ffffff">時期</text>
+    <text x="328" y="42" text-anchor="middle" font-size="13" fill="#ffffff">名義上的權威</text>
+    <text x="546" y="42" text-anchor="middle" font-size="13" fill="#ffffff">實際掌權者</text>
+    <text x="877" y="42" text-anchor="middle" font-size="13" fill="#ffffff">掌權者的正當性從哪裡來</text>
+
+    <rect x="25" y="58" width="210" height="62" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="243" y="58" width="170" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="421" y="58" width="250" height="62" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="679" y="58" width="396" height="62" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="130" y="95" text-anchor="middle" font-size="12.5" fill="#3d7a55">710–967　律令國家</text>
+    <text x="328" y="95" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">天皇</text>
+    <text x="546" y="95" text-anchor="middle" font-size="12.5" fill="#263238">天皇與朝廷</text>
+    <text x="877" y="95" text-anchor="middle" font-size="12.5" fill="#546e7a">律令：由成文法規定的統治權，名實合一</text>
+
+    <rect x="25" y="120" width="210" height="62" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="243" y="120" width="170" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="421" y="120" width="250" height="62" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="679" y="120" width="396" height="62" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="130" y="157" text-anchor="middle" font-size="12.5" fill="#3d7a55">967–1086　攝關政治</text>
+    <text x="328" y="157" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">天皇</text>
+    <text x="546" y="157" text-anchor="middle" font-size="12.5" fill="#263238">藤原氏</text>
+    <text x="877" y="157" text-anchor="middle" font-size="12.5" fill="#546e7a">身為天皇的外祖父，以攝政、關白之名代理</text>
+
+    <rect x="25" y="182" width="210" height="62" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="243" y="182" width="170" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="421" y="182" width="250" height="62" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="679" y="182" width="396" height="62" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="130" y="219" text-anchor="middle" font-size="12.5" fill="#3d7a55">1086–1185　院政</text>
+    <text x="328" y="219" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">天皇</text>
+    <text x="546" y="219" text-anchor="middle" font-size="12.5" fill="#263238">上皇（治天之君）</text>
+    <text x="877" y="219" text-anchor="middle" font-size="12.5" fill="#546e7a">身為天皇的父祖，退位反而擺脫了朝廷的束縛</text>
+
+    <rect x="25" y="244" width="210" height="62" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="243" y="244" width="170" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="421" y="244" width="250" height="62" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="679" y="244" width="396" height="62" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="130" y="281" text-anchor="middle" font-size="12.5" fill="#1f5c85">1185–1867　幕府</text>
+    <text x="328" y="281" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">天皇</text>
+    <text x="546" y="281" text-anchor="middle" font-size="12.5" fill="#263238">將軍</text>
+    <text x="877" y="281" text-anchor="middle" font-size="12.5" fill="#546e7a">由天皇任命為征夷大將軍，武力在先，任命在後</text>
+
+    <rect x="25" y="306" width="210" height="62" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="243" y="306" width="170" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="421" y="306" width="250" height="62" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="679" y="306" width="396" height="62" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="130" y="343" text-anchor="middle" font-size="12.5" fill="#b8442a">1868–1945　帝國</text>
+    <text x="328" y="343" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">天皇（形式上親政）</text>
+    <text x="546" y="343" text-anchor="middle" font-size="12.5" fill="#263238">藩閥 · 元老 · 軍部</text>
+    <text x="877" y="343" text-anchor="middle" font-size="12.5" fill="#546e7a">代天皇行使大權，統帥權更不受內閣節制</text>
+
+    <rect x="25" y="368" width="210" height="62" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="243" y="368" width="170" height="62" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="421" y="368" width="250" height="62" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="679" y="368" width="396" height="62" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="130" y="405" text-anchor="middle" font-size="12.5" fill="#6b4a8f">1947 至今　戰後</text>
+    <text x="328" y="405" text-anchor="middle" font-size="13" fill="#6b4a8f" font-weight="600">天皇（象徵）</text>
+    <text x="546" y="405" text-anchor="middle" font-size="12.5" fill="#263238">內閣與國會</text>
+    <text x="877" y="405" text-anchor="middle" font-size="12.5" fill="#546e7a">國民主權：權威第一次不再從天皇那裡取得</text>
+
+    <rect x="25" y="442" width="1050" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="466" text-anchor="middle" font-size="12.5" fill="#8f5e14">1947 年那一列才是真正的斷裂。前面五次都只是換掉「代天皇行使權力的人」，天皇這個權威來源</text>
+    <text x="550" y="488" text-anchor="middle" font-size="12.5" fill="#8f5e14">始終不變；戰後憲法把主權移到國民身上，這個延續了一千三百年的裝置才第一次被拆掉</text>
+  </svg>
+  </div>
+  <p class="after">這個裝置解釋了兩件事。其一，日本沒有「易姓革命」的觀念，因此政權更替不必否定前朝的正統，只需取得新的名分。其二，明治維新之所以能自稱「王政復古」——推翻幕府卻宣稱是恢復古制——正是因為天皇一直在那裡，任何人都可以主張自己才是真正在替天皇辦事。</p>
+</section>
+
+<section>
+  <h2>十個時代</h2>
+  <p class="sub">上排是古代與中世，下排是近世與現代。每一格最底下那行，是該時代真正留下來的東西。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="20" y="18" width="1165" height="28" fill="#2f5570"/>
+    <text x="602" y="37" text-anchor="middle" font-size="12.5" fill="#ffffff">古代與中世　3 世紀 – 1603 年</text>
+
+    <rect x="20" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="132" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">古墳 · 飛鳥</text>
+    <text x="132" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">3 世紀 – 710</text>
+    <text x="132" y="122" text-anchor="middle" font-size="11" fill="#546e7a">大和政權統合各地豪族</text>
+    <text x="132" y="142" text-anchor="middle" font-size="11" fill="#546e7a">607　遣隋使</text>
+    <text x="132" y="162" text-anchor="middle" font-size="11" fill="#546e7a">645　大化改新</text>
+    <text x="132" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">開始照中國的樣子建國</text>
+
+    <rect x="255" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="367" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">奈良 · 平安</text>
+    <text x="367" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">710 – 1185</text>
+    <text x="367" y="122" text-anchor="middle" font-size="11" fill="#546e7a">701　大寶律令</text>
+    <text x="367" y="142" text-anchor="middle" font-size="11" fill="#546e7a">894　停派遣唐使</text>
+    <text x="367" y="162" text-anchor="middle" font-size="11" fill="#546e7a">攝關政治與院政交替</text>
+    <text x="367" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">假名與國風文化成形</text>
+
+    <rect x="490" y="56" width="225" height="150" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="602" y="80" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">鎌倉</text>
+    <text x="602" y="99" text-anchor="middle" font-size="10.5" fill="#37607a">1185 – 1333</text>
+    <text x="602" y="122" text-anchor="middle" font-size="11" fill="#546e7a">源賴朝開創武家政權</text>
+    <text x="602" y="142" text-anchor="middle" font-size="11" fill="#546e7a">1274 · 1281　元軍來襲</text>
+    <text x="602" y="162" text-anchor="middle" font-size="11" fill="#546e7a">鎌倉新佛教普及民間</text>
+    <text x="602" y="190" text-anchor="middle" font-size="11" fill="#1f5c85">武士第一次成為統治者</text>
+
+    <rect x="725" y="56" width="225" height="150" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="837" y="80" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">室町 · 戰國</text>
+    <text x="837" y="99" text-anchor="middle" font-size="10.5" fill="#37607a">1336 – 1573</text>
+    <text x="837" y="122" text-anchor="middle" font-size="11" fill="#546e7a">1467　應仁之亂</text>
+    <text x="837" y="142" text-anchor="middle" font-size="11" fill="#546e7a">1543　鐵炮傳入</text>
+    <text x="837" y="162" text-anchor="middle" font-size="11" fill="#546e7a">1549　基督教傳入</text>
+    <text x="837" y="190" text-anchor="middle" font-size="11" fill="#1f5c85">中央權威瓦解，實力說了算</text>
+
+    <rect x="960" y="56" width="225" height="150" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="1072" y="80" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">安土桃山</text>
+    <text x="1072" y="99" text-anchor="middle" font-size="10.5" fill="#8a6a35">1573 – 1603</text>
+    <text x="1072" y="122" text-anchor="middle" font-size="11" fill="#546e7a">織田信長與豐臣秀吉</text>
+    <text x="1072" y="142" text-anchor="middle" font-size="11" fill="#546e7a">1588　刀狩令</text>
+    <text x="1072" y="162" text-anchor="middle" font-size="11" fill="#546e7a">1592 · 1597　出兵朝鮮</text>
+    <text x="1072" y="190" text-anchor="middle" font-size="11" fill="#8f5e14">兵農分離，身分被固定下來</text>
+
+    <rect x="20" y="222" width="1165" height="28" fill="#8a4636"/>
+    <text x="602" y="241" text-anchor="middle" font-size="12.5" fill="#ffffff">近世與現代　1603 年至今</text>
+
+    <rect x="20" y="260" width="225" height="150" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="132" y="284" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">江戶</text>
+    <text x="132" y="303" text-anchor="middle" font-size="10.5" fill="#8a6a35">1603 – 1867</text>
+    <text x="132" y="326" text-anchor="middle" font-size="11" fill="#546e7a">幕藩體制與參勤交代</text>
+    <text x="132" y="346" text-anchor="middle" font-size="11" fill="#546e7a">1639　鎖國體制完成</text>
+    <text x="132" y="366" text-anchor="middle" font-size="11" fill="#546e7a">1853　培理來航</text>
+    <text x="132" y="394" text-anchor="middle" font-size="11" fill="#8f5e14">兩百六十年無大戰，識字率大升</text>
+
+    <rect x="255" y="260" width="225" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="367" y="284" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">明治</text>
+    <text x="367" y="303" text-anchor="middle" font-size="10.5" fill="#96604f">1868 – 1912</text>
+    <text x="367" y="326" text-anchor="middle" font-size="11" fill="#546e7a">1871　廢藩置縣</text>
+    <text x="367" y="346" text-anchor="middle" font-size="11" fill="#546e7a">1889　帝國憲法</text>
+    <text x="367" y="366" text-anchor="middle" font-size="11" fill="#546e7a">1894 · 1904　兩場對外戰爭</text>
+    <text x="367" y="394" text-anchor="middle" font-size="11" fill="#b8442a">三十年內躋身列強</text>
+
+    <rect x="490" y="260" width="225" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="602" y="284" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">大正 · 昭和前期</text>
+    <text x="602" y="303" text-anchor="middle" font-size="10.5" fill="#96604f">1912 – 1945</text>
+    <text x="602" y="326" text-anchor="middle" font-size="11" fill="#546e7a">1925　普選法與治安維持法</text>
+    <text x="602" y="346" text-anchor="middle" font-size="11" fill="#546e7a">1931　滿洲事變</text>
+    <text x="602" y="366" text-anchor="middle" font-size="11" fill="#546e7a">1941–45　太平洋戰爭</text>
+    <text x="602" y="394" text-anchor="middle" font-size="11" fill="#b8442a">政黨政治被軍部取代</text>
+
+    <rect x="725" y="260" width="225" height="150" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="837" y="284" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">昭和後期</text>
+    <text x="837" y="303" text-anchor="middle" font-size="10.5" fill="#73618a">1945 – 1989</text>
+    <text x="837" y="326" text-anchor="middle" font-size="11" fill="#546e7a">1947　日本國憲法</text>
+    <text x="837" y="346" text-anchor="middle" font-size="11" fill="#546e7a">1955–73　高度經濟成長</text>
+    <text x="837" y="366" text-anchor="middle" font-size="11" fill="#546e7a">1964　東京奧運</text>
+    <text x="837" y="394" text-anchor="middle" font-size="11" fill="#6b4a8f">改用經濟重跑一次追趕</text>
+
+    <rect x="960" y="260" width="225" height="150" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="1072" y="284" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">平成 · 令和</text>
+    <text x="1072" y="303" text-anchor="middle" font-size="10.5" fill="#73618a">1989 至今</text>
+    <text x="1072" y="326" text-anchor="middle" font-size="11" fill="#546e7a">1991　泡沫破裂</text>
+    <text x="1072" y="346" text-anchor="middle" font-size="11" fill="#546e7a">長期停滯與人口減少</text>
+    <text x="1072" y="366" text-anchor="middle" font-size="11" fill="#546e7a">2011　東日本大震災</text>
+    <text x="1072" y="394" text-anchor="middle" font-size="11" fill="#6b4a8f">第一次沒有現成標竿可追</text>
+
+    <rect x="20" y="430" width="1165" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="602" y="454" text-anchor="middle" font-size="12.5" fill="#546e7a">把十格最底下那一行連起來讀，會發現一個規律：每當有一個明確的外部範本可以照抄，日本就</text>
+    <text x="602" y="476" text-anchor="middle" font-size="12.5" fill="#546e7a">轉型得又快又徹底；一旦必須自己定義目標，速度就會慢下來——最後一格正是這種狀態</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>三次大輸入，三次消化</h2>
+  <p class="sub">日本史上的三次劇變都是同一個動作：整批引進一個先進文明的制度，用兩三代人消化，再長出一個原版沒有的東西。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 430" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="190" height="36" fill="#17324d"/>
+    <rect x="223" y="18" width="300" height="36" fill="#17324d"/>
+    <rect x="531" y="18" width="280" height="36" fill="#17324d"/>
+    <rect x="819" y="18" width="256" height="36" fill="#17324d"/>
+    <text x="120" y="42" text-anchor="middle" font-size="13" fill="#ffffff">時期與來源</text>
+    <text x="373" y="42" text-anchor="middle" font-size="13" fill="#ffffff">輸入了什麼</text>
+    <text x="671" y="42" text-anchor="middle" font-size="13" fill="#ffffff">怎麼消化</text>
+    <text x="947" y="42" text-anchor="middle" font-size="13" fill="#ffffff">長出了什麼原版沒有的</text>
+
+    <rect x="25" y="58" width="190" height="96" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="223" y="58" width="300" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="531" y="58" width="280" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="819" y="58" width="256" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="120" y="98" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">6 – 9 世紀</text>
+    <text x="120" y="122" text-anchor="middle" font-size="11.5" fill="#446b53">來源：隋唐中國</text>
+    <text x="373" y="94" text-anchor="middle" font-size="11.5" fill="#546e7a">律令制、都城規劃、漢字</text>
+    <text x="373" y="116" text-anchor="middle" font-size="11.5" fill="#546e7a">佛教與儒學</text>
+    <text x="373" y="138" text-anchor="middle" font-size="11.5" fill="#546e7a">遣隋使與遣唐使帶回</text>
+    <text x="671" y="94" text-anchor="middle" font-size="11.5" fill="#546e7a">894 年停派遣唐使</text>
+    <text x="671" y="116" text-anchor="middle" font-size="11.5" fill="#546e7a">兩百多年密集輸入後</text>
+    <text x="671" y="138" text-anchor="middle" font-size="11.5" fill="#546e7a">主動關上門自行沉澱</text>
+    <text x="947" y="94" text-anchor="middle" font-size="12" fill="#263238">假名文字與國風文化</text>
+    <text x="947" y="116" text-anchor="middle" font-size="12" fill="#263238">未採行科舉與宦官</text>
+    <text x="947" y="138" text-anchor="middle" font-size="12" fill="#263238">貴族世襲因此保留下來</text>
+
+    <rect x="25" y="158" width="190" height="96" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="223" y="158" width="300" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="531" y="158" width="280" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="819" y="158" width="256" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="120" y="198" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">1868 – 1900</text>
+    <text x="120" y="222" text-anchor="middle" font-size="11.5" fill="#96604f">來源：西歐各國</text>
+    <text x="373" y="194" text-anchor="middle" font-size="11.5" fill="#546e7a">憲法學普魯士、海軍學英國</text>
+    <text x="373" y="216" text-anchor="middle" font-size="11.5" fill="#546e7a">法典學法德、教育學法美</text>
+    <text x="373" y="238" text-anchor="middle" font-size="11.5" fill="#546e7a">各領域各自挑最強的來抄</text>
+    <text x="671" y="194" text-anchor="middle" font-size="11.5" fill="#546e7a">和魂洋才：技術制度全收</text>
+    <text x="671" y="216" text-anchor="middle" font-size="11.5" fill="#546e7a">價值核心刻意保留</text>
+    <text x="671" y="238" text-anchor="middle" font-size="11.5" fill="#546e7a">以天皇為中心重新包裝</text>
+    <text x="947" y="194" text-anchor="middle" font-size="12" fill="#263238">立憲制與天皇制的結合</text>
+    <text x="947" y="216" text-anchor="middle" font-size="12" fill="#263238">統帥權獨立於內閣之外</text>
+    <text x="947" y="238" text-anchor="middle" font-size="12" fill="#263238">這個設計日後失控</text>
+
+    <rect x="25" y="258" width="190" height="96" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="223" y="258" width="300" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="531" y="258" width="280" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="819" y="258" width="256" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="120" y="298" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">1945 – 1955</text>
+    <text x="120" y="322" text-anchor="middle" font-size="11.5" fill="#73618a">來源：美國佔領當局</text>
+    <text x="373" y="294" text-anchor="middle" font-size="11.5" fill="#546e7a">新憲法與國民主權</text>
+    <text x="373" y="316" text-anchor="middle" font-size="11.5" fill="#546e7a">農地改革、解散財閥</text>
+    <text x="373" y="338" text-anchor="middle" font-size="11.5" fill="#546e7a">品質管理等經營技術</text>
+    <text x="671" y="294" text-anchor="middle" font-size="11.5" fill="#546e7a">佔領結束後多數保留</text>
+    <text x="671" y="316" text-anchor="middle" font-size="11.5" fill="#546e7a">但依本地慣行大幅改造</text>
+    <text x="671" y="338" text-anchor="middle" font-size="11.5" fill="#546e7a">官民協作取代自由競爭</text>
+    <text x="947" y="294" text-anchor="middle" font-size="12" fill="#263238">終身雇用與年功序列</text>
+    <text x="947" y="316" text-anchor="middle" font-size="12" fill="#263238">現場改善的製造文化</text>
+    <text x="947" y="338" text-anchor="middle" font-size="12" fill="#263238">被稱為日本式經營</text>
+
+    <rect x="25" y="366" width="1050" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="390" text-anchor="middle" font-size="12.5" fill="#8f5e14">三次都有同一個特徵：輸入是整批、快速而徹底的，消化卻極為挑剔——凡是會動搖既有身分秩序</text>
+    <text x="550" y="412" text-anchor="middle" font-size="12.5" fill="#8f5e14">的東西，一律不進口。學了唐制卻不要科舉，這一項選擇影響了此後一千年的社會結構</text>
+  </svg>
+  </div>
+  <p class="after">不採行科舉是三次輸入裡最關鍵的一次拒絕。中國靠考試把統治階層向平民開放，日本則保留了血統與家格；於是貴族與後來的武士都是世襲的封閉集團。這既讓日本缺少中國式的社會流動，也讓它在明治時期擁有一個現成的、有組織的統治階層可以整批轉型。</p>
+</section>
+
+<section>
+  <h2>武士的六百年：從私人武裝到官僚，再到消失</h2>
+  <p class="sub">同一個階級，前三百年靠打仗存在，後三百年靠讀書存在，最後在十年內被自己出身的政權解散。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 350" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <defs>
+      <marker id="arj" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,1 L9,5 L0,9 z" fill="#5c7580"/>
+      </marker>
+    </defs>
+
+    <rect x="20" y="50" width="215" height="170" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="127" y="78" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">起源</text>
+    <text x="127" y="98" text-anchor="middle" font-size="10.5" fill="#446b53">10 – 11 世紀</text>
+    <text x="127" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">莊園自衛的地方武裝</text>
+    <text x="127" y="148" text-anchor="middle" font-size="11.5" fill="#546e7a">替貴族看守土地與治安</text>
+    <text x="127" y="170" text-anchor="middle" font-size="11.5" fill="#546e7a">身分低，只是工具</text>
+    <text x="127" y="200" text-anchor="middle" font-size="11" fill="#3d7a55">中央越衰弱，他們越重要</text>
+
+    <rect x="255" y="50" width="215" height="170" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="362" y="78" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">掌權</text>
+    <text x="362" y="98" text-anchor="middle" font-size="10.5" fill="#37607a">1185 – 1333</text>
+    <text x="362" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">源平之爭後建立幕府</text>
+    <text x="362" y="148" text-anchor="middle" font-size="11.5" fill="#546e7a">形成御恩與奉公的關係</text>
+    <text x="362" y="170" text-anchor="middle" font-size="11.5" fill="#546e7a">與朝廷並存而非取代</text>
+    <text x="362" y="200" text-anchor="middle" font-size="11" fill="#1f5c85">工具翻身成為統治者</text>
+
+    <rect x="490" y="50" width="215" height="170" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="597" y="78" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">極盛</text>
+    <text x="597" y="98" text-anchor="middle" font-size="10.5" fill="#96604f">1467 – 1600</text>
+    <text x="597" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">應仁之亂後全面內戰</text>
+    <text x="597" y="148" text-anchor="middle" font-size="11.5" fill="#546e7a">出身不再重要，實力至上</text>
+    <text x="597" y="170" text-anchor="middle" font-size="11.5" fill="#546e7a">1588 刀狩令收繳民間武器</text>
+    <text x="597" y="200" text-anchor="middle" font-size="11" fill="#b8442a">武士與農民從此分離</text>
+
+    <rect x="725" y="50" width="215" height="170" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="832" y="78" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">官僚化</text>
+    <text x="832" y="98" text-anchor="middle" font-size="10.5" fill="#8a6a35">1603 – 1867</text>
+    <text x="832" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">兩百六十年沒有大規模戰爭</text>
+    <text x="832" y="148" text-anchor="middle" font-size="11.5" fill="#546e7a">改領俸祿，處理行政文書</text>
+    <text x="832" y="170" text-anchor="middle" font-size="11.5" fill="#546e7a">習儒學、辦藩校</text>
+    <text x="832" y="200" text-anchor="middle" font-size="11" fill="#8f5e14">戰士變成識字的行政人員</text>
+
+    <rect x="960" y="50" width="220" height="170" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="1070" y="78" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">解散</text>
+    <text x="1070" y="98" text-anchor="middle" font-size="10.5" fill="#73618a">1871 – 1877</text>
+    <text x="1070" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">1871 廢藩置縣斷了俸祿</text>
+    <text x="1070" y="148" text-anchor="middle" font-size="11.5" fill="#546e7a">1873 徵兵令取消武力壟斷</text>
+    <text x="1070" y="170" text-anchor="middle" font-size="11.5" fill="#546e7a">1876 廢刀令、1877 西南戰爭</text>
+    <text x="1070" y="200" text-anchor="middle" font-size="11" fill="#6b4a8f">推翻幕府的武士解散了武士</text>
+
+    <line x1="235" y1="135" x2="251" y2="135" stroke="#5c7580" stroke-width="1.6" marker-end="url(#arj)"/>
+    <line x1="470" y1="135" x2="486" y2="135" stroke="#5c7580" stroke-width="1.6" marker-end="url(#arj)"/>
+    <line x1="705" y1="135" x2="721" y2="135" stroke="#5c7580" stroke-width="1.6" marker-end="url(#arj)"/>
+    <line x1="940" y1="135" x2="956" y2="135" stroke="#5c7580" stroke-width="1.6" marker-end="url(#arj)"/>
+
+    <rect x="20" y="250" width="1160" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="600" y="276" text-anchor="middle" font-size="12.5" fill="#546e7a">第四格是理解明治維新的關鍵。江戶時代把一個軍事階級改造成了會讀書、懂算帳、習慣按規章</text>
+    <text x="600" y="298" text-anchor="middle" font-size="12.5" fill="#546e7a">辦事的行政集團；到 1868 年，日本因此擁有一個現成的、識字率極高的統治階層可以整批轉業。</text>
+    <text x="600" y="320" text-anchor="middle" font-size="12.5" fill="#546e7a">同時期多數後進國要推動近代化時，都必須先從無到有培養這樣一批人</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>同一套追趕模式，跑了三次</h2>
+  <p class="sub">明治的成功不是偶然，昭和的災難也不是斷裂——三次用的是同一套邏輯，差別只在標竿選得對不對。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="30" width="336" height="290" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.5" rx="6"/>
+    <text x="198" y="62" text-anchor="middle" font-size="16" fill="#3d7a55" font-weight="700">第一次：軍事版</text>
+    <text x="198" y="84" text-anchor="middle" font-size="11.5" fill="#446b53">1868 – 1905</text>
+    <rect x="50" y="100" width="296" height="58" fill="#ffffff" stroke="#c8dccf"/>
+    <text x="198" y="120" text-anchor="middle" font-size="11" fill="#59707b">目標</text>
+    <text x="198" y="142" text-anchor="middle" font-size="12.5" fill="#263238">不要淪為殖民地</text>
+    <rect x="50" y="166" width="296" height="58" fill="#ffffff" stroke="#c8dccf"/>
+    <text x="198" y="186" text-anchor="middle" font-size="11" fill="#59707b">手段</text>
+    <text x="198" y="208" text-anchor="middle" font-size="12.5" fill="#263238">全面移植制度，富國強兵</text>
+    <rect x="50" y="232" width="296" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="198" y="252" text-anchor="middle" font-size="11" fill="#59707b">結果</text>
+    <text x="198" y="274" text-anchor="middle" font-size="12.5" fill="#263238">兩場對外戰爭獲勝</text>
+    <text x="198" y="294" text-anchor="middle" font-size="12.5" fill="#263238">三十餘年躋身列強</text>
+
+    <rect x="382" y="30" width="336" height="290" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="550" y="62" text-anchor="middle" font-size="16" fill="#b8442a" font-weight="700">第二次：外推版</text>
+    <text x="550" y="84" text-anchor="middle" font-size="11.5" fill="#96604f">1931 – 1945</text>
+    <rect x="402" y="100" width="296" height="58" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="550" y="120" text-anchor="middle" font-size="11" fill="#59707b">目標</text>
+    <text x="550" y="142" text-anchor="middle" font-size="12.5" fill="#263238">擺脫資源與市場的依賴</text>
+    <rect x="402" y="166" width="296" height="58" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="550" y="186" text-anchor="middle" font-size="11" fill="#59707b">手段</text>
+    <text x="550" y="208" text-anchor="middle" font-size="12.5" fill="#263238">把同一套邏輯往外擴張</text>
+    <rect x="402" y="232" width="296" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="252" text-anchor="middle" font-size="11" fill="#59707b">結果</text>
+    <text x="550" y="274" text-anchor="middle" font-size="12.5" fill="#263238">統帥權失控，軍部主導國政</text>
+    <text x="550" y="294" text-anchor="middle" font-size="12.5" fill="#263238">戰爭導致全面毀滅</text>
+
+    <rect x="734" y="30" width="336" height="290" fill="#f2eef6" stroke="#a894c0" stroke-width="1.5" rx="6"/>
+    <text x="902" y="62" text-anchor="middle" font-size="16" fill="#6b4a8f" font-weight="700">第三次：經濟版</text>
+    <text x="902" y="84" text-anchor="middle" font-size="11.5" fill="#73618a">1945 – 1990</text>
+    <rect x="754" y="100" width="296" height="58" fill="#ffffff" stroke="#d5cbe0"/>
+    <text x="902" y="120" text-anchor="middle" font-size="11" fill="#59707b">目標</text>
+    <text x="902" y="142" text-anchor="middle" font-size="12.5" fill="#263238">追上歐美的生活水準</text>
+    <rect x="754" y="166" width="296" height="58" fill="#ffffff" stroke="#d5cbe0"/>
+    <text x="902" y="186" text-anchor="middle" font-size="11" fill="#59707b">手段</text>
+    <text x="902" y="208" text-anchor="middle" font-size="12.5" fill="#263238">官民協作，出口導向</text>
+    <rect x="754" y="232" width="296" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="902" y="252" text-anchor="middle" font-size="11" fill="#59707b">結果</text>
+    <text x="902" y="274" text-anchor="middle" font-size="12.5" fill="#263238">成為世界第二大經濟體</text>
+    <text x="902" y="294" text-anchor="middle" font-size="12.5" fill="#263238">1991 年後陷入長期停滯</text>
+
+    <rect x="30" y="346" width="1040" height="84" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="372" text-anchor="middle" font-size="12.5" fill="#8f5e14">三次的內在結構完全相同：先設定一個清楚的外部標竿，再由國家主導全社會動員去追。這套做法在</text>
+    <text x="550" y="394" text-anchor="middle" font-size="12.5" fill="#8f5e14">標竿明確時效率驚人，但它沒有處理兩件事——標竿選錯時沒有煞車機制，以及追上之後要做什麼。</text>
+    <text x="550" y="416" text-anchor="middle" font-size="12.5" fill="#8f5e14">1945 年碰上的是前者，1991 年之後碰上的是後者</text>
+  </svg>
+  </div>
+  <p class="after">把第二次單獨當成「軍國主義的瘋狂」，會漏掉它與第一次的連續性：同一批制度、同一種動員方式、同一個「後進國必須急起直追」的焦慮。真正出問題的是明治憲法留下的設計——統帥權獨立於內閣之外，使得當軍方認定標竿在滿洲時，沒有任何文官機構能夠喊停。</p>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　第一張圖是全局的鑰匙，其餘四張分別是它在不同層面的展開：第二張是時間軸，第三張是文化輸入，第四張是社會階級，第五張是近代化的成敗。下方卡片分成關鍵轉折與延伸閱讀兩組。此資料夾目前只有本頁，卡片中標示「→ 專頁」者連往本知識庫其他分類的既有頁面。
+</div>
+
+<div class="band"><h2>關鍵轉折</h2><span class="tag">十個改變方向的時刻</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">大化改新</span><span class="yr">645</span><p>仿唐建立中央集權的起點。土地與人民名義上收歸國有，豪族聯盟被改造成官僚國家——但只維持了約兩百年。</p></div>
+  <div class="card"><span class="nm">停派遣唐使</span><span class="yr">894</span><p>主動中斷輸入。此後兩百年是消化期，假名、和歌與物語文學都在這段時間成形，日本文化的獨特性由此而來。</p></div>
+  <div class="card"><span class="nm">院政的開始</span><span class="yr">1086</span><p>天皇退位成為上皇，反而握有實權。這是「權威與權力分離」被推到極致的一次操作，也讓皇室內部先分裂成兩派。</p></div>
+  <div class="card"><span class="nm">鎌倉幕府成立</span><span class="yr">1185</span><p>武士政權登場，卻沒有取代朝廷，而是與之並存。這個雙重結構此後維持了近七百年。</p></div>
+  <div class="card"><span class="nm">應仁之亂</span><span class="yr">1467–1477</span><p>幕府權威掃地，戰國時代開始。舊秩序徹底瓦解，出身不再決定地位，日本史上社會流動最劇烈的一百年。</p></div>
+  <div class="card"><span class="nm">刀狩令</span><span class="yr">1588</span><p>秀吉收繳農民武器。兵農分離讓身分被固定下來，是江戶兩百六十年社會穩定的制度基礎。</p></div>
+  <div class="card"><span class="nm">鎖國體制完成</span><span class="yr">1639</span><p>對外窗口僅留長崎。常被說成閉關自守，實際上是幕府對資訊與貿易的獨占——並非完全斷絕，而是壟斷。</p></div>
+  <div class="card"><span class="nm">培理來航</span><span class="yr">1853</span><p>四艘軍艦揭穿了幕府無力保衛國土。真正致命的不是外壓本身，而是它讓「尊王攘夷」有了現實的號召力。</p></div>
+  <div class="card"><span class="nm">大政奉還與廢藩置縣</span><span class="yr">1867–1871</span><p>將軍把權力交還天皇，新政府隨即取消所有藩國。四年之內，一個封建體制被拆成中央集權國家。</p></div>
+  <div class="card"><span class="nm">日本國憲法</span><span class="yr">1947</span><p>主權歸於國民、天皇成為象徵、第九條放棄戰爭。一千三百年來，權威第一次不再從天皇身上取得。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">比較與當代</span></div>
+<div class="grid">
+  <a class="card" href="../5.人文政經/日本失落的三十年.html"><span class="nm">日本失落的三十年</span><span class="lk">→ 專頁</span><p>泡沫破裂之後的長期停滯：成因、政策應對與人口結構的壓力，本頁第五張圖的當代延伸。</p></a>
+  <a class="card" href="../2.中國歷史/先秦諸子百家.html"><span class="nm">先秦諸子百家</span><span class="lk">→ 專頁</span><p>日本大量輸入的儒學源頭。對照著讀，可以看出日本挑了什麼、又刻意略過了什麼。</p></a>
+  <a class="card" href="../1.西方歷史/美國歷史總覽.html"><span class="nm">美國歷史總覽</span><span class="lk">→ 專頁</span><p>另一個由文件定義國家的案例，也是 1945 年後日本制度的直接來源。</p></a>
+  <a class="card" href="../3-1.佛學/佛教總覽.html"><span class="nm">佛教總覽</span><span class="lk">→ 專頁</span><p>經中國傳入日本的佛教，其教義分歧與判教架構的完整脈絡。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>2 日本歷史</b> 的總覽入口。年代採通行紀年；鎌倉幕府的起點學界有 1185 與 1192 兩說，本頁採 1185（源賴朝取得守護、地頭任命權）。天皇「萬世一系」是傳統說法，早期部分天皇的實在性在史學上仍有爭議，本頁論述不依賴這一點，只處理有史料可稽的時期。
+</footer>
+
+</div>
+</body>
+</html>

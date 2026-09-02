@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>西方科學家總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 總覽</p>
+  <h1>西方科學家總覽</h1>
+  <p class="lede">科學史通常被寫成一串發現與發現者的名單，但發現本身不解釋為什麼科學會前進。把五百年攤開來看，真正反覆出現的動作只有一個：<b>把原本被當成兩件事的東西，證明成同一件事</b>。天上的運動與地上的運動、有機物與無機物、熱與功、電與磁與光、人與其他生物——每一次這樣的合併，都同時擴大了可解釋的範圍，也縮小了人在宇宙裡的特殊地位。這一頁用七次合併、一張學科矩陣與四次降級，把科學革命以來的主要人物放回他們各自取消的那條界線上。</p>
+</header>
+
+<blockquote>
+  科學進步的標誌，不是名單上又多了一個發現，而是清單上又少了一種「特殊情況」。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>七次「其實是同一件事」</h2>
+  <p class="sub">近代科學最有生產力的動作：拆掉一條大家都以為理所當然的界線。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 466" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="110" height="34" fill="#17324d"/>
+    <rect x="143" y="18" width="150" height="34" fill="#17324d"/>
+    <rect x="301" y="18" width="430" height="34" fill="#17324d"/>
+    <rect x="739" y="18" width="336" height="34" fill="#17324d"/>
+    <text x="80" y="40" text-anchor="middle" font-size="13" fill="#ffffff">年代</text>
+    <text x="218" y="40" text-anchor="middle" font-size="13" fill="#ffffff">誰</text>
+    <text x="516" y="40" text-anchor="middle" font-size="13" fill="#ffffff">原本被當成兩件事</text>
+    <text x="907" y="40" text-anchor="middle" font-size="13" fill="#ffffff">被證明是同一件事</text>
+
+    <rect x="25" y="56" width="110" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="143" y="56" width="150" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="301" y="56" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="56" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="90" text-anchor="middle" font-size="12.5" fill="#37607a">1687</text>
+    <text x="218" y="90" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">牛頓</text>
+    <text x="516" y="90" text-anchor="middle" font-size="13" fill="#263238">「天上的運動」與「地上的運動」</text>
+    <text x="907" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">同一組運動定律與萬有引力</text>
+
+    <rect x="25" y="112" width="110" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="143" y="112" width="150" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="301" y="112" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="112" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="146" text-anchor="middle" font-size="12.5" fill="#8a6a35">1828</text>
+    <text x="218" y="146" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">維勒</text>
+    <text x="516" y="146" text-anchor="middle" font-size="13" fill="#263238">「有機物」與「無機物」</text>
+    <text x="907" y="146" text-anchor="middle" font-size="12.5" fill="#546e7a">同一套化學，生命力不必存在</text>
+
+    <rect x="25" y="168" width="110" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="143" y="168" width="150" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="301" y="168" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="168" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="202" text-anchor="middle" font-size="12.5" fill="#96604f">1840 年代</text>
+    <text x="218" y="202" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">焦耳 · 邁爾</text>
+    <text x="516" y="202" text-anchor="middle" font-size="13" fill="#263238">「熱」與「功」</text>
+    <text x="907" y="202" text-anchor="middle" font-size="12.5" fill="#546e7a">同一個守恆量：能量</text>
+
+    <rect x="25" y="224" width="110" height="56" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="143" y="224" width="150" height="56" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="301" y="224" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="224" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="258" text-anchor="middle" font-size="12.5" fill="#446b53">1859</text>
+    <text x="218" y="258" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">達爾文</text>
+    <text x="516" y="258" text-anchor="middle" font-size="13" fill="#263238">「人」與「其他生物」</text>
+    <text x="907" y="258" text-anchor="middle" font-size="12.5" fill="#546e7a">同一棵演化樹上的兩根枝</text>
+
+    <rect x="25" y="280" width="110" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="143" y="280" width="150" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="301" y="280" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="280" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="314" text-anchor="middle" font-size="12.5" fill="#37607a">1865</text>
+    <text x="218" y="314" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">馬克士威</text>
+    <text x="516" y="314" text-anchor="middle" font-size="13" fill="#263238">「電」「磁」與「光」</text>
+    <text x="907" y="314" text-anchor="middle" font-size="12.5" fill="#546e7a">同一個電磁場的不同表現</text>
+
+    <rect x="25" y="336" width="110" height="56" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="143" y="336" width="150" height="56" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="301" y="336" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="336" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="370" text-anchor="middle" font-size="12.5" fill="#73618a">1905 · 1915</text>
+    <text x="218" y="370" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">愛因斯坦</text>
+    <text x="516" y="370" text-anchor="middle" font-size="13" fill="#263238">「質量」與「能量」、「重力」與「加速度」</text>
+    <text x="907" y="370" text-anchor="middle" font-size="12.5" fill="#546e7a">同一個會彎曲的時空</text>
+
+    <rect x="25" y="392" width="110" height="56" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="143" y="392" width="150" height="56" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="301" y="392" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="392" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="426" text-anchor="middle" font-size="12.5" fill="#446b53">1953</text>
+    <text x="218" y="426" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">華生 · 克里克</text>
+    <text x="516" y="426" text-anchor="middle" font-size="13" fill="#263238">「遺傳」與「化學」</text>
+    <text x="907" y="426" text-anchor="middle" font-size="12.5" fill="#546e7a">同一個分子的結構：DNA</text>
+  </svg>
+  </div>
+  <p class="after">這七次合併有一個共同的副作用：每拆掉一條界線，就少掉一個「這裡的規則不一樣」的特區。中世紀的宇宙有兩套物理（月上完美、月下腐朽），有機界有生命力，人有不朽的靈魂；到二十世紀中葉，這些特區一個接一個被收編進同一套自然法則裡。</p>
+</section>
+
+<section>
+  <h2>學科矩陣：四個世紀，四條戰線</h2>
+  <p class="sub">橫著讀是一個學科怎麼長大，直著讀是同一個世紀裡各條戰線的進度差。空格本身也是資訊。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 570" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="190" y="14" width="240" height="30" fill="#17324d"/>
+    <rect x="440" y="14" width="240" height="30" fill="#17324d"/>
+    <rect x="690" y="14" width="240" height="30" fill="#17324d"/>
+    <rect x="940" y="14" width="240" height="30" fill="#17324d"/>
+    <text x="310" y="34" text-anchor="middle" font-size="12.5" fill="#ffffff">1543–1700　科學革命</text>
+    <text x="560" y="34" text-anchor="middle" font-size="12.5" fill="#ffffff">1700–1800　啟蒙</text>
+    <text x="810" y="34" text-anchor="middle" font-size="12.5" fill="#ffffff">1800–1900　專業化</text>
+    <text x="1060" y="34" text-anchor="middle" font-size="12.5" fill="#ffffff">1900–　地基重寫</text>
+
+    <rect x="20" y="56" width="150" height="118" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="95" y="108" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">天文與物理</text>
+    <text x="95" y="130" text-anchor="middle" font-size="11" fill="#37607a">最早數學化的一支</text>
+    <rect x="190" y="56" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="310" y="82" text-anchor="middle" font-size="12" fill="#263238">哥白尼 · 第谷</text>
+    <text x="310" y="104" text-anchor="middle" font-size="12" fill="#263238">克卜勒 · 伽利略</text>
+    <text x="310" y="126" text-anchor="middle" font-size="12" fill="#263238">牛頓</text>
+    <text x="310" y="150" text-anchor="middle" font-size="10.5" fill="#59707b">從幾何模型到力學定律</text>
+    <rect x="440" y="56" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="560" y="88" text-anchor="middle" font-size="12" fill="#263238">赫歇爾 · 拉普拉斯</text>
+    <text x="560" y="112" text-anchor="middle" font-size="12" fill="#263238">庫侖 · 伏打</text>
+    <text x="560" y="140" text-anchor="middle" font-size="10.5" fill="#59707b">把牛頓力學推到極限</text>
+    <rect x="690" y="56" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="810" y="82" text-anchor="middle" font-size="12" fill="#263238">法拉第 · 馬克士威</text>
+    <text x="810" y="104" text-anchor="middle" font-size="12" fill="#263238">焦耳 · 克勞修斯</text>
+    <text x="810" y="126" text-anchor="middle" font-size="12" fill="#263238">波茲曼</text>
+    <text x="810" y="150" text-anchor="middle" font-size="10.5" fill="#59707b">電磁學與熱力學成形</text>
+    <rect x="940" y="56" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="1060" y="82" text-anchor="middle" font-size="12" fill="#263238">愛因斯坦 · 普朗克</text>
+    <text x="1060" y="104" text-anchor="middle" font-size="12" fill="#263238">波耳 · 海森堡 · 薛丁格</text>
+    <text x="1060" y="126" text-anchor="middle" font-size="12" fill="#263238">哈伯 · 費曼</text>
+    <text x="1060" y="150" text-anchor="middle" font-size="10.5" fill="#59707b">相對論與量子力學</text>
+
+    <rect x="20" y="182" width="150" height="118" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="95" y="234" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">化學</text>
+    <text x="95" y="256" text-anchor="middle" font-size="11" fill="#8a6a35">最晚脫離煉金術</text>
+    <rect x="190" y="182" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="310" y="222" text-anchor="middle" font-size="12" fill="#263238">波以耳</text>
+    <text x="310" y="248" text-anchor="middle" font-size="10.5" fill="#59707b">開始要求可重複的實驗</text>
+    <text x="310" y="270" text-anchor="middle" font-size="10.5" fill="#59707b">但仍與煉金術並存</text>
+    <rect x="440" y="182" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="560" y="222" text-anchor="middle" font-size="12" fill="#263238">拉瓦節</text>
+    <text x="560" y="248" text-anchor="middle" font-size="10.5" fill="#59707b">氧化說取代燃素說</text>
+    <text x="560" y="270" text-anchor="middle" font-size="10.5" fill="#59707b">質量守恆與定量化學</text>
+    <rect x="690" y="182" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="810" y="212" text-anchor="middle" font-size="12" fill="#263238">道爾頓 · 維勒</text>
+    <text x="810" y="234" text-anchor="middle" font-size="12" fill="#263238">門得列夫</text>
+    <text x="810" y="260" text-anchor="middle" font-size="10.5" fill="#59707b">原子論與週期表</text>
+    <rect x="940" y="182" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="1060" y="222" text-anchor="middle" font-size="12" fill="#263238">鮑林</text>
+    <text x="1060" y="248" text-anchor="middle" font-size="10.5" fill="#59707b">化學鍵得到量子力學解釋</text>
+    <text x="1060" y="270" text-anchor="middle" font-size="10.5" fill="#59707b">化學被還原到物理</text>
+
+    <rect x="20" y="308" width="150" height="118" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="95" y="360" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">生命科學</text>
+    <text x="95" y="382" text-anchor="middle" font-size="11" fill="#446b53">從描述走到機制</text>
+    <rect x="190" y="308" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="310" y="338" text-anchor="middle" font-size="12" fill="#263238">維薩里 · 哈維</text>
+    <text x="310" y="360" text-anchor="middle" font-size="12" fill="#263238">虎克 · 列文虎克</text>
+    <text x="310" y="386" text-anchor="middle" font-size="10.5" fill="#59707b">解剖與顯微鏡打開新尺度</text>
+    <rect x="440" y="308" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="560" y="348" text-anchor="middle" font-size="12" fill="#263238">林奈</text>
+    <text x="560" y="374" text-anchor="middle" font-size="10.5" fill="#59707b">分類系統與二名法</text>
+    <text x="560" y="396" text-anchor="middle" font-size="10.5" fill="#59707b">秩序有了，原因還沒有</text>
+    <rect x="690" y="308" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="810" y="338" text-anchor="middle" font-size="12" fill="#263238">達爾文 · 孟德爾</text>
+    <text x="810" y="360" text-anchor="middle" font-size="12" fill="#263238">巴斯德 · 柯霍</text>
+    <text x="810" y="386" text-anchor="middle" font-size="10.5" fill="#59707b">演化、遺傳與病菌說</text>
+    <rect x="940" y="308" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="1060" y="338" text-anchor="middle" font-size="12" fill="#263238">摩根 · 華生 · 克里克</text>
+    <text x="1060" y="360" text-anchor="middle" font-size="12" fill="#263238">富蘭克林</text>
+    <text x="1060" y="386" text-anchor="middle" font-size="10.5" fill="#59707b">遺傳被還原到分子</text>
+
+    <rect x="20" y="434" width="150" height="118" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="95" y="486" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">心智與計算</text>
+    <text x="95" y="508" text-anchor="middle" font-size="11" fill="#96604f">最晚成為科學</text>
+    <rect x="190" y="434" width="240" height="118" fill="#eef2f5" stroke="#d7e0e6"/>
+    <text x="310" y="486" text-anchor="middle" font-size="11.5" fill="#59707b">尚未成為獨立學科</text>
+    <text x="310" y="508" text-anchor="middle" font-size="10.5" fill="#59707b">心靈仍屬哲學與神學</text>
+    <rect x="440" y="434" width="240" height="118" fill="#eef2f5" stroke="#d7e0e6"/>
+    <text x="560" y="486" text-anchor="middle" font-size="11.5" fill="#59707b">尚未成為獨立學科</text>
+    <text x="560" y="508" text-anchor="middle" font-size="10.5" fill="#59707b">觀念聯想說仍是哲學命題</text>
+    <rect x="690" y="434" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="810" y="474" text-anchor="middle" font-size="12" fill="#263238">馮特 · 佛洛伊德</text>
+    <text x="810" y="500" text-anchor="middle" font-size="10.5" fill="#59707b">實驗心理學與潛意識</text>
+    <text x="810" y="522" text-anchor="middle" font-size="10.5" fill="#59707b">心智首度成為研究對象</text>
+    <rect x="940" y="434" width="240" height="118" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="1060" y="464" text-anchor="middle" font-size="12" fill="#263238">圖靈 · 夏農</text>
+    <text x="1060" y="486" text-anchor="middle" font-size="12" fill="#263238">馮紐曼</text>
+    <text x="1060" y="512" text-anchor="middle" font-size="10.5" fill="#59707b">計算與資訊成為新語言</text>
+  </svg>
+  </div>
+  <p class="after">最後一列的兩個空格值得注意。物理學在十七世紀就數學化了，化學要等到十八世紀末，生命科學到十九世紀才找到機制，而心智一直要到十九世紀末才勉強脫離哲學。學科之間差了兩三百年，原因不是聰明才智，而是<b>可測量的量</b>出現得有早有晚。</p>
+</section>
+
+<section>
+  <h2>四次降級：人被移出中心</h2>
+  <p class="sub">每一次統一都有代價。佛洛伊德自己數過前三次「對人類自戀的打擊」，第四次是他身後才發生的。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="40" width="250" height="170" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="150" y="68" text-anchor="middle" font-size="11.5" fill="#37607a">1543　哥白尼</text>
+    <text x="150" y="92" text-anchor="middle" font-size="14.5" fill="#1f5c85" font-weight="700">宇宙學的打擊</text>
+    <rect x="43" y="106" width="214" height="42" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="150" y="124" text-anchor="middle" font-size="10.5" fill="#59707b">原本以為</text>
+    <text x="150" y="142" text-anchor="middle" font-size="12" fill="#263238">地球是宇宙的中心</text>
+    <rect x="43" y="154" width="214" height="42" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="150" y="172" text-anchor="middle" font-size="10.5" fill="#59707b">之後</text>
+    <text x="150" y="190" text-anchor="middle" font-size="12" fill="#263238">只是一顆普通的行星</text>
+
+    <rect x="290" y="90" width="250" height="170" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.5" rx="6"/>
+    <text x="415" y="118" text-anchor="middle" font-size="11.5" fill="#446b53">1859　達爾文</text>
+    <text x="415" y="142" text-anchor="middle" font-size="14.5" fill="#3d7a55" font-weight="700">生物學的打擊</text>
+    <rect x="308" y="156" width="214" height="42" fill="#ffffff" stroke="#bcd8c4"/>
+    <text x="415" y="174" text-anchor="middle" font-size="10.5" fill="#59707b">原本以為</text>
+    <text x="415" y="192" text-anchor="middle" font-size="12" fill="#263238">人是獨立受造的物種</text>
+    <rect x="308" y="204" width="214" height="42" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="415" y="222" text-anchor="middle" font-size="10.5" fill="#59707b">之後</text>
+    <text x="415" y="240" text-anchor="middle" font-size="12" fill="#263238">只是演化樹上的一根枝</text>
+
+    <rect x="555" y="140" width="250" height="170" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="680" y="168" text-anchor="middle" font-size="11.5" fill="#96604f">1900　佛洛伊德</text>
+    <text x="680" y="192" text-anchor="middle" font-size="14.5" fill="#b8442a" font-weight="700">心理學的打擊</text>
+    <rect x="573" y="206" width="214" height="42" fill="#ffffff" stroke="#e8c4b9"/>
+    <text x="680" y="224" text-anchor="middle" font-size="10.5" fill="#59707b">原本以為</text>
+    <text x="680" y="242" text-anchor="middle" font-size="12" fill="#263238">理性是自己心靈的主人</text>
+    <rect x="573" y="254" width="214" height="42" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="680" y="272" text-anchor="middle" font-size="10.5" fill="#59707b">之後</text>
+    <text x="680" y="290" text-anchor="middle" font-size="12" fill="#263238">大半決定發生在意識之外</text>
+
+    <rect x="820" y="190" width="250" height="170" fill="#f2eef6" stroke="#a894c0" stroke-width="1.5" rx="6"/>
+    <text x="945" y="218" text-anchor="middle" font-size="11.5" fill="#73618a">1936–　圖靈以降</text>
+    <text x="945" y="242" text-anchor="middle" font-size="14.5" fill="#6b4a8f" font-weight="700">計算的打擊</text>
+    <rect x="838" y="256" width="214" height="42" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="945" y="274" text-anchor="middle" font-size="10.5" fill="#59707b">原本以為</text>
+    <text x="945" y="292" text-anchor="middle" font-size="12" fill="#263238">推理是人獨有的能力</text>
+    <rect x="838" y="304" width="214" height="42" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="945" y="322" text-anchor="middle" font-size="10.5" fill="#59707b">之後</text>
+    <text x="945" y="340" text-anchor="middle" font-size="12" fill="#263238">形式推理可以機械化</text>
+
+    <rect x="25" y="392" width="1045" height="60" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="547" y="416" text-anchor="middle" font-size="12.5" fill="#8f5e14">前三次是佛洛伊德在 1917 年自己提出的分期，他把精神分析放進哥白尼與達爾文的行列——這個自我定位本身</text>
+    <text x="547" y="438" text-anchor="middle" font-size="12.5" fill="#8f5e14">就很能說明十九世紀末的科學家如何理解自己的工作：不是增添知識，而是取消人類的例外地位</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>方法本身也是被發明出來的</h2>
+  <p class="sub">科學革命改的不只是結論，更是「什麼樣的說法才算數」。這一層變動比任何單一發現都持久。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 350" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="170" height="38" fill="#17324d"/>
+    <rect x="203" y="18" width="288" height="38" fill="#17324d"/>
+    <rect x="499" y="18" width="288" height="38" fill="#17324d"/>
+    <rect x="795" y="18" width="280" height="38" fill="#17324d"/>
+    <text x="110" y="43" text-anchor="middle" font-size="13" fill="#ffffff">關鍵問題</text>
+    <text x="347" y="43" text-anchor="middle" font-size="13" fill="#ffffff">亞里士多德式（–1600）</text>
+    <text x="643" y="43" text-anchor="middle" font-size="13" fill="#ffffff">培根—伽利略式（1600–1800）</text>
+    <text x="935" y="43" text-anchor="middle" font-size="13" fill="#ffffff">現代（1800–）</text>
+
+    <rect x="25" y="60" width="170" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="60" width="288" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="499" y="60" width="288" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="795" y="60" width="280" height="90" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="110" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">什麼算「解釋」</text>
+    <text x="347" y="96" text-anchor="middle" font-size="11.5" fill="#546e7a">說出事物的本性與目的，</text>
+    <text x="347" y="118" text-anchor="middle" font-size="11.5" fill="#546e7a">石頭落下是因為要回歸本位</text>
+    <text x="643" y="96" text-anchor="middle" font-size="11.5" fill="#546e7a">給出可計算的數學關係，</text>
+    <text x="643" y="118" text-anchor="middle" font-size="11.5" fill="#546e7a">不再追問「為了什麼」</text>
+    <text x="935" y="96" text-anchor="middle" font-size="11.5" fill="#546e7a">指出產生現象的機制，</text>
+    <text x="935" y="118" text-anchor="middle" font-size="11.5" fill="#546e7a">並能做出可失敗的預測</text>
+
+    <rect x="25" y="150" width="170" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="150" width="288" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="499" y="150" width="288" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="795" y="150" width="280" height="90" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="200" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">什麼算「證據」</text>
+    <text x="347" y="186" text-anchor="middle" font-size="11.5" fill="#546e7a">日常觀察與權威文本，</text>
+    <text x="347" y="208" text-anchor="middle" font-size="11.5" fill="#546e7a">實驗被視為人為的干擾</text>
+    <text x="643" y="186" text-anchor="middle" font-size="11.5" fill="#546e7a">刻意設計的實驗與量測，</text>
+    <text x="643" y="208" text-anchor="middle" font-size="11.5" fill="#546e7a">人為介入反而是優點</text>
+    <text x="935" y="186" text-anchor="middle" font-size="11.5" fill="#546e7a">控制組、統計顯著性，</text>
+    <text x="935" y="208" text-anchor="middle" font-size="11.5" fill="#546e7a">以及能被他人重複</text>
+
+    <rect x="25" y="240" width="170" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="240" width="288" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="499" y="240" width="288" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="795" y="240" width="280" height="90" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="290" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">誰有權裁決</text>
+    <text x="347" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">大學與教會，</text>
+    <text x="347" y="298" text-anchor="middle" font-size="11.5" fill="#546e7a">爭議靠訴諸經典解決</text>
+    <text x="643" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">新成立的學會，</text>
+    <text x="643" y="298" text-anchor="middle" font-size="11.5" fill="#546e7a">如皇家學會與法蘭西科學院</text>
+    <text x="935" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">專業期刊與同儕審查，</text>
+    <text x="935" y="298" text-anchor="middle" font-size="11.5" fill="#546e7a">科學家成為一種職業</text>
+  </svg>
+  </div>
+  <p class="after">第三列常被忽略，卻決定了前兩列能不能運作。1660 年代成立的皇家學會與法蘭西科學院，把「誰說了算」從教會與大學手上移到一個新的社群；十九世紀的專業期刊再把它制度化。沒有這層社會建制，實驗方法只是個人癖好。</p>
+</section>
+
+<section>
+  <h2>二十世紀：地基被掀了兩次，而且還沒補起來</h2>
+  <p class="sub">牛頓的世界撐了兩百年，然後在二十五年之內被兩件事同時推翻——而這兩件事彼此還不相容。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <defs>
+      <marker id="ars5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,1 L9,5 L0,9 z" fill="#5c7580"/>
+      </marker>
+    </defs>
+
+    <rect x="60" y="20" width="440" height="230" fill="#f2eef6" stroke="#a894c0" stroke-width="1.5" rx="6"/>
+    <text x="280" y="50" text-anchor="middle" font-size="16" fill="#6b4a8f" font-weight="700">相對論</text>
+    <text x="280" y="71" text-anchor="middle" font-size="11.5" fill="#73618a">愛因斯坦　1905 · 1915</text>
+    <rect x="82" y="86" width="396" height="52" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="280" y="105" text-anchor="middle" font-size="11" fill="#59707b">推翻了什麼</text>
+    <text x="280" y="125" text-anchor="middle" font-size="12.5" fill="#263238">絕對的時間與空間</text>
+    <rect x="82" y="148" width="396" height="52" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="280" y="167" text-anchor="middle" font-size="11" fill="#59707b">改成什麼</text>
+    <text x="280" y="187" text-anchor="middle" font-size="12.5" fill="#263238">時空是一個會被質量彎曲的整體</text>
+    <rect x="82" y="210" width="396" height="28" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="280" y="229" text-anchor="middle" font-size="11.5" fill="#546e7a">擅長的尺度：星系、黑洞、整個宇宙</text>
+
+    <rect x="600" y="20" width="440" height="230" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="820" y="50" text-anchor="middle" font-size="16" fill="#1f5c85" font-weight="700">量子力學</text>
+    <text x="820" y="71" text-anchor="middle" font-size="11.5" fill="#37607a">普朗克 · 波耳 · 海森堡 · 薛丁格　1900–1927</text>
+    <rect x="622" y="86" width="396" height="52" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="820" y="105" text-anchor="middle" font-size="11" fill="#59707b">推翻了什麼</text>
+    <text x="820" y="125" text-anchor="middle" font-size="12.5" fill="#263238">決定論，以及觀察不影響對象</text>
+    <rect x="622" y="148" width="396" height="52" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="820" y="167" text-anchor="middle" font-size="11" fill="#59707b">改成什麼</text>
+    <text x="820" y="187" text-anchor="middle" font-size="12.5" fill="#263238">機率幅、疊加，與測不準原理</text>
+    <rect x="622" y="210" width="396" height="28" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="820" y="229" text-anchor="middle" font-size="11.5" fill="#546e7a">擅長的尺度：原子、粒子、化學鍵</text>
+
+    <line x1="280" y1="250" x2="380" y2="292" stroke="#5c7580" stroke-width="1.6" marker-end="url(#ars5)"/>
+    <line x1="820" y1="250" x2="720" y2="292" stroke="#5c7580" stroke-width="1.6" marker-end="url(#ars5)"/>
+
+    <rect x="150" y="300" width="800" height="150" fill="#fdeeeb" stroke="#dda695" stroke-width="1.8" rx="6"/>
+    <text x="550" y="330" text-anchor="middle" font-size="15.5" fill="#b8442a" font-weight="700">第八次合併：至今沒有做到</text>
+    <rect x="172" y="346" width="756" height="46" fill="#ffffff" stroke="#e8c4b9"/>
+    <text x="550" y="364" text-anchor="middle" font-size="11" fill="#59707b">問題</text>
+    <text x="550" y="383" text-anchor="middle" font-size="12.5" fill="#263238">兩套理論各自都通過了極高精度的檢驗，但在同一個描述裡會互相矛盾</text>
+    <rect x="172" y="400" width="756" height="34" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="422" text-anchor="middle" font-size="12" fill="#546e7a">黑洞內部與宇宙起點正好同時是「極重」與「極小」——那裡兩套理論都必須用上，卻無法並存</text>
+  </svg>
+  </div>
+  <p class="after">前面七次合併都完成了，第八次卡了將近一百年。這也是為什麼二十世紀之後，物理學的前沿反而變得比十九世紀更難向外行說明：它處理的不是新現象，而是兩套都對的理論之間的矛盾。</p>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　前五節是骨架，下面是人物索引，依年代分組。本知識庫已有專頁的人物，卡片右上角標了「→ 專頁」可以點進去；其餘卡片只做定位，說明他取消了哪一條界線。最後一組是延伸連結，通往科學革命的歷史脈絡與 8 科普的四張主題圖譜。
+</div>
+
+<div class="band"><h2>科學革命</h2><span class="tag">1543–1700　天文學帶頭，物理學跟上</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">哥白尼</span><span class="yr">1473–1543</span><p>《天體運行論》把太陽放到中心。他的模型當時並不比托勒密精確，真正的價值是示範了「參考點可以換」。</p></div>
+  <div class="card"><span class="nm">第谷</span><span class="yr">1546–1601</span><p>望遠鏡發明前最精確的觀測者。他自己的宇宙模型是錯的，但留下的數據讓克卜勒得以推翻圓形軌道。</p></div>
+  <a class="card" href="../1.西方歷史/達文西.html"><span class="nm">達文西</span><span class="yr">1452–1519</span><span class="lk">→ 專頁</span><p>科學革命之前的過渡人物：已經在觀察與繪製，卻還沒有可公開檢驗的方法，成果多半留在私人筆記裡。</p></a>
+  <div class="card"><span class="nm">克卜勒</span><span class="yr">1571–1630</span><p>三大定律。他放棄了完美圓形這個延續兩千年的美學前提，只因為第谷的數據不同意——現代科學態度的第一個範例。</p></div>
+  <div class="card"><span class="nm">伽利略</span><span class="yr">1564–1642</span><p>望遠鏡、斜面實驗與慣性概念。他真正的貢獻是主張自然這本書用數學寫成，於是「測量」成為理解的前提。</p></div>
+  <a class="card" href="../4-1.哲學家/培根.html"><span class="nm">培根</span><span class="yr">1561–1626</span><span class="lk">→ 專頁</span><p>沒有做出重要發現，卻寫下了方法的宣言：知識來自有計畫的歸納，目的是控制自然而非沉思自然。</p></a>
+  <div class="card"><span class="nm">波以耳</span><span class="yr">1627–1691</span><p>氣體定律與《懷疑的化學家》。把化學從煉金術的秘傳中拉出來，靠的是堅持實驗必須公開且可重複。</p></div>
+  <div class="card"><span class="nm">虎克</span><span class="yr">1635–1703</span><p>《微物圖誌》讓顯微鏡下的世界第一次被畫出來，並提出「細胞」一詞。彈性定律也以他為名。</p></div>
+  <a class="card" href="../4-1.哲學家/牛頓.html"><span class="nm">牛頓</span><span class="yr">1642–1727</span><span class="lk">→ 專頁</span><p>《原理》完成了第一次大合併：一組定律同時管住蘋果與月亮。此後兩百年，物理學的工作就是把它推廣。</p></a>
+</div>
+
+<div class="band"><h2>啟蒙與化學革命</h2><span class="tag">1700–1800　分類、定量與燃素之死</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">林奈</span><span class="yr">1707–1778</span><p>二名法與階層分類。他相信物種固定不變，卻意外替一百年後的演化論準備好了描述語言。</p></div>
+  <div class="card"><span class="nm">赫歇爾</span><span class="yr">1738–1822</span><p>發現天王星，並開始測繪銀河的形狀。宇宙從此不只是太陽系，尺度問題正式進入天文學。</p></div>
+  <div class="card"><span class="nm">拉瓦節</span><span class="yr">1743–1794</span><p>用天平終結了燃素說：燃燒是與氧結合，質量在反應前後守恆。化學由此變成一門定量科學。</p></div>
+  <div class="card"><span class="nm">伏打</span><span class="yr">1745–1827</span><p>電堆提供了第一個穩定電流源。沒有它，十九世紀的電磁學研究無從做起。</p></div>
+</div>
+
+<div class="band"><h2>十九世紀</h2><span class="tag">學科分化、專業化，也是合併最密集的一百年</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">道爾頓</span><span class="yr">1766–1844</span><p>把原子從哲學猜想變成可用的化學假說：元素依固定比例結合，因為它們是一顆一顆的。</p></div>
+  <div class="card"><span class="nm">法拉第</span><span class="yr">1791–1867</span><p>電磁感應與場的概念。沒有受過數學訓練，卻用直覺的力線圖，替馬克士威準備好了整個框架。</p></div>
+  <div class="card"><span class="nm">維勒</span><span class="yr">1800–1882</span><p>1828 年由無機原料合成尿素，拆掉了有機／無機的界線。生命不再需要一種特殊的「生命力」。</p></div>
+  <a class="card" href="../4-1.哲學家/達爾文與演化論.html"><span class="nm">達爾文</span><span class="yr">1809–1882</span><span class="lk">→ 專頁</span><p>天擇說用一個機制同時解釋了適應與多樣性，並取消了自然界的目的論。人也被放進同一棵樹。</p></a>
+  <div class="card"><span class="nm">焦耳</span><span class="yr">1818–1889</span><p>用實驗確立熱功當量。熱不是一種流體，而是能量的一種形式——能量守恆由此成立。</p></div>
+  <div class="card"><span class="nm">孟德爾</span><span class="yr">1822–1884</span><p>豌豆實驗給出了遺傳的離散單位。論文在 1866 年發表後被忽略三十五年，直到二十世紀初才被重新發現。</p></div>
+  <div class="card"><span class="nm">巴斯德</span><span class="yr">1822–1895</span><p>否證自然發生說，建立病菌說與疫苗。醫學第一次有了可操作的因果理論，而不只是經驗療法。</p></div>
+  <div class="card"><span class="nm">克勞修斯</span><span class="yr">1822–1888</span><p>提出熵，寫下熱力學第二定律。物理學第一次有了不可逆的方向——時間之箭進入了自然定律。</p></div>
+  <div class="card"><span class="nm">馬克士威</span><span class="yr">1831–1879</span><p>四條方程式把電、磁與光收成同一件事，並預言了電磁波。十九世紀最徹底的一次合併。</p></div>
+  <div class="card"><span class="nm">門得列夫</span><span class="yr">1834–1907</span><p>週期表不只是整理，而是預測：他留下空格並指明未發現元素的性質，後來一一被填上。</p></div>
+  <a class="card" href="../4-1.哲學家/佛洛伊德與精神分析.html"><span class="nm">佛洛伊德</span><span class="yr">1856–1939</span><span class="lk">→ 專頁</span><p>把心智變成研究對象，代價是理性不再是自己家裡的主人。方法上的爭議至今未息，衝擊力卻無可否認。</p></a>
+</div>
+
+<div class="band"><h2>二十世紀</h2><span class="tag">尺度的兩端，以及資訊這個新語言</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">居禮夫人</span><span class="yr">1867–1934</span><p>放射性研究顯示原子並非不可分。她是首位獲得諾貝爾獎的女性，也是唯一在兩個不同科學領域各得一次的人。</p></div>
+  <div class="card"><span class="nm">拉塞福</span><span class="yr">1871–1937</span><p>金箔實驗推出原子核的存在。原子從一團均勻的東西，變成幾乎全是空的、中心極重的結構。</p></div>
+  <div class="card"><span class="nm">愛因斯坦</span><span class="yr">1879–1955</span><p>狹義相對論合併了質量與能量，廣義相對論把重力解釋成時空的彎曲。同一年他也替量子論提供了光電效應的解釋。</p></div>
+  <div class="card"><span class="nm">波耳</span><span class="yr">1885–1962</span><p>原子的量子模型與互補原理。哥本哈根詮釋在他手上成形，也由他與愛因斯坦爭論了一輩子。</p></div>
+  <div class="card"><span class="nm">薛丁格</span><span class="yr">1887–1961</span><p>波動方程式給了量子力學可計算的形式。他也在《生命是什麼》裡預言遺傳訊息存在於某種非週期晶體中。</p></div>
+  <div class="card"><span class="nm">哈伯</span><span class="yr">1889–1953</span><p>證明銀河之外還有星系，且它們正在遠離。宇宙有年齡、有歷史，這個觀念完全來自他的觀測。</p></div>
+  <div class="card"><span class="nm">海森堡</span><span class="yr">1901–1976</span><p>矩陣力學與測不準原理。限制的不是儀器精度，而是「粒子同時具有確定位置與動量」這個想法本身。</p></div>
+  <div class="card"><span class="nm">圖靈</span><span class="yr">1912–1954</span><p>用一個假想機器定義了「可計算」。形式推理因此可以機械化，心智與計算的關係成為新的科學問題。</p></div>
+  <div class="card"><span class="nm">富蘭克林</span><span class="yr">1920–1958</span><p>X 光繞射照片「照片 51」是 DNA 雙螺旋結構的關鍵證據。她的貢獻長期被低估，是科學史上最常被引用的歸屬爭議之一。</p></div>
+  <div class="card"><span class="nm">華生 · 克里克</span><span class="gk">1953</span><p>雙螺旋結構讓遺傳與化學合而為一：訊息如何被儲存與複製，第一次有了分子層次的答案。</p></div>
+</div>
+
+<div class="band"><h2>延伸</h2><span class="tag">歷史脈絡與主題圖譜</span></div>
+<div class="grid">
+  <a class="card" href="../1.西方歷史/科學革命.html"><span class="nm">科學革命</span><p>1543 到 1700 這一百五十年究竟發生了什麼：制度、贊助、印刷術與宗教衝突如何一起促成它。</p></a>
+  <a class="card" href="../1.西方歷史/科學革命時間軸.html"><span class="nm">科學革命時間軸</span><p>互動年表，逐年對照天文、物理、醫學與制度的進展。</p></a>
+  <a class="card" href="../1.西方歷史/啟蒙運動.html"><span class="nm">啟蒙運動</span><p>科學方法的成功如何被推廣到政治與社會，成為一整套關於理性與進步的世界觀。</p></a>
+  <a class="card" href="../4-1.哲學家/西方哲學家總覽.html"><span class="nm">西方哲學家總覽</span><p>同一段時間的另一條線：當科學接管了「世界是什麼」，哲學被迫改問「我們憑什麼能知道」。</p></a>
+  <a class="card" href="量子力學知識圖譜.html"><span class="nm">量子力學知識圖譜</span><p>疊加、糾纏、測不準與各家詮釋的完整整理。</p></a>
+  <a class="card" href="黑洞知識圖譜.html"><span class="nm">黑洞知識圖譜</span><p>相對論與量子力學正面衝突的現場：事件視界、霍金輻射與資訊悖論。</p></a>
+  <a class="card" href="量子電腦知識圖譜.html"><span class="nm">量子電腦知識圖譜</span><p>把量子力學當成工程材料使用：量子位元、閘、演算法與現實的門檻。</p></a>
+  <a class="card" href="區塊鏈知識圖譜.html"><span class="nm">區塊鏈知識圖譜</span><p>資訊科學這一支的當代應用，與圖靈以降的計算傳統同一條線。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 的人物總覽入口。已有專頁者標示「→ 專頁」並連往該頁；其餘人物僅作定位說明。年代採通行的西曆生卒年，牛頓依儒略曆記為 1642 年生，與本知識庫其他頁面一致。
+</footer>
+
+</div>
+</body>
+</html>

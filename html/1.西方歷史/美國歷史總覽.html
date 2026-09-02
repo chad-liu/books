@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美國歷史總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 總覽</p>
+  <h1>美國歷史總覽</h1>
+  <p class="lede">大多數國家是先有一群自認同源的人，再建立國家。美國反過來：<b>先有一份文件，再由這份文件造出一個民族</b>。這個順序決定了它此後所有衝突的形狀——當認同的基礎不是血緣或土地而是一部憲法，那麼每一次重大爭執，無論表面上是關於奴隸制、經濟管制、種族隔離還是移民，最後都會收斂成同一個問題：<b>這部憲法是誰的，由誰來解釋</b>。這一頁從制憲時刻刻意留下的三個空白開始，看它們如何在往後兩百年裡一個接一個引爆。</p>
+</header>
+
+<blockquote>
+  1787 年的制憲會議沒有解決那些最困難的問題，它只是把它們寫得夠模糊，好讓十三個州都願意簽字。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>建國時刻刻意留下的三個空白</h2>
+  <p class="sub">不是疏忽。當時若把這三件事寫清楚，憲法根本通不過。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 450" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="470" height="36" fill="#17324d"/>
+    <rect x="711" y="18" width="364" height="36" fill="#17324d"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">留下的空白</text>
+    <text x="468" y="42" text-anchor="middle" font-size="13" fill="#ffffff">憲法實際上怎麼處理</text>
+    <text x="893" y="42" text-anchor="middle" font-size="13" fill="#ffffff">什麼時候引爆</text>
+
+    <rect x="25" y="58" width="200" height="96" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="58" width="470" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="711" y="58" width="364" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="100" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">主權到底屬於誰</text>
+    <text x="125" y="124" text-anchor="middle" font-size="11" fill="#37607a">是一個國家，還是各州的聯盟</text>
+    <text x="468" y="94" text-anchor="middle" font-size="12.5" fill="#263238">序言寫「我們人民」，卻又保留各州既有的權力</text>
+    <text x="468" y="118" text-anchor="middle" font-size="12.5" fill="#263238">全文從未寫明一個州能不能退出</text>
+    <text x="893" y="94" text-anchor="middle" font-size="13" fill="#546e7a">1861　南方各州宣布退出</text>
+    <text x="893" y="118" text-anchor="middle" font-size="13" fill="#546e7a">只能由戰爭給出答案</text>
+
+    <rect x="25" y="158" width="200" height="96" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="233" y="158" width="470" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="711" y="158" width="364" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="200" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">奴隸制</text>
+    <text x="125" y="224" text-anchor="middle" font-size="11" fill="#96604f">與獨立宣言的原則正面衝突</text>
+    <text x="468" y="194" text-anchor="middle" font-size="12.5" fill="#263238">全文不出現「奴隸」二字，卻用五分之三條款計入人口</text>
+    <text x="468" y="218" text-anchor="middle" font-size="12.5" fill="#263238">並禁止國會在 1808 年之前廢止奴隸貿易</text>
+    <text x="893" y="194" text-anchor="middle" font-size="13" fill="#546e7a">1820 年起每隔十年發作一次</text>
+    <text x="893" y="218" text-anchor="middle" font-size="13" fill="#546e7a">1861 總清算</text>
+
+    <rect x="25" y="258" width="200" height="96" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="233" y="258" width="470" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="711" y="258" width="364" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="300" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">誰有權解釋憲法</text>
+    <text x="125" y="324" text-anchor="middle" font-size="11" fill="#73618a">爭議最終由誰裁決</text>
+    <text x="468" y="294" text-anchor="middle" font-size="12.5" fill="#263238">完全沒有規定</text>
+    <text x="468" y="318" text-anchor="middle" font-size="12.5" fill="#263238">司法審查權是最高法院在 1803 年自己認領的</text>
+    <text x="893" y="294" text-anchor="middle" font-size="13" fill="#546e7a">1803　馬伯里訴麥迪遜案</text>
+    <text x="893" y="318" text-anchor="middle" font-size="13" fill="#546e7a">此後爭議一律以釋憲收場</text>
+
+    <rect x="25" y="376" width="1050" height="60" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="400" text-anchor="middle" font-size="12.5" fill="#8f5e14">第三個空白最容易被忽略，卻決定了另外兩個的命運：正因為解釋權落在法院手上，此後每一場</text>
+    <text x="550" y="422" text-anchor="middle" font-size="12.5" fill="#8f5e14">社會鬥爭——廢奴、勞工、種族、墮胎、槍枝——最後都必須改裝成一樁憲法訴訟才能定勝負</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>五個世代</h2>
+  <p class="sub">兩百五十年可以切成五段。每一段的結尾，都是某個被推遲的問題到期。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="20" y="16" width="225" height="30" fill="#17324d"/>
+    <rect x="255" y="16" width="225" height="30" fill="#17324d"/>
+    <rect x="490" y="16" width="225" height="30" fill="#17324d"/>
+    <rect x="725" y="16" width="225" height="30" fill="#17324d"/>
+    <rect x="960" y="16" width="225" height="30" fill="#17324d"/>
+    <text x="132" y="36" text-anchor="middle" font-size="12" fill="#ffffff">1607–1789</text>
+    <text x="367" y="36" text-anchor="middle" font-size="12" fill="#ffffff">1789–1877</text>
+    <text x="602" y="36" text-anchor="middle" font-size="12" fill="#ffffff">1877–1945</text>
+    <text x="837" y="36" text-anchor="middle" font-size="12" fill="#ffffff">1945–1991</text>
+    <text x="1072" y="36" text-anchor="middle" font-size="12" fill="#ffffff">1991 至今</text>
+
+    <rect x="20" y="56" width="225" height="330" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.5" rx="6"/>
+    <text x="132" y="84" text-anchor="middle" font-size="15" fill="#3d7a55" font-weight="700">殖民與建國</text>
+    <rect x="38" y="98" width="189" height="272" fill="#f6f9fb" stroke="#c8dccf"/>
+    <text x="132" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">1607　詹姆斯敦建立</text>
+    <text x="132" y="150" text-anchor="middle" font-size="11.5" fill="#546e7a">1620　五月花號抵達</text>
+    <text x="132" y="176" text-anchor="middle" font-size="11.5" fill="#546e7a">十三殖民地各自發展</text>
+    <text x="132" y="202" text-anchor="middle" font-size="11.5" fill="#546e7a">自治傳統遠早於獨立</text>
+    <text x="132" y="234" text-anchor="middle" font-size="11.5" fill="#263238">1776　獨立宣言</text>
+    <text x="132" y="260" text-anchor="middle" font-size="11.5" fill="#546e7a">1781　邦聯條例失敗</text>
+    <text x="132" y="286" text-anchor="middle" font-size="11.5" fill="#263238">1787　制憲會議</text>
+    <text x="132" y="312" text-anchor="middle" font-size="11.5" fill="#546e7a">1789　聯邦政府成立</text>
+    <text x="132" y="344" text-anchor="middle" font-size="11" fill="#3d7a55">留下三個空白</text>
+
+    <rect x="255" y="56" width="225" height="330" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="367" y="84" text-anchor="middle" font-size="15" fill="#b8442a" font-weight="700">擴張與分裂</text>
+    <rect x="273" y="98" width="189" height="272" fill="#f6f9fb" stroke="#e8cfc7"/>
+    <text x="367" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">1803　路易斯安那購地</text>
+    <text x="367" y="150" text-anchor="middle" font-size="11.5" fill="#546e7a">1823　門羅主義</text>
+    <text x="367" y="176" text-anchor="middle" font-size="11.5" fill="#546e7a">西進運動與領土翻倍</text>
+    <text x="367" y="202" text-anchor="middle" font-size="11.5" fill="#546e7a">每併一塊地就要再問一次</text>
+    <text x="367" y="228" text-anchor="middle" font-size="11.5" fill="#546e7a">這裡准不准蓄奴</text>
+    <text x="367" y="260" text-anchor="middle" font-size="11.5" fill="#263238">1861–65　內戰</text>
+    <text x="367" y="286" text-anchor="middle" font-size="11.5" fill="#546e7a">1865–77　重建</text>
+    <text x="367" y="312" text-anchor="middle" font-size="11.5" fill="#546e7a">1877　重建被放棄</text>
+    <text x="367" y="344" text-anchor="middle" font-size="11" fill="#b8442a">主權問題解決，種族問題沒有</text>
+
+    <rect x="490" y="56" width="225" height="330" fill="#fdf5e7" stroke="#e0b775" stroke-width="1.5" rx="6"/>
+    <text x="602" y="84" text-anchor="middle" font-size="15" fill="#8f5e14" font-weight="700">工業與強權</text>
+    <rect x="508" y="98" width="189" height="272" fill="#f6f9fb" stroke="#e5d6b8"/>
+    <text x="602" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">鍍金時代與托拉斯</text>
+    <text x="602" y="150" text-anchor="middle" font-size="11.5" fill="#546e7a">大規模移民與都市化</text>
+    <text x="602" y="176" text-anchor="middle" font-size="11.5" fill="#546e7a">南方施行種族隔離法</text>
+    <text x="602" y="202" text-anchor="middle" font-size="11.5" fill="#546e7a">1898　美西戰爭</text>
+    <text x="602" y="228" text-anchor="middle" font-size="11.5" fill="#546e7a">1917　參加一次大戰</text>
+    <text x="602" y="260" text-anchor="middle" font-size="11.5" fill="#263238">1929　大蕭條</text>
+    <text x="602" y="286" text-anchor="middle" font-size="11.5" fill="#263238">1933　新政</text>
+    <text x="602" y="312" text-anchor="middle" font-size="11.5" fill="#546e7a">1941–45　二次大戰</text>
+    <text x="602" y="344" text-anchor="middle" font-size="11" fill="#8f5e14">聯邦權力第二次大擴張</text>
+
+    <rect x="725" y="56" width="225" height="330" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="837" y="84" text-anchor="middle" font-size="15" fill="#1f5c85" font-weight="700">冷戰與民權</text>
+    <rect x="743" y="98" width="189" height="272" fill="#f6f9fb" stroke="#c3d9e5"/>
+    <text x="837" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">1947　冷戰格局成形</text>
+    <text x="837" y="150" text-anchor="middle" font-size="11.5" fill="#546e7a">戰後繁榮與郊區化</text>
+    <text x="837" y="176" text-anchor="middle" font-size="11.5" fill="#263238">1954　布朗案</text>
+    <text x="837" y="202" text-anchor="middle" font-size="11.5" fill="#263238">1964–65　民權兩法</text>
+    <text x="837" y="228" text-anchor="middle" font-size="11.5" fill="#546e7a">越戰與社會撕裂</text>
+    <text x="837" y="260" text-anchor="middle" font-size="11.5" fill="#546e7a">1974　水門案</text>
+    <text x="837" y="286" text-anchor="middle" font-size="11.5" fill="#546e7a">1980s　保守派回擺</text>
+    <text x="837" y="312" text-anchor="middle" font-size="11.5" fill="#546e7a">1991　蘇聯解體</text>
+    <text x="837" y="344" text-anchor="middle" font-size="11" fill="#1f5c85">重建的承諾遲到九十年才兌現</text>
+
+    <rect x="960" y="56" width="225" height="330" fill="#f2eef6" stroke="#a894c0" stroke-width="1.5" rx="6"/>
+    <text x="1072" y="84" text-anchor="middle" font-size="15" fill="#6b4a8f" font-weight="700">單極與分裂</text>
+    <rect x="978" y="98" width="189" height="272" fill="#f6f9fb" stroke="#d5cbe0"/>
+    <text x="1072" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">1990s　全球化紅利</text>
+    <text x="1072" y="150" text-anchor="middle" font-size="11.5" fill="#546e7a">唯一超強的短暫時刻</text>
+    <text x="1072" y="176" text-anchor="middle" font-size="11.5" fill="#263238">2001　九一一與反恐戰爭</text>
+    <text x="1072" y="202" text-anchor="middle" font-size="11.5" fill="#546e7a">製造業外移，內陸衰退</text>
+    <text x="1072" y="234" text-anchor="middle" font-size="11.5" fill="#263238">2008　金融海嘯</text>
+    <text x="1072" y="260" text-anchor="middle" font-size="11.5" fill="#546e7a">貧富差距擴大</text>
+    <text x="1072" y="286" text-anchor="middle" font-size="11.5" fill="#546e7a">2016 起政治極化加劇</text>
+    <text x="1072" y="312" text-anchor="middle" font-size="11.5" fill="#546e7a">對外從主導轉為猶豫</text>
+    <text x="1072" y="344" text-anchor="middle" font-size="11" fill="#6b4a8f">爭的仍是誰算美國人</text>
+
+    <rect x="20" y="410" width="1165" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="602" y="434" text-anchor="middle" font-size="12.5" fill="#546e7a">每一欄最底下那一行，是該時代真正留給下一代的東西。這五句連起來，就是美國史的主線：</text>
+    <text x="602" y="456" text-anchor="middle" font-size="12.5" fill="#546e7a">一個刻意含糊的開端，一次以戰爭做出的裁決，兩次聯邦權力的擴張，以及一個至今沒有答案的問題</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>內戰不是意外，是延期到期</h2>
+  <p class="sub">從制憲到開戰的七十四年，每一次「妥協」都只是把同一筆帳往後推，而且利息越滾越高。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="30" width="420" height="58" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="235" y="54" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">1787　制憲妥協</text>
+    <text x="235" y="76" text-anchor="middle" font-size="11.5" fill="#546e7a">用五分之三條款換取南方簽字，爭議凍結二十年</text>
+
+    <rect x="115" y="96" width="420" height="58" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="325" y="120" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">1808　停止進口奴隸</text>
+    <text x="325" y="142" text-anchor="middle" font-size="11.5" fill="#546e7a">貿易被禁了，制度本身完全沒有動搖</text>
+
+    <rect x="205" y="162" width="420" height="58" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="415" y="186" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">1820　密蘇里妥協</text>
+    <text x="415" y="208" text-anchor="middle" font-size="11.5" fill="#546e7a">以北緯 36 度 30 分劃線，把問題往西邊推</text>
+
+    <rect x="295" y="228" width="420" height="58" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="505" y="252" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">1850　妥協案</text>
+    <text x="505" y="274" text-anchor="middle" font-size="11.5" fill="#546e7a">加州以自由州入聯邦，代價是更嚴厲的逃奴法</text>
+
+    <rect x="385" y="294" width="420" height="58" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="595" y="318" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">1854　堪薩斯—內布拉斯加法</text>
+    <text x="595" y="340" text-anchor="middle" font-size="11.5" fill="#546e7a">改由居民自行投票決定，直接引發流血堪薩斯</text>
+
+    <rect x="475" y="360" width="420" height="58" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="685" y="384" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">1857　德雷德 · 史考特案</text>
+    <text x="685" y="406" text-anchor="middle" font-size="11.5" fill="#546e7a">最高法院判黑人不具公民資格，妥協空間歸零</text>
+
+    <rect x="565" y="426" width="420" height="62" fill="#8e2f1c" stroke="#6d2415"/>
+    <text x="775" y="452" text-anchor="middle" font-size="14.5" fill="#ffffff" font-weight="700">1861–1865　內戰</text>
+    <text x="775" y="475" text-anchor="middle" font-size="11.5" fill="#f6dfd9">七十四年的延期一次到期，代價是約六十二萬人死亡</text>
+  </svg>
+  </div>
+  <p class="after">階梯往右下走，不只是版面設計。每一次妥協都必須把賭注加大才買得到下一次和平：1820 年還能靠劃一條線解決，1850 年就得拿逃奴法交換，1854 年連那條線都被廢掉。到 1857 年最高法院宣告黑人不可能成為公民時，能夠妥協的空間已經被前面六步用完了。</p>
+</section>
+
+<section>
+  <h2>三次憲法重寫</h2>
+  <p class="sub">美國沒有換過憲法，但憲法的實際內容被大幅改寫過三次。三次都是把權力從各州收到聯邦，三次都伴隨強烈反挫。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="175" height="36" fill="#17324d"/>
+    <rect x="208" y="18" width="250" height="36" fill="#17324d"/>
+    <rect x="466" y="18" width="310" height="36" fill="#17324d"/>
+    <rect x="784" y="18" width="291" height="36" fill="#17324d"/>
+    <text x="112" y="42" text-anchor="middle" font-size="13" fill="#ffffff">時期</text>
+    <text x="333" y="42" text-anchor="middle" font-size="13" fill="#ffffff">手段</text>
+    <text x="621" y="42" text-anchor="middle" font-size="13" fill="#ffffff">聯邦因此得到什麼權力</text>
+    <text x="929" y="42" text-anchor="middle" font-size="13" fill="#ffffff">反挫</text>
+
+    <rect x="25" y="58" width="175" height="96" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="208" y="58" width="250" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="466" y="58" width="310" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="784" y="58" width="291" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="112" y="100" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">1865–1870</text>
+    <text x="112" y="124" text-anchor="middle" font-size="11.5" fill="#96604f">重建修正案</text>
+    <text x="333" y="94" text-anchor="middle" font-size="11.5" fill="#546e7a">第 13 修正案廢除奴隸制</text>
+    <text x="333" y="116" text-anchor="middle" font-size="11.5" fill="#546e7a">第 14 修正案定義公民權</text>
+    <text x="333" y="138" text-anchor="middle" font-size="11.5" fill="#546e7a">第 15 修正案保障投票權</text>
+    <text x="621" y="94" text-anchor="middle" font-size="12" fill="#263238">公民資格首度由聯邦定義</text>
+    <text x="621" y="116" text-anchor="middle" font-size="12" fill="#263238">各州不得剝奪法律的平等保護</text>
+    <text x="621" y="138" text-anchor="middle" font-size="12" fill="#263238">這是憲法結構上最大的一次改動</text>
+    <text x="929" y="94" text-anchor="middle" font-size="12" fill="#546e7a">1877 年重建被放棄</text>
+    <text x="929" y="116" text-anchor="middle" font-size="12" fill="#546e7a">條文被架空近九十年</text>
+    <text x="929" y="138" text-anchor="middle" font-size="12" fill="#546e7a">南方施行種族隔離制度</text>
+
+    <rect x="25" y="158" width="175" height="96" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="208" y="158" width="250" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="466" y="158" width="310" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="784" y="158" width="291" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="112" y="200" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">1933–1938</text>
+    <text x="112" y="224" text-anchor="middle" font-size="11.5" fill="#8a6a35">新政</text>
+    <text x="333" y="194" text-anchor="middle" font-size="11.5" fill="#546e7a">沒有修憲</text>
+    <text x="333" y="216" text-anchor="middle" font-size="11.5" fill="#546e7a">改為大幅放寬</text>
+    <text x="333" y="238" text-anchor="middle" font-size="11.5" fill="#546e7a">州際商業條款的解釋</text>
+    <text x="621" y="194" text-anchor="middle" font-size="12" fill="#263238">聯邦得以管制工資、工時與農業</text>
+    <text x="621" y="216" text-anchor="middle" font-size="12" fill="#263238">建立社會安全制度</text>
+    <text x="621" y="238" text-anchor="middle" font-size="12" fill="#263238">行政部門的規模與角色永久改變</text>
+    <text x="929" y="194" text-anchor="middle" font-size="12" fill="#546e7a">最高法院最初連續判違憲</text>
+    <text x="929" y="216" text-anchor="middle" font-size="12" fill="#546e7a">1937 年後立場翻轉</text>
+    <text x="929" y="238" text-anchor="middle" font-size="12" fill="#546e7a">「大政府」自此成為政爭主軸</text>
+
+    <rect x="25" y="258" width="175" height="96" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="208" y="258" width="250" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="466" y="258" width="310" height="96" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="784" y="258" width="291" height="96" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="112" y="300" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">1954–1965</text>
+    <text x="112" y="324" text-anchor="middle" font-size="11.5" fill="#37607a">民權運動</text>
+    <text x="333" y="294" text-anchor="middle" font-size="11.5" fill="#546e7a">1954 布朗案推翻隔離</text>
+    <text x="333" y="316" text-anchor="middle" font-size="11.5" fill="#546e7a">1964 民權法案</text>
+    <text x="333" y="338" text-anchor="middle" font-size="11.5" fill="#546e7a">1965 投票權法案</text>
+    <text x="621" y="294" text-anchor="middle" font-size="12" fill="#263238">第 14 修正案終於被實際執行</text>
+    <text x="621" y="316" text-anchor="middle" font-size="12" fill="#263238">聯邦可直接介入各州的選務</text>
+    <text x="621" y="338" text-anchor="middle" font-size="12" fill="#263238">一百年前的承諾在此兌現</text>
+    <text x="929" y="294" text-anchor="middle" font-size="12" fill="#546e7a">南方選民大規模轉換政黨</text>
+    <text x="929" y="316" text-anchor="middle" font-size="12" fill="#546e7a">兩黨的地理版圖重新洗牌</text>
+    <text x="929" y="338" text-anchor="middle" font-size="12" fill="#546e7a">今日的政治分裂由此奠定</text>
+  </svg>
+  </div>
+  <p class="after">三次的結構完全相同：先是聯邦權力擴張，接著是一段長達數十年的反挫，反挫的語言則永遠是「州權」與「聯邦越權」。理解這個循環，就能看懂為什麼在美國，一個看似技術性的憲法條款爭議，往往承載著整個社會最激烈的對立。</p>
+</section>
+
+<section>
+  <h2>對外：從孤立到霸權，再到猶豫</h2>
+  <p class="sub">方塊的高低代表對外介入的程度：越高，捲入世界事務越深。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="20" y="190" width="185" height="110" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="112" y="216" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">門羅主義</text>
+    <text x="112" y="236" text-anchor="middle" font-size="11" fill="#446b53">1823</text>
+    <text x="112" y="260" text-anchor="middle" font-size="11.5" fill="#546e7a">歐洲不要插手美洲</text>
+    <text x="112" y="280" text-anchor="middle" font-size="11.5" fill="#546e7a">美國也不插手歐洲</text>
+
+    <rect x="215" y="140" width="185" height="110" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="307" y="166" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">跨出半球</text>
+    <text x="307" y="186" text-anchor="middle" font-size="11" fill="#8a6a35">1898</text>
+    <text x="307" y="210" text-anchor="middle" font-size="11.5" fill="#546e7a">美西戰爭取得海外領地</text>
+    <text x="307" y="230" text-anchor="middle" font-size="11.5" fill="#546e7a">開始被視為強權</text>
+
+    <rect x="410" y="220" width="185" height="110" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="502" y="246" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">參戰又退回</text>
+    <text x="502" y="266" text-anchor="middle" font-size="11" fill="#96604f">1917–1920</text>
+    <text x="502" y="290" text-anchor="middle" font-size="11.5" fill="#546e7a">參加一次大戰後</text>
+    <text x="502" y="310" text-anchor="middle" font-size="11.5" fill="#546e7a">國會拒絕加入國際聯盟</text>
+
+    <rect x="605" y="70" width="185" height="110" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="697" y="96" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">全面投入</text>
+    <text x="697" y="116" text-anchor="middle" font-size="11" fill="#37607a">1941–1945</text>
+    <text x="697" y="140" text-anchor="middle" font-size="11.5" fill="#546e7a">二戰後成為主導者</text>
+    <text x="697" y="160" text-anchor="middle" font-size="11.5" fill="#546e7a">主導戰後的國際體制</text>
+
+    <rect x="800" y="50" width="185" height="110" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.8"/>
+    <text x="892" y="76" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">冷戰</text>
+    <text x="892" y="96" text-anchor="middle" font-size="11" fill="#37607a">1947–1991</text>
+    <text x="892" y="120" text-anchor="middle" font-size="11.5" fill="#546e7a">圍堵政策與全球駐軍</text>
+    <text x="892" y="140" text-anchor="middle" font-size="11.5" fill="#546e7a">介入程度的最高點</text>
+
+    <rect x="995" y="110" width="185" height="110" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="1087" y="136" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">單極到猶豫</text>
+    <text x="1087" y="156" text-anchor="middle" font-size="11" fill="#73618a">1991 至今</text>
+    <text x="1087" y="180" text-anchor="middle" font-size="11.5" fill="#546e7a">反恐戰爭消耗信心</text>
+    <text x="1087" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">內部對承擔成本失去共識</text>
+
+    <rect x="20" y="346" width="1160" height="60" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="600" y="370" text-anchor="middle" font-size="12.5" fill="#546e7a">這條曲線的形狀值得注意：它不是單調上升，而是每一次深度介入之後都會出現回擺。1920 年拒絕</text>
+    <text x="600" y="392" text-anchor="middle" font-size="12.5" fill="#546e7a">國際聯盟、越戰後的收縮、以及當前的爭論，都是同一種週期——擴張引發疲乏，疲乏引發撤退</text>
+  </svg>
+  </div>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　五張圖是骨架。第一張是理解全局的鑰匙：三個空白對應後面三張圖——奴隸制那一格通往第三張（內戰），解釋權那一格通往第四張（憲法重寫），主權那一格則在第二張的第二欄結案。下方卡片分成關鍵文件、關鍵轉折與延伸閱讀三組，可連結者會標示「→ 專頁」。
+</div>
+
+<div class="band"><h2>關鍵文件與制度</h2><span class="tag">美國政治的基本材料</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">獨立宣言</span><span class="yr">1776</span><p>宣布脫離英國的政治文件，也是「人人生而平等」這句話的出處。它確立了原則，卻沒有建立任何政府。</p></div>
+  <div class="card"><span class="nm">邦聯條例</span><span class="yr">1781–1789</span><p>第一部憲法，刻意讓中央極度虛弱：無權徵稅、無常備軍。它的失敗才是 1787 年制憲的直接原因。</p></div>
+  <div class="card"><span class="nm">合眾國憲法</span><span class="yr">1787</span><p>全世界仍在施行的最古老成文憲法。它的簡短與含糊既是長壽的原因，也是爭議不斷的原因。</p></div>
+  <div class="card"><span class="nm">權利法案</span><span class="yr">1791</span><p>前十條修正案，是換取各州批准憲法的條件。原本只約束聯邦，二十世紀後才逐步適用於各州。</p></div>
+  <div class="card"><span class="nm">馬伯里訴麥迪遜案</span><span class="yr">1803</span><p>最高法院宣告自己有權判定法律違憲。憲法沒有授予這項權力，此後兩百年的憲政運作卻建立在它之上。</p></div>
+  <div class="card"><span class="nm">第 14 修正案</span><span class="yr">1868</span><p>公民權、正當程序與平等保護三個條款。當代幾乎所有重大憲法訴訟，最終都會回到這一條。</p></div>
+</div>
+
+<div class="band"><h2>關鍵轉折</h2><span class="tag">被反覆援引的六個時刻</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">路易斯安那購地</span><span class="yr">1803</span><p>領土一夕之間翻倍。買地的傑佛遜本人也承認憲法並未授權此事——擴張與憲法解釋的張力自此開始。</p></div>
+  <div class="card"><span class="nm">內戰</span><span class="yr">1861–1865</span><p>回答了主權歸屬：各州不能退出。約六十二萬人死亡，至今仍是美國傷亡最慘重的戰爭。</p></div>
+  <div class="card"><span class="nm">重建的放棄</span><span class="yr">1877</span><p>聯邦軍撤出南方，換取一場爭議選舉的落幕。種族隔離自此合法存在近九十年，是美國史上代價最高的一次妥協。</p></div>
+  <div class="card"><span class="nm">新政</span><span class="yr">1933–1938</span><p>不修憲而重寫憲法：靠重新解釋商業條款，讓聯邦得以管制經濟。現代美國政府的形狀由此定型。</p></div>
+  <div class="card"><span class="nm">民權運動</span><span class="yr">1954–1965</span><p>布朗案、民權法案與投票權法案。第 14 修正案寫下近百年後，才第一次被認真執行。</p></div>
+  <div class="card"><span class="nm">2008 金融海嘯</span><span class="yr">2008</span><p>戰後最嚴重的經濟危機。它終結了對全球化的普遍共識，並直接鋪成了此後的政治極化。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">思想根源、平行事件與經濟面</span></div>
+<div class="grid">
+  <a class="card" href="美國獨立時間軸.html"><span class="nm">美國獨立時間軸</span><span class="lk">→ 專頁</span><p>互動年表，逐年追蹤從印花稅法到憲法批准的完整過程。</p></a>
+  <a class="card" href="啟蒙運動.html"><span class="nm">啟蒙運動</span><span class="lk">→ 專頁</span><p>建國世代的思想來源。獨立宣言與憲法的每一個關鍵概念，都能在這裡找到出處。</p></a>
+  <a class="card" href="英國立憲運動時間軸.html"><span class="nm">英國立憲運動時間軸</span><span class="lk">→ 專頁</span><p>大憲章到光榮革命。美國人主張的「英國人的權利」，正是這條線索的延伸。</p></a>
+  <a class="card" href="法國大革命時間軸.html"><span class="nm">法國大革命時間軸</span><span class="lk">→ 專頁</span><p>同一批啟蒙觀念在另一個社會的結果。兩場革命的對比，是理解美國制度保守性格的最佳參照。</p></a>
+  <a class="card" href="../4-1.哲學家/洛克.html"><span class="nm">洛克</span><span class="lk">→ 專頁</span><p>自然權利與政府基於同意。獨立宣言的論證結構幾乎直接取自他。</p></a>
+  <a class="card" href="../4-1.哲學家/孟德斯鳩.html"><span class="nm">孟德斯鳩</span><span class="lk">→ 專頁</span><p>三權分立的來源。制憲會議的權力設計，是他的理論最徹底的一次實作。</p></a>
+  <a class="card" href="../5.人文政經/美元.html"><span class="nm">美元</span><span class="lk">→ 專頁</span><p>從布列敦森林到今天的儲備貨幣地位，以及這個地位帶來的特權與束縛。</p></a>
+  <a class="card" href="../5.人文政經/美國國債.html"><span class="nm">美國國債</span><span class="lk">→ 專頁</span><p>債務上限之爭表面是財政問題，實質仍是聯邦權力該有多大這個老問題的當代版本。</p></a>
+  <a class="card" href="../5.人文政經/全球化.html"><span class="nm">全球化</span><span class="lk">→ 專頁</span><p>美國主導建立的戰後經濟秩序，以及它如何反過來衝擊自己的製造業地帶。</p></a>
+  <a class="card" href="../5.人文政經/2008年金融海嘯.html"><span class="nm">2008 年金融海嘯</span><span class="lk">→ 專頁</span><p>危機的成因與後果，是理解 2016 年之後美國政治轉向的經濟背景。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的美國史總覽入口。年代採通行紀年；內戰死亡人數採用近年學界修正後的估計（約六十二萬，早期常見數字為五十五萬）。標示「→ 專頁」的卡片可點入本知識庫既有頁面，其餘卡片僅作定位說明。
+</footer>
+
+</div>
+</body>
+</html>
