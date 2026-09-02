@@ -144,6 +144,8 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .tab .x{color:var(--muted);font-size:14px;line-height:1}
 .tab .x:hover{color:var(--hot)}
 .tab .dot{color:var(--hot);font-size:15px;line-height:1}
+.tab.add{color:var(--muted);font-weight:700;padding:6px 12px;background:transparent;border-style:dashed}
+.tab.add:hover{background:var(--hover);color:var(--accent2);border-color:var(--accent)}
 
 /* ---- 工具列 ---- */
 #bar{display:flex;align-items:center;gap:8px;padding:7px 12px;background:var(--panel);
@@ -271,19 +273,38 @@ function search(){
 }
 
 /* ---------- 分頁 ---------- */
+function blankTab(){
+  return { p:null, n:'新分頁', s:0, mode:'view', dirty:false, draft:null, loaded:false };
+}
+function newTab(){
+  tabs.push(blankTab());
+  activate(tabs.length - 1);
+  renderTabs(); saveTabs();
+}
+/* 單擊左欄＝取代目前分頁（類似 VS Code 的預覽分頁），要另開請按「＋」。
+   已開啟的檔案直接切過去；有未存檔變更的分頁不覆蓋，改開新分頁保住草稿。 */
 function openTab(it){
   var i = tabs.findIndex(function(t){ return t.p === it.p; });
   if (i >= 0) { activate(i); return; }
-  tabs.push({ p:it.p, n:it.n, s:it.s, mode:'view', dirty:false, draft:null, loaded:false });
-  activate(tabs.length - 1);
+  var cur = tabs[active];
+  if (cur && !cur.dirty){
+    cur.p=it.p; cur.n=it.n; cur.s=it.s;
+    cur.mode='view'; cur.draft=null; cur.dirty=false; cur.loaded=false;
+    activate(active);
+  } else {
+    tabs.push({ p:it.p, n:it.n, s:it.s, mode:'view', dirty:false, draft:null, loaded:false });
+    activate(tabs.length - 1);
+    if (cur && cur.dirty) msg('原分頁有未存檔變更，已改為開新分頁', 'ok');
+  }
   renderTabs(); saveTabs();
 }
 function closeTab(i, ev){
   if (ev) ev.stopPropagation();
   if (tabs[i].dirty && !confirm('「'+tabs[i].n+'」有未存檔的變更，確定關閉？')) return;
   tabs.splice(i,1);
+  if (!tabs.length) tabs.push(blankTab());
   if (active >= tabs.length) active = tabs.length - 1;
-  if (active < 0) { showEmpty(); } else { activate(active); }
+  activate(active);
   renderTabs(); saveTabs();
 }
 function renderTabs(){
@@ -298,9 +319,23 @@ function renderTabs(){
     d.querySelector('.x').onclick = function(e){ closeTab(i,e); };
     el.appendChild(d);
   });
+  var add = document.createElement('div');
+  add.className = 'tab add'; add.title = '新增分頁（Ctrl+T）';
+  add.textContent = '＋';
+  add.onclick = newTab;
+  el.appendChild(add);
+  // 分頁列會橫向捲動，新分頁常落在視野外，看起來像「沒有新增」
+  var on = el.querySelector('.tab.on');
+  if (on && on.scrollIntoView) on.scrollIntoView({block:'nearest', inline:'nearest'});
 }
 function activate(i){
   active = i; var t = tabs[i]; if (!t) return showEmpty();
+  if (!t.p){                       // 空白分頁：等使用者從左欄挑檔案
+    $('#empty').style.display='flex'; $('#panes').style.display='none';
+    $('#bar').style.display='none'; document.body.classList.remove('edit');
+    document.querySelectorAll('#side li').forEach(function(li){ li.classList.remove('on'); });
+    renderTabs(); saveTabs(); return;
+  }
   $('#empty').style.display='none'; $('#panes').style.display='flex';
   $('#bar').style.display='flex';
   $('#bar .path').textContent = t.p + '　·　' + fmt(t.s);
@@ -452,7 +487,8 @@ function init(){
   var sw = LS('sw'); if (sw) $('#side').style.width = sw+'px';
 
   document.addEventListener('keydown', function(e){
-    if ((e.ctrlKey||e.metaKey) && e.key==='s'){ e.preventDefault(); save(); }
+    if ((e.ctrlKey||e.metaKey) && e.key==='t'){ e.preventDefault(); newTab(); }
+    else if ((e.ctrlKey||e.metaKey) && e.key==='s'){ e.preventDefault(); save(); }
     else if ((e.ctrlKey||e.metaKey) && e.key==='w'){ if(active>=0){ e.preventDefault(); closeTab(active); } }
     else if ((e.ctrlKey||e.metaKey) && e.key==='f'){ e.preventDefault(); $('#q').focus(); $('#q').select(); }
     else if (e.key==='Escape' && document.activeElement===$('#q')){ $('#q').value=''; search(); $('#q').blur(); }
@@ -495,7 +531,7 @@ BODY = """<div id="top">
       <button class="btn pri" id="save" title="Ctrl+S">存檔</button>
       <button class="btn" id="dl">下載</button>
     </div>
-    <div id="empty">從左欄挑一個檔案開始<br>可以同時開啟多個分頁</div>
+    <div id="empty">從左欄挑一個檔案開始<br>單擊會取代目前分頁，要另開請按分頁列的「＋」（Ctrl+T）</div>
     <div id="panes" style="display:none">
       <div id="viewWrap"><iframe id="view"></iframe></div>
       <div id="editWrap">
