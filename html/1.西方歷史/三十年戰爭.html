@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三十年戰爭</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 專題</p>
+  <h1>三十年戰爭</h1>
+  <p class="lede">1618 至 1648 年這場戰爭，通常被歸類為「歐洲最後一場宗教戰爭」。但真正值得注意的是它中途換了性質：<b>開場時是波希米亞的新教貴族反抗天主教皇帝，收場時是天主教的法國出錢資助新教的瑞典，去打天主教的哈布斯堡</b>。它之所以打了三十年，不是因為有人打了三十年，而是因為它其實是四場前後相接的戰爭——每接一場，宗教的比重就低一分，國家利益的比重就高一分。這一頁就沿著這條遞移來看整場戰爭，並說明它為什麼停不下來、以及最後留下了什麼。</p>
+</header>
+
+<blockquote>
+  這場戰爭開始時，人們為了信仰而戰；結束時，他們為了誰能在中歐說了算而戰。中間沒有任何一天可以指出來說「就是從這天開始變的」。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>四個階段：宗教如何被國家利益取代</h2>
+  <p class="sub">注意第三欄。它從「確實是宗教戰爭」一路降到「幾乎與宗教無關」。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 480" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="150" height="36" fill="#17324d"/>
+    <rect x="183" y="18" width="320" height="36" fill="#17324d"/>
+    <rect x="511" y="18" width="180" height="36" fill="#17324d"/>
+    <rect x="699" y="18" width="376" height="36" fill="#17324d"/>
+    <text x="100" y="42" text-anchor="middle" font-size="13" fill="#ffffff">階段</text>
+    <text x="343" y="42" text-anchor="middle" font-size="13" fill="#ffffff">誰在打誰</text>
+    <text x="601" y="42" text-anchor="middle" font-size="13" fill="#ffffff">宗教的成分</text>
+    <text x="887" y="42" text-anchor="middle" font-size="13" fill="#ffffff">這一階段的轉折</text>
+
+    <rect x="25" y="58" width="150" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="183" y="58" width="320" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="58" width="180" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="699" y="58" width="376" height="84" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="100" y="92" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">一、波希米亞</text>
+    <text x="100" y="116" text-anchor="middle" font-size="11.5" fill="#96604f">1618–1625</text>
+    <text x="343" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">波希米亞的新教貴族</text>
+    <text x="343" y="116" text-anchor="middle" font-size="12.5" fill="#546e7a">對抗天主教的皇帝斐迪南二世</text>
+    <text x="601" y="92" text-anchor="middle" font-size="15" fill="#b8442a" font-weight="700">高</text>
+    <text x="601" y="118" text-anchor="middle" font-size="11" fill="#96604f">確實是信仰之爭</text>
+    <text x="887" y="92" text-anchor="middle" font-size="12.5" fill="#263238">1620 年白山之役，皇帝大勝</text>
+    <text x="887" y="116" text-anchor="middle" font-size="12.5" fill="#263238">當時所有人都以為戰爭已經結束了</text>
+
+    <rect x="25" y="142" width="150" height="84" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="183" y="142" width="320" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="142" width="180" height="84" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="699" y="142" width="376" height="84" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="100" y="176" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">二、丹麥</text>
+    <text x="100" y="200" text-anchor="middle" font-size="11.5" fill="#8a6a35">1625–1629</text>
+    <text x="343" y="176" text-anchor="middle" font-size="12.5" fill="#546e7a">丹麥國王以新教保護者之名介入</text>
+    <text x="343" y="200" text-anchor="middle" font-size="12.5" fill="#546e7a">同時也想擴大在北德的地盤</text>
+    <text x="601" y="176" text-anchor="middle" font-size="15" fill="#8f5e14" font-weight="700">中高</text>
+    <text x="601" y="202" text-anchor="middle" font-size="11" fill="#8a6a35">信仰之外已有領土算計</text>
+    <text x="887" y="176" text-anchor="middle" font-size="12.5" fill="#263238">1629 年皇帝頒布歸還敕令，要收回教產</text>
+    <text x="887" y="200" text-anchor="middle" font-size="12.5" fill="#263238">連原本中立的新教邦都被逼到對立面</text>
+
+    <rect x="25" y="226" width="150" height="84" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="183" y="226" width="320" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="226" width="180" height="84" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="699" y="226" width="376" height="84" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="100" y="260" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">三、瑞典</text>
+    <text x="100" y="284" text-anchor="middle" font-size="11.5" fill="#37607a">1630–1635</text>
+    <text x="343" y="260" text-anchor="middle" font-size="12.5" fill="#546e7a">新教的瑞典出兵，由天主教的法國出錢</text>
+    <text x="343" y="284" text-anchor="middle" font-size="12.5" fill="#546e7a">對手仍是哈布斯堡皇帝</text>
+    <text x="601" y="260" text-anchor="middle" font-size="15" fill="#1f5c85" font-weight="700">中</text>
+    <text x="601" y="286" text-anchor="middle" font-size="11" fill="#37607a">金主與打手不同教派</text>
+    <text x="887" y="260" text-anchor="middle" font-size="12.5" fill="#263238">1632 年瑞典國王戰死，1634 年瑞軍大敗</text>
+    <text x="887" y="284" text-anchor="middle" font-size="12.5" fill="#263238">代理人失效，法國只能自己下場</text>
+
+    <rect x="25" y="310" width="150" height="84" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="183" y="310" width="320" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="310" width="180" height="84" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="699" y="310" width="376" height="84" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="100" y="344" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">四、法國—瑞典</text>
+    <text x="100" y="368" text-anchor="middle" font-size="11.5" fill="#73618a">1635–1648</text>
+    <text x="343" y="344" text-anchor="middle" font-size="12.5" fill="#546e7a">天主教的法國正式參戰</text>
+    <text x="343" y="368" text-anchor="middle" font-size="12.5" fill="#546e7a">與新教瑞典聯手打天主教的哈布斯堡</text>
+    <text x="601" y="344" text-anchor="middle" font-size="15" fill="#6b4a8f" font-weight="700">極低</text>
+    <text x="601" y="370" text-anchor="middle" font-size="11" fill="#73618a">王朝與強權之爭</text>
+    <text x="887" y="344" text-anchor="middle" font-size="12.5" fill="#263238">雙方都無力取勝，打成長期消耗戰</text>
+    <text x="887" y="368" text-anchor="middle" font-size="12.5" fill="#263238">最後靠長達數年的談判收場</text>
+
+    <rect x="25" y="406" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="430" text-anchor="middle" font-size="12.5" fill="#8f5e14">第三、四階段是關鍵。法國的黎希留是樞機主教，卻長期資助新教軍隊——因為對法國而言，被</text>
+    <text x="550" y="452" text-anchor="middle" font-size="12.5" fill="#8f5e14">哈布斯堡從東西兩面包圍，比新教在德意志擴張更危險。國家理由自此壓過了教派立場</text>
+  </svg>
+  </div>
+  <p class="after">把這四階段連起來讀，會看到一個少見的現象：<b>戰爭的名義從頭到尾沒變，內容卻整個換掉了</b>。1618 年開打時的爭議是波希米亞人能不能自選一位新教國王；1648 年談判桌上的議題則是阿爾薩斯歸誰、瑞典能拿到哪些波羅的海港口。這也是為什麼「歐洲最後一場宗教戰爭」這個標籤只對前半段成立。</p>
+</section>
+
+<section>
+  <h2>為什麼停不下來</h2>
+  <p class="sub">戰爭曾經數度接近尾聲，卻每次都重新點燃。原因有三個，而且彼此加強。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="30" width="336" height="270" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="198" y="62" text-anchor="middle" font-size="16" fill="#1f5c85" font-weight="700">勝利會製造新敵人</text>
+    <rect x="50" y="80" width="296" height="94" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="198" y="100" text-anchor="middle" font-size="11" fill="#59707b">機制</text>
+    <text x="198" y="122" text-anchor="middle" font-size="12.5" fill="#263238">任何一方接近全勝時</text>
+    <text x="198" y="144" text-anchor="middle" font-size="12.5" fill="#263238">鄰國就會介入阻止</text>
+    <text x="198" y="166" text-anchor="middle" font-size="12.5" fill="#263238">以免中歐出現單一霸權</text>
+    <rect x="50" y="184" width="296" height="98" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="198" y="204" text-anchor="middle" font-size="11" fill="#59707b">實例</text>
+    <text x="198" y="226" text-anchor="middle" font-size="12" fill="#546e7a">皇帝在 1629 年幾乎全面得勝</text>
+    <text x="198" y="248" text-anchor="middle" font-size="12" fill="#546e7a">隔年瑞典就登陸北德</text>
+    <text x="198" y="270" text-anchor="middle" font-size="12" fill="#546e7a">背後是法國的資金</text>
+
+    <rect x="382" y="30" width="336" height="270" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="550" y="62" text-anchor="middle" font-size="16" fill="#b8442a" font-weight="700">軍隊沒有停戰的誘因</text>
+    <rect x="402" y="80" width="296" height="94" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="550" y="100" text-anchor="middle" font-size="11" fill="#59707b">機制</text>
+    <text x="550" y="122" text-anchor="middle" font-size="12.5" fill="#263238">傭兵部隊以戰養戰</text>
+    <text x="550" y="144" text-anchor="middle" font-size="12.5" fill="#263238">靠就地徵發與劫掠維生</text>
+    <text x="550" y="166" text-anchor="middle" font-size="12.5" fill="#263238">停戰等於全體失業</text>
+    <rect x="402" y="184" width="296" height="98" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="204" text-anchor="middle" font-size="11" fill="#59707b">實例</text>
+    <text x="550" y="226" text-anchor="middle" font-size="12" fill="#546e7a">統帥華倫斯坦自組大軍</text>
+    <text x="550" y="248" text-anchor="middle" font-size="12" fill="#546e7a">擁有獨立的財源與盤算</text>
+    <text x="550" y="270" text-anchor="middle" font-size="12" fill="#546e7a">最後遭皇帝下令除掉</text>
+
+    <rect x="734" y="30" width="336" height="270" fill="#fdf5e7" stroke="#e0b775" stroke-width="1.5" rx="6"/>
+    <text x="902" y="62" text-anchor="middle" font-size="16" fill="#8f5e14" font-weight="700">沒有人能仲裁</text>
+    <rect x="754" y="80" width="296" height="94" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="902" y="100" text-anchor="middle" font-size="11" fill="#59707b">機制</text>
+    <text x="902" y="122" text-anchor="middle" font-size="12.5" fill="#263238">帝國內沒有仲裁機關</text>
+    <text x="902" y="144" text-anchor="middle" font-size="12.5" fill="#263238">能強制執行任何和解</text>
+    <text x="902" y="166" text-anchor="middle" font-size="12.5" fill="#263238">皇帝自己就是當事人</text>
+    <rect x="754" y="184" width="296" height="98" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="902" y="204" text-anchor="middle" font-size="11" fill="#59707b">實例</text>
+    <text x="902" y="226" text-anchor="middle" font-size="12" fill="#546e7a">1635 年的布拉格和約</text>
+    <text x="902" y="248" text-anchor="middle" font-size="12" fill="#546e7a">只擺平了帝國內部</text>
+    <text x="902" y="270" text-anchor="middle" font-size="12" fill="#546e7a">外部強權不受它拘束</text>
+
+    <rect x="30" y="326" width="1040" height="58" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="348" text-anchor="middle" font-size="12.5" fill="#546e7a">三者互相加強：因為沒有仲裁者，戰爭只能靠一方全勝來結束；但一方接近全勝就會引來新的干預；</text>
+    <text x="550" y="370" text-anchor="middle" font-size="12.5" fill="#546e7a">而養活這些軍隊的方式，又讓戰爭本身變成一門能自我維持的生意</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>陣營：那些跨教派的組合</h2>
+  <p class="sub">如果這真是一場宗教戰爭，下面這幾條連線不應該存在。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="24" width="490" height="34" fill="#8a4636"/>
+    <text x="275" y="47" text-anchor="middle" font-size="13" fill="#ffffff">哈布斯堡陣營</text>
+    <rect x="580" y="24" width="490" height="34" fill="#2f5570"/>
+    <text x="825" y="47" text-anchor="middle" font-size="13" fill="#ffffff">反哈布斯堡陣營</text>
+
+    <rect x="30" y="68" width="490" height="58" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="275" y="90" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">神聖羅馬皇帝（奧地利哈布斯堡）</text>
+    <text x="275" y="112" text-anchor="middle" font-size="11.5" fill="#546e7a">天主教　戰爭全程的核心當事人</text>
+    <rect x="30" y="132" width="490" height="58" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="275" y="154" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">西班牙哈布斯堡</text>
+    <text x="275" y="176" text-anchor="middle" font-size="11.5" fill="#546e7a">天主教　同時在打荷蘭的獨立戰爭</text>
+    <rect x="30" y="196" width="490" height="58" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="275" y="218" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">巴伐利亞與天主教聯盟</text>
+    <text x="275" y="240" text-anchor="middle" font-size="11.5" fill="#546e7a">天主教　德意志境內的主要盟友</text>
+    <rect x="30" y="260" width="490" height="58" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.6"/>
+    <text x="275" y="282" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">薩克森選侯國</text>
+    <text x="275" y="304" text-anchor="middle" font-size="11.5" fill="#546e7a">路德派　卻在初期站在皇帝這一邊</text>
+
+    <rect x="580" y="68" width="490" height="58" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="825" y="90" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">波希米亞新教貴族 · 普法爾茨</text>
+    <text x="825" y="112" text-anchor="middle" font-size="11.5" fill="#546e7a">新教　最早起事，也最早被擊潰</text>
+    <rect x="580" y="132" width="490" height="58" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="825" y="154" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">丹麥 · 瑞典</text>
+    <text x="825" y="176" text-anchor="middle" font-size="11.5" fill="#546e7a">路德派　先後以新教保護者之名介入</text>
+    <rect x="580" y="196" width="490" height="58" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="825" y="218" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">尼德蘭聯省共和國</text>
+    <text x="825" y="240" text-anchor="middle" font-size="11.5" fill="#546e7a">加爾文派　與西班牙的戰爭並行進行</text>
+    <rect x="580" y="260" width="490" height="58" fill="#fdeeeb" stroke="#dda695" stroke-width="1.6"/>
+    <text x="825" y="282" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">法國</text>
+    <text x="825" y="304" text-anchor="middle" font-size="11.5" fill="#546e7a">天主教　先出錢，1635 年起親自參戰</text>
+
+    <rect x="30" y="342" width="1040" height="112" fill="#f2eef6" stroke="#a894c0" stroke-width="1.5" rx="6"/>
+    <text x="550" y="368" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="700">兩處用顏色標出來的異常</text>
+    <rect x="52" y="382" width="496" height="58" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="300" y="404" text-anchor="middle" font-size="12" fill="#263238">路德派的薩克森幫皇帝打新教的波希米亞</text>
+    <text x="300" y="426" text-anchor="middle" font-size="11.5" fill="#546e7a">它想要的是鄰近的盧薩蒂亞地區</text>
+    <rect x="560" y="382" width="488" height="58" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="804" y="404" text-anchor="middle" font-size="12" fill="#263238">天主教的法國資助新教的瑞典打天主教的皇帝</text>
+    <text x="804" y="426" text-anchor="middle" font-size="11.5" fill="#546e7a">它擔心的是被哈布斯堡兩面包圍</text>
+  </svg>
+  </div>
+  <p class="after">薩克森那一格特別值得記住。它是德意志最重要的路德派邦國，卻在戰爭初期選擇支持天主教皇帝去鎮壓波希米亞的新教徒——因為它想要的是相鄰的領土，而不是新教的勝利。第一階段就已經有人把教派放在利益之後了。</p>
+</section>
+
+<section>
+  <h2>代價：為什麼死的多半不是士兵</h2>
+  <p class="sub">這場戰爭常被稱為近代早期歐洲最慘烈的一場。真正的殺手不是會戰。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 440" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="300" height="36" fill="#17324d"/>
+    <rect x="333" y="18" width="330" height="36" fill="#17324d"/>
+    <rect x="671" y="18" width="404" height="36" fill="#17324d"/>
+    <text x="175" y="42" text-anchor="middle" font-size="13" fill="#ffffff">戰爭的運作方式</text>
+    <text x="498" y="42" text-anchor="middle" font-size="13" fill="#ffffff">直接後果</text>
+    <text x="873" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼平民首當其衝</text>
+
+    <rect x="25" y="58" width="300" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="333" y="58" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="58" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">軍隊沒有穩定的後勤</text>
+    <text x="175" y="116" text-anchor="middle" font-size="12.5" fill="#546e7a">補給靠就地取得</text>
+    <text x="498" y="104" text-anchor="middle" font-size="12.5" fill="#263238">徵發糧食、牲口與住所</text>
+    <text x="873" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">部隊駐紮或路過的地區，收成被取走</text>
+    <text x="873" y="116" text-anchor="middle" font-size="12.5" fill="#546e7a">當地隨即面臨饑荒</text>
+
+    <rect x="25" y="138" width="300" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="333" y="138" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="138" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="172" text-anchor="middle" font-size="12.5" fill="#546e7a">大批軍隊長期在各地移動</text>
+    <text x="175" y="196" text-anchor="middle" font-size="12.5" fill="#546e7a">且反覆經過同一批地區</text>
+    <text x="498" y="184" text-anchor="middle" font-size="12.5" fill="#263238">疫病沿著行軍路線擴散</text>
+    <text x="873" y="172" text-anchor="middle" font-size="12.5" fill="#546e7a">傷寒與鼠疫造成的死亡</text>
+    <text x="873" y="196" text-anchor="middle" font-size="12.5" fill="#546e7a">遠多於戰鬥本身</text>
+
+    <rect x="25" y="218" width="300" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="333" y="218" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="218" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="252" text-anchor="middle" font-size="12.5" fill="#546e7a">攻城戰中若守方拒降</text>
+    <text x="175" y="276" text-anchor="middle" font-size="12.5" fill="#546e7a">破城後往往縱兵劫掠</text>
+    <text x="498" y="264" text-anchor="middle" font-size="12.5" fill="#263238">城市遭到毀滅性打擊</text>
+    <text x="873" y="252" text-anchor="middle" font-size="12.5" fill="#546e7a">1631 年馬格德堡被攻破後遭焚掠</text>
+    <text x="873" y="276" text-anchor="middle" font-size="12.5" fill="#546e7a">數萬名居民死亡，全城幾乎毀盡</text>
+
+    <rect x="25" y="316" width="1050" height="106" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="342" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="700">關於人口損失的數字</text>
+    <rect x="47" y="356" width="330" height="52" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="212" y="378" text-anchor="middle" font-size="12" fill="#263238">德意志地區整體損失</text>
+    <text x="212" y="398" text-anchor="middle" font-size="12.5" fill="#8f5e14">約為戰前人口的兩成上下</text>
+    <rect x="385" y="356" width="330" height="52" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="550" y="378" text-anchor="middle" font-size="12" fill="#263238">受創最重的地區</text>
+    <text x="550" y="398" text-anchor="middle" font-size="12.5" fill="#8f5e14">部分邦國失去三分之一以上</text>
+    <rect x="723" y="356" width="330" height="52" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="888" y="378" text-anchor="middle" font-size="12" fill="#263238">要注意的是</text>
+    <text x="888" y="398" text-anchor="middle" font-size="12.5" fill="#8f5e14">各家估計差距很大，宜視為區間</text>
+  </svg>
+  </div>
+  <p class="after">人口數字必須謹慎看待：十七世紀沒有現代的統計，研究者是從稅籍、教區登記與土地紀錄回推，不同方法得到的結果差異可以到兩倍。可以確定的是<b>區域差異極大</b>——軍隊反覆經過的中德與北德損失慘重，西北部與東南邊緣則相對輕微。把「損失三分之一」當成全德一律的數字，是常見的誤解。</p>
+</section>
+
+<section>
+  <h2>西發里亞和約留下了什麼</h2>
+  <p class="sub">最後一列是本節的重點：它處理一個流傳很廣、但已被學界修正的說法。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="303" y="18" width="360" height="36" fill="#17324d"/>
+    <rect x="671" y="18" width="404" height="36" fill="#17324d"/>
+    <text x="160" y="42" text-anchor="middle" font-size="13" fill="#ffffff">和約的內容</text>
+    <text x="483" y="42" text-anchor="middle" font-size="13" fill="#ffffff">具體規定</text>
+    <text x="873" y="42" text-anchor="middle" font-size="13" fill="#ffffff">實際效果</text>
+
+    <rect x="25" y="58" width="270" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="303" y="58" width="360" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="58" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="160" y="104" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">各邦的締約權</text>
+    <text x="483" y="92" text-anchor="middle" font-size="12" fill="#546e7a">各邦可自行與外國締結同盟</text>
+    <text x="483" y="116" text-anchor="middle" font-size="12" fill="#546e7a">但不得針對皇帝與帝國</text>
+    <text x="873" y="92" text-anchor="middle" font-size="12.5" fill="#263238">各邦取得近乎主權的地位</text>
+    <text x="873" y="116" text-anchor="middle" font-size="12.5" fill="#263238">帝國自此名存實亡</text>
+
+    <rect x="25" y="138" width="270" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="303" y="138" width="360" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="138" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="160" y="184" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">宗教安排</text>
+    <text x="483" y="172" text-anchor="middle" font-size="12" fill="#546e7a">加爾文派納入容忍範圍</text>
+    <text x="483" y="196" text-anchor="middle" font-size="12" fill="#546e7a">以 1624 年的狀態為歸屬基準</text>
+    <text x="873" y="172" text-anchor="middle" font-size="12.5" fill="#263238">教隨國定原則保留，但爭議凍結</text>
+    <text x="873" y="196" text-anchor="middle" font-size="12.5" fill="#263238">教派問題從此不再是開戰理由</text>
+
+    <rect x="25" y="218" width="270" height="80" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="303" y="218" width="360" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="218" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="160" y="264" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">獨立的承認</text>
+    <text x="483" y="252" text-anchor="middle" font-size="12" fill="#546e7a">尼德蘭與瑞士正式脫離帝國</text>
+    <text x="483" y="276" text-anchor="middle" font-size="12" fill="#546e7a">西班牙承認荷蘭獨立</text>
+    <text x="873" y="252" text-anchor="middle" font-size="12.5" fill="#263238">兩者早已實質獨立</text>
+    <text x="873" y="276" text-anchor="middle" font-size="12.5" fill="#263238">和約是把既成事實寫成法律</text>
+
+    <rect x="25" y="298" width="270" height="80" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="303" y="298" width="360" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="298" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="160" y="344" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">領土與強權排序</text>
+    <text x="483" y="332" text-anchor="middle" font-size="12" fill="#546e7a">法國取得阿爾薩斯的部分權利</text>
+    <text x="483" y="356" text-anchor="middle" font-size="12" fill="#546e7a">瑞典取得北德的港口據點</text>
+    <text x="873" y="332" text-anchor="middle" font-size="12.5" fill="#263238">法國成為歐陸第一強權</text>
+    <text x="873" y="356" text-anchor="middle" font-size="12.5" fill="#263238">哈布斯堡的兩面優勢被打破</text>
+
+    <rect x="25" y="378" width="270" height="80" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="303" y="378" width="360" height="80" fill="#ffffff" stroke="#c9bad8"/>
+    <rect x="671" y="378" width="404" height="80" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <text x="160" y="424" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">主權國家體系</text>
+    <text x="483" y="412" text-anchor="middle" font-size="12" fill="#546e7a">常被說成現代國際秩序</text>
+    <text x="483" y="436" text-anchor="middle" font-size="12" fill="#546e7a">從 1648 年正式開始</text>
+    <text x="873" y="412" text-anchor="middle" font-size="12.5" fill="#6b4a8f">近年研究指出：和約條文並未確立</text>
+    <text x="873" y="436" text-anchor="middle" font-size="12.5" fill="#6b4a8f">現代主權概念，該說法屬後世追溯</text>
+
+    <rect x="25" y="470" width="1050" height="24" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="487" text-anchor="middle" font-size="11.5" fill="#546e7a">和約由分處奧斯納布呂克與明斯特兩地的談判同時進行，前者對新教方，後者對天主教方</text>
+  </svg>
+  </div>
+  <p class="after">最後一列的修正很重要，卻不必因此低估這場戰爭的意義。1648 年真正確立的不是一套主權理論，而是一個更實際的習慣：<b>歐洲的重大爭端，此後由多方談判與條約來處理，而不是由皇帝或教宗裁決</b>。這個習慣本身就是後來國際體系的雛形——只是它是慢慢長出來的，不是那一年簽出來的。</p>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　第一張圖是主線：四階段與宗教成分的遞減。第二張回答「為什麼停不下來」，第三張用陣營中的異常組合佐證第一張的論點，第四張是代價，第五張是後果。若時間有限，讀第一張與第三張就能掌握這場戰爭最關鍵的特徵。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">布拉格擲窗事件</span><span class="yr">1618</span><p>波希米亞新教貴族把皇帝的代表從窗戶扔出去。三人都活了下來，戰爭卻由此開始——這是全歐洲都知道的開場。</p></div>
+  <div class="card"><span class="nm">白山之役</span><span class="yr">1620</span><p>波希米亞軍在布拉格城外潰敗。新教貴族被處決或流亡，波希米亞被徹底再天主教化，此後三百年屬於哈布斯堡。</p></div>
+  <div class="card"><span class="nm">丹麥介入</span><span class="yr">1625</span><p>克里斯蒂安四世以新教保護者之名出兵，同時想擴大在北德的影響力。戰敗後退出，卻讓戰火從波希米亞蔓延到整個德意志北部。</p></div>
+  <div class="card"><span class="nm">歸還敕令</span><span class="yr">1629</span><p>皇帝要求新教方歸還數十年來取得的教產。這道命令把原本觀望的新教邦全部推向對立面，也是戰爭升級的關鍵一步。</p></div>
+  <div class="card"><span class="nm">瑞典登陸</span><span class="yr">1630</span><p>古斯塔夫二世率軍進入北德，隔年與法國簽約取得資金。新教方第一次有了能與皇帝正面抗衡的軍隊。</p></div>
+  <div class="card"><span class="nm">馬格德堡陷落</span><span class="yr">1631</span><p>城破後遭焚掠，數萬居民死亡。它成為整場戰爭最著名的暴行象徵，也在當時就被雙方用於宣傳。</p></div>
+  <div class="card"><span class="nm">呂岑會戰</span><span class="yr">1632</span><p>瑞典獲勝，但古斯塔夫二世本人陣亡。失去這位統帥後，瑞典再也無法獨力主導戰局。</p></div>
+  <div class="card"><span class="nm">華倫斯坦遇刺</span><span class="yr">1634</span><p>皇帝最有能力的統帥被自己人除掉。他握有獨立的軍隊與財源，強大到讓雇主也感到威脅——傭兵體制的內在問題。</p></div>
+  <div class="card"><span class="nm">法國正式參戰</span><span class="yr">1635</span><p>天主教的法國對天主教的西班牙宣戰。從這一年起，戰爭與宗教幾乎脫鉤，變成純粹的強權對決。</p></div>
+  <div class="card"><span class="nm">西發里亞和約</span><span class="yr">1648</span><p>經過數年談判達成。德意志各邦取得締約權、加爾文派獲得承認、法國崛起、神聖羅馬帝國名存實亡。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">前因、脈絡與後果</span></div>
+<div class="grid">
+  <a class="card" href="宗教改革.html"><span class="nm">宗教改革</span><span class="lk">→ 專頁</span><p>戰爭的遠因。路德之後的一百年間，教派問題如何一步步變成無法用談判解決的政治問題。</p></a>
+  <a class="card" href="宗教改革時間軸.html"><span class="nm">宗教改革時間軸</span><span class="lk">→ 專頁</span><p>從 1517 到 1648 的逐年脈絡，包含 1555 年奧格斯堡和約——那份和約的漏洞正是本頁第一張圖的起點。</p></a>
+  <a class="card" href="神聖羅馬帝國時間軸.html"><span class="nm">神聖羅馬帝國時間軸</span><span class="lk">→ 專頁</span><p>戰爭的舞台。帝國原本的憲政結構，說明了為什麼它沒有能力仲裁自己內部的衝突。</p></a>
+  <a class="card" href="德國歷史總覽.html"><span class="nm">德國歷史總覽</span><span class="lk">→ 專頁</span><p>1648 年之後的長期後果：各邦近乎主權的地位如何一路延續，成為今日德國聯邦制的來源。</p></a>
+  <a class="card" href="法國歷史總覽.html"><span class="nm">法國歷史總覽</span><span class="lk">→ 專頁</span><p>戰爭的最大贏家。黎希留與馬扎然這段時期的外交，是法國走向絕對王權與歐陸霸權的關鍵。</p></a>
+  <a class="card" href="../3-0.宗教/天主教.html"><span class="nm">天主教</span><span class="lk">→ 專頁</span><p>特倫特會議之後的天主教改革，是理解斐迪南二世那種強硬立場的背景。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的專題頁。數字說明：人口損失採學界常見的區間表述而非單一數值，因為十七世紀缺乏現代統計，不同的回推方法差距可達兩倍；區域差異亦極大，不宜以單一比例概括全德。「西發里亞主權體系」一節反映的是近數十年史學界對該說法的修正，並非否定和約的重要性——詳見該節之後的說明。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拿破崙戰爭</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 專題</p>
+  <h1>拿破崙戰爭</h1>
+  <p class="lede">拿破崙幾乎贏了他打過的每一場會戰，卻輸掉了整場戰爭。這件事不能用某一次失誤解釋——問題出在<b>他的勝利公式本身有三個處理不了的情況</b>：對手沒有可供殲滅的主力、對手在海上而陸軍構不著、對手可以無限後退。更關鍵的是，這三個盲區不是各自獨立的：因為打不到英國，他改用經濟封鎖；為了讓封鎖生效，他必須控制整條歐洲海岸線；於是他先陷進西班牙，再走進俄國。<b>他兩場最大的災難，都是為了對付一個他打不到的敵人而發生的。</b></p>
+</header>
+
+<blockquote>
+  他的戰法要求對手接受決戰並在戰敗後求和。當對手拒絕其中任何一步，他所有的天才就沒有著力點。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>勝利公式與它的三個盲區</h2>
+  <p class="sub">公式是：快速機動、集中優勢兵力、迫使對方主力會戰、一擊擊潰、對方求和。以下三種對手讓這個流程無法完成。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 510" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <defs>
+      <marker id="arn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,1 L9,5 L0,9 z" fill="#8f5e14"/>
+      </marker>
+    </defs>
+
+    <rect x="30" y="30" width="336" height="310" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="198" y="62" text-anchor="middle" font-size="15.5" fill="#1f5c85" font-weight="700">盲區一：打不到的對手</text>
+    <text x="198" y="84" text-anchor="middle" font-size="11.5" fill="#37607a">英國　1805 年之後</text>
+    <rect x="50" y="100" width="296" height="76" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="198" y="120" text-anchor="middle" font-size="10.5" fill="#59707b">公式為什麼失效</text>
+    <text x="198" y="142" text-anchor="middle" font-size="12" fill="#263238">陸上的決戰邏輯</text>
+    <text x="198" y="164" text-anchor="middle" font-size="12" fill="#263238">碰到海峽就完全用不上</text>
+    <rect x="50" y="186" width="296" height="76" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="198" y="206" text-anchor="middle" font-size="10.5" fill="#59707b">他的替代方案</text>
+    <text x="198" y="228" text-anchor="middle" font-size="12" fill="#263238">大陸封鎖體系</text>
+    <text x="198" y="250" text-anchor="middle" font-size="12" fill="#263238">以經濟戰取代軍事勝利</text>
+    <rect x="50" y="272" width="296" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="198" y="292" text-anchor="middle" font-size="10.5" fill="#59707b">代價</text>
+    <text x="198" y="314" text-anchor="middle" font-size="12" fill="#546e7a">封鎖傷己也傷盟國</text>
+
+    <rect x="382" y="30" width="336" height="310" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="550" y="62" text-anchor="middle" font-size="15.5" fill="#b8442a" font-weight="700">盲區二：沒有主力可打</text>
+    <text x="550" y="84" text-anchor="middle" font-size="11.5" fill="#96604f">西班牙　1808–1814</text>
+    <rect x="402" y="100" width="296" height="76" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="550" y="120" text-anchor="middle" font-size="10.5" fill="#59707b">公式為什麼失效</text>
+    <text x="550" y="142" text-anchor="middle" font-size="12" fill="#263238">正規軍被擊潰之後</text>
+    <text x="550" y="164" text-anchor="middle" font-size="12" fill="#263238">游擊隊照樣繼續作戰</text>
+    <rect x="402" y="186" width="296" height="76" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="550" y="206" text-anchor="middle" font-size="10.5" fill="#59707b">更根本的問題</text>
+    <text x="550" y="228" text-anchor="middle" font-size="12" fill="#263238">找不到一個有權投降</text>
+    <text x="550" y="250" text-anchor="middle" font-size="12" fill="#263238">而且說話算數的對象</text>
+    <rect x="402" y="272" width="296" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="292" text-anchor="middle" font-size="10.5" fill="#59707b">代價</text>
+    <text x="550" y="314" text-anchor="middle" font-size="12" fill="#546e7a">數十萬兵力被長期牽制</text>
+
+    <rect x="734" y="30" width="336" height="310" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.5" rx="6"/>
+    <text x="902" y="62" text-anchor="middle" font-size="15.5" fill="#3d7a55" font-weight="700">盲區三：可以一直後退</text>
+    <text x="902" y="84" text-anchor="middle" font-size="11.5" fill="#446b53">俄國　1812</text>
+    <rect x="754" y="100" width="296" height="76" fill="#ffffff" stroke="#c8dccf"/>
+    <text x="902" y="120" text-anchor="middle" font-size="10.5" fill="#59707b">公式為什麼失效</text>
+    <text x="902" y="142" text-anchor="middle" font-size="12" fill="#263238">俄軍避免決戰，邊退邊燒</text>
+    <text x="902" y="164" text-anchor="middle" font-size="12" fill="#263238">他追不到想要的那一戰</text>
+    <rect x="754" y="186" width="296" height="76" fill="#ffffff" stroke="#c8dccf"/>
+    <text x="902" y="206" text-anchor="middle" font-size="10.5" fill="#59707b">更根本的問題</text>
+    <text x="902" y="228" text-anchor="middle" font-size="12" fill="#263238">佔領了莫斯科</text>
+    <text x="902" y="250" text-anchor="middle" font-size="12" fill="#263238">卻沒有人來談和</text>
+    <rect x="754" y="272" width="296" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="902" y="292" text-anchor="middle" font-size="10.5" fill="#59707b">代價</text>
+    <text x="902" y="314" text-anchor="middle" font-size="12" fill="#546e7a">遠征軍在撤退中崩解</text>
+
+    <rect x="30" y="366" width="1040" height="124" fill="#fdf5e7" stroke="#e0b775" stroke-width="1.5" rx="6"/>
+    <text x="550" y="392" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="700">三個盲區其實是同一條因果鏈</text>
+    <rect x="52" y="406" width="222" height="64" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="163" y="432" text-anchor="middle" font-size="12" fill="#263238">打不倒英國</text>
+    <text x="163" y="454" text-anchor="middle" font-size="11" fill="#546e7a">特拉法加之後放棄登陸</text>
+    <rect x="302" y="406" width="222" height="64" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="413" y="432" text-anchor="middle" font-size="12" fill="#263238">改用大陸封鎖</text>
+    <text x="413" y="454" text-anchor="middle" font-size="11" fill="#546e7a">須控制整條歐洲海岸</text>
+    <rect x="552" y="406" width="222" height="64" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="663" y="432" text-anchor="middle" font-size="12" fill="#263238">為封鎖而入侵西班牙</text>
+    <text x="663" y="454" text-anchor="middle" font-size="11" fill="#546e7a">堵住葡萄牙這個缺口</text>
+    <rect x="802" y="406" width="222" height="64" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="913" y="432" text-anchor="middle" font-size="12" fill="#263238">為封鎖而入侵俄國</text>
+    <text x="913" y="454" text-anchor="middle" font-size="11" fill="#546e7a">俄國退出了封鎖體系</text>
+    <line x1="276" y1="438" x2="298" y2="438" stroke="#8f5e14" stroke-width="1.6" marker-end="url(#arn)"/>
+    <line x1="526" y1="438" x2="548" y2="438" stroke="#8f5e14" stroke-width="1.6" marker-end="url(#arn)"/>
+    <line x1="776" y1="438" x2="798" y2="438" stroke="#8f5e14" stroke-width="1.6" marker-end="url(#arn)"/>
+  </svg>
+  </div>
+  <p class="after">最後那條鏈是理解整場戰爭的關鍵。西班牙與俄國這兩場災難，通常被當成兩次獨立的判斷失誤；但如果從「他必須讓大陸封鎖生效」這個前提回推，兩者都是同一個邏輯的延伸。而大陸封鎖之所以存在，只因為他無法用軍隊解決英國。</p>
+</section>
+
+<section>
+  <h2>十個階段：從土倫到滑鐵盧</h2>
+  <p class="sub">上排是上升期，下排是崩解期。轉折點落在兩者之間的 1808 年。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="20" y="18" width="1165" height="28" fill="#2f5570"/>
+    <text x="602" y="37" text-anchor="middle" font-size="12.5" fill="#ffffff">上升　1793 – 1807 年</text>
+
+    <rect x="20" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="132" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">革命戰爭中崛起</text>
+    <text x="132" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">1793 – 1799</text>
+    <text x="132" y="122" text-anchor="middle" font-size="11" fill="#546e7a">全國徵兵造出空前規模的軍隊</text>
+    <text x="132" y="142" text-anchor="middle" font-size="11" fill="#546e7a">1796　義大利戰役成名</text>
+    <text x="132" y="162" text-anchor="middle" font-size="11" fill="#546e7a">1798　埃及遠征受挫</text>
+    <text x="132" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">革命的動員能力是他的本錢</text>
+
+    <rect x="255" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="367" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">奪權與稱帝</text>
+    <text x="367" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">1799 – 1804</text>
+    <text x="367" y="122" text-anchor="middle" font-size="11" fill="#546e7a">1799　霧月政變任第一執政</text>
+    <text x="367" y="142" text-anchor="middle" font-size="11" fill="#546e7a">1802　短暫的亞眠和約</text>
+    <text x="367" y="162" text-anchor="middle" font-size="11" fill="#546e7a">1804　稱帝、頒行民法典</text>
+    <text x="367" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">共和結束，革命成果被制度化</text>
+
+    <rect x="490" y="56" width="225" height="150" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="602" y="80" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">海上的挫敗</text>
+    <text x="602" y="99" text-anchor="middle" font-size="10.5" fill="#37607a">1805</text>
+    <text x="602" y="122" text-anchor="middle" font-size="11" fill="#546e7a">特拉法加海戰法西艦隊覆滅</text>
+    <text x="602" y="142" text-anchor="middle" font-size="11" fill="#546e7a">入侵英國的計畫從此作罷</text>
+    <text x="602" y="162" text-anchor="middle" font-size="11" fill="#546e7a">此後只能在陸地上尋求勝利</text>
+    <text x="602" y="190" text-anchor="middle" font-size="11" fill="#1f5c85">第一個盲區在這一年定型</text>
+
+    <rect x="725" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="837" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">陸戰的頂點</text>
+    <text x="837" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">1805 – 1807</text>
+    <text x="837" y="122" text-anchor="middle" font-size="11" fill="#546e7a">1805　奧斯特里茨大勝奧俄</text>
+    <text x="837" y="142" text-anchor="middle" font-size="11" fill="#546e7a">1806　數週內擊垮普魯士</text>
+    <text x="837" y="162" text-anchor="middle" font-size="11" fill="#546e7a">1807　與沙皇簽提爾西特和約</text>
+    <text x="837" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">歐陸幾乎已在他掌握之中</text>
+
+    <rect x="960" y="56" width="225" height="150" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="1072" y="80" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">大陸封鎖體系</text>
+    <text x="1072" y="99" text-anchor="middle" font-size="10.5" fill="#8a6a35">1806 起</text>
+    <text x="1072" y="122" text-anchor="middle" font-size="11" fill="#546e7a">禁止歐陸各國與英國貿易</text>
+    <text x="1072" y="142" text-anchor="middle" font-size="11" fill="#546e7a">要求盟國與附庸一體執行</text>
+    <text x="1072" y="162" text-anchor="middle" font-size="11" fill="#546e7a">走私與怨言隨即出現</text>
+    <text x="1072" y="190" text-anchor="middle" font-size="11" fill="#8f5e14">往後所有災難的起點</text>
+
+    <rect x="20" y="222" width="1165" height="28" fill="#8a4636"/>
+    <text x="602" y="241" text-anchor="middle" font-size="12.5" fill="#ffffff">崩解　1808 – 1815 年</text>
+
+    <rect x="20" y="260" width="225" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="132" y="284" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">半島戰爭</text>
+    <text x="132" y="303" text-anchor="middle" font-size="10.5" fill="#96604f">1808 – 1814</text>
+    <text x="132" y="326" text-anchor="middle" font-size="11" fill="#546e7a">為封鎖而入侵葡萄牙與西班牙</text>
+    <text x="132" y="346" text-anchor="middle" font-size="11" fill="#546e7a">遭遇全民規模的游擊抵抗</text>
+    <text x="132" y="366" text-anchor="middle" font-size="11" fill="#546e7a">英軍在葡萄牙站穩腳跟</text>
+    <text x="132" y="394" text-anchor="middle" font-size="11" fill="#b8442a">他自己稱之為潰爛的傷口</text>
+
+    <rect x="255" y="260" width="225" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="367" y="284" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">遠征俄國</text>
+    <text x="367" y="303" text-anchor="middle" font-size="10.5" fill="#96604f">1812</text>
+    <text x="367" y="326" text-anchor="middle" font-size="11" fill="#546e7a">因俄國退出封鎖而出兵</text>
+    <text x="367" y="346" text-anchor="middle" font-size="11" fill="#546e7a">俄軍後撤，博羅金諾未能殲敵</text>
+    <text x="367" y="366" text-anchor="middle" font-size="11" fill="#546e7a">佔領莫斯科卻等不到談判</text>
+    <text x="367" y="394" text-anchor="middle" font-size="11" fill="#b8442a">大軍在撤退途中幾乎全毀</text>
+
+    <rect x="490" y="260" width="225" height="150" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="602" y="284" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">歐洲的總反攻</text>
+    <text x="602" y="303" text-anchor="middle" font-size="10.5" fill="#73618a">1813</text>
+    <text x="602" y="326" text-anchor="middle" font-size="11" fill="#546e7a">普魯士、奧地利、俄國聯手</text>
+    <text x="602" y="346" text-anchor="middle" font-size="11" fill="#546e7a">萊比錫會戰法軍大敗</text>
+    <text x="602" y="366" text-anchor="middle" font-size="11" fill="#546e7a">德意志地區全面脫離控制</text>
+    <text x="602" y="394" text-anchor="middle" font-size="11" fill="#6b4a8f">對手已學會用他的方法打他</text>
+
+    <rect x="725" y="260" width="225" height="150" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="837" y="284" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="600">退位與百日</text>
+    <text x="837" y="303" text-anchor="middle" font-size="10.5" fill="#73618a">1814 – 1815</text>
+    <text x="837" y="326" text-anchor="middle" font-size="11" fill="#546e7a">1814　聯軍入巴黎，他被流放</text>
+    <text x="837" y="346" text-anchor="middle" font-size="11" fill="#546e7a">1815　脫離厄爾巴島重返法國</text>
+    <text x="837" y="366" text-anchor="middle" font-size="11" fill="#546e7a">滑鐵盧戰敗後再度退位</text>
+    <text x="837" y="394" text-anchor="middle" font-size="11" fill="#6b4a8f">最後被流放至南大西洋孤島</text>
+
+    <rect x="960" y="260" width="225" height="150" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="1072" y="284" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">維也納會議</text>
+    <text x="1072" y="303" text-anchor="middle" font-size="10.5" fill="#37607a">1814 – 1815</text>
+    <text x="1072" y="326" text-anchor="middle" font-size="11" fill="#546e7a">列強重畫歐洲版圖</text>
+    <text x="1072" y="346" text-anchor="middle" font-size="11" fill="#546e7a">恢復被推翻的王室</text>
+    <text x="1072" y="366" text-anchor="middle" font-size="11" fill="#546e7a">建立圍堵法國的緩衝地帶</text>
+    <text x="1072" y="394" text-anchor="middle" font-size="11" fill="#1f5c85">整套設計都是為了防止他再現</text>
+
+    <rect x="20" y="430" width="1165" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="602" y="454" text-anchor="middle" font-size="12.5" fill="#546e7a">上排最後一格與下排第一格之間只隔兩年，卻是整場戰爭的分水嶺：大陸封鎖從一個對付英國的</text>
+    <text x="602" y="476" text-anchor="middle" font-size="12.5" fill="#546e7a">手段，變成了一個必須用軍隊到處維持的義務——而維持它的成本，最終超過了它能造成的傷害</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>他發明的東西，對手全學走了</h2>
+  <p class="sub">他的優勢來自方法而非武器。方法一旦被看懂，就守不住了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="300" height="36" fill="#17324d"/>
+    <rect x="333" y="18" width="300" height="36" fill="#17324d"/>
+    <rect x="641" y="18" width="434" height="36" fill="#17324d"/>
+    <text x="175" y="42" text-anchor="middle" font-size="13" fill="#ffffff">他的做法</text>
+    <text x="483" y="42" text-anchor="middle" font-size="13" fill="#ffffff">對手原本的做法</text>
+    <text x="858" y="42" text-anchor="middle" font-size="13" fill="#ffffff">對手如何學走</text>
+
+    <rect x="25" y="58" width="300" height="72" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="333" y="58" width="300" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="58" width="434" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">全國徵兵，軍隊動輒數十萬</text>
+    <text x="175" y="112" text-anchor="middle" font-size="12.5" fill="#546e7a">兵源近乎無限</text>
+    <text x="483" y="101" text-anchor="middle" font-size="12.5" fill="#263238">職業軍與傭兵，規模受財政限制</text>
+    <text x="858" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">普魯士戰敗後推動軍事改革</text>
+    <text x="858" y="112" text-anchor="middle" font-size="12.5" fill="#546e7a">1813 年動員後備軍，俄奧同步擴大徵召</text>
+
+    <rect x="25" y="130" width="300" height="72" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="333" y="130" width="300" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="130" width="434" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="162" text-anchor="middle" font-size="12.5" fill="#546e7a">軍團制：每個軍能獨立行軍</text>
+    <text x="175" y="184" text-anchor="middle" font-size="12.5" fill="#546e7a">並自行支撐一段時間的戰鬥</text>
+    <text x="483" y="173" text-anchor="middle" font-size="12.5" fill="#263238">全軍集中行動，行軍緩慢</text>
+    <text x="858" y="162" text-anchor="middle" font-size="12.5" fill="#546e7a">各國陸續改採相同的編制</text>
+    <text x="858" y="184" text-anchor="middle" font-size="12.5" fill="#546e7a">行軍與集中的速度差距因此消失</text>
+
+    <rect x="25" y="202" width="300" height="72" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="333" y="202" width="300" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="202" width="434" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="234" text-anchor="middle" font-size="12.5" fill="#546e7a">以戰養戰，就地徵發糧秣</text>
+    <text x="175" y="256" text-anchor="middle" font-size="12.5" fill="#546e7a">擺脫倉庫補給的束縛</text>
+    <text x="483" y="245" text-anchor="middle" font-size="12.5" fill="#263238">依賴後方倉庫，機動範圍受限</text>
+    <text x="858" y="234" text-anchor="middle" font-size="12.5" fill="#546e7a">俄國找到了反制方法：焦土</text>
+    <text x="858" y="256" text-anchor="middle" font-size="12.5" fill="#546e7a">沒有東西可徵發時，這個優勢反成致命傷</text>
+
+    <rect x="25" y="274" width="300" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="333" y="274" width="300" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="274" width="434" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="306" text-anchor="middle" font-size="12.5" fill="#546e7a">砲兵集中使用</text>
+    <text x="175" y="328" text-anchor="middle" font-size="12.5" fill="#546e7a">在關鍵點上一次打開缺口</text>
+    <text x="483" y="317" text-anchor="middle" font-size="12.5" fill="#263238">砲兵分散配屬給各步兵單位</text>
+    <text x="858" y="306" text-anchor="middle" font-size="12.5" fill="#546e7a">普俄奧都改為集中編組</text>
+    <text x="858" y="328" text-anchor="middle" font-size="12.5" fill="#546e7a">這項優勢到後期已不復存在</text>
+
+    <rect x="25" y="346" width="300" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="333" y="346" width="300" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="346" width="434" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="175" y="378" text-anchor="middle" font-size="12.5" fill="#546e7a">追求殲滅性的決戰</text>
+    <text x="175" y="400" text-anchor="middle" font-size="12.5" fill="#546e7a">而非奪取幾座城堡</text>
+    <text x="483" y="389" text-anchor="middle" font-size="12.5" fill="#263238">追求有限目標，見好就收</text>
+    <text x="858" y="378" text-anchor="middle" font-size="12.5" fill="#546e7a">聯軍後期改採避免與他本人決戰</text>
+    <text x="858" y="400" text-anchor="middle" font-size="12.5" fill="#546e7a">而專打他的元帥，再合圍主力</text>
+
+    <rect x="25" y="430" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="454" text-anchor="middle" font-size="12.5" fill="#8f5e14">1813 年萊比錫會戰時，對面的軍隊正在用他的方法打他，而人數是他的兩倍左右。方法上的</text>
+    <text x="550" y="476" text-anchor="middle" font-size="12.5" fill="#8f5e14">優勢一旦被抵銷，剩下的就只是人力與資源的比較——那是法國不可能贏的一場算術</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>雙面遺產：終結革命，也傳播革命</h2>
+  <p class="sub">同一個人，對內把革命收束成個人統治，對外卻用軍隊把革命的成果送到各地。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 525" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="190" height="36" fill="#17324d"/>
+    <rect x="223" y="18" width="400" height="36" fill="#8a4636"/>
+    <rect x="631" y="18" width="444" height="36" fill="#2f5570"/>
+    <text x="120" y="42" text-anchor="middle" font-size="13" fill="#ffffff">面向</text>
+    <text x="423" y="42" text-anchor="middle" font-size="13" fill="#ffffff">對法國國內</text>
+    <text x="853" y="42" text-anchor="middle" font-size="13" fill="#ffffff">對歐洲各地</text>
+
+    <rect x="25" y="58" width="190" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="58" width="400" height="72" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="58" width="444" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="101" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">政治體制</text>
+    <text x="423" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">終結共和，建立個人統治並稱帝</text>
+    <text x="423" y="112" text-anchor="middle" font-size="12.5" fill="#546e7a">言論與選舉自由大幅倒退</text>
+    <text x="853" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">把法律之前人人平等的原則</text>
+    <text x="853" y="112" text-anchor="middle" font-size="12.5" fill="#546e7a">帶進了尚未經歷革命的地區</text>
+
+    <rect x="25" y="130" width="190" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="130" width="400" height="72" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="130" width="444" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="173" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">法律</text>
+    <text x="423" y="162" text-anchor="middle" font-size="12.5" fill="#546e7a">民法典鞏固財產權與世俗婚姻</text>
+    <text x="423" y="184" text-anchor="middle" font-size="12.5" fill="#546e7a">同時也強化了家父長的權力</text>
+    <text x="853" y="162" text-anchor="middle" font-size="12.5" fill="#546e7a">法典被帶到義大利、荷蘭與德意志西部</text>
+    <text x="853" y="184" text-anchor="middle" font-size="12.5" fill="#546e7a">他倒台後多數地方仍繼續沿用</text>
+
+    <rect x="25" y="202" width="190" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="202" width="400" height="72" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="202" width="444" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="245" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">封建制度</text>
+    <text x="423" y="234" text-anchor="middle" font-size="12.5" fill="#546e7a">革命期間已廢除</text>
+    <text x="423" y="256" text-anchor="middle" font-size="12.5" fill="#546e7a">他所做的是把它固定下來</text>
+    <text x="853" y="234" text-anchor="middle" font-size="12.5" fill="#546e7a">在佔領區廢除農奴與領主特權</text>
+    <text x="853" y="256" text-anchor="middle" font-size="12.5" fill="#546e7a">1815 年後多數並未真正恢復</text>
+
+    <rect x="25" y="274" width="190" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="274" width="400" height="72" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="274" width="444" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="317" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">行政</text>
+    <text x="423" y="306" text-anchor="middle" font-size="12.5" fill="#546e7a">省長制與統一的官僚體系成形</text>
+    <text x="423" y="328" text-anchor="middle" font-size="12.5" fill="#546e7a">這套架構此後兩百年沒有被廢除</text>
+    <text x="853" y="306" text-anchor="middle" font-size="12.5" fill="#546e7a">德意志的邦國數目被大幅精簡</text>
+    <text x="853" y="328" text-anchor="middle" font-size="12.5" fill="#546e7a">為日後的統一清掉了大量障礙</text>
+
+    <rect x="25" y="346" width="190" height="72" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="223" y="346" width="400" height="72" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="631" y="346" width="444" height="72" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <text x="120" y="389" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">意外的反作用</text>
+    <text x="423" y="378" text-anchor="middle" font-size="12.5" fill="#6b4a8f">長年征戰耗盡了人力與財力</text>
+    <text x="423" y="400" text-anchor="middle" font-size="12.5" fill="#6b4a8f">最後連法國自己也不再支持他</text>
+    <text x="853" y="378" text-anchor="middle" font-size="12.5" fill="#6b4a8f">西班牙、德意志與俄國的民族意識</text>
+    <text x="853" y="400" text-anchor="middle" font-size="12.5" fill="#6b4a8f">都在反抗他的過程中第一次成形</text>
+
+    <rect x="25" y="430" width="1050" height="84" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="456" text-anchor="middle" font-size="12.5" fill="#8f5e14">最後一列是整場戰爭最大的諷刺。他以革命之名把歐洲重新組織了一遍，而各地反抗他的過程，</text>
+    <text x="550" y="478" text-anchor="middle" font-size="12.5" fill="#8f5e14">恰好孕育出十九世紀最強大的一股力量：民族主義。這股力量先是埋葬了他的帝國，</text>
+    <text x="550" y="500" text-anchor="middle" font-size="12.5" fill="#8f5e14">半個世紀後又埋葬了他的對手費盡力氣想要恢復的那個舊秩序</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>維也納會議：一套防止他再出現的設計</h2>
+  <p class="sub">1815 年的每一項安排，都可以還原成一個問題：怎樣才不會再有第二個拿破崙。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 525" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="170" height="36" fill="#17324d"/>
+    <rect x="203" y="18" width="390" height="36" fill="#17324d"/>
+    <rect x="601" y="18" width="474" height="36" fill="#17324d"/>
+    <text x="110" y="42" text-anchor="middle" font-size="13" fill="#ffffff">原則</text>
+    <text x="398" y="42" text-anchor="middle" font-size="13" fill="#ffffff">具體做法</text>
+    <text x="838" y="42" text-anchor="middle" font-size="13" fill="#ffffff">實際效果</text>
+
+    <rect x="25" y="58" width="170" height="72" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="203" y="58" width="390" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="58" width="474" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="101" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">正統主義</text>
+    <text x="398" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">恢復被革命與拿破崙推翻的王室</text>
+    <text x="398" y="112" text-anchor="middle" font-size="12.5" fill="#546e7a">法國由波旁王朝復辟</text>
+    <text x="838" y="90" text-anchor="middle" font-size="12.5" fill="#263238">王室回來了，封建制度卻沒有</text>
+    <text x="838" y="112" text-anchor="middle" font-size="12.5" fill="#263238">多數行政與法律改革被保留下來</text>
+
+    <rect x="25" y="130" width="170" height="72" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="203" y="130" width="390" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="130" width="474" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="173" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">補償原則</text>
+    <text x="398" y="162" text-anchor="middle" font-size="12.5" fill="#546e7a">列強互相分配領土</text>
+    <text x="398" y="184" text-anchor="middle" font-size="12.5" fill="#546e7a">讓各方的得失大致相抵</text>
+    <text x="838" y="162" text-anchor="middle" font-size="12.5" fill="#263238">波蘭與薩克森的歸屬幾乎讓會議破裂</text>
+    <text x="838" y="184" text-anchor="middle" font-size="12.5" fill="#263238">當地居民的意願完全不在考慮之列</text>
+
+    <rect x="25" y="202" width="170" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="202" width="390" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="202" width="474" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="245" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">圍堵法國</text>
+    <text x="398" y="234" text-anchor="middle" font-size="12.5" fill="#546e7a">在法國四周建立較強的鄰邦</text>
+    <text x="398" y="256" text-anchor="middle" font-size="12.5" fill="#546e7a">普魯士被安排進萊茵地區</text>
+    <text x="838" y="234" text-anchor="middle" font-size="12.5" fill="#263238">法國確實不再能單獨稱霸歐陸</text>
+    <text x="838" y="256" text-anchor="middle" font-size="12.5" fill="#263238">但也意外壯大了日後的普魯士</text>
+
+    <rect x="25" y="274" width="170" height="72" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="274" width="390" height="72" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="274" width="474" height="72" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="317" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">均勢</text>
+    <text x="398" y="306" text-anchor="middle" font-size="12.5" fill="#546e7a">不讓任何一國再度獨大</text>
+    <text x="398" y="328" text-anchor="middle" font-size="12.5" fill="#546e7a">戰敗的法國也被保留為強權之一</text>
+    <text x="838" y="306" text-anchor="middle" font-size="12.5" fill="#263238">這是會議最成功的一項</text>
+    <text x="838" y="328" text-anchor="middle" font-size="12.5" fill="#263238">歐洲此後四十年沒有五強間的大戰</text>
+
+    <rect x="25" y="346" width="170" height="72" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="203" y="346" width="390" height="72" fill="#ffffff" stroke="#c9bad8"/>
+    <rect x="601" y="346" width="474" height="72" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <text x="110" y="389" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">列強協調</text>
+    <text x="398" y="378" text-anchor="middle" font-size="12.5" fill="#546e7a">定期召開會議處理爭端</text>
+    <text x="398" y="400" text-anchor="middle" font-size="12.5" fill="#546e7a">共同壓制革命與獨立運動</text>
+    <text x="838" y="378" text-anchor="middle" font-size="12.5" fill="#6b4a8f">1820 年代就開始鬆動</text>
+    <text x="838" y="400" text-anchor="middle" font-size="12.5" fill="#6b4a8f">1853 年在克里米亞徹底失效</text>
+
+    <rect x="25" y="430" width="1050" height="84" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="456" text-anchor="middle" font-size="12.5" fill="#8f5e14">這套設計確實達成了主要目標：歐洲四十年沒有大規模戰爭，也沒有再出現一個能橫掃全歐的人。</text>
+    <text x="550" y="478" text-anchor="middle" font-size="12.5" fill="#8f5e14">代價是它壓制了兩股它無法處理的力量——自由主義與民族主義。1848 年的革命浪潮，</text>
+    <text x="550" y="500" text-anchor="middle" font-size="12.5" fill="#8f5e14">以及 1859 至 1871 年義大利與德意志的統一，都是這筆壓抑到期後的清算</text>
+  </svg>
+  </div>
+  <p class="after">這一節可以直接接到同資料夾的〈克里米亞戰爭〉：那場戰爭正是五強第一次彼此開戰，也就是本表最後一列所說的「1853 年徹底失效」。維也納體系撐了四十年，然後在四年之內被拆掉。</p>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　第一張圖是全局的鑰匙——三個盲區與那條因果鏈，解釋了為什麼常勝的人會輸。第二張把它放進時間軸，第三張說明優勢如何被抵銷，第四張是他留下的雙面遺產，第五張是歐洲對他的制度性回應。若時間有限，讀第一張與第四張。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">義大利戰役</span><span class="yr">1796–1797</span><p>二十多歲的他以劣勢兵力連續擊敗奧軍。快速機動、集中兵力、各個擊破的打法在此定型。</p></div>
+  <div class="card"><span class="nm">霧月政變</span><span class="yr">1799</span><p>推翻督政府出任第一執政。法國大革命的共和階段到此結束，但革命的社會成果被保留並制度化。</p></div>
+  <div class="card"><span class="nm">民法典頒行</span><span class="yr">1804</span><p>他晚年自認最持久的成就，而且說對了。這部法典在他失勢後仍通行於歐洲多地，至今仍是大陸法系的基礎。</p></div>
+  <div class="card"><span class="nm">特拉法加海戰</span><span class="yr">1805</span><p>法西聯合艦隊覆滅，入侵英國的計畫永久作廢。第一個盲區從這一天起無法迴避。</p></div>
+  <div class="card"><span class="nm">奧斯特里茨會戰</span><span class="yr">1805</span><p>一日之內擊潰奧俄聯軍，通常被視為他指揮藝術的最高點。歐陸的力量對比就此改寫。</p></div>
+  <div class="card"><span class="nm">大陸封鎖體系</span><span class="yr">1806</span><p>禁止歐陸與英國貿易。它是無法擊敗英國之後的替代方案，也是此後每一場災難的共同起點。</p></div>
+  <div class="card"><span class="nm">半島戰爭爆發</span><span class="yr">1808</span><p>為了堵住封鎖的缺口而入侵伊比利半島，卻遇上沒有主力可打的全民抵抗。他自己稱之為潰爛的傷口。</p></div>
+  <div class="card"><span class="nm">遠征俄國</span><span class="yr">1812</span><p>因俄國退出封鎖而出兵。俄軍拒絕決戰、邊退邊燒，他佔領了莫斯科卻等不到任何人來談判。</p></div>
+  <div class="card"><span class="nm">萊比錫會戰</span><span class="yr">1813</span><p>又稱民族會戰。多國聯軍用他自己的方法、以兩倍的兵力擊敗他，德意志地區隨即全面脫離控制。</p></div>
+  <div class="card"><span class="nm">滑鐵盧與維也納會議</span><span class="yr">1815</span><p>百日復辟以戰敗告終。同時進行的維也納會議重畫了歐洲版圖，並確立了一套維持四十年的均勢體系。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">前因、對手與後續</span></div>
+<div class="grid">
+  <a class="card" href="法國大革命時間軸.html"><span class="nm">法國大革命時間軸</span><span class="lk">→ 專頁</span><p>他的權力來源。全國徵兵與革命動員體制，是他得以組建空前規模軍隊的前提。</p></a>
+  <a class="card" href="法國歷史總覽.html"><span class="nm">法國歷史總覽</span><span class="lk">→ 專頁</span><p>省長制與民法典如何在此後十一種政體的更替中一次也沒有被廢除——本頁第四節的長期版本。</p></a>
+  <a class="card" href="克里米亞戰爭.html"><span class="nm">克里米亞戰爭</span><span class="lk">→ 專頁</span><p>本頁第五節的下文：維也納體系撐了四十年，在 1853 年由五強第一次互相開戰而告終。</p></a>
+  <a class="card" href="德國歷史總覽.html"><span class="nm">德國歷史總覽</span><span class="lk">→ 專頁</span><p>被他精簡掉的邦國、被他激起的民族主義，以及被會議壯大的普魯士，日後如何組合成德國統一。</p></a>
+  <a class="card" href="俄羅斯歷史總覽.html"><span class="nm">俄羅斯歷史總覽</span><span class="lk">→ 專頁</span><p>1812 年的勝利讓俄國一躍成為歐洲憲兵，這個自我認知一直維持到 1856 年被克里米亞戰爭打碎。</p></a>
+  <a class="card" href="英國歷史總覽.html"><span class="nm">英國歷史總覽</span><span class="lk">→ 專頁</span><p>為什麼英國能長期支撐這場戰爭：議會控制稅收帶來的國家信用，讓它能以低利率不斷舉債。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的專題頁。範圍說明：「拿破崙戰爭」狹義指 1803 至 1815 年，但本頁自 1793 年的革命戰爭談起，因為他的軍隊、戰法與動員體制都源於那個階段，切斷來看會失去因果。兵力與傷亡數字採概略或比例表述而不列精確值——這個時期各國的統計方法差異大，遠征俄國一役的損失數字尤其分歧。
+</footer>
+
+</div>
+</body>
+</html>
