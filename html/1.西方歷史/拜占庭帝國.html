@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拜占庭帝國</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 專題</p>
+  <h1>拜占庭帝國</h1>
+  <p class="lede">先講一件會改變整個理解的事：<b>「拜占庭帝國」這個名字，是它滅亡一百年後才被歐洲學者發明出來的</b>。它自稱羅馬帝國，人民自稱羅馬人，直到 1453 年最後一位皇帝的正式頭銜仍是「羅馬人的皇帝」。所謂「羅馬帝國在 476 年滅亡」，只在西半部成立——東半部沒有中斷，而且又活了將近一千年。它靠的不是軍事優勢，它幾乎一直在挨打；<b>它擅長的是縮小、重組，然後撐住</b>。這一頁從那個名字開始，看它如何一次次在失去大半領土之後重新活下來，以及最後為什麼還是倒了。</p>
+</header>
+
+<blockquote>
+  一個國家能不能存續，有時不取決於它能贏多少次，而取決於它能輸多少次還不散。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>名字的問題：他們從來不叫自己拜占庭</h2>
+  <p class="sub">這不是名詞之爭。這個名字本身造成了對這一千年最普遍的誤解。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="170" height="36" fill="#17324d"/>
+    <rect x="203" y="18" width="290" height="36" fill="#2f5570"/>
+    <rect x="501" y="18" width="290" height="36" fill="#8a4636"/>
+    <rect x="799" y="18" width="276" height="36" fill="#17324d"/>
+    <text x="110" y="42" text-anchor="middle" font-size="13" fill="#ffffff">項目</text>
+    <text x="348" y="42" text-anchor="middle" font-size="13" fill="#ffffff">他們自己的說法</text>
+    <text x="646" y="42" text-anchor="middle" font-size="13" fill="#ffffff">別人給的說法</text>
+    <text x="937" y="42" text-anchor="middle" font-size="13" fill="#ffffff">造成的誤解</text>
+
+    <rect x="25" y="58" width="170" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="203" y="58" width="290" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="501" y="58" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="799" y="58" width="276" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="110" y="104" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">國號</text>
+    <text x="348" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">羅馬帝國</text>
+    <text x="348" y="114" text-anchor="middle" font-size="12.5" fill="#546e7a">從頭到尾沒有改過</text>
+    <text x="646" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">西歐稱之為「希臘人的帝國」</text>
+    <text x="646" y="114" text-anchor="middle" font-size="12.5" fill="#546e7a">刻意不承認它是羅馬</text>
+    <text x="937" y="92" text-anchor="middle" font-size="12.5" fill="#263238">讓人以為它是</text>
+    <text x="937" y="114" text-anchor="middle" font-size="12.5" fill="#263238">另一個接手的國家</text>
+
+    <rect x="25" y="138" width="170" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="203" y="138" width="290" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="501" y="138" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="799" y="138" width="276" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="110" y="184" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">人民</text>
+    <text x="348" y="172" text-anchor="middle" font-size="12.5" fill="#546e7a">羅馬人</text>
+    <text x="348" y="194" text-anchor="middle" font-size="12.5" fill="#546e7a">這是他們的自我認同</text>
+    <text x="646" y="172" text-anchor="middle" font-size="12.5" fill="#546e7a">希臘人</text>
+    <text x="646" y="194" text-anchor="middle" font-size="12.5" fill="#546e7a">在當時帶有貶意</text>
+    <text x="937" y="172" text-anchor="middle" font-size="12.5" fill="#263238">讓人以為羅馬帝國</text>
+    <text x="937" y="194" text-anchor="middle" font-size="12.5" fill="#263238">在 476 年就結束了</text>
+
+    <rect x="25" y="218" width="170" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="203" y="218" width="290" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="501" y="218" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="799" y="218" width="276" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="110" y="264" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">拜占庭一詞</text>
+    <text x="348" y="252" text-anchor="middle" font-size="12.5" fill="#546e7a">從未用來自稱</text>
+    <text x="348" y="274" text-anchor="middle" font-size="12.5" fill="#546e7a">那只是首都的舊地名</text>
+    <text x="646" y="252" text-anchor="middle" font-size="12.5" fill="#546e7a">十六世紀學者的分類用語</text>
+    <text x="646" y="274" text-anchor="middle" font-size="12.5" fill="#546e7a">十八世紀之後才普及</text>
+    <text x="937" y="252" text-anchor="middle" font-size="12.5" fill="#263238">把一千多年的延續</text>
+    <text x="937" y="274" text-anchor="middle" font-size="12.5" fill="#263238">硬切成不相干的兩段</text>
+
+    <rect x="25" y="298" width="170" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="203" y="298" width="290" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="501" y="298" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="799" y="298" width="276" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="110" y="344" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">語言</text>
+    <text x="348" y="332" text-anchor="middle" font-size="12.5" fill="#546e7a">官方語言在七世紀後</text>
+    <text x="348" y="354" text-anchor="middle" font-size="12.5" fill="#546e7a">由拉丁文改為希臘文</text>
+    <text x="646" y="332" text-anchor="middle" font-size="12.5" fill="#546e7a">西方以此為據</text>
+    <text x="646" y="354" text-anchor="middle" font-size="12.5" fill="#546e7a">認定它已不是羅馬</text>
+    <text x="937" y="332" text-anchor="middle" font-size="12.5" fill="#263238">把換了工作語言</text>
+    <text x="937" y="354" text-anchor="middle" font-size="12.5" fill="#263238">當成換了一個國家</text>
+
+    <rect x="25" y="390" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="414" text-anchor="middle" font-size="12.5" fill="#8f5e14">這個命名之爭有現實動機：西歐在 800 年之後也有了自己的「羅馬皇帝」，若承認東方那個才是</text>
+    <text x="550" y="436" text-anchor="middle" font-size="12.5" fill="#8f5e14">正統，自己的帝號就站不住腳。於是東羅馬被改稱希臘，「羅馬」的名分留給了西邊</text>
+  </svg>
+  </div>
+  <p class="after">本頁沿用「拜占庭」這個通行的稱呼，因為它已是中文與各國學界的標準用語，換掉反而不便查找。但讀的時候值得記住：<b>這是一個後人加上去的標籤，而被貼標籤的那些人，一輩子都認為自己是羅馬人。</b></p>
+</section>
+
+<section>
+  <h2>一千一百年：十個階段</h2>
+  <p class="sub">上排是版圖擴張與第一次重生，下排是持續縮小卻又數度回穩的後半段。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="20" y="18" width="1165" height="28" fill="#2f5570"/>
+    <text x="602" y="37" text-anchor="middle" font-size="12.5" fill="#ffffff">330 – 1025 年</text>
+
+    <rect x="20" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="132" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">新都與分治</text>
+    <text x="132" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">330 – 476</text>
+    <text x="132" y="122" text-anchor="middle" font-size="11" fill="#546e7a">君士坦丁遷都並改名新羅馬</text>
+    <text x="132" y="142" text-anchor="middle" font-size="11" fill="#546e7a">395 年帝國行政上分為東西</text>
+    <text x="132" y="162" text-anchor="middle" font-size="11" fill="#546e7a">476 年西部末帝被廢</text>
+    <text x="132" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">東部自認是唯一的延續</text>
+
+    <rect x="255" y="56" width="225" height="150" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="367" y="80" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">查士丁尼時代</text>
+    <text x="367" y="99" text-anchor="middle" font-size="10.5" fill="#37607a">527 – 565</text>
+    <text x="367" y="122" text-anchor="middle" font-size="11" fill="#546e7a">編纂民法大全</text>
+    <text x="367" y="142" text-anchor="middle" font-size="11" fill="#546e7a">興建聖索菲亞大教堂</text>
+    <text x="367" y="162" text-anchor="middle" font-size="11" fill="#546e7a">收復北非與義大利部分</text>
+    <text x="367" y="190" text-anchor="middle" font-size="11" fill="#1f5c85">收復耗盡國力，瘟疫接踵而來</text>
+
+    <rect x="490" y="56" width="225" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="602" y="80" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">七世紀大危機</text>
+    <text x="602" y="99" text-anchor="middle" font-size="10.5" fill="#96604f">602 – 718</text>
+    <text x="602" y="122" text-anchor="middle" font-size="11" fill="#546e7a">與波斯長期消耗，兩敗俱傷</text>
+    <text x="602" y="142" text-anchor="middle" font-size="11" fill="#546e7a">阿拉伯征服敘利亞、埃及與北非</text>
+    <text x="602" y="162" text-anchor="middle" font-size="11" fill="#546e7a">兩度被圍首都而未破</text>
+    <text x="602" y="190" text-anchor="middle" font-size="11" fill="#b8442a">失去約三分之二的領土與稅收</text>
+
+    <rect x="725" y="56" width="225" height="150" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="837" y="80" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">重組與聖像之爭</text>
+    <text x="837" y="99" text-anchor="middle" font-size="10.5" fill="#8a6a35">7 世紀後期 – 843</text>
+    <text x="837" y="122" text-anchor="middle" font-size="11" fill="#546e7a">推行軍區制，授田換兵役</text>
+    <text x="837" y="142" text-anchor="middle" font-size="11" fill="#546e7a">在縮小的基礎上重建財政與軍隊</text>
+    <text x="837" y="162" text-anchor="middle" font-size="11" fill="#546e7a">兩波破壞聖像運動撕裂社會</text>
+    <text x="837" y="190" text-anchor="middle" font-size="11" fill="#8f5e14">第一次成功的縮小重生</text>
+
+    <rect x="960" y="56" width="225" height="150" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="1072" y="80" text-anchor="middle" font-size="14" fill="#3d7a55" font-weight="600">馬其頓王朝盛世</text>
+    <text x="1072" y="99" text-anchor="middle" font-size="10.5" fill="#446b53">867 – 1025</text>
+    <text x="1072" y="122" text-anchor="middle" font-size="11" fill="#546e7a">版圖與財政回到高點</text>
+    <text x="1072" y="142" text-anchor="middle" font-size="11" fill="#546e7a">向斯拉夫世界傳教並輸出文字</text>
+    <text x="1072" y="162" text-anchor="middle" font-size="11" fill="#546e7a">法典整理與古典學術復興</text>
+    <text x="1072" y="190" text-anchor="middle" font-size="11" fill="#3d7a55">影響力擴及整個東歐</text>
+
+    <rect x="20" y="222" width="1165" height="28" fill="#8a4636"/>
+    <text x="602" y="241" text-anchor="middle" font-size="12.5" fill="#ffffff">1025 – 1453 年</text>
+
+    <rect x="20" y="260" width="225" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="132" y="284" text-anchor="middle" font-size="14" fill="#b8442a" font-weight="600">失去小亞細亞</text>
+    <text x="132" y="303" text-anchor="middle" font-size="10.5" fill="#96604f">1071</text>
+    <text x="132" y="326" text-anchor="middle" font-size="11" fill="#546e7a">曼齊刻爾特戰役敗於塞爾柱</text>
+    <text x="132" y="346" text-anchor="middle" font-size="11" fill="#546e7a">安納托利亞大半失守</text>
+    <text x="132" y="366" text-anchor="middle" font-size="11" fill="#546e7a">主要兵源與糧倉同時喪失</text>
+    <text x="132" y="394" text-anchor="middle" font-size="11" fill="#b8442a">軍區制的基礎被連根拔掉</text>
+
+    <rect x="255" y="260" width="225" height="150" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="367" y="284" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="600">求援與十字軍</text>
+    <text x="367" y="303" text-anchor="middle" font-size="10.5" fill="#8a6a35">1095 起</text>
+    <text x="367" y="326" text-anchor="middle" font-size="11" fill="#546e7a">向西方求援以收復失地</text>
+    <text x="367" y="346" text-anchor="middle" font-size="11" fill="#546e7a">來的卻是自有目的的十字軍</text>
+    <text x="367" y="366" text-anchor="middle" font-size="11" fill="#546e7a">雙方互不信任日益加深</text>
+    <text x="367" y="394" text-anchor="middle" font-size="11" fill="#8f5e14">請來的援兵成了新的威脅</text>
+
+    <rect x="490" y="260" width="225" height="150" fill="#f0e6e2" stroke="#c9a99e"/>
+    <text x="602" y="284" text-anchor="middle" font-size="14" fill="#8e2f1c" font-weight="600">君士坦丁堡被洗劫</text>
+    <text x="602" y="303" text-anchor="middle" font-size="10.5" fill="#7a4436">1204</text>
+    <text x="602" y="326" text-anchor="middle" font-size="11" fill="#4c636e">第四次十字軍轉向攻打盟友</text>
+    <text x="602" y="346" text-anchor="middle" font-size="11" fill="#4c636e">城市遭劫掠，帝國分裂</text>
+    <text x="602" y="366" text-anchor="middle" font-size="11" fill="#4c636e">拉丁帝國佔據首都近六十年</text>
+    <text x="602" y="394" text-anchor="middle" font-size="11" fill="#8e2f1c">財政、艦隊與人口再未恢復</text>
+
+    <rect x="725" y="260" width="225" height="150" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="837" y="284" text-anchor="middle" font-size="14" fill="#1f5c85" font-weight="600">復國與最後的餘暉</text>
+    <text x="837" y="303" text-anchor="middle" font-size="10.5" fill="#37607a">1261 – 14 世紀</text>
+    <text x="837" y="326" text-anchor="middle" font-size="11" fill="#546e7a">流亡政權自尼西亞收復首都</text>
+    <text x="837" y="346" text-anchor="middle" font-size="11" fill="#546e7a">但已無力恢復舊有版圖</text>
+    <text x="837" y="366" text-anchor="middle" font-size="11" fill="#546e7a">學術與藝術反而再現高峰</text>
+    <text x="837" y="394" text-anchor="middle" font-size="11" fill="#1f5c85">第二次縮小重生，規模更小</text>
+
+    <rect x="960" y="260" width="225" height="150" fill="#f0e6e2" stroke="#c9a99e"/>
+    <text x="1072" y="284" text-anchor="middle" font-size="14" fill="#8e2f1c" font-weight="600">1453</text>
+    <text x="1072" y="303" text-anchor="middle" font-size="10.5" fill="#7a4436">最後一年</text>
+    <text x="1072" y="326" text-anchor="middle" font-size="11" fill="#4c636e">領土僅剩首都與少數飛地</text>
+    <text x="1072" y="346" text-anchor="middle" font-size="11" fill="#4c636e">鄂圖曼以重砲轟破千年城牆</text>
+    <text x="1072" y="366" text-anchor="middle" font-size="11" fill="#4c636e">末代皇帝戰死於城破當日</text>
+    <text x="1072" y="394" text-anchor="middle" font-size="11" fill="#8e2f1c">羅馬帝國的名號至此終結</text>
+
+    <rect x="20" y="430" width="1165" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="602" y="454" text-anchor="middle" font-size="12.5" fill="#546e7a">上排第四格與下排第四格是這部歷史的節奏所在：兩次在失去大半領土之後，它都以更小的規模</text>
+    <text x="602" y="476" text-anchor="middle" font-size="12.5" fill="#546e7a">重新站起來。真正致命的不是任何一次戰敗，而是 1071 年之後再也長不回來的那個基礎</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>不靠打贏，靠撐住：三套存活系統</h2>
+  <p class="sub">它很少能一次解決敵人。它擅長的是讓時間站在自己這邊。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 480" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="30" width="336" height="290" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="198" y="62" text-anchor="middle" font-size="15.5" fill="#1f5c85" font-weight="700">外交</text>
+    <text x="198" y="84" text-anchor="middle" font-size="11.5" fill="#37607a">用錢與情報取代兵力</text>
+    <rect x="50" y="100" width="296" height="92" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="198" y="122" text-anchor="middle" font-size="11" fill="#59707b">做法</text>
+    <text x="198" y="144" text-anchor="middle" font-size="12" fill="#263238">以贈禮與津貼換取和平</text>
+    <text x="198" y="166" text-anchor="middle" font-size="12" fill="#263238">聯姻、離間、扶植對手的敵人</text>
+    <text x="198" y="186" text-anchor="middle" font-size="12" fill="#263238">維持一套職業使節與情報網</text>
+    <rect x="50" y="202" width="296" height="100" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="198" y="224" text-anchor="middle" font-size="11" fill="#59707b">為什麼有效</text>
+    <text x="198" y="246" text-anchor="middle" font-size="12" fill="#546e7a">一筆年金比一場戰役便宜</text>
+    <text x="198" y="268" text-anchor="middle" font-size="12" fill="#546e7a">而且能買到時間去處理</text>
+    <text x="198" y="290" text-anchor="middle" font-size="12" fill="#546e7a">另一條戰線上的敵人</text>
+
+    <rect x="382" y="30" width="336" height="290" fill="#fdf5e7" stroke="#e0b775" stroke-width="1.5" rx="6"/>
+    <text x="550" y="62" text-anchor="middle" font-size="15.5" fill="#8f5e14" font-weight="700">防禦技術</text>
+    <text x="550" y="84" text-anchor="middle" font-size="11.5" fill="#8a6a35">讓首都成為打不下來的目標</text>
+    <rect x="402" y="100" width="296" height="92" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="550" y="122" text-anchor="middle" font-size="11" fill="#59707b">做法</text>
+    <text x="550" y="144" text-anchor="middle" font-size="12" fill="#263238">三重的狄奧多西城牆</text>
+    <text x="550" y="166" text-anchor="middle" font-size="12" fill="#263238">列為機密的燃燒兵器</text>
+    <text x="550" y="186" text-anchor="middle" font-size="12" fill="#263238">三面環水的天然地形</text>
+    <rect x="402" y="202" width="296" height="100" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="224" text-anchor="middle" font-size="11" fill="#59707b">效果與極限</text>
+    <text x="550" y="246" text-anchor="middle" font-size="12" fill="#546e7a">城牆擋住了千年間無數次圍攻</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">但火砲出現後失效</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">燃燒兵器的配方最終失傳</text>
+
+    <rect x="734" y="30" width="336" height="290" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.5" rx="6"/>
+    <text x="902" y="62" text-anchor="middle" font-size="15.5" fill="#3d7a55" font-weight="700">行政與稅制</text>
+    <text x="902" y="84" text-anchor="middle" font-size="11.5" fill="#446b53">能在縮小之後重新組裝</text>
+    <rect x="754" y="100" width="296" height="92" fill="#ffffff" stroke="#c8dccf"/>
+    <text x="902" y="122" text-anchor="middle" font-size="11" fill="#59707b">做法</text>
+    <text x="902" y="144" text-anchor="middle" font-size="12" fill="#263238">軍區制：授田給農民換取兵役</text>
+    <text x="902" y="166" text-anchor="middle" font-size="12" fill="#263238">地方軍政合一，就地供養</text>
+    <text x="902" y="186" text-anchor="middle" font-size="12" fill="#263238">成文法傳統與專業文官體系</text>
+    <rect x="754" y="202" width="296" height="100" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="902" y="224" text-anchor="middle" font-size="11" fill="#59707b">為什麼關鍵</text>
+    <text x="902" y="246" text-anchor="middle" font-size="12" fill="#546e7a">稅基萎縮三分之二之後</text>
+    <text x="902" y="268" text-anchor="middle" font-size="12" fill="#546e7a">它仍能維持一支軍隊</text>
+    <text x="902" y="290" text-anchor="middle" font-size="12" fill="#546e7a">這是七世紀能撐過來的原因</text>
+
+    <rect x="30" y="346" width="1040" height="116" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="372" text-anchor="middle" font-size="14" fill="#8f5e14" font-weight="700">三套系統的共通點</text>
+    <rect x="52" y="386" width="330" height="62" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="217" y="410" text-anchor="middle" font-size="12" fill="#263238">目標不是消滅敵人</text>
+    <text x="217" y="432" text-anchor="middle" font-size="11.5" fill="#546e7a">而是讓對方先撐不下去</text>
+    <rect x="390" y="386" width="330" height="62" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="555" y="410" text-anchor="middle" font-size="12" fill="#263238">用金錢與制度換時間</text>
+    <text x="555" y="432" text-anchor="middle" font-size="11.5" fill="#546e7a">時間到了敵人往往自己分裂</text>
+    <rect x="728" y="386" width="320" height="62" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="888" y="410" text-anchor="middle" font-size="12" fill="#263238">承認自己會一直挨打</text>
+    <text x="888" y="432" text-anchor="middle" font-size="11.5" fill="#546e7a">因此把重點放在恢復力上</text>
+  </svg>
+  </div>
+  <p class="after">這種戰略常被西歐的敘述貶為怯懦或狡詐——「拜占庭式」在英文裡至今帶有陰謀與繁瑣的貶義。但把標準換成「在四面受敵的位置上活了多久」，這套做法的成績相當難以超越：它撐過了波斯、阿拉伯、保加爾、諾曼、塞爾柱與蒙古，最後才倒在鄂圖曼手上。</p>
+</section>
+
+<section>
+  <h2>兩次致命傷都來自西方</h2>
+  <p class="sub">它最大的敵人在東方，但真正打斷它的兩件事，都發生在它與西方基督教世界之間。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="24" width="505" height="34" fill="#8a4636"/>
+    <text x="282" y="47" text-anchor="middle" font-size="13" fill="#ffffff">1204：請來的援兵洗劫了首都</text>
+    <rect x="565" y="24" width="505" height="34" fill="#8a4636"/>
+    <text x="817" y="47" text-anchor="middle" font-size="13" fill="#ffffff">1453：求援的代價付不起</text>
+
+    <rect x="30" y="68" width="505" height="76" fill="#f0e6e2" stroke="#c9a99e"/>
+    <text x="282" y="94" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">發生了什麼</text>
+    <text x="282" y="116" text-anchor="middle" font-size="11.5" fill="#4c636e">第四次十字軍原定前往埃及，因債務與</text>
+    <text x="282" y="136" text-anchor="middle" font-size="11.5" fill="#4c636e">威尼斯的盤算而轉向攻打君士坦丁堡</text>
+    <rect x="30" y="152" width="505" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="282" y="178" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">直接後果</text>
+    <text x="282" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">城市遭連日劫掠，藏書與聖物被運往西歐</text>
+    <text x="282" y="220" text-anchor="middle" font-size="11.5" fill="#546e7a">帝國分裂成數個彼此競爭的政權</text>
+    <rect x="30" y="236" width="505" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="282" y="262" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">長期後果</text>
+    <text x="282" y="284" text-anchor="middle" font-size="11.5" fill="#546e7a">1261 年雖收復首都，但艦隊、財政與人口</text>
+    <text x="282" y="304" text-anchor="middle" font-size="11.5" fill="#546e7a">再也沒有回到 1204 年之前的水準</text>
+
+    <rect x="565" y="68" width="505" height="76" fill="#f0e6e2" stroke="#c9a99e"/>
+    <text x="817" y="94" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">發生了什麼</text>
+    <text x="817" y="116" text-anchor="middle" font-size="11.5" fill="#4c636e">面對鄂圖曼的壓迫，皇帝親赴西方求援</text>
+    <text x="817" y="136" text-anchor="middle" font-size="11.5" fill="#4c636e">代價是接受教會合一、承認教宗權威</text>
+    <rect x="565" y="152" width="505" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="817" y="178" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">國內的反應</text>
+    <text x="817" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">教士與民眾強烈反對，合一協議形同具文</text>
+    <text x="817" y="220" text-anchor="middle" font-size="11.5" fill="#546e7a">當時流傳「寧見蘇丹的頭巾，不見拉丁人的冠冕」</text>
+    <rect x="565" y="236" width="505" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="817" y="262" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">實際結果</text>
+    <text x="817" y="284" text-anchor="middle" font-size="11.5" fill="#546e7a">西方的援助既有限又太遲</text>
+    <text x="817" y="304" text-anchor="middle" font-size="11.5" fill="#546e7a">首都在守軍數千人的情況下被攻破</text>
+
+    <rect x="30" y="340" width="1040" height="146" fill="#f2eef6" stroke="#a894c0" stroke-width="1.8" rx="6"/>
+    <text x="550" y="368" text-anchor="middle" font-size="14" fill="#6b4a8f" font-weight="700">中間那個結構性的兩難</text>
+    <rect x="52" y="382" width="330" height="88" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="217" y="406" text-anchor="middle" font-size="12" fill="#263238">1054 年東西教會分裂之後</text>
+    <text x="217" y="428" text-anchor="middle" font-size="12" fill="#263238">向西方求援永遠附帶條件</text>
+    <text x="217" y="452" text-anchor="middle" font-size="11.5" fill="#546e7a">承認羅馬教宗的最高權威</text>
+    <rect x="390" y="382" width="330" height="88" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="555" y="406" text-anchor="middle" font-size="12" fill="#263238">但接受這個條件</text>
+    <text x="555" y="428" text-anchor="middle" font-size="12" fill="#263238">會失去國內的正當性</text>
+    <text x="555" y="452" text-anchor="middle" font-size="11.5" fill="#546e7a">皇帝的權威建立在信仰的正統上</text>
+    <rect x="728" y="382" width="320" height="88" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="888" y="406" text-anchor="middle" font-size="12" fill="#6b4a8f">於是每一次求援</text>
+    <text x="888" y="428" text-anchor="middle" font-size="12" fill="#6b4a8f">都在對外與對內之間二選一</text>
+    <text x="888" y="452" text-anchor="middle" font-size="11.5" fill="#546e7a">兩百年間反覆上演而無解</text>
+  </svg>
+  </div>
+  <p class="after">這一節說明了為什麼「西方為何不救拜占庭」這個問題問得不太對。西方不是單純見死不救，而是它開出的條件觸及對方立國的根本；而拜占庭也不是單純固執，它很清楚一旦皇帝被視為背棄正教，統治的基礎就沒了。<b>兩邊都在自己的邏輯裡做了合理的選擇，合起來卻是死局。</b></p>
+</section>
+
+<section>
+  <h2>1453 之後：它留下了什麼</h2>
+  <p class="sub">帝國消失了，但它保管的東西分別流進了三個方向。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="390" height="36" fill="#17324d"/>
+    <rect x="631" y="18" width="444" height="36" fill="#17324d"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">流向</text>
+    <text x="428" y="42" text-anchor="middle" font-size="13" fill="#ffffff">它保管或創造了什麼</text>
+    <text x="853" y="42" text-anchor="middle" font-size="13" fill="#ffffff">後續的影響</text>
+
+    <rect x="25" y="58" width="200" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="58" width="390" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="631" y="58" width="444" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="104" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">東正教世界</text>
+    <text x="428" y="92" text-anchor="middle" font-size="12" fill="#546e7a">向斯拉夫地區傳教並創制文字</text>
+    <text x="428" y="114" text-anchor="middle" font-size="12" fill="#546e7a">確立了東方教會的禮儀與神學</text>
+    <text x="853" y="92" text-anchor="middle" font-size="12.5" fill="#263238">今日東歐與俄羅斯的信仰版圖</text>
+    <text x="853" y="114" text-anchor="middle" font-size="12.5" fill="#263238">大致就是這條傳教路線畫出來的</text>
+
+    <rect x="25" y="134" width="200" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="134" width="390" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="631" y="134" width="444" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="180" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">莫斯科</text>
+    <text x="428" y="168" text-anchor="middle" font-size="12" fill="#546e7a">末代皇室的姻親關係</text>
+    <text x="428" y="190" text-anchor="middle" font-size="12" fill="#546e7a">與東正教正統的繼承主張</text>
+    <text x="853" y="168" text-anchor="middle" font-size="12.5" fill="#263238">自居第三羅馬，替往後的擴張</text>
+    <text x="853" y="190" text-anchor="middle" font-size="12.5" fill="#263238">提供了一套宗教上的正當性語言</text>
+
+    <rect x="25" y="210" width="200" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="233" y="210" width="390" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="631" y="210" width="444" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="256" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">鄂圖曼</text>
+    <text x="428" y="244" text-anchor="middle" font-size="12" fill="#546e7a">首都、宮廷制度與部分稅制</text>
+    <text x="428" y="266" text-anchor="middle" font-size="12" fill="#546e7a">以及境內原有的行政人員</text>
+    <text x="853" y="244" text-anchor="middle" font-size="12.5" fill="#263238">征服者本人也自稱羅馬的凱撒</text>
+    <text x="853" y="266" text-anchor="middle" font-size="12.5" fill="#263238">這個名分之爭又延續了數百年</text>
+
+    <rect x="25" y="286" width="200" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="233" y="286" width="390" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="631" y="286" width="444" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="125" y="332" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">歐洲的法學</text>
+    <text x="428" y="320" text-anchor="middle" font-size="12" fill="#546e7a">查士丁尼時代編纂的羅馬法彙編</text>
+    <text x="428" y="342" text-anchor="middle" font-size="12" fill="#546e7a">在東方被完整保存下來</text>
+    <text x="853" y="320" text-anchor="middle" font-size="12.5" fill="#263238">十一世紀起在義大利被重新研究</text>
+    <text x="853" y="342" text-anchor="middle" font-size="12.5" fill="#263238">成為整個大陸法系的源頭</text>
+
+    <rect x="25" y="362" width="200" height="76" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="233" y="362" width="390" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="631" y="362" width="444" height="76" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="125" y="408" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">文藝復興</text>
+    <text x="428" y="396" text-anchor="middle" font-size="12" fill="#546e7a">希臘文古典著作的抄本</text>
+    <text x="428" y="418" text-anchor="middle" font-size="12" fill="#546e7a">以及讀得懂它們的學者</text>
+    <text x="853" y="396" text-anchor="middle" font-size="12.5" fill="#3d7a55">學者攜書西遷，讓義大利得以直接</text>
+    <text x="853" y="418" text-anchor="middle" font-size="12.5" fill="#3d7a55">接觸希臘原典而非阿拉伯轉譯本</text>
+
+    <rect x="25" y="450" width="1050" height="42" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="477" text-anchor="middle" font-size="12.5" fill="#8f5e14">最後一列有個少被提起的因果：西歐重新發現古希臘，有一部分正是因為東邊那個帝國撐得夠久</text>
+  </svg>
+  </div>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　第一張圖處理名字，這是理解全局的前提。第二張是一千一百年的節奏，第三張說明它憑什麼撐這麼久，第四張是它為什麼最終撐不住，第五張是它留下的東西。若時間有限，讀第一張與第三張——一個糾正誤解，一個給出解釋。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">君士坦丁堡落成</span><span class="yr">330</span><p>君士坦丁在博斯普魯斯海峽邊建新都，命名為新羅馬。三面環水、扼守海峽，這個位置本身就是它日後最大的資產。</p></div>
+  <div class="card"><span class="nm">西部帝國終結</span><span class="yr">476</span><p>西部最後一位皇帝被廢。東部並不認為帝國滅亡了——在他們的紀年裡，羅馬帝國從未中斷。</p></div>
+  <div class="card"><span class="nm">民法大全編成</span><span class="yr">6 世紀</span><p>查士丁尼下令彙整羅馬法。這部彙編在東方被保存下來，六百年後成為西歐法學復興的起點。</p></div>
+  <div class="card"><span class="nm">聖索菲亞大教堂落成</span><span class="yr">537</span><p>當時世界最大的穹頂建築。它在 1453 年後改為清真寺，今日仍是伊斯坦堡最著名的建築。</p></div>
+  <div class="card"><span class="nm">阿拉伯征服東方行省</span><span class="yr">7 世紀</span><p>敘利亞、埃及與北非相繼失守，帝國失去約三分之二的領土與稅收。接下來的重建決定了它往後的形態。</p></div>
+  <div class="card"><span class="nm">軍區制成形</span><span class="yr">7–8 世紀</span><p>把土地授予農民以換取兵役，讓帝國在稅基大幅萎縮後仍能維持軍隊。這是它撐過七世紀危機的關鍵制度。</p></div>
+  <div class="card"><span class="nm">東西教會大分裂</span><span class="yr">1054</span><p>雙方互相開除教籍。此後每一次向西方求援，都會附帶承認教宗權威的條件，形成無解的兩難。</p></div>
+  <div class="card"><span class="nm">曼齊刻爾特戰役</span><span class="yr">1071</span><p>敗於塞爾柱之後失去安納托利亞大半。兵源與糧倉同時喪失，軍區制的基礎被連根拔起，這是真正的轉折點。</p></div>
+  <div class="card"><span class="nm">第四次十字軍洗劫首都</span><span class="yr">1204</span><p>本應是援軍的十字軍轉而攻打並劫掠君士坦丁堡。帝國雖在 1261 年復國，實力再未恢復。</p></div>
+  <div class="card"><span class="nm">君士坦丁堡陷落</span><span class="yr">1453</span><p>鄂圖曼以重砲轟破千年城牆，末代皇帝戰死。羅馬帝國這個政治實體，到此才真正結束。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">信仰、鄰居與遺產</span></div>
+<div class="grid">
+  <a class="card" href="../3-0.宗教/東正教.html"><span class="nm">東正教</span><span class="lk">→ 專頁</span><p>這個帝國的信仰體系：教義、禮儀，以及教會與皇權的關係為何與西方截然不同。</p></a>
+  <a class="card" href="../3-0.宗教/基督教的形成與早期教義爭論.html"><span class="nm">基督教的形成與早期教義爭論</span><span class="lk">→ 專頁</span><p>那些在君士坦丁堡與周邊召開的大公會議，如何決定了基督教的基本教義。</p></a>
+  <a class="card" href="../3-0.宗教/伊斯蘭教.html"><span class="nm">伊斯蘭教</span><span class="lk">→ 專頁</span><p>七世紀奪走它三分之二領土的那股力量。理解阿拉伯征服，才能理解帝國為何必須整個重組。</p></a>
+  <a class="card" href="神聖羅馬帝國時間軸.html"><span class="nm">神聖羅馬帝國時間軸</span><span class="lk">→ 專頁</span><p>西方那個也自稱羅馬的帝國。兩個「羅馬」並存的尷尬，正是本頁第一節那場命名之爭的來源。</p></a>
+  <a class="card" href="文藝復興.html"><span class="nm">文藝復興</span><span class="lk">→ 專頁</span><p>本頁第五節的下文：希臘文抄本與學者西遷，如何讓義大利得以直接閱讀希臘原典。</p></a>
+  <a class="card" href="俄羅斯歷史總覽.html"><span class="nm">俄羅斯歷史總覽</span><span class="lk">→ 專頁</span><p>988 年那個選擇的長期後果，以及「第三羅馬」這套論述如何被用來支撐後來的擴張。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的專題頁。<b>名稱</b>：本頁沿用通行的「拜占庭帝國」，但如第一節所述，這是後世的稱呼；該政權自稱羅馬帝國，其人民自稱羅馬人。<b>起訖年</b>：起點採 330 年遷都，另有 395 年分治、476 年西部終結、7 世紀改用希臘語等分法，各有理由，本頁不主張唯一正確的斷代。<b>數字</b>：領土與稅收的損失比例、末期守軍人數等採概略表述，中古史料的數字多為估計。
+</footer>
+
+</div>
+</body>
+</html>

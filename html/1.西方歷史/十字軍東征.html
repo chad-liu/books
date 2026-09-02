@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>十字軍東征</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 專題</p>
+  <h1>十字軍東征</h1>
+  <p class="lede">把十字軍理解成「基督徒去打穆斯林」，會漏掉它一半的用途。<b>「十字軍」本質上不是一個目標，而是一種可以被授予的身分</b>——立誓、佩上十字，就取得全大赦、財產保護與教會法上的特殊地位。既然這是一套可授予的東西，教宗就能把它指向任何一場被宣告為正當的戰爭。於是兩百年間，被冠上十字軍之名的行動裡，<b>有幾次打的是基督徒</b>：第四次洗劫了君士坦丁堡，阿爾比十字軍摧毀了法國南部，還有專門用來對付教宗政敵的十字軍。這一頁從那套授權機制開始，看它如何被指向不同方向，以及結果為什麼幾乎和初衷相反。</p>
+</header>
+
+<blockquote>
+  它不是一場戰爭，而是一種地位。理解了這一點，才能理解為什麼它會被指向那麼多不同的對象。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>「十字軍」是一種授權，不是一個目標</h2>
+  <p class="sub">先看這套身分包含什麼。它的內容決定了它為什麼那麼有號召力，也決定了它為什麼可以被移作他用。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="240" height="36" fill="#17324d"/>
+    <rect x="273" y="18" width="390" height="36" fill="#17324d"/>
+    <rect x="671" y="18" width="404" height="36" fill="#17324d"/>
+    <text x="145" y="42" text-anchor="middle" font-size="13" fill="#ffffff">這套身分包含</text>
+    <text x="468" y="42" text-anchor="middle" font-size="13" fill="#ffffff">具體內容</text>
+    <text x="873" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼關鍵</text>
+
+    <rect x="25" y="58" width="240" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="273" y="58" width="390" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="58" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="145" y="104" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">誓願與十字標記</text>
+    <text x="468" y="92" text-anchor="middle" font-size="12" fill="#546e7a">公開立誓後在衣服上佩十字</text>
+    <text x="468" y="114" text-anchor="middle" font-size="12" fill="#546e7a">從此成為有特殊身分的人</text>
+    <text x="873" y="92" text-anchor="middle" font-size="12.5" fill="#263238">誓言由教會強制執行</text>
+    <text x="873" y="114" text-anchor="middle" font-size="12.5" fill="#263238">中途反悔要受教會的處罰</text>
+
+    <rect x="25" y="138" width="240" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="273" y="138" width="390" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="138" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="145" y="184" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">全大赦</text>
+    <text x="468" y="172" text-anchor="middle" font-size="12" fill="#546e7a">已告解之罪的現世補贖被免除</text>
+    <text x="468" y="194" text-anchor="middle" font-size="12" fill="#546e7a">出征本身被視為一種苦行</text>
+    <text x="873" y="172" text-anchor="middle" font-size="12.5" fill="#263238">最主要的號召力所在</text>
+    <text x="873" y="194" text-anchor="middle" font-size="12.5" fill="#263238">對以殺伐為業的武士階層尤其有力</text>
+
+    <rect x="25" y="218" width="240" height="80" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="273" y="218" width="390" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="218" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="145" y="264" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">財產與債務保護</text>
+    <text x="468" y="252" text-anchor="middle" font-size="12" fill="#546e7a">出征期間家產受教會保護</text>
+    <text x="468" y="274" text-anchor="middle" font-size="12" fill="#546e7a">債務暫停計息</text>
+    <text x="873" y="252" text-anchor="middle" font-size="12.5" fill="#263238">解決了「離家數年怎麼辦」</text>
+    <text x="873" y="274" text-anchor="middle" font-size="12.5" fill="#263238">這個最現實的障礙</text>
+
+    <rect x="25" y="298" width="240" height="80" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="273" y="298" width="390" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="671" y="298" width="404" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="145" y="344" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">教會法上的地位</text>
+    <text x="468" y="332" text-anchor="middle" font-size="12" fill="#546e7a">侵害十字軍者受絕罰</text>
+    <text x="468" y="354" text-anchor="middle" font-size="12" fill="#546e7a">相關訴訟由教會法庭處理</text>
+    <text x="873" y="332" text-anchor="middle" font-size="12.5" fill="#263238">參加者取得了實質的法律庇護</text>
+    <text x="873" y="354" text-anchor="middle" font-size="12.5" fill="#263238">在封建糾紛頻繁的時代非常實用</text>
+
+    <rect x="25" y="390" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="414" text-anchor="middle" font-size="12.5" fill="#8f5e14">關鍵在於這四項都是「可以被授予的」。教宗能把這整套地位授予任何一場他宣告為正當的戰爭，</text>
+    <text x="550" y="436" text-anchor="middle" font-size="12.5" fill="#8f5e14">於是它很快就不再只用於聖地——下一節那張表的後四列，就是這個機制被移作他用的結果</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>被指向的八個方向</h2>
+  <p class="sub">前四列是通稱的「東征」，後四列同樣是正式的十字軍。注意第三欄。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="180" height="36" fill="#17324d"/>
+    <rect x="213" y="18" width="150" height="36" fill="#17324d"/>
+    <rect x="371" y="18" width="290" height="36" fill="#17324d"/>
+    <rect x="669" y="18" width="406" height="36" fill="#17324d"/>
+    <text x="115" y="42" text-anchor="middle" font-size="13" fill="#ffffff">名稱</text>
+    <text x="288" y="42" text-anchor="middle" font-size="13" fill="#ffffff">年代</text>
+    <text x="516" y="42" text-anchor="middle" font-size="13" fill="#ffffff">主要對象</text>
+    <text x="872" y="42" text-anchor="middle" font-size="13" fill="#ffffff">結果</text>
+
+    <rect x="25" y="58" width="180" height="52" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="213" y="58" width="150" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="371" y="58" width="290" height="52" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="58" width="406" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="115" y="90" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">第一次</text>
+    <text x="288" y="90" text-anchor="middle" font-size="12" fill="#546e7a">1096–1099</text>
+    <text x="516" y="90" text-anchor="middle" font-size="12.5" fill="#263238">塞爾柱與法蒂瑪等穆斯林政權</text>
+    <text x="872" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">攻陷耶路撒冷並屠城，建立十字軍國家</text>
+
+    <rect x="25" y="110" width="180" height="52" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="213" y="110" width="150" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="371" y="110" width="290" height="52" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="110" width="406" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="115" y="142" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">第二次</text>
+    <text x="288" y="142" text-anchor="middle" font-size="12" fill="#546e7a">1147–1149</text>
+    <text x="516" y="142" text-anchor="middle" font-size="12.5" fill="#263238">敘利亞的穆斯林政權</text>
+    <text x="872" y="142" text-anchor="middle" font-size="12.5" fill="#546e7a">大軍雲集卻無功而返，聲望嚴重受挫</text>
+
+    <rect x="25" y="162" width="180" height="52" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="213" y="162" width="150" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="371" y="162" width="290" height="52" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="162" width="406" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="115" y="194" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">第三次</text>
+    <text x="288" y="194" text-anchor="middle" font-size="12" fill="#546e7a">1189–1192</text>
+    <text x="516" y="194" text-anchor="middle" font-size="12.5" fill="#263238">薩拉丁的阿尤布王朝</text>
+    <text x="872" y="194" text-anchor="middle" font-size="12.5" fill="#546e7a">未收復耶路撒冷，談成基督徒的朝聖權</text>
+
+    <rect x="25" y="214" width="180" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="213" y="214" width="150" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="371" y="214" width="290" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="669" y="214" width="406" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <text x="115" y="246" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">第四次</text>
+    <text x="288" y="246" text-anchor="middle" font-size="12" fill="#7a4436">1202–1204</text>
+    <text x="516" y="246" text-anchor="middle" font-size="12.5" fill="#8e2f1c">基督教的君士坦丁堡</text>
+    <text x="872" y="246" text-anchor="middle" font-size="12.5" fill="#4c636e">洗劫該城並建立拉丁帝國，從未抵達聖地</text>
+
+    <rect x="25" y="266" width="180" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="213" y="266" width="150" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="371" y="266" width="290" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="669" y="266" width="406" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <text x="115" y="298" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">阿爾比十字軍</text>
+    <text x="288" y="298" text-anchor="middle" font-size="12" fill="#7a4436">1209–1229</text>
+    <text x="516" y="298" text-anchor="middle" font-size="12.5" fill="#8e2f1c">法國南部的卡特里派基督徒</text>
+    <text x="872" y="298" text-anchor="middle" font-size="12.5" fill="#4c636e">當地文化與貴族被摧毀，土地歸入法王直轄</text>
+
+    <rect x="25" y="318" width="180" height="52" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="213" y="318" width="150" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="371" y="318" width="290" height="52" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="318" width="406" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="115" y="350" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">北方十字軍</text>
+    <text x="288" y="350" text-anchor="middle" font-size="12" fill="#546e7a">12–15 世紀</text>
+    <text x="516" y="350" text-anchor="middle" font-size="12.5" fill="#263238">波羅的海沿岸的非基督教族群</text>
+    <text x="872" y="350" text-anchor="middle" font-size="12.5" fill="#546e7a">條頓騎士團在當地建立了長期的統治</text>
+
+    <rect x="25" y="370" width="180" height="52" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="213" y="370" width="150" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="371" y="370" width="290" height="52" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="370" width="406" height="52" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="115" y="402" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">伊比利的戰事</text>
+    <text x="288" y="402" text-anchor="middle" font-size="12" fill="#546e7a">11–15 世紀</text>
+    <text x="516" y="402" text-anchor="middle" font-size="12.5" fill="#263238">半島上的穆斯林政權</text>
+    <text x="872" y="402" text-anchor="middle" font-size="12.5" fill="#546e7a">部分戰役被授予十字軍地位，1492 年結束</text>
+
+    <rect x="25" y="422" width="180" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="213" y="422" width="150" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="371" y="422" width="290" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <rect x="669" y="422" width="406" height="52" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <text x="115" y="454" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">政治十字軍</text>
+    <text x="288" y="454" text-anchor="middle" font-size="12" fill="#7a4436">13 世紀</text>
+    <text x="516" y="454" text-anchor="middle" font-size="12.5" fill="#8e2f1c">教宗在義大利的基督徒政敵</text>
+    <text x="872" y="454" text-anchor="middle" font-size="12.5" fill="#4c636e">用於教宗與神聖羅馬皇帝之間的權力鬥爭</text>
+
+    <rect x="25" y="486" width="1050" height="62" fill="#f0e6e2" stroke="#c9a99e"/>
+    <text x="550" y="510" text-anchor="middle" font-size="12.5" fill="#8e2f1c">八列裡有三列標了顏色，它們的對象是基督徒。把十字軍理解成「基督徒打穆斯林」，</text>
+    <text x="550" y="532" text-anchor="middle" font-size="12.5" fill="#8e2f1c">就會漏掉這套授權機制的另一半用途——它同樣被用來對付內部的異端與政敵</text>
+  </svg>
+  </div>
+  <p class="after">「八次東征」這個編號本身也是後人整理出來的，中世紀當時並沒有這樣數。實際上還有許多規模較小、未被編號的遠征，以及像 1212 年那類真偽難辨、被後世傳說大幅加工的事件。編號方便記憶，但會讓人誤以為它是一個有計畫、有連續性的系列。</p>
+</section>
+
+<section>
+  <h2>為什麼是十一世紀末：四股力量剛好對上</h2>
+  <p class="sub">1095 年的號召之所以有那樣的規模，是因為四件本來不相干的事同時成熟了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="30" width="252" height="270" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="151" y="62" text-anchor="middle" font-size="14.5" fill="#1f5c85" font-weight="700">教宗的權威</text>
+    <rect x="43" y="78" width="216" height="96" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="151" y="102" text-anchor="middle" font-size="11.5" fill="#263238">與皇帝的敘任權鬥爭</text>
+    <text x="151" y="124" text-anchor="middle" font-size="11.5" fill="#263238">正激烈進行</text>
+    <text x="151" y="148" text-anchor="middle" font-size="11.5" fill="#263238">教宗需要展示號召力</text>
+    <rect x="43" y="184" width="216" height="102" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="151" y="208" text-anchor="middle" font-size="11" fill="#59707b">因此</text>
+    <text x="151" y="232" text-anchor="middle" font-size="11.5" fill="#546e7a">一場能動員全歐的行動</text>
+    <text x="151" y="254" text-anchor="middle" font-size="11.5" fill="#546e7a">正好證明誰才是</text>
+    <text x="151" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">基督教世界的中心</text>
+
+    <rect x="289" y="30" width="252" height="270" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="415" y="62" text-anchor="middle" font-size="14.5" fill="#b8442a" font-weight="700">沒有土地的武士</text>
+    <rect x="307" y="78" width="216" height="96" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="415" y="102" text-anchor="middle" font-size="11.5" fill="#263238">長子繼承制之下</text>
+    <text x="415" y="124" text-anchor="middle" font-size="11.5" fill="#263238">次子無法分到領地</text>
+    <text x="415" y="148" text-anchor="middle" font-size="11.5" fill="#263238">卻受過完整的武裝訓練</text>
+    <rect x="307" y="184" width="216" height="102" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="415" y="208" text-anchor="middle" font-size="11" fill="#59707b">因此</text>
+    <text x="415" y="232" text-anchor="middle" font-size="11.5" fill="#546e7a">歐洲有大量閒置的武力</text>
+    <text x="415" y="254" text-anchor="middle" font-size="11.5" fill="#546e7a">既是內部動亂的來源</text>
+    <text x="415" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">也是現成的兵源</text>
+
+    <rect x="553" y="30" width="252" height="270" fill="#fdf5e7" stroke="#e0b775" stroke-width="1.5" rx="6"/>
+    <text x="679" y="62" text-anchor="middle" font-size="14.5" fill="#8f5e14" font-weight="700">義大利商業城市</text>
+    <rect x="571" y="78" width="216" height="96" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="679" y="102" text-anchor="middle" font-size="11.5" fill="#263238">威尼斯、熱那亞、比薩</text>
+    <text x="679" y="124" text-anchor="middle" font-size="11.5" fill="#263238">正在擴張海上貿易</text>
+    <text x="679" y="148" text-anchor="middle" font-size="11.5" fill="#263238">需要東地中海的據點</text>
+    <rect x="571" y="184" width="216" height="102" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="679" y="208" text-anchor="middle" font-size="11" fill="#59707b">因此</text>
+    <text x="679" y="232" text-anchor="middle" font-size="11.5" fill="#546e7a">它們提供船運與資金</text>
+    <text x="679" y="254" text-anchor="middle" font-size="11.5" fill="#546e7a">並在每次遠征中</text>
+    <text x="679" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">爭取自己的商業條件</text>
+
+    <rect x="817" y="30" width="252" height="270" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.5" rx="6"/>
+    <text x="943" y="62" text-anchor="middle" font-size="14.5" fill="#3d7a55" font-weight="700">朝聖與贖罪</text>
+    <rect x="835" y="78" width="216" height="96" fill="#ffffff" stroke="#c8dccf"/>
+    <text x="943" y="102" text-anchor="middle" font-size="11.5" fill="#263238">前往聖地朝聖</text>
+    <text x="943" y="124" text-anchor="middle" font-size="11.5" fill="#263238">早已是普遍的宗教實踐</text>
+    <text x="943" y="148" text-anchor="middle" font-size="11.5" fill="#263238">被視為贖罪的方式</text>
+    <rect x="835" y="184" width="216" height="102" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="943" y="208" text-anchor="middle" font-size="11" fill="#59707b">因此</text>
+    <text x="943" y="232" text-anchor="middle" font-size="11.5" fill="#546e7a">當朝聖被加上武裝</text>
+    <text x="943" y="254" text-anchor="middle" font-size="11.5" fill="#546e7a">並附帶全大赦時</text>
+    <text x="943" y="276" text-anchor="middle" font-size="11.5" fill="#546e7a">這個觀念不難被接受</text>
+
+    <rect x="25" y="326" width="1044" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="547" y="350" text-anchor="middle" font-size="12.5" fill="#8f5e14">這四股力量彼此獨立，卻在十一世紀末同時到位。少了任何一股，1095 年的號召都不會有那樣的</text>
+    <text x="547" y="372" text-anchor="middle" font-size="12.5" fill="#8f5e14">規模——這也說明為什麼後來的教宗一再嘗試複製，卻再也召不出同樣的動員</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>結果與初衷的落差</h2>
+  <p class="sub">前四列是原本的目標，後兩列是沒有人預期到的結果。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 550" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="170" height="36" fill="#17324d"/>
+    <rect x="213" y="18" width="390" height="36" fill="#2f5570"/>
+    <rect x="611" y="18" width="464" height="36" fill="#8a4636"/>
+    <text x="110" y="42" text-anchor="middle" font-size="13" fill="#ffffff">項目</text>
+    <text x="408" y="42" text-anchor="middle" font-size="13" fill="#ffffff">原本的期待</text>
+    <text x="843" y="42" text-anchor="middle" font-size="13" fill="#ffffff">實際的結果</text>
+
+    <rect x="25" y="58" width="170" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="213" y="58" width="390" height="68" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="611" y="58" width="464" height="68" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="98" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">聖地</text>
+    <text x="408" y="98" text-anchor="middle" font-size="12.5" fill="#546e7a">奪回並長期保有耶路撒冷</text>
+    <text x="843" y="88" text-anchor="middle" font-size="12.5" fill="#546e7a">斷續佔有約兩百年</text>
+    <text x="843" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">1291 年最後一個據點也丟失</text>
+
+    <rect x="25" y="126" width="170" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="213" y="126" width="390" height="68" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="611" y="126" width="464" height="68" fill="#f0e6e2" stroke="#c9a99e" stroke-width="1.6"/>
+    <text x="110" y="166" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">拜占庭</text>
+    <text x="408" y="166" text-anchor="middle" font-size="12.5" fill="#546e7a">應其求援，協助它收復失土</text>
+    <text x="843" y="156" text-anchor="middle" font-size="12.5" fill="#8e2f1c">1204 年由十字軍親手洗劫其首都</text>
+    <text x="843" y="178" text-anchor="middle" font-size="12.5" fill="#4c636e">它從此再也沒有恢復元氣</text>
+
+    <rect x="25" y="194" width="170" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="213" y="194" width="390" height="68" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="611" y="194" width="464" height="68" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="234" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">教會合一</text>
+    <text x="408" y="234" text-anchor="middle" font-size="12.5" fill="#546e7a">修補 1054 年的東西教會分裂</text>
+    <text x="843" y="224" text-anchor="middle" font-size="12.5" fill="#546e7a">敵意反而大幅加深</text>
+    <text x="843" y="246" text-anchor="middle" font-size="12.5" fill="#546e7a">1204 年之後合一幾乎不再可能</text>
+
+    <rect x="25" y="262" width="170" height="68" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="213" y="262" width="390" height="68" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="611" y="262" width="464" height="68" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="302" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">勢力版圖</text>
+    <text x="408" y="302" text-anchor="middle" font-size="12.5" fill="#546e7a">遏止伊斯蘭勢力的擴張</text>
+    <text x="843" y="292" text-anchor="middle" font-size="12.5" fill="#546e7a">長期而言並未改變版圖</text>
+    <text x="843" y="314" text-anchor="middle" font-size="12.5" fill="#546e7a">鄂圖曼在此後數百年更逼近歐洲</text>
+
+    <rect x="25" y="330" width="170" height="68" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="213" y="330" width="390" height="68" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="611" y="330" width="464" height="68" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="110" y="370" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">意外之一</text>
+    <text x="408" y="370" text-anchor="middle" font-size="12.5" fill="#546e7a">沒有人是為了做生意而去的</text>
+    <text x="843" y="360" text-anchor="middle" font-size="12.5" fill="#3d7a55">義大利商業城市取得地中海航線與據點</text>
+    <text x="843" y="382" text-anchor="middle" font-size="12.5" fill="#3d7a55">為日後的文藝復興累積了資本</text>
+
+    <rect x="25" y="398" width="170" height="68" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="213" y="398" width="390" height="68" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="611" y="398" width="464" height="68" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="110" y="438" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">意外之二</text>
+    <text x="408" y="438" text-anchor="middle" font-size="12.5" fill="#546e7a">軍事修會原本只是護衛朝聖者</text>
+    <text x="843" y="428" text-anchor="middle" font-size="12.5" fill="#3d7a55">發展出跨國的財務、借貸與後勤網絡</text>
+    <text x="843" y="450" text-anchor="middle" font-size="12.5" fill="#3d7a55">這是歐洲最早的跨境金融組織之一</text>
+
+    <rect x="25" y="478" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="502" text-anchor="middle" font-size="12.5" fill="#8f5e14">要澄清一個常見說法：希臘與阿拉伯學術傳回西歐，主要管道是伊比利半島與西西里的翻譯運動，</text>
+    <text x="550" y="524" text-anchor="middle" font-size="12.5" fill="#8f5e14">不是十字軍國家。把知識傳播歸功於十字軍，是十九世紀之後被過度放大的一種說法</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>這個詞後來怎麼被使用</h2>
+  <p class="sub">十字軍的形象變過好幾次，而且每一次的變化，反映的多半是當時的需要而非史實。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="230" height="36" fill="#17324d"/>
+    <rect x="263" y="18" width="812" height="36" fill="#17324d"/>
+    <text x="140" y="42" text-anchor="middle" font-size="13" fill="#ffffff">時期</text>
+    <text x="669" y="42" text-anchor="middle" font-size="13" fill="#ffffff">當時的看法</text>
+
+    <rect x="25" y="58" width="230" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="263" y="58" width="812" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="140" y="104" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">中世紀當時</text>
+    <text x="669" y="88" text-anchor="middle" font-size="12.5" fill="#546e7a">並非一面倒的讚揚。第二次遠征失敗後，有人公開質疑這是否真為神所喜；</text>
+    <text x="669" y="112" text-anchor="middle" font-size="12.5" fill="#546e7a">也有教士批評參加者動機不純，只是為了土地、戰利品或免除債務</text>
+
+    <rect x="25" y="134" width="230" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="263" y="134" width="812" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="140" y="180" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">十六至十八世紀</text>
+    <text x="669" y="164" text-anchor="middle" font-size="12.5" fill="#546e7a">宗教改革之後，新教作者把它當成教宗權力濫用的例證；</text>
+    <text x="669" y="188" text-anchor="middle" font-size="12.5" fill="#546e7a">啟蒙時代的作者則普遍視之為狂熱與愚昧所造成的浪費</text>
+
+    <rect x="25" y="210" width="230" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="263" y="210" width="812" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="140" y="256" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">十九世紀</text>
+    <text x="669" y="240" text-anchor="middle" font-size="12.5" fill="#546e7a">浪漫主義與帝國擴張的年代重新美化了它，塑造出忠誠騎士的傳奇形象；</text>
+    <text x="669" y="264" text-anchor="middle" font-size="12.5" fill="#546e7a">今日大眾文化中的十字軍印象，多半來自這個時期而非中世紀</text>
+
+    <rect x="25" y="286" width="230" height="76" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="263" y="286" width="812" height="76" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <text x="140" y="332" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">二十世紀以降</text>
+    <text x="669" y="316" text-anchor="middle" font-size="12.5" fill="#6b4a8f">這個詞被不同立場的人反覆挪用為政治語彙，用來指稱各種當代的對立；</text>
+    <text x="669" y="340" text-anchor="middle" font-size="12.5" fill="#6b4a8f">這些用法與十一至十三世紀實際發生的事，關聯往往相當薄弱</text>
+
+    <rect x="25" y="374" width="1050" height="36" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="550" y="397" text-anchor="middle" font-size="12" fill="#546e7a">重點不在評判哪一種用法對，而在於：一個詞被用來動員時，它指涉的通常是後來建構出的形象</text>
+  </svg>
+  </div>
+  <p class="after">這一節之所以值得放進來，是因為十字軍是少數幾個「後世形象比史實本身更有影響力」的歷史題目。讀它的史料時會發現，中世紀當事人的想法遠比後來的任何一種版本更複雜、也更混雜——虔誠、貪婪、恐懼與現實算計往往出現在同一個人身上。</p>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　第一張圖是理解全局的鑰匙：十字軍是一種可授予的身分。第二張用八個方向證明這一點，第三張回答「為什麼是那個時候」，第四張是結果與初衷的落差，第五張處理這個詞後來的命運。若時間有限，讀第一張與第二張。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">拜占庭求援</span><span class="yr">1095 之前</span><p>1071 年失去小亞細亞後，拜占庭皇帝向西方請求傭兵支援。他要的是可供指揮的部隊，而不是一支有自己目標的大軍。</p></div>
+  <div class="card"><span class="nm">克萊蒙會議</span><span class="yr">1095</span><p>烏爾班二世公開號召。演說內容有數個彼此不一致的版本傳世，全部都是事後追記的，這一點本身就值得注意。</p></div>
+  <div class="card"><span class="nm">攻陷耶路撒冷</span><span class="yr">1099</span><p>經過長途跋涉與圍城後破城，隨之而來的屠殺在當時的雙方記載中都留下了紀錄。十字軍國家自此建立。</p></div>
+  <div class="card"><span class="nm">軍事修會成立</span><span class="yr">12 世紀初</span><p>聖殿騎士團與醫院騎士團先後成立，原本的任務是護衛朝聖者，後來發展成跨國的軍事與財務組織。</p></div>
+  <div class="card"><span class="nm">哈丁戰役</span><span class="yr">1187</span><p>薩拉丁殲滅十字軍主力，隨後收復耶路撒冷。這次他沒有屠城，與 1099 年形成對照，也成為後世反覆引用的一幕。</p></div>
+  <div class="card"><span class="nm">第三次遠征</span><span class="yr">1189–1192</span><p>三位歐洲君主同時出兵，其中一位在途中溺斃。最終未能收復耶路撒冷，只談成基督徒的朝聖通行權。</p></div>
+  <div class="card"><span class="nm">洗劫君士坦丁堡</span><span class="yr">1204</span><p>第四次遠征因債務與威尼斯的盤算轉向，攻打並劫掠了同為基督教的盟友首都，從未抵達聖地。</p></div>
+  <div class="card"><span class="nm">阿爾比十字軍</span><span class="yr">1209–1229</span><p>對象是法國南部的卡特里派基督徒。二十年的戰事摧毀了當地文化，該地區最終被納入法王直轄。</p></div>
+  <div class="card"><span class="nm">以談判取得耶路撒冷</span><span class="yr">1229</span><p>神聖羅馬皇帝腓特烈二世在被逐出教門的狀態下前往，靠外交協議取得該城。這個結果讓各方都不滿意。</p></div>
+  <div class="card"><span class="nm">阿卡陷落</span><span class="yr">1291</span><p>最後一個主要據點失守，十字軍國家在東方的存在告終。往後的號召再也無法動員起同等規模的遠征。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">當事各方與後續</span></div>
+<div class="grid">
+  <a class="card" href="拜占庭帝國.html"><span class="nm">拜占庭帝國</span><span class="lk">→ 專頁</span><p>求援的一方，也是 1204 年的受害者。那一頁說明了為什麼向西方求援對它而言始終是個兩難。</p></a>
+  <a class="card" href="神聖羅馬帝國時間軸.html"><span class="nm">神聖羅馬帝國時間軸</span><span class="lk">→ 專頁</span><p>教宗與皇帝的權力鬥爭，是理解本頁第三節第一格與第二節最後一列的必要背景。</p></a>
+  <a class="card" href="../3-0.宗教/天主教.html"><span class="nm">天主教</span><span class="lk">→ 專頁</span><p>大赦、告解與補贖這套觀念的來源。不理解它，就無法理解全大赦為什麼有那麼大的號召力。</p></a>
+  <a class="card" href="../3-0.宗教/伊斯蘭教.html"><span class="nm">伊斯蘭教</span><span class="lk">→ 專頁</span><p>另一方的信仰與政治結構。當時的穆斯林世界本身也分裂成數個互相競爭的政權。</p></a>
+  <a class="card" href="../3-0.宗教/東正教.html"><span class="nm">東正教</span><span class="lk">→ 專頁</span><p>1054 年分裂的內容。它讓「援助東方基督徒」這件事從一開始就帶著條件。</p></a>
+  <a class="card" href="三十年戰爭.html"><span class="nm">三十年戰爭</span><span class="lk">→ 專頁</span><p>另一場以宗教為名的長期戰爭。兩相對照可以看出，宗教動員與實際利益的關係從來不是單純的。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的專題頁。<b>編號</b>：「第幾次十字軍」是後世史家的整理方式，中世紀當時並無此編號，各家對次數的計算也不一致，本頁採最通行的分法並另列非東方的幾場。<b>取材</b>：十字軍的史料以拉丁文與阿拉伯文雙方記載為主，雙方對同一事件的描述常有出入，本頁在有明顯分歧處以概括方式陳述。<b>爭議</b>：屠殺規模、參加人數等數字在史料中差異極大，多數為當時的估計或修辭，本頁不列具體數值。
+</footer>
+
+</div>
+</body>
+</html>
