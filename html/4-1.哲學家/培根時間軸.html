@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>培根 Francis Bacon｜教學用哲學資訊圖表</title>
+
+<style>
+:root{
+  --bg:#f4f1ea;
+  --paper:#fffdf8;
+  --ink:#29251f;
+  --muted:#6d675e;
+  --gold:#b4872f;
+  --gold-light:#ead39a;
+  --blue:#3e627b;
+  --red:#8e4438;
+  --green:#55715d;
+  --line:#d9d0c2;
+  --shadow:0 8px 25px rgba(60,45,25,.10);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+  line-height:1.8;
+}
+
+.container{
+  width:min(1180px,94%);
+  margin:auto;
+}
+
+.hero{
+  background:
+    linear-gradient(135deg,#242b30,#354d59 55%,#8a6b32);
+  color:white;
+  padding:70px 20px 60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"B";
+  position:absolute;
+  right:7%;
+  top:-20px;
+  font-family:Georgia,serif;
+  font-size:230px;
+  font-weight:bold;
+  color:white;
+  opacity:.05;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.badge{
+  padding:6px 14px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(44px,8vw,82px);
+  letter-spacing:.08em;
+}
+
+.hero .english{
+  font-family:Georgia,serif;
+  font-size:clamp(22px,3vw,34px);
+  color:#e8cf8b;
+  margin-top:5px;
+}
+
+.hero p{
+  max-width:850px;
+  color:#e9e7e0;
+  font-size:18px;
+}
+
+section{
+  padding:55px 0;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.section-title .num{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  background:var(--gold);
+  color:white;
+  border-radius:50%;
+  font-weight:bold;
+}
+
+h2{
+  margin:0;
+  font-size:32px;
+  color:#3c342b;
+}
+
+h3{
+  color:#57472f;
+  margin-top:0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.big-question{
+  background:#302d28;
+  color:white;
+  padding:38px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.big-question .q{
+  font-size:clamp(25px,4vw,42px);
+  color:#efd487;
+  font-weight:bold;
+}
+
+.big-question p{
+  max-width:850px;
+  margin:auto;
+  color:#e6e3dd;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:20px;
+}
+
+.stat{
+  background:var(--paper);
+  border-top:5px solid var(--gold);
+  padding:22px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat .number{
+  font-size:32px;
+  font-weight:bold;
+  color:var(--red);
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+/* timeline */
+
+.timeline{
+  position:relative;
+  margin:35px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:28px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--gold-light);
+}
+
+.event{
+  position:relative;
+  padding-left:75px;
+  margin-bottom:32px;
+}
+
+.event:before{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:8px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:var(--gold);
+  border:5px solid var(--bg);
+  box-shadow:0 0 0 2px var(--gold);
+}
+
+.year{
+  color:var(--red);
+  font-size:22px;
+  font-weight:bold;
+}
+
+.event-title{
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* formula */
+
+.formula{
+  background:#2f3f48;
+  color:white;
+  padding:35px;
+  border-radius:20px;
+  text-align:center;
+  font-size:clamp(20px,3vw,32px);
+  box-shadow:var(--shadow);
+}
+
+.formula span{
+  color:#e9cf84;
+}
+
+/* idol diagram */
+
+.idols{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.idol{
+  background:white;
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  position:relative;
+}
+
+.idol-number{
+  position:absolute;
+  right:15px;
+  top:12px;
+  font-size:35px;
+  font-weight:bold;
+  color:#e5d5b0;
+}
+
+.idol h3{
+  margin-bottom:8px;
+}
+
+/* induction */
+
+.induction{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  align-items:stretch;
+}
+
+.step{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:20px 14px;
+  text-align:center;
+  position:relative;
+}
+
+.step:not(:last-child):after{
+  content:"→";
+  position:absolute;
+  right:-20px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--gold);
+  font-size:25px;
+  z-index:3;
+}
+
+.highlight{
+  background:#fff8e9;
+  border-left:5px solid var(--gold);
+  padding:20px 25px;
+  border-radius:0 14px 14px 0;
+}
+
+.note{
+  background:#edf3f6;
+  border-left:5px solid var(--blue);
+  padding:18px 22px;
+  border-radius:0 14px 14px 0;
+}
+
+.warning{
+  background:#f7e9e6;
+  border-left:5px solid var(--red);
+  padding:18px 22px;
+  border-radius:0 14px 14px 0;
+}
+
+/* compare */
+
+.compare{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  overflow:hidden;
+  border-radius:15px;
+  box-shadow:var(--shadow);
+}
+
+.compare th,
+.compare td{
+  padding:15px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+}
+
+.compare th{
+  background:#38342e;
+  color:white;
+}
+
+.compare tr:last-child td{
+  border-bottom:none;
+}
+
+/* quote */
+
+.quote{
+  border-left:6px solid var(--gold);
+  background:#fffaf0;
+  padding:22px 28px;
+  border-radius:0 15px 15px 0;
+  font-size:21px;
+}
+
+/* Q&A */
+
+.qa{
+  display:grid;
+  gap:15px;
+}
+
+.qa details{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px 20px;
+}
+
+.qa summary{
+  cursor:pointer;
+  font-size:18px;
+  font-weight:bold;
+  color:#55442e;
+}
+
+.qa p{
+  margin-bottom:0;
+}
+
+/* footer */
+
+footer{
+  background:#292722;
+  color:#d9d5cd;
+  text-align:center;
+  padding:35px 0;
+}
+
+footer strong{
+  color:#e5c878;
+}
+
+@media(max-width:900px){
+
+  .grid,
+  .grid2{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .induction{
+    grid-template-columns:1fr;
+  }
+
+  .step:not(:last-child):after{
+    content:"↓";
+    right:50%;
+    top:auto;
+    bottom:-28px;
+    transform:translateX(50%);
+  }
+}
+
+@media(max-width:600px){
+
+  .grid,
+  .grid2,
+  .stats,
+  .idols{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:40px 0;
+  }
+
+  .hero{
+    padding:50px 15px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+<div class="container">
+
+  <div class="badges">
+    <span class="badge">1561—1626</span>
+    <span class="badge">英國哲學家</span>
+    <span class="badge">經驗主義先驅</span>
+    <span class="badge">科學方法</span>
+  </div>
+
+  <h1>培根</h1>
+
+  <div class="english">
+    Francis Bacon
+  </div>
+
+  <p>
+    培根不是單純研究「世界是什麼」的哲學家，
+    他更關心一個問題：
+    <strong>人類究竟應該如何獲得可靠的知識？</strong>
+  </p>
+
+  <p>
+    他批判盲目的權威與偏見，主張從觀察、實驗與經驗出發，
+    透過有系統的歸納逐步建立知識。
+    這使他成為近代科學方法史上的重要人物。
+  </p>
+
+</div>
+</header>
+
+<main>
+
+<!-- 01 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+  <div class="num">01</div>
+  <h2>培根最重要的問題</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+「人類如何知道自己是真的知道？」
+</div>
+
+<p>
+中世紀知識傳統高度重視古代權威與宗教傳統。
+培根則認為，如果人類想真正改善知識，
+就必須重新檢查自己的思考方式。
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<div class="number">1561</div>
+<small>出生</small>
+</div>
+
+<div class="stat">
+<div class="number">1620</div>
+<small>《新工具》出版</small>
+</div>
+
+<div class="stat">
+<div class="number">4</div>
+<small>四種假象</small>
+</div>
+
+<div class="stat">
+<div class="number">1626</div>
+<small>逝世</small>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 02 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">02</div>
+<h2>培根的人生與時代</h2>
+</div>
+
+<div class="timeline">
+
+<div class="event">
+<div class="year">1561</div>
+<div class="event-title">出生於英格蘭</div>
+<p>
+培根出生於倫敦，來自具有政治背景的家庭。
+他很早便接觸法律與政治。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1573</div>
+<div class="event-title">進入劍橋大學</div>
+<p>
+培根在劍橋接受教育，逐漸對當時的學術傳統產生批判性的看法。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1605</div>
+<div class="event-title">《學術的進展》</div>
+<p>
+開始系統性思考人類知識的分類、限制與發展。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1620</div>
+<div class="event-title">《新工具》</div>
+<p>
+提出以觀察、實驗與歸納為核心的新方法，
+反對單純依賴傳統邏輯與權威。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1626</div>
+<div class="event-title">逝世</div>
+<p>
+培根因研究冷藏保存食物而受寒染病，最終逝世。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 03 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">03</div>
+<h2>培根到底反對什麼？</h2>
+</div>
+
+<div class="card">
+
+<h3>傳統知識最大的問題</h3>
+
+<p>
+培根並不是說「以前的人全部錯了」，
+而是認為人類容易受到既有觀念、語言、權威與個人心理的影響。
+</p>
+
+<div class="formula">
+<span>錯誤觀念</span>
+＋
+<span>偏見</span>
+＋
+<span>盲從權威</span>
+→
+錯誤知識
+</div>
+
+<p>
+因此，真正的科學研究不應該從「我已經知道答案」開始，
+而應該從<strong>清理自己的偏見</strong>開始。
+</p>
+
+</div>
+
+</div>
+</section>
+
+<!-- 04 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">04</div>
+<h2>四種假象：人類為什麼會想錯？</h2>
+</div>
+
+<p>
+培根在《新工具》中提出著名的
+<strong>「四假象說」（Idols）</strong>。
+這是理解他的哲學最重要的概念之一。
+</p>
+
+<div class="idols">
+
+<div class="idol">
+<div class="idol-number">I</div>
+<h3>種族假象</h3>
+<p>
+<strong>Idols of the Tribe</strong>
+</p>
+<p>
+來自人類共同的天性。
+人類容易把自己的感覺、期待與偏好投射到自然界。
+</p>
+<p>
+例如：
+「自然應該有目的。」
+</p>
+</div>
+
+<div class="idol">
+<div class="idol-number">II</div>
+<h3>洞穴假象</h3>
+<p>
+<strong>Idols of the Cave</strong>
+</p>
+<p>
+每個人都有自己的「洞穴」。
+家庭、教育、經驗、性格與閱讀會形成個人的偏見。
+</p>
+</div>
+
+<div class="idol">
+<div class="idol-number">III</div>
+<h3>市場假象</h3>
+<p>
+<strong>Idols of the Marketplace</strong>
+</p>
+<p>
+來自人與人溝通時使用的語言。
+詞語可能模糊、誤導，甚至製造不存在的問題。
+</p>
+</div>
+
+<div class="idol">
+<div class="idol-number">IV</div>
+<h3>劇場假象</h3>
+<p>
+<strong>Idols of the Theatre</strong>
+</p>
+<p>
+來自哲學體系、學派與權威思想。
+人們可能因為相信某個偉大理論，
+就把它當成不可懷疑的真理。
+</p>
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="highlight">
+<strong>一句話：</strong>
+培根認為，科學的第一步不是「增加知識」，
+而是<strong>先清除阻礙我們正確思考的假象。</strong>
+</div>
+
+</div>
+</section>
+
+<!-- 05 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">05</div>
+<h2>四種假象，用生活例子理解</h2>
+</div>
+
+<table class="compare">
+
+<tr>
+<th>假象</th>
+<th>來源</th>
+<th>生活例子</th>
+</tr>
+
+<tr>
+<td>種族假象</td>
+<td>人類共同心理</td>
+<td>因為某件事情「看起來有意義」，就認為自然一定有目的。</td>
+</tr>
+
+<tr>
+<td>洞穴假象</td>
+<td>個人背景</td>
+<td>因為自己從小看到的世界如此，就認為所有人都應該如此。</td>
+</tr>
+
+<tr>
+<td>市場假象</td>
+<td>語言與溝通</td>
+<td>同一個詞語被不同人理解成不同意思，卻以為彼此談的是同一件事。</td>
+</tr>
+
+<tr>
+<td>劇場假象</td>
+<td>學派與權威</td>
+<td>「老師說這樣，所以一定是對的。」</td>
+</tr>
+
+</table>
+
+</div>
+</section>
+
+<!-- 06 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">06</div>
+<h2>培根的核心：歸納法</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+不要先相信答案，再找證據。
+</div>
+
+<p>
+應該從大量具體觀察與實驗出發，
+逐步尋找穩定的規律。
+</p>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="induction">
+
+<div class="step">
+<strong>①</strong><br>
+觀察現象
+</div>
+
+<div class="step">
+<strong>②</strong><br>
+收集資料
+</div>
+
+<div class="step">
+<strong>③</strong><br>
+比較不同案例
+</div>
+
+<div class="step">
+<strong>④</strong><br>
+歸納規律
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+具體經驗
+<span>→</span>
+比較
+<span>→</span>
+排除錯誤
+<span>→</span>
+歸納
+<span>→</span>
+一般規律
+</div>
+
+<div style="height:25px"></div>
+
+<div class="note">
+<strong>注意：</strong>
+培根的歸納法不是「看到幾次就直接下結論」。
+他希望透過系統性的資料整理與排除，
+避免人類只挑選支持自己想法的證據。
+</div>
+
+</div>
+</section>
+
+<!-- 07 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">07</div>
+<h2>培根 vs 傳統演繹：兩種思考方向</h2>
+</div>
+
+<div class="grid2">
+
+<div class="card">
+
+<h3>⬇ 演繹法</h3>
+
+<div class="formula">
+一般原則<br>
+↓<br>
+具體案例<br>
+↓<br>
+結論
+</div>
+
+<p>
+如果前提正確，結論可以具有高度確定性。
+</p>
+
+<p>
+典型代表：
+<strong>亞里斯多德式邏輯傳統</strong>
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⬆ 歸納法</h3>
+
+<div class="formula">
+具體案例<br>
+↓<br>
+比較與觀察<br>
+↓<br>
+一般規律
+</div>
+
+<p>
+從經驗與觀察中尋找規律。
+</p>
+
+<p>
+培根希望建立一套更適合自然研究的方法。
+</p>
+
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="warning">
+<strong>重要：</strong>
+不要把培根理解成「演繹法完全沒用」。
+他的重點是：
+<strong>自然科學的知識不能只靠抽象推理，必須與經驗、觀察與實驗結合。</strong>
+</div>
+
+</div>
+</section>
+
+<!-- 08 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">08</div>
+<h2>「知識就是力量」</h2>
+</div>
+
+<div class="quote">
+「Knowledge itself is power.」
+<br>
+<strong>知識本身就是力量。</strong>
+</div>
+
+<div style="height:25px"></div>
+
+<div class="grid">
+
+<div class="card">
+<h3>知識 → 理解自然</h3>
+<p>
+如果理解自然規律，
+人類就能更準確地預測自然現象。
+</p>
+</div>
+
+<div class="card">
+<h3>知識 → 改造世界</h3>
+<p>
+科學不應只是思考，
+還應該轉化為技術與實際應用。
+</p>
+</div>
+
+<div class="card">
+<h3>知識 → 改善人類生活</h3>
+<p>
+培根認為科學研究應具有公共價值，
+能夠改善人類的生活條件。
+</p>
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+知識
+<span>→</span>
+理解自然
+<span>→</span>
+技術
+<span>→</span>
+改善人類生活
+</div>
+
+</div>
+</section>
+
+<!-- 09 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">09</div>
+<h2>培根與科學革命</h2>
+</div>
+
+<p>
+培根生活在 16～17 世紀之交，
+正好處於歐洲從中世紀學術傳統走向近代科學的轉折期。
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>哥白尼</h3>
+<p>
+重新思考宇宙中心與天體運動。
+</p>
+</div>
+
+<div class="card">
+<h3>伽利略</h3>
+<p>
+將觀察、實驗與數學結合。
+</p>
+</div>
+
+<div class="card">
+<h3>克卜勒</h3>
+<p>
+利用數學找出行星運動規律。
+</p>
+</div>
+
+<div class="card">
+<h3>培根</h3>
+<p>
+從哲學與方法論角度，
+強調觀察、實驗與歸納。
+</p>
+</div>
+
+<div class="card">
+<h3>笛卡兒</h3>
+<p>
+強調理性、懷疑與數學化思考。
+</p>
+</div>
+
+<div class="card">
+<h3>牛頓</h3>
+<p>
+後來將數學、觀察與物理規律整合，
+形成近代物理學的重要高峰。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 10 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">10</div>
+<h2>培根與笛卡兒：經驗 vs 理性？</h2>
+</div>
+
+<table class="compare">
+
+<tr>
+<th>培根</th>
+<th>笛卡兒</th>
+</tr>
+
+<tr>
+<td>強調經驗與觀察</td>
+<td>強調理性與清楚明確的思想</td>
+</tr>
+
+<tr>
+<td>歸納法</td>
+<td>演繹法</td>
+</tr>
+
+<tr>
+<td>從具體現象出發</td>
+<td>從確定原理出發</td>
+</tr>
+
+<tr>
+<td>警惕經驗中的偏見</td>
+<td>透過普遍懷疑尋找確定性</td>
+</tr>
+
+<tr>
+<td>近代經驗主義的重要先驅</td>
+<td>近代理性主義的重要代表</td>
+</tr>
+
+</table>
+
+<div style="height:25px"></div>
+
+<div class="big-question">
+
+<div class="q">
+那麼，到底誰是對的？
+</div>
+
+<p>
+近代科學真正發展起來後，
+通常不是單純選擇「經驗」或「理性」其中一個，
+而是讓觀察、實驗、數學與理論彼此配合。
+</p>
+
+</div>
+
+</div>
+</section>
+
+<!-- 11 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">11</div>
+<h2>培根真正偉大的地方</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 把「方法」變成哲學問題</h3>
+<p>
+他不只是問「世界是什麼」，
+還問「我們應該怎麼研究世界」。
+</p>
+</div>
+
+<div class="card">
+<h3>② 批判權威</h3>
+<p>
+知識不能因為古人說過就自動成為真理。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 重視實驗</h3>
+<p>
+自然知識必須與實際觀察與實驗接觸。
+</p>
+</div>
+
+<div class="card">
+<h3>④ 重視集體研究</h3>
+<p>
+科學不應只是少數哲學家的個人思辨，
+而應成為有制度、有分工的知識活動。
+</p>
+</div>
+
+<div class="card">
+<h3>⑤ 科學具有社會功能</h3>
+<p>
+知識應該能夠改善人類生活，
+而不是只停留在書本中。
+</p>
+</div>
+
+<div class="card">
+<h3>⑥ 影響近代科學精神</h3>
+<p>
+他所倡導的經驗、實驗與反偏見精神，
+成為近代科學文化的重要組成部分。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 12 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">12</div>
+<h2>培根的局限：他真的建立了現代科學方法嗎？</h2>
+</div>
+
+<div class="card">
+
+<h3>答案：不能完全這樣說。</h3>
+
+<p>
+培根對科學方法的思想影響非常大，
+但現代科學並不是由他一個人建立的。
+</p>
+
+<p>
+伽利略的實驗方法、克卜勒的數學分析、
+笛卡兒的理性方法，以及後來牛頓的數學物理，
+共同塑造了近代科學。
+</p>
+
+<div class="warning">
+<strong>歷史上的重要修正：</strong>
+培根強調歸納，但現代科學並不只是「觀察 → 歸納」。
+現代科學通常還包括假設、模型、數學推導、實驗檢驗、
+反駁與理論修正等複雜過程。
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 13 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">13</div>
+<h2>培根與後來的經驗主義</h2>
+</div>
+
+<div class="induction">
+
+<div class="step">
+<strong>培根</strong><br>
+經驗與歸納
+</div>
+
+<div class="step">
+<strong>洛克</strong><br>
+心靈如白板
+</div>
+
+<div class="step">
+<strong>貝克萊</strong><br>
+存在與知覺
+</div>
+
+<div class="step">
+<strong>休謨</strong><br>
+經驗與懷疑
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+培根
+<span>→</span>
+經驗主義傳統
+<span>→</span>
+洛克
+<span>→</span>
+貝克萊
+<span>→</span>
+休謨
+</div>
+
+<div style="height:25px"></div>
+
+<div class="note">
+<strong>注意：</strong>
+培根通常被稱為「經驗主義先驅」，
+但他與後來成熟的英國經驗主義哲學並不完全相同。
+真正系統性的經驗論認識論主要是在洛克、貝克萊與休謨那裡發展起來。
+</div>
+
+</div>
+</section>
+
+<!-- 14 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">14</div>
+<h2>培根思想的完整架構</h2>
+</div>
+
+<div class="card">
+
+<div class="formula">
+
+<div>
+<strong>人類容易受到偏見影響</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>四種假象</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>清除偏見</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>觀察與實驗</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>比較與排除</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>歸納規律</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>建立可靠知識</strong>
+</div>
+
+<div style="margin:12px">↓</div>
+
+<div>
+<strong>運用知識改造世界</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 15 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">15</div>
+<h2>一句話掌握培根</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+「先清除偏見，再研究自然。」
+</div>
+
+<p>
+培根最重要的貢獻，不只是提出「歸納法」，
+而是建立一種近代科學精神：
+<strong>不要盲從權威，不要相信自己的第一個直覺，
+而要用證據、觀察與實驗檢驗我們認為是真的東西。</strong>
+</p>
+
+</div>
+
+</div>
+</section>
+
+<!-- 16 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">16</div>
+<h2>課堂「大哉問」</h2>
+</div>
+
+<div class="qa">
+
+<details open>
+<summary>❓ 為什麼人類明明會思考，卻還是容易犯錯？</summary>
+<p>
+因為我們的思考會受到感覺、語言、個人經驗、文化與權威影響。
+培根認為，理性本身也需要被檢查。
+</p>
+</details>
+
+<details>
+<summary>❓ 四種假象中，哪一種最危險？</summary>
+<p>
+沒有唯一答案。
+「洞穴假象」容易讓人困在個人經驗；
+「劇場假象」則可能讓人盲從學派與權威；
+「市場假象」則可能讓我們因語言混亂而爭論不存在的問題。
+</p>
+</details>
+
+<details>
+<summary>❓ 「知識就是力量」是不是代表知識越多越好？</summary>
+<p>
+不完全是。
+培根更強調的是：可靠知識可以讓人理解並運用自然。
+如果知識本身錯誤，反而可能造成更大的問題。
+</p>
+</details>
+
+<details>
+<summary>❓ 培根和笛卡兒究竟誰比較重要？</summary>
+<p>
+兩人代表近代科學與哲學的兩條重要路線：
+培根強調經驗與歸納，笛卡兒強調理性與演繹。
+現代科學其實吸收了兩者的重要元素。
+</p>
+</details>
+
+<details>
+<summary>❓ 四種假象今天還存在嗎？</summary>
+<p>
+非常存在。
+社群媒體的同溫層、錯誤資訊、政治宣傳、廣告、
+語言操弄與確認偏誤，都可以拿來重新思考培根的「四假象」。
+</p>
+</details>
+
+</div>
+
+</div>
+</section>
+
+<!-- 17 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">17</div>
+<h2>培根的歷史位置</h2>
+</div>
+
+<table class="compare">
+
+<tr>
+<th>時代</th>
+<th>主要思想</th>
+<th>培根的意義</th>
+</tr>
+
+<tr>
+<td>中世紀</td>
+<td>權威、神學、亞里斯多德傳統</td>
+<td>開始重新檢查知識來源</td>
+</tr>
+
+<tr>
+<td>文藝復興</td>
+<td>重新發現古典世界、人文主義</td>
+<td>強調人類能力與知識進步</td>
+</tr>
+
+<tr>
+<td>科學革命</td>
+<td>觀察、實驗、數學</td>
+<td>從方法論上支持經驗研究</td>
+</tr>
+
+<tr>
+<td>近代哲學</td>
+<td>理性主義與經驗主義</td>
+<td>成為經驗主義的重要先驅</td>
+</tr>
+
+<tr>
+<td>現代科學</td>
+<td>假設、實驗、數據、理論</td>
+<td>「反偏見、重證據」仍具有現代意義</td>
+</tr>
+
+</table>
+
+</div>
+</section>
+
+<!-- 18 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">18</div>
+<h2>最後一張圖：培根哲學地圖</h2>
+</div>
+
+<div class="card" style="text-align:center">
+
+<div style="
+font-size:clamp(30px,6vw,55px);
+font-weight:bold;
+color:#8e4438;
+margin-bottom:25px;">
+培根
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>四假象</h3>
+<p>
+種族<br>
+洞穴<br>
+市場<br>
+劇場
+</p>
+</div>
+
+<div class="card">
+<h3>研究方法</h3>
+<p>
+觀察<br>
+實驗<br>
+比較<br>
+歸納
+</p>
+</div>
+
+<div class="card">
+<h3>知識觀</h3>
+<p>
+反對盲從<br>
+重視證據<br>
+追求可靠知識
+</p>
+</div>
+
+</div>
+
+<div style="
+margin:30px 0;
+font-size:30px;
+color:#b4872f;">
+↓
+</div>
+
+<div class="formula">
+
+<span>清除偏見</span>
+→ <span>經驗</span>
+→ <span>歸納</span>
+→ <span>科學</span>
+→ <span>改善人類生活</span>
+
+</div>
+
+<div style="
+margin-top:30px;
+font-size:clamp(20px,3vw,30px);
+font-weight:bold;
+color:#57472f;">
+培根：
+「不要只問『誰說的？』，
+要問『證據在哪裡？』」
+</div>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+
+<strong>培根 Francis Bacon｜教學用哲學資訊圖表</strong>
+
+<p>
+從「四種假象」到「歸納法」，
+理解近代科學精神的形成
+</p>
+
+</div>
+</footer>
+
+</body>
+</html>

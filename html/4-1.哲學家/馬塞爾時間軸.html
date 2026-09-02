@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>馬塞爾｜存在不是問題，而是一個奧祕</title>
+<style>
+:root{
+  --bg:#f5f2ec;
+  --paper:#fffdf9;
+  --ink:#292825;
+  --muted:#706b63;
+  --accent:#5b4d78;
+  --accent2:#8a76aa;
+  --soft:#ebe5f2;
+  --line:#ddd6ca;
+  --dark:#272331;
+  --gold:#b18a52;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei",
+  "PingFang TC",Arial,sans-serif;
+  line-height:1.85;
+}
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+.hero{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(255,255,255,.12),transparent 26%),
+    linear-gradient(135deg,#272331,#51456b 62%,#796b91);
+  color:white;
+  padding:72px 0 65px;
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"∞";
+  position:absolute;
+  right:5%;
+  top:-70px;
+  font-family:Georgia,serif;
+  font-size:300px;
+  color:rgba(255,255,255,.05);
+}
+.kicker{
+  display:inline-block;
+  padding:6px 15px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:30px;
+  letter-spacing:2px;
+  font-size:.9rem;
+}
+h1{
+  font-size:clamp(2.7rem,6vw,5rem);
+  line-height:1.05;
+  margin:20px 0;
+  letter-spacing:-2px;
+}
+.hero h2{
+  max-width:860px;
+  color:#eee9f2;
+  font-size:clamp(1.15rem,2.3vw,1.6rem);
+  font-weight:400;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+.hero-meta span{
+  background:rgba(255,255,255,.11);
+  padding:7px 14px;
+  border-radius:8px;
+  font-size:.9rem;
+}
+section{padding:55px 0}
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+.num{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-weight:bold;
+}
+h2{
+  margin:0;
+  font-size:clamp(1.6rem,3vw,2.3rem);
+}
+h3{
+  margin-top:0;
+  color:var(--accent);
+}
+.lead{
+  font-size:1.18rem;
+  color:#4c4850;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 5px 18px rgba(55,45,70,.06);
+}
+.card strong{color:var(--accent)}
+.quote{
+  background:var(--dark);
+  color:#f8f5fa;
+  border-radius:18px;
+  padding:30px;
+  margin:25px 0;
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:1.4rem;
+}
+.quote small{
+  display:block;
+  margin-top:15px;
+  color:#c9c1d1;
+  font-family:inherit;
+  font-size:.9rem;
+}
+.highlight{
+  background:var(--soft);
+  border-left:5px solid var(--accent2);
+  padding:20px 24px;
+  border-radius:0 12px 12px 0;
+}
+.timeline{
+  position:relative;
+  margin:30px 0;
+}
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--line);
+}
+.event{
+  position:relative;
+  padding-left:60px;
+  margin-bottom:28px;
+}
+.event:before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:8px;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  background:var(--accent);
+  border:5px solid var(--bg);
+}
+.year{
+  color:var(--accent);
+  font-weight:bold;
+}
+.flow{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:25px 0;
+}
+.box{
+  background:var(--paper);
+  border:2px solid var(--accent2);
+  border-radius:12px;
+  padding:14px 18px;
+  text-align:center;
+  font-weight:bold;
+}
+.arrow{
+  color:var(--accent);
+  font-size:1.5rem;
+}
+.table-wrap{overflow-x:auto}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--paper);
+  border-radius:14px;
+  overflow:hidden;
+}
+th,td{
+  padding:14px 16px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  background:#e8e0ef;
+  color:var(--accent);
+}
+.formula{
+  background:#282431;
+  color:white;
+  border-radius:16px;
+  padding:28px;
+  text-align:center;
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:1.55rem;
+  margin:25px 0;
+}
+.formula span{
+  display:block;
+  color:#c9bfd3;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  font-size:.9rem;
+  margin-top:10px;
+}
+.big-question{
+  background:linear-gradient(135deg,#fffdf9,#ece6f2);
+  border:1px solid #d8cde2;
+  border-radius:20px;
+  padding:30px;
+  margin:18px 0;
+}
+.big-question .q{
+  font-size:1.3rem;
+  font-weight:bold;
+  color:var(--accent);
+}
+.mind{
+  display:grid;
+  grid-template-columns:1fr 1.25fr 1fr;
+  gap:15px;
+  align-items:center;
+}
+.mind .center{
+  background:var(--dark);
+  color:white;
+  padding:40px 20px;
+  border-radius:50%;
+  text-align:center;
+  font-size:1.35rem;
+  font-weight:bold;
+}
+.mind .side{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.badge{
+  background:#e8e0ef;
+  color:#55466e;
+  padding:8px 15px;
+  border-radius:30px;
+}
+footer{
+  background:var(--dark);
+  color:#cfc7d6;
+  padding:40px 0;
+  text-align:center;
+}
+.note{
+  color:var(--muted);
+  font-size:.9rem;
+}
+@media(max-width:850px){
+  .grid,.grid2,.mind{
+    grid-template-columns:1fr;
+  }
+  .mind .center{
+    border-radius:18px;
+  }
+  .arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+<div class="container">
+
+<span class="kicker">1889–1973｜法國哲學家｜基督教存在主義｜對話哲學</span>
+
+<h1>馬塞爾</h1>
+
+<h2>
+如果「我」不是一個孤立的個體，
+而是一個活在關係、身體、忠誠與希望之中的存在，
+那麼「我是誰」應該如何回答？
+</h2>
+
+<div class="hero-meta">
+<span>Gabriel Marcel</span>
+<span>1889–1973</span>
+<span>存在主義</span>
+<span>基督教</span>
+<span>我—你</span>
+<span>身體</span>
+<span>忠誠</span>
+<span>希望</span>
+</div>
+
+</div>
+</header>
+
+<main>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">01</div>
+<h2>一句話理解馬塞爾</h2>
+</div>
+
+<p class="lead">
+馬塞爾認為，人的存在不能像一個數學問題或科學物件一樣，
+站在外面客觀地分析完畢。
+</p>
+
+<div class="formula">
+「存在」不是一道問題，而是一個奧祕
+<span>Being is mystery，不是單純的 object / problem</span>
+</div>
+
+<div class="highlight">
+<strong>核心思想：</strong>
+有些事情可以「站在外面」研究，
+但人的存在、愛、忠誠、希望、死亡與上帝，
+卻會把「我自己」也捲入其中。
+這就是馬塞爾所說的<strong>「奧祕（Mystery）」</strong>。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">02</div>
+<h2>馬塞爾是誰？</h2>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>出生</h3>
+<p><strong>1889年</strong>出生於巴黎。</p>
+</div>
+
+<div class="card">
+<h3>身份</h3>
+<p>法國哲學家、劇作家、音樂評論家，後來成為基督教思想的重要代表。</p>
+</div>
+
+<div class="card">
+<h3>哲學位置</h3>
+<p>通常被稱為<strong>基督教存在主義</strong>的重要人物。</p>
+</div>
+</div>
+
+<p>
+他與沙特、卡繆同處於20世紀法國存在主義的思想環境，
+但他的道路完全不同：
+<strong>他不是從荒謬與虛無走向自由，而是從存在、關係與希望走向超越。</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">03</div>
+<h2>馬塞爾的時代</h2>
+</div>
+
+<div class="timeline">
+
+<div class="event">
+<div class="year">1889</div>
+<h3>出生於巴黎</h3>
+<p>出生於法國巴黎的文化與知識家庭。</p>
+</div>
+
+<div class="event">
+<div class="year">1900年代</div>
+<h3>哲學與音樂</h3>
+<p>接受哲學訓練，同時對音樂與戲劇保持高度興趣。</p>
+</div>
+
+<div class="event">
+<div class="year">第一次世界大戰</div>
+<h3>接觸人的苦難</h3>
+<p>曾參與紅十字會相關工作，協助尋找與確認戰爭中失聯的人。</p>
+</div>
+
+<div class="event">
+<div class="year">1920年代</div>
+<h3>逐漸形成存在哲學</h3>
+<p>開始深入思考「存在」、「我與他人」、「忠誠」、「希望」等問題。</p>
+</div>
+
+<div class="event">
+<div class="year">1929</div>
+<h3>皈依天主教</h3>
+<p>成為天主教徒，此後宗教信仰成為其哲學的重要背景。</p>
+</div>
+
+<div class="event">
+<div class="year">1950</div>
+<h3>《存在與擁有》</h3>
+<p>重要思想作品之一，集中處理「存在」與「擁有」的差異。</p>
+</div>
+
+<div class="event">
+<div class="year">1973</div>
+<h3>逝世</h3>
+<p>逝世於巴黎，享年83歲。</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">04</div>
+<h2>為什麼「問題」與「奧祕」不同？</h2>
+</div>
+
+<div class="grid2">
+
+<div class="card">
+<h3>問題 Problem</h3>
+<p>
+問題可以站在外部處理。
+</p>
+<p>
+例如：
+「這台機器為什麼故障？」
+</p>
+<p>
+我可以把自己當成觀察者，
+分析它、測量它、找到原因。
+</p>
+</div>
+
+<div class="card">
+<h3>奧祕 Mystery</h3>
+<p>
+奧祕涉及我自己的存在。
+</p>
+<p>
+例如：
+「我是誰？」
+「愛是什麼？」
+「我為什麼活著？」
+</p>
+<p>
+我不能完全站在自己之外研究自己。
+</p>
+</div>
+
+</div>
+
+<div class="flow">
+<div class="box">問題</div>
+<div class="arrow">→</div>
+<div class="box">我站在外面分析</div>
+<div class="arrow">→</div>
+<div class="box">可以解決</div>
+</div>
+
+<div class="flow">
+<div class="box">奧祕</div>
+<div class="arrow">→</div>
+<div class="box">我本身就在其中</div>
+<div class="arrow">→</div>
+<div class="box">需要參與、體驗、回應</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">05</div>
+<h2>「我是誰？」為什麼不是普通問題？</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+如果你問：「我的身高是多少？」
+這是一個問題。
+<br><br>
+但如果你問：「我是誰？」
+這還是一個普通的問題嗎？
+</div>
+</div>
+
+<p>
+身高可以測量，
+年齡可以計算，
+職業可以分類，
+DNA可以分析。
+</p>
+
+<p>
+但這些資料加起來，
+<strong>就等於「我」嗎？</strong>
+</p>
+
+<div class="highlight">
+馬塞爾認為，
+人的存在不能被完全還原成一組客觀資料。
+<strong>「我」不是一個物件，而是一個活生生的存在者。</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">06</div>
+<h2>「擁有」與「存在」</h2>
+</div>
+
+<p class="lead">
+這是馬塞爾哲學非常重要的一組區分：
+<strong>Having vs Being。</strong>
+</p>
+
+<div class="grid2">
+<div class="card">
+<h3>Having｜擁有</h3>
+<p>
+我擁有一部手機、一棟房子、一份工作、一筆錢。
+</p>
+<p>
+「東西」可以成為我的所有物。
+</p>
+</div>
+
+<div class="card">
+<h3>Being｜存在</h3>
+<p>
+我是一個人、一個朋友、一個父母、一個愛人。
+</p>
+<p>
+這些不是單純可以放進「所有物清單」的東西。
+</p>
+</div>
+</div>
+
+<div class="flow">
+<div class="box">我擁有東西</div>
+<div class="arrow">≠</div>
+<div class="box">東西定義了我的存在</div>
+</div>
+
+<div class="highlight">
+現代社會很容易問：
+<strong>「你有什麼？」</strong>
+<br>
+馬塞爾則提醒我們：
+<strong>「你是誰？」</strong>
+可能比「你擁有什麼？」更重要。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">07</div>
+<h2>現代人的危機：把「擁有」變成「我是」</h2>
+</div>
+
+<div class="flow">
+<div class="box">我有錢</div>
+<div class="box">我有學歷</div>
+<div class="box">我有名氣</div>
+<div class="box">我有房子</div>
+<div class="box">我有追蹤者</div>
+</div>
+
+<div class="big-question">
+<div class="q">
+如果這些東西全部消失，我還是「我」嗎？
+</div>
+</div>
+
+<p>
+馬塞爾並不是說財富、工作、物質都不重要。
+真正的問題是：
+<strong>我們是否把「擁有」誤認為「存在本身」？</strong>
+</p>
+
+<div class="highlight">
+當人的價值完全建立在「我擁有什麼」上，
+人就容易陷入焦慮：
+「我還不夠。」
+「別人比我多。」
+「如果失去這些，我還剩下什麼？」
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">08</div>
+<h2>馬塞爾的「我—你」</h2>
+</div>
+
+<p>
+馬塞爾認為，人不是一個孤立的「我」。
+我們是在與他人的關係中成為自己。
+</p>
+
+<div class="flow">
+<div class="box">我</div>
+<div class="arrow">↔</div>
+<div class="box">你</div>
+<div class="arrow">↔</div>
+<div class="box">我們</div>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>「他」</h3>
+<p>
+我可以把另一個人當成一個研究對象、
+一個資料、一個角色、一個功能。
+</p>
+</div>
+
+<div class="card">
+<h3>「你」</h3>
+<p>
+我把對方當成一個真正的存在者，
+願意與他相遇、回應他。
+</p>
+</div>
+</div>
+
+<div class="highlight">
+<strong>「你」不是一個物件。</strong>
+<br>
+真正的關係不是「我研究你」，
+而是「我向你敞開，並且讓自己受到你的影響」。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">09</div>
+<h2>「我—它」與「我—你」</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>我—它</th>
+<th>我—你</th>
+</tr>
+<tr>
+<td>把對方當作對象</td>
+<td>把對方當作一個人</td>
+</tr>
+<tr>
+<td>分析</td>
+<td>相遇</td>
+</tr>
+<tr>
+<td>利用</td>
+<td>回應</td>
+</tr>
+<tr>
+<td>功能關係</td>
+<td>存在關係</td>
+</tr>
+<tr>
+<td>「他是什麼？」</td>
+<td>「你是誰？」</td>
+</tr>
+</table>
+</div>
+
+<p>
+這與後來馬丁・布伯的「我—你」思想具有重要的對話關係，
+但兩人的概念與哲學脈絡並不完全相同。
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">10</div>
+<h2>身體：我「擁有」身體，還是「就是」身體？</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+「我的身體」到底是一件我擁有的東西，
+還是我的存在本身？
+</div>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>把身體當物件</h3>
+<p>
+我可以測量身高、體重、血壓、肌肉、器官。
+</p>
+</div>
+
+<div class="card">
+<h3>活著的身體</h3>
+<p>
+但我不是站在身體外面使用它。
+我就是透過這個身體活在世界中。
+</p>
+</div>
+</div>
+
+<div class="highlight">
+因此，身體不能完全被理解成「我擁有的一件東西」。
+<strong>我與我的身體具有非常深的存在性關係。</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">11</div>
+<h2>「參與」而不是「旁觀」</h2>
+</div>
+
+<p>
+馬塞爾認為，人真正重要的存在經驗，
+不是永遠站在世界之外觀察，
+而是<strong>參與其中</strong>。
+</p>
+
+<div class="flow">
+<div class="box">旁觀者</div>
+<div class="arrow">→</div>
+<div class="box">世界是研究對象</div>
+</div>
+
+<div class="flow">
+<div class="box">參與者</div>
+<div class="arrow">→</div>
+<div class="box">我本身就在世界之中</div>
+</div>
+
+<div class="card">
+<h3>例子：友誼</h3>
+<p>
+你可以研究「友誼」的心理學，
+列出友誼的定義與條件。
+</p>
+<p>
+但真正成為朋友，
+需要<strong>信任、陪伴、承諾與共同生活</strong>。
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">12</div>
+<h2>忠誠：我如何對另一個人說「我會在」？</h2>
+</div>
+
+<p>
+馬塞爾非常重視<strong>忠誠（fidelity）</strong>。
+</p>
+
+<div class="big-question">
+<div class="q">
+真正的忠誠，是「我答應你，所以我履行承諾」，
+還是更深的「即使情況改變，我仍願意與你同在」？
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>契約</h3>
+<p>可以寫在紙上，具有條款。</p>
+</div>
+
+<div class="card">
+<h3>忠誠</h3>
+<p>是一種對人的持續承擔。</p>
+</div>
+
+<div class="card">
+<h3>存在性承諾</h3>
+<p>不是只說「我做某件事」，而是說「我願意與你一起面對」。</p>
+</div>
+</div>
+
+<div class="highlight">
+忠誠讓「我—你」關係不只停留在當下，
+而產生了<strong>時間中的持續性</strong>。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">13</div>
+<h2>希望：不是「事情一定會成功」</h2>
+</div>
+
+<p>
+馬塞爾的「希望」不是普通的樂觀。
+</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>樂觀</th>
+<th>希望</th>
+</tr>
+<tr>
+<td>「我相信結果會很好。」</td>
+<td>「即使我不知道結果，我仍不放棄。」</td>
+</tr>
+<tr>
+<td>依賴預測</td>
+<td>依賴信任</td>
+</tr>
+<tr>
+<td>事情按照計畫發展</td>
+<td>在不確定中仍保持開放</td>
+</tr>
+<tr>
+<td>「事情會成功」</td>
+<td>「我仍願意相信與等待」</td>
+</tr>
+</table>
+</div>
+
+<div class="quote">
+希望不是對未來的控制，
+而是在不確定中仍然向未來敞開。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">14</div>
+<h2>希望與絕望</h2>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>絕望</h3>
+<p>
+把未來完全封閉：
+「沒有任何可能了。」
+</p>
+</div>
+
+<div class="card">
+<h3>希望</h3>
+<p>
+承認自己無法控制未來，
+卻拒絕把未來完全封死。
+</p>
+</div>
+</div>
+
+<div class="flow">
+<div class="box">不確定</div>
+<div class="arrow">→</div>
+<div class="box">我無法控制</div>
+<div class="arrow">→</div>
+<div class="box">我仍然相信</div>
+<div class="arrow">→</div>
+<div class="box">希望</div>
+</div>
+
+<div class="highlight">
+馬塞爾的希望具有很強的<strong>超越性與宗教性</strong>：
+它不是「我相信自己的能力一定能解決一切」，
+而是「即使我無法掌控，我仍然不把存在判定為毫無希望」。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">15</div>
+<h2>愛：不是擁有另一個人</h2>
+</div>
+
+<p>
+如果把另一個人當成「我的東西」，
+愛就容易變成佔有。
+</p>
+
+<div class="flow">
+<div class="box">愛</div>
+<div class="arrow">≠</div>
+<div class="box">擁有</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>佔有</h3>
+<p>「你是我的。」</p>
+</div>
+
+<div class="card">
+<h3>控制</h3>
+<p>「你必須按照我的期待。」</p>
+</div>
+
+<div class="card">
+<h3>真正的關係</h3>
+<p>「我承認你是一個自由而獨立的存在者。」</p>
+</div>
+</div>
+
+<div class="highlight">
+愛不是把「你」變成「我的東西」，
+而是讓兩個存在者在自由中彼此相遇。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">16</div>
+<h2>馬塞爾與海德格</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>馬塞爾</th>
+<th>海德格</th>
+</tr>
+<tr>
+<td>存在</td>
+<td>存在</td>
+</tr>
+<tr>
+<td>強調我與他人的關係</td>
+<td>強調此在與存在問題</td>
+</tr>
+<tr>
+<td>忠誠、希望、愛</td>
+<td>焦慮、向死而在、真實性</td>
+</tr>
+<tr>
+<td>具有宗教與超越性方向</td>
+<td>主要以存在論方式分析</td>
+</tr>
+<tr>
+<td>希望通向超越</td>
+<td>死亡揭示存在的有限性</td>
+</tr>
+</table>
+</div>
+
+<div class="highlight">
+兩人都反對把人完全當成「客觀物件」，
+但馬塞爾更強調：
+<strong>人的存在是在關係、愛、忠誠與希望中被經驗的。</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">17</div>
+<h2>馬塞爾與沙特</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>馬塞爾</th>
+<th>沙特</th>
+</tr>
+<tr>
+<td>基督教存在主義</td>
+<td>無神論存在主義</td>
+</tr>
+<tr>
+<td>存在具有超越方向</td>
+<td>不存在預先給定的終極本質</td>
+</tr>
+<tr>
+<td>希望、忠誠、愛</td>
+<td>自由、責任、焦慮</td>
+</tr>
+<tr>
+<td>他人可以成為相遇與共同存在</td>
+<td>他人關係常帶有衝突與客體化問題</td>
+</tr>
+<tr>
+<td>信仰是存在的開放</td>
+<td>自由是人在無神世界中的處境</td>
+</tr>
+</table>
+</div>
+
+<div class="flow">
+<div class="box">沙特</div>
+<div class="arrow">→</div>
+<div class="box">沒有上帝</div>
+<div class="arrow">→</div>
+<div class="box">自由與責任</div>
+</div>
+
+<div class="flow">
+<div class="box">馬塞爾</div>
+<div class="arrow">→</div>
+<div class="box">存在的超越</div>
+<div class="arrow">→</div>
+<div class="box">希望與信仰</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">18</div>
+<h2>馬塞爾與雅士培</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>馬塞爾</th>
+<th>雅士培</th>
+</tr>
+<tr>
+<td>存在不是物件</td>
+<td>存在不能被科學完全掌握</td>
+</tr>
+<tr>
+<td>奧祕</td>
+<td>界限情境</td>
+</tr>
+<tr>
+<td>希望、忠誠、愛</td>
+<td>溝通、存在、超越</td>
+</tr>
+<tr>
+<td>基督教超越性</td>
+<td>哲學信仰與超越者</td>
+</tr>
+</table>
+</div>
+
+<div class="highlight">
+兩人都反對把人的存在完全縮減成科學資料，
+並且都認為：
+<strong>人在極限情境中，才可能真正面對「自己是誰」。</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">19</div>
+<h2>馬塞爾與布伯</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>馬塞爾</th>
+<th>馬丁・布伯</th>
+</tr>
+<tr>
+<td>我—你關係</td>
+<td>我—你關係</td>
+</tr>
+<tr>
+<td>強調存在性的相遇</td>
+<td>強調關係本身形成「我」</td>
+</tr>
+<tr>
+<td>忠誠與希望</td>
+<td>相遇與對話</td>
+</tr>
+<tr>
+<td>具有基督教神學背景</td>
+<td>具有猶太宗教思想背景</td>
+</tr>
+</table>
+</div>
+
+<p>
+兩人的思想可以一起理解一個重要命題：
+<strong>「我」並不是一個完全孤立、先存在再去找別人的個體。</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">20</div>
+<h2>馬塞爾的思想地圖</h2>
+</div>
+
+<div class="mind">
+
+<div class="side">
+<h3>存在</h3>
+<p>我不是一個物件。</p>
+</div>
+
+<div class="center">
+馬塞爾
+<br>
+存在的奧祕
+</div>
+
+<div class="side">
+<h3>關係</h3>
+<p>我在「我—你」中存在。</p>
+</div>
+
+<div class="side">
+<h3>身體</h3>
+<p>我不是站在身體外使用身體。</p>
+</div>
+
+<div class="side">
+<h3>希望</h3>
+<p>在不確定中仍向未來敞開。</p>
+</div>
+
+</div>
+
+<div class="flow">
+<div class="box">存在</div>
+<div class="arrow">→</div>
+<div class="box">參與</div>
+<div class="arrow">→</div>
+<div class="box">相遇</div>
+<div class="arrow">→</div>
+<div class="box">忠誠</div>
+<div class="arrow">→</div>
+<div class="box">希望</div>
+<div class="arrow">→</div>
+<div class="box">超越</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">21</div>
+<h2>馬塞爾的「存在鏈」</h2>
+</div>
+
+<div class="formula">
+存在 → 參與 → 關係 → 忠誠 → 希望 → 超越
+<span>從孤立的「我」走向與他人及超越者的關係</span>
+</div>
+
+<p>
+這條線可以幫助學生快速掌握馬塞爾：
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>存在</h3>
+<p>我不是一個可以完全客觀化的東西。</p>
+</div>
+
+<div class="card">
+<h3>參與</h3>
+<p>我永遠已經身處世界之中。</p>
+</div>
+
+<div class="card">
+<h3>關係</h3>
+<p>我透過與他人的相遇成為自己。</p>
+</div>
+
+<div class="card">
+<h3>忠誠</h3>
+<p>關係在時間中持續。</p>
+</div>
+
+<div class="card">
+<h3>希望</h3>
+<p>面對未知的未來仍不封閉自己。</p>
+</div>
+
+<div class="card">
+<h3>超越</h3>
+<p>人的存在向一個超越自身的維度開放。</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">22</div>
+<h2>「問題」與「奧祕」：教室案例</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+老師問：「人的幸福需要多少錢？」
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>問題式思考</h3>
+<p>
+可以研究收入、生活品質、消費與幸福感的統計關係。
+</p>
+</div>
+
+<div class="card">
+<h3>奧祕式思考</h3>
+<p>
+但「我為什麼活著？」
+「什麼值得我奉獻？」
+不能只靠統計數字回答。
+</p>
+</div>
+
+<div class="card">
+<h3>馬塞爾會追問</h3>
+<p>
+當我們討論幸福時，
+我們自己其實也正在參與「什麼是值得活的人生」這個問題。
+</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">23</div>
+<h2>現代生活中的馬塞爾</h2>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>社群媒體</h3>
+<p>
+追蹤者、按讚數、觀看數，
+會不會讓我們把「存在」變成「數據」？
+</p>
+</div>
+
+<div class="card">
+<h3>職場</h3>
+<p>
+一個人的價值是否只剩下職稱、薪資與績效？
+</p>
+</div>
+
+<div class="card">
+<h3>教育</h3>
+<p>
+學生是否被簡化成分數、排名與升學結果？
+</p>
+</div>
+
+<div class="card">
+<h3>人際關係</h3>
+<p>
+我們是在真正理解對方，
+還是在利用對方滿足自己的需求？
+</p>
+</div>
+
+<div class="card">
+<h3>人工智慧</h3>
+<p>
+當人被大量資料描述時，
+資料是否等於「這個人」本身？
+</p>
+</div>
+
+<div class="card">
+<h3>消費社會</h3>
+<p>
+「我擁有什麼」是否逐漸取代「我是誰」？
+</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">24</div>
+<h2>三個非常重要的大哉問</h2>
+</div>
+
+<div class="big-question">
+<div class="q">① 我是「一個人」，還是「一組資料」？</div>
+<p>
+如果我的成績、收入、履歷、外貌與社群數據全部被列出，
+這些資料真的等於「我」嗎？
+</p>
+</div>
+
+<div class="big-question">
+<div class="q">② 我是在「擁有」人生，還是在「活著」？</div>
+<p>
+房子、金錢、工作與名聲很重要，
+但它們能否回答「我為什麼活著」？
+</p>
+</div>
+
+<div class="big-question">
+<div class="q">③ 在不確定的未來，我還能希望嗎？</div>
+<p>
+希望不是保證結果成功，
+而是在不能控制的時候仍然選擇敞開。
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">25</div>
+<h2>常見誤解</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>❌ 誤解一：馬塞爾只是說「人生要有愛」</h3>
+<p>
+<strong>✓ 正確：</strong>
+他的「愛」是存在性的關係，
+涉及自由、忠誠、承諾與對他人的真正承認。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解二：希望就是樂觀</h3>
+<p>
+<strong>✓ 正確：</strong>
+希望恰恰是在無法確定結果時仍保持開放。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解三：奧祕就是神秘學</h3>
+<p>
+<strong>✓ 正確：</strong>
+「奧祕」是指我無法把某個存在問題完全客觀化，
+因為我自己就在其中。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解四：他反對科學</h3>
+<p>
+<strong>✓ 正確：</strong>
+科學可以有效處理「問題」，
+但不能因此宣稱所有存在問題都能被還原成科學問題。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解五：他只是一位宗教思想家</h3>
+<p>
+<strong>✓ 正確：</strong>
+他的宗教信仰深刻影響哲學，
+但他也提出了關於身體、關係、存在與現代人的重要哲學分析。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解六：我—你就是單純「對別人好」</h3>
+<p>
+<strong>✓ 正確：</strong>
+它是一種存在性的關係：
+我承認對方不是工具，而是一個自由的「你」。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">26</div>
+<h2>馬塞爾與20世紀存在主義</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>思想家</th>
+<th>核心問題</th>
+<th>主要方向</th>
+</tr>
+<tr>
+<td>海德格</td>
+<td>存在是什麼？</td>
+<td>此在、時間、死亡、真實性</td>
+</tr>
+<tr>
+<td>雅士培</td>
+<td>人在界限情境中如何存在？</td>
+<td>溝通、超越、哲學信仰</td>
+</tr>
+<tr>
+<td>馬塞爾</td>
+<td>如何在關係與希望中存在？</td>
+<td>我—你、忠誠、希望、超越</td>
+</tr>
+<tr>
+<td>沙特</td>
+<td>沒有上帝時，人如何自由？</td>
+<td>自由、責任、焦慮</td>
+</tr>
+<tr>
+<td>卡繆</td>
+<td>荒謬的人如何生活？</td>
+<td>荒謬、反抗、自由</td>
+</tr>
+</table>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">27</div>
+<h2>馬塞爾的哲學地圖</h2>
+</div>
+
+<div class="mind">
+
+<div class="side">
+<h3>問題</h3>
+<p>可以站在外面分析。</p>
+</div>
+
+<div class="center">
+存在
+<br>
+不是物件
+</div>
+
+<div class="side">
+<h3>奧祕</h3>
+<p>我自己就在其中。</p>
+</div>
+
+<div class="side">
+<h3>擁有</h3>
+<p>我有什麼？</p>
+</div>
+
+<div class="side">
+<h3>存在</h3>
+<p>我是誰？</p>
+</div>
+
+</div>
+
+<div class="flow">
+<div class="box">我</div>
+<div class="arrow">↔</div>
+<div class="box">你</div>
+<div class="arrow">→</div>
+<div class="box">忠誠</div>
+<div class="arrow">→</div>
+<div class="box">希望</div>
+<div class="arrow">→</div>
+<div class="box">超越</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">28</div>
+<h2>如果只記住馬塞爾的八個概念</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 存在</h3>
+<p>人不能被完全當成物件。</p>
+</div>
+
+<div class="card">
+<h3>② 問題</h3>
+<p>可以站在外部分析與解決。</p>
+</div>
+
+<div class="card">
+<h3>③ 奧祕</h3>
+<p>我自己也參與其中。</p>
+</div>
+
+<div class="card">
+<h3>④ 擁有</h3>
+<p>「我有什麼？」</p>
+</div>
+
+<div class="card">
+<h3>⑤ 存在</h3>
+<p>「我是誰？」</p>
+</div>
+
+<div class="card">
+<h3>⑥ 我—你</h3>
+<p>真正的人際關係不是把對方當工具。</p>
+</div>
+
+<div class="card">
+<h3>⑦ 忠誠</h3>
+<p>在時間中持續對他人承擔。</p>
+</div>
+
+<div class="card">
+<h3>⑧ 希望</h3>
+<p>在未知中仍保持對未來的開放。</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">29</div>
+<h2>一張圖掌握馬塞爾</h2>
+</div>
+
+<div class="card">
+
+<div class="flow">
+<div class="box">人不是物件</div>
+<div class="arrow">→</div>
+<div class="box">存在是奧祕</div>
+<div class="arrow">→</div>
+<div class="box">我必須參與</div>
+<div class="arrow">→</div>
+<div class="box">我與你相遇</div>
+<div class="arrow">→</div>
+<div class="box">產生忠誠</div>
+<div class="arrow">→</div>
+<div class="box">面對未知</div>
+<div class="arrow">→</div>
+<div class="box">保持希望</div>
+<div class="arrow">→</div>
+<div class="box">向超越開放</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">30</div>
+<h2>最後總結：馬塞爾想告訴我們什麼？</h2>
+</div>
+
+<div class="quote">
+真正重要的人生問題，
+不是所有問題都能被「解決」；
+有些問題必須被「活出來」。
+</div>
+
+<div class="highlight">
+<strong>馬塞爾的核心思想，可以濃縮成一條線：</strong>
+<br><br>
+「我不是一個孤立的物件」
+→「我活在世界之中」
+→「我與他人相遇」
+→「我學習忠誠」
+→「我面對未知」
+→「我仍然希望」
+→「我向超越敞開」。
+</div>
+
+<p class="lead">
+如果笛卡兒問的是：
+<strong>「我如何確定我存在？」</strong>
+<br><br>
+如果海德格問的是：
+<strong>「存在究竟意味著什麼？」</strong>
+<br><br>
+那麼馬塞爾更進一步問：
+<strong>「我如何與他人一起存在？」</strong>
+</p>
+
+<div class="formula">
+馬塞爾
+<span>存在不是孤立的「我」，而是在關係、忠誠、希望與超越中實現的存在。</span>
+</div>
+
+<p class="note">
+教學提示：馬塞爾最適合與「海德格 → 雅士培 → 馬塞爾 → 沙特 → 卡繆」放在同一條20世紀存在主義思想線中。若要掌握馬塞爾，最重要的四組概念是：「問題／奧祕」、「擁有／存在」、「我—它／我—你」、「絕望／希望」。
+</p>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+<strong>馬塞爾｜Gabriel Marcel</strong>
+<p>1889–1973　｜　存在・奧祕・我—你・忠誠・希望・超越</p>
+</div>
+</footer>
+
+</body>
+</html>

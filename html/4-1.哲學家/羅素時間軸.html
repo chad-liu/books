@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>羅素｜邏輯、語言與現代哲學</title>
+
+<style>
+:root{
+  --bg:#eef1f5;
+  --paper:#ffffff;
+  --ink:#20252b;
+  --muted:#68717b;
+  --dark:#202a35;
+  --dark2:#354452;
+  --blue:#557da3;
+  --blue2:#88a9c5;
+  --gold:#c39a4b;
+  --gold2:#e4cb91;
+  --red:#b65d58;
+  --green:#5d8069;
+  --purple:#76689b;
+  --line:#d8dee5;
+  --shadow:0 10px 30px rgba(30,45,60,.09);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    "PingFang TC",
+    Arial,
+    sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+}
+
+.hero{
+  background:
+    linear-gradient(135deg,var(--dark),var(--dark2));
+  color:white;
+  padding:70px 24px 65px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  right:-120px;
+  top:-150px;
+  box-shadow:
+    0 0 0 45px rgba(255,255,255,.025),
+    0 0 0 90px rgba(255,255,255,.018);
+}
+
+.hero-inner{
+  max-width:1180px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.eyebrow{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.25);
+  padding:6px 14px;
+  border-radius:30px;
+  font-size:13px;
+  letter-spacing:1.5px;
+  color:#dce5ed;
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,82px);
+  line-height:1;
+  margin:24px 0 12px;
+  letter-spacing:-2px;
+}
+
+.hero .subtitle{
+  font-size:clamp(20px,3vw,32px);
+  color:#c8d5df;
+  margin-bottom:28px;
+}
+
+.hero p{
+  max-width:820px;
+  color:#d7e0e7;
+  font-size:17px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+.tag{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.15);
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:14px;
+}
+
+.container{
+  max-width:1180px;
+  margin:auto;
+  padding:50px 20px 80px;
+}
+
+.section{
+  margin-bottom:65px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.num{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:var(--dark);
+  color:white;
+  font-weight:700;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:30px;
+  line-height:1.3;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-top:0;
+  font-size:20px;
+}
+
+.card p:last-child{
+  margin-bottom:0;
+}
+
+.big-question{
+  background:linear-gradient(135deg,#f7f9fb,#e8eef4);
+  border-left:6px solid var(--blue);
+  padding:28px 30px;
+  border-radius:16px;
+  font-size:24px;
+  font-weight:700;
+  margin:25px 0;
+}
+
+.quote{
+  background:var(--dark);
+  color:white;
+  padding:30px;
+  border-radius:18px;
+  margin:25px 0;
+  position:relative;
+}
+
+.quote:before{
+  content:"“";
+  font-size:80px;
+  line-height:1;
+  color:var(--gold);
+  position:absolute;
+  left:18px;
+  top:4px;
+}
+
+.quote p{
+  padding-left:48px;
+  font-size:21px;
+  margin:0;
+}
+
+.quote small{
+  display:block;
+  margin-top:15px;
+  padding-left:48px;
+  color:#bfcbd5;
+}
+
+.timeline{
+  position:relative;
+  margin:30px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--line);
+}
+
+.event{
+  position:relative;
+  padding:0 0 28px 55px;
+}
+
+.event:before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:8px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--blue);
+  border:4px solid var(--bg);
+  box-shadow:0 0 0 1px var(--blue);
+}
+
+.year{
+  color:var(--blue);
+  font-weight:800;
+  font-size:17px;
+}
+
+.event h3{
+  margin:3px 0;
+}
+
+.flow{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  margin:25px 0;
+}
+
+.flow-item{
+  flex:1;
+  background:white;
+  border:1px solid var(--line);
+  padding:20px;
+  text-align:center;
+  border-radius:14px;
+}
+
+.arrow{
+  width:42px;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  color:var(--blue);
+}
+
+.formula{
+  background:#202a35;
+  color:white;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+  font-size:23px;
+  margin:25px 0;
+}
+
+.formula span{
+  color:var(--gold2);
+}
+
+.concept{
+  border-top:5px solid var(--blue);
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:var(--shadow);
+}
+
+.concept.green{border-top-color:var(--green)}
+.concept.red{border-top-color:var(--red)}
+.concept.purple{border-top-color:var(--purple)}
+.concept.gold{border-top-color:var(--gold)}
+
+.concept h3{
+  margin-top:0;
+}
+
+.note{
+  background:#f3f7f3;
+  border-left:5px solid var(--green);
+  padding:18px 22px;
+  border-radius:10px;
+  margin:20px 0;
+}
+
+.warning{
+  background:#fff5f3;
+  border-left:5px solid var(--red);
+  padding:18px 22px;
+  border-radius:10px;
+  margin:20px 0;
+}
+
+.compare{
+  overflow-x:auto;
+  background:white;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+th,td{
+  padding:15px 17px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+
+th{
+  background:var(--dark);
+  color:white;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.qa{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin:12px 0;
+  padding:20px 23px;
+}
+
+.qa strong{
+  color:var(--blue);
+  display:block;
+  margin-bottom:5px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin:25px 0;
+}
+
+.stat{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat .big{
+  font-size:30px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.mindmap{
+  background:var(--dark);
+  color:white;
+  border-radius:22px;
+  padding:35px;
+}
+
+.mindmap-center{
+  text-align:center;
+  background:#fff;
+  color:var(--ink);
+  max-width:300px;
+  margin:0 auto 30px;
+  padding:20px;
+  border-radius:50px;
+  font-size:23px;
+  font-weight:800;
+}
+
+.mindmap-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.mind-item{
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;
+  padding:18px;
+}
+
+.mind-item b{
+  color:var(--gold2);
+}
+
+footer{
+  background:var(--dark);
+  color:#bfcbd5;
+  text-align:center;
+  padding:35px 20px;
+}
+
+.highlight{
+  color:var(--blue);
+  font-weight:800;
+}
+
+@media(max-width:900px){
+  .grid,.stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .mindmap-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:50px 20px;
+  }
+
+  .container{
+    padding:35px 15px 60px;
+  }
+
+  .grid,.grid2,.stats,
+  .mindmap-grid{
+    grid-template-columns:1fr;
+  }
+
+  .flow{
+    flex-direction:column;
+  }
+
+  .arrow{
+    width:100%;
+    height:35px;
+    transform:rotate(90deg);
+  }
+
+  .section-title h2{
+    font-size:25px;
+  }
+
+  .big-question{
+    font-size:20px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">20TH CENTURY · ANALYTIC PHILOSOPHY · LOGIC</span>
+
+ 
+<h1>羅素</h1>
+
+<div class="subtitle">
+  Bertrand Russell · 1872—1970
+</div>
+
+<p>
+  從「邏輯」出發，重新追問語言、知識、真理與世界。
+  羅素不只是哲學家，也是數學家、邏輯學家、教育思想家與和平倡議者。
+  他的重要工作之一，是把哲學問題轉化成可以透過
+  <strong>邏輯分析與語言分析</strong>來處理的問題。
+</p>
+
+<div class="tags">
+  <span class="tag">分析哲學</span>
+  <span class="tag">數理邏輯</span>
+  <span class="tag">語言分析</span>
+  <span class="tag">知識論</span>
+  <span class="tag">邏輯原子論</span>
+  <span class="tag">科學</span>
+  <span class="tag">和平主義</span>
+  <span class="tag">自由思想</span>
+</div>
+ 
+
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 01 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>一句話理解羅素</h2>
+  </div>
+
+  <div class="big-question">
+    如果哲學問題常常是因為「語言沒有說清楚」，
+    那麼我們能不能先把語言分析清楚，再重新思考世界？
+  </div>
+
+  <div class="card">
+    <p>
+      羅素最重要的貢獻，可以濃縮成一句話：
+    </p>
+
+ 
+<div class="formula">
+  <span>哲學問題</span>
+  → 語言分析
+  → 邏輯分析
+  → 澄清命題
+  → 重新理解世界
+</div>
+
+<p>
+  因此，羅素將哲學從「建立一套龐大的宇宙觀」，
+  逐漸轉向「分析我們究竟在說什麼」。
+</p>
+ 
+
+  </div>
+</section>
+
+<!-- 02 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>羅素是誰？</h2>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="big">1872</div>
+      出生
+    </div>
+    <div class="stat">
+      <div class="big">1970</div>
+      逝世
+    </div>
+    <div class="stat">
+      <div class="big">98</div>
+      歲
+    </div>
+    <div class="stat">
+      <div class="big">1950</div>
+      諾貝爾文學獎
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="concept">
+      <h3>數學家</h3>
+      <p>
+        羅素深入研究數學基礎與邏輯，希望說明：
+        <strong>數學知識究竟建立在什麼基礎上？</strong>
+      </p>
+    </div>
+
+ 
+<div class="concept green">
+  <h3>哲學家</h3>
+  <p>
+    他把邏輯工具帶入哲學，用來分析語言、知識、真理、
+    世界與心靈等問題。
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>公共知識分子</h3>
+  <p>
+    他也積極介入戰爭、核武、教育、婚姻、
+    言論自由與社會改革等公共議題。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="quote">
+    <p>
+      哲學的價值，不一定在於給出最後答案，
+      而在於讓我們看見問題究竟有多複雜。
+    </p>
+    <small>—— 可用來理解羅素哲學精神的概括</small>
+  </div>
+</section>
+
+<!-- 03 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>羅素所處的時代</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>19世紀末：舊哲學受到挑戰</h3>
+  <p>
+    德國觀念論留下龐大的形上學體系。
+    但英國哲學界逐漸出現反思：
+    我們是否真的需要如此龐大的哲學體系？
+  </p>
+</div>
+
+<div class="card">
+  <h3>數學基礎危機</h3>
+  <p>
+    集合論與數學基礎出現許多悖論，
+    迫使數學家重新思考：
+    <strong>數學的確定性究竟從何而來？</strong>
+  </p>
+</div>
+
+<div class="card">
+  <h3>科學快速發展</h3>
+  <p>
+    物理學、心理學與數學迅速發展。
+    哲學開始面臨新的問題：
+    哲學與科學究竟應該如何分工？
+  </p>
+</div>
+
+<div class="card">
+  <h3>兩次世界大戰</h3>
+  <p>
+    羅素親身經歷兩次世界大戰以及核武時代，
+    因此他的哲學並沒有停留在學院，
+    而延伸到和平、政治與人類生存。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 04 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>羅素的人生時間軸</h2>
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1872</div>
+  <h3>出生於英國威爾斯</h3>
+  <p>出生於英國貴族家庭，後來進入劍橋大學學習。</p>
+</div>
+
+<div class="event">
+  <div class="year">1890年代</div>
+  <h3>接觸數學與哲學</h3>
+  <p>
+    在劍橋受到數學、邏輯與哲學訓練，
+    開始思考數學知識的基礎。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1903</div>
+  <h3>《數學原理》之前的重要研究</h3>
+  <p>
+    發表數學哲學與邏輯相關工作，
+    開始建立自己的分析方法。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1905</div>
+  <h3>〈論指稱〉</h3>
+  <p>
+    提出著名的「描述理論」，
+    成為分析哲學與語言哲學的重要里程碑。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1910—1913</div>
+  <h3>《數學原理》</h3>
+  <p>
+    與懷海德共同完成
+    <em>Principia Mathematica</em>，
+    嘗試以邏輯建立數學基礎。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1918</div>
+  <h3>邏輯原子論</h3>
+  <p>
+    發展以邏輯結構分析世界與語言的哲學方案。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1950</div>
+  <h3>獲得諾貝爾文學獎</h3>
+  <p>
+    不是因為寫小說，而是因為其大量公共論述
+    與捍衛自由思想的寫作。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1950—1960年代</div>
+  <h3>核武與和平運動</h3>
+  <p>
+    積極反對核戰爭，並參與國際和平倡議。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1970</div>
+  <h3>逝世</h3>
+  <p>享年97歲。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 05 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>羅素的核心問題：哲學到底在做什麼？</h2>
+  </div>
+
+  <div class="big-question">
+    哲學應該告訴我們「世界究竟是什麼」，
+    還是應該先弄清楚「我們說世界是什麼時，到底說了什麼」？
+  </div>
+
+  <div class="card">
+    <p>
+      羅素對哲學最大的改變之一，是把注意力放到
+      <span class="highlight">命題、概念、語言與邏輯結構</span>。
+    </p>
+
+ 
+<div class="flow">
+  <div class="flow-item">
+    <strong>問題</strong><br>
+    「不存在的東西」如何被談論？
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    <strong>分析</strong><br>
+    拆解句子的邏輯形式
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    <strong>澄清</strong><br>
+    找出真正的命題
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    <strong>哲學</strong><br>
+    消除假問題
+  </div>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 06 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">06</div>
+    <h2>「分析哲學」是什麼？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>傳統方式</h3>
+  <p>
+    從宏大的問題出發：
+    世界的本質是什麼？
+    人的本質是什麼？
+    絕對存在是什麼？
+  </p>
+</div>
+
+<div class="card">
+  <h3>羅素式方式</h3>
+  <p>
+    先問：
+    <strong>這個問題中的詞語究竟代表什麼？
+    句子的邏輯結構是什麼？</strong>
+  </p>
+</div>
+
+<div class="card">
+  <h3>結果</h3>
+  <p>
+    有些問題可能得到解答，
+    有些問題則會被發現其實是
+    語言造成的假問題。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    <span>哲學困惑</span>
+    ≠ 世界一定很神秘
+    <br>
+    有時只是
+    <span>語言結構讓我們誤會了</span>
+  </div>
+</section>
+
+<!-- 07 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">07</div>
+    <h2>羅素與「描述理論」</h2>
+  </div>
+
+  <div class="big-question">
+    「現在的法國國王是禿頭」這句話，
+    如果現在根本沒有法國國王，它到底是真是假？
+  </div>
+
+  <div class="card">
+    <h3>問題在哪裡？</h3>
+    <p>
+      「現在的法國國王」看起來像一個名字，
+      但實際上它是一個<strong>描述</strong>。
+    </p>
+
+ 
+<p>
+  羅素提出著名的「描述理論」，
+  認為這類句子可以透過邏輯分析拆解。
+</p>
+
+<div class="flow">
+  <div class="flow-item">
+    有一個人
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    他是現在法國國王
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    而且只有一個
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    他是禿頭
+  </div>
+</div>
+
+<div class="note">
+  <strong>重要：</strong>
+  羅素的重點不是玩文字遊戲，而是證明：
+  我們日常語言表面上看起來簡單，
+  深層的邏輯結構卻可能非常複雜。
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 08 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">08</div>
+    <h2>邏輯原子論</h2>
+  </div>
+
+  <div class="big-question">
+    如果一句複雜的話可以拆成更基本的命題，
+    那麼世界本身是否也可以理解成某些基本事實的結構？
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept">
+  <h3>邏輯原子</h3>
+  <p>
+    羅素嘗試把複雜命題分析成更基本的邏輯結構。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>原子事實</h3>
+  <p>
+    世界可以被理解為由更基本的事實與關係構成。
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>命題</h3>
+  <p>
+    語言透過命題表達世界中的事實結構。
+  </p>
+</div>
+
+<div class="concept purple">
+  <h3>分析</h3>
+  <p>
+    哲學的工作之一，就是把複雜語言拆開，
+    找出它真正的邏輯結構。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    複雜命題
+    → 基本命題
+    → 邏輯結構
+    → 世界中的事實
+  </div>
+</section>
+
+<!-- 09 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">09</div>
+    <h2>《數學原理》：數學可以建立在邏輯上嗎？</h2>
+  </div>
+
+  <div class="card">
+    <h3>Principia Mathematica</h3>
+
+ 
+<p>
+  羅素與阿爾弗雷德・諾斯・懷海德共同撰寫
+  <em>Principia Mathematica</em>。
+</p>
+
+<p>
+  他們希望透過形式邏輯，建立數學命題的基礎，
+  也就是試圖回答：
+</p>
+
+<div class="big-question">
+  「數學的確定性，是否最終可以追溯到邏輯？」
+</div>
+
+<p>
+  這項工作極其龐大，也極其技術化，
+  但它對現代邏輯、數學基礎與電腦科學的發展
+  具有深遠影響。
+</p>
+ 
+
+  </div>
+
+  <div class="warning">
+    <strong>注意：</strong>
+    羅素並不是單獨完成《數學原理》。
+    這是他與懷海德共同完成的重要作品。
+  </div>
+</section>
+
+<!-- 10 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>羅素悖論</h2>
+  </div>
+
+  <div class="big-question">
+    「所有不包含自己的集合所形成的集合」
+    是否包含自己？
+  </div>
+
+  <div class="card">
+    <h3>最簡化的理解</h3>
+
+ 
+<p>
+  想像有一個集合 R：
+</p>
+
+<div class="formula">
+  R = {所有「不屬於自己的集合」}
+</div>
+
+<p>
+  現在問：
+  <strong>R 是否屬於 R？</strong>
+</p>
+
+<div class="grid2">
+
+  <div class="concept red">
+    <h3>如果 R ∈ R</h3>
+    <p>
+      根據 R 的定義，
+      R 不應該屬於自己。
+      → 矛盾。
+    </p>
+  </div>
+
+  <div class="concept purple">
+    <h3>如果 R ∉ R</h3>
+    <p>
+      根據 R 的定義，
+      R 符合「不屬於自己」的條件，
+      因此應該屬於 R。
+      → 又矛盾。
+    </p>
+  </div>
+
+</div>
+
+<div class="note">
+  這個悖論顯示：
+  <strong>「任何條件都可以形成集合」</strong>
+  這種直覺性的集合觀會產生嚴重問題。
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 11 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>羅素如何理解知識？</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept">
+  <h3>直接認知</h3>
+  <p>
+    我們直接接觸某些經驗內容，
+    例如感覺資料。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>描述性知識</h3>
+  <p>
+    我們透過描述與推理，
+    知道某個我們並未直接接觸的對象。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    直接經驗
+    <span>＋</span>
+    邏輯推理
+    <span>＋</span>
+    語言描述
+    <span>→</span>
+    知識
+  </div>
+
+  <div class="card">
+    <p>
+      這讓羅素的知識論具有一個重要特色：
+      他不把「我相信」與「我知道」混為一談，
+      而是追問我們的信念究竟建立在什麼證據與邏輯基礎上。
+    </p>
+  </div>
+</section>
+
+<!-- 12 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>羅素與科學</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      羅素非常重視科學，
+      但他並不認為科學能夠回答所有問題。
+    </p>
+
+ 
+<div class="grid2">
+
+  <div class="concept">
+    <h3>科學能做什麼？</h3>
+    <ul>
+      <li>建立可檢驗的理論</li>
+      <li>說明自然現象</li>
+      <li>累積經驗證據</li>
+      <li>預測與控制現象</li>
+    </ul>
+  </div>
+
+  <div class="concept gold">
+    <h3>哲學還能問什麼？</h3>
+    <ul>
+      <li>「知識」究竟是什麼？</li>
+      <li>科學推理為何可靠？</li>
+      <li>什麼叫合理的信念？</li>
+      <li>語言如何表達科學命題？</li>
+    </ul>
+  </div>
+
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 13 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>羅素不是「只相信科學」</h2>
+  </div>
+
+  <div class="big-question">
+    「科學不能證明的東西」，
+    是否就等於「完全沒有意義」？
+  </div>
+
+  <div class="card">
+    <p>
+      羅素對超自然與宗教主張通常持懷疑態度，
+      但他的哲學並不是簡單的
+      「科學可以解釋一切」。
+    </p>
+
+ 
+<p>
+  他更重視的是：
+  <strong>一個信念有多少證據支持？</strong>
+</p>
+
+<div class="formula">
+  強烈主張
+  <span>→</span>
+  需要充分證據
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 14 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">14</div>
+    <h2>羅素與懷疑精神</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>不要急著相信</h3>
+  <p>
+    一個說法很有吸引力，
+    並不代表它是真的。
+  </p>
+</div>
+
+<div class="card">
+  <h3>不要急著否定</h3>
+  <p>
+    沒有證據證明某件事，
+    也不代表它一定是假的。
+  </p>
+</div>
+
+<div class="card">
+  <h3>尋找證據</h3>
+  <p>
+    合理信念需要與證據、
+    邏輯及經驗保持聯繫。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+    <strong>核心態度：</strong>
+    理性不是「什麼都不相信」，
+    而是知道「我為什麼相信」。
+  </div>
+</section>
+
+<!-- 15 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">15</div>
+    <h2>羅素與「茶壺」</h2>
+  </div>
+
+  <div class="big-question">
+    如果有人說：
+    「宇宙某處有一個小茶壺，
+    只是人類永遠無法觀察到它。」
+    我們應該相信嗎？
+  </div>
+
+  <div class="card">
+    <p>
+      羅素提出著名的「天體茶壺」思想實驗，
+      用來說明一個重要原則：
+    </p>
+
+ 
+<div class="formula">
+  <span>提出主張的人</span>
+  應負擔
+  <span>舉證責任</span>
+</div>
+
+<p>
+  不能因為一個主張「無法被證偽」，
+  就要求別人證明它是假的。
+</p>
+ 
+
+  </div>
+</section>
+
+<!-- 16 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">16</div>
+    <h2>羅素與「我為什麼相信某件事？」</h2>
+  </div>
+
+  <div class="flow">
+    <div class="flow-item">
+      <strong>看到資訊</strong><br>
+      ↓
+    </div>
+    <div class="arrow">→</div>
+    <div class="flow-item">
+      <strong>產生相信</strong><br>
+      ↓
+    </div>
+    <div class="arrow">→</div>
+    <div class="flow-item">
+      <strong>尋找證據</strong><br>
+      ↓
+    </div>
+    <div class="arrow">→</div>
+    <div class="flow-item">
+      <strong>檢查推理</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>
+      這種態度放到今日的網路時代尤其重要：
+      <strong>看到、聽到、很多人相信，
+      都不等於「知道」。</strong>
+    </p>
+  </div>
+</section>
+
+<!-- 17 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">17</div>
+    <h2>羅素與政治思想</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <h3>自由思想</h3>
+  <p>
+    重視個人思考與言論自由，
+    反對思想被權威壓制。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>反戰</h3>
+  <p>
+    反對把戰爭當作解決政治問題的正常手段。
+  </p>
+</div>
+
+<div class="concept red">
+  <h3>反核戰</h3>
+  <p>
+    在核武時代警告人類：
+    技術能力越強，
+    自我毀滅的能力也越強。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 18 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">18</div>
+    <h2>羅素與和平運動</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      第二次世界大戰後，核武器使羅素更加關心
+      「人類是否有能力毀滅自己」。
+    </p>
+
+ 
+<div class="big-question">
+  科學技術發展得越快，
+  人類的道德與政治能力是否也跟得上？
+</div>
+
+<p>
+  羅素因此積極參與反核與和平運動，
+  並與愛因斯坦等人共同推動
+  關於核武與人類生存的公共討論。
+</p>
+ 
+
+  </div>
+</section>
+
+<!-- 19 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">19</div>
+    <h2>羅素與教育</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>教育不是灌輸答案</h3>
+  <p>
+    教育應該培養學生自己思考、
+    判斷與探索的能力。
+  </p>
+</div>
+
+<div class="card">
+  <h3>培養理性懷疑</h3>
+  <p>
+    不只是「知道答案」，
+    更重要的是知道：
+    <strong>為什麼這個答案值得相信？</strong>
+  </p>
+</div>
+
+<div class="card">
+  <h3>避免思想教條</h3>
+  <p>
+    不論政治、宗教或意識形態，
+    都應允許公開討論與質疑。
+  </p>
+</div>
+
+<div class="card">
+  <h3>好奇心</h3>
+  <p>
+    真正的教育應該讓人保有
+    對世界的好奇，而不是只追求標準答案。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 20 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">20</div>
+    <h2>羅素的哲學方法</h2>
+  </div>
+
+  <div class="flow">
+    <div class="flow-item">
+      <strong>① 發現困惑</strong><br>
+      「這句話到底是什麼意思？」
+    </div>
+
+ 
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <strong>② 分析語言</strong><br>
+  拆解概念與命題
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <strong>③ 分析邏輯</strong><br>
+  找出推理結構
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <strong>④ 檢查證據</strong><br>
+  判斷信念是否合理
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    哲學 ≈
+    <span>清楚地問問題</span>
+    ＋
+    <span>精確地使用語言</span>
+    ＋
+    <span>嚴格地檢查推理</span>
+  </div>
+</section>
+
+<!-- 21 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">21</div>
+    <h2>羅素 vs 傳統形上學</h2>
+  </div>
+
+  <div class="compare">
+    <table>
+      <tr>
+        <th>面向</th>
+        <th>傳統形上學傾向</th>
+        <th>羅素式分析</th>
+      </tr>
+
+ 
+  <tr>
+    <td>核心問題</td>
+    <td>世界的終極本質是什麼？</td>
+    <td>我們的命題究竟表達什麼？</td>
+  </tr>
+
+  <tr>
+    <td>方法</td>
+    <td>概念推演、形上學建構</td>
+    <td>邏輯分析、語言分析</td>
+  </tr>
+
+  <tr>
+    <td>語言</td>
+    <td>有時直接使用日常語言</td>
+    <td>分析語句的深層邏輯形式</td>
+  </tr>
+
+  <tr>
+    <td>哲學困惑</td>
+    <td>可能來自世界本身</td>
+    <td>可能來自語言結構</td>
+  </tr>
+</table>
+ 
+
+  </div>
+</section>
+
+<!-- 22 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">22</div>
+    <h2>羅素 vs 維根斯坦</h2>
+  </div>
+
+  <div class="compare">
+    <table>
+      <tr>
+        <th>面向</th>
+        <th>羅素</th>
+        <th>早期維根斯坦</th>
+      </tr>
+
+ 
+  <tr>
+    <td>關注</td>
+    <td>邏輯、語言、知識</td>
+    <td>語言、邏輯、世界</td>
+  </tr>
+
+  <tr>
+    <td>語言與世界</td>
+    <td>命題具有邏輯結構</td>
+    <td>命題可以描繪事實的結構</td>
+  </tr>
+
+  <tr>
+    <td>哲學工作</td>
+    <td>透過分析澄清問題</td>
+    <td>澄清語言的界限</td>
+  </tr>
+
+  <tr>
+    <td>關係</td>
+    <td>羅素曾對維根斯坦早期思想產生重要影響</td>
+    <td>後來維根斯坦發展出不同的語言哲學</td>
+  </tr>
+</table>
+ 
+
+  </div>
+
+  <div class="note">
+    <strong>重要：</strong>
+    維根斯坦並不是「羅素的學生而已」。
+    他後來發展出自己的哲學道路，
+    尤其是後期語言哲學與「語言遊戲」思想。
+  </div>
+</section>
+
+<!-- 23 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">23</div>
+    <h2>羅素與弗雷格</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>弗雷格</h3>
+  <p>
+    現代邏輯的重要奠基者之一，
+    研究語言、意義、指稱與數學基礎。
+  </p>
+</div>
+
+<div class="card">
+  <h3>羅素</h3>
+  <p>
+    延續並發展邏輯主義與語言分析，
+    將邏輯方法帶入更多哲學問題。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    弗雷格
+    <span>→</span>
+    羅素
+    <span>→</span>
+    維根斯坦
+    <span>→</span>
+    分析哲學的發展
+  </div>
+</section>
+
+<!-- 24 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">24</div>
+    <h2>羅素與笛卡兒</h2>
+  </div>
+
+  <div class="compare">
+    <table>
+      <tr>
+        <th>笛卡兒</th>
+        <th>羅素</th>
+      </tr>
+
+ 
+  <tr>
+    <td>從懷疑出發</td>
+    <td>從分析出發</td>
+  </tr>
+
+  <tr>
+    <td>尋找不可懷疑的自我</td>
+    <td>分析知識與命題的邏輯結構</td>
+  </tr>
+
+  <tr>
+    <td>「我思故我在」</td>
+    <td>「我們究竟知道什麼？」</td>
+  </tr>
+
+  <tr>
+    <td>建立理性主義體系</td>
+    <td>避免過早建立龐大的形上學體系</td>
+  </tr>
+</table>
+ 
+
+  </div>
+</section>
+
+<!-- 25 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">25</div>
+    <h2>羅素與休謨</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>共同點</h3>
+  <ul>
+    <li>重視經驗與證據</li>
+    <li>警惕過度形上學</li>
+    <li>強調理性懷疑</li>
+    <li>追問因果與知識的基礎</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>差異</h3>
+  <ul>
+    <li>休謨以經驗論與心理分析為核心</li>
+    <li>羅素更重視形式邏輯</li>
+    <li>羅素受到現代數學與科學影響</li>
+    <li>兩人所處的知識環境不同</li>
+  </ul>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 26 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">26</div>
+    <h2>羅素與尼采：兩種完全不同的哲學氣質</h2>
+  </div>
+
+  <div class="compare">
+    <table>
+      <tr>
+        <th>面向</th>
+        <th>羅素</th>
+        <th>尼采</th>
+      </tr>
+
+ 
+  <tr>
+    <td>核心風格</td>
+    <td>分析、論證、邏輯</td>
+    <td>譜系、批判、格言</td>
+  </tr>
+
+  <tr>
+    <td>關注</td>
+    <td>知識、語言、科學、社會</td>
+    <td>價值、道德、權力、生命</td>
+  </tr>
+
+  <tr>
+    <td>理性</td>
+    <td>高度重視</td>
+    <td>對理性主義保持深刻懷疑</td>
+  </tr>
+
+  <tr>
+    <td>哲學問題</td>
+    <td>「這個命題能否成立？」</td>
+    <td>「這個價值從何而來？」</td>
+  </tr>
+</table>
+ 
+
+  </div>
+</section>
+
+<!-- 27 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">27</div>
+    <h2>羅素最重要的幾個概念</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <h3>① 分析哲學</h3>
+  <p>
+    透過分析概念、語言與邏輯來處理哲學問題。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>② 描述理論</h3>
+  <p>
+    說明「描述」如何在語言中指涉對象。
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>③ 邏輯主義</h3>
+  <p>
+    嘗試把數學的基礎建立在邏輯之上。
+  </p>
+</div>
+
+<div class="concept purple">
+  <h3>④ 邏輯原子論</h3>
+  <p>
+    透過基本命題與事實結構理解世界。
+  </p>
+</div>
+
+<div class="concept red">
+  <h3>⑤ 理性懷疑</h3>
+  <p>
+    信念應與證據及合理推理相連。
+  </p>
+</div>
+
+<div class="concept">
+  <h3>⑥ 自由思想</h3>
+  <p>
+    鼓勵人們勇於質疑權威與既有信念。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 28 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">28</div>
+    <h2>羅素與現代電腦科學</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      羅素本人當然不是電腦科學家，
+      但他參與建立的現代邏輯傳統，
+      對後來的計算理論與資訊科學具有重要思想背景。
+    </p>
+
+ 
+<div class="flow">
+  <div class="flow-item">
+    數學邏輯
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    形式系統
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    計算理論
+  </div>
+  <div class="arrow">→</div>
+  <div class="flow-item">
+    電腦科學
+  </div>
+</div>
+
+<div class="note">
+  這條歷史線不能簡化成「羅素發明電腦」。
+  更準確的說法是：
+  <strong>現代數理邏輯提供了後來計算理論的重要思想基礎之一。</strong>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 29 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">29</div>
+    <h2>羅素的「大哉問」</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q1｜我們為什麼相信自己知道的事情是真的？</strong>
+<p>
+  因為有證據，還是因為大家都這麼說？
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q2｜一句話真的代表一個東西嗎？</strong>
+<p>
+  「獨角獸不存在」中的「獨角獸」究竟在指什麼？
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q3｜語言會不會欺騙我們？</strong>
+<p>
+  我們是否會因為一句話的表面形式，
+  誤以為背後存在某個實體？
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q4｜科學越進步，人類就一定越幸福嗎？</strong>
+<p>
+  技術能力與道德能力是否同步成長？
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q5｜自由思想有沒有代價？</strong>
+<p>
+  如果我們允許所有思想受到質疑，
+  社會是否也必須接受不舒服的答案？
+</p>
+ 
+
+  </div>
+</section>
+
+<!-- 30 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">30</div>
+    <h2>羅素與今日的資訊時代</h2>
+  </div>
+
+  <div class="big-question">
+    在一個「資訊很多」的時代，
+    我們是否反而更需要羅素式的理性懷疑？
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>假新聞</h3>
+  <p>
+    先問來源，再問證據。
+  </p>
+</div>
+
+<div class="card">
+  <h3>社群媒體</h3>
+  <p>
+    「很多人按讚」不等於「是真的」。
+  </p>
+</div>
+
+<div class="card">
+  <h3>AI生成內容</h3>
+  <p>
+    內容看起來合理，
+    不代表內容一定正確。
+  </p>
+</div>
+
+<div class="card">
+  <h3>政治宣傳</h3>
+  <p>
+    不只問「誰說的」，
+    還要問「證據是什麼」。
+  </p>
+</div>
+
+<div class="card">
+  <h3>科學資訊</h3>
+  <p>
+    「研究指出」之後，
+    還需要追問研究如何進行。
+  </p>
+</div>
+
+<div class="card">
+  <h3>個人信念</h3>
+  <p>
+    我們尤其容易相信
+    符合自己原有立場的資訊。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 31 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">31</div>
+    <h2>五個常見誤解</h2>
+  </div>
+
+  <div class="qa">
+    <strong>誤解一：羅素就是數學家。</strong>
+    <p>
+      不完整。他是數學家、邏輯學家、哲學家、
+      作家與公共知識分子。
+    </p>
+  </div>
+
+  <div class="qa">
+    <strong>誤解二：羅素認為只有科學才有價值。</strong>
+    <p>
+      不完全正確。他高度重視科學與證據，
+      同時也討論倫理、政治、教育、愛與和平。
+    </p>
+  </div>
+
+  <div class="qa">
+    <strong>誤解三：分析哲學就是只研究語言。</strong>
+    <p>
+      分析哲學的核心是分析與論證，
+      語言只是其中非常重要的工具。
+    </p>
+  </div>
+
+  <div class="qa">
+    <strong>誤解四：羅素證明數學就是邏輯。</strong>
+    <p>
+      他與懷海德確實推動邏輯主義，
+      但數學基礎問題遠比這一句話複雜。
+    </p>
+  </div>
+
+  <div class="qa">
+    <strong>誤解五：羅素只會談抽象邏輯。</strong>
+    <p>
+      恰恰相反。他長期介入戰爭、核武、
+      教育、婚姻、自由與社會改革。
+    </p>
+  </div>
+</section>
+
+<!-- 32 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">32</div>
+    <h2>羅素思想地圖</h2>
+  </div>
+
+  <div class="mindmap">
+
+ 
+<div class="mindmap-center">
+  羅素
+</div>
+
+<div class="mindmap-grid">
+
+  <div class="mind-item">
+    <b>邏輯</b><br>
+    數理邏輯<br>
+    邏輯主義<br>
+    羅素悖論
+  </div>
+
+  <div class="mind-item">
+    <b>語言</b><br>
+    描述理論<br>
+    命題<br>
+    邏輯形式
+  </div>
+
+  <div class="mind-item">
+    <b>知識</b><br>
+    直接認知<br>
+    描述性知識<br>
+    證據
+  </div>
+
+  <div class="mind-item">
+    <b>世界</b><br>
+    原子事實<br>
+    邏輯結構<br>
+    邏輯原子論
+  </div>
+
+  <div class="mind-item">
+    <b>科學</b><br>
+    理性<br>
+    經驗<br>
+    懷疑
+  </div>
+
+  <div class="mind-item">
+    <b>社會</b><br>
+    自由<br>
+    教育<br>
+    和平
+  </div>
+
+</div>
+ 
+
+  </div>
+</section>
+
+<!-- 33 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">33</div>
+    <h2>一條線記住羅素</h2>
+  </div>
+
+  <div class="formula">
+    <span>數學危機</span>
+    →
+    <span>邏輯</span>
+    →
+    <span>語言分析</span>
+    →
+    <span>知識論</span>
+    →
+    <span>科學理性</span>
+    →
+    <span>自由思想</span>
+    →
+    <span>和平與人類責任</span>
+  </div>
+
+  <div class="card">
+    <p>
+      這條線可以把羅素看成一個完整的思想家：
+    </p>
+
+ 
+<ul>
+  <li>
+    他從<strong>數學與邏輯</strong>出發。
+  </li>
+  <li>
+    進一步研究<strong>語言與命題</strong>。
+  </li>
+  <li>
+    再追問<strong>知識與證據</strong>。
+  </li>
+  <li>
+    最後把理性精神帶入<strong>教育、政治與和平</strong>。
+  </li>
+</ul>
+ 
+
+  </div>
+</section>
+
+<!-- 34 -->
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">34</div>
+    <h2>最後總結：羅素真正重要的是什麼？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <h3>第一</h3>
+  <p>
+    <strong>把「說清楚」變成哲學方法。</strong>
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>第二</h3>
+  <p>
+    <strong>把邏輯帶進語言與哲學分析。</strong>
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>第三</h3>
+  <p>
+    <strong>提醒我們：相信一件事需要理由。</strong>
+  </p>
+</div>
+
+<div class="concept purple">
+  <h3>第四</h3>
+  <p>
+    <strong>科學能力越強，人類責任也越大。</strong>
+  </p>
+</div>
+
+<div class="concept red">
+  <h3>第五</h3>
+  <p>
+    <strong>哲學不只在書房，也可以介入現實世界。</strong>
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="big-question">
+    羅素留給現代人的核心問題：
+    <br><br>
+    <span class="highlight">
+      「你相信一件事情的理由，真的足以讓你相信它嗎？」
+    </span>
+  </div>
+
+  <div class="quote">
+    <p>
+      哲學的價值，某種程度上就在於：
+      它讓我們學會在「還不知道答案」的時候，
+      仍然能夠理性地思考。
+    </p>
+    <small>—— 羅素哲學精神的教學式總結</small>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <strong>羅素｜Bertrand Russell</strong><br>
+  1872—1970 · 分析哲學 · 邏輯 · 語言 · 科學 · 自由思想 · 和平
+</footer>
+
+</body>
+</html>

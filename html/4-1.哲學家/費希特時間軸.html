@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>費希特｜我是如何成為「我」的？</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+    background:#f4f6f8;
+    color:#202936;
+    line-height:1.8;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* Hero */
+.hero{
+    padding:70px 20px 65px;
+    background:linear-gradient(135deg,#172033,#39465c);
+    color:white;
+    text-align:center;
+}
+
+.hero .tag{
+    display:inline-block;
+    padding:7px 18px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:30px;
+    font-size:.9rem;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    margin:0;
+    font-size:clamp(2.3rem,6vw,4.5rem);
+    letter-spacing:3px;
+}
+
+.hero h2{
+    margin:12px 0 20px;
+    font-size:clamp(1.15rem,3vw,1.8rem);
+    font-weight:400;
+}
+
+.hero p{
+    max-width:800px;
+    margin:auto;
+    color:#dce3ec;
+    font-size:1.05rem;
+}
+
+/* Section */
+section{
+    padding:55px 0;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:28px;
+}
+
+.num{
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:#27364b;
+    color:white;
+    font-weight:bold;
+}
+
+.section-title h2{
+    margin:0;
+    font-size:1.8rem;
+}
+
+/* Cards */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 7px 25px rgba(0,0,0,.07);
+}
+
+.card h3{
+    margin-top:0;
+    color:#27364b;
+}
+
+.card .big{
+    font-size:2rem;
+    font-weight:800;
+    margin:8px 0;
+}
+
+.badge{
+    display:inline-block;
+    background:#e9edf2;
+    color:#334155;
+    padding:4px 11px;
+    border-radius:20px;
+    font-size:.8rem;
+    margin-bottom:8px;
+}
+
+/* Concept chain */
+.chain{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:30px 0;
+}
+
+.chain .node{
+    background:white;
+    border:2px solid #52657d;
+    padding:14px 20px;
+    border-radius:14px;
+    font-weight:bold;
+    min-width:120px;
+    text-align:center;
+}
+
+.arrow{
+    font-size:1.5rem;
+    color:#52657d;
+}
+
+/* Quote */
+.quote{
+    margin:30px 0;
+    padding:30px;
+    border-left:6px solid #52657d;
+    background:white;
+    border-radius:0 16px 16px 0;
+    font-size:1.15rem;
+}
+
+.quote strong{
+    display:block;
+    margin-top:12px;
+    font-size:.9rem;
+    color:#65758a;
+}
+
+/* Formula */
+.formula{
+    background:#172033;
+    color:white;
+    border-radius:20px;
+    padding:35px 25px;
+    text-align:center;
+    margin:30px 0;
+}
+
+.formula .main{
+    font-size:clamp(1.3rem,4vw,2.2rem);
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.formula p{
+    color:#d8e0e9;
+    max-width:750px;
+    margin:18px auto 0;
+}
+
+/* Timeline */
+.timeline{
+    position:relative;
+    margin:20px 0;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:25px;
+    top:0;
+    bottom:0;
+    width:3px;
+    background:#c8d0da;
+}
+
+.event{
+    position:relative;
+    padding-left:70px;
+    margin-bottom:30px;
+}
+
+.dot{
+    position:absolute;
+    left:15px;
+    top:6px;
+    width:23px;
+    height:23px;
+    border-radius:50%;
+    background:#34465d;
+    border:5px solid #e0e5eb;
+}
+
+.year{
+    font-weight:800;
+    color:#34465d;
+    font-size:1.1rem;
+}
+
+/* Compare */
+.compare{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+th,td{
+    padding:15px;
+    border-bottom:1px solid #e5e9ee;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#27364b;
+    color:white;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+/* Question */
+.question{
+    background:white;
+    border-radius:18px;
+    padding:22px 25px;
+    margin-bottom:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+}
+
+.question h3{
+    margin-top:0;
+    color:#27364b;
+}
+
+/* Mindmap */
+.mindmap{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+}
+
+.center{
+    display:inline-block;
+    padding:18px 28px;
+    border-radius:50px;
+    background:#27364b;
+    color:white;
+    font-size:1.4rem;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.branches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+}
+
+.branch{
+    padding:18px;
+    border-radius:14px;
+    background:#edf1f5;
+    font-weight:bold;
+}
+
+.footer{
+    background:#172033;
+    color:#d8e0e9;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.footer strong{
+    color:white;
+}
+
+/* Responsive */
+@media(max-width:650px){
+    section{padding:40px 0}
+    .hero{padding:55px 18px}
+    .card{padding:20px}
+    .timeline:before{left:19px}
+    .event{padding-left:55px}
+    .dot{left:9px}
+    .chain .arrow{
+        transform:rotate(90deg);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+    <div class="tag">德國觀念論・自我哲學・自由哲學</div>
+    <h1>費希特</h1>
+    <h2>我是如何成為「我」的？</h2>
+    <p>
+        約翰・戈特利布・費希特（Johann Gottlieb Fichte，1762–1814）
+        是德國觀念論的重要奠基者之一。
+        他把康德留下的問題推向更激進的方向：
+        <strong>如果我們要談「世界」，那麼作為認識者的「我」究竟從哪裡開始？</strong>
+    </p>
+</header>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">01</div>
+    <h2>費希特是誰？</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<span class="badge">1762–1814</span>
+<h3>人生</h3>
+<p>
+出生於薩克森的拉梅瑙。
+早年家境貧寒，靠獎學金接受教育，
+後來受到康德哲學深刻影響。
+</p>
+</div>
+
+<div class="card">
+<span class="badge">哲學定位</span>
+<h3>德國觀念論</h3>
+<p>
+通常與康德、謝林、黑格爾並列為
+德國觀念論的重要人物。
+</p>
+</div>
+
+<div class="card">
+<span class="badge">核心關懷</span>
+<h3>自由與行動</h3>
+<p>
+費希特並不把「自我」理解成一個靜態的東西，
+而是把自我理解為<strong>不斷活動、設定與實踐的主體</strong>。
+</p>
+</div>
+
+<div class="card">
+<span class="badge">代表作品</span>
+<h3>《全部知識學基礎》</h3>
+<p>
+1794／95 年的《全部知識學基礎》
+（Grundlage der gesamten Wissenschaftslehre）
+是理解費希特早期哲學的重要入口。
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">02</div>
+    <h2>費希特真正想問什麼？</h2>
+</div>
+
+<div class="quote">
+    哲學不能只問「世界是什麼」，
+    還必須追問：
+    <strong>「我們為什麼能夠認識世界？」</strong>
+</div>
+
+<p>
+康德已經指出，我們所認識的世界並不是完全脫離認知結構的
+「物自身」本身，而是經過人的認知形式所呈現的經驗世界。
+</p>
+
+<p>
+費希特進一步追問：
+<strong>既然「認識」必須從主體開始，那麼哲學是否可以從「自我」本身建立整個知識體系？</strong>
+</p>
+
+<div class="formula">
+<div class="main">「我」不是一個東西，而是一種活動。</div>
+<p>
+對費希特而言，自我是「自我設定自己」的活動。
+因此，「我」不是先存在，然後才去行動；
+某種意義上，正是在自我活動中，「我」才成為一個自我。
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">03</div>
+    <h2>費希特最重要的三個命題</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 自我設定自己</h3>
+<div class="big">I = I</div>
+<p>
+「我」意識到自己是「我」。
+但這不是單純的同一律，而是指向一種
+<strong>自我活動、自我建立</strong>的根本行動。
+</p>
+</div>
+
+<div class="card">
+<h3>② 自我設定「非我」</h3>
+<div class="big">I → Not-I</div>
+<p>
+為了使「我」能夠作為有限的實踐主體，
+必須面對一個與我相對的限制——
+費希特稱為「非我」。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 我與非我彼此限制</h3>
+<div class="big">I ↔ Not-I</div>
+<p>
+具體的人既不是無限自由，
+也不是完全被世界決定。
+自由必須在限制之中實現。
+</p>
+</div>
+
+</div>
+
+<div class="chain">
+<div class="node">自我</div>
+<div class="arrow">→</div>
+<div class="node">活動</div>
+<div class="arrow">→</div>
+<div class="node">非我</div>
+<div class="arrow">→</div>
+<div class="node">限制</div>
+<div class="arrow">→</div>
+<div class="node">行動</div>
+<div class="arrow">→</div>
+<div class="node">自由</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">04</div>
+    <h2>「自我」不是一個躲在腦中的小人</h2>
+</div>
+
+<div class="card">
+
+<p>
+理解費希特最容易犯的一個錯誤，就是把「自我」想像成：
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>❌ 錯誤理解</h3>
+<p>
+「我的腦袋裡有一個叫作『我』的東西，
+它觀察外面的世界。」
+</p>
+</div>
+
+<div class="card">
+<h3>✅ 費希特的方向</h3>
+<p>
+「自我」首先是一種<strong>活動</strong>，
+是一種能夠自我設定、反思、行動與追求目的的活動。
+</p>
+</div>
+
+</div>
+
+<p>
+因此，費希特的哲學不是要找到一個
+「自我這個東西」，而是要說明：
+<strong>主體如何透過活動而成為主體。</strong>
+</p>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">05</div>
+    <h2>「非我」是什麼？</h2>
+</div>
+
+<div class="card">
+
+<p>
+「非我」不是簡單地等於「外面的物質世界」。
+更準確地說，它代表著：
+<strong>與自我活動相對的限制性因素。</strong>
+</p>
+
+<div class="chain">
+<div class="node">我想做某件事</div>
+<div class="arrow">→</div>
+<div class="node">遇到限制</div>
+<div class="arrow">→</div>
+<div class="node">重新調整行動</div>
+<div class="arrow">→</div>
+<div class="node">實現自由</div>
+</div>
+
+<p>
+例如：
+
+「我想跑步」是我的意志；
+「身體會疲累」是一種限制；
+「我必須訓練」則是我在限制中重新組織自己的行動。
+
+</p>
+
+<p>
+所以限制並不一定是自由的敵人。
+對費希特而言，
+<strong>沒有任何阻力的「自由」，反而無法真正表現為自由。</strong>
+</p>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">06</div>
+    <h2>費希特的哲學：從「認識」走向「行動」</h2>
+</div>
+
+<div class="formula">
+<div class="main">哲學 → 不是只知道世界，而是理解行動的條件</div>
+<p>
+費希特特別強調實踐理性與道德行動。
+人的自由不是「想做什麼就做什麼」，
+而是能夠按照理性所認定的道德目的去行動。
+</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>自由</h3>
+<p>
+自由不是沒有任何限制，
+而是在理性與道德要求下，
+主動決定自己要成為什麼樣的人。
+</p>
+</div>
+
+<div class="card">
+<h3>行動</h3>
+<p>
+人的存在不能只用「我知道什麼」描述，
+還必須問：
+<strong>「我應該做什麼？」</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>道德</h3>
+<p>
+道德生活要求人不斷克服惰性與限制，
+朝向理性所要求的更高目標前進。
+</p>
+</div>
+
+<div class="card">
+<h3>使命</h3>
+<p>
+人不是被動接受世界的人，
+而是具有改變自己與世界能力的行動者。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">07</div>
+    <h2>「自我設定」到底是什麼？</h2>
+</div>
+
+<div class="card">
+
+<p>
+可以用一個簡單例子理解：
+</p>
+
+<div class="chain">
+<div class="node">「我是學生」</div>
+<div class="arrow">→</div>
+<div class="node">開始學習</div>
+<div class="arrow">→</div>
+<div class="node">面對困難</div>
+<div class="arrow">→</div>
+<div class="node">努力克服</div>
+<div class="arrow">→</div>
+<div class="node">成為新的自己</div>
+</div>
+
+<p>
+「我是學生」並不是一張永遠不變的身分證明。
+人在行動中不斷形成自己。
+</p>
+
+<p>
+因此，費希特的自我哲學具有非常強烈的
+<strong>實踐性與生成性</strong>：
+</p>
+
+<div class="quote">
+    <strong>你不是單純「擁有」一個自我；</strong>
+    你在不斷的選擇、行動與自我超越中成為自己。
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">08</div>
+    <h2>費希特與康德：他到底改變了什麼？</h2>
+</div>
+
+<div class="compare">
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>康德</th>
+<th>費希特</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>認識的主體</td>
+<td>人的認知結構塑造經驗</td>
+<td>從自我活動的原理說明知識</td>
+</tr>
+<tr>
+<td>物自身</td>
+<td>承認「物自身」作為認識邊界</td>
+<td>試圖從主體活動重新建構知識體系</td>
+</tr>
+<tr>
+<td>自我</td>
+<td>「先驗統覺」是經驗統一的重要條件</td>
+<td>自我是一種根本性的活動</td>
+</tr>
+<tr>
+<td>自由</td>
+<td>自由是實踐理性的核心概念</td>
+<td>自由成為主體自我實現與道德行動的核心</td>
+</tr>
+<tr>
+<td>哲學方向</td>
+<td>說明認識與道德的條件</td>
+<td>從「自我活動」出發建立哲學體系</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="quote">
+<strong>一句話：</strong>
+康德問「人的認識如何可能？」
+費希特則更進一步問：
+「作為認識與行動主體的『我』，如何從自身活動出發建立世界？」
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">09</div>
+    <h2>費希特與謝林、黑格爾</h2>
+</div>
+
+<div class="compare">
+<table>
+<thead>
+<tr>
+<th>哲學家</th>
+<th>核心問題</th>
+<th>關鍵概念</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>康德</strong></td>
+<td>知識與道德的條件</td>
+<td>先驗哲學、物自身、自由</td>
+</tr>
+<tr>
+<td><strong>費希特</strong></td>
+<td>自我如何透過活動建立知識與實踐</td>
+<td>自我、非我、行動、使命</td>
+</tr>
+<tr>
+<td><strong>謝林</strong></td>
+<td>主體與自然如何統一</td>
+<td>自然哲學、同一性</td>
+</tr>
+<tr>
+<td><strong>黑格爾</strong></td>
+<td>主體、歷史與精神如何發展</td>
+<td>精神、辯證法、承認、歷史</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="chain">
+<div class="node">康德</div>
+<div class="arrow">→</div>
+<div class="node">費希特</div>
+<div class="arrow">→</div>
+<div class="node">謝林</div>
+<div class="arrow">→</div>
+<div class="node">黑格爾</div>
+</div>
+
+<p>
+這條線索不是說後者只是前者的「升級版」，
+而是表示德國觀念論在19世紀初逐步追問：
+<strong>主體、自然、自由、歷史與絕對者究竟如何統一？</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">10</div>
+    <h2>費希特的「道德使命」</h2>
+</div>
+
+<div class="card">
+
+<h3>人為什麼要行動？</h3>
+
+<p>
+費希特認為，人不能把自己理解成一個單純觀看世界的旁觀者。
+理性的本質包含一種要求：
+<strong>不斷實現理性與道德。</strong>
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>第一步</h3>
+<p>我意識到自己具有自由與行動能力。</p>
+</div>
+
+<div class="card">
+<h3>第二步</h3>
+<p>我發現世界存在阻力與限制。</p>
+</div>
+
+<div class="card">
+<h3>第三步</h3>
+<p>我不是因此放棄，而是透過行動克服限制。</p>
+</div>
+
+<div class="card">
+<h3>第四步</h3>
+<p>我的生命因此具有一個持續追求的道德方向。</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="formula">
+<div class="main">自由 ≠ 沒有阻礙</div>
+<p>
+更接近費希特的理解是：
+<strong>自由是在理性自律與實踐活動中逐步實現自己。</strong>
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">11</div>
+    <h2>費希特與「德國民族」</h2>
+</div>
+
+<div class="card">
+
+<p>
+費希特晚年在拿破崙戰爭時期發表著名的
+<strong>《對德意志國民的演講》</strong>（1808）。
+</p>
+
+<p>
+其中教育與民族文化成為重要主題。
+他認為教育不只是傳授知識，
+而是要培養能夠自律、自由並具有公共責任感的人。
+</p>
+
+<div class="quote">
+    教育的問題不是：
+    <strong>「學生知道多少？」</strong>
+    而是：
+    <strong>「我們正在把學生培養成什麼樣的人？」</strong>
+</div>
+
+<p>
+不過，費希特後期民族思想具有其時代背景，
+其中一些民族論述後來也被不同政治力量重新解讀。
+因此，理解費希特時，應區分他的
+<strong>道德教育思想、民族文化論述與後世民族主義的利用</strong>。
+</p>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">12</div>
+    <h2>費希特人生時間軸</h2>
+</div>
+
+<div class="timeline">
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1762</div>
+<p>出生於薩克森的拉梅瑙。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1780年代</div>
+<p>在耶拿大學等地接受神學與哲學教育，逐漸受到啟蒙思想與康德哲學影響。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1790年代</div>
+<p>受到康德哲學高度關注，開始建立自己的「知識學」體系。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1794</div>
+<p>發表《全部知識學基礎》，確立以「自我活動」為核心的哲學方向。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1790年代末</div>
+<p>因無神論爭議而失去耶拿大學教授職位，後轉往柏林等地活動。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1807–1808</div>
+<p>在拿破崙戰爭背景下發表《對德意志國民的演講》，強調教育、道德與民族文化。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1810</div>
+<p>柏林大學成立後，成為首任校長之一。</p>
+</div>
+
+<div class="event">
+<div class="dot"></div>
+<div class="year">1814</div>
+<p>逝世於柏林。</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">13</div>
+    <h2>費希特的思想地圖</h2>
+</div>
+
+<div class="mindmap">
+
+<div class="center">費希特哲學</div>
+
+<div class="branches">
+<div class="branch">自我<br>Ich</div>
+<div class="branch">非我<br>Nicht-Ich</div>
+<div class="branch">自我活動</div>
+<div class="branch">限制</div>
+<div class="branch">自由</div>
+<div class="branch">行動</div>
+<div class="branch">道德</div>
+<div class="branch">使命</div>
+<div class="branch">教育</div>
+<div class="branch">共同體</div>
+</div>
+
+</div>
+
+<div class="chain">
+<div class="node">自我</div>
+<div class="arrow">→</div>
+<div class="node">設定</div>
+<div class="arrow">→</div>
+<div class="node">非我</div>
+<div class="arrow">→</div>
+<div class="node">限制</div>
+<div class="arrow">→</div>
+<div class="node">行動</div>
+<div class="arrow">→</div>
+<div class="node">自由</div>
+<div class="arrow">→</div>
+<div class="node">道德使命</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">14</div>
+    <h2>費希特與其他哲學家</h2>
+</div>
+
+<div class="compare">
+<table>
+<thead>
+<tr>
+<th>哲學家</th>
+<th>最核心的問題</th>
+<th>與費希特的差異</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>笛卡兒</td>
+<td>如何確定我存在？</td>
+<td>以「我思」作為確定性的起點</td>
+</tr>
+<tr>
+<td>康德</td>
+<td>認識如何可能？</td>
+<td>以先驗結構說明經驗與道德</td>
+</tr>
+<tr>
+<td><strong>費希特</strong></td>
+<td>自我如何透過活動成為自我？</td>
+<td>強調自我設定、行動與自由</td>
+</tr>
+<tr>
+<td>謝林</td>
+<td>自我與自然如何統一？</td>
+<td>更重視自然哲學與主客體統一</td>
+</tr>
+<tr>
+<td>黑格爾</td>
+<td>精神如何在歷史中發展？</td>
+<td>將辯證發展、歷史與承認推向更完整體系</td>
+</tr>
+<tr>
+<td>薩特</td>
+<td>人如何在沒有預定本質的情況下自由存在？</td>
+<td>同樣強調自由與主體性，但哲學背景與形上學不同</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">15</div>
+    <h2>現代生活中的費希特</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>🎓 教育</h3>
+<p>
+「學生不是裝知識的容器。」
+真正的教育，是讓人逐漸形成
+<strong>自主判斷、責任感與行動能力</strong>。
+</p>
+</div>
+
+<div class="card">
+<h3>💼 工作</h3>
+<p>
+職涯不只是「找到一個職位」，
+也是人在工作中逐步塑造
+「我要成為什麼樣的人」。
+</p>
+</div>
+
+<div class="card">
+<h3>📱 社群媒體</h3>
+<p>
+社群平台容易讓人把自我變成
+「別人眼中的我」。
+費希特會提醒：
+<strong>自我不能完全由外部評價定義。</strong>
+</p>
+</div>
+
+<div class="card">
+<h3>🤖 AI時代</h3>
+<p>
+當 AI 可以快速產生文字、圖片與答案，
+人的核心價值是否只剩「知道答案」？
+費希特會把問題重新推向：
+<strong>「誰在選擇？誰在行動？誰承擔責任？」</strong>
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">16</div>
+    <h2>費希特最容易被誤解的地方</h2>
+</div>
+
+<div class="question">
+<h3>❌ 1. 「自我設定」就是我想什麼就成為什麼？</h3>
+<p>
+不是。
+費希特的自我活動必須與「非我」及限制發生關係，
+而不是魔法式地創造現實。
+</p>
+</div>
+
+<div class="question">
+<h3>❌ 2. 「非我」就是虛假的世界？</h3>
+<p>
+不能如此簡化。
+「非我」是知識與實踐中對自我形成限制的必要對立面。
+</p>
+</div>
+
+<div class="question">
+<h3>❌ 3. 費希特只是主觀唯心論？</h3>
+<p>
+這是一個常見標籤，但容易過度簡化。
+費希特試圖說明的是：
+<strong>主體、客體、知識與實踐如何在一個哲學體系中彼此關聯。</strong>
+</p>
+</div>
+
+<div class="question">
+<h3>❌ 4. 自由就是完全沒有規則？</h3>
+<p>
+恰恰相反。
+費希特的自由與道德自律密切相關，
+真正的自由需要理性地決定自己的行動。
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">17</div>
+    <h2>費希特的「大哉問」</h2>
+</div>
+
+<div class="question">
+<h3>❓ 如果我的自我是在行動中形成的，那麼「真正的我」在哪裡？</h3>
+<p>
+也許「真正的我」不是一個固定物件，
+而是一個持續形成自己的過程。
+</p>
+</div>
+
+<div class="question">
+<h3>❓ 沒有阻力，還有自由嗎？</h3>
+<p>
+如果沒有任何困難、限制與選擇，
+「自由」是否還具有意義？
+</p>
+</div>
+
+<div class="question">
+<h3>❓ 我可以決定自己成為誰嗎？</h3>
+<p>
+費希特的答案傾向於「可以，但不是完全任意」。
+我們必須在身體、環境、歷史與他人的限制中實踐自由。
+</p>
+</div>
+
+<div class="question">
+<h3>❓ 一個人的自由與社會責任有沒有關係？</h3>
+<p>
+對費希特而言，自由不是孤立的個人任性，
+而與道德、教育及共同體生活密切相關。
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+    <div class="num">18</div>
+    <h2>一句話掌握費希特</h2>
+</div>
+
+<div class="formula">
+<div class="main">
+不是「我有一個自我」，
+而是「我在行動中成為我自己」。
+</div>
+
+<p>
+費希特把康德的先驗哲學推向「活動」：
+自我不是靜態的東西，而是主動設定自己、
+面對限制、克服阻力並追求道德目的的主體。
+</p>
+</div>
+
+<div class="chain">
+<div class="node">自我</div>
+<div class="arrow">→</div>
+<div class="node">活動</div>
+<div class="arrow">→</div>
+<div class="node">限制</div>
+<div class="arrow">→</div>
+<div class="node">行動</div>
+<div class="arrow">→</div>
+<div class="node">自由</div>
+<div class="arrow">→</div>
+<div class="node">道德</div>
+</div>
+
+</div>
+</section>
+
+<footer class="footer">
+<p><strong>費希特｜Johann Gottlieb Fichte</strong></p>
+<p>1762–1814　・　德國觀念論　・　自我　・　行動　・　自由　・　道德使命</p>
+<p>教學關鍵句：<strong>「自我不是一個靜止的東西，而是在活動中不斷成為自己的主體。」</strong></p>
+</footer>
+
+</body>
+</html>

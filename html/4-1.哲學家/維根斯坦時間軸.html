@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>維根斯坦｜語言的界限與生活的語言遊戲</title>
+
+<style>
+:root{
+  --bg:#eef1f4;
+  --paper:#ffffff;
+  --ink:#20252b;
+  --muted:#68727c;
+  --dark:#202a34;
+  --dark2:#354552;
+  --blue:#557da3;
+  --blue2:#8aa9c3;
+  --gold:#c39a4b;
+  --gold2:#e5cc91;
+  --green:#5d8069;
+  --red:#b65d58;
+  --purple:#77699a;
+  --line:#d8dee4;
+  --shadow:0 10px 30px rgba(30,45,60,.09);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    "PingFang TC",
+    Arial,
+    sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
+  color:white;
+  padding:70px 24px 65px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:460px;
+  height:460px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  right:-130px;
+  top:-170px;
+  box-shadow:
+    0 0 0 50px rgba(255,255,255,.025),
+    0 0 0 100px rgba(255,255,255,.018);
+}
+
+.hero-inner{
+  max-width:1180px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.eyebrow{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.25);
+  padding:6px 14px;
+  border-radius:30px;
+  font-size:13px;
+  letter-spacing:1.5px;
+  color:#dce5ec;
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,82px);
+  line-height:1;
+  margin:24px 0 12px;
+  letter-spacing:-2px;
+}
+
+.hero .subtitle{
+  font-size:clamp(20px,3vw,31px);
+  color:#c8d5df;
+  margin-bottom:28px;
+}
+
+.hero p{
+  max-width:850px;
+  color:#d7e0e7;
+  font-size:17px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+.tag{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.15);
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:14px;
+}
+
+.container{
+  max-width:1180px;
+  margin:auto;
+  padding:50px 20px 80px;
+}
+
+.section{
+  margin-bottom:65px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.num{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:var(--dark);
+  color:white;
+  font-weight:700;
+  flex-shrink:0;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:30px;
+  line-height:1.3;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-top:0;
+  font-size:20px;
+}
+
+.card p:last-child{
+  margin-bottom:0;
+}
+
+.big-question{
+  background:linear-gradient(135deg,#f7f9fb,#e7edf3);
+  border-left:6px solid var(--blue);
+  padding:28px 30px;
+  border-radius:16px;
+  font-size:24px;
+  font-weight:700;
+  margin:25px 0;
+}
+
+.quote{
+  background:var(--dark);
+  color:white;
+  padding:30px;
+  border-radius:18px;
+  margin:25px 0;
+  position:relative;
+}
+
+.quote:before{
+  content:"“";
+  font-size:80px;
+  line-height:1;
+  color:var(--gold);
+  position:absolute;
+  left:18px;
+  top:4px;
+}
+
+.quote p{
+  padding-left:48px;
+  font-size:21px;
+  margin:0;
+}
+
+.quote small{
+  display:block;
+  margin-top:15px;
+  padding-left:48px;
+  color:#bfcbd5;
+}
+
+.timeline{
+  position:relative;
+  margin:30px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--line);
+}
+
+.event{
+  position:relative;
+  padding:0 0 28px 55px;
+}
+
+.event:before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:8px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--blue);
+  border:4px solid var(--bg);
+  box-shadow:0 0 0 1px var(--blue);
+}
+
+.year{
+  color:var(--blue);
+  font-weight:800;
+  font-size:17px;
+}
+
+.event h3{
+  margin:3px 0;
+}
+
+.flow{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  margin:25px 0;
+}
+
+.flow-item{
+  flex:1;
+  background:white;
+  border:1px solid var(--line);
+  padding:20px;
+  text-align:center;
+  border-radius:14px;
+}
+
+.arrow{
+  width:42px;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  color:var(--blue);
+}
+
+.formula{
+  background:var(--dark);
+  color:white;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+  font-size:23px;
+  margin:25px 0;
+}
+
+.formula span{
+  color:var(--gold2);
+}
+
+.concept{
+  border-top:5px solid var(--blue);
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:var(--shadow);
+}
+
+.concept.green{border-top-color:var(--green)}
+.concept.red{border-top-color:var(--red)}
+.concept.purple{border-top-color:var(--purple)}
+.concept.gold{border-top-color:var(--gold)}
+
+.concept h3{
+  margin-top:0;
+}
+
+.note{
+  background:#f3f7f3;
+  border-left:5px solid var(--green);
+  padding:18px 22px;
+  border-radius:10px;
+  margin:20px 0;
+}
+
+.warning{
+  background:#fff5f3;
+  border-left:5px solid var(--red);
+  padding:18px 22px;
+  border-radius:10px;
+  margin:20px 0;
+}
+
+.compare{
+  overflow-x:auto;
+  background:white;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px;
+}
+
+th,td{
+  padding:15px 17px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+
+th{
+  background:var(--dark);
+  color:white;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.qa{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin:12px 0;
+  padding:20px 23px;
+}
+
+.qa strong{
+  color:var(--blue);
+  display:block;
+  margin-bottom:5px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin:25px 0;
+}
+
+.stat{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat .big{
+  font-size:30px;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.mindmap{
+  background:var(--dark);
+  color:white;
+  border-radius:22px;
+  padding:35px;
+}
+
+.mindmap-center{
+  text-align:center;
+  background:#fff;
+  color:var(--ink);
+  max-width:330px;
+  margin:0 auto 30px;
+  padding:20px;
+  border-radius:50px;
+  font-size:23px;
+  font-weight:800;
+}
+
+.mindmap-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.mind-item{
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;
+  padding:18px;
+}
+
+.mind-item b{
+  color:var(--gold2);
+}
+
+footer{
+  background:var(--dark);
+  color:#bfcbd5;
+  text-align:center;
+  padding:35px 20px;
+}
+
+.highlight{
+  color:var(--blue);
+  font-weight:800;
+}
+
+.phase{
+  padding:28px;
+  border-radius:20px;
+  color:white;
+  margin-bottom:25px;
+}
+
+.phase.early{
+  background:linear-gradient(135deg,#263744,#4b6678);
+}
+
+.phase.late{
+  background:linear-gradient(135deg,#33483c,#5b7664);
+}
+
+.phase h3{
+  margin-top:0;
+  font-size:26px;
+}
+
+.phase .label{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.25);
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+@media(max-width:900px){
+  .grid,.stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .mindmap-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:50px 20px;
+  }
+
+  .container{
+    padding:35px 15px 60px;
+  }
+
+  .grid,.grid2,.stats,.mindmap-grid{
+    grid-template-columns:1fr;
+  }
+
+  .flow{
+    flex-direction:column;
+  }
+
+  .arrow{
+    width:100%;
+    height:35px;
+    transform:rotate(90deg);
+  }
+
+  .section-title h2{
+    font-size:25px;
+  }
+
+  .big-question{
+    font-size:20px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+
+ 
+<span class="eyebrow">
+  20TH CENTURY · ANALYTIC PHILOSOPHY · LANGUAGE
+</span>
+
+<h1>維根斯坦</h1>
+
+<div class="subtitle">
+  Ludwig Wittgenstein · 1889—1951
+</div>
+
+<p>
+  一位「一生改變自己哲學」的思想家。
+  早期他認為哲學應該揭示語言與世界的邏輯結構；
+  後期卻發現語言並不是一張固定的世界地圖，
+  而是存在於各種不同的
+  <strong>語言遊戲與生活形式</strong>之中。
+</p>
+
+<div class="tags">
+  <span class="tag">語言哲學</span>
+  <span class="tag">分析哲學</span>
+  <span class="tag">邏輯</span>
+  <span class="tag">語言圖像論</span>
+  <span class="tag">語言遊戲</span>
+  <span class="tag">家族相似</span>
+  <span class="tag">生活形式</span>
+  <span class="tag">哲學治療</span>
+</div>
+ 
+
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 01 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>一句話理解維根斯坦</h2>
+  </div>
+
+  <div class="big-question">
+    哲學的許多困惑，
+    會不會不是因為世界太神秘，
+    而是因為我們沒有弄清楚「語言正在怎麼使用」？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  如果用一條思想線來理解維根斯坦，可以寫成：
+</p>
+
+<div class="formula">
+  <span>早期：</span>
+  世界 → 邏輯形式 → 命題
+  <br><br>
+  <span>後期：</span>
+  語言 → 語言遊戲 → 生活形式
+</div>
+
+<p>
+  因此，維根斯坦最重要的特色，
+  不是提出一套固定的哲學學說，
+  而是<strong>不斷重新檢查哲學問題本身</strong>。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 02 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>維根斯坦是誰？</h2>
+  </div>
+
+  <div class="stats">
+
+ 
+<div class="stat">
+  <div class="big">1889</div>
+  出生
+</div>
+
+<div class="stat">
+  <div class="big">1951</div>
+  逝世
+</div>
+
+<div class="stat">
+  <div class="big">2</div>
+  哲學階段
+</div>
+
+<div class="stat">
+  <div class="big">∞</div>
+  問題
+</div>
+ 
+
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <h3>早期維根斯坦</h3>
+  <p>
+    以邏輯與語言的結構為核心，
+    代表作是《邏輯哲學論》。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>後期維根斯坦</h3>
+  <p>
+    轉向日常語言，
+    發展「語言遊戲」與「生活形式」思想。
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>哲學治療</h3>
+  <p>
+    哲學不是建立巨大理論，
+    而是解除語言造成的思想困惑。
+  </p>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 03 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>為什麼維根斯坦如此特別？</h2>
+  </div>
+
+  <div class="big-question">
+    很少有哲學家會如此徹底地批判「自己以前的哲學」。
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="phase early">
+
+  <span class="label">EARLY WITTGENSTEIN</span>
+
+  <h3>早期：語言描繪世界</h3>
+
+  <p>
+    語言具有邏輯結構，
+    命題可以描繪事實。
+  </p>
+
+  <p>
+    代表作品：
+    <strong>《邏輯哲學論》</strong>
+  </p>
+
+</div>
+
+<div class="phase late">
+
+  <span class="label">LATE WITTGENSTEIN</span>
+
+  <h3>後期：語言存在於使用</h3>
+
+  <p>
+    語言不是只有一種功能，
+    而是在不同情境中進行不同的「遊戲」。
+  </p>
+
+  <p>
+    代表作品：
+    <strong>《哲學研究》</strong>
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 04 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>維根斯坦的人生時間軸</h2>
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1889</div>
+  <h3>出生於維也納</h3>
+  <p>
+    出身富裕的奧地利家庭，
+    家族與音樂、藝術及文化界關係密切。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1908</div>
+  <h3>前往英國研究工程</h3>
+  <p>
+    原本對航空工程與螺旋槳設計感興趣，
+    後來逐漸轉向數學基礎與哲學。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1911</div>
+  <h3>與羅素相遇</h3>
+  <p>
+    到劍橋與羅素接觸，
+    很快成為當時分析哲學的重要人物。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1914—1918</div>
+  <h3>第一次世界大戰</h3>
+  <p>
+    參與戰爭並在戰場上持續思考哲學問題，
+    完成《邏輯哲學論》的主要內容。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1921</div>
+  <h3>《邏輯哲學論》出版</h3>
+  <p>
+    以高度簡潔的格言式結構，
+    探討世界、語言、邏輯與哲學的界限。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1920年代</div>
+  <h3>短暫離開哲學界</h3>
+  <p>
+    曾擔任小學教師，
+    也從事園藝與其他工作。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1929</div>
+  <h3>返回劍橋</h3>
+  <p>
+    再度投入哲學研究，
+    開始逐漸發展與早期思想不同的新哲學。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1953</div>
+  <h3>《哲學研究》出版</h3>
+  <p>
+    死後出版，
+    成為20世紀語言哲學最重要的著作之一。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1951</div>
+  <h3>逝世</h3>
+  <p>
+    在英國劍橋附近逝世。
+  </p>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 05 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>早期維根斯坦：世界是什麼？</h2>
+  </div>
+
+  <div class="big-question">
+    世界究竟是由「東西」組成，
+    還是由「事實」組成？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  《邏輯哲學論》開頭提出一個非常重要的思想：
+</p>
+
+<div class="formula">
+  世界不是「事物的總和」
+  <br>
+  <span>而是「事實的總和」</span>
+</div>
+
+<p>
+  這裡的關鍵轉變是：
+  世界不只是「有哪些東西」，
+  還包括「這些東西處於什麼關係」。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 06 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">06</div>
+    <h2>事物 vs 事實</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept">
+  <h3>事物</h3>
+  <p>
+    例如：
+    一張桌子、一顆球、一個人。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>事實</h3>
+  <p>
+    例如：
+    「球在桌子上」。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    事物
+    <span>＋</span>
+    關係
+    <span>→</span>
+    事實
+  </div>
+
+  <div class="note">
+    維根斯坦真正關心的不是單獨的「球」，
+    而是「球在桌子上」這類可以成立或不成立的事實。
+  </div>
+
+</section>
+
+<!-- 07 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">07</div>
+    <h2>語言圖像論</h2>
+  </div>
+
+  <div class="big-question">
+    一句話為什麼可以描述世界？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  早期維根斯坦認為：
+  <strong>命題可以成為事實的「圖像」。</strong>
+</p>
+
+<div class="flow">
+
+  <div class="flow-item">
+    <strong>世界</strong><br>
+    事實
+  </div>
+
+  <div class="arrow">↔</div>
+
+  <div class="flow-item">
+    <strong>命題</strong><br>
+    語言
+  </div>
+
+  <div class="arrow">↔</div>
+
+  <div class="flow-item">
+    <strong>邏輯形式</strong><br>
+    結構對應
+  </div>
+
+</div>
+
+<p>
+  就像地圖不是土地本身，
+  但地圖的結構可以對應土地的結構。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 08 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">08</div>
+    <h2>「語言的界限」</h2>
+  </div>
+
+  <div class="big-question">
+    如果某件事情無法被有意義地說出，
+    我們是否應該保持沉默？
+  </div>
+
+  <div class="quote">
+    <p>
+      凡是可以說的事情，都可以說清楚；
+      對於不可說的事情，必須保持沉默。
+    </p>
+    <small>——《邏輯哲學論》最後命題的著名中譯意旨</small>
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  這句話經常被誤解為：
+  「只有科學能談的東西才重要。」
+</p>
+
+<p>
+  其實更精確地說，
+  維根斯坦是在區分：
+  <strong>可以用命題清楚描述的事情</strong>
+  與
+  <strong>不能以這種方式表達的東西</strong>。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 09 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">09</div>
+    <h2>早期維根斯坦的哲學觀</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<div class="flow">
+
+  <div class="flow-item">
+    <strong>語言混亂</strong><br>
+    ↓
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <strong>邏輯分析</strong><br>
+    ↓
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <strong>命題澄清</strong><br>
+    ↓
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <strong>哲學困惑消失</strong>
+  </div>
+
+</div>
+
+<p>
+  因此，哲學不一定是在建立新的科學理論，
+  而是在<strong>澄清我們已經使用的語言</strong>。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 10 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>轉折：維根斯坦開始懷疑自己</h2>
+  </div>
+
+  <div class="big-question">
+    語言真的只有一種功能嗎？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  早期理論很像這樣：
+</p>
+
+<div class="formula">
+  語言
+  <span>＝</span>
+  描述世界的命題
+</div>
+
+<p>
+  但後來維根斯坦發現，
+  我們實際使用語言時，
+  語言遠遠不只是在「描述事實」。
+</p>
+
+<div class="grid">
+
+  <div class="concept">
+    <h3>命令</h3>
+    <p>「請把門關上。」</p>
+  </div>
+
+  <div class="concept green">
+    <h3>提問</h3>
+    <p>「你幾點回家？」</p>
+  </div>
+
+  <div class="concept gold">
+    <h3>道歉</h3>
+    <p>「對不起。」</p>
+  </div>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 11 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>後期維根斯坦：語言遊戲</h2>
+  </div>
+
+  <div class="big-question">
+    「語言的意義」究竟藏在字典裡，
+    還是存在於我們實際使用語言的活動裡？
+  </div>
+
+  <div class="card">
+
+ 
+<div class="formula">
+  <span>Meaning</span>
+  ≈
+  <span>Use</span>
+  <br>
+  意義
+  ≈
+  使用
+</div>
+
+<p>
+  後期維根斯坦的重要思想是：
+  <strong>一個詞的意義，不能只看它對應什麼東西，
+  還要看它在語言中的實際使用方式。</strong>
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 12 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>什麼是「語言遊戲」？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>下命令</h3>
+  <p>
+    「把書拿過來。」
+  </p>
+</div>
+
+<div class="card">
+  <h3>報告事件</h3>
+  <p>
+    「今天下雨了。」
+  </p>
+</div>
+
+<div class="card">
+  <h3>問問題</h3>
+  <p>
+    「現在幾點？」
+  </p>
+</div>
+
+<div class="card">
+  <h3>開玩笑</h3>
+  <p>
+    「你又遲到了，冠軍。」
+  </p>
+</div>
+
+<div class="card">
+  <h3>祈禱</h3>
+  <p>
+    語言具有宗教活動中的功能。
+  </p>
+</div>
+
+<div class="card">
+  <h3>數數</h3>
+  <p>
+    在數學與日常活動中使用數字。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+    「遊戲」不是說語言只是娛樂，
+    而是強調：
+    <strong>不同語言活動有不同規則、目的與使用方式。</strong>
+  </div>
+
+</section>
+
+<!-- 13 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>「意義就在使用中」</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<h3>同一個詞，不同使用方式</h3>
+
+<div class="compare">
+  <table>
+
+    <tr>
+      <th>語境</th>
+      <th>「冷」的使用</th>
+      <th>真正功能</th>
+    </tr>
+
+    <tr>
+      <td>天氣</td>
+      <td>「今天很冷。」</td>
+      <td>描述溫度</td>
+    </tr>
+
+    <tr>
+      <td>食物</td>
+      <td>「湯冷了。」</td>
+      <td>描述狀態</td>
+    </tr>
+
+    <tr>
+      <td>態度</td>
+      <td>「他對我很冷。」</td>
+      <td>描述人際關係</td>
+    </tr>
+
+    <tr>
+      <td>玩笑</td>
+      <td>「這笑話很冷。」</td>
+      <td>評價幽默效果</td>
+    </tr>
+
+  </table>
+</div>
+
+<p>
+  所以，不能只問：
+  「冷」到底代表哪一個固定東西？
+</p>
+
+<p>
+  更好的問題是：
+  <strong>「在這個情境裡，『冷』是怎麼被使用的？」</strong>
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 14 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">14</div>
+    <h2>家族相似</h2>
+  </div>
+
+  <div class="big-question">
+    一個概念是否一定要有一個共同本質，
+    才能把不同東西放在同一類？
+  </div>
+
+  <div class="card">
+
+ 
+<h3>「遊戲」是什麼？</h3>
+
+<p>
+  棋類、球類、撲克牌、兒童遊戲、電腦遊戲……
+</p>
+
+<p>
+  它們真的都有一個完全相同的「遊戲本質」嗎？
+</p>
+
+<div class="formula">
+  A
+  <span>↔</span>
+  B
+  <span>↔</span>
+  C
+  <span>↔</span>
+  D
+  <br><br>
+  不一定有「共同本質」
+  <br>
+  而可能存在
+  <span>家族相似性</span>
+</div>
+
+<p>
+  就像一家人可能有相似的眼睛、鼻子、笑容，
+  但不一定所有人都有完全相同的特徵。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 15 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">15</div>
+    <h2>生活形式</h2>
+  </div>
+
+  <div class="big-question">
+    如果語言有規則，
+    那麼這些規則從哪裡來？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  語言不是獨立漂浮在世界上的符號系統。
+  它嵌入人們共同的生活方式、習慣與社會活動中。
+</p>
+
+<div class="formula">
+  人的生活
+  <span>→</span>
+  社會活動
+  <span>→</span>
+  語言使用
+  <span>→</span>
+  語言規則
+</div>
+
+<p>
+  因此，理解語言，
+  很多時候也就是理解人們如何生活。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 16 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">16</div>
+    <h2>「遵守規則」是什麼？</h2>
+  </div>
+
+  <div class="big-question">
+    規則究竟藏在我的腦袋裡，
+    還是存在於我們共同的實踐之中？
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept">
+  <h3>錯誤理解</h3>
+  <p>
+    以為規則像一張隱藏的說明書，
+    完整存在於個人心中。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>維根斯坦式理解</h3>
+  <p>
+    規則的意義與我們實際如何遵守、
+    教導、糾正規則密切相關。
+  </p>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 17 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">17</div>
+    <h2>「私人語言」問題</h2>
+  </div>
+
+  <div class="big-question">
+    如果一種語言只有我一個人能理解，
+    它還能算是一種真正的語言嗎？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  假設我有一種只有自己知道的符號，
+  並且我自己決定什麼時候它算「正確」。
+</p>
+
+<p>
+  問題是：
+  <strong>如果沒有任何公共標準，
+  我如何區分「我正確使用它」
+  與「我只是覺得自己正確」？</strong>
+</p>
+
+<div class="note">
+  私人語言論證的核心，
+  並不是說「私人經驗不存在」，
+  而是在追問：
+  <strong>語言的規則與正誤標準是否能完全私有化？</strong>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 18 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">18</div>
+    <h2>哲學問題有時像「被語言困住」</h2>
+  </div>
+
+  <div class="big-question">
+    如果一個哲學問題讓我們不停繞圈，
+    也許真正需要改變的不是答案，
+    而是我們提出問題的方法。
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <strong>日常語言</strong><br>
+  ↓
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <strong>抽象化</strong><br>
+  ↓
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <strong>產生哲學困惑</strong><br>
+  ↓
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <strong>回到語言使用</strong>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 19 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">19</div>
+    <h2>哲學不是「建立理論」，而是「治療困惑」</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<div class="formula">
+  哲學問題
+  <span>→</span>
+  語言混亂
+  <span>→</span>
+  找出使用方式
+  <span>→</span>
+  困惑消除
+</div>
+
+<p>
+  這就是後期維根斯坦非常重要的
+  <strong>「哲學治療」</strong>概念。
+</p>
+
+<p>
+  哲學家不一定要像科學家一樣發現新事實。
+  有時候哲學家的工作只是：
+  <strong>讓我們停止被自己製造的問題困住。</strong>
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 20 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">20</div>
+    <h2>早期 vs 後期維根斯坦</h2>
+  </div>
+
+  <div class="compare">
+
+ 
+<table>
+
+  <tr>
+    <th>面向</th>
+    <th>早期維根斯坦</th>
+    <th>後期維根斯坦</th>
+  </tr>
+
+  <tr>
+    <td>代表作品</td>
+    <td>《邏輯哲學論》</td>
+    <td>《哲學研究》</td>
+  </tr>
+
+  <tr>
+    <td>核心</td>
+    <td>邏輯形式</td>
+    <td>語言使用</td>
+  </tr>
+
+  <tr>
+    <td>語言</td>
+    <td>描繪事實</td>
+    <td>多種語言遊戲</td>
+  </tr>
+
+  <tr>
+    <td>意義</td>
+    <td>與命題的邏輯形式有關</td>
+    <td>與使用方式有關</td>
+  </tr>
+
+  <tr>
+    <td>哲學</td>
+    <td>澄清命題的邏輯結構</td>
+    <td>解除語言造成的困惑</td>
+  </tr>
+
+  <tr>
+    <td>關鍵概念</td>
+    <td>圖像、命題、事實、邏輯</td>
+    <td>語言遊戲、家族相似、生活形式</td>
+  </tr>
+
+</table>
+ 
+
+  </div>
+
+</section>
+
+<!-- 21 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">21</div>
+    <h2>維根斯坦 vs 羅素</h2>
+  </div>
+
+  <div class="compare">
+
+ 
+<table>
+
+  <tr>
+    <th>面向</th>
+    <th>羅素</th>
+    <th>維根斯坦</th>
+  </tr>
+
+  <tr>
+    <td>共同點</td>
+    <td>重視邏輯與語言分析</td>
+    <td>重視邏輯與語言分析</td>
+  </tr>
+
+  <tr>
+    <td>早期思想</td>
+    <td>邏輯分析</td>
+    <td>語言與世界的邏輯結構</td>
+  </tr>
+
+  <tr>
+    <td>後期方向</td>
+    <td>仍持續發展分析哲學</td>
+    <td>轉向日常語言與語言遊戲</td>
+  </tr>
+
+  <tr>
+    <td>哲學方法</td>
+    <td>分析、論證、知識論</td>
+    <td>語言描述、概念澄清、治療</td>
+  </tr>
+
+  <tr>
+    <td>關鍵問題</td>
+    <td>我們如何知道？</td>
+    <td>我們究竟如何使用這些詞？</td>
+  </tr>
+
+</table>
+ 
+
+  </div>
+
+</section>
+
+<!-- 22 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">22</div>
+    <h2>維根斯坦 vs 笛卡兒</h2>
+  </div>
+
+  <div class="compare">
+
+ 
+<table>
+
+  <tr>
+    <th>笛卡兒</th>
+    <th>維根斯坦</th>
+  </tr>
+
+  <tr>
+    <td>從懷疑出發</td>
+    <td>從語言困惑出發</td>
+  </tr>
+
+  <tr>
+    <td>尋找不可懷疑的基礎</td>
+    <td>分析問題如何被語言形成</td>
+  </tr>
+
+  <tr>
+    <td>「我思故我在」</td>
+    <td>「我如何使用『我』這個詞？」</td>
+  </tr>
+
+  <tr>
+    <td>建立哲學基礎</td>
+    <td>解除哲學困惑</td>
+  </tr>
+
+</table>
+ 
+
+  </div>
+
+</section>
+
+<!-- 23 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">23</div>
+    <h2>維根斯坦 vs 海德格</h2>
+  </div>
+
+  <div class="compare">
+
+ 
+<table>
+
+  <tr>
+    <th>面向</th>
+    <th>維根斯坦</th>
+    <th>海德格</th>
+  </tr>
+
+  <tr>
+    <td>核心</td>
+    <td>語言與概念</td>
+    <td>存在與存有</td>
+  </tr>
+
+  <tr>
+    <td>方法</td>
+    <td>語言分析</td>
+    <td>現象學、存在論分析</td>
+  </tr>
+
+  <tr>
+    <td>哲學困惑</td>
+    <td>語言使用錯置</td>
+    <td>遺忘「存在」問題</td>
+  </tr>
+
+  <tr>
+    <td>關注</td>
+    <td>「我們怎麼說？」</td>
+    <td>「存在意味著什麼？」</td>
+  </tr>
+
+</table>
+ 
+
+  </div>
+
+</section>
+
+<!-- 24 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">24</div>
+    <h2>維根斯坦 vs 孔德：什麼才算哲學問題？</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+
+  <h3>實證主義式傾向</h3>
+
+  <p>
+    強調科學、經驗與可檢驗性，
+    對形上學抱持高度懷疑。
+  </p>
+
+</div>
+
+<div class="card">
+
+  <h3>維根斯坦</h3>
+
+  <p>
+    也反對許多沒有清楚語言基礎的形上學說法，
+    但他的重點不是單純把哲學全部變成科學。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 25 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">25</div>
+    <h2>維根斯坦對「心」的理解</h2>
+  </div>
+
+  <div class="big-question">
+    「我有一個痛苦」是一個描述內在物體的句子嗎？
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  後期維根斯坦會提醒我們：
+  「痛」這類詞的意義，
+  必須放在實際語言活動中理解。
+</p>
+
+<p>
+  例如：
+</p>
+
+<div class="grid">
+
+  <div class="concept">
+    <h3>喊叫</h3>
+    <p>「啊！」</p>
+  </div>
+
+  <div class="concept green">
+    <h3>求助</h3>
+    <p>「醫生！」</p>
+  </div>
+
+  <div class="concept gold">
+    <h3>描述</h3>
+    <p>「我的腿很痛。」</p>
+  </div>
+
+</div>
+
+<p>
+  這不是否認痛苦的真實性，
+  而是拒絕把心理詞語簡單想像成
+  「腦中某個私人物件的名稱」。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 26 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">26</div>
+    <h2>「哲學像蒼蠅從捕蠅瓶中逃出去」</h2>
+  </div>
+
+  <div class="quote">
+
+ 
+<p>
+  哲學的目的之一，是讓我們看見自己究竟是如何被語言困住的。
+</p>
+
+<small>
+  「讓蒼蠅走出捕蠅瓶」——《哲學研究》中的著名比喻意象
+</small>
+ 
+
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  想像一隻蒼蠅飛進透明瓶子。
+  它看得到出口，卻一直撞牆。
+</p>
+
+<p>
+  哲學家的工作有時不是替它建造新的世界，
+  而是<strong>指出出口其實就在眼前</strong>。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 27 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">27</div>
+    <h2>維根斯坦哲學的核心轉變</h2>
+  </div>
+
+  <div class="formula">
+
+ 
+<span>早期</span>
+<br>
+語言如何描繪世界？
+<br><br>
+
+↓
+<br><br>
+
+<span>轉折</span>
+<br>
+語言真的只有這一種功能嗎？
+<br><br>
+
+↓
+<br><br>
+
+<span>後期</span>
+<br>
+語言在不同生活情境中如何被使用？
+ 
+
+  </div>
+
+</section>
+
+<!-- 28 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">28</div>
+    <h2>維根斯坦思想地圖</h2>
+  </div>
+
+  <div class="mindmap">
+
+ 
+<div class="mindmap-center">
+  維根斯坦
+</div>
+
+<div class="mindmap-grid">
+
+  <div class="mind-item">
+    <b>早期</b><br>
+    《邏輯哲學論》<br>
+    世界<br>
+    事實<br>
+    命題<br>
+    邏輯形式
+  </div>
+
+  <div class="mind-item">
+    <b>語言圖像論</b><br>
+    命題<br>
+    描繪<br>
+    世界結構
+  </div>
+
+  <div class="mind-item">
+    <b>語言界限</b><br>
+    可說<br>
+    不可說<br>
+    哲學界限
+  </div>
+
+  <div class="mind-item">
+    <b>後期</b><br>
+    《哲學研究》<br>
+    日常語言<br>
+    使用
+  </div>
+
+  <div class="mind-item">
+    <b>語言遊戲</b><br>
+    命令<br>
+    提問<br>
+    描述<br>
+    玩笑
+  </div>
+
+  <div class="mind-item">
+    <b>生活形式</b><br>
+    規則<br>
+    社會活動<br>
+    公共實踐
+  </div>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 29 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">29</div>
+    <h2>五個最重要的概念</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <h3>① 語言圖像論</h3>
+  <p>
+    早期思想：
+    命題可以以邏輯形式描繪事實。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>② 語言遊戲</h3>
+  <p>
+    語言具有多種不同功能，
+    意義與具體使用情境有關。
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>③ 家族相似</h3>
+  <p>
+    概念不一定具有單一共同本質，
+    可能只是彼此具有交疊的相似性。
+  </p>
+</div>
+
+<div class="concept purple">
+  <h3>④ 生活形式</h3>
+  <p>
+    語言嵌入人類共同生活與社會活動。
+  </p>
+</div>
+
+<div class="concept red">
+  <h3>⑤ 哲學治療</h3>
+  <p>
+    哲學的任務之一，
+    是解除語言造成的思想困惑。
+  </p>
+</div>
+
+<div class="concept">
+  <h3>⑥ 私人語言問題</h3>
+  <p>
+    追問語言規則是否可能完全私人化。
+  </p>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 30 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">30</div>
+    <h2>五個常見誤解</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>誤解一：維根斯坦只有一套哲學。</strong>
+
+<p>
+  不對。他至少存在非常明顯的早期與後期轉變。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>誤解二：語言遊戲就是「把語言當遊戲玩」。</strong>
+
+<p>
+  不是。
+  「遊戲」是用來說明不同語言活動具有不同規則與功能。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>誤解三：「意義就是使用」表示字典沒有意義。</strong>
+
+<p>
+  不是。
+  維根斯坦強調的是：
+  字詞的意義不能脫離實際使用方式理解。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>誤解四：維根斯坦認為所有哲學都沒有意義。</strong>
+
+<p>
+  更準確的說法是：
+  他認為許多哲學困惑來自我們誤用了語言。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>誤解五：早期與後期維根斯坦完全沒有關係。</strong>
+
+<p>
+  雖然思想發生重大轉變，
+  但兩者都關心同一個核心問題：
+  <strong>語言如何造成或解除哲學困惑？</strong>
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 31 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">31</div>
+    <h2>維根斯坦的「大哉問」</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q1｜一句話的意義，究竟來自它指向什麼，還是來自它怎麼被使用？</strong>
+
+<p>
+  這正是早期與後期維根斯坦的重要分水嶺之一。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q2｜如果不同文化使用同一個詞，意思一定相同嗎？</strong>
+
+<p>
+  不一定。
+  語言的使用方式與生活形式會影響意義。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q3｜一個概念一定要有共同本質嗎？</strong>
+
+<p>
+  「家族相似」提醒我們：
+  不一定。
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q4｜哲學問題真的都有答案嗎？</strong>
+
+<p>
+  有些問題需要答案，
+  有些問題需要先檢查：
+  「這個問題是不是問錯了？」
+</p>
+ 
+
+  </div>
+
+  <div class="qa">
+
+ 
+<strong>Q5｜我們是不是常常被自己的語言欺騙？</strong>
+
+<p>
+  維根斯坦會說：
+  語言不一定欺騙我們，
+  但我們可能會被語言的表面形式困住。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 32 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">32</div>
+    <h2>維根斯坦與今日生活</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>網路留言</h3>
+  <p>
+    同一句話在不同社群文化中，
+    可能具有完全不同的功能。
+  </p>
+</div>
+
+<div class="card">
+  <h3>政治語言</h3>
+  <p>
+    「自由」、「正義」、「人民」等詞，
+    不同政治語境可能有不同使用方式。
+  </p>
+</div>
+
+<div class="card">
+  <h3>教育</h3>
+  <p>
+    「理解」究竟代表背答案，
+    還是能在不同情境中正確使用知識？
+  </p>
+</div>
+
+<div class="card">
+  <h3>AI</h3>
+  <p>
+    AI產生的句子「看起來有意義」，
+    是否等於它真的理解語言？
+  </p>
+</div>
+
+<div class="card">
+  <h3>社群文化</h3>
+  <p>
+    梗、迷因、反諷與黑色幽默，
+    都高度依賴共同的語言遊戲。
+  </p>
+</div>
+
+<div class="card">
+  <h3>人際關係</h3>
+  <p>
+    「謝謝」、「對不起」、「我愛你」
+    不只是描述事實，
+    也是人際行動。
+  </p>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 33 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">33</div>
+    <h2>用一個教室案例理解「語言遊戲」</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<h3>老師說：「很好。」</h3>
+
+<p>
+  同一句話可能具有完全不同的功能：
+</p>
+
+<div class="grid">
+
+  <div class="concept">
+    <h3>稱讚</h3>
+    <p>
+      學生答對問題：
+      「很好。」
+    </p>
+  </div>
+
+  <div class="concept red">
+    <h3>反諷</h3>
+    <p>
+      學生遲到30分鐘：
+      「很好。」
+    </p>
+  </div>
+
+  <div class="concept gold">
+    <h3>鼓勵</h3>
+    <p>
+      學生第一次嘗試：
+      「很好。」
+    </p>
+  </div>
+
+</div>
+
+<div class="formula">
+  同一句話
+  <span>＋</span>
+  不同情境
+  <span>→</span>
+  不同語言遊戲
+  <span>→</span>
+  不同意義
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 34 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">34</div>
+    <h2>一張圖記住維根斯坦</h2>
+  </div>
+
+  <div class="mindmap">
+
+ 
+<div class="mindmap-center">
+  語言
+</div>
+
+<div class="mindmap-grid">
+
+  <div class="mind-item">
+    <b>早期</b><br>
+    語言描繪世界
+  </div>
+
+  <div class="mind-item">
+    <b>邏輯</b><br>
+    命題<br>
+    事實<br>
+    邏輯形式
+  </div>
+
+  <div class="mind-item">
+    <b>界限</b><br>
+    能說什麼？<br>
+    不能說什麼？
+  </div>
+
+  <div class="mind-item">
+    <b>後期</b><br>
+    語言使用
+  </div>
+
+  <div class="mind-item">
+    <b>遊戲</b><br>
+    不同情境<br>
+    不同規則
+  </div>
+
+  <div class="mind-item">
+    <b>生活</b><br>
+    家族相似<br>
+    生活形式
+  </div>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 35 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">35</div>
+    <h2>一條線掌握維根斯坦</h2>
+  </div>
+
+  <div class="formula">
+
+ 
+<span>世界</span>
+→
+<span>事實</span>
+→
+<span>命題</span>
+→
+<span>邏輯形式</span>
+
+<br><br>
+
+↓
+
+<br><br>
+
+<span>語言不只是描述</span>
+→
+<span>語言遊戲</span>
+→
+<span>生活形式</span>
+→
+<span>哲學治療</span>
+ 
+
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  這條線呈現了維根斯坦最精彩的思想轉變：
+</p>
+
+<ul>
+  <li>
+    早期問：
+    <strong>語言如何描繪世界？</strong>
+  </li>
+
+  <li>
+    後來問：
+    <strong>我們實際上如何使用語言？</strong>
+  </li>
+
+  <li>
+    最終關心：
+    <strong>哲學問題是否是語言把我們困住了？</strong>
+  </li>
+</ul>
+ 
+
+  </div>
+
+</section>
+
+<!-- 36 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">36</div>
+    <h2>最後總結</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <h3>第一</h3>
+  <p>
+    <strong>語言不是透明的工具。</strong>
+    語言本身可能影響我們如何思考。
+  </p>
+</div>
+
+<div class="concept green">
+  <h3>第二</h3>
+  <p>
+    <strong>意義與使用密切相關。</strong>
+    不應把詞語簡單理解成「標籤」。
+  </p>
+</div>
+
+<div class="concept gold">
+  <h3>第三</h3>
+  <p>
+    <strong>語言有很多種遊戲。</strong>
+    描述、命令、提問、道歉、玩笑都不同。
+  </p>
+</div>
+
+<div class="concept purple">
+  <h3>第四</h3>
+  <p>
+    <strong>概念不一定有單一共同本質。</strong>
+    「家族相似」提供另一種理解方式。
+  </p>
+</div>
+
+<div class="concept red">
+  <h3>第五</h3>
+  <p>
+    <strong>哲學有時不是尋找新答案，
+    而是解除錯誤問題。</strong>
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="big-question">
+
+ 
+維根斯坦留給現代人的核心問題：
+
+<br><br>
+
+<span class="highlight">
+  「你以為自己正在思考一個很深的問題，
+  會不會其實只是被語言的使用方式困住了？」
+</span>
+ 
+
+  </div>
+
+  <div class="quote">
+
+ 
+<p>
+  不要問「這個詞究竟代表什麼東西」，
+  先看看它在我們的生活中是怎麼被使用的。
+</p>
+
+<small>
+  —— 後期維根斯坦思想的教學式總結
+</small>
+ 
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+<strong>維根斯坦｜Ludwig Wittgenstein</strong> <br>
+1889—1951 · 語言哲學 · 邏輯 · 語言遊戲 · 生活形式 · 哲學治療
+
+</footer>
+
+</body>
+</html>

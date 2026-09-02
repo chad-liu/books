@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海德格｜重新追問「存在」</title>
+
+<style>
+:root{
+  --bg:#f3f5f7;
+  --paper:#ffffff;
+  --ink:#202832;
+  --muted:#667482;
+  --dark:#18232d;
+  --dark2:#293947;
+  --gold:#d3a64b;
+  --gold2:#f1d38e;
+  --blue:#4f79a5;
+  --red:#bd6262;
+  --green:#54856e;
+  --purple:#80669e;
+  --line:#dce3e8;
+  --shadow:0 10px 28px rgba(24,35,45,.08);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:
+    "Noto Sans TC",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+  line-height:1.8;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
+  color:#fff;
+  padding:72px 24px 65px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:470px;
+  height:470px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  right:-130px;
+  top:-180px;
+  box-shadow:
+    0 0 0 70px rgba(255,255,255,.025),
+    0 0 0 140px rgba(255,255,255,.018);
+}
+
+.hero-inner{
+  max-width:1100px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+.eyebrow{
+  color:var(--gold2);
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+.hero h1{
+  font-size:clamp(44px,7vw,78px);
+  line-height:1;
+  margin:12px 0 8px;
+  letter-spacing:3px;
+}
+
+.subtitle{
+  font-size:24px;
+  color:#e2e9ee;
+  margin:0 0 22px;
+}
+
+.hero p{
+  max-width:900px;
+  color:#c9d4dc;
+  font-size:17px;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+
+.badge{
+  padding:7px 14px;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,.17);
+  background:rgba(255,255,255,.06);
+  font-size:14px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:45px 20px 80px;
+}
+
+.section{
+  margin-bottom:65px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.num{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:var(--dark);
+  color:var(--gold2);
+  font-weight:bold;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:29px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-top:0;
+  color:var(--dark);
+}
+
+.card p:last-child{
+  margin-bottom:0;
+}
+
+.big-question{
+  background:linear-gradient(135deg,#fffaf0,#fff);
+  border:1px solid #ead9b3;
+  border-left:6px solid var(--gold);
+  border-radius:18px;
+  padding:28px 30px;
+  box-shadow:var(--shadow);
+}
+
+.big-question .q{
+  color:#624a1d;
+  font-size:27px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.quote{
+  background:var(--dark);
+  color:#fff;
+  border-radius:18px;
+  padding:28px 30px;
+  margin:25px 0;
+  position:relative;
+}
+
+.quote:before{
+  content:"“";
+  position:absolute;
+  top:-20px;
+  left:18px;
+  font-size:90px;
+  color:rgba(255,255,255,.1);
+}
+
+.quote p{
+  position:relative;
+  margin:0;
+  padding-left:25px;
+  font-size:21px;
+}
+
+.quote small{
+  display:block;
+  margin-top:12px;
+  padding-left:25px;
+  color:#bac7d1;
+}
+
+.timeline{
+  position:relative;
+  margin:25px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:90px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--line);
+}
+
+.event{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:35px;
+  margin-bottom:24px;
+  position:relative;
+}
+
+.event:before{
+  content:"";
+  position:absolute;
+  left:84px;
+  top:9px;
+  width:15px;
+  height:15px;
+  border-radius:50%;
+  background:var(--gold);
+  border:4px solid var(--bg);
+}
+
+.year{
+  text-align:right;
+  color:var(--blue);
+  font-weight:bold;
+}
+
+.event-content{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px 20px;
+}
+
+.event-content strong{
+  color:var(--dark);
+}
+
+.flow{
+  display:flex;
+  align-items:stretch;
+  gap:10px;
+  margin:25px 0;
+}
+
+.flow-item{
+  flex:1;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:21px 15px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+
+.flow-item:not(:last-child):after{
+  content:"→";
+  position:absolute;
+  right:-19px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:25px;
+  color:var(--gold);
+  z-index:2;
+}
+
+.flow-item .icon{
+  font-size:30px;
+  margin-bottom:6px;
+}
+
+.flow-item h3{
+  margin:5px 0;
+}
+
+.formula{
+  background:#202b35;
+  color:#fff;
+  border-radius:18px;
+  padding:28px;
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+  margin:25px 0;
+}
+
+.formula span{
+  color:var(--gold2);
+}
+
+.concept{
+  border-radius:18px;
+  padding:25px;
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+
+.concept.blue{background:var(--blue)}
+.concept.red{background:var(--red)}
+.concept.green{background:var(--green)}
+.concept.purple{background:var(--purple)}
+
+.concept h3{
+  margin-top:0;
+}
+
+.note{
+  background:#eef5fb;
+  border-left:5px solid var(--blue);
+  border-radius:12px;
+  padding:18px 22px;
+  margin:20px 0;
+}
+
+.warning{
+  background:#fff4f0;
+  border-left:5px solid var(--red);
+  border-radius:12px;
+  padding:18px 22px;
+  margin:20px 0;
+}
+
+.compare{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.compare th,
+.compare td{
+  padding:15px 16px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+
+.compare th{
+  background:var(--dark);
+  color:#fff;
+}
+
+.compare tr:last-child td{
+  border-bottom:none;
+}
+
+.compare td:first-child{
+  font-weight:bold;
+  width:18%;
+  background:#f8fafb;
+}
+
+.qa{
+  display:grid;
+  gap:14px;
+}
+
+.qa details{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px 20px;
+}
+
+.qa summary{
+  cursor:pointer;
+  font-weight:bold;
+  color:var(--dark);
+}
+
+.qa p{
+  margin-bottom:0;
+  color:#52606d;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  text-align:center;
+}
+
+.stat .number{
+  font-size:31px;
+  font-weight:bold;
+  color:var(--blue);
+}
+
+.stat .label{
+  font-size:14px;
+  color:var(--muted);
+}
+
+footer{
+  background:var(--dark);
+  color:#cbd5df;
+  text-align:center;
+  padding:35px 20px;
+}
+
+footer strong{
+  color:var(--gold2);
+}
+
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .flow{
+    flex-direction:column;
+  }
+
+  .flow-item:not(:last-child):after{
+    content:"↓";
+    right:auto;
+    top:auto;
+    bottom:-24px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+}
+
+@media(max-width:600px){
+
+  .hero{
+    padding:50px 20px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero .subtitle{
+    font-size:20px;
+  }
+
+  .container{
+    padding:35px 15px 60px;
+  }
+
+  .grid,
+  .grid2,
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .timeline:before{
+    left:20px;
+  }
+
+  .event{
+    grid-template-columns:1fr;
+    padding-left:55px;
+    gap:4px;
+  }
+
+  .event:before{
+    left:14px;
+  }
+
+  .year{
+    text-align:left;
+  }
+
+  .compare{
+    font-size:14px;
+  }
+
+  .compare th,
+  .compare td{
+    padding:11px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+
+  <div class="hero-inner">
+
+ 
+<div class="eyebrow">
+  20TH CENTURY PHILOSOPHY · EXISTENTIAL THOUGHT
+</div>
+
+<h1>海德格</h1>
+
+<p class="subtitle">
+  Martin Heidegger　1889—1976
+</p>
+
+<p>
+  20世紀最具影響力的哲學家之一。
+  他重新提出一個看似最基本、卻被西方哲學逐漸遺忘的問題：
+  <strong>
+    「存在，到底是什麼？」
+  </strong>
+  從「此在」、日常生活、焦慮、死亡、本真性，
+  一路追問到現代技術與人的存在處境。
+</p>
+
+<div class="badges">
+  <span class="badge">存在論</span>
+  <span class="badge">現象學</span>
+  <span class="badge">此在 Dasein</span>
+  <span class="badge">向死而在</span>
+  <span class="badge">焦慮</span>
+  <span class="badge">本真性</span>
+  <span class="badge">技術哲學</span>
+</div>
+ 
+
+  </div>
+
+</header>
+
+<main class="container">
+
+<!-- 01 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>一句話理解海德格</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「我們每天都在存在，卻真的知道『存在』是什麼嗎？」
+</div>
+
+<p>
+  海德格認為，
+  西方哲學長期研究「世界上有哪些東西」，
+  卻忽略了一個更根本的問題：
+</p>
+
+<p style="font-size:22px;font-weight:bold;color:var(--dark)">
+  「為什麼會有存在，而不是什麼都沒有？」
+</p>
+ 
+
+  </div>
+
+  <div class="formula">
+    研究「存在者」 → 還不夠
+    <br>
+    必須追問 → <span>「存在本身」</span>
+  </div>
+
+</section>
+
+<!-- 02 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>海德格的一生</h2>
+  </div>
+
+  <div class="stats">
+
+ 
+<div class="stat">
+  <div class="number">1889</div>
+  <div class="label">出生</div>
+</div>
+
+<div class="stat">
+  <div class="number">1927</div>
+  <div class="label">《存在與時間》</div>
+</div>
+
+<div class="stat">
+  <div class="number">1933</div>
+  <div class="label">擔任弗萊堡大學校長</div>
+</div>
+
+<div class="stat">
+  <div class="number">1976</div>
+  <div class="label">逝世</div>
+</div>
+ 
+
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+
+  <div class="year">1889</div>
+
+  <div class="event-content">
+
+    <strong>出生於德國梅斯基爾希</strong>
+
+    <p>
+      出生於天主教家庭，
+      早年曾受到神學與哲學教育影響。
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="event">
+
+  <div class="year">1910s</div>
+
+  <div class="event-content">
+
+    <strong>受到現象學影響</strong>
+
+    <p>
+      與胡塞爾的現象學密切相關，
+      後來逐漸發展出自己的存在論方向。
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="event">
+
+  <div class="year">1927</div>
+
+  <div class="event-content">
+
+    <strong>《存在與時間》出版</strong>
+
+    <p>
+      這部作品成為20世紀哲學的重要經典，
+      也使「此在、存在、時間、死亡、焦慮、本真性」
+      成為哲學史上的重要概念。
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="event">
+
+  <div class="year">1933</div>
+
+  <div class="event-content">
+
+    <strong>擔任弗萊堡大學校長</strong>
+
+    <p>
+      海德格與納粹政權的政治關係，
+      成為其生平與思想研究中極具爭議的問題。
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="event">
+
+  <div class="year">1940s</div>
+
+  <div class="event-content">
+
+    <strong>戰後反思技術與存在</strong>
+
+    <p>
+      晚期思想更加關注語言、藝術、
+      技術與現代人的存在處境。
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="event">
+
+  <div class="year">1976</div>
+
+  <div class="event-content">
+
+    <strong>逝世</strong>
+
+    <p>
+      海德格的思想後來深刻影響哲學、
+      文學、神學、心理學與建築等領域。
+    </p>
+
+  </div>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 03 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>海德格真正想問的問題</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+
+  <h3>一般問題</h3>
+
+  <p>
+    「桌子是什麼？」
+  </p>
+
+  <p>
+    「人是什麼？」
+  </p>
+
+  <p>
+    「宇宙是什麼？」
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>海德格的問題</h3>
+
+  <p>
+    「桌子存在」是什麼意思？
+  </p>
+
+  <p>
+    「人存在」是什麼意思？
+  </p>
+
+  <p>
+    <strong>
+      「存在」本身是什麼意思？
+    </strong>
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+「存在者」＝ 某個東西
+<br>
+<span>「存在」＝ 使「某個東西是」的根本問題</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 04 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>「存在」與「存在者」</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept blue">
+
+  <h3>存在者 Being / Seiendes</h3>
+
+  <p>
+    我們可以看到、描述或討論的東西。
+  </p>
+
+  <p>
+    例如：
+    人、樹、房子、手機、星球、動物。
+  </p>
+
+</div>
+
+
+<div class="concept purple">
+
+  <h3>存在 Being / Sein</h3>
+
+  <p>
+    不是另一個「東西」，
+    而是「存在者之所以能夠被理解為存在」的問題。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+
+ 
+<strong>這是理解海德格最重要的區分之一：</strong>
+
+<br>
+
+我們通常不停研究「存在者」，
+海德格要求哲學重新追問「存在」。
+ 
+
+  </div>
+
+</section>
+
+<!-- 05 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>什麼是「此在」Dasein？</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  此在不是單純的「人」。
+</div>
+
+<p>
+  德文 <strong>Dasein</strong>
+  可以理解為「在那裡的存在」。
+</p>
+
+<p>
+  海德格用「此在」來描述那種
+  <strong>
+    能夠對自己的存在提出問題的存在者。
+  </strong>
+</p>
+ 
+
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+
+  <div class="icon">👤</div>
+
+  <h3>人</h3>
+
+  <p>
+    活在世界中
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <div class="icon">🌍</div>
+
+  <h3>世界</h3>
+
+  <p>
+    與事物、他人互動
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <div class="icon">🧠</div>
+
+  <h3>理解</h3>
+
+  <p>
+    能理解自己的存在
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <div class="icon">❓</div>
+
+  <h3>追問</h3>
+
+  <p>
+    「我是誰？」
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 06 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">06</div>
+    <h2>「在世存有」：人不是孤立的思想者</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  人不是一顆被丟進宇宙、與世界完全分離的大腦。
+</div>
+
+<p>
+  海德格認為，
+  我們一開始就是「在世界之中」存在。
+</p>
+
+<p>
+  我們使用工具、與人交談、工作、生活、
+  愛人、害怕、計畫未來。
+  <strong>
+    這些實際生活本身，就是我們存在的方式。
+  </strong>
+</p>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+人
+≠
+孤立的「觀察者」
+
+<br>
+
+人
+=
+<span>在世界之中生活的存在</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 07 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">07</div>
+    <h2>工具的例子：鎚子</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+
+  <h3>我們平常使用鎚子</h3>
+
+  <p>
+    當你正在釘釘子時，
+    你通常不會思考：
+    「這是一個長度30公分、重量500克的物體。」
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>工具真正「壞掉」時</h3>
+
+  <p>
+    當鎚子突然壞掉，
+    它才從「順手使用的工具」
+    變成我們眼前需要觀察的「物件」。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+順手使用
+→
+<span>世界中的實際存在</span>
+
+<br>
+
+工具故障
+→
+「物」突然成為被觀察的對象
+ 
+
+  </div>
+
+  <div class="note">
+
+ 
+這個例子說明：
+人與世界的關係，
+並不只是「主體觀看客體」，
+而是首先透過實際生活與行動建立關係。
+ 
+
+  </div>
+
+</section>
+
+<!-- 08 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">08</div>
+    <h2>「被拋」：我沒有選擇出生</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「為什麼我是現在的我？」
+</div>
+
+<p>
+  我們無法選擇：
+</p>
+
+<ul>
+  <li>出生在哪裡</li>
+  <li>出生於什麼家庭</li>
+  <li>出生在哪個時代</li>
+  <li>自己的歷史背景</li>
+  <li>很多最初的生命條件</li>
+</ul>
+
+<p>
+  海德格稱這種存在處境為
+  <strong>「被拋性」</strong>
+  （Geworfenheit）。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 09 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">09</div>
+    <h2>「投射」：我又可以選擇成為誰</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept blue">
+
+  <h3>被拋</h3>
+
+  <p>
+    我無法選擇自己從哪裡開始。
+  </p>
+
+</div>
+
+
+<div class="concept green">
+
+  <h3>投射</h3>
+
+  <p>
+    但我可以朝向某些可能性，
+    決定自己接下來要成為什麼樣的人。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+我不能選擇
+<span>「從哪裡開始」</span>
+
+<br>
+
+但可以面對
+<span>「接下來怎麼存在」</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 10 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>日常生活：我們為什麼常常活成「別人」？</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「大家都這樣做，所以我也這樣做。」
+</div>
+
+<p>
+  我們每天都會聽見：
+</p>
+
+<ul>
+  <li>大家都說這樣最好。</li>
+  <li>大家都認為應該這樣。</li>
+  <li>大家都在追求這個。</li>
+  <li>大家都覺得那個很重要。</li>
+</ul>
+
+<p>
+  海德格用
+  <strong>「常人」（das Man）</strong>
+  描述這種匿名的「大家」。
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 11 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>「常人」das Man</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+
+  <h3>大家怎麼說</h3>
+
+  <p>
+    我們跟著社會普遍的看法。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>大家怎麼做</h3>
+
+  <p>
+    我們按照社會期待生活。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>大家怎麼活</h3>
+
+  <p>
+    最後甚至忘記追問：
+    「這真的是我想要的人生嗎？」
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+「我這樣做」
+→
+「因為大家都這樣做」
+
+<br>
+
+<span>＝ 常人的日常存在</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 12 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>「本真性」Authenticity</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「如果不是按照大家的期待，
+  我真正想成為誰？」
+</div>
+
+<p>
+  海德格所說的本真性，
+  並不是「做自己想做的所有事情」。
+</p>
+
+<p>
+  它更接近：
+  <strong>
+    真正面對自己的存在可能性，
+    不再只是被「大家怎麼活」牽著走。
+  </strong>
+</p>
+ 
+
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+
+  <h3>常人</h3>
+
+  <p>
+    大家都這樣
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <h3>迷失</h3>
+
+  <p>
+    忘記自己的可能性
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <h3>焦慮</h3>
+
+  <p>
+    發現熟悉世界不再可靠
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <h3>本真</h3>
+
+  <p>
+    承擔自己的存在
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 13 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>焦慮 Angst：不是害怕某一件事情</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="concept red">
+
+  <h3>恐懼 Fear</h3>
+
+  <p>
+    通常有明確對象。
+  </p>
+
+  <p>
+    例如：
+    怕蛇、怕考試、怕失敗。
+  </p>
+
+</div>
+
+
+<div class="concept purple">
+
+  <h3>焦慮 Angst</h3>
+
+  <p>
+    不一定有明確對象。
+  </p>
+
+  <p>
+    它讓熟悉的世界突然變得陌生，
+    使人直接面對自己的存在。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+恐懼
+=
+<span>害怕某個東西</span>
+
+<br>
+
+焦慮
+=
+<span>面對「存在本身」的不安</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 14 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">14</div>
+    <h2>為什麼焦慮反而可能讓人醒來？</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「當日常世界突然失去熟悉感，
+  我才開始真正問自己是誰。」
+</div>
+
+<p>
+  平常生活中，
+  我們可以一直忙碌、工作、娛樂、追蹤新聞，
+  讓自己沒有時間思考存在。
+</p>
+
+<p>
+  焦慮卻可能把我們從這種日常狀態中拉出來。
+</p>
+ 
+
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <h3>日常</h3>
+  <p>忙碌生活</p>
+</div>
+
+<div class="flow-item">
+  <h3>斷裂</h3>
+  <p>熟悉世界失去穩定</p>
+</div>
+
+<div class="flow-item">
+  <h3>焦慮</h3>
+  <p>開始面對自己</p>
+</div>
+
+<div class="flow-item">
+  <h3>覺醒</h3>
+  <p>重新思考存在</p>
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 15 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">15</div>
+    <h2>「向死而在」Being-toward-death</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「知道自己終究會死，會如何改變我們活著的方式？」
+</div>
+
+<p>
+  海德格認為，
+  死亡不是人生最後才突然發生的一件事件。
+</p>
+
+<p>
+  「死亡是我自己的、無法由別人替代的可能性。」
+</p>
+
+<p>
+  正因為人生有限，
+  我們的每一個選擇才具有重量。
+</p>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+有限的生命
+→
+每一個選擇都有代價
+
+<br>
+
+<span>死亡意識 → 迫使人重新思考如何生活</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 16 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">16</div>
+    <h2>海德格不是在鼓吹「死亡主義」</h2>
+  </div>
+
+  <div class="warning">
+
+ 
+<strong>重要：</strong>
+
+「向死而在」不是叫人追求死亡，
+而是要人承認：
+<strong>
+  自己的生命具有不可逃避的有限性。
+</strong>
+ 
+
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+
+  <h3>死亡使人生有限</h3>
+
+  <p>
+    因為時間有限，
+    所以選擇才重要。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>死亡不能由別人代替</h3>
+
+  <p>
+    每個人最終都必須面對自己的死亡。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>面對有限性</h3>
+
+  <p>
+    可以讓人停止無限拖延，
+    更認真承擔自己的生命。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 17 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">17</div>
+    <h2>時間：人不是「靜止的東西」</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+
+  <h3>過去</h3>
+
+  <p>
+    我已經被拋入某種歷史
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <h3>現在</h3>
+
+  <p>
+    我正在生活與行動
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <h3>未來</h3>
+
+  <p>
+    我朝向各種可能性
+  </p>
+
+</div>
+
+
+<div class="flow-item">
+
+  <h3>存在</h3>
+
+  <p>
+    本身就是時間性的
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+過去
++
+現在
++
+未來
+
+<br>
+
+≠ 三個分開的時間點
+
+<br>
+
+<span>而是人的存在結構</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 18 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">18</div>
+    <h2>「本真性」到底是什麼？</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+
+  <h3>非本真</h3>
+
+  <ul>
+    <li>大家都這樣做</li>
+    <li>按照社會期待生活</li>
+    <li>逃避自己的有限性</li>
+    <li>不願承擔自己的選擇</li>
+  </ul>
+
+</div>
+
+
+<div class="card">
+
+  <h3>本真</h3>
+
+  <ul>
+    <li>承認自己的有限性</li>
+    <li>面對自己的可能性</li>
+    <li>不只是跟著「大家」生活</li>
+    <li>承擔自己的選擇</li>
+  </ul>
+
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+
+ 
+<strong>注意：</strong>
+海德格的「本真性」不是一種
+「做自己、開心就好」的流行心理學概念。
+它是一種存在論上的生活方式：
+<strong>承擔自己的存在。</strong>
+ 
+
+  </div>
+
+</section>
+
+<!-- 19 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">19</div>
+    <h2>海德格晚期：開始反思「技術」</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「技術只是工具嗎？」
+</div>
+
+<p>
+  一般人會說：
+  技術就是人用來達成目的的工具。
+</p>
+
+<p>
+  海德格卻認為問題更深：
+  <strong>
+    現代技術不只是在改變我們「使用什麼」，
+    也在改變我們「如何看待世界」。
+  </strong>
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 20 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">20</div>
+    <h2>現代技術如何改變我們看世界？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+
+  <h3>森林</h3>
+
+  <p>
+    不只是自然，
+    也可能被看成木材資源。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>河流</h3>
+
+  <p>
+    不只是自然景觀，
+    也可能被看成能源來源。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>人</h3>
+
+  <p>
+    不只是有尊嚴的生命，
+    也可能被看成勞動力、
+    數據或「人力資源」。
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+世界
+→
+資源
+→
+可計算
+→
+可控制
+→
+<span>可利用</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 21 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">21</div>
+    <h2>「座架」Gestell</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<h3>現代技術的深層問題</h3>
+
+<p>
+  海德格用「座架」（Gestell）
+  描述現代技術背後的一種揭示方式。
+</p>
+
+<p>
+  世界中的事物被要求以
+  <strong>
+    「可計算、可預測、可管理、可利用」
+  </strong>
+  的方式呈現。
+</p>
+ 
+
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <h3>自然</h3>
+  <p>資源</p>
+</div>
+
+<div class="flow-item">
+  <h3>人</h3>
+  <p>人力資源</p>
+</div>
+
+<div class="flow-item">
+  <h3>時間</h3>
+  <p>生產效率</p>
+</div>
+
+<div class="flow-item">
+  <h3>注意力</h3>
+  <p>流量與數據</p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+
+ 
+這也是海德格思想在今天重新受到重視的原因之一：
+AI、大數據、社群媒體與演算法，
+是否正在把人與世界越來越全面地轉化為
+<strong>可計算、可管理的對象？</strong>
+ 
+
+  </div>
+
+</section>
+
+<!-- 22 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">22</div>
+    <h2>海德格與人工智慧：可以問什麼？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+
+  <h3>AI是在「理解」嗎？</h3>
+
+  <p>
+    還是只是在處理資訊與產生結果？
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>人會不會變成資料？</h3>
+
+  <p>
+    當人的行為都可以被量化，
+    人是否也被重新理解為「數據集合」？
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>效率是不是最高價值？</h3>
+
+  <p>
+    如果一切都追求效率，
+    那麼愛、藝術、沉思與自由還剩多少空間？
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 23 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">23</div>
+    <h2>海德格與尼采</h2>
+  </div>
+
+  <table class="compare">
+
+ 
+<thead>
+
+  <tr>
+    <th>思想家</th>
+    <th>核心問題</th>
+    <th>關鍵概念</th>
+    <th>思想方向</th>
+  </tr>
+
+</thead>
+
+<tbody>
+
+  <tr>
+
+    <td>尼采</td>
+
+    <td>
+      傳統價值崩潰後，
+      人如何重新創造價值？
+    </td>
+
+    <td>
+      權力意志、
+      超人、
+      永恆回歸
+    </td>
+
+    <td>
+      批判傳統形上學與道德
+    </td>
+
+  </tr>
+
+
+  <tr>
+
+    <td>海德格</td>
+
+    <td>
+      西方哲學為何遺忘「存在」？
+    </td>
+
+    <td>
+      此在、
+      焦慮、
+      死亡、
+      本真性
+    </td>
+
+    <td>
+      重新追問存在
+    </td>
+
+  </tr>
+
+</tbody>
+ 
+
+  </table>
+
+  <div class="note">
+
+ 
+海德格高度重視尼采，
+並把尼采視為西方形上學傳統的一個關鍵終點。
+兩人的關係非常複雜，
+不能簡化成「尼采是海德格的老師」。
+ 
+
+  </div>
+
+</section>
+
+<!-- 24 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">24</div>
+    <h2>海德格與沙特</h2>
+  </div>
+
+  <table class="compare">
+
+ 
+<thead>
+
+  <tr>
+    <th>問題</th>
+    <th>海德格</th>
+    <th>沙特</th>
+  </tr>
+
+</thead>
+
+<tbody>
+
+  <tr>
+
+    <td>核心關注</td>
+
+    <td>
+      存在論
+    </td>
+
+    <td>
+      存在主義、自由
+    </td>
+
+  </tr>
+
+
+  <tr>
+
+    <td>人</td>
+
+    <td>
+      此在
+    </td>
+
+    <td>
+      自為存在
+    </td>
+
+  </tr>
+
+
+  <tr>
+
+    <td>自由</td>
+
+    <td>
+      與存在可能性、本真性相關
+    </td>
+
+    <td>
+      強調人的自由與責任
+    </td>
+
+  </tr>
+
+
+  <tr>
+
+    <td>死亡</td>
+
+    <td>
+      向死而在
+    </td>
+
+    <td>
+      存在處境的重要限制
+    </td>
+
+  </tr>
+
+
+  <tr>
+
+    <td>宗教</td>
+
+    <td>
+      不以傳統神學作為其存在論基礎
+    </td>
+
+    <td>
+      著名的無神論存在主義
+    </td>
+
+  </tr>
+
+</tbody>
+ 
+
+  </table>
+
+  <div class="warning">
+
+ 
+<strong>重要：</strong>
+海德格本人並不喜歡把自己的哲學直接歸類為
+「存在主義」。
+他更關心的是存在論問題，
+而沙特則把許多相關問題發展成更明確的存在主義哲學。
+ 
+
+  </div>
+
+</section>
+
+<!-- 25 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">25</div>
+    <h2>海德格與胡塞爾</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+
+  <h3>胡塞爾</h3>
+
+  <p>
+    「回到事情本身。」
+  </p>
+
+  <p>
+    透過現象學分析意識經驗，
+    探索事物如何呈現在意識中。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>海德格</h3>
+
+  <p>
+    將現象學轉向存在論。
+  </p>
+
+  <p>
+    不只問「事物如何被意識經驗」，
+    更問：
+    <strong>
+    「存在者之所以存在，是什麼意思？」
+    </strong>
+  </p>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 26 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">26</div>
+    <h2>海德格思想地圖</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<div class="flow">
+
+  <div class="flow-item">
+    <h3>存在</h3>
+    <p>哲學最根本的問題</p>
+  </div>
+
+  <div class="flow-item">
+    <h3>此在</h3>
+    <p>能追問存在的人</p>
+  </div>
+
+  <div class="flow-item">
+    <h3>在世</h3>
+    <p>人永遠活在世界中</p>
+  </div>
+
+  <div class="flow-item">
+    <h3>常人</h3>
+    <p>被「大家」牽著走</p>
+  </div>
+
+  <div class="flow-item">
+    <h3>焦慮</h3>
+    <p>日常世界失去熟悉感</p>
+  </div>
+
+  <div class="flow-item">
+    <h3>死亡</h3>
+    <p>面對存在的有限性</p>
+  </div>
+
+  <div class="flow-item">
+    <h3>本真</h3>
+    <p>承擔自己的存在</p>
+  </div>
+
+</div>
+ 
+
+  </div>
+
+</section>
+
+<!-- 27 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">27</div>
+    <h2>海德格的「大哉問」</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<details open>
+
+  <summary>
+    Q1．海德格到底在問什麼？
+  </summary>
+
+  <p>
+    他最根本的問題是：
+    「存在究竟是什麼？」
+    這被稱為「存在問題」。
+  </p>
+
+</details>
+
+
+<details>
+
+  <summary>
+    Q2．什麼是「此在」？
+  </summary>
+
+  <p>
+    此在不是單純等於「人」，
+    而是指那個能夠理解自身存在、
+    並對存在提出問題的存在者。
+  </p>
+
+</details>
+
+
+<details>
+
+  <summary>
+    Q3．為什麼海德格一直談死亡？
+  </summary>
+
+  <p>
+    因為死亡使我們看見生命的有限性。
+    當人真正承認生命有限，
+    就可能停止無限地逃避自己的選擇。
+  </p>
+
+</details>
+
+
+<details>
+
+  <summary>
+    Q4．「本真性」是不是「做自己」？
+  </summary>
+
+  <p>
+    不能簡單等同。
+    本真性更接近於：
+    面對自己的存在可能性，
+    並承擔自己的選擇，
+    而不是單純跟著「大家」生活。
+  </p>
+
+</details>
+
+
+<details>
+
+  <summary>
+    Q5．焦慮和恐懼有什麼不同？
+  </summary>
+
+  <p>
+    恐懼通常有明確對象；
+    焦慮則可能沒有特定對象，
+    它讓人直接面對自身存在的不確定性。
+  </p>
+
+</details>
+
+
+<details>
+
+  <summary>
+    Q6．海德格為什麼批判現代技術？
+  </summary>
+
+  <p>
+    他不是簡單反對科技，
+    而是擔心現代技術會形成一種
+    「把一切都看成可計算、可管理、可利用資源」
+    的世界觀。
+  </p>
+
+</details>
+
+
+<details>
+
+  <summary>
+    Q7．海德格是存在主義者嗎？
+  </summary>
+
+  <p>
+    通常會把他視為存在主義的重要思想來源，
+    但海德格本人更強調自己的問題是「存在論」，
+    不希望被簡化為一般意義上的存在主義。
+  </p>
+
+</details>
+ 
+
+  </div>
+
+</section>
+
+<!-- 28 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">28</div>
+    <h2>最容易考的重點</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+
+  <h3>必背①</h3>
+
+  <p>
+    海德格是
+    <strong>20世紀德國哲學家</strong>，
+    代表作《存在與時間》。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>必背②</h3>
+
+  <p>
+    核心問題：
+    <strong>重新追問「存在」</strong>。
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>必背③</h3>
+
+  <p>
+    重要概念：
+    <strong>
+    此在、在世存有、被拋性、常人、焦慮、本真性、向死而在。
+    </strong>
+  </p>
+
+</div>
+
+
+<div class="card">
+
+  <h3>必背④</h3>
+
+  <p>
+    晚期重要思想：
+    <strong>反思現代技術如何揭示與支配世界。</strong>
+  </p>
+
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+海德格
+=
+存在問題
+＋
+此在
+＋
+焦慮
+＋
+向死而在
+＋
+<span>本真性</span>
+ 
+
+  </div>
+
+</section>
+
+<!-- 29 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">29</div>
+    <h2>海德格的歷史爭議：不能忽略的一面</h2>
+  </div>
+
+  <div class="warning">
+
+ 
+<strong>1933年的政治選擇：</strong>
+
+<p>
+  海德格在1933年曾加入納粹黨，
+  並擔任弗萊堡大學校長。
+  他與納粹政權的關係，
+  一直是海德格研究中的重大爭議。
+</p>
+
+<p>
+  因此，在介紹海德格時，
+  不應只介紹他的哲學成就，
+  也應讓學生理解：
+  <strong>
+  思想家的哲學與其政治行動之間，
+  可以存在極其複雜甚至矛盾的關係。
+  </strong>
+</p>
+ 
+
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  一個人的哲學很深刻，
+  是否代表他的政治選擇也一定正確？
+</div>
+
+<p>
+  這是一個非常值得在課堂討論的哲學問題：
+  <strong>
+  「我們應該如何評價一個思想家？」
+  </strong>
+</p>
+ 
+
+  </div>
+
+</section>
+
+<!-- 30 -->
+
+<section class="section">
+
+  <div class="section-title">
+    <div class="num">30</div>
+    <h2>最後總結：海德格真正想叫我們做什麼？</h2>
+  </div>
+
+  <div class="big-question">
+
+ 
+<div class="q">
+  「不要只是活著，
+  要開始思考『我是如何存在的』。」
+</div>
+
+<p>
+  我們每天工作、上課、滑手機、購物、
+  追逐成功，也接受社會告訴我們
+  「什麼才是重要的」。
+</p>
+
+<p>
+  海德格要求我們暫停一下：
+</p>
+
+<p style="font-size:22px;font-weight:bold;color:var(--dark)">
+  我現在的生活，
+  真的是我自己的生活嗎？
+</p>
+
+<p>
+  當我們承認生命有限，
+  看見自己被「大家」影響，
+  並願意承擔自己的存在，
+  才可能開始走向比較本真的生命。
+</p>
+ 
+
+  </div>
+
+  <div class="formula">
+
+ 
+「存在」
+→
+「此在」
+→
+「在世」
+→
+「焦慮」
+→
+「死亡」
+→
+<span>「本真地存在」</span>
+ 
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+<strong>Martin Heidegger｜海德格</strong>
+
+  <br>
+
+1889—1976 · 存在論 · 現象學 · 此在 · 焦慮 · 向死而在 · 本真性 · 技術哲學
+
+</footer>
+
+</body>
+</html>

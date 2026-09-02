@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>霍布斯 Thomas Hobbes｜教學用哲學資訊圖表</title>
+
+<style>
+:root{
+  --bg:#f2f1ee;
+  --paper:#fffdf9;
+  --ink:#292b2d;
+  --muted:#6d7073;
+  --dark:#252b31;
+  --dark2:#35414a;
+  --gold:#c09a4b;
+  --gold2:#ead7a2;
+  --red:#98473d;
+  --blue:#456a82;
+  --green:#55705d;
+  --line:#d8d5cf;
+  --shadow:0 8px 25px rgba(35,35,30,.11);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--bg);
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+  line-height:1.85;
+}
+
+.container{
+  width:min(1180px,94%);
+  margin:auto;
+}
+
+.hero{
+  background:
+    radial-gradient(circle at 80% 25%,rgba(205,170,90,.22),transparent 25%),
+    linear-gradient(135deg,#20262c,#34424c 58%,#80652e);
+  color:white;
+  padding:70px 20px 65px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"L";
+  position:absolute;
+  right:5%;
+  top:-40px;
+  font-family:Georgia,serif;
+  font-size:300px;
+  font-weight:bold;
+  color:white;
+  opacity:.045;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.badge{
+  padding:6px 14px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+}
+
+.hero h1{
+  font-size:clamp(45px,8vw,82px);
+  letter-spacing:.08em;
+  margin:0;
+}
+
+.hero .english{
+  font-family:Georgia,serif;
+  font-size:clamp(22px,3vw,34px);
+  color:#e9d28f;
+}
+
+.hero p{
+  max-width:900px;
+  font-size:18px;
+  color:#e8e7e3;
+}
+
+section{
+  padding:55px 0;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.section-title .num{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--gold);
+  color:white;
+  font-weight:bold;
+}
+
+h2{
+  margin:0;
+  font-size:32px;
+  color:#383d41;
+}
+
+h3{
+  margin-top:0;
+  color:#59472e;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.big-question{
+  background:linear-gradient(135deg,#272d33,#3b4850);
+  color:white;
+  padding:40px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.big-question .q{
+  color:#efd48b;
+  font-size:clamp(25px,4vw,43px);
+  font-weight:bold;
+}
+
+.big-question p{
+  max-width:850px;
+  margin:auto;
+  color:#e8e7e3;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:20px;
+}
+
+.stat{
+  background:var(--paper);
+  border-top:5px solid var(--gold);
+  border-radius:14px;
+  padding:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat .number{
+  color:var(--red);
+  font-size:32px;
+  font-weight:bold;
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+/* timeline */
+
+.timeline{
+  position:relative;
+  margin:35px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:28px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--gold2);
+}
+
+.event{
+  position:relative;
+  padding-left:75px;
+  margin-bottom:32px;
+}
+
+.event:before{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:8px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:var(--gold);
+  border:5px solid var(--bg);
+  box-shadow:0 0 0 2px var(--gold);
+}
+
+.year{
+  color:var(--red);
+  font-size:22px;
+  font-weight:bold;
+}
+
+.event-title{
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* Leviathan */
+
+.leviathan{
+  background:
+    linear-gradient(135deg,#252b31,#3b4851);
+  color:white;
+  border-radius:25px;
+  padding:40px 30px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.leviathan-symbol{
+  width:170px;
+  height:170px;
+  margin:0 auto 25px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:8px solid #d7bd77;
+  background:#2b333a;
+  font-size:80px;
+  color:#e6ca82;
+}
+
+.leviathan h3{
+  color:#f0d78f;
+  font-size:30px;
+}
+
+/* Hobbes flow */
+
+.flow{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  align-items:stretch;
+}
+
+.flow-item{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:20px 13px;
+  text-align:center;
+  position:relative;
+}
+
+.flow-item:not(:last-child):after{
+  content:"→";
+  position:absolute;
+  right:-20px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--gold);
+  font-size:26px;
+  z-index:2;
+}
+
+.formula{
+  background:#303a41;
+  color:white;
+  padding:32px;
+  border-radius:18px;
+  text-align:center;
+  font-size:clamp(19px,3vw,30px);
+}
+
+.formula span{
+  color:#efd58b;
+}
+
+.quote{
+  background:#fff9ec;
+  border-left:6px solid var(--gold);
+  border-radius:0 15px 15px 0;
+  padding:22px 28px;
+  font-size:21px;
+}
+
+.note{
+  background:#edf3f6;
+  border-left:5px solid var(--blue);
+  border-radius:0 14px 14px 0;
+  padding:18px 22px;
+}
+
+.warning{
+  background:#f8e9e6;
+  border-left:5px solid var(--red);
+  border-radius:0 14px 14px 0;
+  padding:18px 22px;
+}
+
+/* state */
+
+.state-box{
+  display:grid;
+  grid-template-columns:1fr 1.1fr 1fr;
+  gap:15px;
+  align-items:center;
+}
+
+.state{
+  background:white;
+  border:2px solid var(--line);
+  border-radius:17px;
+  padding:25px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.state.central{
+  background:#eee0bd;
+  border-color:var(--gold);
+}
+
+.state strong{
+  display:block;
+  color:var(--blue);
+  font-size:20px;
+}
+
+.arrow{
+  text-align:center;
+  font-size:35px;
+  color:var(--gold);
+}
+
+/* compare */
+
+.compare{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.compare th,
+.compare td{
+  padding:15px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+}
+
+.compare th{
+  background:#353c42;
+  color:white;
+}
+
+.compare tr:last-child td{
+  border-bottom:none;
+}
+
+/* Q&A */
+
+.qa{
+  display:grid;
+  gap:15px;
+}
+
+.qa details{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px 20px;
+}
+
+.qa summary{
+  cursor:pointer;
+  color:#57462f;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.qa p{
+  margin-bottom:0;
+}
+
+footer{
+  background:#24292e;
+  color:#d7d5d0;
+  text-align:center;
+  padding:35px 0;
+}
+
+footer strong{
+  color:#e7ca7d;
+}
+
+@media(max-width:900px){
+
+  .grid,
+  .grid2{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  .flow-item:not(:last-child):after{
+    content:"↓";
+    right:50%;
+    top:auto;
+    bottom:-29px;
+    transform:translateX(50%);
+  }
+
+  .state-box{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .grid,
+  .grid2,
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:40px 0;
+  }
+
+  .hero{
+    padding:50px 15px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+<div class="container">
+
+  <div class="badges">
+    <span class="badge">1588—1679</span>
+    <span class="badge">英國哲學家</span>
+    <span class="badge">政治哲學</span>
+    <span class="badge">社會契約論</span>
+    <span class="badge">《利維坦》</span>
+  </div>
+
+  <h1>霍布斯</h1>
+
+  <div class="english">
+    Thomas Hobbes
+  </div>
+
+  <p>
+    霍布斯最著名的問題是：
+    <strong>如果沒有政府，人類會怎麼生活？</strong>
+  </p>
+
+  <p>
+    他的答案相當悲觀：
+    當沒有一個共同的權力維持秩序時，
+    人與人之間會陷入高度的不安全與衝突。
+    因此，人們為了和平與安全，
+    必須共同建立一個強大的政治權威。
+  </p>
+
+</div>
+</header>
+
+<main>
+
+<!-- 01 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">01</div>
+<h2>先用一句話理解霍布斯</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+「沒有共同權力，人類如何和平共存？」
+</div>
+
+<p>
+霍布斯不是先問「什麼是最好的政府」，
+而是先從最極端的情況開始：
+<strong>假設政府不存在，會發生什麼？</strong>
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<div class="number">1588</div>
+<small>出生</small>
+</div>
+
+<div class="stat">
+<div class="number">1642</div>
+<small>英國內戰爆發</small>
+</div>
+
+<div class="stat">
+<div class="number">1651</div>
+<small>《利維坦》出版</small>
+</div>
+
+<div class="stat">
+<div class="number">1679</div>
+<small>逝世</small>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 02 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">02</div>
+<h2>霍布斯生活在什麼時代？</h2>
+</div>
+
+<div class="timeline">
+
+<div class="event">
+<div class="year">1588</div>
+<div class="event-title">出生於英格蘭</div>
+<p>
+霍布斯出生於英格蘭。
+他的一生正好經歷歐洲政治與宗教秩序劇烈變化的時代。
+</p>
+</div>
+
+<div class="event">
+<div class="year">17世紀</div>
+<div class="event-title">宗教衝突與政治危機</div>
+<p>
+英國與歐洲正經歷宗教衝突、王權與議會的鬥爭，
+以及社會秩序的不穩定。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1642</div>
+<div class="event-title">英國內戰</div>
+<p>
+國王查理一世與國會支持者爆發武裝衝突。
+這場內戰深刻影響霍布斯的政治思想。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1651</div>
+<div class="event-title">《利維坦》</div>
+<p>
+霍布斯出版最重要的政治哲學著作，
+系統提出自然狀態、社會契約與主權等思想。
+</p>
+</div>
+
+<div class="event">
+<div class="year">1679</div>
+<div class="event-title">逝世</div>
+<p>
+霍布斯逝世於英格蘭。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 03 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">03</div>
+<h2>霍布斯為什麼如此悲觀？</h2>
+</div>
+
+<div class="card">
+
+<p>
+霍布斯認為，人類不是天然和平、合作的生物。
+人有慾望，也有追求安全、資源與地位的需求。
+</p>
+
+<p>
+而且，人與人之間大致具有某種程度的能力平等：
+即使一個人比較強，
+其他人仍可能透過聯合、計謀或工具傷害他。
+</p>
+
+<div class="formula">
+
+慾望 <span>＋</span>
+資源有限 <span>＋</span>
+彼此不信任 <span>＋</span>
+缺乏共同權力 <br><br> <span>↓</span> <br><br>
+不安全與衝突
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 04 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">04</div>
+<h2>自然狀態：沒有政府會怎樣？</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+State of Nature
+</div>
+
+<p>
+「自然狀態」不是指某個歷史上真的存在過的原始部落，
+而是一種思想實驗：
+<strong>如果沒有一個共同權力，政治秩序會是什麼樣子？</strong>
+</p>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="state-box">
+
+<div class="state">
+<strong>人人具有某種能力</strong>
+<p>
+即使力量不同，
+弱者仍可能聯合或利用手段對付強者。
+</p>
+</div>
+
+<div class="state central">
+<strong>缺乏共同權力</strong>
+<p>
+沒有一個所有人都承認的權威，
+來制定規則並執行規則。
+</p>
+</div>
+
+<div class="state">
+<strong>彼此缺乏安全感</strong>
+<p>
+人無法確定別人是否會傷害自己，
+因此容易產生防衛與先發制人的行為。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 05 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">05</div>
+<h2>「人人對人人的戰爭」</h2>
+</div>
+
+<div class="quote">
+<strong>Bellum omnium contra omnes</strong><br>
+「人人對人人的戰爭」
+</div>
+
+<p>
+這句話是理解霍布斯的重要關鍵。
+但不要把它理解成：
+「每個人每天都拿武器互相打架。」
+</p>
+
+<div class="note">
+霍布斯真正強調的是：
+<strong>只要沒有可靠的共同權力，
+人們就缺乏安全感，彼此可能合理地擔心遭到攻擊。</strong>
+因此，即使沒有實際發生戰鬥，
+「戰爭狀態」仍可能存在。
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+
+沒有安全 <span>→</span>
+無法信任 <span>→</span>
+先防衛 <span>→</span>
+別人也防衛 <span>→</span>
+互相恐懼 <span>→</span>
+衝突
+
+</div>
+
+</div>
+</section>
+
+<!-- 06 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">06</div>
+<h2>自然狀態中的三大衝突原因</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>① 競爭</h3>
+<p>
+為了利益、資源或生活條件，
+人可能與他人競爭。
+</p>
+</div>
+
+<div class="card">
+<h3>② 不安全感</h3>
+<p>
+人可能因為害怕受到傷害，
+而採取先發制人的防衛。
+</p>
+</div>
+
+<div class="card">
+<h3>③ 榮譽／地位</h3>
+<p>
+人也會為了名譽、尊嚴、地位與承認，
+產生衝突。
+</p>
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="highlight" style="
+background:#fff8e9;
+border-left:5px solid var(--gold);
+padding:20px 25px;
+border-radius:0 14px 14px 0;">
+<strong>核心：</strong>
+霍布斯的政治哲學不是建立在「人都是壞人」上，
+而是建立在：
+<strong>即使人只是追求自己的生存與利益，
+在缺乏共同權力時，也可能形成高度不安全的社會。</strong>
+</div>
+
+</div>
+</section>
+
+<!-- 07 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">07</div>
+<h2>自然法：理性告訴我們應該追求和平</h2>
+</div>
+
+<div class="card">
+
+<p>
+霍布斯雖然對自然狀態非常悲觀，
+但他並不是說人類只能永遠戰爭。
+</p>
+
+<p>
+人的理性會讓人發現：
+<strong>和平其實比較有利於自己的生存。</strong>
+</p>
+
+<div class="flow">
+
+<div class="flow-item">
+<strong>生存本能</strong><br>
+我要活下去
+</div>
+
+<div class="flow-item">
+<strong>理性</strong><br>
+戰爭很危險
+</div>
+
+<div class="flow-item">
+<strong>自然法</strong><br>
+尋求和平
+</div>
+
+<div class="flow-item">
+<strong>互相讓渡</strong><br>
+放棄部分自由
+</div>
+
+<div class="flow-item">
+<strong>建立國家</strong><br>
+共同權力
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 08 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">08</div>
+<h2>社會契約：國家是怎麼產生的？</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+「我們為什麼願意服從政府？」
+</div>
+
+<p>
+霍布斯的答案不是：
+「因為國王天生神聖。」
+而是：
+<strong>因為人們為了安全與和平，同意建立共同權力。</strong>
+</p>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+
+自然狀態 <span>→</span>
+恐懼與不安全 <span>→</span>
+理性要求和平 <span>→</span>
+彼此訂立契約 <span>→</span>
+建立主權者 <span>→</span>
+和平與秩序
+
+</div>
+
+</div>
+</section>
+
+<!-- 09 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">09</div>
+<h2>《利維坦》：霍布斯最重要的著作</h2>
+</div>
+
+<div class="leviathan">
+
+<div class="leviathan-symbol">
+♜
+</div>
+
+<h3>Leviathan</h3>
+
+<p>
+1651 年出版。
+</p>
+
+<p>
+書名來自《聖經》中的「利維坦」，
+霍布斯用這個巨大象徵代表強大的政治國家。
+</p>
+
+<p>
+在著名封面中，
+一個巨大的人形君主由大量小人物組成，
+象徵：
+<strong>國家的力量來自眾人的共同組合。</strong>
+</p>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="note">
+<strong>注意：</strong>
+「利維坦」不是單純等於「暴君」。
+霍布斯使用這個意象主要是在說：
+國家必須擁有足夠強大的共同權力，
+才能防止社會重新陷入無政府狀態。
+</div>
+
+</div>
+</section>
+
+<!-- 10 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">10</div>
+<h2>為什麼需要「主權者」？</h2>
+</div>
+
+<div class="state-box">
+
+<div class="state">
+<strong>人民</strong>
+<p>
+各自有利益、需求與恐懼。
+</p>
+</div>
+
+<div class="state central">
+<strong>主權者</strong>
+<p>
+制定法律、維持秩序、執行規則，
+讓契約具有實際力量。
+</p>
+</div>
+
+<div class="state">
+<strong>和平社會</strong>
+<p>
+人們可以在穩定秩序下生活、交易與合作。
+</p>
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+
+契約 <span>≠</span>
+「政府自動存在」 <br><br>
+契約 <span>→</span>
+需要有權力執行 <br><br>
+因此 <span>→</span>
+必須有強大的主權
+
+</div>
+
+</div>
+</section>
+
+<!-- 11 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">11</div>
+<h2>霍布斯支持「絕對主權」嗎？</h2>
+</div>
+
+<div class="card">
+
+<h3>是，但要理解他的理由。</h3>
+
+<p>
+霍布斯認為，如果主權權力太弱，
+國家就可能重新陷入內戰與無政府狀態。
+</p>
+
+<p>
+因此主權必須具有足夠的力量，
+包括制定法律、司法、軍事與維持秩序的權力。
+</p>
+
+<div class="warning">
+<strong>這就是霍布斯最具爭議的地方：</strong>
+為了避免「人人對人人的戰爭」，
+霍布斯給予主權者非常強大的權力。
+因此後世常把他的政治思想視為「強主權」甚至「絕對主權」的理論。
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 12 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">12</div>
+<h2>霍布斯是不是支持暴君？</h2>
+</div>
+
+<div class="big-question">
+
+<div class="q">
+不應該簡化成「霍布斯 = 崇拜暴君」。
+</div>
+
+<p>
+他的核心問題其實是：
+<strong>如何避免政治秩序崩潰？</strong>
+</p>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="grid">
+
+<div class="card">
+<h3>他最害怕什麼？</h3>
+<p>
+不是政府太強本身，
+而是政府失去維持秩序的能力，
+導致內戰與無政府狀態。
+</p>
+</div>
+
+<div class="card">
+<h3>他的價值排序</h3>
+<p>
+生存與安全
+→
+和平
+→
+政治秩序
+→
+其他政治自由。
+</p>
+</div>
+
+<div class="card">
+<h3>真正的限制</h3>
+<p>
+如果主權者無法保護人民的生命，
+霍布斯的理論本身也產生了人民自我保存的問題。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 13 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">13</div>
+<h2>霍布斯 vs 洛克：社會契約論的兩條路</h2>
+</div>
+
+<table class="compare">
+
+<tr>
+<th>霍布斯</th>
+<th>洛克</th>
+</tr>
+
+<tr>
+<td>自然狀態高度不安全</td>
+<td>自然狀態並非必然全面戰爭</td>
+</tr>
+
+<tr>
+<td>核心問題：生存與安全</td>
+<td>核心問題：生命、自由、財產</td>
+</tr>
+
+<tr>
+<td>需要強大的主權</td>
+<td>政府權力必須受到限制</td>
+</tr>
+
+<tr>
+<td>人民讓渡大量政治自由</td>
+<td>政府權力來自人民同意</td>
+</tr>
+
+<tr>
+<td>反抗政府的空間較小</td>
+<td>政府違反信託時，人民具有抵抗權</td>
+</tr>
+
+<tr>
+<td>較接近強主權國家</td>
+<td>成為自由主義與憲政思想的重要來源</td>
+</tr>
+
+</table>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+
+霍布斯： <span>安全優先</span>
+
+  vs  
+
+洛克： <span>自由與權利優先</span>
+
+</div>
+
+</div>
+</section>
+
+<!-- 14 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">14</div>
+<h2>霍布斯 vs 盧梭：人性觀完全不同</h2>
+</div>
+
+<table class="compare">
+
+<tr>
+<th>霍布斯</th>
+<th>盧梭</th>
+</tr>
+
+<tr>
+<td>自然狀態中的人具有競爭與不安全問題</td>
+<td>自然人原本較單純，不是現代社會中的腐敗人</td>
+</tr>
+
+<tr>
+<td>社會契約是為了避免戰爭</td>
+<td>社會契約應重新建立自由與政治共同體</td>
+</tr>
+
+<tr>
+<td>強調秩序與安全</td>
+<td>強調自由與人民主權</td>
+</tr>
+
+<tr>
+<td>主權者權力非常強</td>
+<td>主權屬於人民</td>
+</tr>
+
+<tr>
+<td>害怕無政府</td>
+<td>害怕不平等與政治異化</td>
+</tr>
+
+</table>
+
+</div>
+</section>
+
+<!-- 15 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">15</div>
+<h2>三位社會契約論思想家</h2>
+</div>
+
+<div class="flow">
+
+<div class="flow-item">
+<strong>霍布斯</strong><br><br>
+自然狀態<br>
+↓<br>
+恐懼與戰爭<br>
+↓<br>
+強主權
+</div>
+
+<div class="flow-item">
+<strong>洛克</strong><br><br>
+自然權利<br>
+↓<br>
+保護生命、自由、財產<br>
+↓<br>
+有限政府
+</div>
+
+<div class="flow-item">
+<strong>盧梭</strong><br><br>
+自然人<br>
+↓<br>
+社會不平等<br>
+↓<br>
+人民主權
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="note">
+<strong>共同點：</strong>
+三人都在思考：
+「政治權力究竟從哪裡來？」
+「政府為什麼可以統治人民？」
+<br><br>
+<strong>差異：</strong>
+他們對「自然狀態」「人性」「自由」「政府權力」的理解完全不同。
+</div>
+
+</div>
+</section>
+
+<!-- 16 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">16</div>
+<h2>霍布斯的人性觀</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>不是「人天生邪惡」</h3>
+<p>
+霍布斯並不是簡單地認為人是邪惡的。
+人追求生存、利益、安全與地位，本身並不等於邪惡。
+</p>
+</div>
+
+<div class="card">
+<h3>恐懼非常重要</h3>
+<p>
+即使一個人沒有攻擊別人的意圖，
+只要他害怕別人可能攻擊自己，
+就可能採取防衛行動。
+</p>
+</div>
+
+<div class="card">
+<h3>制度改變行為</h3>
+<p>
+如果存在可信的法律與懲罰，
+人就沒有必要靠私人暴力保護自己。
+</p>
+</div>
+
+</div>
+
+<div style="height:25px"></div>
+
+<div class="formula">
+
+個人恐懼 <span>→</span>
+自我防衛 <span>→</span>
+互相猜疑 <span>→</span>
+集體建立規則 <span>→</span>
+國家 <span>→</span>
+安全
+
+</div>
+
+</div>
+</section>
+
+<!-- 17 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">17</div>
+<h2>霍布斯與現代政治</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>國家為什麼需要警察？</h3>
+<p>
+如果所有人都自行執法，
+很容易形成私人報復。
+</p>
+</div>
+
+<div class="card">
+<h3>為什麼需要法院？</h3>
+<p>
+法院將私人衝突轉換成公共法律程序。
+</p>
+</div>
+
+<div class="card">
+<h3>為什麼需要軍隊？</h3>
+<p>
+國家必須面對外部威脅，
+也必須維持整體安全。
+</p>
+</div>
+
+<div class="card">
+<h3>為什麼人願意守法？</h3>
+<p>
+法律必須具有一定程度的可信執行力，
+否則規則很難維持。
+</p>
+</div>
+
+<div class="card">
+<h3>內戰為什麼可怕？</h3>
+<p>
+因為霍布斯認為，
+政治秩序崩潰會使所有人重新面對不安全。
+</p>
+</div>
+
+<div class="card">
+<h3>國家可以強到什麼程度？</h3>
+<p>
+這正是後來洛克、孟德斯鳩與自由主義者繼續追問的問題。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 18 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">18</div>
+<h2>霍布斯的歷史位置</h2>
+</div>
+
+<table class="compare">
+
+<tr>
+<th>思想傳統</th>
+<th>霍布斯的貢獻</th>
+</tr>
+
+<tr>
+<td>近代政治哲學</td>
+<td>把政治權威建立在人的安全需求與契約上</td>
+</tr>
+
+<tr>
+<td>社會契約論</td>
+<td>成為近代社會契約理論的重要奠基者</td>
+</tr>
+
+<tr>
+<td>國家理論</td>
+<td>強調國家必須擁有足夠的共同權力</td>
+</tr>
+
+<tr>
+<td>政治現實主義</td>
+<td>從恐懼、利益、權力與安全分析政治</td>
+</tr>
+
+<tr>
+<td>自由主義的形成</td>
+<td>其「為何需要政府」的問題，促使後來思想家進一步追問「如何限制政府」</td>
+</tr>
+
+</table>
+
+</div>
+</section>
+
+<!-- 19 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">19</div>
+<h2>最容易搞錯的五件事</h2>
+</div>
+
+<div class="qa">
+
+<details open>
+<summary>① 霍布斯是不是認為人類天生就是壞人？</summary>
+<p>
+不完全是。
+他的重點不是道德上的「善／惡」，
+而是當沒有共同權力時，
+即使正常的人類慾望也可能造成高度不安全。
+</p>
+</details>
+
+<details>
+<summary>② 「人人對人人的戰爭」是不是代表所有人每天都在打仗？</summary>
+<p>
+不是。
+它描述的是缺乏共同權力時的「戰爭狀態」，
+核心是恐懼、不信任與缺乏安全保障。
+</p>
+</details>
+
+<details>
+<summary>③ 霍布斯的社會契約是人民與國王簽約嗎？</summary>
+<p>
+霍布斯的理論並不是簡單的「人民與國王簽訂契約」。
+契約主要是人與人之間互相同意，
+將權力集中到一個共同的主權者。
+</p>
+</details>
+
+<details>
+<summary>④ 霍布斯就是君主專制的思想家嗎？</summary>
+<p>
+他確實支持非常強大的主權，
+但他論證強主權的核心理由是政治秩序與安全，
+而不是單純因為「國王天生應該統治人民」。
+</p>
+</details>
+
+<details>
+<summary>⑤ 霍布斯與洛克都講社會契約，為什麼結論完全不同？</summary>
+<p>
+因為兩人的出發點不同。
+霍布斯最害怕的是「無政府與內戰」，
+洛克則更重視「自然權利與限制政府」。
+</p>
+</details>
+
+</div>
+
+</div>
+</section>
+
+<!-- 20 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">20</div>
+<h2>課堂「大哉問」</h2>
+</div>
+
+<div class="qa">
+
+<details>
+<summary>❓ 如果沒有政府，人類真的一定會互相戰爭嗎？</summary>
+<p>
+這是霍布斯最值得討論的問題。
+歷史與人類學資料顯示，人類也能形成合作、互助與規範。
+因此霍布斯的自然狀態更適合被理解為一種政治哲學思想實驗，
+而不是對所有人類社會歷史的描述。
+</p>
+</details>
+
+<details>
+<summary>❓ 為了安全，我們應該願意放棄多少自由？</summary>
+<p>
+這是霍布斯之後幾百年政治哲學的重要問題。
+國家需要權力維持秩序，
+但如果權力沒有界線，又可能威脅個人自由。
+</p>
+</details>
+
+<details>
+<summary>❓ 強大的政府真的比較安全嗎？</summary>
+<p>
+霍布斯會強調「沒有足夠權力的政府可能無法維持和平」。
+但洛克、孟德斯鳩等人會進一步問：
+「如果政府太強，誰來防止政府傷害人民？」
+</p>
+</details>
+
+<details>
+<summary>❓ 現代民主國家是否仍然有霍布斯的影子？</summary>
+<p>
+有。
+警察、法院、軍隊、法律、國家主權與公共秩序，
+都可以讓我們重新思考霍布斯提出的核心問題：
+如何把私人衝突轉化成公共制度。
+</p>
+</details>
+
+<details>
+<summary>❓ 如果所有人都非常善良，還需要政府嗎？</summary>
+<p>
+這個問題可以反過來挑戰霍布斯：
+即使人善良，資訊不足、資源分配、利益衝突與協調問題仍然存在。
+所以政治制度可能不只是防止「壞人」，
+也是解決集體行動問題的一種工具。
+</p>
+</details>
+
+</div>
+
+</div>
+</section>
+
+<!-- 21 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">21</div>
+<h2>霍布斯思想總圖</h2>
+</div>
+
+<div class="card">
+
+<div class="formula">
+
+人性 <br> <span>↓</span> <br>
+追求生存、安全、利益與地位 <br> <span>↓</span> <br>
+自然狀態 <br> <span>↓</span> <br>
+恐懼＋不信任＋競爭 <br> <span>↓</span> <br>
+「人人對人人的戰爭」 <br> <span>↓</span> <br>
+理性發現和平比較有利 <br> <span>↓</span> <br>
+社會契約 <br> <span>↓</span> <br>
+建立共同主權 <br> <span>↓</span> <br>
+國家／利維坦 <br> <span>↓</span> <br>
+法律＋秩序＋安全
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 22 -->
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">22</div>
+<h2>最後一張圖：霍布斯、洛克、盧梭</h2>
+</div>
+
+<div class="card">
+
+<div class="grid">
+
+<div class="card">
+<h3>霍布斯</h3>
+<p>
+<strong>恐懼戰爭</strong>
+</p>
+<p>
+自然狀態危險<br>
+↓<br>
+需要強主權<br>
+↓<br>
+安全與秩序
+</p>
+</div>
+
+<div class="card">
+<h3>洛克</h3>
+<p>
+<strong>保護權利</strong>
+</p>
+<p>
+自然權利<br>
+↓<br>
+有限政府<br>
+↓<br>
+自由與財產
+</p>
+</div>
+
+<div class="card">
+<h3>盧梭</h3>
+<p>
+<strong>人民主權</strong>
+</p>
+<p>
+社會造成不平等<br>
+↓<br>
+人民共同意志<br>
+↓<br>
+自由與平等
+</p>
+</div>
+
+</div>
+
+<div style="
+margin:30px 0;
+font-size:30px;
+text-align:center;
+color:#c09a4b;">
+政治哲學的三個核心問題
+</div>
+
+<div class="formula">
+
+霍布斯： <span>沒有政府，我們會不會互相傷害？</span> <br><br>
+
+洛克： <span>政府憑什麼侵犯我的權利？</span> <br><br>
+
+盧梭： <span>如何讓我們服從政府的同時仍然保持自由？</span>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+
+<strong>霍布斯 Thomas Hobbes｜教學用哲學資訊圖表</strong>
+
+<p>
+從「自然狀態」到「利維坦」，
+理解近代政治哲學與社會契約論的起點
+</p>
+
+</div>
+</footer>
+
+</body>
+</html>

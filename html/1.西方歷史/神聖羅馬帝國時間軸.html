@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神聖羅馬帝國｜教學用資訊圖表</title>
+
+<style>
+:root{
+  --bg:#f4f1ea;
+  --paper:#fffdf8;
+  --ink:#29251f;
+  --muted:#6f685d;
+  --gold:#b68a32;
+  --gold2:#e4c878;
+  --red:#8f3d32;
+  --blue:#365d78;
+  --green:#4e7058;
+  --line:#d9d0c0;
+  --shadow:0 8px 25px rgba(60,45,25,.10);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+}
+
+.container{
+  width:min(1180px,94%);
+  margin:auto;
+}
+
+.hero{
+  background:
+    linear-gradient(135deg,#29251f,#4b3b25 60%,#8a692c);
+  color:white;
+  padding:70px 20px 60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:after{
+  content:"✦";
+  position:absolute;
+  right:7%;
+  top:15px;
+  font-size:180px;
+  opacity:.08;
+}
+
+.hero h1{
+  font-size:clamp(38px,7vw,76px);
+  margin:0 0 10px;
+  letter-spacing:.08em;
+}
+
+.hero .subtitle{
+  font-size:clamp(18px,3vw,28px);
+  color:#f4dc9a;
+}
+
+.hero p{
+  max-width:850px;
+  color:#eee8dc;
+  font-size:17px;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+.badge{
+  border:1px solid rgba(255,255,255,.3);
+  padding:6px 14px;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+}
+
+section{
+  padding:55px 0;
+}
+
+h2{
+  font-size:32px;
+  margin:0 0 25px;
+  color:#3d3224;
+}
+
+h3{
+  margin-top:0;
+  color:#59462b;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+
+.section-title .num{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--gold);
+  color:white;
+  font-weight:bold;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.big-question{
+  background:#332c24;
+  color:white;
+  border-radius:22px;
+  padding:35px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.big-question .q{
+  font-size:clamp(24px,4vw,40px);
+  color:#f1d17c;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.big-question p{
+  max-width:800px;
+  margin:auto;
+  color:#eee;
+}
+
+/* 核心數字 */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:var(--paper);
+  border-top:5px solid var(--gold);
+  border-radius:14px;
+  padding:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat .number{
+  font-size:34px;
+  font-weight:bold;
+  color:var(--red);
+}
+
+.stat small{
+  color:var(--muted);
+}
+
+/* 時間軸 */
+.timeline{
+  position:relative;
+  margin:35px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:28px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--gold2);
+}
+
+.event{
+  position:relative;
+  padding-left:75px;
+  margin-bottom:32px;
+}
+
+.event:before{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:8px;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:var(--gold);
+  border:5px solid var(--bg);
+  box-shadow:0 0 0 2px var(--gold);
+}
+
+.year{
+  font-size:22px;
+  font-weight:bold;
+  color:var(--red);
+}
+
+.event-title{
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* 結構圖 */
+.empire{
+  display:grid;
+  grid-template-columns:1fr 1.4fr 1fr;
+  gap:15px;
+  align-items:center;
+  margin-top:30px;
+}
+
+.empire .center{
+  min-height:210px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle,#d8b45a,#9d7629);
+  color:white;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:30px;
+  box-shadow:0 15px 30px rgba(70,50,20,.2);
+}
+
+.empire .center strong{
+  display:block;
+  font-size:30px;
+}
+
+.side{
+  display:grid;
+  gap:15px;
+}
+
+.node{
+  background:white;
+  border:2px solid var(--line);
+  border-radius:14px;
+  padding:15px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.node strong{
+  display:block;
+  color:var(--blue);
+}
+
+/* 權力關係 */
+.power{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+.power-box{
+  width:min(700px,100%);
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  background:white;
+  border:2px solid var(--line);
+}
+
+.power-box.emperor{
+  background:#eee2c2;
+  border-color:var(--gold);
+}
+
+.power-box.pope{
+  background:#eee2e0;
+  border-color:var(--red);
+}
+
+.arrow{
+  font-size:28px;
+  color:var(--muted);
+}
+
+/* 比較表 */
+.compare{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.compare th,
+.compare td{
+  padding:15px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+}
+
+.compare th{
+  background:#3c3429;
+  color:white;
+}
+
+.compare tr:last-child td{
+  border-bottom:none;
+}
+
+/* 因果流程 */
+.flow{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  align-items:stretch;
+}
+
+.flow-item{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px 12px;
+  text-align:center;
+  position:relative;
+}
+
+.flow-item:not(:last-child):after{
+  content:"→";
+  position:absolute;
+  right:-18px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:24px;
+  color:var(--gold);
+  z-index:2;
+}
+
+/* quote */
+.quote{
+  border-left:6px solid var(--gold);
+  background:#fffaf0;
+  padding:22px 28px;
+  border-radius:0 14px 14px 0;
+  font-size:20px;
+}
+
+.note{
+  background:#edf2f5;
+  border-left:5px solid var(--blue);
+  padding:18px 22px;
+  border-radius:0 12px 12px 0;
+}
+
+.warning{
+  background:#f7e9e6;
+  border-left:5px solid var(--red);
+  padding:18px 22px;
+  border-radius:0 12px 12px 0;
+}
+
+/* 大哉問 */
+.qa{
+  display:grid;
+  gap:15px;
+}
+
+.qa details{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px 20px;
+}
+
+.qa summary{
+  cursor:pointer;
+  font-weight:bold;
+  color:#57432a;
+  font-size:18px;
+}
+
+.qa p{
+  margin-bottom:0;
+}
+
+/* footer */
+footer{
+  background:#29251f;
+  color:#ddd;
+  padding:35px 0;
+  text-align:center;
+}
+
+footer strong{
+  color:#e5c56f;
+}
+
+@media(max-width:900px){
+  .grid,.grid2,.stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .flow{
+    grid-template-columns:1fr;
+  }
+
+  .flow-item:not(:last-child):after{
+    content:"↓";
+    right:50%;
+    top:auto;
+    bottom:-27px;
+    transform:translateX(50%);
+  }
+
+  .empire{
+    grid-template-columns:1fr;
+  }
+
+  .empire .center{
+    order:-1;
+    border-radius:25px;
+  }
+}
+
+@media(max-width:600px){
+  .grid,.grid2,.stats{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:40px 0;
+  }
+
+  .hero{
+    padding:50px 15px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="badges">
+      <span class="badge">中世歐洲</span>
+      <span class="badge">962—1806</span>
+      <span class="badge">皇帝 × 教皇 × 諸侯</span>
+      <span class="badge">宗教改革</span>
+    </div>
+
+ 
+<h1>神聖羅馬帝國</h1>
+<div class="subtitle">Holy Roman Empire</div>
+
+<p>
+  一個存在近千年的「帝國」，卻不是今天所理解的中央集權國家。
+  它更像是一個由皇帝、諸侯、教會、城市與無數地方領地共同組成的政治共同體。
+  它見證了中世紀、文藝復興、宗教改革、三十年戰爭與拿破崙時代。
+</p>
+ 
+
+  </div>
+</header>
+
+<main>
+
+<!-- 01 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>先回答：它到底是什麼？</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">「神聖羅馬帝國」不是一個現代國家</div>
+    <p>
+      它是一個由許多不同政治實體組成的帝國性政治架構。
+      皇帝的權力受到諸侯、教會、城市與傳統法律制度的限制。
+      因此，它和法國、英格蘭等逐漸形成中央集權的王國有很大不同。
+    </p>
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="number">962</div>
+      <small>奧托一世加冕為皇帝</small>
+    </div>
+    <div class="stat">
+      <div class="number">1356</div>
+      <small>《金璽詔書》</small>
+    </div>
+    <div class="stat">
+      <div class="number">1648</div>
+      <small>威斯特伐利亞和約</small>
+    </div>
+    <div class="stat">
+      <div class="number">1806</div>
+      <small>帝國解體</small>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- 02 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>它從哪裡來？</h2>
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">800</div>
+  <div class="event-title">查理曼加冕</div>
+  <p>
+    法蘭克王國的查理曼在羅馬由教宗加冕為「羅馬人的皇帝」。
+    這建立了中世紀西歐「皇帝」與羅馬傳統之間的重要連結。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">843</div>
+  <div class="event-title">《凡爾登條約》</div>
+  <p>
+    加洛林帝國分裂，形成西法蘭克、中法蘭克與東法蘭克等政治區域。
+    東法蘭克後來成為德意志王權的重要基礎。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">962</div>
+  <div class="event-title">奧托一世加冕</div>
+  <p>
+    東法蘭克國王奧托一世在羅馬加冕為皇帝。
+    這一年通常被視為「神聖羅馬帝國」歷史的起點。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+    <strong>重要觀念：</strong>
+    962 年不是「古羅馬帝國重新成立」。
+    它是中世紀歐洲重新建立「羅馬皇帝」傳統的一個重要階段。
+  </div>
+
+</div>
+</section>
+
+<!-- 03 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>為什麼叫「神聖・羅馬・帝國」？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>✦ 神聖</h3>
+  <p>
+    帝國具有基督教世界的宗教使命。
+    皇帝被視為基督教世界的重要政治領袖之一。
+  </p>
+</div>
+
+<div class="card">
+  <h3>🏛 羅馬</h3>
+  <p>
+    中世紀西歐認為「羅馬帝國」的皇帝傳統仍具有合法性。
+    皇帝在羅馬接受加冕，更強化這種象徵。
+  </p>
+</div>
+
+<div class="card">
+  <h3>👑 帝國</h3>
+  <p>
+    皇帝不是單純的國王，而是擁有超越一般王國的帝國性地位，
+    但實際統治能力受到地方政治力量限制。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="quote">
+    「神聖羅馬帝國」是一種<strong>政治理想、法律傳統與實際地方權力</strong>交織而成的制度，
+    而不是一個現代民族國家。
+  </div>
+
+</div>
+</section>
+
+<!-- 04 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>帝國究竟是怎麼運作的？</h2>
+  </div>
+
+  <p>
+    如果把現代國家想成「中央政府 → 地方政府 → 人民」的階層，
+    神聖羅馬帝國就完全不是這種簡單結構。
+  </p>
+
+  <div class="empire">
+
+ 
+<div class="side">
+  <div class="node">
+    <strong>選帝侯</strong>
+    負責選出德意志國王
+  </div>
+  <div class="node">
+    <strong>諸侯</strong>
+    公爵、伯爵、侯爵等
+  </div>
+  <div class="node">
+    <strong>教會領地</strong>
+    主教、修道院等擁有政治權力
+  </div>
+</div>
+
+<div class="center">
+  <div>
+    <strong>皇帝</strong>
+    <span>帝國的象徵與最高政治領袖之一</span>
+  </div>
+</div>
+
+<div class="side">
+  <div class="node">
+    <strong>自由帝國城市</strong>
+    直接隸屬皇帝
+  </div>
+  <div class="node">
+    <strong>帝國議會</strong>
+    皇帝與各階層協商
+  </div>
+  <div class="node">
+    <strong>各種領地</strong>
+    擁有不同程度的自治權
+  </div>
+</div>
+ 
+
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="warning">
+    <strong>所以：</strong>
+    皇帝「很有名」不等於皇帝「可以直接統治所有地方」。
+    神聖羅馬帝國最大的特色之一，就是中央權力與地方權力長期並存。
+  </div>
+
+</div>
+</section>
+
+<!-- 05 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>皇帝 vs 教皇：誰才是基督教世界的最高領袖？</h2>
+  </div>
+
+  <div class="power">
+
+ 
+<div class="power-box emperor">
+  <strong>👑 皇帝</strong><br>
+  世俗政治權力、軍事力量、帝國統治
+</div>
+
+<div class="arrow">↕</div>
+
+<div class="power-box">
+  <strong>⚖️ 權力衝突</strong><br>
+  誰有權任命主教？皇帝是否可以干涉教會？
+</div>
+
+<div class="arrow">↕</div>
+
+<div class="power-box pope">
+  <strong>✝ 教皇</strong><br>
+  宗教權威、教會組織、加冕與宗教合法性
+</div>
+ 
+
+  </div>
+
+  <div style="height:30px"></div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1077</div>
+  <div class="event-title">卡諾莎事件</div>
+  <p>
+    皇帝亨利四世與教宗額我略七世發生授職權之爭。
+    亨利四世前往卡諾莎請求教宗解除絕罰，
+    成為中世紀皇權與教權衝突最著名的象徵之一。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1122</div>
+  <div class="event-title">《沃爾姆斯宗教協定》</div>
+  <p>
+    授職權之爭告一段落，教會與世俗權力之間形成新的權力分配。
+  </p>
+</div>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 06 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">06</div>
+    <h2>霍亨斯陶芬王朝：皇帝與教皇的再次對決</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>⚔ 腓特烈一世・巴巴羅薩</h3>
+  <p>
+    12 世紀著名皇帝，試圖強化皇權，
+    並與義大利城市及教皇勢力長期衝突。
+  </p>
+  <p>
+    「巴巴羅薩」意為「紅鬍子」。
+  </p>
+</div>
+
+<div class="card">
+  <h3>👑 腓特烈二世</h3>
+  <p>
+    中世紀最具才華也最具爭議的皇帝之一。
+    他同時統治德意志與西西里，
+    並長期與教皇發生衝突。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="flow">
+    <div class="flow-item">
+      <strong>皇權強化</strong><br>
+      ↓
+    </div>
+    <div class="flow-item">
+      <strong>義大利城市反抗</strong><br>
+      ↓
+    </div>
+    <div class="flow-item">
+      <strong>教皇介入</strong><br>
+      ↓
+    </div>
+    <div class="flow-item">
+      <strong>皇帝與教皇衝突</strong><br>
+      ↓
+    </div>
+    <div class="flow-item">
+      <strong>帝國內部權力分散</strong>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- 07 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">07</div>
+    <h2>1356：《金璽詔書》——誰可以選皇帝？</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  14 世紀，查理四世頒布《金璽詔書》，
+  確立七名「選帝侯」在選舉德意志國王中的核心地位。
+</p>
+
+<div class="grid">
+
+  <div class="node">
+    <strong>美因茲大主教</strong>
+    教會選帝侯
+  </div>
+
+  <div class="node">
+    <strong>特里爾大主教</strong>
+    教會選帝侯
+  </div>
+
+  <div class="node">
+    <strong>科隆大主教</strong>
+    教會選帝侯
+  </div>
+
+  <div class="node">
+    <strong>波希米亞國王</strong>
+    世俗選帝侯
+  </div>
+
+  <div class="node">
+    <strong>普法爾茨伯爵</strong>
+    世俗選帝侯
+  </div>
+
+  <div class="node">
+    <strong>薩克森公爵</strong>
+    世俗選帝侯
+  </div>
+
+  <div class="node">
+    <strong>勃蘭登堡侯爵</strong>
+    世俗選帝侯
+  </div>
+
+</div>
+ 
+
+  </div>
+
+  <div style="height:20px"></div>
+
+  <div class="note">
+    <strong>關鍵：</strong>
+    神聖羅馬帝國的皇帝不是簡單的「父傳子」。
+    德意志國王需要經由帝國選舉產生，
+    因此諸侯在帝國政治中具有非常重要的地位。
+  </div>
+
+</div>
+</section>
+
+<!-- 08 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">08</div>
+    <h2>哈布斯堡家族：帝國後期的主角</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>🏰 哈布斯堡家族</h3>
+  <p>
+    自中世紀後期開始逐漸成為帝國最重要的王朝。
+    其統治範圍不只在神聖羅馬帝國，
+    還包括奧地利、西班牙及其他歐洲領地。
+  </p>
+</div>
+
+<div class="card">
+  <h3>🌍 「婚姻政治」</h3>
+  <p>
+    哈布斯堡家族善於透過婚姻取得王位與領地。
+    後來形成著名的政治格局：
+    <strong>「讓別人去打仗，你，幸福的奧地利，去結婚吧！」</strong>
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1273</div>
+  <div class="event-title">魯道夫一世成為德意志國王</div>
+  <p>
+    哈布斯堡家族正式進入帝國最高權力核心。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1493</div>
+  <div class="event-title">馬克西米利安一世</div>
+  <p>
+    強化哈布斯堡家族在帝國中的影響力，
+    並推動帝國制度改革。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1519</div>
+  <div class="event-title">查理五世當選皇帝</div>
+  <p>
+    查理五世建立了當時歐洲最龐大的王朝體系之一，
+    同時面對法國、鄂圖曼帝國與宗教改革的巨大壓力。
+  </p>
+</div>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 09 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">09</div>
+    <h2>1517：宗教改革改變帝國</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <strong>1517</strong><br>
+  馬丁・路德提出<br>《九十五條論綱》
+</div>
+
+<div class="flow-item">
+  <strong>1521</strong><br>
+  沃爾姆斯會議<br>
+  路德拒絕撤回主張
+</div>
+
+<div class="flow-item">
+  <strong>德意志諸侯</strong><br>
+  部分支持宗教改革
+</div>
+
+<div class="flow-item">
+  <strong>皇帝</strong><br>
+  希望維持宗教與政治秩序
+</div>
+
+<div class="flow-item">
+  <strong>帝國分裂</strong><br>
+  天主教 × 新教
+</div>
+ 
+
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="card">
+    <h3>1555：《奧格斯堡和約》</h3>
+    <p>
+      和約承認帝國內天主教與路德宗的共存，
+      並形成著名原則：
+    </p>
+
+ 
+<div class="quote">
+  <strong>Cuius regio, eius religio</strong><br>
+  「誰的領地，誰的宗教」
+</div>
+
+<p>
+  意思是地方統治者可以決定其領地的宗教。
+  這並沒有真正解決所有宗教衝突，
+  反而反映出帝國政治權力高度地方化的現實。
+</p>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 10 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>1618—1648：三十年戰爭</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">為什麼一場宗教衝突會變成歐洲大戰？</div>
+    <p>
+      因為宗教、王朝利益、諸侯權力、國家安全與歐洲強權競爭全部交織在一起。
+    </p>
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>✝ 宗教因素</h3>
+  <p>
+    天主教與新教之間的矛盾仍然非常尖銳。
+  </p>
+</div>
+
+<div class="card">
+  <h3>👑 王朝因素</h3>
+  <p>
+    哈布斯堡家族希望強化自身勢力，
+    引起其他勢力警戒。
+  </p>
+</div>
+
+<div class="card">
+  <h3>🌍 國際因素</h3>
+  <p>
+    法國、瑞典、西班牙等強權介入，
+    戰爭逐漸超越單純宗教衝突。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div style="height:25px"></div>
+
+  <div class="card">
+    <h3>1648：《威斯特伐利亞和約》</h3>
+    <p>
+      戰爭結束後，帝國內各政治實體的權利得到進一步確認，
+      帝國諸侯的自主性更加強大。
+    </p>
+
+ 
+<div class="note">
+  <strong>歷史意義：</strong>
+  1648 年常被視為近代國際關係與國家主權發展的重要轉折點。
+  但「威斯特伐利亞和約直接創造現代主權國家體系」是一種後來形成的簡化敘事，
+  實際歷史更加複雜。
+</div>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 11 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>1648 之後：為什麼帝國越來越分散？</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <strong>皇帝權力有限</strong>
+</div>
+
+<div class="flow-item">
+  <strong>諸侯自治增加</strong>
+</div>
+
+<div class="flow-item">
+  <strong>帝國政治協商化</strong>
+</div>
+
+<div class="flow-item">
+  <strong>奧地利與普魯士崛起</strong>
+</div>
+
+<div class="flow-item">
+  <strong>帝國更加鬆散</strong>
+</div>
+ 
+
+  </div>
+
+  <div style="height:30px"></div>
+
+  <table class="compare">
+    <tr>
+      <th>神聖羅馬帝國</th>
+      <th>中央集權型王國</th>
+    </tr>
+    <tr>
+      <td>皇帝權力受到諸侯限制</td>
+      <td>國王逐漸建立中央官僚體系</td>
+    </tr>
+    <tr>
+      <td>地方領地高度多樣</td>
+      <td>中央政府直接管理地方</td>
+    </tr>
+    <tr>
+      <td>帝國議會具有重要地位</td>
+      <td>王權與中央政府較突出</td>
+    </tr>
+    <tr>
+      <td>政治權力高度分散</td>
+      <td>政治權力逐漸集中</td>
+    </tr>
+  </table>
+
+</div>
+</section>
+
+<!-- 12 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>神聖羅馬帝國 vs 法國：為什麼走向不同？</h2>
+  </div>
+
+  <table class="compare">
+
+ 
+<tr>
+  <th>面向</th>
+  <th>神聖羅馬帝國</th>
+  <th>法國王國</th>
+</tr>
+
+<tr>
+  <td>政治結構</td>
+  <td>多中心、地方領地眾多</td>
+  <td>王權逐步集中</td>
+</tr>
+
+<tr>
+  <td>統治者</td>
+  <td>皇帝</td>
+  <td>國王</td>
+</tr>
+
+<tr>
+  <td>地方權力</td>
+  <td>諸侯、城市、教會領地強大</td>
+  <td>地方貴族存在，但王權逐漸加強</td>
+</tr>
+
+<tr>
+  <td>宗教改革</td>
+  <td>帝國內部出現嚴重宗教分裂</td>
+  <td>亦發生宗教戰爭，但王權逐步控制局面</td>
+</tr>
+
+<tr>
+  <td>近代結果</td>
+  <td>形成大量德意志邦國</td>
+  <td>形成較集中統一的法國國家</td>
+</tr>
+ 
+
+  </table>
+
+  <div style="height:20px"></div>
+
+  <div class="note">
+    <strong>思考：</strong>
+    神聖羅馬帝國的「分散」，後來反而成為德意志地區文化與政治多樣性的重要來源。
+    但它也使德意志政治統一的道路比法國更加漫長。
+  </div>
+
+</div>
+</section>
+
+<!-- 13 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>1806：神聖羅馬帝國為什麼滅亡？</h2>
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1804</div>
+  <div class="event-title">拿破崙建立法蘭西第一帝國</div>
+  <p>
+    拿破崙成為法國皇帝，歐洲政治秩序受到巨大衝擊。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1805</div>
+  <div class="event-title">奧斯特里茨戰役</div>
+  <p>
+    拿破崙擊敗奧地利與俄羅斯聯軍，
+    神聖羅馬帝國的舊秩序受到致命打擊。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1806</div>
+  <div class="event-title">萊茵邦聯成立</div>
+  <p>
+    多個德意志邦國脫離帝國體系，
+    轉而加入拿破崙主導的萊茵邦聯。
+  </p>
+</div>
+
+<div class="event">
+  <div class="year">1806</div>
+  <div class="event-title">法蘭茲二世放棄帝國皇冠</div>
+  <p>
+    神聖羅馬帝國正式解體。
+    法蘭茲二世在 1804 年已成為奧地利帝國的皇帝法蘭茲一世，
+    因此放棄的是神聖羅馬帝國皇帝稱號。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="big-question">
+    <div class="q">1806：近千年的帝國終於結束</div>
+    <p>
+      但「神聖羅馬帝國」消失了，不代表德意志政治問題消失。
+      19 世紀的德意志統一問題，反而由此成為歐洲歷史的重要主題。
+    </p>
+  </div>
+
+</div>
+</section>
+
+<!-- 14 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">14</div>
+    <h2>一句話看懂 844 年的歷史</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <strong>800</strong><br>
+  查理曼<br>
+  羅馬皇帝傳統
+</div>
+
+<div class="flow-item">
+  <strong>962</strong><br>
+  奧托一世<br>
+  帝國傳統重新確立
+</div>
+
+<div class="flow-item">
+  <strong>1077</strong><br>
+  卡諾莎<br>
+  皇權 × 教權
+</div>
+
+<div class="flow-item">
+  <strong>1356</strong><br>
+  金璽詔書<br>
+  選帝侯制度
+</div>
+
+<div class="flow-item">
+  <strong>1517</strong><br>
+  路德<br>
+  宗教改革
+</div>
+ 
+
+  </div>
+
+  <div style="height:15px"></div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <strong>1555</strong><br>
+  奧格斯堡和約
+</div>
+
+<div class="flow-item">
+  <strong>1618</strong><br>
+  三十年戰爭
+</div>
+
+<div class="flow-item">
+  <strong>1648</strong><br>
+  威斯特伐利亞
+</div>
+
+<div class="flow-item">
+  <strong>1701+</strong><br>
+  普魯士崛起
+</div>
+
+<div class="flow-item">
+  <strong>1806</strong><br>
+  帝國解體
+</div>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 15 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">15</div>
+    <h2>神聖羅馬帝國與歐洲史的連結</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>🏛 文藝復興</h3>
+  <p>
+    義大利城邦與帝國政治互動密切，
+    羅馬、佛羅倫斯、威尼斯等地成為歐洲文化中心。
+  </p>
+</div>
+
+<div class="card">
+  <h3>✝ 宗教改革</h3>
+  <p>
+    路德首先在神聖羅馬帝國境內掀起改革，
+    使帝國內部形成天主教與新教的長期政治分裂。
+  </p>
+</div>
+
+<div class="card">
+  <h3>🔬 科學革命</h3>
+  <p>
+    開普勒等人物活動於德意志與哈布斯堡世界，
+    科學革命與帝國政治、宗教環境彼此交織。
+  </p>
+</div>
+
+<div class="card">
+  <h3>💡 啟蒙運動</h3>
+  <p>
+    帝國內部大量邦國與城市形成多元的思想環境，
+    成為近代思想交流的重要空間。
+  </p>
+</div>
+
+<div class="card">
+  <h3>⚔ 法國大革命</h3>
+  <p>
+    法國革命與拿破崙戰爭打破舊有歐洲政治秩序，
+    最終使神聖羅馬帝國走向解體。
+  </p>
+</div>
+
+<div class="card">
+  <h3>🇩🇪 德意志統一</h3>
+  <p>
+    1806 年帝國消失後，
+    奧地利與普魯士的競爭成為德意志統一的重要背景。
+  </p>
+</div>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 16 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">16</div>
+    <h2>最容易搞錯的五件事</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<details open>
+  <summary>① 神聖羅馬帝國就是古羅馬帝國嗎？</summary>
+  <p>
+    不是。它繼承的是中世紀西歐對「羅馬帝國」的政治與宗教傳統，
+    並不是古代羅馬帝國直接延續下來的同一個國家。
+  </p>
+</details>
+
+<details>
+  <summary>② 神聖羅馬帝國就是現在的德國嗎？</summary>
+  <p>
+    不是。帝國包含許多不同民族與領地，也包括今天德國以外的地區。
+    現代德國是在 19 世紀才形成統一國家。
+  </p>
+</details>
+
+<details>
+  <summary>③ 皇帝是不是可以命令所有諸侯？</summary>
+  <p>
+    通常不能這麼理解。皇帝的權力受到帝國法律、選帝侯、諸侯、
+    城市與教會等多重力量制約。
+  </p>
+</details>
+
+<details>
+  <summary>④ 為什麼路德的宗教改革在這裡特別重要？</summary>
+  <p>
+    因為帝國本身政治權力高度分散。
+    一些諸侯可以利用宗教改革取得更大的政治自主性，
+    使宗教問題與地方政治結合。
+  </p>
+</details>
+
+<details>
+  <summary>⑤ 「神聖羅馬帝國既不神聖、也不羅馬、更不是帝國」是真的嗎？</summary>
+  <p>
+    這是後人常引用的伏爾泰式嘲諷，用來批評帝國的複雜與鬆散。
+    它很有記憶點，但不能當作嚴格的歷史定義。
+  </p>
+</details>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 17 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">17</div>
+    <h2>課堂「大哉問」</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<details>
+  <summary>❓ 為什麼一個帝國可以存在近千年，卻一直沒有形成真正的中央政府？</summary>
+  <p>
+    因為帝國的合法性並不完全建立在中央行政控制上，
+    而是建立在皇帝、諸侯、城市、教會與帝國法律之間長期協商的政治結構。
+  </p>
+</details>
+
+<details>
+  <summary>❓ 皇帝與教皇為什麼一定要爭權？</summary>
+  <p>
+    因為中世紀歐洲同時存在「世俗權威」與「宗教權威」。
+    誰有權任命主教、誰能決定宗教秩序，
+    就等於掌握巨大的政治與經濟資源。
+  </p>
+</details>
+
+<details>
+  <summary>❓ 宗教改革為什麼不只是宗教問題？</summary>
+  <p>
+    因為諸侯可以透過支持某一宗教取得政治自主，
+    而皇帝又希望維持帝國秩序。
+    因此宗教信仰與權力政治緊密結合。
+  </p>
+</details>
+
+<details>
+  <summary>❓ 三十年戰爭為什麼會從德意志內戰變成歐洲大戰？</summary>
+  <p>
+    因為哈布斯堡、法國、瑞典、西班牙等強權都有自身利益。
+    宗教只是其中一項因素，王朝與地緣政治同樣重要。
+  </p>
+</details>
+
+<details>
+  <summary>❓ 如果神聖羅馬帝國沒有解體，今天的德國會不會不一樣？</summary>
+  <p>
+    這是一個反事實歷史問題。
+    可以討論「如果帝國中央權力更強」或「如果奧地利統一德意志」，
+    歐洲政治是否會形成完全不同的國家體系。
+  </p>
+</details>
+ 
+
+  </div>
+
+</div>
+</section>
+
+<!-- 18 -->
+
+<section>
+<div class="container">
+
+  <div class="section-title">
+    <div class="num">18</div>
+    <h2>最後用一張圖記住</h2>
+  </div>
+
+  <div class="card" style="text-align:center">
+
+ 
+<div style="
+  font-size:clamp(26px,5vw,48px);
+  font-weight:bold;
+  color:#8f3d32;
+  margin-bottom:25px;">
+  神聖羅馬帝國
+</div>
+
+<div class="grid">
+
+  <div class="node">
+    <strong>皇帝</strong>
+    帝國最高象徵
+  </div>
+
+  <div class="node">
+    <strong>選帝侯</strong>
+    選出國王
+  </div>
+
+  <div class="node">
+    <strong>諸侯</strong>
+    地方政治力量
+  </div>
+
+  <div class="node">
+    <strong>教會</strong>
+    宗教與政治權力
+  </div>
+
+  <div class="node">
+    <strong>城市</strong>
+    商業與自治
+  </div>
+
+  <div class="node">
+    <strong>帝國議會</strong>
+    協商與制度
+  </div>
+
+</div>
+
+<div style="
+  margin:30px auto;
+  font-size:22px;
+  color:#59462b;">
+  ↓
+</div>
+
+<div class="quote">
+  <strong>核心關鍵字</strong><br>
+  「皇帝的名義」＋「諸侯的權力」＋「教會的影響」＋「帝國法律」＋「地方自治」
+</div>
+
+<div style="
+  margin-top:30px;
+  font-size:clamp(20px,3vw,30px);
+  font-weight:bold;">
+  800 → 962 → 1077 → 1356 → 1517 → 1648 → 1806
+</div>
+ 
+
+  </div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>神聖羅馬帝國｜Holy Roman Empire</strong>
+    <p>
+      從中世紀帝國理想到近代歐洲國家體系的重要歷史橋樑
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

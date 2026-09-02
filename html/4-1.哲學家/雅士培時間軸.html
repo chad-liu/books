@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅士培｜存在哲學與界限情境</title>
+
+<style>
+:root{
+  --bg:#eef1f5;
+  --paper:#fff;
+  --ink:#20262d;
+  --muted:#68727d;
+  --dark:#202833;
+  --dark2:#374250;
+  --gold:#c59a4a;
+  --gold2:#e4ca91;
+  --blue:#557da5;
+  --green:#5e8972;
+  --red:#b95c5c;
+  --purple:#77679c;
+  --line:#d9dee5;
+  --shadow:0 10px 28px rgba(25,35,50,.09);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  line-height:1.8;
+}
+
+.hero{
+  background:linear-gradient(135deg,#202833 0%,#374250 55%,#171d25 100%);
+  color:#fff;
+  padding:80px 24px 75px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"EXISTENCE";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-size:clamp(75px,17vw,230px);
+  font-weight:900;
+  letter-spacing:10px;
+  opacity:.035;
+  white-space:nowrap;
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:1050px;
+  margin:auto;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 16px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;
+  color:var(--gold2);
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+.hero h1{
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:clamp(50px,8vw,92px);
+  letter-spacing:8px;
+  margin:18px 0 8px;
+}
+
+.hero h2{
+  margin:0;
+  font-weight:400;
+  font-size:clamp(19px,3vw,30px);
+  color:#e2e6eb;
+}
+
+.hero p{
+  color:#c9d0d8;
+  margin:24px auto 0;
+  max-width:780px;
+}
+
+.container{
+  max-width:1180px;
+  margin:auto;
+  padding:20px;
+}
+
+.section{
+  margin:55px 0;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.num{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--dark);
+  color:var(--gold2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  flex:none;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:28px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-top:0;
+  color:var(--dark);
+}
+
+.big-question{
+  background:linear-gradient(135deg,#292f38,#424c5a);
+  color:#fff;
+  border-radius:20px;
+  padding:38px;
+  box-shadow:var(--shadow);
+}
+
+.big-question .q{
+  color:var(--gold2);
+  font-size:13px;
+  letter-spacing:3px;
+  font-weight:800;
+}
+
+.big-question h3{
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:30px;
+  margin:12px 0;
+}
+
+.big-question p{
+  color:#d7dde4;
+}
+
+.quote{
+  background:#f8f4ea;
+  border-left:5px solid var(--gold);
+  padding:22px 25px;
+  border-radius:0 12px 12px 0;
+  margin:20px 0;
+}
+
+.quote strong{
+  color:#8a6828;
+}
+
+.timeline{
+  position:relative;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:105px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--line);
+}
+
+.event{
+  display:grid;
+  grid-template-columns:90px 30px 1fr;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.year{
+  text-align:right;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.dot{
+  width:13px;
+  height:13px;
+  margin-top:8px;
+  border-radius:50%;
+  background:var(--gold);
+  border:3px solid white;
+  box-shadow:0 0 0 2px var(--gold);
+  z-index:1;
+}
+
+.event-content{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:15px 18px;
+}
+
+.flow{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:10px;
+  margin:30px 0;
+}
+
+.flow-item{
+  flex:1;
+  max-width:300px;
+  background:#fff;
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.flow-item .symbol{
+  font-size:38px;
+  font-weight:900;
+  color:var(--dark);
+}
+
+.flow-item h3{
+  margin:5px 0;
+}
+
+.arrow{
+  display:flex;
+  align-items:center;
+  color:var(--gold);
+  font-size:30px;
+  font-weight:900;
+}
+
+.formula{
+  background:var(--dark);
+  color:#f3f5f7;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:clamp(20px,3vw,31px);
+  margin:25px 0;
+}
+
+.formula span{
+  color:var(--gold2);
+}
+
+.concept{
+  background:#f7f8fa;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:22px;
+}
+
+.concept .label{
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:999px;
+  color:#fff;
+  background:var(--blue);
+  font-size:12px;
+}
+
+.note{
+  background:#eef5fa;
+  border-left:5px solid var(--blue);
+  padding:18px 20px;
+  border-radius:0 10px 10px 0;
+}
+
+.warning{
+  background:#fff3ef;
+  border-left:5px solid var(--red);
+  padding:18px 20px;
+  border-radius:0 10px 10px 0;
+}
+
+.compare{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  border-radius:14px;
+}
+
+.compare th,
+.compare td{
+  padding:15px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+
+.compare th{
+  background:var(--dark);
+  color:#fff;
+}
+
+.compare tr:last-child td{
+  border-bottom:none;
+}
+
+.qa{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  margin:14px 0;
+}
+
+.question{
+  padding:17px 20px;
+  background:#f5f7f9;
+  font-weight:800;
+}
+
+.answer{
+  padding:18px 20px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:22px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.stat strong{
+  display:block;
+  font-size:30px;
+  color:var(--dark);
+}
+
+.mindmap{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  align-items:center;
+}
+
+.mindmap .center{
+  grid-column:2;
+  grid-row:2;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--dark);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+  font-weight:800;
+  box-shadow:var(--shadow);
+}
+
+.mindmap .node{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.mindmap .node:nth-child(1){grid-column:2;grid-row:1}
+.mindmap .node:nth-child(3){grid-column:1;grid-row:2}
+.mindmap .node:nth-child(4){grid-column:3;grid-row:2}
+.mindmap .node:nth-child(5){grid-column:2;grid-row:3}
+
+footer{
+  margin-top:70px;
+  background:var(--dark);
+  color:#cbd2da;
+  text-align:center;
+  padding:40px 20px;
+}
+
+footer strong{
+  color:var(--gold2);
+}
+
+@media(max-width:900px){
+  .grid,.stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid2{
+    grid-template-columns:1fr;
+  }
+
+  .mindmap{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .mindmap .center{
+    grid-column:1/-1;
+    grid-row:2;
+    width:180px;
+    justify-self:center;
+  }
+
+  .mindmap .node:nth-child(1){grid-column:1;grid-row:1}
+  .mindmap .node:nth-child(3){grid-column:2;grid-row:1}
+  .mindmap .node:nth-child(4){grid-column:1;grid-row:3}
+  .mindmap .node:nth-child(5){grid-column:2;grid-row:3}
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:60px 18px;
+  }
+
+  .container{
+    padding:15px;
+  }
+
+  .grid,.stats{
+    grid-template-columns:1fr;
+  }
+
+  .flow{
+    flex-direction:column;
+  }
+
+  .arrow{
+    justify-content:center;
+    transform:rotate(90deg);
+  }
+
+  .timeline:before{
+    left:72px;
+  }
+
+  .event{
+    grid-template-columns:58px 25px 1fr;
+    gap:8px;
+  }
+
+  .year{
+    font-size:13px;
+  }
+
+  .big-question{
+    padding:26px;
+  }
+
+  .big-question h3{
+    font-size:24px;
+  }
+
+  .section{
+    margin:40px 0;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="badge">20TH CENTURY PHILOSOPHY · EXISTENTIAL PHILOSOPHY</div>
+    <h1>雅士培</h1>
+    <h2>Karl Jaspers</h2>
+    <p>
+      1883—1969　｜　存在哲學　｜　界限情境　｜　溝通　｜　超越者
+    </p>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="section">
+  <div class="big-question">
+    <div class="q">JASPERS' CENTRAL QUESTION</div>
+    <h3>當人生走到「無法逃避的極限」時，我們會成為誰？</h3>
+    <p>
+      雅士培認為，人不能只靠科學知識理解自己。
+      當人遭遇死亡、痛苦、罪責、衝突等無法徹底解決的處境時，
+      我們才真正被迫面對「我究竟是誰」以及「我要如何存在」。
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>一句話理解雅士培</h2>
+  </div>
+
+  <div class="quote">
+    <strong>一句話：</strong>
+    人只有在面對無法消除的「界限情境」時，
+    才可能突破單純的日常生活，
+    進一步理解自己的存在，並向超越者開放。
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>① 存在</h3>
+      <p>
+        人不只是可以被科學研究的「客體」，
+        還是一個必須自己決定如何存在的人。
+      </p>
+    </div>
+
+ 
+<div class="card">
+  <h3>② 界限情境</h3>
+  <p>
+    死亡、痛苦、罪責、鬥爭等，
+    是人無法完全消除的存在處境。
+  </p>
+</div>
+
+<div class="card">
+  <h3>③ 溝通</h3>
+  <p>
+    真正的存在不是孤立完成的，
+    而是在與他人的真誠溝通中逐漸展開。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>雅士培的一生</h2>
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1883</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>出生於奧爾登堡</strong>
+    <p>出生於德國北部城市奧爾登堡。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1901</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>大學求學</strong>
+    <p>先後接觸法律、醫學與哲學，最後以醫學與精神病理學為重要基礎。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1913</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《普通精神病理學》</strong>
+    <p>建立精神病理學的重要著作，強調理解患者而不只是分類症狀。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1919</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《世界觀心理學》</strong>
+    <p>逐漸從心理學與精神病理學轉向哲學。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1932</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《哲學》</strong>
+    <p>三卷本哲學巨著出版，系統提出存在哲學的重要思想。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1949</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《歷史的起源與目標》</strong>
+    <p>提出「軸心時代」概念，重新思考世界文明共同的精神突破。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1969</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>逝世於巴塞爾</strong>
+    <p>晚年長期居住於瑞士巴塞爾。</p>
+  </div>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>從精神醫學走向哲學</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>醫學可以研究什麼？</h3>
+  <p>
+    醫學可以觀察症狀、身體與心理現象，
+    並建立分類、診斷與治療的方法。
+  </p>
+</div>
+
+<div class="card">
+  <h3>但「我是誰」呢？</h3>
+  <p>
+    一個人的存在、自由、選擇與人生意義，
+    不能完全被客觀科學描述。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    科學可以研究「人是什麼」
+    <br>
+    <span>哲學追問「人可以成為什麼」</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>雅士培的「存在」</h2>
+  </div>
+
+  <p>
+    雅士培不認為「存在」是一個可以像桌子、石頭一樣，
+    被直接放在眼前觀察的東西。
+  </p>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <div class="label">客觀世界</div>
+  <h3>作為存在的東西</h3>
+  <p>
+    我們可以研究自然、物質與事件。
+  </p>
+</div>
+
+<div class="concept">
+  <div class="label">主體</div>
+  <h3>我如何存在</h3>
+  <p>
+    我不只是「一個物件」，
+    而是可以反省自己、選擇自己的人。
+  </p>
+</div>
+
+<div class="concept">
+  <div class="label">超越</div>
+  <h3>超越者</h3>
+  <p>
+    存在最深處指向超越我們有限理解的維度。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>最重要的概念：界限情境</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">GRENZSITUATION</div>
+    <h3>「界限情境」是什麼？</h3>
+    <p>
+      有些人生處境不是靠更努力、更有錢、更聰明，
+      就可以完全消除。
+      它們構成人類存在不可逃避的界限。
+    </p>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>死亡</h3>
+  <p>
+    我們知道自己終究會死亡，
+    卻無法透過一般日常生活逃避這個事實。
+  </p>
+</div>
+
+<div class="card">
+  <h3>痛苦</h3>
+  <p>
+    人生中的痛苦不能全部被技術與制度消除。
+  </p>
+</div>
+
+<div class="card">
+  <h3>罪責</h3>
+  <p>
+    人會發現自己的選擇可能造成傷害，
+    並必須面對責任。
+  </p>
+</div>
+
+<div class="card">
+  <h3>鬥爭</h3>
+  <p>
+    人與人之間存在利益、價值與生存上的衝突。
+  </p>
+</div>
+
+<div class="card">
+  <h3>偶然性</h3>
+  <p>
+    我們無法完全控制自己出生、疾病、時代與命運。
+  </p>
+</div>
+
+<div class="card">
+  <h3>失敗</h3>
+  <p>
+    人無法保證自己的計畫一定成功，
+    而失敗會迫使我們重新理解自己。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">06</div>
+    <h2>界限情境為什麼重要？</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <div class="symbol">日常</div>
+  <h3>平常生活</h3>
+  <p>工作、娛樂、學習、社交。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">!</div>
+  <h3>界限情境</h3>
+  <p>死亡、痛苦、失敗、罪責。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">?</div>
+  <h3>存在追問</h3>
+  <p>我究竟是誰？我應該怎麼活？</p>
+</div>
+ 
+
+  </div>
+
+  <div class="quote">
+    <strong>重點：</strong>
+    界限情境不是「哲學問題的答案」，
+    而是讓人開始真正進行哲學思考的契機。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">07</div>
+    <h2>「失敗」為什麼能讓人覺醒？</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  平常順利時，我們很容易認為：
+  「只要努力，一切都能解決。」
+</p>
+
+<p>
+  但當人生遭遇真正無法控制的失敗，
+  這種想法可能崩潰。
+</p>
+
+<div class="formula">
+  我可以控制一切
+  <br>↓<br>
+  <span>失敗：發現自己並非全能</span>
+  <br>↓<br>
+  重新面對自己的有限性
+  <br>↓<br>
+  存在的覺醒
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">08</div>
+    <h2>雅士培的「超越者」</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">TRANSCENDENCE</div>
+    <h3>人的存在之外，還有更高的維度嗎？</h3>
+    <p>
+      雅士培使用「超越者」概念，
+      指向人無法完全掌握、卻可以透過存在經驗去感受與思考的超越維度。
+    </p>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>不是簡單的「上帝證明」</h3>
+  <p>
+    雅士培並不是要像數學證明一樣，
+    證明一個可以被客觀觀察的神。
+  </p>
+</div>
+
+<div class="card">
+  <h3>而是一種開放</h3>
+  <p>
+    人在界限情境、哲學思考與存在經驗中，
+    可以向超越者保持開放。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">09</div>
+    <h2>雅士培最重要的答案：溝通</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">COMMUNICATION</div>
+    <h3>人可以獨自完成自己的存在嗎？</h3>
+    <p>
+      雅士培的答案傾向於：不能。
+      真正的存在需要與另一個自由的存在者相遇。
+    </p>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <div class="symbol">我</div>
+  <h3>自我</h3>
+  <p>我開始反省自己的存在。</p>
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="flow-item">
+  <div class="symbol">你</div>
+  <h3>他者</h3>
+  <p>另一個具有自由的存在者。</p>
+</div>
+
+<div class="arrow">↔</div>
+
+<div class="flow-item">
+  <div class="symbol">∞</div>
+  <h3>超越</h3>
+  <p>透過真誠溝通向更高存在開放。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>什麼叫「真正的溝通」？</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>不是交換資訊</h3>
+  <p>
+    「今天幾度？」「明天幾點上課？」
+    這是資訊交換，而不是雅士培所說的存在性溝通。
+  </p>
+</div>
+
+<div class="card">
+  <h3>不是說服對方</h3>
+  <p>
+    真正的溝通不是我要贏，
+    而是讓雙方都更清楚地面對自己。
+  </p>
+</div>
+
+<div class="card">
+  <h3>不是逃避差異</h3>
+  <p>
+    真正的溝通可以容納差異、衝突與不確定性。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="quote">
+    <strong>核心：</strong>
+    我不是因為把自己關起來才成為自己，
+    而是在與另一個自由的人真正相遇時，
+    才逐漸成為自己。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>雅士培與海德格：兩種存在哲學</h2>
+  </div>
+
+  <table class="compare">
+
+ 
+<tr>
+  <th>雅士培</th>
+  <th>海德格</th>
+</tr>
+
+<tr>
+  <td>重視「存在」的覺醒</td>
+  <td>重問「存在」本身的意義</td>
+</tr>
+
+<tr>
+  <td>界限情境</td>
+  <td>焦慮、向死而在</td>
+</tr>
+
+<tr>
+  <td>溝通與共同存在</td>
+  <td>此在、在世存有</td>
+</tr>
+
+<tr>
+  <td>超越者</td>
+  <td>存在本身</td>
+</tr>
+
+<tr>
+  <td>較具有宗教與超越哲學色彩</td>
+  <td>較集中於存在論問題</td>
+</tr>
+ 
+
+  </table>
+
+  <div class="note">
+    兩人都受到存在哲學影響，
+    但雅士培比海德格更強調「溝通」與「超越」。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>雅士培與齊克果</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>齊克果</h3>
+  <p>
+    強調個人存在、焦慮、絕望、選擇與信仰。
+  </p>
+</div>
+
+<div class="card">
+  <h3>雅士培</h3>
+  <p>
+    將個人的存在危機進一步發展成哲學性的
+    「界限情境」與「超越」思想。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    齊克果：個人 → 焦慮／絕望 → 信仰
+    <br>
+    <span>雅士培：界限情境 → 存在覺醒 → 超越</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>「軸心時代」Axial Age</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">AXIAL AGE · 約前 800—前 200 年</div>
+    <h3>為什麼世界不同文明，同時出現思想突破？</h3>
+    <p>
+      雅士培在1949年的《歷史的起源與目標》中提出著名的
+      「軸心時代」概念，認為約西元前800年至前200年間，
+      世界不同文明出現深刻的精神轉型。
+    </p>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>中國</h3>
+  <p>
+    孔子、老子等思想傳統形成。
+  </p>
+</div>
+
+<div class="card">
+  <h3>印度</h3>
+  <p>
+    《奧義書》、佛教等思想發展。
+  </p>
+</div>
+
+<div class="card">
+  <h3>希臘</h3>
+  <p>
+    哲學家開始以理性方式追問世界與存在。
+  </p>
+</div>
+
+<div class="card">
+  <h3>以色列傳統</h3>
+  <p>
+    先知傳統深化倫理與超越性的思考。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+    <strong>軸心時代的核心：</strong>
+    人開始不再只是接受傳統秩序，
+    而是反過來追問「世界應該是什麼？」
+    「人應該如何生活？」
+    「什麼是真正的善？」
+  </div>
+
+  <div class="warning">
+    <strong>歷史學提醒：</strong>
+    「軸心時代」是一個具有高度影響力的宏觀歷史理論，
+    但其時間範圍、跨文明同步性與因果解釋，
+    在當代學術界仍存在討論，不能視為毫無爭議的歷史定律。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">14</div>
+    <h2>雅士培眼中的哲學</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <div class="symbol">知識</div>
+  <h3>科學</h3>
+  <p>理解客觀世界。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">反省</div>
+  <h3>哲學</h3>
+  <p>追問存在與超越。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">存在</div>
+  <h3>成為自己</h3>
+  <p>在自由與溝通中實現自己。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">15</div>
+    <h2>科學有極限嗎？</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  雅士培並不是反科學。
+  相反地，他本人就是精神病理學家。
+</p>
+
+<p>
+  但他認為：
+  <strong>科學的成功不能被誤解成「科學可以回答所有問題」。</strong>
+</p>
+
+<table class="compare">
+
+  <tr>
+    <th>科學可以回答</th>
+    <th>科學不能單獨回答</th>
+  </tr>
+
+  <tr>
+    <td>宇宙如何運作？</td>
+    <td>我應該如何生活？</td>
+  </tr>
+
+  <tr>
+    <td>疾病如何發生？</td>
+    <td>人生為什麼值得活？</td>
+  </tr>
+
+  <tr>
+    <td>某個現象如何形成？</td>
+    <td>自由與責任意味著什麼？</td>
+  </tr>
+
+</table>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">16</div>
+    <h2>雅士培與現代科技</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">MODERN TECHNOLOGY</div>
+    <h3>科技越強，人就一定越自由嗎？</h3>
+    <p>
+      科技可以增加人的能力，
+      卻不代表人因此自動獲得更深的存在自由。
+    </p>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>能力增加</h3>
+  <p>交通、醫療、資訊、AI都能擴大人的行動能力。</p>
+</div>
+
+<div class="card">
+  <h3>依賴增加</h3>
+  <p>人也可能越來越依賴龐大的技術系統。</p>
+</div>
+
+<div class="card">
+  <h3>存在問題仍在</h3>
+  <p>死亡、孤獨、責任、選擇與人生意義並沒有因此消失。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">17</div>
+    <h2>雅士培與 AI：一個現代問題</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">A QUESTION FOR THE 21ST CENTURY</div>
+    <h3>AI 能告訴我們「應該怎麼活」嗎？</h3>
+    <p>
+      AI可以提供大量資訊、預測、建議與分析，
+      但「我究竟要成為什麼樣的人」，
+      仍涉及人的自由、責任與存在選擇。
+    </p>
+  </div>
+
+  <div class="formula">
+    AI 可以告訴你「可能怎麼做」
+    <br>
+    <span>但「我要不要這樣活」仍是存在問題</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">18</div>
+    <h2>雅士培的思想地圖</h2>
+  </div>
+
+  <div class="mindmap">
+
+ 
+<div class="node">
+  <strong>界限情境</strong><br>
+  死亡・痛苦・罪責
+</div>
+
+<div class="node">
+  <strong>超越</strong><br>
+  向不可完全掌握者開放
+</div>
+
+<div class="node">
+  <strong>溝通</strong><br>
+  我和他者
+</div>
+
+<div class="center">
+  雅士培<br>
+  <small>存在哲學</small>
+</div>
+
+<div class="node">
+  <strong>自由</strong><br>
+  成為自己
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">19</div>
+    <h2>雅士培 vs 海德格 vs 沙特</h2>
+  </div>
+
+  <table class="compare">
+
+ 
+<tr>
+  <th>哲學家</th>
+  <th>核心問題</th>
+  <th>關鍵概念</th>
+</tr>
+
+<tr>
+  <td><strong>雅士培</strong></td>
+  <td>人如何在界限中成為自己？</td>
+  <td>界限情境、溝通、超越、存在</td>
+</tr>
+
+<tr>
+  <td><strong>海德格</strong></td>
+  <td>存在究竟是什麼？</td>
+  <td>此在、在世存有、焦慮、向死而在</td>
+</tr>
+
+<tr>
+  <td><strong>沙特</strong></td>
+  <td>人在沒有預定本質下如何自由選擇？</td>
+  <td>存在先於本質、自由、責任、他人</td>
+</tr>
+ 
+
+  </table>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">20</div>
+    <h2>最容易考的核心概念</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <div class="label">Existenz</div>
+  <h3>存在</h3>
+  <p>人不是單純客體，而是必須自己實現的存在。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Grenzsituation</div>
+  <h3>界限情境</h3>
+  <p>死亡、痛苦、罪責、鬥爭等無法完全逃避的處境。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Communication</div>
+  <h3>溝通</h3>
+  <p>存在透過與另一個自由者的真誠交流而展開。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Transcendence</div>
+  <h3>超越</h3>
+  <p>存在向超越者開放。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Axial Age</div>
+  <h3>軸心時代</h3>
+  <p>人類文明在前800年至前200年左右出現重要精神轉型。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Freedom</div>
+  <h3>自由</h3>
+  <p>自由不是任性，而是成為自己的存在可能。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">21</div>
+    <h2>雅士培的大哉問</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<div class="question">
+  Q1｜什麼是「界限情境」？
+</div>
+<div class="answer">
+  是人無法透過一般方法完全消除的存在處境，例如死亡、痛苦、罪責與鬥爭。
+</div>
+
+<div class="question">
+  Q2｜為什麼死亡具有哲學意義？
+</div>
+<div class="answer">
+  因為死亡提醒人：人生具有不可逆的有限性，我不能無限延後自己的選擇。
+</div>
+
+<div class="question">
+  Q3｜雅士培為什麼如此重視溝通？
+</div>
+<div class="answer">
+  因為真正的存在不是孤立完成的，人需要在與另一個自由者的真誠關係中理解自己。
+</div>
+
+<div class="question">
+  Q4｜雅士培反對科學嗎？
+</div>
+<div class="answer">
+  不反對。他本人就是精神病理學家；他反對的是把科學當成解答所有存在問題的唯一方法。
+</div>
+
+<div class="question">
+  Q5｜什麼是「軸心時代」？
+</div>
+<div class="answer">
+  雅士培用來描述約前800年至前200年間，中國、印度、希臘與以色列等文明出現深刻精神轉型的概念。
+</div>
+
+<div class="question">
+  Q6｜雅士培與海德格最大的差別是什麼？
+</div>
+<div class="answer">
+  兩人都關心存在，但雅士培更加強調界限情境、與他人的溝通以及向超越者開放。
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">22</div>
+    <h2>一張圖記住雅士培</h2>
+  </div>
+
+  <div class="formula">
+
+ 
+平常生活
+<br>↓<br>
+<span>界限情境</span>
+<br>
+死亡・痛苦・罪責・鬥爭
+<br>↓<br>
+存在覺醒
+<br>↓<br>
+<span>自由</span>
+<br>↓<br>
+真誠溝通
+<br>↓<br>
+<span>超越</span>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">23</div>
+    <h2>最後總結：雅士培到底在說什麼？</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  雅士培的哲學不是告訴我們一套「標準答案」，
+  而是要我們重新面對自己的存在。
+</p>
+
+<div class="quote">
+  <strong>第一步：</strong>
+  我們平常生活在日常世界裡。
+</div>
+
+<div class="quote">
+  <strong>第二步：</strong>
+  我們突然遭遇死亡、痛苦、失敗、罪責等界限情境。
+</div>
+
+<div class="quote">
+  <strong>第三步：</strong>
+  我們發現自己不是一個可以完全被科學解釋的物件。
+</div>
+
+<div class="quote">
+  <strong>第四步：</strong>
+  我們開始問：「我究竟要如何成為自己？」
+</div>
+
+<div class="quote">
+  <strong>第五步：</strong>
+  我們透過與他人的真誠溝通，
+  並向超越者保持開放，
+  讓自己的存在逐漸展開。
+</div>
+
+<div class="formula">
+  <span>界限情境</span>
+  → 存在覺醒
+  → 自由
+  → 溝通
+  → <span>超越</span>
+</div>
+ 
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>JASPERS｜雅士培</strong><br>
+  存在 × 界限情境 × 溝通 × 自由 × 超越
+  <br><br>
+  教學版哲學資訊圖表
+</footer>
+
+</body>
+</html>

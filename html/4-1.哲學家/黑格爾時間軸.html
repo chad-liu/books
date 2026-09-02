@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黑格爾｜辯證法與歷史哲學</title>
+
+<style>
+:root{
+  --bg:#eef1f5;
+  --paper:#ffffff;
+  --ink:#20252b;
+  --muted:#68717c;
+  --dark:#202733;
+  --dark2:#343e4d;
+  --gold:#c59a4a;
+  --gold2:#e4c783;
+  --red:#b95757;
+  --blue:#4e759c;
+  --green:#5d876e;
+  --purple:#76659a;
+  --line:#d9dee5;
+  --shadow:0 10px 30px rgba(25,35,50,.09);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    sans-serif;
+  line-height:1.75;
+}
+
+.hero{
+  background:
+    linear-gradient(135deg,#202733 0%,#343e4d 55%,#171c24 100%);
+  color:white;
+  padding:80px 24px 75px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"DIALECTIC";
+  position:absolute;
+  font-size:clamp(80px,18vw,240px);
+  font-weight:900;
+  letter-spacing:10px;
+  opacity:.035;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  white-space:nowrap;
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:1100px;
+  margin:auto;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 15px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;
+  font-size:13px;
+  letter-spacing:2px;
+  color:var(--gold2);
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:clamp(48px,8vw,92px);
+  margin:0;
+  letter-spacing:8px;
+}
+
+.hero h2{
+  margin:12px 0;
+  font-weight:400;
+  color:#e4e8ee;
+  font-size:clamp(20px,3vw,30px);
+}
+
+.hero p{
+  max-width:780px;
+  margin:25px auto 0;
+  color:#cbd1d9;
+  font-size:17px;
+}
+
+.container{
+  max-width:1180px;
+  margin:auto;
+  padding:20px;
+}
+
+.section{
+  margin:55px 0;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.num{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--dark);
+  color:var(--gold2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  flex:none;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:28px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  margin-top:0;
+  color:var(--dark);
+}
+
+.card p:last-child{
+  margin-bottom:0;
+}
+
+.big-question{
+  background:linear-gradient(135deg,#292f39,#3d4654);
+  color:white;
+  border-radius:20px;
+  padding:38px;
+  box-shadow:var(--shadow);
+}
+
+.big-question .q{
+  color:var(--gold2);
+  font-size:14px;
+  letter-spacing:3px;
+  font-weight:700;
+}
+
+.big-question h3{
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:30px;
+  margin:12px 0;
+}
+
+.big-question p{
+  color:#d8dde5;
+}
+
+.quote{
+  border-left:5px solid var(--gold);
+  background:#f8f4ea;
+  padding:22px 25px;
+  border-radius:0 12px 12px 0;
+  margin:20px 0;
+}
+
+.quote strong{
+  color:#8a6828;
+}
+
+.timeline{
+  position:relative;
+  margin:25px 0;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:105px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--line);
+}
+
+.event{
+  display:grid;
+  grid-template-columns:90px 30px 1fr;
+  gap:15px;
+  margin:0 0 25px;
+  align-items:start;
+}
+
+.year{
+  text-align:right;
+  font-weight:800;
+  color:var(--blue);
+}
+
+.dot{
+  width:13px;
+  height:13px;
+  margin-top:8px;
+  border-radius:50%;
+  background:var(--gold);
+  border:3px solid white;
+  box-shadow:0 0 0 2px var(--gold);
+  z-index:1;
+}
+
+.event-content{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:15px 18px;
+}
+
+.flow{
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  gap:10px;
+  margin:30px 0;
+}
+
+.flow-item{
+  flex:1;
+  max-width:300px;
+  background:white;
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.flow-item .symbol{
+  font-size:40px;
+  font-weight:900;
+  color:var(--dark);
+}
+
+.flow-item h3{
+  margin:5px 0;
+}
+
+.arrow{
+  display:flex;
+  align-items:center;
+  font-size:30px;
+  color:var(--gold);
+  font-weight:900;
+}
+
+.formula{
+  background:#202733;
+  color:#f2f4f7;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:clamp(20px,3vw,32px);
+  margin:25px 0;
+}
+
+.formula span{
+  color:var(--gold2);
+}
+
+.concept{
+  border-radius:14px;
+  padding:22px;
+  background:#f7f8fa;
+  border:1px solid var(--line);
+}
+
+.concept .label{
+  display:inline-block;
+  font-size:12px;
+  padding:3px 10px;
+  border-radius:999px;
+  color:white;
+  background:var(--blue);
+  margin-bottom:8px;
+}
+
+.note{
+  background:#eef5fa;
+  border-left:5px solid var(--blue);
+  padding:18px 20px;
+  border-radius:0 10px 10px 0;
+}
+
+.warning{
+  background:#fff4f0;
+  border-left:5px solid var(--red);
+  padding:18px 20px;
+  border-radius:0 10px 10px 0;
+}
+
+.compare{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  box-shadow:var(--shadow);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.compare th,
+.compare td{
+  border-bottom:1px solid var(--line);
+  padding:15px;
+  text-align:left;
+  vertical-align:top;
+}
+
+.compare th{
+  background:var(--dark);
+  color:white;
+}
+
+.compare tr:last-child td{
+  border-bottom:none;
+}
+
+.qa{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin:14px 0;
+  overflow:hidden;
+}
+
+.qa .question{
+  padding:17px 20px;
+  font-weight:800;
+  color:var(--dark);
+  background:#f6f7f9;
+}
+
+.qa .answer{
+  padding:18px 20px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:white;
+  border-radius:15px;
+  padding:22px;
+  text-align:center;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+
+.stat strong{
+  display:block;
+  font-size:32px;
+  color:var(--dark);
+}
+
+.mindmap{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  align-items:center;
+}
+
+.mindmap .center{
+  grid-column:2;
+  grid-row:2;
+  background:var(--dark);
+  color:white;
+  border-radius:50%;
+  aspect-ratio:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  font-weight:800;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.mindmap .node{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.mindmap .node:nth-child(1){grid-column:2;grid-row:1}
+.mindmap .node:nth-child(3){grid-column:1;grid-row:2}
+.mindmap .node:nth-child(4){grid-column:3;grid-row:2}
+.mindmap .node:nth-child(5){grid-column:2;grid-row:3}
+
+footer{
+  margin-top:70px;
+  background:var(--dark);
+  color:#cbd1d9;
+  padding:40px 20px;
+  text-align:center;
+}
+
+footer strong{
+  color:var(--gold2);
+}
+
+@media(max-width:900px){
+  .grid,
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid2{
+    grid-template-columns:1fr;
+  }
+
+  .mindmap{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .mindmap .center{
+    grid-column:1 / -1;
+    grid-row:2;
+    width:180px;
+    justify-self:center;
+  }
+
+  .mindmap .node:nth-child(1){grid-column:1;grid-row:1}
+  .mindmap .node:nth-child(3){grid-column:2;grid-row:1}
+  .mindmap .node:nth-child(4){grid-column:1;grid-row:3}
+  .mindmap .node:nth-child(5){grid-column:2;grid-row:3}
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:60px 18px;
+  }
+
+  .container{
+    padding:15px;
+  }
+
+  .grid,
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .flow{
+    flex-direction:column;
+  }
+
+  .arrow{
+    justify-content:center;
+    transform:rotate(90deg);
+  }
+
+  .timeline:before{
+    left:72px;
+  }
+
+  .event{
+    grid-template-columns:58px 25px 1fr;
+    gap:8px;
+  }
+
+  .year{
+    font-size:13px;
+  }
+
+  .section{
+    margin:40px 0;
+  }
+
+  .big-question{
+    padding:26px;
+  }
+
+  .big-question h3{
+    font-size:24px;
+  }
+
+  .compare{
+    font-size:14px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="badge">19TH CENTURY PHILOSOPHY · GERMAN IDEALISM</div>
+    <h1>黑格爾</h1>
+    <h2>Georg Wilhelm Friedrich Hegel</h2>
+    <p>
+      1770—1831　｜　辯證法　｜　歷史哲學　｜　絕對精神　｜　自由
+    </p>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="section">
+  <div class="big-question">
+    <div class="q">HEGEL'S CENTRAL QUESTION</div>
+    <h3>世界為什麼會「發展」？</h3>
+    <p>
+      黑格爾真正關心的，不只是「世界是什麼」，
+      而是：<strong>事物為什麼會從一種狀態，發展成另一種狀態？</strong>
+    </p>
+    <p>
+      對黑格爾而言，矛盾不是單純的錯誤，
+      而是推動思想、社會與歷史前進的重要力量。
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>一句話理解黑格爾</h2>
+  </div>
+
+  <div class="quote">
+    <strong>一句話：</strong>
+    世界不是靜止的東西，而是一個透過矛盾、不斷發展，
+    最終逐步實現自由與自我理解的歷史過程。
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>① 發展</h3>
+      <p>
+        真實不是固定不變的。
+        一個概念會因自身的限制而產生新的問題，
+        進而進入下一階段。
+      </p>
+    </div>
+
+ 
+<div class="card">
+  <h3>② 矛盾</h3>
+  <p>
+    矛盾不是單純「A錯、B對」，
+    而是事物內部存在張力，
+    迫使它超越原本的狀態。
+  </p>
+</div>
+
+<div class="card">
+  <h3>③ 自由</h3>
+  <p>
+    歷史最終的重要主題之一，
+    是人逐漸理解自己是自由的，
+    並建立使自由得以實現的制度。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>黑格爾的一生</h2>
+  </div>
+
+  <div class="timeline">
+
+ 
+<div class="event">
+  <div class="year">1770</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>出生於斯圖加特</strong>
+    <p>出生於符騰堡公國，後來成為德國古典哲學的重要人物。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1788</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>進入圖賓根神學院</strong>
+    <p>與荷爾德林、謝林成為同窗，受到德國哲學與古典文化深刻影響。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1801</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>進入耶拿大學</strong>
+    <p>與謝林合作，逐漸形成自己的哲學體系。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1807</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《精神現象學》</strong>
+    <p>出版代表作，描述意識如何經過一連串發展，最後走向更高層次的自我理解。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1812</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《邏輯學》</strong>
+    <p>建立高度抽象的「思辨邏輯」體系。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1821</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>《法哲學原理》</strong>
+    <p>討論自由、權利、家庭、市民社會與國家。</p>
+  </div>
+</div>
+
+<div class="event">
+  <div class="year">1831</div>
+  <div class="dot"></div>
+  <div class="event-content">
+    <strong>逝世</strong>
+    <p>在柏林去世，留下極為龐大的哲學影響。</p>
+  </div>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>黑格爾到底在反對什麼？</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>反對「靜止的真理」</h3>
+  <p>
+    黑格爾認為，不能把真理想像成一個永遠固定、
+    可以一次完整掌握的答案。
+  </p>
+  <p>
+    真理必須放在<strong>發展過程</strong>中理解。
+  </p>
+</div>
+
+<div class="card">
+  <h3>反對孤立的個體</h3>
+  <p>
+    人不是脫離社會與歷史的孤立個體。
+    我們的自我意識，是在人與人的關係中逐漸形成的。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>最重要的概念：辯證法</h2>
+  </div>
+
+  <p>
+    「辯證法」是理解黑格爾最重要的入口。
+    但要注意一件事：
+    <strong>「正題 → 反題 → 合題」並不是黑格爾自己最標準的表述。</strong>
+  </p>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <div class="symbol">A</div>
+  <h3>某一狀態</h3>
+  <p>一個概念、制度或立場形成。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">↔</div>
+  <h3>內在矛盾</h3>
+  <p>它自身的限制逐漸顯現。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">B</div>
+  <h3>超越</h3>
+  <p>進入更高、更複雜的發展階段。</p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    發展 ≠ 簡單否定<br>
+    <span>發展 = 否定 + 保留 + 提升</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">05</div>
+    <h2>什麼叫「揚棄」Aufheben？</h2>
+  </div>
+
+  <div class="card">
+    <h3>黑格爾哲學的關鍵字</h3>
+
+ 
+<p>
+  德文 <strong>Aufheben</strong> 非常特殊，
+  同時包含「取消、保存、提升」等意思。
+</p>
+
+<div class="grid">
+  <div class="concept">
+    <div class="label">① 否定</div>
+    <p>原來的狀態被超越。</p>
+  </div>
+
+  <div class="concept">
+    <div class="label">② 保存</div>
+    <p>原來狀態中有價值的部分並不完全消失。</p>
+  </div>
+
+  <div class="concept">
+    <div class="label">③ 提升</div>
+    <p>原本的內容被放入更高、更複雜的整體中。</p>
+  </div>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">06</div>
+    <h2>最經典的例子：主奴辯證</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">MASTER–SLAVE DIALECTIC</div>
+    <h3>「我是誰？」需要別人承認嗎？</h3>
+    <p>
+      黑格爾認為，自我意識並不是孤立產生的。
+      我們需要另一個自我意識承認我們，
+      才能真正形成完整的自我意識。
+    </p>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <div class="symbol">1</div>
+  <h3>兩個自我意識</h3>
+  <p>彼此相遇，都希望得到對方承認。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">2</div>
+  <h3>支配關係</h3>
+  <p>形成主人與奴隸的關係。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">3</div>
+  <h3>矛盾出現</h3>
+  <p>主人依賴奴隸的承認，而奴隸透過勞動改造世界。</p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+    <strong>核心：</strong>
+    主人看似獲勝，卻反而依賴奴隸；
+    奴隸看似處於被支配位置，
+    卻透過勞動與自我形成逐漸獲得更深的自我意識。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">07</div>
+    <h2>黑格爾的「精神」到底是什麼？</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>不是鬼魂</h3>
+  <p>
+    黑格爾所說的 <strong>Geist</strong>，
+    可以理解為精神、心靈、文化意識等。
+  </p>
+</div>
+
+<div class="card">
+  <h3>不是個人的心理</h3>
+  <p>
+    「精神」也具有社會與歷史意義，
+    它會透過語言、文化、法律、制度與藝術表現出來。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    個人意識 → 社會制度 → 文化 → 歷史 → 自我理解
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">08</div>
+    <h2>絕對精神</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      黑格爾的哲學體系最終指向「絕對」。
+      這不是一個躲在宇宙背後的人格神，
+      而是精神逐步理解自身的最高形式。
+    </p>
+
+ 
+<div class="flow">
+
+  <div class="flow-item">
+    <div class="symbol">🎨</div>
+    <h3>藝術</h3>
+    <p>精神透過感性的形式表現自己。</p>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <div class="symbol">⛪</div>
+    <h3>宗教</h3>
+    <p>精神透過表象與信仰理解自身。</p>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <div class="symbol">Φ</div>
+    <h3>哲學</h3>
+    <p>精神透過概念對自身進行理解。</p>
+  </div>
+
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">09</div>
+    <h2>黑格爾的歷史哲學</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">PHILOSOPHY OF HISTORY</div>
+    <h3>歷史有方向嗎？</h3>
+    <p>
+      黑格爾認為，人類歷史不是完全沒有方向的事件集合。
+      歷史具有發展結構，而其中一個核心主題就是：
+      <strong>自由意識逐步擴大。</strong>
+    </p>
+  </div>
+
+  <div class="formula">
+    歷史發展 ≈ 人類逐漸理解「自由」並將自由制度化
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>東方世界</h3>
+  <p>
+    黑格爾以其自己的歷史哲學框架理解，
+    認為只有「一個人」被視為自由。
+  </p>
+</div>
+
+<div class="card">
+  <h3>希臘、羅馬</h3>
+  <p>
+    自由意識擴展，
+    但仍存在奴隸制度與排除。
+  </p>
+</div>
+
+<div class="card">
+  <h3>日耳曼世界</h3>
+  <p>
+    黑格爾認為現代自由理念在此進一步發展，
+    最終走向「人人皆應自由」的理念。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="warning">
+    <strong>重要提醒：</strong>
+    這套歷史分期具有強烈的歐洲中心與19世紀思想背景，
+    今天不能直接當作客觀、普世的世界史時間表。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">10</div>
+    <h2>黑格爾最重要的歷史觀念：自由</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>自由 ≠ 想做什麼就做什麼</h3>
+  <p>
+    黑格爾認為，如果自由只是「我想怎樣就怎樣」，
+    那麼它仍然是任性的。
+  </p>
+</div>
+
+<div class="card">
+  <h3>自由需要制度</h3>
+  <p>
+    真正的自由必須存在於合理的社會制度、
+    法律與相互承認之中。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="quote">
+    <strong>關鍵思想：</strong>
+    「自由」不是逃離一切限制，
+    而是在合理制度與相互承認中，
+    成為能夠實現自身意志的人。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">11</div>
+    <h2>《法哲學原理》：家庭 → 市民社會 → 國家</h2>
+  </div>
+
+  <div class="flow">
+
+ 
+<div class="flow-item">
+  <div class="symbol">家</div>
+  <h3>家庭</h3>
+  <p>以愛與共同體為核心。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">市</div>
+  <h3>市民社會</h3>
+  <p>個人追求利益、交換、工作與需求。</p>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-item">
+  <div class="symbol">國</div>
+  <h3>國家</h3>
+  <p>將個人自由放入更普遍的倫理秩序。</p>
+</div>
+ 
+
+  </div>
+
+  <div class="note">
+    黑格爾的「國家」不是單純的政府機器，
+    而是倫理生活的重要制度形式。
+    這也是他政治哲學中最具爭議、也最容易被簡化的部分之一。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">12</div>
+    <h2>「理性的」與「現實的」</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      黑格爾有一句非常著名、也非常容易被誤解的話：
+    </p>
+
+ 
+<div class="formula">
+  「凡是合乎理性的，都是現實的；<br>
+  凡是現實的，都是合乎理性的。」
+</div>
+
+<p>
+  這不應簡化成：
+  <strong>「現在存在的政府、制度全部都是合理的。」</strong>
+</p>
+
+<p>
+  黑格爾所說的「現實」不是單純指「目前存在」，
+  而是具有內在合理性、能夠在歷史發展中維持自身的東西。
+</p>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">13</div>
+    <h2>黑格爾與康德</h2>
+  </div>
+
+  <table class="compare">
+    <tr>
+      <th>康德</th>
+      <th>黑格爾</th>
+    </tr>
+    <tr>
+      <td>強調理性的界限</td>
+      <td>希望建立完整的思辨體系</td>
+    </tr>
+    <tr>
+      <td>物自身不可被認識</td>
+      <td>認為思想與存在可以在發展中獲得更高層次的統一</td>
+    </tr>
+    <tr>
+      <td>道德自主</td>
+      <td>自由必須進入社會制度與倫理生活</td>
+    </tr>
+    <tr>
+      <td>個人理性</td>
+      <td>歷史、社會與精神的發展</td>
+    </tr>
+  </table>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">14</div>
+    <h2>黑格爾與馬克思</h2>
+  </div>
+
+  <div class="grid2">
+
+ 
+<div class="card">
+  <h3>黑格爾</h3>
+  <p>
+    強調理念、精神、概念與歷史發展。
+  </p>
+  <p>
+    世界的發展可以理解為精神逐步實現自身。
+  </p>
+</div>
+
+<div class="card">
+  <h3>馬克思</h3>
+  <p>
+    保留辯證法的重要結構，
+    但將重點轉向物質生產、經濟關係與階級。
+  </p>
+  <p>
+    因而形成所謂的「唯物辯證」方向。
+  </p>
+</div>
+ 
+
+  </div>
+
+  <div class="formula">
+    黑格爾：理念 → 歷史 → 精神<br>
+    馬克思：生產關係 → 階級矛盾 → 歷史變化
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">15</div>
+    <h2>黑格爾與後來的存在主義</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="card">
+  <h3>齊克果</h3>
+  <p>
+    反對把個人的存在完全融入龐大的哲學體系，
+    強調個人、選擇、信仰與存在。
+  </p>
+</div>
+
+<div class="card">
+  <h3>尼采</h3>
+  <p>
+    對黑格爾式的歷史必然性與理性進步觀保持高度懷疑。
+  </p>
+</div>
+
+<div class="card">
+  <h3>海德格</h3>
+  <p>
+    將哲學焦點重新拉回「存在本身」，
+    對黑格爾的「絕對精神」採取批判態度。
+  </p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">16</div>
+    <h2>黑格爾的思想地圖</h2>
+  </div>
+
+  <div class="mindmap">
+
+ 
+<div class="node">
+  <strong>辯證法</strong><br>
+  矛盾 → 發展
+</div>
+
+<div class="node">
+  <strong>歷史</strong><br>
+  自由意識的發展
+</div>
+
+<div class="node">
+  <strong>主奴辯證</strong><br>
+  承認 → 自我意識
+</div>
+
+<div class="center">
+  黑格爾<br>
+  <small>精神的自我發展</small>
+</div>
+
+<div class="node">
+  <strong>法哲學</strong><br>
+  自由 → 制度
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">17</div>
+    <h2>一個生活化例子：學生的成長</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<div class="flow">
+
+  <div class="flow-item">
+    <div class="symbol">①</div>
+    <h3>「我只想自由」</h3>
+    <p>
+      學生認為自由就是沒有人管我。
+    </p>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <div class="symbol">②</div>
+    <h3>遇到現實矛盾</h3>
+    <p>
+      如果完全沒有規則，
+      自己的自由可能會傷害別人的自由。
+    </p>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="flow-item">
+    <div class="symbol">③</div>
+    <h3>更高層次的自由</h3>
+    <p>
+      理解規則、責任與他人，
+      反而能讓自由真正實現。
+    </p>
+  </div>
+
+</div>
+
+<div class="note">
+  這不是黑格爾原著中的例子，
+  而是用來幫助理解「矛盾 → 超越 → 更高層次」的教學比喻。
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">18</div>
+    <h2>最容易搞錯的「正、反、合」</h2>
+  </div>
+
+  <div class="warning">
+    <strong>考試提醒：</strong>
+    「正題—反題—合題」常被用來介紹黑格爾，
+    但它其實是一種高度簡化的教學說法，
+    不能把它當成黑格爾完整辯證法的正式公式。
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>❌ 錯誤理解</h3>
+      <p>先提出一個觀點，再故意找一個完全相反的觀點。</p>
+    </div>
+
+ 
+<div class="card">
+  <h3>❌ 錯誤理解</h3>
+  <p>最後找一個「折衷答案」。</p>
+</div>
+
+<div class="card">
+  <h3>✓ 比較接近</h3>
+  <p>概念自身產生矛盾，並透過「揚棄」進入更高層次。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">19</div>
+    <h2>黑格爾的「歷史」不是單純進步史</h2>
+  </div>
+
+  <div class="card">
+    <p>
+      黑格爾常被描述成「相信歷史會越來越進步」。
+      這樣說有一定道理，但不完整。
+    </p>
+
+ 
+<p>
+  黑格爾的歷史具有<strong>衝突、斷裂、革命與否定</strong>。
+  發展並不是舒服地一路向上，
+  而可能經歷巨大的危機與破壞。
+</p>
+
+<div class="formula">
+  發展 ≠ 直線上升<br>
+  <span>發展 = 矛盾 → 危機 → 否定 → 新形態</span>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">20</div>
+    <h2>黑格爾與「歷史的終點」</h2>
+  </div>
+
+  <div class="big-question">
+    <div class="q">THE END OF HISTORY?</div>
+    <h3>如果自由已經實現，歷史還會繼續嗎？</h3>
+    <p>
+      黑格爾的歷史哲學後來經常被解讀成：
+      歷史具有一個「終點」。
+      但更準確地說，他關心的是
+      <strong>自由理念是否達到自我理解與制度化的高度。</strong>
+    </p>
+  </div>
+
+  <div class="note">
+    後來的思想家，包括科耶夫與福山，
+    都以不同方式重新解讀「歷史終結」問題。
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">21</div>
+    <h2>為什麼黑格爾這麼重要？</h2>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <strong>辯證法</strong>
+      <span>影響馬克思主義</span>
+    </div>
+
+ 
+<div class="stat">
+  <strong>歷史</strong>
+  <span>重新思考人類發展</span>
+</div>
+
+<div class="stat">
+  <strong>承認</strong>
+  <span>影響社會哲學</span>
+</div>
+
+<div class="stat">
+  <strong>自由</strong>
+  <span>連結個人與制度</span>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">22</div>
+    <h2>黑格爾的大哉問</h2>
+  </div>
+
+  <div class="qa">
+
+ 
+<div class="question">Q1｜矛盾一定是壞事嗎？</div>
+<div class="answer">
+  不一定。對黑格爾而言，矛盾可能正是發展的動力。
+</div>
+
+<div class="question">Q2｜自由是不是「想做什麼就做什麼」？</div>
+<div class="answer">
+  不是。真正的自由需要制度、責任與相互承認。
+</div>
+
+<div class="question">Q3｜為什麼主奴關係中主人也依賴奴隸？</div>
+<div class="answer">
+  因為主人需要奴隸的承認，而這種承認又來自不平等關係，因此存在內在矛盾。
+</div>
+
+<div class="question">Q4｜黑格爾認為歷史一定越來越好嗎？</div>
+<div class="answer">
+  他認為歷史具有發展方向，但發展不是簡單、平順、直線式的進步。
+</div>
+
+<div class="question">Q5｜馬克思為什麼要「倒轉黑格爾」？</div>
+<div class="answer">
+  馬克思保留辯證法的動態結構，但將歷史動力從理念與精神轉向物質生產與社會關係。
+</div>
+
+<div class="question">Q6｜為什麼後來的哲學家一直反對或重新解讀黑格爾？</div>
+<div class="answer">
+  因為黑格爾建立了一個極為龐大的哲學體系，
+  後來的哲學家往往必須選擇接受、修改或反對這套體系。
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">23</div>
+    <h2>黑格爾的核心關鍵字</h2>
+  </div>
+
+  <div class="grid">
+
+ 
+<div class="concept">
+  <div class="label">Dialectic</div>
+  <h3>辯證法</h3>
+  <p>透過矛盾與否定推動發展。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Aufheben</div>
+  <h3>揚棄</h3>
+  <p>否定、保存並提升。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Geist</div>
+  <h3>精神</h3>
+  <p>個人、社會與歷史中的精神發展。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Recognition</div>
+  <h3>承認</h3>
+  <p>自我意識需要透過他者形成。</p>
+</div>
+
+<div class="concept">
+  <div class="label">Freedom</div>
+  <h3>自由</h3>
+  <p>自由需要制度與倫理生活。</p>
+</div>
+
+<div class="concept">
+  <div class="label">History</div>
+  <h3>歷史</h3>
+  <p>精神與自由意識的發展過程。</p>
+</div>
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">24</div>
+    <h2>一張圖記住黑格爾</h2>
+  </div>
+
+  <div class="formula">
+
+ 
+<span>矛盾</span>
+↓
+<br>
+否定
+↓
+<br>
+<span>揚棄</span>
+↓
+<br>
+更高層次
+↓
+<br>
+自我理解
+↓
+<br>
+<span>自由</span>
+↓
+<br>
+歷史發展
+ 
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <div class="num">25</div>
+    <h2>最後總結：黑格爾到底在說什麼？</h2>
+  </div>
+
+  <div class="card">
+
+ 
+<p>
+  如果把黑格爾的哲學濃縮成一條線：
+</p>
+
+<div class="formula">
+  世界不是靜止的
+  <br>↓<br>
+  事物內部存在矛盾
+  <br>↓<br>
+  矛盾迫使事物發展
+  <br>↓<br>
+  發展不是單純摧毀，而是「揚棄」
+  <br>↓<br>
+  人的自我意識在「承認」中形成
+  <br>↓<br>
+  社會制度使自由逐漸具體化
+  <br>↓<br>
+  歷史成為精神理解自身的過程
+</div>
+
+<div class="quote">
+  <strong>最值得記住的一句話：</strong><br>
+  黑格爾不是單純在問「世界是什麼」，
+  而是在問——
+  <strong>「世界如何透過矛盾而成為它自己？」</strong>
+</div>
+ 
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>HEGEL｜黑格爾</strong><br>
+  辯證法 × 歷史 × 精神 × 承認 × 自由
+  <br><br>
+  教學版哲學資訊圖表
+</footer>
+
+</body>
+</html>

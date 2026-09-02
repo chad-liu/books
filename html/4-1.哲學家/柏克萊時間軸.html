@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柏克萊｜存在就是被感知</title>
+<style>
+:root{
+  --bg:#f3f6f8;
+  --paper:#ffffff;
+  --ink:#202a30;
+  --muted:#65727a;
+  --accent:#24566b;
+  --accent2:#4e8aa0;
+  --soft:#e3eef2;
+  --line:#d5e0e5;
+  --dark:#18252c;
+  --gold:#b38a45;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei",
+  "PingFang TC",Arial,sans-serif;
+  line-height:1.8;
+}
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+.hero{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(255,255,255,.12),transparent 25%),
+    linear-gradient(135deg,#18252c,#24566b 65%,#4e8aa0);
+  color:#fff;
+  padding:72px 0 65px;
+  position:relative;
+  overflow:hidden;
+}
+.hero:after{
+  content:"∃";
+  position:absolute;
+  right:5%;
+  top:-55px;
+  font-family:Georgia,serif;
+  font-size:290px;
+  color:rgba(255,255,255,.055);
+}
+.kicker{
+  display:inline-block;
+  padding:6px 15px;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:30px;
+  letter-spacing:2px;
+  font-size:.9rem;
+}
+h1{
+  font-size:clamp(2.7rem,6vw,5rem);
+  line-height:1.05;
+  margin:20px 0;
+  letter-spacing:-2px;
+}
+.hero h2{
+  max-width:850px;
+  color:#e3edf0;
+  font-weight:400;
+  font-size:clamp(1.15rem,2.3vw,1.6rem);
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+.hero-meta span{
+  padding:7px 14px;
+  background:rgba(255,255,255,.11);
+  border-radius:8px;
+  font-size:.9rem;
+}
+section{padding:55px 0}
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+.num{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--accent);
+  color:white;
+  font-weight:bold;
+}
+h2{
+  margin:0;
+  font-size:clamp(1.6rem,3vw,2.3rem);
+}
+h3{
+  margin-top:0;
+  color:var(--accent);
+}
+.lead{
+  font-size:1.18rem;
+  color:#435159;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 5px 18px rgba(30,60,70,.06);
+}
+.card strong{color:var(--accent)}
+.quote{
+  background:var(--dark);
+  color:#f4f8fa;
+  border-radius:18px;
+  padding:30px;
+  margin:25px 0;
+  font-family:Georgia,"Noto Serif TC",serif;
+  font-size:1.4rem;
+}
+.quote small{
+  display:block;
+  margin-top:15px;
+  color:#b9c9ce;
+  font-family:inherit;
+  font-size:.9rem;
+}
+.highlight{
+  background:var(--soft);
+  border-left:5px solid var(--accent2);
+  padding:20px 24px;
+  border-radius:0 12px 12px 0;
+}
+.timeline{
+  position:relative;
+  margin:30px 0;
+}
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--line);
+}
+.event{
+  position:relative;
+  padding-left:60px;
+  margin-bottom:28px;
+}
+.event:before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:8px;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  background:var(--accent);
+  border:5px solid var(--bg);
+}
+.year{
+  color:var(--accent);
+  font-weight:bold;
+}
+.flow{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:25px 0;
+}
+.box{
+  background:var(--paper);
+  border:2px solid var(--accent2);
+  border-radius:12px;
+  padding:14px 18px;
+  text-align:center;
+  font-weight:bold;
+}
+.arrow{
+  color:var(--accent);
+  font-size:1.5rem;
+}
+.table-wrap{overflow-x:auto}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--paper);
+  border-radius:14px;
+  overflow:hidden;
+}
+th,td{
+  padding:14px 16px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  background:#dceaf0;
+  color:var(--accent);
+}
+.formula{
+  background:#17242a;
+  color:#fff;
+  border-radius:16px;
+  padding:25px;
+  text-align:center;
+  font-family:Georgia,serif;
+  font-size:1.65rem;
+  margin:25px 0;
+}
+.formula span{
+  display:block;
+  color:#9fc3cf;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  font-size:.9rem;
+  margin-top:10px;
+}
+.big-question{
+  background:linear-gradient(135deg,#fff,#e5f0f4);
+  border:1px solid #cbdde4;
+  border-radius:20px;
+  padding:30px;
+  margin:18px 0;
+}
+.big-question .q{
+  font-size:1.3rem;
+  font-weight:bold;
+  color:var(--accent);
+}
+.mind{
+  display:grid;
+  grid-template-columns:1fr 1.25fr 1fr;
+  gap:15px;
+  align-items:center;
+}
+.mind .center{
+  background:var(--dark);
+  color:white;
+  padding:38px 20px;
+  border-radius:50%;
+  text-align:center;
+  font-size:1.35rem;
+  font-weight:bold;
+}
+.mind .side{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px;
+}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.badge{
+  background:#e1edf1;
+  color:#315867;
+  padding:8px 15px;
+  border-radius:30px;
+}
+footer{
+  background:var(--dark);
+  color:#c6d2d6;
+  padding:40px 0;
+  text-align:center;
+}
+.note{
+  color:var(--muted);
+  font-size:.9rem;
+}
+@media(max-width:850px){
+  .grid,.grid2,.mind{
+    grid-template-columns:1fr;
+  }
+  .mind .center{
+    border-radius:18px;
+  }
+  .arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+<div class="container">
+  <span class="kicker">1685–1753｜英國哲學家｜經驗論｜主觀唯心論</span>
+
+  <h1>柏克萊</h1>
+
+  <h2>
+    如果一棵樹倒在沒有人看見的森林裡，
+    它還「存在」嗎？
+    ——柏克萊把經驗論推向了一個令人震驚的方向。
+  </h2>
+
+  <div class="hero-meta">
+    <span>George Berkeley</span>
+    <span>1685–1753</span>
+    <span>經驗論</span>
+    <span>唯心論</span>
+    <span>感知</span>
+    <span>物質實體</span>
+    <span>上帝</span>
+  </div>
+</div>
+</header>
+
+<main>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">01</div>
+<h2>一句話理解柏克萊</h2>
+</div>
+
+<p class="lead">
+柏克萊認為，我們真正直接接觸到的不是「物質本身」，
+而是<strong>被感知到的觀念</strong>。
+</p>
+
+<div class="formula">
+Esse est percipi
+<span>存在就是被感知（to be is to be perceived）</span>
+</div>
+
+<div class="highlight">
+<strong>注意：</strong>
+這句話不是簡單地說「人看見的東西才存在」。
+柏克萊認為，即使沒有任何人正在感知某個事物，
+<strong>上帝仍然持續感知它</strong>，
+因此世界不會因為人類離開就消失。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">02</div>
+<h2>柏克萊是誰？</h2>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>出生</h3>
+<p><strong>1685年</strong>出生於愛爾蘭基爾肯尼附近。</p>
+</div>
+
+<div class="card">
+<h3>身份</h3>
+<p>哲學家、聖公會主教，也是18世紀英國經驗論的重要人物。</p>
+</div>
+
+<div class="card">
+<h3>哲學位置</h3>
+<p>通常與<strong>洛克、休謨</strong>並列為英國經驗論的重要代表。</p>
+</div>
+</div>
+
+<p>
+柏克萊最大的特色，是接受經驗論的基本出發點，
+卻進一步追問：
+<strong>如果我們的一切知識都來自經驗，那麼我們所謂的「物質」到底是什麼？</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">03</div>
+<h2>時代背景：經驗論正在崛起</h2>
+</div>
+
+<div class="timeline">
+
+<div class="event">
+<div class="year">1632</div>
+<h3>洛克出生</h3>
+<p>後來成為英國經驗論的重要奠基者。</p>
+</div>
+
+<div class="event">
+<div class="year">1685</div>
+<h3>柏克萊出生</h3>
+<p>出生於愛爾蘭。</p>
+</div>
+
+<div class="event">
+<div class="year">1687</div>
+<h3>牛頓《自然哲學的數學原理》</h3>
+<p>近代科學與機械自然觀迅速發展。</p>
+</div>
+
+<div class="event">
+<div class="year">1709</div>
+<h3>《視覺新論》</h3>
+<p>柏克萊分析視覺與空間知覺。</p>
+</div>
+
+<div class="event">
+<div class="year">1710</div>
+<h3>《人類知識原理》</h3>
+<p>柏克萊系統提出對「物質實體」的批判。</p>
+</div>
+
+<div class="event">
+<div class="year">1734</div>
+<h3>《三篇對話》</h3>
+<p>以對話形式進一步為唯心論辯護。</p>
+</div>
+
+<div class="event">
+<div class="year">1753</div>
+<h3>逝世</h3>
+<p>柏克萊逝世，享年68歲。</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">04</div>
+<h2>先理解「經驗論」</h2>
+</div>
+
+<p class="lead">
+經驗論的核心問題是：
+<strong>我們的知識究竟從哪裡來？</strong>
+</p>
+
+<div class="flow">
+<div class="box">感官經驗</div>
+<div class="arrow">→</div>
+<div class="box">觀念</div>
+<div class="arrow">→</div>
+<div class="box">知識</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>洛克</h3>
+<p>心靈起初沒有現成的觀念，經驗提供知識材料。</p>
+</div>
+
+<div class="card">
+<h3>柏克萊</h3>
+<p>如果我們只能接觸觀念，那麼「物質本身」究竟從何而來？</p>
+</div>
+
+<div class="card">
+<h3>休謨</h3>
+<p>進一步懷疑因果、自我與形上學的確定性。</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">05</div>
+<h2>柏克萊的關鍵問題：我們看見「物質」了嗎？</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+當你看見一張桌子時，你真正「看見」的是什麼？
+</div>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>我們直接經驗到的</h3>
+<p>
+顏色、形狀、硬度、聲音、氣味、冷熱等感覺。
+</p>
+</div>
+
+<div class="card">
+<h3>問題來了</h3>
+<p>
+我們是否真的直接感受到一個獨立存在、
+躲在所有感覺背後的「物質實體」？
+</p>
+</div>
+</div>
+
+<div class="highlight">
+柏克萊的答案是：
+<strong>我們沒有直接經驗到一個「物質實體」本身。</strong>
+我們經驗到的是一組組可被感知的觀念。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">06</div>
+<h2>「物質實體」到底是什麼？</h2>
+</div>
+
+<p>
+洛克承認我們可以談論「物質實體」，
+即使我們無法直接感知它。
+柏克萊則問：
+</p>
+
+<div class="big-question">
+<div class="q">
+如果你永遠沒有經驗過它，
+你憑什麼說它存在？
+</div>
+</div>
+
+<div class="flow">
+<div class="box">顏色</div>
+<div class="box">形狀</div>
+<div class="box">聲音</div>
+<div class="box">氣味</div>
+<div class="box">觸感</div>
+</div>
+
+<p>
+這些都是我們實際經驗到的內容。
+但把它們背後再加上一個「看不見、摸不到、感知不到的物質基底」，
+柏克萊認為是<strong>沒有必要的假設</strong>。
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">07</div>
+<h2>柏克萊的核心：兩種存在</h2>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>① 觀念 Ideas</h3>
+<p>
+我們感知到的顏色、聲音、形狀、觸感等。
+</p>
+<p><strong>特徵：</strong>被動地被我們感知。</p>
+</div>
+
+<div class="card">
+<h3>② 心靈 Spirits</h3>
+<p>
+能夠感知、思考、意志與行動的主體。
+</p>
+<p><strong>特徵：</strong>主動地感知觀念。</p>
+</div>
+</div>
+
+<div class="formula">
+存在的基本架構
+<span>觀念被感知 ＋ 心靈進行感知</span>
+</div>
+
+<p>
+因此，柏克萊並不是說「什麼都不存在」。
+恰恰相反，他認為：
+<strong>觀念存在，心靈存在，而上帝也存在。</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">08</div>
+<h2>最震撼的命題：存在就是被感知</h2>
+</div>
+
+<div class="formula">
+Esse est percipi
+<span>存在，就是被感知。</span>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>一棵樹</h3>
+<p>我們看到它的顏色、形狀、大小。</p>
+</div>
+
+<div class="card">
+<h3>一顆蘋果</h3>
+<p>我們看到顏色、感覺重量、聞到氣味、嚐到味道。</p>
+</div>
+
+<div class="card">
+<h3>一張桌子</h3>
+<p>我們感覺它堅硬、看到它具有某種形狀與顏色。</p>
+</div>
+</div>
+
+<p>
+柏克萊認為，我們真正能談論的，
+是這些<strong>可被感知的內容</strong>，
+而不是一個超出一切經驗之外的「物質本體」。
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">09</div>
+<h2>那麼，沒有人看的時候，樹會消失嗎？</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+問題：如果我離開房間，房間裡的桌子還存在嗎？
+</div>
+</div>
+
+<div class="flow">
+<div class="box">人離開</div>
+<div class="arrow">→</div>
+<div class="box">沒有人正在感知</div>
+<div class="arrow">→</div>
+<div class="box">那桌子是否消失？</div>
+</div>
+
+<p>
+這正是柏克萊哲學最容易被誤解的地方。
+</p>
+
+<div class="highlight">
+<strong>柏克萊並不認為世界會因為人不看就消失。</strong><br><br>
+因為在他的哲學中，
+<strong>上帝是一個永遠存在、永遠感知一切的心靈。</strong>
+因此，事物即使沒有被人類感知，也仍然被上帝感知。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">10</div>
+<h2>上帝為什麼是柏克萊哲學的關鍵？</h2>
+</div>
+
+<div class="flow">
+<div class="box">人類感知有限</div>
+<div class="arrow">→</div>
+<div class="box">世界不能依賴人的感知</div>
+<div class="arrow">→</div>
+<div class="box">需要持續的感知者</div>
+<div class="arrow">→</div>
+<div class="box">上帝</div>
+</div>
+
+<div class="card">
+<h3>上帝在柏克萊哲學中的角色</h3>
+<p>
+上帝不是最後才加進來的宗教裝飾，
+而是柏克萊用來解決「世界是否持續存在」問題的核心概念。
+</p>
+</div>
+
+<div class="highlight">
+<strong>人的感知：</strong>有限、間斷。<br>
+<strong>上帝的感知：</strong>持續、普遍。<br><br>
+因此，世界具有穩定性與秩序。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">11</div>
+<h2>柏克萊不是「什麼都不存在」</h2>
+</div>
+
+<div class="grid2">
+<div class="card">
+<h3>❌ 常見誤解</h3>
+<p>
+「柏克萊說世界都是假的。」
+</p>
+</div>
+
+<div class="card">
+<h3>✓ 正確理解</h3>
+<p>
+柏克萊否定的是<strong>獨立於感知之外的物質實體</strong>，
+不是否定我們經驗到的世界。
+</p>
+</div>
+</div>
+
+<div class="quote">
+不是「沒有世界」，
+而是「世界不是由不可感知的物質實體構成」。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">12</div>
+<h2>柏克萊如何解釋「物體」？</h2>
+</div>
+
+<p>
+例如「蘋果」這個東西：
+</p>
+
+<div class="flow">
+<div class="box">紅色</div>
+<div class="box">圓形</div>
+<div class="box">甜味</div>
+<div class="box">香味</div>
+<div class="box">重量</div>
+<div class="box">觸感</div>
+</div>
+
+<p>
+我們把這些感覺組合起來，
+稱為「蘋果」。
+</p>
+
+<div class="highlight">
+所以，「蘋果」不是一個躲在所有感覺背後的神秘物質，
+而是一組<strong>穩定、可被感知的觀念集合</strong>。
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">13</div>
+<h2>柏克萊與洛克</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th></th>
+<th>洛克</th>
+<th>柏克萊</th>
+</tr>
+<tr>
+<td>知識來源</td>
+<td>經驗</td>
+<td>經驗</td>
+</tr>
+<tr>
+<td>觀念</td>
+<td>是心靈直接處理的內容</td>
+<td>是我們真正直接感知的內容</td>
+</tr>
+<tr>
+<td>物質實體</td>
+<td>承認其存在</td>
+<td>否定其作為不可感知基礎的必要性</td>
+</tr>
+<tr>
+<td>哲學方向</td>
+<td>經驗論</td>
+<td>經驗論＋唯心論</td>
+</tr>
+</table>
+</div>
+
+<div class="highlight">
+<strong>關鍵轉折：</strong>
+柏克萊接受洛克的「知識來自經驗」，
+卻追問：
+「如果只有經驗中的觀念能被認識，
+那麼不可感知的物質實體到底是什麼？」
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">14</div>
+<h2>柏克萊與休謨</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>柏克萊</th>
+<th>休謨</th>
+</tr>
+<tr>
+<td>否定不可感知的物質實體</td>
+<td>進一步懷疑許多形上學概念</td>
+</tr>
+<tr>
+<td>保留心靈</td>
+<td>甚至重新檢視「自我」概念</td>
+</tr>
+<tr>
+<td>保留上帝</td>
+<td>對宗教形上學更加懷疑</td>
+</tr>
+<tr>
+<td>經驗論走向唯心論</td>
+<td>經驗論走向懷疑論</td>
+</tr>
+</table>
+</div>
+
+<div class="flow">
+<div class="box">洛克</div>
+<div class="arrow">→</div>
+<div class="box">柏克萊</div>
+<div class="arrow">→</div>
+<div class="box">休謨</div>
+</div>
+
+<p>
+這三人可以看成英國經驗論逐步深化的過程：
+<strong>經驗 → 觀念 → 物質問題 → 自我問題 → 懷疑論。</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">15</div>
+<h2>柏克萊與笛卡兒：兩種「唯心」</h2>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>笛卡兒</th>
+<th>柏克萊</th>
+</tr>
+<tr>
+<td>從「我思」出發</td>
+<td>從「被感知的觀念」出發</td>
+</tr>
+<tr>
+<td>心靈與物質都是重要實體</td>
+<td>否定物質實體的必要性</td>
+</tr>
+<tr>
+<td>理性主義</td>
+<td>經驗論</td>
+</tr>
+<tr>
+<td>追求確定知識</td>
+<td>批判不可經驗的形上學假設</td>
+</tr>
+</table>
+</div>
+
+<div class="highlight">
+兩人都把注意力放到「心靈」，
+但走的是完全不同的道路：
+<strong>笛卡兒從理性出發，柏克萊從經驗出發。</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">16</div>
+<h2>「第一性質」與「第二性質」</h2>
+</div>
+
+<p>
+洛克區分物體的第一性質與第二性質，
+例如：
+</p>
+
+<div class="grid2">
+<div class="card">
+<h3>第一性質</h3>
+<p>
+形狀、大小、運動、數量等，
+被認為較接近物體本身。
+</p>
+</div>
+
+<div class="card">
+<h3>第二性質</h3>
+<p>
+顏色、味道、氣味、聲音等，
+被認為與感知者的感官有關。
+</p>
+</div>
+</div>
+
+<div class="big-question">
+<div class="q">
+柏克萊的追問：第一性質真的可以獨立於感知存在嗎？
+</div>
+<p>
+形狀與大小不也是透過視覺、觸覺等經驗被我們認識嗎？
+</p>
+</div>
+
+<p>
+因此柏克萊進一步主張：
+<strong>第一性質與第二性質都屬於被感知的觀念。</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">17</div>
+<h2>柏克萊的「觀念」與「心靈」</h2>
+</div>
+
+<div class="mind">
+<div class="side">
+<h3>觀念</h3>
+<p>被感知。</p>
+</div>
+
+<div class="center">
+柏克萊<br>
+世界
+</div>
+
+<div class="side">
+<h3>心靈</h3>
+<p>感知觀念。</p>
+</div>
+
+<div class="side">
+<h3>人</h3>
+<p>有限的感知者。</p>
+</div>
+
+<div class="side">
+<h3>上帝</h3>
+<p>無限且持續的感知者。</p>
+</div>
+</div>
+
+<div class="formula">
+世界 = 被感知的觀念 + 感知的心靈
+<span>而世界的持續秩序由上帝保證</span>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">18</div>
+<h2>柏克萊的思想鏈</h2>
+</div>
+
+<div class="flow">
+<div class="box">知識來自經驗</div>
+<div class="arrow">→</div>
+<div class="box">經驗到的是觀念</div>
+<div class="arrow">→</div>
+<div class="box">物質本身不可被感知</div>
+<div class="arrow">→</div>
+<div class="box">物質實體沒有必要</div>
+<div class="arrow">→</div>
+<div class="box">存在＝被感知</div>
+<div class="arrow">→</div>
+<div class="box">上帝持續感知世界</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">19</div>
+<h2>柏克萊的哲學地圖</h2>
+</div>
+
+<div class="mind">
+<div class="side">
+<h3>經驗論</h3>
+<p>知識從經驗開始。</p>
+</div>
+
+<div class="center">
+柏克萊
+<br>
+「存在就是被感知」
+</div>
+
+<div class="side">
+<h3>唯心論</h3>
+<p>否定獨立物質實體。</p>
+</div>
+
+<div class="side">
+<h3>觀念</h3>
+<p>我們真正感知到的內容。</p>
+</div>
+
+<div class="side">
+<h3>上帝</h3>
+<p>保證世界持續存在。</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">20</div>
+<h2>最經典的思想實驗：無人森林</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+如果森林裡一棵樹倒下，而世界上沒有任何人聽見，會產生聲音嗎？
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>一般直覺</h3>
+<p>當然會，因為聲音是物理現象。</p>
+</div>
+
+<div class="card">
+<h3>柏克萊式追問</h3>
+<p>「聲音」作為我們經驗到的內容，是否必須有感知者？</p>
+</div>
+
+<div class="card">
+<h3>柏克萊的回答</h3>
+<p>人不感知時，上帝仍然持續感知整個自然世界。</p>
+</div>
+</div>
+
+<div class="highlight">
+這個問題真正有趣的地方，
+不是要我們猜答案，
+而是迫使我們思考：
+<strong>「物理世界」與「被感知的世界」究竟是什麼關係？</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">21</div>
+<h2>柏克萊與現代電影</h2>
+</div>
+
+<p>
+柏克萊的思想，可以幫助學生理解許多現代作品提出的問題：
+</p>
+
+<div class="grid">
+<div class="card">
+<h3>《駭客任務》</h3>
+<p>
+如果我們經驗到的一切都可能只是被呈現的內容，
+那麼「真實世界」究竟在哪裡？
+</p>
+</div>
+
+<div class="card">
+<h3>虛擬實境</h3>
+<p>
+如果感官經驗完全被人工製造，
+我們如何判斷自己身處的世界？
+</p>
+</div>
+
+<div class="card">
+<h3>人工智慧</h3>
+<p>
+一個系統能處理大量資訊，
+是否就代表它真的「感知」了世界？
+</p>
+</div>
+</div>
+
+<div class="highlight">
+柏克萊並不是在討論電腦或虛擬實境，
+但他的哲學可以讓我們重新思考：
+<strong>「真實」究竟與感知有什麼關係？</strong>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">22</div>
+<h2>柏克萊的三個大哉問</h2>
+</div>
+
+<div class="big-question">
+<div class="q">① 我們真的感知到「物質」嗎？</div>
+<p>
+還是我們只感知到顏色、形狀、聲音、觸感等觀念？
+</p>
+</div>
+
+<div class="big-question">
+<div class="q">② 沒有人感知時，世界還存在嗎？</div>
+<p>
+如果存在不等於被人看見，
+那麼事物的持續存在如何得到保證？
+</p>
+</div>
+
+<div class="big-question">
+<div class="q">③ 我們所謂的「真實世界」是什麼？</div>
+<p>
+世界究竟是獨立存在的物質，
+還是由可被感知的經驗構成？
+</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">23</div>
+<h2>常見誤解</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>❌ 誤解一：柏克萊認為「看不見就不存在」</h3>
+<p>
+<strong>✓ 正確：</strong>
+不是「被人看見才存在」，而是存在與被感知相關；
+上帝持續感知世界。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解二：柏克萊認為世界是假的</h3>
+<p>
+<strong>✓ 正確：</strong>
+他認為我們經驗到的世界是真實的，
+只是其存在方式不是「不可感知的物質實體」。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解三：柏克萊否定所有外在世界</h3>
+<p>
+<strong>✓ 正確：</strong>
+他否定的是獨立物質實體，
+並不否定感知經驗具有客觀秩序。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解四：柏克萊就是主觀幻想論</h3>
+<p>
+<strong>✓ 正確：</strong>
+他的哲學不是「世界只是我的幻想」，
+因為世界的穩定性由上帝的持續感知支撐。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解五：柏克萊和休謨完全一樣</h3>
+<p>
+<strong>✓ 正確：</strong>
+柏克萊保留心靈與上帝，
+休謨則對這些形上學概念採取更徹底的懷疑。
+</p>
+</div>
+
+<div class="card">
+<h3>❌ 誤解六：「存在就是被感知」等於唯我論</h3>
+<p>
+<strong>✓ 正確：</strong>
+柏克萊並不主張只有「我」存在。
+他主張存在心靈，而且上帝是最根本的無限心靈。
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">24</div>
+<h2>從洛克到柏克萊，再到休謨</h2>
+</div>
+
+<div class="flow">
+<div class="box">
+洛克
+<br>
+經驗論
+</div>
+<div class="arrow">→</div>
+<div class="box">
+柏克萊
+<br>
+唯心論
+</div>
+<div class="arrow">→</div>
+<div class="box">
+休謨
+<br>
+懷疑論
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>洛克問</h3>
+<p>人的知識從哪裡來？</p>
+</div>
+
+<div class="card">
+<h3>柏克萊問</h3>
+<p>我們真的知道「物質」存在嗎？</p>
+</div>
+
+<div class="card">
+<h3>休謨問</h3>
+<p>我們真的能證明因果、自我與必然性嗎？</p>
+</div>
+</div>
+
+<div class="highlight">
+<strong>經驗論越走越深：</strong>
+<br>
+「知識來自經驗」
+→「我們只經驗到觀念」
+→「物質實體如何被證明？」
+→「形上學還剩下多少確定性？」
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">25</div>
+<h2>柏克萊對後來哲學的影響</h2>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>經驗論</h3>
+<p>深化了英國經驗論對知識來源與感知的分析。</p>
+</div>
+
+<div class="card">
+<h3>唯心論</h3>
+<p>成為西方唯心論傳統的重要先聲。</p>
+</div>
+
+<div class="card">
+<h3>知覺哲學</h3>
+<p>迫使哲學家重新思考感知與外在世界的關係。</p>
+</div>
+
+<div class="card">
+<h3>休謨</h3>
+<p>他的問題意識對休謨的懷疑論發展具有重要背景意義。</p>
+</div>
+
+<div class="card">
+<h3>康德</h3>
+<p>後來康德也必須回應「我們如何理解外在世界」的問題。</p>
+</div>
+
+<div class="card">
+<h3>現代心靈哲學</h3>
+<p>「感知內容」與「外在世界」的關係至今仍是哲學的重要問題。</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">26</div>
+<h2>柏克萊的思想鏈：一張圖記住</h2>
+</div>
+
+<div class="card">
+<div class="flow">
+<div class="box">經驗論</div>
+<div class="arrow">→</div>
+<div class="box">知識來自經驗</div>
+<div class="arrow">→</div>
+<div class="box">經驗到的是觀念</div>
+<div class="arrow">→</div>
+<div class="box">物質無法被直接感知</div>
+<div class="arrow">→</div>
+<div class="box">否定物質實體</div>
+<div class="arrow">→</div>
+<div class="box">存在＝被感知</div>
+<div class="arrow">→</div>
+<div class="box">上帝持續感知</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">27</div>
+<h2>如果只記住柏克萊的六個概念</h2>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>① 經驗論</h3>
+<p>知識必須從經驗出發。</p>
+</div>
+
+<div class="card">
+<h3>② 觀念</h3>
+<p>我們直接經驗到的是感知中的觀念。</p>
+</div>
+
+<div class="card">
+<h3>③ 物質實體</h3>
+<p>柏克萊認為不可感知的物質實體沒有必要。</p>
+</div>
+
+<div class="card">
+<h3>④ 心靈</h3>
+<p>心靈是能夠感知與思考的主體。</p>
+</div>
+
+<div class="card">
+<h3>⑤ 存在＝被感知</h3>
+<p>Esse est percipi。</p>
+</div>
+
+<div class="card">
+<h3>⑥ 上帝</h3>
+<p>上帝持續感知世界，使世界保持存在與秩序。</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">28</div>
+<h2>最後的大哉問：我們看到的世界，真的是世界本身嗎？</h2>
+</div>
+
+<div class="big-question">
+<div class="q">
+當你看見一棵樹，你看到的是「樹本身」，
+還是你的視覺、觸覺、嗅覺所構成的經驗？
+</div>
+</div>
+
+<p>
+這個問題從柏克萊開始，
+可以一路連接到後來的認識論、心靈哲學、
+現象學甚至現代虛擬實境問題。
+</p>
+
+<div class="formula">
+世界？
+<span>外在物質實體　vs　感知經驗　vs　心靈</span>
+</div>
+
+<p class="lead">
+柏克萊最令人震撼的地方，
+不是他告訴我們一個簡單答案，
+而是他逼我們重新問：
+<strong>「我們所謂的真實，到底是怎麼被我們知道的？」</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">29</div>
+<h2>哲學史定位</h2>
+</div>
+
+<div class="badges">
+<span class="badge">英國經驗論</span>
+<span class="badge">唯心論</span>
+<span class="badge">知覺哲學</span>
+<span class="badge">形上學</span>
+<span class="badge">知識論</span>
+<span class="badge">宗教哲學</span>
+</div>
+
+<div class="flow">
+<div class="box">培根</div>
+<div class="arrow">→</div>
+<div class="box">洛克</div>
+<div class="arrow">→</div>
+<div class="box">柏克萊</div>
+<div class="arrow">→</div>
+<div class="box">休謨</div>
+<div class="arrow">→</div>
+<div class="box">康德</div>
+</div>
+
+<p>
+若把近代哲學看成一場「我們究竟如何知道世界」的長期辯論，
+柏克萊位於一個非常關鍵的位置：
+<strong>他把經驗論的問題直接推向了「世界究竟是什麼」的形上學問題。</strong>
+</p>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<div class="num">30</div>
+<h2>最後總結</h2>
+</div>
+
+<div class="quote">
+「存在就是被感知。」
+<small>Esse est percipi</small>
+</div>
+
+<div class="flow">
+<div class="box">經驗</div>
+<div class="arrow">→</div>
+<div class="box">觀念</div>
+<div class="arrow">→</div>
+<div class="box">感知</div>
+<div class="arrow">→</div>
+<div class="box">存在</div>
+<div class="arrow">→</div>
+<div class="box">上帝</div>
+</div>
+
+<div class="highlight">
+<strong>柏克萊最核心的問題：</strong><br><br>
+我們以為自己生活在一個「物質世界」裡，
+但當我們真正分析自己的經驗時，
+我們究竟直接接觸到了什麼？
+<br><br>
+柏克萊的答案是：
+<strong>我們直接接觸的是被感知的觀念，而不是不可感知的物質實體。</strong>
+</div>
+
+<p class="lead">
+所以，柏克萊不是簡單地說「世界不存在」，
+而是把問題改寫成：
+<strong>「世界以什麼方式存在？」</strong>
+</p>
+
+<p class="note">
+教學提示：柏克萊最適合與「洛克 → 柏克萊 → 休謨 → 康德」連成一條近代知識論發展線；學生若能掌握「經驗 → 觀念 → 物質實體問題 → 懷疑論 → 康德的回應」，就能理解近代哲學的一條重要主軸。
+</p>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+<strong>柏克萊｜George Berkeley</strong>
+<p>1685–1753　｜　經驗論・唯心論・感知・物質・上帝</p>
+</div>
+</footer>
+
+</body>
+</html>
