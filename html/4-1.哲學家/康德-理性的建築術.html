@@ -1,0 +1,416 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+@charset "utf-8";
+
+:root { color-scheme: light; }
+
+body { margin: 0px; padding: 0px; font: 14px -apple-system, BlinkMacSystemFont, sans-serif; background: rgb(250, 249, 245); color: rgb(20, 20, 19); }
+
+img { max-width: 100%; }
+
+[hidden]:not([hidden="until-found"]) { display: none !important; }
+</style><style>
+@charset "utf-8";
+
+:root { --bg: #eef0f4; --bg-deep: #dde1ea; --surface: #ffffff; --surface-2: #f5f6f9; --text: #1b2233; --text-secondary: #565f74; --text-faint: #8890a3; --border: #d8dce6; --border-strong: #c1c7d6; --accent: #9c6b12; --accent-soft: #f3e6cd; --accent-ink: #22405e; --quote-bg: #f6f2e8; --shadow: 0 1px 3px rgba(27,34,51,0.06), 0 8px 24px rgba(27,34,51,0.05); --font-serif: "Noto Serif TC", "Source Han Serif TC", serif; --font-sans: "Noto Sans TC", "Source Han Sans TC", sans-serif; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0c1119; --bg-deep: #070a10; --surface: #131a26; --surface-2: #0f1520; --text: #e7e9f1; --text-secondary: #a3acc2; --text-faint: #6b7590; --border: #232c3d; --border-strong: #2f3a4e; --accent: #d9ad5c; --accent-soft: #2a2416; --accent-ink: #8fb0d6; --quote-bg: #171d29; --shadow: 0 1px 3px rgba(0,0,0,0.35), 0 12px 32px rgba(0,0,0,0.35); }
+}
+
+:root[data-theme="dark"] { --bg: #0c1119; --bg-deep: #070a10; --surface: #131a26; --surface-2: #0f1520; --text: #e7e9f1; --text-secondary: #a3acc2; --text-faint: #6b7590; --border: #232c3d; --border-strong: #2f3a4e; --accent: #d9ad5c; --accent-soft: #2a2416; --accent-ink: #8fb0d6; --quote-bg: #171d29; --shadow: 0 1px 3px rgba(0,0,0,0.35), 0 12px 32px rgba(0,0,0,0.35); }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--text); font-family: var(--font-serif); line-height: 1.9; -webkit-font-smoothing: antialiased; }
+
+::selection { background: var(--accent-soft); color: var(--text); }
+
+#progress { position: fixed; top: 0px; left: 0px; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent-ink), var(--accent)); z-index: 200; transition: width 0.08s linear; }
+
+.hero { position: relative; background: radial-gradient(1px 1px at 8% 20%, rgba(255, 255, 255, 0.55) 0px, transparent 60%), radial-gradient(1px 1px at 22% 65%, rgba(255, 255, 255, 0.4) 0px, transparent 60%), radial-gradient(1.5px 1.5px at 40% 30%, rgba(255, 255, 255, 0.6) 0px, transparent 60%), radial-gradient(1px 1px at 60% 75%, rgba(255, 255, 255, 0.35) 0px, transparent 60%), radial-gradient(1.5px 1.5px at 78% 22%, rgba(255, 255, 255, 0.55) 0px, transparent 60%), radial-gradient(1px 1px at 88% 60%, rgba(255, 255, 255, 0.4) 0px, transparent 60%), radial-gradient(1px 1px at 33% 88%, rgba(255, 255, 255, 0.3) 0px, transparent 60%), radial-gradient(1.5px 1.5px at 68% 90%, rgba(255, 255, 255, 0.4) 0px, transparent 60%), linear-gradient(160deg, rgb(23, 39, 59) 0%, rgb(15, 28, 44) 55%, rgb(10, 20, 31) 100%); color: rgb(238, 241, 246); padding: 4.5rem 1.75rem 3rem; }
+
+.hero-inner { max-width: 820px; margin: 0px auto; }
+
+.eyebrow { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(201, 169, 97); margin: 0px 0px 1rem; }
+
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.1rem); font-weight: 700; margin: 0px 0px 1rem; line-height: 1.3; text-wrap: balance; letter-spacing: 0.02em; }
+
+.hero-lede { font-size: 1.05rem; color: rgb(195, 203, 220); max-width: 64ch; margin: 0px 0px 2.2rem; line-height: 1.9; }
+
+.hero-meta { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; font-family: var(--font-sans); font-size: 0.85rem; color: rgb(154, 167, 192); border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: 1.1rem; margin-bottom: 2rem; }
+
+.hero-meta b { color: rgb(223, 229, 242); font-weight: 600; }
+
+.epigraph { border-left: 2px solid rgb(201, 169, 97); padding-left: 1.3rem; font-size: 1.02rem; color: rgb(228, 232, 242); }
+
+.epigraph .de { font-style: italic; color: rgb(170, 182, 204); font-size: 0.92rem; display: block; margin-top: 0.6rem; }
+
+.epigraph cite { display: block; margin-top: 0.7rem; font-family: var(--font-sans); font-style: normal; font-size: 0.82rem; color: rgb(139, 150, 179); }
+
+.layout { max-width: 1180px; margin: 0px auto; display: grid; grid-template-columns: 250px minmax(0px, 1fr); gap: 0px 3rem; padding: 0px 1.75rem; }
+
+@media (max-width: 920px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+nav.toc { align-self: start; position: sticky; top: 0px; max-height: 100vh; overflow-y: auto; padding: 2.5rem 0px; font-family: var(--font-sans); }
+
+@media (max-width: 920px) {
+  nav.toc { position: relative; max-height: none; padding: 1.5rem 0px 0px; }
+}
+
+nav.toc .toc-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.9rem; }
+
+nav.toc ul { list-style: none; margin: 0px; padding: 0px; }
+
+nav.toc li { margin: 0px; }
+
+nav.toc a { display: block; color: var(--text-secondary); text-decoration: none; font-size: 0.86rem; padding: 0.4rem 0px 0.4rem 0.8rem; border-left: 2px solid transparent; transition: color 0.15s, border-color 0.15s; }
+
+nav.toc a.sub { font-size: 0.8rem; padding-left: 1.5rem; color: var(--text-faint); }
+
+nav.toc a:hover { color: var(--text); }
+
+nav.toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+
+nav.toc a.sub.active { color: var(--accent); border-left-color: var(--accent); font-weight: 500; }
+
+main { min-width: 0px; padding: 3rem 0px 6rem; }
+
+.prose { max-width: 700px; }
+
+section.part { margin-bottom: 3.6rem; scroll-margin-top: 1.5rem; }
+
+section.sub { scroll-margin-top: 1.5rem; }
+
+.part-label { font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0px 0px 0.5rem; }
+
+h2 { font-size: 1.7rem; font-weight: 700; margin: 0px 0px 1.1rem; line-height: 1.4; text-wrap: balance; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border); }
+
+h3 { font-size: 1.22rem; font-weight: 600; margin: 2.2rem 0px 0.9rem; color: var(--text); }
+
+p { margin: 0px 0px 1.15rem; color: var(--text); font-size: 1.02rem; }
+
+p.lede { color: var(--text-secondary); font-size: 1.05rem; }
+
+strong { font-weight: 600; color: var(--text); }
+
+em.term { font-style: normal; font-weight: 600; border-bottom: 1px dotted var(--border-strong); }
+
+blockquote { margin: 1.6rem 0px; padding: 1.1rem 1.5rem; background: var(--quote-bg); border-left: 3px solid var(--accent); border-radius: 2px; }
+
+blockquote p { margin: 0px 0px 0.3rem; font-size: 1rem; }
+
+blockquote .de { display: block; font-style: italic; color: var(--text-secondary); font-size: 0.92rem; margin-top: 0.5rem; }
+
+blockquote cite { display: block; margin-top: 0.6rem; font-family: var(--font-sans); font-style: normal; font-size: 0.8rem; color: var(--text-faint); }
+
+.aside { margin: 1.6rem 0px; padding: 1.1rem 1.4rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; }
+
+.aside .aside-label { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); margin: 0px 0px 0.5rem; }
+
+.aside p:last-child { margin-bottom: 0px; }
+
+.aside p { font-size: 0.94rem; color: var(--text-secondary); }
+
+.table-wrap { overflow-x: auto; margin: 1.8rem 0px; border: 1px solid var(--border); border-radius: 8px; }
+
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.92rem; background: var(--surface); }
+
+thead th { text-align: left; font-family: var(--font-sans); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-secondary); background: var(--surface-2); padding: 0.8rem 1rem; border-bottom: 1px solid var(--border-strong); }
+
+tbody td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--text); }
+
+tbody tr:last-child td { border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; }
+
+tbody td.k { color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+ol.formulae { margin: 0px 0px 1.2rem; padding-left: 1.3rem; }
+
+ol.formulae li { margin-bottom: 0.9rem; font-size: 1.02rem; }
+
+ol.formulae b { display: block; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.25rem; font-weight: 600; }
+
+.divider { display: flex; align-items: center; gap: 0.8rem; margin: 2.4rem 0px; color: var(--text-faint); font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.1em; }
+
+.divider::before, .divider::after { content: ""; flex: 1 1 0%; height: 1px; background: var(--border); }
+
+.biblio { list-style: none; margin: 0px; padding: 0px; font-size: 0.94rem; }
+
+.biblio li { padding: 0.6rem 0px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+
+.biblio li:last-child { border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; }
+
+.biblio b { color: var(--text); font-weight: 600; }
+
+footer { max-width: 700px; padding: 2.5rem 0px 4rem; color: var(--text-faint); font-family: var(--font-sans); font-size: 0.82rem; line-height: 1.7; border-top: 1px solid var(--border); margin-top: 1rem; }
+
+a.footnote-jump { color: var(--accent-ink); text-decoration: none; border-bottom: 1px dotted var(--accent-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style><!-- frame-runtime --><!-- /frame-runtime --><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>理性的建築術</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+
+
+<div id="progress" style="width: 0.999943%;"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">康德研究筆記・批判哲學導論</p>
+    <h1>理性的建築術</h1>
+    <p class="hero-lede">
+      一份系統性梳理康德批判哲學的個人研究資料：從《純粹理性批判》對知識界限的勘定，
+      經《實踐理性批判》對道德自律的奠基，到《判斷力批判》對美感與自然目的的反思判斷，
+      並嘗試呈現康德本人所謂「理性的建築術」——三大批判如何在他心目中構成一個彼此呼應、
+      沒有多餘部件的統一體系。
+    </p>
+    <div class="hero-meta">
+      <span><b>伊曼努爾・康德</b> Immanuel Kant</span>
+      <span>1724–1804</span>
+      <span>柯尼斯堡（Königsberg）</span>
+      <span>三大批判：1781 ／ 1788 ／ 1790</span>
+    </div>
+    <div class="epigraph">
+      <p>「有兩樣東西，我愈是經常而持續地反覆思索，它們就愈是使心中充滿常新而日增的讚嘆與敬畏：我頭上的星空，以及我心中的道德法則。」</p>
+      <span class="de">"Zwei Dinge erfüllen das Gemüt mit immer neuer und zunehmender Bewunderung und Ehrfurcht, je öfter und anhaltender sich das Nachdenken damit beschäftigt: der bestirnte Himmel über mir und das moralische Gesetz in mir."</span>
+      <cite>——《實踐理性批判》結論，學院版（Akademie-Ausgabe）Ak. 5:161</cite>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" aria-label="目錄">
+    <p class="toc-title">目錄</p>
+    <ul id="toc-list">
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#intro" data-target="intro" class="">導論：批判哲學的起點</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#part1" data-target="part1" class="">一、純粹理性批判：知識的界限</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s1-1" class="sub active" data-target="s1-1">先天綜合判斷</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s1-2" class="sub" data-target="s1-2">超驗感性論</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s1-3" class="sub" data-target="s1-3">超驗分析論</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s1-4" class="sub" data-target="s1-4">超驗辯證論</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s1-5" class="sub" data-target="s1-5">現象與物自身</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#part2" data-target="part2">二、實踐理性批判：道德的自律</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s2-1" class="sub" data-target="s2-1">善良意志與義務</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s2-2" class="sub" data-target="s2-2">定言令式</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s2-3" class="sub" data-target="s2-3">自律與自由</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s2-4" class="sub" data-target="s2-4">實踐理性的設準</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#part3" data-target="part3">三、判斷力批判：美感與目的</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s3-1" class="sub" data-target="s3-1">美感判斷的四個契機</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s3-2" class="sub" data-target="s3-2">崇高</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#s3-3" class="sub" data-target="s3-3">自然目的論</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#part4" data-target="part4">四、三大批判的體系統一</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#part5" data-target="part5">五、歷史地位與後世影響</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#conclusion" data-target="conclusion">結語</a></li>
+      <li><a href="https://ee92b9f1-4db8-4342-bceb-c3f672eaaff7.frame.claudeusercontent.com/_f/1788308180-45f5/?__frame_t=SIxaAxfXnuoTYtbnGDQNLdVe.18ec45b5-2735-4505-b30d-b1ac5eadfaad.74d85f19-cdbd-448a-918f-57dd330952dc.1788312000&amp;__frame_v=manifest.8e07c2317553a346.json#biblio" data-target="biblio">參考書目</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="prose">
+
+      <section class="part" id="intro">
+        <p class="part-label">導論</p>
+        <h2>批判哲學的起點</h2>
+
+        <p>伊曼努爾・康德（Immanuel Kant, 1724–1804）一生幾乎未曾離開東普魯士的柯尼斯堡（Königsberg）。他在當地大學任教，早年講授邏輯學、形上學、自然地理學等課程，直到 1770 年才升任邏輯與形上學正教授。此後十餘年間，康德幾乎沒有發表重要著作，學界稱之為他的「沉默的十年」（stille Dekade）——這段沉默，正是《純粹理性批判》（Kritik der reinen Vernunft, 1781，第二版 1787）醞釀成形的時期。此書出版後，康德在短短九年間又接連完成《道德形上學基礎》（1785）、《實踐理性批判》（1788）與《判斷力批判》（1790），構成後人所稱的「三大批判」，奠定了康德在西方哲學史上無可取代的地位。</p>
+
+        <p>要理解康德為何要寫這三部艱澀的巨著，必須回到十八世紀歐陸哲學的內部張力。當時的哲學版圖大致分裂為兩個陣營：一是以萊布尼茲（Leibniz）與沃爾夫（Wolff）為代表的理性主義，主張純粹理性本身即可推導出關於世界、靈魂與上帝的實質知識；二是以洛克（Locke）、柏克萊（Berkeley）、休謨（Hume）為代表的經驗主義，主張一切知識均源於感覺經驗。康德後來在《未來形上學導論》（Prolegomena, 1783）中坦承，是休謨對因果性概念的懷疑論分析，「把我從獨斷的迷夢中喚醒」（unterbrach... meinen dogmatischen Schlummer）。休謨指出，「因為 A 之後恆常隨之而來 B」這種經驗上的規律性，永遠無法邏輯地證成「A 必然導致 B」這樣的因果必然性；因果性只是心理習慣的產物，並非理性可證明的客觀真理。這個結論若成立，不僅動搖了牛頓物理學的哲學基礎，也使得理性主義形上學所宣稱的「純粹理性知識」變得可疑。</p>
+
+        <p>康德的回應方式極具原創性。他既不願意退回獨斷的理性主義，也不願意接受休謨式懷疑論將一切必然性化約為心理習慣，於是提出了一次方法論上的翻轉，後世稱之為「哥白尼式革命」（kopernikanische Wendung）。在《純粹理性批判》第二版序言中，康德寫道：以往形上學總是假定「我們的知識必須符合對象」（unsere Erkenntnis sich nach den Gegenständen richten müsse），但這個假定始終無法解釋先天知識（a priori）如何可能；不妨反過來嘗試，假定「對象必須符合我們的知識」——正如哥白尼發現，與其假定天體繞觀察者旋轉，不如假定觀察者本身在運動，才能更好地解釋天文現象。同理，若假定認識主體本身具有某些先天的認知形式（時間、空間、範疇），而對象必須以符合這些形式的方式才能被我們經驗到，那麼「先天綜合知識如何可能」這個問題便有了解答的線索（KrV, B XVI）。</p>
+
+        <div class="aside">
+          <p class="aside-label">術語辨析：先驗（transzendental）與超驗（transzendent）</p>
+          <p>這兩個詞在中文康德研究文獻中譯法並不統一，卻是理解康德的關鍵分野，值得研究之初就先弄清楚。康德所謂「先驗的」（transzendental）並非指「先於經驗、與經驗無關」，而是專指探討「先天知識何以可能」這一層次的探究方式本身——例如「先驗感性論」探討的是空間、時間作為先天直觀形式如何使經驗知識成為可能。相對地，「超驗的」（transzendent）則是指逾越一切可能經驗界限、宣稱能認識物自身（靈魂、宇宙整體、上帝）的僭越用法，正是《純粹理性批判》〈超驗辯證論〉所要批判的對象。牟宗三等學者將 transzendental 譯為「超越的」，李明輝、鄧曉芒等則多譯為「先驗的」；閱讀不同譯本或二手文獻時，務必留意譯者採用的譯名對應關係，以免混淆康德自己嚴格區分的兩個概念。</p>
+        </div>
+
+        <p>康德認為，理性向來對自己最缺乏認識，因此在建構任何實質的知識體系之前，必須先對理性能力本身進行一場「法庭式的審判」——這正是「批判」（Kritik）一詞的原意：不是消極的挑剔或否定，而是勘定理性認知能力的範圍、來源與界限，判定它在哪些領域內可以合法地運作，又在哪些領域必然陷入自相矛盾的幻象。康德將這整個批判計畫濃縮為三個著名的提問：「我能夠知道什麼？」（Was kann ich wissen?）「我應當做什麼？」（Was soll ich tun?）「我可以希望什麼？」（Was darf ich hoffen?）——分別對應《純粹理性批判》、《實踐理性批判》與宗教哲學的關懷；晚年他在《邏輯學講義》中又補充了第四個、統攝前三者的問題：「人是什麼？」（Was ist der Mensch?）本篇研究筆記，即依循這三大批判的順序，逐一梳理其核心論證，最後嘗試呈現康德所構想的「建築術」（Architektonik）——亦即這一整套理性能力批判如何構成一個彼此支援、內部一致的哲學體系。</p>
+      </section>
+
+      <section class="part" id="part1">
+        <p class="part-label">第一部分</p>
+        <h2>純粹理性批判：知識的界限</h2>
+        <p class="lede">《純粹理性批判》處理的是康德所謂「理論理性」（theoretische Vernunft）的問題：人類的知性與理性，究竟能不能、又如何能夠獲得關於世界的先天知識？全書分為兩大部分——「先驗要素論」（探討知識的正面來源與結構）與「先驗方法論」——其中「先驗要素論」又細分為「先驗感性論」「先驗分析論」與「先驗辯證論」三段，構成了全書的論證核心。</p>
+
+        <section class="sub" id="s1-1">
+          <h3>先天綜合判斷如何可能</h3>
+          <p>康德在導論中先做了一組判斷的分類。依「主詞是否已經涵蘊謂詞」，判斷可分為<em class="term">分析判斷</em>（analytisches Urteil，如「所有物體都是有廣延的」，謂詞早已包含在主詞概念之中，僅是邏輯上的展開，不增加任何新知識）與<em class="term">綜合判斷</em>（synthetisches Urteil，謂詞為主詞概念增添了新的內容，如「所有物體都是有重量的」）。另依「判斷的成立是否依賴經驗」，又可分為<em class="term">先天判斷</em>（a priori，獨立於一切特定經驗而成立，且具有普遍性與必然性）與<em class="term">後天判斷</em>（a posteriori，其真假繫於經驗）。</p>
+          <p>經驗主義者原則上只承認兩種組合：分析的先天判斷（邏輯真理）與綜合的後天判斷（經驗事實）。但康德指出，數學命題（如「7+5=12」）與自然科學的基本原理（如「一切變化都有原因」）卻是<em class="term">先天綜合判斷</em>：它們具有先天判斷的普遍必然性，卻又像綜合判斷一樣，為概念增添了非邏輯地蘊涵於其中的內容。「7+5=12」不能單靠分析「7」與「5」這兩個概念得出，必須訴諸某種直觀上的構造程序才能得到「12」這個結果，但這個結果卻又是先天必然為真的。於是，貫穿全書的核心問題便是：<strong>先天綜合判斷如何可能？</strong>康德進一步將這個問題拆解為三個層次分別追問：純粹數學如何可能、純粹自然科學如何可能，以及作為一門科學的形上學如何可能——「先驗感性論」回答第一個問題，「先驗分析論」回答第二個，而「先驗辯證論」則說明為何第三個問題以傳統方式是無法被正面回答的。</p>
+        </section>
+
+        <section class="sub" id="s1-2">
+          <h3>先驗感性論：時間與空間作為直觀的先天形式</h3>
+          <p>「感性」（Sinnlichkeit）是人類認知的接受性能力，透過它，對象以「直觀」（Anschauung）的方式被給予我們。康德的論證是：空間與時間並不是我們從外在事物中抽象、歸納出來的經驗性概念，也不是牛頓意義下獨立於心靈而存在的實在容器；相反，它們是感性本身固有的<em class="term">純粹直觀形式</em>（reine Anschauungsformen）——是主體用以整理、接受一切感覺材料的先天架構。正因為空間、時間並非來自對象，而是主體認知結構的一部分，幾何學（研究空間關係）與算術、代數（本質上涉及時間中的相繼綜合）才能夠是先天綜合的：它們的命題之所以普遍必然，正是因為一切可能的感性經驗，都必然已經被組織在空間與時間的形式之中。</p>
+          <p>這個論證帶來一個影響深遠的後果，即所謂的<em class="term">先驗觀念論</em>（transzendentaler Idealismus）：我們所認識的空間與時間中的一切事物，都只是「對我們而言顯現的樣態」（即「現象」，Erscheinungen），而非「事物本身在不依賴於我們認知形式時的樣態」（即「物自身」，Ding an sich）。康德特別強調，這並不是要否定外在世界的實在性（他明確與貝克萱式的「經驗觀念論」劃清界線），而是主張：空間與時間僅具有「經驗上的實在性」（在一切可能經驗的範圍內是客觀有效的），卻只具有「先驗上的觀念性」（一旦脫離與認知主體的關聯，便不能被賦予獨立自存的地位）。</p>
+        </section>
+
+        <section class="sub" id="s1-3">
+          <h3>先驗分析論：範疇與先驗演繹</h3>
+          <p>感性只能提供雜多的直觀材料，若要形成「知識」，還需要「知性」（Verstand）這種主動的、自發性的思維能力，將雜多材料統攝於概念之下。康德從形式邏輯傳統的判斷分類表（依「量」「質」「關係」「模態」四項，每項再分三種）出發，經由所謂的「形上學演繹」，推導出與之一一對應的十二個純粹知性概念，也就是<em class="term">範疇</em>（Kategorien）——例如「單一性、多數性、全體性」（量）、「實在性、否定性、限制性」（質）、「實體與屬性、原因與結果、交互性」（關係）、「可能性、存在性、必然性」（模態）。這些範疇並非從經驗歸納得來，而是知性用以將直觀材料綜合為「對象」表象的先天邏輯功能。</p>
+          <p>然而，範疇本身只是純粹思維形式，如何能保證它們必然適用於透過感性給予我們的現象？這正是「先驗演繹」（transzendentale Deduktion）要解決的難題——康德自己稱之為全書中最艱難、卻也最重要的部分。其論證核心繫於<em class="term">統覺的先驗統一</em>（transzendentale Einheit der Apperzeption）：一切屬於我的表象，都必須原則上能夠伴隨著「我思」（Ich denke）而被統一在同一個自我意識之中；而要使雜多表象能夠被統一在單一的「我思」之下，就必須依照範疇的規則將它們加以綜合聯結。換言之，範疇之所以必然適用於一切可能經驗的對象，正是因為經驗性自我意識的統一，本身就以範疇性的綜合作為其可能性條件。為了進一步說明範疇這種純粹知性概念如何能與時間中給予的感性雜多相接合，康德又提出「圖式論」（Schematismus）：每一範疇都對應著一個以時間規定方式表達出來的「先驗圖式」（如「實體」的圖式即「在時間中持存的實在」），以此作為範疇應用於現象的中介。</p>
+        </section>
+
+        <section class="sub" id="s1-4">
+          <h3>先驗辯證論：理性的自然幻象</h3>
+          <p>如果說知性的任務是將直觀綜合為經驗性的知識，那麼「理性」（Vernunft）在康德的用法中，則是一種更高層次的能力，其本性是不滿足於任何有條件者，而總是要為一切有條件的系列尋求那個「無條件者」（das Unbedingte），並依此構作出三個「理性理念」（Vernunftideen）：作為思維主體之絕對統一的「靈魂」、作為現象系列之絕對總體的「世界」，以及作為一切存在之絕對條件的「上帝」。這三個理念分別對應著理性心理學、理性宇宙論與理性神學三門傳統形上學分支，也正是康德在〈先驗辯證論〉中要逐一拆解的對象。</p>
+          <p>針對理性心理學，康德指出，笛卡兒式的「我思故我在」只能證明「我思」在邏輯上必然伴隨一切表象，卻不能因此推論出「我」是一個單一、不朽、非物質的實體——這種從純粹邏輯主詞跳躍到形上學實體的推論，康德稱之為「謬誤推理」（Paralogismus）。針對理性宇宙論，康德展示了理性在試圖思考「世界整體」時，會不可避免地陷入四組「二律背反」（Antinomien）：例如正題主張「世界在時間上有一個開端、在空間上有一個界限」，反題則同樣可以被嚴密論證為「世界在時間與空間上都是無限的」；正題主張「一切複合實體都由單純部分組成」，反題主張「世界上沒有單純的東西」；正題主張「除了依照自然法則的因果性外，還必須有出於自由的因果性」，反題主張「一切都僅依照自然法則發生，沒有自由」；正題主張「屬於世界的、或作為世界原因的，存在著一個絕對必然的存在者」，反題則予以否認。康德的解決方案是指出，正題與反題之所以看似都能被證明，是因為雙方都預設了「世界整體」是一個能夠被完整給予的物自身；一旦意識到現象與物自身的區分，就會發現前兩組二律背反（數學性的）雙方其實都錯，而後兩組（力學性的）則可以在「現象界服從必然性、智思界保有自由與必然存在者的可能性」的意義下同時為真——這一區分，日後將成為銜接第一與第二批判的關鍵樞紐。至於理性神學所提出的三種上帝存在論證——本體論證明、宇宙論證明、目的論證明（自然神學證明）——康德逐一指出，它們最終都無可避免地要訴諸本體論證明中「存在」可以作為謂詞這一被誤用的前提，而「存在」在康德看來從來不是能夠增加概念內容的實在謂詞，因此三種證明均不能成立。</p>
+        </section>
+
+        <section class="sub" id="s1-5">
+          <h3>現象與物自身</h3>
+          <p>整部〈先驗辯證論〉的破壞性結論，其實服務於一個具建設性的目的：劃定知性合法運用的疆界，使理性不再徒勞地在思辨形上學中製造幻象，同時也為第二批判的道德哲學保留空間。康德著名地寫道：「我不得不揚棄知識，以便為信仰騰出位置」（Ich musste also das Wissen aufheben, um zum Glauben Platz zu bekommen, KrV B XXX）。物自身（Ding an sich）在此扮演的是一個「界限概念」（Grenzbegriff）的角色：我們雖然無法對它形成任何知識性的認識（因為知識必須經由感性直觀與知性範疇的共同作用，而物自身恰恰不在此二者的管轄範圍之內），卻仍然可以一致地「思考」它的存在，而不自相矛盾。正是因為現象與物自身的區分，使得「人在現象界中作為自然因果鏈的一環而受到嚴格決定」與「人作為智思物（noumenon）而可能擁有自由意志」二者，得以在邏輯上並行不悖——這正是通往《實踐理性批判》的橋樑。</p>
+        </section>
+      </section>
+
+      <section class="part" id="part2">
+        <p class="part-label">第二部分</p>
+        <h2>實踐理性批判：道德的自律</h2>
+        <p class="lede">如果理論理性回答的是「我能知道什麼」，實踐理性回答的則是「我應當做什麼」。康德的倫理學計畫始於 1785 年較為簡短的《道德形上學基礎》（Grundlegung zur Metaphysik der Sitten），並在 1788 年的《實踐理性批判》中獲得更完整的系統論證。其根本立場是：道德法則必須具有普遍必然性，因此絕不能建立在任何經驗性的、依人的欲望或幸福感受而定的基礎之上，而必須完全出自純粹實踐理性自身。</p>
+
+        <section class="sub" id="s2-1">
+          <h3>善良意志與出於義務而行動</h3>
+          <p>《道德形上學基礎》開篇即提出一個極具份量的論斷：「在世界之中，甚至在世界之外，除了一個善良意志（guter Wille）之外，不可能設想任何東西能夠被無限制地稱為善的」——才智、機智、判斷力等心靈稟賦，乃至勇氣、果斷、堅忍等性格特質，若缺乏善良意志的引導，都可能被用於邪惡的目的，因而並非無條件的善；甚至連「幸福」本身，若缺乏善良意志的節制，也可能使人更加傲慢或肆無忌憚。善良意志之所以是善的，並不在於它所促成的結果或效用，而僅僅在於「意欲」（Wollen）本身——也就是說，它是就自身而言、而非因其功用或成就而為善的。</p>
+          <p>由此，康德區分了三種行為方式：違背義務而行動；雖合乎義務、卻是出於某種傾向或自利動機而行動（pflichtmäßig，僅是「合乎義務」）；以及純粹出於對義務本身的尊重而行動（aus Pflicht，「出於義務」）。他舉了商人童叟無欺的例子：一個商人若只因擔心壞名聲影響生意而誠實交易，其行為雖合乎義務，卻不具有道德價值；唯有當一個人即便毫無利益可圖、甚至違背自身的直接愛好，仍然選擇履行義務，這樣的行為才真正彰顯了道德價值——道德價值繫於行為的<em class="term">格律</em>（Maxime，主觀的行動原則）是否純然出於對法則的尊重，而不繫於行為所達成的具體目的或後果。</p>
+        </section>
+
+        <section class="sub" id="s2-2">
+          <h3>定言令式及其諸種表述</h3>
+          <p>康德區分了兩種「令式」（Imperativ，即命令行動主體「應當」如何行動的規則）：<em class="term">假言令式</em>（hypothetischer Imperativ）以「若要達成某個目的，就應當採取某種手段」的條件形式出現，其效力繫於行動者是否欲求該目的；<em class="term">定言令式</em>（kategorischer Imperativ）則無條件地要求行動，不繫於任何預先設定的目的，而道德命令正必須具有這種無條件的形式。在《道德形上學基礎》中，康德給出了定言令式的幾種不同表述方式，並主張它們本質上是同一原則的不同側面：</p>
+          <ol class="formulae">
+            <li><b>普遍法則公式（Ak. 4:421）</b>「只依據你能夠同時意願它成為一條普遍法則的那個格律而行動。」（Handle nur nach derjenigen Maxime, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz werde.）此公式要求行動者對自己行動的主觀原則進行「可普遍化」測試：若將此格律設想為適用於一切理性存有者的普遍法則，是否會導致邏輯矛盾，或是否會是行動者本身不可能一致地意願的？康德以「說謊的허諾」「怠惰不發展自身才能」「見死不救」「自殺以逃避痛苦」四個例子逐一示範這項測試。</li>
+            <li><b>人性公式（Ak. 4:429）</b>「這樣行動：無論是對你自己人身中的人性，還是對其他任何人身中的人性，你始終同時把它當作目的，而絕不僅僅當作手段來使用。」（Handle so, dass du die Menschheit sowohl in deiner Person als in der Person eines jeden anderen jederzeit zugleich als Zweck, niemals bloß als Mittel brauchst.）此一表述強調理性存有者具有無可取代的「尊嚴」（Würde），而非可用價格衡量的「價值」（Preis），因而不能被工具化地化約為滿足他人目的的純粹手段。</li>
+            <li><b>自律與目的王國公式（Ak. 4:433, 4:439）</b>「要如此行動，猶如你的意志的格律，能透過你的意願，同時成為一條普遍的自然法則」，並進一步要求行動者將自己既視為「目的王國」（Reich der Zwecke）中的立法成員，也視為服從該法則的成員——也就是說，道德法則必須是理性存有者<em class="term">自己</em>為自己所立的法則，而非外部強加的規範。</li>
+          </ol>
+          <p>康德強調這幾個公式並非三條獨立的原則，而是同一個定言令式，從不同角度呈現而已：普遍法則公式著重法則的形式，人性公式著重法則的質料（以理性存有者為目的自身），自律公式則綜合了形式與質料，指出道德法則的立法者與服從者其實同為一身。</p>
+        </section>
+
+        <section class="sub" id="s2-3">
+          <h3>自律、他律與自由</h3>
+          <p>康德將道德哲學史上幾乎所有既存的倫理學理論——無論是訴諸自身幸福（自愛）、他人幸福、完美性等經驗性原則，或是訴諸神的意志、道德情感等——一概歸類為<em class="term">他律</em>（Heteronomie）：只要道德法則的效力來源建立在意志之外的某個對象或目的之上，行動便不再是純粹出於理性自身的立法，而是被某種外於意志的東西所決定。與此相對，<em class="term">自律</em>（Autonomie）意味著意志本身即是道德法則的立法者，這種自我立法能力正是人之為理性存有者所具有的尊嚴根源，也是道德責任得以成立的前提——唯有能夠自己給自己立法的存有者，才談得上真正意義下的「應當」與「義務」。</p>
+          <p>自律的概念又與<em class="term">自由</em>緊密相連。在《實踐理性批判》序言中，康德提出了著名的「交互性論題」：自由是道德法則的存在根據（ratio essendi），道德法則則是我們認識自由的認知根據（ratio cognoscendi）——換言之，我們無法從理論上直接證明自由的實在性（如前述，第一批判已指出思辨理性無法對此做出決定），但我們對定言令式之無條件約束力的直接意識，也就是康德所稱的「理性的事實」（Faktum der Vernunft），卻讓我們有充分理由設定：唯有一個能夠不受自然因果鏈條決定、能夠僅依理性法則自我決定的意志，才可能真正服從一條無條件的道德命令。這使得自由從理論理性中懸而未決的一個理念，轉化為實踐理性領域中不可或缺的預設。</p>
+        </section>
+
+        <section class="sub" id="s2-4">
+          <h3>實踐理性的設準：自由、靈魂不朽與上帝</h3>
+          <p>《實踐理性批判》比《道德形上學基礎》更進一步處理的問題，是<em class="term">至善</em>（höchstes Gut）——德行與幸福按適當比例結合而成的完滿狀態。康德認為，純粹實踐理性必然會要求至善的實現，但要使至善成為可能，理性必須設定三個無法從理論上證明、卻是道德生活得以完整展開所必需的預設，稱為<em class="term">實踐理性的設準</em>（Postulate der praktischen Vernunft）：其一是<em class="term">自由</em>，作為道德責任得以成立的前提；其二是<em class="term">靈魂不朽</em>，因為德行與至善的完全符合，往往需要一個超出有限人生的無限進程才可能趨近；其三是<em class="term">上帝的存在</em>，作為保證德行與幸福終將相稱的至高理性存有者。必須強調的是，這三項設準並非理論知識，康德明確表示它們不能被「認識」（wissen），而只能基於道德實踐的必要性而被「相信」或「設定」——這正呼應了前述第一批判「揚棄知識、為信仰騰出位置」的定位：思辨理性證明不了上帝存在或靈魂不朽，但也正因如此，它們才得以在實踐理性的領域中，以一種不與知識相衝突的方式被合理地設定。</p>
+        </section>
+      </section>
+
+      <section class="part" id="part3">
+        <p class="part-label">第三部分</p>
+        <h2>判斷力批判：美感與目的</h2>
+        <p class="lede">1790 年的《判斷力批判》常被視為康德體系中最後、也最難歸類的一塊拼圖。此書探討的「判斷力」（Urteilskraft），是介於知性與理性之間的第三種認知能力，其任務是在特殊者與普遍者之間進行連結。康德區分了兩種判斷力的運用：<em class="term">規定性判斷力</em>（bestimmende Urteilskraft）是普遍者（規則、法則、概念）已經給定，判斷力只需將特殊者歸攝於其下（這正是第一批判中知性運用範疇的方式）；<em class="term">反思性判斷力</em>（reflektierende Urteilskraft）則相反，僅有特殊者被給予，判斷力必須自己為此特殊者尋找一個普遍者——美感判斷與對有機自然的目的論判斷，正是反思性判斷力運作的兩個典型領域。康德在全書導論中賦予判斷力一項極為關鍵的體系性任務：在《純粹理性批判》所勘定的「自然」（受機械因果法則支配的現象界）與《實踐理性批判》所奠基的「自由」（道德法則的領域）之間，架起一座橋樑，跨越這道他自己稱為「無可估量的鴻溝」（unübersehbare Kluft）。</p>
+
+        <section class="sub" id="s3-1">
+          <h3>美感判斷的四個契機</h3>
+          <p>在〈美的分析〉中，康德依循判斷表的「質、量、關係、模態」四項架構，逐一分析審美判斷（即「這是美的」這類判斷）的特性：</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>契機</th><th>特性</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td class="k">質</td><td>無利害的愉悅</td><td>審美的愉悅（interesseloses Wohlgefallen）既不同於感官快適（涉及慾望的滿足），也不同於對善的認可（涉及概念與目的），而是純粹靜觀對象形式所產生的愉悅，與該對象是否實際存在或對己有用完全無關。</td></tr>
+                <tr><td class="k">量</td><td>無概念的普遍性</td><td>審美判斷雖是單稱判斷（針對眼前這一個對象），卻要求所有人普遍贊同，儘管這種普遍性並非建立在概念之上，而是一種「主觀的普遍性」。</td></tr>
+                <tr><td class="k">關係</td><td>無目的的合目的性</td><td>美的對象呈現出一種彷彿是為了某個目的而被設計出來的形式秩序（合目的性），但我們的愉悅並不依賴於指認出該對象實際服務於什麼具體目的——形式本身即引發想像力與知性之間一種和諧的「自由遊戲」（freies Spiel）。</td></tr>
+                <tr><td class="k">模態</td><td>典範式的必然性</td><td>我們期待他人也會贊同自己的審美判斷，這種必然性並非邏輯必然，而是奠基於一種假定人人皆共有的「共通感」（sensus communis）——一種可傳達的、共同的判斷能力。</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>這四個契機共同刻畫出審美經驗的獨特位置：它既不是純粹主觀的私人感受（因為它要求普遍的可傳達性），也不是客觀的概念性知識（因為它不訴諸明確的概念規則），而是介於兩者之間、以想像力與知性的自由和諧運作為基礎的一種特殊愉悅。</p>
+        </section>
+
+        <section class="sub" id="s3-2">
+          <h3>崇高：想像力面對其自身界限</h3>
+          <p>與「美」形成對照的是<em class="term">崇高</em>（das Erhabene）。康德區分了兩種崇高：<em class="term">數學的崇高</em>面對的是體積或數量上「絕對地大」、超出想像力所能一次把握、綜合為一個直觀整體之能力的對象（如浩瀚星空、無垠海洋）——想像力在試圖估量這種無限之物時遭遇挫敗，但理性卻能夠形構出「總體」這一理念，於是這種挫敗感反而轉化為對自身理性能力之超感性使命的崇敬。<em class="term">力學的崇高</em>則面對自然界展現出的強大威力（狂風暴雨、火山、懸崖峭壁），這種威力雖使我們在物理上感到自身之渺小與無力，但只要我們身處安全的觀察位置，便能同時意識到：自己作為道德主體所具有的理性尊嚴，是連自然界最強大的力量都無法真正征服、貶低的——由此，恐懼中反而生出一種超越性的自我肯定。無論哪一種崇高，其情感結構都帶有「痛快交織」的雙重性：先是想像力遭受挫折的不快，繼而轉化為對理性自身超感性能力的愉悅與敬畏，這也解釋了為何崇高的情感與《實踐理性批判》結論中「頭上的星空」所喚起的敬畏如此接近——兩者都指向理性存有者超越純粹自然決定的那個面向。</p>
+        </section>
+
+        <section class="sub" id="s3-3">
+          <h3>自然目的論：有機體與反思判斷力</h3>
+          <p>《判斷力批判》下半部〈目的論判斷力批判〉處理的是另一種反思性判斷：面對生物有機體（如一棵樹、一隻動物）時，我們似乎無法僅僅依靠機械因果法則就對其結構做出令人滿意的說明，而傾向於將其設想為依循某種「自然目的」（Naturzweck）而組織起來的系統——其特徵是部分與整體之間存在著相互的因果關係：各部分的存在與功能是為了整體（如心臟為了維持整個生物體），而整體的維持又反過來使各部分得以存在與再生。康德強調，這種目的論的理解方式僅具有<em class="term">範導性</em>（regulativ）而非<em class="term">構成性</em>（konstitutiv）的地位：它只是我們的反思判斷力為了理解有機自然而採用的一種啟發性原則，並不能因此宣稱自然界中真的存在著客觀的、可被證明的目的因，機械論的解釋原則在理論上依然是優先且不可放棄的，目的論只是在機械論說明力有未逮之處，提供一種必要的、調節性的補充視角。在全書的最後部分，康德進一步將自然目的論的思路延伸至對「自然的終極目的」與「創世的終極目的」（人自身作為道德主體）的反思，為溝通自然與自由這兩大領域，提供了一種更全面的哲學圖像，也為他晚期的歷史哲學與宗教哲學埋下伏筆。</p>
+        </section>
+      </section>
+
+      <section class="part" id="part4">
+        <p class="part-label">第四部分</p>
+        <h2>三大批判的體系統一：理性的建築術</h2>
+        <p>康德本人極為重視哲學論述的系統性，他在《純粹理性批判》〈先驗方法論〉中專闢一節論述「純粹理性的建築術」（Die Architektonik der reinen Vernunft），主張真正的哲學體系不應是雜多知識的堆積，而應像一個有機體一樣，各部分依循一個統一的理念，彼此不多不少、恰如其分地銜接在一起。三大批判之所以恰好是「三」大批判，並非隨意的著作規劃，而是對應著康德所劃分的心靈三種基本能力，以及與之相應的三種先天原則與三個應用領域：</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>批判著作</th><th>對應的心靈能力</th><th>先天原則</th><th>應用領域</th><th>核心提問</th></tr></thead>
+            <tbody>
+              <tr><td class="k">純粹理性批判</td><td>知性（Verstand）</td><td>合法則性（Gesetzmäßigkeit）</td><td>自然（理論知識）</td><td>我能夠知道什麼？</td></tr>
+              <tr><td class="k">判斷力批判</td><td>判斷力（Urteilskraft）</td><td>合目的性（Zweckmäßigkeit）</td><td>藝術與有機自然（橋樑地帶）</td><td>自然如何可能被理解為統一的整體？</td></tr>
+              <tr><td class="k">實踐理性批判</td><td>理性（Vernunft）</td><td>終極目的（Endzweck）</td><td>自由（道德實踐）</td><td>我應當做什麼？</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>依這個架構，知性以其範疇為自然現象立法，保證了自然科學知識的普遍必然性，卻將自身嚴格限制在可能經驗的範圍之內；理性以定言令式為意志立法，開闢出一個不受自然因果決定的自由領域，兩者原則上分屬「現象界」與「智思界」，彼此互不侵犯，卻也因此產生了一道鴻溝——一個服從嚴格自然必然性的世界，如何可能容納一個理應能夠透過自由意志的行動、在其中實現道德目的的主體？判斷力的任務，正是在不違背知性立法的前提下，透過對自然之「合目的性」的反思性設想（無論是審美領域中對象形式引發的自由遊戲，還是有機自然領域中部分與整體的目的性統一），使自然界看起來至少「並非與自由的目的完全不相容」，從而為道德目的最終能在自然世界中實現，鋪設一條概念上的可能通道。這正是康德所說：判斷力批判不僅是連接前兩大批判的第三個獨立部分，更是使整個批判哲學體系得以真正閉合、成為一個完整「建築物」的關鍵拱心石。</p>
+
+        <div class="divider">ARCHITEKTONIK</div>
+      </section>
+
+      <section class="part" id="part5">
+        <p class="part-label">第五部分</p>
+        <h2>歷史地位與後世影響</h2>
+
+        <p>康德的批判哲學一經問世，便立即成為此後歐陸哲學無法迴避的參照點。他的直接繼承者——費希特（Fichte）、謝林（Schelling）與黑格爾（Hegel）——共同開展出所謂「德國觀念論」（Deutscher Idealismus）的運動，但也各自對康德體系中被視為「未完成」之處提出了修正：費希特認為康德保留「物自身」作為認識的外在給予者，在其嚴格的觀念論立場中是不徹底、不一致的，因而主張將一切實在性都收攝於「自我」的自我設定活動之中；黑格爾則進一步批評康德將知性範疇與理性理念、現象與物自身截然二分的做法過於僵固，主張以辯證法的方式揚棄這些對立，構築一個涵蓋自然、精神與歷史的絕對觀念論體系。儘管如此，這些後繼者的整個問題意識——如何理解先天認知形式、如何安置自由與自然的關係——仍然完全是在康德所開啟的問題場域中展開的。</p>
+
+        <p>十九世紀下半葉，在黑格爾式思辨哲學逐漸式微、實證主義與唯物論興起的氛圍下，德語學界出現了「回到康德去！」（Zurück zu Kant!）的口號，形成所謂<em class="term">新康德主義</em>（Neukantianismus）運動，其中以柯亨（Hermann Cohen）、那托普（Paul Natorp）為代表的馬堡學派著重先驗方法論在自然科學基礎中的應用，以文德爾班（Windelband）、李凱爾特（Rickert）為代表的西南學派則著重先驗方法在歷史文化科學（價值哲學）中的運用，兩派共同重新確立了康德在德語哲學教育體制中的核心地位。進入二十世紀，胡塞爾（Husserl）的現象學在方法論上明顯承繼了康德「先驗轉向」的問題意識，儘管胡塞爾對「先驗自我」的構想與康德多有出入；海德格（Heidegger）則在《康德與形上學問題》（1929）中，將《純粹理性批判》重新詮釋為一部探討「有限性」（Endlichkeit）與想像力之根源性地位的著作，賦予康德文本嶄新的存在論意涵。</p>
+
+        <p>在英語分析哲學傳統中，史特勞森（P. F. Strawson）1966 年出版的《感覺的界限》（The Bounds of Sense），嘗試剝離康德先驗觀念論中帶有「心理主義」色彩的部分，重新以描述形上學（descriptive metaphysics）的方式，挖掘先驗論證（transcendental arguments）這一論證形式在當代哲學中的方法論價值，開啟了「先驗論證」作為一種獨立哲學方法的討論熱潮。在倫理學與政治哲學領域，羅爾斯（John Rawls）在《正義論》（1971）中明確以康德式的「建構主義」（Kantian constructivism）——透過理性建構的程序（如原初立場）而非訴諸獨立自存的道德實在——來說明正義原則的證成方式；柯思嘉德（Christine Korsgaard）等當代康德倫理學者則進一步發展了自律、規範性與行動者身分（practical identity）之間的關聯；哈伯瑪斯（Habermas）與阿佩爾（Apel）的「言說倫理學」（Diskursethik），也可視為將康德式的普遍化程序，從個體理性的獨白式測試，轉化為主體間對話式論證程序的當代重構。此外，康德「人是目的而非純然手段」的人性公式，也構成了現代人權論述與生命倫理學中「人類尊嚴」（Menschenwürde）概念的重要哲學根源之一。</p>
+
+        <p>康德哲學傳入漢語學界，同樣留下深厚的研究傳統。牟宗三窮盡心力翻譯並疏解康德三大批判，撰有《現象與物自身》、《圓善論》等專著，嘗試以康德的道德形上學架構重新詮釋儒家的「內聖」義理，並提出「智的直覺」等概念，回應康德「人類理性不具智性直觀」的判定；李明輝、鄧曉芒、楊祖陶等學者則分別在康德倫理學研究與《純粹理性批判》的翻譯考訂上著力甚深，共同構成當代華文康德研究不可或缺的文獻基礎，也是研究者在梳理康德思想時，除英譯本與德文原著外，值得並列參照的重要資源。</p>
+      </section>
+
+      <section class="part" id="conclusion">
+        <p class="part-label">結語</p>
+        <h2>批判之後：一份仍在展開的遺產</h2>
+        <p>回顧三大批判的整體布局，康德所完成的，與其說是一套關於世界、道德或藝術的「實質理論」，不如說是一次徹底的方法論轉向：透過對理性自身能力的批判性檢視，劃定知識、道德與審美判斷各自的合法範圍與界限，既拒絕獨斷形上學對理性能力的僭越使用，也拒絕懷疑論式地全盤取消理性追求普遍必然性的正當要求。「勇於運用自己的理智」（Sapere aude! Habe Mut, dich deines eigenen Verstandes zu bedienen）——康德在 1784 年〈答何謂啟蒙之問〉一文中提出的這句格言，某種意義上正是整套批判哲學的精神縮影：真正的理性成熟，不在於相信理性能夠無限制地知道一切，而在於清醒地認識並尊重自己認知能力的界限，同時在被清楚劃定的界限之內，堅定不移地捍衛理性的自主與尊嚴。對於仍在康德文本中反覆推敲的研究者而言，這種「劃界」與「奠基」並重的方法論姿態——先問「如何可能」，再問「有何限度」——或許正是康德留給後世最歷久彌新、也最值得在自己研究領域中反覆操練的哲學遺產。</p>
+      </section>
+
+      <section class="part" id="biblio" style="margin-bottom:0;">
+        <p class="part-label">參考書目</p>
+        <h2>研究文獻舉要</h2>
+        <h3>康德原典（德文與標準英譯）</h3>
+        <ul class="biblio">
+          <li><b>Kant, I.</b> <i>Kritik der reinen Vernunft</i> (1781/1787). Trans. P. Guyer &amp; A. Wood, <i>Critique of Pure Reason</i>. Cambridge University Press, 1998.</li>
+          <li><b>Kant, I.</b> <i>Grundlegung zur Metaphysik der Sitten</i> (1785). Trans. M. Gregor, <i>Groundwork of the Metaphysics of Morals</i>, in <i>Practical Philosophy</i>. Cambridge University Press, 1996.</li>
+          <li><b>Kant, I.</b> <i>Kritik der praktischen Vernunft</i> (1788). Trans. M. Gregor, <i>Critique of Practical Reason</i>, in <i>Practical Philosophy</i>. Cambridge University Press, 1996.</li>
+          <li><b>Kant, I.</b> <i>Kritik der Urteilskraft</i> (1790). Trans. P. Guyer &amp; E. Matthews, <i>Critique of the Power of Judgment</i>. Cambridge University Press, 2000.</li>
+          <li><b>Kant, I.</b> "Beantwortung der Frage: Was ist Aufklärung?" (1784), in <i>Practical Philosophy</i>. Cambridge University Press, 1996.</li>
+        </ul>
+        <h3>中譯本與華文研究</h3>
+        <ul class="biblio">
+          <li>康德著，鄧曉芒譯、楊祖陶校：《純粹理性批判》。北京：人民出版社。</li>
+          <li>康德著，李明輝譯註：《康德歷史哲學論文集》。台北：聯經出版。</li>
+          <li>牟宗三：《現象與物自身》。台北：台灣學生書局。</li>
+          <li>牟宗三：《圓善論》。台北：台灣學生書局。</li>
+          <li>李明輝：《康德倫理學說與現代新儒學》。台北：中央研究院中國文哲研究所。</li>
+        </ul>
+        <h3>重要二手研究（英文）</h3>
+        <ul class="biblio">
+          <li>Paul Guyer, <i>Kant</i>, 2nd ed. (The Routledge Philosophers). Routledge, 2014.</li>
+          <li>Henry E. Allison, <i>Kant's Transcendental Idealism: An Interpretation and Defense</i>, rev. ed. Yale University Press, 2004.</li>
+          <li>Christine M. Korsgaard, <i>Creating the Kingdom of Ends</i>. Cambridge University Press, 1996.</li>
+          <li>P. F. Strawson, <i>The Bounds of Sense: An Essay on Kant's Critique of Pure Reason</i>. Methuen, 1966.</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <footer>
+      <p>本篇為個人研究所階段之康德哲學研究筆記，內容係作者依主要文獻與學界通行詮釋整理而成，用於研究進度的自我梳理與後續論文寫作之底稿，正式引用時仍請核對原典與譯本頁碼。</p>
+    </footer>
+  </main>
+</div>
+
+
+
+</body></html>
