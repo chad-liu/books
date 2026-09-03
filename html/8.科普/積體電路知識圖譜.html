@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>積體電路知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>積體電路知識圖譜</h1>
+  <p class="lede">積體電路的故事幾乎總是被講成一個「越做越小」的故事。但 1950 年代末真正卡住整個產業的，<b>不是零件太大，而是接線太多</b>——每一個電子零件都要靠人工焊接，而每一個焊點都是一個可能失效的地方。電路越複雜，能正常運作的機率就越低，這個現象當時被稱為「數量的暴政」。積體電路的突破因此不在於微縮，而在於<b>讓所有元件與它們之間的連線，在同一塊材料上一次成形</b>。這一頁從這個被解錯的問題開始，接著談矽為什麼會贏（答案不是它的導電性）、晶片為什麼是「印」出來的、摩爾定律其實不是定律，以及這一切如何把整個產業切成了幾塊。</p>
+</header>
+
+<blockquote>
+  它不是把零件做小，而是取消了「零件」這個概念——電路從一堆被接起來的東西，變成一塊長出來的東西。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>數量的暴政：真正卡住的地方</h2>
+  <p class="sub">問題不在單一零件，而在零件之間——而且它會隨數量惡化得非常快。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 398" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="146" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">一般以為的瓶頸</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">零件太大，塞不進更小的機器，所以必須想辦法</text>
+    <text x="282.5" y="108" text-anchor="middle" font-size="12.5" fill="#4c636e">把電晶體、電阻與電容一個個做得更小。</text>
+    <text x="282.5" y="140" text-anchor="middle" font-size="12.5" fill="#4c636e">這個描述本身沒有錯，卻不是當時真正的死結。</text>
+
+    <rect x="570" y="20" width="505" height="146" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="822" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">實際上卡住的瓶頸</text>
+    <text x="822.5" y="82" text-anchor="middle" font-size="12.5" fill="#4f6773">當時一台電腦要靠人工焊接數十萬個接點。</text>
+    <text x="822.5" y="104" text-anchor="middle" font-size="12.5" fill="#4f6773">每個接點都可能虛焊、斷裂或接觸不良，而失效的</text>
+    <text x="822.5" y="126" text-anchor="middle" font-size="12.5" fill="#4f6773">機率會隨接點數量累積。電路越複雜，能正常開機</text>
+    <text x="822.5" y="148" text-anchor="middle" font-size="12.5" fill="#4f6773">的機率就越低——這被稱為「數量的暴政」。</text>
+
+    <rect x="30" y="182" width="1045" height="56" fill="#17324d" rx="6"/>
+    <text x="552" y="216" text-anchor="middle" font-size="13.5" fill="#ffffff">就算每個接點的可靠度高達 99.99%，十萬個接點全部正常的機率仍然不到萬分之一</text>
+
+    <rect x="30" y="254" width="1045" height="124" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="552" y="288" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">所以真正的解法不是「做得更小」</text>
+    <text x="44" y="318" font-size="12.5" fill="#546e7a">1958 與 1959 年的兩項成果各解決了一半。基爾比證明所有元件都可以用同一塊半導體材料做出來；</text>
+    <text x="44" y="342" font-size="12.5" fill="#546e7a">諾伊斯則讓元件之間的連線也一起被做出來——把金屬直接鍍在絕緣的氧化層上，取代所有的手工焊接。</text>
+    <text x="44" y="366" font-size="12.5" fill="#546e7a">從此電路不再是「一堆零件加上接線」，而是一塊一次成形的東西。「積體」指的正是這件事。</text>
+  </svg>
+  </div>
+  <p class="after">分清楚這兩者很重要，因為它決定了後面所有事情的邏輯。<b>如果問題只是尺寸，那麼解法會是更精細的加工；但問題既然是「連線的數量」，解法就必須是取消連線這個工序本身</b>。基爾比 1958 年的原型其實還留著飛線，諾伊斯隔年的平面版本才真正把連線也納入同一道製程——這也是為什麼今天量產的晶片，走的是後者那條路。</p>
+</section>
+
+<section>
+  <h2>為什麼是矽：贏在它生鏽之後的那層東西</h2>
+  <p class="sub">純就導電特性而言，矽並不是最好的選擇——最早的電晶體與第一個積體電路用的都是鍺。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 522" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="170" height="36" fill="#17324d"/>
+    <rect x="203" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="481" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="759" y="18" width="316" height="36" fill="#8a4636"/>
+    <text x="110" y="42" text-anchor="middle" font-size="13" fill="#ffffff">比較項目</text>
+    <text x="338" y="42" text-anchor="middle" font-size="13" fill="#ffffff">鍺</text>
+    <text x="616" y="42" text-anchor="middle" font-size="13" fill="#ffffff">矽</text>
+    <text x="917" y="42" text-anchor="middle" font-size="13" fill="#ffffff">誰勝出</text>
+
+    <rect x="25" y="58" width="170" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="58" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="481" y="58" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="759" y="58" width="316" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="102" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">電子遷移率</text>
+    <text x="338" y="90" text-anchor="middle" font-size="12" fill="#546e7a">較高</text>
+    <text x="338" y="114" text-anchor="middle" font-size="12" fill="#546e7a">理論上開關得更快</text>
+    <text x="616" y="90" text-anchor="middle" font-size="12" fill="#546e7a">較低</text>
+    <text x="616" y="114" text-anchor="middle" font-size="12" fill="#546e7a">同樣條件下較慢</text>
+    <text x="917" y="102" text-anchor="middle" font-size="12.5" fill="#263238">鍺，但這一項不是關鍵</text>
+
+    <rect x="25" y="134" width="170" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="134" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="481" y="134" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="759" y="134" width="316" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="178" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">耐熱程度</text>
+    <text x="338" y="166" text-anchor="middle" font-size="12" fill="#546e7a">能隙較小</text>
+    <text x="338" y="190" text-anchor="middle" font-size="12" fill="#546e7a">溫度稍高就開始漏電</text>
+    <text x="616" y="166" text-anchor="middle" font-size="12" fill="#546e7a">能隙較大</text>
+    <text x="616" y="190" text-anchor="middle" font-size="12" fill="#546e7a">承受得住工作溫度</text>
+    <text x="917" y="178" text-anchor="middle" font-size="12.5" fill="#263238">矽</text>
+
+    <rect x="25" y="210" width="170" height="76" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="203" y="210" width="270" height="76" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="481" y="210" width="270" height="76" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="759" y="210" width="316" height="76" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="110" y="248" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">天然氧化物</text>
+    <text x="110" y="270" text-anchor="middle" font-size="11" fill="#446b53">生鏽之後的產物</text>
+    <text x="338" y="242" text-anchor="middle" font-size="12" fill="#546e7a">二氧化鍺會溶於水</text>
+    <text x="338" y="266" text-anchor="middle" font-size="12" fill="#546e7a">不穩定，派不上用場</text>
+    <text x="616" y="242" text-anchor="middle" font-size="12" fill="#546e7a">二氧化矽穩定又絕緣</text>
+    <text x="616" y="266" text-anchor="middle" font-size="12" fill="#546e7a">可以直接長在晶圓表面</text>
+    <text x="917" y="248" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">矽，而且是決定性的一項</text>
+    <text x="917" y="270" text-anchor="middle" font-size="11" fill="#446b53">整套平面製程都靠它</text>
+
+    <rect x="25" y="286" width="170" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="286" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="481" y="286" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="759" y="286" width="316" height="76" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="110" y="330" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">蘊藏量</text>
+    <text x="338" y="318" text-anchor="middle" font-size="12" fill="#546e7a">稀有</text>
+    <text x="338" y="342" text-anchor="middle" font-size="12" fill="#546e7a">價格高、供應受限</text>
+    <text x="616" y="318" text-anchor="middle" font-size="12" fill="#546e7a">地殼中含量僅次於氧</text>
+    <text x="616" y="342" text-anchor="middle" font-size="12" fill="#546e7a">原料幾乎是沙子</text>
+    <text x="917" y="330" text-anchor="middle" font-size="12.5" fill="#263238">矽</text>
+
+    <rect x="30" y="378" width="1045" height="126" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="410" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">勝負不是由半導體本身的性能決定的</text>
+    <text x="44" y="440" font-size="12.5" fill="#546e7a">二氧化矽既是優良的絕緣體，又能靠加熱直接在晶圓表面長出來，而且長得均勻、附著牢固。這讓它可以</text>
+    <text x="44" y="464" font-size="12.5" fill="#546e7a">當作一層遮罩：先在上面開出需要的窗口，後續的摻雜就只會發生在指定的位置，其餘部分自動被擋住。</text>
+    <text x="44" y="488" font-size="12.5" fill="#546e7a">換句話說，矽贏在它「生鏽」之後的那層東西剛好極度好用——這是化學上的巧合，不是誰設計出來的。</text>
+  </svg>
+  </div>
+  <p class="after">這一節值得記住的是它的形狀：<b>一個材料被選中的理由，可以完全不是它被拿來使用的那個性質</b>。矽是拿來當半導體的，但它擊敗鍺靠的卻是它的氧化物有多好用。同樣的邏輯也解釋了為什麼後來雖然有電性更優異的化合物半導體，主流製程仍然難以離開矽——整套產業的設備、知識與資本，都建立在那層氧化膜所允許的做法之上。</p>
+</section>
+
+<section>
+  <h2>它是印出來的，不是刻出來的</h2>
+  <p class="sub">整條製程的本質接近攝影與印刷，而不是機械加工——這決定了晶片的成本結構。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 326" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="254" height="124" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="157" y="54" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">一　製作光罩</text>
+    <text x="157" y="86" text-anchor="middle" font-size="11.5" fill="#546e7a">把設計好的電路圖案，做</text>
+    <text x="157" y="108" text-anchor="middle" font-size="11.5" fill="#546e7a">成一片供光線通過的遮罩</text>
+    <text x="157" y="130" text-anchor="middle" font-size="11.5" fill="#546e7a">相當於底片。</text>
+
+    <rect x="292" y="20" width="254" height="124" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="419" y="54" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">二　曝光</text>
+    <text x="419" y="86" text-anchor="middle" font-size="11.5" fill="#546e7a">讓光穿過光罩，把圖案投</text>
+    <text x="419" y="108" text-anchor="middle" font-size="11.5" fill="#546e7a">影到塗有感光材料的矽晶</text>
+    <text x="419" y="130" text-anchor="middle" font-size="11.5" fill="#546e7a">圓上。</text>
+
+    <rect x="554" y="20" width="254" height="124" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="681" y="54" text-anchor="middle" font-size="13" fill="#17324d" font-weight="600">三　顯影、蝕刻與摻雜</text>
+    <text x="681" y="86" text-anchor="middle" font-size="11.5" fill="#546e7a">把光學圖案變成實體結構</text>
+    <text x="681" y="108" text-anchor="middle" font-size="11.5" fill="#546e7a">沒被遮罩擋住的地方才會</text>
+    <text x="681" y="130" text-anchor="middle" font-size="11.5" fill="#546e7a">被蝕刻或摻入雜質。</text>
+
+    <rect x="816" y="20" width="254" height="124" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="943" y="54" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">四　重複疊層</text>
+    <text x="943" y="86" text-anchor="middle" font-size="11.5" fill="#4f6773">換一片光罩，重複上述步</text>
+    <text x="943" y="108" text-anchor="middle" font-size="11.5" fill="#4f6773">驟。現代晶片要疊上百道</text>
+    <text x="943" y="130" text-anchor="middle" font-size="11.5" fill="#4f6773">這樣的層。</text>
+
+    <rect x="30" y="160" width="1045" height="146" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="194" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">為什麼是「印」而不是「刻」——以及它造成的後果</text>
+    <text x="44" y="224" font-size="12.5" fill="#546e7a">關鍵在第二步。曝光時照亮的是一整個區域，圖案裡有一個電晶體還是十億個，所需的時間幾乎相同。</text>
+    <text x="44" y="248" font-size="12.5" fill="#546e7a">這正是電晶體單價能一路掉到接近於零的根本原因，就像印一張報紙，版面上排一個字或一萬個字，印刷的</text>
+    <text x="44" y="272" font-size="12.5" fill="#546e7a">工序與時間並不會因此不同。代價則落在另一端：光罩、曝光機與無塵廠房都是極其龐大的固定成本。</text>
+    <text x="44" y="296" font-size="12.5" fill="#546e7a">這個「固定成本極高、邊際成本極低」的結構，直接決定了第五節裡整個產業會長成什麼形狀。</text>
+  </svg>
+  </div>
+  <p class="after">也因為是光學投影，晶片能做多精細就受限於用的光有多細。這是<b>為什麼曝光機的光源波長會變成整個產業的瓶頸</b>：從紫外光一路推進到波長僅十三點五奈米的極紫外光，每一次縮短都極其困難，而能造出這種機台的廠商在全世界僅有一家。整條供應鏈上最難被取代的一環，往往不是晶片設計，而是這台機器。</p>
+</section>
+
+<section>
+  <h2>摩爾定律不是定律</h2>
+  <p class="sub">它是一個關於成本的觀察，而在 2005 年前後停下來的其實是另一件事。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 350" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="146" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">常見的說法</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">每十八個月，電腦的速度就會加倍。</text>
+    <text x="282.5" y="112" text-anchor="middle" font-size="12.5" fill="#4c636e">這是一條半導體領域的物理定律。</text>
+    <text x="282.5" y="138" text-anchor="middle" font-size="12.5" fill="#4c636e">它在 2010 年代已經結束了。</text>
+
+    <rect x="570" y="20" width="505" height="146" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="822" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">摩爾實際上說了什麼</text>
+    <text x="822.5" y="82" text-anchor="middle" font-size="12.5" fill="#546e7a">他觀察的是「單位面積上最划算的電晶體數量」，</text>
+    <text x="822.5" y="104" text-anchor="middle" font-size="12.5" fill="#546e7a">談的是成本，不是速度。</text>
+    <text x="822.5" y="126" text-anchor="middle" font-size="12.5" fill="#546e7a">1965 年原文寫的是每年加倍，十年後才修正為</text>
+    <text x="822.5" y="148" text-anchor="middle" font-size="12.5" fill="#546e7a">每兩年——它一直是經驗觀察，不是定律。</text>
+
+    <rect x="30" y="182" width="1045" height="146" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="216" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">在 2005 年前後停下來的是丹納德縮放，不是摩爾定律</text>
+    <text x="44" y="246" font-size="12.5" fill="#546e7a">1974 年提出的丹納德縮放指出：電晶體按比例縮小的同時，單位面積的耗電可以維持不變。</text>
+    <text x="44" y="270" font-size="12.5" fill="#546e7a">這才是「越小就越快、而且不會更熱」的真正根據，也是時脈能一路從百萬赫茲衝到十億赫茲的原因。</text>
+    <text x="44" y="294" font-size="12.5" fill="#546e7a">但尺寸縮到一定程度後漏電流無法忽略，這條規律在 2005 年前後失效，時脈自此卡在三到四 GHz。</text>
+    <text x="44" y="318" font-size="12.5" fill="#546e7a">電腦改走多核心而不是更高時脈，原因就在這裡——而電晶體數量本身，其實還在繼續增加。</text>
+  </svg>
+  </div>
+  <p class="after">這個區別在日常經驗裡是可以驗證的：<b>二十年前的電腦時脈大約是三 GHz，今天的電腦時脈仍然大約是三到五 GHz，但核心數從一個變成了十幾個</b>。另外值得一提的是，現在的「三奈米」「五奈米」製程名稱早已不對應晶片上任何一個實際的物理尺寸，它們是各廠自行沿用的世代代號。把節點名稱當成尺寸來比較不同廠商的技術，會得到誤導的結論。</p>
+</section>
+
+<section>
+  <h2>成本結構如何把產業切成幾塊</h2>
+  <p class="sub">最右欄是重點。四種模式其實是同一個成本問題的四種答案。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 538" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="160" height="36" fill="#17324d"/>
+    <rect x="193" y="18" width="280" height="36" fill="#17324d"/>
+    <rect x="481" y="18" width="180" height="36" fill="#17324d"/>
+    <rect x="669" y="18" width="406" height="36" fill="#8a4636"/>
+    <text x="105" y="42" text-anchor="middle" font-size="13" fill="#ffffff">模式</text>
+    <text x="333" y="42" text-anchor="middle" font-size="13" fill="#ffffff">自己做哪些事</text>
+    <text x="571" y="42" text-anchor="middle" font-size="13" fill="#ffffff">代表</text>
+    <text x="872" y="42" text-anchor="middle" font-size="13" fill="#ffffff">它解決了什麼問題</text>
+
+    <rect x="25" y="58" width="160" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="193" y="58" width="280" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="481" y="58" width="180" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="58" width="406" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="94" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">整合元件製造</text>
+    <text x="105" y="116" text-anchor="middle" font-size="11" fill="#37607a">IDM</text>
+    <text x="333" y="92" text-anchor="middle" font-size="12" fill="#546e7a">設計、製造、封裝測試</text>
+    <text x="333" y="116" text-anchor="middle" font-size="12" fill="#546e7a">全部自己來</text>
+    <text x="571" y="104" text-anchor="middle" font-size="12" fill="#546e7a">英特爾、三星、美光</text>
+    <text x="872" y="92" text-anchor="middle" font-size="12" fill="#b8442a">掌握整條鏈，設計與製程可以互相配合；</text>
+    <text x="872" y="116" text-anchor="middle" font-size="12" fill="#b8442a">代價是每一代新廠都得獨力負擔資本支出</text>
+
+    <rect x="25" y="138" width="160" height="80" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="193" y="138" width="280" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="481" y="138" width="180" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="138" width="406" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="174" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">無晶圓廠</text>
+    <text x="105" y="196" text-anchor="middle" font-size="11" fill="#8a6a35">Fabless</text>
+    <text x="333" y="172" text-anchor="middle" font-size="12" fill="#546e7a">只做設計</text>
+    <text x="333" y="196" text-anchor="middle" font-size="12" fill="#546e7a">製造完全外包</text>
+    <text x="571" y="184" text-anchor="middle" font-size="12" fill="#546e7a">輝達、高通、蘋果</text>
+    <text x="872" y="172" text-anchor="middle" font-size="12" fill="#b8442a">不必蓋廠，把最重的固定成本移出公司；</text>
+    <text x="872" y="196" text-anchor="middle" font-size="12" fill="#b8442a">代價是產能與先進製程要看代工廠臉色</text>
+
+    <rect x="25" y="218" width="160" height="80" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="193" y="218" width="280" height="80" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="481" y="218" width="180" height="80" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="669" y="218" width="406" height="80" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="105" y="254" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">晶圓代工</text>
+    <text x="105" y="276" text-anchor="middle" font-size="11" fill="#446b53">Foundry</text>
+    <text x="333" y="252" text-anchor="middle" font-size="12" fill="#546e7a">只做製造</text>
+    <text x="333" y="276" text-anchor="middle" font-size="12" fill="#546e7a">不推出自有品牌產品</text>
+    <text x="571" y="264" text-anchor="middle" font-size="12" fill="#546e7a">台積電、聯電</text>
+    <text x="872" y="252" text-anchor="middle" font-size="12" fill="#3d7a55">正因為不跟客戶競爭，才能匯集全世界的</text>
+    <text x="872" y="276" text-anchor="middle" font-size="12" fill="#3d7a55">訂單，用最大的產量去攤提同一座廠房</text>
+
+    <rect x="25" y="298" width="160" height="80" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="193" y="298" width="280" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="481" y="298" width="180" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="669" y="298" width="406" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="334" text-anchor="middle" font-size="12.5" fill="#6b4a8f" font-weight="600">矽智財授權</text>
+    <text x="105" y="356" text-anchor="middle" font-size="11" fill="#73618a">IP</text>
+    <text x="333" y="332" text-anchor="middle" font-size="12" fill="#546e7a">連晶片都不做</text>
+    <text x="333" y="356" text-anchor="middle" font-size="12" fill="#546e7a">只把設計本身授權出去</text>
+    <text x="571" y="344" text-anchor="middle" font-size="12" fill="#546e7a">安謀（ARM）</text>
+    <text x="872" y="332" text-anchor="middle" font-size="12" fill="#b8442a">最輕的一端：收授權費與每顆晶片約 1–2%</text>
+    <text x="872" y="356" text-anchor="middle" font-size="12" fill="#b8442a">的版稅，完全不必碰製造與庫存</text>
+
+    <rect x="30" y="394" width="1045" height="124" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="426" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">推動這場分工的，其實是一個數字</text>
+    <text x="44" y="456" font-size="12.5" fill="#546e7a">一座先進晶圓廠的造價已達約兩百億美元，而且每一個世代都在上升。當固定成本以這種速度成長，</text>
+    <text x="44" y="480" font-size="12.5" fill="#546e7a">唯一的解法就是讓更多產品去分攤同一座廠——而要做到這件事，就必須有一個不跟客戶競爭的中立製造者。</text>
+    <text x="44" y="504" font-size="12.5" fill="#546e7a">這個邏輯的終點是高度集中：目前全球約九成的先進晶片，產自同一個地方。</text>
+  </svg>
+  </div>
+  <p class="after">把第三節與這一節接起來看，整條因果鏈就完整了：<b>因為製程是「印」的，所以固定成本極高而邊際成本極低；因為固定成本極高，所以必須靠極大的產量攤提；因為要攤提，所以製造必須從設計中分離出來，交給一個能同時服務所有競爭者的中立角色</b>。這不是產業政策規劃出來的結果，而是成本結構本身推出來的。它帶來的效率極高，但也讓整個世界的運算能力集中到極少數的地點與極少數的設備供應商手上。</p>
+</section>
+
+<div class="callout">
+  <b>三個容易混淆的名詞。</b>其一，<b>「晶片」與「半導體」不是同義詞</b>——半導體指的是材料類別，晶片是用它做出來的成品；說「半導體產業」是習慣用法，但一顆晶片裡真正在導電的路徑其實是金屬。其二，<b>「奈米製程」不是尺寸</b>——如第四節所述，三奈米、五奈米這些名稱已與晶片上任何實際長度脫鉤，只是世代代號。其三，<b>「摩爾定律」與「丹納德縮放」是兩回事</b>——前者講的是數量與成本，後者講的是功率密度；讓時脈停止上升的是後者失效，而不是前者結束。這三個混淆常常同時出現在同一段新聞裡。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">電晶體問世</span><span class="yr">1947</span><p>貝爾實驗室做出第一個電晶體，取代真空管。但零件變小之後，接線的問題反而浮上檯面。</p></div>
+  <div class="card"><span class="nm">「數量的暴政」被命名</span><span class="yr">1950 年代後期</span><p>貝爾實驗室的工程師指出真正的瓶頸不是零件而是接點數量。問題被準確描述，是解法出現的前一步。</p></div>
+  <div class="card"><span class="nm">基爾比的第一個積體電路</span><span class="yr">1958</span><p>德州儀器。證明所有元件都能做在同一塊半導體上，但元件之間仍靠飛線連接，尚無法量產。</p></div>
+  <div class="card"><span class="nm">平面製程與矽積體電路</span><span class="yr">1959</span><p>快捷半導體。利用二氧化矽層當絕緣與遮罩，讓連線也一起做出來——這才是今天所有晶片的原型。</p></div>
+  <div class="card"><span class="nm">摩爾定律提出</span><span class="yr">1965</span><p>一篇雜誌文章中的觀察，原文說的是每年加倍。1975 年修正為每兩年，此後成為整個產業共同的時間表。</p></div>
+  <div class="card"><span class="nm">第一顆商用微處理器</span><span class="yr">1971</span><p>英特爾 4004。把運算單元整合進單一晶片，讓「電腦」從一整個房間縮進一個零件裡。</p></div>
+  <div class="card"><span class="nm">丹納德縮放提出</span><span class="yr">1974</span><p>指出電晶體縮小的同時功率密度可以保持不變。這是往後三十年時脈能持續提升的理論基礎。</p></div>
+  <div class="card"><span class="nm">純晶圓代工模式出現</span><span class="yr">1987</span><p>台積電成立，只做製造、不做自有產品。這個「不與客戶競爭」的定位，讓無晶圓廠設計公司得以大量出現。</p></div>
+  <div class="card"><span class="nm">丹納德縮放失效</span><span class="yr">2005 年前後</span><p>漏電流使功率密度無法再維持，時脈停在三到四 GHz。此後效能的提升改由多核心與架構最佳化承擔。</p></div>
+  <div class="card"><span class="nm">極紫外光微影量產</span><span class="yr">2019</span><p>波長十三點五奈米的光源投入量產，讓製程得以繼續推進。能供應此種機台的廠商全世界僅有一家。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="量子力學知識圖譜.html"><span class="nm">量子力學知識圖譜</span><span class="lk">→ 專頁</span><p>半導體為什麼會「半導」，靠的是能帶結構——第二節裡矽與鍺的能隙差異，答案就在這一頁。</p></a>
+  <a class="card" href="量子電腦知識圖譜.html"><span class="nm">量子電腦知識圖譜</span><span class="lk">→ 專頁</span><p>當尺寸縮到量子效應再也無法被當成雜訊時，一條路是想辦法壓制它，另一條路是反過來利用它。</p></a>
+  <a class="card" href="西方科學家總覽.html"><span class="nm">西方科學家總覽</span><span class="lk">→ 專頁</span><p>「把原本被當成兩件事的東西變成同一件事」——積體電路做的正是這件事：元件與連線。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：聚焦於積體電路的核心概念、製程本質與由此決定的產業結構，不含電路設計與元件物理的細節。<b>數值</b>：晶圓廠造價、市占率與製程參數皆為公開資料中的通行概數，各家統計口徑不同，本頁不逐一標注來源與誤差。<b>年份</b>：丹納德縮放的失效並無單一時間點，「2005 年前後」為業界普遍採用的說法。<b>名詞</b>：「積體電路」在台灣亦常稱晶片或 IC，本頁在指成品時使用「晶片」，指技術概念時使用「積體電路」。
+</footer>
+
+</div>
+</body>
+</html>

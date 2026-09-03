@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>真空管與電晶體知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>真空管與電晶體知識圖譜</h1>
+  <p class="lede">真空管與電晶體做的是同一件事：<b>用一個小訊號去控制一個大電流</b>。它們的差別不在功能，而在做法——而這個做法的差別，可以收斂成一句話：<b>真空管必須把電子從熱金屬裡「煮」出來，電晶體不必</b>。真空管所有為人詬病的地方——耗電、發熱、壽命有限、必須抽真空、體積縮不下去——全部都是「加熱陰極」這一個設計選擇的後果，而不是五個彼此獨立的缺點。這一頁先確認兩者的功能其實完全對應，接著沿著那個唯一的根源看它導出了什麼，再看電晶體如何繞開它，以及為什麼這場交接的真正意義，不在於零件變小了。</p>
+</header>
+
+<blockquote>
+  電晶體最重要的性質，不是它比較小，而是它不再是一個「零件」——它是固體內部的一塊區域。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>先確認：兩者做的是同一件事</h2>
+  <p class="sub">三個端子一一對應，功能完全一致。所有差異都發生在「怎麼做到」這一層。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 558" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="1050" height="44" fill="#17324d" rx="6"/>
+    <text x="550" y="46" text-anchor="middle" font-size="13.5" fill="#ffffff">共同的功能：讓一個微弱的訊號，去控制一股大得多的電流——就像用手指轉動水龍頭</text>
+
+    <rect x="25" y="76" width="220" height="36" fill="#17324d"/>
+    <rect x="253" y="76" width="270" height="36" fill="#17324d"/>
+    <rect x="531" y="76" width="270" height="36" fill="#17324d"/>
+    <rect x="809" y="76" width="266" height="36" fill="#17324d"/>
+    <text x="135" y="100" text-anchor="middle" font-size="13" fill="#ffffff">扮演的角色</text>
+    <text x="388" y="100" text-anchor="middle" font-size="13" fill="#ffffff">真空管（三極管）</text>
+    <text x="666" y="100" text-anchor="middle" font-size="13" fill="#ffffff">雙極性電晶體</text>
+    <text x="942" y="100" text-anchor="middle" font-size="13" fill="#ffffff">場效電晶體</text>
+
+    <rect x="25" y="116" width="220" height="76" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="253" y="116" width="270" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="531" y="116" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="809" y="116" width="266" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="135" y="160" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">電子從哪裡出發</text>
+    <text x="388" y="148" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">陰極</text>
+    <text x="388" y="172" text-anchor="middle" font-size="11.5" fill="#b8442a">必須加熱——本頁的關鍵差異</text>
+    <text x="666" y="160" text-anchor="middle" font-size="12.5" fill="#546e7a">射極</text>
+    <text x="942" y="160" text-anchor="middle" font-size="12.5" fill="#546e7a">源極</text>
+
+    <rect x="25" y="192" width="220" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="192" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="531" y="192" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="809" y="192" width="266" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="135" y="236" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">誰在控制</text>
+    <text x="388" y="236" text-anchor="middle" font-size="12.5" fill="#546e7a">柵極</text>
+    <text x="666" y="236" text-anchor="middle" font-size="12.5" fill="#546e7a">基極</text>
+    <text x="942" y="236" text-anchor="middle" font-size="12.5" fill="#546e7a">閘極</text>
+
+    <rect x="25" y="268" width="220" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="268" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="531" y="268" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="809" y="268" width="266" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <text x="135" y="312" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">電子往哪裡去</text>
+    <text x="388" y="312" text-anchor="middle" font-size="12.5" fill="#546e7a">陽極</text>
+    <text x="666" y="312" text-anchor="middle" font-size="12.5" fill="#546e7a">集極</text>
+    <text x="942" y="312" text-anchor="middle" font-size="12.5" fill="#546e7a">汲極</text>
+
+    <rect x="25" y="344" width="220" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="253" y="344" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="531" y="344" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="809" y="344" width="266" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <text x="135" y="388" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">用什麼來控制</text>
+    <text x="388" y="388" text-anchor="middle" font-size="12.5" fill="#546e7a">柵極的電壓</text>
+    <text x="666" y="388" text-anchor="middle" font-size="12.5" fill="#546e7a">基極的電流</text>
+    <text x="942" y="376" text-anchor="middle" font-size="12.5" fill="#3d7a55">閘極的電壓</text>
+    <text x="942" y="400" text-anchor="middle" font-size="11.5" fill="#446b53">隔著一層絕緣膜，幾乎不耗電</text>
+
+    <rect x="25" y="436" width="1050" height="102" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="468" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">放大與開關，其實是同一個能力的兩種用法</text>
+    <text x="44" y="498" font-size="12.5" fill="#546e7a">當控制訊號連續變化、輸出跟著按比例變化，它就是放大器——收音機、擴大機、早期的長途電話用的是這一面。</text>
+    <text x="44" y="522" font-size="12.5" fill="#546e7a">當控制訊號只在「全開」與「全關」之間跳動，它就是開關——而這一面，正是所有數位電路與電腦的基礎。</text>
+  </svg>
+  </div>
+  <p class="after">這張對應表值得先看清楚，因為它排除了一個常見的誤解：<b>電晶體並不是「另一種原理的東西」，它在電路裡扮演的角色與真空管完全一樣</b>，早期的電晶體電路甚至可以直接照著真空管電路的拓樸去改。真正被換掉的不是功能，而是實現這個功能的物理機制——而下一節會說明，那個機制的差別為什麼能造成那麼大的連鎖後果。</p>
+</section>
+
+<section>
+  <h2>一個根源，五個後果</h2>
+  <p class="sub">下面五項不是五個獨立的缺點，而是同一個設計選擇往下長出來的五條分枝。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 578" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1045" height="102" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="552" y="52" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">根源：真空管必須把電子從金屬裡「煮」出來</text>
+    <text x="44" y="82" font-size="12.5" fill="#4f6773">陰極要被加熱到數百度以上，電子才有足夠能量脫離金屬表面、跑進真空中。這個現象叫熱電子發射，</text>
+    <text x="44" y="106" font-size="12.5" fill="#4f6773">是真空管能運作的唯一前提。而下面五項，全部都是這一個前提的必然後果。</text>
+
+    <rect x="25" y="138" width="170" height="36" fill="#17324d"/>
+    <rect x="203" y="138" width="330" height="36" fill="#17324d"/>
+    <rect x="541" y="138" width="534" height="36" fill="#8a4636"/>
+    <text x="110" y="162" text-anchor="middle" font-size="13" fill="#ffffff">後果</text>
+    <text x="368" y="162" text-anchor="middle" font-size="13" fill="#ffffff">直接的原因</text>
+    <text x="808" y="162" text-anchor="middle" font-size="13" fill="#ffffff">它造成的實際限制</text>
+
+    <rect x="25" y="178" width="170" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="203" y="178" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="541" y="178" width="534" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="222" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">持續耗電</text>
+    <text x="368" y="210" text-anchor="middle" font-size="12" fill="#546e7a">燈絲必須一直通電加熱</text>
+    <text x="368" y="234" text-anchor="middle" font-size="12" fill="#546e7a">否則整支管子不工作</text>
+    <text x="808" y="210" text-anchor="middle" font-size="12" fill="#b8442a">這份功率與訊號完全無關，開著就在燒。</text>
+    <text x="808" y="234" text-anchor="middle" font-size="12" fill="#b8442a">早期用上萬支真空管的電腦，耗電以十萬瓦計</text>
+
+    <rect x="25" y="254" width="170" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="203" y="254" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="541" y="254" width="534" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="298" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">大量發熱</text>
+    <text x="368" y="286" text-anchor="middle" font-size="12" fill="#546e7a">加熱用掉的能量</text>
+    <text x="368" y="310" text-anchor="middle" font-size="12" fill="#546e7a">最後都變成廢熱</text>
+    <text x="808" y="286" text-anchor="middle" font-size="12" fill="#b8442a">必須留出散熱空間與通風，機器因此撐大。</text>
+    <text x="808" y="310" text-anchor="middle" font-size="12" fill="#b8442a">越想擠得密，散熱就越困難，形成死結</text>
+
+    <rect x="25" y="330" width="170" height="76" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="203" y="330" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="541" y="330" width="534" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="374" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">壽命有限</text>
+    <text x="368" y="362" text-anchor="middle" font-size="12" fill="#546e7a">燈絲會像燈泡一樣</text>
+    <text x="368" y="386" text-anchor="middle" font-size="12" fill="#546e7a">用久了就燒斷</text>
+    <text x="808" y="362" text-anchor="middle" font-size="12" fill="#b8442a">這是必然而不是瑕疵。管子用得越多，</text>
+    <text x="808" y="386" text-anchor="middle" font-size="12" fill="#b8442a">整台機器能連續運轉的時間就越短</text>
+
+    <rect x="25" y="406" width="170" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="406" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="541" y="406" width="534" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="450" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">必須抽真空</text>
+    <text x="368" y="438" text-anchor="middle" font-size="12" fill="#546e7a">電子要能自由飛過去</text>
+    <text x="368" y="462" text-anchor="middle" font-size="12" fill="#546e7a">就不能被空氣分子擋住</text>
+    <text x="808" y="438" text-anchor="middle" font-size="12" fill="#b8442a">因此需要玻璃外殼與密封工序，怕震怕摔，</text>
+    <text x="808" y="462" text-anchor="middle" font-size="12" fill="#b8442a">而且只要漏進一點空氣，整支就報廢</text>
+
+    <rect x="25" y="482" width="170" height="76" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="203" y="482" width="330" height="76" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="541" y="482" width="534" height="76" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="110" y="526" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">尺寸縮不下去</text>
+    <text x="368" y="514" text-anchor="middle" font-size="12" fill="#546e7a">加熱、真空與封裝</text>
+    <text x="368" y="538" text-anchor="middle" font-size="12" fill="#546e7a">三者各自都有最小尺寸</text>
+    <text x="808" y="514" text-anchor="middle" font-size="12" fill="#3d7a55">這一項最關鍵：每一支都必須單獨組裝，</text>
+    <text x="808" y="538" text-anchor="middle" font-size="12" fill="#3d7a55">不可能整批做出來——第五節會回到這裡</text>
+  </svg>
+  </div>
+  <p class="after">把這五項還原成一個根源，可以避免一個常見的誤讀：<b>真空管並不是「設計得不好」，它已經是那個原理下能做到的樣子</b>。想讓它不耗電，就得取消加熱；取消加熱，電子就出不來。這是原理層次的死結，再怎麼改良製造工藝都繞不過去。所以真正的突破必須來自別的地方——一個根本不需要把電子煮出來的機制。</p>
+</section>
+
+<section>
+  <h2>電晶體怎麼繞開這個前提</h2>
+  <p class="sub">關鍵在於：半導體裡本來就有可以移動的載子，不必額外製造它們。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 494" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="148" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">真空管：先製造電子，再讓它飛過去</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">加熱陰極，把電子趕出金屬表面。</text>
+    <text x="282.5" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">電子穿過真空飛向陽極。</text>
+    <text x="282.5" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">中間的柵極用電壓決定放多少過去。</text>
+    <text x="282.5" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">載子必須被「生產」出來，這就是成本所在。</text>
+
+    <rect x="570" y="20" width="505" height="148" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="822" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">電晶體：載子本來就在，只要調節它</text>
+    <text x="822.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">在矽裡摻入微量雜質，就會多出可移動的載子。</text>
+    <text x="822.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">它們在常溫下就存在，不必加熱去製造。</text>
+    <text x="822.5" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">要做的只是用電場或小電流，去調節通道要不要</text>
+    <text x="822.5" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">導通、導通多少。不需加熱，也不需要真空。</text>
+
+    <rect x="30" y="184" width="505" height="148" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="282" y="218" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">雙極性電晶體（先發明的那種）</text>
+    <text x="282.5" y="250" text-anchor="middle" font-size="12.5" fill="#546e7a">用流進基極的小電流，去控制大電流。</text>
+    <text x="282.5" y="274" text-anchor="middle" font-size="12.5" fill="#546e7a">開關速度快、驅動能力強，至今仍廣泛使用。</text>
+    <text x="282.5" y="298" text-anchor="middle" font-size="12.5" fill="#546e7a">但缺點是：控制端本身必須一直有電流流過，</text>
+    <text x="282.5" y="322" text-anchor="middle" font-size="12.5" fill="#546e7a">所以只要維持在導通狀態，就一直在耗電。</text>
+
+    <rect x="570" y="184" width="505" height="148" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="822" y="218" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">場效電晶體（後來統治數位電路的那種）</text>
+    <text x="822.5" y="250" text-anchor="middle" font-size="12.5" fill="#546e7a">閘極與通道之間隔著一層絕緣的氧化膜。</text>
+    <text x="822.5" y="274" text-anchor="middle" font-size="12.5" fill="#546e7a">控制靠的是電場，而不是電流——閘極幾乎</text>
+    <text x="822.5" y="298" text-anchor="middle" font-size="12.5" fill="#546e7a">沒有電流通過，因此控制端本身幾乎不耗電。</text>
+    <text x="822.5" y="322" text-anchor="middle" font-size="12.5" fill="#546e7a">結構也更簡單，適合大量整合在同一片晶圓上。</text>
+
+    <rect x="30" y="348" width="1045" height="126" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="380" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">最後一步：互補式配對，讓靜止時幾乎不耗電</text>
+    <text x="44" y="410" font-size="12.5" fill="#546e7a">把兩種極性相反的場效電晶體成對使用，任何一個穩定狀態下，兩者之中總有一個是關的。</text>
+    <text x="44" y="434" font-size="12.5" fill="#546e7a">於是電路在「沒有在切換」的時候幾乎不消耗電流——耗電只發生在狀態改變的那一瞬間。</text>
+    <text x="44" y="458" font-size="12.5" fill="#546e7a">這正是幾十億個開關能擠進一片指甲大小的晶片、而不會把自己燒毀的根本原因。</text>
+  </svg>
+  </div>
+  <p class="after">請注意這一節的推進方向：<b>每一步解決的都是「控制端本身要不要耗電」這個問題</b>。真空管的控制端不耗電，但它的電子來源耗電；雙極性電晶體不需加熱，但控制端要吃電流；場效電晶體把控制端隔絕起來，只剩切換瞬間耗電；互補式配對再把靜止狀態的漏耗壓到接近於零。這條線索一路走下來，才讓「把極大量的開關放在一起」從不可能變成日常。</p>
+</section>
+
+<section>
+  <h2>「被取代」的實際含義：真空管其實還在</h2>
+  <p class="sub">最右欄是重點。看清楚電晶體贏在哪幾個維度，就知道它在哪些地方沒有贏。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 524" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="230" height="36" fill="#17324d"/>
+    <rect x="263" y="18" width="500" height="36" fill="#17324d"/>
+    <rect x="771" y="18" width="304" height="36" fill="#8a4636"/>
+    <text x="140" y="42" text-anchor="middle" font-size="13" fill="#ffffff">今天還在用真空管的地方</text>
+    <text x="513" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼電晶體沒有取代它</text>
+    <text x="923" y="42" text-anchor="middle" font-size="13" fill="#ffffff">真正被看重的性質</text>
+
+    <rect x="25" y="58" width="230" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="263" y="58" width="500" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="771" y="58" width="304" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="140" y="102" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">微波爐的磁控管</text>
+    <text x="513" y="90" text-anchor="middle" font-size="12" fill="#546e7a">要在單一元件上產生數百瓦的微波，</text>
+    <text x="513" y="114" text-anchor="middle" font-size="12" fill="#546e7a">真空仍然是最便宜也最有效的做法</text>
+    <text x="923" y="102" text-anchor="middle" font-size="12" fill="#b8442a">高功率、低成本</text>
+
+    <rect x="25" y="134" width="230" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="263" y="134" width="500" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="771" y="134" width="304" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="140" y="178" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">衛星與雷達的行波管</text>
+    <text x="513" y="166" text-anchor="middle" font-size="12" fill="#546e7a">在很高的頻率上同時要求高功率與高效率，</text>
+    <text x="513" y="190" text-anchor="middle" font-size="12" fill="#546e7a">半導體元件在這個區間仍難以匹敵</text>
+    <text x="923" y="178" text-anchor="middle" font-size="12" fill="#b8442a">高頻率下的功率密度</text>
+
+    <rect x="25" y="210" width="230" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="263" y="210" width="500" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="771" y="210" width="304" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="140" y="254" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">高功率廣播發射機</text>
+    <text x="513" y="242" text-anchor="middle" font-size="12" fill="#546e7a">數十千瓦等級的射頻輸出，用真空管做</text>
+    <text x="513" y="266" text-anchor="middle" font-size="12" fill="#546e7a">結構單純、耐得住過載與雷擊</text>
+    <text x="923" y="254" text-anchor="middle" font-size="12" fill="#b8442a">極端功率與耐受性</text>
+
+    <rect x="25" y="286" width="230" height="76" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="263" y="286" width="500" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="771" y="286" width="304" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="140" y="330" text-anchor="middle" font-size="12.5" fill="#6b4a8f" font-weight="600">部分音響擴大機</text>
+    <text x="513" y="318" text-anchor="middle" font-size="12" fill="#546e7a">過載時產生的失真型態被許多人認為好聽，</text>
+    <text x="513" y="342" text-anchor="middle" font-size="12" fill="#546e7a">這是聲音偏好的問題，不是性能問題</text>
+    <text x="923" y="330" text-anchor="middle" font-size="12" fill="#b8442a">特定的音色，而非規格</text>
+
+    <rect x="30" y="378" width="1045" height="126" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="410" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">規律：電晶體贏的是三個維度，不是全部</text>
+    <text x="44" y="440" font-size="12.5" fill="#546e7a">電晶體壓倒性勝出的地方只有三項：體積小、省電、可以大量整合在一起。凡是同時需要這三件事的用途，</text>
+    <text x="44" y="464" font-size="12.5" fill="#546e7a">真空管就全面退場了——電腦、收音機、電視、電話交換機無一例外。</text>
+    <text x="44" y="488" font-size="12.5" fill="#546e7a">但若某個用途要的是極高功率或極高頻率，而且只需要一兩個元件，那三項優勢就派不上用場。</text>
+  </svg>
+  </div>
+  <p class="after">這一節其實是一個通用的判斷方法：<b>要理解一次技術替代，先問清楚新技術贏在哪幾個維度，就能推測出它在哪些角落不會贏</b>。真空管沒有輸在「原理過時」，它輸在恰好有三項需求同時大幅上升——而那三項需求，正是二十世紀後半電子產品的主流方向。順帶一提，真空管中最後大規模退場的其實是映像管，它一直用到平面顯示器普及為止。</p>
+</section>
+
+<section>
+  <h2>這次交接真正的意義：從「物件」變成「區域」</h2>
+  <p class="sub">體積與耗電只是表層。真正改變一切的，是元件的存在方式變了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 376" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">真空管是一個「組裝出來的物件」</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">陰極、柵極、陽極是三個分開的金屬零件。</text>
+    <text x="282.5" y="110" text-anchor="middle" font-size="12.5" fill="#4c636e">它們必須被實際擺放到正確的相對位置，</text>
+    <text x="282.5" y="134" text-anchor="middle" font-size="12.5" fill="#4c636e">圍住一段必須維持住的真空，外面再封玻璃。</text>
+    <text x="282.5" y="158" text-anchor="middle" font-size="12.5" fill="#4c636e">每一支都得單獨組裝、單獨抽氣、單獨密封，</text>
+    <text x="282.5" y="182" text-anchor="middle" font-size="12.5" fill="#4c636e">再逐一焊接到電路上。</text>
+
+    <rect x="570" y="20" width="505" height="170" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="822" y="54" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">電晶體是固體裡的一塊「區域」</text>
+    <text x="822.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">它不是被放進去的零件，而是同一塊矽晶體中</text>
+    <text x="822.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">摻了不同雜質的幾個區塊。</text>
+    <text x="822.5" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">這些區塊的邊界由遮罩上的圖案決定，</text>
+    <text x="822.5" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">而不是由零件的擺放決定——換句話說，</text>
+    <text x="822.5" y="182" text-anchor="middle" font-size="12.5" fill="#546e7a">它的形狀是被「畫」出來的。</text>
+
+    <rect x="30" y="206" width="1045" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">這才是為什麼交接之後，一切都不一樣了</text>
+    <text x="44" y="268" font-size="12.5" fill="#546e7a">因為電晶體是區域而不是物件，它就沒有「組裝」所帶來的最小尺寸，也不必逐個製作。</text>
+    <text x="44" y="292" font-size="12.5" fill="#546e7a">既然形狀由遮罩決定，那麼在同一塊材料上同時定義一個或十億個，工序其實是一樣的。</text>
+    <text x="44" y="316" font-size="12.5" fill="#546e7a">真空管在原理上就到不了這一步——沒有任何辦法用光去「印」出一段真空。</text>
+    <text x="44" y="340" font-size="12.5" fill="#546e7a">積體電路之所以可能，前提正是在這裡就已經定下了。</text>
+  </svg>
+  </div>
+  <p class="after">所以如果只用一句話總結這場交接，說「零件變小了」會錯過重點。<b>更準確的說法是：電子元件從一種需要被製造與組裝的「東西」，變成了一種可以被定義出來的「圖案」</b>。這個轉變讓後續的一切成為可能——包括同資料夾〈積體電路知識圖譜〉整頁在談的那些事：連線也一起被印出來、成本隨產量崩落、以及整個產業因此被切成幾塊。</p>
+</section>
+
+<div class="callout">
+  <b>三個容易搞混的地方。</b>其一，<b>「真空管」與「燈泡」的親緣關係是真的</b>——真空管正是從白熾燈泡的研究裡長出來的，兩者都有一根被燒得發亮的燈絲、都封在抽真空的玻璃殼裡，也都會因為燈絲燒斷而壽終正寢。其二，<b>電晶體不等於「矽」</b>——第一批電晶體用的是鍺，矽是後來才成為主流的，理由與電晶體本身的性能關係不大（見〈積體電路知識圖譜〉第二節）。其三，<b>「固態」不是指硬邦邦</b>——固態電子學的「固態」，指的是載子在固體內部移動，相對於真空管讓電子在真空中飛行；這是一個關於電子在哪裡跑的說法，不是關於外觀。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">愛迪生效應被記錄</span><span class="yr">1880 年代</span><p>研究燈泡壽命時發現，被加熱的燈絲會讓電流單向流過真空。當時沒有用途，卻是熱電子發射的第一次觀察。</p></div>
+  <div class="card"><span class="nm">二極真空管</span><span class="yr">1904</span><p>把上述效應做成元件，可讓電流只往一個方向通過。無線電得以把高頻訊號還原成聲音。</p></div>
+  <div class="card"><span class="nm">三極管問世</span><span class="yr">1906</span><p>在中間加入柵極，讓小訊號能控制大電流。放大功能自此誕生，無線電、長途電話與電子計算都建立在它之上。</p></div>
+  <div class="card"><span class="nm">真空管電腦的極限</span><span class="yr">1940 年代</span><p>用上萬支真空管的電腦耗電以十萬瓦計，且經常有管子燒斷。效能的瓶頸不在設計，而在元件本身的物理性質。</p></div>
+  <div class="card"><span class="nm">點接觸電晶體</span><span class="yr">1947</span><p>貝爾實驗室做出第一個電晶體，用鍺製成。不需加熱、不需真空，體積只有真空管的一小部分。</p></div>
+  <div class="card"><span class="nm">接面型電晶體</span><span class="yr">1948–1951</span><p>結構更堅固也更適合量產，取代了難以複製的點接觸型。電晶體從實驗室成果變成可以工業化的產品。</p></div>
+  <div class="card"><span class="nm">電晶體收音機上市</span><span class="yr">1954</span><p>第一個真正的消費性應用。不必等待預熱、可用電池驅動、能放進口袋——這三點都是真空管做不到的。</p></div>
+  <div class="card"><span class="nm">諾貝爾物理獎</span><span class="yr">1956</span><p>頒給電晶體的三位發明者。從發明到獲獎僅九年，反映當時各界對這項成果重要性的共識。</p></div>
+  <div class="card"><span class="nm">場效電晶體實作成功</span><span class="yr">1959</span><p>概念早在 1920 年代就被提出，直到能穩定製作絕緣氧化層之後才真正做得出來。它後來成為數位電路的主力。</p></div>
+  <div class="card"><span class="nm">互補式電路提出</span><span class="yr">1963</span><p>把兩種極性的場效電晶體成對使用，讓電路在不切換時幾乎不耗電。這是後來能大規模整合的關鍵前提。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="積體電路知識圖譜.html"><span class="nm">積體電路知識圖譜</span><span class="lk">→ 專頁</span><p>本頁的直接續篇。第五節說明了元件為何可以被「畫」出來；那一頁接著談連線如何也一起被印出來。</p></a>
+  <a class="card" href="量子力學知識圖譜.html"><span class="nm">量子力學知識圖譜</span><span class="lk">→ 專頁</span><p>第三節說「載子本來就在」，為什麼？答案是半導體的能帶結構，而那是量子力學的直接結果。</p></a>
+  <a class="card" href="西方科學家總覽.html"><span class="nm">西方科學家總覽</span><span class="lk">→ 專頁</span><p>從燈泡的副作用到無線電、再到電腦——這條線是「基礎研究的意外發現如何變成技術」的典型案例。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁，可視為〈積體電路知識圖譜〉的前篇。<b>範圍</b>：聚焦於兩類元件的工作原理差異，以及該差異造成的連鎖後果，不含電路設計與元件參數。<b>簡化</b>：第三節對半導體導電機制的說明為概念性描述，實際的載子行為需由能帶理論處理。<b>數值</b>：耗電與元件數量為早期電腦的通行概數，各機型差異甚大，本頁不列個別型號的精確規格。<b>用語</b>：真空管在英國稱為「閥」（valve），這個名稱其實更貼近第一節所說的功能。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相對論知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>相對論知識圖譜</h1>
+  <p class="lede">「相對論」這個名字，讓幾乎所有人第一次接觸它時都誤解了它的內容——以為它在說「一切都是相對的、沒有客觀標準」。<b>它主張的其實正好相反</b>：這套理論的出發點，是堅持有某樣東西對所有觀察者都必須完全相同（真空中的光速），而為了保住這個絕對性，時間、長度與「同時」這些原本被當成理所當然的絕對量，才被迫變成隨觀察者而異的相對量。<b>換句話說，相對論不是把絕對變成相對，而是重新指認了哪一個才是真正的絕對</b>。這一頁從這個更換開始，接著看兩條假設如何逼出全部結論、重力如何從「力」被改寫成「幾何」、它憑什麼被相信，以及它自己在哪裡失效。</p>
+</header>
+
+<blockquote>
+  它不是說什麼都無所謂，而是說：你以為的那些不變的東西會變，而你從沒留意過的那個東西，永遠不變。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>名字取錯了：什麼變成相對的，什麼變成絕對的</h2>
+  <p class="sub">前四列是被降級的，後兩列是被升級的——後兩列才是這套理論真正的地基。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 524" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="160" height="36" fill="#17324d"/>
+    <rect x="193" y="18" width="290" height="36" fill="#17324d"/>
+    <rect x="491" y="18" width="300" height="36" fill="#17324d"/>
+    <rect x="799" y="18" width="276" height="36" fill="#8a4636"/>
+    <text x="105" y="42" text-anchor="middle" font-size="13" fill="#ffffff">哪一個量</text>
+    <text x="338" y="42" text-anchor="middle" font-size="13" fill="#ffffff">牛頓力學認為</text>
+    <text x="641" y="42" text-anchor="middle" font-size="13" fill="#ffffff">相對論認為</text>
+    <text x="937" y="42" text-anchor="middle" font-size="13" fill="#ffffff">地位如何改變</text>
+
+    <rect x="25" y="58" width="160" height="74" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="193" y="58" width="290" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="58" width="300" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="799" y="58" width="276" height="74" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="101" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">時間流逝的快慢</text>
+    <text x="338" y="89" text-anchor="middle" font-size="12" fill="#546e7a">對每個人都一樣</text>
+    <text x="338" y="112" text-anchor="middle" font-size="12" fill="#546e7a">宇宙有一個統一的鐘</text>
+    <text x="641" y="89" text-anchor="middle" font-size="12" fill="#546e7a">依運動速度與所在重力而異</text>
+    <text x="641" y="112" text-anchor="middle" font-size="12" fill="#546e7a">沒有統一的鐘</text>
+    <text x="937" y="101" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">絕對　→　相對</text>
+
+    <rect x="25" y="132" width="160" height="74" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="193" y="132" width="290" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="132" width="300" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="799" y="132" width="276" height="74" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="175" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">兩件事是否同時</text>
+    <text x="338" y="163" text-anchor="middle" font-size="12" fill="#546e7a">是一件客觀事實</text>
+    <text x="338" y="186" text-anchor="middle" font-size="12" fill="#546e7a">與誰在看無關</text>
+    <text x="641" y="163" text-anchor="middle" font-size="12" fill="#546e7a">依觀察者的運動狀態而不同</text>
+    <text x="641" y="186" text-anchor="middle" font-size="12" fill="#546e7a">沒有共通的「現在」</text>
+    <text x="937" y="175" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">絕對　→　相對</text>
+
+    <rect x="25" y="206" width="160" height="74" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="193" y="206" width="290" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="206" width="300" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="799" y="206" width="276" height="74" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="249" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">物體的長度</text>
+    <text x="338" y="237" text-anchor="middle" font-size="12" fill="#546e7a">固定不變</text>
+    <text x="338" y="260" text-anchor="middle" font-size="12" fill="#546e7a">誰來量都一樣</text>
+    <text x="641" y="237" text-anchor="middle" font-size="12" fill="#546e7a">沿運動方向收縮</text>
+    <text x="641" y="260" text-anchor="middle" font-size="12" fill="#546e7a">速度越快收縮越多</text>
+    <text x="937" y="249" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">絕對　→　相對</text>
+
+    <rect x="25" y="280" width="160" height="74" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="193" y="280" width="290" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="280" width="300" height="74" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="799" y="280" width="276" height="74" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="105" y="323" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">質量與能量</text>
+    <text x="338" y="311" text-anchor="middle" font-size="12" fill="#546e7a">兩種不同的東西</text>
+    <text x="338" y="334" text-anchor="middle" font-size="12" fill="#546e7a">各自獨立守恆</text>
+    <text x="641" y="311" text-anchor="middle" font-size="12" fill="#546e7a">同一件事的兩種形式</text>
+    <text x="641" y="334" text-anchor="middle" font-size="12" fill="#546e7a">E = mc²</text>
+    <text x="937" y="323" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">兩者　→　一者</text>
+
+    <rect x="25" y="354" width="160" height="74" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.6"/>
+    <rect x="193" y="354" width="290" height="74" fill="#ffffff" stroke="#8fb4c9"/>
+    <rect x="491" y="354" width="300" height="74" fill="#ffffff" stroke="#8fb4c9"/>
+    <rect x="799" y="354" width="276" height="74" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.6"/>
+    <text x="105" y="397" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">真空中的光速</text>
+    <text x="338" y="385" text-anchor="middle" font-size="12" fill="#546e7a">相對於某種介質而言</text>
+    <text x="338" y="408" text-anchor="middle" font-size="12" fill="#546e7a">會與觀察者的運動疊加</text>
+    <text x="641" y="385" text-anchor="middle" font-size="12" fill="#546e7a">對所有等速運動的觀察者</text>
+    <text x="641" y="408" text-anchor="middle" font-size="12" fill="#546e7a">都是同一個數值</text>
+    <text x="937" y="397" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">相對　→　絕對</text>
+
+    <rect x="25" y="428" width="160" height="74" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="193" y="428" width="290" height="74" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="491" y="428" width="300" height="74" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="799" y="428" width="276" height="74" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="105" y="471" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">時空間隔</text>
+    <text x="338" y="465" text-anchor="middle" font-size="12" fill="#546e7a">沒有這個概念</text>
+    <text x="641" y="459" text-anchor="middle" font-size="12" fill="#546e7a">結合時間與空間的一個量</text>
+    <text x="641" y="482" text-anchor="middle" font-size="12" fill="#546e7a">所有觀察者測到的值相同</text>
+    <text x="937" y="471" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">全新的絕對量</text>
+  </svg>
+  </div>
+  <p class="after">看懂這張表，就抓到了整套理論的邏輯方向：<b>前四列的「相對化」不是目的，而是為了守住後兩列的「絕對性」所付出的代價</b>。時間和長度之所以必須讓步，正因為光速這個底線不肯讓步。而最後一列的時空間隔尤其關鍵——它說明相對論並沒有讓客觀性消失，只是把客觀性搬到了一個新的位置：不同觀察者測到的時間與距離都不一樣，但把兩者用特定方式組合起來之後，得到的數值人人相同。</p>
+</section>
+
+<section>
+  <h2>狹義相對論：兩條假設，一串被迫的結論</h2>
+  <p class="sub">下面四件事不是各自獨立的發現，而是接受兩條假設之後推導出來的必然結果。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 385" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="190" y="20" width="340" height="112" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="360" y="52" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">假設一　相對性原理</text>
+    <text x="360" y="78" text-anchor="middle" font-size="12" fill="#546e7a">物理定律在所有等速運動的參考</text>
+    <text x="360" y="98" text-anchor="middle" font-size="12" fill="#546e7a">系裡都相同。沒有哪一個參考系</text>
+    <text x="360" y="118" text-anchor="middle" font-size="12" fill="#546e7a">是「真正靜止」的那一個。</text>
+
+    <rect x="570" y="20" width="340" height="112" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="740" y="52" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">假設二　光速不變</text>
+    <text x="740" y="78" text-anchor="middle" font-size="12" fill="#546e7a">真空中的光速對所有觀察者都是</text>
+    <text x="740" y="98" text-anchor="middle" font-size="12" fill="#546e7a">同一個值，與光源的運動、觀察</text>
+    <text x="740" y="118" text-anchor="middle" font-size="12" fill="#546e7a">者的運動都無關。</text>
+
+    <rect x="30" y="148" width="1045" height="44" fill="#17324d" rx="6"/>
+    <text x="552" y="176" text-anchor="middle" font-size="13" fill="#ffffff">這兩條一旦同時成立，下面四件事就不是可以選擇要不要接受的——它們是被推導出來的</text>
+
+    <rect x="30" y="208" width="254" height="158" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="157" y="240" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">同時性是相對的</text>
+    <text x="157" y="270" text-anchor="middle" font-size="11.5" fill="#546e7a">對甲而言同時發生的兩</text>
+    <text x="157" y="290" text-anchor="middle" font-size="11.5" fill="#546e7a">件事，對運動中的乙來</text>
+    <text x="157" y="310" text-anchor="middle" font-size="11.5" fill="#546e7a">說有先後之分。</text>
+    <text x="157" y="344" text-anchor="middle" font-size="11" fill="#96604f">其餘三項的共同根源</text>
+
+    <rect x="292" y="208" width="254" height="158" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="419" y="240" text-anchor="middle" font-size="13" fill="#17324d" font-weight="600">時間膨脹</text>
+    <text x="419" y="270" text-anchor="middle" font-size="11.5" fill="#546e7a">相對於你運動的鐘，走</text>
+    <text x="419" y="290" text-anchor="middle" font-size="11.5" fill="#546e7a">得比你的鐘慢。速度越</text>
+    <text x="419" y="310" text-anchor="middle" font-size="11.5" fill="#546e7a">接近光速，差距越大。</text>
+    <text x="419" y="344" text-anchor="middle" font-size="11" fill="#59707b">宇宙射線的緲子是直接證據</text>
+
+    <rect x="554" y="208" width="254" height="158" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="681" y="240" text-anchor="middle" font-size="13" fill="#17324d" font-weight="600">長度收縮</text>
+    <text x="681" y="270" text-anchor="middle" font-size="11.5" fill="#546e7a">沿運動方向的長度會變</text>
+    <text x="681" y="290" text-anchor="middle" font-size="11.5" fill="#546e7a">短。它與時間膨脹其實</text>
+    <text x="681" y="310" text-anchor="middle" font-size="11.5" fill="#546e7a">是同一件事的兩種說法</text>
+    <text x="681" y="344" text-anchor="middle" font-size="11" fill="#59707b">兩者必須成套出現才自洽</text>
+
+    <rect x="816" y="208" width="254" height="158" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="943" y="240" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">質能等價</text>
+    <text x="943" y="270" text-anchor="middle" font-size="11.5" fill="#546e7a">質量是能量的一種形式</text>
+    <text x="943" y="290" text-anchor="middle" font-size="11.5" fill="#546e7a">靜止的物體本身就帶有</text>
+    <text x="943" y="310" text-anchor="middle" font-size="11.5" fill="#546e7a">能量，數值為 E = mc²。</text>
+    <text x="943" y="344" text-anchor="middle" font-size="11" fill="#446b53">1905 年稍晚一篇短文的結論</text>
+  </svg>
+  </div>
+  <p class="after">值得特別指出第一格：<b>同時性的相對化才是真正的關鍵一步</b>，時間膨脹與長度收縮都是它的後果。原因不難理解——量長度必須「同時」記下兩端的位置，量時間必須比對「同時」發生的刻度。一旦「同時」本身失去了普遍意義，長度與時間的測量就自動跟著失去絕對性。狹義相對論處理的是等速運動的情形，一旦牽涉到加速與重力，就得換一套更大的框架，也就是下一節。</p>
+</section>
+
+<section>
+  <h2>廣義相對論：把重力從「力」改寫成「幾何」</h2>
+  <p class="sub">整套改寫都建立在一個看似平凡的觀察上：有兩種處境，你無法用任何實驗把它們分辨開來。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 432" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="150" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="52" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">情境 A　靜止在地球表面的密閉電梯</text>
+    <text x="282.5" y="84" text-anchor="middle" font-size="12.5" fill="#546e7a">你站在裡面，感覺到腳底有向下的重量。手上的球</text>
+    <text x="282.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">一放開就會加速墜落。你會說：這是重力。</text>
+    <text x="282" y="148" text-anchor="middle" font-size="11.5" fill="#37607a">看不到外面，只能靠艙內的實驗判斷</text>
+
+    <rect x="570" y="20" width="505" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="822" y="52" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">情境 B　在無重力太空中加速的密閉電梯</text>
+    <text x="822.5" y="84" text-anchor="middle" font-size="12.5" fill="#546e7a">火箭以每秒每秒 9.8 公尺的加速度拉著電梯前進。</text>
+    <text x="822.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">你感覺到完全相同的重量，球也同樣加速「墜落」。</text>
+    <text x="822" y="148" text-anchor="middle" font-size="11.5" fill="#8a6a35">艙內任何實驗都給出相同結果</text>
+
+    <rect x="30" y="186" width="1045" height="90" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="218" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">等效原理：既然分辨不出來，就不必當成兩件事</text>
+    <text x="44" y="244" font-size="12.5" fill="#546e7a">在夠小的範圍內，重力與加速度的效果完全等價。既然如此，重力就不必被當成一種「拉扯物體的力」——</text>
+    <text x="44" y="264" font-size="12.5" fill="#546e7a">它可以是時空本身的彎曲，而物體只是在彎曲的時空中沿著最直的路徑前進，看起來才像被拉著走。</text>
+
+    <rect x="30" y="292" width="338" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="199" y="322" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">推論一　光線會被重力偏折</text>
+    <text x="199" y="352" text-anchor="middle" font-size="11.5" fill="#546e7a">光走的是時空中最直的路徑，</text>
+    <text x="199" y="374" text-anchor="middle" font-size="11.5" fill="#546e7a">但時空本身被質量彎曲了，所</text>
+    <text x="199" y="396" text-anchor="middle" font-size="11.5" fill="#546e7a">以路徑看起來是彎的。</text>
+
+    <rect x="381" y="292" width="338" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="322" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">推論二　重力使時間變慢</text>
+    <text x="550" y="352" text-anchor="middle" font-size="11.5" fill="#546e7a">重力越強的地方時間走得越慢</text>
+    <text x="550" y="374" text-anchor="middle" font-size="11.5" fill="#546e7a">地面的鐘比高空的鐘慢，這是</text>
+    <text x="550" y="396" text-anchor="middle" font-size="11.5" fill="#546e7a">可以直接量出來的效應。</text>
+
+    <rect x="732" y="292" width="343" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="903" y="322" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">推論三　時空彎曲會傳播</text>
+    <text x="903.5" y="352" text-anchor="middle" font-size="11.5" fill="#546e7a">質量劇烈運動時，彎曲的擾動</text>
+    <text x="903.5" y="374" text-anchor="middle" font-size="11.5" fill="#546e7a">會以光速向外傳出去，也就是</text>
+    <text x="903.5" y="396" text-anchor="middle" font-size="11.5" fill="#546e7a">重力波。</text>
+  </svg>
+  </div>
+  <p class="after">這一節與牛頓的差別，不只是算得比較準而已，而是<b>對「重力是什麼」給了完全不同的回答</b>。牛頓說有一種力隔空作用於兩個物體之間，而且無法解釋它為何存在、如何瞬間傳遞；愛因斯坦則說根本沒有那種力——質量改變了時空的形狀，物體只是照著新的形狀走。三個推論都在下一節被逐一驗證。至於這套幾何被推到極端會發生什麼事，見同資料夾的〈黑洞知識圖譜〉。</p>
+</section>
+
+<section>
+  <h2>為什麼相信它：一百年的驗證清單</h2>
+  <p class="sub">最右欄是重點。這些不是理論的示意說明，而是可以量出數字、也可能推翻理論的檢驗。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 536" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="210" height="36" fill="#17324d"/>
+    <rect x="243" y="18" width="110" height="36" fill="#17324d"/>
+    <rect x="361" y="18" width="330" height="36" fill="#17324d"/>
+    <rect x="699" y="18" width="376" height="36" fill="#8a4636"/>
+    <text x="130" y="42" text-anchor="middle" font-size="13" fill="#ffffff">預測</text>
+    <text x="298" y="42" text-anchor="middle" font-size="13" fill="#ffffff">年份</text>
+    <text x="526" y="42" text-anchor="middle" font-size="13" fill="#ffffff">怎麼檢驗</text>
+    <text x="887" y="42" text-anchor="middle" font-size="13" fill="#ffffff">結果</text>
+
+    <rect x="25" y="58" width="210" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="243" y="58" width="110" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="361" y="58" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="699" y="58" width="376" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="130" y="102" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">水星軌道的異常</text>
+    <text x="298" y="102" text-anchor="middle" font-size="12.5" fill="#546e7a">1915</text>
+    <text x="526" y="90" text-anchor="middle" font-size="11.5" fill="#546e7a">用新方程式重算水星軌道</text>
+    <text x="526" y="114" text-anchor="middle" font-size="11.5" fill="#546e7a">與觀測資料比對</text>
+    <text x="887" y="90" text-anchor="middle" font-size="11.5" fill="#b8442a">牛頓力學算不出的每世紀 43 角秒偏差</text>
+    <text x="887" y="114" text-anchor="middle" font-size="11.5" fill="#b8442a">完全對上，且未引入任何額外參數</text>
+
+    <rect x="25" y="134" width="210" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="243" y="134" width="110" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="361" y="134" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="699" y="134" width="376" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="130" y="178" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">星光經過太陽偏折</text>
+    <text x="298" y="178" text-anchor="middle" font-size="12.5" fill="#546e7a">1919</text>
+    <text x="526" y="166" text-anchor="middle" font-size="11.5" fill="#546e7a">趁日全食拍攝太陽旁的星空</text>
+    <text x="526" y="190" text-anchor="middle" font-size="11.5" fill="#546e7a">比對平時的星位</text>
+    <text x="887" y="166" text-anchor="middle" font-size="11.5" fill="#b8442a">結果接近廣義相對論的 1.75 角秒</text>
+    <text x="887" y="190" text-anchor="middle" font-size="11.5" fill="#b8442a">約為牛頓式估算值的兩倍</text>
+
+    <rect x="25" y="210" width="210" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="243" y="210" width="110" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="361" y="210" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="699" y="210" width="376" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="130" y="254" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">重力使時間變慢</text>
+    <text x="298" y="254" text-anchor="middle" font-size="12.5" fill="#546e7a">1959</text>
+    <text x="526" y="242" text-anchor="middle" font-size="11.5" fill="#546e7a">在一座二十二公尺高的塔上</text>
+    <text x="526" y="266" text-anchor="middle" font-size="11.5" fill="#546e7a">量測光子頻率的細微變化</text>
+    <text x="887" y="242" text-anchor="middle" font-size="11.5" fill="#b8442a">在地面實驗室內就測到了預測的效應</text>
+    <text x="887" y="266" text-anchor="middle" font-size="11.5" fill="#b8442a">不必依賴天文觀測</text>
+
+    <rect x="25" y="286" width="210" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="243" y="286" width="110" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="361" y="286" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="699" y="286" width="376" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="130" y="322" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">衛星上的鐘會走偏</text>
+    <text x="130" y="344" text-anchor="middle" font-size="11" fill="#37607a">兩種效應方向相反</text>
+    <text x="298" y="330" text-anchor="middle" font-size="12.5" fill="#546e7a">1970s 起</text>
+    <text x="526" y="318" text-anchor="middle" font-size="11.5" fill="#546e7a">衛星定位系統每天都必須</text>
+    <text x="526" y="342" text-anchor="middle" font-size="11.5" fill="#546e7a">依兩套公式修正星載時鐘</text>
+    <text x="887" y="318" text-anchor="middle" font-size="11.5" fill="#b8442a">若不修正，定位誤差每天累積約十公里</text>
+    <text x="887" y="342" text-anchor="middle" font-size="11.5" fill="#b8442a">這是每天都在運作的實證</text>
+
+    <rect x="25" y="362" width="210" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="243" y="362" width="110" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="361" y="362" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="699" y="362" width="376" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="130" y="406" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">重力波存在</text>
+    <text x="298" y="406" text-anchor="middle" font-size="12.5" fill="#546e7a">2015</text>
+    <text x="526" y="394" text-anchor="middle" font-size="11.5" fill="#546e7a">用數公里長的雷射干涉儀</text>
+    <text x="526" y="418" text-anchor="middle" font-size="11.5" fill="#546e7a">量測極微小的長度變化</text>
+    <text x="887" y="394" text-anchor="middle" font-size="11.5" fill="#b8442a">偵測到兩個黑洞合併發出的波</text>
+    <text x="887" y="418" text-anchor="middle" font-size="11.5" fill="#b8442a">波形與理論的數值解高度吻合</text>
+
+    <rect x="25" y="438" width="210" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="243" y="438" width="110" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="361" y="438" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="699" y="438" width="376" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="130" y="482" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">黑洞有陰影輪廓</text>
+    <text x="298" y="482" text-anchor="middle" font-size="12.5" fill="#546e7a">2019</text>
+    <text x="526" y="470" text-anchor="middle" font-size="11.5" fill="#546e7a">把全球多座電波望遠鏡</text>
+    <text x="526" y="494" text-anchor="middle" font-size="11.5" fill="#546e7a">合成為一座地球大小的陣列</text>
+    <text x="887" y="470" text-anchor="middle" font-size="11.5" fill="#b8442a">拍到的陰影大小與形狀符合預測</text>
+    <text x="887" y="494" text-anchor="middle" font-size="11.5" fill="#b8442a">距離理論提出已超過一百年</text>
+  </svg>
+  </div>
+  <p class="after">這份清單有一個容易被略過的特徵：<b>它橫跨了「天文觀測」與「桌上實驗」兩種完全不同的檢驗途徑</b>。1919 年的日食觀測必須等待特定天象、精度也受限，但 1959 年那次在一座塔上就完成的實驗，把同一個效應搬進了可以反覆重做的實驗室。而第四列的衛星定位更特別——它不是為了驗證相對論而做的實驗，而是一項每天都必須依賴這套理論才能運作的日常技術。</p>
+</section>
+
+<section>
+  <h2>它自己的邊界在哪裡</h2>
+  <p class="sub">一套理論知道自己會在哪裡失效，這件事本身就是它的價值之一。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 358" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="338" height="180" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="199" y="52" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">奇異點</text>
+    <text x="199" y="84" text-anchor="middle" font-size="11.5" fill="#4f6773">在黑洞中心與宇宙的起點，</text>
+    <text x="199" y="106" text-anchor="middle" font-size="11.5" fill="#4f6773">方程式算出的密度與曲率是</text>
+    <text x="199" y="128" text-anchor="middle" font-size="11.5" fill="#4f6773">無限大。無限大不是一個物</text>
+    <text x="199" y="150" text-anchor="middle" font-size="11.5" fill="#4f6773">理答案，而是理論在說：這</text>
+    <text x="199" y="172" text-anchor="middle" font-size="11.5" fill="#4f6773">裡已經超出我能處理的範圍</text>
+
+    <rect x="381" y="20" width="338" height="180" fill="#f2eef6" stroke="#a894c0" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13" fill="#6b4a8f" font-weight="600">與量子力學不相容</text>
+    <text x="550" y="84" text-anchor="middle" font-size="11.5" fill="#546e7a">廣義相對論描述的是連續、</text>
+    <text x="550" y="106" text-anchor="middle" font-size="11.5" fill="#546e7a">光滑的幾何；量子力學描述</text>
+    <text x="550" y="128" text-anchor="middle" font-size="11.5" fill="#546e7a">的是離散、機率性的世界。</text>
+    <text x="550" y="150" text-anchor="middle" font-size="11.5" fill="#546e7a">在極小的尺度上兩者必須同</text>
+    <text x="550" y="172" text-anchor="middle" font-size="11.5" fill="#546e7a">時成立，目前卻無法整合。</text>
+
+    <rect x="732" y="20" width="343" height="180" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="903" y="52" text-anchor="middle" font-size="13" fill="#4c636e" font-weight="600">尚未解釋的觀測</text>
+    <text x="903.5" y="78" text-anchor="middle" font-size="11.5" fill="#4c636e">星系轉得比可見物質所能維</text>
+    <text x="903.5" y="100" text-anchor="middle" font-size="11.5" fill="#4c636e">持的更快，宇宙的膨脹也在</text>
+    <text x="903.5" y="122" text-anchor="middle" font-size="11.5" fill="#4c636e">加速。這些落差目前用暗物</text>
+    <text x="903.5" y="144" text-anchor="middle" font-size="11.5" fill="#4c636e">質與暗能量來補，但究竟是</text>
+    <text x="903.5" y="166" text-anchor="middle" font-size="11.5" fill="#4c636e">缺了成分還是理論不完整，</text>
+    <text x="903.5" y="188" text-anchor="middle" font-size="11.5" fill="#4c636e">仍未有定論。</text>
+
+    <rect x="30" y="216" width="1045" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="248" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">「有邊界」不等於「錯了」</text>
+    <text x="44" y="276" font-size="12.5" fill="#546e7a">牛頓力學並沒有因為相對論的出現而變成錯的——在速度遠低於光速、重力不強的情況下，它依然精確，也依然</text>
+    <text x="44" y="298" font-size="12.5" fill="#546e7a">是造橋、發射衛星時實際在用的工具。相對論的處境完全相同：它在自己被驗證過的範圍內極其精確，而它指出的</text>
+    <text x="44" y="320" font-size="12.5" fill="#546e7a">那幾個失效之處，正是下一套理論將要接手的地方。理論被取代的方式，通常是被涵蓋，而不是被推翻。</text>
+  </svg>
+  </div>
+  <p class="after">第二格是目前物理學最主要的未解問題之一，而它的另一半在同資料夾的〈量子力學知識圖譜〉。值得注意的是，這兩套理論各自都通過了極為嚴苛的檢驗、在各自的領域裡都極度精確，<b>問題不在於哪一套是錯的，而在於兩者用的語言根本不相容</b>——只有在黑洞中心與宇宙初始那種「又極小又極重」的處境裡，這個矛盾才會真正浮上檯面。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>雙生子悖論不是悖論</b>——兩人的處境並不對稱，出發後又折返的那一位中途改變了運動狀態，回來時較年輕的是他，理論給出的答案是唯一且明確的。其二，<b>E = mc² 不是原子彈的原理</b>——核彈的機制是連鎖分裂反應，這條式子只是準確地換算出釋放的能量有多少；同一條式子也同樣適用於太陽發光與一般化學反應，只是後者的質量變化小到量不出來。其三，<b>「時間變慢」不是錯覺或觀測誤差</b>——不是鐘壞了或看錯了，而是時間本身在不同處境下流逝得不一樣快，衛星上的原子鐘每天都在證明這件事。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">邁克生—莫立實驗</span><span class="yr">1887</span><p>設計來測量地球穿過「以太」的速度，結果什麼也沒測到。這個否定的結果，成了光速不變假設最重要的實驗背景。</p></div>
+  <div class="card"><span class="nm">狹義相對論發表</span><span class="yr">1905</span><p>愛因斯坦的「奇蹟年」論文之一。全文沒有引用任何前人文獻，而是從兩條假設直接推導出全部結論。</p></div>
+  <div class="card"><span class="nm">質能等價</span><span class="yr">1905</span><p>同年稍晚發表的一篇短文，篇幅僅數頁，卻推出了 E = mc²——質量與能量是同一件事的兩種形式。</p></div>
+  <div class="card"><span class="nm">閔可夫斯基時空</span><span class="yr">1908</span><p>數學家閔可夫斯基把時間與空間合併為一個四維幾何結構，讓「時空間隔」這個新的絕對量有了明確的形式。</p></div>
+  <div class="card"><span class="nm">等效原理的靈感</span><span class="yr">1907</span><p>愛因斯坦意識到自由落體中的人感覺不到自身的重量。他後來稱這是「一生中最快樂的念頭」，也是廣義相對論的起點。</p></div>
+  <div class="card"><span class="nm">廣義相對論場方程</span><span class="yr">1915</span><p>歷經八年才完成。方程式描述物質如何決定時空的彎曲，而彎曲又如何決定物質的運動。</p></div>
+  <div class="card"><span class="nm">日食觀測</span><span class="yr">1919</span><p>英國觀測隊在日全食時測得星光偏折，結果支持廣義相對論。消息登上各國報紙頭版，愛因斯坦自此成為公眾人物。</p></div>
+  <div class="card"><span class="nm">地面測到重力紅移</span><span class="yr">1959</span><p>在一座二十餘公尺高的塔上完成，把原本只能靠天文觀測檢驗的效應，變成了可以在實驗室反覆重做的測量。</p></div>
+  <div class="card"><span class="nm">首次直接偵測重力波</span><span class="yr">2015</span><p>兩座相距數千公里的干涉儀同時捕捉到兩個黑洞合併的訊號。距離理論預言此現象已經整整一百年。</p></div>
+  <div class="card"><span class="nm">首張黑洞影像</span><span class="yr">2019</span><p>全球多座電波望遠鏡合成觀測，拍下 M87 星系中心黑洞的陰影輪廓，其大小與形狀符合理論預測。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="黑洞知識圖譜.html"><span class="nm">黑洞知識圖譜</span><span class="lk">→ 專頁</span><p>第三節那套幾何被推到極端的結果。也是第五節「奇異點」問題最具體的所在。</p></a>
+  <a class="card" href="量子力學知識圖譜.html"><span class="nm">量子力學知識圖譜</span><span class="lk">→ 專頁</span><p>第五節那個不相容問題的另一半。兩套理論各自都極其精確，卻用著彼此無法翻譯的語言。</p></a>
+  <a class="card" href="西方科學家總覽.html"><span class="nm">西方科學家總覽</span><span class="lk">→ 專頁</span><p>「把原本被當成兩件事的東西證明成同一件事」——相對論做了兩次：時間與空間、質量與能量。</p></a>
+  <a class="card" href="../1.西方歷史/科學革命.html"><span class="nm">科學革命</span><span class="lk">→ 專頁</span><p>被相對論修正的那個牛頓體系是怎麼建立起來的，以及它為何在兩百多年間看起來毫無破綻。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：涵蓋 1905 年的狹義相對論與 1915 年的廣義相對論，重點放在概念結構與驗證方式，不含數學推導。<b>數值</b>：文中的角秒、公尺、微秒等數字為文獻中的通行值，實際測量各有誤差範圍，本頁不逐一標注。<b>用語</b>：「時空間隔」指的是結合時間與空間的不變量；「等效原理」在此採其局部形式，亦即只在夠小的範圍內成立。<b>邊界</b>：第五節所列的三項限制，學界對其性質仍有不同看法，本頁僅陳述問題本身，不採取特定立場。
+</footer>
+
+</div>
+</body>
+</html>
