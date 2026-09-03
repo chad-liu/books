@@ -30,8 +30,6 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn.pri:hover{filter:brightness(1.1)}
 #zl{font-size:11.5px;color:var(--muted);min-width:38px;text-align:center}
-#env{font-size:11.5px;color:var(--muted);margin-left:auto;white-space:nowrap}
-#env b{color:var(--hot)}
 
 /* ---- 主體 ---- */
 #main{flex:1;display:flex;min-height:0}
@@ -69,31 +67,19 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .tab .nm{overflow:hidden;text-overflow:ellipsis}
 .tab .x{color:var(--muted);font-size:14px;line-height:1}
 .tab .x:hover{color:var(--hot)}
-.tab .dot{color:var(--hot);font-size:15px;line-height:1}
 .tab.add{color:var(--muted);font-weight:700;padding:6px 12px;background:transparent;border-style:dashed}
 .tab.add:hover{background:var(--hover);color:var(--accent2);border-color:var(--accent)}
 
 /* ---- 工具列 ---- */
 #bar{display:flex;align-items:center;gap:8px;padding:7px 12px;background:var(--panel);
   border-bottom:1px solid var(--line);flex:0 0 auto;flex-wrap:wrap}
-#bar .path{font-size:11.5px;color:var(--muted);margin-right:auto;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:46%}
-#msg{font-size:12px}
-#msg.ok{color:var(--ok)} #msg.err{color:var(--hot)}
+#bar .path{font-size:11.5px;color:var(--muted);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 /* ---- 內容區 ---- */
 #panes{flex:1;min-height:0;display:flex}
 #viewWrap{flex:1;min-width:0;display:flex}
-#editWrap{flex:1;min-width:0;display:none}
-body.edit #viewWrap{display:none}
-body.edit #editWrap{display:flex}
 iframe{border:0;width:100%;height:100%;background:#fff}
-#src{width:50%;height:100%;border:0;border-right:1px solid var(--line);resize:none;
-  padding:12px;font-family:ui-monospace,Consolas,"Noto Sans Mono",monospace;
-  font-size:13px;line-height:1.6;background:var(--panel);color:var(--ink);
-  tab-size:2;white-space:pre;overflow:auto}
-#src:focus{outline:none}
-#prevWrap{width:50%;height:100%}
 #empty{flex:1;display:flex;align-items:center;justify-content:center;
   color:var(--muted);font-size:13.5px;text-align:center;line-height:2;padding:20px}
 </style>
@@ -106,8 +92,6 @@ iframe{border:0;width:100%;height:100%;background:#fff}
   <button class="btn" id="fsDn" title="縮小右邊預覽欄">A−</button>
   <span id="zl">100%</span>
   <button class="btn" id="fsUp" title="放大右邊預覽欄">A+</button>
-  <button class="btn" id="conn" title="授權後可直接存回原檔">連結資料夾</button>
-  <span id="env"></span>
 </div>
 
 <div id="main">
@@ -115,32 +99,17 @@ iframe{border:0;width:100%;height:100%;background:#fff}
   <div id="gutter"></div>
   <section id="work">
     <div id="tabs"></div>
-    <div id="bar" style="display:none">
-      <button class="btn" id="mView">檢視</button>
-      <button class="btn" id="mEdit">編輯</button>
-      <span class="path"></span>
-      <span id="msg"></span>
-      <button class="btn pri" id="save" title="Ctrl+S">存檔</button>
-      <button class="btn" id="dl">下載</button>
-    </div>
+    <div id="bar" style="display:none"><span class="path"></span></div>
     <div id="empty">從左欄挑一個檔案開始<br>單擊會取代目前分頁，要另開請按分頁列的「＋」（Ctrl+T）</div>
     <div id="panes" style="display:none">
       <div id="viewWrap"><iframe id="view"></iframe></div>
-      <div id="editWrap">
-        <textarea id="src" spellcheck="false"></textarea>
-        <div id="prevWrap"><iframe id="prev"></iframe></div>
-      </div>
     </div>
   </section>
 </div>
 <script>
-var TREE = [{"name": "1.西方歷史", "files": [{"n": "希臘神話人物簡介與關係圖.html", "p": "html/1.西方歷史/希臘神話人物簡介與關係圖.html", "s": 25424, "o": true}, {"n": "北歐神話人物簡介與關係圖.html", "p": "html/1.西方歷史/北歐神話人物簡介與關係圖.html", "s": 21903, "o": true}, {"n": "荷馬史詩人物關係圖.html", "p": "html/1.西方歷史/荷馬史詩人物關係圖.html", "s": 26242, "o": true}, {"n": "波希戰爭.html", "p": "html/1.西方歷史/波希戰爭.html", "s": 27327, "o": true}, {"n": "拜占庭帝國.html", "p": "html/1.西方歷史/拜占庭帝國.html", "s": 42518, "o": true}, {"n": "歐洲中古史.html", "p": "html/1.西方歷史/歐洲中古史.html", "s": 39906, "o": true}, {"n": "神聖羅馬帝國時間軸.html", "p": "html/1.西方歷史/神聖羅馬帝國時間軸.html", "s": 33320, "o": true}, {"n": "十字軍東征.html", "p": "html/1.西方歷史/十字軍東征.html", "s": 38832, "o": true}, {"n": "文藝復興.html", "p": "html/1.西方歷史/文藝復興.html", "s": 31501, "o": true}, {"n": "文藝復興時間軸.html", "p": "html/1.西方歷史/文藝復興時間軸.html", "s": 25367, "o": true}, {"n": "梅迪奇家族.html", "p": "html/1.西方歷史/梅迪奇家族.html", "s": 19686, "o": true}, {"n": "達文西.html", "p": "html/1.西方歷史/達文西.html", "s": 29554, "o": true}, {"n": "地理大發現時間軸.html", "p": "html/1.西方歷史/地理大發現時間軸.html", "s": 31504, "o": true}, {"n": "宗教改革.html", "p": "html/1.西方歷史/宗教改革.html", "s": 30425, "o": true}, {"n": "宗教改革時間軸.html", "p": "html/1.西方歷史/宗教改革時間軸.html", "s": 27143, "o": true}, {"n": "三十年戰爭.html", "p": "html/1.西方歷史/三十年戰爭.html", "s": 37432, "o": true}, {"n": "科學革命.html", "p": "html/1.西方歷史/科學革命.html", "s": 28231, "o": true}, {"n": "科學革命時間軸.html", "p": "html/1.西方歷史/科學革命時間軸.html", "s": 27254, "o": true}, {"n": "英國立憲運動時間軸.html", "p": "html/1.西方歷史/英國立憲運動時間軸.html", "s": 29603, "o": true}, {"n": "英國歷史總覽.html", "p": "html/1.西方歷史/英國歷史總覽.html", "s": 43272, "o": true}, {"n": "啟蒙運動.html", "p": "html/1.西方歷史/啟蒙運動.html", "s": 33287, "o": true}, {"n": "啟蒙運動時間軸.html", "p": "html/1.西方歷史/啟蒙運動時間軸.html", "s": 27205, "o": true}, {"n": "美國獨立時間軸.html", "p": "html/1.西方歷史/美國獨立時間軸.html", "s": 32017, "o": true}, {"n": "美國歷史總覽.html", "p": "html/1.西方歷史/美國歷史總覽.html", "s": 37364, "o": true}, {"n": "法國大革命時間軸.html", "p": "html/1.西方歷史/法國大革命時間軸.html", "s": 29077, "o": true}, {"n": "拿破崙戰爭.html", "p": "html/1.西方歷史/拿破崙戰爭.html", "s": 43793, "o": true}, {"n": "克里米亞戰爭.html", "p": "html/1.西方歷史/克里米亞戰爭.html", "s": 40388, "o": true}, {"n": "義大利統一與建國.html", "p": "html/1.西方歷史/義大利統一與建國.html", "s": 40582, "o": true}, {"n": "俄國革命.html", "p": "html/1.西方歷史/俄國革命.html", "s": 42486, "o": true}, {"n": "法國歷史總覽.html", "p": "html/1.西方歷史/法國歷史總覽.html", "s": 46924, "o": true}, {"n": "德國歷史總覽.html", "p": "html/1.西方歷史/德國歷史總覽.html", "s": 44909, "o": true}, {"n": "俄羅斯歷史總覽.html", "p": "html/1.西方歷史/俄羅斯歷史總覽.html", "s": 42905, "o": true}]}, {"name": "2.中國歷史", "files": [{"n": "夏商存在問題.html", "p": "html/2.中國歷史/夏商存在問題.html", "s": 26985, "o": true}, {"n": "古蜀國與三星堆.html", "p": "html/2.中國歷史/古蜀國與三星堆.html", "s": 27858, "o": true}, {"n": "先秦諸子百家.html", "p": "html/2.中國歷史/先秦諸子百家.html", "s": 31230, "o": true}, {"n": "兩漢經學.html", "p": "html/2.中國歷史/兩漢經學.html", "s": 27483, "o": true}, {"n": "鹽鐵論.html", "p": "html/2.中國歷史/鹽鐵論.html", "s": 29208, "o": true}, {"n": "王莽興衰與改革.html", "p": "html/2.中國歷史/王莽興衰與改革.html", "s": 25221, "o": true}, {"n": "魏晉玄學.html", "p": "html/2.中國歷史/魏晉玄學.html", "s": 28964, "o": true}, {"n": "王安石變法.html", "p": "html/2.中國歷史/王安石變法.html", "s": 30167, "o": true}, {"n": "北宋新舊黨人物.html", "p": "html/2.中國歷史/北宋新舊黨人物.html", "s": 19541, "o": true}, {"n": "宋明理學人物.html", "p": "html/2.中國歷史/宋明理學人物.html", "s": 26502, "o": true}]}, {"name": "2.日本歷史", "files": [{"n": "日本歷史總覽.html", "p": "html/2.日本歷史/日本歷史總覽.html", "s": 42650, "o": true}, {"n": "日俄戰爭.html", "p": "html/2.日本歷史/日俄戰爭.html", "s": 38321, "o": true}]}, {"name": "3-0.宗教", "files": [{"n": "亞伯拉罕三教總覽對照.html", "p": "html/3-0.宗教/亞伯拉罕三教總覽對照.html", "s": 27412, "o": true}, {"n": "婆羅門教與印度教.html", "p": "html/3-0.宗教/婆羅門教與印度教.html", "s": 28850, "o": true}, {"n": "猶太教與希伯來聖經.html", "p": "html/3-0.宗教/猶太教與希伯來聖經.html", "s": 41991, "o": true}, {"n": "天主教.html", "p": "html/3-0.宗教/天主教.html", "s": 24999, "o": true}, {"n": "東正教.html", "p": "html/3-0.宗教/東正教.html", "s": 26068, "o": true}, {"n": "基督教的形成與早期教義爭論.html", "p": "html/3-0.宗教/基督教的形成與早期教義爭論.html", "s": 29983, "o": true}, {"n": "伊斯蘭教.html", "p": "html/3-0.宗教/伊斯蘭教.html", "s": 28055, "o": true}]}, {"name": "3-1.佛學", "files": [{"n": "佛教總覽.html", "p": "html/3-1.佛學/佛教總覽.html", "s": 39781, "o": true}, {"n": "古印度文明與原始佛教光譜圖.html", "p": "html/3-1.佛學/古印度文明與原始佛教光譜圖.html", "s": 26694, "o": true}, {"n": "古印度王朝與佛教的關係.html", "p": "html/3-1.佛學/古印度王朝與佛教的關係.html", "s": 27931, "o": true}, {"n": "印度佛教部派分裂圖.html", "p": "html/3-1.佛學/印度佛教部派分裂圖.html", "s": 32936, "o": true}, {"n": "印度部派佛教與大乘佛教光譜圖.html", "p": "html/3-1.佛學/印度部派佛教與大乘佛教光譜圖.html", "s": 30513, "o": true}, {"n": "重要佛經的源流.html", "p": "html/3-1.佛學/重要佛經的源流.html", "s": 27351, "o": true}, {"n": "中觀學派.html", "p": "html/3-1.佛學/中觀學派.html", "s": 31600, "o": true}, {"n": "唯識學派.html", "p": "html/3-1.佛學/唯識學派.html", "s": 33771, "o": true}, {"n": "般若與中觀系經典.html", "p": "html/3-1.佛學/般若與中觀系經典.html", "s": 27428, "o": true}, {"n": "金剛經與心經.html", "p": "html/3-1.佛學/金剛經與心經.html", "s": 29300, "o": true}, {"n": "中國佛教的判教與宗派.html", "p": "html/3-1.佛學/中國佛教的判教與宗派.html", "s": 26711, "o": true}, {"n": "東晉玄佛合流.html", "p": "html/3-1.佛學/東晉玄佛合流.html", "s": 26921, "o": true}, {"n": "南北朝佛教與判教思潮.html", "p": "html/3-1.佛學/南北朝佛教與判教思潮.html", "s": 25809, "o": true}, {"n": "隋唐三論宗與地論宗.html", "p": "html/3-1.佛學/隋唐三論宗與地論宗.html", "s": 26142, "o": true}, {"n": "宋元明清的禪淨合流與居士佛教.html", "p": "html/3-1.佛學/宋元明清的禪淨合流與居士佛教.html", "s": 26034, "o": true}, {"n": "唯識宗.html", "p": "html/3-1.佛學/唯識宗.html", "s": 26450, "o": true}, {"n": "華嚴宗.html", "p": "html/3-1.佛學/華嚴宗.html", "s": 25493, "o": true}, {"n": "禪宗.html", "p": "html/3-1.佛學/禪宗.html", "s": 23557, "o": true}, {"n": "佛教傳統中的優越我慢.html", "p": "html/3-1.佛學/佛教傳統中的優越我慢.html", "s": 190511, "o": true}]}, {"name": "4-0.哲學思想", "files": [{"n": "古希臘哲學家光譜圖.html", "p": "html/4-0.哲學思想/古希臘哲學家光譜圖.html", "s": 34200, "o": true}, {"n": "古希臘哲學家時間軸.html", "p": "html/4-0.哲學思想/古希臘哲學家時間軸.html", "s": 27368, "o": true}, {"n": "蘇格拉底的光譜圖.html", "p": "html/4-0.哲學思想/蘇格拉底的光譜圖.html", "s": 15767, "o": true}, {"n": "蘇格拉底時間軸.html", "p": "html/4-0.哲學思想/蘇格拉底時間軸.html", "s": 21365, "o": true}, {"n": "柏拉圖的光譜圖.html", "p": "html/4-0.哲學思想/柏拉圖的光譜圖.html", "s": 21253, "o": true}, {"n": "柏拉圖時間軸.html", "p": "html/4-0.哲學思想/柏拉圖時間軸.html", "s": 25676, "o": true}, {"n": "亞里士多德的光譜圖.html", "p": "html/4-0.哲學思想/亞里士多德的光譜圖.html", "s": 20038, "o": true}, {"n": "亞里士多德時間軸.html", "p": "html/4-0.哲學思想/亞里士多德時間軸.html", "s": 29279, "o": true}, {"n": "伊比鳩魯學派的光譜圖.html", "p": "html/4-0.哲學思想/伊比鳩魯學派的光譜圖.html", "s": 19606, "o": true}, {"n": "斯多葛學派的光譜圖.html", "p": "html/4-0.哲學思想/斯多葛學派的光譜圖.html", "s": 19942, "o": true}, {"n": "犬儒學派的光譜圖.html", "p": "html/4-0.哲學思想/犬儒學派的光譜圖.html", "s": 19697, "o": true}, {"n": "逍遙學派的光譜圖.html", "p": "html/4-0.哲學思想/逍遙學派的光譜圖.html", "s": 20066, "o": true}, {"n": "懷疑主義的光譜圖.html", "p": "html/4-0.哲學思想/懷疑主義的光譜圖.html", "s": 20376, "o": true}, {"n": "中世紀哲學光譜圖.html", "p": "html/4-0.哲學思想/中世紀哲學光譜圖.html", "s": 32794, "o": true}, {"n": "中世紀哲學時間軸1.html", "p": "html/4-0.哲學思想/中世紀哲學時間軸1.html", "s": 8811, "o": true}, {"n": "中世紀哲學時間軸2.html", "p": "html/4-0.哲學思想/中世紀哲學時間軸2.html", "s": 31070, "o": true}, {"n": "大陸理性論.html", "p": "html/4-0.哲學思想/大陸理性論.html", "s": 29309, "o": true}, {"n": "大陸理性論時間軸.html", "p": "html/4-0.哲學思想/大陸理性論時間軸.html", "s": 28015, "o": true}, {"n": "英國經驗論.html", "p": "html/4-0.哲學思想/英國經驗論.html", "s": 29342, "o": true}, {"n": "英國經驗論時間軸.html", "p": "html/4-0.哲學思想/英國經驗論時間軸.html", "s": 26583, "o": true}, {"n": "德意志觀念論.html", "p": "html/4-0.哲學思想/德意志觀念論.html", "s": 33699, "o": true}, {"n": "德意志觀念論時間軸.html", "p": "html/4-0.哲學思想/德意志觀念論時間軸.html", "s": 30349, "o": true}, {"n": "存在主義.html", "p": "html/4-0.哲學思想/存在主義.html", "s": 33327, "o": true}, {"n": "存在主義時間軸.html", "p": "html/4-0.哲學思想/存在主義時間軸.html", "s": 29999, "o": true}, {"n": "效益主義與實證主義.html", "p": "html/4-0.哲學思想/效益主義與實證主義.html", "s": 31138, "o": true}, {"n": "二十世紀的分析哲學.html", "p": "html/4-0.哲學思想/二十世紀的分析哲學.html", "s": 31268, "o": true}]}, {"name": "4-1.哲學家", "files": [{"n": "西方哲學家總覽.html", "p": "html/4-1.哲學家/西方哲學家總覽.html", "s": 51156, "o": true}, {"n": "西方哲學派別.html", "p": "html/4-1.哲學家/西方哲學派別.html", "s": 14927, "o": true}, {"n": "蒙田.html", "p": "html/4-1.哲學家/蒙田.html", "s": 26345, "o": true}, {"n": "蒙田時間軸.html", "p": "html/4-1.哲學家/蒙田時間軸.html", "s": 32931, "o": true}, {"n": "笛卡兒.html", "p": "html/4-1.哲學家/笛卡兒.html", "s": 26248, "o": true}, {"n": "笛卡兒時間軸.html", "p": "html/4-1.哲學家/笛卡兒時間軸.html", "s": 27522, "o": true}, {"n": "笛卡兒哲學研究.html", "p": "html/4-1.哲學家/笛卡兒哲學研究.html", "s": 21338, "o": true}, {"n": "帕斯卡.html", "p": "html/4-1.哲學家/帕斯卡.html", "s": 26574, "o": true}, {"n": "帕斯卡時間軸.html", "p": "html/4-1.哲學家/帕斯卡時間軸.html", "s": 35643, "o": true}, {"n": "史賓諾莎.html", "p": "html/4-1.哲學家/史賓諾莎.html", "s": 26631, "o": true}, {"n": "史賓諾莎時間軸.html", "p": "html/4-1.哲學家/史賓諾莎時間軸.html", "s": 27391, "o": true}, {"n": "萊布尼茲.html", "p": "html/4-1.哲學家/萊布尼茲.html", "s": 27007, "o": true}, {"n": "萊布尼茲時間軸.html", "p": "html/4-1.哲學家/萊布尼茲時間軸.html", "s": 30085, "o": true}, {"n": "牛頓.html", "p": "html/4-1.哲學家/牛頓.html", "s": 26557, "o": true}, {"n": "牛頓時間軸.html", "p": "html/4-1.哲學家/牛頓時間軸.html", "s": 30247, "o": true}, {"n": "培根.html", "p": "html/4-1.哲學家/培根.html", "s": 26781, "o": true}, {"n": "培根時間軸.html", "p": "html/4-1.哲學家/培根時間軸.html", "s": 26867, "o": true}, {"n": "霍布斯.html", "p": "html/4-1.哲學家/霍布斯.html", "s": 26785, "o": true}, {"n": "霍布斯時間軸.html", "p": "html/4-1.哲學家/霍布斯時間軸.html", "s": 30816, "o": true}, {"n": "洛克.html", "p": "html/4-1.哲學家/洛克.html", "s": 26729, "o": true}, {"n": "洛克時間軸.html", "p": "html/4-1.哲學家/洛克時間軸.html", "s": 31255, "o": true}, {"n": "柏克萊.html", "p": "html/4-1.哲學家/柏克萊.html", "s": 26608, "o": true}, {"n": "柏克萊時間軸.html", "p": "html/4-1.哲學家/柏克萊時間軸.html", "s": 33073, "o": true}, {"n": "休謨.html", "p": "html/4-1.哲學家/休謨.html", "s": 26642, "o": true}, {"n": "休謨時間軸.html", "p": "html/4-1.哲學家/休謨時間軸.html", "s": 30192, "o": true}, {"n": "孟德斯鳩.html", "p": "html/4-1.哲學家/孟德斯鳩.html", "s": 26292, "o": true}, {"n": "孟德斯鳩時間軸.html", "p": "html/4-1.哲學家/孟德斯鳩時間軸.html", "s": 33509, "o": true}, {"n": "伏爾泰.html", "p": "html/4-1.哲學家/伏爾泰.html", "s": 26225, "o": true}, {"n": "伏爾泰時間軸.html", "p": "html/4-1.哲學家/伏爾泰時間軸.html", "s": 32153, "o": true}, {"n": "盧梭.html", "p": "html/4-1.哲學家/盧梭.html", "s": 26416, "o": true}, {"n": "盧梭時間軸.html", "p": "html/4-1.哲學家/盧梭時間軸.html", "s": 38286, "o": true}, {"n": "康德.html", "p": "html/4-1.哲學家/康德.html", "s": 28963, "o": true}, {"n": "康德時間軸.html", "p": "html/4-1.哲學家/康德時間軸.html", "s": 28983, "o": true}, {"n": "康德的純粹理性批判.html", "p": "html/4-1.哲學家/康德的純粹理性批判.html", "s": 25324, "o": true}, {"n": "康德的實踐理性批判.html", "p": "html/4-1.哲學家/康德的實踐理性批判.html", "s": 25527, "o": true}, {"n": "康德的判斷力批判.html", "p": "html/4-1.哲學家/康德的判斷力批判.html", "s": 25632, "o": true}, {"n": "康德的永久和平論.html", "p": "html/4-1.哲學家/康德的永久和平論.html", "s": 25608, "o": true}, {"n": "康德-理性的建築術.html", "p": "html/4-1.哲學家/康德-理性的建築術.html", "s": 60958, "o": true}, {"n": "費希特.html", "p": "html/4-1.哲學家/費希特.html", "s": 26682, "o": true}, {"n": "費希特時間軸.html", "p": "html/4-1.哲學家/費希特時間軸.html", "s": 26517, "o": true}, {"n": "謝林.html", "p": "html/4-1.哲學家/謝林.html", "s": 26881, "o": true}, {"n": "謝林時間軸.html", "p": "html/4-1.哲學家/謝林時間軸.html", "s": 31343, "o": true}, {"n": "黑格爾.html", "p": "html/4-1.哲學家/黑格爾.html", "s": 28044, "o": true}, {"n": "黑格爾時間軸.html", "p": "html/4-1.哲學家/黑格爾時間軸.html", "s": 32437, "o": true}, {"n": "叔本華.html", "p": "html/4-1.哲學家/叔本華.html", "s": 26667, "o": true}, {"n": "叔本華時間軸.html", "p": "html/4-1.哲學家/叔本華時間軸.html", "s": 31524, "o": true}, {"n": "費爾巴哈.html", "p": "html/4-1.哲學家/費爾巴哈.html", "s": 26782, "o": true}, {"n": "費爾巴哈時間軸.html", "p": "html/4-1.哲學家/費爾巴哈時間軸.html", "s": 25669, "o": true}, {"n": "尼采.html", "p": "html/4-1.哲學家/尼采.html", "s": 30715, "o": true}, {"n": "尼采時間軸.html", "p": "html/4-1.哲學家/尼采時間軸.html", "s": 33167, "o": true}, {"n": "達爾文與演化論.html", "p": "html/4-1.哲學家/達爾文與演化論.html", "s": 30594, "o": true}, {"n": "史賓賽.html", "p": "html/4-1.哲學家/史賓賽.html", "s": 26804, "o": true}, {"n": "史賓賽時間軸.html", "p": "html/4-1.哲學家/史賓賽時間軸.html", "s": 31274, "o": true}, {"n": "佛洛伊德與精神分析.html", "p": "html/4-1.哲學家/佛洛伊德與精神分析.html", "s": 32465, "o": true}, {"n": "佛洛伊德時間軸.html", "p": "html/4-1.哲學家/佛洛伊德時間軸.html", "s": 36172, "o": true}, {"n": "馬克思與歷史唯物論.html", "p": "html/4-1.哲學家/馬克思與歷史唯物論.html", "s": 29796, "o": true}, {"n": "馬克思時間軸.html", "p": "html/4-1.哲學家/馬克思時間軸.html", "s": 27794, "o": true}, {"n": "羅素.html", "p": "html/4-1.哲學家/羅素.html", "s": 26578, "o": true}, {"n": "羅素時間軸.html", "p": "html/4-1.哲學家/羅素時間軸.html", "s": 42514, "o": true}, {"n": "雅士培.html", "p": "html/4-1.哲學家/雅士培.html", "s": 26782, "o": true}, {"n": "雅士培時間軸.html", "p": "html/4-1.哲學家/雅士培時間軸.html", "s": 31334, "o": true}, {"n": "馬塞爾.html", "p": "html/4-1.哲學家/馬塞爾.html", "s": 26477, "o": true}, {"n": "馬塞爾時間軸.html", "p": "html/4-1.哲學家/馬塞爾時間軸.html", "s": 34917, "o": true}, {"n": "海德格.html", "p": "html/4-1.哲學家/海德格.html", "s": 26486, "o": true}, {"n": "海德格時間軸.html", "p": "html/4-1.哲學家/海德格時間軸.html", "s": 38634, "o": true}, {"n": "維根斯坦時間軸.html", "p": "html/4-1.哲學家/維根斯坦時間軸.html", "s": 43102, "o": true}]}, {"name": "5.人文政經", "files": [{"n": "經濟指標.html", "p": "html/5.人文政經/經濟指標.html", "s": 26829, "o": true}, {"n": "GDP的組成與計算.html", "p": "html/5.人文政經/GDP的組成與計算.html", "s": 25487, "o": true}, {"n": "貧富差距與所得分配.html", "p": "html/5.人文政經/貧富差距與所得分配.html", "s": 23586, "o": true}, {"n": "全球化.html", "p": "html/5.人文政經/全球化.html", "s": 24820, "o": true}, {"n": "反全球化.html", "p": "html/5.人文政經/反全球化.html", "s": 24937, "o": true}, {"n": "WTO.html", "p": "html/5.人文政經/WTO.html", "s": 24533, "o": true}, {"n": "匯率變動.html", "p": "html/5.人文政經/匯率變動.html", "s": 25226, "o": true}, {"n": "關稅.html", "p": "html/5.人文政經/關稅.html", "s": 24383, "o": true}, {"n": "中央銀行的功能.html", "p": "html/5.人文政經/中央銀行的功能.html", "s": 25916, "o": true}, {"n": "財政政策.html", "p": "html/5.人文政經/財政政策.html", "s": 24764, "o": true}, {"n": "加密貨幣與央行數位貨幣.html", "p": "html/5.人文政經/加密貨幣與央行數位貨幣.html", "s": 26115, "o": true}, {"n": "金本位.html", "p": "html/5.人文政經/金本位.html", "s": 30954, "o": true}, {"n": "美元.html", "p": "html/5.人文政經/美元.html", "s": 25495, "o": true}, {"n": "SWIFT.html", "p": "html/5.人文政經/SWIFT.html", "s": 34587, "o": true}, {"n": "歐元.html", "p": "html/5.人文政經/歐元.html", "s": 25353, "o": true}, {"n": "歐債危機.html", "p": "html/5.人文政經/歐債危機.html", "s": 24858, "o": true}, {"n": "人民幣.html", "p": "html/5.人文政經/人民幣.html", "s": 25463, "o": true}, {"n": "中國房地產危機.html", "p": "html/5.人文政經/中國房地產危機.html", "s": 25007, "o": true}, {"n": "中國地方債危機.html", "p": "html/5.人文政經/中國地方債危機.html", "s": 25044, "o": true}, {"n": "美國國債.html", "p": "html/5.人文政經/美國國債.html", "s": 25259, "o": true}, {"n": "通貨膨脹與通貨緊縮.html", "p": "html/5.人文政經/通貨膨脹與通貨緊縮.html", "s": 24466, "o": true}, {"n": "就業率.html", "p": "html/5.人文政經/就業率.html", "s": 25453, "o": true}, {"n": "日本失落的三十年.html", "p": "html/5.人文政經/日本失落的三十年.html", "s": 25737, "o": true}, {"n": "2008年金融海嘯.html", "p": "html/5.人文政經/2008年金融海嘯.html", "s": 25916, "o": true}, {"n": "三大經濟學派比較.html", "p": "html/5.人文政經/三大經濟學派比較.html", "s": 25154, "o": true}, {"n": "台灣的半導體產業鏈.html", "p": "html/5.人文政經/台灣的半導體產業鏈.html", "s": 26799, "o": true}, {"n": "全球記憶體產業.html", "p": "html/5.人文政經/全球記憶體產業.html", "s": 26573, "o": true}, {"n": "台灣的無人機產業.html", "p": "html/5.人文政經/台灣的無人機產業.html", "s": 25282, "o": true}, {"n": "台灣的機器人產業.html", "p": "html/5.人文政經/台灣的機器人產業.html", "s": 26265, "o": true}]}, {"name": "6.文學小說", "files": [{"n": "伊利亞德(荷馬).html", "p": "html/6.文學小說/伊利亞德(荷馬).html", "s": 9065810, "o": true}, {"n": "奧德賽(荷馬).html", "p": "html/6.文學小說/奧德賽(荷馬).html", "s": 9479861, "o": true}, {"n": "奧德修斯的流浪地圖.html", "p": "html/6.文學小說/奧德修斯的流浪地圖.html", "s": 1371665, "o": true}, {"n": "荷馬史詩人物關係圖.html", "p": "html/6.文學小說/荷馬史詩人物關係圖.html", "s": 24579, "o": true}]}, {"name": "7.教育學習", "files": [{"n": "每個孩子都是全部，不是之一.html", "p": "html/7.教育學習/每個孩子都是全部，不是之一.html", "s": 392585, "o": true}, {"n": "20260430台南培文課程.html", "p": "html/7.教育學習/20260430台南培文課程.html", "s": 27318, "o": true}, {"n": "兒少未來帳戶.html", "p": "html/7.教育學習/兒少未來帳戶.html", "s": 7721, "o": true}, {"n": "影響台灣國小高年級學生休息時間長短的關鍵因素.html", "p": "html/7.教育學習/影響台灣國小高年級學生休息時間長短的關鍵因素.html", "s": 5813, "o": true}, {"n": "20260819上午-吉東國小_逐字稿整理.html", "p": "html/7.教育學習/20260819上午-吉東國小_逐字稿整理.html", "s": 98652, "o": true}, {"n": "20260819下午-吉東國小_逐字稿整理.html", "p": "html/7.教育學習/20260819下午-吉東國小_逐字稿整理.html", "s": 80992, "o": true}, {"n": "20260821北勢國小-數位閱讀專題探究實務分享.html", "p": "html/7.教育學習/20260821北勢國小-數位閱讀專題探究實務分享.html", "s": 31591, "o": true}, {"n": "20260821北勢國小-記敘文本寫作教學實務.html", "p": "html/7.教育學習/20260821北勢國小-記敘文本寫作教學實務.html", "s": 20997, "o": true}]}, {"name": "8.科普", "files": [{"n": "西方科學家總覽.html", "p": "html/8.科普/西方科學家總覽.html", "s": 46455, "o": true}, {"n": "量子力學知識圖譜.html", "p": "html/8.科普/量子力學知識圖譜.html", "s": 26228, "o": true}, {"n": "黑洞知識圖譜.html", "p": "html/8.科普/黑洞知識圖譜.html", "s": 26010, "o": true}, {"n": "量子電腦知識圖譜.html", "p": "html/8.科普/量子電腦知識圖譜.html", "s": 26258, "o": true}, {"n": "元宇宙知識圖譜.html", "p": "html/8.科普/元宇宙知識圖譜.html", "s": 25914, "o": true}, {"n": "區塊鏈知識圖譜.html", "p": "html/8.科普/區塊鏈知識圖譜.html", "s": 26018, "o": true}]}, {"name": "9.綜合資料", "files": [{"n": "powershell_cheatsheet.html", "p": "html/9.綜合資料/powershell_cheatsheet.html", "s": 21273, "o": true}, {"n": "45種圖表與關係圖範例庫.html", "p": "html/9.綜合資料/45種圖表與關係圖範例庫.html", "s": 22033, "o": true}, {"n": "Git & GitHub 指令速查.html", "p": "html/9.綜合資料/Git & GitHub 指令速查.html", "s": 65190, "o": true}, {"n": "Markdown語法速查表.html", "p": "html/9.綜合資料/Markdown語法速查表.html", "s": 13713, "o": true}]}];
-var BIG = 2*1024*1024;              // 超過 2MB 的檔預設不載入編輯器
-var isFile = location.protocol === 'file:';
-var canEdit = !isFile;              // file:// 會被 CORS 擋住 fetch，讀不到原始碼
-var canFS = !!window.showDirectoryPicker && window.isSecureContext;
+var TREE = [{"name": "1.西方歷史", "files": [{"n": "希臘神話人物簡介與關係圖.html", "p": "html/1.西方歷史/希臘神話人物簡介與關係圖.html", "s": 25424, "o": true}, {"n": "北歐神話人物簡介與關係圖.html", "p": "html/1.西方歷史/北歐神話人物簡介與關係圖.html", "s": 21903, "o": true}, {"n": "荷馬史詩人物關係圖.html", "p": "html/1.西方歷史/荷馬史詩人物關係圖.html", "s": 26242, "o": true}, {"n": "波希戰爭.html", "p": "html/1.西方歷史/波希戰爭.html", "s": 27327, "o": true}, {"n": "拜占庭帝國.html", "p": "html/1.西方歷史/拜占庭帝國.html", "s": 42518, "o": true}, {"n": "歐洲中古史.html", "p": "html/1.西方歷史/歐洲中古史.html", "s": 39906, "o": true}, {"n": "神聖羅馬帝國時間軸.html", "p": "html/1.西方歷史/神聖羅馬帝國時間軸.html", "s": 33320, "o": true}, {"n": "十字軍東征.html", "p": "html/1.西方歷史/十字軍東征.html", "s": 38832, "o": true}, {"n": "文藝復興.html", "p": "html/1.西方歷史/文藝復興.html", "s": 31501, "o": true}, {"n": "文藝復興時間軸.html", "p": "html/1.西方歷史/文藝復興時間軸.html", "s": 25367, "o": true}, {"n": "梅迪奇家族.html", "p": "html/1.西方歷史/梅迪奇家族.html", "s": 19686, "o": true}, {"n": "達文西.html", "p": "html/1.西方歷史/達文西.html", "s": 29554, "o": true}, {"n": "地理大發現時間軸.html", "p": "html/1.西方歷史/地理大發現時間軸.html", "s": 31504, "o": true}, {"n": "宗教改革.html", "p": "html/1.西方歷史/宗教改革.html", "s": 30425, "o": true}, {"n": "宗教改革時間軸.html", "p": "html/1.西方歷史/宗教改革時間軸.html", "s": 27143, "o": true}, {"n": "三十年戰爭.html", "p": "html/1.西方歷史/三十年戰爭.html", "s": 37432, "o": true}, {"n": "科學革命.html", "p": "html/1.西方歷史/科學革命.html", "s": 28231, "o": true}, {"n": "科學革命時間軸.html", "p": "html/1.西方歷史/科學革命時間軸.html", "s": 27254, "o": true}, {"n": "英國立憲運動時間軸.html", "p": "html/1.西方歷史/英國立憲運動時間軸.html", "s": 29603, "o": true}, {"n": "英國歷史總覽.html", "p": "html/1.西方歷史/英國歷史總覽.html", "s": 43272, "o": true}, {"n": "啟蒙運動.html", "p": "html/1.西方歷史/啟蒙運動.html", "s": 33287, "o": true}, {"n": "啟蒙運動時間軸.html", "p": "html/1.西方歷史/啟蒙運動時間軸.html", "s": 27205, "o": true}, {"n": "美國獨立時間軸.html", "p": "html/1.西方歷史/美國獨立時間軸.html", "s": 32017, "o": true}, {"n": "美國歷史總覽.html", "p": "html/1.西方歷史/美國歷史總覽.html", "s": 37364, "o": true}, {"n": "法國大革命時間軸.html", "p": "html/1.西方歷史/法國大革命時間軸.html", "s": 29077, "o": true}, {"n": "拿破崙戰爭.html", "p": "html/1.西方歷史/拿破崙戰爭.html", "s": 43793, "o": true}, {"n": "克里米亞戰爭.html", "p": "html/1.西方歷史/克里米亞戰爭.html", "s": 40388, "o": true}, {"n": "義大利統一與建國.html", "p": "html/1.西方歷史/義大利統一與建國.html", "s": 40582, "o": true}, {"n": "俄國革命.html", "p": "html/1.西方歷史/俄國革命.html", "s": 42486, "o": true}, {"n": "法國歷史總覽.html", "p": "html/1.西方歷史/法國歷史總覽.html", "s": 46924, "o": true}, {"n": "德國歷史總覽.html", "p": "html/1.西方歷史/德國歷史總覽.html", "s": 44909, "o": true}, {"n": "俄羅斯歷史總覽.html", "p": "html/1.西方歷史/俄羅斯歷史總覽.html", "s": 42905, "o": true}]}, {"name": "2.中國歷史", "files": [{"n": "夏商存在問題.html", "p": "html/2.中國歷史/夏商存在問題.html", "s": 26985, "o": true}, {"n": "古蜀國與三星堆.html", "p": "html/2.中國歷史/古蜀國與三星堆.html", "s": 27858, "o": true}, {"n": "先秦諸子百家.html", "p": "html/2.中國歷史/先秦諸子百家.html", "s": 31230, "o": true}, {"n": "兩漢經學.html", "p": "html/2.中國歷史/兩漢經學.html", "s": 27483, "o": true}, {"n": "鹽鐵論.html", "p": "html/2.中國歷史/鹽鐵論.html", "s": 29208, "o": true}, {"n": "王莽興衰與改革.html", "p": "html/2.中國歷史/王莽興衰與改革.html", "s": 25221, "o": true}, {"n": "魏晉玄學.html", "p": "html/2.中國歷史/魏晉玄學.html", "s": 28964, "o": true}, {"n": "王安石變法.html", "p": "html/2.中國歷史/王安石變法.html", "s": 30167, "o": true}, {"n": "北宋新舊黨人物.html", "p": "html/2.中國歷史/北宋新舊黨人物.html", "s": 19541, "o": true}, {"n": "宋明理學人物.html", "p": "html/2.中國歷史/宋明理學人物.html", "s": 26502, "o": true}]}, {"name": "2.日本歷史", "files": [{"n": "日本歷史總覽.html", "p": "html/2.日本歷史/日本歷史總覽.html", "s": 42650, "o": true}, {"n": "日俄戰爭.html", "p": "html/2.日本歷史/日俄戰爭.html", "s": 38321, "o": true}]}, {"name": "3-0.宗教", "files": [{"n": "亞伯拉罕三教總覽對照.html", "p": "html/3-0.宗教/亞伯拉罕三教總覽對照.html", "s": 27412, "o": true}, {"n": "婆羅門教與印度教.html", "p": "html/3-0.宗教/婆羅門教與印度教.html", "s": 28850, "o": true}, {"n": "猶太教與希伯來聖經.html", "p": "html/3-0.宗教/猶太教與希伯來聖經.html", "s": 41991, "o": true}, {"n": "天主教.html", "p": "html/3-0.宗教/天主教.html", "s": 24999, "o": true}, {"n": "東正教.html", "p": "html/3-0.宗教/東正教.html", "s": 26068, "o": true}, {"n": "基督教的形成與早期教義爭論.html", "p": "html/3-0.宗教/基督教的形成與早期教義爭論.html", "s": 29983, "o": true}, {"n": "伊斯蘭教.html", "p": "html/3-0.宗教/伊斯蘭教.html", "s": 28055, "o": true}]}, {"name": "3-1.佛學", "files": [{"n": "佛教總覽.html", "p": "html/3-1.佛學/佛教總覽.html", "s": 39781, "o": true}, {"n": "古印度文明與原始佛教光譜圖.html", "p": "html/3-1.佛學/古印度文明與原始佛教光譜圖.html", "s": 26694, "o": true}, {"n": "古印度王朝與佛教的關係.html", "p": "html/3-1.佛學/古印度王朝與佛教的關係.html", "s": 27931, "o": true}, {"n": "印度佛教部派分裂圖.html", "p": "html/3-1.佛學/印度佛教部派分裂圖.html", "s": 32936, "o": true}, {"n": "印度部派佛教與大乘佛教光譜圖.html", "p": "html/3-1.佛學/印度部派佛教與大乘佛教光譜圖.html", "s": 30513, "o": true}, {"n": "重要佛經的源流.html", "p": "html/3-1.佛學/重要佛經的源流.html", "s": 27351, "o": true}, {"n": "中觀學派.html", "p": "html/3-1.佛學/中觀學派.html", "s": 31600, "o": true}, {"n": "唯識學派.html", "p": "html/3-1.佛學/唯識學派.html", "s": 33771, "o": true}, {"n": "般若與中觀系經典.html", "p": "html/3-1.佛學/般若與中觀系經典.html", "s": 27428, "o": true}, {"n": "金剛經與心經.html", "p": "html/3-1.佛學/金剛經與心經.html", "s": 29300, "o": true}, {"n": "中國佛教的判教與宗派.html", "p": "html/3-1.佛學/中國佛教的判教與宗派.html", "s": 26711, "o": true}, {"n": "東晉玄佛合流.html", "p": "html/3-1.佛學/東晉玄佛合流.html", "s": 26921, "o": true}, {"n": "南北朝佛教與判教思潮.html", "p": "html/3-1.佛學/南北朝佛教與判教思潮.html", "s": 25809, "o": true}, {"n": "隋唐三論宗與地論宗.html", "p": "html/3-1.佛學/隋唐三論宗與地論宗.html", "s": 26142, "o": true}, {"n": "宋元明清的禪淨合流與居士佛教.html", "p": "html/3-1.佛學/宋元明清的禪淨合流與居士佛教.html", "s": 26034, "o": true}, {"n": "唯識宗.html", "p": "html/3-1.佛學/唯識宗.html", "s": 26450, "o": true}, {"n": "華嚴宗.html", "p": "html/3-1.佛學/華嚴宗.html", "s": 25493, "o": true}, {"n": "禪宗.html", "p": "html/3-1.佛學/禪宗.html", "s": 23557, "o": true}, {"n": "佛教傳統中的優越我慢.html", "p": "html/3-1.佛學/佛教傳統中的優越我慢.html", "s": 190511, "o": true}]}, {"name": "4-0.哲學思想", "files": [{"n": "古希臘哲學家光譜圖.html", "p": "html/4-0.哲學思想/古希臘哲學家光譜圖.html", "s": 34200, "o": true}, {"n": "古希臘哲學家時間軸.html", "p": "html/4-0.哲學思想/古希臘哲學家時間軸.html", "s": 27368, "o": true}, {"n": "蘇格拉底的光譜圖.html", "p": "html/4-0.哲學思想/蘇格拉底的光譜圖.html", "s": 15767, "o": true}, {"n": "蘇格拉底時間軸.html", "p": "html/4-0.哲學思想/蘇格拉底時間軸.html", "s": 21365, "o": true}, {"n": "柏拉圖的光譜圖.html", "p": "html/4-0.哲學思想/柏拉圖的光譜圖.html", "s": 21253, "o": true}, {"n": "柏拉圖時間軸.html", "p": "html/4-0.哲學思想/柏拉圖時間軸.html", "s": 25676, "o": true}, {"n": "亞里士多德的光譜圖.html", "p": "html/4-0.哲學思想/亞里士多德的光譜圖.html", "s": 20038, "o": true}, {"n": "亞里士多德時間軸.html", "p": "html/4-0.哲學思想/亞里士多德時間軸.html", "s": 29279, "o": true}, {"n": "伊比鳩魯學派的光譜圖.html", "p": "html/4-0.哲學思想/伊比鳩魯學派的光譜圖.html", "s": 19606, "o": true}, {"n": "斯多葛學派的光譜圖.html", "p": "html/4-0.哲學思想/斯多葛學派的光譜圖.html", "s": 19942, "o": true}, {"n": "犬儒學派的光譜圖.html", "p": "html/4-0.哲學思想/犬儒學派的光譜圖.html", "s": 19697, "o": true}, {"n": "逍遙學派的光譜圖.html", "p": "html/4-0.哲學思想/逍遙學派的光譜圖.html", "s": 20066, "o": true}, {"n": "懷疑主義的光譜圖.html", "p": "html/4-0.哲學思想/懷疑主義的光譜圖.html", "s": 20376, "o": true}, {"n": "中世紀哲學光譜圖.html", "p": "html/4-0.哲學思想/中世紀哲學光譜圖.html", "s": 32794, "o": true}, {"n": "中世紀哲學時間軸1.html", "p": "html/4-0.哲學思想/中世紀哲學時間軸1.html", "s": 8811, "o": true}, {"n": "中世紀哲學時間軸2.html", "p": "html/4-0.哲學思想/中世紀哲學時間軸2.html", "s": 31070, "o": true}, {"n": "大陸理性論.html", "p": "html/4-0.哲學思想/大陸理性論.html", "s": 29309, "o": true}, {"n": "大陸理性論時間軸.html", "p": "html/4-0.哲學思想/大陸理性論時間軸.html", "s": 28015, "o": true}, {"n": "英國經驗論.html", "p": "html/4-0.哲學思想/英國經驗論.html", "s": 29342, "o": true}, {"n": "英國經驗論時間軸.html", "p": "html/4-0.哲學思想/英國經驗論時間軸.html", "s": 26583, "o": true}, {"n": "德意志觀念論.html", "p": "html/4-0.哲學思想/德意志觀念論.html", "s": 33699, "o": true}, {"n": "德意志觀念論時間軸.html", "p": "html/4-0.哲學思想/德意志觀念論時間軸.html", "s": 30349, "o": true}, {"n": "存在主義.html", "p": "html/4-0.哲學思想/存在主義.html", "s": 33327, "o": true}, {"n": "存在主義時間軸.html", "p": "html/4-0.哲學思想/存在主義時間軸.html", "s": 29999, "o": true}, {"n": "效益主義與實證主義.html", "p": "html/4-0.哲學思想/效益主義與實證主義.html", "s": 31138, "o": true}, {"n": "二十世紀的分析哲學.html", "p": "html/4-0.哲學思想/二十世紀的分析哲學.html", "s": 31268, "o": true}]}, {"name": "4-1.哲學家", "files": [{"n": "西方哲學家總覽.html", "p": "html/4-1.哲學家/西方哲學家總覽.html", "s": 51156, "o": true}, {"n": "西方哲學派別.html", "p": "html/4-1.哲學家/西方哲學派別.html", "s": 14927, "o": true}, {"n": "蒙田.html", "p": "html/4-1.哲學家/蒙田.html", "s": 26345, "o": true}, {"n": "蒙田時間軸.html", "p": "html/4-1.哲學家/蒙田時間軸.html", "s": 32931, "o": true}, {"n": "笛卡兒.html", "p": "html/4-1.哲學家/笛卡兒.html", "s": 26248, "o": true}, {"n": "笛卡兒時間軸.html", "p": "html/4-1.哲學家/笛卡兒時間軸.html", "s": 27522, "o": true}, {"n": "笛卡兒哲學研究.html", "p": "html/4-1.哲學家/笛卡兒哲學研究.html", "s": 21338, "o": true}, {"n": "帕斯卡.html", "p": "html/4-1.哲學家/帕斯卡.html", "s": 26574, "o": true}, {"n": "帕斯卡時間軸.html", "p": "html/4-1.哲學家/帕斯卡時間軸.html", "s": 35643, "o": true}, {"n": "史賓諾莎.html", "p": "html/4-1.哲學家/史賓諾莎.html", "s": 26631, "o": true}, {"n": "史賓諾莎時間軸.html", "p": "html/4-1.哲學家/史賓諾莎時間軸.html", "s": 27391, "o": true}, {"n": "萊布尼茲.html", "p": "html/4-1.哲學家/萊布尼茲.html", "s": 27007, "o": true}, {"n": "萊布尼茲時間軸.html", "p": "html/4-1.哲學家/萊布尼茲時間軸.html", "s": 30085, "o": true}, {"n": "牛頓.html", "p": "html/4-1.哲學家/牛頓.html", "s": 26557, "o": true}, {"n": "牛頓時間軸.html", "p": "html/4-1.哲學家/牛頓時間軸.html", "s": 30247, "o": true}, {"n": "培根.html", "p": "html/4-1.哲學家/培根.html", "s": 26781, "o": true}, {"n": "培根時間軸.html", "p": "html/4-1.哲學家/培根時間軸.html", "s": 26867, "o": true}, {"n": "霍布斯.html", "p": "html/4-1.哲學家/霍布斯.html", "s": 26785, "o": true}, {"n": "霍布斯時間軸.html", "p": "html/4-1.哲學家/霍布斯時間軸.html", "s": 30816, "o": true}, {"n": "洛克.html", "p": "html/4-1.哲學家/洛克.html", "s": 26729, "o": true}, {"n": "洛克時間軸.html", "p": "html/4-1.哲學家/洛克時間軸.html", "s": 31255, "o": true}, {"n": "柏克萊.html", "p": "html/4-1.哲學家/柏克萊.html", "s": 26608, "o": true}, {"n": "柏克萊時間軸.html", "p": "html/4-1.哲學家/柏克萊時間軸.html", "s": 33073, "o": true}, {"n": "休謨.html", "p": "html/4-1.哲學家/休謨.html", "s": 26642, "o": true}, {"n": "休謨時間軸.html", "p": "html/4-1.哲學家/休謨時間軸.html", "s": 30192, "o": true}, {"n": "孟德斯鳩.html", "p": "html/4-1.哲學家/孟德斯鳩.html", "s": 26292, "o": true}, {"n": "孟德斯鳩時間軸.html", "p": "html/4-1.哲學家/孟德斯鳩時間軸.html", "s": 33509, "o": true}, {"n": "伏爾泰.html", "p": "html/4-1.哲學家/伏爾泰.html", "s": 26225, "o": true}, {"n": "伏爾泰時間軸.html", "p": "html/4-1.哲學家/伏爾泰時間軸.html", "s": 32153, "o": true}, {"n": "盧梭.html", "p": "html/4-1.哲學家/盧梭.html", "s": 26416, "o": true}, {"n": "盧梭時間軸.html", "p": "html/4-1.哲學家/盧梭時間軸.html", "s": 38286, "o": true}, {"n": "康德.html", "p": "html/4-1.哲學家/康德.html", "s": 28963, "o": true}, {"n": "康德時間軸.html", "p": "html/4-1.哲學家/康德時間軸.html", "s": 28983, "o": true}, {"n": "康德的純粹理性批判.html", "p": "html/4-1.哲學家/康德的純粹理性批判.html", "s": 25324, "o": true}, {"n": "康德的實踐理性批判.html", "p": "html/4-1.哲學家/康德的實踐理性批判.html", "s": 25527, "o": true}, {"n": "康德的判斷力批判.html", "p": "html/4-1.哲學家/康德的判斷力批判.html", "s": 25632, "o": true}, {"n": "康德的永久和平論.html", "p": "html/4-1.哲學家/康德的永久和平論.html", "s": 25608, "o": true}, {"n": "康德-理性的建築術.html", "p": "html/4-1.哲學家/康德-理性的建築術.html", "s": 60958, "o": true}, {"n": "費希特.html", "p": "html/4-1.哲學家/費希特.html", "s": 26682, "o": true}, {"n": "費希特時間軸.html", "p": "html/4-1.哲學家/費希特時間軸.html", "s": 26517, "o": true}, {"n": "謝林.html", "p": "html/4-1.哲學家/謝林.html", "s": 26881, "o": true}, {"n": "謝林時間軸.html", "p": "html/4-1.哲學家/謝林時間軸.html", "s": 31343, "o": true}, {"n": "黑格爾.html", "p": "html/4-1.哲學家/黑格爾.html", "s": 28044, "o": true}, {"n": "黑格爾時間軸.html", "p": "html/4-1.哲學家/黑格爾時間軸.html", "s": 32437, "o": true}, {"n": "叔本華.html", "p": "html/4-1.哲學家/叔本華.html", "s": 26667, "o": true}, {"n": "叔本華時間軸.html", "p": "html/4-1.哲學家/叔本華時間軸.html", "s": 31524, "o": true}, {"n": "費爾巴哈.html", "p": "html/4-1.哲學家/費爾巴哈.html", "s": 26782, "o": true}, {"n": "費爾巴哈時間軸.html", "p": "html/4-1.哲學家/費爾巴哈時間軸.html", "s": 25669, "o": true}, {"n": "尼采.html", "p": "html/4-1.哲學家/尼采.html", "s": 30715, "o": true}, {"n": "尼采時間軸.html", "p": "html/4-1.哲學家/尼采時間軸.html", "s": 33167, "o": true}, {"n": "達爾文與演化論.html", "p": "html/4-1.哲學家/達爾文與演化論.html", "s": 30594, "o": true}, {"n": "史賓賽.html", "p": "html/4-1.哲學家/史賓賽.html", "s": 26804, "o": true}, {"n": "史賓賽時間軸.html", "p": "html/4-1.哲學家/史賓賽時間軸.html", "s": 31274, "o": true}, {"n": "佛洛伊德與精神分析.html", "p": "html/4-1.哲學家/佛洛伊德與精神分析.html", "s": 32465, "o": true}, {"n": "佛洛伊德時間軸.html", "p": "html/4-1.哲學家/佛洛伊德時間軸.html", "s": 36172, "o": true}, {"n": "馬克思與歷史唯物論.html", "p": "html/4-1.哲學家/馬克思與歷史唯物論.html", "s": 29796, "o": true}, {"n": "馬克思時間軸.html", "p": "html/4-1.哲學家/馬克思時間軸.html", "s": 27794, "o": true}, {"n": "羅素.html", "p": "html/4-1.哲學家/羅素.html", "s": 26578, "o": true}, {"n": "羅素時間軸.html", "p": "html/4-1.哲學家/羅素時間軸.html", "s": 42514, "o": true}, {"n": "雅士培.html", "p": "html/4-1.哲學家/雅士培.html", "s": 26782, "o": true}, {"n": "雅士培時間軸.html", "p": "html/4-1.哲學家/雅士培時間軸.html", "s": 31334, "o": true}, {"n": "馬塞爾.html", "p": "html/4-1.哲學家/馬塞爾.html", "s": 26477, "o": true}, {"n": "馬塞爾時間軸.html", "p": "html/4-1.哲學家/馬塞爾時間軸.html", "s": 34917, "o": true}, {"n": "海德格.html", "p": "html/4-1.哲學家/海德格.html", "s": 26486, "o": true}, {"n": "海德格時間軸.html", "p": "html/4-1.哲學家/海德格時間軸.html", "s": 38634, "o": true}, {"n": "維根斯坦時間軸.html", "p": "html/4-1.哲學家/維根斯坦時間軸.html", "s": 43102, "o": true}]}, {"name": "5.人文政經", "files": [{"n": "經濟指標.html", "p": "html/5.人文政經/經濟指標.html", "s": 26829, "o": true}, {"n": "GDP的組成與計算.html", "p": "html/5.人文政經/GDP的組成與計算.html", "s": 25487, "o": true}, {"n": "貧富差距與所得分配.html", "p": "html/5.人文政經/貧富差距與所得分配.html", "s": 23586, "o": true}, {"n": "全球化.html", "p": "html/5.人文政經/全球化.html", "s": 24820, "o": true}, {"n": "反全球化.html", "p": "html/5.人文政經/反全球化.html", "s": 24937, "o": true}, {"n": "WTO.html", "p": "html/5.人文政經/WTO.html", "s": 24533, "o": true}, {"n": "匯率變動.html", "p": "html/5.人文政經/匯率變動.html", "s": 25226, "o": true}, {"n": "關稅.html", "p": "html/5.人文政經/關稅.html", "s": 24383, "o": true}, {"n": "中央銀行的功能.html", "p": "html/5.人文政經/中央銀行的功能.html", "s": 25916, "o": true}, {"n": "財政政策.html", "p": "html/5.人文政經/財政政策.html", "s": 24764, "o": true}, {"n": "加密貨幣與央行數位貨幣.html", "p": "html/5.人文政經/加密貨幣與央行數位貨幣.html", "s": 26115, "o": true}, {"n": "金本位.html", "p": "html/5.人文政經/金本位.html", "s": 30954, "o": true}, {"n": "美元.html", "p": "html/5.人文政經/美元.html", "s": 25495, "o": true}, {"n": "SWIFT.html", "p": "html/5.人文政經/SWIFT.html", "s": 34587, "o": true}, {"n": "歐元.html", "p": "html/5.人文政經/歐元.html", "s": 25353, "o": true}, {"n": "歐債危機.html", "p": "html/5.人文政經/歐債危機.html", "s": 24858, "o": true}, {"n": "人民幣.html", "p": "html/5.人文政經/人民幣.html", "s": 25463, "o": true}, {"n": "中國房地產危機.html", "p": "html/5.人文政經/中國房地產危機.html", "s": 25007, "o": true}, {"n": "中國地方債危機.html", "p": "html/5.人文政經/中國地方債危機.html", "s": 25044, "o": true}, {"n": "美國國債.html", "p": "html/5.人文政經/美國國債.html", "s": 25259, "o": true}, {"n": "通貨膨脹與通貨緊縮.html", "p": "html/5.人文政經/通貨膨脹與通貨緊縮.html", "s": 24466, "o": true}, {"n": "就業率.html", "p": "html/5.人文政經/就業率.html", "s": 25453, "o": true}, {"n": "日本失落的三十年.html", "p": "html/5.人文政經/日本失落的三十年.html", "s": 25737, "o": true}, {"n": "2008年金融海嘯.html", "p": "html/5.人文政經/2008年金融海嘯.html", "s": 25916, "o": true}, {"n": "三大經濟學派比較.html", "p": "html/5.人文政經/三大經濟學派比較.html", "s": 25154, "o": true}, {"n": "台灣的半導體產業鏈.html", "p": "html/5.人文政經/台灣的半導體產業鏈.html", "s": 26799, "o": true}, {"n": "全球記憶體產業.html", "p": "html/5.人文政經/全球記憶體產業.html", "s": 26573, "o": true}, {"n": "台灣的無人機產業.html", "p": "html/5.人文政經/台灣的無人機產業.html", "s": 25282, "o": true}, {"n": "台灣的機器人產業.html", "p": "html/5.人文政經/台灣的機器人產業.html", "s": 26265, "o": true}]}, {"name": "6.文學小說", "files": [{"n": "伊利亞德(荷馬).html", "p": "html/6.文學小說/伊利亞德(荷馬).html", "s": 9065810, "o": true}, {"n": "奧德賽(荷馬).html", "p": "html/6.文學小說/奧德賽(荷馬).html", "s": 9479861, "o": true}, {"n": "奧德修斯的流浪地圖.html", "p": "html/6.文學小說/奧德修斯的流浪地圖.html", "s": 1371665, "o": true}, {"n": "荷馬史詩人物關係圖.html", "p": "html/6.文學小說/荷馬史詩人物關係圖.html", "s": 24579, "o": true}]}, {"name": "7.教育學習", "files": [{"n": "每個孩子都是全部，不是之一.html", "p": "html/7.教育學習/每個孩子都是全部，不是之一.html", "s": 392585, "o": true}, {"n": "20260430台南培文課程.html", "p": "html/7.教育學習/20260430台南培文課程.html", "s": 27318, "o": true}, {"n": "兒少未來帳戶.html", "p": "html/7.教育學習/兒少未來帳戶.html", "s": 7721, "o": true}, {"n": "影響台灣國小高年級學生休息時間長短的關鍵因素.html", "p": "html/7.教育學習/影響台灣國小高年級學生休息時間長短的關鍵因素.html", "s": 5813, "o": true}, {"n": "20260819上午-吉東國小_逐字稿整理.html", "p": "html/7.教育學習/20260819上午-吉東國小_逐字稿整理.html", "s": 98652, "o": true}, {"n": "20260819下午-吉東國小_逐字稿整理.html", "p": "html/7.教育學習/20260819下午-吉東國小_逐字稿整理.html", "s": 80992, "o": true}, {"n": "20260821北勢國小-數位閱讀專題探究實務分享.html", "p": "html/7.教育學習/20260821北勢國小-數位閱讀專題探究實務分享.html", "s": 31591, "o": true}, {"n": "20260821北勢國小-記敘文本寫作教學實務.html", "p": "html/7.教育學習/20260821北勢國小-記敘文本寫作教學實務.html", "s": 20997, "o": true}]}, {"name": "8.科普", "files": [{"n": "西方科學家總覽.html", "p": "html/8.科普/西方科學家總覽.html", "s": 46455, "o": true}, {"n": "量子力學知識圖譜.html", "p": "html/8.科普/量子力學知識圖譜.html", "s": 26228, "o": true}, {"n": "黑洞知識圖譜.html", "p": "html/8.科普/黑洞知識圖譜.html", "s": 26010, "o": true}, {"n": "量子電腦知識圖譜.html", "p": "html/8.科普/量子電腦知識圖譜.html", "s": 26258, "o": true}, {"n": "元宇宙知識圖譜.html", "p": "html/8.科普/元宇宙知識圖譜.html", "s": 25914, "o": true}, {"n": "區塊鏈知識圖譜.html", "p": "html/8.科普/區塊鏈知識圖譜.html", "s": 26018, "o": true}]}, {"name": "9.綜合資料", "files": [{"n": "powershell_cheatsheet.html", "p": "html/9.綜合資料/powershell_cheatsheet.html", "s": 21273, "o": true}, {"n": "45種圖表與關係圖範例庫.html", "p": "html/9.綜合資料/45種圖表與關係圖範例庫.html", "s": 22033, "o": true}, {"n": "Git & GitHub 指令速查.html", "p": "html/9.綜合資料/Git & GitHub 指令速查.html", "s": 65190, "o": true}, {"n": "Markdown語法速查表.html", "p": "html/9.綜合資料/Markdown語法速查表.html", "s": 13713, "o": true}, {"n": "Markdown 語法速查.html", "p": "html/9.綜合資料/Markdown 語法速查.html", "s": 254323, "o": false}]}];
 
-var tabs = [], active = -1, rootHandle = null;
+var tabs = [], active = -1;
 var $ = function(s){ return document.querySelector(s); };
 
 /* ---------- localStorage 小工具 ---------- */
@@ -157,12 +126,10 @@ function LS(k, v){
    不會跟著 CSS 字級走——只改字級會變成內文放大但圖表不動。用 zoom 才能整頁等比縮放。 */
 var zoom = LS('zoom') || 1, zoomOK = true;
 function applyZoom(){
-  [$('#view'), $('#prev')].forEach(function(f){
-    try{
-      var d = f.contentDocument;
-      if (d && d.documentElement) d.documentElement.style.zoom = zoom;
-    }catch(e){ zoomOK = false; }      // file:// 之下取不到 iframe 內容
-  });
+  try{
+    var d = $('#view').contentDocument;
+    if (d && d.documentElement) d.documentElement.style.zoom = zoom;
+  }catch(e){ zoomOK = false; }        // file:// 之下取不到 iframe 內容
   $('#zl').textContent = Math.round(zoom*100) + '%';
   $('#fsUp').disabled = $('#fsDn').disabled = !zoomOK;
   if (!zoomOK) $('#zl').title = 'file:// 之下無法存取預覽內容，縮放已停用';
@@ -235,7 +202,7 @@ function search(){
 
 /* ---------- 分頁 ---------- */
 function blankTab(){
-  return { p:null, n:'新分頁', s:0, mode:'view', dirty:false, draft:null, loaded:false };
+  return { p:null, n:'新分頁', s:0 };
 }
 function newTab(){
   tabs.push(blankTab());
@@ -243,25 +210,17 @@ function newTab(){
   renderTabs(); saveTabs();
 }
 /* 單擊左欄＝取代目前分頁（類似 VS Code 的預覽分頁），要另開請按「＋」。
-   已開啟的檔案直接切過去；有未存檔變更的分頁不覆蓋，改開新分頁保住草稿。 */
+   已開啟的檔案直接切過去。 */
 function openTab(it){
   var i = tabs.findIndex(function(t){ return t.p === it.p; });
   if (i >= 0) { activate(i); return; }
   var cur = tabs[active];
-  if (cur && !cur.dirty){
-    cur.p=it.p; cur.n=it.n; cur.s=it.s;
-    cur.mode='view'; cur.draft=null; cur.dirty=false; cur.loaded=false;
-    activate(active);
-  } else {
-    tabs.push({ p:it.p, n:it.n, s:it.s, mode:'view', dirty:false, draft:null, loaded:false });
-    activate(tabs.length - 1);
-    if (cur && cur.dirty) msg('原分頁有未存檔變更，已改為開新分頁', 'ok');
-  }
+  if (cur){ cur.p=it.p; cur.n=it.n; cur.s=it.s; activate(active); }
+  else { tabs.push({ p:it.p, n:it.n, s:it.s }); activate(tabs.length - 1); }
   renderTabs(); saveTabs();
 }
 function closeTab(i, ev){
   if (ev) ev.stopPropagation();
-  if (tabs[i].dirty && !confirm('「'+tabs[i].n+'」有未存檔的變更，確定關閉？')) return;
   tabs.splice(i,1);
   if (!tabs.length) tabs.push(blankTab());
   if (active >= tabs.length) active = tabs.length - 1;
@@ -273,8 +232,7 @@ function renderTabs(){
   tabs.forEach(function(t,i){
     var d = document.createElement('div');
     d.className = 'tab' + (i===active ? ' on' : '');
-    d.innerHTML = (t.dirty ? '<span class="dot">●</span>' : '') +
-                  '<span class="nm">'+esc(t.n.replace(/\.html$/,''))+'</span><span class="x">×</span>';
+    d.innerHTML = '<span class="nm">'+esc(t.n.replace(/\.html$/,''))+'</span><span class="x">×</span>';
     d.onclick = function(){ activate(i); };
     d.onauxclick = function(e){ if (e.button===1) closeTab(i,e); };
     d.querySelector('.x').onclick = function(e){ closeTab(i,e); };
@@ -293,151 +251,39 @@ function activate(i){
   active = i; var t = tabs[i]; if (!t) return showEmpty();
   if (!t.p){                       // 空白分頁：等使用者從左欄挑檔案
     $('#empty').style.display='flex'; $('#panes').style.display='none';
-    $('#bar').style.display='none'; document.body.classList.remove('edit');
+    $('#bar').style.display='none';
     document.querySelectorAll('#side li').forEach(function(li){ li.classList.remove('on'); });
     renderTabs(); saveTabs(); return;
   }
   $('#empty').style.display='none'; $('#panes').style.display='flex';
   $('#bar').style.display='flex';
   $('#bar .path').textContent = t.p + '　·　' + fmt(t.s);
-  document.body.classList.toggle('edit', t.mode==='edit');
-  $('#mView').classList.toggle('pri', t.mode==='view');
-  $('#mEdit').classList.toggle('pri', t.mode==='edit');
-  $('#mEdit').disabled = !canEdit;
   document.querySelectorAll('#side li').forEach(function(li){
     li.classList.toggle('on', li.dataset.path === t.p); });
-  renderTabs(); msg('');
-
-  if (t.mode === 'view'){
-    var want = url(t.p);
-    if ($('#view').getAttribute('src') !== want) $('#view').setAttribute('src', want);
-  } else {
-    $('#src').value = t.draft !== null ? t.draft : '';
-    preview();
-  }
+  renderTabs();
+  var want = url(t.p);
+  if ($('#view').getAttribute('src') !== want) $('#view').setAttribute('src', want);
   saveTabs();
 }
 function showEmpty(){
   active=-1; $('#empty').style.display='flex'; $('#panes').style.display='none';
-  $('#bar').style.display='none'; document.body.classList.remove('edit');
+  $('#bar').style.display='none';
   document.querySelectorAll('#side li').forEach(function(li){ li.classList.remove('on'); });
 }
 function url(p){ return p.split('/').map(encodeURIComponent).join('/'); }
-function saveTabs(){ LS('tabs', tabs.map(function(t){ return {p:t.p,n:t.n,s:t.s,mode:t.mode}; }));
+function saveTabs(){ LS('tabs', tabs.map(function(t){ return {p:t.p,n:t.n,s:t.s}; }));
   LS('active', active); }
-
-/* ---------- 編輯 ---------- */
-async function toEdit(){
-  var t = tabs[active]; if (!t || !canEdit) return;
-  if (t.s > BIG && !confirm('這個檔約 '+fmt(t.s)+'，載入編輯器可能會很卡。仍要編輯？')) return;
-  if (t.draft === null){
-    var d = LS('draft.'+t.p);
-    if (d !== null && confirm('偵測到「'+t.n+'」的未存草稿，要載入嗎？（取消則讀取原檔）')){
-      t.draft = d; t.dirty = true;
-    } else {
-      msg('載入中…');
-      try{
-        var r = await fetch(url(t.p));
-        if (!r.ok) throw new Error('HTTP '+r.status);
-        t.draft = await r.text(); t.dirty = false; msg('');
-      }catch(e){ msg('讀取失敗：'+e.message, 'err'); return; }
-    }
-  }
-  t.mode = 'edit'; activate(active);
-}
-function toView(){ var t=tabs[active]; if(!t) return; t.mode='view'; activate(active); }
-
-var tmr = null;
-function onInput(){
-  var t = tabs[active]; if (!t) return;
-  t.draft = $('#src').value;
-  if (!t.dirty){ t.dirty = true; renderTabs(); }
-  clearTimeout(tmr);
-  tmr = setTimeout(function(){
-    LS('draft.'+t.p, t.draft);
-    preview();
-  }, 400);
-}
-function preview(){
-  var t = tabs[active]; if (!t || t.draft === null) return;
-  // srcdoc 的相對路徑基準跟父頁不同，注入 <base> 才能讓頁內相對連結正常
-  var base = new URL(url(t.p.replace(/[^/]+$/,'')), location.href).href;
-  var html = t.draft.replace(/<head([^>]*)>/i, '<head$1><base href="'+base+'">');
-  if (html === t.draft) html = '<base href="'+base+'">' + html;
-  $('#prev').srcdoc = html;
-}
-
-/* ---------- 存檔 ---------- */
-async function connectDir(){
-  try{
-    rootHandle = await window.showDirectoryPicker({ mode:'readwrite' });
-    msg('已連結資料夾：'+rootHandle.name, 'ok'); updEnv();
-  }catch(e){ if (e.name!=='AbortError') msg('連結失敗：'+e.message,'err'); }
-}
-async function handleFor(path){
-  var parts = path.split('/'), file = parts.pop(), dir = rootHandle;
-  for (var i=0;i<parts.length;i++) dir = await dir.getDirectoryHandle(parts[i]);
-  return dir.getFileHandle(file);
-}
-async function save(){
-  var t = tabs[active]; if (!t || t.mode!=='edit') return;
-  if (!rootHandle){
-    if (!canFS){ return download(); }
-    msg('尚未連結本機資料夾，請先點「連結資料夾」', 'err'); return;
-  }
-  try{
-    msg('存檔中…');
-    var h = await handleFor(t.p);
-    var w = await h.createWritable();
-    await w.write(t.draft); await w.close();
-    t.dirty = false; renderTabs();
-    try{ localStorage.removeItem('tv.draft.'+t.p); }catch(e){}
-    msg('已存回 '+t.p, 'ok');
-  }catch(e){ msg('存檔失敗：'+e.message+'（可改用下載）', 'err'); }
-}
-function download(){
-  var t = tabs[active]; if (!t || t.draft === null) return;
-  var b = new Blob([t.draft], {type:'text/html;charset=utf-8'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(b); a.download = t.n;
-  a.click(); URL.revokeObjectURL(a.href);
-  msg('已下載 '+t.n+'，請自行覆蓋原檔', 'ok');
-}
-function msg(s, cls){ var m=$('#msg'); m.textContent=s||''; m.className = cls||''; }
-
-/* ---------- 環境提示 ---------- */
-function updEnv(){
-  var e = $('#env');
-  if (isFile){
-    e.innerHTML = '<b>file:// 模式</b>：瀏覽器擋住讀取本機檔案，編輯已停用。要編輯請改用 localhost 開啟';
-  } else if (rootHandle){
-    e.innerHTML = '已連結 <b>'+esc(rootHandle.name)+'</b>　·　可直接存回原檔';
-  } else if (canFS){
-    e.textContent = '可編輯　·　點「連結資料夾」後才能直接存回原檔，否則只能下載';
-  } else {
-    e.textContent = '可編輯　·　此瀏覽器不支援直接存回原檔，只能下載';
-  }
-  $('#conn').style.display = (canFS && !rootHandle) ? '' : 'none';
-}
 
 /* ---------- 啟動 ---------- */
 function init(){
   applyZoom();
   buildTree();
-  updEnv();
 
   $('#q').oninput = search;
   $('#fsUp').onclick = function(){ setZoom(zoom + 0.1); };
   $('#fsDn').onclick = function(){ setZoom(zoom - 0.1); };
   $('#view').onload = applyZoom;      // 換檔／換分頁後要重新套用
-  $('#prev').onload = applyZoom;
   $('#tog').onclick = function(){ $('#side').classList.toggle('hide'); };
-  $('#mView').onclick = toView;
-  $('#mEdit').onclick = toEdit;
-  $('#save').onclick = save;
-  $('#dl').onclick = download;
-  $('#conn').onclick = connectDir;
-  $('#src').oninput = onInput;
 
   // 左欄寬度可拖曳
   var drag=false;
@@ -449,19 +295,19 @@ function init(){
 
   document.addEventListener('keydown', function(e){
     if ((e.ctrlKey||e.metaKey) && e.key==='t'){ e.preventDefault(); newTab(); }
-    else if ((e.ctrlKey||e.metaKey) && e.key==='s'){ e.preventDefault(); save(); }
     else if ((e.ctrlKey||e.metaKey) && e.key==='w'){ if(active>=0){ e.preventDefault(); closeTab(active); } }
     else if ((e.ctrlKey||e.metaKey) && e.key==='f'){ e.preventDefault(); $('#q').focus(); $('#q').select(); }
     else if (e.key==='Escape' && document.activeElement===$('#q')){ $('#q').value=''; search(); $('#q').blur(); }
   });
-  window.addEventListener('beforeunload', function(e){
-    if (tabs.some(function(t){ return t.dirty; })){ e.preventDefault(); e.returnValue=''; }
-  });
+  // 編輯功能移除後，清掉舊版本留在瀏覽器裡的草稿，免得一直占空間
+  try{
+    Object.keys(localStorage).filter(function(k){ return k.indexOf('tv.draft.')===0; })
+      .forEach(function(k){ localStorage.removeItem(k); });
+  }catch(e){}
 
   // 還原上次開啟的分頁
   var saved = LS('tabs') || [];
-  saved.forEach(function(s){
-    tabs.push({p:s.p,n:s.n,s:s.s,mode:'view',dirty:false,draft:null,loaded:false}); });
+  saved.forEach(function(s){ tabs.push({p:s.p,n:s.n,s:s.s}); });
   if (tabs.length){ renderTabs(); activate(Math.min(LS('active')||0, tabs.length-1)); }
   else showEmpty();
 }
