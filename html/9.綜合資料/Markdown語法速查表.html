@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown 語法速查表</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#182230;--muted:#64748b;--line:#dbe2ea;--accent:#2563eb;--code:#111827}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;line-height:1.7}
+header{background:linear-gradient(135deg,#172554,#4f46e5);color:#fff;padding:42px 6vw}
+header h1{font-size:clamp(30px,5vw,52px);margin:0 0 8px}
+header p{margin:0;color:#dbeafe}
+.toolbar{position:sticky;top:0;z-index:10;background:#ffffffee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 6vw;display:flex;gap:10px;flex-wrap:wrap}
+#search{flex:1;min-width:240px;padding:10px 14px;border:1px solid var(--line);border-radius:9px;font-size:15px}
+button{padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:9px;cursor:pointer}
+button:hover{background:#eef4ff}
+main{max-width:1250px;margin:30px auto;padding:0 20px}
+section{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:25px;margin-bottom:20px;box-shadow:0 5px 20px #1725540a}
+h2{margin-top:0;font-size:23px;border-bottom:2px solid #e5e7eb;padding-bottom:8px}
+h3{font-size:17px;margin-bottom:7px}
+pre{background:var(--code);color:#e5e7eb;padding:16px;border-radius:9px;overflow:auto}
+code{font-family:Consolas,"Courier New",monospace}
+:not(pre)>code{background:#eef2f7;color:#b42318;padding:2px 6px;border-radius:5px}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left}
+th{background:#eff6ff}
+tr:nth-child(even){background:#fafbfc}
+.demo{padding:14px;border-left:4px solid var(--accent);background:#f8fafc;margin:12px 0}
+blockquote{border-left:4px solid #94a3b8;margin:12px 0;padding:8px 15px;background:#f8fafc;color:#475569}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
+.tip{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border-radius:999px;padding:2px 9px;font-size:12px;margin-left:7px}
+footer{text-align:center;padding:30px;color:var(--muted)}
+.hidden{display:none}
+@media(max-width:700px){section{padding:18px}th,td{font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Markdown 語法速查表</h1>
+<p>從基礎 Markdown 到表格、程式碼、數學公式、HTML 與 Mermaid 圖表的完整快速參考。</p>
+</header>
+
+<div class="toolbar">
+<input id="search" placeholder="搜尋：標題、表格、Mermaid、公式、清單…">
+<button onclick="showAll()">全部顯示</button>
+<button onclick="window.print()">列印／另存 PDF</button>
+</div>
+
+<main id="content">
+
+<section data-search="標題 heading">
+<h2>1. 標題</h2>
+<pre><code># 一級標題
+## 二級標題
+### 三級標題
+#### 四級標題
+##### 五級標題
+###### 六級標題</code></pre>
+<div class="demo">
+<h1>一級標題</h1><h2>二級標題</h2><h3>三級標題</h3>
+</div>
+</section>
+
+<section data-search="粗體 斜體 刪除線 emphasis">
+<h2>2. 粗體、斜體、刪除線</h2>
+<table><tr><th>語法</th><th>效果</th></tr>
+<tr><td><code>**粗體**</code></td><td><strong>粗體</strong></td></tr>
+<tr><td><code>*斜體*</code></td><td><em>斜體</em></td></tr>
+<tr><td><code>***粗斜體***</code></td><td><strong><em>粗斜體</em></strong></td></tr>
+<tr><td><code>~~刪除線~~</code></td><td><del>刪除線</del></td></tr>
+<tr><td><code>`程式碼`</code></td><td><code>程式碼</code></td></tr></table>
+</section>
+
+<section data-search="段落 換行 br">
+<h2>3. 段落與換行</h2>
+<pre><code>第一段。
+
+第二段。
+
+第一行  
+第二行</code></pre>
+<div class="tip">空白行通常用來分隔段落；兩個空格再換行可產生強制換行。</div>
+</section>
+
+<section data-search="無序清單 unordered list 巢狀">
+<h2>4. 無序清單</h2>
+<pre><code>- 蘋果
+- 香蕉
+- 橘子
+
+- 水果
+  - 蘋果
+  - 香蕉</code></pre>
+<div class="demo"><ul><li>蘋果</li><li>香蕉</li><li>橘子</li></ul></div>
+</section>
+
+<section data-search="有序清單 ordered list 編號">
+<h2>5. 有序清單</h2>
+<pre><code>1. 第一步
+2. 第二步
+3. 第三步</code></pre>
+<div class="demo"><ol><li>第一步</li><li>第二步</li><li>第三步</li></ol></div>
+</section>
+
+<section data-search="待辦 checklist checkbox">
+<h2>6. 待辦事項</h2>
+<pre><code>- [ ] 尚未完成
+- [x] 已完成
+- [ ] 待確認</code></pre>
+<div class="demo"><label><input type="checkbox"> 尚未完成</label><br><label><input type="checkbox" checked> 已完成</label><br><label><input type="checkbox"> 待確認</label></div>
+</section>
+
+<section data-search="連結 link URL">
+<h2>7. 連結</h2>
+<pre><code>[OpenAI](https://openai.com)
+
+&lt;https://openai.com&gt;</code></pre>
+<div class="demo"><a href="https://openai.com" target="_blank">OpenAI</a></div>
+</section>
+
+<section data-search="圖片 image">
+<h2>8. 圖片</h2>
+<pre><code>![圖片說明](https://example.com/image.jpg)</code></pre>
+<p>格式：<code>![替代文字](圖片網址)</code></p>
+</section>
+
+<section data-search="引用 blockquote">
+<h2>9. 引用</h2>
+<pre><code>&gt; 這是一段引用文字。
+
+&gt; 第一層
+&gt;&gt; 第二層
+&gt;&gt;&gt; 第三層</code></pre>
+<blockquote>這是一段引用文字。</blockquote>
+</section>
+
+<section data-search="分隔線 horizontal rule">
+<h2>10. 分隔線</h2>
+<pre><code>---
+***
+___</code></pre>
+</section>
+
+<section data-search="程式碼 code syntax highlight programming">
+<h2>11. 程式碼</h2>
+<h3>行內程式碼</h3>
+<pre><code>使用 `print()` 顯示文字。</code></pre>
+<h3>程式碼區塊</h3>
+<pre><code>```python
+print("Hello World")
+```</code></pre>
+<h3>常見語言</h3>
+<div class="grid">
+<pre><code>```html
+&lt;h1&gt;Hello&lt;/h1&gt;
+```</code></pre>
+<pre><code>```css
+body {
+    margin: 0;
+}
+```</code></pre>
+<pre><code>```javascript
+console.log("Hello");
+```</code></pre>
+<pre><code>```python
+print("Hello")
+```</code></pre>
+</div>
+</section>
+
+<section data-search="表格 table markdown table">
+<h2>12. 表格</h2>
+<pre><code>| 姓名 | 年齡 | 城市 |
+|---|---:|---|
+| 小明 | 20 | 高雄 |
+| 小華 | 22 | 台南 |
+| 小美 | 21 | 台北 |</code></pre>
+<table><tr><th>姓名</th><th>年齡</th><th>城市</th></tr><tr><td>小明</td><td>20</td><td>高雄</td></tr><tr><td>小華</td><td>22</td><td>台南</td></tr><tr><td>小美</td><td>21</td><td>台北</td></tr></table>
+<h3>對齊</h3>
+<pre><code>| 左對齊 | 置中 | 右對齊 |
+|:---|:---:|---:|
+| A | B | C |</code></pre>
+</section>
+
+<section data-search="特殊符號 跳脫 escape">
+<h2>13. 特殊符號跳脫</h2>
+<pre><code>\*這不是斜體\*
+\_這不是底線\_
+\# 這不是標題</code></pre>
+</section>
+
+<section data-search="HTML">
+<h2>14. HTML</h2>
+<pre><code>&lt;div&gt;
+  &lt;h2&gt;標題&lt;/h2&gt;
+  &lt;p&gt;這是一段文字。&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<div class="tip">Markdown 通常可以混合 HTML，但不同 Markdown 平台對 HTML 的支援程度不同。</div>
+</section>
+
+<section data-search="details 折疊 FAQ">
+<h2>15. 折疊內容</h2>
+<pre><code>&lt;details&gt;
+&lt;summary&gt;點擊查看答案&lt;/summary&gt;
+
+這裡是隱藏內容。
+
+&lt;/details&gt;</code></pre>
+<details><summary>點擊查看答案</summary><p>這裡是隱藏內容。</p></details>
+</section>
+
+<section data-search="腳註 footnote">
+<h2>16. 腳註</h2>
+<pre><code>這是一段文字。[^1]
+
+[^1]: 這是腳註內容。</code></pre>
+</section>
+
+<section data-search="上標 下標 sub sup">
+<h2>17. 上標與下標</h2>
+<pre><code>H&lt;sub&gt;2&lt;/sub&gt;O
+x&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+<div class="demo">H<sub>2</sub>O　　x<sup>2</sup></div>
+</section>
+
+<section data-search="數學公式 LaTeX math">
+<h2>18. 數學公式</h2>
+<h3>行內公式</h3>
+<pre><code>$E=mc^2$</code></pre>
+<h3>區塊公式</h3>
+<pre><code>$$
+E=mc^2
+$$</code></pre>
+<h3>常見符號</h3>
+<table><tr><th>功能</th><th>語法</th></tr>
+<tr><td>平方</td><td><code>x^2</code></td></tr>
+<tr><td>下標</td><td><code>x_1</code></td></tr>
+<tr><td>分數</td><td><code>\frac{a}{b}</code></td></tr>
+<tr><td>根號</td><td><code>\sqrt{x}</code></td></tr>
+<tr><td>無限</td><td><code>\infty</code></td></tr>
+<tr><td>加總</td><td><code>\sum</code></td></tr>
+<tr><td>積分</td><td><code>\int</code></td></tr>
+<tr><td>約等於</td><td><code>\approx</code></td></tr>
+<tr><td>不等於</td><td><code>\neq</code></td></tr>
+<tr><td>大於等於</td><td><code>\geq</code></td></tr>
+<tr><td>小於等於</td><td><code>\leq</code></td></tr></table>
+</section>
+
+<section data-search="Mermaid 流程圖 flowchart diagram">
+<h2>19. Mermaid 流程圖 <span class="badge">視覺化</span></h2>
+<pre><code>```mermaid
+flowchart LR
+    A[開始] --&gt; B[輸入資料]
+    B --&gt; C[分析]
+    C --&gt; D[輸出結果]
+```</code></pre>
+<div class="demo">開始 → 輸入資料 → 分析 → 輸出結果</div>
+</section>
+
+<section data-search="Mermaid 心智圖 mindmap">
+<h2>20. Mermaid 心智圖</h2>
+<pre><code>```mermaid
+mindmap
+  root((Markdown))
+    基礎
+      標題
+      粗體
+      清單
+    文件
+      表格
+      引用
+      連結
+    視覺化
+      Mermaid
+      流程圖
+      心智圖
+```</code></pre>
+</section>
+
+<section data-search="Mermaid 時間軸 timeline">
+<h2>21. Mermaid 時間軸</h2>
+<pre><code>```mermaid
+timeline
+    title 科技發展
+    1940 : 電腦
+    1970 : 網際網路
+    2000 : 行動網路
+    2020 : 生成式 AI
+```</code></pre>
+</section>
+
+<section data-search="Mermaid 甘特圖 gantt">
+<h2>22. Mermaid 甘特圖</h2>
+<pre><code>```mermaid
+gantt
+    title 專案時程
+    dateFormat YYYY-MM-DD
+
+    section 規劃
+    需求分析 :a1, 2026-09-01, 7d
+
+    section 開發
+    程式開發 :a2, after a1, 14d
+
+    section 測試
+    系統測試 :a3, after a2, 7d
+```</code></pre>
+</section>
+
+<section data-search="Mermaid 系統架構 system architecture">
+<h2>23. Mermaid 系統架構圖</h2>
+<pre><code>```mermaid
+flowchart TB
+    User[使用者]
+    Web[Web 前端]
+    API[API]
+    DB[(資料庫)]
+
+    User --&gt; Web
+    Web --&gt; API
+    API --&gt; DB
+```</code></pre>
+</section>
+
+<section data-search="Mermaid 關係圖 relationship">
+<h2>24. Mermaid 關係圖</h2>
+<pre><code>```mermaid
+graph LR
+    A[教師] --&gt; B[課程]
+    C[學生] --&gt; B
+    B --&gt; D[學習成果]
+```</code></pre>
+</section>
+
+<section data-search="Mermaid 回饋循環 feedback loop">
+<h2>25. Mermaid 循環／回饋</h2>
+<pre><code>```mermaid
+flowchart LR
+    A[學習] --&gt; B[成果]
+    B --&gt; C[回饋]
+    C --&gt; A
+```</code></pre>
+</section>
+
+<section data-search="萬用模板 template">
+<h2>26. 萬用 Markdown 文件模板</h2>
+<pre><code># 文件標題
+
+&gt; 文件簡介或重要說明
+
+## 一、第一章
+
+這是一段說明文字。
+
+### 1.1 小節
+
+- 重點一
+- 重點二
+- 重點三
+
+### 1.2 待辦事項
+
+- [x] 已完成
+- [ ] 待完成
+
+## 二、資料表
+
+| 項目 | 說明 | 狀態 |
+|---|---|---|
+| A | 說明 A | ✅ |
+| B | 說明 B | ⏳ |
+| C | 說明 C | ❌ |
+
+## 三、流程圖
+
+```mermaid
+flowchart LR
+    A[開始] --&gt; B[處理]
+    B --&gt; C[完成]
+```
+
+## 四、程式碼
+
+```python
+print("Hello World")
+```
+
+## 五、公式
+
+$$
+E=mc^2
+$$
+
+## 六、參考資料
+
+1. [網站名稱](https://example.com)</code></pre>
+</section>
+
+<section data-search="速查表 cheatsheet quick reference">
+<h2>27. Markdown 最常用語法總表</h2>
+<table>
+<tr><th>類型</th><th>語法</th></tr>
+<tr><td>標題</td><td><code># 標題</code></td></tr>
+<tr><td>粗體</td><td><code>**文字**</code></td></tr>
+<tr><td>斜體</td><td><code>*文字*</code></td></tr>
+<tr><td>粗斜體</td><td><code>***文字***</code></td></tr>
+<tr><td>刪除線</td><td><code>~~文字~~</code></td></tr>
+<tr><td>行內程式碼</td><td><code>`code`</code></td></tr>
+<tr><td>無序清單</td><td><code>- 項目</code></td></tr>
+<tr><td>有序清單</td><td><code>1. 項目</code></td></tr>
+<tr><td>待辦</td><td><code>- [ ] 項目</code></td></tr>
+<tr><td>完成</td><td><code>- [x] 項目</code></td></tr>
+<tr><td>連結</td><td><code>[文字](網址)</code></td></tr>
+<tr><td>圖片</td><td><code>![文字](網址)</code></td></tr>
+<tr><td>引用</td><td><code>&gt; 文字</code></td></tr>
+<tr><td>分隔線</td><td><code>---</code></td></tr>
+<tr><td>程式碼區塊</td><td><code>```code```</code></td></tr>
+<tr><td>表格</td><td><code>| A | B |</code></td></tr>
+<tr><td>腳註</td><td><code>[^1]</code></td></tr>
+<tr><td>行內公式</td><td><code>$x^2$</code></td></tr>
+<tr><td>區塊公式</td><td><code>$$x^2$$</code></td></tr>
+<tr><td>HTML</td><td><code>&lt;div&gt;...&lt;/div&gt;</code></td></tr>
+<tr><td>Mermaid</td><td><code>```mermaid</code></td></tr>
+</table>
+</section>
+
+<section data-search="十大常用語法">
+<h2>28. ⭐ 最值得先記住的 10 個</h2>
+<pre><code># 標題
+**粗體**
+*斜體*
+~~刪除線~~
+- 清單
+1. 編號
+- [ ] 待辦
+[連結](網址)
+![圖片](網址)
+&gt; 引用
+```程式碼```</code></pre>
+</section>
+
+</main>
+
+<footer>Markdown 語法速查表｜可直接列印、另存 PDF 或作為教學教材使用</footer>
+
+<script>
+const input=document.getElementById("search");
+const sections=[...document.querySelectorAll("section")];
+input.addEventListener("input",()=>{
+ const q=input.value.trim().toLowerCase();
+ sections.forEach(s=>{
+   s.classList.toggle("hidden",q && !s.dataset.search.toLowerCase().includes(q));
+ });
+});
+function showAll(){input.value="";sections.forEach(s=>s.classList.remove("hidden"))}
+</script>
+</body>
+</html>

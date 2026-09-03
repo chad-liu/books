@@ -5,3 +5,5 @@ taiwan.md(https://taiwan.md/)
 台灣姓氏地圖(https://imdataman.github.io/tw-family-names/)
 powershell_cheatsheet
 45種圖表與關係圖範例庫
+Git & GitHub 指令速查
+Markdown語法速查表
