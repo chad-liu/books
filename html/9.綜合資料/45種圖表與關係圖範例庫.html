@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>45 種資訊圖表與關係圖範例</title>
+<style>
+:root{
+  --bg:#f5f7fb;--card:#fff;--text:#182230;--muted:#64748b;
+  --line:#d9e0ea;--accent:#3b82f6;--accent2:#8b5cf6;
+  --good:#10b981;--warn:#f59e0b;--bad:#ef4444;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif}
+header{padding:36px 5vw;background:linear-gradient(135deg,#172554,#312e81);color:white}
+header h1{margin:0 0 8px;font-size:clamp(28px,4vw,48px)}
+header p{margin:0;color:#dbeafe;font-size:16px}
+.toolbar{position:sticky;top:0;z-index:5;background:#ffffffee;backdrop-filter:blur(10px);
+padding:14px 5vw;border-bottom:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
+input{flex:1;min-width:240px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+button{border:1px solid var(--line);background:white;padding:9px 14px;border-radius:9px;cursor:pointer}
+button:hover{background:#eef4ff}
+main{max-width:1500px;margin:28px auto;padding:0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;
+box-shadow:0 5px 18px #1725540b;overflow:hidden}
+.card h2{font-size:18px;margin:0 0 4px}.en{font-size:12px;color:var(--muted);font-weight:500}
+.desc{font-size:13px;color:var(--muted);margin:7px 0 15px}.canvas{min-height:220px;position:relative}
+.row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.node{padding:11px 16px;border:2px solid #93c5fd;border-radius:10px;background:#eff6ff;text-align:center}
+.node.purple{border-color:#c4b5fd;background:#f5f3ff}.node.green{border-color:#86efac;background:#f0fdf4}
+.node.orange{border-color:#fcd34d;background:#fffbeb}.node.red{border-color:#fca5a5;background:#fef2f2}
+.arrow{font-size:25px;color:#64748b}.vline{width:2px;height:28px;background:#94a3b8;margin:auto}
+.stack{display:flex;flex-direction:column;gap:5px;max-width:300px;margin:auto}
+.layer{padding:14px;text-align:center;border:1px solid var(--line);border-radius:7px}
+.barbox{display:flex;align-items:flex-end;gap:14px;height:170px;padding:10px 20px;border-bottom:1px solid #94a3b8}
+.bar{width:38px;background:#60a5fa;border-radius:6px 6px 0 0;position:relative}
+.bar span{position:absolute;top:-22px;width:100%;text-align:center;font-size:11px}
+.axis{position:absolute;left:10px;bottom:10px;right:10px;border-bottom:1px solid #94a3b8}
+.timeline{display:flex;align-items:center;gap:0;margin:45px 10px 20px}.tlitem{flex:1;text-align:center;position:relative}
+.tlitem:before{content:"";display:block;height:4px;background:#93c5fd;position:absolute;top:12px;left:0;right:0}
+.dot{width:26px;height:26px;border-radius:50%;background:#3b82f6;margin:auto;position:relative;z-index:1;border:4px solid white;box-shadow:0 0 0 1px #93c5fd}
+.tlitem b{display:block;margin-top:12px;font-size:13px}.tlitem small{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.matrix{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
+.matrix div{padding:10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;font-size:12px}
+.quad{height:220px;border-left:2px solid #64748b;border-bottom:2px solid #64748b;position:relative}
+.quad:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed #cbd5e1}
+.quad:after{content:"";position:absolute;top:50%;left:0;right:0;border-top:1px dashed #cbd5e1}
+.q{position:absolute;padding:9px 12px;border-radius:9px;background:#eff6ff;border:1px solid #93c5fd;font-size:12px}
+.venn{height:200px;position:relative}.circle{position:absolute;width:145px;height:145px;border-radius:50%;
+border:2px solid #60a5fa;background:#60a5fa33;display:flex;align-items:center;justify-content:center;font-size:12px}
+.donut{width:150px;height:150px;border-radius:50%;background:conic-gradient(#3b82f6 0 38%,#8b5cf6 38% 68%,#10b981 68% 86%,#f59e0b 86%);position:relative;margin:auto}
+.donut:after{content:"";position:absolute;inset:38px;background:white;border-radius:50%}
+.stat{padding:16px;border:1px solid var(--line);border-radius:12px;text-align:center}.stat b{display:block;font-size:30px}
+.small{font-size:11px;color:var(--muted)}
+.heat{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.heat i{height:25px;border-radius:4px;background:#dbeafe}
+.heat i:nth-child(3n){background:#93c5fd}.heat i:nth-child(4n){background:#3b82f6}.heat i:nth-child(7n){background:#1d4ed8}
+.swim{display:grid;grid-template-columns:90px repeat(4,1fr);border:1px solid var(--line)}
+.swim>div{padding:9px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px}
+.swim .task{background:#dbeafe;border-radius:6px;margin:3px}
+.sankey{display:flex;align-items:center;justify-content:space-around;height:200px}
+.flowcol{display:flex;flex-direction:column;gap:12px}.flow{padding:12px 18px;border-radius:9px;background:#dbeafe;text-align:center}
+.ribbon{height:22px;border-radius:6px;background:#bfdbfe;margin:7px 0}.r2{width:80%}.r3{width:58%}.r4{width:35%}
+.pyramid{width:0;height:0;border-left:150px solid transparent;border-right:150px solid transparent;border-bottom:190px solid #bfdbfe;margin:auto;position:relative}
+.pyramid:after{content:"策略";position:absolute;left:-32px;top:25px}.pyr2{position:absolute;top:65px;left:-95px;width:190px;text-align:center}
+.maturity{display:flex;gap:3px;align-items:flex-end;height:170px}.maturity div{flex:1;text-align:center;background:#dbeafe;padding:10px 4px}.maturity div:nth-child(2){height:45%}.maturity div:nth-child(3){height:60%}.maturity div:nth-child(4){height:78%}.maturity div:nth-child(5){height:100%}
+.scatter{height:190px;position:relative;border-left:1px solid #94a3b8;border-bottom:1px solid #94a3b8}
+.point{position:absolute;width:10px;height:10px;background:#3b82f6;border-radius:50%}
+.code{background:#111827;color:#d1d5db;border-radius:10px;padding:14px;font:12px/1.7 Consolas,monospace}
+.result{padding:18px;border:2px solid #86efac;border-radius:10px;background:#f0fdf4;text-align:center}
+.explode{display:flex;align-items:center;justify-content:center;gap:20px}.part{padding:16px;border:2px dashed #94a3b8;border-radius:10px}
+.recon{border-left:4px solid #ef4444;padding-left:15px}.recon div{margin:10px 0;padding:9px;background:#fef2f2;border-radius:7px}
+footer{padding:30px;text-align:center;color:var(--muted)}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>45 種圖表／關係圖範例庫</h1><p>以「數位學習平台」為共同案例，示範不同圖形最適合表達什麼資訊。</p></header>
+<div class="toolbar"><input id="search" placeholder="搜尋圖表名稱、英文名稱或關鍵字…"><button onclick="showAll()">全部</button><button onclick="window.print()">列印／另存 PDF</button></div>
+<main><div class="grid" id="cards"></div></main>
+<footer>可將此頁作為教學、簡報、資訊圖表設計的範例圖庫。</footer>
+<script>
+const examples=[
+["1","前後對比圖","Before-and-After Diagram","呈現改造、優化前後的差異",`<div class="row"><div class="node red">Before<br><b>學習資料分散</b></div><div class="arrow">→</div><div class="node green">After<br><b>統一學習平台</b></div></div>`],
+["2","因果圖","Cause-and-Effect Chart","找出問題的主要原因與結果",`<div class="row"><div class="node red">學生退課率高</div><div class="arrow">←</div><div class="stack"><div class="node orange">內容難度</div><div class="node orange">缺乏回饋</div><div class="node orange">操作複雜</div></div></div>`],
+["3","系統架構圖","System Architecture Diagram","描述系統元件及其分層關係",`<div class="stack"><div class="layer" style="background:#eff6ff">前端：Web / App</div><div class="layer" style="background:#f5f3ff">API：認證／課程／分析</div><div class="layer" style="background:#f0fdf4">服務：使用者／內容／推薦</div><div class="layer" style="background:#fffbeb">資料庫／雲端儲存</div></div>`],
+["4","網路拓撲圖","Network Map","呈現節點、設備與網路連線",`<div class="row"><div class="node">Router</div><div class="arrow">↔</div><div class="stack"><div class="node">Web</div><div class="node">Database</div><div class="node">Users</div></div></div>`],
+["5","資料流程圖","Data-Flow Diagram","追蹤資料如何被輸入、處理與儲存",`<div class="row"><div class="node">輸入資料</div><div class="arrow">→</div><div class="node purple">處理</div><div class="arrow">→</div><div class="node green">資料庫</div></div>`],
+["6","資訊流程圖","Information-Flow Diagram","描述資訊在角色、系統間如何流動",`<div class="row"><div class="node">教師</div><div class="arrow">→ 課程資訊 →</div><div class="node purple">平台</div><div class="arrow">→ 通知 →</div><div class="node">學生</div></div>`],
+["7","飛輪模型","Flywheel","表現持續增長、互相強化的循環",`<div class="row"><div class="node">更多內容</div><div class="arrow">↻</div><div class="node">更多使用者</div><div class="arrow">↻</div><div class="node">更多資料</div></div>`],
+["8","回饋迴路","Feedback Loop","呈現正回饋或負回饋機制",`<div class="row"><div class="node green">學習</div><div class="arrow">→</div><div class="node">成績</div><div class="arrow">→</div><div class="node">推薦</div><div class="arrow">↺</div></div>`],
+["9","層級結構圖","Hierarchy Chart","將事物依上下層級分類",`<div class="stack"><div class="node purple">教育平台</div><div class="row"><div class="node">課程</div><div class="node">使用者</div><div class="node">資料</div></div><div class="row"><div class="node green">影片</div><div class="node green">測驗</div></div></div>`],
+["10","組織架構圖","Organization Chart","呈現組織中的職位與隸屬關係",`<div class="stack"><div class="node purple">平台主管</div><div class="row"><div class="node">產品</div><div class="node">工程</div><div class="node">教學</div></div></div>`],
+["11","心智圖","Mind Map","從中心主題向外發散想法",`<div class="row"><div class="stack"><div class="node">課程</div><div class="node">評量</div></div><div class="node purple"><b>數位學習</b></div><div class="stack"><div class="node">社群</div><div class="node">分析</div></div></div>`],
+["12","概念圖","Concept Map","呈現概念與命題之間的語意關係",`<div class="row"><div class="node">學習</div><div class="arrow">→ 需要 →</div><div class="node">練習</div><div class="arrow">→ 產生 →</div><div class="node">能力</div></div>`],
+["13","關係圖","Relationship Map","展示多個對象彼此之間的關係",`<div class="row"><div class="node">教師</div><div class="node">學生</div><div class="node">課程</div></div><div class="row"><span class="small">教師 ↔ 課程　教師 ↔ 學生　學生 ↔ 課程</span></div>`],
+["14","生態系統圖","Ecosystem Map","描述組織、平台、夥伴與外部環境",`<div class="row"><div class="node">學校</div><div class="node purple">學習平台</div><div class="node">教師</div><div class="node">出版社</div><div class="node">家長</div></div>`],
+["15","利害關係人地圖","Stakeholder Map","依影響力與關注程度定位角色",`<div class="quad"><div class="q" style="left:8%;top:15%">學生</div><div class="q" style="right:8%;top:15%">校長</div><div class="q" style="left:12%;bottom:12%">家長</div><div class="q" style="right:12%;bottom:12%">教師</div></div>`],
+["16","依賴關係圖","Dependency Map","呈現元件、任務或系統彼此依賴",`<div class="row"><div class="node">登入</div><div class="arrow">→</div><div class="node">課程</div><div class="arrow">→</div><div class="node">測驗</div><div class="arrow">→</div><div class="node">報表</div></div>`],
+["17","旅程地圖","Journey Map","描繪使用者從開始到完成目標的體驗",`<div class="timeline"><div class="tlitem"><div class="dot"></div><b>發現</b><small>搜尋課程</small></div><div class="tlitem"><div class="dot"></div><b>註冊</b><small>建立帳號</small></div><div class="tlitem"><div class="dot"></div><b>學習</b><small>觀看內容</small></div><div class="tlitem"><div class="dot"></div><b>完成</b><small>取得證書</small></div></div>`],
+["18","使用者流程圖","User-Flow Diagram","展示使用者完成任務的操作步驟",`<div class="row"><div class="node">登入</div><div class="arrow">→</div><div class="node">選課</div><div class="arrow">→</div><div class="node">學習</div><div class="arrow">→</div><div class="node green">完成</div></div>`],
+["19","路線圖","Roadmap","展示產品或計畫的未來方向",`<div class="timeline"><div class="tlitem"><div class="dot"></div><b>Q1</b><small>MVP</small></div><div class="tlitem"><div class="dot"></div><b>Q2</b><small>App</small></div><div class="tlitem"><div class="dot"></div><b>Q3</b><small>AI</small></div><div class="tlitem"><div class="dot"></div><b>Q4</b><small>全球化</small></div></div>`],
+["20","里程碑圖","Milestone Chart","強調重要節點而非所有任務",`<div class="timeline"><div class="tlitem"><div class="dot"></div><b>需求</b></div><div class="tlitem"><div class="dot"></div><b>Beta</b></div><div class="tlitem"><div class="dot"></div><b>上線</b></div><div class="tlitem"><div class="dot"></div><b>1.0</b></div></div>`],
+["21","甘特圖式圖表","Gantt-Style Chart","展示任務在時間軸上的開始、結束與重疊",`<div><div class="ribbon" style="width:75%"></div><div class="ribbon r2"></div><div class="ribbon r3"></div><div class="ribbon r4"></div><span class="small">需求　　設計　　開發　　測試　　上線</span></div>`],
+["22","泳道圖","Swimlane Diagram","按角色／部門區分流程責任",`<div class="swim"><div>角色</div><div>1</div><div>2</div><div>3</div><div>4</div><div>教師</div><div class="task">建立課程</div><div></div><div class="task">檢視</div><div></div><div>學生</div><div></div><div class="task">學習</div><div class="task">測驗</div><div class="task">完成</div></div>`],
+["23","桑基流程圖","Sankey-Style Flow Chart","用流量寬度表示資源或人流的去向",`<div class="sankey"><div class="flowcol"><div class="flow">1000 訪客</div></div><div class="flowcol"><div class="flow">600 註冊</div><div class="flow">400 離開</div></div><div class="flowcol"><div class="flow">450 學習</div><div class="flow">150 放棄</div></div></div>`],
+["24","范氏圖","Venn Diagram","展示集合之間的重疊與共同部分",`<div class="venn"><div class="circle" style="left:23%">影片</div><div class="circle" style="left:43%;border-color:#8b5cf6;background:#8b5cf633">互動</div></div>`],
+["25","比較表","Comparison Table","以欄列直接比較多個方案",`<div class="matrix"><div>方案</div><div>成本</div><div>速度</div><div>彈性</div><div>A</div><div>低</div><div>高</div><div>中</div><div>B</div><div>中</div><div>中</div><div>高</div><div>C</div><div>高</div><div>低</div><div>高</div></div>`],
+["26","比較矩陣","Comparison Matrix","用兩個以上維度交叉評估選項",`<div class="matrix"><div></div><div>成本</div><div>品質</div><div>推薦</div><div>A</div><div>★★★</div><div>★★</div><div>★★</div><div>B</div><div>★★</div><div>★★★</div><div>★★★</div><div>C</div><div>★</div><div>★★★</div><div>★★</div></div>`],
+["27","象限圖","Quadrant Chart","用兩個軸快速分類與定位",`<div class="quad"><div class="q" style="left:65%;top:15%">明星</div><div class="q" style="left:15%;top:15%">問題</div><div class="q" style="left:65%;top:68%">現金牛</div><div class="q" style="left:15%;top:68%">淘汰</div></div>`],
+["28","優缺點對照表","Pros-and-Cons Chart","將正面與負面因素並列",`<div class="grid2"><div class="node green"><b>優點</b><br>快速<br>易擴充<br>易共享</div><div class="node red"><b>缺點</b><br>初期成本<br>學習曲線<br>維護需求</div></div>`],
+["29","金字塔圖","Pyramid Diagram","呈現由基礎到高層的層級結構",`<div class="pyramid"><div class="pyr2">策略</div></div>`],
+["30","分層圖","Layer Diagram","把複雜系統拆成不同層次",`<div class="stack"><div class="layer">體驗層</div><div class="layer">應用層</div><div class="layer">服務層</div><div class="layer">資料層</div><div class="layer">基礎設施層</div></div>`],
+["31","光譜圖","Spectrum Chart","呈現連續尺度或程度差異",`<div style="padding:25px 5px"><div style="height:28px;border-radius:14px;background:linear-gradient(90deg,#dbeafe,#60a5fa,#3b82f6,#312e81)"></div><div class="row" style="justify-content:space-between"><span>低</span><span>中</span><span>高</span></div></div>`],
+["32","成熟度模型","Maturity Model","評估組織、流程或產品的成熟階段",`<div class="maturity"><div>1<br>初始</div><div>2<br>可重複</div><div>3<br>標準化</div><div>4<br>管理化</div><div>5<br>最佳化</div></div>`],
+["33","進程圖","Progression Chart","呈現能力、階段或成果逐步提升",`<div class="timeline"><div class="tlitem"><div class="dot"></div><b>入門</b></div><div class="tlitem"><div class="dot"></div><b>熟練</b></div><div class="tlitem"><div class="dot"></div><b>進階</b></div><div class="tlitem"><div class="dot"></div><b>專家</b></div></div>`],
+["34","計分卡","Scorecard","用多項指標綜合評分",`<div class="grid2"><div class="stat"><b>92</b>完成率</div><div class="stat"><b>87</b>滿意度</div><div class="stat"><b>78</b>互動率</div><div class="stat"><b>95</b>穩定性</div></div>`],
+["35","數據統計卡片","Statistic Cards","快速呈現關鍵數字 KPI",`<div class="grid2"><div class="stat"><b>12,480</b><span class="small">使用者</span></div><div class="stat"><b>842</b><span class="small">課程</span></div><div class="stat"><b>68%</b><span class="small">完成率</span></div><div class="stat"><b>4.7</b><span class="small">平均評分</span></div></div>`],
+["36","長條圖","Bar Chart","比較不同類別的數量",`<div class="barbox"><div class="bar" style="height:55%"><span>55</span></div><div class="bar" style="height:82%"><span>82</span></div><div class="bar" style="height:68%"><span>68</span></div><div class="bar" style="height:94%"><span>94</span></div><div class="bar" style="height:72%"><span>72</span></div></div>`],
+["37","折線圖","Line Chart","展示數值隨時間變化的趨勢",`<svg viewBox="0 0 420 180" width="100%" height="180"><polyline points="20,145 100,115 180,125 260,70 340,88 400,35" fill="none" stroke="#3b82f6" stroke-width="4"/><circle cx="20" cy="145" r="5"/><circle cx="100" cy="115" r="5"/><circle cx="180" cy="125" r="5"/><circle cx="260" cy="70" r="5"/><circle cx="340" cy="88" r="5"/><circle cx="400" cy="35" r="5"/></svg>`],
+["38","環形圖","Donut Chart","展示比例與構成",`<div class="donut"></div><div class="small" style="text-align:center">完成 38%　學習 30%　其他 32%</div>`],
+["39","散佈圖","Scatter Plot","觀察兩個數值變數的相關性",`<div class="scatter">${[[15,75],[22,60],[30,70],[38,45],[46,58],[55,30],[64,42],[73,20],[82,35]].map(([x,y])=>`<i class="point" style="left:${x}%;bottom:${y}%"></i>`).join("")}</div>`],
+["40","熱點圖","Heat Map","用顏色強度表示高低或密度",`<div class="heat">${Array.from({length:35},()=>"<i></i>").join("")}</div>`],
+["41","註解介面圖","Annotated Interface Diagram","在介面截圖或線框上標示重點",`<div style="border:2px solid #94a3b8;border-radius:10px;padding:12px"><div class="node">① 搜尋列</div><div class="node purple">② 課程卡片</div><div class="node green">③ 開始學習</div><div class="small">← 以編號搭配說明文字</div></div>`],
+["42","爆炸視圖介面圖","Exploded Interface Diagram","把介面或產品元件拆開展示",`<div class="explode"><div class="part">Header</div><div class="part">↓</div><div class="part">Content</div><div class="part">↓</div><div class="part">Footer</div></div>`],
+["43","程式碼至成果關聯圖","Code-to-Outcome Diagram","連結程式碼、模組與最終功能成果",`<div class="row"><div class="code">fetch()<br>transform()</div><div class="arrow">→</div><div class="node purple">推薦引擎</div><div class="arrow">→</div><div class="result">個人化推薦</div></div>`],
+["44","運作原理說明圖","How-It-Works Explainer","用簡化步驟說明複雜系統如何運作",`<div class="row"><div class="node">輸入</div><div class="arrow">→</div><div class="node purple">分析</div><div class="arrow">→</div><div class="node">判斷</div><div class="arrow">→</div><div class="node green">輸出</div></div>`],
+["45","事件重組圖","Incident Reconstruction Diagram","依時間順序重建事故、事件或問題",`<div class="recon"><div><b>09:00</b> 系統開始異常</div><div><b>09:12</b> 使用者大量回報</div><div><b>09:25</b> 找到根因</div><div><b>09:40</b> 完成修復</div></div>`]
+];
+
+const cards=document.getElementById("cards");
+function render(list){
+ cards.innerHTML=list.map(e=>`<article class="card" data-key="${e[1]} ${e[2]} ${e[3]}"><h2>${e[0]}. ${e[1]} <span class="en">${e[2]}</span></h2><div class="desc">${e[3]}</div><div class="canvas">${e[4]}</div></article>`).join("");
+}
+render(examples);
+document.getElementById("search").addEventListener("input",e=>{
+ const q=e.target.value.toLowerCase();
+ render(examples.filter(x=>(x[1]+" "+x[2]+" "+x[3]).toLowerCase().includes(q)));
+});
+function showAll(){document.getElementById("search").value="";render(examples)}
+</script>
+</body>
+</html>
