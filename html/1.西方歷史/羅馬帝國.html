@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>羅馬帝國</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 專題</p>
+  <h1>羅馬帝國</h1>
+  <p class="lede">羅馬帝國最值得追問的，不是它為什麼衰亡——那是每個帝國最終都會面對的事。真正值得追問的是：<b>一個原本只用來治理單一城市的政治體制，怎麼撐了四百多年去統治整片地中海世界</b>。答案的一半是它從不強迫別人臣服於「羅馬」本身，而是不斷把「成為羅馬人」這件事本身變得可以取得——公民權、法律、道路，讓帝國的邊界最終比軍事佔領線寬得多。答案的另一半，則是它的政治體制始終沒有真正跟上帝國的體量，這個沒補上的缺口，最後決定了它會怎麼裂開。這一頁從公民權這個引擎談起，接著看那個缺口是什麼、它在三世紀怎麼幾乎拖垮整個帝國、西半部後來如何在沒有一場決定性戰役的情況下悄悄結束，最後看它留下了哪幾條至今仍在運作的管道。</p>
+</header>
+
+<blockquote>
+  它從不真的要求你臣服於羅馬，它要求的是你想不想成為羅馬人——而這個問題，它讓越來越多人可以回答「想」。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>羅馬的秘密武器不是軍團，是公民權</h2>
+  <p class="sub">最右欄是重點。每一次擴大公民權的範圍，都是把原本只能被統治的人，變成有份參與的人。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 480" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="190" height="36" fill="#17324d"/>
+    <rect x="223" y="18" width="230" height="36" fill="#17324d"/>
+    <rect x="461" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="739" y="18" width="336" height="36" fill="#8a4636"/>
+    <text x="120" y="42" text-anchor="middle" font-size="13" fill="#ffffff">哪一步</text>
+    <text x="338" y="42" text-anchor="middle" font-size="13" fill="#ffffff">誰被納入</text>
+    <text x="596" y="42" text-anchor="middle" font-size="13" fill="#ffffff">用什麼條件換</text>
+    <text x="907" y="42" text-anchor="middle" font-size="13" fill="#ffffff">後果</text>
+
+    <rect x="25" y="58" width="190" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="223" y="58" width="230" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="461" y="58" width="270" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="58" width="336" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="120" y="98" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">拉丁權</text>
+    <text x="120" y="120" text-anchor="middle" font-size="11" fill="#37607a">共和早期</text>
+    <text x="338" y="98" text-anchor="middle" font-size="12" fill="#546e7a">義大利半島上</text>
+    <text x="338" y="120" text-anchor="middle" font-size="12" fill="#546e7a">結盟的城邦</text>
+    <text x="596" y="98" text-anchor="middle" font-size="12" fill="#546e7a">部分公民權利</text>
+    <text x="596" y="120" text-anchor="middle" font-size="12" fill="#546e7a">通商權與通婚權</text>
+    <text x="907" y="98" text-anchor="middle" font-size="12" fill="#b8442a">建立起「身分可以分級」</text>
+    <text x="907" y="120" text-anchor="middle" font-size="12" fill="#b8442a">這個後來反覆使用的模板</text>
+
+    <rect x="25" y="148" width="190" height="90" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="223" y="148" width="230" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="461" y="148" width="270" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="148" width="336" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="120" y="188" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">同盟者戰爭後</text>
+    <text x="120" y="210" text-anchor="middle" font-size="11" fill="#7a4436">西元前 90 年代</text>
+    <text x="338" y="188" text-anchor="middle" font-size="12" fill="#546e7a">全體義大利</text>
+    <text x="338" y="210" text-anchor="middle" font-size="12" fill="#546e7a">盟邦居民</text>
+    <text x="596" y="188" text-anchor="middle" font-size="12" fill="#546e7a">完整羅馬公民權</text>
+    <text x="596" y="210" text-anchor="middle" font-size="12" fill="#546e7a">因盟邦武裝反叛而讓步</text>
+    <text x="907" y="188" text-anchor="middle" font-size="12" fill="#b8442a">用武力換來的教訓：不給身分</text>
+    <text x="907" y="210" text-anchor="middle" font-size="12" fill="#b8442a">的代價，比給出去更高</text>
+
+    <rect x="25" y="238" width="190" height="90" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="223" y="238" width="230" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="461" y="238" width="270" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="238" width="336" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="120" y="278" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">輔助軍退伍</text>
+    <text x="120" y="300" text-anchor="middle" font-size="11" fill="#8a6a35">帝國前期</text>
+    <text x="338" y="278" text-anchor="middle" font-size="12" fill="#546e7a">非公民出身的</text>
+    <text x="338" y="300" text-anchor="middle" font-size="12" fill="#546e7a">行省士兵</text>
+    <text x="596" y="278" text-anchor="middle" font-size="12" fill="#546e7a">服役滿一定年限</text>
+    <text x="596" y="300" text-anchor="middle" font-size="12" fill="#546e7a">退伍時授予公民權</text>
+    <text x="907" y="278" text-anchor="middle" font-size="12" fill="#b8442a">邊疆各地的年輕人，把從軍</text>
+    <text x="907" y="300" text-anchor="middle" font-size="12" fill="#b8442a">當成一條晉升身分的正式管道</text>
+
+    <rect x="25" y="328" width="190" height="90" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="223" y="328" width="230" height="90" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="461" y="328" width="270" height="90" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="739" y="328" width="336" height="90" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="120" y="368" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">卡拉卡拉敕令</text>
+    <text x="120" y="390" text-anchor="middle" font-size="11" fill="#446b53">西元 212 年</text>
+    <text x="338" y="368" text-anchor="middle" font-size="12" fill="#546e7a">帝國境內幾乎</text>
+    <text x="338" y="390" text-anchor="middle" font-size="12" fill="#546e7a">全體自由人</text>
+    <text x="596" y="368" text-anchor="middle" font-size="12" fill="#546e7a">一道敕令，不必</text>
+    <text x="596" y="390" text-anchor="middle" font-size="12" fill="#546e7a">再逐案申請或服役</text>
+    <text x="907" y="368" text-anchor="middle" font-size="12" fill="#3d7a55">「羅馬人」與「被羅馬統治的人」</text>
+    <text x="907" y="390" text-anchor="middle" font-size="12" fill="#3d7a55">之間的界線，法律上正式消失</text>
+
+    <rect x="30" y="428" width="1045" height="42" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="454" text-anchor="middle" font-size="12.5" fill="#17324d">四百年間，這條路線的方向從未反轉——每一步都是把更多人納入，沒有一步是把人排除出去</text>
+  </svg>
+  </div>
+  <p class="after">這條路線值得對照同時期其他帝國的做法：多數古代帝國靠駐軍與徵稅維持統治，被統治者永遠是被統治者。<b>羅馬的不同之處，在於它把「統治的對象」逐步轉換成「統治的參與者」</b>——公民權不是恩賜的裝飾，而是實質的法律保障與晉升管道，這讓帝國的凝聚力不完全依賴軍事佔領。這也是為什麼後面幾節談到的種種危機，動搖的始終是統治這個公民體的政治機制，而不是這個公民體本身是否還認同自己是羅馬人。</p>
+</section>
+
+<section>
+  <h2>一座城市的憲法，怎麼撐起一整個帝國</h2>
+  <p class="sub">問題不在於羅馬人不懂治理，而在於他們從未真正給「皇帝」這個角色寫下一條繼承規則。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 386" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">共和的憲法，是為一座城市寫的</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">執政官、元老院與公民大會這套設計，</text>
+    <text x="282.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">預設的是一群住在同一座城裡、彼此</text>
+    <text x="282.5" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">認識的公民，年年選出兩位一年一任</text>
+    <text x="282.5" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">的官員，互相制衡。</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">奧古斯都的補丁：假裝什麼都沒變</text>
+    <text x="817.5" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">內戰結束後，奧古斯都保留了全部共和</text>
+    <text x="817.5" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">官銜的外殼，實際大權集於一身，對外</text>
+    <text x="817.5" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">仍宣稱自己「恢復了共和」——這是一</text>
+    <text x="817.5" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">套權宜的偽裝，不是重新設計的制度。</text>
+
+    <rect x="30" y="206" width="1040" height="94" fill="#17324d" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">補丁裡唯一沒有補上的，是最關鍵的一項：皇帝之後由誰接任，從未成文</text>
+    <text x="550" y="262" text-anchor="middle" font-size="12" fill="#bcd4e4">歷代皇帝各自用收養、聯姻、指定或純粹的軍隊擁立來解決這個問題，每一種辦法都只在當時有效</text>
+    <text x="550" y="282" text-anchor="middle" font-size="12" fill="#bcd4e4">一旦某位皇帝沒有事先安排好繼承人，權力的移交就沒有任何機制可以依循</text>
+
+    <rect x="30" y="312" width="1040" height="60" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="338" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">這個缺口在承平時期不會顯現</text>
+    <text x="550" y="358" text-anchor="middle" font-size="12" fill="#546e7a">但只要同一時間出現多重壓力，它就會變成整個帝國最先斷裂的地方——下一節就是這種情況實際發生的樣子</text>
+  </svg>
+  </div>
+  <p class="after">這一節的重點不是「奧古斯都很聰明」或「元老院很無能」，而是<b>羅馬帝國從第一天起，權力交接的規則就是一片空白，靠的是每一代人臨場填補</b>。這與第一節形成有趣的對照：公民權的擴張是一條被反覆驗證、逐步成文化的路線；皇位的繼承卻從未走上同一條路。一個帝國可以在「誰是羅馬人」這個問題上想得非常清楚，同時在「誰來統治羅馬人」這個問題上始終沒有答案。</p>
+</section>
+
+<section>
+  <h2>三世紀危機：缺口第一次被同時撐開</h2>
+  <p class="sub">單一一個壓力，帝國扛得住；當外患、內鬥、瘟疫與通膨同時到來，沒有繼承規則的代價就攤在眼前。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 412" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="254" height="164" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="157" y="52" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">東西兩面同時開戰</text>
+    <text x="157" y="82" text-anchor="middle" font-size="11.5" fill="#4f6773">波斯薩珊王朝在東方發</text>
+    <text x="157" y="102" text-anchor="middle" font-size="11.5" fill="#4f6773">動攻勢，日耳曼各部落</text>
+    <text x="157" y="122" text-anchor="middle" font-size="11.5" fill="#4f6773">同時越過北方邊界，防</text>
+    <text x="157" y="142" text-anchor="middle" font-size="11.5" fill="#4f6773">線再也顧不過來</text>
+    <text x="157" y="170" text-anchor="middle" font-size="10.5" fill="#7a4436">邊防兵力被迫兩頭抽調</text>
+
+    <rect x="292" y="20" width="254" height="164" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="419" y="52" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">皇位在數十年間反覆易主</text>
+    <text x="419" y="82" text-anchor="middle" font-size="11.5" fill="#96604f">半個世紀裡，稱帝者多</text>
+    <text x="419" y="102" text-anchor="middle" font-size="11.5" fill="#96604f">達二十餘人，多數死於</text>
+    <text x="419" y="122" text-anchor="middle" font-size="11.5" fill="#96604f">部下謀殺或另一位將領</text>
+    <text x="419" y="142" text-anchor="middle" font-size="11.5" fill="#96604f">的軍隊擁立</text>
+    <text x="419" y="170" text-anchor="middle" font-size="10.5" fill="#96604f">第二節那個缺口正式引爆</text>
+
+    <rect x="554" y="20" width="254" height="164" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="681" y="52" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">貨幣貶值與經濟崩壞</text>
+    <text x="681" y="82" text-anchor="middle" font-size="11.5" fill="#8a6a35">為了支付各方軍隊，銀</text>
+    <text x="681" y="102" text-anchor="middle" font-size="11.5" fill="#8a6a35">幣的貴金屬含量被一再</text>
+    <text x="681" y="122" text-anchor="middle" font-size="11.5" fill="#8a6a35">稀釋，物價隨之失控，</text>
+    <text x="681" y="142" text-anchor="middle" font-size="11.5" fill="#8a6a35">跨行省貿易大幅萎縮</text>
+    <text x="681" y="170" text-anchor="middle" font-size="10.5" fill="#8a6a35">財政與軍事互相拖累</text>
+
+    <rect x="816" y="20" width="254" height="164" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="943" y="52" text-anchor="middle" font-size="13" fill="#4c636e" font-weight="600">帝國一度一分為三</text>
+    <text x="943" y="82" text-anchor="middle" font-size="11.5" fill="#4c636e">西部與東部各自出現割</text>
+    <text x="943" y="102" text-anchor="middle" font-size="11.5" fill="#4c636e">據政權，中央有效控制</text>
+    <text x="943" y="122" text-anchor="middle" font-size="11.5" fill="#4c636e">的範圍一度只剩義大利</text>
+    <text x="943" y="142" text-anchor="middle" font-size="11.5" fill="#4c636e">與巴爾幹周邊</text>
+    <text x="943" y="170" text-anchor="middle" font-size="10.5" fill="#4c636e">帝國實質上已接近解體</text>
+
+    <rect x="30" y="200" width="1040" height="120" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="232" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">收拾殘局的辦法，是把統治權本身拆開</text>
+    <text x="44" y="262" font-size="12.5" fill="#546e7a">戴克里先在西元 284 年重新統一帝國後，沒有選擇修補舊制度，而是承認一個人已經管不過來整個帝國——</text>
+    <text x="44" y="286" font-size="12.5" fill="#546e7a">他把統治權正式分給多人共治，並讓行政體系分東西兩片運作。這不是政治分裂，而是治理規模的重新設計。</text>
+    <text x="44" y="310" font-size="12.5" fill="#546e7a">但這個分工的存在本身，也讓「東西各自為政」從一個技術性安排，逐漸變成一條後來回不了頭的界線。</text>
+
+    <rect x="30" y="332" width="1040" height="60" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="358" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">這條界線在西元 395 年正式定型</text>
+    <text x="550" y="378" text-anchor="middle" font-size="12" fill="#546e7a">皇帝狄奧多西一世死後，帝國分別交給兩個兒子，此後再也沒有重新合併——東半部後續的命運，見〈拜占庭帝國〉</text>
+  </svg>
+  </div>
+  <p class="after">三世紀危機值得記住的，不是它有多慘烈，而是<b>羅馬帝國最終挺過去了</b>——用的辦法不是回到舊制度，而是承認舊制度撐不住現在的體量，重新設計了統治權本身的形狀。這件事本身證明了羅馬的制度彈性遠比表面上看到的更大。但它也留下一個副作用：東西分治一旦開始運作得比合治更有效率，就再也沒有動機走回頭路，下一節談的正是西半部後來怎麼走完剩下的路。</p>
+</section>
+
+<section>
+  <h2>西羅馬滅亡：不是一場戰役，是一連串外包</h2>
+  <p class="sub">476 年沒有攻城掠地的戲劇畫面，只有一份調任公文——真正決定結局的過程早在此前一世紀就開始了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 442" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="380" height="36" fill="#17324d"/>
+    <rect x="621" y="18" width="454" height="36" fill="#8a4636"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">哪一步</text>
+    <text x="423" y="42" text-anchor="middle" font-size="13" fill="#ffffff">實際發生了什麼</text>
+    <text x="848" y="42" text-anchor="middle" font-size="13" fill="#ffffff">留下的後果</text>
+
+    <rect x="25" y="58" width="200" height="90" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="233" y="58" width="380" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="58" width="454" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="98" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">條約而非征服</text>
+    <text x="125" y="120" text-anchor="middle" font-size="11" fill="#8a6a35">四世紀後期起</text>
+    <text x="423" y="90" text-anchor="middle" font-size="12" fill="#546e7a">邊境的日耳曼部族不是被打敗才進入帝國，</text>
+    <text x="423" y="112" text-anchor="middle" font-size="12" fill="#546e7a">而是以盟軍身分簽約定居，換取為羅馬打仗</text>
+    <text x="848" y="90" text-anchor="middle" font-size="12" fill="#b8442a">帝國內部逐漸出現效忠對象</text>
+    <text x="848" y="112" text-anchor="middle" font-size="12" fill="#b8442a">是部族領袖、而非皇帝的軍隊</text>
+
+    <rect x="25" y="148" width="200" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="148" width="380" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="148" width="454" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="188" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">西部稅基持續萎縮</text>
+    <text x="423" y="180" text-anchor="middle" font-size="12" fill="#546e7a">西部各行省的人口與城市化程度，長期不如</text>
+    <text x="423" y="202" text-anchor="middle" font-size="12" fill="#546e7a">埃及、敘利亞一帶的東部行省富庶</text>
+    <text x="848" y="180" text-anchor="middle" font-size="12" fill="#b8442a">中央能徵到的稅越來越少，</text>
+    <text x="848" y="202" text-anchor="middle" font-size="12" fill="#b8442a">供養常備軍的能力隨之下滑</text>
+
+    <rect x="25" y="238" width="200" height="90" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="233" y="238" width="380" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="238" width="454" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="278" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">軍隊指揮權旁落</text>
+    <text x="423" y="270" text-anchor="middle" font-size="12" fill="#4f6773">出身盟軍部族的將領逐漸掌握西部軍事實權，</text>
+    <text x="423" y="292" text-anchor="middle" font-size="12" fill="#4f6773">皇帝本人常常只是他們扶立的傀儡</text>
+    <text x="848" y="270" text-anchor="middle" font-size="12" fill="#b8442a">誰坐上皇位，取決於這些將領</text>
+    <text x="848" y="292" text-anchor="middle" font-size="12" fill="#b8442a">的意願，而不是羅馬的政治程序</text>
+
+    <rect x="25" y="328" width="200" height="90" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="233" y="328" width="380" height="90" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="621" y="328" width="454" height="98" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="125" y="368" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">476 年，一紙調令</text>
+    <text x="423" y="358" text-anchor="middle" font-size="12" fill="#546e7a">將領奧多亞塞廢黜了年幼的末代皇帝，</text>
+    <text x="423" y="380" text-anchor="middle" font-size="12" fill="#546e7a">把皇帝的正式徽記送往東部首都，自己以</text>
+    <text x="423" y="402" text-anchor="middle" font-size="12" fill="#546e7a">「義大利統治者」而非皇帝的名義治理</text>
+    <text x="848" y="358" text-anchor="middle" font-size="12" fill="#3d7a55">當時的人沒有把這當成「帝國</text>
+    <text x="848" y="380" text-anchor="middle" font-size="12" fill="#3d7a55">滅亡」，這是後世史家回頭</text>
+    <text x="848" y="402" text-anchor="middle" font-size="12" fill="#3d7a55">選定的一個方便的結束點</text>
+  </svg>
+  </div>
+  <p class="after">把這四步連起來看，476 年之所以沒有戲劇性，正是因為<b>真正的權力轉移早就完成了，那份公文只是把既成事實正式記錄下來</b>。西羅馬不是被一場戰役打垮的，而是一百多年間逐步把軍事與財政能力外包出去，直到「皇帝」這個位置變成一個可以被跳過的形式。與此同時，同一套壓力在資源更豐厚的東部行省，帶來的後果完全不同——那段故事見同資料夾的〈拜占庭帝國〉。</p>
+</section>
+
+<section>
+  <h2>消失的政治體，留下的四條管道</h2>
+  <p class="sub">政治結構停止運作，不等於它創造的一切跟著消失——這四樣東西，比帝國本身多活了超過一千年。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 330" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="254" height="184" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="157" y="52" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">語言</text>
+    <text x="157" y="84" text-anchor="middle" font-size="11.5" fill="#546e7a">各地通行的拉丁口語，</text>
+    <text x="157" y="104" text-anchor="middle" font-size="11.5" fill="#546e7a">在帝國崩解後各自演變</text>
+    <text x="157" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">成法語、西班牙語、義</text>
+    <text x="157" y="144" text-anchor="middle" font-size="11.5" fill="#546e7a">大利語等今日仍在使用</text>
+    <text x="157" y="164" text-anchor="middle" font-size="11.5" fill="#546e7a">的語言</text>
+    <text x="157" y="192" text-anchor="middle" font-size="10.5" fill="#37607a">政治體消失，語言留下</text>
+
+    <rect x="292" y="20" width="254" height="184" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="419" y="52" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">法律</text>
+    <text x="419" y="84" text-anchor="middle" font-size="11.5" fill="#4f6773">東部皇帝查士丁尼下令</text>
+    <text x="419" y="104" text-anchor="middle" font-size="11.5" fill="#4f6773">彙編的羅馬法典，日後</text>
+    <text x="419" y="124" text-anchor="middle" font-size="11.5" fill="#4f6773">成為歐陸法系的共同源</text>
+    <text x="419" y="144" text-anchor="middle" font-size="11.5" fill="#4f6773">頭，至今仍是許多國家</text>
+    <text x="419" y="164" text-anchor="middle" font-size="11.5" fill="#4f6773">法律體系的骨架</text>
+    <text x="419" y="192" text-anchor="middle" font-size="10.5" fill="#7a4436">帝國滅亡近百年後才編成</text>
+
+    <rect x="554" y="20" width="254" height="184" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="681" y="52" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">教會的行政地圖</text>
+    <text x="681" y="84" text-anchor="middle" font-size="11.5" fill="#8a6a35">「教區」一詞與許多邊</text>
+    <text x="681" y="104" text-anchor="middle" font-size="11.5" fill="#8a6a35">界，直接沿用戴克里先</text>
+    <text x="681" y="124" text-anchor="middle" font-size="11.5" fill="#8a6a35">改革時劃定的行政分區</text>
+    <text x="681" y="144" text-anchor="middle" font-size="11.5" fill="#8a6a35">——第三節那次重組留</text>
+    <text x="681" y="164" text-anchor="middle" font-size="11.5" fill="#8a6a35">下的框架</text>
+    <text x="681" y="192" text-anchor="middle" font-size="10.5" fill="#8a6a35">行政區劃比帝國本身更長壽</text>
+
+    <rect x="816" y="20" width="254" height="184" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="943" y="52" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">工程與路網</text>
+    <text x="943" y="84" text-anchor="middle" font-size="11.5" fill="#546e7a">道路與水道的路線規劃</text>
+    <text x="943" y="104" text-anchor="middle" font-size="11.5" fill="#546e7a">，往往被後續數百年的</text>
+    <text x="943" y="124" text-anchor="middle" font-size="11.5" fill="#546e7a">聚落與道路系統直接沿</text>
+    <text x="943" y="144" text-anchor="middle" font-size="11.5" fill="#546e7a">用，部分歐洲現代公路</text>
+    <text x="943" y="164" text-anchor="middle" font-size="11.5" fill="#546e7a">仍與古道路線重疊</text>
+    <text x="943" y="192" text-anchor="middle" font-size="10.5" fill="#446b53">實體建設比典章制度更難抹除</text>
+
+    <rect x="30" y="220" width="1040" height="90" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="252" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">連「羅馬帝國」這個名號本身，也被反覆借用了一千多年</text>
+    <text x="44" y="282" font-size="12.5" fill="#546e7a">查理曼在西元 800 年被加冕為「羅馬人的皇帝」，後來的神聖羅馬帝國也以此為名——這套借殼延續合法性的做法，見同資料夾的〈神聖羅馬帝國時間軸〉。</text>
+    <text x="44" y="302" font-size="12.5" fill="#546e7a">政治實體早已不在，但「羅馬」這個標籤本身還在被拿來用，這本身就是一種留存下來的遺產。</text>
+  </svg>
+  </div>
+  <p class="after">把五節放在一起看，會發現一個貫穿全篇的形狀：<b>公民權讓帝國能撐大，制度的缺口讓它注定會裂開，而它裂開之後留下的東西，比它本身存在的時間還要長得多</b>。羅馬從未真正「消失」——它的政治結構停止運作了，但它創造的語言、法律、行政框架與實體建設，各自找到了自己的路，繼續在後來一千五百年的歐洲歷史裡運作下去。</p>
+</section>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">同盟者戰爭與義大利全境入籍</span><span class="yr">西元前 91–87 年</span><p>義大利盟邦因長期未獲公民權而武裝反叛，戰後羅馬讓步，將公民權授予全體義大利居民。</p></div>
+  <div class="card"><span class="nm">奧古斯都建立元首制</span><span class="yr">西元前 27 年</span><p>內戰結束後，屋大維獲元老院授予「奧古斯都」尊號，對外宣稱恢復共和，實際大權集於一身。</p></div>
+  <div class="card"><span class="nm">四帝之年</span><span class="yr">西元 69 年</span><p>一年內四位將領先後稱帝，是繼承規則缺失第一次造成的大規模內戰，最終由維斯帕先勝出收場。</p></div>
+  <div class="card"><span class="nm">卡拉卡拉敕令</span><span class="yr">西元 212 年</span><p>皇帝卡拉卡拉一道敕令，將羅馬公民權授予帝國境內幾乎所有自由人，公民與被統治者的界線正式消失。</p></div>
+  <div class="card"><span class="nm">三世紀危機</span><span class="yr">西元 235–284 年</span><p>半世紀間外患、篡位、貨幣崩壞與帝國一度三分同時發生，是羅馬史上最接近整體解體的一段時期。</p></div>
+  <div class="card"><span class="nm">戴克里先的四帝共治</span><span class="yr">西元 284–305 年</span><p>重新統一帝國後，將統治權正式分給多人共治，並讓行政體系分東西運作，是後來東西分治的制度起點。</p></div>
+  <div class="card"><span class="nm">狄奧多西一世死後帝國東西分家</span><span class="yr">西元 395 年</span><p>皇帝將帝國分別交給兩個兒子繼承，此後再未重新合併，東西兩半自此走上不同的歷史軌跡。</p></div>
+  <div class="card"><span class="nm">西哥德人以盟軍身分定居帝國境內</span><span class="yr">西元 382 年</span><p>阿德里安堡之役後，西哥德人與帝國簽約，作為盟軍在境內定居，是外包軍事力量的典型案例。</p></div>
+  <div class="card"><span class="nm">西羅馬末代皇帝被廢黜</span><span class="yr">西元 476 年</span><p>將領奧多亞塞廢黜年幼的羅慕路斯・奧古斯圖魯斯，將皇帝徽記送往東部首都，後世以此年作為西羅馬滅亡的標誌。</p></div>
+  <div class="card"><span class="nm">查理曼加冕為羅馬人的皇帝</span><span class="yr">西元 800 年</span><p>教宗為法蘭克國王查理曼加冕，重新啟用「羅馬皇帝」這個頭銜，是後來神聖羅馬帝國正當性的直接源頭。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">前因與後續</span></div>
+<div class="grid">
+  <a class="card" href="拜占庭帝國.html"><span class="nm">拜占庭帝國</span><span class="lk">→ 專頁</span><p>第三、四節那條東西分治的路線，東半部後續走了將近一千年——同樣的壓力，在資源更豐厚的一側帶來完全不同的結局。</p></a>
+  <a class="card" href="歐洲中古史.html"><span class="nm">歐洲中古史</span><span class="lk">→ 專頁</span><p>西羅馬政治結構停止運作之後，那塊土地上的權力真空如何被國王、教會與封建領主重新填補。</p></a>
+  <a class="card" href="神聖羅馬帝國時間軸.html"><span class="nm">神聖羅馬帝國時間軸</span><span class="lk">→ 專頁</span><p>第五節末尾提到的借殼延續：查理曼與後續的神聖羅馬皇帝，如何反覆援引「羅馬」這個名號建立正當性。</p></a>
+  <a class="card" href="波希戰爭.html"><span class="nm">波希戰爭</span><span class="lk">→ 專頁</span><p>羅馬繼承並改寫的地中海世界，其古典城邦政治的另一端起點——同一片海域更早的一場強權對抗。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的專題頁。<b>範圍</b>：聚焦於公民權擴張、政治體制設計、三世紀危機與西部滅亡的制度性成因，不含軍事戰役與行省治理的細節，帝國東半部見〈拜占庭帝國〉。<b>年份</b>：多數制度性變化為漸進過程，文中年份標示的是傳統史學採用的關鍵節點，而非唯一起訖。<b>數字</b>：三世紀危機的稱帝人數，各家史料統計口徑不一，本頁採「二十餘人」的通行說法，不列精確數字。<b>476 年</b>：如第四節所述，這是後世史家選定的方便結束點，並非當時人普遍認定的「帝國滅亡」時刻。
+</footer>
+
+</div>
+</body>
+</html>

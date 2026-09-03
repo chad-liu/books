@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鐵路運輸知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>鐵路運輸知識圖譜</h1>
+  <p class="lede">鐵路的一切，幾乎都可以從一個物理事實推出來：<b>鋼輪壓在鋼軌上，接觸面只有一枚硬幣大小</b>。這件事有兩個方向相反的後果。往好的一面看，滾動阻力低到只有橡膠輪胎在柏油路上的十分之一左右，所以同樣的動力能拉動重得多的東西——這是它在貨運上難以被取代的根本原因。往壞的一面看，<b>摩擦這麼小，它就煞不住；輪緣被夾在軌道裡，它也閃不掉</b>。一列貨車以時速八十公里前進時，煞車距離超過一公里，遠比駕駛看得見的距離長。於是鐵路不能靠「看到再反應」來避免相撞，只能靠事先分配軌道的使用權——而整套號誌、時刻表、甚至現代的標準時間，都是從這個「不能閃避」長出來的。</p>
+</header>
+
+<blockquote>
+  它跑得快不是重點。重點是它停不下來，所以人類必須先發明一整套制度，才敢讓它跑。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>一個物理事實，兩個相反的後果</h2>
+  <p class="sub">本頁其餘四節，全部是這兩欄各自往下長出來的東西。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="72" fill="#17324d" rx="6"/>
+    <text x="550" y="50" text-anchor="middle" font-size="14" fill="#ffffff" font-weight="600">鋼輪壓在鋼軌上，接觸面只有一枚硬幣大小</text>
+    <text x="550" y="76" text-anchor="middle" font-size="12.5" fill="#bcd4e4">兩者都是硬的，幾乎不變形——這是下面兩件事的共同來源</text>
+
+    <rect x="30" y="108" width="505" height="170" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="282" y="142" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">好的那一面：拉得動</text>
+    <text x="282" y="174" text-anchor="middle" font-size="12.5" fill="#546e7a">不變形就不會把能量耗在輪胎的反覆擠壓上，</text>
+    <text x="282" y="198" text-anchor="middle" font-size="12.5" fill="#546e7a">滾動阻力大約只有橡膠輪胎在柏油路上的十分之一。</text>
+    <text x="282" y="222" text-anchor="middle" font-size="12.5" fill="#546e7a">同樣的動力可以拉動重得多的貨物，</text>
+    <text x="282" y="246" text-anchor="middle" font-size="12.5" fill="#546e7a">而且速度越穩定、越省。</text>
+    <text x="282" y="270" text-anchor="middle" font-size="11.5" fill="#446b53">→ 第二節：它在運輸體系裡站的位置</text>
+
+    <rect x="565" y="108" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="142" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">壞的那一面：停不住、也閃不掉</text>
+    <text x="817" y="174" text-anchor="middle" font-size="12.5" fill="#4f6773">摩擦小，煞車就沒有東西可以「咬」。一列貨車在</text>
+    <text x="817" y="198" text-anchor="middle" font-size="12.5" fill="#4f6773">時速八十公里下，煞車距離超過一公里。</text>
+    <text x="817" y="222" text-anchor="middle" font-size="12.5" fill="#4f6773">而輪緣被夾在軌道之間，方向盤這種東西根本不存在，</text>
+    <text x="817" y="246" text-anchor="middle" font-size="12.5" fill="#4f6773">前方有障礙也無法繞開。</text>
+    <text x="817" y="270" text-anchor="middle" font-size="11.5" fill="#7a4436">→ 第三、四節：它被迫發明的整套制度</text>
+
+    <rect x="30" y="294" width="1040" height="88" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="324" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">同一個原因，同時是優勢也是限制</text>
+    <text x="44" y="352" font-size="12.5" fill="#546e7a">值得注意的是：這兩件事不能分開處理。想讓它煞得住，就得增加摩擦；而增加摩擦，就等於放棄它省力的本錢。</text>
+    <text x="44" y="374" font-size="12.5" fill="#546e7a">這是原理層次的取捨，兩百年來沒有改變過——變的只是人類拿什麼制度去補上後半段。</text>
+  </svg>
+  </div>
+  <p class="after">把這個取捨看清楚，就能理解一件常被誤解的事：<b>鐵路的核心競爭力從來不是「快」</b>。在絕對速度上，飛機遠勝於它；在門到門的彈性上，卡車遠勝於它。它真正無可取代的是「用很少的能量，把很重的東西，按照事先講好的時間送到」。而後半句之所以做得到，恰恰是因為它被迫發展出一套極其嚴格的排程制度——這一點下面兩節會談。</p>
+</section>
+
+<section>
+  <h2>它在運輸體系裡站的位置</h2>
+  <p class="sub">重點不是誰最好，而是四種運具的成本結構不同——所以它們是接力，不是競爭。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 440" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="150" height="36" fill="#17324d"/>
+    <rect x="183" y="18" width="230" height="36" fill="#17324d"/>
+    <rect x="421" y="18" width="290" height="36" fill="#17324d"/>
+    <rect x="719" y="18" width="356" height="36" fill="#8a4636"/>
+    <text x="100" y="42" text-anchor="middle" font-size="13" fill="#ffffff">運具</text>
+    <text x="298" y="42" text-anchor="middle" font-size="13" fill="#ffffff">每噸公里的能耗</text>
+    <text x="566" y="42" text-anchor="middle" font-size="13" fill="#ffffff">起訖點能到哪裡</text>
+    <text x="897" y="42" text-anchor="middle" font-size="13" fill="#ffffff">它真正的適用區間</text>
+
+    <rect x="25" y="58" width="150" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="183" y="58" width="230" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="421" y="58" width="290" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="719" y="58" width="356" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="104" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">海運</text>
+    <text x="298" y="92" text-anchor="middle" font-size="12" fill="#546e7a">最低</text>
+    <text x="298" y="116" text-anchor="middle" font-size="12" fill="#546e7a">水的浮力免費承重</text>
+    <text x="566" y="92" text-anchor="middle" font-size="12" fill="#546e7a">只能到港口</text>
+    <text x="566" y="116" text-anchor="middle" font-size="12" fill="#546e7a">而且要夠深</text>
+    <text x="897" y="92" text-anchor="middle" font-size="12" fill="#b8442a">洲際、大宗、不趕時間的貨</text>
+    <text x="897" y="116" text-anchor="middle" font-size="12" fill="#b8442a">以週為單位計算的行程</text>
+
+    <rect x="25" y="138" width="150" height="80" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="183" y="138" width="230" height="80" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="421" y="138" width="290" height="80" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="719" y="138" width="356" height="80" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="100" y="184" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">鐵路</text>
+    <text x="298" y="172" text-anchor="middle" font-size="12" fill="#546e7a">低</text>
+    <text x="298" y="196" text-anchor="middle" font-size="12" fill="#546e7a">約為公路的數分之一</text>
+    <text x="566" y="172" text-anchor="middle" font-size="12" fill="#546e7a">只能到車站與側線</text>
+    <text x="566" y="196" text-anchor="middle" font-size="12" fill="#546e7a">要另外鋪軌才能延伸</text>
+    <text x="897" y="172" text-anchor="middle" font-size="12" fill="#3d7a55">陸上的中長距離、量大、班次固定</text>
+    <text x="897" y="196" text-anchor="middle" font-size="12" fill="#3d7a55">最適合「同一批貨定期走同一條路」</text>
+
+    <rect x="25" y="218" width="150" height="80" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="183" y="218" width="230" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="421" y="218" width="290" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="719" y="218" width="356" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="264" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">公路</text>
+    <text x="298" y="252" text-anchor="middle" font-size="12" fill="#546e7a">中</text>
+    <text x="298" y="276" text-anchor="middle" font-size="12" fill="#546e7a">輪胎變形持續耗能</text>
+    <text x="566" y="252" text-anchor="middle" font-size="12" fill="#546e7a">任何有路的地方</text>
+    <text x="566" y="276" text-anchor="middle" font-size="12" fill="#546e7a">彈性最大的一種</text>
+    <text x="897" y="252" text-anchor="middle" font-size="12" fill="#b8442a">短程、末端配送、少量多樣</text>
+    <text x="897" y="276" text-anchor="middle" font-size="12" fill="#b8442a">以及其他運具到不了的那一哩</text>
+
+    <rect x="25" y="298" width="150" height="80" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="183" y="298" width="230" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="421" y="298" width="290" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="719" y="298" width="356" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="344" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">空運</text>
+    <text x="298" y="332" text-anchor="middle" font-size="12" fill="#4f6773">最高</text>
+    <text x="298" y="356" text-anchor="middle" font-size="12" fill="#4f6773">要先把重量舉起來</text>
+    <text x="566" y="332" text-anchor="middle" font-size="12" fill="#546e7a">只能到機場</text>
+    <text x="566" y="356" text-anchor="middle" font-size="12" fill="#546e7a">兩端都要再轉一次</text>
+    <text x="897" y="332" text-anchor="middle" font-size="12" fill="#b8442a">單位重量價值高、時效壓倒一切</text>
+    <text x="897" y="356" text-anchor="middle" font-size="12" fill="#b8442a">以及體積小到運費占比不高的貨</text>
+
+    <rect x="30" y="394" width="1040" height="34" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="416" text-anchor="middle" font-size="12.5" fill="#17324d">鐵路在結構上是「中間段」：兩頭都需要公路把貨集中過來、再送出去</text>
+  </svg>
+  </div>
+  <p class="after">最後一列那句話值得展開。<b>因為鐵路兩端都必須接駁，所以真正決定它划不划算的，往往不是行駛成本，而是轉運成本</b>——貨物從卡車搬到火車再搬回卡車，每一次裝卸都要人力、時間與破損風險。二十世紀中期貨櫃的出現之所以是運輸史上的關鍵事件，正是因為它把「轉運」從拆箱重裝變成整箱吊起，讓海運、鐵路與公路第一次可以順暢地接力。今天的鐵路貨運有很大一部分其實是在跑貨櫃，原因就在這裡。</p>
+</section>
+
+<section>
+  <h2>不能閃避，所以必須事先分配</h2>
+  <p class="sub">這是鐵路營運的核心。它處理的不是「怎麼開」，而是「誰在什麼時候可以用哪一段軌道」。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 432" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="18" width="1040" height="48" fill="#17324d" rx="6"/>
+    <text x="550" y="48" text-anchor="middle" font-size="13.5" fill="#ffffff">駕駛看得見的距離，遠短於他煞得住的距離——所以「看到再反應」這件事在鐵路上不成立</text>
+
+    <text x="550" y="102" text-anchor="middle" font-size="12" fill="#59707b">行進方向</text>
+    <path d="M600,97 H660 M660,97 L652,93 M660,97 L652,101" stroke="#59707b" stroke-width="1.6" fill="none"/>
+
+    <text x="166" y="138" text-anchor="middle" font-size="12" fill="#59707b">閉塞區間 ①</text>
+    <text x="358" y="138" text-anchor="middle" font-size="12" fill="#59707b">閉塞區間 ②</text>
+    <text x="550" y="138" text-anchor="middle" font-size="12" fill="#59707b">閉塞區間 ③</text>
+    <text x="742" y="138" text-anchor="middle" font-size="12" fill="#59707b">閉塞區間 ④</text>
+    <text x="934" y="138" text-anchor="middle" font-size="12" fill="#59707b">閉塞區間 ⑤</text>
+
+    <path d="M70,174 H1030" stroke="#8a8f93" stroke-width="3" fill="none"/>
+    <path d="M262,164 V184 M454,164 V184 M646,164 V184 M838,164 V184" stroke="#8a8f93" stroke-width="2" fill="none"/>
+
+    <rect x="96" y="158" width="112" height="30" fill="#eaf2f7" stroke="#8fb4c9" rx="4"/>
+    <text x="152" y="178" text-anchor="middle" font-size="12" fill="#1f5c85" font-weight="600">後續列車</text>
+
+    <rect x="686" y="158" width="112" height="30" fill="#f0e6e2" stroke="#c9a99e" rx="4"/>
+    <text x="742" y="178" text-anchor="middle" font-size="12" fill="#8e2f1c" font-weight="600">前行列車</text>
+
+    <path d="M262,188 V210 M454,188 V210 M646,188 V210 M838,188 V210" stroke="#8a8f93" stroke-width="2" fill="none"/>
+    <circle cx="262" cy="220" r="9" fill="#3d7a55"/>
+    <circle cx="454" cy="220" r="9" fill="#d99b2e"/>
+    <circle cx="646" cy="220" r="9" fill="#c0392b"/>
+    <circle cx="838" cy="220" r="9" fill="#3d7a55"/>
+
+    <rect x="182" y="244" width="160" height="52" fill="#ecf5ef" stroke="#9dc3a9" rx="4"/>
+    <text x="262" y="266" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">綠燈</text>
+    <text x="262" y="286" text-anchor="middle" font-size="11" fill="#446b53">可依線路速限行駛</text>
+
+    <rect x="374" y="244" width="160" height="52" fill="#fdf5e7" stroke="#e0b775" rx="4"/>
+    <text x="454" y="266" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">黃燈</text>
+    <text x="454" y="286" text-anchor="middle" font-size="11" fill="#8a6a35">準備在下一架號誌停車</text>
+
+    <rect x="566" y="244" width="160" height="52" fill="#fdeeeb" stroke="#dda695" rx="4"/>
+    <text x="646" y="266" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">紅燈</text>
+    <text x="646" y="286" text-anchor="middle" font-size="11" fill="#96604f">前方區間有車，不得進入</text>
+
+    <rect x="758" y="244" width="160" height="52" fill="#ecf5ef" stroke="#9dc3a9" rx="4"/>
+    <text x="838" y="266" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">綠燈</text>
+    <text x="838" y="286" text-anchor="middle" font-size="11" fill="#446b53">前方區間淨空</text>
+
+    <rect x="30" y="312" width="1040" height="102" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="344" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">規則只有一條：一個區間，同時只准有一列車</text>
+    <text x="44" y="372" font-size="12.5" fill="#546e7a">黃燈的存在是為了給煞車距離留空間：看到黃燈時就要開始減速，才來得及在下一架紅燈前停住。</text>
+    <text x="44" y="396" font-size="12.5" fill="#546e7a">所以鐵路的容量單位是「每小時幾班」，不是「時速多少」——區間越短、號誌越密，同一條線就能塞進越多班次。</text>
+  </svg>
+  </div>
+  <p class="after">這套邏輯解釋了一個外行常覺得奇怪的現象：<b>提升鐵路運量的辦法，往往不是把車開快，而是把區間切細</b>。因為容量取決於「前後兩列車之間必須空出幾個區間」，把區間縮短就能讓班次更密。近年的號誌系統更進一步，不再用固定的實體區間，而是靠列車即時回報位置、動態計算它後方需要多少安全距離——等於讓區間隨車移動。捷運能做到兩三分鐘一班，靠的就是這一類技術，而不是列車跑得比較快。</p>
+</section>
+
+<section>
+  <h2>它逼出來的四項制度</h2>
+  <p class="sub">最右欄是重點：每一項都是鐵路因為技術上非有不可而先做，社會與法律後來才追認。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="180" height="36" fill="#17324d"/>
+    <rect x="213" y="18" width="380" height="36" fill="#17324d"/>
+    <rect x="601" y="18" width="474" height="36" fill="#8a4636"/>
+    <text x="115" y="42" text-anchor="middle" font-size="13" fill="#ffffff">制度</text>
+    <text x="403" y="42" text-anchor="middle" font-size="13" fill="#ffffff">鐵路為什麼非要它不可</text>
+    <text x="838" y="42" text-anchor="middle" font-size="13" fill="#ffffff">社會與法律什麼時候才跟上</text>
+
+    <rect x="25" y="58" width="180" height="94" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="213" y="58" width="380" height="94" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="58" width="474" height="94" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="115" y="112" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">標準時間</text>
+    <text x="403" y="90" text-anchor="middle" font-size="12" fill="#546e7a">各城鎮原本各用自己的太陽時，</text>
+    <text x="403" y="112" text-anchor="middle" font-size="12" fill="#546e7a">彼此差上好幾分鐘。只要時間不統一，</text>
+    <text x="403" y="134" text-anchor="middle" font-size="12" fill="#546e7a">跨城市的時刻表在邏輯上就不成立。</text>
+    <text x="838" y="90" text-anchor="middle" font-size="12" fill="#b8442a">英國鐵路 1840 年代起自行統一採用倫敦時間，</text>
+    <text x="838" y="112" text-anchor="middle" font-size="12" fill="#b8442a">法律要到 1880 年才確認。北美鐵路 1883 年</text>
+    <text x="838" y="134" text-anchor="middle" font-size="12" fill="#b8442a">自行畫定時區，美國國會 1918 年才立法。</text>
+
+    <rect x="25" y="152" width="180" height="94" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="213" y="152" width="380" height="94" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="152" width="474" height="94" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="115" y="206" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">電報</text>
+    <text x="403" y="184" text-anchor="middle" font-size="12" fill="#546e7a">要知道前方區間有沒有車，</text>
+    <text x="403" y="206" text-anchor="middle" font-size="12" fill="#546e7a">消息就必須跑得比火車還快。</text>
+    <text x="403" y="228" text-anchor="middle" font-size="12" fill="#546e7a">這是第三節那套制度的物理前提。</text>
+    <text x="838" y="184" text-anchor="middle" font-size="12" fill="#b8442a">最早的商用電報線就架設在鐵路旁，</text>
+    <text x="838" y="206" text-anchor="middle" font-size="12" fill="#b8442a">兩者一起長大：路權提供了架線的通道，</text>
+    <text x="838" y="228" text-anchor="middle" font-size="12" fill="#b8442a">鐵路則提供了第一個非它不可的用途。</text>
+
+    <rect x="25" y="246" width="180" height="94" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="213" y="246" width="380" height="94" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="246" width="474" height="94" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="115" y="300" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">大規模融資</text>
+    <text x="403" y="278" text-anchor="middle" font-size="12" fill="#546e7a">蓋一條鐵路要先買下整條路廊、</text>
+    <text x="403" y="300" text-anchor="middle" font-size="12" fill="#546e7a">挖隧道、架橋，全部得在通車前付清。</text>
+    <text x="403" y="322" text-anchor="middle" font-size="12" fill="#546e7a">這遠超過任何合夥人能湊出的規模。</text>
+    <text x="838" y="278" text-anchor="middle" font-size="12" fill="#b8442a">十九世紀的鐵路股票是最早被大量一般人</text>
+    <text x="838" y="300" text-anchor="middle" font-size="12" fill="#b8442a">持有的證券，也造就了第一批投機狂熱與</text>
+    <text x="838" y="322" text-anchor="middle" font-size="12" fill="#b8442a">崩盤——現代資本市場的許多習慣源於此。</text>
+
+    <rect x="25" y="340" width="180" height="94" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="213" y="340" width="380" height="94" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="340" width="474" height="94" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="115" y="394" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">安全法規</text>
+    <text x="403" y="372" text-anchor="middle" font-size="12" fill="#546e7a">一次事故的傷亡規模，</text>
+    <text x="403" y="394" text-anchor="middle" font-size="12" fill="#546e7a">遠超過在此之前的任何運輸工具。</text>
+    <text x="403" y="416" text-anchor="middle" font-size="12" fill="#546e7a">而且受害的是購票的一般乘客。</text>
+    <text x="838" y="372" text-anchor="middle" font-size="12" fill="#b8442a">英國在 1889 年一場重大事故之後立法，</text>
+    <text x="838" y="394" text-anchor="middle" font-size="12" fill="#b8442a">強制採用閉塞號誌、連鎖裝置與連續式煞車</text>
+    <text x="838" y="416" text-anchor="middle" font-size="12" fill="#b8442a">——這是「先出事、才立法」的典型案例。</text>
+  </svg>
+  </div>
+  <p class="after">四列的形狀是一樣的：<b>鐵路因為技術上非有不可而先建立了某種秩序，社會與法律往往在幾十年後才追認</b>。這個模式在同資料夾之外也看得到——〈歐洲國家對外殖民〉第一節談的正是同一件事的另一個版本：公司與私人先造成既成事實，國家最後才被拖進去接手。差別在於，鐵路這一組的結果多半是好的：標準時間、資本市場與安全法規，今天都被視為理所當然的基礎設施。</p>
+</section>
+
+<section>
+  <h2>三種鐵路，三個不同的目標</h2>
+  <p class="sub">最右欄是重點。它們追求的東西彼此衝突，混在同一條線上就會互相妨礙。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="170" height="36" fill="#17324d"/>
+    <rect x="203" y="18" width="280" height="36" fill="#17324d"/>
+    <rect x="491" y="18" width="250" height="36" fill="#17324d"/>
+    <rect x="749" y="18" width="326" height="36" fill="#8a4636"/>
+    <text x="110" y="42" text-anchor="middle" font-size="13" fill="#ffffff">類型</text>
+    <text x="343" y="42" text-anchor="middle" font-size="13" fill="#ffffff">它在最佳化什麼</text>
+    <text x="616" y="42" text-anchor="middle" font-size="13" fill="#ffffff">它最怕什麼</text>
+    <text x="912" y="42" text-anchor="middle" font-size="13" fill="#ffffff">因此在設計上被迫怎麼取捨</text>
+
+    <rect x="25" y="58" width="170" height="84" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="203" y="58" width="280" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="58" width="250" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="749" y="58" width="326" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="106" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">高速客運</text>
+    <text x="343" y="94" text-anchor="middle" font-size="12" fill="#546e7a">城市之間的門到門時間</text>
+    <text x="343" y="118" text-anchor="middle" font-size="12" fill="#546e7a">而不只是最高速度</text>
+    <text x="616" y="94" text-anchor="middle" font-size="12" fill="#546e7a">停站太多</text>
+    <text x="616" y="118" text-anchor="middle" font-size="12" fill="#546e7a">以及被慢車擋住</text>
+    <text x="912" y="94" text-anchor="middle" font-size="12" fill="#b8442a">曲線半徑要大、坡度要緩，路線因此</text>
+    <text x="912" y="118" text-anchor="middle" font-size="12" fill="#b8442a">很難遷就既有市區，多半得另闢專線</text>
+
+    <rect x="25" y="142" width="170" height="84" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="203" y="142" width="280" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="142" width="250" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="749" y="142" width="326" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="190" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">通勤客運</text>
+    <text x="343" y="178" text-anchor="middle" font-size="12" fill="#546e7a">尖峰時段的每小時運量</text>
+    <text x="343" y="202" text-anchor="middle" font-size="12" fill="#546e7a">單程時間反而是次要的</text>
+    <text x="616" y="178" text-anchor="middle" font-size="12" fill="#546e7a">上下車拖太久</text>
+    <text x="616" y="202" text-anchor="middle" font-size="12" fill="#546e7a">一站誤點就全線延誤</text>
+    <text x="912" y="178" text-anchor="middle" font-size="12" fill="#b8442a">車門要多、站距要短、加減速要猛，</text>
+    <text x="912" y="202" text-anchor="middle" font-size="12" fill="#b8442a">代價是舒適性與最高速度都得讓步</text>
+
+    <rect x="25" y="226" width="170" height="84" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="203" y="226" width="280" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="226" width="250" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="749" y="226" width="326" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="110" y="274" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">貨運</text>
+    <text x="343" y="262" text-anchor="middle" font-size="12" fill="#546e7a">每噸公里的總成本</text>
+    <text x="343" y="286" text-anchor="middle" font-size="12" fill="#546e7a">對速度相當不敏感</text>
+    <text x="616" y="262" text-anchor="middle" font-size="12" fill="#546e7a">空車回程</text>
+    <text x="616" y="286" text-anchor="middle" font-size="12" fill="#546e7a">以及轉運次數太多</text>
+    <text x="912" y="262" text-anchor="middle" font-size="12" fill="#b8442a">編組要長、軸重要大，於是需要更強的</text>
+    <text x="912" y="286" text-anchor="middle" font-size="12" fill="#b8442a">路基與橋梁，也拉長了煞車距離</text>
+
+    <rect x="30" y="326" width="1040" height="60" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="352" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">為什麼混跑會出問題：快車追上慢車，就浪費掉整個時段的容量</text>
+    <text x="550" y="374" text-anchor="middle" font-size="12" fill="#546e7a">速度差越大，同一條線能安排的班次就越少——這才是許多國家的高鐵必須另建專用路線的真正原因</text>
+  </svg>
+  </div>
+  <p class="after">最後這一點常被誤解成「舊路線的路基不夠好」。<b>真正的問題是排程</b>：把時速三百公里的列車和時速八十公里的貨車放進同一組閉塞區間，快車每追上一次慢車，就等於白白吃掉好幾個班次的空間。日本在 1964 年另建新幹線專線，既是因為既有路線是窄軌，也是因為它早已飽和；後來各國多半沿用這個做法。反過來說，如果一條線上所有列車的速度都差不多，那麼即使設備普通，它的班次密度也可以很高——這正是通勤鐵路與捷運的情況。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>軌距寬窄不等於速度快慢</b>——標準軌被廣泛採用主要是歷史與互通的結果；窄軌路線同樣可以高速運轉，真正的限制是曲線半徑、路基強度與號誌系統。其二，<b>「電氣化」不是為了跑得快</b>——它的主要好處是加速性能好、沒有廢氣、能量可以在下坡時回收，以及不必把燃料帶著跑；速度提升只是附帶。其三，<b>誤點很少是單一列車的問題</b>——因為所有列車共用同一組區間，一列車晚了幾分鐘，會沿著時刻表往後傳染，這種連鎖延誤才是準點率的主要敵人。這也解釋了為什麼班次越密的路線，反而越禁不起一次小意外。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">第一輛在軌道上行駛的蒸汽機車</span><span class="yr">1804</span><p>在威爾斯的礦區軌道上完成。當時的鑄鐵軌承受不住機車重量而斷裂——軌道本身的材料，是比引擎更早遇到的瓶頸。</p></div>
+  <div class="card"><span class="nm">斯托克頓－達靈頓鐵路</span><span class="yr">1825</span><p>第一條使用蒸汽機車的公用鐵路。它證明的不是技術可行，而是這門生意可以向公眾收費。</p></div>
+  <div class="card"><span class="nm">利物浦－曼徹斯特鐵路</span><span class="yr">1830</span><p>第一條全程蒸汽動力、雙軌、按時刻表營運的城際鐵路。現代鐵路的營運形態在這一年大致定型。</p></div>
+  <div class="card"><span class="nm">電報架上鐵路</span><span class="yr">1839</span><p>最早的商用電報線沿著鐵路架設。從此「前方區間有沒有車」這個問題第一次有了比火車更快的答案。</p></div>
+  <div class="card"><span class="nm">鐵路時間</span><span class="yr">1840 年代</span><p>英國各鐵路公司陸續改用單一的倫敦時間，各城鎮的地方太陽時就此被實務淘汰。法律上的確認要等到 1880 年。</p></div>
+  <div class="card"><span class="nm">美國橫貫鐵路貫通</span><span class="yr">1869</span><p>東西兩線在猶他州接軌。橫越大陸的時間從數個月縮短到一週左右，美國內部的經濟地理被整個改寫。</p></div>
+  <div class="card"><span class="nm">北美鐵路自行畫定時區</span><span class="yr">1883</span><p>各鐵路公司在同一天改用統一時區，當日許多城市經歷了「兩個正午」。美國國會遲至 1918 年才立法承認。</p></div>
+  <div class="card"><span class="nm">英國強制閉塞號誌與連續煞車</span><span class="yr">1889</span><p>一場造成大量傷亡的事故之後立法，把原本各公司自願採用的安全措施變成強制規定。</p></div>
+  <div class="card"><span class="nm">東海道新幹線通車</span><span class="yr">1964</span><p>第一條高速鐵路專用線。它真正的創新不只是速度，而是「客運專用、全線同速、高頻發車」這套營運模式。</p></div>
+  <div class="card"><span class="nm">貨櫃與複合運輸普及</span><span class="yr">1950–60 年代起</span><p>轉運從拆箱重裝變成整箱吊起。鐵路兩端接駁的成本大幅下降，也讓它重新在長程貨運上具備競爭力。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="../1.西方歷史/第一次世界大戰.html"><span class="nm">第一次世界大戰</span><span class="lk">→ 專頁</span><p>各國的動員計畫完全建立在鐵路時刻表上。第三節那種「事先排定、臨時改不了」的性質，在 1914 年造成了嚴重的後果。</p></a>
+  <a class="card" href="../1.西方歷史/歐洲國家對外殖民.html"><span class="nm">歐洲國家對外殖民</span><span class="lk">→ 專頁</span><p>與第四節同一個模式：技術與私人先造成既成事實，國家與法律最後才追認。差別在於結果的好壞。</p></a>
+  <a class="card" href="../5.人文政經/全球化.html"><span class="nm">全球化</span><span class="lk">→ 專頁</span><p>第二節末尾談的貨櫃與複合運輸，如何把運輸成本壓低到足以重組全球的生產分工。</p></a>
+  <a class="card" href="../1.西方歷史/英國歷史總覽.html"><span class="nm">英國歷史總覽</span><span class="lk">→ 專頁</span><p>第四節第三列的背景：十九世紀的鐵路狂熱如何塑造了英國的資本市場，以及它付出的代價。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：聚焦於鐵路的物理特性、營運邏輯與它所帶動的制度，不含車輛工程與路線工程的細節。<b>數值</b>：滾動阻力、能耗與煞車距離的比值會隨車種、載重、坡度與路況大幅變動，本頁只給數量級的對比，不列精確數字。<b>號誌</b>：第三節的三顯示號誌為說明用的簡化模型，實務上各國的顯示方式、區間長度與行車保安裝置差異相當大。<b>年份</b>：制度的形成多為漸進過程，文中年份標示的是關鍵節點而非唯一起訖。
+</footer>
+
+</div>
+</body>
+</html>

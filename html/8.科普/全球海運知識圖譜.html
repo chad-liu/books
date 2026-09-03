@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全球海運知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>全球海運知識圖譜</h1>
+  <p class="lede">全世界九成以上的貿易貨物量，是靠海運完成的，而這個產業的形狀，可以追到一條幾何規律：<b>把一艘船造大，載重量幾乎是照著長寬高的乘積成長，但需要的動力與鋼材卻長得慢得多</b>。多裝一個貨櫃的邊際成本，會隨著船越造越大而不斷下降。這個規律解釋了為什麼海運船隻幾十年來一路長成今天的巨獸，也解釋了它為什麼特別容易「規模到卡住」——大到連運河與港口都得跟著改建才裝得下。這一頁從這條規律出發，接著看貨櫃如何重新設計了裝卸這件事、地理的咽喉如何反過來限制規模、運費為什麼像坐雲霄飛車，最後看一艘船在法律上到底屬於誰。</p>
+</header>
+
+<blockquote>
+  把船造大幾乎是免費的午餐，直到它大到連地球既有的水道都容不下為止。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>一條幾何規律，決定了它會一直變大</h2>
+  <p class="sub">這條規律不是海運獨有的物理定律，而是造船業長期觀察到的成本結構——但它的效果非常穩定。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 424" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="180" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">長得快的：能裝多少</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">船的載貨空間大致是長寬高的乘積，把三個</text>
+    <text x="282.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">維度同時放大一倍，容積會變成八倍。</text>
+    <text x="282.5" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">這就是把貨物裝進去的能力——</text>
+    <text x="282.5" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">近似跟著長度的三次方成長。</text>
+    <text x="282" y="188" text-anchor="middle" font-size="11" fill="#37607a">容積 ∝ 長度³</text>
+
+    <rect x="565" y="20" width="505" height="180" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">長得慢的：要花多少</text>
+    <text x="817.5" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">要推動船前進，克服的主要是水對船殼</text>
+    <text x="817.5" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">表面的阻力，這大致跟著表面積成長——</text>
+    <text x="817.5" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">同樣放大一倍，表面積只變四倍。</text>
+    <text x="817.5" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">船員、導航設備等成本更幾乎不隨船變大而增加。</text>
+    <text x="817" y="188" text-anchor="middle" font-size="11" fill="#7a4436">動力需求 ∝ 長度² 或更慢</text>
+
+    <rect x="30" y="216" width="1040" height="90" fill="#17324d" rx="6"/>
+    <text x="550" y="248" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">容積長得比成本快，所以「每個貨櫃的運輸成本」會隨船越造越大而持續下降</text>
+    <text x="550" y="272" text-anchor="middle" font-size="12" fill="#bcd4e4">這正是二十世紀後期貨櫃船越造越大、單船運力屢創新高的根本驅動力——不是誰刻意追求「更大」，而是更大確實更省</text>
+    <text x="550" y="292" text-anchor="middle" font-size="12" fill="#bcd4e4">是這條規律本身，不斷把整個產業往「盡量造大」的方向推</text>
+
+    <rect x="30" y="322" width="1040" height="86" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="352" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">但這條規律不會無限延伸下去</text>
+    <text x="44" y="382" font-size="12.5" fill="#546e7a">船越大，吃水越深、航道要求越高，能停靠的港口與能通過的水道就越少——這正是第三節要談的限制。</text>
+  </svg>
+  </div>
+  <p class="after">值得留意的是，這條規律解釋的是<b>單位成本為什麼下降</b>，卻沒有回答「為什麼要把貨物集中到少數幾艘巨船上」。答案在下一節：光有大船不夠，還得有辦法在幾小時內把幾千個貨櫃裝卸完畢，否則大船大半時間會停在港口裡不動，規模優勢就被抵銷掉了。</p>
+</section>
+
+<section>
+  <h2>貨櫃化：把「裝卸」整個重新設計</h2>
+  <p class="sub">貨櫃本身只是一個鐵盒子，真正的突破是把裝卸這件事從人力密集的工作，變成機械可以標準化處理的流程。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 426" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="188" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">1956 年以前：散雜貨作業</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">貨物是各種形狀、各種包裝的散件——麻袋、</text>
+    <text x="282.5" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">木箱、桶子，得由碼頭工人一件一件搬上船、</text>
+    <text x="282.5" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">在艙裡手工堆疊固定。</text>
+    <text x="282.5" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">一艘船在港口停泊裝卸的時間，</text>
+    <text x="282.5" y="182" text-anchor="middle" font-size="12.5" fill="#4f6773">往往以「星期」計算，遠長於它航行的時間。</text>
+
+    <rect x="565" y="20" width="505" height="188" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">1956 年之後：標準化貨櫃</text>
+    <text x="817.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">貨物先在內陸裝進統一尺寸的鋼製貨櫃，</text>
+    <text x="817.5" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">船隻只負責搬動一個個固定形狀的箱子。</text>
+    <text x="817.5" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">起重機一次吊一箱，速度是人工的數十倍。</text>
+    <text x="817.5" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">同一個箱子可以直接吊上卡車或火車，</text>
+    <text x="817.5" y="182" text-anchor="middle" font-size="12.5" fill="#546e7a">中途完全不必拆開重裝。</text>
+
+    <rect x="30" y="224" width="1040" height="94" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="254" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">真正被重新設計的，不是箱子，是介面</text>
+    <text x="44" y="284" font-size="12.5" fill="#546e7a">貨櫃的尺寸、角件與吊掛方式被國際標準統一，讓船、卡車、火車與起重機第一次可以用同一套規格互相銜接——</text>
+    <text x="44" y="306" font-size="12.5" fill="#546e7a">這正是〈鐵路運輸〉第二節談過的「轉運成本」問題的答案：把拆箱重裝，變成整箱吊起。</text>
+
+    <rect x="30" y="328" width="1040" height="86" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="358" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">後果：碼頭不再需要成千上萬名工人</text>
+    <text x="44" y="388" font-size="12.5" fill="#546e7a">裝卸從勞力密集變成資本密集，港口城市的碼頭工人數量大幅萎縮，這場轉型在多個港口都引發過長期的勞資衝突。</text>
+  </svg>
+  </div>
+  <p class="after">把第一節與第二節接起來看：<b>大船之所以划算，前提是它能被快速裝卸；而快速裝卸之所以可能，前提是貨物先被標準化成同一種形狀</b>。這兩件事缺一不可——只有大船而沒有貨櫃，大船會被港口拖慢；只有貨櫃而沒有大船，規模優勢也發揮不出來。它們是同一場變革的兩面，只是通常被分開講述。</p>
+</section>
+
+<section>
+  <h2>地理仍然說了算：航運的咽喉</h2>
+  <p class="sub">船可以一直造大，但地球的水道不會跟著變寬變深——這是第一節那條規律的硬性上限。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 466" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="511" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="789" y="18" width="286" height="36" fill="#8a4636"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">咽喉點</text>
+    <text x="368" y="42" text-anchor="middle" font-size="13" fill="#ffffff">繞過去要多走多遠</text>
+    <text x="646" y="42" text-anchor="middle" font-size="13" fill="#ffffff">物理限制在哪裡</text>
+    <text x="932" y="42" text-anchor="middle" font-size="13" fill="#ffffff">曾經出過的問題</text>
+
+    <rect x="25" y="58" width="200" height="88" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="58" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="58" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="789" y="58" width="286" height="88" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="106" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">蘇伊士運河</text>
+    <text x="368" y="90" text-anchor="middle" font-size="11.5" fill="#546e7a">改繞非洲南端好望角，</text>
+    <text x="368" y="112" text-anchor="middle" font-size="11.5" fill="#546e7a">航程可能多出一至兩週</text>
+    <text x="646" y="90" text-anchor="middle" font-size="11.5" fill="#546e7a">運河寬度與水深有上限，</text>
+    <text x="646" y="112" text-anchor="middle" font-size="11.5" fill="#546e7a">超大型船隻仍受限制</text>
+    <text x="932" y="90" text-anchor="middle" font-size="11.5" fill="#b8442a">2021 年一艘貨櫃船擱淺</text>
+    <text x="932" y="112" text-anchor="middle" font-size="11.5" fill="#b8442a">整條運河中斷約一週</text>
+
+    <rect x="25" y="146" width="200" height="88" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="233" y="146" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="146" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="789" y="146" width="286" height="88" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="194" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">巴拿馬運河</text>
+    <text x="368" y="178" text-anchor="middle" font-size="11.5" fill="#546e7a">改繞南美洲南端，</text>
+    <text x="368" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">航程可能多出數週</text>
+    <text x="646" y="178" text-anchor="middle" font-size="11.5" fill="#546e7a">閘門尺寸曾長期定義</text>
+    <text x="646" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">出一種船型規格上限</text>
+    <text x="932" y="178" text-anchor="middle" font-size="11.5" fill="#b8442a">運河本身淡水湖水位</text>
+    <text x="932" y="200" text-anchor="middle" font-size="11.5" fill="#b8442a">不足時也曾限制通行量</text>
+
+    <rect x="25" y="234" width="200" height="88" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="233" y="234" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="234" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="789" y="234" width="286" height="88" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="282" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">麻六甲海峽</text>
+    <text x="368" y="266" text-anchor="middle" font-size="11.5" fill="#546e7a">沒有等效的替代航線，</text>
+    <text x="368" y="288" text-anchor="middle" font-size="11.5" fill="#546e7a">繞道代價極高</text>
+    <text x="646" y="266" text-anchor="middle" font-size="11.5" fill="#546e7a">海峽最窄處與最淺處</text>
+    <text x="646" y="288" text-anchor="middle" font-size="11.5" fill="#546e7a">都限制了可通行的船型</text>
+    <text x="932" y="266" text-anchor="middle" font-size="11.5" fill="#b8442a">海盜與擁擠航道並存，</text>
+    <text x="932" y="288" text-anchor="middle" font-size="11.5" fill="#b8442a">是長期關注的安全焦點</text>
+
+    <rect x="25" y="322" width="200" height="88" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="233" y="322" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="511" y="322" width="270" height="88" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="789" y="322" width="286" height="88" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="370" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">荷姆茲海峽</text>
+    <text x="368" y="354" text-anchor="middle" font-size="11.5" fill="#4f6773">沒有海路替代方案，</text>
+    <text x="368" y="376" text-anchor="middle" font-size="11.5" fill="#4f6773">只能靠陸上管線分流部分</text>
+    <text x="646" y="354" text-anchor="middle" font-size="11.5" fill="#4f6773">海峽狹窄，航道</text>
+    <text x="646" y="376" text-anchor="middle" font-size="11.5" fill="#4f6773">緊鄰有主權爭議的水域</text>
+    <text x="932" y="354" text-anchor="middle" font-size="11.5" fill="#b8442a">是全球原油海運</text>
+    <text x="932" y="376" text-anchor="middle" font-size="11.5" fill="#b8442a">最集中通過的單一航道之一</text>
+
+    <rect x="30" y="416" width="1040" height="40" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="440" text-anchor="middle" font-size="12.5" fill="#17324d">四個咽喉點的共同點：一旦中斷，代價不是「慢一點」，而是整條供應鏈的排程全部打亂</text>
+  </svg>
+  </div>
+  <p class="after">這張表帶出一個常被忽略的結構性事實：<b>全球海運看起來四通八達，實際上有好幾個環節完全沒有替代路線</b>。這與第二節的貨櫃化剛好形成對照——貨櫃化解決的是「介面」問題，讓不同運具能順暢接力；但地理咽喉是「介面」再怎麼優化也繞不開的物理限制。一艘船擱淺能讓全球供應鏈的排程亂上數週，正是因為現代物流已經把「準時通過」當成預設條件，幾乎沒有為咽喉中斷留下緩衝。</p>
+</section>
+
+<section>
+  <h2>為什麼運費像坐雲霄飛車</h2>
+  <p class="sub">供給端反應慢、需求端變化快，這個時間差是航運業長期陷入景氣循環的根本原因。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 388" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="160" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">需求端：可以幾乎立刻改變</text>
+    <text x="282.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">貿易量會隨景氣、季節與突發事件</text>
+    <text x="282.5" y="108" text-anchor="middle" font-size="12.5" fill="#546e7a">快速波動，運費隨之立即反應——</text>
+    <text x="282.5" y="130" text-anchor="middle" font-size="12.5" fill="#546e7a">今天需求暴增，運費今天就能翻倍。</text>
+    <text x="282" y="158" text-anchor="middle" font-size="11" fill="#8a6a35">反應時間：以天、週計算</text>
+
+    <rect x="565" y="20" width="505" height="160" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">供給端：造一艘船要好幾年</text>
+    <text x="817.5" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">從下訂單到新船交付，通常要經過</text>
+    <text x="817.5" y="108" text-anchor="middle" font-size="12.5" fill="#546e7a">數年時間；訂單一旦下達，</text>
+    <text x="817.5" y="130" text-anchor="middle" font-size="12.5" fill="#546e7a">運力沒辦法回頭取消。</text>
+    <text x="817" y="158" text-anchor="middle" font-size="11" fill="#37607a">反應時間：以年計算</text>
+
+    <rect x="30" y="196" width="1040" height="86" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="228" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">景氣好時大量訂船，新船交付時景氣可能已經反轉</text>
+    <text x="44" y="258" font-size="12.5" fill="#546e7a">這個時間差，是航運業反覆經歷「運費飆漲—瘋狂造船—運力過剩—運費崩跌」循環的核心機制，比大多數產業都明顯得多。</text>
+
+    <rect x="30" y="298" width="1040" height="72" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="330" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">船隻本身也是彈性最小的資產之一</text>
+    <text x="44" y="356" font-size="12" fill="#546e7a">造好的船很難轉行做別的用途，運力過剩時業者只能降價搶貨、甚至讓船隻減速航行來變相消化過剩運力</text>
+  </svg>
+  </div>
+  <p class="after">這條規律不是海運獨有——供給反應滯後於需求，是許多重資產產業景氣循環的共同來源。但海運的滯後特別長、船隻的用途特別單一，使得這個循環的波動幅度格外劇烈。理解這一點，能解釋為什麼海運公司的獲利常在幾年間從嚴重虧損翻轉成鉅額盈餘，又在下一輪運力交付潮中打回原形。</p>
+</section>
+
+<section>
+  <h2>一艘船，幾乎不屬於任何一個國家</h2>
+  <p class="sub">最右欄是重點。同一艘船上，這幾件事可能分屬完全不同的國家。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="220" height="36" fill="#17324d"/>
+    <rect x="253" y="18" width="330" height="36" fill="#17324d"/>
+    <rect x="591" y="18" width="484" height="36" fill="#8a4636"/>
+    <text x="135" y="42" text-anchor="middle" font-size="13" fill="#ffffff">哪一件事</text>
+    <text x="418" y="42" text-anchor="middle" font-size="13" fill="#ffffff">誰在決定</text>
+    <text x="833" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼會分散成這樣</text>
+
+    <rect x="25" y="58" width="220" height="84" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="58" width="330" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="591" y="58" width="484" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="106" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">船旗（法律管轄）</text>
+    <text x="418" y="94" text-anchor="middle" font-size="12" fill="#546e7a">船東自由選擇登記的國家，</text>
+    <text x="418" y="116" text-anchor="middle" font-size="12" fill="#546e7a">不必是船東自己的國籍</text>
+    <text x="833" y="94" text-anchor="middle" font-size="12" fill="#b8442a">部分國家的登記手續簡便、稅費低廉，</text>
+    <text x="833" y="116" text-anchor="middle" font-size="12" fill="#b8442a">吸引了全球相當大比例的商船在此登記</text>
+
+    <rect x="25" y="142" width="220" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="253" y="142" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="591" y="142" width="484" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="186" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">實際船東</text>
+    <text x="418" y="180" text-anchor="middle" font-size="12" fill="#546e7a">可能透過多層控股公司持有，</text>
+    <text x="418" y="202" text-anchor="middle" font-size="12" fill="#546e7a">最終受益人未必公開</text>
+    <text x="833" y="180" text-anchor="middle" font-size="12" fill="#b8442a">與船旗國通常完全是兩回事，</text>
+    <text x="833" y="202" text-anchor="middle" font-size="12" fill="#b8442a">追蹤實際控制人往往並不容易</text>
+
+    <rect x="25" y="218" width="220" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="253" y="218" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="591" y="218" width="484" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="262" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">船級社</text>
+    <text x="418" y="256" text-anchor="middle" font-size="12" fill="#546e7a">獨立於船旗國，負責審查</text>
+    <text x="418" y="278" text-anchor="middle" font-size="12" fill="#546e7a">船體結構與設備是否合格</text>
+    <text x="833" y="256" text-anchor="middle" font-size="12" fill="#b8442a">船東可以在不同船級社之間</text>
+    <text x="833" y="278" text-anchor="middle" font-size="12" fill="#b8442a">自由選擇，形成另一層競爭關係</text>
+
+    <rect x="25" y="294" width="220" height="76" fill="#f2eef6" stroke="#a894c0"/>
+    <rect x="253" y="294" width="330" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="591" y="294" width="484" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="338" text-anchor="middle" font-size="12.5" fill="#6b4a8f" font-weight="600">船員</text>
+    <text x="418" y="332" text-anchor="middle" font-size="12" fill="#546e7a">來自全球勞動力市場，</text>
+    <text x="418" y="354" text-anchor="middle" font-size="12" fill="#546e7a">國籍與船旗常常無關</text>
+    <text x="833" y="332" text-anchor="middle" font-size="12" fill="#b8442a">部分國家因海事訓練體系完整，</text>
+    <text x="833" y="354" text-anchor="middle" font-size="12" fill="#b8442a">長年是全球船員的重要來源地</text>
+
+    <rect x="30" y="380" width="1040" height="66" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="410" text-anchor="middle" font-size="13" fill="#17324d" font-weight="600">這種分散，是效率的來源，也是規範的漏洞</text>
+    <text x="550" y="432" text-anchor="middle" font-size="12" fill="#546e7a">船東可以組合出最划算的一套安排，但當環保、安全或制裁規範需要追責時，這種分散結構也讓執法變得格外困難</text>
+  </svg>
+  </div>
+  <p class="after">這一節與〈歐洲國家對外殖民〉第一節其實有一個結構上的呼應：<b>國家在鐵路與殖民地上是「最後才到場」，而在海運上更像是「被拆成好幾塊、分別出租」</b>——船旗、船東、船級、船員各自可以來自不同的司法管轄，沒有哪一個環節能單獨掌握全局。近年被稱為「影子船隊」的老舊油輪之所以難以規管，用的正是這套組合方式：所有權模糊、保險安排不透明、船旗選擇監理寬鬆的國家，讓單一國家很難靠一己之力對它究責。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>「權宜船旗」不等於違法</b>——絕大多數商船懸掛的都是這類旗幟，這是行業常態而非個案，重點在於船旗國對安全與勞動規範的落實程度差異很大，而不是登記本身有問題。其二，<b>海運「便宜」不代表「慢」是它唯一的代價</b>——如第四節所述，運價本身的波動幅度可能遠大於陸運或空運，長期合約與現貨市場承受的風險並不相同。其三，<b>貨櫃船不是海運的全部</b>——散裝船運送的是穀物、煤炭、鐵礦砂這類無法裝箱的大宗物資，油輪與液化天然氣船又是另一套完全不同的船型與市場，三者的景氣循環未必同步。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">蘇伊士運河通航</span><span class="yr">1869</span><p>連通地中海與紅海，讓歐亞航線不必再繞行非洲南端，是海運史上第一次重大的地理捷徑。</p></div>
+  <div class="card"><span class="nm">巴拿馬運河通航</span><span class="yr">1914</span><p>連通大西洋與太平洋，同樣省去繞行南美洲的航程。運河閘門的尺寸此後長期定義了一種船型上限的代稱。</p></div>
+  <div class="card"><span class="nm">第一艘貨櫃船首航</span><span class="yr">1956</span><p>由一艘改裝油輪搭載貨櫃，從美國東岸港口出發。這趟航程通常被視為貨櫃化運輸的起點。</p></div>
+  <div class="card"><span class="nm">貨櫃尺寸國際標準化</span><span class="yr">1960 年代起</span><p>國際標準化組織陸續訂出貨櫃的統一規格，讓不同船公司、不同國家的貨櫃能在同一套基礎設施上互通。</p></div>
+  <div class="card"><span class="nm">越戰帶動貨櫃航運擴張</span><span class="yr">1960 年代</span><p>美軍後勤大量採用貨櫃運補，驗證了這套系統在大規模、高頻率場景下的可靠度，加速了商業採用。</p></div>
+  <div class="card"><span class="nm">巴拿馬運河擴建通航</span><span class="yr">2016</span><p>新船閘啟用，可通行的船型上限大幅放寬，反映出既有運河設計已跟不上船隻持續變大的趨勢。</p></div>
+  <div class="card"><span class="nm">超大型貨櫃船陸續下水</span><span class="yr">2010 年代起</span><p>單船載運能力持續創下紀錄，是第一節那條規律長期作用下的具體結果。</p></div>
+  <div class="card"><span class="nm">蘇伊士運河擱淺事故</span><span class="yr">2021</span><p>一艘大型貨櫃船橫向擱淺，堵塞運河約一週，讓全球看見單一咽喉點中斷對供應鏈排程的實際衝擊。</p></div>
+  <div class="card"><span class="nm">疫情期間運費劇烈波動</span><span class="yr">2020–2022</span><p>需求急遽變化疊加港口壅塞，貨櫃運費出現歷史性的暴漲，隨後在運力陸續交付後同樣劇烈回落。</p></div>
+  <div class="card"><span class="nm">紅海航運安全危機</span><span class="yr">2023 年底起</span><p>部分船隻改繞航好望角以避開紅海風險，航程與成本同步增加，是咽喉點風險升高時最直接的因應方式。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="鐵路運輸知識圖譜.html"><span class="nm">鐵路運輸知識圖譜</span><span class="lk">→ 專頁</span><p>同樣是「一個物理事實決定整個產業形狀」的結構，但鐵路的核心限制是煞不住、閃不掉，海運則是規模與地理的拉鋸。</p></a>
+  <a class="card" href="../5.人文政經/全球化.html"><span class="nm">全球化</span><span class="lk">→ 專頁</span><p>第一、二節談的規模經濟與貨櫃化，正是全球化得以把生產分工拉到全世界的物流基礎。</p></a>
+  <a class="card" href="../5.人文政經/關稅.html"><span class="nm">關稅</span><span class="lk">→ 專頁</span><p>運輸成本與關稅是貿易成本的兩大來源；當前者持續下降，後者的相對重要性反而變得更明顯。</p></a>
+  <a class="card" href="../1.西方歷史/歐洲國家對外殖民.html"><span class="nm">歐洲國家對外殖民</span><span class="lk">→ 專頁</span><p>第五節提到的治理分散模式，與該頁第一節「國家最後才到場」的模式，是同一種鬆散治理邏輯的兩個版本。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：聚焦於海運的經濟結構、地理限制與治理模式，不含船舶工程與航海技術的細節。<b>第一節</b>：容積與表面積的成長關係為簡化說明，實際船舶設計涉及穩度、強度與航速等多重限制，並非單純的幾何比例。<b>數值</b>：航程差距、事故持續時間等數字為文獻中常見的概數，各次事件情況不同，本頁不列精確數字。<b>年份</b>：多數制度性變化為漸進過程，文中年份標示的是關鍵節點而非唯一起訖。
+</footer>
+
+</div>
+</body>
+</html>
