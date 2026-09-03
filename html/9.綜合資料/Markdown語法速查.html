@@ -234,6 +234,15 @@ section.cat{
 .pv .frac .num{ padding:0 .15em; }
 .pv .frac .den{ padding:0 .15em; border-top:1.3px solid currentColor; }
 
+.pv .yt-thumb{ position:relative; display:inline-block; border-radius:8px; overflow:hidden; line-height:0; max-width:200px; }
+.pv .yt-thumb img{ display:block; width:100%; height:auto; }
+.pv .yt-thumb::after{
+  content:"▶"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; color:#fff; background:rgba(0,0,0,.28);
+}
+.pv .yt-embed{ position:relative; width:100%; max-width:260px; aspect-ratio:16/9; border-radius:8px; overflow:hidden; border:1px solid var(--line); }
+.pv .yt-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
 pre.mermaid{
   margin:0; background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
   padding:10px; font-family:"Source Sans 3",sans-serif; font-size:.72rem; color:var(--ink-3);
@@ -336,6 +345,8 @@ const DATA = [
       { syntax: mk('![替代文字](image.png)', ['!','[',']','(',')']), preview:'<p style="font-size:.78rem;color:var(--ink-3)">🖼️ 顯示圖片，替代文字：「替代文字」</p>', desc:'開頭多一個驚嘆號，圖片載入失敗時顯示替代文字' },
       { syntax: mk('這是[參考連結][1]的寫法', ['[',']']), preview:'<p>這是<a href="#">參考連結</a>的寫法</p>', desc:'內文用編號或代稱標記連結' },
       { syntax: mk('[1]: https://example.com "標題"', ['[',']',':']), preview:'<p class="hint">於文件任何位置定義該編號對應的網址</p>', desc:'參考式連結的定義列，通常放在文件最後' },
+      { syntax: mk('[![影片縮圖](https://img.youtube.com/vi/影片ID/hqdefault.jpg)](https://youtu.be/影片ID)', ['!','[',']','(',')']), preview:'<a class="yt-thumb" href="https://youtu.be/XdDpSGEdIbo" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/XdDpSGEdIbo/hqdefault.jpg" alt="影片縮圖" loading="lazy"></a>', desc:'內嵌 YouTube 影片（可攜寫法）：用連結包住縮圖，GitHub 等純 Markdown 平台也能正確顯示，點擊會另開影片' },
+      { syntax: mk('<iframe width="560" height="315" src="https://www.youtube.com/embed/影片ID" title="YouTube 影片" allowfullscreen></iframe>', []), preview:'<div class="yt-embed"><iframe src="https://www.youtube.com/embed/XdDpSGEdIbo" title="YouTube 影片" loading="lazy" allowfullscreen></iframe></div>', desc:'內嵌 YouTube 影片（原生播放器）：直接寫 iframe 標籤，部落格、筆記軟體等允許 HTML 的平台會顯示可播放的影片；GitHub 基於安全考量不會渲染' },
     ]
   },
   {
