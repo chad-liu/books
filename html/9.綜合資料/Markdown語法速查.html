@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown 語法速查</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#F2F3F6;
+  --surface:#FFFFFF;
+  --surface-2:#EAECF2;
+  --ink:#1B1D24;
+  --ink-2:#565A6B;
+  --ink-3:#8B8FA0;
+  --line:#DDE0E8;
+  --line-soft:#E9EBF1;
+  --accent:#2E4B8F;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#E2E8F7;
+  --mark:#93650F;
+  --mark-soft:#F3E7CB;
+  --code-bg:#181A22;
+  --code-ink:#E7E9F1;
+  --code-ink-2:#9AA0B4;
+  --code-line:#2B2E3A;
+  --shadow: 0 1px 2px rgba(20,23,31,.04), 0 8px 24px -12px rgba(20,23,31,.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1015;
+    --surface:#171A22;
+    --surface-2:#1F2330;
+    --ink:#ECEEF4;
+    --ink-2:#A7ACBE;
+    --ink-3:#6D7285;
+    --line:#2C3040;
+    --line-soft:#252938;
+    --accent:#7C97DE;
+    --accent-ink:#0E1015;
+    --accent-soft:#20263B;
+    --mark:#E0B255;
+    --mark-soft:#332913;
+    --code-bg:#0A0B10;
+    --code-ink:#E7E9F1;
+    --code-ink-2:#8188A0;
+    --code-line:#252938;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1015;
+  --surface:#171A22;
+  --surface-2:#1F2330;
+  --ink:#ECEEF4;
+  --ink-2:#A7ACBE;
+  --ink-3:#6D7285;
+  --line:#2C3040;
+  --line-soft:#252938;
+  --accent:#7C97DE;
+  --accent-ink:#0E1015;
+  --accent-soft:#20263B;
+  --mark:#E0B255;
+  --mark-soft:#332913;
+  --code-bg:#0A0B10;
+  --code-ink:#E7E9F1;
+  --code-ink-2:#8188A0;
+  --code-line:#252938;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Source Sans 3",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.mono, code, pre{ font-family:"Source Code Pro","SFMono-Regular",Consolas,Menlo,monospace; }
+.serif{ font-family:"Source Serif 4",Georgia,serif; }
+
+/* ---------- header ---------- */
+header.top{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:1px solid var(--line);
+}
+.top-inner{ max-width:1140px; margin:0 auto; padding:20px 24px 16px; }
+.brand-row{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; justify-content:space-between; }
+.brand{ display:flex; align-items:baseline; gap:11px; }
+.brand h1{
+  font-family:"Source Serif 4",serif; font-size:1.4rem; margin:0; font-weight:700;
+  letter-spacing:-.01em; text-wrap:balance;
+}
+.brand .glyph{
+  font-family:"Source Serif 4",serif; font-weight:700; font-style:italic; font-size:1.05rem;
+  color:var(--accent-ink); background:var(--accent);
+  padding:2px 9px; border-radius:6px;
+}
+.brand-sub{ font-size:.82rem; color:var(--ink-2); margin:3px 0 0; }
+.stat-line{ font-size:.78rem; color:var(--ink-3); font-family:"Source Code Pro"; white-space:nowrap; }
+
+.controls{ max-width:1140px; margin:0 auto; padding:0 24px 16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.search-wrap{ position:relative; flex:1 1 260px; min-width:220px; }
+.search-wrap svg{ position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:var(--ink-3); pointer-events:none; }
+#search{
+  width:100%; padding:9px 12px 9px 34px; border-radius:9px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink); font-size:.88rem; font-family:inherit; outline:none;
+}
+#search::placeholder{ color:var(--ink-3); }
+#search:focus{ border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+
+.chip-nav{ display:flex; gap:6px; flex-wrap:wrap; }
+.chip{
+  font-size:.76rem; font-weight:500; padding:6px 11px; border-radius:999px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink-2);
+  cursor:pointer; white-space:nowrap; transition:background .12s, color .12s, border-color .12s;
+  font-family:inherit;
+}
+.chip:hover{ border-color:var(--accent); color:var(--ink); }
+.chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+.col-caption{
+  max-width:1140px; margin:0 auto; padding:18px 24px 0;
+  display:none;
+}
+@media (min-width:860px){
+  .col-caption{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px; }
+  .col-caption span{
+    font-size:.68rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3);
+    padding-left:2px;
+  }
+}
+
+/* ---------- layout ---------- */
+main{ max-width:1140px; margin:0 auto; padding:14px 24px 80px; display:flex; flex-direction:column; gap:22px; }
+section.cat{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  box-shadow:var(--shadow); overflow:hidden; scroll-margin-top:150px;
+}
+.cat-head{ display:flex; align-items:center; gap:10px; padding:14px 18px; border-bottom:1px solid var(--line-soft); background:var(--surface-2); }
+.cat-dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); flex:none; }
+.cat-head h2{ font-family:"Source Serif 4",serif; font-size:1.05rem; margin:0; font-weight:600; letter-spacing:-.01em; }
+.cat-head .en{ font-size:.72rem; color:var(--ink-3); font-family:"Source Code Pro"; margin-left:auto; }
+
+.row{ border-bottom:1px solid var(--line-soft); }
+.row:last-child{ border-bottom:none; }
+.row-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+@media (max-width:859px){ .row-grid{ grid-template-columns:1fr; } }
+
+.pane{ padding:13px 18px; position:relative; overflow-x:auto; }
+.pane.syntax{ background:var(--code-bg); }
+.pane.preview{ background:var(--surface); }
+.row-grid .pane.syntax{ border-right:1px solid var(--code-line); }
+@media (max-width:859px){
+  .row-grid .pane.syntax{ border-right:none; border-bottom:1px solid var(--code-line); }
+}
+.pane-label{
+  display:none;
+  font-size:.65rem; font-weight:600; letter-spacing:.07em; text-transform:uppercase;
+  margin-bottom:6px;
+}
+@media (max-width:859px){
+  .pane-label{ display:block; }
+  .pane.syntax .pane-label{ color:var(--code-ink-2); }
+  .pane.preview .pane-label{ color:var(--ink-3); }
+}
+
+.pane.syntax pre{
+  margin:0; white-space:pre-wrap; word-break:break-word;
+  font-size:.82rem; line-height:1.55; color:var(--code-ink);
+}
+.pane.syntax .mk{ color:var(--mark); font-weight:600; }
+.copy-btn{
+  position:absolute; top:10px; right:10px;
+  width:24px; height:24px; border-radius:6px; border:1px solid var(--code-line); background:transparent;
+  color:var(--code-ink-2); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background .12s, color .12s;
+}
+.copy-btn:hover{ background:#242733; color:var(--code-ink); }
+.copy-btn.copied{ color:#5FC78C; border-color:#5FC78C; }
+.copy-btn svg{ width:12px; height:12px; }
+
+.desc{ padding:0 18px 12px; font-size:.79rem; color:var(--ink-2); }
+
+/* ---------- preview content styling (simulated rendered markdown) ---------- */
+.pv{ font-size:.92rem; color:var(--ink); }
+.pv h1,.pv h2,.pv h3{ font-family:"Source Serif 4",serif; margin:0; line-height:1.25; }
+.pv h1{ font-size:1.5rem; font-weight:700; }
+.pv h2{ font-size:1.22rem; font-weight:700; }
+.pv h3{ font-size:1.04rem; font-weight:600; }
+.pv p{ margin:0; }
+.pv strong{ font-weight:700; }
+.pv em{ font-style:italic; }
+.pv del{ text-decoration:line-through; color:var(--ink-2); }
+.pv mark{ background:var(--mark-soft); color:var(--ink); padding:0 2px; border-radius:2px; }
+.pv code{ background:var(--surface-2); border:1px solid var(--line); padding:1px 5px; border-radius:5px; font-size:.85em; }
+.pv a{ color:var(--accent); text-decoration:underline; text-underline-offset:2px; }
+.pv ul,.pv ol{ margin:0; padding-left:1.35em; }
+.pv li{ margin:2px 0; }
+.pv li + li{ margin-top:3px; }
+.pv blockquote{
+  margin:0; padding:2px 0 2px 12px; border-left:3px solid var(--accent);
+  color:var(--ink-2); font-style:italic;
+}
+.pv blockquote blockquote{ margin-top:4px; border-left-color:var(--ink-3); }
+.pv pre.codeblock{
+  margin:0; background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+  padding:9px 12px; font-size:.8rem; overflow-x:auto; color:var(--ink);
+}
+.pv img.demo{
+  display:block; max-width:100%; border-radius:8px; border:1px solid var(--line);
+}
+.pv hr{ border:none; border-top:2px solid var(--ink-3); margin:4px 0; opacity:.6; }
+.pv table{ border-collapse:collapse; font-size:.85rem; }
+.pv th,.pv td{ border:1px solid var(--line); padding:4px 10px; text-align:left; }
+.pv th{ background:var(--surface-2); font-weight:600; }
+.pv .task{ display:flex; align-items:center; gap:6px; }
+.pv .task input{ accent-color:var(--accent); }
+.pv sup.fn{ color:var(--accent); font-weight:600; }
+.pv .hint{ font-size:.76rem; color:var(--ink-3); }
+.pv .math-expr{ font-family:"Source Serif 4",Georgia,serif; font-style:italic; }
+.pv .math-expr sup, .pv .math-expr sub{ font-style:italic; }
+.pv .math-block{ display:block; text-align:center; font-size:1.18rem; padding:6px 0; }
+.pv .frac{ display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; font-size:.8em; line-height:1.15; margin:0 .2em; }
+.pv .frac .num{ padding:0 .15em; }
+.pv .frac .den{ padding:0 .15em; border-top:1.3px solid currentColor; }
+
+pre.mermaid{
+  margin:0; background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+  padding:10px; font-family:"Source Sans 3",sans-serif; font-size:.72rem; color:var(--ink-3);
+  display:flex; align-items:center; justify-content:center; min-height:64px;
+}
+pre.mermaid svg{ max-width:100%; height:auto; }
+
+.empty-state{ display:none; max-width:1140px; margin:60px auto; padding:0 24px; text-align:center; color:var(--ink-3); font-size:.9rem; }
+
+footer{ max-width:1140px; margin:0 auto; padding:0 24px 48px; color:var(--ink-3); font-size:.76rem; text-align:center; }
+footer .k{ font-family:"Source Code Pro"; background:var(--surface-2); border:1px solid var(--line); padding:1px 6px; border-radius:5px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <span class="glyph">M↓</span>
+        <div>
+          <h1>Markdown 語法速查</h1>
+          <p class="brand-sub">左邊寫語法，右邊看結果 · 涵蓋 CommonMark、GFM 擴充、數學公式與 Mermaid 圖表</p>
+        </div>
+      </div>
+      <span class="stat-line" id="stat-line">— 條語法</span>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="搜尋語法或關鍵字，如 表格、粗體、連結…" autocomplete="off">
+    </div>
+    <nav class="chip-nav" id="chip-nav"></nav>
+  </div>
+</header>
+
+<div class="col-caption"><span>語法</span><span>預覽結果</span></div>
+
+<main id="main"></main>
+
+<p class="empty-state" id="empty-state">沒有符合「<span id="empty-term"></span>」的語法。</p>
+
+<footer>
+  按一下語法區塊右上角圖示可複製原始文字 · 右側預覽為手動示範效果，實際外觀依平台而略有差異
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.15.0/mermaid.min.js"></script>
+<script>
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+// mark specific literal substrings of markdown punctuation within an already-escaped syntax string
+function mk(raw, tokens){
+  let out = esc(raw);
+  tokens.forEach(t=>{
+    const e = esc(t);
+    out = out.split(e).join(`<span class="mk">${e}</span>`);
+  });
+  return out;
+}
+
+const DATA = [
+  {
+    id:'heading', zh:'標題', en:'Headings',
+    items:[
+      { syntax: mk('# 一級標題', ['#']), preview:'<h1>一級標題</h1>', desc:'數量代表層級，共可到六級' },
+      { syntax: mk('## 二級標題', ['##']), preview:'<h2>二級標題</h2>', desc:'' },
+      { syntax: mk('### 三級標題', ['###']), preview:'<h3>三級標題</h3>', desc:'' },
+      { syntax: mk('#### 四級\n##### 五級\n###### 六級', ['####','#####','######']), preview:'<div style="font-size:.94rem;font-weight:700">四級</div><div style="font-size:.87rem;font-weight:700">五級</div><div style="font-size:.8rem;font-weight:700">六級</div>', desc:'四到六級字級依序縮小' },
+      { syntax: mk('一級標題\n========', ['========']), preview:'<h1>一級標題</h1>', desc:'Setext 寫法：文字下方畫等號' },
+      { syntax: mk('二級標題\n--------', ['--------']), preview:'<h2>二級標題</h2>', desc:'Setext 寫法：文字下方畫減號' },
+    ]
+  },
+  {
+    id:'emphasis', zh:'文字樣式', en:'Emphasis',
+    items:[
+      { syntax: mk('**粗體文字**', ['**','**']), preview:'<p><strong>粗體文字</strong></p>', desc:'星號或底線都可以，前後需成對' },
+      { syntax: mk('*斜體文字*', ['*','*']), preview:'<p><em>斜體文字</em></p>', desc:'單一星號或底線 _斜體_ 皆可' },
+      { syntax: mk('***粗斜體文字***', ['***','***']), preview:'<p><strong><em>粗斜體文字</em></strong></p>', desc:'三個星號同時套用粗體與斜體' },
+      { syntax: mk('~~刪除線文字~~', ['~~','~~']), preview:'<p><del>刪除線文字</del></p>', desc:'GFM 擴充語法' },
+      { syntax: mk('`行內程式碼`', ['`','`']), preview:'<p>這是 <code>行內程式碼</code> 範例</p>', desc:'反引號包住的文字會以等寬字顯示' },
+      { syntax: mk('==螢光標記==', ['==','==']), preview:'<p><mark>螢光標記</mark>文字</p>', desc:'非標準語法，部分平台（如 Obsidian）支援' },
+    ]
+  },
+  {
+    id:'list', zh:'清單', en:'Lists',
+    items:[
+      { syntax: mk('- 項目一\n- 項目二\n- 項目三', ['-','-','-']), preview:'<ul><li>項目一</li><li>項目二</li><li>項目三</li></ul>', desc:'開頭用 -、* 或 + 都算無序清單' },
+      { syntax: mk('1. 第一步\n2. 第二步\n3. 第三步', ['1.','2.','3.']), preview:'<ol><li>第一步</li><li>第二步</li><li>第三步</li></ol>', desc:'數字接一個點，會自動接續編號' },
+      { syntax: mk('- 主項目\n  - 子項目\n  - 子項目', ['-','-','-']), preview:'<ul><li>主項目<ul><li>子項目</li><li>子項目</li></ul></li></ul>', desc:'子項目前面縮排兩個空格' },
+      { syntax: mk('- [ ] 尚未完成\n- [x] 已經完成', ['[ ]','[x]']), preview:'<div class="task"><input type="checkbox" disabled><span>尚未完成</span></div><div class="task"><input type="checkbox" checked disabled><span>已經完成</span></div>', desc:'GFM 任務清單，方括號中打 x 代表完成' },
+      { syntax: mk('1. 項目一\n\n   接續說明文字', ['1.']), preview:'<ol><li>項目一<div class="hint" style="margin-top:2px">接續說明文字</div></li></ol>', desc:'清單項目下方縮排即可接續同一項目的內容' },
+    ]
+  },
+  {
+    id:'link', zh:'連結與圖片', en:'Links & Images',
+    items:[
+      { syntax: mk('[顯示文字](https://example.com)', ['[',']','(',')']), preview:'<p><a href="#">顯示文字</a></p>', desc:'方括號放文字，圓括號放網址' },
+      { syntax: mk('[顯示文字](https://example.com "提示文字")', ['[',']','(',')','"提示文字"']), preview:'<p><a href="#" title="提示文字">顯示文字</a></p>', desc:'網址後加空格與雙引號可設定滑鼠停留提示' },
+      { syntax: mk('<https://example.com>', ['<','>']), preview:'<p><a href="#">https://example.com</a></p>', desc:'用角括號包住網址即成為自動連結' },
+      { syntax: mk('![替代文字](image.png)', ['!','[',']','(',')']), preview:'<p style="font-size:.78rem;color:var(--ink-3)">🖼️ 顯示圖片，替代文字：「替代文字」</p>', desc:'開頭多一個驚嘆號，圖片載入失敗時顯示替代文字' },
+      { syntax: mk('這是[參考連結][1]的寫法', ['[',']']), preview:'<p>這是<a href="#">參考連結</a>的寫法</p>', desc:'內文用編號或代稱標記連結' },
+      { syntax: mk('[1]: https://example.com "標題"', ['[',']',':']), preview:'<p class="hint">於文件任何位置定義該編號對應的網址</p>', desc:'參考式連結的定義列，通常放在文件最後' },
+    ]
+  },
+  {
+    id:'quote', zh:'引用區塊', en:'Blockquotes',
+    items:[
+      { syntax: mk('> 這是一段引用文字', ['>']), preview:'<blockquote>這是一段引用文字</blockquote>', desc:'大於符號加空格開頭' },
+      { syntax: mk('> 第一層引用\n>> 第二層引用', ['>','>>']), preview:'<blockquote>第一層引用<blockquote>第二層引用</blockquote></blockquote>', desc:'疊加大於符號可巢狀引用' },
+      { syntax: mk('> **重點**：引用內也能用其他語法', ['>','**','**']), preview:'<blockquote><strong>重點</strong>：引用內也能用其他語法</blockquote>', desc:'引用區塊內部仍可混用粗體、連結等語法' },
+    ]
+  },
+  {
+    id:'code', zh:'程式碼', en:'Code',
+    items:[
+      { syntax: mk('`const x = 1`', ['`','`']), preview:'<p>設定 <code>const x = 1</code> 後即可使用</p>', desc:'行內程式碼，適合穿插在句子中' },
+      { syntax: mk('```js\nfunction hi() {\n  return "hi";\n}\n```', ['```js','```']), preview:'<pre class="codeblock">function hi() {\n  return "hi";\n}</pre>', desc:'三個反引號圍成區塊，語言名稱可觸發語法上色' },
+      { syntax: mk('    function hi() {\n      return "hi";\n    }', []), preview:'<pre class="codeblock">function hi() {\n  return "hi";\n}</pre>', desc:'整段縮排 4 個空格，效果等同程式碼區塊（較少使用）' },
+    ]
+  },
+  {
+    id:'table', zh:'表格', en:'Tables',
+    items:[
+      { syntax: mk('| 姓名 | 分數 |\n| --- | --- |\n| 小美 | 92 |\n| 小華 | 88 |', ['|','---']), preview:'<table><tr><th>姓名</th><th>分數</th></tr><tr><td>小美</td><td>92</td></tr><tr><td>小華</td><td>88</td></tr></table>', desc:'第二列的虛線決定欄位分隔，需為 GFM 表格' },
+      { syntax: mk('| 項目 |\n| :--- |\n| 靠左 |', [':---']), preview:'<table><tr><th style="text-align:left">項目</th></tr><tr><td style="text-align:left">靠左</td></tr></table>', desc:'冒號在左側 = 靠左對齊（預設）' },
+      { syntax: mk('| 項目 |\n| :---: |\n| 置中 |', [':---:']), preview:'<table><tr><th style="text-align:center">項目</th></tr><tr><td style="text-align:center">置中</td></tr></table>', desc:'冒號在兩側 = 置中對齊' },
+      { syntax: mk('| 項目 |\n| ---: |\n| 靠右 |', ['---:']), preview:'<table><tr><th style="text-align:right">項目</th></tr><tr><td style="text-align:right">靠右</td></tr></table>', desc:'冒號在右側 = 靠右對齊' },
+    ]
+  },
+  {
+    id:'break', zh:'分隔線與換行', en:'HR & Breaks',
+    items:[
+      { syntax: mk('---', ['---']), preview:'<hr>', desc:'三個以上的 -、* 或 _ 單獨一行即為分隔線' },
+      { syntax: mk('第一行文字  \n第二行文字', ['  ']), preview:'<p>第一行文字<br>第二行文字</p>', desc:'行尾保留兩個空格再換行，會產生強制換行' },
+      { syntax: mk('第一行文字<br>第二行文字', ['<br>']), preview:'<p>第一行文字<br>第二行文字</p>', desc:'直接寫 HTML 的 br 標籤也可以強制換行' },
+      { syntax: mk('第一段。\n\n第二段。', []), preview:'<p>第一段。</p><p style="margin-top:6px">第二段。</p>', desc:'中間留一行空白，才會被視為新的段落' },
+    ]
+  },
+  {
+    id:'extra', zh:'跳脫與進階語法', en:'Escaping & Extras',
+    items:[
+      { syntax: mk('\\* 這不是清單 \\*', ['\\*','\\*']), preview:'<p>* 這不是清單 *</p>', desc:'反斜線可跳脫特殊字元，讓它顯示為純文字' },
+      { syntax: mk('這裡有註腳[^1]\n\n[^1]: 這是註腳說明', ['[^1]','[^1]:']), preview:'<p>這裡有註腳<sup class="fn">[1]</sup></p><p class="hint" style="margin-top:4px">1. 這是註腳說明</p>', desc:'GFM 擴充語法，常見於部落格與說明文件' },
+      { syntax: mk('文字內可直接寫 <strong>HTML</strong>', ['<strong>','</strong>']), preview:'<p>文字內可直接寫 <strong>HTML</strong></p>', desc:'CommonMark 允許在 Markdown 中混用原生 HTML 標籤' },
+      { syntax: mk('開心 :smile: 大笑 :laughing:', [':smile:',':laughing:']), preview:'<p>開心 🙂 大笑 😄</p>', desc:'GitHub 等平台支援用代碼輸入表情符號' },
+      { syntax: mk('www.example.com 或 test@mail.com', []), preview:'<p><a href="#">www.example.com</a> 或 <a href="#">test@mail.com</a></p>', desc:'GFM 會自動把裸露的網址與信箱轉成連結' },
+    ]
+  },
+  {
+    id:'math', zh:'數學公式', en:'Math (LaTeX)',
+    items:[
+      { syntax: mk('$E = mc^2$', ['$','$']), preview:'<span class="math-expr">E = mc<sup>2</sup></span>', desc:'單一錢字號包住 = 行內公式，GitHub、Obsidian 等平台皆支援' },
+      { syntax: mk('$$\\int_0^{\\infty} e^{-x}\\,dx = 1$$', ['$$']), preview:'<span class="math-expr math-block">∫<sub>0</sub><sup>∞</sup> e<sup>−x</sup> dx = 1</span>', desc:'雙錢字號 = 獨立成行的區塊公式，通常會置中顯示' },
+      { syntax: mk('$\\frac{a}{b}$', ['$','$']), preview:'<span class="math-expr">分數：<span class="frac"><span class="num">a</span><span class="den">b</span></span></span>', desc:'\\frac{分子}{分母} 產生上下堆疊的分數' },
+      { syntax: mk('$x^2 + y_i$', ['$','$']), preview:'<span class="math-expr">x<sup>2</sup> + y<sub>i</sub></span>', desc:'^ 為上標、_ 為下標，多個字元要用大括號包住' },
+      { syntax: mk('$\\sqrt{x}\\ \\sqrt[3]{y}$', ['$','$']), preview:'<span class="math-expr">√x　∛y</span>', desc:'\\sqrt{} 開平方根，\\sqrt[n]{} 開 n 次方根' },
+      { syntax: mk('$\\alpha\\ \\beta\\ \\pi\\ \\theta\\ \\Sigma\\ \\Omega$', ['$','$']), preview:'<span class="math-expr">α β π θ Σ Ω</span>', desc:'反斜線加希臘字母名稱，字首大寫即為大寫字母' },
+      { syntax: mk('$a \\leq b \\quad c \\neq d \\quad e \\approx f$', ['$','$']), preview:'<span class="math-expr">a ≤ b　c ≠ d　e ≈ f</span>', desc:'常用關係符號：\\leq \\geq \\neq \\approx' },
+      { syntax: mk('$\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$', ['$','$']), preview:'<span class="math-expr">Σ<sub>i=1</sub><sup>n</sup> i = <span class="frac"><span class="num">n(n+1)</span><span class="den">2</span></span></span>', desc:'\\sum 可加上下限，並與分數等語法組合使用' },
+    ]
+  },
+  {
+    id:'mermaid', zh:'Mermaid 圖表', en:'Mermaid Diagrams',
+    items:[
+      { mermaid:'flowchart LR\n    A[開始] --> B{是否登入?}\n    B -->|是| C[進入首頁]\n    B -->|否| D[前往登入頁]', desc:'流程圖：方框代表步驟，菱形代表判斷分支' },
+      { mermaid:'sequenceDiagram\n    participant 使用者\n    participant 伺服器\n    使用者->>伺服器: 傳送請求\n    伺服器-->>使用者: 回傳結果', desc:'循序圖：呈現物件之間的訊息往來順序' },
+      { mermaid:'gantt\n    title 專案排程\n    dateFormat  YYYY-MM-DD\n    section 設計\n    需求訪談 :a1, 2026-01-01, 3d\n    section 開發\n    功能實作 :a2, after a1, 5d', desc:'甘特圖：常用於專案排程與時程規劃' },
+      { mermaid:'classDiagram\n    Animal <|-- Dog\n    class Animal{\n      +String name\n      +makeSound()\n    }', desc:'類別圖：呈現物件導向設計中的類別與繼承關係' },
+      { mermaid:'pie title 瀏覽器市占率\n    "Chrome" : 65\n    "Safari" : 19\n    "其他" : 16', desc:'圓餅圖：適合呈現比例分布' },
+      { mermaid:'stateDiagram-v2\n    [*] --> 待處理\n    待處理 --> 進行中\n    進行中 --> 完成\n    完成 --> [*]', desc:'狀態圖：呈現系統在不同狀態之間的轉換' },
+    ]
+  },
+];
+
+const main = document.getElementById('main');
+const chipNav = document.getElementById('chip-nav');
+const searchInput = document.getElementById('search');
+const emptyState = document.getElementById('empty-state');
+const emptyTerm = document.getElementById('empty-term');
+const statLine = document.getElementById('stat-line');
+
+let totalCount = 0;
+
+DATA.forEach(cat=>{
+  totalCount += cat.items.length;
+
+  const chip = document.createElement('button');
+  chip.className = 'chip';
+  chip.textContent = cat.zh;
+  chip.addEventListener('click', ()=>{
+    document.getElementById('cat-'+cat.id).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  chipNav.appendChild(chip);
+
+  const section = document.createElement('section');
+  section.className = 'cat';
+  section.id = 'cat-'+cat.id;
+
+  const head = document.createElement('div');
+  head.className = 'cat-head';
+  head.innerHTML = `<span class="cat-dot"></span><h2>${cat.zh}</h2><span class="en">${cat.en}</span>`;
+  section.appendChild(head);
+
+  cat.items.forEach(item=>{
+    const isMermaid = !!item.mermaid;
+    const syntaxHtml = isMermaid ? esc(item.mermaid) : item.syntax;
+    const copyText = isMermaid ? item.mermaid : null;
+
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.dataset.search = (syntaxHtml + ' ' + item.desc + ' ' + (item.preview||'')).replace(/<[^>]+>/g,' ').toLowerCase();
+
+    const grid = document.createElement('div');
+    grid.className = 'row-grid';
+
+    const syn = document.createElement('div');
+    syn.className = 'pane syntax';
+    syn.innerHTML = `<span class="pane-label">語法</span><button class="copy-btn" title="複製語法"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><pre>${syntaxHtml}</pre>`;
+    const btn = syn.querySelector('.copy-btn');
+    btn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(copyText !== null ? copyText : syn.querySelector('pre').textContent);
+        btn.classList.add('copied');
+        setTimeout(()=>btn.classList.remove('copied'), 1200);
+      }catch(e){ /* clipboard unavailable */ }
+    });
+
+    const prev = document.createElement('div');
+    prev.className = 'pane preview';
+    if(isMermaid){
+      prev.innerHTML = `<span class="pane-label">預覽</span>`;
+      const pre = document.createElement('pre');
+      pre.className = 'mermaid';
+      pre.textContent = item.mermaid;
+      prev.appendChild(pre);
+    } else {
+      prev.innerHTML = `<span class="pane-label">預覽</span><div class="pv">${item.preview}</div>`;
+    }
+
+    grid.appendChild(syn);
+    grid.appendChild(prev);
+    row.appendChild(grid);
+
+    if(item.desc){
+      const d = document.createElement('p');
+      d.className = 'desc';
+      d.textContent = item.desc;
+      row.appendChild(d);
+    }
+
+    section.appendChild(row);
+  });
+
+  main.appendChild(section);
+});
+
+statLine.textContent = totalCount + ' 條語法 · ' + DATA.length + ' 個分類';
+
+searchInput.addEventListener('input', ()=>{
+  const term = searchInput.value.trim().toLowerCase();
+  let visibleTotal = 0;
+  document.querySelectorAll('section.cat').forEach(section=>{
+    let visibleInSection = 0;
+    section.querySelectorAll('.row').forEach(row=>{
+      const match = !term || row.dataset.search.includes(term);
+      row.style.display = match ? '' : 'none';
+      if(match) visibleInSection++;
+    });
+    section.style.display = visibleInSection ? '' : 'none';
+    visibleTotal += visibleInSection;
+  });
+  emptyState.style.display = (term && visibleTotal===0) ? 'block' : 'none';
+  emptyTerm.textContent = searchInput.value.trim();
+});
+
+if (window.mermaid) {
+  try {
+    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: isDark ? 'dark' : 'default',
+      securityLevel: 'loose',
+      fontFamily: '"Source Sans 3", sans-serif'
+    });
+    mermaid.run({ querySelector: '.mermaid' });
+  } catch (e) { /* mermaid unavailable — raw source stays visible */ }
+}
+</script>
+</body>
+</html>

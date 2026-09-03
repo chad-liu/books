@@ -6,4 +6,4 @@ taiwan.md(https://taiwan.md/)
 powershell_cheatsheet
 45種圖表與關係圖範例庫
 Git & GitHub 指令速查
-Markdown語法速查表
+Markdown語法速查

@@ -16,10 +16,13 @@ header{padding:36px 5vw;background:linear-gradient(135deg,#172554,#312e81);color
 header h1{margin:0 0 8px;font-size:clamp(28px,4vw,48px)}
 header p{margin:0;color:#dbeafe;font-size:16px}
 .toolbar{position:sticky;top:0;z-index:5;background:#ffffffee;backdrop-filter:blur(10px);
-padding:14px 5vw;border-bottom:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
-input{flex:1;min-width:240px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
-button{border:1px solid var(--line);background:white;padding:9px 14px;border-radius:9px;cursor:pointer}
-button:hover{background:#eef4ff}
+padding:14px 5vw;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.toolbar label{font-size:14px;font-weight:600;color:var(--text);flex:0 0 auto}
+select{flex:1;min-width:280px;max-width:640px;padding:10px 14px;border:1px solid var(--line);
+border-radius:10px;font-size:15px;background:white;color:var(--text);cursor:pointer;
+font-family:inherit}
+select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.toolbar .cnt{font-size:13px;color:var(--muted);margin-left:auto;flex:0 0 auto}
 main{max-width:1500px;margin:28px auto;padding:0 20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(390px,1fr));gap:20px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;
@@ -77,7 +80,7 @@ footer{padding:30px;text-align:center;color:var(--muted)}
 </head>
 <body>
 <header><h1>45 種圖表／關係圖範例庫</h1><p>以「數位學習平台」為共同案例，示範不同圖形最適合表達什麼資訊。</p></header>
-<div class="toolbar"><input id="search" placeholder="搜尋圖表名稱、英文名稱或關鍵字…"><button onclick="showAll()">全部</button><button onclick="window.print()">列印／另存 PDF</button></div>
+<div class="toolbar"><label for="pick">選擇圖表</label><select id="pick"></select><span class="cnt" id="cnt"></span></div>
 <main><div class="grid" id="cards"></div></main>
 <footer>可將此頁作為教學、簡報、資訊圖表設計的範例圖庫。</footer>
 <script>
@@ -130,15 +133,19 @@ const examples=[
 ];
 
 const cards=document.getElementById("cards");
+const pick=document.getElementById("pick"), cnt=document.getElementById("cnt");
 function render(list){
- cards.innerHTML=list.map(e=>`<article class="card" data-key="${e[1]} ${e[2]} ${e[3]}"><h2>${e[0]}. ${e[1]} <span class="en">${e[2]}</span></h2><div class="desc">${e[3]}</div><div class="canvas">${e[4]}</div></article>`).join("");
+ cards.innerHTML=list.map(e=>`<article class="card"><h2>${e[0]}. ${e[1]} <span class="en">${e[2]}</span></h2><div class="desc">${e[3]}</div><div class="canvas">${e[4]}</div></article>`).join("");
+ cnt.textContent=list.length===examples.length?`共 ${examples.length} 種`:`第 ${list[0][0]} 種 / 共 ${examples.length} 種`;
 }
-render(examples);
-document.getElementById("search").addEventListener("input",e=>{
- const q=e.target.value.toLowerCase();
- render(examples.filter(x=>(x[1]+" "+x[2]+" "+x[3]).toLowerCase().includes(q)));
+pick.innerHTML=`<option value="">— 全部顯示（${examples.length} 種）—</option>`+
+ examples.map(e=>`<option value="${e[0]}">${e[0]}. ${e[1]}　${e[2]}</option>`).join("");
+pick.addEventListener("change",()=>{
+ const v=pick.value;
+ render(v?examples.filter(x=>x[0]===v):examples);
+ window.scrollTo(0,0);          // 選單在頂端，捲回去才看得到選出來的那張
 });
-function showAll(){document.getElementById("search").value="";render(examples)}
+render(examples);
 </script>
 </body>
 </html>

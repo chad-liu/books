@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第一次世界大戰</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">1 西方歷史 · 專題</p>
+  <h1>第一次世界大戰</h1>
+  <p class="lede">1914 年開戰時，<b>沒有任何一個參戰國為長期戰爭做過準備</b>。德國的作戰計畫假設六週內解決法國，法國的計畫假設攻勢至上，英國認為自己主要出海軍，俄國指望人數優勢。到 1915 年，所有國家都同時面臨砲彈不足——因為誰都沒有儲備打上四年的物資。當速決的前提在 1914 年秋天破產，各國只能一邊打一邊臨時發明後面的東西：戰時管制經濟、配給、國家宣傳機構、把婦女大量送進工廠。<b>「總體戰」不是被設計出來的，是被逼出來的</b>——它先有實踐，後來才被命名。</p>
+</header>
+
+<blockquote>
+  所有參謀本部都算好了怎麼贏，沒有人算過打不贏的時候該怎麼辦。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>每一份計畫都假設戰爭很短</h2>
+  <p class="sub">最後一列是共同點，也是整場戰爭走向的關鍵。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="150" height="36" fill="#17324d"/>
+    <rect x="183" y="18" width="300" height="36" fill="#17324d"/>
+    <rect x="491" y="18" width="270" height="36" fill="#17324d"/>
+    <rect x="769" y="18" width="306" height="36" fill="#8a4636"/>
+    <text x="100" y="42" text-anchor="middle" font-size="13" fill="#ffffff">誰</text>
+    <text x="333" y="42" text-anchor="middle" font-size="13" fill="#ffffff">戰前的計畫</text>
+    <text x="626" y="42" text-anchor="middle" font-size="13" fill="#ffffff">它假設什麼</text>
+    <text x="922" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼失敗</text>
+
+    <rect x="25" y="58" width="150" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="183" y="58" width="300" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="58" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="769" y="58" width="306" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="104" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">德國</text>
+    <text x="333" y="92" text-anchor="middle" font-size="12" fill="#546e7a">主力先西後東，取道比利時</text>
+    <text x="333" y="114" text-anchor="middle" font-size="12" fill="#546e7a">大迴旋包抄巴黎</text>
+    <text x="626" y="92" text-anchor="middle" font-size="12" fill="#263238">六週內擊敗法國</text>
+    <text x="626" y="114" text-anchor="middle" font-size="12" fill="#263238">再回頭對付俄國</text>
+    <text x="922" y="92" text-anchor="middle" font-size="12" fill="#b8442a">馬恩河受阻，包抄失敗</text>
+    <text x="922" y="114" text-anchor="middle" font-size="12" fill="#b8442a">兩線作戰成為長期現實</text>
+
+    <rect x="25" y="134" width="150" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="183" y="134" width="300" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="134" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="769" y="134" width="306" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="180" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">法國</text>
+    <text x="333" y="168" text-anchor="middle" font-size="12" fill="#546e7a">主張攻勢至上</text>
+    <text x="333" y="190" text-anchor="middle" font-size="12" fill="#546e7a">向東直取失土</text>
+    <text x="626" y="168" text-anchor="middle" font-size="12" fill="#263238">士氣與衝擊力</text>
+    <text x="626" y="190" text-anchor="middle" font-size="12" fill="#263238">可以壓過火力</text>
+    <text x="922" y="168" text-anchor="middle" font-size="12" fill="#b8442a">面對機槍與速射砲</text>
+    <text x="922" y="190" text-anchor="middle" font-size="12" fill="#b8442a">開戰數週即傷亡慘重</text>
+
+    <rect x="25" y="210" width="150" height="76" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="183" y="210" width="300" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="210" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="769" y="210" width="306" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="256" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">英國</text>
+    <text x="333" y="244" text-anchor="middle" font-size="12" fill="#546e7a">派出規模有限的遠征軍</text>
+    <text x="333" y="266" text-anchor="middle" font-size="12" fill="#546e7a">主力放在海上封鎖</text>
+    <text x="626" y="244" text-anchor="middle" font-size="12" fill="#263238">陸戰是配角</text>
+    <text x="626" y="266" text-anchor="middle" font-size="12" fill="#263238">靠盟友承擔主要地面戰</text>
+    <text x="922" y="244" text-anchor="middle" font-size="12" fill="#b8442a">被迫在 1916 年實施徵兵</text>
+    <text x="922" y="266" text-anchor="middle" font-size="12" fill="#b8442a">投入數百萬人於西線</text>
+
+    <rect x="25" y="286" width="150" height="76" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="183" y="286" width="300" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="491" y="286" width="270" height="76" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="769" y="286" width="306" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="332" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">俄國</text>
+    <text x="333" y="320" text-anchor="middle" font-size="12" fill="#546e7a">以龐大兵力快速壓進</text>
+    <text x="333" y="342" text-anchor="middle" font-size="12" fill="#546e7a">同時對德奧兩面出擊</text>
+    <text x="626" y="320" text-anchor="middle" font-size="12" fill="#263238">人數本身就是優勢</text>
+    <text x="626" y="342" text-anchor="middle" font-size="12" fill="#263238">動員速度快於敵方預期</text>
+    <text x="922" y="320" text-anchor="middle" font-size="12" fill="#b8442a">補給與通訊跟不上</text>
+    <text x="922" y="342" text-anchor="middle" font-size="12" fill="#b8442a">開戰月餘即在東線慘敗</text>
+
+    <rect x="25" y="362" width="150" height="76" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="183" y="362" width="300" height="76" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="491" y="362" width="270" height="76" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="769" y="362" width="306" height="76" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <text x="100" y="408" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">共同點</text>
+    <text x="333" y="396" text-anchor="middle" font-size="12" fill="#6b4a8f">四份計畫互不相同</text>
+    <text x="333" y="418" text-anchor="middle" font-size="12" fill="#6b4a8f">卻共用同一個前提</text>
+    <text x="626" y="396" text-anchor="middle" font-size="12" fill="#6b4a8f">戰爭在數月內結束</text>
+    <text x="626" y="418" text-anchor="middle" font-size="12" fill="#6b4a8f">不必準備長期物資</text>
+    <text x="922" y="396" text-anchor="middle" font-size="12" fill="#6b4a8f">到 1915 年各國同時爆發</text>
+    <text x="922" y="418" text-anchor="middle" font-size="12" fill="#6b4a8f">嚴重的砲彈短缺</text>
+
+    <rect x="25" y="450" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="474" text-anchor="middle" font-size="12.5" fill="#8f5e14">「聖誕節前就能回家」不只是士兵之間的樂觀說法，而是各國參謀本部真正的規劃前提。</text>
+    <text x="550" y="496" text-anchor="middle" font-size="12.5" fill="#8f5e14">當這個前提在 1914 年秋天破產時，沒有任何一個國家手上有預備方案</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>僵局：防禦壓倒了進攻</h2>
+  <p class="sub">戰線從北海延伸到瑞士邊界，四年幾乎沒有移動。原因是兩邊技術發展的速度不一樣。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="24" width="505" height="34" fill="#2f5570"/>
+    <text x="282" y="47" text-anchor="middle" font-size="13" fill="#ffffff">守方在 1914 年已經工業化</text>
+    <rect x="565" y="24" width="505" height="34" fill="#8a4636"/>
+    <text x="817" y="47" text-anchor="middle" font-size="13" fill="#ffffff">攻方還停留在人腳與馬匹</text>
+
+    <rect x="30" y="68" width="505" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="282" y="94" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">機槍</text>
+    <text x="282" y="116" text-anchor="middle" font-size="11.5" fill="#546e7a">少數幾挺就能封鎖數百公尺正面</text>
+    <text x="282" y="136" text-anchor="middle" font-size="11.5" fill="#546e7a">且只需極少人操作</text>
+    <rect x="30" y="152" width="505" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="282" y="178" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">鐵絲網與縱深塹壕</text>
+    <text x="282" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">攻方即使突破第一線</text>
+    <text x="282" y="220" text-anchor="middle" font-size="11.5" fill="#546e7a">後面還有第二、第三線</text>
+    <rect x="30" y="236" width="505" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="282" y="262" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">速射野砲與預先測定</text>
+    <text x="282" y="284" text-anchor="middle" font-size="11.5" fill="#546e7a">射擊諸元事先算好</text>
+    <text x="282" y="304" text-anchor="middle" font-size="11.5" fill="#546e7a">攻擊一發起即遭覆蓋射擊</text>
+    <rect x="30" y="320" width="505" height="76" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="282" y="346" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">鐵路</text>
+    <text x="282" y="368" text-anchor="middle" font-size="11.5" fill="#546e7a">守方能在數小時內</text>
+    <text x="282" y="388" text-anchor="middle" font-size="11.5" fill="#546e7a">把預備隊送到被突破的缺口</text>
+
+    <rect x="565" y="68" width="505" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="817" y="94" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">沒有伴隨步兵的火力</text>
+    <text x="817" y="116" text-anchor="middle" font-size="11.5" fill="#546e7a">重砲留在後方無法跟上</text>
+    <text x="817" y="136" text-anchor="middle" font-size="11.5" fill="#546e7a">步兵衝出去就只剩步槍</text>
+    <rect x="565" y="152" width="505" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="817" y="178" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">砲擊解決不了鐵絲網</text>
+    <text x="817" y="200" text-anchor="middle" font-size="11.5" fill="#546e7a">長時間轟擊既暴露了攻擊位置</text>
+    <text x="817" y="220" text-anchor="middle" font-size="11.5" fill="#546e7a">又把地面炸成難以通行的彈坑</text>
+    <rect x="565" y="236" width="505" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="817" y="262" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">通訊在衝鋒後中斷</text>
+    <text x="817" y="284" text-anchor="middle" font-size="11.5" fill="#546e7a">電話線一過火線就被炸斷</text>
+    <text x="817" y="304" text-anchor="middle" font-size="11.5" fill="#546e7a">指揮官無從得知前方狀況</text>
+    <rect x="565" y="320" width="505" height="76" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="817" y="346" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">突破後只能用走的</text>
+    <text x="817" y="368" text-anchor="middle" font-size="11.5" fill="#546e7a">徒步推進永遠慢於</text>
+    <text x="817" y="388" text-anchor="middle" font-size="11.5" fill="#546e7a">守方用鐵路調來的預備隊</text>
+
+    <rect x="30" y="410" width="1040" height="46" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="439" text-anchor="middle" font-size="12.5" fill="#8f5e14">解法要到 1918 年才成熟：滲透戰術、徐進彈幕、坦克與空中偵察互相搭配，缺一項都不夠</text>
+  </svg>
+  </div>
+  <p class="after">值得對照的是十年前的<b>日俄戰爭</b>——機槍、鐵絲網、塹壕與間接射擊在那時就已大規模出現，各國都派了觀察員。但他們得出的結論是「攻勢精神仍能奏效」，因為日軍最終確實拿下了陣地。他們記住了突擊成功，沒有記住它的價格。</p>
+</section>
+
+<section>
+  <h2>被迫發明出來的總體戰</h2>
+  <p class="sub">左欄的問題沒有一個是戰前預想過的，中欄的做法也全是臨時決定的。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="290" height="36" fill="#8a4636"/>
+    <rect x="323" y="18" width="330" height="36" fill="#17324d"/>
+    <rect x="661" y="18" width="414" height="36" fill="#2f5570"/>
+    <text x="170" y="42" text-anchor="middle" font-size="13" fill="#ffffff">撞上的問題</text>
+    <text x="488" y="42" text-anchor="middle" font-size="13" fill="#ffffff">臨時想出來的做法</text>
+    <text x="868" y="42" text-anchor="middle" font-size="13" fill="#ffffff">戰後留下了什麼</text>
+
+    <rect x="25" y="58" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="323" y="58" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="661" y="58" width="414" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="170" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">砲彈消耗遠超過預估</text>
+    <text x="170" y="114" text-anchor="middle" font-size="12.5" fill="#546e7a">1915 年各國同時鬧彈荒</text>
+    <text x="488" y="92" text-anchor="middle" font-size="12.5" fill="#263238">政府接管並統籌軍工生產</text>
+    <text x="488" y="114" text-anchor="middle" font-size="12.5" fill="#263238">分配原料、指定產量</text>
+    <text x="868" y="92" text-anchor="middle" font-size="12.5" fill="#1f5c85">國家直接干預經濟成為常態</text>
+    <text x="868" y="114" text-anchor="middle" font-size="12.5" fill="#1f5c85">此後再也沒有完全退回去</text>
+
+    <rect x="25" y="138" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="323" y="138" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="661" y="138" width="414" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="170" y="172" text-anchor="middle" font-size="12.5" fill="#546e7a">男性勞動力被大量抽走</text>
+    <text x="170" y="194" text-anchor="middle" font-size="12.5" fill="#546e7a">工廠與運輸同時缺人</text>
+    <text x="488" y="172" text-anchor="middle" font-size="12.5" fill="#263238">大量婦女進入軍工廠</text>
+    <text x="488" y="194" text-anchor="middle" font-size="12.5" fill="#263238">以及運輸與行政職位</text>
+    <text x="868" y="172" text-anchor="middle" font-size="12.5" fill="#1f5c85">戰後數國陸續給予婦女投票權</text>
+    <text x="868" y="194" text-anchor="middle" font-size="12.5" fill="#1f5c85">戰時的勞動經驗是重要推力之一</text>
+
+    <rect x="25" y="218" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="323" y="218" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="661" y="218" width="414" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="170" y="252" text-anchor="middle" font-size="12.5" fill="#546e7a">封鎖與徵用造成糧食短缺</text>
+    <text x="170" y="274" text-anchor="middle" font-size="12.5" fill="#546e7a">物價失控</text>
+    <text x="488" y="252" text-anchor="middle" font-size="12.5" fill="#263238">實施配給制與價格管制</text>
+    <text x="488" y="274" text-anchor="middle" font-size="12.5" fill="#263238">建立全國性的分配機構</text>
+    <text x="868" y="252" text-anchor="middle" font-size="12.5" fill="#1f5c85">政府第一次有能力掌握全國供需</text>
+    <text x="868" y="274" text-anchor="middle" font-size="12.5" fill="#1f5c85">這套行政能力後來用在福利制度上</text>
+
+    <rect x="25" y="298" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="323" y="298" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="661" y="298" width="414" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="170" y="332" text-anchor="middle" font-size="12.5" fill="#546e7a">傷亡數字動搖後方士氣</text>
+    <text x="170" y="354" text-anchor="middle" font-size="12.5" fill="#546e7a">而戰爭又必須繼續</text>
+    <text x="488" y="332" text-anchor="middle" font-size="12.5" fill="#263238">設立國家層級的宣傳機構</text>
+    <text x="488" y="354" text-anchor="middle" font-size="12.5" fill="#263238">並對新聞實施審查</text>
+    <text x="868" y="332" text-anchor="middle" font-size="12.5" fill="#1f5c85">現代宣傳技術的起點</text>
+    <text x="868" y="354" text-anchor="middle" font-size="12.5" fill="#1f5c85">兩次大戰之間被各方大量沿用</text>
+
+    <rect x="25" y="378" width="290" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="323" y="378" width="330" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="661" y="378" width="414" height="80" fill="#f2eef6" stroke="#a894c0"/>
+    <text x="170" y="412" text-anchor="middle" font-size="12.5" fill="#546e7a">戰費遠超過稅收能負擔</text>
+    <text x="170" y="434" text-anchor="middle" font-size="12.5" fill="#546e7a">而戰爭看不到盡頭</text>
+    <text x="488" y="412" text-anchor="middle" font-size="12.5" fill="#263238">大規模發行戰爭公債</text>
+    <text x="488" y="434" text-anchor="middle" font-size="12.5" fill="#263238">並以增發貨幣支應</text>
+    <text x="868" y="412" text-anchor="middle" font-size="12.5" fill="#6b4a8f">龐大債務與戰後的通膨問題</text>
+    <text x="868" y="434" text-anchor="middle" font-size="12.5" fill="#6b4a8f">1920 年代數國出現惡性通膨</text>
+
+    <rect x="25" y="470" width="1050" height="42" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="497" text-anchor="middle" font-size="12.5" fill="#8f5e14">「總體戰」這個詞是後來才有的——它先被做出來，過了很久才被命名並寫成理論</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>四個帝國同時消失</h2>
+  <p class="sub">戰爭結束時，歐洲與中東的政治地圖被整個重畫。今天的許多邊界就是那幾年定下來的。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="20" y="24" width="285" height="290" fill="#eaf2f7" stroke="#8fb4c9" stroke-width="1.5" rx="6"/>
+    <text x="162" y="56" text-anchor="middle" font-size="15" fill="#1f5c85" font-weight="700">德意志帝國</text>
+    <rect x="38" y="72" width="249" height="106" fill="#ffffff" stroke="#c3d9e5"/>
+    <text x="162" y="96" text-anchor="middle" font-size="11" fill="#59707b">發生了什麼</text>
+    <text x="162" y="120" text-anchor="middle" font-size="12" fill="#263238">1918 年皇帝退位</text>
+    <text x="162" y="142" text-anchor="middle" font-size="12" fill="#263238">帝制在戰敗中結束</text>
+    <text x="162" y="164" text-anchor="middle" font-size="12" fill="#263238">共和政體倉促成立</text>
+    <rect x="38" y="188" width="249" height="112" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="162" y="212" text-anchor="middle" font-size="11" fill="#59707b">後續</text>
+    <text x="162" y="236" text-anchor="middle" font-size="12" fill="#546e7a">新政權一出生</text>
+    <text x="162" y="258" text-anchor="middle" font-size="12" fill="#546e7a">就背上戰敗與賠款</text>
+    <text x="162" y="280" text-anchor="middle" font-size="12" fill="#546e7a">正當性長期不穩</text>
+
+    <rect x="315" y="24" width="285" height="290" fill="#fdf5e7" stroke="#e0b775" stroke-width="1.5" rx="6"/>
+    <text x="457" y="56" text-anchor="middle" font-size="15" fill="#8f5e14" font-weight="700">奧匈帝國</text>
+    <rect x="333" y="72" width="249" height="106" fill="#ffffff" stroke="#e5d6b8"/>
+    <text x="457" y="96" text-anchor="middle" font-size="11" fill="#59707b">發生了什麼</text>
+    <text x="457" y="120" text-anchor="middle" font-size="12" fill="#263238">沿民族界線解體</text>
+    <text x="457" y="142" text-anchor="middle" font-size="12" fill="#263238">分裂為數個新國家</text>
+    <text x="457" y="164" text-anchor="middle" font-size="12" fill="#263238">中歐版圖徹底重畫</text>
+    <rect x="333" y="188" width="249" height="112" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="457" y="212" text-anchor="middle" font-size="11" fill="#59707b">後續</text>
+    <text x="457" y="236" text-anchor="middle" font-size="12" fill="#546e7a">新國界無法與族群</text>
+    <text x="457" y="258" text-anchor="middle" font-size="12" fill="#546e7a">分布完全吻合</text>
+    <text x="457" y="280" text-anchor="middle" font-size="12" fill="#546e7a">少數族群問題隨即浮現</text>
+
+    <rect x="610" y="24" width="285" height="290" fill="#fdeeeb" stroke="#dda695" stroke-width="1.5" rx="6"/>
+    <text x="752" y="56" text-anchor="middle" font-size="15" fill="#b8442a" font-weight="700">鄂圖曼帝國</text>
+    <rect x="628" y="72" width="249" height="106" fill="#ffffff" stroke="#e8cfc7"/>
+    <text x="752" y="96" text-anchor="middle" font-size="11" fill="#59707b">發生了什麼</text>
+    <text x="752" y="120" text-anchor="middle" font-size="12" fill="#263238">戰敗後領土被瓜分</text>
+    <text x="752" y="142" text-anchor="middle" font-size="12" fill="#263238">阿拉伯地區改由列強</text>
+    <text x="752" y="164" text-anchor="middle" font-size="12" fill="#263238">以委任統治名義接管</text>
+    <rect x="628" y="188" width="249" height="112" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="752" y="212" text-anchor="middle" font-size="11" fill="#59707b">後續</text>
+    <text x="752" y="236" text-anchor="middle" font-size="12" fill="#546e7a">1923 年土耳其共和國</text>
+    <text x="752" y="258" text-anchor="middle" font-size="12" fill="#546e7a">在安納托利亞成立</text>
+    <text x="752" y="280" text-anchor="middle" font-size="12" fill="#546e7a">中東邊界則由外人劃定</text>
+
+    <rect x="905" y="24" width="285" height="290" fill="#f2eef6" stroke="#a894c0" stroke-width="1.5" rx="6"/>
+    <text x="1047" y="56" text-anchor="middle" font-size="15" fill="#6b4a8f" font-weight="700">俄羅斯帝國</text>
+    <rect x="923" y="72" width="249" height="106" fill="#ffffff" stroke="#c9bad8"/>
+    <text x="1047" y="96" text-anchor="middle" font-size="11" fill="#59707b">發生了什麼</text>
+    <text x="1047" y="120" text-anchor="middle" font-size="12" fill="#263238">1917 年兩次革命</text>
+    <text x="1047" y="142" text-anchor="middle" font-size="12" fill="#263238">帝制結束並退出戰爭</text>
+    <text x="1047" y="164" text-anchor="middle" font-size="12" fill="#263238">隨即陷入內戰</text>
+    <rect x="923" y="188" width="249" height="112" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="1047" y="212" text-anchor="middle" font-size="11" fill="#59707b">後續</text>
+    <text x="1047" y="236" text-anchor="middle" font-size="12" fill="#546e7a">以蘇聯的形式重新組合</text>
+    <text x="1047" y="258" text-anchor="middle" font-size="12" fill="#546e7a">並成為一種與西方</text>
+    <text x="1047" y="280" text-anchor="middle" font-size="12" fill="#546e7a">對立的政治模式</text>
+
+    <rect x="20" y="340" width="1170" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="605" y="364" text-anchor="middle" font-size="12.5" fill="#8f5e14">四個統治了數百年的帝國在四年之內全部消失。今天中東與東歐的許多國界，就是 1916 至 1923 年間</text>
+    <text x="605" y="386" text-anchor="middle" font-size="12.5" fill="#8f5e14">在幾張會議桌上畫出來的——這場戰爭真正的長度，要用它留下的地圖來衡量</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>凡爾賽的兩難</h2>
+  <p class="sub">同一份條約，德國認為太苛刻，法國認為太寬鬆。兩邊說的其實都對。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="190" height="36" fill="#17324d"/>
+    <rect x="223" y="18" width="400" height="36" fill="#8a4636"/>
+    <rect x="631" y="18" width="444" height="36" fill="#2f5570"/>
+    <text x="120" y="42" text-anchor="middle" font-size="13" fill="#ffffff">條款</text>
+    <text x="423" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼被認為太重</text>
+    <text x="853" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼實際上太輕</text>
+
+    <rect x="25" y="58" width="190" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="58" width="400" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="58" width="444" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="104" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">戰爭責任與賠款</text>
+    <text x="423" y="92" text-anchor="middle" font-size="12.5" fill="#546e7a">條文要求德國承認發動戰爭的責任</text>
+    <text x="423" y="114" text-anchor="middle" font-size="12.5" fill="#546e7a">在國內被視為公開的羞辱</text>
+    <text x="853" y="92" text-anchor="middle" font-size="12.5" fill="#263238">賠款金額後來一再調降與延期</text>
+    <text x="853" y="114" text-anchor="middle" font-size="12.5" fill="#263238">實際支付遠低於條約上的數字</text>
+
+    <rect x="25" y="138" width="190" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="138" width="400" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="138" width="444" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="184" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">領土</text>
+    <text x="423" y="172" text-anchor="middle" font-size="12.5" fill="#546e7a">失去約一成的領土與全部殖民地</text>
+    <text x="423" y="194" text-anchor="middle" font-size="12.5" fill="#546e7a">數百萬德語人口留在新國界之外</text>
+    <text x="853" y="172" text-anchor="middle" font-size="12.5" fill="#263238">核心的工業區與人口大致完整保留</text>
+    <text x="853" y="194" text-anchor="middle" font-size="12.5" fill="#263238">德國仍是中歐人口與產能最大的國家</text>
+
+    <rect x="25" y="218" width="190" height="80" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <rect x="223" y="218" width="400" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="631" y="218" width="444" height="80" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="120" y="264" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">軍備限制</text>
+    <text x="423" y="252" text-anchor="middle" font-size="12.5" fill="#546e7a">陸軍被限制在十萬人</text>
+    <text x="423" y="274" text-anchor="middle" font-size="12.5" fill="#546e7a">禁止擁有多種主要武器</text>
+    <text x="853" y="252" text-anchor="middle" font-size="12.5" fill="#263238">沒有配套的長期查核與執行機制</text>
+    <text x="853" y="274" text-anchor="middle" font-size="12.5" fill="#263238">1930 年代被逐項推翻而未受阻止</text>
+
+    <rect x="25" y="298" width="190" height="80" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="223" y="298" width="400" height="80" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <rect x="631" y="298" width="444" height="80" fill="#f2eef6" stroke="#a894c0" stroke-width="1.6"/>
+    <text x="120" y="344" text-anchor="middle" font-size="13.5" fill="#6b4a8f" font-weight="600">誰來執行</text>
+    <text x="423" y="332" text-anchor="middle" font-size="12.5" fill="#6b4a8f">對德國而言，條約由戰勝國單方面</text>
+    <text x="423" y="354" text-anchor="middle" font-size="12.5" fill="#6b4a8f">決定，並非談判的結果</text>
+    <text x="853" y="332" text-anchor="middle" font-size="12.5" fill="#6b4a8f">美國參議院拒絕批准並退出國聯</text>
+    <text x="853" y="354" text-anchor="middle" font-size="12.5" fill="#6b4a8f">英法對如何執行也始終沒有共識</text>
+
+    <rect x="25" y="390" width="1050" height="62" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="550" y="414" text-anchor="middle" font-size="12.5" fill="#8f5e14">兩難就在這裡：它嚴厲到足以讓德國記恨，卻不足以讓德國無力再起。要同時做到兩件事本來就</text>
+    <text x="550" y="436" text-anchor="middle" font-size="12.5" fill="#8f5e14">很難——要嘛真正解除對方的力量，要嘛真正把對方接納回來，而凡爾賽兩者都沒有做到</text>
+  </svg>
+  </div>
+  <p class="after">要注意不要把這一節讀成「條約直接導致了下一場戰爭」。從 1919 到 1939 之間還隔著大蕭條、各國內政的變化與一連串具體的決定，任何一環不同結果都可能不同。條約提供的是一個長期的怨恨題材與一個沒人真正執行的框架，<b>它讓後來的事更容易發生，但沒有讓它必然發生</b>。</p>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　第一張圖是全局的鑰匙——所有人都為短戰爭做準備。第二張說明為什麼短不了，第三張是被迫發明出來的那一整套東西，第四張是政治版圖的後果，第五張是和約的兩難。若時間有限，讀第一張與第三張。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">塞拉耶佛刺殺</span><span class="yr">1914 年 6 月</span><p>奧匈皇儲夫婦遇刺。它本身是一起地區事件，之所以引爆全面戰爭，是因為背後那套彼此連鎖的同盟與動員時程。</p></div>
+  <div class="card"><span class="nm">各國宣戰</span><span class="yr">1914 年 8 月</span><p>一週之內主要強權相繼參戰。動員計畫一旦啟動就難以中止，時間壓力壓縮了外交迴旋的空間。</p></div>
+  <div class="card"><span class="nm">馬恩河會戰</span><span class="yr">1914 年 9 月</span><p>德軍的包抄被擋下。速決的前提就此破產，雙方開始挖壕固守，戰線最終從北海延伸到瑞士邊界。</p></div>
+  <div class="card"><span class="nm">彈藥危機</span><span class="yr">1915</span><p>各國同時發現砲彈存量遠不敷需求。這迫使政府直接介入軍工生產，是戰時管制經濟的起點。</p></div>
+  <div class="card"><span class="nm">毒氣首次大規模使用</span><span class="yr">1915</span><p>為打破僵局而投入的新手段。它造成了恐懼與傷害，卻沒有解決根本問題——因為對方很快也有了同樣的東西。</p></div>
+  <div class="card"><span class="nm">凡爾登與索姆河</span><span class="yr">1916</span><p>兩場持續數月的消耗戰，傷亡以百萬計而戰線幾乎未動。它們定義了這場戰爭在後世記憶中的樣子。</p></div>
+  <div class="card"><span class="nm">坦克首次投入</span><span class="yr">1916</span><p>為了跨越壕溝與鐵絲網而造。初期數量少、故障多，要等到 1918 年與其他兵種配合才真正發揮作用。</p></div>
+  <div class="card"><span class="nm">美國參戰</span><span class="yr">1917 年 4 月</span><p>無限制潛艇戰是直接原因。美國的人力與工業產能改變了長期的力量對比，即使部隊要到 1918 年才大量抵達。</p></div>
+  <div class="card"><span class="nm">俄國退出戰爭</span><span class="yr">1917–1918</span><p>革命後的新政權以割讓大片領土為代價媾和。德國得以把東線兵力調往西線，發動最後一次大規模攻勢。</p></div>
+  <div class="card"><span class="nm">停戰</span><span class="yr">1918 年 11 月</span><p>德軍尚未被逐出他國領土即停戰，這個事實日後被用來散布「未被擊敗」的說法，成為戰後政治鬥爭的題材。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">前因、參戰各方與後續</span></div>
+<div class="grid">
+  <a class="card" href="../2.日本歷史/日俄戰爭.html"><span class="nm">日俄戰爭</span><span class="lk">→ 專頁</span><p>本頁第二節的預演。塹壕、機槍與間接射擊在十年前就出現過，各國觀察員卻得出了錯誤的結論。</p></a>
+  <a class="card" href="俄國革命.html"><span class="nm">俄國革命</span><span class="lk">→ 專頁</span><p>戰爭直接促成的政權崩潰。臨時政府堅持繼續作戰的決定，是它八個月後垮台的首要原因。</p></a>
+  <a class="card" href="德國歷史總覽.html"><span class="nm">德國歷史總覽</span><span class="lk">→ 專頁</span><p>威瑪共和的處境，以及 1949 年的基本法如何逐條針對它的漏洞設計——本頁第五節的下文。</p></a>
+  <a class="card" href="法國歷史總覽.html"><span class="nm">法國歷史總覽</span><span class="lk">→ 專頁</span><p>為什麼法國在和會上堅持嚴厲條款：1870 年的戰敗與這次的傷亡，都發生在同一塊土地上。</p></a>
+  <a class="card" href="英國歷史總覽.html"><span class="nm">英國歷史總覽</span><span class="lk">→ 專頁</span><p>戰爭如何耗盡帝國的財政，以及它此後為何更不願介入歐陸事務。</p></a>
+  <a class="card" href="俄羅斯歷史總覽.html"><span class="nm">俄羅斯歷史總覽</span><span class="lk">→ 專頁</span><p>把 1917 放進更長的軌跡裡看：這是俄國史上「挫敗—改革—混亂—收緊」循環的又一次發作。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>1 西方歷史</b> 底下的專題頁。<b>數字</b>：軍民死亡人數、賠款實付金額等各家估計差異甚大，且統計口徑不一（是否含失蹤、病死、1918 年流感死亡等），本頁一律以概略或比例表述，不列單一數值。<b>因果</b>：關於戰爭起因與凡爾賽條約的評價，史學界長期存在多種立場；本頁陳述各方在當時的處境與條約的實際條款，不採取單一的責任歸屬結論。<b>範圍</b>：本頁以歐洲戰場與各國內部的動員為主，中東、非洲與亞洲戰場僅在涉及後果處提及。
+</footer>
+
+</div>
+</body>
+</html>
