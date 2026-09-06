@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>法拉第知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">裝訂學徒的筆記本・力線・沒有數學的直覺</p>
+  <h1>法拉第知識圖譜</h1>
+  <p class="lede">法拉第從沒學過大學數學，他十四歲就去書店當裝訂學徒，靠著把送來裝訂的書一頁頁翻完，自學出了對科學的興趣。他能踏進科學圈，靠的不是文憑，而是一本親手裝訂、寄給戴維的聽講筆記。往後幾十年，他靠著純粹的直覺與雙手，發現了電磁感應，並用一套完全不靠數學公式的「力線」圖像，描繪出電磁場的運作方式——這套圖像後來被馬克士威整理成四條方程式，成為古典電磁學的基石。這份圖譜要梳理的，就是這條從裝訂學徒到皇家研究院講台的路徑，以及一位沒有數學工具的人，如何替後人準備好了整個理論框架。</p>
+</header>
+
+<section>
+  <h2>生平——鐵匠之子，裝訂學徒自學成材</h2>
+  <p class="sub">一本親手裝訂的聽講筆記，是他敲開科學大門的唯一憑證</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="法拉第生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">法拉第出身倫敦一個貧困的鐵匠家庭，十四歲起在書店當裝訂學徒，幾乎沒受過正規教育</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">裝訂工作意外成了他自學科學的起點——他讀遍了每一本送來裝訂的書</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">鐵匠之子</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1791年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身倫敦貧困的鐵</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">匠家庭，幾乎沒受過正規教育</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">十四歲起到書店當裝訂學徒</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">聽講並裝訂成冊</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1812年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">聽了化學家戴維在皇</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">家研究院的公開演講</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">將詳細筆記親手裝訂寄給戴維</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">獲聘為實驗室助手</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1813年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">戴維賞識這份筆記，</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">聘他為實驗室洗瓶助手</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">從此進入皇家研究院體系</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">戴維的複雜態度</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1820年代</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">後來法拉第選皇家學</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">會院士，戴維態度轉趨保留</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">師生關係後期的實情仍有爭議</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">跟同資料夾多數人物一樣，他的起點也遠離科學殿堂</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟〈道爾頓〉篇的貴格會織工之子、〈焦耳〉篇的釀酒商業餘愛好者一樣，法拉第也是靠自學與</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">機緣走進科學圈，而且他終生沒有補上正規的數學訓練，這個限制反而塑造了他獨特的思考方式</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">沒有數學工具，卻讓他發展出一套影響深遠的視覺化思考方式</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>力線——沒有方程式，卻替馬克士威準備好了框架</h2>
+  <p class="sub">他從沒解過一條電磁學方程式，卻用鐵屑排列出的圖像，畫出了「場」的雛形</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="法拉第力線概念結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">法拉第習慣用看得見的圖像思考電磁作用，這套「力線」概念，成了「場」理論的雛形</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他自己完全不靠數學公式，卻精準捕捉到了場的空間結構</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">鐵屑排列出的圖像</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">用磁鐵旁灑落的鐵屑排列圖案，具體看見</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">磁場延伸的空間形狀</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">提出「力線」概念</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">主張力線是充滿空間的實體結構，而非單</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">純的數學抽象</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">當時被視為不夠嚴謹</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">沒有數學公式支撐，這套圖像化理論起初</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">不被許多同代物理學家當真</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">馬克士威接手數學化</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">馬克士威將這套直覺圖像轉譯成四條方程</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">式，建立起完整的電磁場理論</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">直覺先於數學，是這段科學史少見的順序</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">馬克士威後來公開承認，自己是先讀懂了法拉第的力線圖像，才動手替它寫出數學形式，而不是</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">反過來從方程式推導出圖像——這在物理學史上並不常見，多數理論都是先有數學才有直覺圖像</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而支撐這套直覺不斷產出成果的，是一連串具體的實驗發現</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>核心發現——從電磁感應到電解定律</h2>
+  <p class="sub">幾乎每一項發現，都靠雙手在實驗桌上摸索出來，而非紙上推導</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="法拉第核心發現結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">法拉第一生留下多項奠基性發現，全數靠實驗操作而非理論推導取得</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這些發現後來共同構成了電力工業與現代化學分析的基礎</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">1831年電磁感應</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">發現變動磁場能在導線中感應出電流，是</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">發電機的理論基礎</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">電解定律</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">確立析出物質量與通過電量成正比的定量</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">關係，奠定電化學基礎</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">法拉第籠與抗磁性</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">發現導體外殼能屏蔽內部電場，並發現物</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">質受磁場排斥的抗磁性現象</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">法拉第效應</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">發現磁場能使光的偏振方向偏轉，首度證</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">實光與磁之間存在關聯</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">四項看似獨立的發現，其實都指向同一套「場」的直覺</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">電磁感應、電解定律、抗磁性與光磁效應，表面上分屬不同領域，但都是他用同一套力線圖像去</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">探索空間中作用力如何傳遞的產物，這正是他終生思考方式一以貫之的體現</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而在這些發現背後，還有一段他鮮少對外提及的信仰與健康故事</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">鐵匠之子<span class="yr">1791年生</span></div><p>出身倫敦貧困的鐵匠家庭，幾乎沒受過正規教育，十四歲起到書店當裝訂學徒。</p></div>
+    <div class="card"><div class="nm">聽講並裝訂成冊<span class="yr">1812年</span></div><p>聽了化學家戴維的公開演講，將詳細筆記親手裝訂寄給戴維。</p></div>
+    <div class="card"><div class="nm">獲聘為實驗室助手<span class="yr">1813年</span></div><p>戴維賞識這份筆記，聘他為實驗室洗瓶助手，從此進入皇家研究院體系。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>力線概念</h2><span class="tag">LINES OF FORCE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">鐵屑排列出的圖像</div><p>用磁鐵旁灑落的鐵屑排列圖案，具體看見磁場延伸的空間形狀。</p></div>
+    <div class="card"><div class="nm">提出「力線」概念</div><p>主張力線是充滿空間的實體結構，而非單純的數學抽象。</p></div>
+    <div class="card"><div class="nm">馬克士威接手數學化</div><p>馬克士威將這套直覺圖像轉譯成四條方程式，建立完整的電磁場理論。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心發現</h2><span class="tag">DISCOVERIES</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">1831年電磁感應</div><p>發現變動磁場能在導線中感應出電流，是發電機的理論基礎。</p></div>
+    <div class="card"><div class="nm">電解定律</div><p>確立析出物質量與通過電量成正比的定量關係，奠定電化學基礎。</p></div>
+    <div class="card"><div class="nm">法拉第籠與抗磁性</div><p>發現導體外殼能屏蔽內部電場，並發現物質受磁場排斥的抗磁性現象。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與〈道爾頓〉篇的呼應：信仰帶來的樸素，也帶來了拒絕</b><br>
+  法拉第一生信奉桑德曼教派，這是一支極度強調謙卑與簡樸生活的基督教小教派，教義深刻影響了他的處世態度。他曾兩度婉拒英國皇家學會會長一職，也拒絕了騎士封號，理由都與這份信仰有關——追求世俗頭銜被他視為與教義相悖。這跟同資料夾〈道爾頓〉篇道爾頓因貴格會教義拒絕絢麗服飾如出一轍：兩人都是靠自學出身的科學家，也都讓宗教上的樸素教義，直接約束了自己在功成名就後的選擇。法拉第晚年也曾因記憶力衰退、精神狀態不穩而被迫中斷研究數年，這段鮮少被提及的低潮，同樣是他完整生平的一部分。
+</div>
+
+<section>
+  <blockquote>
+    沒有什麼比實驗更能說服我了。
+    <cite>法拉第一貫的治學態度，反映他終生以動手實驗而非數學推導作為理解自然的主要途徑。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、力線概念的形成過程與幾項核心實驗發現，具體實驗細節與電磁學後續發展請另行查證專業科學史文獻。戴維晚年態度轉變的確切原因，史學界看法不一，本頁採較為保留的敘述。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

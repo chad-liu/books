@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>孟德爾知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">修道院裡的豌豆田・失敗的教師・被自己的續作絆倒</p>
+  <h1>孟德爾知識圖譜</h1>
+  <p class="lede">與〈達爾文與演化論〉篇的銜接：那篇談的是孟德爾定律1900年被重新發現後，如何補上天擇理論缺失的遺傳機制、催生出現代綜合理論，這裡不重複那段後續，要談的是孟德爾本人如何做出這些實驗，以及論文發表後為什麼會被冷落長達三十五年。孟德爾不是大學教授，是一位兩度教師資格考試落榜的修道士，靠著修道院圖書館與一小塊菜園，花八年時間種了上萬株豌豆，才整理出遺傳的基本規律。但真正諷刺的是，讓這篇論文陷入更長時間沉寂的，竟是孟德爾自己晚年做的一項後續實驗。</p>
+</header>
+
+<section>
+  <h2>生平——貧農之子，兩次教師資格考試都落榜</h2>
+  <p class="sub">進修道院，起初是為了免費取得受教育的機會，不是出於宗教熱忱</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="孟德爾生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">孟德爾出身摩拉維亞一個貧困農家，加入奧古斯丁修道院，很大程度是為了免費受教育的機會</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但這條路走得並不順利，他兩度嘗試取得正式教師資格都失敗了</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">貧農家庭出身</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1822年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身摩拉維亞貧困</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">農家，求學經濟壓力沉重</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">修道院提供免費教育與圖書館</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">首次教師考試落榜</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1850年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">因嚴重的考試焦慮，</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">首次教師資格考試落榜</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">院長因此送他到維也納深造</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">維也納大學進修</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1851年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">在維也納大學研習物</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">理、化學與植物學兩年</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">在此接觸到嚴謹的實驗方法</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">二度教師考試又落榜</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1856年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">進修後再次應考仍然</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">落榜，終生未取得正式資格</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">但仍長期以代課身分教書</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一位終生沒有正式教師資格的代課老師，做出了遺傳學史上最重要的實驗</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟同資料夾多數靠自學出身的人物一樣，孟德爾也不是科班出身的研究者，他真正的實驗場，</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">是修道院後院一塊不起眼的菜園</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而正是在維也納學到的統計方法，讓這塊菜園結出了不尋常的成果</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>豌豆實驗——八年、上萬株植物，換來精確到能算比例的規律</h2>
+  <p class="sub">選豌豆不是隨機的決定，而是經過審慎考量的實驗設計</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="孟德爾豌豆實驗結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1856年至1863年間，孟德爾以嚴謹的統計方法，系統性雜交豌豆並記錄後代性狀</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這套方法的嚴謹程度，遠遠超過當時同時代其他人的育種觀察</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">挑選七項明確性狀</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">選定豆莢顏色、種子形狀等七項非黑即白</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">的明確性狀，避免模糊地帶</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">控制授粉並統計記錄</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">人工控制授粉過程，八年間種植超過萬株</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">植株，逐一記錄性狀比例</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">發現顆粒式遺傳規律</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">性狀比例呈現穩定的整數規律，顯示遺傳</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">是一顆一顆分立的單位，不會混融稀釋</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1866年發表論文</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">於布爾諾自然史學會地方學報發表研究成</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">果，並將抽印本寄給多位知名學者</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">跟〈道爾頓〉篇的整數比例定律，是同一種思維方式的產物</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">孟德爾用統計方法逼近看不見的遺傳機制，跟道爾頓用整數重量比例逼近看不見的原子，走的是</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">同一條邏輯路徑——只是道爾頓的原子論很快被接受，孟德爾的論文卻靜靜躺了三十五年</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而真正把這篇論文推得更遠的，其實是孟德爾自己晚年的一項後續實驗</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>被自己絆倒——山柳菊實驗差點親手埋葬了正確的理論</h2>
+  <p class="sub">一種當時沒人知道能無性生殖的植物，讓孟德爾對自己的理論失去了信心</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="孟德爾山柳菊實驗結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">植物學家內格里質疑豌豆結果的普遍性，建議孟德爾改用山柳菊驗證，孟德爾照做了</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但這個建議，把他帶進了一個當時沒人能預料的陷阱</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">內格里的質疑</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1866年後</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">知名植物學家內格</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">里回信質疑結果普遍性</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">建議改用山柳菊重複驗證</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">結果完全對不上</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1870年代</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">山柳菊雜交後代的</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">性狀分離，跟豌豆結果不符</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">孟德爾對自己的理論產生動搖</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">真正的原因是無性生殖</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">後世才發現</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">山柳菊多數以無融</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">合生殖方式繁衍，當時無人知曉</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">結果自然對不上顆粒遺傳規律</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">晚年淡出科學研究</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1868年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">升任修道院院長，忙</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">於稅務糾紛，淡出研究</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">1884年過世，論文長期無人問津</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">正確的理論，差點被自己不知情的後續實驗親手推翻</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">孟德爾終其一生都不知道山柳菊會無性生殖，這個未知的變因，讓他對自己原本正確的豌豆結</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">論失去信心，也間接影響了他晚年淡出科學研究的決定</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">〈達爾文與演化論〉篇已詳述1900年三人重新發現孟德爾定律的後續，這裡不再重複</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">貧農家庭出身<span class="yr">1822年生</span></div><p>出身摩拉維亞貧困農家，加入修道院很大程度是為了免費受教育的機會。</p></div>
+    <div class="card"><div class="nm">首次教師考試落榜<span class="yr">1850年</span></div><p>因嚴重的考試焦慮首次落榜，院長因此送他到維也納大學深造。</p></div>
+    <div class="card"><div class="nm">二度教師考試又落榜<span class="yr">1856年</span></div><p>進修後再次應考仍然落榜，終生未取得正式教師資格，但長期以代課身分教書。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>豌豆實驗</h2><span class="tag">PEA EXPERIMENTS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">挑選七項明確性狀</div><p>選定豆莢顏色、種子形狀等七項非黑即白的明確性狀，避免模糊地帶。</p></div>
+    <div class="card"><div class="nm">控制授粉並統計記錄</div><p>人工控制授粉過程，八年間種植超過萬株植株，逐一記錄性狀比例。</p></div>
+    <div class="card"><div class="nm">發現顆粒式遺傳規律</div><p>性狀比例呈現穩定的整數規律，顯示遺傳是分立單位，不會混融稀釋。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>山柳菊挫折</h2><span class="tag">HAWKWEED</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">內格里的質疑<span class="yr">1866年後</span></div><p>知名植物學家內格里回信質疑結果普遍性，建議改用山柳菊重複驗證。</p></div>
+    <div class="card"><div class="nm">結果完全對不上</div><p>山柳菊雜交後代的性狀分離跟豌豆結果不符，孟德爾對自己的理論產生動搖。</p></div>
+    <div class="card"><div class="nm">真正的原因是無性生殖</div><p>山柳菊多數以無融合生殖方式繁衍，當時無人知曉，結果自然對不上顆粒遺傳規律。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與達爾文近乎擦身而過，卻從未真正相遇</b><br>
+  孟德爾與達爾文活躍於同一時代，孟德爾的論文抽印本甚至被收錄在幾份達爾文讀過的書目引用清單裡，但沒有證據顯示達爾文真正讀過或注意到這篇論文的重要性——兩套本該互補的理論，就這樣錯過了彼此半個世紀。孟德爾定律直到1900年才被三位學者各自獨立重新發現，正式補上天擇理論缺失的遺傳機制，這段後續與現代綜合理論的發展，〈達爾文與演化論〉篇已有詳細說明，這裡不再重複。
+</div>
+
+<section>
+  <blockquote>
+    我的時代終將到來。
+    <cite>據傳孟德爾晚年曾對友人如此說過，表達他對自己研究終將被理解的信念，這句話的確切出處與措辭在史料中略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、豌豆實驗的設計邏輯與山柳菊實驗失敗的原因，1900年重新發現與現代綜合理論的後續發展請參閱〈達爾文與演化論〉篇，具體實驗數據請另行查證專業科學史文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>伏打知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">青蛙腿之爭・第一股穩定電流</p>
+  <h1>伏打知識圖譜</h1>
+  <p class="lede">伽伐尼解剖青蛙時，發現用兩種不同金屬同時碰觸腿部肌肉，青蛙腿會抽動，因此主張生物體內存在一種「動物電」。伏打起初也深信不疑，後來卻愈想愈不對勁——他懷疑青蛙腿根本不是電的來源，只是一具極度敏感的偵測器，真正的電，來自兩種金屬接觸本身。為了證明這一點，他做出一個完全不含任何生物組織的裝置，一樣能產生電——這具裝置，就是人類史上第一個能提供穩定連續電流的電池：伏打電堆。這份圖譜要梳理的，就是這場跨越十幾年的科學論戰，以及一封信如何在幾週內改變了整個歐洲的電學研究。</p>
+</header>
+
+<section>
+  <h2>生平——義大利物理學家，從沼氣研究開始</h2>
+  <p class="sub">在轉向那場著名的論戰之前，他已經用一場戶外實驗，發現了一種可燃氣體</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伏打生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">伏打出身義大利科莫，任教於帕維亞大學，早年研究興趣橫跨靜電與氣體化學</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">一場湖邊的氣體採集實驗，是他日後對電學窮追不捨的性格預演</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">科莫的物理學家</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1745年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身義大利科莫，1779年</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">起任教於帕維亞大學物理</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">學講座</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">早年研究興趣其實不只電學一項</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">發明起電盤</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1775年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">發明一種能持續產生靜</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">電荷的裝置，是他對電</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">學研究的早期成果</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">在電池之前，他就已經對電很有心得</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">湖邊採集沼氣</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1776年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">在馬焦雷湖畔採集沼澤</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">冒出的氣泡，發現並點</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">燃了甲烷</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">早期研究興趣橫跨靜電與氣體化學</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">關注同儕的新發現</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1791年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">密切關注同鄉學者伽伐</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">尼發表的青蛙實驗結果</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">，起初深信不疑</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這份信任，接下來會逐漸動搖</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在轉向那場著名的論戰之前，他已經對電有相當扎實的研究基礎</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">伏打並不是因為伽伐尼的實驗才第一次接觸電學——他早已是這個領域裡有經驗的研究者，這份累積</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">的專業判斷力，正是他日後敢於質疑同儕結論的底氣</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而伽伐尼那場實驗，正是把伏打推向電學史核心的起點</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>伽伐尼的青蛙腿——「動物電」還是別的東西？</h2>
+  <p class="sub">兩種金屬同時碰觸青蛙腿，肌肉會抽動——這個現象該怎麼解釋，成了一場延續十年的爭論</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伏打伽伐尼論戰結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1791年，解剖學者伽伐尼發表觀察：兩種不同金屬同時碰觸解剖後的青蛙腿，肌肉會抽動</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">伽伐尼認為，這證明生物體內存在一種特殊的「動物電」</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">伽伐尼的青蛙腿實驗</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">解剖後的青蛙腿，只要同時接觸兩種不同金屬，肌肉便</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">會出現明顯抽動反應</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">「動物電」假說</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">伽伐尼主張，這證明生物組織本身就能產生一種特殊的</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">「動物電」，是生命特有的力量</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">伏打逐漸產生的懷疑</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">伏打反覆重現實驗，逐漸注意到抽動反應似乎只在使用</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">兩種不同金屬時才會發生</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">青蛙腿只是敏感的偵測器？</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">伏打開始懷疑，青蛙腿本身或許不是電的來源，只是恰</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">好對電流異常敏感的一具生物偵測器</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這場爭論的哲學份量，遠超過表面上一個實驗現象的解釋之爭</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">如果伽伐尼是對的，代表生命本身帶有某種特殊的、物理學無法完全化約的力量；如果伏打是對的，</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">代表青蛙腿只是碰巧敏感的載體，生命現象終究能用純粹的物理與化學解釋</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">要證明自己是對的，伏打得先做出一件事：讓生物徹底從實驗裡消失</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>反駁的方法——做一個完全沒有生物組織的裝置</h2>
+  <p class="sub">如果拿掉青蛙、只留下金屬，電還會不會出現？這是最直接、也最有力的反駁方式</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伏打反駁動物電結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">伏打決定用最直接的方式驗證自己的猜想：把生物組織整個拿掉，看看電還在不在</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個實驗設計本身，就是反駁「動物電」假說最有力的證據形式</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">用浸鹽水的紙板取代青蛙腿</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">改用浸過鹽水的紙板或布，夾在兩種不同金屬之間，完</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">全不含任何生物組織</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">電依然出現</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">結果證實，即使完全沒有任何生物組織參與，這套裝置</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">依然能產生電流</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">電來自金屬接觸本身</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">由此證實，電的真正來源是兩種不同金屬接觸產生的作</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">用，跟生物組織完全無關</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">「動物電」假說站不住腳</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這個結果直接推翻了伽伐尼「生物組織本身能產生特殊</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">電力」的核心主張</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">推翻一個假說最乾淨的方式，是拿掉假說裡認定必要的那個元素</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">伏打沒有直接反駁伽伐尼的觀察，而是設計了一個排除法實驗——如果拿掉生物組織後現象依然存</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">在，就足以證明生物組織從來不是必要條件</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而這個排除法實驗的副產品，比證明伽伐尼錯了更重要——它變成了人類史上第一個電池</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">科莫的物理學家<span class="yr">1745年生</span></div><p>出身義大利科莫，1779年起任教於帕維亞大學物理學講座。</p></div>
+    <div class="card"><div class="nm">發明起電盤<span class="yr">1775年</span></div><p>發明一種能持續產生靜電荷的裝置，是他對電學研究的早期成果。</p></div>
+    <div class="card"><div class="nm">湖邊採集沼氣<span class="yr">1776年</span></div><p>在馬焦雷湖畔採集沼澤冒出的氣泡，發現並點燃了甲烷。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>動物電論戰</h2><span class="tag">GALVANI DEBATE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">伽伐尼的青蛙腿實驗<span class="yr">1791年</span></div><p>解剖後的青蛙腿只要同時接觸兩種不同金屬，肌肉便會出現明顯抽動反應。</p></div>
+    <div class="card"><div class="nm">「動物電」假說</div><p>伽伐尼主張這證明生物組織本身就能產生一種特殊的「動物電」，是生命特有的力量。</p></div>
+    <div class="card"><div class="nm">青蛙腿只是敏感的偵測器？</div><p>伏打開始懷疑青蛙腿本身或許不是電的來源，只是恰好敏感的一具生物偵測器。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>反駁實驗</h2><span class="tag">REFUTATION</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">用浸鹽水紙板取代青蛙腿</div><p>改用浸過鹽水的紙板或布夾在兩種不同金屬之間，完全不含任何生物組織。</p></div>
+    <div class="card"><div class="nm">電依然出現</div><p>結果證實即使完全沒有任何生物組織參與，這套裝置依然能產生電流。</p></div>
+    <div class="card"><div class="nm">電來自金屬接觸本身</div><p>證實電的真正來源是兩種不同金屬接觸產生的作用，跟生物組織完全無關。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>伏打電堆：人類史上第一個穩定電流來源</b><br>
+  1800年，伏打把鋅片、銅片與浸過鹽水的紙板，依序交替堆疊成一根柱狀結構，做出後世所稱的「伏打電堆」——這是人類史上第一個能提供穩定、連續電流的裝置，跟過去只能瞬間放電的靜電起電機或萊頓瓶截然不同。他透過一封寫給英國皇家學會會長班克斯的信，公布了這項發明，這封信在幾週內就傳遍歐洲科學圈：英國學者尼可森與卡萊爾幾乎立刻用電堆將水電解成氫氣與氧氣，開啟了電化學這門全新領域。1801年，伏打應邀赴巴黎向拿破崙親自示範電堆，拿破崙深受震撼，授予他金質獎章，日後更封他為伯爵、義大利王國參議員。今天電壓的國際單位「伏特」，正是以他的姓氏命名。
+</div>
+
+<section>
+  <blockquote>
+    生物組織並非電力產生所必需，真正的作用力，來自兩種不同金屬彼此接觸的那一刻。
+    <cite>伏打透過一系列排除生物組織的對照實驗，反駁伽伐尼「動物電」假說時的核心立場——這場論戰最終催生了人類史上第一個電池。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、與伽伐尼的動物電論戰，以及伏打電堆的發明過程，具體電化學技術內容請另行查證專業科學史文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

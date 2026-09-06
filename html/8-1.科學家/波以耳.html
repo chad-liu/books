@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>波以耳知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">真空論戰・懷疑的化學家</p>
+  <h1>波以耳知識圖譜</h1>
+  <p class="lede">波以耳常被記成「波以耳定律那個人」，但這條氣體定律只是他留下的其中一小塊遺產。他跟年輕助手虎克一起打造的空氣泵，掀起一場關於「真空究竟能不能存在」的哲學論戰；他寫的《懷疑的化學家》，幾乎是憑一人之力把「元素」重新定義成今天化學課本裡的樣子；但同一個人，終生都是煉金術最投入的實踐者之一，甚至晚年還親自遊說國會廢除一條禁止「點石成金」的古法，只為了讓自己能合法繼續煉金實驗；而支撐他做這一切的，是一份深厚到讓他資助聖經翻譯、卻拒絕貴族封號的宗教信仰。這份圖譜要梳理的，就是這幾條看似互相矛盾、卻同時存在於同一個人身上的線索。</p>
+</header>
+
+<section>
+  <h2>生平——貴族之子，與姊姊共同生活的智識夥伴</h2>
+  <p class="sub">終生未婚，卻在一位常被歷史忽略的女性身邊，度過了大半個學術生涯</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波以耳生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">波以耳出身英愛貴族世家，是柯克伯爵的第十四個孩子，從小接受歐陸最好的教育</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">終生未婚，卻在姊姊身邊度過了大半個學術生涯</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">貴族世家的第十四個孩子</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1627年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">柯克伯爵之子，家境優渥，</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">自幼接受歐陸遊學等最頂級</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">的貴族教育</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">財力讓他終生不必為生計煩惱</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">與姊姊凱瑟琳同住</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">數十年間</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">終生未婚，長年與姊姊雷納</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">拉子爵夫人同住，兩人關係</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">極為緊密</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">姊弟同居數十年，共享一個知識圈</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">姊姊自己的知識沙龍</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">倫敦</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">凱瑟琳本身學養深厚，在倫</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">敦主持頗具份量的知識沙龍</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">，人脈遍及學界</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">她自己沒有以本名發表著作</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">重新被史學界正視的角色</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">近年研究</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">近年科學史研究，逐漸認為</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">她對波以耳的研究方向有實</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">質影響</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">貢獻長期被記在弟弟一個人名下</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這段姊弟關係，是理解他學術生涯的一塊常被忽略的拼圖</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">凱瑟琳・瓊斯不只是同住的家人，她自己就是倫敦知識圈裡受人敬重的人物，波以耳許多重要的人脈與</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">討論場合，都與姊姊的沙龍有關——只是在當時的年代，女性的智識貢獻很少被正式記錄下來</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">波以耳自己最著名的實驗夥伴，則是一位剛出道的年輕助手</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>跟虎克一起打造的空氣泵——一場關於「真空」的哲學論戰</h2>
+  <p class="sub">抽掉容器裡的空氣，看看還剩下什麼——這個實驗，捲入了一場延續數十年的爭辯</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波以耳空氣泵與真空論戰結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">波以耳雇用年輕的虎克協助改良空氣泵，兩人一起做出的實驗，直接引爆一場哲學論戰</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">爭論的核心，是「真空」這種東西究竟能不能真的存在</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">雇用虎克改良空氣泵</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">聘用年輕的虎克擔任助手兼儀器製作師，共同打造出當</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">時最精良的抽氣裝置</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">一系列真空實驗</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">證明聲音無法在真空中傳播、燭火會熄滅、小動物會窒</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">息死亡，一一驗證空氣的必要性</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">霍布斯的哲學挑戰</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">哲學家霍布斯從理論上質疑真正的真空根本不可能存</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">在，與波以耳展開長達數十年的論戰</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">實驗方法本身也是爭論焦點</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">爭議不只在結論，更在於能不能光靠實驗儀器的觀察結</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">果，就宣稱掌握了自然界的真理</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這場論戰的意義，遠遠超過「誰對誰錯」本身</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">它某種程度上是「實驗證據該不該優先於純粹理論推演」這個問題，第一次被公開、激烈地攤開來討</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">論——波以耳這一派最終勝出，也奠定了此後科學方法以實驗為核心的走向</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">波以耳定律，正是從這套空氣泵實驗延伸出的成果之一，但他更大的野心，藏在化學這門學問裡</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>《懷疑的化學家》——他怎麼發明了現代「元素」概念</h2>
+  <p class="sub">古人相信物質由四元素或三原質組成，波以耳的一本書，把整套假設連根拔起</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波以耳懷疑的化學家結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1661年出版的《懷疑的化學家》，直接挑戰了流傳近兩千年的物質組成假設</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他不只是提出反駁，還給了「元素」這個詞一個全新的、可操作的定義</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">挑戰四元素與三原質說</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">直接批判亞里斯多德的地水火風四元素論，以及帕拉塞</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">爾蘇斯學派的鹽硫汞三原質說</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">重新定義「元素」</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">主張元素應該是無法再被化學方法進一步分解的物質，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">而不是先驗假定的固定幾種基本成分</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">主張微粒說</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">提出物質由微小粒子組合而成，性質取決於粒子的排列</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">與運動方式，而非神秘的內在性質</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">「現代化學之父」的由來</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這套操作型定義，正是今天化學課本裡「元素」概念的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">直接源頭，此後化學逐漸從煉金術中分離出來</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這是一次徹底的概念工程，不只是理論修正</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">把「元素是什麼」從一套先驗的哲學信念，改成一項可以被實驗檢驗、隨新發現不斷修正的操作性標</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">準——這個轉向，比任何一項具體的化學發現都更深遠地改變了這門學問往後的走向</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但寫下這本書批判煉金術理論的同一個人，私底下卻是煉金術最投入的實踐者之一</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>同時，他也是煉金術最投入的實踐者之一</h2>
+  <p class="sub">批判的是煉金術的理論，不是煉金術這件事本身——他終生相信點石成金真的可能</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波以耳煉金術實踐結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">《懷疑的化學家》批判的是煉金術背後的理論架構，不是「金屬能否轉化」這件事本身</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">波以耳終生相信金屬轉化在原理上是可能的，並且親自投入實驗追尋</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">終生的祕密實驗</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">貫穿一生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">長年私下進行金屬轉化實</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">驗，部分手稿刻意以密語紀</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">錄，防止外流</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">跟〈牛頓〉篇的煉金手稿如出一轍</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">一條古老的禁令</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1404年立法</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">英格蘭中世紀法律明文禁止</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">「增殖」金銀，煉金轉化在</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">法律上屬於重罪</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">這條法律存在了將近三百年</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">親自遊說廢除禁令</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1689年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">晚年親自推動國會廢除這條</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">古法，讓自己能合法繼續進</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">行轉化實驗</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">動用聲望修法為了自己的實驗</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">同一系列的重複模式</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">跨世代呼應</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">牛頓的煉金術、克卜勒的占</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">星維生，這個時代的理性科</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">學家往往腳踏兩條船</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">科學與玄學的界線，是後來才畫出的</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這不是雙重人格，是那個時代對「物質變化的可能性」的一致好奇心</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">波以耳反對的，是煉金術那套建立在四元素、三原質上的理論框架；他相信的，是如果物質確實由微</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">粒組成，透過正確的操作重新排列這些微粒，理論上沒有理由做不到金屬轉化</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">驅動這一切好奇心的，最終還是要回到他更深層的信仰</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">貴族世家的第十四個孩子<span class="yr">1627年生</span></div><p>柯克伯爵之子，家境優渥，自幼接受歐陸遊學等最頂級的貴族教育。</p></div>
+    <div class="card"><div class="nm">與姊姊凱瑟琳同住</div><p>終生未婚，長年與姊姊雷納拉子爵夫人同住，兩人關係極為緊密。</p></div>
+    <div class="card"><div class="nm">重新被史學界正視的角色</div><p>凱瑟琳自己在倫敦主持知識沙龍，近年研究認為她對波以耳的研究方向有實質影響。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>空氣泵與真空論戰</h2><span class="tag">VACUUM</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">雇用虎克改良空氣泵</div><p>聘用年輕的虎克擔任助手兼儀器製作師，共同打造出當時最精良的抽氣裝置。</p></div>
+    <div class="card"><div class="nm">霍布斯的哲學挑戰</div><p>哲學家霍布斯從理論上質疑真正的真空根本不可能存在，與波以耳展開數十年論戰。</p></div>
+    <div class="card"><div class="nm">實驗方法本身也是焦點</div><p>爭議不只在結論，更在於能不能光靠實驗觀察，就宣稱掌握了自然界的真理。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>懷疑的化學家</h2><span class="tag">CHYMISTRY</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">挑戰四元素與三原質說<span class="yr">1661年</span></div><p>直接批判亞里斯多德的四元素論，以及帕拉塞爾蘇斯學派的鹽硫汞三原質說。</p></div>
+    <div class="card"><div class="nm">重新定義「元素」</div><p>主張元素應是無法再被化學方法進一步分解的物質，而非先驗假定的固定成分。</p></div>
+    <div class="card"><div class="nm">「現代化學之父」的由來</div><p>這套操作型定義，正是今天化學課本裡「元素」概念的直接源頭。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>煉金術實踐</h2><span class="tag">ALCHEMY</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">終生的祕密實驗</div><p>長年私下進行金屬轉化實驗，部分手稿刻意以密語紀錄，防止外流。</p></div>
+    <div class="card"><div class="nm">親自遊說廢除禁令<span class="yr">1689年</span></div><p>晚年推動國會廢除1404年禁止「增殖」金銀的古法，讓自己能合法繼續實驗。</p></div>
+    <div class="card"><div class="nm">同一系列的重複模式</div><p>牛頓的煉金術、克卜勒的占星維生，這個時代的理性科學家往往腳踏兩條船。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>深厚的信仰：資助聖經翻譯，卻拒絕貴族封號</b><br>
+  波以耳終生虔誠，把自己的科學研究視為揭示上帝設計自然的方式，這份信仰不只停留在私人層面。他自掏腰包資助《聖經》翻譯成愛爾蘭語、威爾斯語，甚至資助北美殖民地將聖經譯成當地原住民語言的傳教計畫；他在遺囑裡另外指定經費，設立一系列講座（後世稱為「波以耳講座」，部分形式延續至今），專門用來對抗無神論、捍衛基督教信仰。與此同時，他卻多次婉拒榮譽——包括英國皇家學會會長一職與貴族封號，據信與他對特定宣誓儀式的宗教顧慮有關。對波以耳而言，空氣泵裡的實驗與講座裡捍衛的信仰，從來不是兩件互相矛盾的事，而是同一份好奇心的兩種表現形式。
+</div>
+
+<section>
+  <blockquote>
+    化學家們至今仍把鹽、硫、汞當成物質不可分割的三大原則，但沒有任何實驗真正證明過這件事。
+    <cite>波以耳在《懷疑的化學家》中對帕拉塞爾蘇斯學派三原質說的質疑大意——他主張化學理論必須經得起實驗檢驗，不能只靠代代相傳的權威說法。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、空氣泵實驗、化學元素概念的建立，以及煉金術實踐與宗教信仰的另一面，波以耳定律的完整技術內容見同資料夾〈科學革命〉篇。姊姊凱瑟琳的具體學術貢獻，史學界仍在持續重新評估中，本頁採較為保守的敘述方式，正式引用請另行查證專業科學史文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

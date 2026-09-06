@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>道爾頓知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">氣象日記・色盲・原子論</p>
+  <h1>道爾頓知識圖譜</h1>
+  <p class="lede">道爾頓一輩子沒進過大學，靠自學與教書維生，卻留下三項風馬牛不相及的科學遺產：一份寫了五十七年、直到過世前一天才停筆的氣象日記，一篇因為「我跟弟弟看到的顏色不一樣」而寫成、開啟色盲研究史的論文，以及一套把「原子」從哲學臆測變成可秤重、可計算的化學假說。這三件事看似無關，其實是同一種思維習慣的三種產物——他習慣長期、系統性地記錄看得見的數字，再從中逼近看不見的機制。這份圖譜要梳理的，就是這條從氣象觀察一路拐進原子論的路徑。</p>
+</header>
+
+<section>
+  <h2>生平——貴格會織工之子，十二歲就開始教書維生</h2>
+  <p class="sub">他終生沒有大學學位，卻靠自學撐起了曼徹斯特的科學圈子</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="道爾頓生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">道爾頓出身英格蘭湖區清貧的貴格會織工家庭，貴格會重視教育卻被排除於牛津劍橋之外</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個背景，解釋了他為何終生都靠自學與教書維生</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">貴格會織工之子</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1766年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身英格蘭湖區一個清</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">貧的貴格會織工家庭</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">貴格會不上教會學校，重視自學</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">十二歲當小學老師</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1778年起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">家境清寒，十二歲便在</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">村莊學校任教貼補家用</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">同時跟隨一位盲人學者自學數學</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">展開五十七年氣象日記</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1787年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">二十一歲起開始逐日記</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">錄氣象觀測，終生未斷</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">累積近二十萬筆觀測紀錄</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">移居曼徹斯特任教</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1793年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">移居工業重鎮曼徹斯特</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">，在貴格會學校教書維生</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">業餘投入研究，終生沒有大學學位</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">半世紀不間斷的氣象觀察習慣，意外導向了兩項留名科學史的發現</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">道爾頓終其一生沒有進過大學，靠教書賺取微薄收入維生，卻靠著長年累積的系統性觀察習慣，成</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">為曼徹斯特文哲學會的核心人物——這份紀律，先後把他帶往兩個完全不同的領域</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">第一個領域，是他自己完全沒有預料到的——他自己看不見的顏色</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>色盲研究——他先發現的，其實是自己看不見的顏色</h2>
+  <p class="sub">一篇因為「我跟弟弟形容的顏色不一樣」而寫成的論文，開啟了色盲研究的科學史</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="道爾頓色盲研究結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">道爾頓注意到自己形容的顏色，常常跟旁人的說法對不上，起初以為只是用詞習慣不同</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但這份好奇心，最終讓他成了第一位公開研究這種視覺缺陷的人</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">從一句形容詞的落差開始</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">他曾把一朵粉紅色天竺葵形容成藍色，一開始</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">以為只是用詞習慣不同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">發現弟弟也一樣</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">進一步比對後發現弟弟也有同樣狀況，顯示這</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">並非單純的用詞問題</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">1794年發表首篇論文</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">向曼徹斯特文哲學會發表史上第一篇談這種視</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">覺缺陷的科學論文</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">遺囑要求死後解剖眼球</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">要求死後解剖自己的眼球驗證假說，結果證明</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">他猜錯了成因</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">拿自己的身體當研究對象，是這篇論文留名科學史的關鍵</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">道爾頓當時猜測，是眼球內的玻璃液被染上了藍色，才導致色彩感知異常；解剖結果證明玻璃液完</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">全透明，真正原因要到近兩世紀後才由基因研究釐清，但這種色覺缺陷已因他而被稱為「道爾頓症」</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他長年累積的另一項觀察習慣，同一時期正把他帶往一個完全不同的問題</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>氣體研究——分壓定律與倍比定律，都從氣象觀察延伸而來</h2>
+  <p class="sub">好奇大氣為什麼沒有依照密度分層，一路把他帶向氣體化學</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="道爾頓氣體定律結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">長年氣象觀察讓他好奇：密度不同的氣體，為何在大氣中均勻混合而不分層</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個疑問，一路把他帶到了原子論的門口</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">好奇大氣為何不分層</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">氧氣、氮氣、水氣密度不同，大氣層卻不依</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">密度分層，而是均勻混合</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">提出分壓定律</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1801年提出：混合氣體總壓力，等於各成分</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">氣體單獨存在時分壓力的加總</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">延伸到化合物比例</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">發現同兩種元素化合成不同化合物時，重量</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">變化總呈簡單整數比，即倍比定律</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">通往原子論的線索</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這種整數比的規律性，成為他推導原子論最</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">直接的實驗線索</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從大氣觀察走到整數比例定律，正是他一貫的思維方式</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">道爾頓習慣用長期、系統性的量化觀察去逼近看不見的機制——如果物質不是一顆一顆分立存在，很</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">難解釋為什麼化合的重量比例，永遠是簡單的整數而不是任意數值</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這個線索，最終被他寫成了一套完整的原子假說</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>原子論——把「原子」從哲學臆測，變成可秤重的化學假說</h2>
+  <p class="sub">與〈波以耳〉篇的銜接：那篇談的是把「元素」重新定義為操作型概念，這裡談的是替這個概念補上具體的物理圖像</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="道爾頓原子論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1803年至1808年間，道爾頓陸續提出一套完整的原子假說，並寫成《化學哲學新體系》</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這套假說，第一次替抽象的「元素」補上了可秤重、可計算的物理圖像</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">同元素原子完全相同</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">同一種元素的所有原子，重量與性質完全</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">相同，不同元素原子則彼此不同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">提出相對原子量</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">以氫為基準訂為1，測定各元素相對原子</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">量，開創定量化學新頁</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">化合物是原子的簡單比例</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">化合物由不同元素原子以固定的簡單整數</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">比結合而成，直接解釋倍比定律</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">設計最早的化學符號</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">以圓圈加符號表示元素的圖示系統，是現</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">代化學式的先聲</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">跟〈波以耳〉篇對「元素」的重新定義一脈相承</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">波以耳把「元素」重新定義成操作型概念，卻沒有說明它實際上是什麼樣子；道爾頓做的，是替這個</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">抽象定義補上一幅具體到可以秤重、可以計算比例的物理圖像</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他的貴格會信仰，最終也在一件小事上跟他自己的色盲研究意外交會</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">貴格會織工之子<span class="yr">1766年生</span></div><p>出身英格蘭湖區清貧的貴格會織工家庭，貴格會不上教會學校，重視自學。</p></div>
+    <div class="card"><div class="nm">十二歲當小學老師<span class="yr">1778年起</span></div><p>家境清寒，十二歲便在村莊學校任教貼補家用，同時跟隨一位盲人學者自學數學。</p></div>
+    <div class="card"><div class="nm">展開五十七年氣象日記<span class="yr">1787年起</span></div><p>二十一歲起逐日記錄氣象觀測，終生未斷，累積近二十萬筆紀錄。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>色盲研究</h2><span class="tag">COLOR BLINDNESS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">從一句形容詞的落差開始</div><p>他曾把粉紅色天竺葵形容成藍色，起初以為只是用詞習慣不同。</p></div>
+    <div class="card"><div class="nm">1794年發表首篇論文</div><p>向曼徹斯特文哲學會發表史上第一篇談這種視覺缺陷的科學論文。</p></div>
+    <div class="card"><div class="nm">遺囑要求死後解剖眼球</div><p>要求死後解剖自己的眼球驗證假說，結果證明他猜錯了成因。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>氣體定律</h2><span class="tag">GAS LAWS</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">提出分壓定律<span class="yr">1801年</span></div><p>混合氣體總壓力，等於各成分氣體單獨存在時分壓力的加總。</p></div>
+    <div class="card"><div class="nm">延伸到化合物比例</div><p>同兩種元素化合成不同化合物時，重量變化總呈簡單整數比，即倍比定律。</p></div>
+    <div class="card"><div class="nm">通往原子論的線索</div><p>這種整數比的規律性，成為他推導原子論最直接的實驗線索。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>原子論</h2><span class="tag">ATOMIC THEORY</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">同元素原子完全相同</div><p>同一種元素的所有原子重量與性質完全相同，不同元素原子則彼此不同。</p></div>
+    <div class="card"><div class="nm">提出相對原子量</div><p>以氫為基準訂為1，測定各元素相對原子量，開創定量化學新頁。</p></div>
+    <div class="card"><div class="nm">化合物是原子的簡單比例</div><p>化合物由不同元素原子以固定的簡單整數比結合而成，直接解釋倍比定律。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>貴格會的樸素教義，遇上他自己看不出來的猩紅色</b><br>
+  貴格會教徒奉行樸素教義，拒絕絢麗服飾與世俗頭銜。1832年，牛津大學要頒授榮譽博士學位給他，依例須穿上鮮紅色博士袍在國王面前受勳，這對嚴守教規的道爾頓而言，理論上是絕不該接受的裝扮。據傳流傳下來的說法是，他之所以能坦然穿上這件長袍，正是因為他自己的色覺缺陷讓他根本看不出那是刺眼的猩紅色，在他眼中那更接近某種灰撲撲的顏色——他研究了大半輩子的視覺缺陷，這次意外替他解決了一場信仰與體制之間的兩難。
+</div>
+
+<section>
+  <blockquote>
+    我曾把一朵粉紅色的天竺葵，形容成藍色。
+    <cite>道爾頓1794年論文中回憶自己色覺異常的起點，這篇論文後來被視為史上第一篇關於色盲的科學研究。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、色盲研究的緣起、氣體定律的推導與原子論的核心主張，具體實驗數據請另行查證專業科學史文獻。牛津博士袍的軼事流傳版本不一，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拉普拉斯知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">政治變色龍・我不需要那個假設</p>
+  <h1>拉普拉斯知識圖譜</h1>
+  <p class="lede">拉普拉斯用五大冊《天體力學》證明了太陽系不會自己失控崩潰，據傳拿破崙讀完後問他，這部書怎麼從頭到尾沒提到上帝，拉普拉斯回答：「陛下，我不需要那個假設。」他在另一本書裡想像出一個知道宇宙中每個粒子當下狀態、就能推算出整個過去與未來的「惡魔」，這個思想實驗定義了此後一百多年物理學界對「決定論」的想像；他也是把貝氏機率從一套零星筆記，發展成一套完整數學工具的關鍵人物。但最耐人尋味的，或許是他的政治生涯——歷經舊王朝、大革命、拿破崙帝國、復辟王朝四種截然不同的政權，他都能全身而退，甚至步步高升，跟同資料夾〈拉瓦節〉篇的命運形成強烈對比。這份圖譜要梳理的，就是這幾條交織在一起的線索。</p>
+</header>
+
+<section>
+  <h2>生平——從諾曼第農家子弟到法蘭西科學院的核心人物</h2>
+  <p class="sub">沒有顯赫的家世，靠的是純粹的數學才華，一路被拔擢進入巴黎的核心學術圈</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉普拉斯生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">拉普拉斯出身諾曼第一個經營蘋果酒與農產的普通家庭，並非科學世家</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">靠的是純粹的數學才華，一路被拔擢進入巴黎的核心學術圈</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">諾曼第的普通家庭</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1749年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身經營蘋果酒與農產的</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">普通家庭，靠鄰里資助才</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">得以受教育</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">沒有顯赫家世，起點相對平凡</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">巴黎的數學天賦初露</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1760年代末</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">初到巴黎，以出色的數學</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">能力獲得達朗貝爾等重量</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">級學者賞識</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">一封引薦信，打開了學術圈的大門</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">科學院核心成員</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1770年代起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">迅速累積聲望，成為法蘭</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">西科學院內舉足輕重的核</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">心人物</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">從外省子弟，變成學術圈的中心人物</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">投入天體力學研究</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">畢生志業</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">此後數十年，將牛頓力學</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">系統化為一套完整的數學</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">體系</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這份志業，最終寫成了他最重要的鉅著</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">沒有顯赫的家世，靠的是純粹的數學才華，一路被拔擢進入巴黎的核心學術圈</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟同資料夾多數出身優渥的人物不同，拉普拉斯的起點相對平凡——他的崛起完全仰賴數學能力本身</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">，這份純粹的才華，後來也成了他在政治動盪中屢屢全身而退的重要資本</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">他畢生投入的天體力學研究，最終要回答一個牛頓自己都沒能解決的問題</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>《天體力學》——證明太陽系不會失控崩潰</h2>
+  <p class="sub">牛頓自己都認為，太陽系偶爾需要神的介入才能維持穩定——拉普拉斯不這麼想</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉普拉斯天體力學結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">木星軌道似乎在收縮、土星軌道似乎在擴張，這個現象一度讓人擔心太陽系會失控</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">拉普拉斯耗費數十年心力，用數學徹底解開了這個疑慮</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">木星與土星的軌道異常</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">長期觀測顯示木星軌道似乎逐漸內縮、土星軌道似乎逐</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">漸外擴，引發太陽系是否穩定的疑慮</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">證明是長週期擾動，不是失控</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">以精密數學證明這只是一種長週期的規律擺動，並非永</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">久累積、最終走向失控的趨勢</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">五大冊《天體力學》</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">將牛頓力學系統性改寫為完整的數學分析架構，耗時二</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">十餘年陸續出版完成</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">「我不需要那個假設」</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">據傳拿破崙問他書中為何從未提及上帝，拉普拉斯如此</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">回應，這句話後來被廣為流傳引用</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">牛頓認為太陽系需要神偶爾出手校正，拉普拉斯用數學證明不需要</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">牛頓本人曾主張，行星間的重力擾動長期下來可能累積成災，需要神聖力量偶爾介入調整；拉普拉斯</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">卻用純數學證明，這些擾動終究是自我修正的規律擺動，宇宙本身就足以維持自身的穩定</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這套決定論式的宇宙觀，後來被他推向了一個更極端的思想實驗</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>拉普拉斯惡魔——如果知道一切，就能預知一切</h2>
+  <p class="sub">一個知道宇宙中每個粒子當下狀態的智者，理論上能推算出整個宇宙的過去與未來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉普拉斯惡魔思想實驗結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1814年的著作中，拉普拉斯提出一個影響深遠的思想實驗，探討牛頓力學蘊含的哲學意涵</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">如果一切都遵守力學定律，那麼原則上一切都可以被精確預知</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">假想中的全知智者</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">設想一位智者若能得知宇宙中每個粒子當下確切的位置</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">與運動狀態</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">理論上能推算過去與未來</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">只要套用力學定律進行計算，理論上就能精確推算出整</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">個宇宙過去與未來的每一個狀態</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">後世稱之為「拉普拉斯惡魔」</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">這個假想中的全知智者，後世習慣稱為「拉普拉斯惡魔</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">」，成為經典決定論最著名的象徵</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">直到量子力學才被動搖</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這套決定論式的宇宙觀主宰物理學界一個多世紀，直到</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">二十世紀量子力學的不確定性原理才受到挑戰</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這個思想實驗，其實出自一本談機率的書，而不是談力學的書</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">拉普拉斯提出這個「惡魔」的用意，其實是為了說明機率之所以存在，只是因為人類的知識不完</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">整——而機率理論，正是他留給後世另一項份量更重的遺產</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他在機率這門學問上投入的心力，遠超過這個著名思想實驗給人的印象</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>貝氏機率的真正推手——比貝葉斯本人做得更多的人</h2>
+  <p class="sub">這套統計工具用貝葉斯的名字命名，真正把它發展成完整體系的卻是拉普拉斯</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉普拉斯機率理論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">貝葉斯生前僅留下一篇零星的論文草稿，真正把這套推論方法發展成系統工具的，是拉普拉斯</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他甚至獨立重新推導出同一套原理，再進一步應用到實際問題上</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">獨立發展貝氏推論</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">系統化貢獻</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">在不完全知曉貝葉斯零</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">星研究的情況下，獨立</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">推導出類似原理</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">名字歸了貝葉斯，體系卻是他建立的</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">「明日太陽升起」的機率</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">經典應用</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">以太陽過去每天都升起</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">為例，示範如何用過往</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">紀錄估算未來機率</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">後世稱為「繼承法則」的經典範例</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">應用於人口統計</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">實務應用</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">將機率方法用於估算法</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">國實際人口與出生死亡</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">率等統計問題</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">把純理論工具，用在了實際政務上</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">現代統計學的地基</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">長遠影響</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">這套系統化的機率架構</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">，成為往後兩百年統計</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">學發展的重要地基</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">今天資料科學仍在使用同一套推論邏輯</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">又一次，歷史記住的名字，不一定是真正把體系建立起來的人</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這跟同資料夾〈拉瓦節〉篇談的氧氣命名優先權，是同一種歷史模式——貝葉斯留下的是一顆零星的</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">種子，真正讓它成長為一整套完整學問的耕耘者，卻是拉普拉斯</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而這位在數學與機率上都留下深遠影響的人物，政治手腕同樣高明</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">諾曼第的普通家庭<span class="yr">1749年生</span></div><p>出身經營蘋果酒與農產的普通家庭，靠鄰里資助才得以受教育。</p></div>
+    <div class="card"><div class="nm">巴黎的數學天賦初露</div><p>初到巴黎，以出色的數學能力獲得達朗貝爾等重量級學者賞識。</p></div>
+    <div class="card"><div class="nm">科學院核心成員</div><p>迅速累積聲望，成為法蘭西科學院內舉足輕重的核心人物。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>天體力學</h2><span class="tag">CELESTIAL MECHANICS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">木星與土星的軌道異常</div><p>長期觀測顯示木星軌道似乎內縮、土星軌道似乎外擴，引發太陽系穩定性疑慮。</p></div>
+    <div class="card"><div class="nm">證明是長週期擾動</div><p>以精密數學證明這只是規律擺動，並非永久累積、走向失控的趨勢。</p></div>
+    <div class="card"><div class="nm">「我不需要那個假設」</div><p>據傳拿破崙問他書中為何從未提及上帝，拉普拉斯如此回應，這句話後來廣為流傳。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>拉普拉斯惡魔</h2><span class="tag">DETERMINISM</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">假想中的全知智者</div><p>設想一位智者若能得知宇宙中每個粒子當下確切的位置與運動狀態。</p></div>
+    <div class="card"><div class="nm">理論上能推算過去與未來</div><p>只要套用力學定律計算，理論上就能推算宇宙過去與未來的每一個狀態。</p></div>
+    <div class="card"><div class="nm">直到量子力學才被動搖</div><p>這套決定論宇宙觀主宰物理學界一個多世紀，直到量子力學的不確定性原理才受到挑戰。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>機率理論</h2><span class="tag">PROBABILITY</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">獨立發展貝氏推論</div><p>在不完全知曉貝葉斯零星研究的情況下，獨立推導出類似原理並系統化。</p></div>
+    <div class="card"><div class="nm">「明日太陽升起」的機率</div><p>以太陽過去每天都升起為例，示範如何用過往紀錄估算未來機率。</p></div>
+    <div class="card"><div class="nm">現代統計學的地基</div><p>這套系統化的機率架構，成為往後兩百年統計學發展的重要地基。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>政治變色龍：歷經四種政權都能全身而退</b><br>
+  拉普拉斯的政治生涯，是他人生裡最耐人尋味的一條線索。舊王朝時期，他已是科學院要角；大革命期間，他參與制訂公制度量衡系統，安然度過恐怖統治，沒有像同資料夾〈拉瓦節〉篇那樣因包稅官身分被送上斷頭台；拿破崙掌權後，他短暫出任內政部長，卻只做了六週就被撤換——拿破崙後來評論，他把「無窮小的精神」帶進了行政工作，意思是他太過講究數學式的精確，反而不適合處理實際政務；儘管如此，拿破崙仍授予他伯爵頭銜。等到拿破崙垮台、波旁王朝復辟，拉普拉斯又順利獲封侯爵——同一個人，在短短數十年間先後被大革命、拿破崙帝國與復辟王朝三個立場互相敵對的政權，各自賦予了榮譽與頭銜。他的數學才華或許是真正的護身符，讓他在每一次政權更迭中，都顯得不可或缺。
+</div>
+
+<section>
+  <blockquote>
+    陛下，我不需要那個假設。
+    <cite>據傳拉普拉斯回應拿破崙質疑《天體力學》為何未曾提及上帝時的答覆——這句話的確切措辭與對話場合，史學界普遍認為是後世轉述整理過的版本，但它精準概括了拉普拉斯畢生秉持的科學方法論。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、天體力學的核心貢獻、拉普拉斯惡魔思想實驗，以及機率理論與政治生涯，具體數學推導內容請另行查證專業科學史文獻。「我不需要那個假設」等軼事的確切措辭，不同史料記載略有出入，本頁已標明存疑之處。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

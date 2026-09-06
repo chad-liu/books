@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>維薩里知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">深夜盜屍・與哥白尼同年</p>
+  <h1>維薩里知識圖譜</h1>
+  <p class="lede">1543年，兩本書幾乎同時出版，各自重新定義了一整個世界——哥白尼的《天體運行論》重新安排了天上的星辰，維薩里的《人體構造》則重新畫出了人體內部的樣貌。維薩里挑戰的，是延續一千三百年沒人敢質疑的解剖學權威蓋倫，而蓋倫的錯誤根源很簡單：他解剖的其實幾乎都是豬和猴子，不是人。年僅二十八歲的維薩里，靠的是深夜潛入刑場偷屍體、跟劊子手打好交情換取解剖用的人體，才有辦法一一比對出蓋倫錯在哪裡。這份圖譜要梳理的，就是他怎麼取得解剖材料、怎麼推翻千年權威、那本鉅著本身在印刷與藝術史上的地位，以及晚年一場真假難辨的傳說與一趟沒有回程的朝聖之旅。</p>
+</header>
+
+<section>
+  <h2>生平起點——從魯汶到帕多瓦，一位急於解剖真人的年輕學生</h2>
+  <p class="sub">當時的醫學教育普遍靠讀蓋倫的文本，很少真的動手解剖——維薩里對這套教法很不耐煩</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維薩里生平起點結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">維薩里出身布魯塞爾一個世代行醫的家族，先後在魯汶、巴黎攻讀醫學</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">當時的醫學教育普遍靠讀蓋倫的文本，很少真的動手解剖——他對這套教法很不耐煩</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">世代行醫的家族</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1514年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身布魯塞爾的醫學世家，</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">曾祖父、祖父、父親都從事</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">醫療相關工作</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">從小就浸泡在醫學典籍的環境裡</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">魯汶與巴黎求學</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1530年代</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">先後在魯汶大學與巴黎大學</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">攻讀醫學，課程仍以誦讀蓋</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">倫文本為主</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">解剖多半交給助手代勞，教授只負責唸稿</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">帕多瓦：23歲的教授</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1537年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">取得帕多瓦大學醫學博士學</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">位當天，隨即獲聘為外科與</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">解剖學教授</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">年紀輕輕就站上了解剖台的主講位置</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">堅持親自動刀示範</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">教學風格</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">一反同代教授把解剖工作交</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">給助手的慣例，堅持自己動</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">手示範解剖</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這個堅持，後來揭穿了蓋倫的錯誤</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">親自動手解剖，這個看似基本的堅持，在當時其實相當罕見</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">當時的解剖課通常由教授高坐講台朗讀蓋倫文本，底下的理髮師兼外科助手負責實際動刀——教授本人</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">往往不必碰觸屍體。維薩里打破了這個分工，也因此第一手看見了文本與真實人體之間的落差</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而這份落差，最終指向了一個延續一千三百年沒人質疑的權威</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>挑戰蓋倫——一千三百年沒人質疑的解剖學權威，錯在哪裡</h2>
+  <p class="sub">蓋倫的解剖學知識，幾乎全部來自豬與猴子，不是人</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維薩里挑戰蓋倫結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">古羅馬醫師蓋倫的解剖學著作，自二世紀起主宰西方醫學教育超過一千三百年</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">問題在於，蓋倫幾乎沒有解剖過人體</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">羅馬禁止人體解剖</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">古羅馬社會禁止解剖人類屍體，蓋倫的解剖知識幾乎全</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">部來自解剖豬、猴子等動物</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">動物構造被直接套用到人體</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">蓋倫假定動物解剖結構可以直接對應人體，這個假設此</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">後被奉為醫學教育的標準教材長達千年</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">親手解剖比對出的落差</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">維薩里透過大量親自執行的人體解剖，逐一比對出蓋倫</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">描述與真實人體構造之間的落差</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">記錄下數百處錯誤</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">系統性記錄下蓋倫解剖描述中數以百計的錯誤，涵蓋骨</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">骼、肌肉到內臟等各個層面</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">推翻千年權威的方法，不是提出更好的理論，而是回到解剖台上親自查證</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">這跟同資料夾〈伽利略〉篇談的「用實驗取代權威文本」是同一種邏輯，只是舞台從天文望遠鏡換成</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">了解剖刀——而要進行這種等級的比對，前提是得先找到足夠的人體可以解剖</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">在人體解剖仍高度受限的年代，這件事本身就是一場冒險</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>深夜盜屍與劊子手的交情——他怎麼取得解剖用的人體</h2>
+  <p class="sub">合法取得的屍體數量遠遠不夠，維薩里的解決辦法相當直接，也相當冒險</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維薩里取得屍體結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">合法管道能取得的屍體數量遠遠不夠支撐他大量的解剖需求</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">維薩里的解決辦法，遊走在當時法律與道德的邊緣</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">深夜潛入城外刑場</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">求學期間</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">學生時期便曾深夜潛入城牆</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">外的絞刑架，取回懸掛示眾</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">的犯人屍體</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">冒著被發現的風險換取研究材料</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">與帕多瓦法官交好</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">任教期間</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">在帕多瓦任教後，與當地法</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">官建立友好關係，取得處決</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">囚犯屍體的優先取得權</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">從偷竊轉為半制度化的合作關係</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">處決時程配合教學</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">制度化合作</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">據傳當地司法程序會配合他</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">的教學需求，調整處決犯人</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">的時間</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">解剖教學與司法程序意外綁在一起</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">供應量足以支撐鉅著</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">研究基礎</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">穩定的屍體供應，讓他得以</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">累積足夠的解剖案例，支撐</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">日後鉅著的內容</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">沒有這層灰色合作，就沒有那本書</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">科學史上一段常被輕描淡寫帶過、卻相當關鍵的灰色地帶</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">今天教科書裡對人體解剖學的基礎認識，追根究柢建立在這段遊走法律邊緣的取材過程之上——這段歷</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">史細節，常被排除在通俗的科學史敘述之外</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">累積夠多的解剖案例之後，他把成果做成了一本足以留名藝術史的鉅著</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>《人體構造》——28歲的曠世鉅著，與哥白尼同一年出版</h2>
+  <p class="sub">這不只是一本解剖學教科書，也是印刷史與版畫藝術史上的一座里程碑</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維薩里人體構造出版結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1543年，《人體構造》在瑞士巴塞爾出版，同一年，哥白尼的《天體運行論》也問世了</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">後世史學家常把這一年，視為近代科學同時在天與人兩端起步的一年</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">與哥白尼同年出版</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1543年出版時，維薩里年僅二十八歲，同一年哥白尼</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">的地動說著作也在巴塞爾附近問世</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">精緻的木刻版畫插圖</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">書中收錄大量精細的解剖版畫，據傳出自提香畫室相關</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">藝術家之手，兼具科學與藝術價值</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">「肌肉人」系列插圖</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">著名的漸進解剖插圖系列，讓被剝除肌肉的人體立於風</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">景之中，姿態近乎戲劇性演出</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">印刷史與解剖學的雙重里程碑</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這部作品同時被視為近代解剖學的奠基之作，以及科學</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">插圖史與印刷史上的重要里程碑</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一年，天上與人體，各自被重新畫過一次</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">哥白尼把地球從宇宙中心移開，維薩里則把人體從蓋倫文本的想像裡，拉回解剖台上的真實觀察——</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">兩本書處理的對象天差地遠，方法論上卻同樣是用親自查證取代對古代權威的盲從</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但這份輝煌的成就，並沒有讓他此後的人生一路順遂</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平起點</h2><span class="tag">EARLY LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">世代行醫的家族<span class="yr">1514年生</span></div><p>出身布魯塞爾的醫學世家，曾祖父、祖父、父親都從事醫療相關工作。</p></div>
+    <div class="card"><div class="nm">帕多瓦：23歲的教授<span class="yr">1537年</span></div><p>取得帕多瓦大學醫學博士學位當天，隨即獲聘為外科與解剖學教授。</p></div>
+    <div class="card"><div class="nm">堅持親自動刀示範</div><p>一反同代教授把解剖工作交給助手的慣例，堅持自己動手示範解剖。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>挑戰蓋倫</h2><span class="tag">GALEN</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">羅馬禁止人體解剖</div><p>古羅馬社會禁止解剖人類屍體，蓋倫的解剖知識幾乎全部來自解剖動物。</p></div>
+    <div class="card"><div class="nm">動物構造被套用到人體</div><p>蓋倫假定動物解剖結構可以直接對應人體，此後被奉為醫學教育標準教材長達千年。</p></div>
+    <div class="card"><div class="nm">記錄下數百處錯誤</div><p>透過大量親自解剖，系統性記錄下蓋倫解剖描述中數以百計的錯誤。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>取得解剖材料</h2><span class="tag">CADAVERS</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">深夜潛入城外刑場</div><p>學生時期便曾深夜潛入城牆外的絞刑架，取回懸掛示眾的犯人屍體。</p></div>
+    <div class="card"><div class="nm">與帕多瓦法官交好</div><p>任教後與當地法官建立友好關係，取得處決囚犯屍體的優先取得權。</p></div>
+    <div class="card"><div class="nm">處決時程配合教學</div><p>據傳當地司法程序會配合他的教學需求，調整處決犯人的時間。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>人體構造出版</h2><span class="tag">FABRICA</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">與哥白尼同年出版<span class="yr">1543年</span></div><p>出版時維薩里年僅二十八歲，同一年哥白尼的地動說著作也問世。</p></div>
+    <div class="card"><div class="nm">精緻的木刻版畫插圖</div><p>書中收錄大量精細的解剖版畫，據傳出自提香畫室相關藝術家之手。</p></div>
+    <div class="card"><div class="nm">印刷史與解剖學的雙重里程碑</div><p>同時被視為近代解剖學奠基之作，以及科學插圖史與印刷史上的重要里程碑。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>晚年的傳說與一趟沒有回程的朝聖</b><br>
+  出版鉅著後，維薩里逐漸淡出第一線解剖研究，轉任神聖羅馬帝國皇帝查理五世、後來是西班牙國王腓力二世的御醫。後世流傳一則廣為人知卻史料根基相當薄弱的傳說：他曾在一場解剖中，發現受試者其實尚未真正死亡、心臟仍在跳動，因而遭宗教裁判所調查，被迫以朝聖耶路撒冷作為贖罪。多數現代史學家認為這則故事缺乏同時代的可靠記載，比較可能是後世附會的傳奇。可以確定的是，維薩里確實在1564年前往耶路撒冷朝聖，返程途中於希臘札金索斯島身故，死因與這趟旅程的真正動機，至今仍有不同說法。他親手推翻了千年權威建立起的解剖學，自己人生最後一段路，卻留給了後世一則真假難辨的傳說。
+</div>
+
+<section>
+  <blockquote>
+    我發現蓋倫從未親自解剖過人體，他所描述的一切，其實是猴子與其他動物的構造。
+    <cite>維薩里在《人體構造》中，對蓋倫解剖學權威提出質疑時的立場大意——這句話標誌著解剖學研究從仰賴古代文本，轉向以親自觀察為準的關鍵轉折。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、挑戰蓋倫的過程、解剖材料的取得方式，以及《人體構造》的出版意義，具體解剖學技術內容不在本頁詳述範圍內。晚年「活體解剖」傳說與死亡真相，史學界至今沒有定論，本頁已標明存疑之處，正式引用請另行查證專業科學史文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

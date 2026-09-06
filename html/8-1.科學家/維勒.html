@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>維勒知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">一封寫給恩師的信・生機論的黃昏</p>
+  <h1>維勒知識圖譜</h1>
+  <p class="lede">1828年，維勒寫信給恩師貝吉里斯，語氣像是在告白一件難以置信的事：他不需要腎臟，不管是人的還是狗的，就能做出尿素。這件小事後來被寫成教科書裡「生機論一夜崩潰」的傳奇，但真實的歷史比傳奇更慢、更複雜——生機論並沒有在1828年那一天就死去，維勒自己也沒有立刻意識到這個實驗的哲學份量。這份圖譜要梳理的，是這個意外實驗實際發生的過程、它花了多久才真正改變化學界的想法，以及維勒本人在鋁、鈹與同分異構現象上留下的、常被這個傳奇故事掩蓋的其他貢獻。</p>
+</header>
+
+<section>
+  <h2>生平——先學醫，才轉向化學</h2>
+  <p class="sub">跟後來的〈巴斯德〉篇恰好相反：他是先跨進醫學，才轉身走進化學的</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維勒生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">維勒先在海德堡取得醫學學位，卻在畢業前後決定改行投入化學</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個轉向，把他帶到了瑞典化學泰斗貝吉里斯的門下</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">先取得醫學學位</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1800年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身法蘭克福，在海</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">德堡大學取得醫學學位</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">卻對化學實驗更感興趣</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">改行投入化學</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1823年起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">前往斯德哥爾摩，拜</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">入瑞典化學泰斗貝吉里斯門下</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">貝吉里斯終生的信件往來夥伴</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">柏林、哥廷根任教</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1825年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">陸續於柏林技術學院</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">與哥廷根大學任教化學</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">在哥廷根度過大半學術生涯</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">與李比希長年合作</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1830年代起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">與化學家李比希結為</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">終生摯友，長期通信合作</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">合寫的論文數量相當可觀</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從醫學轉向化學，讓他一開始就對「生命」與「物質」的界線特別敏感</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟稍後〈巴斯德〉篇的路徑恰好相反——巴斯德是先學化學才轉向生物學，維勒則是先學醫學才轉</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">向化學，兩人從不同方向出發，卻都在「生命與非生命的界線」這個問題上留下了關鍵一擊</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">維勒的那一擊，發生在一次原本沒打算得到這個結果的實驗裡</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>意外的尿素——一封信，撼動了生機論的地基</h2>
+  <p class="sub">他原本在嘗試製造別的化合物，卻意外合成出了一種只該來自生物體的物質</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維勒尿素合成結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1828年，維勒嘗試加熱氰酸銨這種無機鹽，想看看會產生什麼變化</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">結果反應瓶裡析出的結晶，竟然跟尿液裡的尿素一模一樣</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">加熱無機鹽的常規實驗</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">原本只是想觀察氰酸銨這種無機鹽加熱後</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">的變化，並非刻意挑戰生機論</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">析出的結晶竟是尿素</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">比對後確認，反應瓶裡的結晶與尿液中的</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">尿素完全相同</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">寫信告訴貝吉里斯</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">寫信給恩師，語帶驚訝表示自己不需要腎</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">臟，也能製造出這種有機物</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">動搖生機論的第一道裂縫</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">當時普遍認為有機物只能由生物體內的「</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">生命力」製造，這個實驗打開了第一道裂縫</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">但這道裂縫，並沒有讓生機論一夜之間崩潰</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">維勒自己在信中的語氣，其實比後世傳頌的還要保留，他也沒有立刻宣稱推翻了生機論；許多同時</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">代的化學家仍主張，氰酸銨本身可能帶有殘餘的生命力，這場實驗要花上數十年才真正改變共識</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而維勒自己，其實還留下了另外兩項常被這個傳奇掩蓋的貢獻</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>被掩蓋的貢獻——鋁、鈹，與一場改寫化學概念的爭論</h2>
+  <p class="sub">尿素合成的名聲太大，反而讓他其餘的重要工作被擠到了歷史的角落</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維勒其他貢獻結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">除了尿素，維勒還率先分離出兩種金屬元素，並協助解決了一場關鍵的化學爭論</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">其中一種金屬，一度比黃金還珍貴</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">分離出金屬鋁</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1827年以鉀還原氯化鋁，分離出金屬鋁</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">，當時提煉困難，鋁一度比黃金珍貴</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">分離出金屬鈹</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">隔年以同樣方法分離出金屬鈹，兩者都</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">是難以還原的活性金屬</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">雷酸銀與氰酸銀之謎</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">發現雷酸銀與李比希研究的氰酸銀，化</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">學成分相同，性質卻大不相同</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">催生「同分異構」概念</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這場謎團促使貝吉里斯提出「同分異構</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">」概念，成為有機化學的核心工具</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">拿破崙三世曾用鋁盤宴請貴賓，其他賓客卻只能用金盤</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">維勒分離出鋁的年代，提煉技術極其昂貴，鋁因此成了比黃金還顯貴的金屬，直到數十年後電解提</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">煉法問世，鋁才變成今天隨處可見的廉價金屬——這段身價暴跌的歷史，本身就是一則有趣的插曲</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而尿素合成的意義，最終還是回到了生命與非生命界線的大哉問</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">先取得醫學學位<span class="yr">1800年生</span></div><p>出身法蘭克福，在海德堡大學取得醫學學位，卻對化學實驗更感興趣。</p></div>
+    <div class="card"><div class="nm">改行投入化學<span class="yr">1823年起</span></div><p>前往斯德哥爾摩，拜入瑞典化學泰斗貝吉里斯門下。</p></div>
+    <div class="card"><div class="nm">與李比希長年合作<span class="yr">1830年代起</span></div><p>與化學家李比希結為終生摯友，長期通信合作，合寫的論文數量相當可觀。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>尿素合成</h2><span class="tag">UREA SYNTHESIS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">加熱無機鹽的常規實驗<span class="yr">1828年</span></div><p>原本只是想觀察氰酸銨這種無機鹽加熱後的變化，並非刻意挑戰生機論。</p></div>
+    <div class="card"><div class="nm">析出的結晶竟是尿素</div><p>比對後確認，反應瓶裡的結晶與尿液中的尿素完全相同。</p></div>
+    <div class="card"><div class="nm">動搖生機論的第一道裂縫</div><p>當時普遍認為有機物只能由生物體內的「生命力」製造，這個實驗打開了第一道裂縫。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>其他貢獻</h2><span class="tag">OTHER WORK</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">分離出金屬鋁<span class="yr">1827年</span></div><p>以鉀還原氯化鋁，分離出金屬鋁，當時提煉困難，鋁一度比黃金珍貴。</p></div>
+    <div class="card"><div class="nm">分離出金屬鈹<span class="yr">1828年</span></div><p>隔年以同樣方法分離出金屬鈹，兩者都是難以還原的活性金屬。</p></div>
+    <div class="card"><div class="nm">催生「同分異構」概念</div><p>雷酸銀與氰酸銀成分相同性質卻不同的謎團，促使貝吉里斯提出同分異構概念。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與〈巴斯德〉篇的呼應：從兩個方向逼近同一條界線</b><br>
+  維勒的尿素合成，證明了「非生命物質可以組成生命才有的分子」，動搖了生機論主張有機物需要神秘生命力的說法；而稍後的〈巴斯德〉篇要談的鵝頸瓶實驗，證明的卻是「生命不會憑空從非生命中冒出來」，否證了自然發生說。兩人從化學與生物學兩個完全不同的方向出發，卻不約而同都在「生命與非生命的界線」這個問題上留下了決定性的一擊——只是維勒的裂縫花了數十年才真正說服化學界，遠不如教科書裡「一夜崩潰」的敘事那樣戲劇化。
+</div>
+
+<section>
+  <blockquote>
+    我必須告訴您，我可以不需要腎臟，不管是人的還是狗的，就能製造出尿素。
+    <cite>維勒1828年寫給恩師貝吉里斯的信中，描述自己意外合成尿素時的語氣，後世常引用此語象徵生機論受到的第一次挑戰。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、尿素合成的實際經過與生機論轉變的時間跨度，以及鋁、鈹分離與同分異構概念等常被忽略的貢獻，具體實驗數據請另行查證專業科學史文獻。信件的確切措辭因翻譯版本略有出入，本頁採較多方引用共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

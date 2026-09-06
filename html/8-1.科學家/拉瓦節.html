@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拉瓦節知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">天平作為武器・命名者的優先權</p>
+  <h1>拉瓦節知識圖譜</h1>
+  <p class="lede">拉瓦節終結燃素說靠的不是新發現，而是一台精密天平——他堅持每次化學反應前後都要秤重，證明「什麼都沒有消失，什麼都沒有被創造」，把化學從一門描述性的手藝，變成一門講究定量的科學。矛盾的是，讓他買得起這台天平、養得起實驗室的錢，來自他包稅官的身分，而正是這個身分，最終把他送上了斷頭台。他也不是第一個製造出氧氣的人，卻是唯一真正搞懂氧氣在做什麼的人——這場「發現者」與「命名者」之間的優先權之爭，比表面看起來更耐人尋味。這份圖譜要梳理的，就是這幾條線怎麼交織在同一個人身上。</p>
+</header>
+
+<section>
+  <h2>生平——繼承的財富與包稅官身分，如何反過來資助了他的實驗室</h2>
+  <p class="sub">供他買下全歐洲最精密天平的錢，來自一份日後會要他命的差事</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉瓦節生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">拉瓦節出身巴黎富裕家庭，主修法律卻一頭栽進化學，靠包稅官的收入養起了頂級實驗室</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他的妻子，後來成了他實驗室裡不可或缺的一雙手</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">巴黎的富裕家族</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1743年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身巴黎富裕家庭，取得法</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">律學位，卻把心力全放在化</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">學實驗上</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">學位是律師，志業卻是化學家</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">加入包稅集團</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1768年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">投資加入法國包稅集團，取</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">得穩定且豐厚的收入來源，</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">用以資助研究</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">這筆錢買下了全歐洲數一數二精密的儀器</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">與瑪麗-安妮的婚姻</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1771年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">與同僚之女瑪麗-安妮成婚</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">，她自學英文與拉丁文，成</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">為關鍵的研究夥伴</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">翻譯外國文獻、記錄實驗，缺一不可</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">親手繪製插圖</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">實驗室分工</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">瑪麗-安妮師從畫家受訓，</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">親手繪製丈夫著作裡精細的</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">儀器插圖</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這套化學革命，是夫妻兩人共同完成的</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">供他買下全歐洲最精密天平的錢，來自一份日後會要他命的差事</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">包稅官負責向法國政府預繳稅款，再自行向民眾徵收、賺取差額——這套制度讓拉瓦節有能力打造頂</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">級實驗室，卻也讓他在往後的政治風暴裡，被貼上了「剝削人民」的標籤</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">這台頂級天平，正是他推翻舊化學理論最核心的武器</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>天平作為武器——「什麼都沒有消失，什麼都沒有被創造」</h2>
+  <p class="sub">同時代的化學家多半靠觀察與描述，拉瓦節卻堅持每一次反應前後都要秤重</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉瓦節質量守恆結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">拉瓦節把天平變成他最重要的實驗工具，堅持每一次化學反應前後都要精密秤重</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個看似枯燥的堅持，最終導出了化學史上最重要的定律之一</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">密閉容器裡的反應</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">在密閉容器中進行反應，確保沒有物質能不受控制地逸</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">散或滲入，才能精確比對重量</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">反應前後總重不變</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">反覆實驗證實，只要把所有反應物與生成物都算進去，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">總重量在反應前後始終維持不變</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">質量守恆定律</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">由此確立「物質不會憑空消失，也不會憑空產生」的原</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">則，成為現代化學最基本的公理之一</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">從描述性學問到定量科學</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這套方法把化學從仰賴質性描述的手藝，轉變成一門可</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">以精確測量、可被驗證的定量科學</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同資料夾裡另一個「精密儀器決定一切」的故事</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">第谷靠精密角度測量拆掉了古代宇宙論，列文虎克靠精密磨鏡看見了微生物世界，拉瓦節則靠精密天</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">平拆掉了燃素說——這套系列裡一再重複的模式，是儀器精度往往才是理論突破的真正門檻</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他用這套方法對付的第一個大目標，就是當時最主流的燃燒理論</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>燃素說之死——他怎麼用氧氣改寫了燃燒的定義</h2>
+  <p class="sub">燃燒後的金屬灰燼反而變重，這個矛盾，舊理論始終解釋不清楚</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉瓦節燃素說之死結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">當時主流的燃素說認為燃燒會釋放一種叫「燃素」的物質，但這套理論有一個難以解釋的矛盾</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">金屬燃燒後的灰燼，重量反而比燃燒前更重</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">燃素說的老問題：越燒越重</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">燃素說主張燃燒釋放燃素，理論上物質應該變輕，但金</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">屬燃燒後的灰燼實際上總是變重</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">汞的密閉加熱實驗</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">在密閉容器中加熱汞並精密測量消耗的氣體量，追蹤重</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">量變化與氣體消耗之間的對應關係</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">燃燒是「結合」，不是「釋放」</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">證明燃燒的本質，是物質與空氣中某種成分結合，而不</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">是釋放出一種神秘物質</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">命名「氧氣」</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">將這種關鍵氣體命名為「氧氣」，意為「成酸者」，儘</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">管這個字面含義後來被證明並不完全準確</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一個簡單的重量矛盾，靠精密量測終於被徹底解開</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">燃素說支持者曾提出各種修補說法（甚至主張燃素帶有負重量）試圖圓場，但拉瓦節的量化實驗直接</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">從根本上否定了燃素這個概念存在的必要性，燃燒不必假設任何神秘物質就能完整解釋</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但拉瓦節其實不是第一個製造出這種氣體的人——這裡藏著一場優先權之爭</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>命名的人，不是發現的人——一場沒有硝煙的優先權之爭</h2>
+  <p class="sub">最早製造出氧氣的兩位化學家，一位至死都不相信自己做出了什麼新東西</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉瓦節氧氣命名優先權結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">氧氣最早由另外兩位化學家各自獨立製造出來，拉瓦節既不是第一，也不是唯一</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但歷史記住的，是那個弄懂這種氣體究竟在做什麼的人</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">舍勒的早期製備</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1770年代初</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">瑞典化學家舍勒最早獨立製</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">造出這種氣體，但研究成果</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">出版時間較晚</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">出版得晚，優先權因此常被忽略</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">普利斯特里的實驗</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1774年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">英國化學家普利斯特里製造</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">出這種氣體，並親自向拉瓦</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">節描述了實驗過程</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">稱之為「脫燃素空氣」，仍套用舊理論</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">拉瓦節重新解讀</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1777年前後</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">拉瓦節重新設計實驗，正確</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">指出這種氣體才是燃燒與呼</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">吸的關鍵</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">別人做出了氣體，他解釋了原理</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">普利斯特里終生不接受</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">意外的結局</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">諷刺的是，普利斯特里終其</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">一生都堅持燃素說，不接受</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">拉瓦節的新解釋</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">親手做出關鍵氣體，卻至死不信新理論</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">科學史記住的往往不是誰第一個做出來，而是誰第一個弄懂了它的意義</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這跟同資料夾〈萊布尼茲〉篇談的微積分符號之爭，是同一種歷史邏輯——真正決定後世記憶的，往往</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">不是誰的手先碰到那個發現，而是誰的解釋架構撐到了最後</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但拉瓦節留給後世的，還包括一整套至今仍在使用的化學命名系統，以及一段沒有回頭路的政治命運</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">巴黎的富裕家族<span class="yr">1743年生</span></div><p>出身巴黎富裕家庭，取得法律學位，卻把心力全放在化學實驗上。</p></div>
+    <div class="card"><div class="nm">加入包稅集團<span class="yr">1768年</span></div><p>投資加入法國包稅集團，取得穩定且豐厚的收入來源，用以資助研究。</p></div>
+    <div class="card"><div class="nm">與瑪麗-安妮的婚姻<span class="yr">1771年</span></div><p>與同僚之女成婚，她自學英文與拉丁文並親手繪製插圖，成為關鍵研究夥伴。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>質量守恆</h2><span class="tag">CONSERVATION</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">密閉容器裡的反應</div><p>在密閉容器中進行反應，確保沒有物質能不受控制地逸散或滲入，才能精確比對重量。</p></div>
+    <div class="card"><div class="nm">反應前後總重不變</div><p>反覆實驗證實，只要把所有反應物與生成物都算進去，總重量在反應前後始終維持不變。</p></div>
+    <div class="card"><div class="nm">從描述性學問到定量科學</div><p>把化學從仰賴質性描述的手藝，轉變成一門可以精確測量、可被驗證的定量科學。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>燃素說之死</h2><span class="tag">OXYGEN</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">燃素說的老問題：越燒越重</div><p>燃素說主張燃燒釋放燃素，理論上該變輕，但金屬燃燒後的灰燼實際上總是變重。</p></div>
+    <div class="card"><div class="nm">燃燒是「結合」，不是「釋放」</div><p>證明燃燒的本質是物質與空氣中某種成分結合，而不是釋放出一種神秘物質。</p></div>
+    <div class="card"><div class="nm">命名「氧氣」</div><p>將這種關鍵氣體命名為「氧氣」，意為「成酸者」，儘管這個字面含義後來被證明不完全準確。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>優先權之爭</h2><span class="tag">PRIORITY</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">普利斯特里的實驗<span class="yr">1774年</span></div><p>英國化學家普利斯特里製造出這種氣體，並親自向拉瓦節描述了實驗過程。</p></div>
+    <div class="card"><div class="nm">拉瓦節重新解讀</div><p>重新設計實驗，正確指出這種氣體才是燃燒與呼吸的關鍵，別人做出了氣體，他解釋了原理。</p></div>
+    <div class="card"><div class="nm">普利斯特里終生不接受</div><p>諷刺的是，普利斯特里終其一生都堅持燃素說，不接受拉瓦節的新解釋。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>包稅官的身分，最終把他送上了斷頭台</b><br>
+  1787年，拉瓦節與同僚共同發表新的化學命名系統，把混亂的傳統物質名稱改造成依組成邏輯命名的架構，兩年後的1789年——法國大革命爆發的同一年——出版《化學基本論述》，一般被視為第一本真正意義上的近代化學教科書。但供他建立這套化學革命的財富來源，正是他包稅官的身分。大革命爆發後，包稅集團被視為剝削人民的象徵，1793到1794年間，拉瓦節與其他包稅官一同被捕受審，1794年5月8日遭處決，得年五十歲。數學家拉格朗日隔天感嘆：「他們只用了一瞬間，就砍下了那顆頭顱，但再過一百年，也未必能再誕生一顆同樣的頭腦。」他推翻燃素說靠的是精密天平，最終奪走他性命的，卻是一場容不下天平的政治審判。
+</div>
+
+<section>
+  <blockquote>
+    他們只用了一瞬間，就砍下了那顆頭顱，但再過一百年，也未必能再誕生一顆同樣的頭腦。
+    <cite>據傳為數學家拉格朗日在拉瓦節被處決隔天所說的話，感嘆這場政治審判摧毀了一位罕見的科學心智。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、質量守恆定律的推導、燃素說的推翻過程與氧氣命名的優先權爭議，具體化學實驗數據請另行查證專業科學史文獻。「燃素帶負重量」等修補說法的細節、拉格朗日評語的確切措辭，不同史料記載略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

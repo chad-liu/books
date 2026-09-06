@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>哈維知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">算出來的證據・看不見的連結</p>
+  <h1>哈維知識圖譜</h1>
+  <p class="lede">維薩里推翻的是蓋倫的解剖學，哈維推翻的則是蓋倫的生理學——蓋倫相信血液由肝臟不斷新生、順著靜脈被身體當燃料消耗掉，心臟兩側的血液還會滲過中膈上看不見的孔洞互通。哈維提出的反駁，最關鍵的證據卻不是他親眼看到的，而是一道簡單的算術：如果血液真的用完即棄，心臟每小時得幫全身重新製造出好幾倍體重的血才夠用，這顯然不可能。他因此斷定血液是一套封閉的循環系統，只是當時的放大鏡看不到動脈通往靜脈的最後一段連結，這段連結直到他過世四年後，才被顯微鏡真正證實。這份圖譜要梳理的，就是他怎麼用算術扳倒千年權威、他晚年在英國內戰中的際遇，以及那段等了幾十年才被看見的「看不見的證據」。</p>
+</header>
+
+<div class="callout">
+  <b>與〈維薩里〉篇、〈列文虎克〉篇的銜接</b><br>
+  維薩里推翻的是蓋倫的解剖結構描述，哈維推翻的是蓋倫的血液生理學，兩人合力拆掉了蓋倫權威的兩根支柱，見同資料夾〈維薩里〉篇第二節。哈維預言、卻終生無法親眼看見的微血管連結，後來正是被〈列文虎克〉篇談到的顯微鏡觀察所證實，本頁不重複那段技術細節。
+</div>
+
+<section>
+  <h2>生平——劍橋到帕多瓦，一路走到皇家御醫</h2>
+  <p class="sub">求學路線與同資料夾〈維薩里〉篇的帕多瓦傳統一脈相承</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈維生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">哈維在劍橋完成基礎學業後，遠赴帕多瓦深造——那正是維薩里留下深厚解剖傳統的地方</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">回到英國後，他的職涯一路走到了皇室御醫的位置</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">劍橋的基礎教育</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1578年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身英格蘭肯特郡，先在劍</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">橋完成人文學科基礎教育，</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">再轉往醫學專攻</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">典型的英國仕紳求學路徑</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">帕多瓦深造</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1600年代初</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">前往帕多瓦大學攻讀醫學，</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">師從當地解剖學者，深受重</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">視親自解剖的傳統影響</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">維薩里留下的教學傳統，仍在延續</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">倫敦執業與教職</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">返英後</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">在倫敦聖巴多羅買醫院任職</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">醫師，同時取得解剖學講席</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">，持續親自解剖研究</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">臨床與研究兩條線同時累積經驗</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">晉身皇室御醫</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">此後數十年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">先後成為詹姆士一世與查理</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">一世的御醫，深入英國宮廷</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">核心</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這個位置，後來讓他捲入了一場內戰</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">求學路線與同資料夾〈維薩里〉篇的帕多瓦傳統一脈相承</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">哈維求學時，維薩里雖已離世多年，但他親自解剖、重視第一手觀察的教學風氣，仍是帕多瓦醫學教</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">育的核心精神——哈維後來挑戰蓋倫的方式，跟這套訓練有著明顯的血緣關係</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">他準備挑戰的，是蓋倫留下的另一套更根本的假設：血液究竟是怎麼流動的</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>挑戰蓋倫的第二戰場——心臟不是爐子，是幫浦</h2>
+  <p class="sub">蓋倫認為血液由肝臟不斷新生、被身體當燃料消耗掉——哈維主張的是完全不同的機制</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈維挑戰蓋倫血液生理學結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">蓋倫的血液理論主宰醫學界一千四百多年，哈維1628年的著作將其徹底推翻</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">兩套理論對心臟與血液的想像，幾乎完全相反</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">蓋倫的舊模型：血液用完即棄</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">血液由肝臟不斷從食物新生，順著靜脈流向全身被當燃</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">料消耗，動靜脈血液各自獨立</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">中膈孔洞的假設</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">蓋倫主張心臟兩側的血液，會透過中膈上看不見的微小</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">孔洞互相滲透，這個構造從未被真正觀察到</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">哈維的新模型：心臟是幫浦</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">主張心臟以規律收縮把同一批血液持續推動，形成一套</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">封閉循環的機械系統，而非消耗性燃料</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1628年《心血運動論》</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這部著作系統性提出循環理論，正式挑戰延續超過一千</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">四百年的蓋倫血液生理學</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">維薩里拆掉的是蓋倫的解剖結構描述，哈維拆掉的是蓋倫的生理運作機制</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">兩場挑戰合在一起，等於把蓋倫醫學體系的「身體構造」與「身體如何運作」兩根支柱，在不到一百</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">年間相繼拆除——但哈維這次靠的不是解剖刀，而是一道簡單卻致命的算術</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這道算術，才是真正壓垮舊理論的決定性證據</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>決定性的證據不是看到的，是算出來的</h2>
+  <p class="sub">他沒有辦法直接看見血液怎麼循環，卻靠一道算術證明了舊理論在數學上根本不可能成立</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈維定量論證結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">哈維估算心臟每次跳動推送的血量，再乘上一小時的心跳次數</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">算出來的數字，遠遠超過身體一小時內能從食物新生出的血量</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">估算單次搏動的排血量</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">透過解剖觀察估算心臟每次收縮排出的血液體積，作為</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">計算的基本單位</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">乘上一小時的心跳次數</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">將單次排血量乘上一小時的心跳總次數，得出一小時內</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">流經心臟的總血量</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">遠超身體能新生的份量</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">這個總量遠遠超過身體一小時內能從食物中新生出的血</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">液，甚至可能超過體重好幾倍</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">唯一合理的結論：循環</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">既然身體不可能不斷生產如此龐大的血量，唯一合理的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">解釋，就是同一批血液反覆循環利用</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這是生理學史上，第一次用定量計算而非直接觀察來扳倒一套千年理論</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">哈維沒有等到能親眼看見血液循環的那一刻才發表結論，而是靠邏輯與算術，先一步證明了舊理論</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">「在數學上不可能成立」——這種論證方式，比同時代多數醫學研究都更接近後來的科學方法</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但算術能證明循環一定存在，卻無法告訴他血液究竟是怎麼從動脈繞回靜脈的</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>血液怎麼從動脈回到靜脈？他預言了看不見的連結</h2>
+  <p class="sub">他正確推斷出動脈與靜脈之間必然有連結，卻終生沒能親眼看到這段連結</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈維預言微血管結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">循環理論若要完整成立，動脈末端必須以某種方式連上靜脈——但哈維那個年代的放大工具看不到這一段</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他只能靠邏輯推斷這段連結必然存在，卻沒有辦法親眼證實</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">邏輯上必然存在的缺口</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">理論推斷</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">循環要成立，動脈與靜脈</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">之間必須存在某種連結，</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">否則血液無處可去</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">先算出結論，再等技術追上來驗證</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">終生無法親眼看見</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">直到1657年過世</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">當時的放大鏡解析度遠遠</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">不足以看清這段細微的連</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">結血管</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">預言正確，卻等不到親眼驗證的那天</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">過世四年後首度被看見</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1661年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">馬爾皮吉在青蛙肺部組織</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">中，首度以顯微鏡觀察到</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">微血管</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">理論預言，終於等到儀器補上證據</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">列文虎克進一步確認</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">同資料夾</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">列文虎克隨後也在自己的</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">觀察中確認微血管的存在</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">，見〈列文虎克〉篇</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">哈維的預言，被下一代的顯微鏡徹底坐實</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">先用邏輯與算術推導出結論，再等技術進步補上直接證據——這個模式後來一再重演</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">從海王星依據軌道擾動被計算出位置、到夸克先被理論預言才被實驗找到，「先算出來、後看見」這種</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">科學推理方式，哈維在十七世紀初，就已經給了醫學史上一次早期的示範</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但就在他提出理論後不久，一場內戰把他推進了英國歷史的中心</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">劍橋的基礎教育<span class="yr">1578年生</span></div><p>出身英格蘭肯特郡，先在劍橋完成人文學科基礎教育，再轉往醫學專攻。</p></div>
+    <div class="card"><div class="nm">帕多瓦深造</div><p>前往帕多瓦大學攻讀醫學，深受重視親自解剖的教學傳統影響。</p></div>
+    <div class="card"><div class="nm">晉身皇室御醫</div><p>先後成為詹姆士一世與查理一世的御醫，深入英國宮廷核心。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>挑戰蓋倫生理學</h2><span class="tag">CIRCULATION</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">蓋倫的舊模型：用完即棄</div><p>血液由肝臟不斷新生，順著靜脈流向全身被當燃料消耗，動靜脈血液各自獨立。</p></div>
+    <div class="card"><div class="nm">哈維的新模型：心臟是幫浦</div><p>主張心臟以規律收縮持續推動同一批血液，形成封閉循環的機械系統。</p></div>
+    <div class="card"><div class="nm">《心血運動論》<span class="yr">1628年</span></div><p>系統性提出循環理論，正式挑戰延續超過一千四百年的蓋倫血液生理學。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>定量論證</h2><span class="tag">CALCULATION</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">估算單次搏動的排血量</div><p>透過解剖觀察估算心臟每次收縮排出的血液體積，作為計算的基本單位。</p></div>
+    <div class="card"><div class="nm">遠超身體能新生的份量</div><p>一小時的總血量遠遠超過身體能從食物新生的量，甚至可能超過體重好幾倍。</p></div>
+    <div class="card"><div class="nm">唯一合理的結論：循環</div><p>既然身體不可能不斷生產如此龐大的血量，唯一解釋就是同一批血液反覆循環利用。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>看不見的連結</h2><span class="tag">CAPILLARIES</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">終生無法親眼看見</div><p>當時的放大鏡解析度遠遠不足以看清動脈通往靜脈的這段細微連結血管。</p></div>
+    <div class="card"><div class="nm">過世四年後首度被看見<span class="yr">1661年</span></div><p>馬爾皮吉在青蛙肺部組織中，首度以顯微鏡觀察到微血管，證實了哈維的預言。</p></div>
+    <div class="card"><div class="nm">列文虎克進一步確認</div><p>列文虎克隨後也在自己的觀察中確認微血管的存在，見同資料夾〈列文虎克〉篇。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>內戰中的御醫：陪王子讀書，與被劫掠一空的手稿</b><br>
+  1642年英國內戰爆發，愛德格山戰役期間，哈維奉命照看兩位年幼的王子（後來的查理二世與詹姆士二世），據傳他在戰事進行時，帶著兩位王子躲在一旁，靜靜讀書給他們聽，藉此讓孩子們保持鎮定。同一年，他在白廳的住所遭議會派人士洗劫，多年累積的研究手稿與標本，包括他晚年投入極深的動物生殖研究資料，幾乎全數散失——據他的友人記述，這是他一生中最難以釋懷的損失之一。此後他仍持續投入動物生殖研究，1651年出版《動物的生成》，書中扉頁以「萬物皆出於卵」為題，是胚胎學史上一句常被引用的早期宣言，儘管當時的哈維根本沒有工具真正觀察到哺乳類的卵細胞。
+</div>
+
+<section>
+  <blockquote>
+    我開始思考，血液是否具有某種循環運動的可能——這個想法起初連我自己都感到難以置信。
+    <cite>哈維在《心血運動論》中，描述自己最初構思循環理論時的猶豫大意——即使是提出這套理論的人，一開始也對這個違反千年常識的想法感到遲疑。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、血液循環理論的推導過程與晚年際遇，具體解剖數據與計算細節請另行查證專業科學史文獻。愛德格山戰役讀書一事等軼事，不同傳記記載細節略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
