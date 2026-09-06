@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hi-res音樂知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>Hi-res音樂知識圖譜</h1>
+  <p class="lede">Hi-Res 賣的其實是一組完全真實、可以量測的規格——比 CD 更高的取樣率、更高的位元深度。<b>問題從來不在規格是否為真，而在於規格提升之後的那一步：這個提升，耳朵聽不聽得出來，跟規格本身是不是更高，是兩個完全不同的問題</b>。同資料夾〈數位音響系統〉結尾留了一句話沒展開——取樣率提升多半是為了保留後製餘裕，不是為了終端播放。這一頁把這句話整個攤開來看：先確認 Hi-Res 這個門檻是怎麼訂出來的、規格提升理論上真的會改變什麼、雙盲測試實際上怎麼說、母帶處理現場真正需要高規格的理由在哪裡，最後看一個「Hi-Res」格式本身變成爭議案例的真實故事。</p>
+</header>
+
+<blockquote>
+  規格更高，不等於聽起來更好——它只保證了一件事：如果聽起來有差別，差別不會是規格不夠。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>什麼是「Hi-Res」：一個認證門檻，不是一個聽覺門檻</h2>
+  <p class="sub">這個標準是業界團體定出來的行銷規格線，不是先測出人耳極限、再回推出來的數字。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 372" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">CD 規格：業界公認的基準線</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">十六位元、44.1kHz，見同資料夾</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">〈數位音響系統〉第二節，這是</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">四十多年前訂出的標準，此後被</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">當成「一般規格」的預設值</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">Hi-Res：業界團體訂出的門檻</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#8a6a35">日本與美國的業界團體約在同一</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#8a6a35">時期，各自訂出高於 CD 規格的</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#8a6a35">認證門檻，通常要求二十四位元</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#8a6a35">、取樣率高於 CD 的規格</text>
+
+    <rect x="30" y="206" width="1040" height="110" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">這條門檻是怎麼訂出來的，值得多想一步</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">它不是先做一系列聽覺實驗、找出人耳剛好分辨得出來的門檻，再回頭訂規格；而是業界團體參考當時錄音室</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">與母帶製作已經普遍在用的規格，直接把那條線定為「Hi-Res」的標籤——這個順序，正是本頁要拆解的起點</text>
+
+    <rect x="30" y="326" width="1040" height="34" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="348" text-anchor="middle" font-size="12" fill="#17324d">認證標誌本身只保證「規格達到門檻」，不保證「聽感上有可分辨的差異」——這兩件事常被混為一談</text>
+  </svg>
+  </div>
+  <p class="after">把這一點說清楚，不是要否定 Hi-Res 規格本身的真實性——<b>更高的位元深度與取樣率確實是真實可量測的技術提升，這一點沒有爭議</b>。真正該問的問題只有一個：這個提升，落到人耳實際聆聽的那一刻，是否還留得下可以聽出來的差異。下面兩節分別從「理論上該會改變什麼」與「實測上到底有沒有改變」兩個角度回答這個問題。</p>
+</section>
+
+<section>
+  <h2>理論上真的會變的兩件事</h2>
+  <p class="sub">這兩項提升是真的，但值得留意它們各自實際能兌現多少，往往比規格數字本身要打折扣。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="200" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">位元深度提升：噪聲底更低</text>
+    <text x="44" y="86" font-size="12.5" fill="#546e7a">理論上，二十四位元比十六位元多出</text>
+    <text x="44" y="110" font-size="12.5" fill="#546e7a">將近五十分貝的動態範圍，見〈數位</text>
+    <text x="44" y="134" font-size="12.5" fill="#546e7a">音響系統〉第三節的計算方式</text>
+    <text x="44" y="166" font-size="12" fill="#446b53">但這個理論值很少真正被用滿——</text>
+    <text x="44" y="188" font-size="12" fill="#446b53">實際限制往往落在下一段</text>
+
+    <rect x="565" y="20" width="505" height="200" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">取樣率提升：濾波器比較好設計</text>
+    <text x="579" y="86" font-size="12.5" fill="#546e7a">取樣率越高，可聽範圍上緣與取樣</text>
+    <text x="579" y="110" font-size="12.5" fill="#546e7a">上限之間的緩衝帶越寬，重建濾波</text>
+    <text x="579" y="134" font-size="12.5" fill="#546e7a">器就不必做得那麼陡峭</text>
+    <text x="579" y="166" font-size="12" fill="#37607a">濾波器越陡峭，越容易在可聽</text>
+    <text x="579" y="188" font-size="12" fill="#37607a">範圍邊緣留下相位上的副作用</text>
+
+    <rect x="30" y="236" width="1040" height="128" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="268" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">真正的瓶頸：動態範圍受限的從來不是數位表示法本身</text>
+    <text x="550" y="298" text-anchor="middle" font-size="12" fill="#546e7a">麥克風、前級放大器與類比轉數位晶片本身都有自己的電子噪聲，這個噪聲底遠遠高不到二十四位元理論上</text>
+    <text x="550" y="320" text-anchor="middle" font-size="12" fill="#546e7a">能達到的水準——多出來的位元深度，多半是在記錄一段訊號本來就到不了的極限，而不是真正被用滿</text>
+    <text x="550" y="342" text-anchor="middle" font-size="11" fill="#96604f">好比買了一輛能跑到某個極速的車，卻永遠只在市區道路上開</text>
+  </svg>
+  </div>
+  <p class="after">這一節故意把「真的」與「有用」分開講：<b>位元深度與取樣率的提升，在數位訊號處理的層面上是實實在在的進步，但它們解決的瓶頸，往往不是消費端聆聽時真正卡住的那個瓶頸</b>。取樣率提升在濾波器設計上的好處是真的，但這個好處主要發生在錄音與後製端的處理過程裡，不必然會在最終播放時被聽出來——這正是下一節要驗證的事。</p>
+</section>
+
+<section>
+  <h2>但耳朵聽不聽得出來：雙盲測試怎麼說</h2>
+  <p class="sub">這裡沒有一個乾淨俐落的答案，兩個方向的證據都存在，而且都經得起檢視。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="190" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">邁爾與莫倫的大型盲測　2007年</text>
+    <text x="44" y="86" font-size="12.5" fill="#4f6773">超過五百次雙盲試驗，把一段十六</text>
+    <text x="44" y="110" font-size="12.5" fill="#4f6773">位元、44.1kHz 的訊號來回轉換，</text>
+    <text x="44" y="134" font-size="12.5" fill="#4f6773">插進原本的高解析播放鏈裡</text>
+    <text x="44" y="166" font-size="11.5" fill="#7a4436">結果：受試者的辨識率接近隨機猜測，</text>
+    <text x="44" y="184" font-size="11.5" fill="#7a4436">但這份研究的測試環境後來也受到方法論上的質疑</text>
+
+    <rect x="565" y="20" width="505" height="190" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">萊斯的統合分析　2016年</text>
+    <text x="579" y="86" font-size="12.5" fill="#546e7a">彙整多篇已發表的高解析度辨識</text>
+    <text x="579" y="110" font-size="12.5" fill="#546e7a">實驗，重新做統計分析</text>
+    <text x="579" y="166" font-size="11.5" fill="#37607a">結果：整體上存在一個很小、但統計上顯著</text>
+    <text x="579" y="184" font-size="11.5" fill="#37607a">的辨識能力，受過訓練的聽者表現更明顯一些</text>
+
+    <rect x="30" y="226" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="258" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">兩篇研究其實沒有真正互相矛盾</text>
+    <text x="550" y="288" text-anchor="middle" font-size="12" fill="#546e7a">前者問的是「一般聽者在一般聆聽情境下能不能分辨」，答案傾向於不太能；後者問的是「彙整所有已發表</text>
+    <text x="550" y="310" text-anchor="middle" font-size="12" fill="#546e7a">的實驗數據，是否存在任何可偵測的差異」，答案是有，但效果很小、而且高度依賴聽者是否受過訓練、播放</text>
+    <text x="550" y="332" text-anchor="middle" font-size="12" fill="#546e7a">器材是否夠好、聆聽環境是否夠安靜。這比「聽得出來」或「聽不出來」的二分法，複雜得多也誠實得多</text>
+    <text x="550" y="358" text-anchor="middle" font-size="11" fill="#96604f">本頁不對這個效果的大小下定論，實際數字請查證原始論文</text>
+  </svg>
+  </div>
+  <p class="after">值得記住的結論不是「Hi-Res 有用」或「Hi-Res 沒用」，而是<b>兩者的效果落差，遠比行銷宣傳暗示的要小得多，而且高度依賴聆聽條件——多數消費情境（一般耳機、一般房間、非受訓耳朵）幾乎不太可能落在那個效果會顯現出來的條件範圍內</b>。這也解釋了為什麼下一節要談的真正理由，會落在錄音室而不是客廳。</p>
+</section>
+
+<section>
+  <h2>那為什麼錄音室還是要用 Hi-Res：理由在生產端，不在播放端</h2>
+  <p class="sub">這裡才是 Hi-Res 規格真正派上用場的地方——而理由跟同資料夾〈數位音響系統〉第三節那個加抖的邏輯直接相關。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">一段錄音在送到聽眾耳朵之前，通常要經過幾十道處理——每一道都會摻進一點量化誤差</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">等化、壓縮、調整音量、混音、母帶處理，每一個步驟都是一次獨立的數位運算</text>
+
+    <rect x="30" y="98" width="338" height="140" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">十六位元的處境</text>
+    <text x="199" y="160" text-anchor="middle" font-size="11.5" fill="#4f6773">每次運算的捨入誤差，一開始</text>
+    <text x="199" y="180" text-anchor="middle" font-size="11.5" fill="#4f6773">就逼近可用精度的極限，經過</text>
+    <text x="199" y="200" text-anchor="middle" font-size="11.5" fill="#4f6773">幾十道處理後，累積誤差有機</text>
+    <text x="199" y="220" text-anchor="middle" font-size="11.5" fill="#4f6773">會被放大到能聽出來</text>
+
+    <rect x="381" y="98" width="338" height="140" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">二十四位元的處境</text>
+    <text x="550" y="160" text-anchor="middle" font-size="11.5" fill="#446b53">起始精度留了很大的餘裕，同</text>
+    <text x="550" y="180" text-anchor="middle" font-size="11.5" fill="#446b53">樣幾十道處理疊加下來，累積</text>
+    <text x="550" y="200" text-anchor="middle" font-size="11.5" fill="#446b53">誤差仍然遠低於最終會被聽出</text>
+    <text x="550" y="220" text-anchor="middle" font-size="11.5" fill="#446b53">來的門檻</text>
+
+    <rect x="732" y="98" width="338" height="140" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">後製才需要的餘裕</text>
+    <text x="903" y="160" text-anchor="middle" font-size="11.5" fill="#8a6a35">音高調整、時間拉伸這類運算</text>
+    <text x="903" y="180" text-anchor="middle" font-size="11.5" fill="#8a6a35">尤其需要更寬的取樣率頻寬，</text>
+    <text x="903" y="200" text-anchor="middle" font-size="11.5" fill="#8a6a35">否則容易在處理過程中產生額</text>
+    <text x="903" y="220" text-anchor="middle" font-size="11.5" fill="#8a6a35">外的疊頻雜訊</text>
+
+    <rect x="30" y="252" width="1040" height="110" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="284" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">高規格是給處理過程留的緩衝，不是給耳朵準備的成品</text>
+    <text x="550" y="308" text-anchor="middle" font-size="12" fill="#546e7a">錄音室用高規格錄音、混音，是為了讓幾十道處理疊加後的累積誤差仍然低於可聽門檻；最終交到聽眾手上的</text>
+    <text x="550" y="330" text-anchor="middle" font-size="12" fill="#546e7a">母帶，即使壓回 CD 規格發行，多半也早已把處理過程中會出現的誤差問題解決掉了</text>
+  </svg>
+  </div>
+  <p class="after">這正是同資料夾〈數位音響系統〉結尾那句話真正的意思：<b>Hi-Res 規格保留的餘裕，主要被生產鏈本身吃掉了，剩下來能不能傳遞到消費端耳朵，取決於前三節談過的那些現實限制</b>。買一份標榜 Hi-Res 的成品檔案，買到的其實常常是「錄音室不必擔心處理誤差」的副產品，而不是「你會聽到更多細節」的直接保證。</p>
+</section>
+
+<section>
+  <h2>MQA 爭議：當「Hi-Res」本身變成一個行銷詞的例子</h2>
+  <p class="sub">最右欄是重點。這個案例值得記住，是因為它顯示規格宣稱本身也需要被檢驗，不能照單全收。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="360" height="36" fill="#17324d"/>
+    <rect x="601" y="18" width="474" height="36" fill="#8a4636"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">節點</text>
+    <text x="413" y="42" text-anchor="middle" font-size="13" fill="#ffffff">發生了什麼</text>
+    <text x="838" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼值得記住</text>
+
+    <rect x="25" y="58" width="200" height="90" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="233" y="58" width="360" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="58" width="474" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="98" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">格式發表</text>
+    <text x="125" y="120" text-anchor="middle" font-size="11" fill="#8a6a35">2014</text>
+    <text x="413" y="90" text-anchor="middle" font-size="12" fill="#546e7a">推出一套專屬編碼技術，宣稱能把</text>
+    <text x="413" y="112" text-anchor="middle" font-size="12" fill="#546e7a">高解析母帶「摺疊」進較小的檔案</text>
+    <text x="838" y="90" text-anchor="middle" font-size="12" fill="#b8442a">宣稱同時修正錄音時鐘造成的</text>
+    <text x="838" y="112" text-anchor="middle" font-size="12" fill="#b8442a">時域模糊，這個說法本身有相當爭議</text>
+
+    <rect x="25" y="148" width="200" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="148" width="360" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="148" width="474" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="188" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">主流串流採用</text>
+    <text x="125" y="210" text-anchor="middle" font-size="11" fill="#37607a">2017</text>
+    <text x="413" y="180" text-anchor="middle" font-size="12" fill="#546e7a">一家主要串流平台開始提供這個</text>
+    <text x="413" y="202" text-anchor="middle" font-size="12" fill="#546e7a">格式的內容，作為訂閱方案賣點</text>
+    <text x="838" y="180" text-anchor="middle" font-size="12" fill="#b8442a">播放需要授權過的解碼器才能</text>
+    <text x="838" y="202" text-anchor="middle" font-size="12" fill="#b8442a">完整「展開」，形成一套封閉生態</text>
+
+    <rect x="25" y="238" width="200" height="90" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="233" y="238" width="360" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="238" width="474" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="278" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">獨立技術分析提出質疑</text>
+    <text x="125" y="300" text-anchor="middle" font-size="11" fill="#7a4436">2021 年前後</text>
+    <text x="413" y="270" text-anchor="middle" font-size="12" fill="#4f6773">多篇獨立技術分析指出，部分標</text>
+    <text x="413" y="292" text-anchor="middle" font-size="12" fill="#4f6773">示為此格式的檔案，實際內容未</text>
+    <text x="413" y="314" text-anchor="middle" font-size="12" fill="#4f6773">必真的超出原始來源的解析度</text>
+    <text x="838" y="270" text-anchor="middle" font-size="12" fill="#b8442a">「認證」與「摺疊」的技術宣稱</text>
+    <text x="838" y="292" text-anchor="middle" font-size="12" fill="#b8442a">缺乏獨立第三方可驗證的透明度，</text>
+    <text x="838" y="314" text-anchor="middle" font-size="12" fill="#b8442a">是這場爭議的核心</text>
+
+    <rect x="25" y="328" width="200" height="80" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="233" y="328" width="360" height="80" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="328" width="474" height="80" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="364" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">公司財務重組</text>
+    <text x="125" y="386" text-anchor="middle" font-size="11" fill="#446b53">2023</text>
+    <text x="413" y="374" text-anchor="middle" font-size="12" fill="#546e7a">開發此格式的公司進入財務重組</text>
+    <text x="838" y="374" text-anchor="middle" font-size="12" fill="#b8442a">格式本身是否會持續獲得產業</text>
+    <text x="838" y="396" text-anchor="middle" font-size="12" fill="#b8442a">支持，此後仍是未定之數</text>
+  </svg>
+  </div>
+  <p class="after">這個案例值得放在全篇最後，因為它把前四節的教訓收束成一句話：<b>「Hi-Res」這個標籤保證的是規格數字，不保證那些數字背後的技術宣稱都經得起檢驗，更不保證最終聽感上一定有可分辨的差異</b>。健康的態度不是全盤拒絕高規格音訊——第四節已經說明它在生產端確實有真實的用途——而是把每一項具體宣稱，都當成可以被檢驗的技術主張，而不是照單全收的行銷詞彙。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>「高解析」串流不等於「無損」串流</b>——無損只保證解壓縮後與原始數位檔案位元對位元相同，這在 CD 規格上就能做到；Hi-Res 談的是規格本身是否高於 CD，兩者是獨立的兩個維度。其二，<b>播放裝置支援 Hi-Res 格式，不代表你聽到的就是完整規格</b>——藍牙傳輸的編碼、耳機單體本身的頻率響應，都可能讓規格提升在傳遞過程中就被削減掉，見同資料夾〈類比音響系統〉第五節談的鏈條最弱環節原則。其三，<b>盲測分辨不出來，不代表訓練與器材都無法改變結果</b>——第三節提到的統合分析顯示，受過訓練的聽者、更安靜的環境、更好的器材，確實會讓分辨的機率提高，只是提高的幅度通常遠小於行銷宣傳暗示的程度。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">邁爾與莫倫發表大型盲測</span><span class="yr">2007</span><p>超過五百次雙盲試驗，發現受試者難以可靠分辨高解析源與插入 CD 規格轉換後的差異，此後成為常被引用也常被質疑的一份研究。</p></div>
+  <div class="card"><span class="nm">業界團體制定 Hi-Res Audio 認證</span><span class="yr">2014</span><p>日本與美國的音響業界團體先後訂出高於 CD 規格的認證門檻與標誌，Hi-Res 自此成為一個正式的行銷標籤。</p></div>
+  <div class="card"><span class="nm">MQA 格式發表</span><span class="yr">2014</span><p>推出專屬編碼技術，宣稱能把高解析母帶「摺疊」進較小檔案，並修正錄音時鐘造成的時域模糊，日後成為第五節談的爭議焦點。</p></div>
+  <div class="card"><span class="nm">Sony 推出 LDAC 藍牙編碼</span><span class="yr">2015</span><p>提供比當時標準藍牙編碼更高的傳輸位元率，試圖讓無線傳輸也能承載接近 Hi-Res 規格的音訊資料。</p></div>
+  <div class="card"><span class="nm">萊斯發表統合分析論文</span><span class="yr">2016</span><p>彙整多篇已發表的高解析度辨識實驗，發現整體上存在很小但統計上顯著的辨識能力，訓練程度是關鍵變數之一。</p></div>
+  <div class="card"><span class="nm">主要串流平台推出 MQA 內容</span><span class="yr">2017</span><p>作為訂閱方案的賣點之一，讓 MQA 格式第一次大規模觸及一般消費者，也讓它後續的爭議影響範圍隨之擴大。</p></div>
+  <div class="card"><span class="nm">主流串流平台加入無損與高解析選項</span><span class="yr">2021</span><p>多家大型串流服務先後在既有訂閱方案中加入無損甚至高解析度音訊選項，不再需要額外付費升級。</p></div>
+  <div class="card"><span class="nm">獨立技術分析對 MQA 提出質疑</span><span class="yr">2021 年前後</span><p>多篇技術分析文章指出部分檔案的實際內容與宣稱的規格不盡相符，也批評其技術宣稱缺乏獨立可驗證的透明度。</p></div>
+  <div class="card"><span class="nm">MQA 公司進入財務重組</span><span class="yr">2023</span><p>開發此格式的公司陷入財務困境並進行重組，格式本身此後的產業支持度變得不明朗。</p></div>
+  <div class="card"><span class="nm">高解析音訊逐漸成為串流服務的標準配備</span><span class="yr">2020 年代</span><p>不再是額外付費的加值選項，而是主流訂閱方案的常態內容，行銷重點也隨之從「規格」逐漸轉向「內容覆蓋率」。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="數位音響系統知識圖譜.html"><span class="nm">數位音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>本頁第二、四節依賴的基礎：取樣定理、位元深度與量化誤差的運作原理，全部在該頁第一至三節有完整說明。</p></a>
+  <a class="card" href="類比音響系統知識圖譜.html"><span class="nm">類比音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>側欄提到的「鏈條最弱環節」原則正出於此——喇叭與聆聽空間造成的落差，遠大於訊源規格提升帶來的差異。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：聚焦於 Hi-Res 規格的定義、其聽覺可辨識性的研究現況，以及格式行銷宣稱的檢驗，不含各家串流平台方案與價格的即時比較。<b>研究引用</b>：第三節提及的兩篇研究為業界常被引用的代表性文獻，具體樣本數與統計方法請查證原始論文，本頁不代為做出最終結論。<b>MQA 案例</b>：第五節涉及的技術爭議在文中已用「據分析指出」等用語標示為當時各方論點，本頁不對爭議本身的是非做出裁定，實際情況請另行查證當時的技術報導。<b>年份</b>：多數事件為漸進發展的過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>

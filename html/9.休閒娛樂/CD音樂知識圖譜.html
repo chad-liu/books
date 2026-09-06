@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CD音樂知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>CD音樂知識圖譜</h1>
+  <p class="lede">CD 當年賣的其實是一個雙重承諾：<b>比黑膠更耐用、比卡帶更清晰，同時滿足「音質無損」與「使用方便」這兩件事</b>。這個雙重承諾撐了它二十年的黃金時期，直到兩個對手各自從一個維度把它超越——串流把「方便」推到了 CD 追不上的極致（連拿一張碟片出來的動作都省了），黑膠復興則把「擁有」與「儀式感」變成一種 CD 那副事務性的塑膠殼設計從來給不了的東西。這一頁從 CD 當年怎麼同時打贏兩個對手談起，接著看這兩個維度分別怎麼被奪走、實際的市場數字怎麼呈現這個交叉、CD 至今還守著哪些串流與黑膠都取代不了的利基，最後回答那個最直接的問題：CD 會不會真的消失。</p>
+</header>
+
+<blockquote>
+  CD 從沒有輸掉音質這場仗，它輸掉的是另外兩場它當年根本不需要打的仗——一場比誰更方便，一場比誰更有情感價值。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>CD 當年的雙重承諾：無損又方便</h2>
+  <p class="sub">要理解 CD 現在的處境，得先記得它一開始到底解決了什麼問題——它同時打贏了黑膠與卡帶兩個對手。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">CD 贏過黑膠的地方</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">同資料夾〈黑膠唱片〉談過，唱針每</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">播放一次就多磨損一次溝槽；CD 靠</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">雷射讀取，不接觸片面，理論上播放</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">再多次音質都不會劣化</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">CD 贏過卡帶的地方</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">磁帶天生有本底噪聲與磁滯失真，</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">同資料夾〈類比音響系統〉談過那套</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">交流偏壓的補救辦法；CD 把整個問題</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">直接繞過，訊噪比大幅領先</text>
+
+    <rect x="30" y="206" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">而且它同時做到了「隨機存取」，這件事在當年是革命性的</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">想跳到專輯第八首，黑膠得抬起唱臂目測落針位置，卡帶得快轉猜秒數；CD 按一個鍵就能精準跳轉，這件事</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">現在聽起來理所當然，在當年卻是黑膠與卡帶都做不到的體驗升級。加上第四節會談到的錯誤更正能力，</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">CD 在上市初期幾乎沒有明顯的短板，這正是它能在十幾年內迅速取代兩個對手的原因</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">見同資料夾〈數位音響系統〉第四節，CD 的錯誤更正機制是黑膠與卡帶完全沒有的能力</text>
+  </svg>
+  </div>
+  <p class="after">把這一節記住，是因為它決定了整篇的分析框架：<b>CD 的成功建立在「音質」與「便利」這兩根柱子上，而且在很長一段時間裡，它是唯一同時擁有這兩根柱子的格式</b>。接下來兩節要說的，正是這兩根柱子後來各自被誰、用什麼方式抽走。</p>
+</section>
+
+<section>
+  <h2>兩個維度的擠壓：串流贏走了方便，黑膠贏走了情感</h2>
+  <p class="sub">CD 沒有變差，是它原本獨佔的兩個優勢，各自被一個更極端的版本超越了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">CD 的兩根支柱，分別被兩個對手用更極端的方式接管</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">不是靠更好的音質贏過 CD，而是各自把 CD 原本就有的某個優點，做到 CD 做不到的極限</text>
+
+    <rect x="30" y="98" width="505" height="170" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="282" y="132" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">串流：把「方便」推到極致</text>
+    <text x="44" y="164" font-size="12.5" fill="#8a6a35">CD 免去了翻面、快轉的麻煩，但還是</text>
+    <text x="44" y="188" font-size="12.5" fill="#8a6a35">得買、得收、得放進機器；串流把整</text>
+    <text x="44" y="212" font-size="12.5" fill="#8a6a35">個「取得音樂」的動作直接省略掉，</text>
+    <text x="44" y="236" font-size="12.5" fill="#8a6a35">見同資料夾〈數位串流音樂〉</text>
+    <text x="282" y="258" text-anchor="middle" font-size="11" fill="#8a6a35">CD 引以為傲的隨機存取，被串流的「不必存取」超越</text>
+
+    <rect x="565" y="98" width="505" height="170" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="817" y="132" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">黑膠：把「擁有」變成一種儀式</text>
+    <text x="579" y="164" font-size="12.5" fill="#446b53">CD 的塑膠殼與方形小冊子，設計上從</text>
+    <text x="579" y="188" font-size="12.5" fill="#446b53">未強調收藏價值；黑膠復興靠的正是</text>
+    <text x="579" y="212" font-size="12.5" fill="#446b53">實體所有權與播放儀式感，見同資料夾</text>
+    <text x="579" y="236" font-size="12.5" fill="#446b53">〈黑膠唱片〉第五節</text>
+    <text x="817" y="258" text-anchor="middle" font-size="11" fill="#446b53">CD 的「比黑膠方便」，在情感訴求上完全派不上用場</text>
+
+    <rect x="30" y="284" width="1040" height="96" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="316" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">CD 尷尬的地方在於：它兩邊都沾一點，卻兩邊都不是最極端的那一個</text>
+    <text x="550" y="346" text-anchor="middle" font-size="12" fill="#546e7a">它比串流麻煩，又比黑膠缺乏收藏價值——當年正是這種「兩者兼顧」讓它勝出，如今卻讓它同時失去兩個市場</text>
+  </svg>
+  </div>
+  <p class="after">這正是全篇最核心的觀察：<b>CD 的困境不是因為它變差了，而是因為市場分裂成兩群人，一群只在乎方便到極致，一群只在乎情感與儀式到極致，而 CD 當年賴以成功的「中庸」定位，在兩個極端之間反而變得無所適從</b>。下一節用實際的銷售數字，看這個擠壓具體是怎麼發生的。</p>
+</section>
+
+<section>
+  <h2>市場數字：CD 銷量下滑，與黑膠的交叉點</h2>
+  <p class="sub">最右欄是重點。三條曲線交錯的順序，正好對應第二節談的兩次擠壓分別發生在什麼時候。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="220" height="36" fill="#17324d"/>
+    <rect x="253" y="18" width="360" height="36" fill="#17324d"/>
+    <rect x="621" y="18" width="454" height="36" fill="#8a4636"/>
+    <text x="135" y="42" text-anchor="middle" font-size="13" fill="#ffffff">時期</text>
+    <text x="433" y="42" text-anchor="middle" font-size="13" fill="#ffffff">發生了什麼</text>
+    <text x="848" y="42" text-anchor="middle" font-size="13" fill="#ffffff">對 CD 的影響</text>
+
+    <rect x="25" y="58" width="220" height="100" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="253" y="58" width="360" height="100" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="58" width="454" height="100" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="102" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">巔峰期</text>
+    <text x="135" y="124" text-anchor="middle" font-size="11" fill="#8a6a35">約 2000 年前後</text>
+    <text x="433" y="90" text-anchor="middle" font-size="12" fill="#546e7a">CD 銷售在多數主要市場來到歷史</text>
+    <text x="433" y="112" text-anchor="middle" font-size="12" fill="#546e7a">最高點，是當時毫無爭議的主流</text>
+    <text x="433" y="134" text-anchor="middle" font-size="12" fill="#546e7a">音樂銷售格式</text>
+    <text x="848" y="90" text-anchor="middle" font-size="12" fill="#b8442a">黑膠當時已經退到收藏市場邊緣，</text>
+    <text x="848" y="112" text-anchor="middle" font-size="12" fill="#b8442a">CD 完全沒有敵手</text>
+
+    <rect x="25" y="158" width="220" height="100" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="158" width="360" height="100" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="158" width="454" height="100" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="202" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">下載與早期串流衝擊</text>
+    <text x="135" y="224" text-anchor="middle" font-size="11" fill="#37607a">2000 年代中期起</text>
+    <text x="433" y="190" text-anchor="middle" font-size="12" fill="#546e7a">數位下載興起，接著串流服務陸續</text>
+    <text x="433" y="212" text-anchor="middle" font-size="12" fill="#546e7a">上線，CD 銷量開始持續下滑</text>
+    <text x="848" y="190" text-anchor="middle" font-size="12" fill="#b8442a">第二節談的「方便」那根支柱</text>
+    <text x="848" y="212" text-anchor="middle" font-size="12" fill="#b8442a">最先被動搖</text>
+
+    <rect x="25" y="258" width="220" height="100" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="253" y="258" width="360" height="100" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="258" width="454" height="100" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="302" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">黑膠營收超越 CD</text>
+    <text x="135" y="324" text-anchor="middle" font-size="11" fill="#7a4436">2020</text>
+    <text x="433" y="290" text-anchor="middle" font-size="12" fill="#4f6773">美國市場的黑膠營收自一九八零年代</text>
+    <text x="433" y="312" text-anchor="middle" font-size="12" fill="#4f6773">以來首次超過 CD，見同資料夾〈黑膠</text>
+    <text x="433" y="334" text-anchor="middle" font-size="12" fill="#4f6773">唱片〉關鍵事件</text>
+    <text x="848" y="290" text-anchor="middle" font-size="12" fill="#b8442a">第二節談的「情感」那根支柱</text>
+    <text x="848" y="312" text-anchor="middle" font-size="12" fill="#b8442a">正式在數字上被超車</text>
+
+  </svg>
+  </div>
+  <p class="after">這條時間線值得留意的地方，不在於 CD 下滑的速度，而在於<b>兩次擠壓的先後順序，剛好對應第二節那兩根支柱被抽走的順序</b>：先是串流讓「方便」這件事變得無關緊要，之後黑膠才在「情感」這個 CD 從未真正經營過的維度上正式反超。CD 不是被單一對手打敗的，是在不同時間點分別被兩個完全不同邏輯的對手，從兩個不同方向夾擊。</p>
+</section>
+
+<section>
+  <h2>CD 至今守住的利基</h2>
+  <p class="sub">被兩面夾擊不等於毫無立足之地——這幾個場景裡，CD 至今仍然是最合理的選擇。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="338" height="180" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="199" y="54" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">日本市場的特例</text>
+    <text x="199" y="86" text-anchor="middle" font-size="11.5" fill="#546e7a">日本是少數幾個實體 CD 銷售</text>
+    <text x="199" y="106" text-anchor="middle" font-size="11.5" fill="#546e7a">至今仍佔重要比重的主要音樂</text>
+    <text x="199" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">市場，握手券、抽選券等隨片</text>
+    <text x="199" y="146" text-anchor="middle" font-size="11.5" fill="#546e7a">特典的偶像文化，加上根深蒂</text>
+    <text x="199" y="166" text-anchor="middle" font-size="11.5" fill="#546e7a">固的實體零售通路是主因</text>
+    <text x="199" y="188" text-anchor="middle" font-size="10.5" fill="#37607a">CD 在此地是收藏品加門票，不只是音樂</text>
+
+    <rect x="381" y="20" width="338" height="180" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="550" y="54" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">串流拿不走的「擁有」</text>
+    <text x="550" y="86" text-anchor="middle" font-size="11.5" fill="#4f6773">串流服務因授權糾紛下架整批</text>
+    <text x="550" y="106" text-anchor="middle" font-size="11.5" fill="#4f6773">曲目、甚至歌手撤下自己作品</text>
+    <text x="550" y="126" text-anchor="middle" font-size="11.5" fill="#4f6773">的情況並不罕見；買下的 CD</text>
+    <text x="550" y="146" text-anchor="middle" font-size="11.5" fill="#4f6773">不會因為平台的商業決定而從</text>
+    <text x="550" y="166" text-anchor="middle" font-size="11.5" fill="#4f6773">你的收藏裡消失</text>
+    <text x="550" y="188" text-anchor="middle" font-size="10.5" fill="#7a4436">這是實體所有權對抗訂閱制脆弱性的優勢</text>
+
+    <rect x="732" y="20" width="343" height="180" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="903" y="54" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">不需要儀式感的收藏者</text>
+    <text x="903" y="86" text-anchor="middle" font-size="11.5" fill="#8a6a35">部分聽眾想要實體所有權，卻</text>
+    <text x="903" y="106" text-anchor="middle" font-size="11.5" fill="#8a6a35">不想處理黑膠的翻面、循軌與</text>
+    <text x="903" y="126" text-anchor="middle" font-size="11.5" fill="#8a6a35">保養問題；CD 提供了「有實</text>
+    <text x="903" y="146" text-anchor="middle" font-size="11.5" fill="#8a6a35">體、但操作單純」的折衷選項</text>
+    <text x="903" y="188" text-anchor="middle" font-size="10.5" fill="#8a6a35">見同資料夾〈黑膠唱片〉第三、五節的取捨</text>
+
+    <rect x="30" y="216" width="1045" height="112" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="248" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">這三個利基有一個共同點：都不是靠「音質」在競爭</text>
+    <text x="552" y="276" text-anchor="middle" font-size="12" fill="#546e7a">日本市場靠的是周邊商品邏輯，資料保存靠的是所有權的穩定性，操作簡便靠的是相對黑膠的便利性——沒有</text>
+    <text x="552" y="298" text-anchor="middle" font-size="12" fill="#546e7a">一個利基是因為 CD 音質比串流或黑膠更好，這也呼應了第一節提過、CD 從未真正輸掉的那件事</text>
+
+    <rect x="30" y="342" width="1045" height="42" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="368" text-anchor="middle" font-size="12" fill="#b8442a">車用音響也是一個常被忽略的長尾利基——部分市場、部分年份的車輛，CD 播放器至今仍是標準配備</text>
+  </svg>
+  </div>
+  <p class="after">這一節提醒了一件容易被忽略的事：<b>CD 沒有輸掉的那場仗，從來就不是它現在還能存活的原因</b>。它現在守住的每一個利基，靠的都是音質以外的理由——這跟第一節形容的「雙重承諾」形成有趣的對照：CD 靠音質與便利起家，最後留下來的立足點，卻幾乎都跟音質無關。</p>
+</section>
+
+<section>
+  <h2>CD 會消失嗎：更可能的答案是收斂成一個穩定的小眾</h2>
+  <p class="sub">歷史上已經有一個現成的參照組——黑膠自己就示範過，一個被判「即將淘汰」的格式，實際上會怎麼走。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">黑膠走過的路，是一個參照</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">CD 剛上市時，黑膠也曾被認為即將</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4c636e">全面消失，銷量確實一路探底，卻</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4c636e">從未真正歸零，最終在二十年後靠</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4c636e">著全新的理由重新成長</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">但 CD 不太可能複製同一條復興路線</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">黑膠復興靠的是第二節說的情感與</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">儀式感，CD 的工業化外觀與操作</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">邏輯，先天不具備同一種懷舊吸引</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">力，很難走上同一條路</text>
+
+    <rect x="30" y="206" width="1040" height="130" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">更合理的預期：不是復興，是穩定在第四節那幾個利基上</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">CD 缺乏黑膠那種能重新點燃大眾情感的敘事，卻擁有幾個穩固、雖然規模不大但也不太可能徹底消失的用途</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">——特定市場的周邊經濟、對抗串流不穩定性的資料保存需求，以及部分裝置的長尾支援。最可能的走向，</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">是主流市場份額持續趨近於零，同時在這幾個利基上維持一個薄但穩定的底線，不會真正歸零，也不會再成長</text>
+  </svg>
+  </div>
+  <p class="after">把五節放在一起看，CD 的故事其實提供了一個更普遍的教訓：<b>一個格式的衰退，未必是因為它做錯了什麼，而可能只是市場分裂成了兩群需求截然不同的人，而它原本引以為傲的「中庸」，剛好誰都不是</b>。它不會像卡帶那樣幾乎徹底退出市場，因為它仍握有黑膠與串流都補不上的幾個具體理由；但它也不太可能重演黑膠的復興故事，因為驅動那場復興的情感邏輯，從一開始就不屬於這個格式。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>CD 銷量下滑不代表 CD 音質比串流或黑膠差</b>——第一、四節都說明過，CD 從未在音質這場仗上輸過，它輸掉的是便利性與情感訴求這兩場不同的比賽。其二，<b>「黑膠復興」跟「CD 會不會復興」不是同一套邏輯能套用的問題</b>——第五節說明黑膠復興的驅動力（儀式感、收藏價值）是 CD 先天缺乏的，用黑膠的成功去推論 CD 也會復興，是誤解了兩者衰退與回升背後完全不同的原因。其三，<b>日本市場的 CD 榮景不能直接套用到其他市場</b>——第四節說明那個市場的特殊性，主要來自特定的偶像產業商業模式與零售文化，不是「CD 其實還是很受歡迎」這種一般性的結論。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">CD 正式上市</span><span class="yr">1982</span><p>第一批商用光碟在日本發售，見同資料夾〈數位音響系統〉，此後二十年間逐步取代黑膠與卡帶成為主流格式。</p></div>
+  <div class="card"><span class="nm">CD 銷量在多數市場達到歷史高點</span><span class="yr">2000 年前後</span><p>CD 成為毫無爭議的主流音樂銷售格式，當時黑膠已退居收藏市場邊緣，是本頁第三節時間線的起點。</p></div>
+  <div class="card"><span class="nm">數位下載興起</span><span class="yr">2001 年起</span><p>iTunes 商店等數位下載服務上線，第一次讓消費者能單獨購買歌曲而不必買下整張 CD，開始侵蝕 CD 的市占。</p></div>
+  <div class="card"><span class="nm">主要串流平台陸續上線</span><span class="yr">2008 年起</span><p>見同資料夾〈數位串流音樂〉，串流服務把「取得音樂」的成本壓到接近零，是第二節談的「方便」擠壓的主要推手。</p></div>
+  <div class="card"><span class="nm">黑膠銷量連續多年回升</span><span class="yr">2007 年起</span><p>見同資料夾〈黑膠唱片〉，獨立音樂場景帶動黑膠需求回溫，是第二節談的「情感」擠壓的起點。</p></div>
+  <div class="card"><span class="nm">串流成為全球錄製音樂最大營收來源</span><span class="yr">2016 年前後</span><p>根據產業報告，串流收入首次超越實體與下載總和，CD 的主流地位自此正式讓位給串流。</p></div>
+  <div class="card"><span class="nm">黑膠營收超越 CD</span><span class="yr">2020</span><p>美國市場的黑膠營收自一九八零年代以來首次超過 CD，第三節提到的第二個交叉點正式發生。</p></div>
+  <div class="card"><span class="nm">串流佔全球錄製音樂營收過半</span><span class="yr">2020</span><p>根據國際唱片業協會的報告，串流首次貢獻全球錄製音樂產業一半以上的營收，CD 的處境更加邊緣化。</p></div>
+  <div class="card"><span class="nm">日本市場持續維持較高的實體銷售比重</span><span class="yr">2020 年代</span><p>相較於其他主要市場，日本的 CD 銷售占比明顯偏高，是第四節談到的少數穩定利基之一。</p></div>
+  <div class="card"><span class="nm">串流授權爭議引發實體收藏需求討論</span><span class="yr">2020 年代</span><p>作品因授權糾紛從串流平台下架的事件時有所聞，帶動部分聽眾重新思考實體所有權的價值，見第四節。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">同系列各篇</span></div>
+<div class="grid">
+  <a class="card" href="黑膠唱片知識圖譜.html"><span class="nm">黑膠唱片知識圖譜</span><span class="lk">→ 專頁</span><p>本頁第二、五節反覆對照的對手——第五節談的黑膠復興經濟學，是理解 CD 情感維度失守的關鍵背景。</p></a>
+  <a class="card" href="數位串流音樂知識圖譜.html"><span class="nm">數位串流音樂知識圖譜</span><span class="lk">→ 專頁</span><p>本頁第二節談的另一個對手——該頁完整說明了串流如何把「方便」這件事推向 CD 原本引以為傲的極限之外。</p></a>
+  <a class="card" href="數位音響系統知識圖譜.html"><span class="nm">數位音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>第一節提到 CD 的錯誤更正能力，完整的技術原理與黑膠沒有這項能力的對照，都在該頁第四節。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁，是〈類比音響系統〉〈黑膠唱片〉〈數位音響系統〉〈Hi-res音樂〉〈數位串流音樂〉同系列的第六篇。<b>範圍</b>：聚焦於 CD 作為市場格式的定位變化與未來走向分析，不含 CD 播放器與光碟機構的工程細節。<b>數值</b>：銷售與營收數字為業界報告中常見的概數，各市場、各年度統計口徑差異極大，本頁不列精確到金額的數字。<b>市場預測</b>：第五節對 CD 未來走向的分析為本頁綜合現有趨勢的推論，不代表對任一市場的精確預測，實際發展請另行查證最新的產業報告。<b>年份</b>：多數市場轉變為漸進過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>

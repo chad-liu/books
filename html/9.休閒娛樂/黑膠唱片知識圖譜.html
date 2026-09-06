@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黑膠唱片知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>黑膠唱片知識圖譜</h1>
+  <p class="lede">黑膠唱片有一個從頭到尾都沒變過的物理特性，卻同時決定了它最聰明的設計，也決定了它最無法解決的缺陷：<b>唱盤是等角速度旋轉的，但溝槽上每一點劃過唱針的實際速度，卻隨著半徑不斷改變</b>。同資料夾〈類比音響系統〉第三節已經談過等化曲線怎麼解決低音溝槽太寬的問題，這一頁要挖的是那節沒展開的部分：立體聲怎麼被塞進同一道溝槽裡、等角速度這件事本身怎麼讓內圈的音質天生比外圈差、母帶處理現場為了讓唱片刻得出來要做哪些取捨、33⅓ 轉與 45 轉這兩個數字是怎麼被選出來的，最後看一個純粹屬於文化與商業的現象——串流當道的年代，黑膠銷量為什麼反而在成長。</p>
+</header>
+
+<blockquote>
+  同一顆唱頭沿著同一道溝槽移動，外圈與內圈聽到的卻是兩種不同品質的聲音——差別不在唱片本身壞了，而在幾何形狀本身就不公平。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>45／45 立體聲刻紋：把兩個聲道疊進同一道溝槽</h2>
+  <p class="sub">單聲道時代的溝槽只需要左右擺動；立體聲要解決的問題是怎麼在同一道溝槽裡塞進兩個獨立訊號，又不搶佔兩倍的唱片空間。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="180" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">單聲道時代的做法</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">溝槽只左右水平擺動，唱針跟著</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4c636e">擺動就能還原一個聲道的訊號，</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4c636e">結構單純，但沒有多餘的空間</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4c636e">可以再塞進第二個聲道</text>
+
+    <rect x="565" y="20" width="505" height="180" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">立體聲的解法：兩面溝槽壁各管一邊</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">溝槽剖面呈 V 字形，左右兩側槽</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">壁各自獨立刻出一個聲道的訊號</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">，兩壁的角度剛好互相垂直，各</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">自朝四十五度傾斜</text>
+
+    <rect x="30" y="216" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="248" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">唱針讀到的其實是「和」與「差」，不是左右分開讀</text>
+    <text x="550" y="278" text-anchor="middle" font-size="12" fill="#546e7a">當左右聲道訊號相同（同相），兩片槽壁同步推動唱針，針尖只做水平方向的位移；當兩聲道訊號相反</text>
+    <text x="550" y="300" text-anchor="middle" font-size="12" fill="#546e7a">（反相），兩片槽壁的推力互相抵銷水平分量、疊加垂直分量，針尖改做上下方向的位移——換句話說，</text>
+    <text x="550" y="322" text-anchor="middle" font-size="12" fill="#546e7a">水平位移對應兩聲道的「和」，垂直位移對應兩聲道的「差」，唱頭裡兩組拾訊線圈再把這兩個分量還原</text>
+    <text x="550" y="346" text-anchor="middle" font-size="11" fill="#96604f">回各自的左右聲道——這套系統於一九五零年代末由西電授權的技術單位定案，沿用至今</text>
+  </svg>
+  </div>
+  <p class="after">這個設計精巧的地方在於<b>它完全相容於舊的單聲道唱機</b>：單聲道唱頭只讀水平位移，天生就只讀得到兩聲道的「和」，播放起來就是把左右聲道自動混成單聲道，聽感上完全正常，不會因為讀不到垂直分量而出錯。新舊系統能無縫相容，是這套刻紋法能被整個產業迅速接受的關鍵，也是它能在六十多年後仍是黑膠標準格式的原因。</p>
+</section>
+
+<section>
+  <h2>等角速度旋轉的物理代價：內圈失真</h2>
+  <p class="sub">同一張唱片，同一顆唱針，外圈聽起來乾淨、內圈聽起來模糊——這不是唱片壓製不良，是幾何形狀本身造成的必然結果。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">唱盤轉速從頭到尾都一樣</text>
+    <text x="44" y="86" font-size="12.5" fill="#546e7a">十二吋唱片以每分鐘三十三又三</text>
+    <text x="44" y="110" font-size="12.5" fill="#546e7a">分之一轉播放，從第一軌到最後</text>
+    <text x="44" y="134" font-size="12.5" fill="#546e7a">一軌，轉盤本身的角速度完全不變</text>
+    <text x="282" y="166" text-anchor="middle" font-size="11" fill="#446b53">這是唱盤機構單純又可靠的原因</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">但溝槽劃過唱針的線速度不一樣</text>
+    <text x="579" y="86" font-size="12.5" fill="#4f6773">外圈的溝槽半徑大，同樣轉一圈</text>
+    <text x="579" y="110" font-size="12.5" fill="#4f6773">要劃過的實際距離長；內圈半徑</text>
+    <text x="579" y="134" font-size="12.5" fill="#4f6773">小，同樣轉一圈劃過的距離短了</text>
+    <text x="817" y="166" text-anchor="middle" font-size="11" fill="#7a4436">外圈的線速度可以是內圈的兩倍以上</text>
+
+    <rect x="30" y="206" width="1040" height="140" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">同一個音符，內圈要刻得更擠</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">一段固定頻率的聲音，在溝槽上對應的是固定數量的波形起伏；線速度越慢，同樣數量的起伏就必須擠進</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">更短的實際距離裡——內圈因此得刻得更細密，唱針要追得更精確，稍有偏差就會產生失真，高頻的細節</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">最先受影響，同一張唱片最後一軌的音質天生就比第一軌吃虧，這與壓片品質或唱針好壞都無關</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">業界稱之為「內圈失真」，是黑膠格式本身無法迴避的先天限制</text>
+  </svg>
+  </div>
+  <p class="after">這一節解釋了一個黑膠玩家間流傳已久的經驗法則：<b>製作人排歌單時常把節奏簡單、高頻不密集的曲目放在每一面的最後一軌</b>，正是為了迴避內圈失真對細節的傷害。這不是迷信，而是對這條物理限制做出的實際因應——第三節談的母帶處理取捨，也是同一套邏輯的延伸。</p>
+</section>
+
+<section>
+  <h2>母帶處理的取捨：能刻出來，比理論上最好聽更重要</h2>
+  <p class="sub">最右欄是重點。每一項取捨背後，都是同一個限制：溝槽的物理擺動幅度有上限，超過就會出事。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="360" height="36" fill="#17324d"/>
+    <rect x="601" y="18" width="474" height="36" fill="#8a4636"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">問題</text>
+    <text x="413" y="42" text-anchor="middle" font-size="13" fill="#ffffff">母帶工程師怎麼處理</text>
+    <text x="838" y="42" text-anchor="middle" font-size="13" fill="#ffffff">代價是什麼</text>
+
+    <rect x="25" y="58" width="200" height="90" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="233" y="58" width="360" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="58" width="474" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="106" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">反相低音</text>
+    <text x="413" y="90" text-anchor="middle" font-size="12" fill="#546e7a">左右聲道方向相反的低頻，會讓</text>
+    <text x="413" y="112" text-anchor="middle" font-size="12" fill="#546e7a">溝槽垂直方向擺動過大，唱針有</text>
+    <text x="413" y="134" text-anchor="middle" font-size="12" fill="#546e7a">機會直接被震出溝槽</text>
+    <text x="838" y="90" text-anchor="middle" font-size="12" fill="#b8442a">把兩百赫茲以下的低音刻意</text>
+    <text x="838" y="112" text-anchor="middle" font-size="12" fill="#b8442a">合併成單聲道再下刀，犧牲一部分</text>
+    <text x="838" y="134" text-anchor="middle" font-size="12" fill="#b8442a">低頻的立體聲定位感</text>
+
+    <rect x="25" y="148" width="200" height="90" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="148" width="360" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="148" width="474" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="196" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">過大的動態範圍</text>
+    <text x="413" y="180" text-anchor="middle" font-size="12" fill="#546e7a">忽大忽小的音量，會讓刻刀的擺</text>
+    <text x="413" y="202" text-anchor="middle" font-size="12" fill="#546e7a">動幅度變化過劇，鄰近溝槽有機</text>
+    <text x="413" y="224" text-anchor="middle" font-size="12" fill="#546e7a">會互相干擾甚至沾黏</text>
+    <text x="838" y="180" text-anchor="middle" font-size="12" fill="#b8442a">用壓縮器控制峰值，讓最</text>
+    <text x="838" y="202" text-anchor="middle" font-size="12" fill="#b8442a">大聲與最小聲的落差維持在刻片</text>
+    <text x="838" y="224" text-anchor="middle" font-size="12" fill="#b8442a">機構能承受的範圍內</text>
+
+    <rect x="25" y="238" width="200" height="90" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="233" y="238" width="360" height="90" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="238" width="474" height="90" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="286" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">單面能刻多久</text>
+    <text x="413" y="270" text-anchor="middle" font-size="12" fill="#4f6773">刻得越響、動態越大，需要的溝</text>
+    <text x="413" y="292" text-anchor="middle" font-size="12" fill="#4f6773">槽間距就越寬，單面能容納的播</text>
+    <text x="413" y="314" text-anchor="middle" font-size="12" fill="#4f6773">放時間就越短</text>
+    <text x="838" y="270" text-anchor="middle" font-size="12" fill="#b8442a">播放時間與音量、動態範圍</text>
+    <text x="838" y="292" text-anchor="middle" font-size="12" fill="#b8442a">三者互相牽制，母帶工程師得在</text>
+    <text x="838" y="314" text-anchor="middle" font-size="12" fill="#b8442a">三者之間找一個平衡點</text>
+
+    <rect x="30" y="342" width="1040" height="62" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="368" text-anchor="middle" font-size="12.5" fill="#17324d" font-weight="600">有意思的副作用：黑膠版有時反而比同一張專輯的響度戰爭 CD 版動態範圍更寬</text>
+    <text x="550" y="390" text-anchor="middle" font-size="12" fill="#546e7a">正因為刻片機構物理上就不允許把動態範圍壓到極限，部分廠牌會為黑膠版另外準備一份壓縮較少的母帶</text>
+  </svg>
+  </div>
+  <p class="after">把這一節跟同資料夾〈類比音響系統〉第三節放在一起看，會發現同一個邏輯又出現了一次：<b>等化曲線解決的是低音與高音在振幅上的落差，這一節的反相低音處理解決的則是立體聲低音在垂直方向上的落差</b>——兩者都是先製造一個受控的偏差，再靠播放端或聆聽習慣去接受它，而不是真的消除問題本身。</p>
+</section>
+
+<section>
+  <h2>33⅓ 轉與 45 轉：兩個數字，兩種不同的優先順序</h2>
+  <p class="sub">這兩個轉速不是隨便選的，各自對應一種完全不同的使用情境，而且從一開始就是競爭對手推出的產品。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="180" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">33⅓ 轉：優先考慮播放時間</text>
+    <text x="44" y="86" font-size="12.5" fill="#546e7a">哥倫比亞唱片一九四八年推出，</text>
+    <text x="44" y="110" font-size="12.5" fill="#546e7a">搭配比 78 轉唱片細得多的溝槽</text>
+    <text x="44" y="134" font-size="12.5" fill="#546e7a">間距，讓一張十二吋唱片單面能</text>
+    <text x="44" y="158" font-size="12.5" fill="#546e7a">錄下完整一段古典樂章</text>
+    <text x="282" y="182" text-anchor="middle" font-size="11" fill="#37607a">目標是長時間、不中斷的聆聽體驗</text>
+
+    <rect x="565" y="20" width="505" height="180" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">45 轉：優先考慮堅固與換片速度</text>
+    <text x="579" y="86" font-size="12.5" fill="#8a6a35">美國無線電公司隔年推出，中心</text>
+    <text x="579" y="110" font-size="12.5" fill="#8a6a35">孔特意做得比一般唱片大上許多</text>
+    <text x="579" y="134" font-size="12.5" fill="#8a6a35">，方便點唱機的自動換片機構快</text>
+    <text x="579" y="158" font-size="12.5" fill="#8a6a35">速抓取與定位</text>
+    <text x="817" y="182" text-anchor="middle" font-size="11" fill="#8a6a35">目標是單曲播放、耐用與便於自動化</text>
+
+    <rect x="30" y="216" width="1040" height="120" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="248" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">兩家公司互相不相容，市場一度陷入短暫的規格對抗</text>
+    <text x="550" y="278" text-anchor="middle" font-size="12" fill="#546e7a">消費者一度得同時擁有兩套播放設備才能收全新發行的唱片，這場對抗最終沒有分出唯一贏家——</text>
+    <text x="550" y="300" text-anchor="middle" font-size="12" fill="#546e7a">三十三轉留給專輯與長篇作品，四十五轉留給單曲，兩種轉速最終各自找到了自己的生態位而共存至今</text>
+    <text x="550" y="322" text-anchor="middle" font-size="11" fill="#96604f">而且四十五轉因為線速度更快，理論上受第二節那種內圈失真的影響也相對較小</text>
+  </svg>
+  </div>
+  <p class="after">值得留意最後一點：<b>45 轉唱片的線速度天生比 33⅓ 轉快，等於是拿播放時間去換第二節談的那種幾何劣勢</b>。這正是為什麼發燒友重視音質的單曲、甚至部分整張專輯的重新發行版，會刻意選擇犧牲播放時間、改用 45 轉來換取更好的循軌精度——兩個轉速從來不是誰比較先進、誰比較落後，而是兩種不同的優先順序。</p>
+</section>
+
+<section>
+  <h2>串流時代的黑膠復興：買的人未必是為了聽</h2>
+  <p class="sub">這是本頁唯一一節不談工程原理，而是一個純粹的文化與商業現象——理解它需要換一套完全不同的框架。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 372" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="80" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">美國市場的黑膠營收，二零二零年首次超過 CD——距離上一次是三十多年前</text>
+    <text x="550" y="76" text-anchor="middle" font-size="12" fill="#bcd4e4">這個時間點，正好落在串流音樂已經成為主流聆聽方式好幾年之後，而不是黑膠取代了串流</text>
+
+    <rect x="30" y="114" width="338" height="150" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="199" y="146" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">實體所有權的價值</text>
+    <text x="199" y="176" text-anchor="middle" font-size="11.5" fill="#546e7a">串流訂閱買到的是隨時可能</text>
+    <text x="199" y="196" text-anchor="middle" font-size="11.5" fill="#546e7a">消失的使用權；黑膠買到的</text>
+    <text x="199" y="216" text-anchor="middle" font-size="11.5" fill="#546e7a">是一件實際擁有、可以陳列</text>
+    <text x="199" y="236" text-anchor="middle" font-size="11.5" fill="#546e7a">與收藏的物品</text>
+
+    <rect x="381" y="114" width="338" height="150" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="550" y="146" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">創作者的分潤結構</text>
+    <text x="550" y="176" text-anchor="middle" font-size="11.5" fill="#446b53">串流每次播放分給音樂人的</text>
+    <text x="550" y="196" text-anchor="middle" font-size="11.5" fill="#446b53">收益極低，一張實體唱片的</text>
+    <text x="550" y="216" text-anchor="middle" font-size="11.5" fill="#446b53">單次銷售對獨立音樂人往往</text>
+    <text x="550" y="236" text-anchor="middle" font-size="11.5" fill="#446b53">意義更大</text>
+
+    <rect x="732" y="114" width="338" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="903" y="146" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">儀式感與專注聆聽</text>
+    <text x="903" y="176" text-anchor="middle" font-size="11.5" fill="#8a6a35">要翻面、要放唱針，這種不</text>
+    <text x="903" y="196" text-anchor="middle" font-size="11.5" fill="#8a6a35">能隨意跳過的操作本身，成</text>
+    <text x="903" y="216" text-anchor="middle" font-size="11.5" fill="#8a6a35">了對抗串流時代碎片化聆聽</text>
+    <text x="903" y="236" text-anchor="middle" font-size="11.5" fill="#8a6a35">習慣的一種訴求</text>
+
+    <rect x="30" y="280" width="1040" height="76" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="308" text-anchor="middle" font-size="12.5" fill="#b8442a" font-weight="600">調查機構的訪問發現：不少購買者坦承很少真正播放</text>
+    <text x="550" y="330" text-anchor="middle" font-size="12" fill="#546e7a">同一批人往往同時是串流服務的訂閱者，實際日常聆聽仍靠串流，黑膠更接近一種收藏與周邊商品</text>
+  </svg>
+  </div>
+  <p class="after">這一節值得跟前面四節放在一起讀，因為它點出一件容易被忽略的事：<b>黑膠復興這件事，跟本頁前四節談的任何工程優勢都沒有直接關係</b>——它的成長曲線並不是「大家發現黑膠比串流更好聽」，而是實體所有權、分潤結構與儀式感這幾個跟音質完全無關的因素疊加的結果。把技術優劣與消費現象混為一談，是理解這波復興最容易踩到的陷阱。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>「黑膠比較有溫暖的聲音」不是因為它比較準確</b>——同資料夾〈類比音響系統〉側欄已經說明，這種聽感部分來自拾取機構本身的機械共振與循軌誤差，是額外添加進去的成分，不是更真實地重現了原始錄音。其二，<b>「黑膠沒有響度戰爭」不是普遍事實</b>——第三節說明的是刻片機構物理上不允許把動態範圍壓到極限，但這只限制了下限，母帶工程師仍然可以選擇壓縮到接近這個上限，實際動態範圍因發行版本而異。其三，<b>轉速數字大小跟音質好壞沒有必然關係</b>——45 轉音質理論上更有優勢是因為線速度更快，而不是因為這個數字本身比較大，78 轉的蟲膠唱片轉速比兩者都高，音質卻遠不如後兩者，材質與溝槽技術才是關鍵變數。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">蟲膠唱片成為業界標準</span><span class="yr">1900 年代初</span><p>以蟲膠為材料、每分鐘約七十八轉的唱片格式確立，音質與播放時間都遠遜於後來的黑膠，但支配市場長達數十年。</p></div>
+  <div class="card"><span class="nm">密紋唱片問世</span><span class="yr">1948</span><p>哥倫比亞唱片推出以聚氯乙烯為材質、每分鐘三十三又三分之一轉的長時間唱片，單面播放時間大幅超越蟲膠唱片。</p></div>
+  <div class="card"><span class="nm">四十五轉單曲唱片推出</span><span class="yr">1949</span><p>美國無線電公司推出競爭格式，兩種轉速一度互不相容，最終分別在專輯與單曲市場站穩腳步，形成共存局面。</p></div>
+  <div class="card"><span class="nm">RIAA 等化曲線統一</span><span class="yr">1954</span><p>業界統一低音衰減、高音提升的錄放修正曲線，解決了各廠牌自訂曲線互不相容的問題，詳見同資料夾〈類比音響系統〉。</p></div>
+  <div class="card"><span class="nm">45／45 立體聲刻紋定案</span><span class="yr">1957–1958</span><p>把左右聲道分別刻在互相垂直的溝槽壁上，同時相容既有單聲道唱機，是第一節談的核心技術。</p></div>
+  <div class="card"><span class="nm">CD 上市，黑膠市佔開始下滑</span><span class="yr">1982</span><p>數位光碟的錯誤更正與便利性快速侵蝕黑膠市場，此後二十年間黑膠一度淪為小眾與收藏市場的產品。</p></div>
+  <div class="card"><span class="nm">黑膠銷量觸底</span><span class="yr">2000 年代初</span><p>主流通路幾乎不再進貨新的黑膠唱片，僅剩獨立唱片行與特定收藏族群支撐著這個格式的存續。</p></div>
+  <div class="card"><span class="nm">黑膠銷量連續多年回升</span><span class="yr">2007 年起</span><p>獨立音樂場景與限量發行版帶動需求回溫，銷量此後幾乎逐年成長，是第五節談的復興現象的起點。</p></div>
+  <div class="card"><span class="nm">串流成為主流聆聽方式</span><span class="yr">2015 年前後</span><p>訂閱制串流服務的使用率超越實體購買與數位下載，日常聆聽習慣自此以串流為主。</p></div>
+  <div class="card"><span class="nm">黑膠營收超越 CD</span><span class="yr">2020</span><p>美國市場的黑膠唱片營收自一九八零年代以來首次超過 CD，成為第五節談的復興現象最常被引用的數字。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="類比音響系統知識圖譜.html"><span class="nm">類比音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>本頁多處延伸的起點——第三節的等化曲線、第五節側欄提到的機械共振，完整說明都在該頁第三節。</p></a>
+  <a class="card" href="數位音響系統知識圖譜.html"><span class="nm">數位音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>取代黑膠成為主流的那套系統，第四節談的錯誤更正正是黑膠完全沒有、CD 卻能做到的關鍵能力。</p></a>
+  <a class="card" href="Hi-res音樂知識圖譜.html"><span class="nm">Hi-res音樂知識圖譜</span><span class="lk">→ 專頁</span><p>同樣談規格與聽感落差的一頁，可以對照第三節「黑膠版動態範圍有時反而更寬」這個現象一起讀。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁，可與〈類比音響系統〉合看。<b>範圍</b>：聚焦於立體聲刻紋、內圈失真與母帶處理的工程原理，以及黑膠復興的現象觀察，不含唱盤與唱頭選購的實務建議。<b>數值</b>：頻率門檻、銷售數字等為文獻中常見的通行值，各家統計口徑與各次發行版本差異極大，本頁不列精確到小數點的規格。<b>黑膠復興的成因</b>：第五節列出的三項因素為常見的分析角度，實際比重難以量化，本頁不對单一因素的重要性下定論。<b>年份</b>：多數技術演變為漸進過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>電影技術演進知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>電影技術演進知識圖譜</h1>
+  <p class="lede">電影從一開始，靠的就是一個相當脆弱的錯覺：把一連串靜止的畫面連續播放，大腦會把它們拼成一個動作。這個錯覺經不起太多干擾，而電影史上幾乎每一次重大技術突破，都是圍繞著同一個問題展開的——<b>怎麼在不打破這個錯覺的前提下，多塞進一件東西：聲音、色彩、更寬的畫面、更高的解析度</b>。這一頁先從那個常被講錯的錯覺原理本身談起，接著看聲音加進來時真正卡住的是什麼、彩色底片怎麼一次拍出三種顏色、五零年代的寬螢幕大戰其實是一場對抗電視的商業戰爭，最後看數位轉型完成之後，把幀數直接推高會發生什麼事——答案跟直覺不太一樣。</p>
+</header>
+
+<blockquote>
+  電影從來不是真的在動，它只是動得夠像，像到大腦懶得分辨。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>動作錯覺的物理基礎：不完全是「視覺暫留」</h2>
+  <p class="sub">這是流傳最廣的科普誤解之一——教科書式的解釋聽起來合理，卻不是研究者現在採用的說法。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">流傳已久的解釋：視覺暫留</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">說法是眼睛會把畫面短暫「留」在</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4c636e">視網膜上，下一張畫面接上時兩者</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4c636e">重疊，於是感覺連續——這個說法</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4c636e">流傳極廣，卻不是完整的答案</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">研究者現在採用的解釋</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">動作的錯覺主要來自大腦主動的</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">詮釋，稱為「似動現象」——看到</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">兩個位置相近的靜止畫面快速交替，</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">大腦會主動腦補中間的移動軌跡</text>
+
+    <rect x="30" y="206" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">兩者的差別，不只是說法不同，是機制完全不同</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">視覺暫留是視網膜的被動殘影，理論上應該讓畫面疊在一起變得模糊；似動現象則是大腦對「位移」的主動</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">推斷，這也是為什麼霓虹燈招牌上一排燈泡依序點滅，會被看成一道光在移動——燈泡根本沒有移動，</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">是大腦自己腦補出移動的軌跡，跟電影銀幕上發生的其實是同一件事</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">這也解釋了為什麼幀數不必真的做到「連續」，只要頻率夠高，大腦就會自動幫你補完</text>
+  </svg>
+  </div>
+  <p class="after">釐清這一點，是因為它直接決定了下一節的答案：<b>如果動作錯覺主要靠大腦的主動詮釋，那麼「每秒該放幾張畫面」就不是一個由視網膜生理極限決定的固定數字，而是有相當大的彈性空間</b>。默片時代的放映速度確實從每秒十幾張到二十幾張都能被接受，直到聲音加入之後，這個數字才第一次被真正鎖死——理由卻跟眼睛完全無關。</p>
+</section>
+
+<section>
+  <h2>從默片到有聲片：真正的瓶頸是同步，不是收音</h2>
+  <p class="sub">錄下聲音在一九二零年代已經不是難事，真正卡住整個產業的，是讓聲音跟畫面對得上。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="190" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">聲音刻在唱片上：先天就會走音</text>
+    <text x="44" y="86" font-size="12.5" fill="#4f6773">一九二零年代中期一套系統，把聲</text>
+    <text x="44" y="110" font-size="12.5" fill="#4f6773">音刻在大張唱片上，用機械裝置跟</text>
+    <text x="44" y="134" font-size="12.5" fill="#4f6773">放映機同步轉動；只要唱片跳針、</text>
+    <text x="44" y="158" font-size="12.5" fill="#4f6773">拷貝斷裂需要重接，或轉速有一點</text>
+    <text x="44" y="182" font-size="12.5" fill="#4f6773">誤差，聲音和嘴型就再也對不上</text>
+
+    <rect x="565" y="20" width="505" height="190" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">聲音印在同一條底片上：結構性解決</text>
+    <text x="579" y="86" font-size="12.5" fill="#546e7a">改把聲音直接轉成一條光學紋路，</text>
+    <text x="579" y="110" font-size="12.5" fill="#546e7a">印在畫面旁邊的同一條底片上，放</text>
+    <text x="579" y="134" font-size="12.5" fill="#546e7a">映時光電管讀取這條紋路還原成聲</text>
+    <text x="579" y="158" font-size="12.5" fill="#546e7a">音——聲音跟畫面physically是同一</text>
+    <text x="579" y="182" font-size="12.5" fill="#546e7a">條膠捲，不可能不同步</text>
+
+    <rect x="30" y="226" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="258" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">正是這套方案，第一次把每秒二十四格鎖死成標準</text>
+    <text x="550" y="288" text-anchor="middle" font-size="12" fill="#546e7a">光學聲軌的音質，取決於底片通過讀取頭的速度夠不夠快；放映速度太慢，聲音會失真、變得沉悶。二十四</text>
+    <text x="550" y="310" text-anchor="middle" font-size="12" fill="#546e7a">格是當時業界權衡音質與底片成本後訂出的下限——底片本身很貴，格數再往上加會大幅墊高每部片的成本，</text>
+    <text x="550" y="332" text-anchor="middle" font-size="12" fill="#546e7a">這個數字從那時起沿用至今，跟第一節談的動作錯覺門檻其實沒有直接關係</text>
+    <text x="550" y="354" text-anchor="middle" font-size="11" fill="#96604f">默片時代的放映速度其實一直不固定，常隨戲院、放映師甚至現場情緒調整</text>
+  </svg>
+  </div>
+  <p class="after">這一節值得記住的地方，在於它推翻了一個常見的直覺：<b>二十四格不是「剛好夠讓眼睛看起來流暢」的數字，而是「剛好夠讓聲音聽起來不失真」的數字</b>。這個純粹為了音訊工程訂出的門檻，後來卻被誤以為是視覺生理學的鐵律，一路延續了將近一百年，直到第五節談的高幀數實驗才重新被拿出來檢視。</p>
+</section>
+
+<section>
+  <h2>三色分光：彩色底片怎麼一次拍出三種顏色</h2>
+  <p class="sub">最直覺的做法是在鏡頭前加一片彩色濾鏡，但那樣拍出來的畫面永遠只有一種顏色偏向——真正的解法複雜得多。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">關鍵構想：把彩色分解成三張各自獨立的黑白負片</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">同一個畫面，同時透過紅、綠、藍三片濾鏡，各自曝光成一張感光度不同的黑白負片</text>
+
+    <rect x="30" y="98" width="338" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">拍攝：三稜鏡分光</text>
+    <text x="199" y="162" text-anchor="middle" font-size="11.5" fill="#96604f">攝影機內裝一組分光稜鏡，</text>
+    <text x="199" y="182" text-anchor="middle" font-size="11.5" fill="#96604f">把同一道光同時分成三束，</text>
+    <text x="199" y="202" text-anchor="middle" font-size="11.5" fill="#96604f">各自穿過一片色濾鏡，曝光</text>
+    <text x="199" y="222" text-anchor="middle" font-size="11.5" fill="#96604f">在三捲各自獨立的底片上</text>
+
+    <rect x="381" y="98" width="338" height="150" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">沖印：染色轉印</text>
+    <text x="550" y="162" text-anchor="middle" font-size="11.5" fill="#37607a">三張負片各自沖成浮雕般</text>
+    <text x="550" y="182" text-anchor="middle" font-size="11.5" fill="#37607a">的凹凸版，分別吸附對應</text>
+    <text x="550" y="202" text-anchor="middle" font-size="11.5" fill="#37607a">顏色的染料，再依序轉印</text>
+    <text x="550" y="222" text-anchor="middle" font-size="11.5" fill="#37607a">到同一張底片上疊合</text>
+
+    <rect x="732" y="98" width="338" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">代價：機器又大又貴</text>
+    <text x="903" y="162" text-anchor="middle" font-size="11.5" fill="#8a6a35">攝影機比黑白攝影機笨重</text>
+    <text x="903" y="182" text-anchor="middle" font-size="11.5" fill="#8a6a35">得多，需要更強的燈光，</text>
+    <text x="903" y="202" text-anchor="middle" font-size="11.5" fill="#8a6a35">整套流程的成本遠高於黑</text>
+    <text x="903" y="222" text-anchor="middle" font-size="11.5" fill="#8a6a35">白拍攝，長期只用於大片</text>
+
+    <rect x="30" y="264" width="1040" height="112" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="296" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">這套做法比想像中更接近印刷，而不是攝影</text>
+    <text x="550" y="322" text-anchor="middle" font-size="12" fill="#546e7a">用染料轉印疊色而不是直接顯影，讓色彩工程師能個別調整三個顏色版的濃淡，色彩飽和度可以精細控制</text>
+    <text x="550" y="344" text-anchor="middle" font-size="12" fill="#546e7a">——這正是那個時代的彩色片色彩看起來特別濃郁鮮豔的原因，跟後來更接近直接感光顯色的彩色底片，</text>
+    <text x="550" y="366" text-anchor="middle" font-size="12" fill="#546e7a">呈現出的色彩性格完全不同</text>
+  </svg>
+  </div>
+  <p class="after">這套技術值得留意的地方在於：<b>它解決彩色問題的方式，跟後來的彩色底片走的是完全不同的路線</b>——不是靠感光材料直接記錄顏色，而是先把顏色拆開成三個獨立的黑白紀錄，再用印刷式的染色技術把它們重新合成。這種「先分解、後合成」的思路，某種程度上預告了下一節要談的另一種難題：怎麼把一個更寬的畫面，硬塞進一條規格固定的底片裡。</p>
+</section>
+
+<section>
+  <h2>寬螢幕大戰：對抗電視的技術武器</h2>
+  <p class="sub">最右欄是重點。這幾套系統要解決的都不是拍攝技術的問題，而是同一個商業焦慮：怎麼讓觀眾離開客廳，走進戲院。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="233" y="18" width="360" height="36" fill="#17324d"/>
+    <rect x="601" y="18" width="474" height="36" fill="#8a4636"/>
+    <text x="125" y="42" text-anchor="middle" font-size="13" fill="#ffffff">系統</text>
+    <text x="413" y="42" text-anchor="middle" font-size="13" fill="#ffffff">怎麼做到更寬</text>
+    <text x="838" y="42" text-anchor="middle" font-size="13" fill="#ffffff">代價與後續</text>
+
+    <rect x="25" y="58" width="200" height="110" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="233" y="58" width="360" height="110" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="58" width="474" height="110" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="106" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">三機投影系統</text>
+    <text x="125" y="128" text-anchor="middle" font-size="11" fill="#7a4436">一九五二年推出</text>
+    <text x="413" y="90" text-anchor="middle" font-size="12" fill="#546e7a">用三台同步運轉的放映機，</text>
+    <text x="413" y="112" text-anchor="middle" font-size="12" fill="#546e7a">把畫面投在一整片弧形巨幕上，</text>
+    <text x="413" y="134" text-anchor="middle" font-size="12" fill="#546e7a">視角遠超一般銀幕</text>
+    <text x="838" y="90" text-anchor="middle" font-size="12" fill="#b8442a">三台放映機要完美同步極其</text>
+    <text x="838" y="112" text-anchor="middle" font-size="12" fill="#b8442a">困難，戲院改裝成本高昂，</text>
+    <text x="838" y="134" text-anchor="middle" font-size="12" fill="#b8442a">商業上難以普及</text>
+
+    <rect x="25" y="168" width="200" height="110" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="233" y="168" width="360" height="110" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="168" width="474" height="110" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="216" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">變形壓縮鏡頭</text>
+    <text x="125" y="238" text-anchor="middle" font-size="11" fill="#37607a">一九五三年推出</text>
+    <text x="413" y="200" text-anchor="middle" font-size="12" fill="#546e7a">拍攝時用特殊鏡頭把寬畫面</text>
+    <text x="413" y="222" text-anchor="middle" font-size="12" fill="#546e7a">左右壓扁塞進標準底片，放映</text>
+    <text x="413" y="244" text-anchor="middle" font-size="12" fill="#546e7a">時再用對應鏡頭還原變寬</text>
+    <text x="838" y="200" text-anchor="middle" font-size="12" fill="#b8442a">只需替換鏡頭、不必更換</text>
+    <text x="838" y="222" text-anchor="middle" font-size="12" fill="#b8442a">底片規格，普及成本相對低，</text>
+    <text x="838" y="244" text-anchor="middle" font-size="12" fill="#b8442a">後來成為業界長期主流</text>
+
+    <rect x="25" y="278" width="200" height="110" fill="#ecf5ef" stroke="#9dc3a9"/>
+    <rect x="233" y="278" width="360" height="110" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="601" y="278" width="474" height="110" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="125" y="326" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">橫向走片底片</text>
+    <text x="125" y="348" text-anchor="middle" font-size="11" fill="#446b53">一九五四年推出</text>
+    <text x="413" y="310" text-anchor="middle" font-size="12" fill="#546e7a">讓底片橫向而非直向通過</text>
+    <text x="413" y="332" text-anchor="middle" font-size="12" fill="#546e7a">攝影機，單格畫面面積變大，</text>
+    <text x="413" y="354" text-anchor="middle" font-size="12" fill="#546e7a">不必壓縮畫面也能提升解析度</text>
+    <text x="838" y="310" text-anchor="middle" font-size="12" fill="#b8442a">畫質優於變形壓縮技術，</text>
+    <text x="838" y="332" text-anchor="middle" font-size="12" fill="#b8442a">但攝影機與沖印設備都得</text>
+    <text x="838" y="354" text-anchor="middle" font-size="12" fill="#b8442a">另外添購，普及度較有限</text>
+  </svg>
+  </div>
+  <p class="after">這三套系統的共同背景值得特別點出：<b>五零年代初期，電視開始普及，戲院觀眾人數持續下滑，好萊塢等於是在跟客廳裡那台小螢幕搶人</b>。「畫面更寬、更清晰、更有臨場感」在當時不只是美學追求，更是產業存亡的技術武器——這跟同資料夾〈黑膠唱片〉第五節談的「串流時代黑膠復興」剛好是相反的故事：一邊是舊媒介靠情感訴求撐住陣腳，一邊是既有媒介靠技術升級正面迎戰新對手。</p>
+</section>
+
+<section>
+  <h2>數位轉型之後：把幀數推高，觀眾不一定買帳</h2>
+  <p class="sub">底片被數位取代之後，理論上想要多高的幀數都做得到——但實際嘗試的結果，回應了第一節那個關於「多少才夠」的問題。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">數位放映解決了什麼問題</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">底片拷貝運送成本高、畫面會隨播</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">放次數刮傷劣化；業界二零零五年</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">前後訂出共同的數位放映規格，取</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">代底片拷貝發行</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">幀數再也不受底片成本限制</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">第二節那個「二十四格是省底片</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">錢的下限」的限制，在數位時代</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">已經不存在，理論上想拍多高的</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">幀數都做得到</text>
+
+    <rect x="30" y="206" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">二零一二年的實驗：加倍幀數，觀眾卻覺得「太順了」</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">一部大型奇幻電影嘗試以兩倍於傳統的幀數上映，畫面確實變得更流暢、動作更清晰，但相當多觀眾與影評</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">反映畫面看起來「太真實」，反而少了電影感、更接近電視現場轉播的觀感——這個評價後來成為業界討論</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">高幀數時經常被引用的案例</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">後續也有其他大片在特定場景嘗試更高幀數，評價則相對分歧，這個爭議至今沒有定論</text>
+  </svg>
+  </div>
+  <p class="after">這個案例把整篇又拉回第一節的起點：<b>二十四格從來不是「剛好夠用」的生理極限，而第五節這個實驗證明了反過來的事情同樣成立——幀數更高不必然等於「更好」，觀眾長期已經把每秒二十四格的些微頓挫，內化成「電影感」本身的一部分</b>。這正是這一頁想指出的整體形狀：電影技術史上多數的突破都是「加法」，多加聲音、多加色彩、多加畫面寬度都受到歡迎；幀數卻是少數「加了不一定討喜」的例外，因為它動到的是觀眾早已習慣、甚至已經產生美學認同的那個門檻本身。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>「電影感」不是玄學，很大一部分就是每秒二十四格帶來的輕微動態模糊與頓挫感</b>——第五節提到的高幀數爭議，說明這種感覺確實可以被量化討論，不完全是主觀偏好。其二，<b>彩色電影不是「發明」出來的單一時刻</b>——手工上色、化學染色等做法比第三節談的三色分光技術早了數十年，只是效果與穩定性遠遠不如後者，色彩技術是一條漸進的路線，不是單一突破。其三，<b>寬螢幕格式的選擇，至今仍會影響電影感的判斷</b>——第四節提到的變形壓縮技術留下的長寬比例，至今仍是許多導演刻意選用的美學語彙，不只是規格問題。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">首次公開放映動態影像</span><span class="yr">1895</span><p>盧米埃兄弟在巴黎公開放映短片，標誌電影作為公開商業放映形式的起點，當時放映速度並不固定。</p></div>
+  <div class="card"><span class="nm">聲音印在唱片上的系統推出</span><span class="yr">1926</span><p>華納兄弟推出的系統讓聲音與畫面首次大規模同步播放，但機械同步的先天缺陷很快浮現，見第二節。</p></div>
+  <div class="card"><span class="nm">光學聲軌系統確立為業界標準</span><span class="yr">1927–1929</span><p>聲音直接印在底片上的做法逐漸取代唱片同步，第一部長片有聲電影於此時期上映，二十四格標準隨之確立。</p></div>
+  <div class="card"><span class="nm">三色分光彩色技術成熟</span><span class="yr">1932</span><p>三稜鏡分光的彩色攝影技術推出實用版本，此後二十餘年間成為好萊塢大片的彩色標準，見第三節。</p></div>
+  <div class="card"><span class="nm">三機投影系統首次商業放映</span><span class="yr">1952</span><p>用三台放映機投影的巨幕系統正式登場，是第四節談的寬螢幕大戰第一槍，也是最快被市場淘汰的一套。</p></div>
+  <div class="card"><span class="nm">變形壓縮寬螢幕技術推出</span><span class="yr">1953</span><p>用特殊鏡頭把寬畫面壓縮進標準底片的技術正式商業化，普及成本較低，後續數十年成為業界長期主流。</p></div>
+  <div class="card"><span class="nm">橫向走片寬螢幕技術推出</span><span class="yr">1954</span><p>讓底片橫向通過攝影機以提升解析度的技術問世，畫質優於變形壓縮但普及度較有限，見第四節。</p></div>
+  <div class="card"><span class="nm">大型專用放映格式首座戲院啟用</span><span class="yr">1971</span><p>使用遠大於標準規格底片的巨型放映系統在加拿大啟用，此後逐漸發展為全球性的高規格放映品牌。</p></div>
+  <div class="card"><span class="nm">數位放映共同規格底定</span><span class="yr">2005 年前後</span><p>好萊塢主要片商聯合訂出數位放映的共通標準，此後十年間全球戲院陸續從底片放映轉換為數位放映。</p></div>
+  <div class="card"><span class="nm">高幀數電影上映引發爭議</span><span class="yr">2012</span><p>一部大型奇幻電影嘗試以兩倍傳統幀數上映，觀眾與影評的分歧反應，成為第五節談的幀數爭議代表案例。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="數位音響系統知識圖譜.html"><span class="nm">數位音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>第二節談的光學聲軌是類比訊號的一種特殊形式，該頁完整說明了聲音如何被轉換與還原的數位對應版本。</p></a>
+  <a class="card" href="黑膠唱片知識圖譜.html"><span class="nm">黑膠唱片知識圖譜</span><span class="lk">→ 專頁</span><p>第四節提到的「舊媒介如何應對新對手」，跟該頁第五節談的黑膠復興，是同一個問題的兩種不同答案。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：聚焦於動作錯覺、聲音、色彩、畫面規格與數位轉型的核心技術原理，不含攝影構圖、剪輯美學等創作層面的討論。<b>第一節</b>：動作知覺的心理學機制至今仍是學界持續研究的主題，本頁採用的是目前較被廣泛接受的說法，並非唯一定論。<b>數值</b>：底片規格、放映速度等數字為文獻中常見的通行值，各年代、各廠牌的實際規格略有差異，本頁不列精確到毫米的規格表。<b>年份</b>：多數技術的成熟為漸進過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>

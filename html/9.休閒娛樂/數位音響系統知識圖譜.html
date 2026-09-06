@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>數位音響系統知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>數位音響系統知識圖譜</h1>
+  <p class="lede">多數人對數位錄音的直覺是「用很多很細的階梯去逼近波形，階梯切得越細就越像」——這個直覺是錯的。<b>取樣定理證明的不是「夠像」，而是在特定條件下可以完全重建</b>：只要取樣速率超過訊號最高頻率的兩倍，那些看似稀疏的數字點，理論上足以精確還原出原本連續的波形，不多不少。這件事在同資料夾〈類比音響系統〉裡留下一個沒解決的伏筆——類比訊號一旦摻入雜訊就再也除不掉。<b>數位音訊真正的分水嶺，正是它讓「除錯」這件事第一次變得可能</b>。這一頁從那條反直覺的定理開始，接著看 44.1kHz 這個數字從哪裡來、位元深度與一個刻意添加雜訊的巧妙手法、CD 如何真的做到刮傷還能修回原樣，最後看破壞式壓縮丟掉的到底是什麼。</p>
+</header>
+
+<blockquote>
+  它拿掉的不是隨機的一部分資料，而是精確算過、耳朵本來就聽不到的那一部分。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>一個違反直覺的定理：取樣不是「夠像」，是「完全重建」</h2>
+  <p class="sub">階梯狀的示意圖是取樣理論裡最容易造成誤解的畫面——實際的還原過程裡，根本沒有階梯。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">常見的直覺（不準確）</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">取樣點之間用直線或階梯連起來，</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4c636e">點取得越密，階梯就越接近原本</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4c636e">的曲線——這只是「逼近」，永遠</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4c636e">有殘留誤差</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">取樣定理實際證明的事</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">只要取樣速率超過訊號最高頻率</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">的兩倍，這些離散的取樣點就唯一</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">對應一條連續波形，用正確的方式</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">可以把它完整還原</text>
+
+    <rect x="30" y="206" width="1040" height="120" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">關鍵不在取樣，在還原時用的方法</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">還原波形時用的不是把點連起來，而是一種特殊的內插方式，讓每個取樣點的影響力平滑地擴散到鄰近時間，</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">而不是只連到下一個點為止——正確做完這一步，階梯感會完全消失，剩下的是原本平滑的曲線</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">實務上的類比重建濾波器不是理想元件，會有些微落差，但這是工程實作的限制，不是定理本身的限制</text>
+
+    <rect x="30" y="336" width="1040" height="46" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="364" text-anchor="middle" font-size="12.5" fill="#17324d">這個結論最初由奈奎斯特提出雛形，後由夏農在一九四九年給出嚴謹證明，因此常合稱「奈奎斯特—夏農取樣定理」</text>
+  </svg>
+  </div>
+  <p class="after">這一節值得記住的，是它把數位音訊的地位徹底翻轉：<b>取樣不是一種不得已的簡化手段，而是一種在數學上站得住腳的精確表示法</b>。只要滿足取樣定理的條件，離散的數字序列和連續的波形之間，理論上不存在資訊損失。真正決定實際錄音品質的，是下面幾節要談的那些現實限制——取樣速率夠不夠高、每個取樣點記得夠不夠精細、以及還原濾波器做得好不好。</p>
+</section>
+
+<section>
+  <h2>為什麼是 44.1kHz：人耳的上限，加上一段錄影帶的往事</h2>
+  <p class="sub">這個數字有一半是生理學決定的，另一半純粹是一九七零年代的工程妥協，兩者合在一起才變成今天的標準。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 372" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="338" height="180" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="199" y="54" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">人耳能聽到的上限</text>
+    <text x="199" y="86" text-anchor="middle" font-size="11.5" fill="#546e7a">年輕健康的耳朵，一般能</text>
+    <text x="199" y="106" text-anchor="middle" font-size="11.5" fill="#546e7a">聽到大約兩萬赫茲，年紀</text>
+    <text x="199" y="126" text-anchor="middle" font-size="11.5" fill="#546e7a">增長後上限通常會降低</text>
+    <text x="199" y="160" text-anchor="middle" font-size="10.5" fill="#446b53">依取樣定理，至少要取樣四萬赫茲</text>
+    <text x="199" y="180" text-anchor="middle" font-size="10.5" fill="#446b53">以上才夠涵蓋整個可聽範圍</text>
+
+    <rect x="381" y="20" width="338" height="180" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="54" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">留一點安全餘裕</text>
+    <text x="550" y="86" text-anchor="middle" font-size="11.5" fill="#8a6a35">實際的重建濾波器不是理</text>
+    <text x="550" y="106" text-anchor="middle" font-size="11.5" fill="#8a6a35">想元件，需要一點頻率上</text>
+    <text x="550" y="126" text-anchor="middle" font-size="11.5" fill="#8a6a35">的緩衝空間才能有效運作</text>
+    <text x="550" y="160" text-anchor="middle" font-size="10.5" fill="#8a6a35">四萬赫茲的底線因此往上</text>
+    <text x="550" y="180" text-anchor="middle" font-size="10.5" fill="#8a6a35">多留了一些空間</text>
+
+    <rect x="732" y="20" width="343" height="180" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="903" y="54" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">錄影帶格式的限制</text>
+    <text x="903" y="86" text-anchor="middle" font-size="11.5" fill="#4f6773">早期的數位錄音機借用了</text>
+    <text x="903" y="106" text-anchor="middle" font-size="11.5" fill="#4f6773">錄影機的機構把音訊數字</text>
+    <text x="903" y="126" text-anchor="middle" font-size="11.5" fill="#4f6773">存到錄影帶上，能取的樣</text>
+    <text x="903" y="146" text-anchor="middle" font-size="11.5" fill="#4f6773">本數受限於錄影格式本身</text>
+    <text x="903" y="170" text-anchor="middle" font-size="10.5" fill="#7a4436">的畫面結構，並非自由選擇</text>
+
+    <rect x="30" y="216" width="1045" height="86" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="552" y="248" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">44.1kHz 是三個限制疊在一起的結果</text>
+    <text x="552" y="272" text-anchor="middle" font-size="12" fill="#546e7a">生理學給了下限，重建濾波器的現實需求把下限推高，而早期借用錄影帶儲存音訊數位資料的機器規格，最終把數字定在了這裡</text>
+
+    <rect x="30" y="310" width="1045" height="54" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="342" text-anchor="middle" font-size="12.5" fill="#17324d">這個數字後來被寫進 CD 的正式規格，此後成為業界公認的標準，一路延續至今</text>
+  </svg>
+  </div>
+  <p class="after">這個故事值得記住的，不是某個精確數字本身，而是<b>「標準」經常是好幾種互不相關的限制疊加後留下的產物，而不是從單一原則推導出來的最優解</b>。日後串流與錄音室製作常用的四萬八千赫茲，就是拿掉錄影帶那道限制、只保留生理學與濾波器需求後，重新抓的一個更寬裕的數字。</p>
+</section>
+
+<section>
+  <h2>位元深度與量化：故意加入雜訊，去馴服更難聽的失真</h2>
+  <p class="sub">位元深度決定的不是「取樣夠不夠密」，而是每個取樣點能記得多精細——而這裡也藏著一個反直覺的手法。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 384" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">位元深度決定的是什麼</text>
+    <text x="44" y="86" font-size="12.5" fill="#546e7a">每增加一個位元，能分辨的最大聲</text>
+    <text x="44" y="110" font-size="12.5" fill="#546e7a">與最小聲之間的落差，大約多出六</text>
+    <text x="44" y="134" font-size="12.5" fill="#546e7a">分貝——十六位元對應到大約九十</text>
+    <text x="44" y="158" font-size="12.5" fill="#546e7a">六分貝的動態範圍，這是 CD 的規格</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">量化必然帶來誤差</text>
+    <text x="579" y="86" font-size="12.5" fill="#4f6773">真實的聲壓是連續的，但只能記錄</text>
+    <text x="579" y="110" font-size="12.5" fill="#4f6773">成有限個階層裡最接近的一個，兩</text>
+    <text x="579" y="134" font-size="12.5" fill="#4f6773">者之間的落差就是量化誤差，在小</text>
+    <text x="579" y="158" font-size="12.5" fill="#4f6773">聲的段落尤其容易被聽出來</text>
+
+    <rect x="30" y="206" width="1040" height="132" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">解法：先加一點雜訊，把失真換成雜訊</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">量化誤差最麻煩的地方，是它會跟著訊號本身規律變化，聽起來像是一種刺耳的失真，而不是單純的背景雜訊。</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">在量化之前，刻意加入一點極微弱、精心設計過的雜訊，可以打散這種規律性，把原本刺耳的失真，換成人耳</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">比較不排斥的一種平順雜訊——聽起來反而更舒服，即使技術上訊噪比並沒有真的變好</text>
+    <text x="550" y="330" text-anchor="middle" font-size="11" fill="#96604f">這個技巧稱為「加抖」，幾乎用在所有專業母帶處理流程裡</text>
+  </svg>
+  </div>
+  <p class="after">這個技巧值得跟同資料夾〈類比音響系統〉第三節的做法放在一起看：<b>那一節的黑膠等化曲線與磁帶偏壓，是設計一對互相抵銷的偏差；這一節的加抖，則是刻意引入一種可以接受的失真，去掩蓋一種更不可接受的失真</b>——兩種做法的精神其實相通，都是承認限制無法完全消除，轉而去操控限制出現的方式。</p>
+</section>
+
+<section>
+  <h2>錯誤更正：數位音訊真正的分水嶺</h2>
+  <p class="sub">這是回應第一頁留下的伏筆——類比訊號沒有辦法分辨雜訊與原音，數位訊號則可以。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">類比媒體：損傷等於永久損失</text>
+    <text x="44" y="86" font-size="12.5" fill="#4f6773">黑膠上的一道刮痕，就是唱針軌跡上</text>
+    <text x="44" y="110" font-size="12.5" fill="#4f6773">實際多出來的振動，沒有辦法分辨</text>
+    <text x="44" y="134" font-size="12.5" fill="#4f6773">哪一段訊號是刮痕造成的，因為訊</text>
+    <text x="44" y="158" font-size="12.5" fill="#4f6773">號本身就是那個物理痕跡</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">數位媒體：損傷可以被算出來</text>
+    <text x="579" y="86" font-size="12.5" fill="#546e7a">CD 在寫入時，會依照原始資料額外</text>
+    <text x="579" y="110" font-size="12.5" fill="#546e7a">算出一批校驗用的數字，一併存進</text>
+    <text x="579" y="134" font-size="12.5" fill="#546e7a">光碟；讀取時只要沒錯得太離譜，</text>
+    <text x="579" y="158" font-size="12.5" fill="#546e7a">就能反推出原本正確的數字</text>
+
+    <rect x="30" y="206" width="1040" height="120" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">CD 使用的方法叫「交錯里德所羅門碼」</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">資料在寫入前先被刻意打散、交錯排列，一道刮痕造成的錯誤原本會集中在一小段，經過交錯後會被打散</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">成許多段各自都在可修正範圍內的小錯誤——這正是為什麼表面有輕微刮痕的 CD，通常還是能完美播放</text>
+    <text x="550" y="312" text-anchor="middle" font-size="11" fill="#96604f">錯誤大到修不回來時，播放器才會退而求其次，用鄰近數值內插去掩蓋，而不是真的算出正確答案</text>
+
+    <rect x="30" y="336" width="1040" height="34" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="358" text-anchor="middle" font-size="12" fill="#17324d">這正是同資料夾〈類比音響系統〉第二節那條分界線的具體展開：有沒有辦法分辨「原本的訊號」與「路上摻進來的雜訊」</text>
+  </svg>
+  </div>
+  <p class="after">這一節是整套系統裡最容易被忽略、卻最關鍵的一步。<b>取樣定理與位元深度解決的是「怎麼把聲音變成數字」，錯誤更正解決的則是「這些數字經過複製、傳輸、刮傷之後還能不能拿回原本正確的值」</b>——後者才是數位音訊相對於類比音訊最根本的優勢，也是為什麼複製一份 CD 音軌，理論上可以做到與原始檔案位元對位元完全相同，而複製一份黑膠唱片永遠做不到。</p>
+</section>
+
+<section>
+  <h2>破壞式壓縮：丟掉的不是隨機資料，是耳朵聽不到的部分</h2>
+  <p class="sub">最右欄是重點。壓縮丟掉的每一個位元，都是先經過模型判斷「聽不聽得出來」才決定丟的。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="220" height="36" fill="#17324d"/>
+    <rect x="253" y="18" width="380" height="36" fill="#17324d"/>
+    <rect x="641" y="18" width="434" height="36" fill="#8a4636"/>
+    <text x="135" y="42" text-anchor="middle" font-size="13" fill="#ffffff">遮蔽效應</text>
+    <text x="443" y="42" text-anchor="middle" font-size="13" fill="#ffffff">具體在做什麼</text>
+    <text x="858" y="42" text-anchor="middle" font-size="13" fill="#ffffff">對編碼的意義</text>
+
+    <rect x="25" y="58" width="220" height="94" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="58" width="380" height="94" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="58" width="434" height="94" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="102" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">同時遮蔽</text>
+    <text x="135" y="124" text-anchor="middle" font-size="11" fill="#37607a">頻率上的遮蔽</text>
+    <text x="443" y="90" text-anchor="middle" font-size="12" fill="#546e7a">一個夠大聲的音，會讓耳朵暫時</text>
+    <text x="443" y="112" text-anchor="middle" font-size="12" fill="#546e7a">聽不見附近頻率上同時出現的較</text>
+    <text x="443" y="134" text-anchor="middle" font-size="12" fill="#546e7a">小聲響</text>
+    <text x="858" y="90" text-anchor="middle" font-size="12" fill="#b8442a">被遮蔽掉的那部分頻率細節，</text>
+    <text x="858" y="112" text-anchor="middle" font-size="12" fill="#b8442a">記不記錄下來，聽感上沒有差別，</text>
+    <text x="858" y="134" text-anchor="middle" font-size="12" fill="#b8442a">於是可以省下編碼空間</text>
+
+    <rect x="25" y="152" width="220" height="94" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="152" width="380" height="94" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="641" y="152" width="434" height="94" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="196" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">時間上的遮蔽</text>
+    <text x="135" y="218" text-anchor="middle" font-size="11" fill="#37607a">前遮蔽與後遮蔽</text>
+    <text x="443" y="184" text-anchor="middle" font-size="12" fill="#546e7a">一個突然的大聲響，會讓耳朵在</text>
+    <text x="443" y="206" text-anchor="middle" font-size="12" fill="#546e7a">它前後短短幾十毫秒內，也聽不</text>
+    <text x="443" y="228" text-anchor="middle" font-size="12" fill="#546e7a">清楚較小的聲音</text>
+    <text x="858" y="184" text-anchor="middle" font-size="12" fill="#b8442a">緊鄰在強音前後的細節，同樣</text>
+    <text x="858" y="206" text-anchor="middle" font-size="12" fill="#b8442a">可以省略而不太會被聽出來，</text>
+    <text x="858" y="228" text-anchor="middle" font-size="12" fill="#b8442a">但這也是壓縮瑕疵最容易出現的地方</text>
+
+    <rect x="25" y="246" width="220" height="94" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="253" y="246" width="380" height="94" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="641" y="246" width="434" height="94" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="135" y="290" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">位元分配</text>
+    <text x="135" y="312" text-anchor="middle" font-size="11" fill="#446b53">省下來的空間怎麼用</text>
+    <text x="443" y="278" text-anchor="middle" font-size="12" fill="#546e7a">整段音樂的可用位元數是固定的，</text>
+    <text x="443" y="300" text-anchor="middle" font-size="12" fill="#546e7a">省下來的位元，會優先分配給耳朵</text>
+    <text x="443" y="322" text-anchor="middle" font-size="12" fill="#546e7a">真正聽得出差異的部分</text>
+    <text x="858" y="278" text-anchor="middle" font-size="12" fill="#3d7a55">這才是壓縮率能做到這麼高、</text>
+    <text x="858" y="300" text-anchor="middle" font-size="12" fill="#3d7a55">卻多數情況下聽不太出差異</text>
+    <text x="858" y="322" text-anchor="middle" font-size="12" fill="#3d7a55">的真正原因</text>
+
+    <rect x="30" y="356" width="1045" height="50" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="552" y="386" text-anchor="middle" font-size="12.5" fill="#17324d">這跟第四節的錯誤更正剛好是相反方向的巧思——一個是設法保留每一個位元，一個是設法判斷哪些位元根本不必留</text>
+  </svg>
+  </div>
+  <p class="after">這一點解釋了為什麼壓縮率調得太高時，最先出現的瑕疵往往是鑔片、掌聲這類尖銳的瞬時聲響變得毛躁——<b>這些聲音正好落在時間遮蔽模型判斷「應該聽不太出來」卻沒完全準確的那個邊界上</b>。破壞式壓縮丟掉的資料是回不來的，這跟第四節的錯誤更正剛好相反：那裡是在盡力找回本來就該存在的資料，這裡則是一開始就主動決定不存。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>取樣率越高不代表錄到「更高解析度的波形」</b>——一旦超過人耳可聽範圍所需的取樣率，多出來的部分記錄的是聽不到的超高頻內容，不會讓可聽範圍內的音質變得更精細，錄音室常用較高規格是為了保留後製處理的餘裕，不是為了終端播放的音質本身。其二，<b>位元深度不是「音量大小」，是「能分辨的最小落差」</b>——十六位元與二十四位元錄下同一段安靜的聲音，聽起來的音量一樣大，差別在極安靜段落的雜訊有多低。其三，<b>「無損」壓縮跟「破壞式」壓縮是完全不同的兩件事</b>——無損壓縮只是把數字更有效率地打包，解壓縮後與原始檔案位元對位元相同；破壞式壓縮才是本頁第五節談的、真的丟掉資料的那一種。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">奈奎斯特提出取樣理論雛形</span><span class="yr">1928</span><p>在電報傳輸理論的研究中，首次提出取樣速率與可還原頻率之間的關係，是第一節那條定理最早的雛形。</p></div>
+  <div class="card"><span class="nm">李維斯申請脈衝編碼調變專利</span><span class="yr">1937</span><p>提出將訊號量化成一串數字脈衝的構想，是數位音訊「把聲音變成數字」這個核心概念最早的專利。</p></div>
+  <div class="card"><span class="nm">夏農證明取樣定理</span><span class="yr">1949</span><p>在探討雜訊環境下的通訊理論時，給出取樣定理嚴謹的數學證明，此後常與奈奎斯特之名合稱。</p></div>
+  <div class="card"><span class="nm">日本放送協會試製數位錄音機</span><span class="yr">1967</span><p>早期實驗性的脈衝編碼調變錄音裝置，證明數位錄音在技術上可行，但當時的儲存成本極高。</p></div>
+  <div class="card"><span class="nm">借用錄影帶儲存數位音訊</span><span class="yr">1970 年代</span><p>早期數位錄音機把音訊數字存進錄影帶的畫面結構裡，這個做法的規格限制，正是第二節那段往事的由來。</p></div>
+  <div class="card"><span class="nm">紅皮書 CD 規格底定</span><span class="yr">1980</span><p>兩家公司共同訂出雷射光碟的正式規格，確立 44.1kHz、十六位元為業界標準，沿用至今。</p></div>
+  <div class="card"><span class="nm">CD 正式上市</span><span class="yr">1982</span><p>第一批商用雷射光碟在日本發售，數位音訊第一次進入一般消費市場，第四節的錯誤更正技術隨之普及。</p></div>
+  <div class="card"><span class="nm">MP3 標準正式底定</span><span class="yr">1993</span><p>破壞式壓縮的國際標準正式發布，第五節談的心理聲學遮蔽模型自此被寫進一套通用的編碼規格。</p></div>
+  <div class="card"><span class="nm">檔案分享徹底改變音樂產業</span><span class="yr">1999 年前後</span><p>壓縮後檔案體積夠小，讓音樂能透過網路大量流通，音樂產業的商業模式自此被迫重新設計。</p></div>
+  <div class="card"><span class="nm">串流音樂採用更高規格</span><span class="yr">2010 年代起</span><p>部分串流服務開始提供高於 CD 規格的取樣率與位元深度選項，主要用途落在後製餘裕而非終端音質，見側欄說明。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="類比音響系統知識圖譜.html"><span class="nm">類比音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>本頁第四節回應的伏筆正出於此——類比訊號沒有辦法分辨原音與雜訊，這正是兩套系統最根本的分歧點。</p></a>
+  <a class="card" href="積體電路知識圖譜.html"><span class="nm">積體電路知識圖譜</span><span class="lk">→ 專頁</span><p>把類比訊號轉成數字、又轉回類比訊號的那顆晶片，正是積體電路把大量電路整合進單一封裝的典型案例。</p></a>
+  <a class="card" href="電子零件的種類知識圖譜.html"><span class="nm">電子零件的種類知識圖譜</span><span class="lk">→ 專頁</span><p>第一節提到的重建濾波器，實際上是由電阻、電容組成的類比濾波網路，並非數位運算能單獨完成的工作。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁，可與〈類比音響系統〉合看。<b>範圍</b>：聚焦於取樣、量化、錯誤更正與破壞式壓縮的核心概念，不含數位訊號處理的數學細節與各壓縮格式的技術比較。<b>數值</b>：動態範圍、取樣率等數字為業界公認的通行值，實際規格隨標準版本略有差異，本頁不列精確到小數點的規格表。<b>取樣定理</b>：第一節談的「完全重建」為理想條件下的數學結論，實務上的類比重建濾波器、時脈精度等現實因素都會帶來些微落差，本頁已於文中註明。<b>年份</b>：技術的成熟多為漸進過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>

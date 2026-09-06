@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>數位串流音樂知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>數位串流音樂知識圖譜</h1>
+  <p class="lede">同資料夾〈數位音響系統〉談的是「怎麼把聲音變成數字」，這一頁談的是完全不同的另一個問題：<b>怎麼讓那些數字，準時、不斷流地從很遠的伺服器送到你的耳機裡</b>。這是一個網路工程問題，不是音訊工程問題——串流音樂能穩定播放，靠的不是壓縮演算法多聰明，而是一整套隱藏在背後、專門對付網路不可靠這件事的機制。這一頁從那個最基本的騙術開始，接著看網路變差時音樂怎麼在背後偷偷降級、你聽到的檔案可能離你只有幾條街、每一次播放實際上分到多少錢，最後看串流平台一個不起眼的規則，如何悄悄終結了黑膠唱片那頁提過的響度戰爭。</p>
+</header>
+
+<blockquote>
+  串流不是把聲音「送」到你耳朵裡，而是不斷猜測接下來幾秒你會需要什麼，然後提前把它準備好。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>串流不是即時傳輸，是預先下載一小段再假裝即時</h2>
+  <p class="sub">按下播放鍵到真正聽到聲音之間那零點幾秒的延遲，不是網路太慢，是刻意留出來的緩衝。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#e2e0dc" stroke="#b6b2ab" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#4c636e" font-weight="600">如果真的逐字即時播放</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4c636e">每個音訊片段一送達就立刻播放，</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4c636e">中間完全沒有存貨。只要網路有</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4c636e">一瞬間變慢，播放就會立刻卡住</text>
+    <text x="282" y="158" text-anchor="middle" font-size="11" fill="#4c636e">這是任何人都無法忍受的聆聽體驗</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">實際的做法：先囤一段存貨</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">播放器在開始播放前，先下載未</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">來幾秒的音訊存進緩衝區，播放</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">的同時持續在背景補貨</text>
+    <text x="817" y="158" text-anchor="middle" font-size="11" fill="#37607a">網路短暫變慢時，先吃存貨頂著</text>
+
+    <rect x="30" y="206" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">這是一筆用時間換穩定性的交易</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">緩衝存貨越多，能扛住的網路波動就越大，但代價是按下播放到真正發聲之間的延遲跟著變長。緩衝存貨</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">太少，遇到網路一瞬間變慢就會卡頓；存貨太多，切歌時要多等好幾秒才聽得到聲音——串流平台的工程</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">團隊不斷在調整的，正是這個存貨量該抓多少</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">同資料夾〈數位音響系統〉談的是聲音本身怎麼變成數字，這裡談的是這批數字怎麼準時送達</text>
+  </svg>
+  </div>
+  <p class="after">這個機制值得記住的地方在於：<b>串流體驗的穩定與否，取決於緩衝策略設計得好不好，而不是取決於音訊編碼技術本身有多先進</b>。同樣的編碼格式，緩衝策略設計得差，照樣會頻繁卡頓；緩衝策略設計得好，即使網路品質普通，多數時候聽起來也毫無異狀。下一節要談的自適應位元率，正是建立在這套緩衝機制之上的進一步優化。</p>
+</section>
+
+<section>
+  <h2>自適應位元率：網路變差時，音樂在背後偷偷降級</h2>
+  <p class="sub">你可能從沒發現一首歌播到一半，音質已經悄悄變過好幾次——因為切換的瞬間被刻意藏起來了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">同一首歌，伺服器上其實備好了好幾種不同位元率的版本</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">播放器會即時偵測目前的網路吞吐量，動態選擇當下負擔得起的那一版</text>
+
+    <rect x="30" y="98" width="338" height="150" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">網路狀況良好</text>
+    <text x="199" y="162" text-anchor="middle" font-size="11.5" fill="#446b53">播放器偵測到頻寬充裕，</text>
+    <text x="199" y="182" text-anchor="middle" font-size="11.5" fill="#446b53">選用較高位元率的版本，</text>
+    <text x="199" y="202" text-anchor="middle" font-size="11.5" fill="#446b53">提供較好的音質</text>
+    <text x="199" y="228" text-anchor="middle" font-size="10.5" fill="#446b53">代價是傳輸的資料量比較大</text>
+
+    <rect x="381" y="98" width="338" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">網路開始變差</text>
+    <text x="550" y="162" text-anchor="middle" font-size="11.5" fill="#8a6a35">頻寬即時偵測數值下降，</text>
+    <text x="550" y="182" text-anchor="middle" font-size="11.5" fill="#8a6a35">播放器提前切換到位元</text>
+    <text x="550" y="202" text-anchor="middle" font-size="11.5" fill="#8a6a35">率較低的版本</text>
+    <text x="550" y="228" text-anchor="middle" font-size="10.5" fill="#8a6a35">先犧牲音質，換取播放不中斷</text>
+
+    <rect x="732" y="98" width="338" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">切換的瞬間被刻意藏起來</text>
+    <text x="903" y="162" text-anchor="middle" font-size="11.5" fill="#96604f">切換點通常選在音量較低</text>
+    <text x="903" y="182" text-anchor="middle" font-size="11.5" fill="#96604f">或段落交界處，讓音質落</text>
+    <text x="903" y="202" text-anchor="middle" font-size="11.5" fill="#96604f">差沒那麼容易被聽出來</text>
+    <text x="903" y="228" text-anchor="middle" font-size="10.5" fill="#96604f">多數聽者根本不會注意到切換發生過</text>
+
+    <rect x="30" y="270" width="1040" height="102" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="302" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">這跟第一節的緩衝策略是同一套哲學的延伸</text>
+    <text x="550" y="326" text-anchor="middle" font-size="12" fill="#546e7a">第一節解決的是「時間夠不夠」，這一節解決的是「當時間快不夠的時候，該放棄什麼」——答案永遠是先放棄</text>
+    <text x="550" y="348" text-anchor="middle" font-size="12" fill="#546e7a">音質，而不是放棄播放的連續性，因為對多數聽者而言，卡頓比音質下降明顯得多，也惱人得多</text>
+  </svg>
+  </div>
+  <p class="after">這一點跟同資料夾〈Hi-res音樂〉第三節談的雙盲測試結論其實互相呼應：<b>既然一般聆聽情境下，音質的細微差異本來就不容易被聽出來，那麼在網路吃緊的當下，用一點音質去換播放不中斷，是一筆划算的交易</b>。這也是為什麼多數人幾乎感覺不到自己正在用行動網路聽著一首「降級版」的歌。</p>
+</section>
+
+<section>
+  <h2>你聽到的檔案，可能離你只有幾條街</h2>
+  <p class="sub">熱門新歌播放起來特別流暢、冷門老歌偶爾要多等一下才開始播——這個落差不是偶然，是整套佈署架構造成的。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">如果只有一座中央機房</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">全世界的播放請求都要跨海跨洲</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">送到同一個地方，光是訊號來回</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">的物理延遲，就足以讓體驗變差</text>
+    <text x="282" y="158" text-anchor="middle" font-size="11" fill="#7a4436">距離越遠，緩衝需要囤的存貨也越多</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">實際的做法：把熱門內容複製到各地</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">串流平台把最常被播放的曲目，</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">預先複製到分布在世界各地的邊</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">緣伺服器上，離聽眾實際距離很近</text>
+    <text x="817" y="158" text-anchor="middle" font-size="11" fill="#37607a">播放請求就近由最近的邊緣伺服器回應</text>
+
+    <rect x="30" y="206" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">代價是冷門內容沒辦法處處都有備份</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">邊緣伺服器的儲存空間有限，只能放得下最常被要求的那一小部分內容，這通常呈現一個很極端的分布——</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">少數熱門曲目佔掉了絕大多數的播放次數。冷門或年代久遠的曲目，很可能沒有被放進邊緣伺服器，播放</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">請求得往回追溯到更遠、更中心的伺服器才拿得到，這正是有時候老歌開始播放前會多停頓一下的原因</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">這套佈署邏輯跟〈全球海運〉談的貨櫃轉運樞紐，其實是同一種「熱門路線優先佈建」的思路</text>
+  </svg>
+  </div>
+  <p class="after">這個架構解釋了一個容易被忽略的現象：<b>串流平台的體驗品質，其實從來不是對所有內容一視同仁的</b>。新發行的熱門單曲，往往在還沒正式上架前就已經被預先佈署到各地的邊緣伺服器，確保發行當下的播放洪峰不會拖垮系統；而那些幾乎沒人點閱的冷門曲目，則长期只存在少數幾個中心據點，播放體驗本質上是不同等級的服務，只是多數聽者從未意識到這件事。</p>
+</section>
+
+<section>
+  <h2>每一次播放，實際上分到多少錢</h2>
+  <p class="sub">最右欄是重點。錢從訂閱費到創作者手上，中間經過的分配規則，遠比多數人想像的複雜。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="220" height="36" fill="#17324d"/>
+    <rect x="253" y="18" width="360" height="36" fill="#17324d"/>
+    <rect x="621" y="18" width="454" height="36" fill="#8a4636"/>
+    <text x="135" y="42" text-anchor="middle" font-size="13" fill="#ffffff">模式</text>
+    <text x="433" y="42" text-anchor="middle" font-size="13" fill="#ffffff">錢實際上怎麼分</text>
+    <text x="848" y="42" text-anchor="middle" font-size="13" fill="#ffffff">造成的後果</text>
+
+    <rect x="25" y="58" width="220" height="150" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="253" y="58" width="360" height="150" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="58" width="454" height="150" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="102" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">比例分配制</text>
+    <text x="135" y="124" text-anchor="middle" font-size="11" fill="#8a6a35">目前多數平台採用</text>
+    <text x="433" y="90" text-anchor="middle" font-size="12" fill="#546e7a">整個市場所有訂閱費與廣告收入</text>
+    <text x="433" y="112" text-anchor="middle" font-size="12" fill="#546e7a">先併成一個大池子，再依全平台</text>
+    <text x="433" y="134" text-anchor="middle" font-size="12" fill="#546e7a">播放次數的佔比分給各版權方</text>
+    <text x="433" y="156" text-anchor="middle" font-size="12" fill="#546e7a">——不是你付的那筆錢直接分給</text>
+    <text x="433" y="178" text-anchor="middle" font-size="12" fill="#546e7a">你自己聽的音樂人</text>
+    <text x="848" y="90" text-anchor="middle" font-size="12" fill="#b8442a">你的訂閱費有一部分，實際上</text>
+    <text x="848" y="112" text-anchor="middle" font-size="12" fill="#b8442a">會流向全平台播放量最高的那</text>
+    <text x="848" y="134" text-anchor="middle" font-size="12" fill="#b8442a">些主流藝人，即使你一次也沒</text>
+    <text x="848" y="156" text-anchor="middle" font-size="12" fill="#b8442a">播放過他們</text>
+
+    <rect x="25" y="208" width="220" height="130" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="253" y="208" width="360" height="130" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="621" y="208" width="454" height="130" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="135" y="252" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">用戶中心制</text>
+    <text x="135" y="274" text-anchor="middle" font-size="11" fill="#37607a">部分平台開始嘗試</text>
+    <text x="433" y="240" text-anchor="middle" font-size="12" fill="#546e7a">每位訂戶的訂閱費，只在該訂戶</text>
+    <text x="433" y="262" text-anchor="middle" font-size="12" fill="#546e7a">自己實際聽過的音樂人之間依比</text>
+    <text x="433" y="284" text-anchor="middle" font-size="12" fill="#546e7a">例分配，不進入全平台大池子</text>
+    <text x="848" y="240" text-anchor="middle" font-size="12" fill="#b8442a">小眾與獨立音樂人的實際收益</text>
+    <text x="848" y="262" text-anchor="middle" font-size="12" fill="#b8442a">占比通常會提高，因為不再被</text>
+    <text x="848" y="284" text-anchor="middle" font-size="12" fill="#b8442a">主流藝人的龐大播放量稀釋掉</text>
+
+    <rect x="30" y="348" width="1040" height="40" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="374" text-anchor="middle" font-size="12.5" fill="#17324d">每一次播放實際分到的金額通常只是一美分的一小部分，累積成有意義的收入需要非常龐大的播放量</text>
+  </svg>
+  </div>
+  <p class="after">這一節的重點，不在於哪一種分配模式「更公平」——兩種模式各自有支持者也各自有爭議——而在於<b>多數聽眾對「我付的訂閱費去了哪裡」這件事，有一個直覺上錯誤的想像</b>。訂閱費不是像投幣點唱機那樣直接付給你點的那首歌，比例分配制底下，它更接近一筆先被混在一起、再依整體人氣重新分配的稅收。</p>
+</section>
+
+<section>
+  <h2>一個不起眼的規則，悄悄終結了響度戰爭</h2>
+  <p class="sub">同資料夾〈黑膠唱片〉第三節提過響度戰爭，這一節要說的是：真正讓它退場的，可能不是任何人的良心發現，而是一條技術規則。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">CD 時代：越大聲，聽起來越搶眼</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">母帶處理越是把音量壓縮到接近</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">上限，整首歌聽起來就越有存在</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">感，這個誘因催生了長達數十年</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">的響度戰爭</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#3d7a55" font-weight="600">串流時代：平台會把你的努力打回原形</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#446b53">串流平台會量測每首歌的實際響</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#446b53">度，超過平台設定的目標值，播</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#446b53">放時就自動被調降音量</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#446b53">刻意壓得很大聲，換來的只是被調低</text>
+
+    <rect x="30" y="206" width="1040" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">誘因整個反過來了</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">在響度會被統一拉平的世界裡，把動態範圍壓縮到極限已經換不到任何「聽起來比較大聲」的優勢——</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">兩首響度不同的歌，播放時最終都會被調整到同一個目標值。壓得越極限，反而只是白白犧牲了動態範圍，</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">卻沒有換到任何實際好處</text>
+    <text x="550" y="334" text-anchor="middle" font-size="11" fill="#96604f">許多母帶工程師近年觀察到，串流普及後新發行作品的動態範圍有回升的趨勢</text>
+  </svg>
+  </div>
+  <p class="after">這正是全篇最值得記住的一個轉折：<b>推動響度戰爭消退的，不是聽眾品味改變、也不是產業自律，而是一條原本只是為了讓使用者體驗更一致而設計的技術規則，意外地拆掉了那個把音量壓到極限的商業誘因</b>。同一套機制原本的目的，只是想解決「不同歌曲之間音量忽大忽小很煩」這個單純的使用體驗問題，卻在無意間改寫了整個產業數十年的母帶處理習慣。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>「無損串流」不等於串流時完全沒有任何損失</b>——無損指的是音訊編碼本身不丟資料，但第一、二節談的緩衝與位元率切換仍然存在，遇到網路不穩，無損串流一樣可能被降級或卡頓。其二，<b>串流平台顯示的「已下載離線」不代表檔案永久保存在裝置上</b>——多數平台的離線快取有加密與到期機制，訂閱一旦中止，離線的檔案通常也會失去播放權限。其三，<b>播放量高不代表創作者收入高</b>——第四節說明版稅池的分配方式，還牽涉到唱片公司、發行方、詞曲版權方之間的拆分比例，音樂人實際到手的金額往往遠低於直覺想像的播放次數乘以每次分潤。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">iTunes 商店上線</span><span class="yr">2001</span><p>數位音樂零售的重要起點，雖然賣的是下載而非串流，但建立了消費者為數位音樂單獨付費的習慣。</p></div>
+  <div class="card"><span class="nm">Spotify 於瑞典上線</span><span class="yr">2008</span><p>免費加訂閱並存的模式成為後續串流平台的範本，第四節談的比例分配版稅制也在此時期成形。</p></div>
+  <div class="card"><span class="nm">Spotify 進入美國市場</span><span class="yr">2011</span><p>串流服務正式進入全球最大的音樂市場，此後數年間帶動整個產業的營收結構出現根本轉變。</p></div>
+  <div class="card"><span class="nm">自適應串流國際標準底定</span><span class="yr">2012</span><p>第二節談的自適應位元率技術有了跨平台共通的標準做法，讓不同廠商的播放器都能實作類似機制。</p></div>
+  <div class="card"><span class="nm">主要平台陸續導入音量正常化</span><span class="yr">2014 年前後</span><p>第五節談的響度統一機制開始被大型平台採用，此後逐漸擴散到幾乎所有主流串流服務。</p></div>
+  <div class="card"><span class="nm">串流成為全球錄製音樂最大營收來源</span><span class="yr">2016 年前後</span><p>根據產業報告，串流收入首次超越實體唱片與數位下載的總和，音樂產業的商業模式自此徹底轉向。</p></div>
+  <div class="card"><span class="nm">Amazon Music HD 推出高解析度串流</span><span class="yr">2019</span><p>把 Hi-Res 規格納入訂閱方案的選項之一，此後帶動其他平台陸續跟進，見同資料夾〈Hi-res音樂〉。</p></div>
+  <div class="card"><span class="nm">串流佔全球錄製音樂營收過半</span><span class="yr">2020</span><p>根據國際唱片業協會的報告，串流首次貢獻了全球錄製音樂產業一半以上的營收，成為毫無疑問的主流。</p></div>
+  <div class="card"><span class="nm">SoundCloud 宣布改採用戶中心制</span><span class="yr">2021</span><p>第四節談的另一種版稅分配模式首次由主要平台正式採用，此後成為業界討論比例制公平性的重要案例。</p></div>
+  <div class="card"><span class="nm">串流計費規則對創作型態的影響開始被廣泛討論</span><span class="yr">2020 年代</span><p>播放需滿一定秒數才計入版稅的規則，被部分業界人士認為與副歌前置、歌曲長度縮短等創作趨勢有關，這個因果關係目前仍有爭論。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="數位音響系統知識圖譜.html"><span class="nm">數位音響系統知識圖譜</span><span class="lk">→ 專頁</span><p>本頁談的是數字怎麼「送達」，該頁談的是聲音怎麼「變成」數字——取樣、量化與錯誤更正的完整說明都在那裡。</p></a>
+  <a class="card" href="Hi-res音樂知識圖譜.html"><span class="nm">Hi-res音樂知識圖譜</span><span class="lk">→ 專頁</span><p>第二節提到的音質分級選擇，與該頁談的規格是否真能被聽出來，是同一個問題的兩個切面。</p></a>
+  <a class="card" href="黑膠唱片知識圖譜.html"><span class="nm">黑膠唱片知識圖譜</span><span class="lk">→ 專頁</span><p>第五節呼應的響度戰爭起點——該頁第三節說明了黑膠版本身的物理限制，如何意外緩解了同一個問題。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁，可與〈數位音響系統〉〈Hi-res音樂〉〈黑膠唱片〉合看。<b>範圍</b>：聚焦於串流傳輸的工程機制與版稅分配的商業邏輯，不含各平台費率與實際合約條款的比較。<b>數值</b>：每次播放的分潤金額、響度目標值等數字為業界常見的概數，各平台、各市場、各時期的實際數字差異極大，本頁不列精確規格。<b>第四、五節</b>：版稅分配模式的公平性與響度規則對創作趨勢的實際影響，業界與學界仍有不同看法，本頁陳述的是常見的分析角度，不代表唯一定論。<b>年份</b>：多數產業轉變為漸進過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>

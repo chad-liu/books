@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>類比音響系統知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8 科普 · 專題</p>
+  <h1>類比音響系統知識圖譜</h1>
+  <p class="lede">從你說話的那一刻到喇叭把聲音送回空氣裡，中間發生的事，本質上只有一件：<b>能量被反覆改造成別的形式，再改造回來</b>。空氣的振動先變成麥克風膜片的機械振動，再變成一股電訊號，電訊號被放大之後又變回喇叭音圈的機械振動，最後才又變回空氣的振動。<b>問題是，沒有一種轉換是完美的</b>——每一次改造形式，都會摻進一點點原本沒有的東西。類比音響工程的全部工作，說到底就是在這條轉換鏈的每一站，想辦法讓摻進去的東西少一點，或者反過來，故意設計一種偏差去抵銷另一種偏差。這一頁從這條鏈的全貌開始，接著談「類比」這兩個字真正在說什麼、黑膠與磁帶各自用什麼巧妙的手法克服自己的物理限制、放大器怎麼把訊號做大又不太失真，最後看為什麼鏈子裡失真最大的一環，往往不是你以為的那個。</p>
+</header>
+
+<blockquote>
+  它不是把聲音「記錄」下來，而是把聲音「翻譯」成另一種物理量，而翻譯這件事，從來就不會完全準確。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>一條轉換鏈：把空氣的振動，變回空氣的振動</h2>
+  <p class="sub">五個階段、四次轉換，每一次轉換都經過一個沒辦法做到完美線性的元件。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="1050" height="44" fill="#17324d" rx="6"/>
+    <text x="550" y="46" text-anchor="middle" font-size="13.5" fill="#ffffff">聲音從來沒有被「保存」過，它只是被反覆翻譯成別種物理量，再翻譯回來</text>
+
+    <rect x="25" y="86" width="196" height="120" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <text x="123" y="118" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">空氣振動</text>
+    <text x="123" y="140" text-anchor="middle" font-size="11" fill="#37607a">聲學</text>
+    <text x="123" y="164" text-anchor="middle" font-size="11" fill="#546e7a">原始的聲波</text>
+    <text x="123" y="184" text-anchor="middle" font-size="11" fill="#546e7a">壓力變化</text>
+
+    <path d="M225,146 H262 M262,146 L253,140 M262,146 L253,152" stroke="#8a8f93" stroke-width="1.8" fill="none"/>
+    <text x="243" y="130" text-anchor="middle" font-size="10.5" fill="#59707b">麥克風</text>
+
+    <rect x="266" y="86" width="196" height="120" fill="#f0e6e2" stroke="#c9a99e"/>
+    <text x="364" y="118" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">膜片振動</text>
+    <text x="364" y="140" text-anchor="middle" font-size="11" fill="#7a4436">機械</text>
+    <text x="364" y="164" text-anchor="middle" font-size="11" fill="#4f6773">麥克風膜片</text>
+    <text x="364" y="184" text-anchor="middle" font-size="11" fill="#4f6773">跟著空氣動</text>
+
+    <path d="M466,146 H503 M503,146 L494,140 M503,146 L494,152" stroke="#8a8f93" stroke-width="1.8" fill="none"/>
+    <text x="484" y="130" text-anchor="middle" font-size="10.5" fill="#59707b">轉換元件</text>
+
+    <rect x="507" y="86" width="196" height="120" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="605" y="118" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">電訊號</text>
+    <text x="605" y="140" text-anchor="middle" font-size="11" fill="#8a6a35">電</text>
+    <text x="605" y="164" text-anchor="middle" font-size="11" fill="#8a6a35">電壓隨時間</text>
+    <text x="605" y="184" text-anchor="middle" font-size="11" fill="#8a6a35">連續變化</text>
+
+    <path d="M707,146 H744 M744,146 L735,140 M744,146 L735,152" stroke="#8a8f93" stroke-width="1.8" fill="none"/>
+    <text x="725" y="130" text-anchor="middle" font-size="10.5" fill="#59707b">放大器</text>
+
+    <rect x="748" y="86" width="152" height="120" fill="#fdf5e7" stroke="#e0b775"/>
+    <text x="824" y="118" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">放大電訊號</text>
+    <text x="824" y="140" text-anchor="middle" font-size="11" fill="#8a6a35">電</text>
+    <text x="824" y="164" text-anchor="middle" font-size="11" fill="#8a6a35">波形相同，</text>
+    <text x="824" y="184" text-anchor="middle" font-size="11" fill="#8a6a35">功率放大</text>
+
+    <path d="M904,146 H941 M941,146 L932,140 M941,146 L932,152" stroke="#8a8f93" stroke-width="1.8" fill="none"/>
+    <text x="922" y="130" text-anchor="middle" font-size="10.5" fill="#59707b">喇叭</text>
+
+    <rect x="945" y="86" width="130" height="120" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="1010" y="118" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">空氣振動</text>
+    <text x="1010" y="140" text-anchor="middle" font-size="11" fill="#446b53">聲學</text>
+    <text x="1010" y="164" text-anchor="middle" font-size="11" fill="#446b53">還原的聲波</text>
+    <text x="1010" y="184" text-anchor="middle" font-size="11" fill="#446b53">壓力變化</text>
+
+    <rect x="30" y="230" width="1040" height="130" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="262" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">每一段箭頭，都是一次無法完美的轉換</text>
+    <text x="550" y="292" text-anchor="middle" font-size="12" fill="#546e7a">麥克風膜片有質量、有慣性，不可能對每一個頻率都反應得一樣快；喇叭音圈要推動有重量的紙盆，</text>
+    <text x="550" y="314" text-anchor="middle" font-size="12" fill="#546e7a">同樣做不到瞬間精確跟隨。放大器本身也不是理想的線性元件，會在波形上留下自己的痕跡</text>
+    <text x="550" y="338" text-anchor="middle" font-size="12" fill="#546e7a">失真不是設計失敗才出現的東西，它是這條鏈子與生俱來的稅金，工程能做的只是壓低稅率</text>
+  </svg>
+  </div>
+  <p class="after">把鏈子拆成這五格，是為了說清楚一件常被忽略的事：<b>音響系統的音質，取決於鏈子裡最弱的那一環，而不是平均值</b>。前端麥克風錄得再精準、擴大機做得再線性，只要最後一段喇叭的轉換效率差，整條鏈子的輸出品質就被那一段封頂——這一點在第五節會有具體數字佐證。</p>
+</section>
+
+<section>
+  <h2>「類比」兩個字，究竟在講什麼</h2>
+  <p class="sub">類比訊號不是聲音的描述，它本身就是聲音的一個物理翻版——這個性質決定了它的優點與死穴。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="170" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">類比：訊號就是波形本身</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">電壓、溝槽深度、磁化強度，這些物理量</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">連續地、成比例地跟著聲壓變化——它是</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">聲波的一個物理翻版，不是對聲波的描述</text>
+    <text x="282" y="158" text-anchor="middle" font-size="11" fill="#37607a">名字裡的「類比」，指的正是這種相似關係</text>
+
+    <rect x="565" y="20" width="505" height="170" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">數位：訊號是一串數字</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">把波形定時取樣、量化成一串固定的</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">數字，數字本身沒有物理形狀，只是</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">被記錄下來的一串符號</text>
+    <text x="817" y="158" text-anchor="middle" font-size="11" fill="#7a4436">「0」永遠是「0」，抄一百次也還是「0」</text>
+
+    <rect x="30" y="206" width="1040" height="130" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="238" text-anchor="middle" font-size="13.5" fill="#b8442a" font-weight="600">這個差異的後果：類比訊號沒有辦法「除錯」</text>
+    <text x="550" y="268" text-anchor="middle" font-size="12" fill="#546e7a">數字錯了一點，只要還分得出是 0 還是 1，就能完整還原；電壓錯了一點，錯的那部分就直接變成訊號</text>
+    <text x="550" y="290" text-anchor="middle" font-size="12" fill="#546e7a">的一部分，沒有辦法分辨哪裡是原本的聲音、哪裡是路上摻進來的雜訊。每複製一次類比訊號，</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">就會疊加一次新的失真與雜訊——這正是「翻版一代比一代模糊」這種現象的物理原因</text>
+  </svg>
+  </div>
+  <p class="after">這一點解釋了為什麼類比音響工程如此在意每一個環節的物理品質：<b>因為沒有數位那種「重新對齊到最近的合法數值」的除錯機制，類比系統唯一能做的就是在源頭把每一步做得夠準確，讓誤差小到聽不出來</b>。第三、四節談的等化曲線與交流偏壓，都是在同一個限制下想出來的補償辦法。</p>
+</section>
+
+<section>
+  <h2>兩種儲存原理：刻痕與磁畴</h2>
+  <p class="sub">黑膠與磁帶各自撞上一個物理難題，也各自想出一個相當聰明的解法。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="505" height="200" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="282" y="54" text-anchor="middle" font-size="13.5" fill="#8e2f1c" font-weight="600">黑膠唱片的難題：低音會把溝槽撐爆</text>
+    <text x="282" y="86" text-anchor="middle" font-size="12.5" fill="#4f6773">低頻的振幅天生比高頻大得多，如果照實刻，</text>
+    <text x="282" y="110" text-anchor="middle" font-size="12.5" fill="#4f6773">低音的溝槽會寬到縮短播放時間，甚至讓唱針</text>
+    <text x="282" y="134" text-anchor="middle" font-size="12.5" fill="#4f6773">跳出溝槽；而高頻訊號小，很容易被表面雜訊</text>
+    <text x="282" y="158" text-anchor="middle" font-size="12.5" fill="#4f6773">蓋過去，聽起來會很吵</text>
+    <text x="282" y="190" text-anchor="middle" font-size="11" fill="#7a4436">刻片時先把低音壓小、高音推大，播放時再反向修正</text>
+
+    <rect x="565" y="20" width="505" height="200" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="817" y="54" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">磁帶的難題：磁化曲線天生就不是直線</text>
+    <text x="817" y="86" text-anchor="middle" font-size="12.5" fill="#546e7a">磁性材料在訊號很小的時候，磁化程度跟</text>
+    <text x="817" y="110" text-anchor="middle" font-size="12.5" fill="#546e7a">訊號大小幾乎不成比例，直接錄音會在小</text>
+    <text x="817" y="134" text-anchor="middle" font-size="12.5" fill="#546e7a">聲音的地方產生嚴重失真——這是磁性材</text>
+    <text x="817" y="158" text-anchor="middle" font-size="12.5" fill="#546e7a">料本身的物理特性，不是設備做得不夠好</text>
+    <text x="817" y="190" text-anchor="middle" font-size="11" fill="#37607a">疊加一個聽不見的高頻訊號，把訊號墊到線性區間再錄</text>
+
+    <rect x="30" y="240" width="1040" height="88" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="272" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">1954 年，各家唱片公司才統一用同一條修正曲線</text>
+    <text x="550" y="296" text-anchor="middle" font-size="12" fill="#546e7a">在此之前每家廠牌各用各的修正比例，同一張黑膠拿到不同廠牌的唱機上播放，音色都會不一樣，直到業界統一標準才解決</text>
+
+    <rect x="30" y="338" width="1040" height="102" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="370" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">兩種辦法的共同結構：不是消除問題，是設計一對互相抵銷的偏差</text>
+    <text x="550" y="398" text-anchor="middle" font-size="12" fill="#546e7a">黑膠的等化曲線與磁帶的交流偏壓，做的都是同一件事——錄音端刻意製造一個偏差，播放端再用另一個相反</text>
+    <text x="550" y="420" text-anchor="middle" font-size="12" fill="#546e7a">的偏差把它修正回來。兩個偏差各自都不完美，但疊在一起卻能得到接近準確的結果</text>
+  </svg>
+  </div>
+  <p class="after">值得多想一步的是：<b>這兩套補償辦法都必須「錄音端」與「播放端」互相配合才會生效</b>。如果用了黑膠唱機卻沒套用正確的等化曲線，聽到的低音會偏小、高音會刺耳；磁帶錄音機如果偏壓調得不對，一樣會出現額外的失真。這正是類比系統的特徵——第二節說的「沒有除錯機制」，代表整條鏈子的每個環節都得互相校準，而不能各做各的。</p>
+</section>
+
+<section>
+  <h2>放大器：把訊號做大，同時盡量不添新的失真</h2>
+  <p class="sub">最右欄是重點。不同的電路設計，是在效率與線性度之間做出的不同取捨。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="150" height="36" fill="#17324d"/>
+    <rect x="183" y="18" width="330" height="36" fill="#17324d"/>
+    <rect x="521" y="18" width="200" height="36" fill="#17324d"/>
+    <rect x="729" y="18" width="346" height="36" fill="#8a4636"/>
+    <text x="100" y="42" text-anchor="middle" font-size="13" fill="#ffffff">類型</text>
+    <text x="348" y="42" text-anchor="middle" font-size="13" fill="#ffffff">運作方式</text>
+    <text x="621" y="42" text-anchor="middle" font-size="13" fill="#ffffff">效率</text>
+    <text x="902" y="42" text-anchor="middle" font-size="13" fill="#ffffff">代價</text>
+
+    <rect x="25" y="58" width="150" height="84" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="183" y="58" width="330" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="521" y="58" width="200" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="729" y="58" width="346" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="106" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">A 類</text>
+    <text x="348" y="92" text-anchor="middle" font-size="12" fill="#546e7a">元件全程導通，波形完整</text>
+    <text x="348" y="116" text-anchor="middle" font-size="12" fill="#546e7a">通過同一個元件</text>
+    <text x="621" y="106" text-anchor="middle" font-size="12" fill="#546e7a">約二至三成</text>
+    <text x="902" y="92" text-anchor="middle" font-size="12" fill="#b8442a">線性度最好，但大部分功率</text>
+    <text x="902" y="116" text-anchor="middle" font-size="12" fill="#b8442a">變成熱，機身燙手又耗電</text>
+
+    <rect x="25" y="142" width="150" height="84" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="183" y="142" width="330" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="521" y="142" width="200" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="729" y="142" width="346" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="190" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">B 類</text>
+    <text x="348" y="176" text-anchor="middle" font-size="12" fill="#546e7a">兩個元件輪流各管半個波形</text>
+    <text x="348" y="200" text-anchor="middle" font-size="12" fill="#546e7a">效率高但交接處會斷</text>
+    <text x="621" y="190" text-anchor="middle" font-size="12" fill="#546e7a">約七成以上</text>
+    <text x="902" y="176" text-anchor="middle" font-size="12" fill="#b8442a">兩者交接的瞬間會產生</text>
+    <text x="902" y="200" text-anchor="middle" font-size="12" fill="#b8442a">明顯的交越失真</text>
+
+    <rect x="25" y="226" width="150" height="84" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="183" y="226" width="330" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="521" y="226" width="200" height="84" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="729" y="226" width="346" height="84" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="100" y="274" text-anchor="middle" font-size="12.5" fill="#8f5e14" font-weight="600">AB 類</text>
+    <text x="348" y="260" text-anchor="middle" font-size="12" fill="#546e7a">在交接處刻意留一點重疊，</text>
+    <text x="348" y="284" text-anchor="middle" font-size="12" fill="#546e7a">用來補上 B 類斷掉的地方</text>
+    <text x="621" y="274" text-anchor="middle" font-size="12" fill="#546e7a">五至六成</text>
+    <text x="902" y="260" text-anchor="middle" font-size="12" fill="#b8442a">傳統家用擴大機最常見的</text>
+    <text x="902" y="284" text-anchor="middle" font-size="12" fill="#b8442a">折衷方案，兼顧線性與效率</text>
+
+    <rect x="25" y="310" width="150" height="84" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <rect x="183" y="310" width="330" height="84" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="521" y="310" width="200" height="84" fill="#ffffff" stroke="#9dc3a9"/>
+    <rect x="729" y="310" width="346" height="84" fill="#ecf5ef" stroke="#9dc3a9" stroke-width="1.6"/>
+    <text x="100" y="358" text-anchor="middle" font-size="12.5" fill="#3d7a55" font-weight="600">D 類</text>
+    <text x="348" y="344" text-anchor="middle" font-size="12" fill="#546e7a">把訊號轉成高速開關脈衝，</text>
+    <text x="348" y="368" text-anchor="middle" font-size="12" fill="#546e7a">再用濾波器還原成波形</text>
+    <text x="621" y="358" text-anchor="middle" font-size="12" fill="#546e7a">九成以上</text>
+    <text x="902" y="344" text-anchor="middle" font-size="12" fill="#3d7a55">早期音質受質疑，現代設計</text>
+    <text x="902" y="368" text-anchor="middle" font-size="12" fill="#3d7a55">已大幅拉近與傳統電路的差距</text>
+  </svg>
+  </div>
+  <p class="after">這張表背後有一條共同的邏輯線：<b>越想要效率，就越需要把波形切開分段處理，而切開的地方正是失真最容易冒出來的地方</b>。至於用什麼元件去做這個「導通」的動作，見同資料夾的〈真空管與電晶體〉——真空管與電晶體在音響圈長期被認為音色不同，原因之一是兩者在訊號逼近極限時產生的諧波失真型態不太一樣，這一點在發燒圈仍有相當多主觀爭論，本頁不做評斷。</p>
+</section>
+
+<section>
+  <h2>喇叭：鏈條中失真最大的一環</h2>
+  <p class="sub">音響玩家常把心力花在擴大機與線材上，但工程數據指向另一個地方。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="260" height="36" fill="#17324d"/>
+    <rect x="293" y="18" width="380" height="36" fill="#17324d"/>
+    <rect x="681" y="18" width="394" height="36" fill="#8a4636"/>
+    <text x="155" y="42" text-anchor="middle" font-size="13" fill="#ffffff">環節</text>
+    <text x="483" y="42" text-anchor="middle" font-size="13" fill="#ffffff">典型的失真數量級</text>
+    <text x="878" y="42" text-anchor="middle" font-size="13" fill="#ffffff">為什麼會差這麼多</text>
+
+    <rect x="25" y="58" width="260" height="82" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="293" y="58" width="380" height="82" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="681" y="58" width="394" height="82" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="155" y="106" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">前級與擴大機</text>
+    <text x="483" y="92" text-anchor="middle" font-size="12" fill="#546e7a">設計良好的電路，失真通常遠低於</text>
+    <text x="483" y="116" text-anchor="middle" font-size="12" fill="#546e7a">百分之零點一，接近人耳無法分辨</text>
+    <text x="878" y="92" text-anchor="middle" font-size="12" fill="#b8442a">純電子電路運作在遠離物理</text>
+    <text x="878" y="116" text-anchor="middle" font-size="12" fill="#b8442a">極限的區間，線性度容易做好</text>
+
+    <rect x="25" y="140" width="260" height="82" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="293" y="140" width="380" height="82" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="681" y="140" width="394" height="82" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="155" y="188" text-anchor="middle" font-size="12.5" fill="#1f5c85" font-weight="600">訊號線材</text>
+    <text x="483" y="174" text-anchor="middle" font-size="12" fill="#546e7a">在合理長度與規格下，對音質的</text>
+    <text x="483" y="198" text-anchor="middle" font-size="12" fill="#546e7a">實際影響通常小到難以量測</text>
+    <text x="878" y="174" text-anchor="middle" font-size="12" fill="#b8442a">音訊頻段的電氣需求並不高，</text>
+    <text x="878" y="198" text-anchor="middle" font-size="12" fill="#b8442a">不需要特殊材料就能達標</text>
+
+    <rect x="25" y="222" width="260" height="82" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="293" y="222" width="380" height="82" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="681" y="222" width="394" height="82" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="155" y="270" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">喇叭</text>
+    <text x="483" y="256" text-anchor="middle" font-size="12" fill="#4f6773">常見的失真數字落在百分之一到</text>
+    <text x="483" y="280" text-anchor="middle" font-size="12" fill="#4f6773">數個百分點，比電子電路高上百倍</text>
+    <text x="878" y="256" text-anchor="middle" font-size="12" fill="#b8442a">紙盆有質量、有懸吊系統的</text>
+    <text x="878" y="280" text-anchor="middle" font-size="12" fill="#b8442a">力學限制，還要對付分頻與音染</text>
+
+    <rect x="25" y="304" width="260" height="82" fill="#f0e6e2" stroke="#c9a99e"/>
+    <rect x="293" y="304" width="380" height="82" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="681" y="304" width="394" height="82" fill="#fdeeeb" stroke="#dda695"/>
+    <text x="155" y="352" text-anchor="middle" font-size="12.5" fill="#8e2f1c" font-weight="600">聆聽空間</text>
+    <text x="483" y="338" text-anchor="middle" font-size="12" fill="#4f6773">房間的駐波與反射，造成的頻率</text>
+    <text x="483" y="362" text-anchor="middle" font-size="12" fill="#4f6773">響應起伏經常達到好幾個分貝</text>
+    <text x="878" y="338" text-anchor="middle" font-size="12" fill="#b8442a">聲波在有限空間裡來回反射</text>
+    <text x="878" y="362" text-anchor="middle" font-size="12" fill="#b8442a">干涉，這不是設備能解決的</text>
+  </svg>
+  </div>
+  <p class="after">這張對照值得停下來想一下：<b>音響討論裡最容易被爭論的環節（線材、擴大機的細微差異），往往正是問題最小的環節；而影響最大的兩個環節（喇叭與空間），卻最少被當成投資與調整的重點</b>。原因或許也不難理解——喇叭與空間牽涉到力學與建築，比電子線路難處理得多，聽感的改善也不像換一條線那樣立即而戲劇化。但就工程數據而言，第一節那條鏈子裡真正的「最弱一環」，多半就落在最後這兩站。</p>
+</section>
+
+<div class="callout">
+  <b>三個常見的誤解。</b>其一，<b>黑膠的「溫暖」不是因為它「更真實」</b>——它其實混入了拾取機構本身的機械共振、循軌誤差與磨損雜訊，這些都是數位錄音沒有的額外成分，聽起來討喜與量測上準確是兩回事。其二，<b>「類比比較好」與「數位比較好」不是一個有單一答案的問題</b>——類比的限制在於沒有除錯機制、每次複製都會劣化；數位的限制在於取樣與量化本身，兩者是不同的取捨，不是進步與落後的關係。其三，<b>耳機系統同樣適用本頁全部的分析</b>——只是把喇叭與空間那兩站，換成了耳機單體與外耳道的聲學特性，物理限制的位置不同，邏輯完全一樣。
+</div>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">留聲機問世</span><span class="yr">1877</span><p>愛迪生的滾筒式留聲機，第一次證明聲音可以被機械式地記錄與重播，是整條類比音響鏈的起點。</p></div>
+  <div class="card"><span class="nm">圓盤唱片登場</span><span class="yr">1887</span><p>柏林納提出以平面圓盤取代滾筒，奠定了後來黑膠唱片的基本形式，也讓大量複製唱片變得可行。</p></div>
+  <div class="card"><span class="nm">磁性錄音的最早專利</span><span class="yr">1898</span><p>保爾森的鋼絲錄音機，是磁性錄音原理最早的實用裝置，比磁帶錄音機的普及早了將近半世紀。</p></div>
+  <div class="card"><span class="nm">電氣錄音取代純機械錄音</span><span class="yr">1925</span><p>引入麥克風與電子放大，取代此前純靠聲學號角收音的做法，錄音的頻率範圍與細節大幅提升。</p></div>
+  <div class="card"><span class="nm">磁帶錄音機實用化</span><span class="yr">1935</span><p>德國研發出使用塑膠基底磁帶的錄音機，音質遠優於先前的鋼絲與鋼帶方案，磁帶錄音自此進入實用階段。</p></div>
+  <div class="card"><span class="nm">交流偏壓大幅改善磁帶音質</span><span class="yr">1940 年前後</span><p>發現在錄音訊號上疊加一個超音波頻率的偏壓，能大幅降低磁帶錄音的失真，是第三節談到的關鍵技術。</p></div>
+  <div class="card"><span class="nm">密紋唱片與單曲唱片之爭</span><span class="yr">1948–1949</span><p>兩大唱片公司先後推出轉速不同的新規格，一段時間內兩種規格並存競爭，最終各自在不同用途上站穩腳步。</p></div>
+  <div class="card"><span class="nm">RIAA 等化曲線標準化</span><span class="yr">1954</span><p>業界統一採用同一條錄放修正曲線，解決了此前各廠牌曲線不一、唱片拿到別家唱機上播放會走音的問題。</p></div>
+  <div class="card"><span class="nm">立體聲黑膠上市</span><span class="yr">1958</span><p>用同一道溝槽的兩側壁面分別刻錄左右聲道，不需要額外的溝槽就能實現立體聲，是相當精巧的工程解法。</p></div>
+  <div class="card"><span class="nm">隨身聽普及卡帶</span><span class="yr">1979</span><p>可攜式卡帶播放機讓類比音樂第一次能隨身攜帶收聽，改變了大眾的聆聽習慣，卡帶自此進入全盛期。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="真空管與電晶體知識圖譜.html"><span class="nm">真空管與電晶體知識圖譜</span><span class="lk">→ 專頁</span><p>第四節放大器裡實際負責「導通」的元件本身，以及為什麼真空管與電晶體的失真型態長期被認為不同。</p></a>
+  <a class="card" href="電子零件的種類知識圖譜.html"><span class="nm">電子零件的種類知識圖譜</span><span class="lk">→ 專頁</span><p>第三節的等化曲線與偏壓電路，實際上是由電阻、電容這幾種被動元件組合出來的濾波網路。</p></a>
+  <a class="card" href="積體電路知識圖譜.html"><span class="nm">積體電路知識圖譜</span><span class="lk">→ 專頁</span><p>現代許多擴大機與訊號處理電路，早已把第四節談的放大電路整合進單一晶片之中。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8 科普</b> 底下的專題頁。<b>範圍</b>：聚焦於類比音響系統的訊號鏈邏輯與各環節的物理限制，不含數位錄音與訊號處理的細節。<b>數值</b>：失真百分比、放大器效率等數字為業界常見的概數，實際數值隨設計與量測條件差異極大，本頁僅作數量級對比，不代表特定產品的規格。<b>第五節</b>：各環節失真的相對重要性為工程界普遍認同的觀察，但聽感偏好牽涉主觀因素，本頁不對器材選擇做出建議。<b>年份</b>：技術的成熟多為漸進過程，文中年份標示的是文獻中常見的關鍵節點。
+</footer>
+
+</div>
+</body>
+</html>
