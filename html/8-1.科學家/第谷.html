@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第谷知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">假鼻子與新星・水晶天球之死</p>
+  <h1>第谷知識圖譜</h1>
+  <p class="lede">第谷・布拉赫的故事，很容易被簡化成「克卜勒的數據供應商」，但他自己一生的成就，遠遠不只是留下一批精密觀測紀錄。他年輕時因為一場醉後的數學爭執決鬥，失去了半個鼻子，此後戴了一輩子的假鼻子；他觀測到的一顆新星，直接打破了古人深信「天界永恆不變」的兩千年信念；他還在丹麥國王贈與的一整座島上，建造了歐洲第一座真正意義上的國家級天文研究機構；一顆彗星的軌跡，則進一步戳破了「天體固定在水晶天球上」這個古老假設。這份圖譜要梳理的，就是這幾件屬於他自己、卻常被克卜勒的名氣蓋過的成就。</p>
+</header>
+
+<div class="callout">
+  <b>與〈克卜勒〉篇、〈科學革命〉篇的銜接</b><br>
+  第谷晚年遷居布拉格、猝逝與觀測數據轉移到克卜勒手中的過程，同資料夾〈克卜勒〉篇已有詳細處理，本頁不重複，轉而聚焦他自己早年到中年的成就——那場決鬥與假鼻子、1572年新星觀測、汶島上的天文城堡，以及1577年彗星觀測對古代宇宙論的第二次重擊。
+</div>
+
+<section>
+  <h2>生平——一場醉後的決鬥，讓他戴了一輩子的假鼻子</h2>
+  <p class="sub">貴族出身的少年，因一場關於數學的爭執，付出了永久的代價</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第谷生平與假鼻子結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1560年一場日食，讓貴族少年第谷迷上了天文學這門能被精確預測的學問</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">幾年後，一場酒後爭執，卻在他臉上留下了終生的印記</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">日食點燃的興趣</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1560年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">一場被精準預告的日食，讓</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">出身貴族的少年第谷，從此</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">迷上天文計算</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">貴族家庭原本安排他讀法律，不是天文</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">一場關於數學的醉後決鬥</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1566年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">在羅斯托克與同學爭論誰才</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">是更好的數學家，酒後演變</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">成一場劍術決鬥</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">爭的不是感情，是數學家的面子</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">失去半個鼻子</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">決鬥結果</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">鼻樑遭削去一部分，此後終</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">生配戴義鼻，是他最著名的</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">外貌特徵</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">肖像畫裡那道鼻樑，其實是義肢</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">現代鑑識重新檢驗材質</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">近年考證</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">長年傳說義鼻是金銀合金打</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">造，遺骸檢測發現日常配戴</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">的其實更可能是黃銅材質</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">傳說華麗，鑑識結果比較樸實</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這則軼事之所以流傳至今，是因為它濃縮了第谷性格裡最鮮明的一面</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">自負、好鬥、對自己的學術地位極度敏感——這份性格，後來也直接反映在他對自己觀測數據的極度佔有</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">欲上（詳見〈克卜勒〉篇），也反映在他對自己領地佃農的嚴苛管理上</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">真正讓他在天文學界一戰成名的，是幾年後一場意外的天象</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>1572年的新星——直接打破了「天界永恆不變」的信念</h2>
+  <p class="sub">古希臘以來，月亮之外的天界被認為完美且永不改變——第谷的一次測量，直接推翻了這個假設</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第谷新星觀測結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1572年，仙后座突然出現一顆前所未見的亮星，第谷立刻展開精密測量</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">測量的重點，是這顆星距離地球有多遠——結果比誰都意外</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">用視差法測量距離</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">連續數月精密量測新星相對背景星空的位置變化，判斷</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">它究竟距離地球多近或多遠</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">測不出視差：遠在月亮之外</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">結果完全測不出視差，意味著這顆新星遠比月亮更遙</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">遠，落在理應「永恆不變」的天界範圍內</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">直接牴觸亞里斯多德宇宙論</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">古代宇宙論主張月亮以外的天界完美且永恆不變，一顆</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">「新」出現的星星，在邏輯上根本不該存在</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">《新星》一書與「新星」一詞的由來</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">1573年出版的《新星》確立了這次觀測的意義，「新</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">星」（nova）一詞的天文學用法即源自此書</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這次觀測讓他一戰成名，也讓歐洲天文學界第一次認真動搖了兩千年的信念</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">今天我們知道這其實是一次超新星爆炸，但在當時，真正震撼學界的不是這顆星本身，而是它出現的位</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">置——月亮之外，不該有任何變化發生的地方</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這份聲望，讓他很快獲得了一個此前歐洲天文學家從未有過的機會</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>汶島上的天文城堡——歐洲第一座國家級科學研究機構</h2>
+  <p class="sub">丹麥國王把一整座島連同鉅額經費都給了他，只為了讓他專心觀測星空</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第谷汶島研究機構結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">丹麥國王腓特烈二世把整座汶島連同鉅額年金一併賜給第谷，條件只有一個：留在丹麥做研究</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這在當時歐洲，是前所未見的科學投資規模</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">整座島加鉅額年金</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1576年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">國王將汶島連同莊園收入</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">一併賜予第谷，資助規模</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">遠超一般學者</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">整個丹麥財政為一人的研究讓路</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">天堡：觀測站兼印刷廠</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">建築群</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">島上建起觀測城堡「天堡」</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">，附設印刷廠、造紙坊與煉</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">金實驗室</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">堪稱歐洲第一座真正的科學園區</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">嚴苛的領主</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">治理爭議</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">對島上佃農課以重稅、要求</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">勞役，卻疏於維護自己應負</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">責的教堂設施</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">科學成就與領主治理，是兩套不同的評價</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">與寵物麋鹿的軼事</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">生活片段</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">據傳島上飼養的寵物麋鹿，</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">某次外出作客時喝醉啤酒，</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">摔下樓梯身亡</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">嚴肅的科學史裡，難得的一則趣聞</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這座島上二十年累積下來的數據，遠比同時代任何人的觀測都精密</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">望遠鏡尚未發明的年代，第谷改良的大型肉眼觀測儀器，把定位精度推到了前所未有的水準——這批數</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">據的價值，遠遠超過他在世時任何一篇論文</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">在汶島的全盛時期，他還用另一次天象觀測，再次撼動了古代宇宙論</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>1577年的彗星——又一次戳破了水晶天球的假設</h2>
+  <p class="sub">古代宇宙論相信天體固定在一層層透明的水晶球殼上——一顆彗星的軌跡，直接穿透了這個假設</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第谷彗星觀測結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1577年一顆大彗星劃過天際，第谷再次動用精密測量，追蹤它實際的運行路徑</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這一次，被打破的不只是「天界不變」，而是天體運行方式本身的假設</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">古代的水晶天球假設</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">傳統宇宙論認為每個天體固定嵌在一層透明、堅固的球</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">殼上，球殼帶動天體規律運行</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">彗星軌跡再次測不出視差</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">測量顯示彗星同樣遠在月亮之外運行，而且軌跡明顯跨</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">越了好幾層理論上應該存在的球殼邊界</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">球殼若堅固，彗星不可能穿越</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">如果水晶天球真的堅固存在，彗星根本無法一路貫穿多</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">層球殼，這個結果直接否定了球殼的存在</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">與新星觀測形成第二波衝擊</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">五年前的新星證明天界會變化，這次的彗星則證明天體</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">運行方式也跟古代設想的完全不同</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩次觀測合在一起，等於連續拆掉了古代宇宙論的兩根支柱</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">新星觀測拆掉了「天界永恆不變」，彗星觀測拆掉了「天體固定於堅固球殼」——第谷自己始終沒有接受</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">哥白尼的日心說，卻用兩次獨立的精密測量，親手鬆動了支撐地心說宇宙觀的地基</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">拆掉舊模型之後，他自己提出的替代方案，是一套常被通俗敘述略過的折衷版本</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平與假鼻子</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">日食點燃的興趣<span class="yr">1560年</span></div><p>一場被精準預告的日食，讓出身貴族的少年第谷，從此迷上天文計算。</p></div>
+    <div class="card"><div class="nm">一場關於數學的醉後決鬥<span class="yr">1566年</span></div><p>與同學爭論誰才是更好的數學家，酒後演變成劍術決鬥，失去半個鼻子。</p></div>
+    <div class="card"><div class="nm">現代鑑識重新檢驗材質</div><p>長年傳說義鼻是金銀合金打造，遺骸檢測發現日常配戴的其實更可能是黃銅材質。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>1572年新星</h2><span class="tag">NOVA</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">用視差法測量距離</div><p>連續數月精密量測新星相對背景星空的位置變化，判斷它距離地球多遠。</p></div>
+    <div class="card"><div class="nm">測不出視差：遠在月亮之外</div><p>結果完全測不出視差，意味著新星遠比月亮更遙遠，落在理應「永恆不變」的天界。</p></div>
+    <div class="card"><div class="nm">「新星」一詞的由來<span class="yr">1573年</span></div><p>出版的《新星》確立了觀測意義，「新星」（nova）一詞的天文學用法即源自此書。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>汶島天文城堡</h2><span class="tag">URANIBORG</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">整座島加鉅額年金<span class="yr">1576年</span></div><p>丹麥國王將汶島連同莊園收入一併賜予第谷，資助規模遠超一般學者。</p></div>
+    <div class="card"><div class="nm">天堡：觀測站兼印刷廠</div><p>島上建起觀測城堡「天堡」，附設印刷廠、造紙坊與煉金實驗室，堪稱歐洲第一座科學園區。</p></div>
+    <div class="card"><div class="nm">嚴苛的領主</div><p>對島上佃農課以重稅、要求勞役，卻疏於維護自己應負責的教堂設施。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>1577年彗星</h2><span class="tag">COMET</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">彗星軌跡再次測不出視差</div><p>測量顯示彗星遠在月亮之外運行，軌跡明顯跨越了好幾層理論上的球殼邊界。</p></div>
+    <div class="card"><div class="nm">球殼若堅固，彗星不可能穿越</div><p>如果水晶天球真的堅固存在，彗星根本無法一路貫穿多層球殼，直接否定球殼存在。</p></div>
+    <div class="card"><div class="nm">連續拆掉兩根支柱</div><p>新星拆掉「天界永恆不變」，彗星拆掉「天體固定於球殼」，兩次觀測合力鬆動了地心說地基。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    我一次又一次地反覆測量，卻始終找不到任何視差——這顆星，必然位於恆星所在的那層天界。
+    <cite>第谷在《新星》一書中，描述他測量1572年仙后座新星的結論大意。這段記錄，是歐洲天文學史上第一次以系統化的精密測量，正面挑戰「天界永恆不變」這個延續近兩千年的宇宙論假設。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦第谷自己早年到中年的成就，晚年遷居布拉格、猝逝與觀測數據轉移至克卜勒手中的過程，見同資料夾〈克卜勒〉篇。義鼻材質、寵物麋鹿等軼事在不同史料中細節略有出入，本頁採較多方記載共通的版本，正式引用請另行查證專業傳記與科學史文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

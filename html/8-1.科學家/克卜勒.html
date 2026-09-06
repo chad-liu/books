@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>克卜勒知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">占星維生・火星戰爭八年</p>
+  <h1>克卜勒知識圖譜</h1>
+  <p class="lede">克卜勒常被簡化成「發現行星橢圓軌道的天文學家」，但他的一生更接近一則神祕主義、宮廷政治與私人悲劇交織的傳奇。他從一套完全錯誤、卻決定他一生方向的柏拉圖立體宇宙模型出發；靠著替權貴占星算命維生，科學研究其實是副業；第谷・布拉赫猝逝之後，他在一場資料爭奪戰裡拿到了關鍵的觀測數據；接著花了將近八年，跟火星軌道一個小到只有八角分的誤差死纏爛打，才推翻兩千年來對正圓運動的信念；而做這一切的同時，他還得抽出好幾年，為被控為女巫、面臨火刑的母親辯護。這份圖譜要梳理的，就是這幾條線怎麼同時纏繞在同一個人身上。</p>
+</header>
+
+<div class="callout">
+  <b>與〈科學革命〉篇的銜接</b><br>
+  行星運動三大定律的具體內容與橢圓軌道打破正圓信念的意義，該篇已有概略處理，本頁不重複，轉而聚焦他鮮少被提及的占星維生生涯、第谷死後的資料爭奪戰、跟火星八角分誤差纏鬥八年的過程，以及與這些科學工作同時發生的母親女巫審判。
+</div>
+
+<section>
+  <h2>生平起點——一套完全錯誤，卻決定他一生方向的宇宙模型</h2>
+  <p class="sub">原本要當路德派牧師的神學院學生，被推薦去教數學，意外走上了另一條路</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="克卜勒生平起點結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">克卜勒原本在圖賓根神學院攻讀神學，準備成為路德派牧師</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">卻被校方推薦到格拉茲擔任數學教師，意外轉了一個彎</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">神學院裡的數學教師</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1594年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">神學訓練半途，被推薦轉往</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">格拉茲擔任數學與天文學教</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">師，並非自己選擇</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">牧師之路，被一紙教職任命打斷</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">柏拉圖立體套疊宇宙模型</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1596年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">主張六大行星軌道間距，對</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">應五種柏拉圖立體層層套疊</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">的比例</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">這個模型後來證明完全錯誤</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">錯誤模型背後的真誠信念</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">終生不變</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">他真心相信宇宙由上帝按可</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">被發現的數學和諧設計而成</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">，這份信念貫穿他一生</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">結論錯了，但驅動他的動機沒有變過</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">持續尋找真正的數學規律</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">此後數十年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">正是這份對宇宙和諧的執著</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">，讓他日後願意花數年時間</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">尋找真正的軌道規律</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">錯誤的起點，通向了正確的方法</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這個完全錯誤的模型，反而揭露了他終生不變的核心信念</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">克卜勒不是先有精確數據才去找規律，而是先深信宇宙必然存在某種數學和諧，才一路苦苦尋找——柏拉</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">圖立體模型是這份信念第一次、也是錯得最離譜的一次具體嘗試</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但這份研究熱情，得靠一份完全不同的工作來養活</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>替權貴占星維生——科學研究背後的經濟現實</h2>
+  <p class="sub">他私下懷疑通俗占星術的準確性，卻仍必須靠它換取穩定收入</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="克卜勒占星維生結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「宮廷數學家」這個職稱，實際的日常工作多半是替君王與貴族占星算命</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">天文研究幾乎全靠這份副業收入支撐，這個經濟現實常被通俗敘述省略</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">受雇為魯道夫二世等貴族占星</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">長期擔任神聖羅馬帝國宮廷數學家，替皇帝與各方貴族</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">繪製星盤、預測時局，是實際的付費工作</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">私下懷疑，公開仍需執業</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">他曾私下批評通俗占星術的粗糙推論，卻仍主張存在一</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">種更精緻、值得研究的和諧占星原理</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">天文研究是靠占星收入養活的</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">耗費多年心力的行星軌道計算，經濟上長期倚賴這份看</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">似不相干的占星收入支撐</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">與牛頓煉金術的相似處</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">跟同資料夾〈牛頓〉篇談的煉金術手稿類似，理性科學</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">的代表人物，私下往往同時涉足今天視為偽科學的領域</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這不是特例，是那個時代科學與神秘主義共存的常態</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">十七世紀初，「科學」與「玄學」之間還沒有今天這樣清楚的界線，替貴族占星算命是一份正當、甚至必</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">要的宮廷職務，天文學家往往同時身兼占星師的角色</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">正是這份宮廷職位，讓他捲入了一場關鍵的資料爭奪戰</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第谷之死與資料爭奪戰</h2>
+  <p class="sub">第谷生前把畢生觀測數據看得極緊，一場猝逝，意外讓數據落到了克卜勒手中</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="克卜勒與第谷資料爭奪結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">克卜勒1600年受雇為第谷的助手，第谷卻對自己數十年累積的精密觀測數據極度防備</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">十八個月後的一場猝逝，徹底改變了這場資料爭奪的局面</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">受雇為第谷的助手</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1600年前往布拉格協助第谷，第谷擁有當時最精密的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">肉眼觀測數據，卻只肯逐次少量釋出</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">第谷猝逝：死因至今仍有討論</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1601年第谷突然過世，長期歸因於宴會禮節不便離席</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">導致膀胱破裂，後世也曾出現汞中毒的推測</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">迅速取得數據掌控權</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">在第谷家族仍試圖主張數據所有權之際，克卜勒動作迅</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">速，率先掌握了關鍵觀測紀錄</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">接任帝國數學家</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">克卜勒隨即接任魯道夫二世的宮廷數學家一職，正式繼</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">承了第谷留下的觀測資產與職位</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">死因的爭議，一度為這場數據轉移添上一層陰影</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">二十世紀末一次遺骸檢驗發現汞元素殘留，一度引發克卜勒涉嫌下毒的揣測；但後續更嚴謹的鑑識重新檢</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">驗，普遍認為證據不足以支持謀殺說，自然死因的解釋仍是主流</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">拿到數據只是開始，真正的苦戰接下來才要展開</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>跟火星軌道的八角分死纏爛打了八年</h2>
+  <p class="sub">大多數天文學家會把這個誤差當成觀測誤差略過，克卜勒卻選擇相信數據，懷疑自己</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="克卜勒火星軌道戰爭結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他選中軌道偏差最明顯的火星下手，卻花了將近八年才等到答案</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">關鍵的突破點，是一個小到多數人會直接忽略的誤差</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">選中火星：偏差最明顯的行星</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">火星軌道偏離正圓預測的程度，在當時已知行星中最為</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">明顯，是驗證假說最理想的對象</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">近七十次失敗的正圓模型</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">反覆嘗試各種以正圓為前提的修正模型，每一次都與第</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">谷的數據存在小幅落差，始終無法完全吻合</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">關鍵的八角分</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">最終殘留的誤差僅約八角分，多數天文學家會視為觀測</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">誤差直接忽略，克卜勒選擇正視它</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">放棄兩千年的正圓信念</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">正是這個微小卻真實的落差，讓他徹底放棄正圓假設，</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">改用橢圓，才讓所有數據完全吻合</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他信任數據的程度，超過信任兩千年的哲學傳統</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">八角分不到人類肉眼可辨識角度的四分之一，換成任何一位對第谷數據精度沒有十足信心的天文學家，大</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">概都會選擇忽略——這場長達八年的纏鬥，最終在1609年結晶成第一、第二運動定律</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而這段耗盡心力的計算歲月，正好也是他人生最沉重的一段家庭危機</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>同一段歲月，他還在為被控女巫的母親辯護</h2>
+  <p class="sub">發表重要天文著作的同一段時期，他花了數年替母親打一場攸關性命的官司</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="克卜勒母親女巫審判結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1615年，克卜勒的母親凱瑟琳娜被鄰居指控為女巫，展開一場長達數年的訴訟</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段家庭危機，與他一生最重要的幾部天文著作，時間線上完全重疊</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">指控成立</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1615年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">符騰堡一名鄰居指控其母</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">行使巫術致病，正式訴訟</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">程序隨之展開</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">在當時，這項指控足以致命</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">親自接手辯護</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1615-1620年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">克卜勒動用自身聲望與法</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">律知識，逐點反駁指控，</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">拖延並周旋多年</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">科學家的嚴謹，用在了法庭辯護上</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">正式審判與威嚇</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1620-1621年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">正式受審，依當時程序被</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">帶到刑具前威嚇，但未真</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">正遭受刑求</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">最終未招供，成為判決的關鍵</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">獲釋後不久過世</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1621年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">最終獲判無罪釋放，但約</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">半年後即過世，這場官司</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">耗盡了她最後的歲月</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">勝訴的代價，是母親人生最後幾年的煎熬</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">替母親辯護的這幾年，正好也是他發表重要著作的時期</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">《哥白尼天文學概要》與《魯道夫星表》的整理工作，都與這場攸關母親性命的官司在時間上高度重疊——</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">教科書通常只呈現他的科學成就，卻很少提及他同時在為家人的生死奔走</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">見同資料夾〈伽利略〉篇：同一時代，另一位天文學家也正面對自己的審判</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平起點</h2><span class="tag">EARLY LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">神學院裡的數學教師<span class="yr">1594年</span></div><p>神學訓練半途，被推薦轉往格拉茲擔任數學與天文學教師，並非自己選擇。</p></div>
+    <div class="card"><div class="nm">柏拉圖立體套疊宇宙模型<span class="yr">1596年</span></div><p>主張六大行星軌道間距，對應五種柏拉圖立體層層套疊的比例，後證明完全錯誤。</p></div>
+    <div class="card"><div class="nm">終生不變的核心信念</div><p>真心相信宇宙由上帝按可被發現的數學和諧設計而成，這份信念貫穿他一生的研究。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>占星維生</h2><span class="tag">ASTROLOGY</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">受雇為貴族占星</div><p>長期擔任神聖羅馬帝國宮廷數學家，替皇帝與各方貴族繪製星盤，是實際的付費工作。</p></div>
+    <div class="card"><div class="nm">私下懷疑，公開仍需執業</div><p>曾私下批評通俗占星術的粗糙推論，卻仍主張存在一種更精緻的和諧占星原理。</p></div>
+    <div class="card"><div class="nm">天文研究靠占星收入養活</div><p>耗費多年心力的行星軌道計算，經濟上長期倚賴這份看似不相干的占星收入支撐。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>第谷的資料</h2><span class="tag">TYCHO'S DATA</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">受雇為第谷的助手<span class="yr">1600年</span></div><p>前往布拉格協助第谷，第谷擁有最精密的觀測數據，卻只肯逐次少量釋出。</p></div>
+    <div class="card"><div class="nm">第谷猝逝<span class="yr">1601年</span></div><p>死因長期歸因於膀胱破裂，後世也曾出現汞中毒推測，但更嚴謹的鑑識傾向自然死因。</p></div>
+    <div class="card"><div class="nm">接任帝國數學家</div><p>迅速掌握關鍵觀測紀錄，隨即接任魯道夫二世的宮廷數學家，繼承第谷留下的資產。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>火星戰爭</h2><span class="tag">MARS</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">近七十次失敗的正圓模型</div><p>反覆嘗試各種以正圓為前提的修正模型，始終與第谷的數據存在小幅落差。</p></div>
+    <div class="card"><div class="nm">關鍵的八角分</div><p>最終殘留誤差僅約八角分，多數人會視為觀測誤差略過，克卜勒選擇正視它。</p></div>
+    <div class="card"><div class="nm">放棄兩千年的正圓信念<span class="yr">1609年</span></div><p>改用橢圓讓所有數據完全吻合，結晶成《新天文學》裡的第一、第二運動定律。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    我曾經以為，天文學的目的是要拯救那些現象；如今我明白，它更該做的是揭示宇宙真正的物理結構。
+    <cite>克卜勒對自己研究方法轉向的自述大意——從單純追求數學上能吻合觀測的模型，轉向堅持模型必須反映宇宙真實的物理運作方式，這個轉向正是他放棄正圓、改用橢圓軌道的思想根源。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦占星維生的經濟現實、第谷資料轉移的過程、火星軌道計算的方法論歷程，以及母親女巫審判的家庭危機，行星運動三大定律的完整技術內容見同資料夾〈科學革命〉篇。第谷死因、母親審判細節等史料在不同傳記中記載略有出入，本頁採較多方記載共通的版本，正式引用請另行查證專業傳記文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

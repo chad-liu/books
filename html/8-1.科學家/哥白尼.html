@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>哥白尼知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">教會行政官・遲來的真相</p>
+  <h1>哥白尼知識圖譜</h1>
+  <p class="lede">哥白尼常被描繪成一位躲在書房裡、不敢出版怕被教會迫害，直到臨終才把畢生心血付印的孤獨天才——但這個劇本的多數細節，很可能是後人把90年後伽利略審判的陰影，投射回哥白尼身上的產物。真實的哥白尼，一輩子的正職其實是教會行政官員，天文學是他公餘的興趣；他還寫過一篇貨幣改革論文，提出了後來被稱為「格雷欣法則」的原理，比格雷欣本人早了幾十年；他遲遲不出版，證據顯示更可能是怕同行天文學家挑錯，而不是怕教會；而他過世那年才印出來的書，序言甚至不是他自己寫的。這份圖譜要梳理的，就是他被教會行政工作占據大半人生的真實樣貌、那篇意外的貨幣改革論文、延遲出版背後更合理的解釋，以及一份在他病榻前被偷偷改寫的序言。</p>
+</header>
+
+<div class="callout">
+  <b>與〈科學革命〉篇、〈伽利略〉篇的銜接</b><br>
+  《天體運行論》出版年份與克卜勒如何進一步簡化他的模型，兩頁已有概略處理，本頁不重複，轉而聚焦他鮮少被提及的教會行政生涯、意外的貨幣改革貢獻、延遲出版背後更貼近史實的原因，以及序言被他人偷改的內幕。
+</div>
+
+<section>
+  <h2>生平——教會行政官，不是全職天文學家</h2>
+  <p class="sub">天文學終其一生都只是他的公餘興趣，真正的正職是教會的行政與法律事務</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哥白尼生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">哥白尼在義大利同時攻讀教會法、醫學與天文學，回國後展開的是行政生涯</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">弗龍堡座堂司鐸這個職位，一做就是三十多年，直到過世</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">義大利求學：法律、醫學、天文</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1496-1503年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">先後在波隆那、帕多瓦、費拉</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">拉攻讀教會法與醫學，天文學</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">是課餘鑽研的興趣</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">正式學位拿的是法律與醫學，不是天文</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">弗龍堡座堂司鐸</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1497年起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">終生擔任瓦爾米亞教區的座堂</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">司鐸，負責財務與行政事務，</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">一做超過三十年</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">這才是他終生沒有變動過的正式身分</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">兼職執業醫師</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">貫穿其行政生涯</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">為主教與地方仕紳看診，是當</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">地小有名氣的醫者，這項技能</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">與天文觀測同時並行</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">一人身兼行政官、醫師與業餘天文學家</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">自建小型觀星塔</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">公餘時間</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">在座堂城牆的一座塔樓進行觀</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">測，設備簡陋，多數推論靠計</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">算而非精密儀器</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">日心說主要是算出來的，不是看出來的</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">天文學終其一生都只是他的公餘興趣，真正的正職是教會的行政與法律事務</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這個身分落差，常被通俗敘述省略——把哥白尼想像成一位全心投入天文觀測的孤獨學者，其實漏掉了他</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">人生大半時間都花在教區財務、土地糾紛與教會法律事務上的真實樣貌</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">這份行政歷練，甚至讓他意外踏進了一個完全不同的領域——貨幣政策</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>業餘經濟學家——他提出的原理，比格雷欣早了幾十年</h2>
+  <p class="sub">教區的財務行政經驗，意外讓他寫出一篇領先時代的貨幣改革論文</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哥白尼貨幣改革結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">普魯士地區的貨幣純度混亂，身為教區代表的他被要求提出解決方案</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他寫下的分析，後來被證明領先了正式提出這條原理的英國人整整幾十年</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">受託撰寫貨幣改革論文</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1517年起，受普魯士地區議會委託，分析各地成色不</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">一的貨幣如何擾亂當地經濟</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">劣幣驅逐良幣的原理</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">他指出成色較差的貨幣一旦流通，民眾會囤積成色好</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">的貨幣，劣幣因此逐漸取代良幣</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">比格雷欣早了幾十年</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">這條原理後來以十六世紀中葉英國財政官格雷欣之名</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">流傳，但哥白尼的分析寫成得更早</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">被主流經濟史長期忽略</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">因為哥白尼以天文學家留名後世，這篇論文長期只在</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">貨幣史研究者的圈子裡被提及</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這篇論文提醒我們，「哥白尼」這個名字承載的身分，遠比天文學家豐富</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">教區財務行政的日常歷練，讓他對貨幣流通有著超越同時代人的觀察力——這份洞見，跟他對星體運行的</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">觀察，其實出自同一種善於從龐雜現象裡歸納規律的思維習慣</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">同樣這種謹慎的性格，也決定了他面對天文學鉅著時，遲遲不肯付印的態度</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>延遲出版的真正原因——不是怕教會，是怕同行</h2>
+  <p class="sub">通俗版本說他怕被燒死；同時代的證據卻指向一個平凡得多的理由</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哥白尼延遲出版原因結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他的手稿其實早就在天文學圈子裡私下流傳了數十年，沒有引來任何迫害</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">「怕教會」這個劇本，更像是後人拿90年後伽利略審判的陰影，回頭套在他身上</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">手稿私下流傳數十年，相安無事</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">早期的簡短摘要手稿在天文學界流傳超過二十年，並</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">未引來任何教會方面的關注</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">是新教徒學者力勸他出版</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">年輕的新教數學家雷提庫斯專程遠道拜訪，多年來積</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">極遊說並協助整理，才促成最終出版</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">更可能的顧慮：同行的學術挑剔</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">同時代書信顯示，他更擔心的是天文學同行挑出計算</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">上的漏洞，或被嘲笑違反直覺的常識</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">「怕教會」的劇本是後見之明</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">當時教會對地動說的態度遠不如90年後嚴厲，這個</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">恐懼敘事更像是後世讀者的投射</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一段猶豫，兩種截然不同的解釋</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">「怕教會迫害」的版本比較戲劇化，也比較符合後人熟悉的伽利略劇本；但更貼近史料的解釋，其實是一</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">位謹慎的學者，害怕自己的數學經不起同行檢驗，遠勝過害怕神學上的指控</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">最終促成出版的過程，本身也留下了一段耐人尋味的插曲</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>死前才印出來的書，序言卻不是他寫的</h2>
+  <p class="sub">在他中風臥床、可能已無法閱讀之際，書稿的序言被人悄悄改寫</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哥白尼天體運行論出版結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">《天體運行論》1543年終於付印，但監印過程中出現了一個哥白尼本人並不知情的更動</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個更動，某種程度上決定了這本書後來幾十年被如何閱讀</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">奧西安德爾接手監印</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">出版最後階段</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">一位路德派神學家負責監督</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">印刷最後階段，哥白尼本人</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">已無法親自把關</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">遠距監印，給了篡改可乘之機</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">匿名插入一篇序言</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">未經同意</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">在正文前加了一篇未署名的</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">序言，讀者容易誤以為出自</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">哥白尼本人</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">一篇沒署名的序言，混淆了全書立場</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">把主張降級為「假設」</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">內容更動</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">序言主張日心說只是方便計</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">算的數學假設，不必然是物</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">理事實——哥白尼本人並不這麼想</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">他相信的是物理真實，不只是計算工具</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">同年病逝</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1543年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">傳說他在病榻上收到剛印好</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">的第一本書，但這個場景的</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">細節史料上仍有爭議</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">動人的場景，未必等於確鑿的史實</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這篇偷渡進去的序言，某種程度上意外保護了這本書</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">正因為序言把日心說降格成「計算工具」而非「物理事實」，教會直到1616年才正式將此書列入查禁書目</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">——距離出版已過了七十三年，這段時間差，某種意義上是一場編輯造假意外換來的緩衝期</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但他真正留給後世的革命，本身也還有一段常被誇大的部分</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">義大利求學：法律、醫學、天文<span class="yr">1496-1503年</span></div><p>先後在波隆那、帕多瓦、費拉拉攻讀教會法與醫學，天文學是課餘鑽研的興趣。</p></div>
+    <div class="card"><div class="nm">弗龍堡座堂司鐸<span class="yr">1497年起</span></div><p>終生擔任瓦爾米亞教區的座堂司鐸，負責財務與行政事務，一做超過三十年。</p></div>
+    <div class="card"><div class="nm">兼職執業醫師</div><p>為主教與地方仕紳看診，是當地小有名氣的醫者，與天文觀測同時並行。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>貨幣改革論文</h2><span class="tag">MONETARY REFORM</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">受託撰寫貨幣改革論文<span class="yr">1517年起</span></div><p>受普魯士地區議會委託，分析各地成色不一的貨幣如何擾亂當地經濟。</p></div>
+    <div class="card"><div class="nm">劣幣驅逐良幣的原理</div><p>指出成色較差的貨幣一旦流通，民眾會囤積良幣，劣幣因此逐漸取代良幣。</p></div>
+    <div class="card"><div class="nm">比格雷欣早了幾十年</div><p>這條原理後來以十六世紀中葉英國財政官格雷欣之名流傳，但哥白尼的分析寫成得更早。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>延遲出版之謎</h2><span class="tag">DELAY</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">手稿流傳數十年，相安無事</div><p>早期的簡短摘要手稿在天文學界流傳超過二十年，並未引來教會方面的關注。</p></div>
+    <div class="card"><div class="nm">是新教徒學者力勸他出版</div><p>年輕的新教數學家雷提庫斯專程遠道拜訪，多年遊說並協助整理，才促成出版。</p></div>
+    <div class="card"><div class="nm">更可能的顧慮：同行的學術挑剔</div><p>同時代書信顯示，他更擔心的是同行挑出計算漏洞，而非教會的神學指控。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>出版與序言風波</h2><span class="tag">PUBLICATION</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">匿名插入一篇序言</div><p>監印的神學家未經同意加了一篇未署名序言，讀者容易誤以為出自哥白尼本人。</p></div>
+    <div class="card"><div class="nm">把主張降級為「假設」</div><p>序言主張日心說只是方便計算的數學假設，哥白尼本人其實相信這是物理事實。</p></div>
+    <div class="card"><div class="nm">同年病逝<span class="yr">1543年</span></div><p>傳說他病榻上收到剛印好的第一本書，但這個場景的細節史料上仍有爭議。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    我深知，一旦有人知道我在這些書卷裡，把地球說成是在運動的，他們立刻就會大聲反對我。
+    <cite>哥白尼在《天體運行論》獻詞中，向教宗保祿三世表達的顧慮——這段文字本身，顯示他確實預期會遭遇異議，但獻詞通篇談的多是學術上的謹慎，而非對教會迫害的恐懼。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平行政脈絡、貨幣改革論文與出版過程的內幕，天文學模型細節（含日心說本身的技術限制）見同資料夾〈科學革命〉篇。延遲出版的動機、病榻收書等情節，史學界仍有不同解讀與考證分歧，本頁採較多方史料支持的說法，正式引用請另行查證專業傳記文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

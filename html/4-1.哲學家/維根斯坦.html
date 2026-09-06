@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>維根斯坦知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">苦行的邏輯・拋棄萬貫家財</p>
+  <h1>維根斯坦知識圖譜</h1>
+  <p class="lede">同資料夾〈梯子與蒼蠅瓶〉已經把維根斯坦的哲學內容——圖像理論、語言遊戲、私人語言論證——梳理得極為透徹。這份圖譜要談的，是促成這套哲學的那個人本身：一個出生在奧匈帝國最富有家族之一、府邸裡常有布拉姆斯與馬勒作客的少爺，卻在繼承鉅額遺產後幾乎全數散盡；寫完《邏輯哲學論》、自認終結了哲學之後，轉身跑去奧地利鄉間教了六年小學；家族在納粹併吞奧地利時，被迫用一場驚險的財務協商換回性命；晚年還跟波普爾在學術聚會上爆發一場被寫成專書的肢體衝突。這份圖譜要梳理的，就是這條貫穿他一生、把多餘的東西清除掉只留下必要之物的邏輯，究竟是怎麼展現在財富、職業與家族命運的抉擇上的。</p>
+</header>
+
+<div class="callout">
+  <b>與前作的銜接</b><br>
+  見〈梯子與蒼蠅瓶〉篇：圖像理論、語言遊戲、家族相似性、私人語言論證、「兩個維根斯坦」之爭等哲學內容，該篇已有極詳盡的逐節梳理，本頁不重複。這裡要補的，是那些正統哲學史敘述裡常被一筆帶過、卻決定了他為何會用那種方式做哲學的人生片段。
+</div>
+
+<section>
+  <h2>世界最富有的家族之一——鋼鐵大亨家的第八個孩子</h2>
+  <p class="sub">帕萊斯・維根斯坦府邸裡，常客包括布拉姆斯與馬勒——這是他出生、成長的世界</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維根斯坦家族背景結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">維根斯坦的父親卡爾，是奧匈帝國最富有的實業家之一，靠鋼鐵事業累積驚人財富</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這棟府邸不只是豪宅，更是維也納音樂界的重要據點，常態接待當代最頂尖的音樂家</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">鋼鐵帝國的締造者：父親卡爾</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">白手起家</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">掌控奧匈帝國鋼鐵工業的相</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">當比例，是當時歐洲數一數</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">二富有的實業家</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">財富規模，足以支撐整個家族的藝文生活</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">帕萊斯的音樂沙龍</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">維也納文化圈</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">布拉姆斯、馬勒等當代最重</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">要的作曲家與音樂家，都曾</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">是這棟宅邸的座上賓</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">古典音樂史上一段常被忽略的私人客廳</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">哥哥保羅：失去右臂的鋼琴家</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">音樂界的另一則傳奇</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">一戰中失去右臂，戰後委託</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">拉威爾為他量身打造《左手</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">鋼琴協奏曲》</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">今天仍是音樂會的經典曲目</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">陰影：四兄弟中三人輕生</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">家族史上沉重的一面</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">家族光鮮之下籠罩著沉重陰</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">影，路德維希的三位兄長相</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">繼在不同時期輕生</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這份陰影終生伴隨著他</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這是路德維希出生、成長的世界——極致的財富，極致的藝術涵養，也極致的心理張力</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">正統哲學史敘述通常把他的家世背景一筆帶過，直接跳到劍橋求學的階段——但理解他日後那些看似激進</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">的人生選擇，得先從理解這個起點開始</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">本頁後續四節，將分別談他如何處理繼承的財富、為何轉行教小學、家族的納粹危機，以及晚年的一場衝突</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>繼承鉅額遺產，卻幾乎全數散盡</h2>
+  <p class="sub">一位歐洲數一數二富有的年輕人，在寫出哲學史上最重要的著作之前，先做了一個更激進的決定</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維根斯坦散盡遺產結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1913年父親過世，路德維希繼承了一筆足以讓他終生無虞的龐大遺產</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他做的第一件事，不是投資或享用，而是想辦法把它送出去</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">匿名資助窮困藝術家</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">透過中間人，匿名捐出大筆款項給當時窮困潦倒的詩人里</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">爾克與特拉克爾等人</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">只留下勉強維生的部分</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">幾乎散盡全部繼承，此後終生過著近乎苦行僧的簡樸生</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">活，即使晚年成名依然如此</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">發生在《邏輯哲學論》完稿之前</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">苦行的傾向，不是晚年才有的哲學態度，而是他一貫的行</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">事邏輯，早在成名之前就已存在</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">一種貫穿一生的模式</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">把繼承的財富當成需要被清除的干擾，就像他後來把哲</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">學問題也當成需要被清除的語言誤用</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這個決定，值得放在他後來的哲學方法論旁邊一起看</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">把多餘的、造成混淆的東西清除掉，只留下真正必要的——這條邏輯線，貫穿了他處理財富的方式，也貫穿</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">了他後來處理哲學問題的方式，兩者之間的相似不太可能只是巧合</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這種對「多餘之物」的不耐，很快又在他寫完鉅著之後，用另一種方式展現出來</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>寫完鉅著後，他決定去鄉下教小學</h2>
+  <p class="sub">完成《邏輯哲學論》、自認終結性地解決了哲學問題之後，他做的不是繼續學術生涯</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維根斯坦鄉間教書結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">戰壕與戰俘營裡寫出的手稿出版後，他一度認為自己已經解決了全部的哲學問題</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">於是他做的，是徹底離開學術界，這段近十年的空白，正統哲學史敘述通常一筆帶過</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">奧地利鄉間的小學教師</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1920年起在幾個偏遠村莊擔任小學教師，一教就是六</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">年，遠離所有學術圈子</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">體罰爭議與辭職</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">因體罰學生引發爭議與訴訟，雖獲判無罪，仍在1926</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">年辭去教職，結束這段教書生涯</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">修道院的園丁助手</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">辭去教職後，曾在維也納近郊修道院擔任園丁助手，</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">一度認真考慮成為修士</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">直到1929年才重返劍橋</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這段近十年的空白，卻是理解他人生選擇邏輯的關鍵</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">，不是可以略過不談的插曲</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這不是一時衝動的逃避，是同一種傾向的兩次展現</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">從散盡家產到轉行教小學——對他而言，聲望、財富、學術地位本身從來不是目的，一旦覺得任務已經完</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">成，繼續留在原地反而是一種需要被清除的多餘</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">重返劍橋之後不久，家族又被捲入一場遠比個人抉擇更沉重的歷史事件</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>1938年：家族用一筆鉅額協商，換回免於迫害的身分</h2>
+  <p class="sub">名義上信奉天主教數代的家族，因祖父的猶太血統，被迫捲入一場驚險的身分周旋</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維根斯坦家族納粹危機結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1938年德國併吞奧地利，紐倫堡種族法追溯認定維根斯坦家族帶有猶太血統</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">儘管家族數代信奉天主教，仍被列為必須處理的對象——路德維希此時已在英國，留在奧地利的手足處境危急</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">從「全猶太人」降級為「混血」的協商</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">家族透過複雜的外交與財務協商，爭取將身分改列為納</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">粹法律中處境較輕的「混血」類別</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">一筆換取身分的鉅額外匯</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">據多方記載，協商過程中家族轉移的外匯與黃金數額極</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">為龐大，具體數字各方說法不一</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">身在英國的路德維希：歸化為公民</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">路德維希本人於1939年取得英國國籍，置身於這場家</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">族危機之外，卻始終牽掛留在歐陸的手足</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">這場周旋最終保住了家族性命</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">儘管代價高昂，協商最終成功，家族成員得以在戰爭</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">期間倖存下來</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這段歷史在多數哲學史敘述裡幾乎完全缺席</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">卻是理解「維根斯坦家族」這個身分，在二十世紀歐洲究竟意味著什麼的必要脈絡——同一個姓氏，可以</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">既是維也納最顯赫的家族之一，也是紐倫堡種族法底下一份需要被重新歸類的危險身分</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">戰後回到劍橋的維根斯坦，晚年還有一場流傳甚廣的衝突事件</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>撥火棍事件與最後的日子</h2>
+  <p class="sub">一場學術聚會上的肢體衝突，以及一句被反覆引用的臨終遺言</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="維根斯坦晚年結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1946年，劍橋道德科學社的一場聚會上，維根斯坦與來訪的波普爾爆發激烈衝突</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這場爭論的主題，恰好呼應了他畢生思考的核心問題：究竟有沒有真正的哲學問題</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">撥火棍事件</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1946年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">波普爾主張確實存在真正</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">的哲學問題，據多人回憶</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">爭論激動之際他一度揮舞</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">壁爐撥火棍，隨後憤而離席</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">細節眾說紛紜</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">後續</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">這場爭論後來成為一整本</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">書的主題，但在場者對細</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">節的回憶彼此頗有出入</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">連當事人的說法都對不上,更添傳奇色彩</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">確診絕症</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1949年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">確診攝護腺癌後，他選擇</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">在友人陪伴下度過最後時</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">光，而非獨自隱居</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">連面對死亡，也拒絕孤立於人群之外</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">「我度過了美好的一生」</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1951年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">辭世前的最後遺言，由照</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">顧他的醫師之妻轉述，至</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">今仍被研究者反覆引用</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">一個散盡家財的人,如此總結自己的一生</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從散盡家財到撥火棍事件，串起這些片段的是同一個人</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">對「什麼才是真正重要的事」抱持近乎苛刻標準的人——這份苛刻，既塑造了他的人生選擇，也塑造了他</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">要求哲學必須做到的那種誠實：哲學內容本身，見〈梯子與蒼蠅瓶〉篇的完整梳理</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">生平年表的完整版本，見〈維根斯坦時間軸〉</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>家族背景</h2><span class="tag">FAMILY</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">鋼鐵帝國的締造者：父親卡爾</div><p>白手起家掌控奧匈帝國鋼鐵工業的相當比例，是當時歐洲數一數二富有的實業家。</p></div>
+    <div class="card"><div class="nm">帕萊斯的音樂沙龍</div><p>布拉姆斯、馬勒等當代最重要的作曲家與音樂家，都曾是這棟宅邸的座上賓。</p></div>
+    <div class="card"><div class="nm">哥哥保羅：失去右臂的鋼琴家</div><p>一戰中失去右臂，戰後委託拉威爾為他打造《左手鋼琴協奏曲》，成為經典曲目。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>散盡遺產</h2><span class="tag">RENUNCIATION</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">匿名資助窮困藝術家</div><p>透過中間人匿名捐款給窮困潦倒的詩人里爾克與特拉克爾等人，發生在成名之前。</p></div>
+    <div class="card"><div class="nm">只留下勉強維生的部分</div><p>幾乎散盡全部繼承，此後終生過著近乎苦行僧的簡樸生活，即使成名後依然如此。</p></div>
+    <div class="card"><div class="nm">與哲學方法論的呼應</div><p>把多餘的東西清除掉只留必要的，這條邏輯貫穿了他處理財富與哲學問題的方式。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>鄉間教書歲月</h2><span class="tag">TEACHING YEARS</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">奧地利鄉間的小學教師<span class="yr">1920年起</span></div><p>在幾個偏遠村莊擔任小學教師，一教就是六年，遠離所有學術圈子。</p></div>
+    <div class="card"><div class="nm">體罰爭議與辭職<span class="yr">1926年</span></div><p>因體罰學生引發爭議與訴訟，雖獲判無罪，仍辭去教職，結束這段教書生涯。</p></div>
+    <div class="card"><div class="nm">修道院的園丁助手</div><p>辭去教職後曾在修道院擔任園丁助手，一度認真考慮成為修士，直到1929年重返劍橋。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>家族與晚年</h2><span class="tag">LATER LIFE</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">納粹併吞後的身分協商<span class="yr">1938年</span></div><p>家族透過複雜的財務協商，爭取從「全猶太人」降級為處境較輕的「混血」類別，保住性命。</p></div>
+    <div class="card"><div class="nm">撥火棍事件<span class="yr">1946年</span></div><p>與波普爾在劍橋道德科學社激烈爭論是否存在真正的哲學問題，據傳一度揮舞壁爐撥火棍。</p></div>
+    <div class="card"><div class="nm">「我度過了美好的一生」<span class="yr">1951年</span></div><p>確診攝護腺癌後選擇在友人陪伴下度過最後時光，臨終遺言至今仍被反覆引用。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    告訴他們，我度過了美好的一生。
+    <cite>維根斯坦1951年辭世前留下的最後一句話，由照顧他的醫師之妻轉述。一個曾經散盡萬貫家財、多次試圖徹底離開學術界的人，最終用這樣一句話總結了自己的一生。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平、家族背景與人生抉擇，哲學論證的完整內容見同資料夾〈梯子與蒼蠅瓶〉篇。具體歷史細節（尤其是1938年家族財務協商的確切數字，以及撥火棍事件的現場經過）在不同傳記與回憶錄中記載略有出入，本頁採用較多方記載共通的版本，正式引用請另行查證專業傳記文獻，如雷．蒙克（Ray Monk）的《維根斯坦：天才之為責任》。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

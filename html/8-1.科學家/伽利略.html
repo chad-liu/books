@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>伽利略知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">斜面與望遠鏡・審判的真相</p>
+  <h1>伽利略知識圖譜</h1>
+  <p class="lede">伽利略審判常被簡化成一則「科學對抗宗教」的簡單故事——但真正引爆1633年審判的，很可能不是地動說本身：哥白尼的地動說早在1543年就已出版，教會多年來也睜一隻眼閉一隻眼。真正的導火線，是伽利略1632年出版的一本書，把教宗本人曾私下告訴他的論點，安排到一個名叫「辛普利丘」（意即傻瓜）的角色口中——這更像一場政治羞辱引爆的審判，而不只是一場單純的信仰衝突。這份圖譜要梳理的，就是他從輟學生到帕多瓦數學教授的生平、一套真正讓他被稱為近代物理學奠基者的實驗方法、那本惹惱教宗的書究竟寫了什麼，以及他在軟禁與失明中完成、卻可能是他一生最重要的一本科學著作。</p>
+</header>
+
+<div class="callout">
+  <b>與〈科學革命〉篇的銜接</b><br>
+  望遠鏡觀測（木星衛星、金星盈虧）與審判的大致背景，該篇已有概略處理，本頁不重複，轉而聚焦他完整的生平脈絡、真正讓他被稱為近代物理學奠基者的實驗方法、審判背後常被忽略的政治導火線，以及他在軟禁中完成、卻可能是他一生最重要的著作。
+</div>
+
+<section>
+  <h2>生平——從比薩的醫學系輟學生，到帕多瓦的數學教授</h2>
+  <p class="sub">他人生最重要的突破，發生在一段教會勢力相對鞭長莫及的時空裡</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伽利略生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">伽利略原本按父親的意願攻讀醫學，卻在自學數學的過程中徹底改變志向</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">教堂裡一盞搖晃的吊燈，據傳是促成他日後重要發現的起點</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">比薩：輟學的醫學系學生</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1580年代</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">進入比薩大學攻讀醫學，卻</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">因自學數學與物理而中途輟</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">學，未取得學位</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">父親的期望，敵不過他自己的興趣</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">一盞吊燈與擺的等時性</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">傳說軼事</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">據傳他觀察主教座堂裡搖晃</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">的吊燈，以自己脈搏計時，</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">注意到擺動週期近乎恆定</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">這則軼事的真實性，史學界仍有保留</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">帕多瓦的黃金十八年</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1592年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">任教帕多瓦大學，威尼斯共</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">和國治下教會箝制相對寬鬆</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">，是他一生最多產的階段</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">相對自由的環境，孕育出後來的爭議發現</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">未婚的家庭：與瑪莉娜</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">終生未婚</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">與瑪莉娜・甘巴維持長期關</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">係並育有三名子女，長女後</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">來成為修女</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">與長女的通信，是晚年生活的重要史料</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他人生最重要的突破，發生在一段教會勢力相對鞭長莫及的時空裡</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">帕多瓦隸屬威尼斯共和國管轄，教會在此地的直接控制力遠不如佛羅倫斯或羅馬，這段相對自由的環境，</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">讓他得以放手發展日後引發爭議的觀測與主張</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">望遠鏡讓他的觀測成名，但真正奠定他物理學地位的，是另一套更容易被忽略的方法</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>一套用實驗，不靠權威文本描述運動的新方法</h2>
+  <p class="sub">望遠鏡讓他名滿天下，但真正的方法論革命，發生在斜面與滾球之間</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伽利略力學方法結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">自由落體的速度太快，當時的鐘錶量不出來——他想出了一個聰明的替代方案</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">用斜面把重力「放慢」，讓誤差被拉長到量得出來的範圍內</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">斜面實驗：把重力「放慢」來測量</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">讓球沿平滑斜面滾下，反覆計時驗證距離與時間平方成</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">正比的關係</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">推翻亞里斯多德的物理學</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">亞里斯多德主張較重的物體落下較快，他以邏輯與實驗</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">證明，忽略空氣阻力下落速度與重量無關</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">慣性原理的雛形</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">提出物體不受外力時會維持等速運動的構想，是牛頓第</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">一運動定律的直接先驅</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">數學化的物理學</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">主張自然這本大書是用數學語言寫成的，唯有精通幾何</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">才讀得懂，這句話後來成了近代科學的座右銘</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這才是他被稱為近代物理學奠基者的真正原因</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">望遠鏡觀測讓他聲名大噪，但真正撐起「近代科學方法」這個稱號的，是這套用可控制的實驗驗證數學關</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">係、而不是引用權威文本推論自然的整套方法論——這正是後來牛頓力學賴以建立的地基</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但讓他被送上宗教裁判所法庭的，不是這套力學方法，而是一本書裡的一句玩笑</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>一本書裡的一句話，怎麼把教宗變成了敵人</h2>
+  <p class="sub">地動說本身教會容忍了將近百年，真正引爆審判的，是一場更私人的羞辱</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伽利略審判導火線結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">哥白尼的地動說1543年就已出版，教會多年來睜一隻眼閉一隻眼</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">真正引爆1633年審判的導火線，發生在1632年出版的一本書裡</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">1616年的私下警告</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">樞機主教貝拉明私下警告，地動說只能作為數學假設討</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">論，不得主張其為物理事實</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">教宗曾私下提供的一個論點</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">舊識教宗烏爾班八世主張，上帝全能，人類永遠無法斷</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">言某個物理解釋是唯一答案，曾要求他納入此論點</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">論點被安排進「辛普利丘」口中</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">1632年出版的對話錄裡，這個論點被安排給一個名叫</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">「辛普利丘」（意即傻瓜）的角色，且顯得笨拙</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">教宗震怒，審判隨即啟動</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這個安排普遍被解讀為對教宗本人的羞辱，不論是否出</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">於本意，都直接促成隔年的宗教裁判所審判</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這更像一場政治羞辱引爆的審判，而不只是一場單純的信仰衝突</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">把整起事件簡化成「科學對抗宗教」，會漏掉真正決定審判時機與力道的關鍵——一個曾經支持他的教</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">宗，如何從盟友變成必須嚴懲的對象</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">判決之後，故事並沒有結束——他在軟禁中完成的下一本書，才是他留給物理學最重要的遺產</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>軟禁中完成的鉅著——他留給物理學最重要的一本書</h2>
+  <p class="sub">被判處終身軟禁、雙眼近乎全盲之後，他做的不是停筆</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伽利略兩門新科學結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1633年審判後，伽利略被迫公開放棄地動說主張，判決終身軟禁於佛羅倫斯近郊別墅</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">判決沒有讓他停止工作，他利用剩下的視力與時間，寫出可能是他一生最重要的著作</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">軟禁期間近乎全盲</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1638年雙眼幾近全盲，仍持續口述，由學生與訪客協</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">助記錄整理書稿內容</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《兩門新科學》：偷渡出境出版</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">手稿輾轉送出義大利，在教廷管轄不到的荷蘭出版，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">全名直譯為《關於兩門新科學的對話》</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">內容刻意避開了地動說爭議</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">全書聚焦力學與材料強度，完全不涉及天文學爭議，</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">某種程度是刻意迴避審查的選擇</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">對牛頓的直接影響</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">書中整理的運動學成果，被後世視為牛頓建立古典力學</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">體系前，最重要的直接基礎</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">審判想終結的是一個天文學主張，卻攔不住背後那套方法論持續擴散</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">伽利略被迫公開放棄的，是地動說這個具體結論；但支撐這個結論的整套實驗與數學方法，卻透過這本</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">在軟禁中完成的書，原封不動地流傳了下來</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">一句廣為流傳的呢喃「而它仍在轉動」，常被當成他的反抗宣言，但這句話的真實性其實頗有爭議</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>遺產——從被審判的異端，到遲來350多年的官方平反</h2>
+  <p class="sub">一句常被引用的名言，史料上第一次出現的時間，比他過世晚了一個多世紀</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伽利略遺產與平反結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「而它仍在轉動」這句話，直到十八世紀才第一次出現在文字記載裡</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">距離審判已經過了一個多世紀，史學界普遍認為這是後人附會的傳說，而非當場的證詞</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">傳說的真實性存疑</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">史料考證</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">沒有任何審判當時的紀錄</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">提及這句話，普遍認為是</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">後世杜撰的反抗英雄形象</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">好故事不一定是真故事</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">教會的地動說解禁</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1758年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">教廷正式從禁書目錄中移</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">除支持地動說的著作，爭</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">議在制度層面逐漸鬆動</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">距離出版《對話錄》已超過一個世紀</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">教宗正式平反</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1992年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">若望保祿二世結束一個歷</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">時十餘年的調查委員會，</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">正式承認教會當年處理有誤</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">距離1633年審判，已過了359年</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">真正持續發揮影響的方法</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">方法論遺產</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">用可控制的實驗，取代對</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">權威文本的引述，去回答</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">關於自然的問題</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">比官方平反更早改變科學走向</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他留給後世的，遠不只是一個被平反的結論</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">地動說的正確與否，最終靠的是後續幾百年的天文觀測證據累積而定案，不是靠教會的平反聲明；真正</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">持續發揮影響力的，是他示範的那套研究方法，後來直接構成了牛頓力學的地基</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">見同資料夾〈牛頓〉篇：這套實驗與數學結合的方法論，如何在他手中發展成完整的力學體系</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">比薩：輟學的醫學系學生</div><p>進入比薩大學攻讀醫學，卻因自學數學與物理而中途輟學，未取得學位。</p></div>
+    <div class="card"><div class="nm">帕多瓦的黃金十八年<span class="yr">1592年起</span></div><p>任教帕多瓦大學，威尼斯共和國治下教會箝制相對寬鬆，是他一生最多產的階段。</p></div>
+    <div class="card"><div class="nm">未婚的家庭：與瑪莉娜</div><p>終生未婚，卻與瑪莉娜維持長期關係並育有三名子女，長女後來成為修女。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>力學方法</h2><span class="tag">MECHANICS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">斜面實驗</div><p>讓球沿平滑斜面滾下，反覆計時驗證距離與時間平方成正比的關係。</p></div>
+    <div class="card"><div class="nm">推翻亞里斯多德的物理學</div><p>以邏輯與實驗證明，忽略空氣阻力下，落體速度與重量無關。</p></div>
+    <div class="card"><div class="nm">慣性原理的雛形</div><p>提出物體不受外力時會維持等速運動的構想，是牛頓第一運動定律的直接先驅。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>審判的導火線</h2><span class="tag">TRIAL</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">1616年的私下警告</div><p>樞機主教貝拉明私下警告，地動說只能作為數學假設討論，不得主張其為物理事實。</p></div>
+    <div class="card"><div class="nm">論點被安排進「辛普利丘」口中<span class="yr">1632年</span></div><p>教宗曾要求納入的一個論點，被安排給一個名叫「傻瓜」的角色，普遍被解讀為羞辱。</p></div>
+    <div class="card"><div class="nm">教宗震怒，審判隨即啟動<span class="yr">1633年</span></div><p>這個安排直接促成隔年的宗教裁判所審判，被迫公開放棄地動說主張。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>軟禁與遺產</h2><span class="tag">LEGACY</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">《兩門新科學》偷渡出版<span class="yr">1638年</span></div><p>軟禁期間近乎全盲仍持續口述，手稿送出義大利在荷蘭出版，全書避開天文爭議。</p></div>
+    <div class="card"><div class="nm">地動說正式解禁<span class="yr">1758年</span></div><p>教廷正式從禁書目錄中移除支持地動說的著作，爭議在制度層面逐漸鬆動。</p></div>
+    <div class="card"><div class="nm">教宗正式平反<span class="yr">1992年</span></div><p>若望保祿二世結束歷時十餘年的調查委員會，正式承認教會當年處理此案有誤。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    自然這本大書，是用數學語言寫成的；不懂這種語言，就如同在黑暗的迷宮中打轉。
+    <cite>伽利略《試金者》（Il Saggiatore, 1623）中的著名論述，主張唯有精通幾何等數學工具，才能真正讀懂自然運行的規律——這句話後來成了近代科學方法論的座右銘。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平脈絡、力學方法論與審判的政治背景，天文觀測細節見同資料夾〈科學革命〉篇。「而它仍在轉動」等軼事的真實性在史學界仍有爭議，本頁已標明存疑之處；具體審判文獻與各家史學詮釋分歧，請另行查證專業傳記與科學史文獻。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
