@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>漫威英雄宇宙知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">9 休閒娛樂 · 專題</p>
+  <h1>漫威英雄宇宙知識圖譜</h1>
+  <p class="lede">漫威電影宇宙常被講成一套精心規劃十年的敘事奇蹟，但這個故事漏掉了它真正的起點——<b>2005年，Marvel Studios手上最值錢的角色版權早就賣光了，剩下能拿去抵押貸款開拍電影的，是當時沒人看好的三線角色</b>。這份圖譜要梳理的，就是這套「共享宇宙」模式其實是一場財務工程：怎麼把單一強片的賭注，換成一整個角色宇宙的組合式賭注；版權怎麼隨著財力增長一塊一塊贖回來；「無限傳說」完結之後為什麼失去了同樣的敘事引擎；以及為什麼別的片廠想抄，卻始終抄不動。</p>
+</header>
+
+<blockquote>
+  MCU真正發明的不是共享宇宙這個敘事點子，是拿它去做風險分攤的那套財務邏輯。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>起點不是雄心壯志，是缺錢：把三線角色拿去抵押貸款</h2>
+  <p class="sub">大家現在把 MCU 講成精心規劃的十年大計，但起點其實是一次幾乎沒有退路的財務賭博。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">在那筆貸款之前，Marvel 最值錢的角色版權早就分別授權給了別的片廠</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">手上剩下的，是當時被普遍視為票房號召力有限的二三線角色</text>
+
+    <rect x="30" y="98" width="338" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">蜘蛛人：早在1998年授權出去</text>
+    <text x="199" y="162" text-anchor="middle" font-size="11.5" fill="#96604f">Marvel Studios完全無法動用</text>
+    <text x="199" y="182" text-anchor="middle" font-size="11.5" fill="#96604f">這個角色開拍電影，直到多年</text>
+    <text x="199" y="202" text-anchor="middle" font-size="11.5" fill="#96604f">後才談成有限度的合作</text>
+
+    <rect x="381" y="98" width="338" height="150" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">X戰警與驚奇四超人：授權給Fox</text>
+    <text x="550" y="162" text-anchor="middle" font-size="11.5" fill="#37607a">同樣是漫畫裡最知名的角色群</text>
+    <text x="550" y="182" text-anchor="middle" font-size="11.5" fill="#37607a">之一，電影版權長年不在自己</text>
+    <text x="550" y="202" text-anchor="middle" font-size="11.5" fill="#37607a">手上</text>
+
+    <rect x="732" y="98" width="338" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">剩下的：鋼鐵人、雷神、美國隊長</text>
+    <text x="903" y="162" text-anchor="middle" font-size="11.5" fill="#8a6a35">二〇〇〇年代中期，這些角色</text>
+    <text x="903" y="182" text-anchor="middle" font-size="11.5" fill="#8a6a35">的漫畫銷量與知名度，都遠不</text>
+    <text x="903" y="202" text-anchor="middle" font-size="11.5" fill="#8a6a35">及已經授權出去的那幾組</text>
+
+    <rect x="30" y="264" width="1040" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="296" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">二〇〇五年，Marvel Studios 用這批「剩下的」角色版權，抵押貸款五億兩千五百萬美元</text>
+    <text x="550" y="324" text-anchor="middle" font-size="12" fill="#546e7a">如果第一部片失敗，連角色版權本身都可能被債權人接管——這不是穩健的商業計畫，是一次沒有退路的賭注，</text>
+    <text x="550" y="346" text-anchor="middle" font-size="12" fill="#546e7a">跟同資料夾〈片場制度興衰與串流時代轉型〉第三節談的「風險改押在單一大片上」是同一種邏輯的極端版本</text>
+    <text x="550" y="368" text-anchor="middle" font-size="11" fill="#59707b">這筆貸款催生的第一部片，就是二〇〇八年的《鋼鐵人》</text>
+  </svg>
+  </div>
+  <p class="after">這一節值得記住的地方在於：<b>MCU的起點是一次防守性的財務操作，不是進攻性的創意規劃</b>——手上握有的是市場不看好的角色，抵押貸款是走投無路下唯一能自己出資拍片、而不必再靠授權金過日子的辦法。下一節要看的是，這次賭注贏了之後，真正的創新才開始出現。</p>
+</section>
+
+<section>
+  <h2>鋼鐵人之後：片尾彩蛋開始織網，Disney 買下了整家公司</h2>
+  <p class="sub">兩件事幾乎同時發生——一件關於敘事，一件關於資本，合起來才構成後來的「宇宙」模式。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">傳統的強片模式，一部片扛自己的風險；Marvel接下來做的，是把風險攤到一整個宇宙上</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">同資料夾〈片場制度興衰與串流時代轉型〉第三節談的強片邏輯，在這裡被進一步改造</text>
+
+    <rect x="30" y="98" width="338" height="140" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">片尾彩蛋：從第一部就開始埋</text>
+    <text x="199" y="162" text-anchor="middle" font-size="11.5" fill="#446b53">二〇〇八年《鋼鐵人》片尾，</text>
+    <text x="199" y="182" text-anchor="middle" font-size="11.5" fill="#446b53">主角遇見神盾局幹員，暗示一</text>
+    <text x="199" y="202" text-anchor="middle" font-size="11.5" fill="#446b53">個更大的世界正在成形</text>
+
+    <rect x="381" y="98" width="338" height="140" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">2009年，Disney收購整家公司</text>
+    <text x="550" y="162" text-anchor="middle" font-size="11.5" fill="#4f6773">《鋼鐵人》證明商業模式可行</text>
+    <text x="550" y="182" text-anchor="middle" font-size="11.5" fill="#4f6773">後僅一年多，Disney以四十億</text>
+    <text x="550" y="202" text-anchor="middle" font-size="11.5" fill="#4f6773">美元收購Marvel Entertainment</text>
+
+    <rect x="732" y="98" width="338" height="140" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">2012年的驗證：集合比單一角色值錢</text>
+    <text x="903" y="162" text-anchor="middle" font-size="11.5" fill="#96604f">《復仇者聯盟》讓四條各自累</text>
+    <text x="903" y="182" text-anchor="middle" font-size="11.5" fill="#96604f">積的角色線首次合體，票房證</text>
+    <text x="903" y="202" text-anchor="middle" font-size="11.5" fill="#96604f">明宇宙本身比單一角色更值錢</text>
+
+    <rect x="30" y="252" width="1040" height="110" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="284" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">這創造了一種新的財務邏輯：個別電影不再只用自己的票房衡量</text>
+    <text x="550" y="312" text-anchor="middle" font-size="12" fill="#546e7a">背後有Disney的資本靠山，Marvel Studios不再需要靠抵押版權借款過日子；只要有助於維繫宇宙的完整性</text>
+    <text x="550" y="334" text-anchor="middle" font-size="12" fill="#546e7a">與觀眾黏著度，一部評價普通的個別電影，對整體資產價值而言仍然「划算」</text>
+  </svg>
+  </div>
+  <p class="after">值得注意的是：<b>Disney的收購時間點在《鋼鐵人》之後、《復仇者聯盟》之前</b>——也就是說，Disney買下的不是一個已經證明完整可行的宇宙模式，而是一次成功的賭注加上一個尚待驗證的構想。真正把整套邏輯坐實的，是三年後才上映的《復仇者聯盟》。</p>
+</section>
+
+<section>
+  <h2>版權贖回的長期戰：把外借出去的角色，一塊一塊買回來</h2>
+  <p class="sub">宇宙的完整性不是一次規劃到位，而是隨著財力累積，逐步贖回、拼回來的。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">從第一節那次抵押角色版權借款開始，到有能力併購買回失散的角色</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">MCU的擴張史，某種程度上也是一部Disney財力增長史的側寫</text>
+
+    <rect x="30" y="98" width="338" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">蜘蛛人：2015年談成有限度共享</text>
+    <text x="199" y="162" text-anchor="middle" font-size="11.5" fill="#96604f">Sony保留發行與財務控制，</text>
+    <text x="199" y="182" text-anchor="middle" font-size="11.5" fill="#96604f">Marvel Studios介入創作——</text>
+    <text x="199" y="202" text-anchor="middle" font-size="11.5" fill="#96604f">不是版權買回，是合作協議</text>
+
+    <rect x="381" y="98" width="338" height="150" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">X戰警：2019年併購間接取得</text>
+    <text x="550" y="162" text-anchor="middle" font-size="11.5" fill="#37607a">Disney以七百一十億美元收購</text>
+    <text x="550" y="182" text-anchor="middle" font-size="11.5" fill="#37607a">21世紀福斯，這是母公司層級</text>
+    <text x="550" y="202" text-anchor="middle" font-size="11.5" fill="#37607a">的併購，不是片廠自己談的</text>
+
+    <rect x="732" y="98" width="338" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#8f5e14" font-weight="600">時間軸本身，就是財力的紀錄</text>
+    <text x="903" y="162" text-anchor="middle" font-size="11.5" fill="#8a6a35">每一次版權局面的改變，背後</text>
+    <text x="903" y="182" text-anchor="middle" font-size="11.5" fill="#8a6a35">都對應著當時Disney或Marvel</text>
+    <text x="903" y="202" text-anchor="middle" font-size="11.5" fill="#8a6a35">實際的財務實力</text>
+
+    <rect x="30" y="264" width="1040" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="296" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">宇宙的完整，是財力累積的副產品，不是一開始就規劃好的藍圖</text>
+    <text x="550" y="324" text-anchor="middle" font-size="12" fill="#546e7a">如果Disney沒有後續的併購動作，X戰警與驚奇四超人可能永遠留在宇宙之外；蜘蛛人至今仍是有限度共享，</text>
+    <text x="550" y="346" text-anchor="middle" font-size="12" fill="#546e7a">不是完全握有——這說明所謂「共享宇宙」的完整版圖，從來不是一次談成的，而是機會出現才逐步拼上的</text>
+    <text x="550" y="368" text-anchor="middle" font-size="11" fill="#59707b">下一節看這套模式在敘事上開始出現裂縫的時刻</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Phase 4之後的結構性難題：失去清楚的終點</h2>
+  <p class="sub">「無限傳說」的二十三部片朝著一個明確終點邁進；終點之後，同樣的清晰感消失了。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="1040" height="60" fill="#17324d" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13.5" fill="#ffffff" font-weight="600">這是同一套「宇宙攤提」模式的反面：當敘事失去清晰匯聚點，宇宙黏著力也開始出現裂縫</text>
+    <text x="550" y="72" text-anchor="middle" font-size="12" fill="#bcd4e4">「清楚的終點」本身，原來是支撐整套風險分攤邏輯運作的關鍵引擎</text>
+
+    <rect x="30" y="98" width="338" height="150" fill="#ecf5ef" stroke="#9dc3a9" rx="6"/>
+    <text x="199" y="130" text-anchor="middle" font-size="13" fill="#3d7a55" font-weight="600">2008-2019：清楚的單一終點</text>
+    <text x="199" y="162" text-anchor="middle" font-size="11.5" fill="#446b53">二十三部片、十一年，全部朝</text>
+    <text x="199" y="182" text-anchor="middle" font-size="11.5" fill="#446b53">向擊敗薩諾斯這個單一敘事終</text>
+    <text x="199" y="202" text-anchor="middle" font-size="11.5" fill="#446b53">點累積，觀眾知道自己在等什麼</text>
+
+    <rect x="381" y="98" width="338" height="150" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="550" y="130" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">2019年後：終點感消失</text>
+    <text x="550" y="162" text-anchor="middle" font-size="11.5" fill="#4f6773">《復仇者聯盟：終局之戰》後</text>
+    <text x="550" y="182" text-anchor="middle" font-size="11.5" fill="#4f6773">，新的Phase沒有同樣明確、</text>
+    <text x="550" y="202" text-anchor="middle" font-size="11.5" fill="#4f6773">統一的單一敘事終點</text>
+
+    <rect x="732" y="98" width="338" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="903" y="130" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">串流劇集成為必要劇情線</text>
+    <text x="903" y="162" text-anchor="middle" font-size="11.5" fill="#96604f">Disney+劇集被納入電影的必</text>
+    <text x="903" y="182" text-anchor="middle" font-size="11.5" fill="#96604f">要背景，追劇門檻大幅提高，</text>
+    <text x="903" y="202" text-anchor="middle" font-size="11.5" fill="#96604f">呼應片場串流轉型的整合邏輯</text>
+
+    <rect x="30" y="264" width="1040" height="120" fill="#f6f9fb" stroke="#d7e0e6" rx="6"/>
+    <text x="550" y="296" text-anchor="middle" font-size="13.5" fill="#17324d" font-weight="600">這是同一套「宇宙攤提」模式的反面</text>
+    <text x="550" y="324" text-anchor="middle" font-size="12" fill="#546e7a">當敘事失去清晰的匯聚點，原本讓觀眾即使對單片失望也願意進場的「宇宙黏著力」，開始出現裂縫——部分</text>
+    <text x="550" y="346" text-anchor="middle" font-size="12" fill="#546e7a">Phase 4、5作品票房與評價的下滑，被普遍視為這個結構性問題的具體徵候，而非單一作品的個別失誤</text>
+    <text x="550" y="368" text-anchor="middle" font-size="11" fill="#59707b">同資料夾〈片場制度興衰與串流時代轉型〉第四節談的「整合進消費者裝置」，在這裡也帶來了追劇義務</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <h2>別人抄不動的門檻，到底是什麼</h2>
+  <p class="sub">把角色放進同一個世界，這個點子任何人都能想到——複製不了的，是別的東西。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="30" y="20" width="338" height="150" fill="#f0e6e2" stroke="#c9a99e" rx="6"/>
+    <text x="199" y="52" text-anchor="middle" font-size="13" fill="#8e2f1c" font-weight="600">DC電影宇宙：多次重啟</text>
+    <text x="199" y="84" text-anchor="middle" font-size="11.5" fill="#4f6773">反覆調整方向與時間線，缺乏</text>
+    <text x="199" y="104" text-anchor="middle" font-size="11.5" fill="#4f6773">Marvel那種長期一致的規劃</text>
+    <text x="199" y="124" text-anchor="middle" font-size="11.5" fill="#4f6773">與執行節奏</text>
+    <text x="199" y="150" text-anchor="middle" font-size="10.5" fill="#7a4436">同樣的點子，不同的執行力</text>
+
+    <rect x="381" y="20" width="338" height="150" fill="#fdeeeb" stroke="#dda695" rx="6"/>
+    <text x="550" y="52" text-anchor="middle" font-size="13" fill="#b8442a" font-weight="600">環球「黑暗宇宙」：一部就收攤</text>
+    <text x="550" y="84" text-anchor="middle" font-size="11.5" fill="#96604f">二〇一七年《神鬼傳奇》票房</text>
+    <text x="550" y="104" text-anchor="middle" font-size="11.5" fill="#96604f">失利後，整個共享宇宙計畫</text>
+    <text x="550" y="124" text-anchor="middle" font-size="11.5" fill="#96604f">直接被取消</text>
+    <text x="550" y="150" text-anchor="middle" font-size="10.5" fill="#7a4436">沒有先靠單片一部部養出信任</text>
+
+    <rect x="732" y="20" width="338" height="150" fill="#eaf2f7" stroke="#8fb4c9" rx="6"/>
+    <text x="903" y="52" text-anchor="middle" font-size="13" fill="#1f5c85" font-weight="600">真正的門檻：累積十幾年的信任</text>
+    <text x="903" y="84" text-anchor="middle" font-size="11.5" fill="#37607a">觀眾願意為還沒公佈細節的下</text>
+    <text x="903" y="104" text-anchor="middle" font-size="11.5" fill="#37607a">一部片預先買票，這種信任只</text>
+    <text x="903" y="124" text-anchor="middle" font-size="11.5" fill="#37607a">能靠時間一部一部累積</text>
+    <text x="903" y="150" text-anchor="middle" font-size="10.5" fill="#37607a">無法一次性複製的無形資產</text>
+
+    <rect x="30" y="190" width="1040" height="150" fill="#fdf5e7" stroke="#e0b775" rx="6"/>
+    <text x="550" y="222" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">兩階段的同一套邏輯：從抵押實體資產，到支撐無形資產</text>
+    <text x="550" y="252" text-anchor="middle" font-size="12" fill="#8a6a35">MCU真正證明的，不是「共享宇宙」這個敘事技巧本身有效，而是這套財務風險攤提邏輯，需要時間累積的信</text>
+    <text x="550" y="274" text-anchor="middle" font-size="12" fill="#8a6a35">譽做為抵押品——這跟第一節那次用角色版權抵押貸款起家，其實是同一個邏輯的兩個階段：先用實體資產</text>
+    <text x="550" y="296" text-anchor="middle" font-size="12" fill="#8a6a35">起家，成功之後改用觀眾信任這種無形資產，去支撐整個宇宙的持續擴張</text>
+    <text x="550" y="318" text-anchor="middle" font-size="11" fill="#96604f">這正是為什麼DC與環球「抄」得了點子，卻抄不到那份靠十幾年累積出來的觀眾信任</text>
+  </svg>
+  </div>
+</section>
+
+<div class="band"><h2>關鍵事件</h2><span class="tag">十個節點</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">蜘蛛人電影版權授權給Sony</span><span class="yr">1998</span><p>Marvel漫畫最知名角色之一的電影版權，長期授權在外，多年後才談成有限度合作。</p></div>
+  <div class="card"><span class="nm">X戰警電影版權授權給Fox</span><span class="yr">2000年代初</span><p>另一組最知名的角色群，電影版權同樣長年不在Marvel自己手上。</p></div>
+  <div class="card"><span class="nm">Marvel Studios抵押角色版權貸款</span><span class="yr">2005</span><p>向美林證券貸款五億兩千五百萬美元，用手上剩下的二三線角色版權作抵押，自己出資拍片。</p></div>
+  <div class="card"><span class="nm">《鋼鐵人》上映，首次埋下宇宙彩蛋</span><span class="yr">2008</span><p>片尾出現神盾局幹員，暗示一個更大的共享世界正在成形，是整套模式的起點作品。</p></div>
+  <div class="card"><span class="nm">Disney收購Marvel Entertainment</span><span class="yr">2009</span><p>以四十億美元收購整家公司，Marvel Studios從此有了大型集團的資本靠山。</p></div>
+  <div class="card"><span class="nm">《復仇者聯盟》首次讓角色線合體</span><span class="yr">2012</span><p>四條各自累積的角色線首次交會，票房證明宇宙本身比任何單一角色更值錢。</p></div>
+  <div class="card"><span class="nm">蜘蛛人在MCU與Sony之間協商共享</span><span class="yr">2015</span><p>Sony保留發行與財務控制，Marvel Studios得以介入創作，是合作協議而非版權買回。</p></div>
+  <div class="card"><span class="nm">Disney併購21世紀福斯</span><span class="yr">2019</span><p>以七百一十億美元收購，間接取得X戰警與驚奇四超人的電影版權，是母公司層級的併購。</p></div>
+  <div class="card"><span class="nm">《復仇者聯盟：終局之戰》完結無限傳說</span><span class="yr">2019</span><p>二十三部片、十一年累積的單一敘事終點在此收束，此後同樣清晰的終點感不再出現。</p></div>
+  <div class="card"><span class="nm">《汪達幻視》成為必要劇情線</span><span class="yr">2021</span><p>Disney+劇集首次成為後續電影劇情的必要背景，追劇門檻自此大幅提高。</p></div>
+</div>
+
+<div class="band"><h2>延伸閱讀</h2><span class="tag">相關主題</span></div>
+<div class="grid">
+  <a class="card" href="片場制度興衰與串流時代轉型知識圖譜.html"><span class="nm">片場制度興衰與串流時代轉型知識圖譜</span><span class="lk">→ 專頁</span><p>第二、四節談的強片邏輯與串流整合進消費者裝置，是MCU這套風險攤提模式賴以運作的產業背景。</p></a>
+  <a class="card" href="好萊塢霸權與在地電影工業知識圖譜.html"><span class="nm">好萊塢霸權與在地電影工業知識圖譜</span><span class="lk">→ 專頁</span><p>好萊塢全球市場規模優勢的結構性成因，MCU的全球發行正是這套優勢的具體受益者之一。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>9 休閒娛樂</b> 底下的專題頁。<b>範圍</b>：聚焦於商業模式、版權結構與財務邏輯的演變，不含個別電影的劇情分析或角色創作評論。<b>金額與年份</b>：貸款、收購金額為公開報導中常見的通行數字，具體合約細節與精確條款請另行查證專業文獻；年份為公開事件的關鍵節點，實際協商過程多為漸進過程。
+</footer>
+
+</div>
+</body>
+</html>

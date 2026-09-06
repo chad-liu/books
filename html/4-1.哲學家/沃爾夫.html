@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>沃爾夫知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">橋樑人物・獨斷的迷夢</p>
+  <h1>沃爾夫知識圖譜</h1>
+  <p class="lede">「休謨把康德從獨斷的迷夢中驚醒」——這句常被引用的哲學史金句，其實漏掉了關鍵的一半：康德年輕時讀的根本不是萊布尼茲本人的原著，而是一整套用萊布尼茲的名字包裝、卻更僵化教條的教科書系統，出自克里斯蒂安・沃爾夫（Christian Wolff, 1679-1754）之手。沃爾夫是萊布尼茲親自推薦上任的教授，畢生任務是把萊布尼茲寫在私人書信裡的零散洞見，改造成一整套可以按幾何學方式證明、可以逐條教給大學生的完整體系——也正是這套體系，後來成了康德真正要拆解的對象。這份圖譜要梳理的，就是沃爾夫怎麼把萊布尼茲系統化、他曾因為一場荒謬的政治指控差點被普魯士國王下令處以絞刑、康德批判的「獨斷論」實際上是在跟誰對話，以及他留下一份幾乎沒人記得、卻至今仍在使用的語言遺產。</p>
+</header>
+
+<div class="callout">
+  <b>與前作的銜接</b><br>
+  見〈萊布尼茲〉篇：單子論、預定和諧等原始論證細節，該篇已有詳細處理；見〈康德-理性的建築術〉篇對「獨斷的迷夢」與哥白尼式革命的完整討論。本頁要補的，是萊布尼茲與康德之間，那位常被跳過、卻決定了德國哲學教科書寫法一整個世紀的關鍵人物。
+</div>
+
+<section>
+  <h2>生平——從萊布尼茲親自推薦的教授，到普魯士首位哲學明星</h2>
+  <p class="sub">他用兩種語言寫作，一種給歐洲學界看，一種給德語讀者看</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沃爾夫生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">沃爾夫能站上哈勒大學的講台，一開始靠的是萊布尼茲本人的舉薦</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他此後畢生的工作，某種意義上就是回報這份舉薦——把舉薦人的哲學，變成一套人人能學的體系</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">耶拿與萊比錫求學</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1699-1703年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">主修數學與物理，深受幾何學</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">式證明的嚴謹形式吸引，這個</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">偏好貫串了他日後全部著作</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">數學訓練決定了他一生的寫作方法</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">萊布尼茲舉薦出任哈勒教授</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1707年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">萊布尼茲親自寫信推薦這位年</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">輕數學家，此後兩人持續通信</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">切磋哲學問題</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">一封推薦信，換來一生的哲學志業</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">同時以拉丁文與德文寫作</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1710年代起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">拉丁文著作面向歐洲學界，德</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">文《德意志學》系列則直接寫</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">給受過教育的德語讀者</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">哲學第一次不必只能被拉丁文讀懂</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">成為神聖羅馬帝國男爵</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1745年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">晚年獲封貴族頭銜，是當時德</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">語世界少數以哲學家身分獲此</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">殊榮的人物</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">從教授到男爵，學術聲望的極致</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他用兩種語言寫作，一種給歐洲學界看，一種給德語讀者看</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這個雙語策略不只是方便，而是一種明確的知識普及野心——沃爾夫相信，嚴謹的哲學不該只鎖在拉丁文</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">寫成的學術圈裡，而應該讓受過教育的一般讀者也能直接讀懂，這個信念後來也留下了意想不到的遺產</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">本頁後續三節，將分別談他如何系統化萊布尼茲、一場差點要了他命的政治風波，以及對康德的真正影響</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>「萊布尼茲-沃爾夫哲學」——把私人書信裡的洞見，改造成一套幾何學式體系</h2>
+  <p class="sub">系統化帶來了可教學性，卻也把原本更謹慎的論證，磨成了更斷然的教條</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="萊布尼茲沃爾夫哲學系統化結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">萊布尼茲的哲學，原本散落在數千封書信與零星論文裡，沒有一本教科書</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">沃爾夫用畢生時間，把這些散落的洞見，重新組織成一套從邏輯學到自然神學一以貫之的完整體系</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">幾何學方法：從公理推導一切</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">仿效歐幾里德的證明形式，先設定定義與公理，再逐步演繹</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">出全部的形上學結論</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">涵蓋範圍：邏輯學到自然神學一以貫之</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">單一套術語與方法，貫串邏輯學、形上學、倫理學、自然法</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">，一路推到自然神學</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">教科書化：整個德語學界的通用課本</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">這套體系被寫成一系列標準教科書，往後將近一世紀是德語</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">大學哲學課的通用課本</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">代價：更斷然的教條，取代更謹慎的論證</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">萊布尼茲書信裡常帶保留與猜測語氣的論證，被沃爾夫改寫成</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">「已證明」的定理式斷言</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">系統化是一把雙面刃：讓哲學變得可教，也讓它變得更難被質疑</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">「萊布尼茲-沃爾夫哲學」這個複合稱呼本身，就洩漏了兩人的差異——後世常常分不清哪些論證出自萊布</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">尼茲本人，哪些是沃爾夫的系統化延伸，這個混淆後來也直接影響了康德年輕時受到的哲學訓練</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這套體系教得越徹底、教科書賣得越好，沃爾夫在普魯士的政治處境反而越危險</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>1723年的驅逐令——一場因果決定論引發的政治審判</h2>
+  <p class="sub">48小時內離開普魯士領土，否則處以絞刑——起因只是一場關於中國哲學的公開演講</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沃爾夫驅逐事件結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一場稱讚儒家倫理的演講，最後演變成一道限期離境、否則處死的王命</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這起事件展示了系統化哲學的政治風險——當論證被講得越徹底、越首尾一貫，反而越容易被抓出把柄</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">導火線：稱讚中國倫理不靠宗教也能成立</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">沃爾夫在公開演講中主張，儒家倫理證明嚴謹的道德體系不</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">必依賴啟示宗教，純靠理性即可成立</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">神學家的攻擊：決定論等於為逃兵開脫</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">哈勒大學的敬虔派神學家指控，他的決定論哲學等同主張士</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">兵逃亡也是被決定的、可被開脫</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">士兵國王的震怒：48小時離境令</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">素以軍紀著稱的腓特烈・威廉一世聞訊震怒，1723年下令沃</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">爾夫限期離開普魯士，否則處以絞刑</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">意外效果：迫害反而讓他名滿歐洲</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">流亡至馬爾堡後，這場政治迫害成了整個歐洲學界關注的公</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">案，他的聲望與學生人數不減反增</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">十七年後，換上王位的人親自把他請了回去</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">1740年腓特烈大帝即位，其中一項最早的公開舉措，就是邀請沃爾夫返回哈勒，並任命他為副校長，後來</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">更晉封為男爵——一場延續十七年的政治翻案，最終以哲學家的完全平反收場</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但真正決定沃爾夫歷史地位的，不是這場風波，而是他日後被康德當作攻擊對象的方式</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>康德真正反對的是誰——被過度簡化的「獨斷的迷夢」</h2>
+  <p class="sub">常見說法只提休謨，卻漏掉了康德年輕時真正讀的是誰寫的教科書</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="康德批判沃爾夫獨斷論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">康德在《純粹理性批判》裡，明確點名沃爾夫是「最偉大的獨斷論哲學家」</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這不是隨口一提——康德年輕時的形上學課本，用的正是沃爾夫學派的標準教材</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">康德受的正規訓練：沃爾夫學派教材</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">康德教授形上學數十年，長期使用的正是沃爾夫學派系統化</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">後的標準教科書，而非萊布尼茲原著</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">獨斷論指的是方法，不是特定結論</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">康德真正批評的，是不先檢查理性本身能力範圍、就直接用純</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">粹理性推導實質形上學結論的做法</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">康德並不否定系統性本身</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">康德肯定沃爾夫追求嚴謹體系的企圖，主張問題不在系統化本</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">身，而在跳過了先批判理性能力這一步</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">三大批判：先檢查地基，再重新蓋房子</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">康德要做的，其實是沃爾夫式的系統工程，但要先把理性能力</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">的邊界批判清楚，再重新動工</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「休謨把康德驚醒」只是故事的一半，另一半是他睡在誰的床上</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">休謨的因果懷疑論提供了驚醒的理由，但讓康德「沉睡」的那套獨斷體系，具體來說是沃爾夫學派的形上學</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">教科書——理解這一層，才能看懂《純粹理性批判》開篇到底在跟誰辯論</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">沃爾夫留給後世的，還有一項幾乎被完全遺忘、卻無所不在的遺產</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>被忽視的遺產——德語哲學詞彙的創造者</h2>
+  <p class="sub">後世哲學家幾乎沒人記得該感謝他，卻幾乎每天都在使用他造的詞</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沃爾夫德語哲學詞彙遺產結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在沃爾夫之前，德語幾乎沒有一套現成的哲學詞彙可用</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">拉丁文與法文的哲學術語有現成傳統，德語沒有——沃爾夫必須自己動手造詞</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">Bewusstsein「意識」</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">造詞</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">今天德語哲學裡最基礎的術</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">語之一，其現代哲學意義可</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">追溯到沃爾夫的用法</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">後世幾乎每位德語哲學家都在用</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">Begriff「概念」</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">造詞</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">從康德到黑格爾，德語哲學</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">最核心的術語之一，沃爾夫</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">是奠定其哲學用法的關鍵人物</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">黑格爾的整套邏輯學都建立在這個詞上</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">Wirklichkeit「現實」</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">造詞</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">用來對譯拉丁文actualitas</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">，這個詞後來成了德國觀念</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">論的核心概念之一</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">一個譯詞，撐起了整個世代的形上學</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">哲學不再只鎖在拉丁文裡</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">結果</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">受過教育的德語讀者第一次</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">能直接讀懂嚴謹的哲學論證</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">，不必先學好拉丁文</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這道語言門檻的拆除，影響遠超哲學界</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這份語言基礎設施，是後世德語哲學家幾乎不會注意到、卻天天在用的地基</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">康德、費希特、黑格爾筆下那些看似理所當然的德語哲學術語，有相當一部分最早的哲學用法，其實出自</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">這位常被簡化成「萊布尼茲與康德之間那個人」的沃爾夫——這正是他留給後世最容易被忽略的一份遺產</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">從一封推薦信開始，到一套至今仍在使用的語言，沃爾夫的哲學生涯首尾相扣</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">萊布尼茲舉薦出任哈勒教授<span class="yr">1707年</span></div><p>萊布尼茲親自寫信推薦這位年輕數學家，此後兩人持續通信切磋哲學問題。</p></div>
+    <div class="card"><div class="nm">同時以拉丁文與德文寫作<span class="yr">1710年代起</span></div><p>拉丁文著作面向歐洲學界，德文《德意志學》系列則直接寫給受過教育的德語讀者。</p></div>
+    <div class="card"><div class="nm">獲封神聖羅馬帝國男爵<span class="yr">1745年</span></div><p>晚年獲封貴族頭銜，是當時德語世界少數以哲學家身分獲此殊榮的人物。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>系統化萊布尼茲</h2><span class="tag">SYSTEMATIZATION</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">幾何學方法</div><p>仿效歐幾里德的證明形式，先設定定義與公理，再逐步演繹出全部的形上學結論。</p></div>
+    <div class="card"><div class="nm">教科書化</div><p>這套體系被寫成標準教科書，往後將近一世紀是德語大學哲學課的通用課本。</p></div>
+    <div class="card"><div class="nm">更斷然的教條</div><p>萊布尼茲書信裡常帶保留語氣的論證，被改寫成「已證明」的定理式斷言。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>1723年驅逐事件</h2><span class="tag">EXILE</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">導火線：稱讚儒家倫理</div><p>公開演講主張儒家倫理證明嚴謹道德體系不必依賴啟示宗教，純靠理性即可成立。</p></div>
+    <div class="card"><div class="nm">48小時離境令<span class="yr">1723年</span></div><p>神學家指控其決定論等同為逃兵開脫，國王震怒下令限期離開普魯士，否則處死。</p></div>
+    <div class="card"><div class="nm">十七年後的平反<span class="yr">1740年</span></div><p>腓特烈大帝即位後親自邀他回國，任命為副校長，後晉封男爵，完全政治翻案。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>對康德的真正影響</h2><span class="tag">KANT'S TARGET</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">康德受的正規訓練</div><p>康德教授形上學數十年使用的教科書，正是沃爾夫學派系統化後的標準教材。</p></div>
+    <div class="card"><div class="nm">獨斷論指的是方法</div><p>康德批評的是不先檢查理性能力、就直接用純粹理性推導實質結論的做法。</p></div>
+    <div class="card"><div class="nm">先批判，再重建</div><p>三大批判要做的其實是沃爾夫式的系統工程，只是要先把理性邊界批判清楚。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    沃爾夫先生是所有獨斷論哲學家中最偉大的一位。
+    <cite>康德在《純粹理性批判》第二版序言中，對沃爾夫方法論野心的評語——他不否定沃爾夫追求體系嚴謹的企圖，只主張這套企圖必須先經過理性能力本身的批判，才能真正站得住腳。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁內容依主流沃爾夫研究與哲學史著作整理，著重呈現生平脈絡、系統化方法與對康德的具體影響，具體文本考據與各家詮釋分歧請另行查證專業譯本與二手研究文獻。年份為公開事件的關鍵節點，實際協商與著述過程多為漸進過程。
+</footer>
+
+</div>
+</body>
+</html>
