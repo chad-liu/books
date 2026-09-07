@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>愛因斯坦知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">專利局職員・奇蹟年・和平主義者的原子彈信</p>
+  <h1>愛因斯坦知識圖譜</h1>
+  <p class="lede">愛因斯坦拿到諾貝爾獎的那一年，得獎的其實不是相對論——委員會刻意迴避了這個當時仍具爭議的理論，把獎頒給了他同一年寫的另一篇論文：光電效應。這只是他一生眾多反差的其中一個：一位在專利局當小職員的人，業餘時間寫出了四篇改寫物理學的論文；一位終生的和平主義者，卻聯署了促成原子彈誕生的那封信；一位窮盡後半生想推翻量子力學「機率」本質的人，留下的論文卻意外奠定了量子資訊科學的基礎。這份圖譜要梳理的，就是這幾個反差背後的來龍去脈——相對論本身的物理內容，請見〈相對論知識圖譜〉。</p>
+</header>
+
+<section>
+  <h2>生平——專利局裡的奇蹟年</h2>
+  <p class="sub">不是被大學拒於門外的失敗者，而是找不到教職、只好去專利局上班的畢業生</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="愛因斯坦生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">愛因斯坦從蘇黎世聯邦工學院畢業後求職四處碰壁，最終進了伯恩專利局當技術審查員</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">改寫物理學的四篇論文，就是在這份日常工作之餘完成的</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">蘇黎世工學院畢業</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1900年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">自蘇黎世聯邦工學院</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">畢業，主修物理教育</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">畢業後求職四處碰壁</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">專利局三級技術員</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1902年起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">求職多次碰壁後，進</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">入伯恩專利局擔任審查員</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">審查專利之餘鑽研物理</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">1905年奇蹟年</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">業餘研究</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">同年發表四篇論文，</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">改寫物理學根基</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">全部完成於工作之餘</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">苦等多年才獲教職</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1908年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">論文發表三年後，才</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">受聘伯恩大學兼任講師</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">學界並未立刻意識到份量</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">四篇論文、四個不同物理領域，卻是同一年業餘時間寫成的</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這一年後來被稱為「奇蹟年」，但寫下這些論文的人，白天的正職是審查別人的專利申請，不是坐</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">在大學研究室裡——這個反差本身，就是這一年最容易被忽略的部分</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而這四篇論文裡，最先替他贏得諾貝爾獎的，並不是後來最著名的相對論</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>諾貝爾獎的反諷——得獎的不是相對論</h2>
+  <p class="sub">委員會躲開了爭議，選了另一篇論文；而獎金早在得獎前兩年，就已經名花有主</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="愛因斯坦諾貝爾獎結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1921年愛因斯坦獲頒諾貝爾物理獎，但得獎理由隻字未提相對論</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">而這筆獎金的去向，兩年前他離婚時就已經寫進了協議</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">委員會刻意迴避相對論</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">相對論在當時仍具高度爭議，部分委員甚至</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">公開表態反對，委員會選擇繞開這個燙手山芋</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">頒給了光電效應解釋</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1921年獎項最終頒給他對光電效應的理</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">論解釋，隻字未提相對論</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">得獎金早已許諾前妻</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">1919年協議離婚時，便已承諾將未來</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">可能的獎金全數留給前妻米列娃</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">頒獎典禮上本人缺席</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">得獎當時人在遠東巡迴演講途中，並</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">未出席頒獎典禮親自領獎</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一場提前兩年下注、卻押對了的協議</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">1919年愛因斯坦與米列娃離婚時，他還沒得獎——把尚未到手的獎金寫進協議裡，等於是在賭自</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">己遲早會得獎；兩年後，這場賭注真的兌現了</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">米列娃本人的物理訓練，也讓後世對這段婚姻留下了另一個懸而未決的疑問</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>與波耳的一輩子爭論——上帝不擲骰子</h2>
+  <p class="sub">他窮盡後半生想證明量子力學不完備，卻意外留下了量子資訊科學最重要的起點之一</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="愛因斯坦與波耳論戰結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">愛因斯坦終生無法接受量子力學的機率本質，與波耳的論戰持續了數十年</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">1935年那篇為了反駁而寫的論文，後來卻有了意想不到的下場</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">哥本哈根詮釋的懷疑者</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">波耳主張量子世界本質上是機率性</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">的，愛因斯坦始終無法接受</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">「上帝不擲骰子」</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">這句常被引用的話，出自他寫給波</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">恩的信，表達他對機率的不安</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">1935年EPR論文</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">與博多斯基、羅森合著論文，主張</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">量子力學若正確，並不完備</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">意外催生量子資訊科學</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這篇論文原意反駁量子糾纏，卻成</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">為量子資訊科學最重要的奠基文獻</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一篇為了反駁而寫的論文，卻寫成了後世最常引用的起點</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">貝爾不等式1964年提出，後續實驗陸續證實量子糾纏確實存在，他當年的懷疑最終並未成立，</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">但EPR論文提出的思想實驗架構，卻成了理解量子糾纏最常被引用的起點</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他晚年在普林斯頓投入的另一個志業，同樣以未竟之功告終</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">蘇黎世工學院畢業<span class="yr">1900年</span></div><p>自蘇黎世聯邦工學院畢業，主修物理教育，畢業後求職四處碰壁。</p></div>
+    <div class="card"><div class="nm">專利局三級技術員<span class="yr">1902年起</span></div><p>求職多次碰壁後，進入伯恩專利局擔任審查員，審查專利之餘鑽研物理。</p></div>
+    <div class="card"><div class="nm">1905年奇蹟年</div><p>同年發表四篇論文，改寫物理學根基，全部完成於工作之餘。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>諾貝爾獎</h2><span class="tag">NOBEL PRIZE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">委員會刻意迴避相對論</div><p>相對論在當時仍具高度爭議，部分委員甚至公開表態反對，委員會選擇繞開這個燙手山芋。</p></div>
+    <div class="card"><div class="nm">頒給了光電效應解釋<span class="yr">1921年</span></div><p>獎項最終頒給他對光電效應的理論解釋，隻字未提相對論。</p></div>
+    <div class="card"><div class="nm">得獎金早已許諾前妻<span class="yr">1919年</span></div><p>協議離婚時，便已承諾將未來可能的獎金全數留給前妻米列娃。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>量子論戰</h2><span class="tag">EPR PARADOX</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">哥本哈根詮釋的懷疑者</div><p>波耳主張量子世界本質上是機率性的，愛因斯坦始終無法接受這個結論。</p></div>
+    <div class="card"><div class="nm">1935年EPR論文</div><p>與博多斯基、羅森合著論文，主張量子力學若正確，並不完備。</p></div>
+    <div class="card"><div class="nm">意外催生量子資訊科學</div><p>這篇論文原意反駁量子糾纏，卻成為量子資訊科學最重要的奠基文獻之一。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>和平主義者，寫了促成原子彈誕生的那封信</b><br>
+  愛因斯坦是公開的和平主義者，第一次世界大戰期間，他是簽署反戰《告歐洲人書》的少數德語知識分子之一，公開反對當時多數同僚聯署支持戰爭的《九三宣言》。1933年納粹上台後，他放棄德國國籍，滯留美國未歸，財產遭沒收、著作遭焚燒。但1939年，他仍應匈牙利物理學家西拉德之請，聯署了那封著名的「愛因斯坦－西拉德信」，警告羅斯福總統納粹德國可能正在研發原子彈——這封信直接促成了曼哈頓計畫。戰後，他公開表達悔意，並在1955年去世前幾天，簽署了《羅素－愛因斯坦宣言》，呼籲全球廢除核武器，成為他一生最後的公開行動。1952年，以色列曾邀請他出任第二任總統，他婉拒了。至於「愛因斯坦數學不好」這個廣為流傳的說法，其實是後世的誤傳——他在校成績優異，數學與物理科目尤其突出。
+</div>
+
+<section>
+  <blockquote>
+    上帝不會擲骰子。
+    <cite>愛因斯坦1926年寫給物理學家波恩的信中名句，表達他對量子力學機率詮釋終生未曾放下的保留態度；德文原句經多次英譯與中譯，措辭版本略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、諾貝爾獎的爭議、與波耳的量子論戰及晚年政治參與，相對論本身的物理內容請見〈相對論知識圖譜〉。米列娃・馬里奇對早期論文實際貢獻的程度，科學史學界看法分歧尚無定論，本頁採保留敘述。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

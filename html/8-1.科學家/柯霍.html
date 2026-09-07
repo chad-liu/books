@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>柯霍知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">鄉村診所的簡陋實驗室・四條法則・洋菜培養基</p>
+  <h1>柯霍知識圖譜</h1>
+  <p class="lede">與〈巴斯德〉篇的銜接：那篇談的是巴斯德如何用鵝頸瓶實驗否證自然發生說、確立病菌致病的大方向，這裡要談的是柯霍如何把這個大方向，變成一套可以重複驗證、能證明「就是這隻細菌、就是這個病」的嚴謹方法。柯霍不是在巴黎的大機構裡工作，而是一位鄉村醫生，起初只在自家診所後方用妻子送的顯微鏡搭出簡陋實驗室。這份圖譜要梳理的，就是這套從鄉村診所走出來的方法，如何變成日後整個細菌學的操作準則，以及柯霍與巴斯德之間那場帶有國族色彩的競爭。</p>
+</header>
+
+<section>
+  <h2>生平——鄉村醫生的自製實驗室</h2>
+  <p class="sub">跟巴斯德的巴黎大機構不同，柯霍最初的實驗室只是自家診所後方一個小房間</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="柯霍生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">柯霍原本是德國沃爾施泰因一位普通的鄉村醫生，妻子送他一台顯微鏡當生日禮物</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這台顯微鏡，成了他自家診所後方簡陋實驗室的起點</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">鄉村醫生</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1843年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">於德國沃爾施泰因擔</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">任地區鄉村醫生</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">診所工作之餘鑽研細菌</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">妻子送的顯微鏡</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1871年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">妻子艾米以生日禮物</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">名義送他一台顯微鏡</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">診所後方隔出簡陋實驗室</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">柏林衛生局任職</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1880年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">炭疽菌研究受矚目後</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">，獲聘進入柏林衛生局</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">終於有了正規研究資源</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1905年諾貝爾獎</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">結核病研究</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">以結核病的相關研究</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">獲頒諾貝爾生理醫學獎</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">從鄉村診所走到世界頂峰</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從一台生日禮物顯微鏡，走到諾貝爾獎領獎台</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟巴斯德在巴黎大機構裡展開研究的路徑不同，柯霍最初完全是業餘身分，靠著自家診所後方</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">一個簡陋房間，做出了第一個讓學界震驚的成果</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而這個成果，第一次證明了一種特定細菌就是一種特定疾病的元兇</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>柯霍法則——把「病菌說」變成可驗證的科學方法</h2>
+  <p class="sub">巴斯德證明了病菌會致病，柯霍要回答的是：怎麼證明是「這一種」病菌致這一種病</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="柯霍法則結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1876年，柯霍以炭疽桿菌為對象，發展出一套嚴謹的四步驟驗證程序</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這套程序後來被稱為「柯霍法則」，成為細菌學公認的證明標準</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">病原須存在於每個病例</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">這種微生物必須出現在所有罹患該</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">疾病的生物體內，健康個體則無</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">必須分離出純培養</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">必須能從病體中分離出這種微生</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">物，並在體外培養成純種菌落</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">接種須引發同樣疾病</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">將純培養接種到健康宿主體內，</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">必須引發同樣的疾病</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">須能再度分離出病原</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">再從這個新感染的宿主體內，重</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">新分離出完全相同的微生物</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">四個步驟，把「病菌致病」從觀察變成可重複驗證的證明</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">在柯霍之前，觀察到病人體內有某種微生物，並不足以證明它就是致病元兇——也可能只是剛好</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">存在、與疾病無關。這套四步驟程序，第一次把「特定病菌造成特定疾病」變成能被重複驗證的命題</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但要完成這四個步驟，他還得先解決一個技術問題——怎麼把細菌培養成純種</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>純培養技術——洋菜培養基與培養皿，讓法則真正可行</h2>
+  <p class="sub">法則寫得再嚴謹，沒有技術把細菌分離成純種，第二步就走不下去</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="柯霍純培養技術結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">柯霍實驗室解決了「怎麼把混雜的細菌分離成單一純種」這個關鍵技術問題</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這套技術後來成了整個微生物學實驗室的標準配備</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">明膠培養基的限制</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">早期嘗試</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">最初使用明膠當固態</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">培養基，體溫下會融化</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">許多細菌無法在此溫度培養</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">助手之妻建議洋菜</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1882年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">助手赫塞之妻建議改</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">用她做果凍慣用的洋菜</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">洋菜在體溫下仍能保持固態</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">助手發明培養皿</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">同時期</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">助手佩特里設計出淺</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">皿加蓋的培養容器</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">後世直接以他的姓氏命名</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">結核桿菌與霍亂弧菌</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1882、1883年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">靠這套技術陸續鑑定</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">出結核與霍亂的病原體</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">兩者當時都是致命的重大疫病</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一次跟同資料夾多篇文章呼應的「精密工具決定突破」案例</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟同資料夾〈拉瓦節〉篇的精密天平、〈焦耳〉篇的精密溫度計一樣，柯霍的突破同樣仰賴一項</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">具體的工具創新——只是這次不是量測儀器，而是一塊能穩定固化的培養基與一只淺皿</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而柯霍確認霍亂病原的過程，正好跟巴斯德的團隊在同一場疫情裡展開了一場競賽</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">鄉村醫生<span class="yr">1843年生</span></div><p>於德國沃爾施泰因擔任地區鄉村醫生，診所工作之餘鑽研細菌。</p></div>
+    <div class="card"><div class="nm">妻子送的顯微鏡<span class="yr">1871年</span></div><p>妻子艾米以生日禮物名義送他一台顯微鏡，診所後方隔出簡陋實驗室。</p></div>
+    <div class="card"><div class="nm">1905年諾貝爾獎</div><p>以結核病的相關研究獲頒諾貝爾生理醫學獎，從鄉村診所走到世界頂峰。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>柯霍法則</h2><span class="tag">KOCH'S POSTULATES</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">病原須存在於每個病例</div><p>這種微生物必須出現在所有罹患該疾病的生物體內，健康個體則無。</p></div>
+    <div class="card"><div class="nm">必須分離出純培養</div><p>必須能從病體中分離出這種微生物，並在體外培養成純種菌落。</p></div>
+    <div class="card"><div class="nm">接種須引發同樣疾病</div><p>將純培養接種到健康宿主體內，必須引發同樣的疾病，並能再度分離出病原。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>純培養技術</h2><span class="tag">PURE CULTURE</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">助手之妻建議洋菜<span class="yr">1882年</span></div><p>助手赫塞之妻建議改用她做果凍慣用的洋菜，在體溫下仍能保持固態。</p></div>
+    <div class="card"><div class="nm">助手發明培養皿</div><p>助手佩特里設計出淺皿加蓋的培養容器，後世直接以他的姓氏命名。</p></div>
+    <div class="card"><div class="nm">結核桿菌與霍亂弧菌<span class="yr">1882、1883年</span></div><p>靠這套技術陸續鑑定出結核與霍亂的病原體，兩者當時都是致命的重大疫病。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與巴斯德的埃及競賽，以及一場遲來的誠實反省</b><br>
+  1883年埃及爆發霍亂疫情，法國與德國各自派出研究團隊前往當地，柯霍與巴斯德陣營幾乎是公開較勁——這場競賽帶有濃厚的普法戰爭餘緒與國族色彩，兩國都急於證明自己的科學實力領先對方。柯霍的團隊最終在埃及、後來在印度加爾各答鑑定出霍亂弧菌，贏得了這場競賽。但柯霍自己也並非全無汙點：1890年，他在柏林一場國際醫學會議上公開宣布發現「結核菌素」能治療結核病，消息轟動全球、病患蜂擁而至，卻很快證實這種製劑不僅無效，還可能對部分患者造成傷害——他在數據尚未充分驗證前就搶先公開宣布，這個急於求成的錯誤重創了他的聲譽。這與巴斯德當年倉促為梅斯特注射未經完整人體試驗的狂犬病疫苗，其實是同一種壓力下的相似身影：兩位確立現代醫學根基的人，都曾在公眾期待的壓力下，搶先一步做出了事後看來太過倉促的宣布。
+</div>
+
+<section>
+  <blockquote>
+    如果我的發現能對人類的福祉有所貢獻，那將是我一生最大的滿足。
+    <cite>轉譯自柯霍晚年談及畢生研究時的常見表述，反映他對細菌學研究實際應用價值的重視；確切措辭因場合與翻譯版本不同略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、柯霍法則的內容與純培養技術的發展過程，以及與巴斯德團隊在霍亂研究上的競爭，具體微生物學細節請另行查證專業科學史文獻。結核菌素事件的細節不同史料記載略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>哈伯知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">從空氣中變出麵包・第一次毒氣攻擊・妻子的槍聲</p>
+  <h1>哈伯知識圖譜</h1>
+  <p class="lede">哈伯留下了兩份幾乎無法並列理解的遺產。一份救了無數人的命：他發明的固氮法，讓人類第一次能從空氣中大量製造肥料，往後供養了地球上很大一部分的人口，被稱為「從空氣中變出麵包的人」。另一份，是他親自督導、甚至親臨前線指揮的第一次大規模毒氣攻擊——現代化學戰的起點。這份圖譜不打算把兩者強行調和成一個簡單的道德結論，而是如實記錄兩者如何出自同一個人、同一份對化學的信念，以及這份信念如何在他自己家中，換來了一聲槍響。</p>
+</header>
+
+<section>
+  <h2>從空氣中變出麵包——固氮法與養活世界的承諾</h2>
+  <p class="sub">空氣中充滿氮，卻沒有植物能直接利用——哈伯解決了這個困擾農業千年的難題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈伯固氮法結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">哈伯出身德國布雷斯勞猶太商人家庭，早年鑽研工業化學，一心想解決化學肥料的原料難題</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">當時全球肥料極度仰賴有限的天然硝石礦，供應隨時可能枯竭</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">猶太商人之子</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1868年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身德國布雷斯勞猶</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">太商人家庭</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">終生極度認同德意志文化</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1909年合成氨成功</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">實驗室突破</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">在高壓高溫下，成功</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">以氮氣與氫氣合成氨</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">解決了肥料原料的根本難題</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">波希放大成工業規模</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">工程接力</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">化學工程師波希將實</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">驗室成果放大成量產技術</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">後世稱為哈伯－波希法</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">供養全球數十億人口</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">長遠影響</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">後世估計，如今地球</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">上相當大比例人口的</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">糧食都仰賴此技術</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">被稱為從空氣中變出麵包的人</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這項成就的規模，怎麼形容都不為過</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">合成氨技術讓化學肥料的產量不再受限於天然礦藏，直接解除了農業生產的一大瓶頸——後世</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">科學史學者常說，若沒有這項技術，地球恐怕根本養不活今天這麼多人口</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但這位解決了糧食難題的化學家，同一份專業信念，還帶他走向了另一個完全不同的方向</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第一次毒氣攻擊——同一位化學家，同一份信念</h2>
+  <p class="sub">他不只是研究出毒氣，還親自到前線督導了史上第一次大規模化學武器攻擊</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="哈伯毒氣戰結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">第一次世界大戰爆發後，哈伯將全部精力投入軍事化學研究，主張化學武器能加速結束戰爭</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他不只是提出構想，還親自到前線督導了實際的攻擊行動</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">全心投入軍事化學</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">一戰爆發後，主動請纓投入軍事</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">化學研究，出任德軍化學部門負責人</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1915年伊珀爾戰役</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">親自到前線督導，於伊珀爾釋放</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">大量氯氣，是史上首次大規模毒氣攻擊</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">主張能加速結束戰爭</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">他堅信化學武器能造成足夠震撼</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">，反而能縮短戰爭、減少總傷亡</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">此後化學戰全面展開</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">此役過後，交戰各國陸續投入毒</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">氣研發，化學戰自此成為常態</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一份對化學的信念，走向了兩個極端</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">哈伯本人似乎並不覺得這兩件事互相矛盾——在他的認知裡，化學是可以用來服務國家與人類</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">的工具，糧食與戰爭都只是這份信念的不同應用場景，但這份信念，最先讓他失去的是家人</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">妻子克拉拉，本身也是一位化學家，對這份工作的反對從未動搖</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>固氮法</h2><span class="tag">HABER-BOSCH</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">猶太商人之子<span class="yr">1868年生</span></div><p>出身德國布雷斯勞猶太商人家庭，終生極度認同德意志文化。</p></div>
+    <div class="card"><div class="nm">1909年合成氨成功</div><p>在高壓高溫下，成功以氮氣與氫氣合成氨，解決了肥料原料的根本難題。</p></div>
+    <div class="card"><div class="nm">供養全球數十億人口</div><p>後世估計，如今地球上相當大比例人口的糧食都仰賴此技術。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>化學武器</h2><span class="tag">CHEMICAL WARFARE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">全心投入軍事化學</div><p>一戰爆發後，主動請纓投入軍事化學研究，出任德軍化學部門負責人。</p></div>
+    <div class="card"><div class="nm">1915年伊珀爾戰役</div><p>親自到前線督導，於伊珀爾釋放大量氯氣，是史上首次大規模毒氣攻擊。</p></div>
+    <div class="card"><div class="nm">主張能加速結束戰爭</div><p>他堅信化學武器能造成足夠震撼，反而能縮短戰爭、減少總傷亡。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>妻子克拉拉的反對，以及一份難以承受的複雜遺產</b><br>
+  哈伯的第一任妻子克拉拉・伊默瓦爾，本身是德國第一位取得化學博士學位的女性，婚後卻因家庭壓力被迫放棄自己的研究工作。她始終公開反對丈夫投入毒氣研究，兩人為此多次激烈爭執。1915年伊珀爾戰役後不到兩週，克拉拉在家中舉槍自盡，確切原因史學界至今仍有不同解讀，但普遍認為與這場攻擊及她長年被壓抑的處境脫不了關係。哈伯本人隔天仍依令啟程前往東線督導另一場毒氣攻擊，未曾因此中斷工作。1918年，他因合成氨的貢獻獲頒諾貝爾化學獎，多國學者以他的毒氣戰角色為由抵制頒獎典禮。1933年，儘管一生對德國忠貞不二，仍因猶太血統被納粹政權逼迫去職，隔年病逝瑞士，未能親眼見到他任職過的研究機構所研發的一種殺蟲劑，後來被納粹改造用於猶太人滅絕營的毒氣室——他多位親屬，也在後來的大屠殺中喪生。這份遺產的兩端，至今仍難以被簡化成單一的評價。
+</div>
+
+<section>
+  <blockquote>
+    在承平時期，一位科學家屬於全世界；但在戰爭時期，他屬於自己的祖國。
+    <cite>哈伯常被引述用以說明其一戰時期立場的表述，反映他將科學研究與國家忠誠緊密綁定的信念；確切措辭與原始出處，不同史料記載略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁如實記錄哈伯在固氮技術與化學武器兩方面的貢獻與行動，不代為下最終道德評價，具體歷史細節請另行查證專業科學史文獻。克拉拉自盡的確切動機，史學界看法不一，本頁採審慎保留的敘述。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

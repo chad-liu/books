@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海森堡知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">留下來的物理學家・德國原子彈計畫・農莊裡的竊聽器</p>
+  <h1>海森堡知識圖譜</h1>
+  <p class="lede">與〈波耳〉篇的銜接：那篇提到1941年海森堡在佔領區拜訪昔日恩師波耳的懸案，這裡要談的是海森堡自己的處境——他是納粹德國原子彈計畫的核心人物，卻在戰後不斷暗示自己其實刻意拖慢了進度。這個說法究竟是事實，還是戰敗後的自我開脫，答案並不在他自己的回憶裡，而是藏在盟軍戰後祕密安裝的一批竊聽器錄音裡。這份圖譜要梳理的，就是這段德國原子彈計畫的來龍去脈，以及那捲錄音帶揭露的真相。</p>
+</header>
+
+<section>
+  <h2>生平——年少成名，選擇留在納粹德國</h2>
+  <p class="sub">跟同資料夾〈愛因斯坦〉〈波耳〉不同，他是選擇留下、甚至一度受到重用的那一位</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="海森堡生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">海森堡二十五歲即以矩陣力學獲得學界矚目，是量子力學最年輕的奠基者之一</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">納粹上台後，他選擇留在德國，這個決定往後主導了他整段生涯</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">年少成名</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1901年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">二十三歲提出矩陣力</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">學，開啟量子力學新頁</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">師從波耳，情誼深厚</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1932年諾貝爾獎</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">年僅31歲</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">以量子力學創立貢獻</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">獲頒諾貝爾物理獎</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">是當時最年輕的得主之一</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">選擇留在德國</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1933年後</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">納粹上台後，多位同</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">僚出走，他選擇留下</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">曾因研究方向遭黨內攻擊</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">主導鈾計畫</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1939年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">受徵召領導德國核能</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">與潛在核武研究計畫</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這段經歷此後爭議不斷</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">留下來，卻沒有完全被納粹體制信任</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">海森堡選擇留在德國，但他因為研究「猶太物理學」（愛因斯坦相對論）一度遭到黨衛軍系統攻</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">擊，靠著母親與黨衛軍首腦希姆萊母親的私交才化解危機，處境遠比表面上複雜</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他此後主導的計畫，究竟走到了哪一步，成了戰後爭論不休的焦點</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>德國原子彈計畫——是失敗，還是刻意拖慢？</h2>
+  <p class="sub">戰爭結束時，德國離做出原子彈還很遙遠——但這是能力不足，還是有意為之？</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="海森堡德國原子彈計畫結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">海森堡領導的德國鈾計畫，戰爭結束時仍遠遠落後於美國的曼哈頓計畫</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">戰後，海森堡多次暗示這是他刻意拖延的結果，但證據並不支持這個說法</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">計畫進度遠遠落後</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">戰爭結束時，德國僅完成初步反</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">應堆實驗，距離製造核武極遠</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1941年拜訪波耳</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">前往佔領區哥本哈根拜訪恩師，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">會面內容各說各話，關係此後生變</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">1945年遭盟軍拘捕</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">戰爭結束前夕，與其他德國核物</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">理學家一同被盟軍拘捕拘留</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">農莊裡的祕密竊聽</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">拘留於英國農莊期間，房間遭裝</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">設竊聽器，對話全數被祕密記錄</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">錄音帶揭露的，是聽聞廣島消息時真實的震驚反應</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">1945年8月，被拘留的德國科學家從廣播中聽到廣島原爆消息，錄音顯示海森堡當下對核彈</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">所需臨界質量的估算明顯有誤，反應更接近真心的震驚與困惑，而非早已知情的鎮定</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這捲錄音帶，成了此後所有「刻意拖延說」爭論裡最關鍵的一份物證</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">年少成名<span class="yr">1901年生</span></div><p>二十三歲提出矩陣力學，開啟量子力學新頁，師從波耳，情誼深厚。</p></div>
+    <div class="card"><div class="nm">1932年諾貝爾獎<span class="yr">年僅31歲</span></div><p>以量子力學創立貢獻獲頒諾貝爾物理獎，是當時最年輕的得主之一。</p></div>
+    <div class="card"><div class="nm">選擇留在德國<span class="yr">1933年後</span></div><p>納粹上台後，多位同僚出走，他選擇留下，曾因研究方向遭黨內攻擊。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>德國鈾計畫</h2><span class="tag">URANIUM PROJECT</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">計畫進度遠遠落後</div><p>戰爭結束時，德國僅完成初步反應堆實驗，距離製造核武極遠。</p></div>
+    <div class="card"><div class="nm">1941年拜訪波耳</div><p>前往佔領區哥本哈根拜訪恩師，會面內容各說各話，關係此後生變。</p></div>
+    <div class="card"><div class="nm">1945年遭盟軍拘捕</div><p>戰爭結束前夕，與其他德國核物理學家一同被盟軍拘捕拘留。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>農莊竊聽錄音</h2><span class="tag">FARM HALL</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">農莊裡的祕密竊聽</div><p>拘留於英國農莊期間，房間遭裝設竊聽器，對話全數被祕密記錄。</p></div>
+    <div class="card"><div class="nm">聽聞廣島消息的反應</div><p>廣播傳來原爆消息，錄音顯示海森堡對臨界質量的估算明顯有誤。</p></div>
+    <div class="card"><div class="nm">戰後暗示刻意拖延</div><p>返回德國後多次暗示自己刻意拖慢進度，但錄音證據並不支持這個說法。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>一齣舞台劇，讓這段懸案走進了大眾視野</b><br>
+  1941年海森堡拜訪波耳那場會面，戰後兩人各自留下的回憶版本天差地遠：海森堡表示自己是想暗示同僚不會全力研發核武、尋求某種道德默契；波耳則回憶當時感受到的是威脅與壓力，而非善意的暗示。英國劇作家麥可・弗萩恩後來把這段各說各話的懸案寫成舞台劇《哥本哈根》，1998年首演後廣受好評，讓這段原本只在物理學史圈子裡流傳的懸案，走進了更廣泛的大眾視野。時至今日，真相究竟為何，仍舊沒有定論。
+</div>
+
+<section>
+  <blockquote>
+    我們不能因為知道某件事在原則上是可能的，就認定自己有義務把它做出來。
+    <cite>轉譯自海森堡戰後談及自己在鈾計畫中角色時常見的自我辯護說法，這段話的真實動機與可信度，至今仍是科學史學界爭論的焦點。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、德國鈾計畫的進展，以及農莊竊聽錄音揭露的關鍵時刻，量子力學不確定性原理的具體物理內容請見〈量子力學知識圖譜〉。海森堡本人在鈾計畫中的真實動機，史學界看法分歧，本頁採審慎保留的敘述，不代為下定論。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

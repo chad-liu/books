@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>波耳知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">哥本哈根精神・熔在酸液裡的金牌・轟炸機彈艙裡的逃亡</p>
+  <h1>波耳知識圖譜</h1>
+  <p class="lede">與〈愛因斯坦〉篇的銜接：那篇談的是愛因斯坦與波耳長達數十年的量子論戰，這裡不再重複那場論戰本身，要談的是波耳自己的故事——他在哥本哈根建立的研究所，如何變成整個歐洲年輕物理學家的朝聖地；納粹佔領丹麥期間，他的研究所如何把兩枚諾貝爾金牌熔進酸液裡藏了起來；以及他本人如何被塞進一架轟炸機的彈艙，近乎窒息地逃離了佔領區。這份圖譜要梳理的，就是這幾段比量子力學本身更少被提起的故事。</p>
+</header>
+
+<section>
+  <h2>生平——哥本哈根精神，把歐洲年輕物理學家聚在一起</h2>
+  <p class="sub">他建立的不只是一間研究所，更是一種開放討論、亦師亦友的學風</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波耳生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">波耳出身哥本哈根一個學術世家，父親是知名生理學教授</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他日後建立的研究所，成了整個歐洲年輕物理學家的朝聖地</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">哥本哈根學術世家</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1885年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身哥本哈根，父親</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">是知名生理學教授</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">弟弟哈拉爾也是知名數學家</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">創立理論物理研究所</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1921年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">於哥本哈根創立理論</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">物理研究所並擔任所長</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">吸引全歐洲年輕物理學家前來</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">1922年諾貝爾獎</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">原子結構研究</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">以原子結構相關研究</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">獲頒諾貝爾物理獎</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">此時研究所聲望已如日中天</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">封爵選了太極圖案</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1947年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">獲丹麥王室封爵，家</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">徽採用中國太極圖案</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">呼應他的互補性原理</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「哥本哈根精神」不只是一個地名，更是一種學風</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">波耳的研究所以開放討論、亦師亦友的氣氛聞名，海森堡、包立等日後的量子力學重要人物，都</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">曾在這裡待過相當長的時間，這種風氣後來被稱為「哥本哈根精神」</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但這間研究所，後來也在納粹佔領期間，經歷了一段極其驚險的歲月</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>熔在酸液裡的金牌——納粹佔領下的研究所</h2>
+  <p class="sub">為了不讓兩枚諾貝爾金牌落入納粹手中，研究所選擇把它們溶解</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波耳熔金牌結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1940年納粹佔領丹麥，波耳的研究所裡藏著兩位德國學者寄放的諾貝爾金牌</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">攜帶金牌逃亡風險太高，研究所選擇了一個誰都沒料到的辦法</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">寄放的兩枚金牌</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">德國物理學家勞厄與法蘭克，將自</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">己的諾貝爾金牌寄放在研究所</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">納粹佔領帶來的風險</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1940年德軍佔領丹麥，攜帶或藏</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">匿刻名金牌都可能招致調查</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">溶進王水裡</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">研究所化學家決定將金牌溶入王</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">水，放在架上偽裝成普通試劑</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">戰後重新鑄回</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">戰爭結束後，瑞典皇家科學院以</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">同樣的黃金重新鑄回兩枚獎牌</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一瓶沒人多看一眼的橘紅色液體，藏著兩座諾貝爾獎</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">王水溶解後的液體顏色平凡無奇，就這樣安然擺在架上度過了整段佔領期，沒有引起搜查人員</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">的注意，直到戰後才被取出，重新提煉還原成黃金</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但波耳本人的處境，比這兩枚金牌更加凶險</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>轟炸機彈艙裡的逃亡——一場幾乎窒息的越境</h2>
+  <p class="sub">丹麥的猶太人身分，讓他必須在幾乎沒有選擇的情況下倉促逃離</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波耳逃亡結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1943年，因母系猶太血統面臨被捕風險，波耳與家人必須立刻逃離丹麥</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">從漁船到轟炸機，這趟逃亡的最後一段幾乎要了他的命</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">得到密報須立即出逃</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1943年9月</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">得知納粹即將展開大</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">規模逮捕丹麥猶太人</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">波耳母親為猶太裔</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">漁船夜渡海峽</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">同月</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">與家人搭乘漁船，連</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">夜渡海逃往中立國瑞典</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">許多丹麥猶太人循此路線脫險</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">被塞進轟炸機彈艙</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">同月</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">英國派出蚊式轟炸機</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">接應，他被安置在彈艙內</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">頭盔太小，無法戴穩供氧面罩</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">飛行途中失去意識</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">缺氧險境</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">高空飛行中因缺氧昏</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">迷，降落後才被發現</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">所幸平安抵達英國</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一位物理學家，被塞進了一架戰鬥飛機的貨艙裡逃命</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">抵達英國後，波耳很快投入曼哈頓計畫擔任顧問，戰後轉而積極倡議核武器的國際管制與科學</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">資訊公開，多次遊說邱吉爾與羅斯福，但這些建言在當時大多未受重視</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他戰時在佔領區與昔日學生海森堡的一場會面，至今仍是一段各說各話的懸案</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">哥本哈根學術世家<span class="yr">1885年生</span></div><p>出身哥本哈根，父親是知名生理學教授，弟弟哈拉爾也是知名數學家。</p></div>
+    <div class="card"><div class="nm">創立理論物理研究所<span class="yr">1921年</span></div><p>於哥本哈根創立理論物理研究所並擔任所長，吸引全歐洲年輕物理學家前來。</p></div>
+    <div class="card"><div class="nm">1922年諾貝爾獎</div><p>以原子結構相關研究獲頒諾貝爾物理獎，此時研究所聲望已如日中天。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>納粹佔領</h2><span class="tag">NAZI OCCUPATION</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">寄放的兩枚金牌</div><p>德國物理學家勞厄與法蘭克，將自己的諾貝爾金牌寄放在研究所。</p></div>
+    <div class="card"><div class="nm">溶進王水裡</div><p>研究所化學家決定將金牌溶入王水，放在架上偽裝成普通試劑。</p></div>
+    <div class="card"><div class="nm">戰後重新鑄回</div><p>戰爭結束後，瑞典皇家科學院以同樣的黃金重新鑄回兩枚獎牌。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>逃亡英國</h2><span class="tag">ESCAPE</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">漁船夜渡海峽<span class="yr">1943年9月</span></div><p>與家人搭乘漁船，連夜渡海逃往中立國瑞典。</p></div>
+    <div class="card"><div class="nm">被塞進轟炸機彈艙</div><p>英國派出蚊式轟炸機接應，他被安置在彈艙內，頭盔太小無法戴穩供氧面罩。</p></div>
+    <div class="card"><div class="nm">飛行途中失去意識</div><p>高空飛行中因缺氧昏迷，降落後才被發現，所幸平安抵達英國。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與海森堡的一場會面，至今仍是各說各話的懸案</b><br>
+  1941年，德國佔領下的哥本哈根，波耳從前的學生、此時已是德國核武計畫核心人物的海森堡，前來拜訪這位昔日恩師。兩人單獨談話的具體內容從未有第三方紀錄，會面後波耳的態度明顯轉冷，此後兩人關係疏遠。海森堡此行究竟是想試探盟軍核武進度、暗示德國無意真正研發原子彈、還是尋求道德指引，戰後雙方各自的回憶版本大相逕庭，這場會面甚至成為後世一齣知名舞台劇的題材。這段懸案的另一半故事——海森堡當時實際主導的德國核武計畫進展如何，另見〈海森堡〉篇。
+</div>
+
+<section>
+  <blockquote>
+    對立面即互補。
+    <cite>波耳受封丹麥爵位時選為家族紋章格言的拉丁文原句，呼應他提出的互補性原理，紋章圖案採用了中國的太極圖案。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、研究所的學風傳統，以及納粹佔領期間的驚險經歷，量子力學與愛因斯坦論戰的具體內容請見〈愛因斯坦〉篇與〈量子力學知識圖譜〉。與海森堡1941年會面的真實內容，史學界至今無法確認，本頁採審慎保留的敘述。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

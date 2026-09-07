@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>費曼知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">給亡妻的信・破解保險箱的物理學家・一杯冰水解開的謎團</p>
+  <h1>費曼知識圖譜</h1>
+  <p class="lede">費曼留給大眾的形象，多半是那個會撬保險箱、打邦哥鼓、愛開玩笑的頑童物理學家——這份形象他自己也樂於經營。但在這層形象底下，是一段鮮少被提起的故事：他在洛沙拉摩斯參與原子彈研發的那幾年，妻子阿琳因肺結核在不遠處的療養院日漸衰弱，兩人靠書信維繫感情，她在他成功試爆的三個月前病逝。這份圖譜要梳理的，就是這段被玩笑話掩蓋的深情，以及四十年後，他如何用一杯冰水，在國會聽證會上戳破了一整套官僚說詞。</p>
+</header>
+
+<section>
+  <h2>生平——洛沙拉摩斯的頑童，與病榻上的妻子</h2>
+  <p class="sub">白天在原子彈計畫裡破解保險箱惡作劇同僚，夜裡寫信給躺在療養院的妻子</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="費曼生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">費曼二十出頭便加入曼哈頓計畫，是洛沙拉摩斯團隊裡最年輕的成員之一</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段期間，他的妻子阿琳正因肺結核，在附近一間療養院裡日漸衰弱</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">加入曼哈頓計畫</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1943年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">二十多歲便加入洛沙</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">拉摩斯原子彈研發團隊</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">團隊裡最年輕的成員之一</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">妻子阿琳病重</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">同時期</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">妻子因肺結核住進附</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">近療養院，兩人靠書信往來</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">費曼常抽空騎車前往探望</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">阿琳病逝</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1945年6月</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">阿琳病逝，距離三位</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">一體試爆僅約一個月</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">費曼隔年仍寫信給她</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1965年諾貝爾獎</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">量子電動力學</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">以量子電動力學貢獻</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">共同獲頒諾貝爾物理獎</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">此時他已是知名教學者</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一封寫給亡妻的信，直到他自己過世都還留在身邊</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">阿琳過世一年多後，費曼仍提筆給她寫了一封信，訴說近況與思念，這封信直到費曼1988年過</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">世後才被發現，與他在自傳裡經營的頑童形象，形成了鮮明的對比</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而在洛沙拉摩斯的日子裡，這份深情之外，還有另一面眾所皆知的頑童性格</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>破解保險箱的物理學家——洛沙拉摩斯的惡作劇傳說</h2>
+  <p class="sub">頂尖機密實驗室裡最森嚴的保險箱，卻擋不住他對鎖具原理的好奇心</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="費曼保險箱惡作劇結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">費曼在洛沙拉摩斯把破解保險箱鎖具當成業餘嗜好，留下了大量流傳至今的軼事</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這份好奇心，跟他對物理問題的態度其實是同一回事</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">自學鎖具原理</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">出於純粹好奇，自行鑽研保險箱</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">密碼鎖的機械原理與破解技巧</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">打開機密文件保險箱</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">多次成功打開存放機密文件的保</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">險箱，留字條捉弄同僚</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">受邀鼓勵直言</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">主管一度請他公開示範，藉此提</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">醒同僚正視保密規範的漏洞</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">好奇心是他一貫的方法論</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這種凡事都要親自拆解、動手驗</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">證的性格，貫穿了他對物理的態度</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這份頑童性格，四十年後在國會聽證會上派上了用場</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">費曼晚年最出名的公開時刻，靠的不是複雜的方程式，而是同一種喜歡動手拆解、不理會官僚</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">說詞的態度——這一次，他要拆解的不是保險箱，而是一場太空梭失事的真正原因</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他用的道具，只是一杯冰水與一個小小的橡膠環</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>一杯冰水解開的謎團——挑戰者號調查委員會</h2>
+  <p class="sub">聽證會現場，他當著鏡頭把一個零件泡進冰水，直接戳破了整套官僚說詞</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="費曼挑戰者號調查結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1986年挑戰者號太空梭升空爆炸後，費曼受邀加入官方調查委員會</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他用一個電視鏡頭前的簡單示範，繞過了層層官僚語言</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">受邀加入調查委員會</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1986年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">挑戰者號升空爆炸後</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">，受邀加入官方調查小組</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">此時已因病體力大不如前</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">懷疑橡膠環是關鍵</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">調查期間</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">私下調查後，懷疑低</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">溫下橡膠密封環失效</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">正是事故當天氣溫異常偏低</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">聽證會上的冰水示範</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">電視轉播</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">當眾將橡膠環樣本浸</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">入冰水，展示其失去彈性</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">畫面直接透過電視傳遍全國</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">附錄直指組織文化</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">報告附錄</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">堅持在官方報告附上</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">個人意見，點出組織文化問題</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">直言風險評估過於樂觀</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一個簡單到任何人都看得懂的示範，比整份技術報告更有說服力</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這個當場示範的畫面，比任何厚重的技術報告都更直接地讓大眾理解事故原因，也讓費曼晚年</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">最廣為人知的公開形象，定格在了這個手拿冰水杯、一臉平靜的瞬間</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">兩年後，他因癌症併發症過世，距離這場聽證會不到兩年</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">加入曼哈頓計畫<span class="yr">1943年</span></div><p>二十多歲便加入洛沙拉摩斯原子彈研發團隊，是團隊裡最年輕的成員之一。</p></div>
+    <div class="card"><div class="nm">妻子阿琳病重</div><p>妻子因肺結核住進附近療養院，兩人靠書信往來，費曼常抽空騎車前往探望。</p></div>
+    <div class="card"><div class="nm">1965年諾貝爾獎</div><p>以量子電動力學貢獻共同獲頒諾貝爾物理獎，此時他已是知名教學者。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>保險箱惡作劇</h2><span class="tag">SAFECRACKING</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">自學鎖具原理</div><p>出於純粹好奇，自行鑽研保險箱密碼鎖的機械原理與破解技巧。</p></div>
+    <div class="card"><div class="nm">打開機密文件保險箱</div><p>多次成功打開存放機密文件的保險箱，留字條捉弄同僚。</p></div>
+    <div class="card"><div class="nm">好奇心是他一貫的方法論</div><p>這種凡事都要親自拆解、動手驗證的性格，貫穿了他對物理的態度。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>挑戰者號調查</h2><span class="tag">CHALLENGER</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">懷疑橡膠環是關鍵<span class="yr">1986年</span></div><p>私下調查後，懷疑低溫下橡膠密封環失效，正是事故當天氣溫異常偏低。</p></div>
+    <div class="card"><div class="nm">聽證會上的冰水示範</div><p>當眾將橡膠環樣本浸入冰水，展示其失去彈性，畫面直接透過電視傳遍全國。</p></div>
+    <div class="card"><div class="nm">附錄直指組織文化</div><p>堅持在官方報告附上個人意見，點出組織文化問題，直言風險評估過於樂觀。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>「別管別人怎麼想」：一句常被引用、卻常被過度簡化的座右銘</b><br>
+  費曼晚年一本暢銷自傳的書名「別鬧了，費曼先生」，加上另一本回憶錄「你管別人怎麼想」，共同塑造了他在大眾心目中不拘小節、蔑視權威的頑童形象。這個形象並非虛構，卻也容易讓人忽略他同時是一位極其嚴謹的教育者——他在加州理工開設的物理課程，後來整理成《費曼物理學講義》，至今仍是許多物理系學生的重要教材，講義裡處處可見他堅持把複雜概念講到人人都能懂的執著，這份執著跟他在挑戰者號調查裡展現的態度，其實是同一件事的兩面。
+</div>
+
+<section>
+  <blockquote>
+    對於自然的實際情況，任何嘗試都必須先服從一項基本原則：實驗才是科學真理唯一的裁判。
+    <cite>費曼在《費曼物理學講義》中常被引用的治學態度，強調實驗驗證優先於理論本身的優雅程度，這正是他在挑戰者號調查中展現的一貫立場。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、與妻子阿琳的情感故事，以及挑戰者號太空梭事故調查的過程，量子電動力學的具體物理內容請另行查證專業物理學文獻。給亡妻信件的完整內容與流傳細節，不同資料記載略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

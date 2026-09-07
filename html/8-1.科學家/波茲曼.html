@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>波茲曼知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">S = k log W・原子存不存在的戰爭・墓碑上的公式</p>
+  <h1>波茲曼知識圖譜</h1>
+  <p class="lede">與〈克勞修斯〉〈馬克士威〉兩篇的銜接：克勞修斯替熵下了巨觀定義，馬克士威推導出分子速度的統計分布，波茲曼接手後把兩者接了起來——證明熵其實就是分子排列方式的機率。但這個把「原子確實存在、確實在運動」當成前提的理論，在當時卻遭到學界重量級人物的長期質疑，甚至嘲笑。這份圖譜要梳理的，就是這場「原子究竟存不存在」的漫長論戰，以及波茲曼本人如何沒能親眼等到這場論戰真正落幕。</p>
+</header>
+
+<section>
+  <h2>生平——把馬克士威的氣體動力論推向統計力學</h2>
+  <p class="sub">奧地利物理學家，接手了克勞修斯與馬克士威留下的未竟之路</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波茲曼生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">波茲曼出身維也納，早早就展現數學天賦，一路走向理論物理研究</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他接手的，正是克勞修斯與馬克士威留下的統計力學未竟之路</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">維也納出身</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1844年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身奧地利維也納，</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">自幼展現數學天賦</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">維也納大學攻讀物理學</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">接手氣體動力論</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1870年代起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">深入研究馬克士威分</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">子速度統計分布理論</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">將其推向更完整的統計架構</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">多所大學輾轉任教</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">終生反覆</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">在格拉茲、慕尼黑、</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">維也納等校間多次轉換</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">情緒起伏被認為是原因之一</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">長期承受學界質疑</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1880年代起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">統計力學理論長期遭</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">受能量論者質疑</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這場論戰持續了他大半生</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一場橫跨三位物理學家、數十年才走完的接力</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">跟同資料夾〈克勞修斯〉〈馬克士威〉兩篇一樣，波茲曼接手的是一條前人已經鋪好一半的路，</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">但他要走的最後一段，卻是整條路上最艱難、也最容易招來質疑的一段</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">因為他要證明的，是熵這個抽象的量，其實只是分子排列方式的機率</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>統計詮釋熵——把巨觀的量，接上微觀的機率</h2>
+  <p class="sub">刻在他自己墓碑上的那個公式，正是這條路走到終點的答案</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波茲曼統計詮釋熵結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">波茲曼證明，克勞修斯定義的熵，其實對應到系統可能的微觀排列方式數量</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個結論，把巨觀的熱力學第一次接上了微觀的機率統計</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">H定理與趨向平衡</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">以統計方法證明氣體分子分布必然</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">隨時間趨向熱平衡狀態</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">熵等於機率的對數</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1877年提出熵與微觀排列方式數量</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">的關係，即S等於k乘以logW</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">不可逆性只是機率問題</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">解釋熱力學第二定律的不可逆性，</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">本質上只是機率極高的排列勝出</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">巨觀熵接上微觀原子</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">整套理論成立的前提，是原子與分</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">子必須是真實存在、正在運動的個體</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">S = k log W——這個公式後來被刻在了他自己的墓碑上</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">維也納中央公墓裡波茲曼的墓碑上，至今刻著這個簡潔的公式，由他過世後的學生所立，作為對</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">他畢生成就最直接的總結</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但這個仰賴「原子真實存在」的理論，在他生前始終沒能說服所有人</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>原子存在的戰爭——馬赫與能量論者的圍剿</h2>
+  <p class="sub">他窮盡一生捍衛的前提，直到過世前一年才等到決定性的證據</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="波茲曼原子論戰結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">馬赫等能量論者主張原子只是方便計算的假設，不必然真實存在，波茲曼的理論卻建立在原子確實存在的前提上</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這場論戰持續了將近三十年，直到愛因斯坦的一篇論文才有了決定性轉折</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">馬赫的懷疑立場</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1880年代起</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">哲學家兼物理學家馬</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">赫主張原子未經直接觀察</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">不該視為真實存在的實體</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">能量論者的圍剿</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1890年代</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">化學家奧斯特瓦爾德</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">等人主張能量才是根本</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">原子不過是計算方便的虛構</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">愛因斯坦的關鍵一擊</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1905年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">布朗運動論文以統計方</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">式解釋微粒隨機運動</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">為原子的真實存在提供有力證據</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1906年結束一生</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">度假期間</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">在里雅斯特近郊的杜</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">伊諾自縊身亡，得年六十二</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">長年憂鬱與論戰壓力交織難分</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他沒能親眼看到自己的理論被完全接受</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">愛因斯坦1905年的布朗運動論文，加上此後陸續的實驗驗證，最終讓原子論在物理學界站穩了</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">腳跟，但這場遲來的平反，波茲曼本人只趕上了開頭，沒能等到論戰真正落幕的那一天</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">他的死因，歷史學界普遍認為是長期憂鬱傾向與論戰壓力交織的結果，而非單一原因</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">維也納出身<span class="yr">1844年生</span></div><p>出身奧地利維也納，自幼展現數學天賦，於維也納大學攻讀物理學。</p></div>
+    <div class="card"><div class="nm">接手氣體動力論<span class="yr">1870年代起</span></div><p>深入研究馬克士威分子速度統計分布理論，將其推向更完整的統計架構。</p></div>
+    <div class="card"><div class="nm">多所大學輾轉任教</div><p>終生在格拉茲、慕尼黑、維也納等校間多次轉換，情緒起伏被認為是原因之一。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>統計力學</h2><span class="tag">STATISTICAL MECHANICS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">H定理與趨向平衡</div><p>以統計方法證明氣體分子分布必然隨時間趨向熱平衡狀態。</p></div>
+    <div class="card"><div class="nm">熵等於機率的對數<span class="yr">1877年</span></div><p>提出熵與微觀排列方式數量的關係，即S等於k乘以logW。</p></div>
+    <div class="card"><div class="nm">巨觀熵接上微觀原子</div><p>整套理論成立的前提，是原子與分子必須是真實存在、正在運動的個體。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>原子論戰</h2><span class="tag">ATOMIC DEBATE</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">馬赫的懷疑立場<span class="yr">1880年代起</span></div><p>哲學家兼物理學家馬赫主張原子未經直接觀察，不該視為真實存在的實體。</p></div>
+    <div class="card"><div class="nm">能量論者的圍剿<span class="yr">1890年代</span></div><p>化學家奧斯特瓦爾德等人主張能量才是根本，原子不過是計算方便的虛構。</p></div>
+    <div class="card"><div class="nm">愛因斯坦的關鍵一擊<span class="yr">1905年</span></div><p>布朗運動論文以統計方式解釋微粒隨機運動，為原子的真實存在提供有力證據。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與〈愛因斯坦〉篇的呼應：一篇「奇蹟年」論文，遲來的平反</b><br>
+  同資料夾〈愛因斯坦〉篇提到，1905年愛因斯坦在專利局裡業餘寫成的四篇論文之一，正是布朗運動——這篇論文用統計方法解釋懸浮微粒為何會隨機抖動，為原子與分子的真實存在提供了當時最有力的間接證據。對波茲曼而言，這篇論文來得太遲：他窮盡大半生捍衛的統計力學前提，直到1905年才真正等到扭轉局勢的證據，而他本人只多活了一年。這場「原子究竟存不存在」的論戰，如今看來結論明確，但在波茲曼生前，答案遠遠沒有這麼確定。
+</div>
+
+<section>
+  <blockquote>
+    S = k log W
+    <cite>波茲曼提出熵與微觀狀態數量關係的核心公式，後由學生刻於他在維也納中央公墓的墓碑上，成為對他畢生成就最簡潔的總結。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、統計力學的核心推導過程，以及與能量論者之間的原子論戰，具體數學內容請另行查證專業物理學文獻，與克勞修斯、馬克士威的銜接請另見該二篇。波茲曼身故原因涉及複雜的個人與時代因素，本頁採審慎保留的敘述方式。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
