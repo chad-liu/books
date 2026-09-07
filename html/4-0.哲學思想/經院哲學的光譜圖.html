@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>經院哲學的光譜圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#8d683a;--muted:#846b36;
+    --lapis:#375b9f;--vermilion:#a73b30;--gold:#856a23;--verdigris:#327b63;
+    --rule:#c6c1b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--gold);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,5vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,182,146,.65)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .lt{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:14px;color:var(--gold);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .la .nm{color:var(--vermilion)} .is .nm{color:var(--lapis)}
+  .je .nm{color:var(--verdigris)} .tm .nm{color:var(--gold)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--gold);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--vermilion);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--gold)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Via Antiqua · Via Moderna</p>
+  <h1>經院哲學的光譜圖</h1>
+  <p class="lede">與〈中世紀哲學光譜圖〉篇的銜接：那張圖譜把整個中世紀攤開成拉丁基督教、伊斯蘭、猶太三個傳統並陳的全景，這裡收窄鏡頭，只談「經院哲學」這套方法本身如何隨時間演化——它從來不是一塊鐵板，而是至少四條同時並存、彼此較勁的路線，在不同大學各有自己的教材與追隨者，一路延續到十六、十七世紀，甚至意外替笛卡兒準備好了他要拿來推翻的那套詞彙。這份圖譜要梳理的，就是這幾條路線各自的位置，以及一段幾乎被遺忘的西班牙復興。</p>
+</header>
+
+<section>
+  <h2>學派光譜——四條同時存在的路線</h2>
+  <p class="sub">橫軸：時間（1250–1650）　·　四條路線分屬不同大學、不同教材，彼此較勁了四百年</p>
+  <div class="frame">
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="經院哲學四條路線時間光譜">
+
+<line x1="140" y1="400" x2="860" y2="400" stroke="#59707b" stroke-width="1.2"/>
+<g stroke="#59707b" stroke-width="1">
+  <line x1="140" y1="400" x2="140" y2="410"/>
+  <line x1="320" y1="400" x2="320" y2="410"/>
+  <line x1="500" y1="400" x2="500" y2="410"/>
+  <line x1="680" y1="400" x2="680" y2="410"/>
+  <line x1="860" y1="400" x2="860" y2="410"/>
+</g>
+<g font-size="10.5" fill="#59707b" text-anchor="middle">
+  <text x="140" y="424">1250</text>
+  <text x="320" y="424">1350</text>
+  <text x="500" y="424">1450</text>
+  <text x="680" y="424">1550</text>
+  <text x="860" y="424">1650</text>
+</g>
+
+<line x1="140" y1="100" x2="860" y2="100" stroke="#327b63" stroke-dasharray="3 4" opacity="0.5"/>
+<line x1="140" y1="180" x2="860" y2="180" stroke="#375b9f" stroke-dasharray="3 4" opacity="0.5"/>
+<line x1="140" y1="260" x2="860" y2="260" stroke="#a73b30" stroke-dasharray="3 4" opacity="0.5"/>
+<line x1="140" y1="340" x2="860" y2="340" stroke="#856a23" stroke-dasharray="3 4" opacity="0.5"/>
+
+<g font-family="'Noto Serif TC',serif" font-size="12.5" font-weight="600">
+  <rect x="34" y="93" width="9" height="9" fill="#327b63"/>
+  <text x="50" y="102" fill="#327b63">多瑪斯學派</text>
+  <rect x="34" y="173" width="9" height="9" fill="#375b9f"/>
+  <text x="50" y="182" fill="#375b9f">司各脫學派</text>
+  <rect x="34" y="253" width="9" height="9" fill="#a73b30"/>
+  <text x="50" y="262" fill="#a73b30">唯名論路線</text>
+  <rect x="34" y="333" width="9" height="9" fill="#856a23"/>
+  <text x="50" y="342" fill="#856a23">耶穌會新綜合</text>
+</g>
+
+<g font-family="'Noto Serif TC',serif">
+  <circle cx="167" cy="100" r="6.5" fill="#327b63"/>
+  <text x="167" y="86" font-size="12.5" text-anchor="middle" fill="#327b63" font-weight="700">阿奎那</text>
+  <text x="167" y="118" font-size="9.5" text-anchor="middle" fill="#327b67">1265</text>
+
+  <circle cx="603" cy="100" r="5.5" fill="#327b63"/>
+  <text x="603" y="118" font-size="11" text-anchor="middle" fill="#327b67">卡耶坦</text>
+
+  <circle cx="660" cy="100" r="6" fill="#327b63"/>
+  <text x="660" y="86" font-size="11.5" text-anchor="middle" fill="#327b63" font-weight="700">維多利亞</text>
+
+  <circle cx="685" cy="100" r="5.5" fill="#327b63"/>
+  <text x="685" y="118" font-size="11" text-anchor="middle" fill="#327b67">德索托</text>
+
+  <circle cx="230" cy="180" r="6.5" fill="#375b9f"/>
+  <text x="230" y="166" font-size="12.5" text-anchor="middle" fill="#375b9f" font-weight="700">司各脫</text>
+  <text x="230" y="198" font-size="9.5" text-anchor="middle" fill="#3e5e98">1300</text>
+
+  <circle cx="853" cy="180" r="5" fill="#375b9f"/>
+  <text x="835" y="198" font-size="10" text-anchor="middle" fill="#3e5e98">方濟會系統化</text>
+
+  <circle cx="271" cy="260" r="6.5" fill="#a73b30"/>
+  <text x="271" y="246" font-size="12.5" text-anchor="middle" fill="#a73b30" font-weight="700">奧坎</text>
+  <text x="271" y="278" font-size="9.5" text-anchor="middle" fill="#984d3e">1323</text>
+
+  <circle cx="320" cy="260" r="5.5" fill="#a73b30"/>
+  <text x="320" y="278" font-size="11" text-anchor="middle" fill="#984d3e">布里丹</text>
+
+  <circle cx="561" cy="260" r="6" fill="#a73b30"/>
+  <text x="561" y="246" font-size="11.5" text-anchor="middle" fill="#a73b30" font-weight="700">加百列・比爾</text>
+
+  <circle cx="599" cy="260" r="6.5" fill="#a73b30"/>
+  <text x="599" y="278" font-size="11.5" text-anchor="middle" fill="#984d3e" font-weight="700">年輕路德受教</text>
+
+  <circle cx="748" cy="340" r="5.5" fill="#856a23"/>
+  <text x="748" y="326" font-size="11" text-anchor="middle" fill="#856a23">莫利納</text>
+
+  <circle cx="765" cy="340" r="6.5" fill="#856a23"/>
+  <text x="765" y="358" font-size="12" text-anchor="middle" fill="#856a23" font-weight="700">蘇亞雷茲</text>
+
+  <circle cx="792" cy="340" r="5.5" fill="#856a23"/>
+  <text x="800" y="326" font-size="10.5" text-anchor="middle" fill="#7d6d33">笛卡兒受教</text>
+</g>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>四條路線同台了四百年</b><span>多瑪斯學派、司各脫學派、唯名論與耶穌會新綜合，並非依序取代彼此，而是長期在不同大學同時開課、互相較勁。</span></div>
+    <div class="note"><b>唯名論路線一路延伸到路德</b><span>加百列・比爾是十五世紀末最重要的唯名論神學家，年輕的馬丁・路德正是在這條路線下受訓。</span></div>
+    <div class="note"><b>耶穌會這條線出現得最晚，卻影響了笛卡兒</b><span>蘇亞雷茲1597年才寫成的《形上學辯論集》，十幾年後成了笛卡兒就讀的耶穌會學校教材。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>道路之爭——大學裡真實存在的門派械鬥</h2>
+  <p class="sub">不是後世史學家的分類，是當時大學章程裡白紙黑字寫明的兩條「路」</p>
+  <div class="frame">
+<svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="老路與新路兩大陣營結構圖">
+
+<rect x="46" y="60" width="380" height="200" rx="3" fill="#f2f4f5" stroke="#b8c1bf"/>
+<text x="236" y="88" font-size="15" text-anchor="middle" fill="#327b63" font-weight="700">老路　Via Antiqua</text>
+<text x="236" y="108" font-size="11.5" text-anchor="middle" fill="#327b67" font-family="'EB Garamond',serif" font-style="italic">共相真實存在</text>
+<line x1="66" y1="120" x2="406" y2="120" stroke="#327b64"/>
+<text x="236" y="142" font-size="11.5" text-anchor="middle" fill="#59707b">主張共相確有實在性，承接多瑪斯</text>
+<text x="236" y="160" font-size="11.5" text-anchor="middle" fill="#59707b">學派與司各脫學派的實在論傳統</text>
+<text x="236" y="188" font-size="10.5" text-anchor="middle" fill="#59707b">代表學院：科隆大學、部分巴黎學院</text>
+<text x="236" y="206" font-size="10.5" text-anchor="middle" fill="#59707b">明訂章程只教這一路</text>
+<text x="236" y="234" font-size="10.5" text-anchor="middle" fill="#327b67">代表人物：阿奎那、司各脫及其後繼者</text>
+
+<rect x="474" y="60" width="380" height="200" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+<text x="664" y="88" font-size="15" text-anchor="middle" fill="#a73b30" font-weight="700">新路　Via Moderna</text>
+<text x="664" y="108" font-size="11.5" text-anchor="middle" fill="#984d3e" font-family="'EB Garamond',serif" font-style="italic">共相僅是名稱</text>
+<line x1="494" y1="120" x2="834" y2="120" stroke="#984e3e"/>
+<text x="664" y="142" font-size="11.5" text-anchor="middle" fill="#59707b">主張唯個物真實存在，共相只是</text>
+<text x="664" y="160" font-size="11.5" text-anchor="middle" fill="#59707b">心靈用來指稱的名稱，承接奧坎路線</text>
+<text x="664" y="188" font-size="10.5" text-anchor="middle" fill="#59707b">代表學院：埃爾福特、海德堡等</text>
+<text x="664" y="206" font-size="10.5" text-anchor="middle" fill="#59707b">明訂章程只教這一路</text>
+<text x="664" y="234" font-size="10.5" text-anchor="middle" fill="#984d3e">代表人物：奧坎、布里丹、加百列・比爾</text>
+
+<text x="46" y="300" font-size="11" fill="#846b36">學生入學時得選定歸屬「老路」或「新路」的學院（bursa），修課、考試甚至日常起居都依所屬路線安排，兩派學生之間的敵意，</text>
+<text x="46" y="322" font-size="11" fill="#846b36">在部分大學紀錄裡並不只是學術分歧。1501年，年輕的馬丁・路德進入埃爾福特大學，正是在新路（唯名論）陣營下受訓，尤其深受</text>
+<text x="46" y="344" font-size="11" fill="#846b36">加百列・比爾著作的影響——他日後對「經院哲學」的猛烈抨擊，火力主要對準的是自己受教的這一支唯名論神學，而非經院哲學全體。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第二經院哲學——被遺忘的西班牙復興</h2>
+  <p class="sub">十六、十七世紀薩拉曼卡與科英布拉，替國際法與經濟學打下了地基</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="第二經院哲學結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#846b36" font-family="'Noto Serif TC',serif" font-weight="600">十六世紀西班牙薩拉曼卡與科英布拉的一批經院學者，把舊方法用在了全新的問題上</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#8d683a">這批貢獻常被歸給後世的其他人名，本身卻鮮少被提及</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f2f4f5" stroke="#b8c1bf"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#327b63" font-weight="700">維多利亞與國際法奠基</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#327b67">1539年講稿主張美洲原住民即使非</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#327b67">基督徒，仍擁有財產與主權</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f5f1" stroke="#c8c2b1"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#856a23" font-weight="700">薩拉曼卡學派的貨幣理論</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#7d6d33">德索托等人提出的貨幣數量論與主</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#7d6d33">觀價值論，早於後世公認的奠基者</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b4bac6"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#375b9f" font-weight="700">蘇亞雷茲的形上學新架構</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e5e98">《形上學辯論集》不再依附亞氏原</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e5e98">典逐條註解，而是自成系統</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#a73b30" font-weight="700">對笛卡兒的意外影響</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#984d3e">笛卡兒就讀的拉夫萊什耶穌會學校</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#984d3e">，教材正是建立在蘇亞雷茲之上</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#846b36" font-family="'Noto Serif TC',serif" font-weight="600">「經院哲學被近代哲學取代」，是一個過度簡化的敘事</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#8d683a">笛卡兒自己成長所學的形上學詞彙，本身就來自蘇亞雷茲這套經院哲學晚期的系統——他要推翻的，</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#8d683a">其實是自己從小被教會的那套語言，這比「近代哲學憑空斷裂於中世紀」的說法要複雜得多</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#846b36">而這整段西班牙復興，長期被夾在「阿奎那」與「笛卡兒」兩個更響亮的名字中間</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>多瑪斯學派</h2><span class="tag">THOMISM</span></div>
+  <div class="grid je">
+    <div class="card"><div class="nm">阿奎那<span class="lt">Aquinas</span><span class="yr">1225–1274</span></div><p>以溫和實在論調和信仰與理性，《神學大全》成為此後多瑪斯學派的核心文本。</p></div>
+    <div class="card"><div class="nm">卡耶坦<span class="lt">Cajetanus</span><span class="yr">1469–1534</span></div><p>阿奎那最重要的官方註釋者之一，其註本長期被視為理解《神學大全》的標準途徑。</p></div>
+    <div class="card"><div class="nm">維多利亞<span class="lt">Vitoria</span><span class="yr">約1483–1546</span></div><p>薩拉曼卡的多明我會學者，以多瑪斯自然法理論論證美洲原住民的權利，常被稱為國際法之父。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>司各脫學派</h2><span class="tag">SCOTISM</span></div>
+  <div class="grid is">
+    <div class="card"><div class="nm">司各脫<span class="lt">Duns Scotus</span><span class="yr">約1266–1308</span></div><p>主張存在的單義性與個體性原則，論證極為精細，人稱「精微博士」。</p></div>
+    <div class="card"><div class="nm">方濟會系統化者<span class="lt">Scotist School</span><span class="yr">14–17世紀</span></div><p>司各脫身後，方濟會內部持續發展並系統化其學說，一路延續到十七世紀的專門論著。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>唯名論路線</h2><span class="tag">VIA MODERNA</span></div>
+  <div class="grid la">
+    <div class="card"><div class="nm">奧坎<span class="lt">Ockham</span><span class="yr">約1287–1347</span></div><p>主張如無必要勿增實體，唯個物真實存在，共相僅是心靈用來指稱的名稱。</p></div>
+    <div class="card"><div class="nm">布里丹<span class="lt">Buridanus</span><span class="yr">約1300–1361</span></div><p>巴黎大學重要唯名論學者，在邏輯學與運動理論上皆有影響深遠的貢獻。</p></div>
+    <div class="card"><div class="nm">加百列・比爾<span class="lt">Gabriel Biel</span><span class="yr">約1420–1495</span></div><p>晚期唯名論神學代表，其著作是年輕馬丁・路德在埃爾福特大學受訓時的核心教材。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>耶穌會新綜合</h2><span class="tag">SECOND SCHOLASTICISM</span></div>
+  <div class="grid tm">
+    <div class="card"><div class="nm">莫利納<span class="lt">Molina</span><span class="yr">1535–1600</span></div><p>提出「中間知識」理論，試圖調和神的預知全能與人的自由意志，引發長期神學論戰。</p></div>
+    <div class="card"><div class="nm">蘇亞雷茲<span class="lt">Suárez</span><span class="yr">1548–1617</span></div><p>《形上學辯論集》擺脫逐條註解亞里斯多德的舊格式，自成系統，深刻影響此後歐陸形上學詞彙。</p></div>
+    <div class="card"><div class="nm">德索托<span class="lt">Domingo de Soto</span><span class="yr">1494–1560</span></div><p>薩拉曼卡學派重要成員，於貨幣數量與價格理論上的見解，早於後世公認的相關奠基者。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>迷思：中世紀學者真的討論過「一根針尖上能站幾個天使」嗎？</b><br>
+  這個常被拿來嘲諷經院哲學繁瑣無用的問題，其實找不到任何一份中世紀原始文獻的出處，普遍被科學史學界認為是宗教改革之後、乃至啟蒙時代的人為了諷刺經院哲學而編造出來的段子。它流傳得如此之廣，恰好說明了「經院哲學＝鑽牛角尖的空談」這個刻板印象本身，很大程度上也是一種被建構出來的形象，而不是對這套方法真實樣貌的描述。
+</div>
+
+<section>
+  <blockquote>
+    在他們獲悉基督教之前，這片土地上的人早已是財產與主權的真正主人。
+    <cite>轉譯自維多利亞1539年於薩拉曼卡的講稿《論印第安人》核心論點，常被視為近代國際法與自然權利理論的重要源頭之一；確切措辭因翻譯版本不同略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  座標為依其學說主張與活躍年代所作的相對定位，非量化結論。生卒年多為推定，代表大學與學院的歸屬情況因史料記載不一而有所簡化。與〈中世紀哲學光譜圖〉篇的共相之爭內容互為補充，請一併參閱。
+</footer>
+
+</div>
+</body>
+</html>
