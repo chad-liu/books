@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>邊沁知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">圓形監獄・自動聖像・被偷走的頭顱</p>
+  <h1>邊沁知識圖譜</h1>
+  <p class="lede">與〈效益主義與實證主義〉篇的銜接：邊沁的快樂計算法本身，那篇已有完整說明，這裡不再重複。這裡要談的是快樂算式背後那個人——一位三歲就開始學拉丁文的神童，終身未婚，卻花了將近二十年光陰與大半財產，想說服英國政府蓋一座他親自設計的圓形監獄，最終功敗垂成；一位死後仍要求把自己做成標本，穿戴整齊坐在倫敦大學學院走廊裡「出席」校務會議至今；而他那顆真正的頭顱，還有一段被學生偷來偷去的離奇歷史。</p>
+</header>
+
+<section>
+  <h2>生平——三歲學拉丁文的神童，終身未婚的改革者</h2>
+  <p class="sub">他把幾乎整個人生，都投入在替社會制度重新設計一套更理性的運作方式</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="邊沁生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">邊沁出身倫敦律師家庭，是公認的神童，十二歲便進入牛津大學就讀</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">終身未婚，把幾乎全部心力投入替社會制度重新設計一套更理性的運作方式</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">倫敦律師之子</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1748年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身倫敦律師家庭，</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">三歲便開始學習拉丁文</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">自幼即被視為神童</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">十二歲進牛津</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1760年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">十二歲便進入牛津</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">大學女王學院就讀</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">日後卻對牛津教育深感失望</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">放棄執業轉投改革</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1770年代起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">取得律師資格卻幾</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">乎不執業，轉而投入</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">法律與制度改革寫作</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">終身未婚，家財多用於改革事業</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">催生倫敦大學學院</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1826年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">思想深刻影響倫敦</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">大學學院的創立，被</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">尊為精神上的創校人</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">該校不問宗教信仰即可入學</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">他還順手發明了不少現在習以為常的英語詞彙</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">邊沁熱衷造詞，「國際的」（international）、「法典化」（codify）、「最大化」（maximize）與</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">「最小化」（minimize）等詞，都出自他手筆，如今已是英語裡再平常不過的日常用語</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他畢生最執著的一項改革構想，是一整座監獄的建築設計</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>圓形監獄——耗費半生、始終未能建成的建築構想</h2>
+  <p class="sub">一座讓犯人永遠不知道自己是否正被監看的建築，理論上能不靠武力就讓人自我約束</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="邊沁圓形監獄結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">邊沁受弟弟薩繆爾在造船廠監工經驗啟發，設計出一套革命性的監獄建築構想</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">此後近二十年，他傾盡心力遊說政府採納，卻始終未能如願</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">環形建築、中央塔樓</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">牢房環繞中央瞭望塔排列，獄卒可</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">從塔內看見每間牢房，犯人卻看不見獄卒</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">不知何時被監看，便自我約束</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">關鍵設計是讓犯人永遠無法確定自</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">己此刻是否正被注視，因而自律</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">近二十年遊說未果</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">投入大量私人財產與精力遊說國</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">會與政府，但計畫始終未能動工</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">後世重新賦予哲學意涵</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">建築本身雖未建成，「圓形監獄」</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">一詞卻成為後世討論監控與規訓的重要意象</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一個沒能蓋成的建築，卻成了描述現代社會監控機制最常被引用的比喻</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">二十世紀後半，法國哲學家傅柯借用圓形監獄的構造，分析現代社會如何透過制度化的持續監</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">視，讓人逐漸養成自我規訓的習慣——邊沁未能實現的建築藍圖，反而在思想史上留下更深的印記</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他自己身後的安排，同樣是一項近乎沒有先例的大膽構想</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>自動聖像——死後仍在大學裡「出席」校務會議</h2>
+  <p class="sub">他要求把自己的遺體做成標本，至今仍公開展示在他催生的那所大學裡</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="邊沁自動聖像結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">邊沁立下遺囑，要求死後將遺體防腐處理、穿戴他生前的衣物，做成「自動聖像」公開展示</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個近乎沒有先例的要求，此後真的被付諸實現</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">1832年立下遺囑</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">身後安排</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">要求遺體防腐並穿</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">戴生前衣物公開展示</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">用意結合科學研究與紀念意義</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">頭部防腐失敗</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">技術意外</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">原始頭部防腐處理</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">結果外觀嚴重走樣</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">此後改以蠟像頭部替代展示</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">真頭顱屢遭學生惡搞</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">校園傳說</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">真正的防腐頭顱曾</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">多次遭學生偷走當惡</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">作劇道具</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">此後校方將其另行妥善收藏</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">至今仍公開展示</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">現況</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">標本至今仍陳列於</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">倫敦大學學院走廊</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">展示櫃中</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">校方紀錄他曾「出席」校務會議</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">校方紀錄裡，他被列為「出席但不投票」</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">倫敦大學學院有個廣為流傳的說法：校方偶爾會把邊沁的展示櫃推到重要校務會議現場，會議紀</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">錄上會註明他「出席但不投票」——真實性帶點玩笑成分，卻已成為這所大學最著名的校園傳統之一</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">這個安排背後，其實也延續了他一貫務實、不迷信傳統喪葬儀式的一貫立場</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">倫敦律師之子<span class="yr">1748年生</span></div><p>出身倫敦律師家庭，三歲便開始學習拉丁文，自幼即被視為神童。</p></div>
+    <div class="card"><div class="nm">十二歲進牛津<span class="yr">1760年</span></div><p>十二歲便進入牛津大學女王學院就讀，日後卻對牛津教育深感失望。</p></div>
+    <div class="card"><div class="nm">催生倫敦大學學院<span class="yr">1826年</span></div><p>思想深刻影響倫敦大學學院的創立，被尊為精神上的創校人，該校不問宗教信仰即可入學。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>圓形監獄</h2><span class="tag">PANOPTICON</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">環形建築、中央塔樓</div><p>牢房環繞中央瞭望塔排列，獄卒可從塔內看見每間牢房，犯人卻看不見獄卒。</p></div>
+    <div class="card"><div class="nm">近二十年遊說未果</div><p>投入大量私人財產與精力遊說國會與政府，但計畫始終未能動工。</p></div>
+    <div class="card"><div class="nm">後世重新賦予哲學意涵</div><p>建築本身雖未建成，「圓形監獄」一詞卻成為後世討論監控與規訓的重要意象。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>自動聖像</h2><span class="tag">AUTO-ICON</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">1832年立下遺囑</div><p>要求遺體防腐並穿戴生前衣物公開展示，用意結合科學研究與紀念意義。</p></div>
+    <div class="card"><div class="nm">頭部防腐失敗</div><p>原始頭部防腐處理結果外觀嚴重走樣，此後改以蠟像頭部替代展示。</p></div>
+    <div class="card"><div class="nm">至今仍公開展示</div><p>標本至今仍陳列於倫敦大學學院走廊展示櫃中，校方紀錄他曾「出席」校務會議。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>對彌爾一家的深厚影響</b><br>
+  邊沁與詹姆斯・彌爾（James Mill）是多年摯友，兩家關係密切到詹姆斯・彌爾按照邊沁認同的效益主義教育理念，親自嚴格督導兒子約翰・彌爾的早年教育——約翰・彌爾三歲學希臘文、八歲學拉丁文的驚人早慧童年，某種程度上正是這套教育理念的直接產物。約翰・彌爾後來成為效益主義最重要的修正者與傳承者，這段承先啟後的師友情誼，跟邊沁本人「三歲學拉丁文」的神童起點，隔了一代依然遙相呼應。彌爾對邊沁快樂計算法的具體修正內容，請見〈效益主義與實證主義〉篇。
+</div>
+
+<section>
+  <blockquote>
+    最大多數人的最大幸福，是判斷是非對錯的準繩。
+    <cite>邊沁效益主義最核心的表述，常被視為他畢生思想與制度改革工程的總綱領；這句話的確切措辭，邊沁本人晚年也曾坦承並非首創，而是借鑑自更早的道德哲學家。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、圓形監獄的構想與遊說過程，以及自動聖像的身後安排，快樂計算法與效益主義的具體理論內容請見〈效益主義與實證主義〉篇。「出席但不投票」的校務會議傳說真實性帶有玩笑成分，本頁如實轉述但不代為確認。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
