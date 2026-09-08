@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正義理論的光譜圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#8d683a;--muted:#846b36;
+    --lapis:#375b9f;--vermilion:#a73b30;--gold:#856a23;--verdigris:#327b63;
+    --rule:#c6c1b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--gold);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,5vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,182,146,.65)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .lt{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:14px;color:var(--gold);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .la .nm{color:var(--vermilion)} .is .nm{color:var(--lapis)}
+  .je .nm{color:var(--verdigris)} .tm .nm{color:var(--gold)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--gold);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--vermilion);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--gold)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Veil of Ignorance · 無知之幕</p>
+  <h1>正義理論的光譜圖</h1>
+  <p class="lede">與〈效益主義與實證主義〉篇的銜接：邊沁與彌爾的效益計算本身，這裡不再重複。1971年，羅爾斯出版《正義論》，正是衝著效益主義最讓人不安的那個特質而來——只要總量夠大，效益主義理論上可以接受犧牲少數人的權益去換取多數人的幸福。羅爾斯要問的是：如果社會的基本規則，得由完全不知道自己會生在哪個位置的人來制訂，他們會同意什麼樣的安排？這個問題後來引出了整個二十世紀後半最重要的一場政治哲學辯論——從羅爾斯到諾齊克，從沈恩到桑德爾，每個人給的答案，畫出的都是截然不同的社會藍圖。</p>
+</header>
+
+<section>
+  <h2>羅爾斯的無知之幕——從效益主義的陰影裡走出來</h2>
+  <p class="sub">想像一群人要替社會制訂規則，卻完全不知道自己出生後會落在哪個位置</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="羅爾斯無知之幕結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">羅爾斯設計了一個思想實驗，讓制訂社會規則的人，暫時忘記自己在社會裡的真實位置</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這個設計本身，就是要排除任何人替自己的既得利益量身訂做規則的可能</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">原初立場</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">思想實驗起點</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">想像一群理性的人，</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">共同協商社會的基本規則</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">重構社會契約論的當代版本</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">無知之幕</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">核心設計</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">協商者不知道自己</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">的階級、天賦、價值觀</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">排除私心自利的規則設計</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">平等自由原則</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">第一原則</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">每個人都享有平等</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">的基本自由，優先於其他考量</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">不可為了效益而犧牲基本自由</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">差異原則</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">第二原則</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">社會不平等只有在</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">能改善最弱勢者處境時</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">才被允許</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">起點不平等，仍可被合理化</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">不知道自己會是誰，才會真正替最弱勢的人著想</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">羅爾斯的邏輯是：如果協商者可能生為社會最底層的人，出於理性的自我保護，他們會傾向選擇</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">一套即使自己落在最不利位置、也還能接受的規則——這正是效益主義從未真正保障的底線</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但這套規則本身該不該有，正是諾齊克接下來要正面反駁的問題</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>張伯倫論證——諾齊克的自由至上主義反擊</h2>
+  <p class="sub">用一位籃球明星的球票收入，諾齊克要證明任何強加的分配模式都留不住</p>
+  <div class="frame">
+<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="羅爾斯與諾齊克張伯倫論證結構圖">
+
+<rect x="46" y="50" width="380" height="200" rx="3" fill="#f2f4f5" stroke="#b8c1bf"/>
+<text x="236" y="78" font-size="15" text-anchor="middle" fill="#375b9f" font-weight="700">羅爾斯：模式化分配</text>
+<text x="236" y="98" font-size="11.5" text-anchor="middle" fill="#3e5e98" font-family="'EB Garamond',serif" font-style="italic">patterned distribution</text>
+<line x1="66" y1="110" x2="406" y2="110" stroke="#3e5e98"/>
+<text x="236" y="132" font-size="11.5" text-anchor="middle" fill="#59707b">正義與否取決於某個時間</text>
+<text x="236" y="150" font-size="11.5" text-anchor="middle" fill="#59707b">點上，財富分配的最終結</text>
+<text x="236" y="168" font-size="11.5" text-anchor="middle" fill="#59707b">果是否符合某種模式</text>
+<text x="236" y="196" font-size="10.5" text-anchor="middle" fill="#3e5e98">差異原則就是這樣一種模式：</text>
+<text x="236" y="212" font-size="10.5" text-anchor="middle" fill="#3e5e98">結果要能改善最弱勢者處境</text>
+<text x="236" y="238" font-size="10" text-anchor="middle" fill="#59707b">正義是關於「分配的最終樣貌」</text>
+
+<rect x="474" y="50" width="380" height="200" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+<text x="664" y="78" font-size="15" text-anchor="middle" fill="#a73b30" font-weight="700">諾齊克：歷史性資格</text>
+<text x="664" y="98" font-size="11.5" text-anchor="middle" fill="#984d3e" font-family="'EB Garamond',serif" font-style="italic">entitlement theory</text>
+<line x1="494" y1="110" x2="834" y2="110" stroke="#984e3e"/>
+<text x="664" y="132" font-size="11.5" text-anchor="middle" fill="#59707b">正義與否取決於財產取</text>
+<text x="664" y="150" font-size="11.5" text-anchor="middle" fill="#59707b">得的歷史過程，是否經</text>
+<text x="664" y="168" font-size="11.5" text-anchor="middle" fill="#59707b">由正當取得與自願轉讓</text>
+<text x="664" y="196" font-size="10.5" text-anchor="middle" fill="#984d3e">只要每一步交易都自願、</text>
+<text x="664" y="212" font-size="10.5" text-anchor="middle" fill="#984d3e">正當，結果無論多不平等都正義</text>
+<text x="664" y="238" font-size="10" text-anchor="middle" fill="#59707b">正義是關於「怎麼一步步走到這裡」</text>
+
+<text x="46" y="280" font-size="11" fill="#846b36">諾齊克設想：假設財富依某種模式公平分配完畢，接著球星張伯倫開出條件，每位觀眾多付25分錢看他打球，數百萬球迷自願支付——</text>
+<text x="46" y="300" font-size="11" fill="#846b36">這筆錢讓他遠比其他人富有，模式因此被打破。要維持原本的模式，就得持續介入禁止這類自願交易，而這正侵犯了個人自由。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>光譜圖——正義的衡量標準，從程序走向實質能力</h2>
+  <p class="sub">橫軸：國家介入分配的程度　·　縱軸：正義的衡量基準從程序移向具體實現的能力</p>
+  <div class="frame">
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="正義理論光譜圖">
+
+<rect x="88" y="68" width="389" height="392" fill="#f6f4f1"/>
+<rect x="477" y="68" width="389" height="392" fill="#f2f3f5"/>
+<rect x="88" y="68" width="778" height="392" fill="none" stroke="#c4c0b5"/>
+<line x1="477" y1="68" x2="477" y2="460" stroke="#c4c0b5" stroke-dasharray="3 4"/>
+
+<text x="282" y="52" font-size="10.5" text-anchor="middle" fill="#375b9f" letter-spacing="3">最小國家・程序正義</text>
+<text x="672" y="52" font-size="10.5" text-anchor="middle" fill="#a73b30" letter-spacing="3">積極介入・實質能力</text>
+<text x="500" y="88" font-size="9.5" fill="#59707b">↑ 衡量標準：資源與程序</text>
+<text x="500" y="450" font-size="9.5" fill="#59707b">↓ 衡量標準：實際能實現什麼</text>
+
+<g font-family="'Noto Serif TC',serif">
+  <circle cx="160" cy="130" r="8" fill="#375b9f"/>
+  <text x="160" y="114" font-size="14" text-anchor="middle" fill="#375b9f" font-weight="700">諾齊克</text>
+  <text x="160" y="153" font-size="9.5" text-anchor="middle" fill="#3e5e98">歷史性資格，最小國家</text>
+
+  <circle cx="330" cy="220" r="7.5" fill="#856a23"/>
+  <text x="330" y="204" font-size="13" text-anchor="middle" fill="#856a23" font-weight="700">羅爾斯</text>
+  <text x="330" y="243" font-size="9.5" text-anchor="middle" fill="#7d6d33">初級財貨，差異原則</text>
+
+  <circle cx="600" cy="200" r="7" fill="#327b63"/>
+  <text x="600" y="184" font-size="12.5" text-anchor="middle" fill="#327b63" font-weight="700">桑德爾</text>
+  <text x="600" y="223" font-size="9.5" text-anchor="middle" fill="#327b67">批判無知之幕背後的抽象自我</text>
+
+  <circle cx="700" cy="360" r="7.5" fill="#a73b30"/>
+  <text x="700" y="344" font-size="13" text-anchor="middle" fill="#a73b30" font-weight="700">沈恩</text>
+  <text x="700" y="383" font-size="9.5" text-anchor="middle" fill="#984d3e">能力取向，比較式判斷</text>
+
+  <circle cx="800" cy="410" r="6.5" fill="#a73b30"/>
+  <text x="800" y="394" font-size="12" text-anchor="middle" fill="#a73b30" font-weight="700">納思邦</text>
+</g>
+
+<line x1="88" y1="512" x2="866" y2="512" stroke="#59707b" stroke-width="1.2"/>
+<text x="88" y="532" font-size="11" fill="#375b9f">← 過程正當，結果就正當</text>
+<text x="866" y="532" font-size="11" text-anchor="end" fill="#a73b30">正義要問人實際能不能過上好生活 →</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>沈恩批評羅爾斯量錯了東西</b><span>羅爾斯用「初級財貨」（自由、機會、所得）衡量誰過得比較不利，沈恩卻指出，同樣的資源，身心障礙者能轉換成的實際生活品質往往遠遠不如常人，只算資源會低估真正的不平等。</span></div>
+    <div class="note"><b>桑德爾的批判不落在同一條軸線上</b><span>他質疑的不是該多分配還是少分配，而是無知之幕背後那個「不帶任何身分、價值觀的自我」根本不存在——人永遠是被社群、傳統形塑出來的。</span></div>
+    <div class="note"><b>沈恩刻意不開一張能力清單</b><span>與納思邦不同，沈恩認為哪些能力才算重要，該交由民主討論決定，而不是由哲學家預先列好一張放諸四海皆準的清單。</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>自由主義正義論</h2><span class="tag">LIBERAL EGALITARIANISM</span></div>
+  <div class="grid tm">
+    <div class="card"><div class="nm">羅爾斯<span class="lt">Rawls</span><span class="yr">1921–2002</span></div><p>《正義論》以原初立場與無知之幕重構社會契約論，提出平等自由原則與差異原則。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>自由至上主義</h2><span class="tag">LIBERTARIANISM</span></div>
+  <div class="grid is">
+    <div class="card"><div class="nm">諾齊克<span class="lt">Nozick</span><span class="yr">1938–2002</span></div><p>《無政府、國家與烏托邦》提出歷史性資格理論，主張只要取得過程正當，結果無論多不平等都屬正義。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>能力取向</h2><span class="tag">CAPABILITY APPROACH</span></div>
+  <div class="grid la">
+    <div class="card"><div class="nm">沈恩<span class="lt">Sen</span><span class="yr">1933–</span></div><p>批評羅爾斯的初級財貨忽略個體轉換資源為實際生活品質的能力落差，主張正義應以能力而非資源衡量。</p></div>
+    <div class="card"><div class="nm">納思邦<span class="lt">Nussbaum</span><span class="yr">1947–</span></div><p>延續沈恩的能力取向，進一步提出一份具體的十項核心能力清單，立場較沈恩更具普遍主義色彩。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>社群主義批判</h2><span class="tag">COMMUNITARIAN CRITIQUE</span></div>
+  <div class="grid je">
+    <div class="card"><div class="nm">桑德爾<span class="lt">Sandel</span><span class="yr">1953–</span></div><p>質疑無知之幕預設了一個不帶任何身分、價值觀的「無牽無掛的自我」，主張自我始終是被社群形塑而成。</p></div>
+    <div class="card"><div class="nm">麥金泰爾<span class="lt">MacIntyre</span><span class="yr">1929–</span></div><p>《德行之後》主張現代道德語言已支離破碎，呼籲回歸亞里斯多德式的德行倫理與傳統構成的理性。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與〈效益主義與實證主義〉篇的呼應：正義理論的整條戰線，都是對它的回應</b><br>
+  邊沁的快樂計算法只問總量極大化，理論上可以接受犧牲少數人換取多數人的幸福，這正是羅爾斯《正義論》開篇就要正面反駁的立場——他主張「每個人都擁有一種基於正義而不可侵犯的地位，即使是社會整體的福祉，也不能凌駕於這種地位之上」。此後從諾齊克到沈恩、桑德爾，這場延續半世紀的辯論表面上彼此針鋒相對，實際上共享同一個出發點：效益主義的加總邏輯，遺漏了某些不該被加總掉的東西。邊沁與彌爾效益主義的具體內容，請見〈效益主義與實證主義〉篇，這裡不再重複。
+</div>
+
+<section>
+  <blockquote>
+    正義是社會制度的首要美德，正如真理是思想體系的首要美德。
+    <cite>羅爾斯《正義論》開篇第一句話，確立全書的基本立場：一套理論無論多麼精緻動人，只要不正義，就必須被拒絕或修正，正如一套理論無論多吸引人，只要不真，就必須被拋棄。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  座標為依其學說主張與活躍年代所作的相對定位，非量化結論。生卒年多為推定。與〈效益主義與實證主義〉篇對邊沁、彌爾效益主義的完整說明，請一併參閱。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

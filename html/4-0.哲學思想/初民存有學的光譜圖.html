@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>初民存有學的光譜圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#8d683a;--muted:#846b36;
+    --lapis:#375b9f;--vermilion:#a73b30;--gold:#856a23;--verdigris:#327b63;
+    --rule:#c6c1b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--gold);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,5vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,182,146,.65)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .lt{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:14px;color:var(--gold);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .la .nm{color:var(--vermilion)} .is .nm{color:var(--lapis)}
+  .je .nm{color:var(--verdigris)} .tm .nm{color:var(--gold)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--gold);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--vermilion);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--gold)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Illud Tempus · 永恆回歸 · 歷史的恐怖</p>
+  <h1>初民存有學的光譜圖</h1>
+  <p class="lede">伊利亞德提出一個違反現代直覺的命題：對初民社會而言，一件事物或一個行動只有在重複某個天上原型、或模仿神明在「那個時候」（illud tempus）做過的事，才算真正「存在」；一場沒有先例、獨一無二的歷史事件，反而是不真實、沒有意義的。這套「初民存有學」認為，唯有透過儀式週期性地取消時間、回到創世那一刻，人才能忍受活在一個不斷流逝、無法挽回的世界裡——伊利亞德稱這種對純粹歷史事件的恐懼為「歷史的恐怖」。這份圖譜要梳理的，就是這套存有論的內部邏輯，以及它與同時代其他幾種理解「神聖」的方式，彼此如何分歧。</p>
+</header>
+
+<section>
+  <h2>原型與模仿——「真實」如何被定義</h2>
+  <p class="sub">一件事物要成為真實，得先在天上有一個對應的原型可供模仿</p>
+  <div class="frame">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="初民存有學原型模仿概念圖">
+<defs>
+  <marker id="antr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#856a23"/>
+  </marker>
+</defs>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="30" y="60" width="190" height="90" rx="3" fill="#f6f5f1" stroke="#c8c2b1"/>
+  <text x="125" y="88" font-size="12.5" fill="#8a6938">神明在初始時刻的行動</text>
+  <text x="125" y="110" font-size="9" fill="#886a37">神話記錄下諸神或</text>
+  <text x="125" y="124" font-size="9" fill="#886a37">祖先在「那個時候」</text>
+  <text x="125" y="138" font-size="9" fill="#886a37">創造世界的原初行動</text>
+  <line x1="224" y1="105" x2="232" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#antr)"/>
+
+  <rect x="236" y="60" width="190" height="90" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+  <text x="331" y="88" font-size="12.5" fill="#a73b30">確立天上原型</text>
+  <text x="331" y="110" font-size="9" fill="#984d3e">這個行動成為此後</text>
+  <text x="331" y="124" font-size="9" fill="#984d3e">所有同類行動必須</text>
+  <text x="331" y="138" font-size="9" fill="#984d3e">依循的永恆範本</text>
+  <line x1="430" y1="105" x2="438" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#antr)"/>
+
+  <rect x="442" y="60" width="190" height="90" rx="3" fill="#f2f4f5" stroke="#b8c1bf"/>
+  <text x="537" y="88" font-size="12.5" fill="#375b9f">人的行動依樣模仿</text>
+  <text x="537" y="110" font-size="9" fill="#3e5e98">蓋房子、結婚、耕</text>
+  <text x="537" y="124" font-size="9" fill="#3e5e98">種都要重演對應的</text>
+  <text x="537" y="138" font-size="9" fill="#3e5e98">神聖原型才算完整</text>
+  <line x1="636" y1="105" x2="644" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#antr)"/>
+
+  <rect x="648" y="60" width="222" height="90" rx="3" fill="#f2f3f5" stroke="#b4bac6"/>
+  <text x="759" y="88" font-size="12.5" fill="#327b63">行動因此獲得真實性</text>
+  <text x="759" y="110" font-size="9" fill="#327b67">唯有重複原型的行</text>
+  <text x="759" y="124" font-size="9" fill="#327b67">動才「真實」，脫離</text>
+  <text x="759" y="138" font-size="9" fill="#327b67">原型的行動沒有意義</text>
+</g>
+
+<text x="450" y="196" font-size="11" fill="#846b36" text-anchor="middle">這套邏輯直接推翻了現代人習慣的順序——不是先有一件獨特的事發生，才被記錄下來、被賦予意義；</text>
+<text x="450" y="220" font-size="11" fill="#846b36" text-anchor="middle">而是一件事必須先能被歸類進某個既有的神聖原型，才有資格被視為「發生過」，才配得上「真實」二字。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>儀式如何週期性地廢除時間——對抗歷史的恐怖</h2>
+  <p class="sub">新年慶典、成年禮，都在做同一件事：讓時間重新歸零，回到創世那一刻</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="初民存有學儀式結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">如果只有重複原型的事才真實，那麼一年裡不斷累積的、無法重來的歷史事件，該怎麼辦？</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">伊利亞德認為，初民社會發展出各種儀式，週期性地把這些累積清空，讓時間重新開始</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">新年儀式</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">週期性更新</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">許多古代文明的新</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">年慶典，儀式性地重</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">演創世的過程</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">舊的一年被象徵性地清空</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">成年禮的死亡與重生</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">個人層次</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">許多成年禮以象徵</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">性的死亡與重生，讓</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">個體脫離舊的存在狀態</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">舊我死去，新我依原型誕生</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">歷史的恐怖</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">核心概念</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">伊利亞德用這個詞</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">描述面對純粹、不可</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">逆的歷史事件的焦慮</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">苦難若無意義，便難以承受</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">現代人失去了出口</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">對照現代</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">現代人接受歷史線</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">性不可逆，卻也失去</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">了這套週期性的出口</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">必須赤裸面對歷史本身</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">伊利亞德寫這套理論時，正身處二十世紀歷史最恐怖的年代之一</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">《永恆回歸的神話》成書於二戰前後，伊利亞德本人在書中直言，正是面對現代歷史裡大規模、</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">無法用任何神聖原型賦予意義的苦難，才讓他更深刻地體會初民社會這套機制想解決的問題</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但「神聖」這個概念本身，同時代其他學者給出的解釋，跟伊利亞德分歧極大</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>光譜圖——神聖是獨立的實在，還是社會的產物</h2>
+  <p class="sub">橫軸：神聖經驗是否能被化約為其他事物　·　縱軸：分析取徑從親身參與移向外部結構分析</p>
+  <div class="frame">
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="神聖概念光譜圖">
+
+<rect x="88" y="68" width="389" height="392" fill="#f6f4f1"/>
+<rect x="477" y="68" width="389" height="392" fill="#f2f3f5"/>
+<rect x="88" y="68" width="778" height="392" fill="none" stroke="#c4c0b5"/>
+<line x1="477" y1="68" x2="477" y2="460" stroke="#c4c0b5" stroke-dasharray="3 4"/>
+
+<text x="282" y="52" font-size="10.5" text-anchor="middle" fill="#a73b30" letter-spacing="3">神聖是獨立不可化約的實在</text>
+<text x="672" y="52" font-size="10.5" text-anchor="middle" fill="#375b9f" letter-spacing="3">神聖可被還原為其他事物</text>
+<text x="500" y="88" font-size="9.5" fill="#59707b">↑ 強調親身參與的宗教經驗</text>
+<text x="500" y="450" font-size="9.5" fill="#59707b">↓ 強調外部的結構或社會分析</text>
+
+<g font-family="'Noto Serif TC',serif">
+  <circle cx="200" cy="140" r="7.5" fill="#a73b30"/>
+  <text x="200" y="124" font-size="13" text-anchor="middle" fill="#a73b30" font-weight="700">奧圖</text>
+  <text x="200" y="163" font-size="9.5" text-anchor="middle" fill="#984d3e">神聖是既敬畏又著迷的原初經驗</text>
+
+  <circle cx="330" cy="220" r="8.5" fill="#a73b30"/>
+  <text x="330" y="204" font-size="14" text-anchor="middle" fill="#a73b30" font-weight="700">伊利亞德</text>
+  <text x="330" y="243" font-size="9.5" text-anchor="middle" fill="#984d3e">初民存有學，原型模仿</text>
+
+  <circle cx="620" cy="300" r="7" fill="#327b63"/>
+  <text x="620" y="284" font-size="12.5" text-anchor="middle" fill="#327b63" font-weight="700">李維史陀</text>
+  <text x="620" y="323" font-size="9.5" text-anchor="middle" fill="#327b67">神話是認知結構的產物</text>
+
+  <circle cx="750" cy="400" r="7.5" fill="#375b9f"/>
+  <text x="750" y="384" font-size="13" text-anchor="middle" fill="#375b9f" font-weight="700">涂爾幹</text>
+  <text x="750" y="423" font-size="9.5" text-anchor="middle" fill="#3e5e98">神聖即社會崇拜自身</text>
+</g>
+
+<line x1="88" y1="512" x2="866" y2="512" stroke="#59707b" stroke-width="1.2"/>
+<text x="88" y="532" font-size="11" fill="#a73b30">← 唯有親身經歷才能理解神聖</text>
+<text x="866" y="532" font-size="11" text-anchor="end" fill="#375b9f">神聖可以完全用外部理論解釋 →</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>奧圖是伊利亞德的重要前輩</b><span>奧圖提出「神秘、令人戰慄又著迷之物」形容神聖經驗本身無法化約為道德或理性概念，伊利亞德繼承了這個「神聖不可化約」的立場，再加上對時間與原型的分析。</span></div>
+    <div class="note"><b>涂爾幹站在光譜的另一端</b><span>他在《宗教生活的基本形式》主張，神聖感受其實是社會透過集體亢奮儀式，讓個體感受到自身所屬群體的力量，本質上是社會在崇拜自己。</span></div>
+    <div class="note"><b>李維史陀跟伊利亞德處理同樣的材料，問法卻不同</b><span>兩人都大量分析神話，但李維史陀關心的是神話底層的認知結構如何運作，伊利亞德關心的則是神話如何界定「什麼算真實存在」，兩者的方法論分歧，另見〈結構主義的光譜圖〉篇。</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>初民存有學</h2><span class="tag">ARCHAIC ONTOLOGY</span></div>
+  <div class="grid tm">
+    <div class="card"><div class="nm">伊利亞德<span class="lt">Eliade</span><span class="yr">1907–1986</span></div><p>《永恆回歸的神話》提出初民存有學，主張唯有重複神聖原型的事物與行動才算真實存在。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>神聖經驗</h2><span class="tag">THE HOLY</span></div>
+  <div class="grid la">
+    <div class="card"><div class="nm">奧圖<span class="lt">Otto</span><span class="yr">1869–1937</span></div><p>《論神聖》提出「神秘、令人戰慄又著迷之物」形容神聖經驗，主張這種經驗無法化約為道德或理性概念。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>還原論取徑</h2><span class="tag">REDUCTIONIST</span></div>
+  <div class="grid is">
+    <div class="card"><div class="nm">涂爾幹<span class="lt">Durkheim</span><span class="yr">1858–1917</span></div><p>《宗教生活的基本形式》主張神聖與世俗的區分，源於社會透過集體儀式讓個體感受群體力量，本質是社會崇拜自身。</p></div>
+    <div class="card"><div class="nm">李維史陀<span class="lt">Lévi-Strauss</span><span class="yr">1908–2009</span></div><p>結構主義式分析神話，關注底層認知結構的二元對立邏輯，而非神話對信仰者本身的存有論意義。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與〈結構主義的光譜圖〉篇的呼應：同樣分析神話，問題意識卻不同</b><br>
+  伊利亞德與李維史陀是同時代研究神話的兩位巨擘，取材範圍甚至常常重疊，卻幾乎是從相反的問題意識出發：李維史陀想知道神話這套敘事底層，人類心智共享的結構邏輯是什麼，答案跟信仰者本人相不相信這套神話無關；伊利亞德想知道的則是，對真心相信神話的人而言，這套敘事如何決定了他們認為什麼東西才算「真實存在」——一個是認知科學式的旁觀分析，一個是現象學式的親身體會。李維史陀的結構分析方法，請見〈結構主義的光譜圖〉篇。
+</div>
+
+<section>
+  <blockquote>
+    對初民心態而言，實在性只透過重複或參與某種原型才能獲得；一切缺乏典範模型的事物，都是「沒有意義」的，也就是缺乏實在性。
+    <cite>轉譯自伊利亞德《永恆回歸的神話》中對初民存有學核心命題的概括，法文與英譯版本用語與段落安排略有出入，本頁採概括性轉譯。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  座標為依其學說主張與活躍年代所作的相對定位，非量化結論。生卒年多為推定。李維史陀結構主義方法的具體內容，請見〈結構主義的光譜圖〉篇。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

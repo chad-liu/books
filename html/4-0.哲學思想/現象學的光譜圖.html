@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>現象學的光譜圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#8d683a;--muted:#846b36;
+    --lapis:#375b9f;--vermilion:#a73b30;--gold:#856a23;--verdigris:#327b63;
+    --rule:#c6c1b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--gold);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,5vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,182,146,.65)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .lt{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:14px;color:var(--gold);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .la .nm{color:var(--vermilion)} .is .nm{color:var(--lapis)}
+  .je .nm{color:var(--verdigris)} .tm .nm{color:var(--gold)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--gold);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--vermilion);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--gold)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Zu den Sachen selbst</p>
+  <h1>現象學的光譜圖</h1>
+  <p class="lede">與〈存在主義〉〈海德格〉兩篇的銜接：那兩篇談的是現象學方法被存在主義者接手之後長出的具體思想，這裡要往回收窄鏡頭，只談胡塞爾自己這套方法本身——懸擱、意向性、回到事物本身，以及他身後這套方法如何裂解成好幾條彼此面貌相差極大的路線：一支走向此在與存有本身，一支走向身體與知覺，一支走向他者的面容與倫理。這份圖譜最後要說的，是一個苦澀的悖論：這位替好幾代哲學家準備好方法的猶太裔老師，晚年卻被自己最重要的學生曾經效忠的政權，逐出了他一手打造的學術體系。</p>
+</header>
+
+<section>
+  <h2>方法本身——懸擱與回到事物本身</h2>
+  <p class="sub">胡塞爾要處理的不是「世界是什麼」，而是「意識如何經驗到世界」這個更基本的問題</p>
+  <div class="frame">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="現象學方法流程圖">
+<defs>
+  <marker id="phtr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#856a23"/>
+  </marker>
+</defs>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="30" y="60" width="150" height="90" rx="3" fill="#f6f5f1" stroke="#c8c2b1"/>
+  <text x="105" y="88" font-size="12.5" fill="#8a6938">自然態度</text>
+  <text x="105" y="110" font-size="9" fill="#886a37">日常生活裡，理所</text>
+  <text x="105" y="124" font-size="9" fill="#886a37">當然相信外在世界</text>
+  <text x="105" y="138" font-size="9" fill="#886a37">確實獨立存在</text>
+  <line x1="184" y1="105" x2="192" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#phtr)"/>
+
+  <rect x="196" y="60" width="150" height="90" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+  <text x="271" y="88" font-size="12.5" fill="#a73b30">懸擱</text>
+  <text x="271" y="110" font-size="9" fill="#984d3e">存而不論外在世界</text>
+  <text x="271" y="124" font-size="9" fill="#984d3e">是否真實存在這個</text>
+  <text x="271" y="138" font-size="9" fill="#984d3e">判斷，暫時擱置一旁</text>
+  <line x1="350" y1="105" x2="358" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#phtr)"/>
+
+  <rect x="362" y="60" width="150" height="90" rx="3" fill="#f2f4f5" stroke="#b8c1bf"/>
+  <text x="437" y="88" font-size="12.5" fill="#375b9f">現象學還原</text>
+  <text x="437" y="110" font-size="9" fill="#3e5e98">把注意力收回到意</text>
+  <text x="437" y="124" font-size="9" fill="#3e5e98">識本身經驗到的現</text>
+  <text x="437" y="138" font-size="9" fill="#3e5e98">象，而非現象背後的物</text>
+  <line x1="516" y1="105" x2="524" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#phtr)"/>
+
+  <rect x="528" y="60" width="150" height="90" rx="3" fill="#f2f3f5" stroke="#b4bac6"/>
+  <text x="603" y="88" font-size="12.5" fill="#327b63">本質直觀</text>
+  <text x="603" y="110" font-size="9" fill="#327b67">透過反覆變換想像</text>
+  <text x="603" y="124" font-size="9" fill="#327b67">中的例子，直接把</text>
+  <text x="603" y="138" font-size="9" fill="#327b67">握現象不變的本質結構</text>
+  <line x1="682" y1="105" x2="690" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#phtr)"/>
+
+  <rect x="694" y="60" width="176" height="90" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+  <text x="782" y="88" font-size="12.5" fill="#a73b30">回到事物本身</text>
+  <text x="782" y="110" font-size="9" fill="#984d3e">不預設任何理論立</text>
+  <text x="782" y="124" font-size="9" fill="#984d3e">場，只依現象本身</text>
+  <text x="782" y="138" font-size="9" fill="#984d3e">向意識顯現的樣子描述它</text>
+</g>
+
+<text x="450" y="196" font-size="11" fill="#846b36" text-anchor="middle">意向性是貫穿整套方法的前提：意識永遠是「對某物的意識」，沒有不指向對象的純粹意識，也沒有脫離意識而被談論的孤立對象。</text>
+<text x="450" y="220" font-size="11" fill="#846b36" text-anchor="middle">胡塞爾的口號「回到事物本身」，字面意思正是這五個步驟合起來要做的事——擱置理論預設，直接描述現象向意識顯現的方式。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>光譜圖——一套方法，裂解成天南地北的路線</h2>
+  <p class="sub">橫軸：對胡塞爾原初方法的忠實程度　·　縱軸：關注焦點從純粹意識移向具體的存在情境</p>
+  <div class="frame">
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="現象學路線光譜圖">
+
+<rect x="88" y="68" width="389" height="452" fill="#f6f4f1"/>
+<rect x="477" y="68" width="389" height="452" fill="#f2f3f5"/>
+<rect x="88" y="68" width="778" height="452" fill="none" stroke="#c4c0b5"/>
+<line x1="477" y1="68" x2="477" y2="520" stroke="#c4c0b5" stroke-dasharray="3 4"/>
+
+<text x="500" y="88" font-size="9.5" fill="#59707b">↑ 純粹意識分析</text>
+<text x="500" y="510" font-size="9.5" fill="#59707b">↓ 具體存在情境</text>
+<text x="282" y="52" font-size="10.5" text-anchor="middle" fill="#375b9f" letter-spacing="3">忠實延續原初方法</text>
+<text x="672" y="52" font-size="10.5" text-anchor="middle" fill="#a73b30" letter-spacing="3">徹底轉向・另起爐灶</text>
+
+<g font-family="'Noto Serif TC',serif">
+  <circle cx="150" cy="110" r="8.5" fill="#375b9f"/>
+  <text x="150" y="94" font-size="14" text-anchor="middle" fill="#375b9f" font-weight="700">胡塞爾</text>
+  <text x="150" y="133" font-size="9.5" text-anchor="middle" fill="#3e5e98">方法的創始者與原點</text>
+
+  <circle cx="230" cy="160" r="6" fill="#375b9f"/>
+  <text x="230" y="146" font-size="11.5" text-anchor="middle" fill="#375b9f">芬克</text>
+
+  <circle cx="330" cy="290" r="6.5" fill="#856a23"/>
+  <text x="330" y="276" font-size="12" text-anchor="middle" fill="#856a23" font-weight="700">謝勒</text>
+
+  <circle cx="560" cy="270" r="7.5" fill="#a73b30"/>
+  <text x="560" y="256" font-size="13" text-anchor="middle" fill="#a73b30" font-weight="700">海德格</text>
+
+  <circle cx="640" cy="350" r="7" fill="#a73b30"/>
+  <text x="640" y="336" font-size="12.5" text-anchor="middle" fill="#a73b30" font-weight="700">沙特</text>
+
+  <circle cx="700" cy="450" r="7" fill="#327b63"/>
+  <text x="700" y="436" font-size="12.5" text-anchor="middle" fill="#327b63" font-weight="700">梅洛龐蒂</text>
+
+  <circle cx="800" cy="190" r="7" fill="#856a23"/>
+  <text x="800" y="176" font-size="12.5" text-anchor="middle" fill="#856a23" font-weight="700">列維納斯</text>
+</g>
+
+<rect x="110" y="380" width="340" height="120" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="280" y="404" font-size="12" fill="#a73b30" font-family="'Noto Serif TC',serif" font-weight="600" text-anchor="middle">同一套方法，走出了完全不同的問題</text>
+<text x="280" y="428" font-size="10" fill="#59707b" text-anchor="middle">海德格拿它去問存有本身；沙特拿它去</text>
+<text x="280" y="444" font-size="10" fill="#59707b" text-anchor="middle">問自由與虛無；梅洛龐蒂拿它去問身體</text>
+<text x="280" y="460" font-size="10" fill="#59707b" text-anchor="middle">如何知覺世界；列維納斯拿它去問他者</text>
+<text x="280" y="476" font-size="10" fill="#59707b" text-anchor="middle">的面容如何先於一切理論而向我要求責任</text>
+
+<g transform="translate(280,548)" font-size="10.5" fill="#59707b">
+  <circle cx="4" cy="-4" r="5" fill="#375b9f"/><text x="16" y="0">忠實傳承</text>
+  <circle cx="112" cy="-4" r="5" fill="#a73b30"/><text x="124" y="0">存在主義現象學</text>
+  <circle cx="252" cy="-4" r="5" fill="#327b63"/><text x="264" y="0">身體與知覺</text>
+  <circle cx="368" cy="-4" r="5" fill="#856a23"/><text x="380" y="0">價值與倫理</text>
+</g>
+
+<line x1="88" y1="572" x2="866" y2="572" stroke="#59707b" stroke-width="1.2"/>
+<text x="88" y="592" font-size="11" fill="#375b9f">← 意識如何構成經驗</text>
+<text x="866" y="592" font-size="11" text-anchor="end" fill="#a73b30">存在本身如何被拋入世界 →</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>海德格是胡塞爾親手指定的接班人</b><span>胡塞爾退休時親自推薦海德格接任弗萊堡教席，兩人的思想卻在《存在與時間》出版後迅速分道揚鑣。</span></div>
+    <div class="note"><b>列維納斯把整套框架倒過來</b><span>胡塞爾的起點是「我」的意識如何構成世界，列維納斯卻主張他者的面容先於「我」的意識而向我提出倫理要求。</span></div>
+    <div class="note"><b>梅洛龐蒂補上了胡塞爾忽略的身體</b><span>胡塞爾晚年手稿其實已觸及身體問題，但要到梅洛龐蒂手上，身體才真正成為現象學分析的核心。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>老師與學生的悖論——四萬頁手稿的祕密偷渡</h2>
+  <p class="sub">替好幾代哲學家準備好方法的人，晚年卻被逐出了自己一手打造的學術體系</p>
+  <div class="frame">
+<svg viewBox="0 0 900 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="胡塞爾手稿偷渡結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#846b36" font-family="'Noto Serif TC',serif" font-weight="600">1933年，猶太裔的胡塞爾因納粹種族法令被逐出他任教數十年的弗萊堡大學</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#8d683a">而簽署種族法令背後那個政權，正是他親手指定的接班人曾公開效忠的對象</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">1933年遭停職</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">納粹種族法令</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">因猶太裔身分，被褫</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">奪教職與圖書館使用權</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">昔日接班人海德格未曾公開聲援</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1938年孤寂辭世</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">晚年處境</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">在近乎與學界隔絕的</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">處境中辭世</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d"></text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">身後留下逾四萬頁速記手稿</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">神父冒險搶救</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1938年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">方濟會神父范布雷達</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">趕赴弗萊堡搶救手稿</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198"></text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">戰爭迫近，手稿隨時可能被毀</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">外交郵袋偷渡出境</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">戰前夕</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">以外交郵袋方式，將</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">手稿祕密運往比利時</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46"></text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">此後成立魯汶胡塞爾檔案館</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#846b36" font-family="'Noto Serif TC',serif" font-weight="600">如果沒有這場搶救，現象學的大半文獻可能永遠消失</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#8d683a">這批以速記符號寫成、外人幾乎無法辨識的手稿，直到今天仍在魯汶胡塞爾檔案館持續整理出</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#8d683a">版，二十世紀後半許多重要的現象學討論，其實都建立在這批被偷渡出境的手稿之上</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#846b36">海德格在納粹掌權期間的政治立場，另見〈海德格〉篇，這裡不再重複</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>忠實傳承</h2><span class="tag">FAITHFUL CONTINUATION</span></div>
+  <div class="grid is">
+    <div class="card"><div class="nm">胡塞爾<span class="lt">Husserl</span><span class="yr">1859–1938</span></div><p>現象學創始者，提出懸擱與現象學還原，主張哲學應回到意識直接經驗到的現象本身。</p></div>
+    <div class="card"><div class="nm">芬克<span class="lt">Fink</span><span class="yr">1905–1975</span></div><p>胡塞爾晚年最重要的私人助手，長期協助整理手稿，思想上維持對原初方法較高的忠誠度。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>存在主義現象學</h2><span class="tag">EXISTENTIAL TURN</span></div>
+  <div class="grid la">
+    <div class="card"><div class="nm">海德格<span class="lt">Heidegger</span><span class="yr">1889–1976</span></div><p>將現象學方法轉用於追問存有本身，1927年出版《存在與時間》，是胡塞爾親自指定的接班人。</p></div>
+    <div class="card"><div class="nm">沙特<span class="lt">Sartre</span><span class="yr">1905–1980</span></div><p>結合現象學方法與自由、虛無等主題，發展出自成一格的存在主義式現象學。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>身體與知覺</h2><span class="tag">EMBODIMENT</span></div>
+  <div class="grid je">
+    <div class="card"><div class="nm">梅洛龐蒂<span class="lt">Merleau-Ponty</span><span class="yr">1908–1961</span></div><p>發展身體現象學，主張意識並非抽離的旁觀者，而是透過身體與世界處於不可分割的知覺關係之中。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>價值與倫理</h2><span class="tag">VALUE & ETHICS</span></div>
+  <div class="grid tm">
+    <div class="card"><div class="nm">謝勒<span class="lt">Scheler</span><span class="yr">1874–1928</span></div><p>發展價值現象學，主張情感與價值感受本身也有可供描述的本質結構，而非單純主觀反應。</p></div>
+    <div class="card"><div class="nm">列維納斯<span class="lt">Levinas</span><span class="yr">1906–1995</span></div><p>主張他者的面容先於自我意識，倫理責任比認識論更為根本，是「倫理學即第一哲學」的代表。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    回到事物本身。
+    <cite>胡塞爾現象學方法最廣為人知的口號，主張哲學描述應擱置一切預設的理論立場，直接依現象向意識顯現的樣子加以描述；德文原句因翻譯版本不同，中譯用語略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  座標為依其學說主張與活躍年代所作的相對定位，非量化結論。生卒年多為推定。與〈存在主義〉〈海德格〉兩篇具體思想內容的銜接，請一併參閱該二篇。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

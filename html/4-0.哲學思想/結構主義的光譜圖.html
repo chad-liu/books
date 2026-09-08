@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>結構主義的光譜圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#8d683a;--muted:#846b36;
+    --lapis:#375b9f;--vermilion:#a73b30;--gold:#856a23;--verdigris:#327b63;
+    --rule:#c6c1b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--gold);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,5vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,182,146,.65)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .lt{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:14px;color:var(--gold);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .la .nm{color:var(--vermilion)} .is .nm{color:var(--lapis)}
+  .je .nm{color:var(--verdigris)} .tm .nm{color:var(--gold)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--gold);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--vermilion);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--gold)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Langue · 能指與所指 · 作者已死</p>
+  <h1>結構主義的光譜圖</h1>
+  <p class="lede">結構主義始於一個看似技術性的語言學問題，卻在半個世紀內橫掃了人類學、精神分析、文學理論與馬克思主義。索緒爾發現，一個字的意義不是來自它指向了什麼東西，而是來自它跟系統裡其他字之間的差異——「狗」之所以是狗，是因為它不是「貓」，不是「狼」。這個看似簡單的洞見，一旦被拿去分析神話、親屬制度、廣告、無意識、意識形態，得出的結論一次比一次更激進：連「作者」這個看似穩固的概念，都可能只是語言系統運作下的一個效果，而不是意義真正的來源。這份圖譜要梳理的，就是這套方法如何從語言學一路擴散開來，以及它最終如何走到自己方法的邊界。</p>
+</header>
+
+<section>
+  <h2>索緒爾的語言學革命——意義來自差異，不是來自事物本身</h2>
+  <p class="sub">結構主義所有後續發展，都建立在這幾個看似平凡的語言學概念之上</p>
+  <div class="frame">
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="索緒爾語言學概念圖">
+<defs>
+  <marker id="sttr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 z" fill="#856a23"/>
+  </marker>
+</defs>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="30" y="60" width="190" height="90" rx="3" fill="#f6f5f1" stroke="#c8c2b1"/>
+  <text x="125" y="88" font-size="12.5" fill="#8a6938">符號＝能指＋所指</text>
+  <text x="125" y="110" font-size="9" fill="#886a37">聲音形象與概念的</text>
+  <text x="125" y="124" font-size="9" fill="#886a37">結合，兩者的連結</text>
+  <text x="125" y="138" font-size="9" fill="#886a37">完全是任意的約定</text>
+  <line x1="224" y1="105" x2="232" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#sttr)"/>
+
+  <rect x="236" y="60" width="190" height="90" rx="3" fill="#f6f2f1" stroke="#cab4af"/>
+  <text x="331" y="88" font-size="12.5" fill="#a73b30">意義來自差異</text>
+  <text x="331" y="110" font-size="9" fill="#984d3e">一個字的意義不來</text>
+  <text x="331" y="124" font-size="9" fill="#984d3e">自它指涉的事物，</text>
+  <text x="331" y="138" font-size="9" fill="#984d3e">而來自它與系統裡</text>
+  <line x1="430" y1="105" x2="438" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#sttr)"/>
+
+  <rect x="442" y="60" width="190" height="90" rx="3" fill="#f2f4f5" stroke="#b8c1bf"/>
+  <text x="537" y="88" font-size="12.5" fill="#375b9f">語言 vs 言語</text>
+  <text x="537" y="110" font-size="9" fill="#3e5e98">結構主義研究背後</text>
+  <text x="537" y="124" font-size="9" fill="#3e5e98">共享的系統規則，</text>
+  <text x="537" y="138" font-size="9" fill="#3e5e98">而非個別的說話行為</text>
+  <line x1="636" y1="105" x2="644" y2="105" stroke="#856a23" stroke-width="1.4" marker-end="url(#sttr)"/>
+
+  <rect x="648" y="60" width="222" height="90" rx="3" fill="#f2f3f5" stroke="#b4bac6"/>
+  <text x="759" y="88" font-size="12.5" fill="#327b63">共時 優先於 歷時</text>
+  <text x="759" y="110" font-size="9" fill="#327b67">研究系統在某一時</text>
+  <text x="759" y="124" font-size="9" fill="#327b67">刻的完整結構，而</text>
+  <text x="759" y="138" font-size="9" fill="#327b67">非它如何隨時間演變</text>
+</g>
+
+<text x="450" y="196" font-size="11" fill="#846b36" text-anchor="middle">其他字的差異——這個原則後來被拿去分析神話、親屬制度、廣告、夢境、意識形態，每次都得出同一種結論：</text>
+<text x="450" y="220" font-size="11" fill="#846b36" text-anchor="middle">表面看似自然、理所當然的意義，底下其實是一套人為的差異系統在運作，而使用者往往渾然不覺。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>光譜圖——同一套方法，接管了完全不同的學科</h2>
+  <p class="sub">橫軸：對索緒爾原初語言學方法的忠實程度　·　縱軸：應用領域從文化文本移向主體與權力結構</p>
+  <div class="frame">
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="結構主義路線光譜圖">
+
+<rect x="88" y="68" width="389" height="392" fill="#f6f4f1"/>
+<rect x="477" y="68" width="389" height="392" fill="#f2f3f5"/>
+<rect x="88" y="68" width="778" height="392" fill="none" stroke="#c4c0b5"/>
+<line x1="477" y1="68" x2="477" y2="460" stroke="#c4c0b5" stroke-dasharray="3 4"/>
+
+<text x="282" y="52" font-size="10.5" text-anchor="middle" fill="#375b9f" letter-spacing="3">忠實移植語言學方法</text>
+<text x="672" y="52" font-size="10.5" text-anchor="middle" fill="#a73b30" letter-spacing="3">大幅改造・另闢戰場</text>
+<text x="500" y="88" font-size="9.5" fill="#59707b">↑ 應用於文化與文本</text>
+<text x="500" y="450" font-size="9.5" fill="#59707b">↓ 應用於主體、心理與權力</text>
+
+<g font-family="'Noto Serif TC',serif">
+  <circle cx="180" cy="180" r="7.5" fill="#375b9f"/>
+  <text x="180" y="164" font-size="13" text-anchor="middle" fill="#375b9f" font-weight="700">李維史陀</text>
+  <text x="180" y="203" font-size="9.5" text-anchor="middle" fill="#3e5e98">神話學與親屬結構</text>
+
+  <circle cx="360" cy="150" r="7" fill="#856a23"/>
+  <text x="360" y="134" font-size="12.5" text-anchor="middle" fill="#856a23" font-weight="700">羅蘭巴特</text>
+  <text x="360" y="173" font-size="9.5" text-anchor="middle" fill="#7d6d33">神話學與符號學，逼近後結構</text>
+
+  <circle cx="650" cy="330" r="7.5" fill="#a73b30"/>
+  <text x="650" y="314" font-size="13" text-anchor="middle" fill="#a73b30" font-weight="700">拉岡</text>
+  <text x="650" y="353" font-size="9.5" text-anchor="middle" fill="#984d3e">無意識結構如同語言</text>
+
+  <circle cx="760" cy="410" r="7" fill="#327b63"/>
+  <text x="760" y="394" font-size="12.5" text-anchor="middle" fill="#327b63" font-weight="700">阿圖塞</text>
+  <text x="760" y="433" font-size="9.5" text-anchor="middle" fill="#327b67">意識形態與國家機器</text>
+</g>
+
+<line x1="88" y1="512" x2="866" y2="512" stroke="#59707b" stroke-width="1.2"/>
+<text x="88" y="532" font-size="11" fill="#375b9f">← 系統的深層結構放諸四海皆準</text>
+<text x="866" y="532" font-size="11" text-anchor="end" fill="#a73b30">結構本身也可能是被建構出來的 →</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>李維史陀最忠於索緒爾的方法</b><span>他把神話拆解成一組組二元對立（生食／熟食、自然／文化），主張全人類的思維底層共享同一套結構邏輯。</span></div>
+    <div class="note"><b>拉岡把語言學方法帶進了精神分析診療室</b><span>他重讀佛洛伊德，主張無意識本身就是依語言的結構在運作，而非一團未經整理的原始衝動。</span></div>
+    <div class="note"><b>羅蘭巴特是這張圖上最靠近邊界的人</b><span>他晚期作品逐漸從「找出穩定結構」轉向「意義如何被讀者持續生成」，是結構主義走向後結構主義的關鍵過渡人物。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>作者已死——意義不在作者手裡</h2>
+  <p class="sub">羅蘭巴特1967年一篇短文，動搖了文學批評長期以來對「作者原意」的信仰</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="羅蘭巴特作者已死結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#846b36" font-family="'Noto Serif TC',serif" font-weight="600">羅蘭巴特主張，把文本的意義釘死在作者的生平與意圖上，是一種需要被打破的迷思</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#8d683a">文本一旦寫成，就成了語言本身在說話，作者的意圖不再是意義唯一的仲裁者</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">傳統批評的假設</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">被挑戰的立場</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">認為讀懂一部作品</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">要先讀懂作者的生平與意圖</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">作者被當成意義的最終仲裁者</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">文本是織物</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">核心比喻</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">文本一詞的字源即</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">是織物，由無數既</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">有的語言與引文交織而成</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">作者只是編織，不是憑空創造</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">作者之死</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1967年文章</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">宣告作者對文本意</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">義的獨裁地位必須</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">被打破</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">標題本身即是刻意的挑釁</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">讀者之生</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">對應主張</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">意義由讀者在閱讀</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">過程中持續生成，</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">而非被動接收</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">此後成為文學理論的重要轉向</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f6f5f1" stroke="#c7c2b2"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#846b36" font-family="'Noto Serif TC',serif" font-weight="600">這篇短文，也悄悄打開了結構主義自己方法的一道裂縫</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#8d683a">如果意義不再由固定的結構或作者所決定，而是在閱讀過程中不斷生成，那麼結構主義原本追求</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#8d683a">「找出穩定深層結構」的整套方法，本身也開始變得可疑——這正是後結構主義即將接手的問題</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#846b36">德希達1966年在美國一場會議上的演講，常被視為這場轉向正式浮上檯面的起點</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>語言學奠基</h2><span class="tag">LINGUISTICS</span></div>
+  <div class="grid is">
+    <div class="card"><div class="nm">索緒爾<span class="lt">Saussure</span><span class="yr">1857–1913</span></div><p>結構語言學創始者，提出符號的能指所指理論與差異性意義觀，身後由學生整理講稿出版。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>人類學與符號學</h2><span class="tag">ANTHROPOLOGY & SEMIOTICS</span></div>
+  <div class="grid tm">
+    <div class="card"><div class="nm">李維史陀<span class="lt">Lévi-Strauss</span><span class="yr">1908–2009</span></div><p>將結構語言學方法用於分析神話與親屬制度，主張人類思維底層共享跨文化的普遍結構。</p></div>
+    <div class="card"><div class="nm">羅蘭巴特<span class="lt">Barthes</span><span class="yr">1915–1980</span></div><p>《神話學》分析日常文化現象如何把特定意識形態偽裝成自然而然的常識，晚期提出「作者已死」。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>精神分析與政治理論</h2><span class="tag">PSYCHOANALYSIS & POLITICS</span></div>
+  <div class="grid la">
+    <div class="card"><div class="nm">拉岡<span class="lt">Lacan</span><span class="yr">1901–1981</span></div><p>主張無意識的結構如同語言，重新以結構語言學框架詮釋佛洛伊德，深刻影響此後的精神分析與文化理論。</p></div>
+    <div class="card"><div class="nm">阿圖塞<span class="lt">Althusser</span><span class="yr">1918–1990</span></div><p>提出意識形態國家機器概念，主張學校、家庭、媒體等體制透過意識形態運作，使人自願接受既有的支配結構。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與〈馬克思與歷史唯物論〉篇的銜接：阿圖塞的另外半套理論</b><br>
+  阿圖塞主張早年人本主義的馬克思與晚期科學的馬克思之間存在「認識論斷裂」，這部分內容〈馬克思與歷史唯物論〉篇已有說明，這裡不再重複。本頁補上的是他另一項同樣重要、卻較少與結構主義並列討論的貢獻：意識形態國家機器理論——他區分了以武力運作的「壓制性國家機器」（軍警、法院）與以意識形態運作的「意識形態國家機器」（學校、教會、家庭、媒體），主張後者才是資本主義社會得以持續運作、讓被支配者「自願」接受支配的真正關鍵，這正是結構主義方法被搬進政治理論後最具影響力的產物之一。
+</div>
+
+<section>
+  <blockquote>
+    語言中沒有正面的項目，只有差異。
+    <cite>索緒爾《普通語言學教程》中最常被引用的論斷之一，主張語言符號的意義並非來自對事物的正面指涉，而完全來自它與系統中其他符號的差異關係；本書由學生整理其講稿於身後出版，文字經多次校訂。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  座標為依其學說主張與活躍年代所作的相對定位，非量化結論。生卒年多為推定。阿圖塞「認識論斷裂」的具體內容，請見〈馬克思與歷史唯物論〉篇。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
