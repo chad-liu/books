@@ -33,20 +33,36 @@ OUT = BOOKS_ROOT / 'treeview.html'
 
 URL_RE = re.compile(r'^(?P<label>.*?)\((?P<url>https?://[^\s()]+)\)\s*$')
 SEP_RE = re.compile(r'^[-=_]{3,}$')
+# 跟 build_html_index.py 同一套規則：整行不是實際檔名、但去掉結尾「(附註)」後是，
+# 就把整行當顯示用標籤（如「蒙田(1533~1592)」），檔名仍對應 蒙田.html。
+LOCAL_LABEL_RE = re.compile(r'^(?P<name>.+?)\((?P<note>[^()]+)\)\s*$')
 
 
-def order_names(folder):
-    """讀 order.md，回傳「本機檔名（不含 .html）」的順序清單。外部連結與分隔線略過。"""
+def order_names(folder, stems):
+    """讀 order.md，回傳（「本機檔名（不含 .html）」的順序清單, {檔名: 顯示標籤}）。
+    外部連結與分隔線略過。stems 是該資料夾實際 .html 檔名（不含副檔名）的集合，
+    用來判斷一行該整行當檔名（如「伊利亞德(荷馬)」本身就是檔名），
+    還是去掉結尾附註後才是檔名（如「蒙田(1533~1592)」對應 蒙田.html）。"""
     f = folder / 'order.md'
     if not f.exists():
-        return []
+        return [], {}
     names = []
+    labels = {}
     for line in f.read_text(encoding='utf-8').splitlines():
         s = line.strip()
         if not s or SEP_RE.match(s) or URL_RE.match(s):
             continue
-        names.append(s)
-    return names
+        if s in stems:
+            names.append(s)
+            continue
+        m = LOCAL_LABEL_RE.match(s)
+        name = m.group('name').strip() if m else None
+        if name and name in stems:
+            names.append(name)
+            labels[name] = s
+            continue
+        names.append(s)  # 找不到對應檔案，原樣留著給排序用（不會有檔案命中它）
+    return names, labels
 
 
 def collect():
@@ -58,7 +74,8 @@ def collect():
         if not files:
             continue
 
-        listed = order_names(folder)
+        stems = {p.stem for p in files}
+        listed, labels = order_names(folder, stems)
         rank = {n: i for i, n in enumerate(listed)}
         # order.md 有列的排前面並照其順序，沒列的接在後面依檔名排
         files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))
@@ -69,7 +86,7 @@ def collect():
             if not in_order:
                 orphans += 1
             items.append({
-                'n': p.name,
+                'n': labels.get(p.stem, p.stem) + '.html',
                 'p': 'html/%s/%s' % (folder.name, p.name),
                 's': p.stat().st_size,
                 'o': in_order,

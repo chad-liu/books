@@ -27,6 +27,11 @@ HTML_ROOT = BOOKS_ROOT / 'html'
 OUT = BOOKS_ROOT / 'index.html'
 
 URL_RE = re.compile(r'^(?P<label>.*?)\((?P<url>https?://[^\s()]+)\)\s*$')
+# 本機條目若整行不是實際檔名，但去掉結尾的「(附註)」後是，就把整行當顯示用標籤、
+# 附註前的部分當檔名去連結——例如 order.md 寫「蒙田(1533~1592)」，檔案仍是 蒙田.html。
+# 若整行本身就是實際檔名（如「伊利亞德(荷馬).html」這種檔名本身帶括號的情況）優先採用，
+# 不會被這條規則覆蓋，見 parse_order() 裡的比對順序。
+LOCAL_LABEL_RE = re.compile(r'^(?P<name>.+?)\((?P<note>[^()]+)\)\s*$')
 
 CSS = """*{box-sizing:border-box;margin:0;padding:0}
 body{background:#1a1a2e;color:#e8d5b7;font-family:"Noto Serif TC","Microsoft JhengHei",serif;
@@ -87,11 +92,16 @@ def parse_order(folder):
             label = m.group('label').strip() or m.group('url')
             items.append({'label': label, 'href': m.group('url'), 'external': True})
             continue
-        if line not in html_files:
-            print('[警告] %s/order.md 列了「%s」但資料夾內找不到對應的 .html 檔，已略過'
-                  % (folder.name, line))
+        if line in html_files:
+            items.append({'label': line, 'href': local_href(folder.name, line), 'external': False})
             continue
-        items.append({'label': line, 'href': local_href(folder.name, line), 'external': False})
+        m2 = LOCAL_LABEL_RE.match(line)
+        name = m2.group('name').strip() if m2 else None
+        if name and name in html_files:
+            items.append({'label': line, 'href': local_href(folder.name, name), 'external': False})
+            continue
+        print('[警告] %s/order.md 列了「%s」但資料夾內找不到對應的 .html 檔，已略過'
+              % (folder.name, line))
     return items
 
 
