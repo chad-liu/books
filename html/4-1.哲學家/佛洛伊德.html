@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>佛洛伊德知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">古柯鹼熱潮・逃離維也納・三十次手術換來的死亡</p>
+  <h1>佛洛伊德知識圖譜</h1>
+  <p class="lede">與〈佛洛伊德與精神分析〉篇的銜接：兩張心靈地圖、自我的防衛工具箱、維也納與蘇黎世的分裂，那篇已有完整說明，這裡不再重複。這裡要談的是這位精神分析創始人自己人生裡，兩段幾乎沒被提起的插曲：早年他曾滿懷熱情推廣一種當時被視為神奇解藥的藥物，差點賠上自己的專業聲譽；晚年他在納粹佔領維也納之後倉皇出逃，用畢生積蓄換來的，不過是離開的許可，而他人生最後十六年，是在下顎癌反覆開刀中度過的。</p>
+</header>
+
+<section>
+  <h2>古柯鹼熱潮——早年一場差點毀掉聲譽的誤判</h2>
+  <p class="sub">在成為精神分析創始人之前，他曾是古柯鹼最熱情的推銷者之一</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="佛洛伊德古柯鹼結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1880年代，年輕的佛洛伊德一度將古柯鹼視為能治百病的神奇藥物，親自服用並大力推廣</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段插曲後來成了他早年學術生涯裡一個明顯的誤判</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">親自服用試驗</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1884年起</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">親自服用古柯鹼並</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">詳細記錄其提神與愉</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">悅感受</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">深信這是劃時代的醫學發現</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">發表推薦論文</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1884年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">發表論文大力推薦</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">古柯鹼可用於治療</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">憂鬱與嗎啡成癮</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">推薦友人以此戒除嗎啡癮</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">友人成癮惡化</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">後續發展</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">受他建議的友人非</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">但未能戒除嗎啡，反</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">而併發古柯鹼成癮</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">這段結果讓他備受同儕批評</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">淡出相關研究</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1880年代末</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">學界逐漸正視古柯</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">鹼的成癮風險，佛洛</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">伊德低調淡出</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">此後轉向神經學與心理研究</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一段常被後世傳記略過的早年誤判</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這段插曲讓年輕的佛洛伊德一度聲譽受損，卻也未曾徹底斷送他的學術生涯——他此後轉向神</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">經學與心理疾病研究，才逐漸走出了日後讓他留名的精神分析理論</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他人生最後幾年，同樣要面對另一種物質——菸草——帶來的長期後果</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>逃離維也納——用畢生積蓄換來離開的許可</h2>
+  <p class="sub">納粹佔領奧地利後，這位精神分析創始人被迫倉皇出逃，人生最後一段路走得極其艱難</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="佛洛伊德逃離維也納結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1938年納粹德國併吞奧地利後，猶太裔的佛洛伊德一家立即面臨迫害風險</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">逃離維也納的過程，付出的代價遠不只金錢</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">1933年柏林焚書</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">納粹在柏林公開焚燒其著作，佛洛</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">伊德當時仍留在維也納</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1938年遭羈押女兒安娜</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">德國併吞奧地利後，女兒安娜一度</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">遭蓋世太保拘留約談</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">繳交鉅額「出境稅」</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">在國際友人奔走協助下，繳交巨</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">額財產作為離境代價</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">遷往倫敦度過餘生</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">1938年成功遷往倫敦，隔年即在</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">當地辭世</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">留在維也納的幾位年邁姊妹，最終未能倖免於難</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">佛洛伊德一家成功脫身，但他幾位年邁的姊妹選擇或被迫留在奧地利，此後陸續於納粹集中營</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">中遇害——這場逃亡對他而言，從來不是全身而退的僥倖，而是伴隨著無法彌補的家族損失</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他自己人生最後這幾年，還在與另一場更貼身的病痛長期搏鬥</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>古柯鹼熱潮</h2><span class="tag">COCAINE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">親自服用試驗<span class="yr">1884年起</span></div><p>親自服用古柯鹼並詳細記錄其提神與愉悅感受，深信這是劃時代的醫學發現。</p></div>
+    <div class="card"><div class="nm">發表推薦論文<span class="yr">1884年</span></div><p>發表論文大力推薦古柯鹼可用於治療憂鬱與嗎啡成癮，推薦友人以此戒除嗎啡癮。</p></div>
+    <div class="card"><div class="nm">友人成癮惡化</div><p>受他建議的友人非但未能戒除嗎啡，反而併發古柯鹼成癮，讓他備受同儕批評。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>逃離維也納</h2><span class="tag">EXILE FROM VIENNA</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">1933年柏林焚書</div><p>納粹在柏林公開焚燒其著作，佛洛伊德當時仍留在維也納。</p></div>
+    <div class="card"><div class="nm">1938年遭羈押女兒安娜</div><p>德國併吞奧地利後，女兒安娜一度遭蓋世太保拘留約談。</p></div>
+    <div class="card"><div class="nm">遷往倫敦度過餘生</div><p>繳交巨額財產作為離境代價，1938年成功遷往倫敦，隔年即在當地辭世。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>三十餘次手術，以及一場經他本人要求的死亡</b><br>
+  佛洛伊德終生嗜好雪茄，晚年因此罹患口腔與下顎癌，人生最後約十六年間接受了三十餘次大小手術，長期忍受疼痛與言語功能受損，卻始終拒絕完全戒除雪茄。1939年，癌症已擴散至無法手術的地步，佛洛伊德向長年照顧他的私人醫師舒爾明確表達了結束痛苦的意願，舒爾依約為他注射了足量的嗎啡，佛洛伊德在女兒安娜的同意下，於倫敦寓所平靜辭世。這段醫師協助善終的安排，在他過世多年後才逐漸為外界所知，如今已是討論安樂死議題時常被引用的歷史案例之一。
+</div>
+
+<section>
+  <blockquote>
+    有時候，一支雪茄就只是一支雪茄。
+    <cite>常被引用歸於佛洛伊德的一句話，用以提醒即使是精神分析理論的創始人，也不主張凡事都該做過度的象徵解讀；這句話的確切出處與原始脈絡，學界考證後認為未必真是他本人所說。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、早年古柯鹼研究的插曲，以及晚年逃離維也納與病逝的經過，精神分析理論的具體內容請見〈佛洛伊德與精神分析〉篇。醫師協助善終的細節，不同資料記載略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
