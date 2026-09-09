@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>史蒂文生知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">十八歲才識字的礦工・雨丘競賽・意外傳世的軌距</p>
+  <h1>史蒂文生知識圖譜</h1>
+  <p class="lede">與〈近現代發明家總覽〉篇的銜接：「火箭號」確立鐵路運輸可行性這件事，那篇已有簡述，這裡要談的是這位十八歲才學會讀寫的煤礦工人之子，怎麼一路做到主導全英國鐵路標準的地位。他年輕時做的第一項發明，其實跟蒸汽機車完全無關，而是一種能救命的礦坑安全燈，還因此捲入了一場跟當代最知名化學家之一的優先權之爭。</p>
+</header>
+
+<section>
+  <h2>生平——十八歲才學會讀寫的礦工之子</h2>
+  <p class="sub">白天在礦坑工作，晚上自費上夜校，只為了看懂工程書籍上的文字</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="史蒂文生生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">史蒂文生出身英格蘭東北部煤礦工人家庭，少年時期便已在礦場工作，家境清寒</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">十八歲才靠著夜校自學讀寫，只為了能看懂工程相關的書籍</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">煤礦工人之子</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1781年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身英格蘭東北部</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">煤礦工人家庭，少年</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">已在礦場工作</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">童年幾乎沒有機會受正規教育</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">夜校自學讀寫</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">十八歲起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">白天工作，晚上自</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">費上夜校學習讀寫</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">與基礎算術</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">目標明確：看懂工程技術書籍</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">礦場機械技師</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1800年代初</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">憑藉自學成果晉升</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">為礦場機械技師，</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">負責維修抽水引擎</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">在此累積深厚的實務經驗</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">發明礦工安全燈</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1815年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">獨立設計出能降低</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">礦坑瓦斯爆炸風險</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">的安全燈</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">與戴維爵士的發明幾乎同時出現</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在做出蒸汽機車之前，他先發明了一種能救命的礦燈</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">當時已享有盛名的化學家戴維，幾乎在同一時期也發表了類似的安全燈設計，兩人的支持者為此</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">爭論優先權多年——出身礦工的史蒂文生，起初並不被倫敦學界正視為認真的競爭對手</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但真正讓他名留青史的，是十幾年後一場公開競賽</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>雨丘競賽——「火箭號」如何定義了此後一百五十年的蒸汽機車</h2>
+  <p class="sub">這場公開競賽的優勝設計，成了往後每一輛蒸汽機車都依循的基本範本</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="史蒂文生雨丘競賽結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1829年，利物浦與曼徹斯特鐵路公司舉辦公開競賽，徵選最適合新鐵路的機車設計</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">史蒂文生與兒子羅伯特合力打造的「火箭號」，最終以壓倒性表現勝出</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">1829年雨丘公開競賽</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">鐵路公司舉辦公開競賽，徵選最</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">適合新建鐵路的機車設計方案</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">與兒子羅伯特合力打造</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">與同樣是工程師的兒子羅伯特合</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">力設計「火箭號」參賽</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">多管鍋爐與噴氣裝置</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">結合多管鍋爐與廢氣噴射助燃裝</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">置，大幅提升產汽速度與馬力</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">壓倒性勝出</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">「火箭號」速度與可靠度遠勝其</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">他參賽機車，一舉奪得優勝</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這場競賽的優勝設計，定義了往後一百五十年蒸汽機車的基本樣貌</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">「火箭號」結合的多項設計，此後成為蒸汽機車的標準範本，一路沿用到二十世紀中葉蒸汽機車</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">逐漸被淘汰為止——很少有單一一次工程競賽的結果，影響了此後這麼長的一段技術史</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他當年隨手選定的一個數字，影響的範圍甚至比機車設計本身還要廣</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">煤礦工人之子<span class="yr">1781年生</span></div><p>出身英格蘭東北部煤礦工人家庭，少年已在礦場工作，童年幾乎沒有機會受正規教育。</p></div>
+    <div class="card"><div class="nm">夜校自學讀寫<span class="yr">十八歲起</span></div><p>白天工作，晚上自費上夜校學習讀寫與基礎算術，目標明確：看懂工程技術書籍。</p></div>
+    <div class="card"><div class="nm">發明礦工安全燈<span class="yr">1815年</span></div><p>獨立設計出能降低礦坑瓦斯爆炸風險的安全燈，與戴維爵士的發明幾乎同時出現。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>雨丘競賽</h2><span class="tag">RAINHILL TRIALS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">1829年雨丘公開競賽</div><p>鐵路公司舉辦公開競賽，徵選最適合新建鐵路的機車設計方案。</p></div>
+    <div class="card"><div class="nm">與兒子羅伯特合力打造</div><p>與同樣是工程師的兒子羅伯特合力設計「火箭號」參賽。</p></div>
+    <div class="card"><div class="nm">多管鍋爐與噴氣裝置</div><p>結合多管鍋爐與廢氣噴射助燃裝置，大幅提升產汽速度與馬力。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>一個隨手選定的軌距，成了全世界的標準</b><br>
+  史蒂文生早年參與設計的礦場軌道，軌距沿用了他家鄉東北部煤礦區既有貨運車輛慣用的四英尺八點五英寸，此後他主導設計的多條鐵路也延續這個數字。隨著他參與的鐵路工程遍布英國、影響力擴及海外，這個原本只是地區慣例的軌距，最終成為全世界多數鐵路採用的「標準軌」。這段歷史，也衍生出一則廣為流傳、卻普遍被史學界視為過度簡化的都市傳說——相傳這個數字最終能追溯至古羅馬戰車兩匹馬並行的寬度，這段以訛傳訛的說法雖然生動，卻缺乏堅實的史料佐證。史蒂文生本人晚年財富與聲望兼具，兒子羅伯特後來也成為同樣傑出的鐵路工程師，父子二人共同參與的鐵路工程遍及英國各地。
+</div>
+
+<section>
+  <blockquote>
+    我這輩子最大的樂趣，是看著一件原本行不通的事，變成大家都覺得理所當然的事。
+    <cite>轉譯自史蒂文生晚年談及鐵路工程時常被引用的表述，反映他從礦工之子一路走到主導全國鐵路標準地位的人生際遇。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、礦工安全燈與雨丘競賽的經過，以及標準軌距的由來，具體機械工程細節請另行查證專業科技史文獻。軌距源自古羅馬戰車寬度的說法，史學界普遍認為證據不足，本頁採審慎保留的敘述。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
