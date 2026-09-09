@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>川端康成知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">十六歲前送走所有至親的「參加葬禮的名人」・諾貝爾獎演說裡的美麗日本・摯友辭世後兩年隨之而去</p>
+  <h1>川端康成知識圖譜</h1>
+  <p class="lede">與〈日本文學家總覽〉篇的銜接：他以物哀美學寫出《雪國》《古都》、1968年成為首位獲頒諾貝爾文學獎的日本作家，以及他提攜三島由紀夫的過程，那篇已有簡述，這裡不再重複。這裡要談的是形塑他一生美學的起點——他在十六歲之前，父母、祖父母與姊姊便已相繼過世，他因此被同輩戲稱為「參加葬禮的名人」，這份徹底的孤獨，直接餵養了他日後作品裡反覆出現的無常與虛空感。也要談他那場舉世矚目的諾貝爾獎演說，以及三島由紀夫辭世對他造成的最終打擊。</p>
+</header>
+
+<section>
+  <h2>「參加葬禮的名人」——十六歲前送走所有至親</h2>
+  <p class="sub">童年接連經歷至親離世，這份徹底的孤獨形塑了他一生的創作基調</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="川端康成童年喪親結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">川端康成出生於大阪，父母在他兩歲前相繼因肺結核過世，此後接連送走祖母、姊姊與祖父</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">十六歲時，他已是家族裡唯一存活的成員，這份孤獨貫穿了他此後的整個創作生涯</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">兩歲前父母雙亡</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1899年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">父母皆因肺結核在</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">他兩歲前相繼過世，</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">由祖父母撫養</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">對父母幾乎沒有任何記憶</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">祖母與姊姊相繼過世</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">童年至少年時期</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">七歲喪祖母，姊姊</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">也在十歲時病逝，</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">兩人自幼分開撫養</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">他與姊姊此生僅有極少數幾次見面機會</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">十六歲送走祖父</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1914年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">相依為命的祖父病</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">逝，他成為家族裡</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">最後存活的一人</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">此後被同輩戲稱為「參加葬禮的名人」</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">早年作品〈參加葬禮的名人〉</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">學生時期</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">以這段童年經歷寫</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">成早期隨筆作品，</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">直面自身的孤獨</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">物哀美學可視為這份孤獨的昇華</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">失去所有至親的孩子，日後成為描寫「無常」最深刻的作家之一</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">川端後來多次在訪談與隨筆裡提及，這段接連失去至親的經歷，讓他自幼便對死亡與消逝有著超乎</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">常人的敏感，這份敏感日後轉化為《雪國》《古都》裡那種瞬間即永恆、美與消逝並存的獨特筆調</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">這份美學最終在1968年，把他推上了世界文壇的最高舞台</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>諾貝爾獎演說與生命最後的兩年</h2>
+  <p class="sub">摯友三島由紀夫的辭世，成為他晚年再也無法真正走出的陰影</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="川端康成諾貝爾獎與晚年結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1968年，川端成為首位獲頒諾貝爾文學獎的日本作家，發表了一場舉世矚目的得獎演說</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但這份榮耀之後僅僅兩年，一場震驚全球的事件，成為他晚年再也無法走出的陰影</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">「美麗日本的我」演說</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">得獎演說以〈美しい日本の私〉為</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">題，向世界闡述日本美學傳統</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">三島由紀夫切腹自盡</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1970年，川端多年提攜的摯友</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">三島於自衛隊基地切腹自盡</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">親自出席辨認遺體</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">川端受邀親自到場協助處理後</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">事，這場衝擊深刻影響了他</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1972年辭世</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">三島辭世約兩年後，川端於工作</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">室中含煤氣管辭世，未留遺書</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">因未留遺書，他的死因至今仍有一定爭議</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">由於沒有遺書，川端的死因究竟是自殺還是意外，後世說法不一；但多數傳記與文學史研究者傾向</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">認為是自殺，並與三島之死、晚年健康惡化及長期失眠等因素合併視為壓垮他的多重原因之一</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他一手提攜的三島由紀夫，本身的人生也走向了同樣戲劇性、卻方向截然不同的結局</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>童年喪親</h2><span class="tag">CHILDHOOD LOSS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">兩歲前父母雙亡<span class="yr">1899年生</span></div><p>父母皆因肺結核在他兩歲前相繼過世，由祖父母撫養，對父母幾乎沒有任何記憶。</p></div>
+    <div class="card"><div class="nm">祖母與姊姊相繼過世</div><p>七歲喪祖母，姊姊也在十歲時病逝，兩人自幼分開撫養，此生僅有極少數幾次見面機會。</p></div>
+    <div class="card"><div class="nm">十六歲送走祖父<span class="yr">1914年</span></div><p>相依為命的祖父病逝，他成為家族裡最後存活的一人，此後被同輩戲稱為「參加葬禮的名人」。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>諾貝爾獎與晚年</h2><span class="tag">NOBEL & FINAL YEARS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">「美麗日本的我」演說<span class="yr">1968年</span></div><p>得獎演說以〈美しい日本の私〉為題，向世界闡述日本美學傳統。</p></div>
+    <div class="card"><div class="nm">三島由紀夫切腹自盡<span class="yr">1970年</span></div><p>川端多年提攜的摯友三島於自衛隊基地切腹自盡。</p></div>
+    <div class="card"><div class="nm">1972年辭世</div><p>三島辭世約兩年後，川端於工作室中含煤氣管辭世，未留遺書。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>「雪國」開篇一句，日本文學最著名的開場白之一</b><br>
+  《雪國》開篇「穿過縣界長長的隧道，便是雪國。夜空下一片白茫茫」，是日本近代文學史上被引用次數最多的開場白之一，短短兩句便確立了整部小說的物哀基調與空間轉換的敘事手法。這部小說前後歷經十餘年的斷續寫作與多次修訂才最終定稿，是川端物哀美學發展最成熟的代表作。
+</div>
+
+<section>
+  <blockquote>
+    美しい日本の私。
+    <cite>川端康成諾貝爾文學獎得獎演說的題目，字面意為「美麗日本的我」，內容援引古典和歌與禪宗思想向世界闡述日本傳統美學，是他文學生涯裡最重要的公開發言之一。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦川端童年喪親的經歷與晚年三島之死帶來的衝擊，《雪國》等作品的具體情節與他提攜三島的過程請見〈日本文學家總覽〉篇。他本人的死因因未留遺書而存在一定爭議，本頁採學界較多數採信的說法陳述，不做武斷結論。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>松尾芭蕉知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">失去年輕主君後轉向詩與禪的武家次子・抱著客死他鄉覺悟的徒步旅行・「不易流行」的創作哲學</p>
+  <h1>松尾芭蕉知識圖譜</h1>
+  <p class="lede">與〈日本文學家總覽〉篇的銜接：《奧之細道》把紀行文學與俳句提煉成禪意藝術，那篇已有簡述，這裡不再重複。這裡要談他為什麼會走上這條路——年輕時服侍的主君早逝，這場喪失讓他一路轉向詩歌與禪修；也要談他四十五歲那年展開的徒步旅程，其實是抱著隨時可能死在路上的覺悟出發的，而不是一趟悠閒的采風之旅。</p>
+</header>
+
+<section>
+  <h2>從武家次子到俳諧宗匠</h2>
+  <p class="sub">年輕主君的早逝，是他一生創作軌跡真正的起點</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="松尾芭蕉生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">芭蕉出身伊賀國一個低階武士家庭，年少時以侍童身分服侍當地年輕領主，兩人一同鑽研俳諧</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段主從情誼因主君早逝而戛然而止，卻成為他日後轉向詩歌與禪修的起點</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">出身低階武士家庭</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1644年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">生於伊賀國，家境</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">並不富裕，少年時</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">出仕當地武家</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">以侍童身分服侍年紀相仿的年輕領主</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">主君早逝的打擊</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1666年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">一同鑽研俳諧的年</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">輕主君病逝，芭蕉</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">辭去武家職務</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">此後離開故鄉，全心投入俳諧創作之路</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">遷居江戶芭蕉庵</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1680年前後</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">於江戶深川一帶結</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">庵而居，門前種有</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">芭蕉樹，因而得名</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">同時期開始鑽研禪修，生活趨於簡樸</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">確立俳諧宗匠地位</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1680年代</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">門下弟子漸眾，逐</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">步把俳諧從逗趣文</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">字遊戲提升為藝術</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">著名的古池蛙鳴一句，正寫於這段時期</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「古池や蛙飛び込む水の音」——一句十七字，寫盡寂靜與瞬間的聲響</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">這句被公認為芭蕉俳句美學的代表作：古老池塘的長久靜謐，被青蛙躍入水中的一聲輕響打破，寂</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">靜與聲響的對照，正是他後來提出「不易流行」理論的雛形——恆常不變之物，與剎那流轉之物並存</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">確立這套美學之後，他做出了一生中最重要、也最危險的決定</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>抱著客死覺悟出發的徒步旅行</h2>
+  <p class="sub">《奧之細道》的旅程，在當時是一趟隨時可能喪命的冒險，不是悠閒的采風之旅</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="松尾芭蕉奧之細道結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1689年，四十五歲的芭蕉出發前往日本東北與北陸地區，全程徒步約兩千四百公里，歷時近五個月</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">在交通條件與醫療都極為有限的年代，這趟旅程的風險遠超後世想像</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">出發前立下遺言</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">據傳出發前已交代身後事，</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">顯示他清楚意識到此行的高風險</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">沿途以俳句記錄見聞</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">與弟子河合曾良同行，將沿途</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">景致與心境化為一句句短詩</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">融合紀行文與俳句的體裁</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">回程後花費數年整理成《奧</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">之細道》，開創俳文新體裁</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1694年病逝於旅途中</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">五年後再度啟程遠遊，最終</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">病逝於大阪，實現了旅人的一生</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「旅」本身就是他晚年美學的核心，而不只是取材的手段</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">芭蕉晚年多次遠行，效法早年遊歷各地、居無定所的行腳僧與歌人前輩，把「漂泊」本身視為一種修</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">行方式——這與同時代講究安穩定居的一般武士生活形成鮮明對比，也讓他的作品帶有濃厚的無常意識</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">兩百年後，另一位女性作家在完全不同的處境裡，也留下了同樣短暫卻深刻的文學生命</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>從武家到俳諧宗匠</h2><span class="tag">EARLY LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">出身低階武士家庭<span class="yr">1644年生</span></div><p>生於伊賀國，家境並不富裕，少年時出仕當地武家，以侍童身分服侍年紀相仿的年輕領主。</p></div>
+    <div class="card"><div class="nm">主君早逝的打擊<span class="yr">1666年</span></div><p>一同鑽研俳諧的年輕主君病逝，芭蕉辭去武家職務，此後離開故鄉，全心投入俳諧創作之路。</p></div>
+    <div class="card"><div class="nm">遷居江戶芭蕉庵<span class="yr">1680年前後</span></div><p>於江戶深川一帶結庵而居，門前種有芭蕉樹，因而得名，同時期開始鑽研禪修。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>奧之細道</h2><span class="tag">THE JOURNEY</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">出發前立下遺言</div><p>據傳出發前已交代身後事，顯示他清楚意識到此行的高風險。</p></div>
+    <div class="card"><div class="nm">沿途以俳句記錄見聞</div><p>與弟子河合曾良同行，將沿途景致與心境化為一句句短詩。</p></div>
+    <div class="card"><div class="nm">1694年病逝於旅途中</div><p>五年後再度啟程遠遊，最終病逝於大阪，實現了旅人的一生。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>「不易流行」——恆常與流轉並存的美學</b><br>
+  芭蕉晚年提出的核心創作理念「不易流行」，主張俳句應同時包含「不易」（跨越時代、恆久不變的本質）與「流行」（隨時代與心境不斷變化的表現形式）兩個層面，缺一不可——只求恆常則流於陳腐，只求新奇則失去根基。這套理論深刻影響了此後三百年日本俳句與美學思想的發展，也常被拿來與「侘寂」（わび・さび，樸拙與寂靜之美）並提，視為理解日本傳統美感的重要入口。
+</div>
+
+<section>
+  <blockquote>
+    古池や蛙飛び込む水の音
+    <cite>芭蕉最廣為人知的俳句，字面意為「古老池塘，青蛙躍入水中的聲響」，被公認為他俳句美學的代表作；不同譯者對這句的中譯版本略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦芭蕉的早年經歷與《奧之細道》旅程的真實風險，俳句的具體技法與美學理論請另行查證專業文獻。旅程細節多依他本人與弟子曾良的紀行文字記載，部分描述帶有文學修飾，未必完全等同史實。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

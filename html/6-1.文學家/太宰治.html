@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>太宰治知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">出身青森大地主之家的富家子弟・五度自殺才真正結束的漫長掙扎・至今每年舉行的「櫻桃忌」</p>
+  <h1>太宰治知識圖譜</h1>
+  <p class="lede">與〈日本文學家總覽〉篇的銜接：他是「無賴派」代表作家、《人間失格》寫盡個人頹廢與時代崩壞、最終投水身亡，那篇已有簡述，這裡不再重複。這裡要談一個常被忽略的反差——寫盡頹廢與底層生活的太宰治，其實出身青森縣數一數二的大地主家庭，家境優渥到令人意外。也要談他反覆多次的自殺嘗試，這不是一次性的悲劇，而是一場持續近二十年、多達五次的漫長掙扎，直到最後一次才真正結束。</p>
+</header>
+
+<section>
+  <h2>出身大地主家庭的富家子弟</h2>
+  <p class="sub">寫盡底層頹廢生活的作家，其實出身青森縣數一數二的富裕家族</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="太宰治家世背景結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">太宰治本名津島修治，出生於青森縣津輕地方一個擁有大片土地的地主兼政商世家</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">家境優渥的背景，與他筆下反覆出現的貧困與頹廢形成鮮明反差</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">出身大地主世家</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1909年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">本名津島修治，家</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">族在青森縣擁有大</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">片土地與政商影響力</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">父親曾任眾議院議員與貴族院議員</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">對出身的愧疚感</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">青年時期</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">大學時期一度接觸</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">左翼運動，對自身</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">地主家庭背景感到愧疚</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">後因家族壓力與現實考量退出運動</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">首次自殺未遂</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1929年前後</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">因罪惡感與情感問</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">題首度嘗試自殺，</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">此後多年反覆發生</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">此後陸續有數次自殺未遂的紀錄</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">戰後成為文壇焦點</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1940年代後期</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">《斜陽》等作品描</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">寫沒落貴族處境，</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">引發強烈迴響</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">「斜陽族」成為描述沒落階層的通用語</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">正因出身優渥卻對自身階級抱持愧疚，他的頹廢書寫才更顯得複雜</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">太宰筆下的頹廢與自我厭棄，並非單純源於物質匱乏，而更多是一種對自身特權處境的道德愧疚與</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">格格不入感——這種「身在福中卻無法安於現狀」的矛盾心理，貫穿了他大部分的重要作品</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而這份無法安頓的自我，最終演變成一場延續近二十年、反覆發生的自我毀滅</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>五度未遂才真正結束的自殺掙扎</h2>
+  <p class="sub">最終的投水身亡，其實是一場延續近二十年、反覆發生的自我毀滅過程的終點</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="太宰治自殺歷程結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從1929年首次嘗試到1948年身亡，太宰治一生至少歷經五次自殺行動，橫跨近二十年時間</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段漫長的自我毀滅過程，比一般認知裡的單一自殺事件複雜得多</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">首次與多次未遂</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1929至1930年代，先後與不同女</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">性嘗試殉情，多次未能如願</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">藥物成癮的低潮期</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1930年代中期一度因藥物依賴</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">住院治療，創作也一度停滯</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">戰後短暫的創作高峰</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">1940年代後期陸續完成《斜</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">陽》《人間失格》等代表作</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1948年投水身亡</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">與情人山崎富榮於玉川上水投</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">水，遺體於六天後的生日尋獲</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">遺體在他生日當天被尋獲，這個巧合此後成為紀念他的固定日期</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">太宰治與山崎富榮於1948年6月投水自盡，遺體六天後在他三十九歲生日當天被尋獲——日本文壇</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">此後將這一天訂為「櫻桃忌」，取自他生前作品〈櫻桃〉之名，至今每年仍有讀者與研究者前往悼念</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而在他辭世前一年出版的《人間失格》，正是他這場漫長自我毀滅的最終文學總結</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>家世背景</h2><span class="tag">FAMILY BACKGROUND</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">出身大地主世家<span class="yr">1909年生</span></div><p>本名津島修治，家族在青森縣擁有大片土地與政商影響力，父親曾任眾議院議員與貴族院議員。</p></div>
+    <div class="card"><div class="nm">對出身的愧疚感</div><p>大學時期一度接觸左翼運動，對自身地主家庭背景感到愧疚，後因家族壓力與現實考量退出運動。</p></div>
+    <div class="card"><div class="nm">戰後成為文壇焦點</div><p>《斜陽》等作品描寫沒落貴族處境，引發強烈迴響，「斜陽族」一詞從此成為描述沒落上流階層的通用語。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>五度自殺掙扎</h2><span class="tag">STRUGGLE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">首次與多次未遂<span class="yr">1929–1930年代</span></div><p>先後與不同女性嘗試殉情，多次未能如願。</p></div>
+    <div class="card"><div class="nm">藥物成癮的低潮期</div><p>1930年代中期一度因藥物依賴住院治療，創作也一度停滯。</p></div>
+    <div class="card"><div class="nm">1948年投水身亡</div><p>與情人山崎富榮於玉川上水投水，遺體於六天後的生日尋獲。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>「無賴派」——一群刻意與主流價值疏離的作家</b><br>
+  太宰治與坂口安吾、織田作之助等人並稱戰後「無賴派」（又稱新戲作派）代表作家，共同特徵是刻意以頹廢、自嘲、反抗既有道德秩序的姿態進行創作，回應戰後日本價值體系崩解的時代氛圍。這個文學流派的名稱本身就帶有自嘲意味，反映當時一批知識分子在戰敗後對「該如何活下去」這個問題找不到答案的集體焦慮。
+</div>
+
+<section>
+  <blockquote>
+    生まれて、すみません。
+    <cite>常被誤傳為《人間失格》原文的名句，字面意為「生而為人，我很抱歉」，實際上出自太宰另一首詩作，但因與小說主題高度契合，長期被讀者與媒體誤植為小說內文；這個誤傳本身也成為理解太宰治文學形象的一部分。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦太宰治的家世背景與反覆多次的自殺歷程，《人間失格》《斜陽》的具體情節請另行查證專業文獻。自殺未遂的確切次數與細節，不同傳記記載略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

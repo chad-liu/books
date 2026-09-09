@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三島由紀夫知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">被祖母隔離撫養的體弱童年・成年後刻意鍛鍊出的健美體格・精心策劃到最後一刻的自決儀式</p>
+  <h1>三島由紀夫知識圖譜</h1>
+  <p class="lede">與〈日本文學家總覽〉篇的銜接：《金閣寺》享譽國際、1970年於自衛隊基地切腹自盡震驚全球，以及川端康成對他的提攜，那篇已有簡述，這裡不再重複。這裡要談的是他驚人的自我改造——童年體弱多病、被祖母近乎隔離地撫養，成年後他卻透過刻苦的健身鍛鍊出一身健美體格，這種對身體的執念貫穿了他的整個創作與人生。也要談那場舉世震驚的最終行動，其實是一場籌劃已久、細節精心安排到最後一刻的儀式。</p>
+</header>
+
+<section>
+  <h2>從體弱童年到健美體格——一場刻意的自我改造</h2>
+  <p class="sub">祖母近乎隔離的過度保護，造就了他體弱多病的童年，也埋下日後對身體改造的執念</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三島由紀夫身體改造結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">三島由紀夫本名平岡公威，出生後不久便被祖母帶離父母身邊撫養，度過近乎隔離的體弱童年</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段經歷與他成年後刻意鍛鍊出的健美體格，形成戲劇性的對比</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">被祖母隔離撫養</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1925年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出生後不久即被祖</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">母帶離父母身邊，</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">單獨撫養至十二歲</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">幾乎不被允許在陽光下自由玩耍</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">體弱多病的童年</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">童年時期</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">長期體弱，多次因</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">健康問題被迫缺席</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">學校體育活動</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">徵兵體檢時因體格被判定不合格</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">開始密集健身鍛鍊</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1950年代中期</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">已成名的三島開始</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">系統性重量訓練，</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">堅持長達十餘年</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">練出健美體格，多次拍攝裸身寫真</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">組織私人準軍事團體</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1968年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">創立「楯之會」，</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">招募年輕成員接受</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">軍事化訓練</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這個組織後來成為他最終行動的核心班底</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">對身體的改造，某種程度上也是對童年脆弱自我的一種反抗</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">三島本人在隨筆《太陽與鐵》裡直言，健身與肉體鍛鍊是他有意識地對抗童年體弱記憶的方式，肉</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">體的強健成為他晚年美學與行動哲學的核心——這條從虛弱到強健的自我改造之路，最終走向了一個</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">舉世震驚的終點：一場籌劃已久、細節精心安排到最後一刻的自決儀式</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>一場籌劃已久的最終儀式</h2>
+  <p class="sub">1970年的自衛隊基地事件，不是一時衝動，而是長期準備、細節精心安排的行動</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="三島由紀夫最終儀式結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1970年11月25日，三島率四名楯之會成員闖入自衛隊東部總監部，發表演說後切腹自盡</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">整起事件的每個環節，事後證實都經過長時間的精心籌劃，而非臨時起意</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">事前完成最後一部小說</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">行動當天上午才交出四部曲小</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">說《豐饒之海》最終卷的原稿</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">挾持總監要求集合部隊</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">率成員挾持東部總監，要求</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">集合官兵，於陽台發表演說</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">演說遭士兵訕笑打斷</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">呼籲自衛隊發動政變修憲的</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">演說，未獲台下官兵回應</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">切腹儀式過程一波三折</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">依古式切腹禮儀執行，但擔任</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">介錯的成員多次未能一刀完成</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這場行動的政治訴求幾乎沒有實現，卻在文化史上留下深刻烙印</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">三島呼籲自衛隊發動政變、恢復天皇實權的訴求，在演說當下就已明顯得不到現場官兵的回應與支</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">持——這場行動的政治目標幾乎完全落空，卻因其戲劇化的執行方式，成為戰後日本文化史上最具</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">震撼力的事件之一，也讓一手提攜他的川端康成陷入深沉的悲痛</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>身體改造</h2><span class="tag">BODY & SELF</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">被祖母隔離撫養<span class="yr">1925年生</span></div><p>出生後不久即被祖母帶離父母身邊，單獨撫養至十二歲，幾乎不被允許在陽光下自由玩耍。</p></div>
+    <div class="card"><div class="nm">開始密集健身鍛鍊</div><p>已成名的三島開始系統性重量訓練，堅持長達十餘年，練出健美體格。</p></div>
+    <div class="card"><div class="nm">組織私人準軍事團體<span class="yr">1968年</span></div><p>創立「楯之會」，招募年輕成員接受軍事化訓練，此後成為最終行動的核心班底。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>最終儀式</h2><span class="tag">FINAL ACT</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">事前完成最後一部小說</div><p>行動當天上午才交出四部曲小說《豐饒之海》最終卷的原稿。</p></div>
+    <div class="card"><div class="nm">挾持總監要求集合部隊</div><p>率成員挾持東部總監，要求集合官兵，於陽台發表演說。</p></div>
+    <div class="card"><div class="nm">演說遭士兵訕笑打斷</div><p>呼籲自衛隊發動政變修憲的演說，未獲台下官兵回應。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>三度與諾貝爾文學獎擦身而過</b><br>
+  三島由紀夫生前曾多次被視為諾貝爾文學獎的有力候選人，1968年獎項最終頒給了他的摯友兼提攜者川端康成，據傳這個結果對三島造成了不小的心理衝擊。此後不到兩年，他便策劃了那場震驚全球的最終行動——這場文學榮譽的擦身而過，是否直接促成他最終的選擇，後世研究者看法不一，但普遍認為是壓在他心頭的因素之一。
+</div>
+
+<section>
+  <blockquote>
+    人生というものは、一冊の書物のようなものである。
+    <cite>三島由紀夫隨筆裡談論人生與敘事關係的一句意譯，字面意為「人生就像一本書」，反映他一貫將自身生命視為某種可以精心編排的敘事作品的傾向；原文脈絡與確切措辭因引用來源不同而略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦三島由紀夫的身體改造歷程與最終行動的籌劃細節，《金閣寺》等作品的具體情節與川端康成對他的提攜請見〈日本文學家總覽〉篇。切腹過程的具體細節，不同目擊者陳述略有出入，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

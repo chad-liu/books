@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>森鷗外知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">軍醫總監與小說家的雙重身分・堅持錯誤醫學理論釀成的腳氣病悲劇・冷酷收尾的德國戀情</p>
+  <h1>森鷗外知識圖譜</h1>
+  <p class="lede">與〈日本文學家總覽〉篇的銜接：他與夏目漱石並列近代日本文學兩大奠基者，那篇已有簡述，這裡不再重複。這裡要談他作為軍醫總監真實掌握的權力，以及他如何用這份權力，在腳氣病病因的科學爭論裡堅持錯誤立場，間接導致數以萬計的士兵死亡——這是他留給後世最沉重、也最少被文學史提及的一面。也要談他早年在德國的一段戀情，以及他回國後如何冷酷地為這段關係畫下句點。</p>
+</header>
+
+<section>
+  <h2>軍醫總監的另一面——腳氣病論爭的重大失誤</h2>
+  <p class="sub">身為陸軍醫療體系最高層級的官員，他在一場攸關士兵性命的科學爭論裡選擇了錯誤的一方</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="森鷗外腳氣病爭論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">森鷗外本名森林太郎，公費赴德留學研習軍醫學與衛生學，回國後迅速晉升陸軍醫療體系高層</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">腳氣病是當時日軍非戰鬥減員的主因之一，病因究竟為何在醫學界爭論不休</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">公費赴德留學</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1884年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">以陸軍軍醫身分赴</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">德留學四年，深受</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">當地細菌學影響</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">堅信腳氣病是未知病原體造成的傳染病</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">否定海軍的營養假說</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1880年代末</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">海軍軍醫高木兼寬</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">已用實驗證實改善</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">飲食可預防腳氣病</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">森鷗外仍堅持細菌病原說，拒絕採納</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">日俄戰爭爆發</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1904～1905年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">陸軍持續供應精白</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">米，未如海軍改良</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">士兵飲食內容</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">陸軍腳氣病患者與死亡人數遠高於海軍</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">真相延後多年才確立</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1910年代後</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">維生素理論逐漸成</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">熟，證實腳氣病源</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">於維生素B1缺乏</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">他堅持的細菌病原說最終被證明是錯誤的</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">日俄戰爭期間，陸軍因腳氣病導致的死亡人數估計達數萬人</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">相較之下，同一時期改良飲食的海軍腳氣病患者比例大幅降低——這場悲劇的責任該如何在整個陸</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">軍醫療體系與森鷗外個人之間分配，後世史家仍有不同看法，但他身居要職、堅持錯誤立場是事實</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而在文學創作裡，他也曾以近乎自傳的筆法，處理過另一段自己選擇冷酷收尾的往事</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>《舞姬》背後的德國戀情</h2>
+  <p class="sub">他早年在柏林的一段感情，多年後化為代表作，而現實中的結局遠比小說冷酷</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="森鷗外舞姬戀情結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">留德期間，森鷗外與一名德國女子相戀，這段感情最終沒有隨他一起回到日本</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">多年後，他把這段經歷改寫成小說《舞姬》，成為近代日本文學的重要早期作品</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">柏林留學期間的戀情</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1888年返國前夕，一名德國女子</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">追隨他一路抵達日本橫濱港</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">家族介入迫使她返國</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">森家為避免影響仕途與家族名</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">聲，安排這名女子搭船返回德國</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">1890年發表《舞姬》</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">以近乎自傳的筆法，改寫這段</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">戀情，成為早期近代文學代表作</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">小說結局與現實有別</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">小說中主角深陷愧疚與掙扎，現實</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">裡他很快依家族安排另娶他人</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">文學裡的懺悔，未必等同現實裡的悔改</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">《舞姬》以第一人稱寫下主角對拋棄戀人的深刻愧疚，感動了無數讀者，但森鷗外本人回國後很快</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">依家族安排完婚，並繼續在軍醫體系裡步步高升——文學的懺悔與現實的選擇，兩者之間存在明顯落差</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">與他同列近代文學奠基者的夏目漱石，選擇了一條截然不同、卻同樣充滿內在掙扎的道路</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>腳氣病論爭</h2><span class="tag">MEDICAL CONTROVERSY</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">公費赴德留學<span class="yr">1884年</span></div><p>以陸軍軍醫身分赴德留學四年，深受當地細菌學影響，堅信腳氣病是某種未知病原體造成的傳染病。</p></div>
+    <div class="card"><div class="nm">否定海軍的營養假說</div><p>海軍軍醫高木兼寬已用實驗證實改善飲食可預防腳氣病，森鷗外仍堅持細菌病原說，拒絕採納。</p></div>
+    <div class="card"><div class="nm">真相延後多年才確立</div><p>維生素理論成熟後，證實腳氣病源於維生素B1缺乏，森鷗外堅持的細菌病原說最終被證明是錯誤的。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>《舞姬》的戀情</h2><span class="tag">THE DANCING GIRL</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">柏林留學期間的戀情<span class="yr">1888年</span></div><p>返國前夕，一名德國女子追隨他一路抵達日本橫濱港。</p></div>
+    <div class="card"><div class="nm">家族介入迫使她返國</div><p>森家為避免影響仕途與家族名聲，安排這名女子搭船返回德國。</p></div>
+    <div class="card"><div class="nm">1890年發表《舞姬》</div><p>以近乎自傳的筆法，改寫這段戀情，成為早期近代文學代表作。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>「森林太郎」與「森鷗外」的雙重身分</b><br>
+  「森鷗外」是筆名，本名森林太郎；他終其一生同時維持軍醫官員與小說家兩種身分，白天處理陸軍醫療體系的公務，業餘時間則翻譯歌德、易卜生等歐洲文學作品並創作小說。這種雙重身分在當時的日本知識界並不罕見，但森鷗外身居軍醫體系要職、握有實質影響士兵生死的權力，使他的雙重身分比多數同代作家承擔了更沉重的現實責任。
+</div>
+
+<section>
+  <blockquote>
+    我不過是一介凡夫俗子，卻背負著超乎自身能力的重擔。
+    <cite>《舞姬》主角內心獨白的意譯，常被引用來說明森鷗外筆下人物面對現實與良知拉扯時的掙扎；原文為文言體日語，不同譯本的中譯措辭差異較大。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦森鷗外的軍醫身分與腳氣病論爭裡的責任，以及《舞姬》背後的真實戀情，翻譯與小說創作的具體成就請另行查證專業文獻。腳氣病論爭的死亡人數估計不同史料略有出入，本頁採較審慎的敘述方式。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
