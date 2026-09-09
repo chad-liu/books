@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>貝爾知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">聾人教育家庭出身・電話專利搶先兩小時的爭議・對聾人手語教育的複雜立場</p>
+  <h1>貝爾知識圖譜</h1>
+  <p class="lede">與〈近現代發明家總覽〉篇的銜接：電話讓聲音成為可傳輸訊號這項發明本身，那篇已有簡述，這裡不再重複。貝爾投入聲音傳輸研究的起點，其實來自他整個家族三代投身聾人教育的背景——而這個背景，也讓他晚年在聾人教育政策上留下了一段至今仍具爭議的立場。這裡也要談電話專利史上最常被引用的一個懸案：他與另一位發明人葛雷，究竟誰先申請到了專利。</p>
+</header>
+
+<section>
+  <h2>從聾人教育家庭到電話發明</h2>
+  <p class="sub">祖父、父親都是語音矯正與聾人教學的先驅，貝爾自己也曾任教於聾啞學校</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="貝爾生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">貝爾出身蘇格蘭一個三代投身語音教學的家族，母親與妻子都是聾人，這深深影響了他的研究方向</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他對聲音物理性質的興趣，最初正是為了幫助聾人「看見」聲音</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">語音教學世家出身</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1847年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">祖父、父親皆從事語</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">音矯正教學，母親自</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">身也是聾人</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">父親發明的可視語言深深影響他</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">移居美國任教聾校</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1870年代初</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">移居美國，於波士頓</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">聾啞學校任教，並私</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">人指導聾人學生</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">日後的妻子梅寶正是他當年的學生之一</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">業餘研究聲音傳輸</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1870年代中</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">教學之餘持續鑽研如</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">何以電流傳送聲音的</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">波形，而非僅是通斷</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">獲岳父資助購置研究器材與聘請助手</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">申請電話專利</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1876年2月14日</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">向美國專利局提交電</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">話裝置專利申請</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">同日發明人葛雷也提交類似申請</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一天遞交兩份高度相似的申請，這場優先權之爭至今仍有歷史學家持續考證</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">葛雷提交的是「專利警示書」（caveat，宣告構想但保留完整細節的初步文件），貝爾提交的是正式</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">專利申請；究竟誰的送件時間在前、貝爾的申請文件是否參考了葛雷的警示書內容，各方說法不一</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">貝爾最終取得專利，並在三天後成功完成史上第一通電話通話</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>晚年——聾人教育政策上的爭議立場</h2>
+  <p class="sub">出身聾人教育家庭的貝爾，晚年卻在手語教育議題上採取了與聾人社群相左的立場</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="貝爾晚年立場結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">貝爾終生投入聾人教育倡議，但他所主張的教育方式，與許多聾人社群的自我認同產生了衝突</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這段爭議至今仍是聾人教育史上經常被重新檢視的一段歷史</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">主張口語教學優先</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">大力提倡以口語與讀唇教學</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">取代手語，認為手語會阻礙融入主流社會</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">反對聾人之間通婚</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">曾發表論文憂心聾人通婚會</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">形成獨立語言社群，立場帶有優生學色彩</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">與聾人社群立場衝突</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">許多聾人社群視手語為自身</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">文化核心，貝爾的主張因此招致長期批評</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1922年於加拿大辭世</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">出殯當日，全美電話系統一度</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">靜音一分鐘表示哀悼</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">出於善意的教育理念，未必與被服務群體的自我認同一致</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">貝爾終其一生都認為自己是在為聾人爭取更好的融入機會，但這套立場忽略了手語本身作為一套完</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">整語言的價值——這段歷史提醒後人，善意的專業判斷仍需要傾聽當事社群自己的聲音</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而在通訊技術的另一條路上，愛迪生正以完全不同的方式打造他的發明工廠</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">語音教學世家出身<span class="yr">1847年生</span></div><p>祖父、父親皆從事語音矯正教學，母親自身也是聾人。</p></div>
+    <div class="card"><div class="nm">移居美國任教聾校</div><p>移居美國，於波士頓聾啞學校任教，並私人指導聾人學生，日後的妻子梅寶正是他當年的學生之一。</p></div>
+    <div class="card"><div class="nm">申請電話專利<span class="yr">1876年2月14日</span></div><p>向美國專利局提交電話裝置專利申請，同一天，另一位發明人葛雷也提交了類似申請。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>晚年立場爭議</h2><span class="tag">LEGACY</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">主張口語教學優先</div><p>大力提倡以口語與讀唇教學取代手語，認為手語會阻礙融入主流社會。</p></div>
+    <div class="card"><div class="nm">反對聾人之間通婚</div><p>曾發表論文憂心聾人通婚會形成獨立語言社群，立場帶有優生學色彩。</p></div>
+    <div class="card"><div class="nm">與聾人社群立場衝突</div><p>許多聾人社群視手語為自身文化核心，貝爾的主張因此招致長期批評。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>電話之外：光學通訊與航空研究</b><br>
+  貝爾晚年興趣廣泛，曾投入光學電話（利用光束傳輸聲音訊號的裝置）、水翼船與早期飛行器研究，並協助創立《國家地理雜誌》所屬的美國國家地理學會。這些較少被提及的成就，顯示他在電話發明之後仍持續保持旺盛的探索精神，只是規模與影響力都不及電話本身。
+</div>
+
+<section>
+  <blockquote>
+    華生先生，過來一下，我需要你。
+    <cite>貝爾對助手華生說出的第一句電話通話內容，被廣泛視為電話史上第一句透過電話傳輸的完整語句；確切措辭在不同記載中略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦貝爾的家族背景、電話專利爭議與晚年聾人教育立場，電話技術本身的原理與商業發展請另見〈近現代發明家總覽〉篇。專利優先權爭議至今仍有不同史家持不同看法，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

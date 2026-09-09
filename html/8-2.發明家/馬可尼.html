@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>馬可尼知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">跨大西洋無線電報的贏家・專利權事後遭判無效・晚年與法西斯政權的牽連</p>
+  <h1>馬可尼知識圖譜</h1>
+  <p class="lede">與〈近現代發明家總覽〉篇的銜接：把赫茲證實存在的電磁波做成跨大西洋無線電報系統，那項成就那篇已有簡述，這裡不再重複。這裡要談的是這場勝利背後兩件不太光彩的插曲——他賴以成名的專利，在他過世後被美國最高法院判定無效，優先權其實另有其人；而他晚年在義大利政壇的選擇，也是他留給後世一份複雜的政治遺產。</p>
+</header>
+
+<section>
+  <h2>跨大西洋無線電報——一場搶時間的競賽</h2>
+  <p class="sub">1901年的成功轟動全球，但這項技術背後的專利歸屬，其實遠比表面上複雜</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="馬可尼跨大西洋電報結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">馬可尼自學生時代便著迷於赫茲的電磁波實驗，立志將其發展成實用的通訊系統</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">義大利政府對此不感興趣，他因此轉往英國尋求支持</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">義大利遭拒後轉赴英國</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1896年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">義大利郵政部對其提</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">案毫無興趣，轉往母</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">親娘家英國尋求支持</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">在英國申請了首件無線電報相關專利</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">傳輸距離逐步突破</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1897～1900年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">陸續完成跨海峽、跨</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">數十公里的無線電報</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">實驗，逐步累積信心</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">當時仍有人質疑訊號能否繞過地曲</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">收到跨大西洋訊號</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1901年12月</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">在加拿大紐芬蘭收到</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">從英格蘭發射、代表</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">字母S的三聲訊號</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">震驚全球，證明訊號確實能跨越大西洋</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1909年獲諾貝爾獎</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">與布勞恩共同獲獎</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">因無線電報的貢獻，</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">與德國物理學家布勞</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">恩共同獲頒諾貝爾獎</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">核心專利本身日後卻出現重大爭議</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1943年，美國最高法院判定馬可尼的關鍵專利無效</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">判決認定其調諧電路的核心構想，早在特斯拉與另一位發明家羅奇（Oliver Lodge）的專利裡已有記</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">載——這起判決發生在馬可尼過世六年後，且原本與一場美國政府對其公司的專利侵權訴訟有關</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">但無論專利歸屬如何，第一個把構想變成跨海實用系統的，仍是馬可尼本人</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>晚年政治選擇——與法西斯政權的牽連</h2>
+  <p class="sub">科學史上的英雄形象，在他晚年的政治立場上出現了難以迴避的陰影</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="馬可尼晚年政治結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">馬可尼晚年定居義大利，聲望達到頂峰之時，也正值墨索里尼法西斯政權崛起的年代</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他選擇了與這個政權深度合作，而非保持科學家慣有的政治中立</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">加入義大利法西斯黨</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1923年加入法西斯黨，日後</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">獲墨索里尼任命擔任多項公職</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">出任義大利皇家科學院院長</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">利用其國際聲望，替法西斯政</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">權的科學形象背書</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">公開支持相關對外政策</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">曾公開為墨索里尼政權的部分</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">對外軍事行動辯護，引發國際批評</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1937年於羅馬辭世</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">獲義大利政府以國葬規格辦理</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">後事，全國廣播電台默哀致意</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">科學成就與政治選擇，後世評價時往往被分開看待，卻也不能完全切割</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">馬可尼在無線電報上的開創性貢獻，與他晚年對法西斯政權的政治靠攏，是同一個人生裡並存的兩</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">面——後世紀念他的通訊成就時，這段政治歷史通常也會一併被提及，而非被略過不談</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而在他競逐無線通訊霸權的路上，電話這項更早問世的發明已先一步改變了聲音的傳遞方式</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>跨大西洋無線電報</h2><span class="tag">TRANSATLANTIC</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">義大利遭拒後轉赴英國<span class="yr">1896年</span></div><p>義大利郵政部對其提案毫無興趣，轉往母親娘家英國尋求支持，在英國申請了首件無線電報相關專利。</p></div>
+    <div class="card"><div class="nm">收到跨大西洋訊號<span class="yr">1901年12月</span></div><p>在加拿大紐芬蘭收到從英格蘭發射、代表字母S的三聲訊號，震驚全球。</p></div>
+    <div class="card"><div class="nm">1909年獲諾貝爾獎</div><p>因無線電報的貢獻，與德國物理學家布勞恩共同獲頒諾貝爾獎。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>晚年政治選擇</h2><span class="tag">POLITICS</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">加入義大利法西斯黨<span class="yr">1923年</span></div><p>加入法西斯黨，日後獲墨索里尼任命擔任多項公職。</p></div>
+    <div class="card"><div class="nm">出任義大利皇家科學院院長</div><p>利用其國際聲望，替法西斯政權的科學形象背書。</p></div>
+    <div class="card"><div class="nm">1937年於羅馬辭世</div><p>獲義大利政府以國葬規格辦理後事，全國廣播電台默哀致意。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>1943年最高法院判決的實際背景</b><br>
+  這起專利無效判決，起源於美國政府在二戰期間被馬可尼無線電報公司的繼承機構控告專利侵權——法院為了替美國政府卸責，回頭審視馬可尼專利的優先權，才做出無效認定，判決本身帶有一定程度的訴訟策略色彩，並非單純的技術史重新調查。特斯拉本人此時已過世數月，未能得知此事。特斯拉完整的生平與晚年際遇，另見〈特斯拉〉篇。
+</div>
+
+<section>
+  <blockquote>
+    我從未把無線電報視為單純的科學好奇，而是視為一項可以立即實現、能為人類服務的工具。
+    <cite>馬可尼受訪時的發言，反映他偏重實用工程勝過純理論探索的一貫態度；原文脈絡與確切措辭，不同資料記載略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦跨大西洋無線電報的關鍵歷程、專利爭議與晚年政治選擇，無線電報的物理原理請另見電磁學相關知識圖譜。專利判決與政治立場的細節，不同史料的側重角度略有差異，本頁採較多方記載共通的版本。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
