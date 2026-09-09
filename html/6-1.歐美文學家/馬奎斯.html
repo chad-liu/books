@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>馬奎斯知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">被外祖母以說鬼故事的口吻養大的童年・外祖父口中真實發生過的香蕉大屠殺・與卡斯楚跨越半世紀的私交</p>
+  <h1>馬奎斯知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：《百年孤寂》確立魔幻寫實主義的敘事典範、深受福克納啟發，那篇已有簡述，這裡不再重複。這裡要談的是他那套「面不改色講述離奇之事」的招牌筆法究竟從哪來——馬奎斯童年由外祖母撫養長大，她總是用完全平靜、不帶驚訝的語氣講述各種鬼怪傳說，這種說故事的方式直接塑造了他日後的魔幻寫實筆調。也要談小說裡看似虛構的香蕉大屠殺，其實是外祖父親口告訴他、真實發生過的歷史事件。</p>
+</header>
+
+<section>
+  <h2>外祖母的鬼故事，塑造出魔幻寫實的語氣</h2>
+  <p class="sub">馬奎斯招牌的「面不改色講述離奇之事」筆調，直接源自童年撫養他的外祖母</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="馬奎斯童年結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">馬奎斯出生於哥倫比亞小鎮阿拉卡塔卡，童年主要由外祖父母撫養，父母則在他年幼時遷居他處</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">外祖母總是用完全平靜、理所當然的語氣講述各種鬼怪與超自然傳說，這種語氣深深烙印在他心裡</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">由外祖父母撫養長大</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1927年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出生於哥倫比亞小</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">鎮阿拉卡塔卡，童</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">年由外祖父母撫養</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">這座小鎮日後成為小說裡馬康多的原型</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">外祖母的平靜語氣</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">童年時期</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">外祖母總以完全平</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">靜、理所當然的口</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">吻講述鬼怪傳說</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">他自陳這正是寫作語氣的直接來源</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">外祖父的歷史故事</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">童年時期</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">外祖父是退役軍官，</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">常向他講述親身經</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">歷的真實歷史事件</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">包括軍隊屠殺罷工工人的往事</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">確立獨特敘事語氣</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">成年寫作生涯</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">融合外祖母的平靜</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">口吻與外祖父的真</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">實歷史素材</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">魔幻寫實是兩種童年記憶的融合</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">魔幻寫實不是憑空發明的技法，而是他童年真實聽故事方式的直接延伸</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">馬奎斯多次在訪談裡強調，《百年孤寂》裡那些看似荒誕的情節，敘事語氣完全比照外祖母講鬼故</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">事時「面不改色」的口吻——他要做的不是發明奇幻，而是精準複製童年記憶裡那種說故事的方式</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而外祖父告訴他的那段屠殺往事，最終也化為小說裡最沉重的一段情節</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>虛構情節裡的真實歷史：香蕉大屠殺</h2>
+  <p class="sub">《百年孤寂》裡看似誇張的屠殺情節，其實是根據真實發生過的歷史事件改寫而成</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="馬奎斯香蕉大屠殺結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1928年，哥倫比亞政府軍隊在美國聯合水果公司的施壓下，鎮壓香蕉種植園罷工工人，造成多人死亡</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">馬奎斯的外祖父曾親身經歷這起事件，多年後把這段歷史講述給了年幼的他</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">聯合水果公司的種植園</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">美國聯合水果公司在哥倫比亞</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">經營大規模香蕉種植園</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1928年工人罷工遭鎮壓</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">工人要求改善待遇罷工，政府</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">軍隊開槍鎮壓，死亡人數眾說紛紜</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">官方紀錄長期被淡化</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">事件死亡人數官方說法與民間</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">記憶落差極大，長期未受重視</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">寫進《百年孤寂》</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">1967年小說裡改寫成馬康多</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">香蕉公司大屠殺的核心情節</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">小說裡「彷彿從未發生過」的官方否認，正是對真實歷史記憶被抹除的文學控訴</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">《百年孤寂》裡描寫倖存者事後被官方要求相信「什麼都沒發生過」，這段情節精準呼應了現實裡</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">香蕉大屠殺真相長期遭政府淡化、民間記憶與官方紀錄嚴重脫節的處境——魔幻寫實在這裡成了記錄被壓抑歷史的手段</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而他晚年與古巴領導人卡斯楚維持數十年的私交，也讓他的政治立場成為終生跟隨他的另一個話題</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>童年與魔幻寫實</h2><span class="tag">CHILDHOOD ORIGINS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">由外祖父母撫養長大<span class="yr">1927年生</span></div><p>出生於哥倫比亞小鎮阿拉卡塔卡，童年由外祖父母撫養，這座小鎮日後成為小說裡馬康多的原型。</p></div>
+    <div class="card"><div class="nm">外祖母的平靜語氣</div><p>外祖母總以完全平靜、理所當然的口吻講述鬼怪傳說，馬奎斯日後自陳這正是他寫作語氣的直接來源。</p></div>
+    <div class="card"><div class="nm">外祖父的歷史故事</div><p>外祖父是退役軍官，常向他講述親身經歷的真實歷史事件，其中包括一場屠殺罷工工人的往事。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>香蕉大屠殺</h2><span class="tag">BANANA MASSACRE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">聯合水果公司的種植園</div><p>美國聯合水果公司在哥倫比亞經營大規模香蕉種植園。</p></div>
+    <div class="card"><div class="nm">1928年工人罷工遭鎮壓</div><p>工人要求改善待遇罷工，政府軍隊開槍鎮壓，死亡人數眾說紛紜。</p></div>
+    <div class="card"><div class="nm">寫進《百年孤寂》<span class="yr">1967年</span></div><p>小說裡改寫成馬康多香蕉公司大屠殺的核心情節。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與卡斯楚跨越半世紀的私交</b><br>
+  馬奎斯與古巴領導人卡斯楚維持了長達數十年的私人情誼，兩人時常互訪、討論文學，這段政治立場鮮明的私交讓他在美國一度被拒發簽證多年，直到柯林頓政府時期才解除限制。這段友誼在馬奎斯生前始終引發外界不同解讀——支持者視為他反殖民、反帝國主義立場的一貫延伸，批評者則質疑他對古巴政權侵害人權問題保持沉默。
+</div>
+
+<section>
+  <blockquote>
+    多年以後，面對行刑隊，奧雷里亞諾・布恩迪亞上校將會回想起，他父親帶他去見識冰塊的那個遙遠的下午。
+    <cite>《百年孤寂》開篇第一句，是拉丁美洲文學史上最著名的開場白，同時橫跨過去、現在、未來三種時態，是魔幻寫實敘事技法的經典示範。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦馬奎斯的童年敘事來源與香蕉大屠殺的真實歷史背景，《百年孤寂》的具體情節與福克納對他的啟發請見〈歐美文學家總覽〉篇。屠殺確切死亡人數因官方紀錄與民間記憶落差，至今仍有爭議，本頁不做武斷結論。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

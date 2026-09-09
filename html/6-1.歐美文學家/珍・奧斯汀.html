@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>珍・奧斯汀知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">終生以「一位女士」匿名發表作品・因財力不足告吹的真實初戀・41歲病逝前才被公開身分</p>
+  <h1>珍・奧斯汀知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：她以精準反諷筆法確立英國社會小說的典範，那篇已有簡述，這裡不再重複。這裡要談一個容易被忽略的事實——奧斯汀終其一生，作品出版時署名都只是「一位女士」，從未以本名公開發表過任何一部小說，直到她過世後,家人才在悼詞裡首次公開她的真實身分。也要談她自己年輕時一段真實的戀情，同樣因為現實的財力考量而被迫告吹——這段經歷，或許正是她此後反覆書寫「婚姻裡的經濟算計」的親身根源。</p>
+</header>
+
+<section>
+  <h2>終生匿名的「一位女士」</h2>
+  <p class="sub">奧斯汀生前從未以本名發表過任何一部小說，這個秘密直到她過世後才被公開</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="珍奧斯汀匿名出版結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">奧斯汀出身英格蘭鄉間牧師家庭，自幼在家人的鼓勵下寫作，卻始終不曾以本名公開發表過作品</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">在當時的英國社會，女性從事寫作仍被視為不夠端莊的行為，匿名是她自保的方式</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">牧師家庭的鼓勵</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1775年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">出身鄉間牧師家庭，</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">父親與兄長都相當</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">支持她的寫作</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">少女時期已寫下大量習作與諷刺短文</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《理性與感性》匿名出版</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1811年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">首部小說出版，署</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">名僅寫「一位女士」</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">而非本名</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">此後作品皆延續匿名方式出版</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">《傲慢與偏見》問世</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1813年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">代表作出版，署名</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">「《理性與感性》</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">作者」而非本名</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">身分僅在親友與少數文壇人士間流傳</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">病逝後身分才公開</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1817年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">因病過世，兄長在</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">遺作出版的傳記說</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">明裡首次公開其身分</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">終生沒能以本名見證自己的聲望</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">匿名不是缺乏自信，而是那個時代女性作家自我保護的普遍策略</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">十九世紀初的英國社會，「女性作家」身分仍可能招致社會非議，甚至影響家族聲譽與姊妹的婚配</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">前景，奧斯汀選擇匿名出版，某種程度上是在追求創作與維護家族社會地位之間找到的折衷方案</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而她小說裡反覆出現的婚姻經濟算計，其實也源自她自己一段真實卻無疾而終的戀情</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>因財力不足告吹的真實初戀</h2>
+  <p class="sub">年輕時一段真心相待的戀情，最終因雙方家境都不夠寬裕而被迫中止</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="珍奧斯汀初戀結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">二十歲那年，奧斯汀結識了一位年輕的愛爾蘭見習律師湯姆・勒弗羅伊，兩人一度互有好感</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但雙方家庭都沒有足夠的財力支持這段婚事，這段感情最終無疾而終</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">結識湯姆・勒弗羅伊</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1795年前後，二十歲的奧斯汀</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">結識這位年輕的愛爾蘭見習律師</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">雙方家境都不寬裕</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">兩人皆無足夠的財產或收</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">入前景，家族並不看好這門婚事</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">被迫分離未再相見</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">勒弗羅伊被家族安排離開，此</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">後兩人終生未再有機會重逢</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">終生未婚</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">此後雖曾有其他求婚機會，奧</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">斯汀終其一生選擇維持單身</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">親身經歷過婚姻裡現實考量的重量，讓她筆下的角色更少浪漫的濾鏡</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">奧斯汀小說裡的角色，無論是《傲慢與偏見》裡的班奈特姊妹或其他作品的女主角，婚事考量幾乎</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">都與經濟現實緊密綁在一起——這種毫不迴避現實的筆法，很可能正源於她自己這段親身經歷的體悟</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">兩百年後，另一位處於截然不同時代的作家，也曾因家族政治壓力而失去了自己的一段初戀</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>匿名出版</h2><span class="tag">ANONYMOUS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">牧師家庭的鼓勵<span class="yr">1775年生</span></div><p>出身鄉間牧師家庭，父親與兄長都相當支持她的寫作，少女時期已寫下大量習作與諷刺短文。</p></div>
+    <div class="card"><div class="nm">《理性與感性》匿名出版<span class="yr">1811年</span></div><p>首部小說出版，署名僅寫「一位女士」而非本名，此後所有作品皆延續這種方式出版。</p></div>
+    <div class="card"><div class="nm">病逝後身分才公開<span class="yr">1817年</span></div><p>因病過世，兄長在遺作出版的傳記說明裡首次公開其身分。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>真實初戀</h2><span class="tag">FIRST LOVE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">結識湯姆・勒弗羅伊</div><p>二十歲的奧斯汀結識這位年輕的愛爾蘭見習律師，兩人一度互有好感。</p></div>
+    <div class="card"><div class="nm">雙方家境都不寬裕</div><p>兩人皆無足夠的財產或收入前景，家族並不看好這門婚事。</p></div>
+    <div class="card"><div class="nm">終生未婚</div><p>此後雖曾有其他求婚機會，奧斯汀終其一生選擇維持單身。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>四十一歲病逝，死因至今仍有推測空間</b><br>
+  奧斯汀於1817年病逝，得年僅四十一歲，生前最後數月身體逐漸虛弱，症狀包括疲憊、背痛與膚色變化。她生前的正式病歷未曾留存，後世醫學史學者依據書信描述提出多種推測，其中愛迪生氏病（腎上腺功能不足）與淋巴瘤都是常被提及的可能病因，但因缺乏確切病理紀錄，至今沒有定論。
+</div>
+
+<section>
+  <blockquote>
+    凡是有錢的單身漢，總想娶位太太，這已經成了一條舉世公認的真理。
+    <cite>《傲慢與偏見》開篇第一句，是英國文學史上最常被引用的反諷開場白之一，精準點出全書對婚姻經濟現實的核心關懷。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦奧斯汀終生匿名出版的處境與真實初戀經歷，《傲慢與偏見》等作品的具體情節請見〈歐美文學家總覽〉篇。確切死因因缺乏病歷紀錄，本頁如實呈現各方推測，不做武斷結論。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雨果知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">公開反對政變流亡近二十年・在英倫海峽小島上寫成的悲慘世界・兩百萬人送葬的國葬級喪禮</p>
+  <h1>雨果知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：《悲慘世界》《鐘樓怪人》以磅礡敘事關懷底層命運，那篇已有簡述，這裡不再重複。這裡要談他人生裡最戲劇化的一段——雨果公開反對拿破崙三世發動政變奪權，因此遭到通緝，被迫展開長達近二十年的海外流亡，《悲慘世界》正是在這段流亡歲月裡的英倫海峽小島上完成的。也要談他過世時那場幾乎等同國葬規格的送葬儀式，兩百萬巴黎市民走上街頭，是十九世紀法國最盛大的公眾場面之一。</p>
+</header>
+
+<section>
+  <h2>公開對抗政變，換來近二十年流亡</h2>
+  <p class="sub">拒絕向政變後的新政權低頭，讓雨果從此離開法國本土近二十年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雨果流亡結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">雨果早年曾支持拿破崙三世當選總統，但當對方發動政變、解散國會自立為皇帝，雨果立刻公開反對</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這場政治立場的轉變，讓他從擁護者變成當局眼中的頭號異議分子</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">拿破崙三世發動政變</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1851年</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">拿破崙三世解散國</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">會、發動政變，雨</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">果公開表態反對</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">曾參與街頭抵抗行動，險遭逮捕</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">遭通緝倉皇出逃</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1851年底</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">遭當局通緝，喬裝</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">身分逃離法國，先</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">後輾轉比利時等地</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">此後長年輾轉海峽群島澤西島與根西島</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">流亡期間完成鉅著</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1862年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">在根西島流亡期間，</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">完成並出版代表作</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">《悲慘世界》</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">流亡期間持續透過寫作介入法國政局</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">帝國垮台終得返鄉</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1870年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">拿破崙三世政權垮</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">台，雨果結束近二</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">十年流亡返回巴黎</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">返鄉時受到巴黎市民熱烈歡迎</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">流亡不是他創作的中斷，反而成為他一生最重要作品的誕生地</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">雨果在根西島流亡期間生活相對穩定，得以心無旁騖投入寫作，《悲慘世界》這部醞釀多年的鉅著，</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">正是在遠離法國本土的異鄉小島上最終完成——流亡的孤寂，某種程度上也成就了這部作品的厚度</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他晚年重返故土後獲得的聲望，最終在他過世那天化為一場空前盛大的送葬場面</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>兩百萬人的送葬隊伍</h2>
+  <p class="sub">雨果過世時，法國為他舉行了幾乎等同國葬規格的盛大喪禮</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雨果國葬結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1885年雨果過世，享年八十三歲，法國政府為他舉行了近乎國葬規格的盛大喪禮</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這場送葬儀式的規模，是十九世紀法國少見的公眾場面</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">凱旋門下停靈</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">遺體移至凱旋門下停放供民眾</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">瞻仰，這在當時是破格待遇</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">約兩百萬人送葬</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">送葬隊伍估計吸引近兩百萬巴</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">黎市民走上街頭，萬人空巷</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">安葬於先賢祠</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">最終安葬於巴黎先賢祠，與伏</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">爾泰等法國偉人同列一處</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">依其遺願簡樸下葬</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">依他生前遺囑要求，以窮人用</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">的靈車運送，形成強烈對比</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">盛大的公眾場面，與他遺囑裡要求的簡樸靈車，形成耐人尋味的對照</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">雨果生前留下遺囑，明確表示希望以窮人使用的靈車下葬，而非鋪張的貴族式喪儀——這項要求與</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">當天萬人空巷的盛大場面形成對比，恰好呼應了他一生透過《悲慘世界》等作品持續關懷底層的立場</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而在雨果流亡海外的同一個十九世紀，倫敦的另一位作家也正用小說筆觸持續揭露自己城市的貧富懸殊</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>流亡歲月</h2><span class="tag">EXILE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">拿破崙三世發動政變<span class="yr">1851年</span></div><p>拿破崙三世解散國會、發動政變，雨果公開表態反對，曾參與街頭抵抗行動。</p></div>
+    <div class="card"><div class="nm">遭通緝倉皇出逃<span class="yr">1851年底</span></div><p>遭當局通緝，喬裝身分逃離法國，此後長年輾轉海峽群島澤西島與根西島。</p></div>
+    <div class="card"><div class="nm">流亡期間完成鉅著<span class="yr">1862年</span></div><p>在根西島流亡期間，完成並出版代表作《悲慘世界》。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>國葬級喪禮</h2><span class="tag">FUNERAL</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">凱旋門下停靈</div><p>遺體移至凱旋門下停放供民眾瞻仰，這在當時是破格待遇。</p></div>
+    <div class="card"><div class="nm">約兩百萬人送葬</div><p>送葬隊伍估計吸引近兩百萬巴黎市民走上街頭，萬人空巷。</p></div>
+    <div class="card"><div class="nm">安葬於先賢祠</div><p>最終安葬於巴黎先賢祠，與伏爾泰等法國偉人同列一處。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>流亡期間持續介入法國政局的公共知識分子</b><br>
+  雨果流亡海外期間並未沉默，反而持續透過公開信、詩集與小說介入法國政局，多次嚴詞批評拿破崙三世政權，甚至拒絕了政府後來提出的特赦，堅持要等到不義的政權真正垮台才願意返鄉。這種將文學創作與政治立場緊密結合、拒絕妥協的姿態，讓他在法國近代史上不只是文學家，也是重要的公共知識分子象徵。
+</div>
+
+<section>
+  <blockquote>
+    世界上最寬闊的是海洋，比海洋更寬闊的是天空，比天空更寬闊的是人的胸懷。
+    <cite>《悲慘世界》裡的名句，常被引用來說明雨果對人性寬容與救贖的核心關懷；不同譯本的中譯措辭略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦雨果的流亡歲月與過世時的送葬場面，《悲慘世界》等作品的具體情節請見〈歐美文學家總覽〉篇。送葬人數為當時估計數字，不同史料記載略有出入。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

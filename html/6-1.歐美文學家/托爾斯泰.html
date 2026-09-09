@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>托爾斯泰知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">功成名就後陷入的存在危機・棄絕貴族頭銜的激進信仰轉向・八十二歲深夜出走病逝荒野車站</p>
+  <h1>托爾斯泰知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：《戰爭與和平》《安娜·卡列尼娜》以龐大的敘事格局呈現個人命運與歷史洪流的交纏，那篇已有簡述，這裡不再重複。這裡要談的是寫出這兩部鉅著之後，托爾斯泰經歷了一場徹底顛覆自己人生的信仰危機——他在五十歲左右陷入深刻的存在意義危機，此後棄絕貴族頭銜與財產，甚至否定自己早年的偉大作品只是「毫無意義的娛樂」。這場轉向最終把他推向了人生最後一幕：八十二歲那年，他在深夜悄悄離開自己的莊園與妻子，最終病逝在一座偏遠的火車站。</p>
+</header>
+
+<section>
+  <h2>功成名就後的存在危機</h2>
+  <p class="sub">寫出兩部文學史鉅著、名滿天下之後，托爾斯泰卻陷入了一場幾乎讓他喪失生存意志的精神危機</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="托爾斯泰精神危機結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">完成《戰爭與和平》與《安娜·卡列尼娜》後，托爾斯泰已是俄國文壇聲望最高的作家之一</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">但這份世俗成就，卻未能解答他內心深處一個他無法迴避的問題</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">陷入深刻存在危機</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1870年代末</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">功成名就之際，卻</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">不斷追問人生究竟</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">有何意義</text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">據傳曾需收起家中繩索與槍枝</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">發表《懺悔錄》</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1882年</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">出版《懺悔錄》，</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">坦承這場精神危機</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">的來龍去脈</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">文中直言早年文學成就已無意義</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">發展激進基督教哲學</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1880年代起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">提出強調非暴力與</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">簡樸生活的基督教</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">無政府主義思想</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">這套思想日後深刻影響甘地</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">棄絕貴族生活方式</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">此後多年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">親自下田勞動、簡</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">化衣著飲食，試圖</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">實踐清貧理想</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">此舉與妻子索菲亞產生長期衝突</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">世俗意義上的巨大成功，反而成為他認為必須揚棄的對象</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">托爾斯泰晚年公開表示，《戰爭與和平》這類作品只是「毫無意義的娛樂」，真正重要的是他晚年</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">投入的道德與宗教論述——這種對自己早年成就的激烈否定，在文學史上的重要作家裡相當罕見</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而這套思想與家庭之間的長期拉扯，最終導向了他人生最後、也最悲劇性的一幕</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>八十二歲深夜出走，客死荒野車站</h2>
+  <p class="sub">與妻子長年關於財產與版權的爭執，最終讓晚年的托爾斯泰選擇在深夜悄悄離家</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="托爾斯泰晚年出走結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">托爾斯泰晚年堅持將所有著作版權公開放棄，與妻子索菲亞就家族財產分配長期爭執不休</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這場長年的家庭衝突，最終在他八十二歲那年，以一場出走畫下人生的句點</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">版權與財產的長年爭執</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">堅持放棄著作版權，與重視家族</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">財產的妻子索菲亞長年爭執不休</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">深夜悄悄離家出走</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1910年10月，八十二歲的托</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">爾斯泰深夜悄悄離開莊園</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">旅途中病倒</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">搭乘火車途中因肺炎病倒，被</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">迫在一座偏遠小站下車</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">病逝於阿斯塔波沃車站</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">在站長宿舍臥床數日後病逝，</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">震驚全俄，媒體聚集報導</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這場出走的真正動機，至今仍是托爾斯泰研究裡持續討論的課題</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">托爾斯泰出走前留下的信件顯示，他渴望以簡樸的方式度過餘生，遠離與妻子之間長期的財產爭執</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">與莊園裡的紛擾生活——但他自己顯然也沒料到，這趟出走會如此倉促地以病逝畫下句點</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他晚年放棄一切世俗成就的激進姿態，某種程度上也預示了此後現代文學裡持續出現的自我懷疑與虛無主題</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>存在危機</h2><span class="tag">SPIRITUAL CRISIS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">陷入深刻存在危機<span class="yr">1870年代末</span></div><p>功成名就之際，卻不斷追問人生究竟有何意義，據傳一度嚴重到必須把家中繩索與槍枝收起。</p></div>
+    <div class="card"><div class="nm">發表《懺悔錄》<span class="yr">1882年</span></div><p>出版《懺悔錄》，坦承這場精神危機的來龍去脈，文中直言早年成就已毫無意義。</p></div>
+    <div class="card"><div class="nm">發展激進基督教哲學</div><p>提出強調非暴力與簡樸生活的思想，日後深刻影響甘地的非暴力抗爭理念。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>晚年出走</h2><span class="tag">FINAL JOURNEY</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">版權與財產的長年爭執</div><p>堅持放棄著作版權，與重視家族財產的妻子索菲亞長年爭執不休。</p></div>
+    <div class="card"><div class="nm">深夜悄悄離家出走<span class="yr">1910年10月</span></div><p>八十二歲的托爾斯泰深夜悄悄離開莊園。</p></div>
+    <div class="card"><div class="nm">病逝於阿斯塔波沃車站</div><p>在站長宿舍臥床數日後病逝，震驚全俄，媒體聚集報導。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>教會將他逐出，卻擋不住他的世界性影響力</b><br>
+  托爾斯泰晚年因公開批評俄羅斯正教會的教條與儀式，於1901年遭教會正式革除教籍，這在當時的俄國社會引發極大爭議。儘管如此，他晚年提出的非暴力抵抗思想，透過書信與著作跨越國界，直接影響了印度的甘地與其後美國民權運動的部分理念，讓一位被本國教會排斥的作家，意外成為二十世紀最具跨國影響力的思想資源之一。
+</div>
+
+<section>
+  <blockquote>
+    幸福的家庭都是相似的，不幸的家庭各有各的不幸。
+    <cite>《安娜·卡列尼娜》開篇第一句，是世界文學史上最常被引用的開場白之一；不同譯本的中譯措辭略有出入。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦托爾斯泰晚年的精神危機與最終出走的經過，《戰爭與和平》等作品的具體情節請見〈歐美文學家總覽〉篇。晚年出走的確切動機因當事人各執一詞，不同傳記記載略有出入。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
