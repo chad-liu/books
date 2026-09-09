@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>近現代發明家總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+
+  .pairgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    margin-top:16px}
+  .pair{border:1px solid #d7e0e6;border-radius:10px;padding:14px 16px;background:#f8fafc}
+  .pair .from{font-size:12px;color:#59707b}
+  .pair .from b{color:#3a758f}
+  .pair .arrow{margin:6px 0;font-size:12px;color:#8fa3ad;text-align:center}
+  .pair .to{font-size:12.5px;color:#37474f}
+  .pair .to b{color:#a5502f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">8-2 發明家 · 總覽</p>
+  <h1>近現代發明家總覽</h1>
+  <p class="lede">科學家解釋世界怎麼運作，發明家把那份解釋變成人人買得起、用得上的東西。這條分界不總是乾淨的——愛迪生自己也做實驗、圖靈本身就是數學家——但大致的分工存在：<b>科學家的成果是一篇論文，發明家的成果是一件能量產、能改變日常生活樣貌的物品</b>。這一頁把工業革命以來最重要的那批「把原理變成產品」的人放進五波浪潮裡，也整理出幾組發明如何直接接在某位科學家的發現後面。</p>
+</header>
+
+<blockquote>
+  科學告訴你電磁感應為什麼會發生，發明家告訴你怎麼用它讓一整座城市在天黑後還能運作。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>五波發明浪潮</h2>
+  <p class="sub">從蒸汽到網路，每一波都在解決當時最迫切、卻還沒有人解決的具體問題。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="110" height="34" fill="#17324d"/>
+    <rect x="143" y="18" width="150" height="34" fill="#17324d"/>
+    <rect x="301" y="18" width="430" height="34" fill="#17324d"/>
+    <rect x="739" y="18" width="336" height="34" fill="#17324d"/>
+    <text x="80" y="40" text-anchor="middle" font-size="13" fill="#ffffff">年代</text>
+    <text x="218" y="40" text-anchor="middle" font-size="13" fill="#ffffff">誰</text>
+    <text x="516" y="40" text-anchor="middle" font-size="13" fill="#ffffff">面對的問題</text>
+    <text x="907" y="40" text-anchor="middle" font-size="13" fill="#ffffff">帶來的改變</text>
+
+    <rect x="25" y="56" width="110" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="143" y="56" width="150" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="301" y="56" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="56" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="90" text-anchor="middle" font-size="12.5" fill="#37607a">1769</text>
+    <text x="218" y="90" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">瓦特</text>
+    <text x="516" y="90" text-anchor="middle" font-size="13" fill="#263238">紐科門蒸汽機效率低落，冷凝加熱擠在同一汽缸裡</text>
+    <text x="907" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">分離冷凝器讓效率大增，成為工業革命的動力心臟</text>
+
+    <rect x="25" y="112" width="110" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="143" y="112" width="150" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="301" y="112" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="112" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="146" text-anchor="middle" font-size="12.5" fill="#8a6a35">1793</text>
+    <text x="218" y="146" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">惠特尼</text>
+    <text x="516" y="146" text-anchor="middle" font-size="13" fill="#263238">棉花纖維與棉籽分離全靠人工，是南方棉業最大瓶頸</text>
+    <text x="907" y="146" text-anchor="middle" font-size="12.5" fill="#546e7a">軋棉機讓清棉效率暴增，也讓可互換零件量產成形</text>
+
+    <rect x="25" y="168" width="110" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="143" y="168" width="150" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="301" y="168" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="168" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="202" text-anchor="middle" font-size="12.5" fill="#96604f">1837</text>
+    <text x="218" y="202" text-anchor="middle" font-size="13.5" fill="#a5502f" font-weight="600">摩斯</text>
+    <text x="516" y="202" text-anchor="middle" font-size="13" fill="#263238">訊息傳遞仍仰賴實體傳送，跨越距離需要數天甚至數週</text>
+    <text x="907" y="202" text-anchor="middle" font-size="12.5" fill="#546e7a">電報線讓訊息第一次能以接近光速跨越大陸傳遞</text>
+
+    <rect x="25" y="224" width="110" height="56" fill="#eef4ee" stroke="#a8c4ab"/>
+    <rect x="143" y="224" width="150" height="56" fill="#eef4ee" stroke="#a8c4ab"/>
+    <rect x="301" y="224" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="224" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="258" text-anchor="middle" font-size="12.5" fill="#3d7a55">1876</text>
+    <text x="218" y="258" text-anchor="middle" font-size="13.5" fill="#2f6b45" font-weight="600">貝爾</text>
+    <text x="516" y="258" text-anchor="middle" font-size="13" fill="#263238">電報只能傳送編碼符號，無法直接傳遞人的聲音</text>
+    <text x="907" y="258" text-anchor="middle" font-size="12.5" fill="#546e7a">電話讓聲音本身變成能即時傳輸的訊號</text>
+
+    <rect x="25" y="280" width="110" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="143" y="280" width="150" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="301" y="280" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="280" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="314" text-anchor="middle" font-size="12.5" fill="#37607a">1879</text>
+    <text x="218" y="314" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">愛迪生</text>
+    <text x="516" y="314" text-anchor="middle" font-size="13" fill="#263238">既有電弧燈太亮太危險，不適合一般家庭室內照明</text>
+    <text x="907" y="314" text-anchor="middle" font-size="12.5" fill="#546e7a">白熾燈泡搭配整套供電系統，電力第一次走進尋常家庭</text>
+
+    <rect x="25" y="336" width="110" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="143" y="336" width="150" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="301" y="336" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="336" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="370" text-anchor="middle" font-size="12.5" fill="#8a6a35">1903</text>
+    <text x="218" y="370" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">萊特兄弟</text>
+    <text x="516" y="370" text-anchor="middle" font-size="13" fill="#263238">人類始終無法讓比空氣重的機器持續、可控地飛行</text>
+    <text x="907" y="370" text-anchor="middle" font-size="12.5" fill="#546e7a">第一次動力飛行成功，證明重於空氣的飛行器可行</text>
+
+    <rect x="25" y="392" width="110" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="143" y="392" width="150" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="301" y="392" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="392" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="426" text-anchor="middle" font-size="12.5" fill="#96604f">1989</text>
+    <text x="218" y="426" text-anchor="middle" font-size="13.5" fill="#a5502f" font-weight="600">貝爾納斯－李</text>
+    <text x="516" y="426" text-anchor="middle" font-size="13" fill="#263238">網際網路上的資訊各自獨立，沒有統一方式互相連結查閱</text>
+    <text x="907" y="426" text-anchor="middle" font-size="12.5" fill="#546e7a">全球資訊網用超連結把散落的資訊織成一張網</text>
+  </svg>
+  </div>
+  <p class="after">七個節點跨越兩百二十年，共同的模式是：每一項發明都不是憑空冒出來的靈光一閃，而是針對一個當時明確存在、卻還沒人解決的具體卡點。</p>
+</section>
+
+<section>
+  <h2>科學家與發明家的接力</h2>
+  <p class="sub">幾組發明背後，都能找到一位早幾十年就解釋過同一組原理的科學家——具體人物與理論內容，請見對應的專頁。</p>
+  <div class="pairgrid">
+    <div class="pair">
+      <div class="from"><b>法拉第、馬克士威</b>　電磁感應原理與電磁波方程式</div>
+      <div class="arrow">↓ 商業化</div>
+      <div class="to"><b>愛迪生、特斯拉</b>　建立起能供電到家家戶戶的商業電力系統</div>
+    </div>
+    <div class="pair">
+      <div class="from"><b>馬克士威、赫茲</b>　證實電磁波確實存在並可傳播</div>
+      <div class="arrow">↓ 商業化</div>
+      <div class="to"><b>馬可尼</b>　把電磁波做成能跨海收發訊息的無線電報</div>
+    </div>
+    <div class="pair">
+      <div class="from"><b>二十世紀固態物理</b>　半導體的能帶理論逐漸成熟</div>
+      <div class="arrow">↓ 商業化</div>
+      <div class="to"><b>貝爾實驗室團隊</b>　1947年做出第一顆能取代真空管的電晶體</div>
+    </div>
+    <div class="pair">
+      <div class="from"><b>圖靈</b>　用假想機器定義了「可計算」這件事本身</div>
+      <div class="arrow">↓ 商業化</div>
+      <div class="to"><b>賈伯斯、沃茲尼克</b>　把運算做成一台擺在客廳裡的個人電腦</div>
+    </div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　下面依五波浪潮分組列出主要人物。目前本知識庫尚未替發明家開設個別專頁，卡片只做定位說明；已有專頁的相關科學家會標「→ 專頁」連往 8-1 科學家資料夾。之後若替特定發明家寫成專頁，會回頭幫對應卡片加上連結。
+</div>
+
+<div class="band"><h2>工業革命</h2><span class="tag">1700s–1800s　機械開始取代人力</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">瓦特</span><span class="yr">1736–1819</span><p>改良紐科門蒸汽機，加裝獨立冷凝器讓效率大幅提升，成為工業革命真正的動力來源。</p></div>
+  <div class="card"><span class="nm">惠特尼</span><span class="yr">1765–1825</span><p>軋棉機解決棉籽分離的瓶頸，他推廣的可互換零件概念，也是日後量產思想的起點。</p></div>
+  <div class="card"><span class="nm">史蒂文生</span><span class="yr">1781–1848</span><p>「火箭號」蒸汽機車確立了鐵路運輸的可行性，陸上長途運輸的速度自此改寫。</p></div>
+</div>
+
+<div class="band"><h2>電與通訊時代</h2><span class="tag">1800s末　讓訊息與能量跨越距離</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">摩斯</span><span class="yr">1791–1872</span><p>電報與摩斯電碼讓文字訊息第一次能以電流速度跨海跨洲傳遞，通訊從此脫離實體遞送。</p></div>
+  <div class="card"><span class="nm">貝爾</span><span class="yr">1847–1922</span><p>電話讓聲音本身成為可傳輸的訊號，這項發明的專利歸屬至今仍有歷史學家持續考證。</p></div>
+  <div class="card"><span class="nm">愛迪生</span><span class="yr">1847–1931</span><p>白熾燈泡、留聲機、電影攝影機，加上一整套商業供電系統，把發明變成一門產業。</p></div>
+  <div class="card"><span class="nm">特斯拉</span><span class="yr">1856–1943</span><p>交流電系統與感應馬達，與愛迪生的直流電系統展開一場延續數年的商業與技術之爭。</p></div>
+  <div class="card"><span class="nm">馬可尼</span><span class="yr">1874–1937</span><p>把赫茲證實存在的電磁波，做成能跨越大西洋收發訊息的無線電報系統。</p></div>
+</div>
+
+<div class="band"><h2>移動與量產的世紀</h2><span class="tag">1900s初　人與物開始以前所未有的速度移動</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">萊特兄弟</span><span class="yr">1871–1948・1867–1912</span><p>1903年首次動力飛行成功，只維持了十二秒，卻證明重於空氣的飛行器確實可行。</p></div>
+  <div class="card"><span class="nm">福特</span><span class="yr">1863–1947</span><p>移動式生產線讓汽車製造時間從數天縮短到數小時，讓汽車第一次成為普通人買得起的商品。</p></div>
+  <div class="card"><span class="nm">狄塞爾</span><span class="yr">1858–1913</span><p>柴油引擎效率遠高於同時代的蒸汽與汽油引擎，此後成為重型運輸與船運的主力動力來源。</p></div>
+</div>
+
+<div class="band"><h2>數位與資訊時代</h2><span class="tag">1950s起　運算從實驗室走進口袋</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">巴丁・布拉頓・夏克利</span><span class="yr">1947</span><p>貝爾實驗室團隊做出第一顆電晶體，體積遠小於真空管，此後成為所有電子產品的基礎元件。</p></div>
+  <div class="card"><span class="nm">恩格爾巴特</span><span class="yr">1925–2013</span><p>發明滑鼠並在1968年「所有演示之母」中展示視窗、超連結等概念，早了個人電腦十餘年。</p></div>
+  <div class="card"><span class="nm">貝爾納斯－李</span><span class="yr">1955–</span><p>1989年提出全球資訊網構想，用超連結把散落的網路資訊織成一張網，且選擇不申請專利。</p></div>
+  <div class="card"><span class="nm">賈伯斯・沃茲尼克</span><span class="yr">1955–2011・1950–</span><p>沃茲尼克設計出Apple II的技術核心，賈伯斯則把個人電腦重新定義成人人想擁有的消費商品。</p></div>
+</div>
+
+<div class="band"><h2>延伸</h2><span class="tag">相關的科學家與主題圖譜</span></div>
+<div class="grid">
+  <a class="card" href="../8-1.科學家/西方科學家總覽.html"><span class="nm">西方科學家總覽</span><p>發明家站上的那些原理，最早是由這批人解釋出來的：牛頓、法拉第、馬克士威、圖靈都在裡面。</p></a>
+  <a class="card" href="../8-1.科學家/法拉第.html"><span class="nm">法拉第</span><span class="lk">→ 專頁</span><p>電磁感應原理的發現者，愛迪生與特斯拉往後建立的整套電力系統都建立在他的發現之上。</p></a>
+  <a class="card" href="../8-1.科學家/馬克士威.html"><span class="nm">馬克士威</span><span class="lk">→ 專頁</span><p>電磁方程式預言了無線電波的存在，馬可尼幾十年後才把這個預言變成能收發訊息的裝置。</p></a>
+  <a class="card" href="../8-1.科學家/圖靈.html"><span class="nm">圖靈</span><span class="lk">→ 專頁</span><p>用假想機器定義了「可計算」，個人電腦本質上都是這台假想機器的具體實現。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>8-2 發明家</b> 資料夾的總覽入口，目前是本資料夾唯一的頁面。人物僅作定位說明，尚無個別專頁；已有專頁的相關科學家標示「→ 專頁」，可另見 <b>8-1 科學家</b> 資料夾。年代採通行的西曆生卒年。
+</footer>
+
+</div>
+</body>
+</html>
