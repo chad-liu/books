@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 指令速查</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#F5F6F8;
+  --surface:#FFFFFF;
+  --surface-2:#EEF0F3;
+  --ink:#14171F;
+  --ink-2:#565D6D;
+  --ink-3:#8A90A0;
+  --line:#DFE2E8;
+  --line-soft:#EAECF0;
+  --accent:#2B5F5A;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#DEEAE7;
+  --amber:#93650F;
+  --amber-soft:#F3E6C9;
+  --add:#1E7A4C;
+  --add-soft:#E1F1E7;
+  --del:#B0392F;
+  --del-soft:#FBE6E3;
+  --code-bg:#11131A;
+  --code-ink:#E8EAF0;
+  --code-line:#2A2E3A;
+  --shadow: 0 1px 2px rgba(20,23,31,.04), 0 8px 24px -12px rgba(20,23,31,.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1015;
+    --surface:#161922;
+    --surface-2:#1D212C;
+    --ink:#EDEFF4;
+    --ink-2:#A6ACBC;
+    --ink-3:#6E7486;
+    --line:#2B2F3B;
+    --line-soft:#232733;
+    --accent:#6FBFB2;
+    --accent-ink:#0E1015;
+    --accent-soft:#1B3330;
+    --amber:#E0B255;
+    --amber-soft:#3A2F17;
+    --add:#5FC78C;
+    --add-soft:#16281E;
+    --del:#E88376;
+    --del-soft:#2E1917;
+    --code-bg:#0A0B10;
+    --code-ink:#E8EAF0;
+    --code-line:#252938;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1015;
+  --surface:#161922;
+  --surface-2:#1D212C;
+  --ink:#EDEFF4;
+  --ink-2:#A6ACBC;
+  --ink-3:#6E7486;
+  --line:#2B2F3B;
+  --line-soft:#232733;
+  --accent:#6FBFB2;
+  --accent-ink:#0E1015;
+  --accent-soft:#1B3330;
+  --amber:#E0B255;
+  --amber-soft:#3A2F17;
+  --add:#5FC78C;
+  --add-soft:#16281E;
+  --del:#E88376;
+  --del-soft:#2E1917;
+  --code-bg:#0A0B10;
+  --code-ink:#E8EAF0;
+  --code-line:#252938;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans TC","IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+code, .mono{
+  font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace;
+}
+
+/* ---------- header ---------- */
+header.top{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:1px solid var(--line);
+}
+.top-inner{
+  max-width:1080px; margin:0 auto;
+  padding:18px 24px 16px;
+}
+.brand-row{
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  justify-content:space-between;
+}
+.brand{
+  display:flex; align-items:baseline; gap:10px;
+}
+.brand h1{
+  font-size:1.28rem; margin:0; font-weight:700; letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.brand .glyph{
+  font-family:"IBM Plex Mono"; font-weight:600; font-size:.95rem;
+  color:var(--accent-ink); background:var(--accent);
+  padding:3px 8px; border-radius:6px; letter-spacing:.02em;
+}
+.brand-sub{
+  font-size:.82rem; color:var(--ink-2); margin:2px 0 0;
+}
+.stat-line{
+  font-size:.78rem; color:var(--ink-3); font-family:"IBM Plex Mono";
+  white-space:nowrap;
+}
+
+.controls{
+  max-width:1080px; margin:0 auto; padding:0 24px 16px;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+}
+.search-wrap{
+  position:relative; flex:1 1 260px; min-width:220px;
+}
+.search-wrap svg{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  width:15px; height:15px; color:var(--ink-3); pointer-events:none;
+}
+#search{
+  width:100%; padding:9px 12px 9px 34px;
+  border-radius:9px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink);
+  font-size:.88rem; font-family:inherit;
+  outline:none;
+}
+#search::placeholder{color:var(--ink-3);}
+#search:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+
+.chip-nav{
+  display:flex; gap:6px; flex-wrap:wrap;
+}
+.chip{
+  font-size:.76rem; font-weight:500;
+  padding:6px 11px; border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--surface); color:var(--ink-2);
+  cursor:pointer; white-space:nowrap;
+  transition:background .12s, color .12s, border-color .12s;
+  font-family:inherit;
+}
+.chip:hover{border-color:var(--accent); color:var(--ink);}
+.chip:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+/* ---------- layout ---------- */
+main{
+  max-width:1080px; margin:0 auto; padding:28px 24px 80px;
+  display:grid; gap:22px;
+  grid-template-columns:repeat(auto-fit, minmax(460px,1fr));
+  align-items:start;
+}
+section.cat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  scroll-margin-top:132px;
+}
+.cat-head{
+  display:flex; align-items:center; gap:10px;
+  padding:15px 18px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--surface-2);
+}
+.cat-dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--accent); flex:none;
+}
+.cat-head h2{
+  font-size:.98rem; margin:0; font-weight:600; letter-spacing:-.01em;
+}
+.cat-head .en{
+  font-size:.72rem; color:var(--ink-3); font-family:"IBM Plex Mono";
+  margin-left:auto;
+}
+
+.cmd-list{
+  display:flex; flex-direction:column;
+}
+.cmd-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:2px 12px;
+  padding:11px 18px;
+  border-bottom:1px solid var(--line-soft);
+  align-items:start;
+}
+.cmd-row:last-child{border-bottom:none;}
+.cmd-row:hover{background:var(--surface-2);}
+
+.cmd-code{
+  display:flex; align-items:center; gap:8px; min-width:0;
+}
+.cmd-code code{
+  font-size:.83rem;
+  background:var(--code-bg); color:var(--code-ink);
+  border:1px solid var(--code-line);
+  padding:3px 8px; border-radius:6px;
+  white-space:nowrap; overflow-x:auto;
+  max-width:100%;
+}
+.cmd-code code .ph{ color:#8DA0FF; }
+.cmd-desc{
+  grid-column:1 / -1;
+  font-size:.82rem; color:var(--ink-2);
+  margin:0;
+}
+.copy-btn{
+  flex:none;
+  width:24px; height:24px; border-radius:6px;
+  border:1px solid transparent; background:transparent;
+  color:var(--ink-3); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .12s, color .12s;
+}
+.copy-btn:hover{background:var(--surface-2); color:var(--accent); border-color:var(--line);}
+.copy-btn svg{width:13px; height:13px;}
+.copy-btn.copied{color:var(--add); background:var(--add-soft); border-color:var(--add);}
+
+.tag{
+  font-size:.68rem; font-weight:600; font-family:"IBM Plex Mono";
+  padding:1px 6px; border-radius:5px; flex:none;
+  letter-spacing:.01em;
+}
+.tag.danger{background:var(--del-soft); color:var(--del);}
+.tag.warn{background:var(--amber-soft); color:var(--amber);}
+
+.empty-state{
+  display:none;
+  max-width:1080px; margin:60px auto; padding:0 24px;
+  text-align:center; color:var(--ink-3); font-size:.9rem;
+}
+
+footer{
+  max-width:1080px; margin:0 auto; padding:0 24px 48px;
+  color:var(--ink-3); font-size:.76rem; text-align:center;
+}
+footer .k{
+  font-family:"IBM Plex Mono"; background:var(--surface-2);
+  border:1px solid var(--line); padding:1px 6px; border-radius:5px;
+}
+
+@media (max-width:640px){
+  main{grid-template-columns:1fr;}
+  .cmd-row{grid-template-columns:1fr;}
+  .cmd-code code{white-space:normal; word-break:break-all;}
+}
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <span class="glyph">CC</span>
+        <div>
+          <h1>Claude Code 指令速查</h1>
+          <p class="brand-sub">CLI 旗標、對話中的斜線指令與鍵盤快捷鍵整理，依使用情境分類</p>
+        </div>
+      </div>
+      <span class="stat-line" id="stat-line">— 條指令</span>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input id="search" type="text" placeholder="搜尋指令或關鍵字，如 resume、mcp、權限…" autocomplete="off">
+    </div>
+    <nav class="chip-nav" id="chip-nav"></nav>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<p class="empty-state" id="empty-state">沒有符合「<span id="empty-term"></span>」的指令。</p>
+
+<footer>
+  按一下指令旁的圖示可複製到剪貼簿 · <span class="k">&lt;id&gt;</span> 之類的內容代表要替換成你自己的值 · 部分指令依平台、方案或版本而異，實際可用性以本機 <span class="k">/help</span> 為準
+</footer>
+
+<script>
+function renderCmd(cmd){
+  const esc = cmd.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return esc.replace(/(&lt;[^&]+?&gt;)/g, '<span class="ph">$1</span>');
+}
+
+const DATA = [
+  {
+    id:'basics', zh:'啟動與基本操作', en:'Launch & Basics',
+    items:[
+      {cmd:'claude', desc:'啟動互動式對話'},
+      {cmd:'claude "explain this project"', desc:'帶著初始提示啟動互動式對話'},
+      {cmd:'claude -p "query"', desc:'以列印模式執行，印出回覆後立即結束，不進入互動介面'},
+      {cmd:'cat logs.txt | claude -p "explain"', desc:'處理管線輸入的內容，常用於快速分析檔案或指令輸出'},
+      {cmd:'claude -c', desc:'延續目前目錄最近一次的對話'},
+      {cmd:'claude -r "<session>" "query"', desc:'依對話 ID 或名稱恢復指定的先前對話'},
+      {cmd:'claude update', desc:'更新到最新版本'},
+      {cmd:'claude auth login', desc:'登入 Anthropic 帳號'},
+      {cmd:'claude auth status', desc:'以 JSON 格式顯示目前的登入狀態'},
+    ]
+  },
+  {
+    id:'slash', zh:'常用斜線指令', en:'Common Slash Commands',
+    items:[
+      {cmd:'/help', desc:'顯示可用指令與說明'},
+      {cmd:'/clear', desc:'清空目前上下文、開始新對話，先前對話仍可用 /resume 找回（別名 /reset）'},
+      {cmd:'/init', desc:'為目前專案產生一份 CLAUDE.md 指南'},
+      {cmd:'/model', desc:'切換使用的模型並記為預設'},
+      {cmd:'/model opusplan', desc:'依任務難度自動切換模型，規劃階段用 Opus、實際執行改用 Sonnet'},
+      {cmd:'/plan', desc:'進入 Plan 模式，適合先規劃再執行的大型變更'},
+      {cmd:'/effort', desc:'調整推理強度，可選 low 到 xhigh、max'},
+      {cmd:'/fast', desc:'切換快速模式（Fast mode）'},
+      {cmd:'/usage', desc:'查看目前用量統計（別名 /cost）'},
+      {cmd:'/status', desc:'立即顯示目前工作階段狀態（帳號、模型等），送出後馬上執行、不佔用一個回合'},
+      {cmd:'/rename', desc:'為目前的工作階段設定顯示名稱'},
+      {cmd:'/login', desc:'登入 Anthropic 帳號'},
+      {cmd:'/logout', desc:'登出目前的 Anthropic 帳號'},
+      {cmd:'/exit', desc:'結束 Claude Code（別名 /quit）'},
+    ]
+  },
+  {
+    id:'context', zh:'上下文與記憶', en:'Context & Memory',
+    items:[
+      {cmd:'/memory', desc:'編輯 CLAUDE.md 檔案，管理自動記憶'},
+      {cmd:'/context', desc:'檢視目前上下文用量與最佳化建議'},
+      {cmd:'/compact', desc:'手動壓縮對話內容，釋放上下文空間'},
+      {cmd:'/export', desc:'將目前對話匯出成純文字'},
+      {cmd:'/rewind', desc:'回捲程式碼與對話到先前的檢查點，等同連按兩下 Esc'},
+      {cmd:'/branch', desc:'從目前對話分岔出一個新方向，原對話不受影響'},
+      {cmd:'/resume', desc:'回到之前某一次的對話（別名 /continue）'},
+      {cmd:'/fork', desc:'把目前對話複製成一個新的背景工作階段'},
+      {cmd:'/btw', desc:'針對目前工作提出不進入對話紀錄的旁支問題，Claude 只依現有上下文回答、不使用工具'},
+    ]
+  },
+  {
+    id:'perm', zh:'權限與設定', en:'Permissions & Settings',
+    items:[
+      {cmd:'/permissions', desc:'管理工具的允許、詢問、拒絕規則（別名 /allowed-tools）'},
+      {cmd:'/config', desc:'開啟設定介面（別名 /settings）'},
+      {cmd:'claude --permission-mode plan', desc:'以指定的權限模式啟動，如 plan、acceptEdits'},
+      {cmd:'claude --dangerously-skip-permissions', desc:'略過所有權限詢問，直接執行', tag:{text:'高風險',type:'danger'}},
+      {cmd:'claude --allowedTools "Read" "Bash(git log *)"', desc:'指定不需詢問即可直接執行的工具'},
+      {cmd:'claude --disallowedTools "Edit"', desc:'指定一律拒絕、不論如何都不執行的工具'},
+      {cmd:'claude --settings ./settings.json', desc:'指定本次工作階段要載入的設定檔路徑'},
+      {cmd:'Shift+Tab', desc:'互動模式中循環切換權限模式（default／acceptEdits／plan／bypassPermissions）'},
+    ]
+  },
+  {
+    id:'bg', zh:'背景工作與子代理', en:'Background & Subagents',
+    items:[
+      {cmd:'claude --bg "investigate the flaky test"', desc:'以背景代理方式啟動並立即返回終端機'},
+      {cmd:'claude agents', desc:'開啟代理總覽畫面，監控並派送並行的背景工作'},
+      {cmd:'claude attach <id>', desc:'在目前終端機接上指定的背景工作階段'},
+      {cmd:'claude logs <id>', desc:'印出背景工作階段最近的輸出內容'},
+      {cmd:'claude stop <id>', desc:'停止指定的背景工作階段（亦可用 claude kill）'},
+      {cmd:'claude respawn <id>', desc:'重新啟動背景工作階段，並保留原有對話內容'},
+      {cmd:'/tasks', desc:'列出目前工作階段執行中的背景工作與子代理'},
+      {cmd:'/agents', desc:'管理子代理設定'},
+      {cmd:'Ctrl+B', desc:'把正在執行中的指令或代理移到背景執行'},
+    ]
+  },
+  {
+    id:'review', zh:'審查與診斷', en:'Review & Diagnostics',
+    items:[
+      {cmd:'/code-review', desc:'審查目前分支或 PR 的 diff，找出正確性錯誤與可簡化之處（別名 /review）'},
+      {cmd:'/security-review', desc:'檢查目前變更是否有安全性弱點'},
+      {cmd:'/diff', desc:'檢視工作目錄目前尚未提交的變更'},
+      {cmd:'claude doctor', desc:'印出安裝與設定的唯讀診斷資訊'},
+      {cmd:'claude --debug=\'mcp,startup\'', desc:'啟用除錯模式，可用逗號指定要追蹤的分類'},
+      {cmd:'/simplify', desc:'只針對重用性、簡化與效能面做程式碼清理並直接套用修正，不找臭蟲，比 /code-review 更聚焦品質面'},
+      {cmd:'/insights', desc:'產生一份分析近期工作階段的 HTML 報告'},
+      {cmd:'/bug', desc:'回報問題或分享目前對話（別名 /share）'},
+    ]
+  },
+  {
+    id:'mcp', zh:'MCP 伺服器管理', en:'MCP Servers',
+    items:[
+      {cmd:'claude mcp add --transport http <name> <url>', desc:'新增一個 HTTP／SSE 型的 MCP 伺服器'},
+      {cmd:'claude mcp add --transport stdio <name> -- <cmd>', desc:'以本機指令啟動一個 stdio 型的 MCP 伺服器'},
+      {cmd:'claude mcp list', desc:'列出所有已設定的 MCP 伺服器與連線狀態'},
+      {cmd:'claude mcp get <name>', desc:'顯示指定伺服器的完整設定與連線細節'},
+      {cmd:'claude mcp remove <name>', desc:'移除指定的 MCP 伺服器設定', tag:{text:'不可逆',type:'danger'}},
+      {cmd:'claude mcp login <name>', desc:'對指定伺服器執行 OAuth 登入流程'},
+      {cmd:'claude mcp logout <name>', desc:'清除指定伺服器已儲存的 OAuth 憑證'},
+      {cmd:'/mcp', desc:'開啟互動式面板，管理已連線的 MCP 伺服器'},
+    ]
+  },
+  {
+    id:'keys', zh:'鍵盤快捷鍵', en:'Keyboard Shortcuts',
+    items:[
+      {cmd:'Esc', desc:'中斷 Claude 目前的回應，或關閉開啟中的對話框'},
+      {cmd:'Esc Esc', desc:'輸入框有文字時清空草稿；輸入框為空時開啟回捲選單'},
+      {cmd:'Ctrl+O', desc:'切換逐字稿檢視，顯示詳細的工具呼叫過程'},
+      {cmd:'Ctrl+R', desc:'互動式反向搜尋先前輸入過的指令歷史'},
+      {cmd:'Ctrl+G', desc:'在預設文字編輯器中開啟目前輸入的內容'},
+      {cmd:'Ctrl+T', desc:'切換 Claude 待辦清單的顯示'},
+      {cmd:'Ctrl+L', desc:'強制重繪畫面，畫面顯示異常時可用來恢復'},
+      {cmd:'\\ + Enter', desc:'換行輸入多行提示，任何終端機皆適用'},
+      {cmd:'! 開頭', desc:'進入 Shell 模式，直接執行指令並讓 Claude 讀取結果回應'},
+      {cmd:'@', desc:'觸發檔案路徑自動完成'},
+      {cmd:'# 開頭', desc:'把這行內容加入記憶，直接寫入 CLAUDE.md'},
+      {cmd:'?（輸入框為空時）', desc:'切換快捷鍵說明面板；輸入框已有文字時則插入問號本身'},
+      {cmd:'↑ / ↓', desc:'在輸入框內移動游標；游標已在首尾時改為瀏覽先前輸入過的指令歷史'},
+      {cmd:'Tab', desc:'接受自動完成建議，如 @ 觸發的檔案路徑候選清單'},
+    ]
+  },
+  {
+    id:'advanced', zh:'進階 CLI 旗標', en:'Advanced Flags',
+    items:[
+      {cmd:'claude --add-dir ../apps ../lib', desc:'額外加入 Claude 可讀取與編輯的工作目錄'},
+      {cmd:'claude --model claude-sonnet-5', desc:'指定本次工作階段要使用的模型'},
+      {cmd:'claude -p "query" --output-format json', desc:'指定列印模式的輸出格式：text、json 或 stream-json'},
+      {cmd:'claude -p --max-turns 3 "query"', desc:'限制列印模式下代理最多執行的輪數'},
+      {cmd:'claude --mcp-config ./mcp.json', desc:'從 JSON 檔案載入 MCP 伺服器設定'},
+      {cmd:'claude --system-prompt "You are a Python expert"', desc:'完全取代預設的系統提示詞'},
+      {cmd:'claude --fallback-model sonnet,haiku', desc:'主要模型無法使用時，自動改用備援模型'},
+      {cmd:'claude --session-id "<uuid>"', desc:'指定本次對話使用的工作階段 ID，需為合法的 UUID'},
+    ]
+  },
+];
+
+const main = document.getElementById('main');
+const chipNav = document.getElementById('chip-nav');
+const searchInput = document.getElementById('search');
+const emptyState = document.getElementById('empty-state');
+const emptyTerm = document.getElementById('empty-term');
+const statLine = document.getElementById('stat-line');
+
+let totalCount = 0;
+
+DATA.forEach(cat=>{
+  totalCount += cat.items.length;
+
+  const chip = document.createElement('button');
+  chip.className = 'chip';
+  chip.textContent = cat.zh;
+  chip.addEventListener('click', ()=>{
+    document.getElementById('cat-'+cat.id).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  chipNav.appendChild(chip);
+
+  const section = document.createElement('section');
+  section.className = 'cat';
+  section.id = 'cat-'+cat.id;
+  section.dataset.catId = cat.id;
+
+  const head = document.createElement('div');
+  head.className = 'cat-head';
+  head.innerHTML = `<span class="cat-dot"></span><h2>${cat.zh}</h2><span class="en">${cat.en}</span>`;
+  section.appendChild(head);
+
+  const list = document.createElement('div');
+  list.className = 'cmd-list';
+
+  cat.items.forEach(item=>{
+    const row = document.createElement('div');
+    row.className = 'cmd-row';
+    row.dataset.search = (item.cmd + ' ' + item.desc).toLowerCase();
+
+    const codeWrap = document.createElement('div');
+    codeWrap.className = 'cmd-code';
+    codeWrap.innerHTML = `<code>${renderCmd(item.cmd)}</code>` + (item.tag ? `<span class="tag ${item.tag.type}">${item.tag.text}</span>` : '');
+
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.title = '複製指令';
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+    btn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(item.cmd);
+        btn.classList.add('copied');
+        setTimeout(()=>btn.classList.remove('copied'), 1200);
+      }catch(e){ /* clipboard unavailable — silently ignore */ }
+    });
+    codeWrap.appendChild(btn);
+
+    const desc = document.createElement('p');
+    desc.className = 'cmd-desc';
+    desc.textContent = item.desc;
+
+    row.appendChild(codeWrap);
+    row.appendChild(desc);
+    list.appendChild(row);
+  });
+
+  section.appendChild(list);
+  main.appendChild(section);
+});
+
+statLine.textContent = totalCount + ' 條指令 · ' + DATA.length + ' 個分類';
+
+searchInput.addEventListener('input', ()=>{
+  const term = searchInput.value.trim().toLowerCase();
+  let visibleTotal = 0;
+  document.querySelectorAll('section.cat').forEach(section=>{
+    let visibleInSection = 0;
+    section.querySelectorAll('.cmd-row').forEach(row=>{
+      const match = !term || row.dataset.search.includes(term);
+      row.style.display = match ? '' : 'none';
+      if(match) visibleInSection++;
+    });
+    section.style.display = visibleInSection ? '' : 'none';
+    visibleTotal += visibleInSection;
+  });
+  emptyState.style.display = (term && visibleTotal===0) ? 'block' : 'none';
+  emptyTerm.textContent = searchInput.value.trim();
+});
+</script>
+
+</body></html>

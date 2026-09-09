@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TypeScript 語法速查</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#F2F4F8;
+  --surface:#FFFFFF;
+  --surface-2:#EAEEF4;
+  --ink:#151A24;
+  --ink-2:#57606F;
+  --ink-3:#8991A3;
+  --line:#DCE1EA;
+  --line-soft:#E8ECF2;
+  --accent:#2E5FA3;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#E1EAF7;
+  --amber:#93650F;
+  --amber-soft:#F3E6C9;
+  --add:#1E7A4C;
+  --add-soft:#E1F1E7;
+  --del:#B0392F;
+  --del-soft:#FBE6E3;
+  --code-bg:#0F1420;
+  --code-ink:#E5E9F2;
+  --code-ink-2:#8791A8;
+  --code-line:#232B3D;
+  --shadow: 0 1px 2px rgba(20,23,31,.04), 0 8px 24px -12px rgba(20,23,31,.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1017;
+    --surface:#161A24;
+    --surface-2:#1D222E;
+    --ink:#EBEEF4;
+    --ink-2:#A4ACBE;
+    --ink-3:#6B7386;
+    --line:#2A2F3E;
+    --line-soft:#232837;
+    --accent:#7FB0E8;
+    --accent-ink:#0D1017;
+    --accent-soft:#1B2D45;
+    --amber:#E0B255;
+    --amber-soft:#3A2F17;
+    --add:#5FC78C;
+    --add-soft:#16281E;
+    --del:#E88376;
+    --del-soft:#2E1917;
+    --code-bg:#090C13;
+    --code-ink:#E5E9F2;
+    --code-ink-2:#818997;
+    --code-line:#212637;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1017;
+  --surface:#161A24;
+  --surface-2:#1D222E;
+  --ink:#EBEEF4;
+  --ink-2:#A4ACBE;
+  --ink-3:#6B7386;
+  --line:#2A2F3E;
+  --line-soft:#232837;
+  --accent:#7FB0E8;
+  --accent-ink:#0D1017;
+  --accent-soft:#1B2D45;
+  --amber:#E0B255;
+  --amber-soft:#3A2F17;
+  --add:#5FC78C;
+  --add-soft:#16281E;
+  --del:#E88376;
+  --del-soft:#2E1917;
+  --code-bg:#090C13;
+  --code-ink:#E5E9F2;
+  --code-ink-2:#818997;
+  --code-line:#212637;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans TC","IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+code, .mono{
+  font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace;
+}
+
+/* ---------- header ---------- */
+header.top{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:1px solid var(--line);
+}
+.top-inner{
+  max-width:1080px; margin:0 auto;
+  padding:18px 24px 16px;
+}
+.brand-row{
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  justify-content:space-between;
+}
+.brand{
+  display:flex; align-items:baseline; gap:10px;
+}
+.brand h1{
+  font-size:1.28rem; margin:0; font-weight:700; letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.brand .glyph{
+  font-family:"IBM Plex Mono"; font-weight:600; font-size:.95rem;
+  color:var(--accent-ink); background:var(--accent);
+  padding:3px 8px; border-radius:6px; letter-spacing:.02em;
+}
+.brand-sub{
+  font-size:.82rem; color:var(--ink-2); margin:2px 0 0;
+}
+.stat-line{
+  font-size:.78rem; color:var(--ink-3); font-family:"IBM Plex Mono";
+  white-space:nowrap;
+}
+
+.controls{
+  max-width:1080px; margin:0 auto; padding:0 24px 16px;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+}
+.search-wrap{
+  position:relative; flex:1 1 260px; min-width:220px;
+}
+.search-wrap svg{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  width:15px; height:15px; color:var(--ink-3); pointer-events:none;
+}
+#search{
+  width:100%; padding:9px 12px 9px 34px;
+  border-radius:9px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink);
+  font-size:.88rem; font-family:inherit;
+  outline:none;
+}
+#search::placeholder{color:var(--ink-3);}
+#search:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+
+.chip-nav{
+  display:flex; gap:6px; flex-wrap:wrap;
+}
+.chip{
+  font-size:.76rem; font-weight:500;
+  padding:6px 11px; border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--surface); color:var(--ink-2);
+  cursor:pointer; white-space:nowrap;
+  transition:background .12s, color .12s, border-color .12s;
+  font-family:inherit;
+}
+.chip:hover{border-color:var(--accent); color:var(--ink);}
+.chip:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+/* ---------- layout ---------- */
+main{
+  max-width:1160px; margin:0 auto; padding:28px 24px 80px;
+  display:grid; gap:22px;
+  grid-template-columns:repeat(auto-fit, minmax(480px,1fr));
+  align-items:start;
+}
+section.cat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  scroll-margin-top:132px;
+}
+.cat-head{
+  display:flex; align-items:center; gap:10px;
+  padding:15px 18px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--surface-2);
+}
+.cat-dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--accent); flex:none;
+}
+.cat-head h2{
+  font-size:.98rem; margin:0; font-weight:600; letter-spacing:-.01em;
+}
+.cat-head .en{
+  font-size:.72rem; color:var(--ink-3); font-family:"IBM Plex Mono";
+  margin-left:auto;
+}
+
+.snip-list{
+  display:flex; flex-direction:column;
+}
+.snip-row{
+  padding:13px 18px;
+  border-bottom:1px solid var(--line-soft);
+}
+.snip-row:last-child{border-bottom:none;}
+.snip-row:hover{background:var(--surface-2);}
+
+.snip-code{
+  position:relative;
+  margin-bottom:7px;
+}
+.snip-code pre{
+  margin:0;
+  background:var(--code-bg); color:var(--code-ink);
+  border:1px solid var(--code-line);
+  border-radius:8px;
+  padding:10px 34px 10px 12px;
+  font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace;
+  font-size:.79rem; line-height:1.55;
+  white-space:pre; overflow-x:auto;
+}
+.snip-code .kw{ color:#C792EA; font-weight:600; }
+.snip-code .str{ color:#C3E88D; }
+.snip-code .bt{ color:#82AAFF; }
+.snip-code .num{ color:#F78C6C; }
+.snip-code .cm{ color:var(--code-ink-2); font-style:italic; }
+
+.copy-btn{
+  position:absolute; top:8px; right:8px;
+  flex:none;
+  width:24px; height:24px; border-radius:6px;
+  border:1px solid var(--code-line); background:transparent;
+  color:var(--code-ink-2); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .12s, color .12s;
+}
+.copy-btn:hover{background:#1a2030; color:var(--code-ink); border-color:var(--code-ink-2);}
+.copy-btn svg{width:13px; height:13px;}
+.copy-btn.copied{color:var(--add); background:var(--add-soft); border-color:var(--add);}
+
+.snip-desc{
+  font-size:.82rem; color:var(--ink-2);
+  margin:0;
+}
+
+.tag{
+  font-size:.68rem; font-weight:600; font-family:"IBM Plex Mono";
+  padding:1px 6px; border-radius:5px; flex:none;
+  letter-spacing:.01em;
+}
+.tag.danger{background:var(--del-soft); color:var(--del);}
+.tag.warn{background:var(--amber-soft); color:var(--amber);}
+
+.empty-state{
+  display:none;
+  max-width:1160px; margin:60px auto; padding:0 24px;
+  text-align:center; color:var(--ink-3); font-size:.9rem;
+}
+
+footer{
+  max-width:1160px; margin:0 auto; padding:0 24px 48px;
+  color:var(--ink-3); font-size:.76rem; text-align:center;
+}
+footer .k{
+  font-family:"IBM Plex Mono"; background:var(--surface-2);
+  border:1px solid var(--line); padding:1px 6px; border-radius:5px;
+}
+
+@media (max-width:640px){
+  main{grid-template-columns:1fr;}
+  .snip-code pre{white-space:pre-wrap; word-break:break-word;}
+}
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <span class="glyph">TS</span>
+        <div>
+          <h1>TypeScript 語法速查</h1>
+          <p class="brand-sub">型別系統、函式、類別、泛型到 tsc 編譯器指令，依使用情境分類整理</p>
+        </div>
+      </div>
+      <span class="stat-line" id="stat-line">— 條語法</span>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input id="search" type="text" placeholder="搜尋語法或關鍵字，如 interface、泛型、Omit…" autocomplete="off">
+    </div>
+    <nav class="chip-nav" id="chip-nav"></nav>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<p class="empty-state" id="empty-state">沒有符合「<span id="empty-term"></span>」的語法。</p>
+
+<footer>
+  按一下程式碼區塊右上角圖示可複製到剪貼簿 · 語法以 TypeScript 5.x 為準，實際行為請依專案 tsconfig 的嚴格模式設定調整
+</footer>
+
+<script>
+function escHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+const KEYWORDS = 'const|let|var|type|interface|class|function|extends|implements|public|private|protected|readonly|static|abstract|new|return|void|this|import|export|from|default|as|satisfies|keyof|typeof|infer|in|is|instanceof|enum|namespace|declare|async|await|get|set|null|undefined|true|false|throw|if|else';
+const BUILTIN_TYPES = 'string|number|boolean|any|unknown|never|object|symbol|bigint|Array|Promise|Record|Partial|Required|Readonly|Pick|Omit|Exclude|Extract|NonNullable|ReturnType|Parameters|InstanceType|Awaited|ConstructorParameters|Map|Set|Capitalize';
+
+function hl(raw){
+  const esc = escHtml(raw);
+  const master = new RegExp(
+    '(\\/\\/[^\\n]*)' +                                    // 1: comment
+    "|('(?:[^'\\\\]|\\\\.)*'|\"(?:[^\"\\\\]|\\\\.)*\"|`(?:[^`\\\\]|\\\\.)*`)" + // 2: string/template
+    '|\\b(' + KEYWORDS + ')\\b' +                          // 3: keyword
+    '|\\b(' + BUILTIN_TYPES + ')\\b' +                     // 4: builtin type
+    '|\\b(\\d+)\\b',                                       // 5: number
+    'g'
+  );
+  return esc.replace(master, (m, cm, str, kw, bt, num) => {
+    if (cm) return '<span class="cm">' + cm + '</span>';
+    if (str) return '<span class="str">' + str + '</span>';
+    if (kw) return '<span class="kw">' + kw + '</span>';
+    if (bt) return '<span class="bt">' + bt + '</span>';
+    if (num) return '<span class="num">' + num + '</span>';
+    return m;
+  });
+}
+
+const DATA = [
+  {
+    id:'basic', zh:'基本型別', en:'Basic Types',
+    items:[
+      {code:"const s: string = 'hello';", desc:'字串型別'},
+      {code:'const n: number = 123;', desc:'數字型別，整數與浮點數共用同一個型別'},
+      {code:'const b: boolean = true;', desc:'布林型別'},
+      {code:'const nu: null = null;', desc:'null 型別，通常搭配聯合型別一起使用'},
+      {code:'const un: undefined = undefined;', desc:'undefined 型別'},
+      {code:"let a: any = 'hello';", desc:'any：關閉型別檢查，盡量避免使用'},
+      {code:"let u: unknown;\nif (typeof u === 'string') {\n  u.trim();\n}", desc:'unknown：比 any 安全，使用前必須先縮小型別'},
+      {code:"function fail(): never {\n  throw new Error('x');\n}", desc:'never：函式必定拋出例外或無限迴圈，不會正常返回'},
+      {code:"const log = (message: string): void => {\n  console.log(message);\n};", desc:'void：函式沒有回傳值'},
+    ]
+  },
+  {
+    id:'array', zh:'陣列、元組與字面值型別', en:'Arrays, Tuples & Literals',
+    items:[
+      {code:"const arr: string[] = ['a', 'b'];", desc:'陣列型別寫法一'},
+      {code:"const arr2: Array<string> = ['a', 'b'];", desc:'陣列型別寫法二，與上面完全等價'},
+      {code:"const tuple: [string, number] = ['id', 1];", desc:'元組：固定長度、各位置型別可以不同的陣列'},
+      {code:"type Direction = 'up' | 'down' | 'left' | 'right';", desc:'字面值型別：值只能是列出的其中一個'},
+    ]
+  },
+  {
+    id:'union', zh:'聯合與交集型別', en:'Union & Intersection',
+    items:[
+      {code:'type StringOrNumber = string | number;', desc:'聯合型別：符合其中一種即可'},
+      {code:"type UserWithRole = User & { role: string };", desc:'交集型別：必須同時滿足所有成員'},
+      {code:"type ApiResponse =\n  | { type: 'success'; data: string }\n  | { type: 'error'; error: string };", desc:'判別聯合：用共同欄位區分不同變體'},
+      {code:"function isString(v: unknown): v is string {\n  return typeof v === 'string';\n}", desc:'自訂型別守衛，回傳型別寫成 v is X'},
+      {code:"if ('role' in user) {\n  user.role;\n}", desc:'in 運算子：依屬性是否存在來縮小聯合型別'},
+    ]
+  },
+  {
+    id:'interface', zh:'型別別名與介面', en:'Type Aliases & Interfaces',
+    items:[
+      {code:'interface User {\n  id: string;\n  name: string;\n}', desc:'介面：定義物件的形狀'},
+      {code:'interface AdminUser extends User {\n  role: string;\n}', desc:'介面繼承：在既有介面上擴充'},
+      {code:'type UserObj = {\n  id: string;\n  name: string;\n};', desc:'type：功能與介面相近，且能用於物件以外的型別'},
+      {code:'interface UserOptional {\n  id: string;\n  name?: string;\n}', desc:'選填屬性，型別後加上 ?'},
+      {code:'interface Config {\n  readonly apiKey: string;\n}', desc:'唯讀屬性，賦值後不可再修改'},
+      {code:'interface StringMap {\n  [key: string]: string;\n}', desc:'索引簽名：允許任意字串鍵存取'},
+      {code:"type Data = DataResponse['data'];", desc:'索引存取型別：取出某個屬性的型別'},
+    ]
+  },
+  {
+    id:'func', zh:'函式', en:'Functions',
+    items:[
+      {code:'const add = (a: number, b: number): number => {\n  return a + b;\n};', desc:'箭頭函式，標注參數與回傳型別'},
+      {code:'function add(a: number, b: number): number {\n  return a + b;\n}', desc:'function 宣告寫法，功能相同'},
+      {code:'const processUser = (user: { id: string; name: string }): void => {};', desc:'直接以物件字面型別當參數'},
+      {code:'const logOptional = (message?: string): void => {};', desc:'選填參數，必須放在必填參數之後'},
+      {code:"const greet = (name: string = 'world'): void => {};", desc:'預設參數值，未傳入時使用預設值'},
+      {code:"const logRest = (...messages: string[]): void => {};\nlogRest('a', 'b');", desc:'其餘參數，收集多個同型別引數成陣列'},
+      {code:'function overload(a: string): string;\nfunction overload(a: number): number;\nfunction overload(a: any): any {\n  return a;\n}', desc:'函式多載：同名函式提供多種參數簽名'},
+      {code:'class Greeter {\n  greet(this: Greeter, name: string): string {\n    return name;\n  }\n}', desc:'this 參數：明確標注函式內 this 的型別'},
+    ]
+  },
+  {
+    id:'class', zh:'類別', en:'Classes',
+    items:[
+      {code:'class User {\n  public name: string;\n  constructor(name: string) {\n    this.name = name;\n  }\n}', desc:'基本類別，public 屬性可省略不寫'},
+      {code:'class User {\n  private id: string;\n  protected role: string;\n}', desc:'private 只在類別內可見，protected 連子類別也可見'},
+      {code:'class Config {\n  readonly apiKey: string;\n  constructor(key: string) {\n    this.apiKey = key;\n  }\n}', desc:'唯讀屬性，只能在建構子內賦值一次'},
+      {code:'class User {\n  constructor(public name: string, private age: number) {}\n}', desc:'參數屬性：建構子參數直接宣告成屬性'},
+      {code:'class AdminUser extends User implements Named {}', desc:'繼承 extends、實作介面 implements'},
+      {code:'abstract class Shape {\n  abstract area(): number;\n}', desc:'抽象類別：不能直接建立實例，需由子類別實作'},
+      {code:'class Counter {\n  static count = 0;\n  static increment() {\n    Counter.count++;\n  }\n}', desc:'靜態屬性／方法，屬於類別本身而非實例'},
+      {code:'class Person {\n  get fullName(): string {\n    return this._name;\n  }\n  set fullName(v: string) {\n    this._name = v;\n  }\n}', desc:'getter／setter 存取子'},
+    ]
+  },
+  {
+    id:'generic', zh:'泛型', en:'Generics',
+    items:[
+      {code:'const identity = <T>(value: T): T => value;', desc:'泛型函式：保留輸入與輸出型別的對應關係'},
+      {code:'interface Box<T> {\n  value: T;\n}', desc:'泛型介面'},
+      {code:'class Stack<T> {\n  items: T[] = [];\n  push(item: T) {\n    this.items.push(item);\n  }\n}', desc:'泛型類別'},
+      {code:'function firstOrNull<T extends { id: string }>(arr: T[]): T | null {\n  return arr[0] ?? null;\n}', desc:'泛型限制：extends 限定 T 必須符合的形狀'},
+      {code:'function createArray<T = string>(len: number, value: T): T[] {\n  return Array(len).fill(value);\n}', desc:'泛型預設型別參數，呼叫時可省略不寫'},
+    ]
+  },
+  {
+    id:'utility', zh:'內建工具型別', en:'Built-in Utility Types',
+    items:[
+      {code:'type PartialUser = Partial<User>;', desc:'把所有屬性變成選填'},
+      {code:'type RequiredUser = Required<User>;', desc:'把所有屬性變成必填'},
+      {code:'type ReadonlyUser = Readonly<User>;', desc:'把所有屬性變成唯讀'},
+      {code:'type UserRecord = Record<string, User>;', desc:'建立鍵為 string、值為 User 的物件型別'},
+      {code:"type UserId = Pick<User, 'id'>;", desc:'只挑出指定的屬性'},
+      {code:"type UserWithoutId = Omit<User, 'id'>;", desc:'排除指定的屬性'},
+      {code:"type NonAdmin = Exclude<Role, 'admin'>;", desc:'從聯合型別中排除符合的成員'},
+      {code:"type OnlyAdmin = Extract<Role, 'admin'>;", desc:'從聯合型別中取出符合的成員'},
+      {code:'type DefinitelyUser = NonNullable<User | null | undefined>;', desc:'排除 null 與 undefined'},
+      {code:'type FnReturn = ReturnType<() => string>;', desc:'取出函式的回傳型別'},
+      {code:'type FnParams = Parameters<(a: number, b: number) => number>;', desc:'取出函式的參數型別，以元組表示'},
+      {code:'type Resolved = Awaited<Promise<string>>;', desc:'取出 Promise 解析後的型別'},
+      {code:'type Inst = InstanceType<typeof User>;', desc:'取出類別建構後的實例型別'},
+    ]
+  },
+  {
+    id:'assert', zh:'型別操作與斷言', en:'Type Operators & Assertions',
+    items:[
+      {code:'const result = someThirdPartyFunction();\nconst typedResult = result as number;', desc:'型別斷言：告訴編譯器把某值當成指定型別看待'},
+      {code:"const el = document.getElementById('x') as HTMLInputElement;", desc:'常見情境：DOM 操作後斷言為更精確的型別'},
+      {code:"const config = { mode: 'dark' } satisfies Config;", desc:'satisfies：驗證符合型別，同時保留字面值型別推論'},
+      {code:"const someString = 'hello';\ntype SomeStringType = typeof someString;", desc:'typeof：從變數取出其型別'},
+      {code:'type Keys = keyof User;', desc:'keyof：取出物件型別所有鍵組成的聯合型別'},
+      {code:'type ValueOf<T> = T[keyof T];', desc:'索引存取結合 keyof，取出物件所有屬性值的聯合型別'},
+      {code:"const frozen = { role: 'admin' } as const;", desc:'as const：把值鎖定為最精確的字面值型別，且整體唯讀'},
+    ]
+  },
+  {
+    id:'advanced', zh:'進階型別', en:'Advanced Types',
+    items:[
+      {code:'type IsString<T> = T extends string ? true : false;', desc:'條件型別：依 T 是否符合條件回傳不同型別'},
+      {code:'type Flatten<T> = T extends Array<infer U> ? U : T;', desc:'infer：在條件型別中推論並擷取子型別'},
+      {code:'type Nullable<T> = { [K in keyof T]: T[K] | null };', desc:'映射型別：依原型別的每個鍵產生新型別'},
+      {code:'type ReadonlyDeep<T> = { readonly [K in keyof T]: T[K] };', desc:'映射型別加上 readonly 修飾詞'},
+      {code:'type EventName<T extends string> = `on${Capitalize<T>}`;', desc:'樣板字面值型別：組合字串產生新的字面值型別'},
+      {code:"const words = ['hello', 'world'];\ntype WordsType = typeof words[number];", desc:'用 number 索引陣列型別，取得元素型別'},
+    ]
+  },
+  {
+    id:'enum', zh:'列舉', en:'Enums',
+    items:[
+      {code:'enum Direction { Up, Down, Left, Right }', desc:'數字列舉，預設從 0 開始遞增'},
+      {code:"enum Status {\n  Active = 'ACTIVE',\n  Inactive = 'INACTIVE',\n}", desc:'字串列舉，每個成員都需明確賦值'},
+      {code:'const enum Color { Red, Green, Blue }', desc:'const enum：編譯時直接內嵌數值，不產生額外的執行期物件', tag:{text:'注意打包相容性',type:'warn'}},
+    ]
+  },
+  {
+    id:'module', zh:'模組匯入匯出', en:'Modules',
+    items:[
+      {code:'export interface User {\n  id: string;\n}', desc:'具名匯出'},
+      {code:'export default class App {}', desc:'預設匯出，一個模組只能有一個'},
+      {code:"import { User } from './types';", desc:'具名匯入'},
+      {code:"import App from './App';", desc:'匯入預設匯出'},
+      {code:"import type { User } from './types';", desc:'純型別匯入，編譯後會被完全移除'},
+      {code:"export * from './types';", desc:'重新匯出整個模組的所有具名匯出'},
+    ]
+  },
+  {
+    id:'tsc', zh:'tsc 編譯器指令', en:'tsc CLI',
+    items:[
+      {code:'tsc', desc:'依專案的 tsconfig.json 編譯所有檔案'},
+      {code:'tsc --init', desc:'產生一份預設的 tsconfig.json'},
+      {code:'tsc --watch', desc:'監看檔案變動並自動重新編譯'},
+      {code:'tsc --noEmit', desc:'只做型別檢查，不輸出任何檔案，常用於 CI'},
+      {code:'tsc --strict', desc:'開啟所有嚴格型別檢查選項'},
+      {code:'tsc app.ts --outFile app.js', desc:'指定輸出檔名，僅適用於非模組化的輸出'},
+      {code:'tsc --project ./tsconfig.build.json', desc:'指定要使用的設定檔路徑'},
+    ]
+  },
+];
+
+const main = document.getElementById('main');
+const chipNav = document.getElementById('chip-nav');
+const searchInput = document.getElementById('search');
+const emptyState = document.getElementById('empty-state');
+const emptyTerm = document.getElementById('empty-term');
+const statLine = document.getElementById('stat-line');
+
+let totalCount = 0;
+
+DATA.forEach(cat=>{
+  totalCount += cat.items.length;
+
+  const chip = document.createElement('button');
+  chip.className = 'chip';
+  chip.textContent = cat.zh;
+  chip.addEventListener('click', ()=>{
+    document.getElementById('cat-'+cat.id).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  chipNav.appendChild(chip);
+
+  const section = document.createElement('section');
+  section.className = 'cat';
+  section.id = 'cat-'+cat.id;
+  section.dataset.catId = cat.id;
+
+  const head = document.createElement('div');
+  head.className = 'cat-head';
+  head.innerHTML = `<span class="cat-dot"></span><h2>${cat.zh}</h2><span class="en">${cat.en}</span>`;
+  section.appendChild(head);
+
+  const list = document.createElement('div');
+  list.className = 'snip-list';
+
+  cat.items.forEach(item=>{
+    const row = document.createElement('div');
+    row.className = 'snip-row';
+    row.dataset.search = (item.code + ' ' + item.desc).toLowerCase();
+
+    const codeWrap = document.createElement('div');
+    codeWrap.className = 'snip-code';
+    codeWrap.innerHTML = `<pre>${hl(item.code)}</pre>` +
+      `<button class="copy-btn" title="複製程式碼"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>`;
+    const btn = codeWrap.querySelector('.copy-btn');
+    btn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(item.code);
+        btn.classList.add('copied');
+        setTimeout(()=>btn.classList.remove('copied'), 1200);
+      }catch(e){ /* clipboard unavailable — silently ignore */ }
+    });
+
+    const desc = document.createElement('p');
+    desc.className = 'snip-desc';
+    desc.textContent = item.desc + (item.tag ? '' : '');
+    if(item.tag){
+      const tagSpan = document.createElement('span');
+      tagSpan.className = 'tag ' + item.tag.type;
+      tagSpan.textContent = item.tag.text;
+      tagSpan.style.marginLeft = '8px';
+      desc.appendChild(tagSpan);
+    }
+
+    row.appendChild(codeWrap);
+    row.appendChild(desc);
+    list.appendChild(row);
+  });
+
+  section.appendChild(list);
+  main.appendChild(section);
+});
+
+statLine.textContent = totalCount + ' 條語法 · ' + DATA.length + ' 個分類';
+
+searchInput.addEventListener('input', ()=>{
+  const term = searchInput.value.trim().toLowerCase();
+  let visibleTotal = 0;
+  document.querySelectorAll('section.cat').forEach(section=>{
+    let visibleInSection = 0;
+    section.querySelectorAll('.snip-row').forEach(row=>{
+      const match = !term || row.dataset.search.includes(term);
+      row.style.display = match ? '' : 'none';
+      if(match) visibleInSection++;
+    });
+    section.style.display = visibleInSection ? '' : 'none';
+    visibleTotal += visibleInSection;
+  });
+  emptyState.style.display = (term && visibleTotal===0) ? 'block' : 'none';
+  emptyTerm.textContent = searchInput.value.trim();
+});
+</script>
+
+</body></html>
