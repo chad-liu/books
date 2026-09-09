@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夏農知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">可能是二十世紀最重要的碩士論文・位元的誕生・雜耍機器人</p>
+  <h1>夏農知識圖譜</h1>
+  <p class="lede">與〈圖靈〉篇的銜接：兩人1943年曾在貝爾實驗室的餐廳裡，一邊喝著下午茶、一邊討論機器能不能思考——那次會面本身，本頁留在後段再談。夏農留給後世的東西，比多數人以為的更基礎：他二十出頭寫的碩士論文，讓所有數位電路都建立在同一套邏輯語言上；他三十出頭寫的一篇論文，第一次讓「資訊」變成可以精確測量、有單位的東西。但同一個人，下班後熱衷的卻是打造雜耍機器人、騎著單輪車穿梭辦公室——這份圖譜要梳理的，就是這種嚴謹到極致與玩心到極致並存的反差。</p>
+</header>
+
+<section>
+  <h2>生平——可能是二十世紀最重要的一篇碩士論文</h2>
+  <p class="sub">一篇學生時代寫的論文，讓所有數位電路從此有了共同的數學語言</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="夏農生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">夏農在麻省理工學院攻讀碩士期間，發現一套十九世紀的邏輯代數，正好能用來設計電路</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這篇論文後來被許多學者稱為可能是二十世紀最重要的一篇碩士論文</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">密西根大學就學</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1916年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">於密西根大學同時</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">修讀數學與電機工程</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">跨領域訓練成了日後關鍵</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1937年碩士論文</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">關鍵突破</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">發現布林代數能用</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">來分析與簡化電話</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">交換電路</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">奠定了數位電路設計的基礎</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">加入貝爾實驗室</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1941年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">進入貝爾實驗室工</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">作，戰時投入密碼與</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">火砲控制研究</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">此時已接觸密碼學核心問題</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">戰後回歸理論研究</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1945年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">戰後將戰時累積的</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">通訊研究心得，整理</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">成一套全新理論</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">這套理論後來震動整個學界</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一套十九世紀的抽象邏輯，意外成了二十世紀電路設計的共同語言</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">布林代數原本只是純數理邏輯的抽象工具，夏農卻看出它跟開關電路「開／關」的二元邏輯完全</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">對應——這個發現，讓工程師此後能用嚴謹的數學方法設計與簡化電路，而不再只靠經驗試誤</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他真正震動整個學界的成就，要到戰後才正式發表</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>1948年資訊理論——把「資訊」變成可以精確測量的東西</h2>
+  <p class="sub">在他之前，沒有人能明確回答「一則訊息裡到底有多少資訊」這個問題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="夏農資訊理論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1948年，夏農發表〈通訊的數學理論〉，第一次把「資訊」變成一個可以精確測量的量</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這篇論文奠定的框架，此後成了所有數位通訊技術共同的理論地基</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">定義「位元」為基本單位</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">提出以二元選擇為資訊的最小單</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">位，此後通稱為位元</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">資訊熵的數學定義</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">借用熱力學熵的概念，定義出</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">衡量訊息不確定性的公式</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">通道容量定理</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">證明只要傳輸速率低於通道容</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">量，即使有雜訊也能可靠傳輸</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">奠定數位通訊基礎</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">此後所有數位通訊、壓縮與加</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">密技術，皆建立在這套框架上</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「資訊」第一次跟訊息的內容意義完全脫鉤</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">夏農的理論刻意忽略訊息本身的意義，只關心「不確定性有多少被消除」——這個看似冷酷的抽</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">象化，反而讓這套理論能同時套用在電報、語音、影像乃至基因序列等各種截然不同的訊息形式上</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">但寫出這套極度嚴謹理論的人，私下生活的樂趣卻完全是另一回事</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">密西根大學就學<span class="yr">1916年生</span></div><p>於密西根大學同時修讀數學與電機工程，跨領域訓練成了日後關鍵。</p></div>
+    <div class="card"><div class="nm">1937年碩士論文</div><p>發現布林代數能用來分析與簡化電話交換電路，奠定數位電路設計的基礎。</p></div>
+    <div class="card"><div class="nm">加入貝爾實驗室<span class="yr">1941年起</span></div><p>進入貝爾實驗室工作，戰時投入密碼與火砲控制研究，此時已接觸密碼學核心問題。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>資訊理論</h2><span class="tag">INFORMATION THEORY</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">定義「位元」為基本單位</div><p>提出以二元選擇為資訊的最小單位，此後通稱為位元。</p></div>
+    <div class="card"><div class="nm">資訊熵的數學定義</div><p>借用熱力學熵的概念，定義出衡量訊息不確定性的公式。</p></div>
+    <div class="card"><div class="nm">通道容量定理</div><p>證明只要傳輸速率低於通道容量，即使有雜訊也能可靠傳輸。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>雜耍機器人、火焰噴射小號，以及與圖靈的一次午茶</b><br>
+  夏農下班後的生活，跟他論文裡的嚴謹幾乎是兩個極端：他打造過會拋接球的雜耍機器人、能噴出火焰的小號、專門解迷宮的機械鼠「忒修斯」，還常常一邊騎單輪車一邊拋接球穿梭在貝爾實驗室的走廊裡；晚年更與友人合作打造出史上最早的穿戴式電腦之一，用來在拉斯維加斯的輪盤賭桌上計算球落點機率。1943年，圖靈以英國密碼機構代表身分造訪貝爾實驗室，討論跨大西洋保密通話系統的安全性，夏農與圖靈因此有了直接共事的機會，兩人時常在午餐與下午茶時間，聊起機器有沒有可能真正具備智能——這場對話，發生在兩人各自最重要的理論成果之間，卻幾乎沒有留下任何正式紀錄，只憑當事人事後的零星回憶流傳下來。
+</div>
+
+<section>
+  <blockquote>
+    通訊的基本問題，在於精確或近似地在某一點重現另一點所選定的訊息。
+    <cite>夏農1948年〈通訊的數學理論〉開篇對「通訊」下的定義，刻意排除訊息本身的意義與內容，只聚焦於訊息傳遞這件事本身的數學結構。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、電路理論與資訊理論的核心貢獻，以及業餘嗜好與圖靈的交會，具體數學推導請另行查證專業資訊理論文獻。與圖靈1943年會面的談話內容，僅憑當事人事後零星回憶流傳，本頁採審慎保留的敘述。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>

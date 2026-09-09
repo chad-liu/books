@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圖靈知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">布萊切利園的祕密・化學閹割・被咬一口的蘋果</p>
+  <h1>圖靈知識圖譜</h1>
+  <p class="lede">圖靈留下的遺產分成兩半，一半光明、一半黑暗，卻幾乎同時發生在他身上。光明的那一半，是他在二戰期間破解德軍密碼的功勞，讓戰爭提早了將近兩年結束，卻因為軍事機密，直到他過世數十年後才為世人所知；黑暗的那一半，是他因為同性戀身分遭到起訴定罪，被迫接受化學閹割，兩年後便離奇死亡。這份圖譜要梳理的，就是這位替現代計算機科學打下地基的人，如何在拯救無數性命的同時，自己的國家卻沒能真正保護他。</p>
+</header>
+
+<section>
+  <h2>生平——劍橋神童，一篇論文定義了什麼是「可計算」</h2>
+  <p class="sub">為了解決一個純數學問題，他發明了一台完全存在於紙上的假想機器</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="圖靈生平結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">圖靈在劍橋國王學院求學期間便展現過人數學天賦，二十二歲即獲選為院士</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">隔年發表的一篇論文，用一台假想機器回答了數理邏輯裡懸而未決的大問題</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">劍橋國王學院</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1912年生</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">於劍橋國王學院攻</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">讀數學，展現過人天賦</text>
+  <text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36"></text>
+  <text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">二十二歲獲選為院士</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">1936年論文</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">關鍵突破</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">提出假想的圖靈機，</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">回答了希爾伯特提出</text>
+  <text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">的判定性問題</text>
+  <text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">第一次嚴謹定義了「可計算」</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">普林斯頓攻讀博士</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1936年起</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">赴普林斯頓大學，</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">師從邱奇攻讀數理邏</text>
+  <text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">輯博士學位</text>
+  <text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">結識當地多位頂尖數學家</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">戰爭爆發返英</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1938年起</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">取得博士學位後返</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">回英國，戰爭陰影已</text>
+  <text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">逐漸逼近</text>
+  <text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">隨即被徵召投入密碼工作</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一台從未真正造出來的機器，卻定義了此後所有真正造出來的機器</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">圖靈機本身只是一個思想實驗，紙上的規則與符號帶，卻精準界定了「計算」這件事的數學本質</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">——此後所有電腦，本質上都是這台假想機器的具體實現</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">而他真正把這套理論用在拯救性命上的機會，很快就來了</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>布萊切利園——搶在世人知道之前，就已經改變了戰爭結局</h2>
+  <p class="sub">他破解的不只是一套密碼，更可能讓整場戰爭提早了將近兩年結束</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="圖靈布萊切利園結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">圖靈加入英國布萊切利園的密碼破譯團隊，主導破解德軍海軍恩尼格瑪密碼</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">這項工作因軍事機密，長達數十年不為世人所知</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">加入布萊切利園</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">戰爭爆發後隨即加入英國密碼</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">學校，主導第八小屋工作</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">設計出炸彈機</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">設計改良出能大規模破解恩尼</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">格瑪密碼的電機裝置</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">破解德軍海軍密碼</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">成功破解難度最高的德軍海</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">軍恩尼格瑪密碼系統</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">戰後長期保密</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">這項工作被列為最高機密，戰</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">後數十年才逐漸公開</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">後世歷史學家估計，這項工作讓戰爭提早了將近兩年結束</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">破解密碼讓盟軍得以提前掌握德軍潛艇動向與作戰計畫，部分歷史學家推估，這項貢獻可能讓歐</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">戰提早了將近兩年結束，間接挽救了數百萬條性命，圖靈生前卻幾乎沒有機會公開談論這份功勞</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而就在這份功勞仍被列為機密的同時，他自己卻因為另一個原因，遭到了國家的起訴</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">劍橋國王學院<span class="yr">1912年生</span></div><p>於劍橋國王學院攻讀數學，展現過人天賦，二十二歲獲選為院士。</p></div>
+    <div class="card"><div class="nm">1936年論文</div><p>提出假想的圖靈機，回答了希爾伯特提出的判定性問題，第一次嚴謹定義了「可計算」。</p></div>
+    <div class="card"><div class="nm">普林斯頓攻讀博士<span class="yr">1936年起</span></div><p>赴普林斯頓大學，師從邱奇攻讀數理邏輯博士學位，結識當地多位頂尖數學家。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>布萊切利園</h2><span class="tag">BLETCHLEY PARK</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">加入布萊切利園</div><p>戰爭爆發後隨即加入英國密碼學校，主導第八小屋工作。</p></div>
+    <div class="card"><div class="nm">設計出炸彈機</div><p>設計改良出能大規模破解恩尼格瑪密碼的電機裝置。</p></div>
+    <div class="card"><div class="nm">破解德軍海軍密碼</div><p>成功破解難度最高的德軍海軍恩尼格瑪密碼系統。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>定罪、化學閹割，與一顆咬了一口的蘋果</b><br>
+  1952年，圖靈向警方報案住宅遭竊，調查過程中卻意外揭露他與另一名男性的同性關係，依當時英國法律遭以「嚴重猥褻罪」起訴定罪。法院給他兩個選擇：入獄服刑，或接受為期一年的荷爾蒙注射治療（即所謂化學閹割）——他選擇了後者，此後身體出現明顯變化，也失去了政府安全許可，被禁止再參與任何密碼相關工作。1954年，圖靈被發現於家中身亡，死因判定為氰化物中毒，床邊留有一顆咬了幾口的蘋果，官方結論為自殺，但部分傳記作者根據他家中確實存放氰化物做實驗的習慣，對自殺說仍抱持保留態度。2009年，英國首相布朗代表政府公開致歉；2013年，英國女王正式頒布皇室赦免；2017年通過的法案，更追溯赦免了數千名曾因同樣罪名遭定罪的男性，這項法案因此被稱為「圖靈法案」。
+</div>
+
+<section>
+  <blockquote>
+    我們只能看到前方不遠之處，但那裡已經有許多值得做的事。
+    <cite>轉譯自圖靈晚年談及機器智能未來發展前景時常被引用的表述，反映他對計算機科學仍處於起步階段、卻蘊藏巨大潛力的樂觀態度。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦生平背景、布萊切利園的密碼破譯工作，以及晚年遭起訴定罪與身後平反的經過，圖靈機與可計算性理論的具體數學內容請另行查證專業計算機科學文獻。死因的確切性質，部分傳記作者持保留態度，本頁採審慎敘述，不代為下定論。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
