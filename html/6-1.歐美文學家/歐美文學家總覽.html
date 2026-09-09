@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>歐美文學家總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;--rule:#d7e0e6;
+    --body:#546e7a;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:#bcd4e4;letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;color:#fff;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.14em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  .lede b{color:#fff;font-weight:500}
+  section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.08em;margin:0 0 4px;color:#17324d}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:#59707b;font-size:13.5px}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .after{margin:16px 0 0;font-size:13.5px;color:#546e7a}
+  .band{display:flex;align-items:baseline;gap:12px;margin:26px 0 2px}
+  .band h2{font-size:16px;letter-spacing:.1em}
+  .tag{font-size:11px;letter-spacing:.16em;color:#59707b}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    border-top:1px solid #d7e0e6}
+  .card{display:block;padding:14px 16px;border-bottom:1px solid #d7e0e6;
+    text-decoration:none;color:inherit;transition:background .15s}
+  a.card:hover{background:#f2f7fa}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:15.5px;
+    letter-spacing:.05em;color:#17324d}
+  .card .yr{font-family:"EB Garamond",Georgia,serif;font-size:14px;color:#59707b;margin-left:8px}
+  .card .gk{font-size:11.5px;color:#59707b;margin-left:8px}
+  .card .lk{font-size:11px;color:#1f5c85;margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13px;color:#546e7a;line-height:1.65}
+  blockquote{margin:0 0 20px;padding:16px 22px;background:#fff;border-left:5px solid #d7655d;
+    border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.03em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:#59707b;margin-top:6px;letter-spacing:0}
+  .callout{background:#fff;border-left:5px solid #e49b3d;border-radius:12px;padding:18px 22px;
+    margin-bottom:20px;font-size:14px;color:#546e7a;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.03em;color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;padding:14px 20px;
+    color:#526b76;font-size:12.5px}
+  footer b{color:#37474f}
+
+  .pairgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    margin-top:16px}
+  .pair{border:1px solid #d7e0e6;border-radius:10px;padding:14px 16px;background:#f8fafc}
+  .pair .from{font-size:12px;color:#59707b}
+  .pair .from b{color:#3a758f}
+  .pair .arrow{margin:6px 0;font-size:12px;color:#8fa3ad;text-align:center}
+  .pair .to{font-size:12.5px;color:#37474f}
+  .pair .to b{color:#a5502f}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">6-1 歐美文學家 · 總覽</p>
+  <h1>歐美文學家總覽</h1>
+  <p class="lede">從但丁把俗語寫成史詩，到馬奎斯把拉丁美洲的口傳記憶寫成魔幻寫實，七百年的歐美文學史其實一直在解決同一個問題：用什麼樣的敘事形式，才能裝得下一個時代的人心。<b>這一頁依時代順序整理十四位最具代表性的作家，也整理出幾組跨國、跨世代的文學影響關係</b>，多數人物目前尚無獨立專頁，之後若補上會回頭替對應卡片加上連結。</p>
+</header>
+
+<blockquote>
+  每個時代的西方文學，都在為自己所處的社會找一種新的敘事語言——從史詩到小說，從寫實到魔幻，形式不斷改變，人心的複雜卻始終是核心關懷。
+  <cite>本頁的組織原則</cite>
+</blockquote>
+
+<section>
+  <h2>七百年的敘事語言變遷</h2>
+  <p class="sub">從中世紀的俗語史詩到當代的魔幻寫實，每一次突破都在解決當時的敘事困境。</p>
+  <div class="frame">
+  <svg viewBox="0 0 1100 500" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC','PingFang TC',sans-serif">
+    <rect x="25" y="18" width="110" height="34" fill="#17324d"/>
+    <rect x="143" y="18" width="150" height="34" fill="#17324d"/>
+    <rect x="301" y="18" width="430" height="34" fill="#17324d"/>
+    <rect x="739" y="18" width="336" height="34" fill="#17324d"/>
+    <text x="80" y="40" text-anchor="middle" font-size="13" fill="#ffffff">年代</text>
+    <text x="218" y="40" text-anchor="middle" font-size="13" fill="#ffffff">誰</text>
+    <text x="516" y="40" text-anchor="middle" font-size="13" fill="#ffffff">面對的處境</text>
+    <text x="907" y="40" text-anchor="middle" font-size="13" fill="#ffffff">留下的意義</text>
+
+    <rect x="25" y="56" width="110" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="143" y="56" width="150" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="301" y="56" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="56" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="90" text-anchor="middle" font-size="12.5" fill="#37607a">約1320</text>
+    <text x="218" y="90" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">但丁</text>
+    <text x="516" y="90" text-anchor="middle" font-size="13" fill="#263238">中世紀俗語尚無成熟的長篇敘事文學傳統</text>
+    <text x="907" y="90" text-anchor="middle" font-size="12.5" fill="#546e7a">《神曲》以俗語寫成史詩，奠定義大利文學語言基礎</text>
+
+    <rect x="25" y="112" width="110" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="143" y="112" width="150" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="301" y="112" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="112" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="146" text-anchor="middle" font-size="12.5" fill="#8a6a35">1605</text>
+    <text x="218" y="146" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">塞萬提斯</text>
+    <text x="516" y="146" text-anchor="middle" font-size="13" fill="#263238">騎士文學氾濫成陳腔濫調，缺乏真正的反思</text>
+    <text x="907" y="146" text-anchor="middle" font-size="12.5" fill="#546e7a">《唐吉訶德》以嘲諷解構騎士傳奇，公認的第一部現代小說</text>
+
+    <rect x="25" y="168" width="110" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="143" y="168" width="150" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="301" y="168" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="168" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="202" text-anchor="middle" font-size="12.5" fill="#96604f">約1600</text>
+    <text x="218" y="202" text-anchor="middle" font-size="13.5" fill="#a5502f" font-weight="600">莎士比亞</text>
+    <text x="516" y="202" text-anchor="middle" font-size="13" fill="#263238">英語尚未成為能承載複雜人性刻劃的文學語言</text>
+    <text x="907" y="202" text-anchor="middle" font-size="12.5" fill="#546e7a">三十餘部劇作定義英語文學巔峰，至今是西方戲劇核心參照</text>
+
+    <rect x="25" y="224" width="110" height="56" fill="#eef4ee" stroke="#a8c4ab"/>
+    <rect x="143" y="224" width="150" height="56" fill="#eef4ee" stroke="#a8c4ab"/>
+    <rect x="301" y="224" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="224" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="258" text-anchor="middle" font-size="12.5" fill="#3d7a55">1813</text>
+    <text x="218" y="258" text-anchor="middle" font-size="13.5" fill="#2f6b45" font-weight="600">珍・奧斯汀</text>
+    <text x="516" y="258" text-anchor="middle" font-size="13" fill="#263238">小說被視為次等文類，女性作家更難獲得認可</text>
+    <text x="907" y="258" text-anchor="middle" font-size="12.5" fill="#546e7a">《傲慢與偏見》以精準反諷確立英國社會小說典範</text>
+
+    <rect x="25" y="280" width="110" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="143" y="280" width="150" height="56" fill="#eaf2f7" stroke="#8fb4c9"/>
+    <rect x="301" y="280" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="280" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="314" text-anchor="middle" font-size="12.5" fill="#37607a">1880</text>
+    <text x="218" y="314" text-anchor="middle" font-size="13.5" fill="#1f5c85" font-weight="600">杜斯妥也夫斯基</text>
+    <text x="516" y="314" text-anchor="middle" font-size="13" fill="#263238">俄國社會劇烈變動，舊有信仰體系搖搖欲墜</text>
+    <text x="907" y="314" text-anchor="middle" font-size="12.5" fill="#546e7a">《卡拉馬助夫兄弟們》刻劃信仰危機，深遠影響存在主義</text>
+
+    <rect x="25" y="336" width="110" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="143" y="336" width="150" height="56" fill="#fdf5e7" stroke="#e0b775"/>
+    <rect x="301" y="336" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="336" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="370" text-anchor="middle" font-size="12.5" fill="#8a6a35">1884</text>
+    <text x="218" y="370" text-anchor="middle" font-size="13.5" fill="#8f5e14" font-weight="600">馬克吐溫</text>
+    <text x="516" y="370" text-anchor="middle" font-size="13" fill="#263238">美國文學仍依附歐洲傳統，缺乏獨立的美式語言風格</text>
+    <text x="907" y="370" text-anchor="middle" font-size="12.5" fill="#546e7a">《頑童歷險記》以口語化美式英語敘事，被稱為美國文學之父</text>
+
+    <rect x="25" y="392" width="110" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="143" y="392" width="150" height="56" fill="#fdeeeb" stroke="#dda695"/>
+    <rect x="301" y="392" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="392" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="426" text-anchor="middle" font-size="12.5" fill="#96604f">1915</text>
+    <text x="218" y="426" text-anchor="middle" font-size="13.5" fill="#a5502f" font-weight="600">卡夫卡</text>
+    <text x="516" y="426" text-anchor="middle" font-size="13" fill="#263238">現代官僚體制帶來的異化感受，尚無文學形式能承載</text>
+    <text x="907" y="426" text-anchor="middle" font-size="12.5" fill="#546e7a">《變形記》開創荒誕與疏離美學，深刻影響二十世紀文學</text>
+
+    <rect x="25" y="448" width="110" height="56" fill="#eef4ee" stroke="#a8c4ab"/>
+    <rect x="143" y="448" width="150" height="56" fill="#eef4ee" stroke="#a8c4ab"/>
+    <rect x="301" y="448" width="430" height="56" fill="#ffffff" stroke="#d7e0e6"/>
+    <rect x="739" y="448" width="336" height="56" fill="#f6f9fb" stroke="#d7e0e6"/>
+    <text x="80" y="482" text-anchor="middle" font-size="12.5" fill="#3d7a55">1967</text>
+    <text x="218" y="482" text-anchor="middle" font-size="13.5" fill="#2f6b45" font-weight="600">馬奎斯</text>
+    <text x="516" y="482" text-anchor="middle" font-size="13" fill="#263238">拉丁美洲的歷史經驗，西方寫實主義難以完整承載</text>
+    <text x="907" y="482" text-anchor="middle" font-size="12.5" fill="#546e7a">《百年孤寂》確立魔幻寫實主義，讓拉美文學躍上世界舞台</text>
+  </svg>
+  </div>
+  <p class="after">八個關鍵年份橫跨近七百年，共同的模式是：每一次文學形式的突破，都是為了裝下一種前人的語言裝不下的人心處境。</p>
+</section>
+
+<section>
+  <h2>跨國影響的接力</h2>
+  <p class="sub">幾位作家的關鍵突破，都能追溯到上一代人跨越國界的啟發——具體人物與作品，請見下方對應段落。</p>
+  <div class="pairgrid">
+    <div class="pair">
+      <div class="from"><b>莎士比亞</b>　悲劇美學與人性刻劃的典範</div>
+      <div class="arrow">↓ 啟發</div>
+      <div class="to"><b>杜斯妥也夫斯基</b>　筆記本裡大量摘錄莎劇台詞，深受其人性刻劃啟發</div>
+    </div>
+    <div class="pair">
+      <div class="from"><b>杜斯妥也夫斯基</b>　對自由意志與虛無的刻劃</div>
+      <div class="arrow">↓ 影響</div>
+      <div class="to"><b>卡夫卡與存在主義文學</b>　直接影響二十世紀荒誕與存在焦慮的書寫傳統</div>
+    </div>
+    <div class="pair">
+      <div class="from"><b>十九世紀寫實主義</b>　福婁拜、左拉的寫實傳統</div>
+      <div class="arrow">↓ 突破</div>
+      <div class="to"><b>喬伊斯與吳爾芙</b>　在寫實基礎上發展出意識流等現代主義技法</div>
+    </div>
+    <div class="pair">
+      <div class="from"><b>福克納</b>　美國南方的哥德式神話敘事</div>
+      <div class="arrow">↓ 移植</div>
+      <div class="to"><b>馬奎斯</b>　融合拉美口傳傳統，開創魔幻寫實主義</div>
+    </div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>怎麼用這一頁</b>　下面依五個時代分組列出主要作家。目前本資料夾尚未替個別作家開設專頁，卡片只做定位說明；之後若替特定作家寫成專頁，會回頭幫對應卡片加上連結。
+</div>
+
+<div class="band"><h2>中世紀至文藝復興：現代西方文學的奠基</h2><span class="tag">約1300s–1600s　從俗語史詩到現代小說與戲劇</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">但丁</span><span class="yr">1265–1321</span><p>以義大利俗語寫成《神曲》，帶著讀者遊歷地獄、煉獄與天堂，奠定義大利文學語言的基礎。</p></div>
+  <div class="card"><span class="nm">塞萬提斯</span><span class="yr">1547–1616</span><p>《唐吉訶德》以嘲諷筆法解構騎士傳奇，公認是西方第一部現代小說。</p></div>
+  <div class="card"><span class="nm">莎士比亞</span><span class="yr">1564–1616</span><p>三十餘部劇作橫跨悲劇、喜劇與歷史劇，至今仍是西方戲劇與英語文學的核心參照。</p></div>
+</div>
+
+<div class="band"><h2>十九世紀：小說成為主流文類</h2><span class="tag">1800s　社會小說與寫實主義的黃金年代</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">珍・奧斯汀</span><span class="yr">1775–1817</span><p>以精準反諷筆法寫盡英國仕紳社會的婚戀算計，確立英國社會小說的典範。</p></div>
+  <div class="card"><span class="nm">雨果</span><span class="yr">1802–1885</span><p>《悲慘世界》《鐘樓怪人》以磅礡敘事關懷底層命運，是法國浪漫主義文學的代表人物。</p></div>
+  <div class="card"><span class="nm">狄更斯</span><span class="yr">1812–1870</span><p>以連載小說形式描繪維多利亞時代的貧富懸殊，作品至今仍是英國社會寫實主義的代名詞。</p></div>
+  <div class="card"><span class="nm">馬克吐溫</span><span class="yr">1835–1910</span><p>《頑童歷險記》以口語化的美式英語敘事，擺脫對歐洲文學傳統的依附，被稱為美國文學之父。</p></div>
+</div>
+
+<div class="band"><h2>俄國文學的黃金時代</h2><span class="tag">1800s中後期　信仰、自由意志與社會變革的深刻叩問</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">杜斯妥也夫斯基</span><span class="yr">1821–1881</span><p>《罪與罰》《卡拉馬助夫兄弟們》深刻刻劃自由意志與信仰危機，深遠影響二十世紀存在主義。</p></div>
+  <div class="card"><span class="nm">托爾斯泰</span><span class="yr">1828–1910</span><p>《戰爭與和平》《安娜·卡列尼娜》以龐大的敘事格局呈現個人命運與歷史洪流的交纏。</p></div>
+</div>
+
+<div class="band"><h2>現代主義的實驗</h2><span class="tag">1900s初　傳統敘事形式的崩解與重構</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">卡夫卡</span><span class="yr">1883–1924</span><p>《變形記》《審判》開創「卡夫卡式」的荒誕與疏離美學，深刻影響二十世紀文學。</p></div>
+  <div class="card"><span class="nm">喬伊斯</span><span class="yr">1882–1941</span><p>《尤利西斯》以意識流技法重寫一日之內的日常生活，被視為現代主義小說的顛峰之作。</p></div>
+  <div class="card"><span class="nm">維吉尼亞・吳爾芙</span><span class="yr">1882–1941</span><p>《戴洛維夫人》《燈塔行》以流動的內心獨白探索時間與自我意識，是英國現代主義文學的核心人物。</p></div>
+</div>
+
+<div class="band"><h2>二十世紀迄今：美國與拉美文學的崛起</h2><span class="tag">1920s起　新大陸的文學語言走向世界</span></div>
+<div class="grid">
+  <div class="card"><span class="nm">海明威</span><span class="yr">1899–1961</span><p>以簡潔冷冽的「冰山原則」文體著稱，《老人與海》等作品確立了他在美國文學史上的地位。</p></div>
+  <div class="card"><span class="nm">馬奎斯</span><span class="yr">1927–2014</span><p>《百年孤寂》確立魔幻寫實主義的敘事典範，讓拉丁美洲文學首次躍上世界文壇的中心舞台。</p></div>
+</div>
+
+<div class="band"><h2>延伸</h2><span class="tag">相關的時代背景與思想脈絡</span></div>
+<div class="grid">
+  <a class="card" href="../1.西方歷史/文藝復興.html"><span class="nm">文藝復興</span><p>但丁、塞萬提斯與莎士比亞所處的時代背景，是理解他們作品何以劃時代的關鍵脈絡。</p></a>
+  <a class="card" href="../4-0.哲學思想/存在主義.html"><span class="nm">存在主義</span><p>杜斯妥也夫斯基對自由意志與虛無的刻劃，是存在主義哲學形成過程裡的重要文學根源。</p></a>
+  <a class="card" href="../6.文學小說/荷馬史詩人物關係圖.html"><span class="nm">荷馬史詩人物關係圖</span><p>比但丁更早近兩千年，西方敘事文學真正的源頭，另見同資料夾的荷馬相關頁面。</p></a>
+</div>
+
+<footer>
+  本頁為 <b>6-1 歐美文學家</b> 資料夾的總覽入口，目前是本資料夾唯一的頁面。人物僅作定位說明，尚無個別專頁。生卒年採通行的西曆記載。
+</footer>
+
+</div>
+</body>
+</html>
