@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>契訶夫知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">醫生作家的雙重身分・改寫現代短篇小說規則的人・薩哈林島的田野調查之旅</p>
+  <h1>契訶夫知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：那篇尚未收錄他的專頁，這裡完整補上——他和日本作家森鷗外一樣終生身兼醫師與作家兩種身分（6-3.日本文學家資料夾〈森鷗外〉篇已詳述森鷗外的軍醫本業），契訶夫更曾親自遠赴西伯利亞薩哈林島監獄實地調查；他44歲便因肺結核辭世，短篇小說與戲劇創作卻徹底改寫了現代文學的敘事規則。</p>
+</header>
+
+<section>
+  <h2>醫生作家與薩哈林島調查之旅</h2>
+  <p class="sub">白天看診，晚上寫作，他曾說「醫學是我的妻子，文學是我的情人」</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="契訶夫醫生作家結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這趟調查耗損了他本已脆弱的肺部，卻讓他的寫作視野擴展到整個帝俄社會</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他終生執業行醫，卻也曾不顧健康遠赴西伯利亞監獄島，親自訪查數千名流放者</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">終生執業的醫師身分</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">醫學院畢業後持續行醫，常為窮困病</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">患免費看診，自稱醫學是他的妻子</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">薩哈林島監獄調查</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1890年不顧健康遠赴西伯利亞薩</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">哈林島，親自訪查數千名囚犯生活</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">《薩哈林島》紀實作品</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">根據調查寫成的紀實作品，揭露帝俄</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">流放制度殘酷實況，是少見的非虛構</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">醫師視角的精準觀察</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">醫學訓練養成的冷靜觀察力，深刻</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">體現在對人物心理近乎診斷式的刻劃</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這趟調查耗損了他本已脆弱的肺部，卻讓他的寫作視野擴展到整個帝俄社會</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">薩哈林島之旅前，他的短篇多聚焦個人情感與家庭瑣事；這趟親眼見證流放制度殘酷的旅程，讓他</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">往後的作品開始承載更沉重的社會關懷，也讓他的健康從此每況愈下</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">而正是這份醫師養成的觀察力，也造就了他晚年短篇與戲劇的雙重革新</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>短篇小說與戲劇的雙重革新</h2>
+  <p class="sub">他讓短篇小說不必有明確結局，也讓戲劇的張力藏在沉默與日常對話裡</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="契訶夫短篇與戲劇結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從短篇小說到舞台劇本，他證明了日常裡的沉默往往比激烈衝突更觸動人心</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他摒棄傳統短篇講求明確結局的寫法，晚年轉向劇作，開創「氛圍戲劇」的全新美學</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">短篇小說的敘事革新</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">摒棄傳統短篇講求明確結局與道德</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">寓意的寫法，改以留白捕捉內心轉折</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《海鷗》《三姊妹》《櫻桃園》</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">晚年轉向劇作，以日常對話與沉默</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">取代激烈衝突，開創氛圍戲劇美學</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">與莫斯科藝術劇院的合作</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">與導演史坦尼斯拉夫斯基合作首演</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">，其方法演技深受契訶夫劇本啟發</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">44歲因肺結核辭世</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">長年肺結核纏身，1904年病逝德國</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">療養地，逝世前剛完成《櫻桃園》首演</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從短篇小說到舞台劇本，他證明了日常裡的沉默往往比激烈衝突更觸動人心</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">無論是短篇小說裡懸而未決的結局，還是劇作中角色欲言又止的沉默，契訶夫始終相信留白比明說</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">更有力量——這份美學徹底改寫了後世短篇小說與現代戲劇的創作規則</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他也深受托爾斯泰賞識，兩人維持多年跨世代的文壇情誼</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>醫生作家</h2><span class="tag">DOCTOR & WRITER</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">終生執業的醫師身分</div><p>醫學院畢業後持續行醫，常為窮困病患免費看診，自稱醫學是他的妻子。</p></div>
+    <div class="card"><div class="nm">薩哈林島監獄調查<span class="yr">1890年</span></div><p>不顧健康遠赴西伯利亞薩哈林島，親自訪查數千名囚犯與流放者生活。</p></div>
+    <div class="card"><div class="nm">《薩哈林島》紀實作品</div><p>根據調查寫成，揭露帝俄流放制度殘酷實況，是他少見的非虛構寫作。</p></div>
+    <div class="card"><div class="nm">醫師視角的精準觀察</div><p>醫學訓練養成的冷靜觀察力，深刻體現在對人物心理近乎診斷式的刻劃。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>短篇與戲劇革新</h2><span class="tag">FICTION & DRAMA</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">短篇小說的敘事革新</div><p>摒棄傳統短篇講求明確結局與道德寓意的寫法，改以留白捕捉內心轉折。</p></div>
+    <div class="card"><div class="nm">《海鷗》《三姊妹》《櫻桃園》</div><p>晚年轉向劇作，以日常對話與沉默取代激烈衝突，開創氛圍戲劇美學。</p></div>
+    <div class="card"><div class="nm">與莫斯科藝術劇院的合作</div><p>與導演史坦尼斯拉夫斯基合作首演，其方法演技深受契訶夫劇本啟發。</p></div>
+    <div class="card"><div class="nm">44歲因肺結核辭世<span class="yr">1904年</span></div><p>長年肺結核纏身病逝德國療養地，逝世前剛完成《櫻桃園》首演。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與托爾斯泰的忘年情誼</b>　契訶夫深受托爾斯泰賞識與影響，兩人維持多年交誼，儘管晚年契訶夫逐漸在文學理念上與托爾斯泰的說教傾向保持距離，仍終生敬重這位前輩。
+</div>
+
+<section>
+  <blockquote>
+    若第一幕牆上掛了一把槍，後面幾幕就一定要開槍，否則就不該掛上去。
+    <cite>契訶夫著名的戲劇創作原則，後世稱為「契訶夫之槍」，強調敘事元素不應無謂存在。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁整理契訶夫的生平與創作革新，具體劇作情節與短篇小說內容請另行參閱專業譯本。生卒年採通行西曆記載（俄國於20世紀前採儒略曆，本頁換算為公曆）。
+</footer>
+
+</div>
+</body>
+</html>

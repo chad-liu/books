@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>伏爾泰知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">一生創作逾五十部劇本的舞台常勝軍・兩萬封書信織成的歐洲文人網絡・與腓特烈大帝的宮廷蜜月與決裂</p>
+  <h1>伏爾泰知識圖譜</h1>
+  <p class="lede">與〈啟蒙運動〉篇、4-1.哲學家資料夾〈伏爾泰知識圖譜〉的銜接：那兩篇已詳細梳理他的自然神論立場、卡拉斯冤案與《哲學通信》引介英式自由的過程，這裡不再重複，轉而聚焦他作為職業作家的另一面——他其實首先是靠劇本與書信立足文壇的寫作機器，一生創作逾五十部劇作，也留下近兩萬封書信，還曾應普魯士腓特烈大帝之邀進駐無憂宮，經歷一段文學蜜月與決裂。</p>
+</header>
+
+<section>
+  <h2>文人的另一面——哲理小說的開創者與劇場之王</h2>
+  <p class="sub">一生創作超過五十部劇作與數部哲理小說，論戰以外，他首先是個寫作機器</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伏爾泰文人身分結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">諷刺散文之外，伏爾泰其實首先是個以劇本與書信立足文壇的職業作家</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">《憨第德》讓他以哲人形象留名後世，但在世時真正撐起他文壇聲望的，是劇場與書信</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">《查第格》與《微型巨人》</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">早於《憨第德》問世，這兩部作品已確立</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">「哲理小說」這個以荒誕包裝思辨的文類</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《拉‧亨利亞德》</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">以法王亨利四世為主角歌頌宗教寬容的</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">史詩，是法國文學史上少見的成功嘗試</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">劇場之王</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">一生創作逾五十部劇作，早年悲劇《伊底</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">帕斯》甫上演便轟動巴黎，舞台聲望一度</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">兩萬封書信</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">與全歐洲君主、學者通信近兩萬封，書信</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">本身被視為十八世紀最具文采的文類之一</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從哲理小說到史詩、劇場與書信，他的文學版圖比後世認知的更廣</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">《憨第德》的名氣讓後世傾向把他當成哲學家看待，但在世時真正撐起他文壇地位的，其實是舞台上的</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">票房與書信裡的文采——他的同代人未必先讀過《憨第德》，卻幾乎都看過他的劇作或收過他的信</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這位劇場常勝軍後來還應普魯士國王之邀，進駐了一座宮廷</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>波茨坦宮廷與一場獻給教宗的劇作爭議</h2>
+  <p class="sub">與腓特烈大帝的文學蜜月最終破裂，一齣諷刺劇也讓他捲入意想不到的爭議</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="伏爾泰波茨坦宮廷結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從無憂宮的詩文唱和，到憤而離開的財務糾紛，這段宮廷歲月充滿戲劇性起伏</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">而他晚年的一齣宗教諷刺劇，也讓他捲入了一場意料之外的爭議</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">波茨坦宮廷歲月</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">應腓特烈二世之邀進駐無憂宮，兩人以詩</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">文唱和，卻因修改御製詩稿等瑣事漸交惡</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">與腓特烈的決裂</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">終因財務糾紛與私人齟齬憤而離開普魯士</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">宮廷，晚年才與腓特烈重修舊好、通信</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">《穆罕默德》劇作爭議</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">這齣劇名為批判宗教狂熱，卻因影射先知</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">穆罕默德引發爭議，他還曾將劇獻給教宗</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">法蘭西學院的恩怨</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">生前歷經波折才當選院士，作品屢遭查禁</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">，死後卻被追認為法蘭西文學精神的象徵</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">83歲高齡才重返闊別28年的巴黎，數週後便與世長辭</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">1778年，他為了自己新劇《伊蓮妮》的首演重返巴黎，全城萬人空巷迎接這位傳奇文人，這場凱旋式</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">的歸鄉卻也是他生命的終章——數週後他便在巴黎病逝，結束這段跌宕起伏卻始終筆耕不輟的文人一生</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他的思想立場、卡拉斯案與《哲學通信》詳見〈啟蒙運動〉篇與 4-1.哲學家 資料夾內的專頁</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>文人的另一面</h2><span class="tag">MAN OF LETTERS</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">《查第格》與《微型巨人》</div><p>早於《憨第德》，已確立「哲理小說」這個以荒誕包裝哲學思辨的文類。</p></div>
+    <div class="card"><div class="nm">《拉‧亨利亞德》</div><p>以法王亨利四世為主角歌頌宗教寬容的史詩，是法國文學史上少見的成功嘗試。</p></div>
+    <div class="card"><div class="nm">劇場之王</div><p>一生創作逾五十部劇作，早年悲劇《伊底帕斯》甫上演便轟動巴黎。</p></div>
+    <div class="card"><div class="nm">兩萬封書信</div><p>與全歐洲君主、學者通信近兩萬封，書信本身被視為十八世紀最具文采的文類之一。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>波茨坦宮廷</h2><span class="tag">POTSDAM COURT</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">波茨坦宮廷歲月</div><p>應腓特烈二世之邀進駐無憂宮，卻因修改御製詩稿等瑣事漸生嫌隙。</p></div>
+    <div class="card"><div class="nm">與腓特烈的決裂</div><p>終因財務糾紛與私人齟齬憤而離開普魯士，晚年才重修舊好、恢復通信。</p></div>
+    <div class="card"><div class="nm">《穆罕默德》劇作爭議</div><p>批判宗教狂熱的劇作，卻因影射先知穆罕默德引發爭議，還曾獻給教宗。</p></div>
+    <div class="card"><div class="nm">法蘭西學院的恩怨</div><p>生前歷經波折才當選院士，死後卻被追認為法蘭西文學精神的象徵。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>83歲的凱旋歸鄉</b>　1778年，他為了新劇《伊蓮妮》首演重返闊別28年的巴黎，全城萬人空巷迎接這位傳奇文人，數週後卻在巴黎病逝，成了他一生最後一場、也最戲劇性的謝幕。
+</div>
+
+<section>
+  <blockquote>
+    評斷一個人，該看他提出的問題，而非他給出的答案。
+    <cite>常見的伏爾泰語錄之一，如同他許多名言一樣，確切出處已難以考證，但精準呼應了他一生對權威保持懷疑的姿態。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦伏爾泰作為職業作家的一面——哲理小說、劇作、書信與波茨坦宮廷歲月；他的哲學立場、卡拉斯案與《哲學通信》詳見〈啟蒙運動〉篇與 4-1.哲學家 資料夾內的〈伏爾泰知識圖譜〉。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>

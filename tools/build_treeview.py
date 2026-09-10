@@ -10,6 +10,9 @@
   * 資料夾依名稱升冪排序（資料夾名已用數字前綴人工排好順序）
   * 檔案先依該資料夾 order.md 的順序，order.md 未列到的接在後面依檔名排序
   * 未列入 order.md 的檔案標記 o=false，前端會加淡色標記（順便當漏列偵測）
+  * 同一人物第二頁以後（如「蒙田時間軸」緊接在「蒙田(1533~1592)」後面）在側欄樹狀
+    選單裡顯示在主頁底下一層，純顯示層面的分組，實體檔案仍留在同一層，不搬動；
+    規則見 order_structure()，只支援一層，不會產生孫層
   * 檔案樹在建置時烘進 treeview.html，因為 GitHub Pages 沒有目錄列表 API、
     file:// 又會被 CORS 擋掉，執行時抓不到目錄內容
   * 沒有 dark/light 切換：被瀏覽的頁面在 SVG 內寫死了上萬處顏色（不吃 CSS 變數），
@@ -38,31 +41,40 @@ SEP_RE = re.compile(r'^[-=_]{3,}$')
 LOCAL_LABEL_RE = re.compile(r'^(?P<name>.+?)\((?P<note>[^()]+)\)\s*$')
 
 
-def order_names(folder, stems):
-    """讀 order.md，回傳（「本機檔名（不含 .html）」的順序清單, {檔名: 顯示標籤}）。
-    外部連結與分隔線略過。stems 是該資料夾實際 .html 檔名（不含副檔名）的集合，
-    用來判斷一行該整行當檔名（如「伊利亞德(荷馬)」本身就是檔名），
-    還是去掉結尾附註後才是檔名（如「蒙田(1533~1592)」對應 蒙田.html）。"""
+def order_structure(folder, stems):
+    """讀 order.md，依序回傳條目清單，每項為
+    {'name': 對應到的本機檔名（不含 .html），找不到檔案時為 None,
+     'label': 顯示用標籤,
+     'parent': 這個條目該掛在哪個「主頁」（本機檔名）底下，沒有則 None}。
+
+    只支援一層：形如「名字(附註)」的條目（如「蒙田(1533~1592)」）視為某人物的
+    主頁；緊接在它後面、直接以檔名比對成功的條目（如「蒙田時間軸」），依序掛在
+    這個主頁底下，直到下一個「名字(附註)」格式條目出現為止——用來讓檔案樹側欄
+    把同一人物第二頁以後的頁面顯示在主頁底下一層，不搬動任何實體檔案。
+    空行、分隔線不影響分組；外部連結一律視為獨立條目，不參與分組也不重置分組。"""
     f = folder / 'order.md'
     if not f.exists():
-        return [], {}
-    names = []
-    labels = {}
+        return []
+    items = []
+    current_primary = None
     for line in f.read_text(encoding='utf-8').splitlines():
         s = line.strip()
-        if not s or SEP_RE.match(s) or URL_RE.match(s):
+        if not s or SEP_RE.match(s):
+            continue
+        if URL_RE.match(s):
+            items.append({'name': None, 'label': s, 'parent': None})
             continue
         if s in stems:
-            names.append(s)
+            items.append({'name': s, 'label': s, 'parent': current_primary})
             continue
         m = LOCAL_LABEL_RE.match(s)
         name = m.group('name').strip() if m else None
         if name and name in stems:
-            names.append(name)
-            labels[name] = s
+            items.append({'name': name, 'label': s, 'parent': None})
+            current_primary = name
             continue
-        names.append(s)  # 找不到對應檔案，原樣留著給排序用（不會有檔案命中它）
-    return names, labels
+        items.append({'name': None, 'label': s, 'parent': None})  # 找不到對應檔案，原樣留著給排序用
+    return items
 
 
 def collect():
@@ -75,23 +87,33 @@ def collect():
             continue
 
         stems = {p.stem for p in files}
-        listed, labels = order_names(folder, stems)
-        rank = {n: i for i, n in enumerate(listed)}
+        structure = order_structure(folder, stems)
+        labels = {it['name']: it['label'] for it in structure if it['name']}
+        parent_of = {it['name']: it['parent'] for it in structure if it['name']}
+        rank = {it['name']: i for i, it in enumerate(structure) if it['name']}
         # order.md 有列的排前面並照其順序，沒列的接在後面依檔名排
         files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))
 
-        items = []
+        by_stem = {}
+        top = []
         for p in files:
             in_order = p.stem in rank
             if not in_order:
                 orphans += 1
-            items.append({
+            item = {
                 'n': labels.get(p.stem, p.stem) + '.html',
                 'p': 'html/%s/%s' % (folder.name, p.name),
                 's': p.stat().st_size,
                 'o': in_order,
-            })
-        tree.append({'name': folder.name, 'files': items})
+                'children': [],
+            }
+            by_stem[p.stem] = item
+            parent = parent_of.get(p.stem)
+            if parent and parent in by_stem:
+                by_stem[parent]['children'].append(item)
+            else:
+                top.append(item)
+        tree.append({'name': folder.name, 'files': top, 'total': len(files)})
     return tree, orphans
 
 
@@ -146,6 +168,16 @@ body{margin:0;background:var(--bg);color:var(--ink);
 .fold li.on{background:var(--sel);font-weight:600}
 .fold li .no{color:var(--muted);font-size:10px;margin-left:5px}
 .fold li.hid,.fold.hid{display:none}
+/* 同一人物第二頁以後：巢狀顯示在主頁底下一層，不是實體子資料夾。
+   預設收合，點主頁列前面的 ▼/▶ 才展開，跟子項目本身的點擊（開檔）分開 */
+.fold ul.children{list-style:none;margin:0;padding:0}
+.fold li.has-children{padding-left:12px}
+.fold li .tgl{display:inline-block;width:16px;text-align:center;font-size:9px;
+  color:var(--muted);cursor:pointer}
+.fold li.closed>ul.children{display:none}
+.fold li ul.children li{padding-left:46px;font-size:12px;color:var(--muted)}
+.fold li ul.children li:hover{color:var(--ink)}
+.fold li ul.children li.on{color:var(--ink)}
 #noHit{display:none;padding:14px;color:var(--muted);font-size:12.5px}
 
 /* ---- 分頁 ---- */
@@ -209,6 +241,34 @@ function setZoom(z){
 }
 
 /* ---------- 樹狀選單 ---------- */
+function buildItem(it){
+  var li = document.createElement('li');
+  li.dataset.path = it.p;
+  li.title = it.p + '　(' + fmt(it.s) + ')';
+  var label = esc(it.n.replace(/\.html$/,'')) +
+    (it.o ? '' : '<span class="no" title="未列入 order.md">未列</span>');
+  var hasChildren = it.children && it.children.length > 0;
+  if (hasChildren) {
+    li.classList.add('has-children', 'closed');   // 主頁預設收合，子項目先不展開
+    li.innerHTML = '<span class="tgl">▶</span>' + label;
+  } else {
+    li.innerHTML = label;
+  }
+  li.onclick = function(e){ e.stopPropagation(); openTab(it); };
+  if (hasChildren) {
+    var cu = document.createElement('ul');
+    cu.className = 'children';
+    it.children.forEach(function(c){ cu.appendChild(buildItem(c)); });
+    li.appendChild(cu);
+    var tgl = li.querySelector('.tgl');
+    tgl.onclick = function(e){
+      e.stopPropagation();               // 點▼只切換展開/收合，不觸發開檔
+      li.classList.toggle('closed');
+      tgl.textContent = li.classList.contains('closed') ? '▶' : '▼';
+    };
+  }
+  return li;
+}
 function buildTree(){
   var side = $('#side'), open = LS('open') || {};   // 預設全部收合，只有存過 true 的才展開
   TREE.forEach(function(f, i){
@@ -218,7 +278,7 @@ function buildTree(){
     var hd = document.createElement('div');
     hd.className = 'hd';
     hd.innerHTML = '<span class="ar">▼</span><span>'+esc(f.name)+
-                   '</span><span class="cnt">'+f.files.length+'</span>';
+                   '</span><span class="cnt">'+f.total+'</span>';
     hd.onclick = function(){
       d.classList.toggle('closed');
       var o = LS('open')||{}; o[f.name] = !d.classList.contains('closed'); LS('open',o);
@@ -228,13 +288,7 @@ function buildTree(){
     syncArrow(d);            // 要等 hd 掛進 d 之後才找得到 .ar
     var ul = document.createElement('ul');
     f.files.forEach(function(it){
-      var li = document.createElement('li');
-      li.dataset.path = it.p;
-      li.title = it.p + '　(' + fmt(it.s) + ')';
-      li.innerHTML = esc(it.n.replace(/\.html$/,'')) +
-        (it.o ? '' : '<span class="no" title="未列入 order.md">未列</span>');
-      li.onclick = function(){ openTab(it); };
-      ul.appendChild(li);
+      ul.appendChild(buildItem(it));
     });
     d.appendChild(ul);
     side.appendChild(d);
@@ -260,6 +314,15 @@ function search(){
       li.classList.toggle('hid', !ok);
       if (ok) any = true;
     });
+    if (t) {
+      // 主頁預設收合，子項目命中搜尋時得先展開才看得到
+      d.querySelectorAll('li.has-children').forEach(function(pli){
+        var cu = pli.querySelector(':scope > ul.children');
+        var childHit = cu && Array.from(cu.children).some(function(cli){
+          return !cli.classList.contains('hid'); });
+        if (childHit) pli.classList.remove('closed');
+      });
+    }
     d.classList.toggle('hid', !!t && !any);
     if (!t || any) hit++;
     if (t && any) d.classList.remove('closed');                        // 命中就自動展開
@@ -408,7 +471,7 @@ BODY = """<div id="top">
 
 def build():
     tree, orphans = collect()
-    total = sum(len(f['files']) for f in tree)
+    total = sum(f['total'] for f in tree)
 
     js = JS.replace('__TREE__', json.dumps(tree, ensure_ascii=False))
 

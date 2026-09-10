@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>福樓拜知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">「包法利夫人就是我」・一字未竟不罷休的完美主義者・淫穢罪起訴反倒成就的文學傳奇</p>
+  <h1>福樓拜知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：那篇的「跨國影響的接力」段落已簡略提及他開創的寫實主義傳統，這裡不再重複，轉而完整談他近乎苛求的寫作方式、《包法利夫人》出版後遭遇的淫穢罪起訴，以及他終生隱居寫作的生活樣貌。</p>
+</header>
+
+<section>
+  <h2>「一字之道」的完美主義寫作法</h2>
+  <p class="sub">他相信每個句子都只有一個最精準的字詞，找到它之前絕不罷休</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="福樓拜寫作方法結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這種近乎苛刻的寫作紀律，讓他的作品不多，卻部部成為後世研究文學技巧的範本</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他相信每個描寫對象都只有唯一最精準的字詞可用，寫作時常反覆推敲數日甚至數週</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">「le mot juste」一字之道</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">主張每個描寫對象都只有唯一最精準的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">字詞可用，常為一個句子反覆推敲數週</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">極度緩慢的創作速度</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">《包法利夫人》耗費近五年才完成</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">，據傳平均每週僅能完成一頁</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">自由間接引語的先驅</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">大量運用「自由間接引語」讓敘事者</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">聲音與角色內心無縫融合，影響深遠</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">「客觀」敘事美學</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">主張作者應如上帝般隱身於作品之外</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">，這種「零度介入」美學影響一整代人</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這種近乎苛刻的寫作紀律，讓他的作品不多，卻部部成為後世研究文學技巧的範本</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">從尋找唯一精準字詞的執著，到讓敘事者聲音隱身於角色內心的技法，福樓拜把小說寫作從單純</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">的說故事，提升成一門需要嚴謹工藝紀律的技藝——這份苛求最終引來的，卻是一場公開的法庭審判</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">《包法利夫人》問世後，他很快就被檢方告上了法庭</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>《包法利夫人》淫穢罪審判與隱居的一生</h2>
+  <p class="sub">一部小說讓他被告上法庭，卻也讓他聲名大噪</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="福樓拜審判與隱居結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從法庭被告到寫實主義奠基者，這場審判意外成了小說最好的宣傳</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他大半生隱居諾曼第莊園專心寫作，鮮少涉足巴黎文壇社交</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">《包法利夫人》出版風波</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">1856年連載刊出，內容描寫已婚婦</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">女出軌情慾，遭檢方以傷風敗俗起訴</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">法庭審判與無罪開釋</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1857年出庭應訊，法院認定作品具</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">文學價值判決無罪，小說反而聲名大噪</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">「包法利夫人就是我」</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">相傳被問及角色原型時如此回答，道</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">出理想幻滅與現實落差的普遍性</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">終生隱居克魯瓦塞莊園</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">大半生隱居諾曼第莊園專心寫作，與</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">喬治桑等作家維持深厚書信情誼</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從法庭被告到寫實主義奠基者，這場審判意外成了小說最好的宣傳</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">檢方原想以「傷風敗俗」罪名查禁這部小說，判決無罪後卻讓《包法利夫人》聲名遠播、洛陽紙貴</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">——這場意外的官司，反倒成了寫實主義文學史上最具戲劇性的一則插曲</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他與喬治桑長達十餘年的通信，後來也成了十九世紀法國文壇最重要的書信紀錄之一</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>寫作方法</h2><span class="tag">CRAFT</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">「le mot juste」一字之道</div><p>主張每個描寫對象都只有唯一最精準的字詞可用，常為一句話反覆推敲數週。</p></div>
+    <div class="card"><div class="nm">極度緩慢的創作速度</div><p>《包法利夫人》耗費近五年才完成，據傳平均每週僅能完成一頁。</p></div>
+    <div class="card"><div class="nm">自由間接引語的先驅</div><p>大量運用「自由間接引語」讓敘事者聲音與角色內心無縫融合，影響深遠。</p></div>
+    <div class="card"><div class="nm">「客觀」敘事美學</div><p>主張作者應如上帝般隱身於作品之外，這種「零度介入」美學影響一整代人。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>審判與隱居</h2><span class="tag">TRIAL & SECLUSION</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">《包法利夫人》出版風波<span class="yr">1856年</span></div><p>連載刊出後內容描寫已婚婦女出軌情慾，遭檢方以傷風敗俗罪名起訴。</p></div>
+    <div class="card"><div class="nm">法庭審判與無罪開釋<span class="yr">1857年</span></div><p>法院認定作品具文學價值判決無罪，小說反而聲名大噪、洛陽紙貴。</p></div>
+    <div class="card"><div class="nm">「包法利夫人就是我」</div><p>相傳被問及角色原型時如此回答，道出理想幻滅與現實落差的普遍性。</p></div>
+    <div class="card"><div class="nm">終生隱居克魯瓦塞莊園</div><p>大半生隱居諾曼第莊園專心寫作，與喬治桑等作家維持深厚書信情誼。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與喬治桑的忘年之交</b>　福樓拜晚年與女作家喬治桑維持長達十餘年的密切書信往來，兩人文學理念南轅北轍卻惺惺相惜，這批書信後來被視為十九世紀法國文壇最重要的通信紀錄之一。
+</div>
+
+<section>
+  <blockquote>
+    包法利夫人，就是我。
+    <cite>相傳福樓拜對友人如此回應關於書中女主角原型的提問，確切出處已難考證，但精準道出了小說對理想與現實落差的深刻描寫。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁整理福樓拜的寫作方法與生平，寫實主義文學脈絡另見〈歐美文學家總覽〉篇。「包法利夫人就是我」一語的確切出處學界仍有爭議，本頁採通行說法。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>

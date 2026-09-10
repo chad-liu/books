@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蕭洛霍夫知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">頓河哥薩克的史詩書寫者・史達林時代的諾貝爾獎得主・終生未散的抄襲爭議</p>
+  <h1>蕭洛霍夫知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：那篇尚未收錄他的專頁，這裡完整補上——他以一部描寫頓河哥薩克人在革命與內戰中命運浮沉的鉅著獲得諾貝爾文學獎，卻終生擺脫不了「作品是否真為他所寫」的抄襲疑雲，這場爭議直到他去世多年後手稿重新出土才逐漸平息。</p>
+</header>
+
+<section>
+  <h2>《靜靜的頓河》——哥薩克的史詩</h2>
+  <p class="sub">一部描寫故鄉哥薩克人在革命與內戰夾縫中掙扎求生的鉅著</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="蕭洛霍夫頓河結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這部作品讓他成為蘇聯文學的驕傲，卻也讓他一生活在質疑聲音的陰影下</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">出身頓河流域哥薩克聚落，親身經歷俄國革命與內戰，成了他畢生創作的核心素材</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">頓河哥薩克的出身</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">出生於頓河流域哥薩克聚落，親身</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">經歷俄國革命與內戰的動盪年代</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《靜靜的頓河》</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">耗時十餘年寫成的四部曲，描寫農</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">民葛利高里在革命內戰中艱難求生</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">不迴避戰爭殘酷的寫實筆法</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">不同於典型社會主義寫實的歌頌基</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">調，大量描寫戰爭殘酷與人性複雜</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">1965年諾貝爾文學獎</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">憑此書獲頒諾貝爾文學獎，是蘇聯</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">官方認可、未遭刁難順利領獎的少數</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這部作品讓他成為蘇聯文學的驕傲，卻也讓他一生活在質疑聲音的陰影下</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">《靜靜的頓河》以磅礡格局描寫哥薩克人在時代洪流裡的掙扎與犧牲，讓蘇聯官方引以為傲、順利</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">推向諾貝爾獎，但完稿時他年僅23歲，這個年紀能寫出如此鉅著，讓質疑聲音從未真正停歇</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這場延燒數十年的抄襲爭議，是理解他文學生涯不可迴避的另一面</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>終生的抄襲爭議與蘇聯建制作家的複雜處境</h2>
+  <p class="sub">完稿時他年僅23歲，這個年紀寫出的鉅著規模，讓質疑聲音從未真正停歇</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="蕭洛霍夫抄襲爭議結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">手稿的重新出土洗刷了大半嫌疑，但他在體制內外的政治處境，至今仍複雜難解</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">從年紀引發的質疑，到手稿失蹤數十年的懸案，這場爭議直到1990年代才逐漸明朗</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">完稿時僅23歲的疑點</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">開始寫作時他才二十出頭，如此年輕</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">便寫出恢弘鉅著，讓評論者質疑作者身分</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">抄襲爭議延燒數十年</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">長年流傳原稿實際出自另一位在內</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">戰中身亡的哥薩克作家之手</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">手稿重新出土後的平息</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">1990年代他保存的早期手稿重新</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">出土，經鑑定後多數學界傾向認定他是原作者</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">蘇聯建制作家的複雜位置</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">身為蘇聯作家協會要員，既受官方扶</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">植，也曾公開批評部分異議作家</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">手稿的重新出土洗刷了大半嫌疑，但他在體制內外的政治處境，至今仍複雜難解</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">長年流傳的抄襲說指稱原稿實際出自另一位在內戰中身亡的哥薩克作家，直到蕭洛霍夫本人保存</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">的早期手稿重新出土並經專家鑑定，爭議才逐漸傾向認定他確為原作者，但學界討論至今未完全休止</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他曾公開批評索忍尼辛等異議作家，也曾私下向當局求情營救其他作家</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>頓河史詩</h2><span class="tag">THE QUIET DON</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">頓河哥薩克的出身</div><p>出生於頓河流域哥薩克聚落，親身經歷俄國革命與內戰的動盪年代。</p></div>
+    <div class="card"><div class="nm">《靜靜的頓河》</div><p>耗時十餘年寫成的四部曲，描寫農民葛利高里在革命內戰中艱難求生。</p></div>
+    <div class="card"><div class="nm">不迴避戰爭殘酷的寫實筆法</div><p>不同於典型社會主義寫實的歌頌基調，大量描寫戰爭殘酷與人性複雜。</p></div>
+    <div class="card"><div class="nm">1965年諾貝爾文學獎</div><p>憑此書獲頒諾貝爾文學獎，是蘇聯官方認可、未遭刁難的少數得主之一。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>抄襲爭議</h2><span class="tag">AUTHORSHIP DISPUTE</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">完稿時僅23歲的疑點</div><p>開始寫作時他才二十出頭，如此年輕便寫出恢弘鉅著，讓評論者質疑作者身分。</p></div>
+    <div class="card"><div class="nm">抄襲爭議延燒數十年</div><p>長年流傳原稿實際出自另一位在內戰中身亡的哥薩克作家之手。</p></div>
+    <div class="card"><div class="nm">手稿重新出土後的平息<span class="yr">1990年代</span></div><p>他保存的早期手稿重新出土並經鑑定，學界多傾向認定他是原作者。</p></div>
+    <div class="card"><div class="nm">蘇聯建制作家的複雜位置</div><p>身為蘇聯作家協會要員，既受官方扶植，也曾公開批評部分異議作家。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>與蘇聯當局的複雜關係</b>　蕭洛霍夫曾公開批評索忍尼辛等異議作家，也曾私下向當局求情營救其他作家，他在體制內外的立場搖擺，反映了蘇聯時代作家普遍面對的艱難處境。
+</div>
+
+<section>
+  <blockquote>
+    我們光榮的土地不是用犁來耕耘，是用馬蹄來耕耘，播種的是哥薩克人的頭顱，我們靜靜的頓河，就用年輕寡婦來點綴。
+    <cite>《靜靜的頓河》開篇引用的哥薩克民歌，並非蕭洛霍夫本人創作，卻精準預示了全書哥薩克人在戰爭中付出的慘痛代價。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁整理蕭洛霍夫的生平、《靜靜的頓河》內容概要與抄襲爭議始末，手稿鑑定與學術定論持續有新研究補充，本頁採目前較普遍認可的說法。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>

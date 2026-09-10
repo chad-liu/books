@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>歌德知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">一夕成名引發全歐仿效自殺潮的青年小說家・威瑪宮廷的樞密顧問・耗費近六十年寫成的《浮士德》</p>
+  <h1>歌德知識圖譜</h1>
+  <p class="lede">與〈歐美文學家總覽〉篇的銜接：那篇尚未收錄他的專頁，這裡完整補上他的生平與創作脈絡。24歲那年，一部描寫失戀青年自殺的書信體小說讓他一夕成為全歐洲最著名的作家，甚至傳出讀者仿效自殺的社會現象；此後他定居威瑪宮廷大半生，與劇作家席勒結為知交，晚年更耗費近六十年光陰，完成一部窮盡人類靈魂交易主題的兩部曲鉅著。</p>
+</header>
+
+<section>
+  <h2>《少年維特的煩惱》與狂飆突進運動</h2>
+  <p class="sub">一部薄薄的書信體小說，讓24歲的他成為全歐洲最著名的作家</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歌德少年維特結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這部小說讓他一戰成名，卻也讓他此後始終想擺脫「維特作者」這個標籤</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">狂飆突進運動崇尚情感與天才，反抗當時啟蒙理性的主流，歌德是其中最具代表性的作家</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">狂飆突進運動的旗手</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">青年時期投入反抗啟蒙理性、崇尚情感</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">與天才的文學運動，是其中代表性作家</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《少年維特的煩惱》</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">1774年出版的書信體小說，描寫青年</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">維特因失戀自殺，出版後轟動全歐洲</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">「維特效應」的社會現象</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">出版後傳出多起讀者仿效書中主角自殺</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">，被視為文學史最早的模仿效應案例</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">一夕成名的青年作家</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">24歲即因此書聲名大噪，拿破崙據傳</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">隨身攜帶此書征戰，可見影響力之廣</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這部小說讓他一戰成名，卻也讓他此後始終想擺脫「維特作者」這個標籤</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">《維特》出版後歐洲各地興起模仿主角穿著、甚至仿效自殺的社會現象，讓年輕的歌德一方面享受</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">盛名，一方面也對作品引發的悲劇後果感到不安——這份矛盾伴隨他走向下一段人生：威瑪宮廷</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">此後他逐漸從狂飆突進的憤怒青年，轉型為講求古典和諧的宮廷重臣</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>威瑪宮廷、與席勒的友誼，以及耗費一生的《浮士德》</h2>
+  <p class="sub">從狂飆突進的憤怒青年，到威瑪宮廷的樞密顧問，他用六十年光陰完成了一部浮士德式的自我實踐</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歌德威瑪宮廷結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從書信體小說到跨越一生的悲劇詩劇，他的創作生涯本身就是一部浮士德式寓言</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">威瑪宮廷歲月裡，他找到了此生最重要的文學夥伴，也埋下了畢生代表作的種子</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">威瑪宮廷生涯</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">26歲應薩克森-威瑪公爵之邀定居威瑪</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">，出任樞密顧問等要職，終老於此</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">與席勒的深厚友誼</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">與劇作家席勒結為知交，兩人共同開創</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">「威瑪古典主義」，是德語文壇美談</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">義大利之旅</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">中年秘密出走義大利近兩年，重新發現</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">古典藝術，創作風格轉向古典和諧</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">《浮士德》——近六十年的鉅著</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">從青年構思到臨終前完成第二部，講述</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">學者與魔鬼梅菲斯特的靈魂交易故事</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從書信體小說到跨越一生的悲劇詩劇，他的創作生涯本身就是一部浮士德式寓言</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">《浮士德》講述學者為求無限知識與體驗，與魔鬼訂下靈魂契約，這個主題貫穿歌德自己近六十年</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">的創作生涯——從狂飆突進的青年到威瑪宮廷的重臣，他本人的一生也像是一場不斷自我超越的實踐</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他晚年也投入植物形態學與色彩理論研究，甚至自認科學成就比文學更值得重視</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>狂飆突進</h2><span class="tag">STURM UND DRANG</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">狂飆突進運動的旗手</div><p>青年時期投入反抗啟蒙理性、崇尚情感與天才的文學運動，是其中代表性作家。</p></div>
+    <div class="card"><div class="nm">《少年維特的煩惱》<span class="yr">1774年</span></div><p>書信體小說描寫青年維特因失戀自殺，出版後轟動全歐洲。</p></div>
+    <div class="card"><div class="nm">「維特效應」的社會現象</div><p>出版後傳出多起讀者仿效書中主角自殺，被視為文學史最早的模仿效應案例。</p></div>
+    <div class="card"><div class="nm">一夕成名的青年作家</div><p>24歲即因此書聲名大噪，拿破崙據傳隨身攜帶此書征戰。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>威瑪歲月與《浮士德》</h2><span class="tag">WEIMAR & FAUST</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">威瑪宮廷生涯</div><p>26歲應薩克森-威瑪公爵之邀定居威瑪，出任樞密顧問等要職。</p></div>
+    <div class="card"><div class="nm">與席勒的深厚友誼</div><p>兩人共同開創「威瑪古典主義」，是德語文壇最重要的合作情誼之一。</p></div>
+    <div class="card"><div class="nm">義大利之旅</div><p>中年秘密出走義大利近兩年，重新發現古典藝術，創作風格轉向古典和諧。</p></div>
+    <div class="card"><div class="nm">《浮士德》</div><p>從青年構思到臨終前完成第二部，是德語文學最重要的作品。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>科學家身分的歌德</b>　他也投入植物形態學與色彩理論研究，甚至自認科學成就比文學更重要，但後世對其文學貢獻的評價遠高於科學研究成果。
+</div>
+
+<section>
+  <blockquote>
+    人只要努力，就會犯錯。
+    <cite>出自《浮士德》，上帝在允許梅菲斯特引誘浮士德時所說的話，反映了歌德對人性有限卻仍值得寬容的看法。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁整理歌德的生平與創作脈絡，《浮士德》全劇情節與哲學意涵請另行參閱專業譯本與研究文獻。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>
