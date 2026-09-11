@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>倫理學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .aq .nm{color:var(--rust)} .fo .nm{color:var(--slate)} .th .nm{color:var(--olive)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Ethica・拉桿與天橋上的胖子</p>
+  <h1>倫理學</h1>
+  <p class="lede">與〈形上學〉〈本體論〉〈知識論〉三篇的銜接：那幾篇分別問「有什麼」「什麼存在」「怎麼知道」，倫理學問的是「該怎麼做」。效益主義、康德義務論、亞里斯多德德性倫理學這三套規範理論站內都已有完整專頁，這裡不重複，轉而聚焦一個把三套理論同時逼到牆角的思想實驗——電車難題。一輛失控電車、一根拉桿、一位站在天橋上的胖子，這個表面上簡單到近乎荒謬的情境，卻讓哲學家、心理學家與神經科學家纏鬥了超過半世紀，至今仍是自駕車工程師寫程式時必須正視的真實難題。</p>
+</header>
+
+<section>
+  <h2>倫理學是什麼——地圖，先看已經展開過的部分</h2>
+  <p class="sub">三大規範倫理學理論站內都有專頁深入，這裡先標位置，再進入本頁的核心</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="倫理學範圍結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">倫理學問「該怎麼做」，三套主流答案站內都已深入展開，這裡先標出位置</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">效益主義、義務論、德性倫理學各自的完整論證，見對應專頁，這裡不重複</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">效益主義——看結果</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">一個行動的對錯，取決於它帶來多</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">少淨效益；見〈效益主義與實證主義〉篇</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">義務論——看動機與規則</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">行動對錯取決於是否遵循普遍法則，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">不問結果；見〈康德的實踐理性批判〉篇</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">德性倫理學——看品格</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">重點不在單一行動對錯，而在行動</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">者的品格；見〈亞里士多德〉哲學研究專頁</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">電車難題——本頁的核心</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">一個思想實驗，同時逼問這三套理</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">論在同一情境下，答案為何不一致</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">三套理論站內都有專頁深入，這裡都不重複，改深入把三者同時逼到牆角的思想實驗</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">效益主義的完整論證見〈效益主義與實證主義〉篇，義務論的定言令式見〈康德的實踐理性批判〉篇，德</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">性倫理學的中庸之道見〈亞里士多德〉篇——這裡都跳過，直接進入電車難題半世紀的攻防</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這場攻防始於中世紀一條關於自衛殺人的神學原則</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>電車難題的前傳——從雙重效果原則到福特的原始提問</h2>
+  <p class="sub">一條中世紀神學原則，七百年後被改寫成哲學史上最著名的思想實驗</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="電車難題前傳結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">1967年一篇討論墮胎的論文，意外催生了倫理學史上最著名的思想實驗</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">福特借用中世紀神學的雙重效果原則，構造出後來被稱為「電車難題」的原始情境</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">阿奎那的雙重效果原則</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">中世紀神學區分「刻意造成的傷害」</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">與「預見卻非刻意的傷害」，原用於自衛殺人</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">福特1967年的原始情境</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">失控電車即將撞死五人，是否該扳</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">動拉桿，讓它轉向撞死另一人</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">多數人的直覺：該扳</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">大多數受訪者認為應該扳動拉桿，</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">犧牲一人救五人，符合效益主義直覺</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">行動與不行動的分界</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">福特真正關心的是：主動造成一人</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">死亡，與放任五人死亡，是否對等</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">原始版本看似有了答案，卻只是這場攻防的開場</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">福特的問題本來是討論墮胎中「殺害」與「聽任死亡」的道德差異，電車只是她借用來說明論點的比</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">喻——沒想到這個比喻本身的吸引力遠遠超過了原本要討論的墮胎議題，十八年後被湯姆森接手發揚光大</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">湯姆森加了一個變體，讓幾乎所有人的直覺瞬間逆轉</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>湯姆森的胖子與神經科學的介入</h2>
+  <p class="sub">同樣一命換五命的數學，換個方式呈現，直覺就整個翻盤</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="電車難題現代發展結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">數學完全相同的兩個情境，多數人的道德直覺卻給出完全相反的答案</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">這道裂縫後來吸引了神經科學家介入，也成了今日自駕車工程師必須面對的真實問題</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">湯姆森1985年命名並加碼</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a5540">正式命名「電車難題」，加入「天橋</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a5540">胖子」變體：推一名胖子擋下電車</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">同樣一命換五命，直覺卻逆轉</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">拉桿版本多數人贊成，推人版本多</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">數人反對，儘管死傷人數完全相同</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">格林的神經科學介入</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">以功能性磁振造影發現，親手推人</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">啟動情緒腦區，拉桿啟動理性計算腦區</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">從思想實驗到工程問題</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">自駕車遇到必須擇一傷害時該如何</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">決策，讓這個假想情境變成真實工程規格</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">半世紀後，這道裂縫依然沒有被真正填平</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">格林的研究說明了「為什麼」多數人直覺不同，卻沒有回答「應該」聽從哪一種直覺——這正是電車難題</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">真正棘手之處：它逼著效益主義、義務論、德性倫理學三套理論，同時面對自己都難以圓滿解釋的案例</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">各家理論如何嘗試回應這個難題，詳見規範倫理學各專頁與專業研究文獻</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>已展開的規範倫理學</h2><span class="tag">NORMATIVE ETHICS</span></div>
+  <div class="grid">
+    <div class="card"><div class="nm">效益主義</div><p>行動對錯取決於帶來多少淨效益；見〈效益主義與實證主義〉篇。</p></div>
+    <div class="card"><div class="nm">義務論</div><p>行動對錯取決於是否遵循普遍法則，不問結果；見〈康德的實踐理性批判〉篇。</p></div>
+    <div class="card"><div class="nm">德性倫理學</div><p>重點在行動者的品格而非單一行動；見〈亞里士多德〉哲學研究專頁。</p></div>
+    <div class="card"><div class="nm">電車難題</div><p>同時逼問三套理論的思想實驗——本頁後兩節深入展開的主題。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>電車難題的關鍵人物</h2><span class="tag">TROLLEY PROBLEM</span></div>
+  <div class="grid">
+    <div class="card aq"><div class="nm">阿奎那<span class="it">Aquinas</span><span class="yr">1225–1274</span></div><p>提出雙重效果原則，區分「刻意造成的傷害」與「預見卻非刻意的傷害」，原用於討論自衛殺人的道德地位。</p></div>
+    <div class="card fo"><div class="nm">福特<span class="it">Philippa Foot</span><span class="yr">1920–2010</span></div><p>1967年於討論墮胎的論文中，借用電車情境說明「殺害」與「聽任死亡」的道德差異，意外開創此後的討論。</p></div>
+    <div class="card th"><div class="nm">湯姆森<span class="it">Judith Jarvis Thomson</span><span class="yr">1929–2020</span></div><p>1985年正式命名「電車難題」，加入「天橋胖子」變體，讓拉桿與推人的直覺落差成為哲學界核心焦點。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    扳動拉桿，是把死亡從一群人轉移到另一個人身上；親手把人推下天橋，卻感覺像是完全不同的一件事——即使死傷人數完全相同。
+    <cite>湯姆森對「電車難題」與「天橋胖子」兩種變體之間道德直覺落差的經典提問，是此後半世紀規範倫理學辯論的核心起點。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦電車難題的發展脈絡，各家規範倫理學理論如何具體回應此難題、以及神經科學研究的完整方法與爭議，請另行參閱專業譯本與研究文獻。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>

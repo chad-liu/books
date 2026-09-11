@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>知識論</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .ge .nm{color:var(--rust)} .go .nm{color:var(--slate)} .so .nm{color:var(--olive)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Epistēmē・一篇三頁論文震動的學門</p>
+  <h1>知識論</h1>
+  <p class="lede">與〈形上學〉篇的銜接：形上學問「有什麼」，知識論問「我們怎麼知道」，兩千多年來幾乎所有哲學家都同意：知識就是「證成的真信念」（justified true belief）。這個定義穩如磐石，直到1963年，一位年輕哲學家用一篇僅僅三頁的論文，找出兩個誰都無法反駁的反例，把這個定義徹底打碎——而且至今沒有人找到公認能修補它的方案。本站個別哲學家與流派專頁裡，理性論與經驗論的知識來源之爭、笛卡兒的懷疑論、康德的先天綜合判斷，都已有完整說明，這裡不重複，直接切入這場改變整個當代知識論走向的三頁論文。</p>
+</header>
+
+<section>
+  <h2>知識論是什麼——一張地圖，先看已經展開過的部分</h2>
+  <p class="sub">四條線索裡，前三條站內都有專頁深入，第四條才是本頁真正要展開的主題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="知識論範圍結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">知識論問的是「我們如何知道」，而不是形上學問的「有什麼存在」</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">與知識相關的幾條線索，站內已分散在不同專頁裡深入展開，這裡先標出位置</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">知識論與形上學的關係</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">形上學問世界根本上是什麼樣子，</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">知識論問我們憑什麼知道這件事</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">知識的來源——理性論vs經驗論</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">知識是靠理性推演還是感官經驗累</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">積而來，這場近代哲學核心論戰</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">懷疑論的挑戰</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">笛卡兒的方法懷疑與惡魔論證，追</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">問我們究竟能不能確定知道任何事</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">「知識」的定義——本頁的核心</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">兩千年來幾乎沒人質疑的定義，被</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">一篇三頁論文用兩個反例打碎</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">前三條線索站內都有專頁深入，這裡都不重複，改深入知識定義本身的危機</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">理性論與經驗論的完整論戰見〈大陸理性論〉〈英國經驗論〉篇，康德如何調和兩者見〈康德－理性的建築</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">術〉篇，笛卡兒懷疑論見〈笛卡兒－我思故我在〉篇——這裡都跳過，直接進入「知識」這個詞本身的定義危機</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這場危機始於柏拉圖一次未完成的嘗試，兩千三百年後才真正引爆</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>證成的真信念——兩千年沒人質疑的定義</h2>
+  <p class="sub">從柏拉圖的初步嘗試，到二十世紀的標準公式，這個定義穩固了兩千三百年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JTB定義結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這個看似無懈可擊的定義，最終被一篇僅三頁的期刊論文攻破</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">柏拉圖在《泰阿泰德篇》裡已隱約摸到這個定義的輪廓，二十世紀才被正式標準化</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">柏拉圖《泰阿泰德篇》的嘗試</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">嘗試把知識定義為「真信念加上一</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">個說明」，對話最終未給出定論</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">證成的真信念（JTB）</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">二十世紀標準化為三個條件：相信</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">它、它為真、有充分理由相信它</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">蓋提爾1963年的三頁論文</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">〈證成的真信念就是知識嗎？〉發</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">表於期刊《分析》，全文僅三頁</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">兩個反例，一擊命中</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">構造出滿足全部三項條件，卻明顯</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">不算「知道」的情境——詳見下節</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">三頁論文，改寫了半世紀的知識論議程</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">蓋提爾投稿時甚至沒把握這篇短文能通過審查——他後來坦承自己此生只發表過極少數論文，卻憑這一篇</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">徹底改寫了當代知識論的議程，「蓋提爾問題」從此成為每一本知識論教科書開篇必談的經典案例</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">兩個反例的具體內容，正是下一節要拆解的重點</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>蓋提爾問題——兩個反例，與修補方案的軍備競賽</h2>
+  <p class="sub">兩個構造出來的巧合情境，讓「證成的真信念」不再等於「知道」</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="蓋提爾問題與修補方案結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩個反例的共同結構：推論完全合乎邏輯，結論碰巧為真，卻真得莫名其妙</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">此後半世紀，一波波修補方案輪番上陣，至今沒有一個能讓所有人滿意</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">案例一：巧合的十枚硬幣</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a5540">史密斯基於證據相信「得到工作的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a5540">人有十枚硬幣」，結果為真卻純屬巧合</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">案例二：巴塞隆納的巧合</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">史密斯推論「瓊斯有福特車，或布</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">朗在巴塞隆納」，前半假後半巧合真</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">修補一：排除偽前提</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">主張證成過程若仰賴任何一個偽命</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">題，就不能算真正知識，隨即被新反例攻破</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">修補二：因果論與可靠論</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">高德曼主張信念須與事實有正確的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">因果或可靠連結，開啟外在論路線</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">半世紀過去，德性知識論成了最新一波嘗試，戰局卻始終沒有真正平息</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">索薩、札格澤博斯基等人主張，知識該定義為「信念的真，是認知能力運作得當所致」，而非單純滿足</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">幾條抽象條件——但批評者總能構造出新的巧合情境反擊，「蓋提爾問題」至今仍是知識論入門的標準教材</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">原始論文與各家修補方案的完整論證，請另行參閱專業譯本與研究文獻</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>知識論的位置</h2><span class="tag">SCOPE</span></div>
+  <div class="grid">
+    <div class="card"><div class="nm">知識論與形上學</div><p>形上學問世界根本上是什麼樣子，知識論問我們憑什麼知道這件事；見〈形上學〉篇。</p></div>
+    <div class="card"><div class="nm">知識的來源</div><p>理性論與經驗論之爭——知識是靠理性推演還是經驗累積；見〈大陸理性論〉〈英國經驗論〉篇。</p></div>
+    <div class="card"><div class="nm">懷疑論的挑戰</div><p>笛卡兒的方法懷疑與惡魔論證，追問我們究竟能不能確定知道任何事；見〈笛卡兒－我思故我在〉篇。</p></div>
+    <div class="card"><div class="nm">知識的定義</div><p>「證成的真信念」被一篇三頁論文攻破——本頁後兩節深入展開的主題。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>蓋提爾問題與修補方案</h2><span class="tag">GETTIER PROBLEM</span></div>
+  <div class="grid">
+    <div class="card ge"><div class="nm">蓋提爾<span class="it">Gettier</span><span class="yr">1927–2021</span></div><p>1963年以三頁論文提出兩個反例，證明「證成的真信念」不足以定義知識，開啟半世紀的知識論辯論。</p></div>
+    <div class="card go"><div class="nm">高德曼<span class="it">Goldman</span><span class="yr">1938–</span></div><p>提出因果論與可靠論，主張信念須與事實有正確的因果或可靠連結才算知識，是外在論路線的代表人物。</p></div>
+    <div class="card so"><div class="nm">索薩<span class="it">Sosa</span><span class="yr">1940–</span></div><p>德性知識論代表，主張知識是信念的真出於認知能力運作得當所致，是近年最活躍的修補方案之一。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    證成的真信念就是知識嗎？
+    <cite>愛德蒙・蓋提爾1963年發表於期刊《分析》（Analysis）的論文標題，全文僅三頁，卻被公認是二十世紀分析哲學史上影響力與篇幅最不成比例的一篇論文。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦知識定義的危機與蓋提爾問題的後續發展，各家修補方案的完整論證與當代知識論界的評價分歧，請另行參閱專業譯本與研究文獻。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>

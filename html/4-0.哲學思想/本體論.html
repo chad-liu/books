@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本體論</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .an .nm{color:var(--rust)} .ga .nm{color:var(--slate)} .de .nm{color:var(--olive)}
+  .ka .nm{color:var(--rust)} .go .nm{color:var(--slate)} .pl .nm{color:var(--olive)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Ontologia・那不能設想有更偉大者</p>
+  <h1>本體論</h1>
+  <p class="lede">與〈形上學〉篇的銜接：那篇已把本體論列為形上學六個核心提問之一——追問「有」如何不同於「無」，這裡不重複，轉而聚焦本體論史上最大膽、也最常被拿來當模態邏輯教學案例的一則論證。這是哲學史上少見的嘗試：不訴諸任何經驗證據，單靠邏輯推理本身，就想從「上帝」這個概念的定義，直接推出「上帝存在」這個結論。從安瑟莫1078年的原始版本，到二十世紀哥德爾秘而不宣的模態邏輯證明，這條論證線索橫跨近千年，至今仍是檢驗邏輯推論效力最常被引用的案例之一。</p>
+</header>
+
+<section>
+  <h2>本體論是什麼——形上學裡專責「存在」的分支</h2>
+  <p class="sub">先畫出本體論在站內的位置，再進入本頁真正要深入的主題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="本體論範圍與位置結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">本體論不是形上學的全部，而是形上學裡專門處理「什麼東西存在」的那一支</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">與存在相關的幾條線索，站內已分散在不同專頁裡深入展開，這裡先標出位置</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">本體論與形上學的關係</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">形上學問所有關於世界根本樣貌的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">問題，本體論專問「什麼存在」一項</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">範疇——為存在分類的嘗試</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">亞里斯多德十範疇、康德十二範疇</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">都是為存在物建立分類架構的嘗試</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">為什麼存在而非虛無</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">萊布尼茲以充足理由律追問這個終</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">極問題，海德格晚年也以此為起點</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">本體論論證——本頁的核心</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">史上最大膽的嘗試：單靠邏輯推</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">理，從上帝的定義推出上帝存在</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">四條線索裡，前三條站內都有專頁深入，第四條才是本頁真正要展開的主題</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">形上學的整體地圖見〈形上學〉篇，範疇分類見〈亞里士多德〉〈康德－理性的建築術〉篇，「為什麼存在而非虛無」</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">見〈萊布尼茲－單子論〉〈海德格〉篇——這裡都不重複，改深入本體論論證近千年的攻防</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">這場論戰始於十一世紀一位本篤會修士的一句定義</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>本體論論證——安瑟莫到笛卡兒的中世紀交鋒</h2>
+  <p class="sub">從一句定義出發，想單靠邏輯就把上帝存在給證明出來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="本體論論證中世紀交鋒結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">安瑟莫的一句定義，引來八百年後仍未平息的反駁與辯護</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">從坎特伯里到巴黎，這場論戰的核心武器始終是同一件事——邏輯定義本身能不能保證存在</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">安瑟莫的原始論證</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a5540">將上帝定義為「不能設想有更偉大者」，</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a5540">若祂只存在心智中，就不是真正最偉大</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">高尼羅的反駁：完美島嶼</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">同樣邏輯可定義出「最完美的島嶼」</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">並「證明」它必然存在——顯然荒謬</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">安瑟莫的回應：必然與偶然</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">島嶼是偶然存在物，上帝卻是定義上</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">必然存在者，兩者的邏輯地位不相同</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">笛卡兒：存在是一種完美</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">《沉思錄》主張存在本身是一種完美，</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">至高完美的上帝必然具備存在這項屬性</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">六百年間，這個論證換了幾套詞彙，核心爭點卻始終沒變</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">安瑟莫問「存在是否讓概念更完整」，笛卡兒換了個問法：存在是否像三角形內角和180度一樣，是</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">某個概念定義裡不可分割的一部分——兩人共享同一個前提：從純粹定義，能不能合法地跳到現實存在</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">十八世紀，這個共享的前提本身，被一位柯尼斯堡的哲學家連根拔起</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>從康德的否定到哥德爾的復活——二十世紀的模態邏輯版本</h2>
+  <p class="sub">被判了死刑的論證，兩百年後用一套全新的邏輯工具復活了</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="本體論論證現代復興結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">康德判定這個論證的根基本身有誤，兩百年後兩位邏輯學家卻各自用模態邏輯把它救了回來</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">關鍵武器從「存在是不是完美」，換成了「必然存在」在可能世界語意學裡如何運作</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">康德：存在不是謂詞</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a5540">主張「存在」不會為概念增添任何新</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a5540">內容，三種上帝存在證明均不成立</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">哥德爾的模態本體論論證</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">二十世紀最重要的邏輯學家晚年秘密</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">寫下模態邏輯版本證明，身後才公開</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">普蘭丁格：最大偉大性</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">以可能世界語意學重新表述，主張</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">「必然存在」若某個世界為真則處處為真</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">有效，但未必健全</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">多數哲學家承認論證形式在邏輯上無</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">懈可擊，卻質疑前提本身早已預設結論</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">邏輯上滴水不漏，卻換不來一致的結論——這正是本體論論證留給後世最耐人尋味的教訓</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">哥德爾與普蘭丁格的版本，在形式邏輯課堂上常被當成模態邏輯 S5 系統的標準範例——問題從來不在推</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">論步驟有沒有錯，而在最初那組看似無害的公理，是否已經悄悄把結論放進了前提裡</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">康德對三種上帝存在證明的完整批判，見〈康德－理性的建築術〉篇</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>中世紀的交鋒</h2><span class="tag">MEDIEVAL DEBATE</span></div>
+  <div class="grid">
+    <div class="card an"><div class="nm">安瑟莫<span class="it">Anselm</span><span class="yr">1033–1109</span></div><p>《宣講》提出本體論論證原始版本，將上帝定義為「不能設想有更偉大者」，藉此推出祂必然存在。</p></div>
+    <div class="card ga"><div class="nm">高尼羅<span class="it">Gaunilo</span><span class="yr">11世紀</span></div><p>以「完美島嶼」類比反駁，指出同樣的邏輯能「證明」任何完美事物存在，論證形式本身有問題。</p></div>
+    <div class="card de"><div class="nm">笛卡兒<span class="it">Descartes</span><span class="yr">1596–1650</span></div><p>《沉思錄》提出「存在是一種完美」的版本，主張至高完美的上帝概念必然蘊含存在這項屬性。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>現代的否定與復興</h2><span class="tag">MODERN REVIVAL</span></div>
+  <div class="grid">
+    <div class="card ka"><div class="nm">康德<span class="it">Kant</span><span class="yr">1724–1804</span></div><p>主張「存在」不是能增添概念內容的謂詞，本體論、宇宙論、目的論三種上帝存在證明均無法成立。</p></div>
+    <div class="card go"><div class="nm">哥德爾<span class="it">Gödel</span><span class="yr">1906–1978</span></div><p>晚年以模態邏輯重新形式化本體論論證，手稿身後才公開，是二十世紀邏輯學史上的知名軼事。</p></div>
+    <div class="card pl"><div class="nm">普蘭丁格<span class="it">Plantinga</span><span class="yr">1932–2024</span></div><p>以可能世界語意學提出「最大偉大性」版本，是宗教哲學界至今仍在討論的模態論證代表作。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    那不能設想有比之更偉大者。
+    <cite>安瑟莫《宣講》對上帝的定義（拉丁文原文 aliquid quo nihil maius cogitari possit），整個本體論論證的邏輯起點，就建立在這短短一句定義之上。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦本體論論證的發展脈絡，各家原始文本的精確論證步驟與當代宗教哲學界的評價分歧，請另行參閱專業譯本與研究文獻。生卒年採通行西曆記載，部分中世紀年代為學界推定範圍。
+</footer>
+
+</div>
+</body>
+</html>

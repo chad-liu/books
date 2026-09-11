@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .du .nm{color:var(--rust)} .da .nm{color:var(--slate)} .di .nm{color:var(--olive)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Aesthetica・一個小便斗引爆的世紀之問</p>
+  <h1>美學</h1>
+  <p class="lede">與〈形上學〉〈本體論〉〈知識論〉〈倫理學〉四篇的銜接：那幾篇分別問「有什麼」「什麼存在」「怎麼知道」「該怎麼做」，美學問的是「什麼讓一件事物美或算作藝術」。柏拉圖對模仿的批判、亞里斯多德的悲劇論與卡塔西斯、康德的審美判斷與崇高，站內都已有專頁深入，這裡不重複，轉而聚焦二十世紀最具顛覆性的一場美學危機——1917年，一位藝術家把一個從商店買來的小便斗簽上假名、直接送進展覽，問題從此再也回不去了：一件東西不需要美、不需要手藝、甚至不需要親手製作，也可以是藝術嗎？</p>
+</header>
+
+<section>
+  <h2>美學是什麼——地圖，先看已經展開過的部分</h2>
+  <p class="sub">三條古典美學線索站內都有專頁深入，這裡先標位置，再進入本頁的核心</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="美學範圍結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美學問「什麼讓一件事物美或算作藝術」，三條古典線索站內都已深入展開</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">柏拉圖、亞里斯多德、康德各自的完整論證，見對應專頁，這裡不重複</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">柏拉圖——藝術是摹本的摹本</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">詩人的模仿遠離真理兩層，因此主</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">張逐出理想城邦；見〈柏拉圖〉篇</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">亞里斯多德——悲劇與卡塔西斯</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">悲劇透過憐憫與恐懼達成情感淨化；</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">見〈亞里士多德〉哲學研究專頁</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">康德——審美判斷與崇高</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">無目的的合目的性、共通感；見〈康</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">德〉〈康德的判斷力批判〉兩篇</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">何謂藝術——本頁的核心</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">一個小便斗，讓「藝術需要美與手</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">藝」這個古老預設徹底崩解</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">三條古典線索站內都有專頁深入，這裡都不重複，改深入二十世紀的定義危機</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">柏拉圖對模仿的批判見〈柏拉圖〉篇，亞里斯多德的悲劇論見〈亞里士多德〉篇，康德的審美判斷與崇高</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">見〈康德〉〈康德的判斷力批判〉兩篇——這裡都跳過，直接進入一場由小便斗引爆的美學革命</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">1917年，一位藝術家把日常物件簽上假名送進展覽，問題從此再也回不去了</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>一個小便斗引爆的世紀之問——杜象與現成物</h2>
+  <p class="sub">商店買來的小便斗，簽上假名，就這樣終結了「藝術等於手藝」的古老預設</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="杜象噴泉結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從商店買來、簽上假名、直接送展——這件作品沒有手藝、沒有美感，卻改寫了整個藝術定義</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">杜象的動作本身就是論證：他要問的不是「這件東西美不美」，而是「誰有權決定什麼是藝術」</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">《噴泉》——1917年的投件</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">將商店購得的小便斗簽上假名「R.</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">Mutt」，送交獨立藝術家協會展覽</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">遭拒展的爭議</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">主辦單位以「不算藝術」為由拒絕</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">展出，杜象本人正是評審委員之一</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">現成物的核心主張</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">藝術價值不在於手工技藝，而在於</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">藝術家的選擇本身這個概念性動作</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">舊定義的失效</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">「藝術即美的技藝」的古典定義，</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">面對這件作品完全無法給出解釋</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">半世紀後，另一位藝術家用超市紙箱，把同一個問題問得更尖銳</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">1964年，安迪・沃荷展出與超市貨架上一模一樣的「布瑞洛紙箱」複製品——肉眼幾乎無法分辨真假，卻</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">有一組是藝術品、一組是包裝紙箱，兩者的差異顯然不在物理外觀本身，而在別的地方</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">正是這個展覽，讓一位哲學家寫下了一篇改寫美學史的論文</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>丹托的藝術界與狄基的制度論——誰有權說「這是藝術」</h2>
+  <p class="sub">一模一樣的兩個紙箱，一個是藝術品，答案不在物件本身，而在圍繞著它的整套體制</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="藝術界與制度論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">丹托看著沃荷的紙箱，寫下了一篇論文，把整場美學危機的答案指向了體制本身</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">從理論氛圍到正式制度，這條路線至今仍是「何謂藝術」爭論裡最具影響力的答案</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">丹托1964年〈藝術界〉</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a5540">主張辨識一件事物為藝術，需要一</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a5540">套「理論氛圍」與藝術史知識做背景</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">狄基的制度論</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">正式化為：一件作品之所以是藝術，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">是因藝術界代表授予它這個身分</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">循環定義的質疑</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">批評者指出：先要有藝術品，才有</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">藝術界，制度論似乎預設了答案</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">開放概念的另一條路</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">韋茲主張「藝術」根本不該有封閉</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">定義，其意義隨作品不斷擴充延展</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">半世紀過去，「何謂藝術」依然沒有定論，卻徹底改變了藝術實踐本身</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">從觀念藝術、行為藝術到當代裝置，藝術家們早已不再假設作品必須「美」或需要手藝——這個轉向，某種</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">意義上正是杜象那件小便斗、與丹托那篇論文共同促成的後果，遠遠超出了美學課堂的範圍</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">各家定義的完整論證與當代藝術哲學界的評價分歧，請另行參閱專業譯本與研究文獻</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>已展開的古典美學</h2><span class="tag">CLASSICAL AESTHETICS</span></div>
+  <div class="grid">
+    <div class="card"><div class="nm">柏拉圖的模仿說</div><p>詩人的模仿是「摹本的摹本」，遠離真理兩層，因此主張逐出理想城邦；見〈柏拉圖〉篇。</p></div>
+    <div class="card"><div class="nm">亞里斯多德的悲劇論</div><p>悲劇透過憐憫與恐懼達成情感的卡塔西斯；見〈亞里士多德〉哲學研究專頁。</p></div>
+    <div class="card"><div class="nm">康德的審美判斷</div><p>無目的的合目的性、崇高與共通感；見〈康德〉〈康德的判斷力批判〉兩篇。</p></div>
+    <div class="card"><div class="nm">何謂藝術的定義危機</div><p>一個小便斗改寫了整套美學史——本頁後兩節深入展開的主題。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>藝術定義的關鍵人物</h2><span class="tag">DEFINING ART</span></div>
+  <div class="grid">
+    <div class="card du"><div class="nm">杜象<span class="it">Duchamp</span><span class="yr">1887–1968</span></div><p>1917年以現成物《噴泉》挑戰藝術定義，主張藝術的核心是藝術家的選擇，而非手工技藝。</p></div>
+    <div class="card da"><div class="nm">丹托<span class="it">Danto</span><span class="yr">1924–2013</span></div><p>1964年〈藝術界〉一文主張辨識藝術需要理論氛圍與藝術史脈絡做背景，是制度論最重要的理論先驅。</p></div>
+    <div class="card di"><div class="nm">狄基<span class="it">Dickie</span><span class="yr">1926–2020</span></div><p>正式提出「制度論」，主張作品之所以是藝術，是因為藝術界的代表授予它這個身分。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    這件物品是否由R先生親手製作，其實無關緊要。他選擇了它。他取一件日常用品，將它放置，讓其原本的實用意義在新的標題與觀點之下消失——他為這件物品創造了一個全新的思想。
+    <cite>《盲人》雜誌（The Blind Man）1917年為《噴泉》辯護所刊登的匿名文字，被廣泛認為出自杜象本人或其友人之手，是「現成物」概念最早的公開論述之一。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦「何謂藝術」的定義危機與制度論的發展脈絡，各家理論的完整論證與當代藝術哲學界的評價分歧，請另行參閱專業譯本與研究文獻。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>

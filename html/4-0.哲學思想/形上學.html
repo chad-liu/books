@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>形上學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .qu .nm{color:var(--rust)} .kr .nm{color:var(--slate)} .lw .nm{color:var(--olive)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Metaphysica・那些排在《物理學》之後的書</p>
+  <h1>形上學</h1>
+  <p class="lede">「形上學」這個詞不是亞里斯多德自己取的——他管這門學問叫「第一哲學」。西元前一世紀，編輯他遺稿的安德羅尼柯，把一批討論「存有本身」的文稿排在《物理學》（Physika）之後，隨手稱之為「ta meta ta physika」（那些物理學之後的書），這個詞就這樣從一次編輯上的權宜之計，變成西方哲學最核心的分支之一。本站個別哲學家與流派專頁裡，柏拉圖的理型論、亞里斯多德的實體論、笛卡兒的心物二元論、康德對思辨形上學的批判、邏輯實證論的「剷除形上學」都已有完整說明，這裡不重複，而是先畫出形上學這整個領域的地圖，再深入二十世紀中葉那場鮮少被完整交代的絕地重生。</p>
+</header>
+
+<section>
+  <h2>形上學在問什麼——六個核心提問的地圖</h2>
+  <p class="sub">每個提問背後，站內都有對應的專頁深入展開，這裡先畫出整體地圖</p>
+  <div class="frame">
+<svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="形上學核心提問地圖">
+<rect x="40" y="24" width="860" height="58" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="48" font-size="13" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「形上學」不是一個單一問題，而是一整組關於「世界根本上是什麼樣子」的提問</text>
+<text x="470" y="68" font-size="10.5" text-anchor="middle" fill="#826c35">六個分支各自處理不同的「根本問題」，前五項站內已有專頁深入，第六項本頁後段展開</text>
+
+  <rect x="40" y="100" width="276" height="128" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="178" y="124" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">本體論——「存在」是什麼？</text>
+  <text x="178" y="144" font-size="11" text-anchor="middle" fill="#7d6a3a">追問「有」如何不同於「無」，</text>
+  <text x="178" y="159" font-size="11" text-anchor="middle" fill="#7d6a3a">什麼叫真正意義下的存在</text>
+  <text x="178" y="180" font-size="10" text-anchor="middle" fill="#9f5e2a">見〈亞里士多德〉〈柏拉圖〉篇</text>
+
+  <rect x="332" y="100" width="276" height="128" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="470" y="124" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">共相問題——性質是真的嗎？</text>
+  <text x="470" y="144" font-size="11" text-anchor="middle" fill="#3e6a80">「紅」「人性」這類共性，是</text>
+  <text x="470" y="159" font-size="11" text-anchor="middle" fill="#3e6a80">獨立實存，還是只是名稱？</text>
+  <text x="470" y="180" font-size="10" text-anchor="middle" fill="#3a748f">見〈中世紀哲學光譜圖〉篇</text>
+
+  <rect x="624" y="100" width="276" height="128" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="762" y="124" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">心物問題——心靈是什麼？</text>
+  <text x="762" y="144" font-size="11" text-anchor="middle" fill="#4c6f38">心靈與身體，是同一種實</text>
+  <text x="762" y="159" font-size="11" text-anchor="middle" fill="#4c6f38">體，還是兩種截然不同的存在？</text>
+  <text x="762" y="180" font-size="10" text-anchor="middle" fill="#4d7932">見〈笛卡兒－我思故我在〉篇</text>
+
+  <rect x="40" y="244" width="276" height="128" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="178" y="268" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">實體與因果——世界怎麼組成？</text>
+  <text x="178" y="288" font-size="11" text-anchor="middle" fill="#8a5540">世界的基本組成單位是什麼？</text>
+  <text x="178" y="303" font-size="11" text-anchor="middle" fill="#8a5540">因果的必然連結從何而來？</text>
+  <text x="178" y="324" font-size="10" text-anchor="middle" fill="#9e4638">見〈史賓諾莎〉〈萊布尼茲〉篇</text>
+
+  <rect x="332" y="244" width="276" height="128" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="470" y="268" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">自由意志——我們真的自由嗎？</text>
+  <text x="470" y="288" font-size="11" text-anchor="middle" fill="#7d6a3a">人的行動是被自然因果鏈</text>
+  <text x="470" y="303" font-size="11" text-anchor="middle" fill="#7d6a3a">嚴格決定，還是保有真正的自由？</text>
+  <text x="470" y="324" font-size="10" text-anchor="middle" fill="#9f5e2a">見〈康德－理性的建築術〉篇</text>
+
+  <rect x="624" y="244" width="276" height="128" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="762" y="268" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">模態——「可能」是什麼意思？</text>
+  <text x="762" y="288" font-size="11" text-anchor="middle" fill="#3e6a80">什麼讓一件事「必然」為真，</text>
+  <text x="762" y="303" font-size="11" text-anchor="middle" fill="#3e6a80">另一件事只是「可能」為真？</text>
+  <text x="762" y="324" font-size="10" text-anchor="middle" fill="#c0392b" font-weight="600">本頁第三節深入展開 ↓</text>
+</svg>
+  </div>
+
+  <div class="notes">
+    <div class="note"><b>不是六個孤立的房間</b><span>這六個提問互相牽連——例如承認「共相」實存，往往連帶影響一個人如何處理「本體論」與「因果」問題；哲學家的形上學立場通常是一整套互相支撐的體系，不是逐項獨立的答案。</span></div>
+    <div class="note"><b>「形上學」在中文裡是個借譯詞</b><span>近代中文「形上學」取自《易經・繫辭》「形而上者謂之道，形而下者謂之器」，用來翻譯西方 metaphysics 一詞，兩套用語的原始脈絡其實截然不同，借譯只是取其「超越具體形體」的字面聯想。</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>兩千三百年簡史——從奠基到危機</h2>
+  <p class="sub">每個階段站內都有專頁深入，這裡只勾勒轉折點，方便看見全局</p>
+  <div class="frame">
+<svg viewBox="0 0 940 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="形上學簡史三階段">
+<rect x="40" y="24" width="860" height="58" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="48" font-size="13" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從亞里斯多德奠基，到二十世紀中葉被宣告「無意義」，形上學走過了一條起伏極大的路</text>
+<text x="470" y="68" font-size="10.5" text-anchor="middle" fill="#826c35">三個階段各自的完整內容，站內都有專頁深入，這裡只標出轉折點</text>
+
+  <rect x="40" y="100" width="276" height="170" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="178" y="124" font-size="13.5" text-anchor="middle" fill="#9f5e2a" font-weight="700">奠基：亞里斯多德到共相之爭</text>
+  <text x="178" y="145" font-size="11" text-anchor="middle" fill="#7d6a3a">亞里斯多德在《形上學》確立</text>
+  <text x="178" y="160" font-size="11" text-anchor="middle" fill="#7d6a3a">「存有之為存有」為核心課題，</text>
+  <text x="178" y="175" font-size="11" text-anchor="middle" fill="#7d6a3a">中世紀經院哲學則把戰火燒向</text>
+  <text x="178" y="190" font-size="11" text-anchor="middle" fill="#7d6a3a">「共相」是否真實存在</text>
+  <text x="178" y="216" font-size="10" text-anchor="middle" fill="#9f5e2a">見〈亞里士多德〉篇</text>
+  <text x="178" y="232" font-size="10" text-anchor="middle" fill="#9f5e2a">見〈中世紀哲學光譜圖〉篇</text>
+
+  <rect x="332" y="100" width="276" height="170" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="470" y="124" font-size="13.5" text-anchor="middle" fill="#3a748f" font-weight="700">近代體系：理性論三巨頭</text>
+  <text x="470" y="145" font-size="11" text-anchor="middle" fill="#3e6a80">笛卡兒把世界劈成心與物</text>
+  <text x="470" y="160" font-size="11" text-anchor="middle" fill="#3e6a80">兩種實體，史賓諾莎主張</text>
+  <text x="470" y="175" font-size="11" text-anchor="middle" fill="#3e6a80">萬物只是唯一實體的樣態，</text>
+  <text x="470" y="190" font-size="11" text-anchor="middle" fill="#3e6a80">萊布尼茲以無數單子重組世界</text>
+  <text x="470" y="216" font-size="10" text-anchor="middle" fill="#3a748f">見〈笛卡兒－我思故我在〉篇</text>
+  <text x="470" y="232" font-size="10" text-anchor="middle" fill="#3a748f">見〈史賓諾莎〉〈萊布尼茲〉篇</text>
+
+  <rect x="624" y="100" width="276" height="170" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="762" y="124" font-size="13.5" text-anchor="middle" fill="#9e4638" font-weight="700">危機：康德劃界到實證論宣判</text>
+  <text x="762" y="145" font-size="11" text-anchor="middle" fill="#8a5540">康德劃定思辨形上學的</text>
+  <text x="762" y="160" font-size="11" text-anchor="middle" fill="#8a5540">界限，靈魂、世界、上帝</text>
+  <text x="762" y="175" font-size="11" text-anchor="middle" fill="#8a5540">淪為理性理念；二十世紀</text>
+  <text x="762" y="190" font-size="11" text-anchor="middle" fill="#8a5540">邏輯實證論更宣告其「無意義」</text>
+  <text x="762" y="216" font-size="10" text-anchor="middle" fill="#9e4638">見〈康德－理性的建築術〉篇</text>
+  <text x="762" y="232" font-size="10" text-anchor="middle" fill="#9e4638">見〈二十世紀的分析哲學〉篇</text>
+
+<rect x="80" y="288" width="780" height="56" rx="3" fill="#eef2f5" stroke="#59707b"/>
+<text x="470" y="312" font-size="11.5" text-anchor="middle" fill="#4d7932" font-family="'Noto Serif TC',serif" font-weight="600">這條主線在正統哲學史敘事裡看似終結於二十世紀中葉</text>
+<text x="470" y="330" font-size="10.5" text-anchor="middle" fill="#59707b">但真正精彩的轉折，其實發生在邏輯實證論宣判之後——下一節要談的，正是這場鮮少被完整交代的絕地重生</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>二十世紀的絕地重生——從「無意義」到分析哲學核心</h2>
+  <p class="sub">邏輯實證論才剛宣告形上學是胡說，三位哲學家幾乎同時把它請了回來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="二十世紀分析形上學復興結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">邏輯實證論才剛判定形上學命題「無意義」，三位哲學家幾乎同時把它重新請回了哲學系</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">這段復興沒有共同的組織或宣言，卻在1950至1970年代之間各自獨立完成，合力扭轉了整個學門的命運</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">蒯因的存有論承諾</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a5540">〈論何物存在〉主張本體論爭議</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a5540">能用邏輯語言精確表述，不是空談</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">克里普奇：必然的後驗真理</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">《命名與必然性》主張專有名詞</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">是「固定指涉詞」，開啟本質主義復興</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">路易斯：可能世界真實存在</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">主張每個「可能世界」都和我們</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">所在的現實世界一樣具體、真實</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">分析形上學重返哲學系</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#7d6a3a">從「形上學是胡說」到重新成為</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#7d6a3a">分析哲學核心議題，僅費時約三十年</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">三人各走各的路，卻共同證明形上學問題可以被嚴謹地談論</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">蒯因從邏輯語言下手，主張「說什麼東西存在」其實有精確的判準；克里普奇從語言哲學下手，證明「水是H2O」這</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">類命題雖是經驗發現、卻具有邏輯上的必然性；路易斯則直接把「可能」本身當作形上學研究對象，三條路徑殊途同歸</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">邏輯實證論對分析／綜合區分的攻防，見〈二十世紀的分析哲學〉篇，本頁不重複</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心提問</h2><span class="tag">CORE QUESTIONS</span></div>
+  <div class="grid">
+    <div class="card"><div class="nm">本體論</div><p>追問「有」如何不同於「無」，什麼叫做真正意義下的存在；見〈亞里士多德〉〈柏拉圖〉兩篇。</p></div>
+    <div class="card"><div class="nm">共相問題</div><p>「紅」「人性」這類共性，是獨立實存，還是只是名稱與概念；見〈中世紀哲學光譜圖〉篇。</p></div>
+    <div class="card"><div class="nm">心物問題</div><p>心靈與身體，是同一種實體，還是兩種截然不同的存在；見〈笛卡兒－我思故我在〉篇。</p></div>
+    <div class="card"><div class="nm">實體與因果</div><p>世界的基本組成單位是什麼，因果的必然連結從何而來；見〈史賓諾莎〉〈萊布尼茲〉篇。</p></div>
+    <div class="card"><div class="nm">自由意志</div><p>人的行動是被自然因果鏈嚴格決定，還是保有真正的自由；見〈康德－理性的建築術〉篇。</p></div>
+    <div class="card"><div class="nm">模態與可能世界</div><p>「必然」與「可能」到底是什麼意思——本頁第三節深入展開的新主題。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>復興三傑</h2><span class="tag">THE REVIVAL</span></div>
+  <div class="grid">
+    <div class="card qu"><div class="nm">蒯因<span class="it">Quine</span><span class="yr">1908–2000</span></div><p>〈論何物存在〉主張本體論爭議能用邏輯語言精確表述，名言「存在，就是成為約束變量的值」。</p></div>
+    <div class="card kr"><div class="nm">克里普奇<span class="it">Kripke</span><span class="yr">1940–2022</span></div><p>《命名與必然性》提出「固定指涉詞」與「後驗必然真理」，開啟本質主義在分析哲學裡的復興。</p></div>
+    <div class="card lw"><div class="nm">路易斯<span class="it">David Lewis</span><span class="yr">1941–2001</span></div><p>主張每個「可能世界」都和現實世界一樣具體真實，是「模態實在論」最鮮明的代表人物。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    求知是人的本性。
+    <cite>亞里斯多德《形上學》開卷第一句，是全書、也是整個「第一哲學」傳統的起手式——形上學從一開始，問的就不是實用的問題，而是純粹的求知欲本身。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁作為「形上學」主題的總覽與地圖，各家具體論證、文本考據與二十世紀分析形上學的實在論／反實在論路線之爭，請見對應哲學家與思想流派專頁及專業研究文獻。年代依主要著作出版或成書年份，部分中世紀年代為學界推定範圍。
+</footer>
+
+</div>
+</body>
+</html>
