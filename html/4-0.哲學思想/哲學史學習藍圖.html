@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哲學史學習藍圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e9e3d4;
+    --paper-alt: #ded7c2;
+    --ink: #262521;
+    --ink-soft: #5a564c;
+    --indigo: #2e3f56;
+    --indigo-deep: #1c2836;
+    --vermilion: #8b4332;
+    --rule: #b3a98f;
+    --gold: #93712a;
+    --max-w: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { background: var(--paper); }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Serif TC", serif;
+    font-weight: 400;
+    line-height: 1.95;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* subtle paper texture via layered radial gradients */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.025) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 6rem 1.75rem 8rem;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    margin-bottom: 5rem;
+  }
+
+  .kicker {
+    font-size: 0.95rem;
+    color: var(--vermilion);
+    letter-spacing: 0.08em;
+    margin: 0 0 1.1rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin: 0 0 1.6rem;
+    color: var(--indigo-deep);
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 2;
+    max-width: 62ch;
+    border-left: 3px solid var(--rule);
+    padding-left: 1.2rem;
+  }
+
+  /* ---------- Stage sequence ---------- */
+  .sequence {
+    position: relative;
+    margin-top: 4rem;
+  }
+
+  .sequence::before {
+    content: "";
+    position: absolute;
+    left: 1.55rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--rule) 4%, var(--rule) 96%, transparent);
+  }
+
+  .stage {
+    position: relative;
+    padding: 0 0 3.6rem 4.6rem;
+  }
+
+  .stage:last-of-type { padding-bottom: 0.5rem; }
+
+  .stage-num {
+    position: absolute;
+    left: 0;
+    top: -0.15rem;
+    width: 3.1rem;
+    height: 3.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--indigo);
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .stage-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--indigo-deep);
+    margin: 0.3rem 0 0.3rem;
+  }
+
+  .stage-note {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 0.05rem 0.5rem;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+  }
+
+  .stage h3.sub {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.4rem 0 0.6rem;
+  }
+
+  .reading-list {
+    margin: 0 0 1.2rem;
+    padding-left: 1.3rem;
+  }
+
+  .reading-list li {
+    margin-bottom: 0.55rem;
+    color: var(--ink);
+  }
+
+  .secondary-note {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.2rem;
+    line-height: 1.9;
+  }
+
+  /* ---------- Buddhist cross-reference callouts ---------- */
+  .cross-ref {
+    border-left: 2px solid var(--vermilion);
+    background: var(--paper-alt);
+    padding: 1rem 1.3rem;
+    margin-top: 1.2rem;
+  }
+
+  .cross-ref .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--vermilion);
+    margin-bottom: 0.4rem;
+  }
+
+  .cross-ref p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+
+  /* ---------- Closing method section ---------- */
+  .method {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .method h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--indigo-deep);
+    margin: 0 0 1.6rem;
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .method-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--indigo);
+    margin: 0 0 0.4rem;
+  }
+
+  .method-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+
+  footer {
+    margin-top: 5rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 3.5rem 1.25rem 5rem; }
+    h1 { font-size: 1.9rem; }
+    .stage { padding-left: 3.8rem; }
+    .stage-num { width: 2.6rem; height: 2.6rem; font-size: 1.25rem; }
+    .sequence::before { left: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="kicker">學習藍圖 · 通論式</p>
+    <h1>哲學史學習藍圖</h1>
+    <p class="lede">依已涉獵的康德、黑格爾、尼采、卡繆、維根斯坦、萊布尼茲為基準,規劃補完哲學史脈絡的路徑。標示「已涉獵」的部分建議做複習式重讀,重點放在把它們放進整條歷史脈絡裡重新定位。每個階段附上與佛學比較研究可能的交叉點。</p>
+  </header>
+
+  <div class="sequence">
+
+    <section class="stage">
+      <div class="stage-num">一</div>
+      <h2 class="stage-title">古典基礎——問題的原型</h2>
+      <p class="stage-note">哲學史上幾乎所有核心問題,都在這裡被第一次系統化提出。這是後面所有閱讀的座標原點。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>前蘇格拉底哲學家(赫拉克利特、巴門尼德、德謨克利特)——變與不變、存在與虛無的最初爭論</li>
+        <li>柏拉圖《理想國》、《斐多篇》——理型論、靈魂不朽論證</li>
+        <li>亞里斯多德《形上學》(節選)、《尼各馬可倫理學》——實體論、德性倫理學</li>
+      </ol>
+      <p class="secondary-note">二手導讀:一本可靠的西方哲學通史,搭配原典閱讀,避免只靠導讀建構理解。</p>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>柏拉圖理型論 vs 唯識學「識所變現」——兩者都處理「現象背後是否有更真實的實在」,但走向完全相反的方向。亞里斯多德的實體論也適合與部派佛教「法有我無」的爭論對讀。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">二</div>
+      <h2 class="stage-title">近代理性主義與經驗主義的對峙</h2>
+      <p class="stage-note">康德綜合之前的前史,補上這段能讓對康德已有的理解更立體。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>笛卡兒《第一哲學沉思集》——懷疑方法、心物二元論</li>
+        <li>斯賓諾莎《倫理學》(節選)——泛神論式的實體一元論</li>
+        <li>萊布尼茲單子論<span class="badge">已涉獵・複習</span>——重點放在與斯賓諾莎的對比</li>
+        <li>洛克《人類理解論》(節選)——經驗主義起點、白板說</li>
+        <li>柏克萊「存在即被感知」</li>
+        <li>休謨《人性論》、《人類理解研究》——因果懷疑論,是康德「驚醒獨斷論迷夢」的直接觸發點</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>休謨對「自我」的解構——自我只是知覺束的集合,沒有恆常主體——幾乎可以直接對話無我論;笛卡兒的「我思故我在」則是絕佳的反例對照組。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">三</div>
+      <h2 class="stage-title">康德的綜合<span class="badge">已涉獵・深化</span></h2>
+      <p class="stage-note">建議做法:不重讀整本《純粹理性批判》,而是針對「先驗綜合判斷如何可能」「現象與物自身的區分」這兩個核心問題,重新釐清它們如何分別回應理性主義與經驗主義的困境。</p>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>康德的「物自身不可知」與唯識學「阿賴耶識所變現的境不即是外境本身」有結構上的相似性,值得深入比較兩者在認識論限度上的異同——這是已在進行的方向,可以再往下挖。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">四</div>
+      <h2 class="stage-title">德國觀念論的展開</h2>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>費希特「自我設定非我」(簡要了解即可,作為過渡)</li>
+        <li>謝林自然哲學(選讀,非必要深入)</li>
+        <li>黑格爾《精神現象學》〈導論〉與〈自我意識〉章<span class="badge">已涉獵・複習</span>——重點放在辯證法的運作邏輯</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>黑格爾辯證法的「正反合」與中觀學派「二諦辯證」(世俗諦與勝義諦的動態關係)是常被比較但也常被誤比的一對,適合仔細釐清概念是否真的對應。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">五</div>
+      <h2 class="stage-title">十九世紀的反動</h2>
+      <p class="stage-note">此階段因叔本華與佛教的直接關聯,若想更快看到成果,也可考慮提前到階段一之後就先讀。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>叔本華《作為意志和表象的世界》(節選)——理解尼采最重要的前置閱讀,叔本華本人深受佛教影響,是天然的橋樑</li>
+        <li>齊克果《恐懼與顫怖》、《致死的疾病》——存在主義先驅,個體性與信仰的跳躍</li>
+        <li>馬克思《1844年經濟學哲學手稿》(節選)——異化理論</li>
+        <li>尼采<span class="badge">已涉獵・複習</span>——可搭配叔本華閱讀後重新理解尼采「反叔本華」的部分</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>叔本華本人明確援引佛教「苦」與「解脫意志」的概念,是西方哲學中少數自覺與佛教對話的思想家,值得專門做一份對照筆記;齊克果的「絕望」概念也可與唯識學的煩惱分類對讀。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">六</div>
+      <h2 class="stage-title">分析哲學傳統的起點</h2>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>弗雷格〈論意義與指稱〉——現代邏輯與語言哲學起點</li>
+        <li>羅素〈論指稱〉、摹狀詞理論</li>
+        <li>維根斯坦《邏輯哲學論》<span class="badge">已涉獵・複習</span>——聚焦「語言的界限即世界的界限」</li>
+        <li>邏輯實證論(維也納學派)概觀——可證偽性、意義判準</li>
+        <li>維根斯坦《哲學研究》<span class="badge">已涉獵・複習</span>——重點放在前後期斷裂:語言遊戲、私有語言論證</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>前期維根斯坦「對不可說者保持沉默」與中觀「言語道斷」的比較是經典題目,但也最容易流於表面類比——建議特別小心區分兩者「不可說」的原因是否相同(邏輯界限 vs 勝義諦超越概念構造)。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">七</div>
+      <h2 class="stage-title">歐陸現象學與存在主義</h2>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>胡塞爾《純粹現象學通論》(節選)——現象學還原、意向性</li>
+        <li>海德格《存在與時間》(節選)——此在、向死存在</li>
+        <li>沙特《存在與虛無》(節選)——存在先於本質</li>
+        <li>卡繆《薛西弗斯的神話》<span class="badge">已涉獵・複習</span>——放進存在主義脈絡中重新定位,卡繆本人拒絕「存在主義者」標籤,這點值得深究</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>海德格晚期思想與禪宗、道家的比較是學界既有的重要文獻(可參考京都學派的相關討論);胡塞爾意向性理論也適合與唯識學「能所」結構對讀。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">八</div>
+      <h2 class="stage-title">後結構與當代分支<span class="badge">選讀</span></h2>
+      <p class="stage-note">視興趣深淺決定投入程度。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>傅柯《規訓與懲罰》或《詞與物》——權力/知識、話語構造</li>
+        <li>德希達解構主義概觀——延異、文字學</li>
+        <li>懷海德歷程哲學(《歷程與實在》節選)——若對「一念三千」等天台思想有興趣,懷海德的歷程存有論是西方哲學中少見的高度可比對象</li>
+      </ol>
+    </section>
+
+  </div>
+
+  <div class="method">
+    <h2>建議節奏與方法</h2>
+    <div class="method-grid">
+      <div class="method-item">
+        <h4>每階段配置</h4>
+        <p>一手文本(原典或可靠譯本)+ 一本二手導讀,兩者交叉閱讀,避免單靠二手詮釋建構理解。</p>
+      </div>
+      <div class="method-item">
+        <h4>筆記產出</h4>
+        <p>延續百科式 Markdown 參考文件的習慣,每個哲學家/學派做一份獨立文件。</p>
+      </div>
+      <div class="method-item">
+        <h4>跨傳統對照表</h4>
+        <p>建議額外建立一份「西方哲學—佛教概念對照表」作為中介文件,把哲學史筆記庫與佛學筆記庫串接起來,並隨閱讀進度持續修訂。</p>
+      </div>
+      <div class="method-item">
+        <h4>順序彈性</h4>
+        <p>此藍圖以歷史順序排列,但階段五(叔本華)可視需求提前閱讀。</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>哲學史學習藍圖 · 通論式版本</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佛學學習藍圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e9e3d4;
+    --paper-alt: #ded7c2;
+    --ink: #262521;
+    --ink-soft: #5a564c;
+    --indigo: #2e3f56;
+    --indigo-deep: #1c2836;
+    --vermilion: #8b4332;
+    --rule: #b3a98f;
+    --gold: #93712a;
+    --max-w: 760px;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Serif TC", serif;
+    font-weight: 400;
+    line-height: 1.95;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.025) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 6rem 1.75rem 8rem;
+  }
+
+  header { margin-bottom: 5rem; }
+
+  .kicker {
+    font-size: 0.95rem;
+    color: var(--vermilion);
+    letter-spacing: 0.08em;
+    margin: 0 0 1.1rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin: 0 0 1.6rem;
+    color: var(--indigo-deep);
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 2;
+    max-width: 62ch;
+    border-left: 3px solid var(--rule);
+    padding-left: 1.2rem;
+  }
+
+  .sequence { position: relative; margin-top: 4rem; }
+
+  .sequence::before {
+    content: "";
+    position: absolute;
+    left: 1.55rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--rule) 4%, var(--rule) 96%, transparent);
+  }
+
+  .stage { position: relative; padding: 0 0 3.6rem 4.6rem; }
+  .stage:last-of-type { padding-bottom: 0.5rem; }
+
+  .stage-num {
+    position: absolute;
+    left: 0;
+    top: -0.15rem;
+    width: 3.1rem;
+    height: 3.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--indigo);
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .stage-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--indigo-deep);
+    margin: 0.3rem 0 0.3rem;
+  }
+
+  .stage-note {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 0.05rem 0.5rem;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+  }
+
+  .stage h3.sub {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.4rem 0 0.6rem;
+  }
+
+  .reading-list { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+  .reading-list li { margin-bottom: 0.55rem; color: var(--ink); }
+
+  .secondary-note {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.2rem;
+    line-height: 1.9;
+  }
+
+  .cross-ref {
+    border-left: 2px solid var(--vermilion);
+    background: var(--paper-alt);
+    padding: 1rem 1.3rem;
+    margin-top: 1.2rem;
+  }
+
+  .cross-ref .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--vermilion);
+    margin-bottom: 0.4rem;
+  }
+
+  .cross-ref p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+
+  .method {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .method h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--indigo-deep);
+    margin: 0 0 1.6rem;
+  }
+
+  .method-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .method-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--indigo);
+    margin: 0 0 0.4rem;
+  }
+
+  .method-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+
+  footer {
+    margin-top: 5rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 3.5rem 1.25rem 5rem; }
+    h1 { font-size: 1.9rem; }
+    .stage { padding-left: 3.8rem; }
+    .stage-num { width: 2.6rem; height: 2.6rem; font-size: 1.25rem; }
+    .sequence::before { left: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="kicker">學習藍圖 · 通論式</p>
+    <h1>佛學學習藍圖</h1>
+    <p class="lede">依已有的唯識、部派佛教、大乘、天台研究基礎,以及正在進行的《大般若經》成書史考察,規劃補齊知識空缺的路徑,並強化各系統之間的串接。</p>
+  </header>
+
+  <div class="sequence">
+
+    <section class="stage">
+      <div class="stage-num">一</div>
+      <h2 class="stage-title">印度佛教基礎的系統化整合</h2>
+      <p class="stage-note">目前的印度佛教史筆記分散在兩條系列(佛陀傳記脈絡、教義論爭脈絡),建議先做一次橫向整合。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>回顧並校訂兩條系列中信心度不確定的集數安排</li>
+        <li>阿毘達磨(Abhidharma)系統性補課——部派佛教的「法」分類體系,是理解後續唯識「法相」的直接前身,建議讀《俱舍論》(節選)搭配導讀</li>
+        <li>建立一張「阿含 → 部派 → 中觀 → 唯識」的教義演變對照表,作為整條印度佛教史筆記的骨架</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">西方哲學交叉點</div>
+        <p>阿毘達磨的法分類體系,適合與亞里斯多德的範疇論做結構性比較——兩者都在做「存在物的窮盡分類」,但預設完全不同。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">二</div>
+      <h2 class="stage-title">中觀學派深化<span class="badge">明顯空缺・優先</span></h2>
+      <p class="stage-note">目前筆記以唯識為主軸,中觀相對單薄,但中觀是理解「空」概念的源頭,也是唯識學建立時的主要論敵。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>龍樹《中論》(節選,建議搭配印順法師或吳汝鈞的導讀)——八不中道、緣起性空</li>
+        <li>龍樹《迴諍論》——中觀對「空是否自我推翻」這個經典詰難的回應</li>
+        <li>月稱《入中論》(節選)——中觀應成派如何批判唯識的「識有境無」</li>
+        <li>清辨與中觀自續派概觀——中觀內部的分裂,以及與唯識的長期論爭</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">與已有知識交叉點</div>
+        <p>中觀與唯識的論爭(空有之爭)是目前筆記庫裡最大的一塊空白,補上這段能讓「阿賴耶識」為何被中觀質疑、唯識又如何回應,形成完整的論證鏈,而不只是單方面理解唯識的立場。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">三</div>
+      <h2 class="stage-title">般若經系統的形成史<span class="badge">延續進行中</span></h2>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>般若經系統的層次(《八千頌》→《二萬五千頌》→《大品》→《金剛經》《心經》的濃縮過程)</li>
+        <li>般若思想與中觀學派的關係——龍樹如何從般若經群中抽取出系統性論證</li>
+      </ol>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">四</div>
+      <h2 class="stage-title">天台學的深化與定位<span class="badge">整合已有研究</span></h2>
+      <p class="stage-note">不建議重新學習,而是把已完成的天台研究放進更大的中國佛教史脈絡。</p>
+      <ol class="reading-list">
+        <li>智顗「一念三千」「三諦圓融」如何回應中觀與唯識兩系的張力</li>
+        <li>天台判教體系(五時八教)——理解天台如何為印度佛教各系統排出一套自己的等級秩序</li>
+      </ol>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">五</div>
+      <h2 class="stage-title">華嚴宗<span class="badge">新領域</span></h2>
+      <p class="stage-note">目前筆記庫裡幾乎缺席的一塊,但其「法界緣起」「理事無礙」對理解中國佛教的整體性思維很關鍵。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>法藏《華嚴金師子章》——短篇但濃縮了華嚴核心概念</li>
+        <li>澄觀、宗密概觀——華嚴判教與禪宗的合流</li>
+      </ol>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">六</div>
+      <h2 class="stage-title">禪宗的系統研究<span class="badge">新領域・建議投入</span></h2>
+      <p class="stage-note">已知禪宗與魏晉玄學、道家的關聯,但尚未系統研究禪宗本身,能與中國哲學史藍圖的宋明理學階段直接串接。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>《六祖壇經》——南宗禪的核心文獻,頓悟說</li>
+        <li>臨濟宗、曹洞宗的宗風差異概觀</li>
+        <li>禪宗公案的邏輯結構——建議搭配已有的維根斯坦筆記,思考公案「破除概念執著」與後期維根斯坦「語言遊戲」之間是否存在可比的操作邏輯</li>
+      </ol>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">七</div>
+      <h2 class="stage-title">淨土宗<span class="badge">簡要補課</span></h2>
+      <p class="stage-note">不必深入,但作為中國佛教三大主流之一(禪、淨、密),了解基本輪廓有助於完整理解中國佛教生態。</p>
+      <ol class="reading-list">
+        <li>曇鸞、道綽、善導概觀——他力信仰如何在強調「自力修證」的中國佛教語境中站穩腳步</li>
+      </ol>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">八</div>
+      <h2 class="stage-title">藏傳佛教<span class="badge">選讀</span></h2>
+      <ol class="reading-list">
+        <li>宗喀巴《菩提道次第廣論》(節選)——藏傳中觀應成派的集大成</li>
+        <li>藏傳與漢傳對「空性」理解的分歧概觀</li>
+      </ol>
+    </section>
+
+  </div>
+
+  <div class="method">
+    <h2>建議節奏</h2>
+    <div class="method-grid">
+      <div class="method-item">
+        <h4>優先順序</h4>
+        <p>階段二(中觀)是最值得優先補的空缺,因為它會回頭讓已有的唯識研究更立體。</p>
+      </div>
+      <div class="method-item">
+        <h4>與中國哲學史同步</h4>
+        <p>階段六(禪宗)建議與中國哲學史藍圖的宋明理學階段同步進行,兩者互相印證。</p>
+      </div>
+      <div class="method-item">
+        <h4>筆記整合</h4>
+        <p>建議做一份「大乘佛教內部論爭地圖」(中觀 vs 唯識、天台判教、禪宗頓漸之爭),作為串接現有各系統筆記的中介文件。</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>佛學學習藍圖 · 通論式版本</footer>
+
+</div>
+</body>
+</html>

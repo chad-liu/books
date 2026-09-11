@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國哲學史學習藍圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e9e3d4;
+    --paper-alt: #ded7c2;
+    --ink: #262521;
+    --ink-soft: #5a564c;
+    --indigo: #2e3f56;
+    --indigo-deep: #1c2836;
+    --vermilion: #8b4332;
+    --rule: #b3a98f;
+    --gold: #93712a;
+    --max-w: 760px;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Serif TC", serif;
+    font-weight: 400;
+    line-height: 1.95;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.025) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 6rem 1.75rem 8rem;
+  }
+
+  header { margin-bottom: 5rem; }
+
+  .kicker {
+    font-size: 0.95rem;
+    color: var(--vermilion);
+    letter-spacing: 0.08em;
+    margin: 0 0 1.1rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin: 0 0 1.6rem;
+    color: var(--indigo-deep);
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 2;
+    max-width: 62ch;
+    border-left: 3px solid var(--rule);
+    padding-left: 1.2rem;
+  }
+
+  .sequence { position: relative; margin-top: 4rem; }
+
+  .sequence::before {
+    content: "";
+    position: absolute;
+    left: 1.55rem;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--rule) 4%, var(--rule) 96%, transparent);
+  }
+
+  .stage { position: relative; padding: 0 0 3.6rem 4.6rem; }
+  .stage:last-of-type { padding-bottom: 0.5rem; }
+
+  .stage-num {
+    position: absolute;
+    left: 0;
+    top: -0.15rem;
+    width: 3.1rem;
+    height: 3.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--indigo);
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .stage-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--indigo-deep);
+    margin: 0.3rem 0 0.3rem;
+  }
+
+  .stage-note {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: 0.05rem 0.5rem;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+  }
+
+  .stage h3.sub {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.4rem 0 0.6rem;
+  }
+
+  .reading-list { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+  .reading-list li { margin-bottom: 0.55rem; color: var(--ink); }
+
+  .secondary-note {
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.2rem;
+    line-height: 1.9;
+  }
+
+  .cross-ref {
+    border-left: 2px solid var(--vermilion);
+    background: var(--paper-alt);
+    padding: 1rem 1.3rem;
+    margin-top: 1.2rem;
+  }
+
+  .cross-ref .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--vermilion);
+    margin-bottom: 0.4rem;
+  }
+
+  .cross-ref p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+
+  .method {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .method h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--indigo-deep);
+    margin: 0 0 1.6rem;
+  }
+
+  .method-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .method-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--indigo);
+    margin: 0 0 0.4rem;
+  }
+
+  .method-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+
+  footer {
+    margin-top: 5rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 3.5rem 1.25rem 5rem; }
+    h1 { font-size: 1.9rem; }
+    .stage { padding-left: 3.8rem; }
+    .stage-num { width: 2.6rem; height: 2.6rem; font-size: 1.25rem; }
+    .sequence::before { left: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="kicker">學習藍圖 · 通論式</p>
+    <h1>中國哲學史學習藍圖</h1>
+    <p class="lede">考量到您已在佛教哲學(唯識、部派、大乘、天台)上有相當深入的研究,此藍圖把佛教中國化階段處理得精簡,重點放在先秦諸子、漢代思想,以及最值得投入的宋明理學與現代新儒家——這一段會直接銜接您已有的康德與佛學知識。</p>
+  </header>
+
+  <div class="sequence">
+
+    <section class="stage">
+      <div class="stage-num">一</div>
+      <h2 class="stage-title">先秦諸子——百家爭鳴的原點</h2>
+      <p class="stage-note">這是中國哲學所有後續發展的問題庫,幾乎每個後代學派都在回應這裡提出的爭論。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>《論語》——孔子的仁、禮、君子觀</li>
+        <li>《孟子》——性善論、心性論的起點</li>
+        <li>《荀子》——性惡論,與孟子的對立提供了理解後世儒學內部張力的鑰匙</li>
+        <li>《老子》、《莊子》(內篇)——無為、逍遙、齊物論</li>
+        <li>《墨子》(節選)——兼愛、非攻,中國哲學史上少見的功利主義式論證</li>
+        <li>韓非《韓非子》(節選)——法家的人性論基礎</li>
+        <li>名家(公孫龍〈白馬論〉)——中國哲學裡少見的邏輯/語言哲學傳統,篇幅雖短但值得留意</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>莊子的「齊物」與中觀「破二元對立」的思路有結構相似性,但莊子並不走向「空」而是走向「化」,這個差異本身就是一個好的比較題目。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">二</div>
+      <h2 class="stage-title">漢代的綜合與轉向</h2>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>董仲舒《春秋繁露》(節選)——天人感應、陰陽五行如何被系統化進儒學</li>
+        <li>《淮南子》(節選)——道家思想在漢代的整合面貌</li>
+        <li>王充《論衡》——漢代罕見的批判性、去神秘化思想</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>此階段主要是內部整合期,與佛教尚未實質接觸,可作為理解「佛教傳入前中國思想土壤」的背景閱讀。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">三</div>
+      <h2 class="stage-title">魏晉玄學——道家的哲學化與佛教的接引</h2>
+      <p class="stage-note">這是佛教得以進入中國知識菁英圈的關鍵橋樑期,也是現有佛學知識庫可以立刻派上用場的地方,建議提前投入較多時間。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>王弼《老子注》、《周易注》——「貴無論」,以無為本</li>
+        <li>郭象《莊子注》——「獨化論」,對王弼的重要修正</li>
+        <li>竹林七賢與清談文化(讀相關導讀了解思想氛圍即可,不必逐一深讀原典)</li>
+        <li>般若學「六家七宗」概觀——玄學概念(有無、本末)如何被用來理解般若「空」,這是格義佛教的核心現象</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>此階段本身就是交叉點——「格義」(用玄學概念解釋佛教)是理解後續中國化佛教(尤其天台、禪宗)如何形成的必讀背景,直接銜接已有的天台研究。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">四</div>
+      <h2 class="stage-title">佛教的中國化<span class="badge">整合已有知識庫</span></h2>
+      <p class="stage-note">此階段建議不做新的深讀,而是把已完成的唯識、天台研究放進「儒道佛三教互動」的脈絡裡重新定位:</p>
+      <ol class="reading-list">
+        <li>天台宗如何回應玄學遺留的「本末」問題</li>
+        <li>禪宗「不立文字」與道家「得意忘言」的直接承繼關係</li>
+        <li>三教在唐代如何形成既競爭又互相滲透的格局</li>
+      </ol>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">五</div>
+      <h2 class="stage-title">宋明理學——儒學的哲學化復興<span class="badge">重點階段</span></h2>
+      <p class="stage-note">中國哲學史上最有系統性、也最適合與康德、黑格爾比較的一段,建議投入重點精力。</p>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>周敦頤《太極圖說》——理學宇宙論的起點</li>
+        <li>張載《正蒙》(節選)——氣本論</li>
+        <li>程頤、程顥「天理」概念</li>
+        <li>朱熹《四書章句集注》(節選)、《朱子語類》(節選)——理氣二元論,集大成的系統建構</li>
+        <li>陸九淵「心即理」——與朱熹「性即理」的著名分歧</li>
+        <li>王陽明《傳習錄》——心學的成熟形態,知行合一、致良知</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>朱熹理氣論與唯識「種子/現行」的結構有可比之處;王陽明心學則明顯受禪宗影響(陸王心學常被稱為「儒表佛裡」),值得專門梳理其實際的思想借用軌跡,而不只是表面類比。</p>
+      </div>
+    </section>
+
+    <section class="stage">
+      <div class="stage-num">六</div>
+      <h2 class="stage-title">清代思想與現代轉型<span class="badge">關鍵站</span></h2>
+
+      <h3 class="sub">閱讀順序</h3>
+      <ol class="reading-list">
+        <li>戴震《孟子字義疏證》——對理學「以理殺人」的批判,回歸情欲本位</li>
+        <li>章太炎、康有為(概觀)——傳統思想面對西學衝擊的轉型</li>
+        <li>熊十力《新唯識論》——現代新儒家的開端,直接以佛教唯識學為對話對象重構儒學形上學</li>
+        <li>牟宗三(節選,建議從《中國哲學十九講》入手)——會通康德與儒釋道三教,提出「兩層存有論」</li>
+      </ol>
+
+      <div class="cross-ref">
+        <div class="label">佛學交叉點</div>
+        <p>這是整條藍圖裡最關鍵的一站。熊十力直接從唯識學出發批判性地重構儒家形上學;牟宗三則同時整合康德的現象/物自身區分與佛教「一心開二門」的架構——這兩位幾乎是為現有知識背景量身打造的閱讀對象,建議列為優先。</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="method">
+    <h2>建議節奏</h2>
+    <div class="method-grid">
+      <div class="method-item">
+        <h4>先秦基礎</h4>
+        <p>不可省略,但可以讀得快一些,重點在建立問題意識。</p>
+      </div>
+      <div class="method-item">
+        <h4>魏晉玄學</h4>
+        <p>直接銜接現有佛學研究,建議提前投入較多時間。</p>
+      </div>
+      <div class="method-item">
+        <h4>宋明理學與現代新儒家</h4>
+        <p>整條藍圖裡最值得深耕的兩段,尤其牟宗三部分,可以直接與已讀的康德筆記對讀。</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>中國哲學史學習藍圖 · 通論式版本</footer>
+
+</div>
+</body>
+</html>
