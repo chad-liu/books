@@ -9,3 +9,4 @@ Git & GitHub 指令速查
 Claude Code 指令速查
 Markdown語法速查
 TypeScript語法速查
+Python指令速查

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python 指令速查</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#F2F4F8;
+  --surface:#FFFFFF;
+  --surface-2:#EAEEF4;
+  --ink:#151A24;
+  --ink-2:#57606F;
+  --ink-3:#8991A3;
+  --line:#DCE1EA;
+  --line-soft:#E8ECF2;
+  --accent:#2E5FA3;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#E1EAF7;
+  --amber:#93650F;
+  --amber-soft:#F3E6C9;
+  --add:#1E7A4C;
+  --add-soft:#E1F1E7;
+  --del:#B0392F;
+  --del-soft:#FBE6E3;
+  --code-bg:#0F1420;
+  --code-ink:#E5E9F2;
+  --code-ink-2:#8791A8;
+  --code-line:#232B3D;
+  --shadow: 0 1px 2px rgba(20,23,31,.04), 0 8px 24px -12px rgba(20,23,31,.12);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1017;
+    --surface:#161A24;
+    --surface-2:#1D222E;
+    --ink:#EBEEF4;
+    --ink-2:#A4ACBE;
+    --ink-3:#6B7386;
+    --line:#2A2F3E;
+    --line-soft:#232837;
+    --accent:#7FB0E8;
+    --accent-ink:#0D1017;
+    --accent-soft:#1B2D45;
+    --amber:#E0B255;
+    --amber-soft:#3A2F17;
+    --add:#5FC78C;
+    --add-soft:#16281E;
+    --del:#E88376;
+    --del-soft:#2E1917;
+    --code-bg:#090C13;
+    --code-ink:#E5E9F2;
+    --code-ink-2:#818997;
+    --code-line:#212637;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1017;
+  --surface:#161A24;
+  --surface-2:#1D222E;
+  --ink:#EBEEF4;
+  --ink-2:#A4ACBE;
+  --ink-3:#6B7386;
+  --line:#2A2F3E;
+  --line-soft:#232837;
+  --accent:#7FB0E8;
+  --accent-ink:#0D1017;
+  --accent-soft:#1B2D45;
+  --amber:#E0B255;
+  --amber-soft:#3A2F17;
+  --add:#5FC78C;
+  --add-soft:#16281E;
+  --del:#E88376;
+  --del-soft:#2E1917;
+  --code-bg:#090C13;
+  --code-ink:#E5E9F2;
+  --code-ink-2:#818997;
+  --code-line:#212637;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 28px -14px rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans TC","IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+code, .mono{
+  font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace;
+}
+
+/* ---------- header ---------- */
+header.top{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:1px solid var(--line);
+}
+.top-inner{
+  max-width:1080px; margin:0 auto;
+  padding:18px 24px 16px;
+}
+.brand-row{
+  display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  justify-content:space-between;
+}
+.brand{
+  display:flex; align-items:baseline; gap:10px;
+}
+.brand h1{
+  font-size:1.28rem; margin:0; font-weight:700; letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.brand .glyph{
+  font-family:"IBM Plex Mono"; font-weight:600; font-size:.95rem;
+  color:var(--accent-ink); background:var(--accent);
+  padding:3px 8px; border-radius:6px; letter-spacing:.02em;
+}
+.brand-sub{
+  font-size:.82rem; color:var(--ink-2); margin:2px 0 0;
+}
+.stat-line{
+  font-size:.78rem; color:var(--ink-3); font-family:"IBM Plex Mono";
+  white-space:nowrap;
+}
+
+.controls{
+  max-width:1080px; margin:0 auto; padding:0 24px 16px;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+}
+.search-wrap{
+  position:relative; flex:1 1 260px; min-width:220px;
+}
+.search-wrap svg{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  width:15px; height:15px; color:var(--ink-3); pointer-events:none;
+}
+#search{
+  width:100%; padding:9px 12px 9px 34px;
+  border-radius:9px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink);
+  font-size:.88rem; font-family:inherit;
+  outline:none;
+}
+#search::placeholder{color:var(--ink-3);}
+#search:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+
+.chip-nav{
+  display:flex; gap:6px; flex-wrap:wrap;
+}
+.chip{
+  font-size:.76rem; font-weight:500;
+  padding:6px 11px; border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--surface); color:var(--ink-2);
+  cursor:pointer; white-space:nowrap;
+  transition:background .12s, color .12s, border-color .12s;
+  font-family:inherit;
+}
+.chip:hover{border-color:var(--accent); color:var(--ink);}
+.chip:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+/* ---------- layout ---------- */
+main{
+  max-width:1160px; margin:0 auto; padding:28px 24px 80px;
+  display:grid; gap:22px;
+  grid-template-columns:repeat(auto-fit, minmax(480px,1fr));
+  align-items:start;
+}
+section.cat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  scroll-margin-top:132px;
+}
+.cat-head{
+  display:flex; align-items:center; gap:10px;
+  padding:15px 18px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--surface-2);
+}
+.cat-dot{
+  width:8px; height:8px; border-radius:50%;
+  background:var(--accent); flex:none;
+}
+.cat-head h2{
+  font-size:.98rem; margin:0; font-weight:600; letter-spacing:-.01em;
+}
+.cat-head .en{
+  font-size:.72rem; color:var(--ink-3); font-family:"IBM Plex Mono";
+  margin-left:auto;
+}
+
+.snip-list{
+  display:flex; flex-direction:column;
+}
+.snip-row{
+  padding:13px 18px;
+  border-bottom:1px solid var(--line-soft);
+}
+.snip-row:last-child{border-bottom:none;}
+.snip-row:hover{background:var(--surface-2);}
+
+.snip-code{
+  position:relative;
+  margin-bottom:7px;
+}
+.snip-code pre{
+  margin:0;
+  background:var(--code-bg); color:var(--code-ink);
+  border:1px solid var(--code-line);
+  border-radius:8px;
+  padding:10px 34px 10px 12px;
+  font-family:"IBM Plex Mono","SFMono-Regular",Consolas,Menlo,monospace;
+  font-size:.79rem; line-height:1.55;
+  white-space:pre; overflow-x:auto;
+}
+.snip-code .kw{ color:#C792EA; font-weight:600; }
+.snip-code .str{ color:#C3E88D; }
+.snip-code .bt{ color:#82AAFF; }
+.snip-code .num{ color:#F78C6C; }
+.snip-code .cm{ color:var(--code-ink-2); font-style:italic; }
+
+.copy-btn{
+  position:absolute; top:8px; right:8px;
+  flex:none;
+  width:24px; height:24px; border-radius:6px;
+  border:1px solid var(--code-line); background:transparent;
+  color:var(--code-ink-2); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .12s, color .12s;
+}
+.copy-btn:hover{background:#1a2030; color:var(--code-ink); border-color:var(--code-ink-2);}
+.copy-btn svg{width:13px; height:13px;}
+.copy-btn.copied{color:var(--add); background:var(--add-soft); border-color:var(--add);}
+
+.snip-desc{
+  font-size:.82rem; color:var(--ink-2);
+  margin:0;
+}
+
+.tag{
+  font-size:.68rem; font-weight:600; font-family:"IBM Plex Mono";
+  padding:1px 6px; border-radius:5px; flex:none;
+  letter-spacing:.01em;
+}
+.tag.danger{background:var(--del-soft); color:var(--del);}
+.tag.warn{background:var(--amber-soft); color:var(--amber);}
+
+.empty-state{
+  display:none;
+  max-width:1160px; margin:60px auto; padding:0 24px;
+  text-align:center; color:var(--ink-3); font-size:.9rem;
+}
+
+footer{
+  max-width:1160px; margin:0 auto; padding:0 24px 48px;
+  color:var(--ink-3); font-size:.76rem; text-align:center;
+}
+footer .k{
+  font-family:"IBM Plex Mono"; background:var(--surface-2);
+  border:1px solid var(--line); padding:1px 6px; border-radius:5px;
+}
+
+@media (max-width:640px){
+  main{grid-template-columns:1fr;}
+  .snip-code pre{white-space:pre-wrap; word-break:break-word;}
+}
+</style>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <span class="glyph">PY</span>
+        <div>
+          <h1>Python 指令速查</h1>
+          <p class="brand-sub">基本語法、資料結構、函式、類別到 pip／直譯器指令，依使用情境分類整理</p>
+        </div>
+      </div>
+      <span class="stat-line" id="stat-line">— 條語法</span>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      <input id="search" type="text" placeholder="搜尋語法或關鍵字，如 lambda、推導式、decorator…" autocomplete="off">
+    </div>
+    <nav class="chip-nav" id="chip-nav"></nav>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<p class="empty-state" id="empty-state">沒有符合「<span id="empty-term"></span>」的語法。</p>
+
+<footer>
+  按一下程式碼區塊右上角圖示可複製到剪貼簿 · 語法以 Python 3.11+ 為準，部分寫法（如 match 陳述式、海象運算子）需較新版本才支援
+</footer>
+
+<script>
+function escHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+const KEYWORDS = 'def|class|return|if|elif|else|for|while|in|is|not|and|or|import|from|as|try|except|finally|raise|with|lambda|yield|pass|break|continue|global|nonlocal|del|assert|async|await|match|case';
+const BUILTIN_TYPES = 'None|True|False|self|int|str|float|bool|list|dict|tuple|set|frozenset|bytes|type|object|Exception|len|range|print|input|open|enumerate|zip|map|filter|sorted|reversed|isinstance|super|staticmethod|classmethod|property';
+
+function hl(raw){
+  const esc = escHtml(raw);
+  const master = new RegExp(
+    '(#[^\\n]*)' +                                         // 1: comment
+    "|('(?:[^'\\\\]|\\\\.)*'|\"(?:[^\"\\\\]|\\\\.)*\")" +   // 2: string
+    '|\\b(' + KEYWORDS + ')\\b' +                          // 3: keyword
+    '|\\b(' + BUILTIN_TYPES + ')\\b' +                     // 4: builtin
+    '|\\b(\\d+(?:\\.\\d+)?)\\b',                           // 5: number
+    'g'
+  );
+  return esc.replace(master, (m, cm, str, kw, bt, num) => {
+    if (cm) return '<span class="cm">' + cm + '</span>';
+    if (str) return '<span class="str">' + str + '</span>';
+    if (kw) return '<span class="kw">' + kw + '</span>';
+    if (bt) return '<span class="bt">' + bt + '</span>';
+    if (num) return '<span class="num">' + num + '</span>';
+    return m;
+  });
+}
+
+const DATA = [
+  {
+    id:'basic', zh:'基本型別與變數', en:'Basic Types & Variables',
+    items:[
+      {code:"name: str = 'Ada'", desc:'型別提示（type hint），不強制檢查，靠編輯器與 mypy 等工具輔助'},
+      {code:'age = 30\nheight = 1.75\nis_active = True', desc:'int、float、bool 不需宣告型別，指派時自動推斷'},
+      {code:'a, b = 1, 2\na, b = b, a', desc:'多重賦值與交換變數，右側先整體求值再賦值'},
+      {code:'x = y = z = 0', desc:'鏈式賦值，三個變數同時指向同一個初始值'},
+      {code:'count: int\ncount = 0', desc:'先宣告型別再賦值，常用於類別屬性標註'},
+      {code:"PI = 3.14159  # 慣例：全大寫代表常數", desc:'Python 沒有真正的常數，全大寫只是命名慣例'},
+      {code:'n = 1_000_000', desc:'數字字面值可用底線分隔增加可讀性，底線本身不影響數值'},
+    ]
+  },
+  {
+    id:'string', zh:'字串', en:'Strings',
+    items:[
+      {code:"name = 'Ada'\ngreeting = f'Hello, {name}!'", desc:'f-string：最常用的字串格式化方式，大括號內可放任意運算式'},
+      {code:"f'{price:.2f}'", desc:'f-string 格式化規格：小數點後兩位'},
+      {code:"s = '  hello  '\ns.strip()", desc:'去除頭尾空白，也有 lstrip()／rstrip() 只去一邊'},
+      {code:"'a,b,c'.split(',')", desc:'依分隔符切成串列，回傳 [\'a\', \'b\', \'c\']'},
+      {code:"','.join(['a', 'b', 'c'])", desc:'用指定字串把串列元素接起來，split 的相反操作'},
+      {code:"'Hello'.lower()\n'Hello'.upper()", desc:'轉小寫／大寫，回傳新字串，不修改原字串'},
+      {code:"'hello'.replace('l', 'L')", desc:'取代所有符合的子字串'},
+      {code:"'hello'.startswith('he')\n'hello'.endswith('lo')", desc:'檢查開頭／結尾'},
+      {code:"'hello'[1:4]", desc:'切片取子字串，索引 1 到 3（不含 4）'},
+      {code:"'hello'[::-1]", desc:'切片技巧：反轉字串'},
+      {code:"text = '''\n多行字串\n保留換行\n'''", desc:'三引號字串，常用於多行文字或 docstring'},
+    ]
+  },
+  {
+    id:'list', zh:'串列 list', en:'Lists',
+    items:[
+      {code:"nums = [1, 2, 3]\nnums.append(4)", desc:'在尾端新增一個元素'},
+      {code:'nums.insert(0, 0)', desc:'在指定索引插入元素，其後元素依序後移'},
+      {code:'nums.pop()\nnums.pop(0)', desc:'移除並回傳最後一個／指定索引的元素'},
+      {code:"nums.remove(3)", desc:'移除第一個符合值的元素，找不到會拋出 ValueError'},
+      {code:'nums.sort()\nnums.sort(reverse=True)', desc:'原地排序，會修改原串列；sorted(nums) 則回傳新串列'},
+      {code:'nums[1:3]', desc:'切片取子串列，索引 1 到 2（不含 3）'},
+      {code:'nums + [4, 5]', desc:'用 + 合併兩個串列，回傳新串列'},
+      {code:'3 in nums', desc:'成員檢查，回傳布林值'},
+      {code:'len(nums)', desc:'取得串列長度'},
+      {code:'nums.extend([4, 5])', desc:'把另一個可迭代物件的元素逐一加到尾端，等同 nums += [4, 5]'},
+    ]
+  },
+  {
+    id:'tupleset', zh:'元組與集合', en:'Tuples & Sets',
+    items:[
+      {code:'point = (3, 4)', desc:'元組：不可變的有序序列，適合表示固定結構的資料'},
+      {code:'x, y = point', desc:'元組解構賦值'},
+      {code:'point = 3, 4', desc:'括號可省略，逗號才是決定元組的關鍵'},
+      {code:'s = {1, 2, 3}', desc:'集合：無序且元素不重複，字面值用大括號'},
+      {code:'empty_set = set()', desc:'空集合必須用 set()，{} 會被視為空字典'},
+      {code:'s.add(4)\ns.discard(1)', desc:'新增／移除元素，discard 找不到也不會報錯'},
+      {code:'a = {1, 2, 3}\nb = {2, 3, 4}\na & b\na | b\na - b', desc:'集合運算：交集、聯集、差集'},
+    ]
+  },
+  {
+    id:'dict', zh:'字典 dict', en:'Dictionaries',
+    items:[
+      {code:"user = {'name': 'Ada', 'age': 30}", desc:'字典字面值，鍵值對用冒號分隔'},
+      {code:"user['email'] = 'a@x.com'", desc:'新增或更新鍵值'},
+      {code:"user.get('phone', 'N/A')", desc:'安全取值，鍵不存在時回傳預設值而非拋出例外'},
+      {code:"user.pop('age')", desc:'移除指定鍵並回傳其值'},
+      {code:'for key, value in user.items():\n    print(key, value)', desc:'同時迭代鍵與值'},
+      {code:'user.keys()\nuser.values()', desc:'取得所有鍵／所有值的視圖物件'},
+      {code:"'name' in user", desc:'檢查鍵是否存在'},
+      {code:'{**a, **b}', desc:'用展開運算子合併兩個字典，b 的鍵值會覆蓋 a 的同名鍵'},
+      {code:'user.setdefault(\'role\', \'guest\')', desc:'鍵不存在時才設定預設值並回傳，存在則回傳原值'},
+    ]
+  },
+  {
+    id:'control', zh:'控制流程', en:'Control Flow',
+    items:[
+      {code:'if age >= 18:\n    print("adult")\nelif age >= 13:\n    print("teen")\nelse:\n    print("child")', desc:'if / elif / else，以縮排決定區塊範圍'},
+      {code:'for i in range(5):\n    print(i)', desc:'range(5) 產生 0 到 4，for 迴圈直接迭代'},
+      {code:'for item in items:\n    if item is None:\n        continue\n    print(item)', desc:'continue 跳過本次迭代，break 則完全跳出迴圈'},
+      {code:'while count < 10:\n    count += 1', desc:'while 迴圈，Python 沒有 count++ 寫法，需用 +='},
+      {code:'for i, name in enumerate(names):\n    print(i, name)', desc:'enumerate 同時取得索引與元素'},
+      {code:'for a, b in zip(list1, list2):\n    print(a, b)', desc:'zip 同時迭代多個序列，以最短的為準'},
+      {code:'match status:\n    case 200:\n        print("ok")\n    case 404 | 500:\n        print("error")\n    case _:\n        print("other")', desc:'match 陳述式（3.10+），case _ 是預設分支'},
+      {code:'x = 1 if condition else 0', desc:'三元運算式，等同其他語言的 condition ? 1 : 0'},
+      {code:'for i in range(3):\n    pass\nelse:\n    print("done")', desc:'for-else：迴圈正常結束（未被 break）時才執行 else'},
+    ]
+  },
+  {
+    id:'func', zh:'函式', en:'Functions',
+    items:[
+      {code:'def add(a: int, b: int) -> int:\n    return a + b', desc:'函式定義，型別提示為選用但建議加上'},
+      {code:"def greet(name: str = 'world') -> None:\n    print(f'Hello, {name}')", desc:'預設參數值，未傳入時使用預設'},
+      {code:'def sum_all(*args) -> int:\n    return sum(args)', desc:'*args 收集任意數量的位置參數成元組'},
+      {code:'def config(**kwargs) -> None:\n    print(kwargs)', desc:'**kwargs 收集任意數量的關鍵字參數成字典'},
+      {code:'square = lambda x: x * x', desc:'lambda 匿名函式，只能包含單一運算式'},
+      {code:'def greet(*, name: str) -> None:\n    print(name)', desc:'* 之後的參數強制必須以關鍵字形式傳入'},
+      {code:'def divide(a, b, /):\n    return a / b', desc:'/ 之前的參數強制必須以位置形式傳入（3.8+）'},
+      {code:'def log(func):\n    def wrapper(*args, **kwargs):\n        print(f"calling {func.__name__}")\n        return func(*args, **kwargs)\n    return wrapper\n\n@log\ndef greet():\n    pass', desc:'裝飾器：用 @ 語法為函式加上額外行為'},
+      {code:'def counter():\n    n = 0\n    def inc():\n        nonlocal n\n        n += 1\n        return n\n    return inc', desc:'閉包：內部函式修改外層變數需用 nonlocal 宣告'},
+    ]
+  },
+  {
+    id:'comprehension', zh:'推導式', en:'Comprehensions',
+    items:[
+      {code:'squares = [x * x for x in range(10)]', desc:'串列推導式，取代 for 迴圈搭配 append 的寫法'},
+      {code:'evens = [x for x in range(10) if x % 2 == 0]', desc:'加上條件篩選'},
+      {code:'pairs = [(x, y) for x in range(3) for y in range(3)]', desc:'巢狀 for，等同兩層迴圈'},
+      {code:"squares = {x: x * x for x in range(5)}", desc:'字典推導式'},
+      {code:'uniq = {x % 3 for x in range(10)}', desc:'集合推導式，自動去除重複值'},
+      {code:'gen = (x * x for x in range(10))', desc:'生成器運算式，用小括號，惰性計算不會一次產生全部元素'},
+    ]
+  },
+  {
+    id:'class', zh:'類別', en:'Classes',
+    items:[
+      {code:'class User:\n    def __init__(self, name: str):\n        self.name = name', desc:'__init__ 是建構子，self 代表實例本身，必須顯式寫出'},
+      {code:'class User:\n    def greet(self) -> str:\n        return f"Hi, {self.name}"', desc:'實例方法第一個參數固定是 self'},
+      {code:'class Animal:\n    def speak(self):\n        raise NotImplementedError\n\nclass Dog(Animal):\n    def speak(self):\n        return "Woof"', desc:'繼承：子類別覆寫父類別方法'},
+      {code:'class Dog(Animal):\n    def speak(self):\n        return super().speak() + "!"', desc:'super() 呼叫父類別的方法'},
+      {code:'class Counter:\n    total = 0\n    def __init__(self):\n        Counter.total += 1', desc:'類別屬性：所有實例共用，通常用類別名稱存取'},
+      {code:'class MathUtil:\n    @staticmethod\n    def add(a, b):\n        return a + b', desc:'靜態方法：不需要 self，也不能存取實例狀態'},
+      {code:'class User:\n    @classmethod\n    def from_dict(cls, data):\n        return cls(data["name"])', desc:'類別方法：第一個參數是類別本身 cls，常用於替代建構子'},
+      {code:'class Circle:\n    def __init__(self, r):\n        self._r = r\n    @property\n    def area(self):\n        return 3.14 * self._r ** 2', desc:'property：把方法包裝成可用屬性語法存取的計算值'},
+      {code:'class Point:\n    def __repr__(self):\n        return f"Point({self.x}, {self.y})"', desc:'__repr__ 定義物件的除錯字串表示法，print() 時會呼叫它'},
+      {code:'from dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: int\n    y: int', desc:'dataclass 裝飾器自動產生 __init__、__repr__ 等樣板方法'},
+    ]
+  },
+  {
+    id:'exception', zh:'例外處理', en:'Exception Handling',
+    items:[
+      {code:'try:\n    risky()\nexcept ValueError as e:\n    print(e)', desc:'捕捉特定型別的例外，並取得例外物件'},
+      {code:'try:\n    risky()\nexcept (ValueError, TypeError):\n    pass', desc:'同時捕捉多種例外型別'},
+      {code:'try:\n    risky()\nfinally:\n    cleanup()', desc:'finally 區塊無論是否發生例外都會執行，常用於資源清理'},
+      {code:'try:\n    risky()\nexcept Exception:\n    pass\nelse:\n    print("no error")', desc:'else 區塊只在 try 沒有拋出例外時執行'},
+      {code:"raise ValueError('invalid input')", desc:'主動拋出例外'},
+      {code:'class InsufficientFunds(Exception):\n    pass', desc:'自訂例外類別，繼承自 Exception 或其子類別'},
+      {code:'with open("f.txt") as f:\n    data = f.read()', desc:'with 陳述式（context manager），區塊結束時自動關閉檔案，即使發生例外也一樣'},
+    ]
+  },
+  {
+    id:'iterator', zh:'迭代器與產生器', en:'Iterators & Generators',
+    items:[
+      {code:'def count_up_to(n):\n    i = 1\n    while i <= n:\n        yield i\n        i += 1', desc:'產生器函式：用 yield 暫停並回傳一個值，下次呼叫時從暫停處繼續'},
+      {code:'gen = count_up_to(3)\nnext(gen)', desc:'next() 取得產生器的下一個值，沒有更多值時拋出 StopIteration'},
+      {code:'for i in count_up_to(3):\n    print(i)', desc:'產生器本身就是可迭代物件，可直接用 for 迭代'},
+      {code:'total = sum(x * x for x in range(1000000))', desc:'生成器運算式節省記憶體，不需一次建立完整串列'},
+      {code:'from itertools import chain\nlist(chain([1, 2], [3, 4]))', desc:'itertools.chain：把多個可迭代物件串接成一個'},
+      {code:'from itertools import islice\nlist(islice(count_up_to(100), 5))', desc:'itertools.islice：從（可能無限的）迭代器取出片段'},
+    ]
+  },
+  {
+    id:'file', zh:'檔案操作', en:'File I/O',
+    items:[
+      {code:'with open("f.txt", "r", encoding="utf-8") as f:\n    content = f.read()', desc:'讀取整個檔案內容為字串'},
+      {code:'with open("f.txt") as f:\n    for line in f:\n        print(line.strip())', desc:'逐行讀取，適合處理大檔案'},
+      {code:'with open("f.txt", "w", encoding="utf-8") as f:\n    f.write("hello")', desc:'寫入模式會覆蓋原有內容，"a" 則是附加模式'},
+      {code:'import json\nwith open("data.json") as f:\n    data = json.load(f)', desc:'讀取 JSON 檔案並解析為 Python 物件'},
+      {code:'with open("out.json", "w") as f:\n    json.dump(data, f, ensure_ascii=False, indent=2)', desc:'把 Python 物件寫成 JSON 檔案，ensure_ascii=False 保留中文原樣'},
+      {code:'from pathlib import Path\np = Path("data") / "f.txt"\np.exists()', desc:'pathlib：物件導向的路徑操作，比 os.path 更直覺，用 / 組合路徑'},
+    ]
+  },
+  {
+    id:'stdlib', zh:'常用標準函式庫', en:'Common Standard Library',
+    items:[
+      {code:'import os\nos.getenv("HOME")', desc:'讀取環境變數，找不到回傳 None'},
+      {code:'import sys\nsys.argv', desc:'sys.argv 是命令列參數的字串串列，[0] 是腳本本身路徑'},
+      {code:'from datetime import datetime\nnow = datetime.now()', desc:'取得目前時間'},
+      {code:'now.strftime("%Y-%m-%d %H:%M")', desc:'將時間格式化為字串'},
+      {code:'import re\nre.findall(r"\\d+", "a1b22c333")', desc:'正規表示式：找出所有符合的子字串'},
+      {code:'re.sub(r"\\s+", " ", "a   b")', desc:'正規表示式：取代所有符合的子字串'},
+      {code:'from collections import Counter\nCounter("mississippi")', desc:'Counter：快速計算可迭代物件裡每個元素出現的次數'},
+      {code:'from collections import defaultdict\nd = defaultdict(list)\nd["x"].append(1)', desc:'defaultdict：存取不存在的鍵時自動建立預設值，避免 KeyError'},
+      {code:'import random\nrandom.choice([1, 2, 3])\nrandom.shuffle(my_list)', desc:'random：隨機選取、隨機打亂順序（原地修改）'},
+      {code:'import math\nmath.sqrt(16)\nmath.ceil(4.1)', desc:'math：常見數學函式，開根號、無條件進位等'},
+    ]
+  },
+  {
+    id:'pip', zh:'pip 與虛擬環境', en:'pip & Virtual Environments',
+    items:[
+      {code:'python -m venv .venv', desc:'建立虛擬環境，目錄名稱通常為 .venv 或 venv'},
+      {code:'.venv\\Scripts\\activate', desc:'Windows 啟用虛擬環境（PowerShell／cmd 通用）'},
+      {code:'source .venv/bin/activate', desc:'macOS／Linux 啟用虛擬環境'},
+      {code:'deactivate', desc:'離開目前啟用的虛擬環境'},
+      {code:'pip install requests', desc:'安裝套件到目前啟用的環境'},
+      {code:'pip install -r requirements.txt', desc:'依需求檔案批次安裝套件'},
+      {code:'pip freeze > requirements.txt', desc:'把目前環境已安裝的套件版本輸出成需求檔案'},
+      {code:'pip install --upgrade requests', desc:'升級套件到最新版本'},
+      {code:'pip uninstall requests', desc:'解除安裝套件'},
+      {code:'pip list', desc:'列出目前環境已安裝的所有套件'},
+    ]
+  },
+  {
+    id:'cli', zh:'python 直譯器指令', en:'python CLI',
+    items:[
+      {code:'python script.py', desc:'執行腳本檔案'},
+      {code:'python script.py arg1 arg2', desc:'執行腳本並傳入命令列參數，於 sys.argv 取得'},
+      {code:'python', desc:'進入互動式直譯器（REPL）'},
+      {code:'python -m module_name', desc:'以模組方式執行，會正確設定 __name__ 與匯入路徑'},
+      {code:'python -c "print(1+1)"', desc:'直接在命令列執行一行程式碼'},
+      {code:'python -V', desc:'顯示目前 Python 版本'},
+      {code:'python -i script.py', desc:'執行腳本後保留在互動式模式，方便檢查變數狀態'},
+      {code:"if __name__ == '__main__':\n    main()", desc:'常見慣例：確保程式碼只在直接執行時運行，被匯入時不執行'},
+    ]
+  },
+];
+
+const main = document.getElementById('main');
+const chipNav = document.getElementById('chip-nav');
+const searchInput = document.getElementById('search');
+const emptyState = document.getElementById('empty-state');
+const emptyTerm = document.getElementById('empty-term');
+const statLine = document.getElementById('stat-line');
+
+let totalCount = 0;
+
+DATA.forEach(cat=>{
+  totalCount += cat.items.length;
+
+  const chip = document.createElement('button');
+  chip.className = 'chip';
+  chip.textContent = cat.zh;
+  chip.addEventListener('click', ()=>{
+    document.getElementById('cat-'+cat.id).scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  chipNav.appendChild(chip);
+
+  const section = document.createElement('section');
+  section.className = 'cat';
+  section.id = 'cat-'+cat.id;
+  section.dataset.catId = cat.id;
+
+  const head = document.createElement('div');
+  head.className = 'cat-head';
+  head.innerHTML = `<span class="cat-dot"></span><h2>${cat.zh}</h2><span class="en">${cat.en}</span>`;
+  section.appendChild(head);
+
+  const list = document.createElement('div');
+  list.className = 'snip-list';
+
+  cat.items.forEach(item=>{
+    const row = document.createElement('div');
+    row.className = 'snip-row';
+    row.dataset.search = (item.code + ' ' + item.desc).toLowerCase();
+
+    const codeWrap = document.createElement('div');
+    codeWrap.className = 'snip-code';
+    codeWrap.innerHTML = `<pre>${hl(item.code)}</pre>` +
+      `<button class="copy-btn" title="複製程式碼"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>`;
+    const btn = codeWrap.querySelector('.copy-btn');
+    btn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(item.code);
+        btn.classList.add('copied');
+        setTimeout(()=>btn.classList.remove('copied'), 1200);
+      }catch(e){ /* clipboard unavailable — silently ignore */ }
+    });
+
+    const desc = document.createElement('p');
+    desc.className = 'snip-desc';
+    desc.textContent = item.desc + (item.tag ? '' : '');
+    if(item.tag){
+      const tagSpan = document.createElement('span');
+      tagSpan.className = 'tag ' + item.tag.type;
+      tagSpan.textContent = item.tag.text;
+      tagSpan.style.marginLeft = '8px';
+      desc.appendChild(tagSpan);
+    }
+
+    row.appendChild(codeWrap);
+    row.appendChild(desc);
+    list.appendChild(row);
+  });
+
+  section.appendChild(list);
+  main.appendChild(section);
+});
+
+statLine.textContent = totalCount + ' 條語法 · ' + DATA.length + ' 個分類';
+
+searchInput.addEventListener('input', ()=>{
+  const term = searchInput.value.trim().toLowerCase();
+  let visibleTotal = 0;
+  document.querySelectorAll('section.cat').forEach(section=>{
+    let visibleInSection = 0;
+    section.querySelectorAll('.snip-row').forEach(row=>{
+      const match = !term || row.dataset.search.includes(term);
+      row.style.display = match ? '' : 'none';
+      if(match) visibleInSection++;
+    });
+    section.style.display = visibleInSection ? '' : 'none';
+    visibleTotal += visibleInSection;
+  });
+  emptyState.style.display = (term && visibleTotal===0) ? 'block' : 'none';
+  emptyTerm.textContent = searchInput.value.trim();
+});
+</script>
+
+</body></html>
