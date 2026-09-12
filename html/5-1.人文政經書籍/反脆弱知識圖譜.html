@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>反脆弱知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">風險哲學・不確定性下的生存之道</p>
+  <h1>反脆弱</h1>
+  <p class="lede">花瓶摔到地上會碎，這是脆弱；石頭摔到地上毫髮無傷，這是強韌——但納西姆・尼可拉斯・塔雷伯追問一個更少人想過的問題：有沒有一種東西，摔得越用力反而變得越好？他稱之為「反脆弱」，並指出人體、演化、新創產業乃至整個知識體系，都具備這種從混亂、壓力與失序中受益的特質。這份圖譜依全書二十五章的順序，把每一章的核心論證整理成一張知識圖。</p>
+</header>
+
+<div class="callout">
+  <b>前言的提問</b><br>
+  塔雷伯指出，希臘神話裡達摩克里斯的寶劍代表脆弱——一根馬鬃懸著利劍，稍有風吹草動就會斷裂；九頭蛇海德拉代表反脆弱——砍掉一顆頭反而長出兩顆。人類語言裡長期缺少一個字，用來形容這種從打擊中受益的特質，塔雷伯於是自創「反脆弱」一詞，把它從強韌的模糊地帶獨立出來，成為全書要精確定義與應用的核心概念。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一冊　反脆弱：導讀</h2><span class="tag">脆弱、強韌與反脆弱</span></div>
+  <p class="sub" style="margin:0">用三個神話比喻，先定義清楚什麼是脆弱、強韌與反脆弱</p>
+</section>
+
+<section>
+  <h2>第1章——達摩克里斯與海德拉之間</h2>
+  <p class="sub">有沒有一種東西，受到打擊之後反而變得更強？</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="達摩克里斯與海德拉之間結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">有沒有一種東西，受到打擊之後反而變得更強？</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">塔雷伯用三個神話角色，畫出脆弱、強韌與反脆弱的完整光譜</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">達摩克里斯之劍：脆弱</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">一根馬鬃懸著利劍，代表隨時可能因微小衝擊而徹底崩潰的脆弱狀態</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">鳳凰：強韌</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">浴火重生後恢復原狀，代表能承受衝擊卻不會因此變得更好的強韌狀</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">態</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">海德拉：反脆弱</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">砍掉一顆頭反而長出兩顆，代表因傷害與混亂而變得更強大的反脆弱</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">狀態</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">消失的字彙</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">人類語言長期只有脆弱與強韌的說法，唯獨少了形容海德拉這種特質</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">的字</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">反脆弱不是強韌的極致，而是一種性質完全不同的第三類狀態</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個三分法看似簡單，卻是全書後續二十四章反覆使用的分析工具，判斷任何系統先問它落在哪一類</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章從人體與心理反應出發，說明反脆弱的機制其實隨處可見</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第2章——每個地方都有過度補償和過度反應</h2>
+  <p class="sub">肌肉在健身後變強，靠的不是修復，而是刻意的過度補償</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="過度補償和過度反應結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">肌肉在健身後變強，靠的不是修復，而是刻意的過度補償</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">身體對壓力的反應，天生就會多給一點，而不是剛好打平</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">超量恢復的生理機制</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">肌肉纖維在運動中微幅撕裂，身體修復時會多長出一些，超過原本的</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">量</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">免疫系統的過度反應</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">接觸病原體後產生的抗體數量，往往遠超過對付當次感染實際所需</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">心理壓力後的成長</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">適度的挫折與壓力，經常讓人在事後發展出比原本更強的因應能力</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">過度反應是演化的保險</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">只打平損失無法應付下一次更大的衝擊，演化因此偏好留一些餘裕</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">過度補償正是反脆弱在生物層次最直接的證據</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個機制說明了為什麼適度的壓力源不是敵人，而是維持系統反脆弱性不可或缺的輸入</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章要區分哪些系統具備這種能力，哪些則完全沒有</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第3章——貓與洗衣機</h2>
+  <p class="sub">貓被踢一腳會反抗、會適應；洗衣機被踢一腳只會壞掉</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="貓與洗衣機結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">貓被踢一腳會反抗、會適應；洗衣機被踢一腳只會壞掉</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">有機系統與機械系統對衝擊的反應方式，存在根本上的差異</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">洗衣機的純機械脆弱</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">零件磨損只會隨使用累積，衝擊與壓力對它只有負面效果，沒有例外</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">貓的有機反脆弱</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">生物體會對適度壓力產生適應與強化反應，衝擊不必然等於損害</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">複雜系統的中間地帶</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">生態系統、經濟體等複雜系統介於兩者之間，部分具備反脆弱特質</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">誤把貓當洗衣機修理</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">用處理機械故障的思維去干預有機系統，反而會壓抑其自我調節能力</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">分不清貓與洗衣機，是現代社會許多干預失敗最根本的原因</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個區分後續會不斷出現：能自我調節的系統該被放手，只會磨損的系統才需要例行維護</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把視角從個體，拉高到族群與產業層次的反脆弱性</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第4章——害死我的，使別人更強大</h2>
+  <p class="sub">個別餐廳不斷倒閉，餐飲業整體卻因此變得更有活力</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="害死我的使別人更強大結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">個別餐廳不斷倒閉，餐飲業整體卻因此變得更有活力</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">局部的脆弱與犧牲，反而可能是整體反脆弱性的必要代價</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">個體脆弱換來整體反脆弱</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">個別公司倒閉、物種淘汰，這些局部損失反而讓整個系統更能適應環</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">境</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">試誤法的隱藏成本</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">每一次失敗的嘗試，都替系統篩掉一種行不通的做法，降低未來犯錯</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">機率</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">演化裡的犧牲結構</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">天擇本身就是無數個體被淘汰、換來物種整體適應力提升的過程</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">誤把局部失敗當系統失靈</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">若強行拯救每一個失敗的個體，反而會讓系統失去汰弱留強的能力</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">想讓整體反脆弱，往往必須容許局部承受脆弱甚至犧牲</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個看似殘酷的邏輯，正是後面幾章要挑戰現代社會過度干預傾向的理論基礎</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">PART 2 開始檢視，現代化的種種制度設計，如何系統性地否定了這種反脆弱性</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二冊　現代化與否定反脆弱性</h2><span class="tag">現代性對隨機性的排斥</span></div>
+  <p class="sub" style="margin:0">現代社會用秩序、預測與干預，系統性地壓抑了本該存在的反脆弱性</p>
+</section>
+
+<section>
+  <h2>第5章——露天市場與辦公大樓</h2>
+  <p class="sub">露天市場裡每個攤販隨時可能倒閉，市場本身卻能存活數百年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="露天市場與辦公大樓結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">露天市場裡每個攤販隨時可能倒閉，市場本身卻能存活數百年</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">分散、去中心化的系統，往往比看似穩固的科層組織更經得起衝擊</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">露天市場的去中心結構</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">無數獨立攤販各自承擔風險，單一攤位倒閉不影響市場整體運作</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">辦公大樓的集中脆弱</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">大型企業組織集中決策與資源，一旦核心環節出錯便可能全盤崩潰</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">冗餘與分散的價值</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">看似沒效率的重複與分散，其實是系統抵禦未知衝擊的重要緩衝</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">效率至上主義的代價</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">現代管理學過度追求精簡效率，往往正是在移除系統原有的反脆弱緩</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">衝</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">效率與反脆弱經常互相衝突，前者在承平時期好看，後者才在危機時刻救命</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">露天市場的邏輯提醒我們：允許局部混亂與重複，反而是整體長期存活的關鍵</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章談隨機性本身：為什麼塔雷伯說他愛的是若干隨機性，而非全部</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第6章——告訴他們我愛（若干）隨機性</h2>
+  <p class="sub">塔雷伯說他愛的不是全部隨機性，而是「若干」隨機性</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="告訴他們我愛若干隨機性結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">塔雷伯說他愛的不是全部隨機性，而是若干隨機性</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">溫和可控的波動有益成長，劇烈失控的波動卻可能一次毀滅一切</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">溫和之國的隨機性</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">日常生活中大多數小幅波動屬於這一類，累積起來反而有助於適應與</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">成長</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">極端之國的隨機性</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">少數極端事件的影響力遠超過其他所有事件總和，難以用平均值掌握</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">劑量決定隨機性的效果</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">適量壓力帶來成長，過量壓力則可能造成無法恢復的損害，一線之隔</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">主動篩選暴露的隨機性</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">聰明的做法不是消除隨機性，而是設法只暴露在溫和有益的那一種之</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">下</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">反脆弱的關鍵，從來不是要不要隨機性，而是暴露在哪一種劑量與類型之下</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個劑量觀念，日後會延伸到醫療、金融等各個領域，成為判斷介入是否恰當的核心標準</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章正面檢視另一種常見錯誤：立意良善的干預，如何反而製造出更大的傷害</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第7章——天真的干預</h2>
+  <p class="sub">撲滅每一場小森林火災，換來的往往是一場燒不完的超級大火</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="天真的干預結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">撲滅每一場小森林火災，換來的往往是燒不完的超級大火</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">立意良善的干預，經常在壓抑必要的小波動，最終累積成無法收拾的大災難</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">森林大火的抑制悖論</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">長期撲滅小火看似安全，實則讓可燃物持續累積，最終釀成失控的大</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">火</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">醫源性傷害的普遍存在</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">醫療與政策介入本身，經常在解決眼前問題的同時製造出新的隱藏風</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">險</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">看不見的脆弱累積</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">天真的干預往往只看到立即效果，卻忽略了系統因此喪失的自我調節</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">能力</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">不作為也是一種選項</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">面對本可自行修復的系統，什麼都不做有時反而是風險最低的策略</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">干預本身並非問題，問題在於干預者往往看不見自己製造出的隱藏脆弱性</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">判斷該不該介入，必須同時衡量介入的立即效果，以及它壓抑掉的那部分必要波動</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章追問干預背後另一個現代迷思：對精準預測的執念</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第8章——預測是現代化的產物</h2>
+  <p class="sub">對精準預測未來的執念，其實是相對晚近才出現的現代病</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="預測是現代化的產物結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">對精準預測未來的執念，其實是相對晚近才出現的現代病</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">與其追求準確預測，不如把心力放在建立無論結果如何都不至於崩潰的結構上</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">預測文化的興起</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">現代社會發展出大量專業預測產業，卻鮮少檢視這些預測本身的實際</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">準確率</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">極端事件本質上難以預測</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">影響力最大的事件往往也最難預先準確判斷發生的時間與規模</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">暴露部位比預測結果重要</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">與其準確猜中未來，不如確保自己在各種可能結果下都不會被摧毀</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">反脆弱取代預測需求</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">建構能從波動中受益的部位，能讓人不必精準預測也能安然應對不確</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">定性</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把資源從追求預測準確度，轉向打造反脆弱的暴露部位，才是更務實的因應之道</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 3 接著要問，一旦放棄準確預測未來的執念，該用什麼樣的世界觀來看待風險</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章介紹一位活生生的實踐者：胖子東尼，以及他所代表的處世智慧</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第三冊　非預測的世界觀</h2><span class="tag">不預測，只管理風險暴露</span></div>
+  <p class="sub" style="margin:0">與其準確預測未來，不如設計出無論未來如何都不吃虧的部位</p>
+</section>
+
+<section>
+  <h2>第9章——胖子東尼和脆弱推手</h2>
+  <p class="sub">胖子東尼不看模型也不信預測，卻總能在市場崩盤中全身而退</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="胖子東尼和脆弱推手結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">胖子東尼不看模型也不信預測，卻總能在市場崩盤中全身而退</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">塔雷伯用胖子東尼對照脆弱推手：過度依賴模型、卻讓別人承擔後果的人</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">胖子東尼的街頭智慧</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">憑藉對風險的直覺與懷疑精神，胖子東尼從不輕信任何精緻的理論模</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">型</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">脆弱推手的典型畫像</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">學者、官僚與部分金融從業者，習慣用模型包裝風險，自己卻不承擔</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">後果</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">模型風險本身被忽視</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">脆弱推手往往只看模型輸出的結果，卻忽略模型本身可能徹底失準的</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">風險</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">經驗與懷疑優於精緻理論</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">面對高度不確定的現實世界，帶懷疑的實務經驗往往比精緻模型可靠</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">胖子東尼與脆弱推手的對比，濃縮了全書對理論凌駕現實這種傲慢心態的批判</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個對比之後會反覆出現，用來檢驗各種專業領域裡，誰真正承擔了風險、誰只是在紙上談兵</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章借用古羅馬哲學家塞內加，示範如何用理性管理上檔利益與下檔損失</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第10章——塞內加的上檔利益和下檔損失</h2>
+  <p class="sub">身家萬貫的塞內加，卻天天在心裡預演破產與流放</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="塞內加的上檔利益和下檔損失結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">身家萬貫的塞內加，卻天天在心裡預演破產與流放</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這位斯多噶哲學家的心法，正是控制下檔損失、同時保留上檔利益的原型</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">斯多噶式的心理保險</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">塞內加習慣提前設想最壞情境，藉此降低真正遭遇厄運時的心理衝擊</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">財富只是暫時保管</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">把擁有的一切視為隨時可能失去的暫時狀態，反而更能坦然面對得失</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">限制下檔、保留上檔</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">這種心態實際上是把人生風險設計成損失有限、獲利卻不封頂的形狀</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">從哲學延伸到風險管理</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">塞內加的處世哲學，日後被塔雷伯轉化為具體的資產配置與決策原則</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">塞內加證明了控制下檔損失，從來不需要放棄追求上檔利益</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這種不對稱思維，正是後面幾章要展開的核心工具：用有限的代價，換取不設限的可能收穫</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用一個尖銳的比喻，說明為什麼該追求這種不對稱，而非單純追求高報酬</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第11章——不要和搖滾明星結婚</h2>
+  <p class="sub">嫁給搖滾明星，賭的是要嘛平淡收場、要嘛萬眾矚目，沒有中間地帶</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="不要和搖滾明星結婚結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">嫁給搖滾明星，賭的是平淡收場或萬眾矚目，沒有中間地帶</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這個比喻用來區分兩種完全不同形狀的風險：有上限的與沒有上限的</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">有界變數的婚姻比喻</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">選擇穩定伴侶，結果分布集中在可預期的範圍內，波動有限</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">無界變數的極端可能</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">選擇追求極端成功的道路，結果可能是巨大成功，也可能是徹底落空</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">凸性報酬優於凹性報酬</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">值得追求的是下檔有限、上檔卻不封頂的選項，而非反過來的形狀</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">辨識報酬形狀先於估算機率</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">判斷一項選擇是否值得冒險，關鍵在報酬結構的形狀，而非精算機率</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">該問的不是這件事會不會發生，而是一旦發生，損益長什麼形狀</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這種形狀優先於機率的思考方式，正是PART 4要正式展開的可選擇性概念的雛形</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用古希臘哲學家泰勒斯的故事，正式引入可選擇性這項反脆弱的核心工具</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第四冊　可選擇性、技術與反脆弱的智慧</h2><span class="tag">試誤法優先於理論</span></div>
+  <p class="sub" style="margin:0">技術與知識的進步，往往是先動手嘗試，理論才事後補上解釋</p>
+</section>
+
+<section>
+  <h2>第12章——泰勒斯的甜葡萄</h2>
+  <p class="sub">泰勒斯用一筆小訂金，鎖住了整年橄欖壓榨機的使用權</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="泰勒斯的甜葡萄結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">泰勒斯用一筆小訂金，鎖住了整年橄欖壓榨機的使用權</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這筆交易示範了可選擇性：付出有限代價，換取不對稱的巨大潛在收益</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">泰勒斯的選擇權交易</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">預先支付少量訂金取得優先使用權，若豐收便大賺，若歉收損失也有</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">限</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">可選擇性不需要準確預測</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">這筆交易的獲利不靠準確預知收成好壞，只靠報酬結構本身的不對稱</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">性</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">下檔有限、上檔開放的結構</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">可選擇性的精髓在於最大損失被鎖定，潛在收益卻沒有明確上限</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">反脆弱來自結構而非知識</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">擁有這種結構的人，不必比別人更聰明，也能持續受益於不確定性</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">可選擇性讓人不需要看得比別人準，只需要站對報酬結構有利的一邊</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個原則後續會用來檢視技術創新、職涯選擇乃至人生決策，成為貫穿下半部的分析工具</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章挑戰一個常見迷思：技術創新究竟是理論先行，還是動手嘗試在先</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第13章——教鳥如何飛</h2>
+  <p class="sub">鳥類演化出飛行能力，從來不需要一堂空氣動力學課程</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="教鳥如何飛結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">鳥類演化出飛行能力，從來不需要一堂空氣動力學課程</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">塔雷伯質疑理論先於實踐的迷思，主張多數技術突破其實是先做了才有理論</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">理論優先的迷思</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">社會普遍相信科學理論指引技術發明，但歷史證據經常顯示順序恰好</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">相反</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">試誤法驅動的技術史</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">許多重要發明來自工匠與實踐者反覆嘗試，理論往往是事後才被建構</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">出來</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">可選擇性驅動的隨機嘗試</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">低成本的反覆試驗本身就是一種可選擇性，允許持續嘗試直到偶然成</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">功</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">事後包裝的理論敘事</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">學術機構習慣把成功的技術重新包裝成理論指導實踐的故事，掩蓋真</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">實過程</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">鳥不需要理論就會飛，人類的許多技術突破也一樣，是先飛了才有人寫下飛行原理</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個顛倒的因果關係，直接挑戰了現代教育與研發體系先理論後應用的預設順序</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章要說明，表面相似的兩件事，實際運作邏輯可能完全不同</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第14章——當兩件事不是「同一回事」</h2>
+  <p class="sub">兩個表面看起來很像的系統，承受壓力時的反應可能完全相反</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="當兩件事不是同一回事結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩個表面看起來很像的系統，承受壓力時反應可能完全相反</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">只看外觀判斷相似性，是導致誤判系統脆弱與否最常見的錯誤</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">外觀相似不等於結構相同</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">兩個系統即使規則或外表雷同，其對隨機衝擊的反應方式可能截然不</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">忽略凸性形狀的類比謬誤</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">把凹性系統誤判為凸性系統，會讓人低估潛在的下檔風險</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">脈絡決定系統的真正性質</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">同一種機制放在不同脈絡下，可能從反脆弱變成極度脆弱</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">拆解機制勝過表面歸類</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">判斷系統性質必須拆解其實際反應方式，而非依賴表面上的分類標籤</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">看起來一樣，是分析風險時最危險的直覺陷阱之一</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這種辨識能力，是正確運用可選擇性與凸性思維的前提，分類錯了後面所有判斷都會跟著錯</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章要揭穿一個關於科技進步敘事的常見誤解</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第15章——輸家寫的歷史</h2>
+  <p class="sub">教科書裡「理論帶動技術」的敘事，很可能是後來的輸家寫出來的故事</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="輸家寫的歷史結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">教科書裡理論帶動技術的敘事，很可能是後來的輸家寫的</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">真正推動技術進步的實踐者，往往沒空也沒興趣去撰寫歷史</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">沉默的實踐者</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">靠反覆試驗取得突破的工匠與創業者，通常忙於實作，鮮少留下理論</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">化的紀錄</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">學者事後的敘事重建</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">學術界傾向把已發生的技術成果，重新詮釋成某套理論指導下的必然</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">結果</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">倖存者偏誤的歷史書寫</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">歷史紀錄容易放大成功案例背後的理論光環，掩蓋大量失敗的試錯過</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">程</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">顛倒因果的長期影響</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">這種被扭曲的敘事，讓後人誤以為必須先有完整理論才能展開任何嘗</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">試</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">我們讀到的技術進步史，很可能高估了理論的作用，低估了試誤法的真實貢獻</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">認清這一點，才能理解為什麼下一章要主張，看似混亂的隨機嘗試裡其實藏著自己的秩序</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章正面處理混亂與秩序之間，這種常被誤解的關係</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第16章——混亂中的秩序</h2>
+  <p class="sub">看似毫無章法的隨機試錯，長期下來卻能篩選出穩定有效的解決方案</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="混亂中的秩序結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">看似毫無章法的隨機試錯，長期下來卻能篩出穩定的解決方案</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">秩序未必來自事前設計，也可能是混亂本身篩選淘汰後留下的結果</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">隨機試錯的篩選效果</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">大量看似雜亂的嘗試，會透過不斷淘汰失敗選項，逐漸收斂出可行的</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">方案</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">由下而上的秩序生成</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">這種秩序不是被規劃出來的，而是無數次隨機互動與淘汰累積出的結</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">果</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">集中規劃的侷限</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">由上而下的規劃者難以預先掌握所有變數，反而容易錯失分散試錯帶</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">來的資訊</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">容忍混亂是秩序的代價</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">想獲得這種由下而上的穩健秩序，必須先容忍過程中大量看似無效的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">嘗試</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">表面的混亂與底層的秩序，很可能是同一個篩選過程的一體兩面</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個觀點呼應了本冊的核心主張：與其用理論規劃一切，不如放手讓大量分散的試錯自行運作</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用胖子東尼對話蘇格拉底的方式，比較實務智慧與理論思辨這兩種認知方式</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第17章——胖子東尼和蘇格拉底辯論</h2>
+  <p class="sub">蘇格拉底靠嚴謹推理定義正義，胖子東尼只問一句：你到底賺不賺錢</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="胖子東尼和蘇格拉底辯論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">蘇格拉底靠嚴謹推理定義正義，胖子東尼只問你到底賺不賺錢</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這場假想辯論，凸顯了抽象邏輯思辨與務實生存智慧之間的深刻落差</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">蘇格拉底式的邏輯推演</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">透過層層邏輯論證追求普遍精確的定義，卻可能脫離真實世界的複雜</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">情境</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">胖子東尼式的實務智慧</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">憑藉長期實戰累積的直覺判斷，未必能清楚說明理由，卻往往更貼近</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">現實</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">精確定義的隱藏代價</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">過度追求邏輯上無懈可擊的定義，容易忽略現實世界裡真正重要的風</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">險訊號</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">兩種智慧的互補而非取代</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">塔雷伯並非否定邏輯思辨，而是主張它必須以真實世界的後果作為檢</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">驗</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">真正的智慧，是讓抽象推理接受現實世界後果的檢驗，而非活在自洽卻脫離現實的邏輯裡</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 4 到此結束，全書視角轉向風險的形狀本身：同樣是非線性，凸性與凹性卻天差地遠</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用石頭與石子的比喻，具體說明規模如何改變風險的性質</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第五冊　非線性與非線性</h2><span class="tag">規模與凸性</span></div>
+  <p class="sub" style="margin:0">同樣的風險，換一種規模或形狀，後果可能天差地遠</p>
+</section>
+
+<section>
+  <h2>第18章——一塊大石頭和一千顆小石子的不同</h2>
+  <p class="sub">一塊大石頭砸下來會壓死人，換成一千顆小石子灑下來卻毫髮無傷</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="一塊大石頭和一千顆小石子的不同結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一塊大石頭砸下來會壓死人，一千顆小石子灑下來卻毫髮無傷</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">總重量相同，但風險的集中程度不同，後果可能天差地遠</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">集中風險的災難性</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">把總量集中在單一巨大部位上，一旦出事往往就是無法承受的毀滅性</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">打擊</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">分散風險的可承受性</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">把同樣總量拆成許多微小部位，個別失誤只造成輕微且可吸收的損失</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">規模改變風險的性質</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">同一件事換成不同規模呈現，承受後果的難易程度可能完全不成比例</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">凹性代價下的規模限制</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">當損害隨規模呈現凹性放大時，刻意維持小規模反而才是穩健的策略</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">多大與多少看似只是數量問題，其實決定了風險究竟溫和還是致命</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個規模與風險的非線性關係，正是理解下一章凸性與其反面的重要前提</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章要區分正向與負向這兩種同樣是非線性、卻方向完全相反的風險形狀</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第19章——點金石與反點金石</h2>
+  <p class="sub">點石成金是傳說中的美夢，把黃金變成廢鐵卻是現實中常見的噩夢</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="點金石與反點金石結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">點石成金是傳說中的美夢，把黃金變成廢鐵卻是常見的噩夢</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">塔雷伯用這對意象，區分正向凸性與負向凸性這兩種截然不同的非線性風險</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">點金石代表的正向凸性</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">少量嘗試就可能換來不成比例的巨大回報，下檔損失卻被牢牢鎖住</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">反點金石代表的負向凸性</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">看似微小的失誤，卻可能引發不成比例的巨大災難性後果</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">辨識自己身處哪一種形狀</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">同樣面對不確定性，處於正向凸性或負向凸性，命運可能截然相反</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">主動追求正向、迴避負向</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">反脆弱策略的核心，就是盡量把暴露部位從反點金石移向點金石</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">世界上真正值得追求的不是消除不確定性，而是把自己放在有利的非線性形狀裡</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 5 到此結束，接下來要談的否定法，正是實際操作這種形狀轉換的具體方法</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章從時間本身出發，說明活得久這件事本身就是一種篩選機制</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第六冊　否定法</h2><span class="tag">減法勝過加法</span></div>
+  <p class="sub" style="margin:0">時間本身就是最可靠的篩選機制，多數介入其實是幫倒忙</p>
+</section>
+
+<section>
+  <h2>第20章——時間與脆弱性</h2>
+  <p class="sub">一本存在了兩千年的書，比一本剛出版的暢銷書更可能再流傳兩千年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="時間與脆弱性結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一本存在兩千年的書，比一本剛出版的暢銷書更可能再流傳兩千年</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">林迪效應主張，非會腐敗之物存活得越久，預期還能存活的時間反而越長</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">林迪效應的核心主張</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">對書籍、觀念與技術這類非實體事物而言，年齡本身就是耐久性的證</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">據</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">時間作為天然的篩選機制</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">長期存活下來的事物，已經通過無數輪隱形的壓力測試，脆弱者早被</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">淘汰</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">新奇事物的隱藏脆弱</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">缺乏時間考驗的新事物，看起來吸引人，卻可能藏著尚未顯現的致命</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">缺陷</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">敬老而非喜新的風險態度</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">面對不確定性，優先信任經得起時間考驗的舊事物，往往是更穩健的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">選擇</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">時間不只是流逝的度量，更是一套持續運作、篩掉脆弱事物的隱形機制</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個觀念直接呼應下一章的主題：許多醫療與健康介入之所以危險，正因還沒經過足夠時間考驗</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把否定法的邏輯，具體套用到醫療介入的凸性與風險上</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第21章——醫療、凸性和不透明</h2>
+  <p class="sub">對病入膏肓的病人放手一搏，對健康的人卻應該盡量什麼都不做</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="醫療凸性和不透明結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">對病入膏肓的病人放手一搏，對健康的人卻該盡量什麼都不做</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">醫療介入是否恰當，取決於病情的嚴重程度，而不是介入本身的多寡</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">重症病人的凸性利益</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">病情越嚴重，積極介入的潛在效益越可能超過副作用帶來的風險</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">健康者的凹性風險</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">對本來健康的人進行介入，潛在副作用的傷害往往超過介入可能帶來</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">的好處</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">醫源性傷害的普遍低估</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">醫療體系經常低估治療本身造成的傷害，只強調不治療的風險</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">不透明性放大介入的危險</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">人體系統的複雜與不透明，讓看似合理的介入經常帶來預料之外的後</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">果</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">該不該介入，答案藏在病情嚴重程度與介入形狀的交叉點上，而非一體適用的規則</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個原則把否定法從抽象概念，落實成一套具體可操作的醫療決策判準</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把同樣的邏輯，延伸到如何活得久這個更貼近日常生活的問題上</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第22章——活得久，但不是太久</h2>
+  <p class="sub">許多號稱能延年益壽的介入，長期下來反而可能悄悄縮短壽命</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="活得久但不是太久結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">許多號稱能延年益壽的介入，長期下來反而可能悄悄縮短壽命</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">對健康的人而言，減法式的生活調整，往往比加法式的藥物介入更安全</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">保健品與藥物的隱藏代價</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">針對健康人群的長期藥物或補充品介入，副作用往往需要很長時間才</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">顯現</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">減法式健康策略</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">間歇性斷食、適度承受寒冷飢餓等壓力源，讓身體維持並強化自身調</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">節能力</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">短期數據掩蓋長期風險</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">許多介入在短期試驗中看似有效，長期使用的風險卻缺乏足夠時間驗</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">證</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">向自然演化壓力借鏡</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">人體本就演化來應付一定程度的匱乏與壓力，適度保留壓力反而有益</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">健康</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">想活得久，與其不斷添加介入，不如優先移除那些看似有益、實則悄悄累積風險的做法</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 6 到此結束，否定法的邏輯至此完整成形：先問能拿掉什麼，而不是急著加上什麼</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">PART 7 把反脆弱的討論，從個人健康延伸到更根本的倫理問題：誰該為風險負責</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第七冊　脆弱性與反脆弱性的倫理</h2><span class="tag">切身利害</span></div>
+  <p class="sub" style="margin:0">讓承擔風險的人，也承擔風險帶來的後果</p>
+</section>
+
+<section>
+  <h2>第23章——切身利害：反脆弱性與犧牲他人的可選擇性</h2>
+  <p class="sub">讓別人承擔下檔風險、自己獨享上檔利益，是現代社會最常見的隱藏剝削</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="切身利害結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">讓別人承擔下檔風險、自己獨享上檔利益，是常見的隱藏剝削</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">塔雷伯主張，沒有切身承擔後果的人，不該擁有替別人做風險決策的權力</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">風險轉嫁的隱藏結構</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">銀行家、預測者與官僚經常能把決策失敗的代價，轉嫁給不知情的第</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">三方</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">切身利害作為道德校正</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">要求決策者必須自行承擔失敗後果，能有效抑制這種風險轉嫁的誘因</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">對稱性是倫理的核心</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">承擔風險與享受利益必須對稱分配給同一群人，這是反脆弱倫理的基</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">本原則</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">缺乏切身利害的專業危機</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">許多專業領域的系統性失靈，根源都在於決策者與承擔後果者並非同</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">一群人</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">反脆弱的倫理學，本質上就是要求每個人為自己製造的風險負起真正的責任</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個原則不只是道德呼籲，更是判斷一套制度是否穩健的實用檢驗標準</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把這套倫理原則，具體套用到幾種容易出現風險轉嫁問題的專業領域上</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第24章——配適倫理到一種專業上</h2>
+  <p class="sub">醫師、銀行家與預測者，各自需要一套量身訂做的切身利害規則</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="配適倫理到一種專業上結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">醫師、銀行家與預測者，各自需要量身訂做的切身利害規則</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">抽象的倫理原則必須落實到具體職業情境，才能真正發揮約束力</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">醫師的切身利害設計</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">要求醫師承擔治療失敗的具體後果，能有效抑制過度或不必要的醫療</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">介入</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">金融從業者的風險對稱</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">讓決策者的個人財富與其投資決策的後果直接掛鉤，能抑制過度冒險</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">行為</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">預測者的紀錄可追蹤性</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">要求預測者公開並承擔錯誤預測的代價，能篩掉長期不準卻持續發言</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">的人</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">制度設計優於道德勸說</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">與其寄望從業者的良心，不如直接設計出讓風險轉嫁在制度上行不通</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">的規則</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把切身利害寫進具體的制度規則裡，比單純呼籲道德良知更能長期抑制風險轉嫁</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一整套倫理主張，最終指向全書最後要傳達的訊息：反脆弱不能光靠理論理解，必須親身實踐</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">全書最後一章，要把二十四章的論證收束成幾條簡明的行動原則</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第25章——結語</h2>
+  <p class="sub">反脆弱無法只靠閱讀理解，必須親身承受風險才能真正體會</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="結語結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">反脆弱無法只靠閱讀理解，必須親身承受風險才能真正體會</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">塔雷伯在全書最後，把二十四章的論證收束成幾條可以直接實踐的行動原則</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">擁抱而非消除隨機性</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">適度暴露在溫和的壓力與波動之下，是維持反脆弱性不可或缺的日常</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">實踐</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">追求凸性、迴避凹性</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">在人生各種選擇裡，優先尋找下檔有限、上檔開放的不對稱機會</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">信任時間篩選出的事物</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">面對新舊選項時，優先信任已經通過長時間考驗的觀念、技術與制度</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">讓切身利害回歸決策者</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">無論在個人生活或制度設計上，都該確保承擔風險的人就是做決策的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">人</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這幾條原則彼此呼應，共同指向同一個核心態度：與不確定性共處，而非徒勞地消滅它</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">全書從神話比喻出發，走過生理、經濟、技術與倫理，最終回到脆弱可以避免、反脆弱值得主動追求</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">後記要把這套理論，收束回塔雷伯自己家族與地中海文明反覆毀滅又重生的故事裡</text>
+</svg>
+  </div>
+</section>
+
+<section>
+<div class="callout">
+  <b>後記的迴響——從復活到復活</b><br>
+  塔雷伯在後記裡，把反脆弱的理論收束回自己黎巴嫩家族與地中海文明的故事——腓尼基城邦反覆遭受戰爭、地震與外族入侵摧毀，卻總能在廢墟上重新站起。這段跨越數千年的興衰史，是全書反脆弱概念最古老、也最貼身的一個實例：真正的反脆弱，不是躲過每一次毀滅，而是擁有在毀滅之後一次次重新復活的能力。
+</div>
+</section>
+
+<footer>
+  本頁依納西姆・尼可拉斯・塔雷伯《反脆弱》整理各章核心論證與因果脈絡，著重呈現全書從神話比喻到風險倫理的完整架構，書中大量統計與金融技術細節請另行參閱原書。
+</footer>
+
+</div>
+</body>
+</html>
