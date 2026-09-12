@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>世界的本質是什麼</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;--purple:#653e98;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .mt .nm{color:var(--rust)} .id .nm{color:var(--slate)} .du .nm{color:var(--olive)}
+  .mo .nm{color:var(--amber)} .pl .nm{color:var(--purple)} .pr .nm{color:var(--rust)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Archē・存在還是變化，這才是最初的岔路</p>
+  <h1>世界的本質是什麼——西方哲學家的立場地圖</h1>
+  <p class="lede">泰利斯說萬物是水，德謨克利特說萬物是原子與虛空，柏克萊說萬物是感知，黑格爾說萬物是精神自我展開——兩千六百年來，西方哲學家對「世界到底是什麼做的」給出的答案幾乎沒有重複過兩次。本頁把散落在站內各專頁裡的立場收攏成一張地圖：泰利斯與德謨克利特等前蘇格拉底本原論見〈古希臘哲學家光譜圖〉篇、笛卡兒的心物二元論見〈笛卡兒－我思故我在〉篇、史賓諾莎的一元實體見〈大陸理性論〉篇、萊布尼茲的單子多元論見〈萊布尼茲－單子論〉篇、柏克萊的非物質論見〈英國經驗論〉篇、黑格爾的絕對精神見他的專頁、懷海德的歷程哲學見〈懷海德〉篇、叔本華的意志與表象見他的專頁——這些站內都已深入，這裡不重複，只在列表裡摘要並指路。真正新增的，是把巴門尼德與赫拉克利特這場西方形上學最初的對決攤開來比較，以及尼采晚年一個鮮少被提及、卻極端激進的宇宙論主張——永恆回歸。</p>
+</header>
+
+<section>
+  <h2>光譜總覽——六種立場</h2>
+  <p class="sub">從「世界是物質」到「世界是不斷生成的事件」，光譜上每一站都有代表人物</p>
+  <div class="frame">
+<svg viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="世界本質立場光譜圖">
+<rect x="40" y="24" width="860" height="50" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="46" font-size="13" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">六種立場橫跨兩千六百年，分歧核心在於：世界的基本單位是物質、心靈、還是根本沒有固定單位</text>
+<text x="470" y="64" font-size="10.5" text-anchor="middle" fill="#826c35">從「世界是一種東西」到「世界不是東西而是事件」，中間夾著整部西方形上學史</text>
+
+  <rect x="40" y="96" width="132" height="150" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="106" y="118" font-size="12.5" text-anchor="middle" fill="#9f5e2a" font-weight="700">唯物論</text>
+  <text x="106" y="134" font-size="9.5" text-anchor="middle" fill="#7d6a3a">世界只是物</text>
+  <text x="106" y="147" font-size="9.5" text-anchor="middle" fill="#7d6a3a">質的排列</text>
+  <text x="106" y="168" font-size="9" text-anchor="middle" fill="#9f5e2a">德謨克利特</text>
+  <text x="106" y="182" font-size="9" text-anchor="middle" fill="#9f5e2a">拉美特利</text>
+
+  <rect x="180" y="96" width="132" height="150" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="246" y="118" font-size="12.5" text-anchor="middle" fill="#3a748f" font-weight="700">唯心論</text>
+  <text x="246" y="134" font-size="9.5" text-anchor="middle" fill="#3e6a80">世界是心靈</text>
+  <text x="246" y="147" font-size="9.5" text-anchor="middle" fill="#3e6a80">或精神產物</text>
+  <text x="246" y="168" font-size="9" text-anchor="middle" fill="#3a748f">柏克萊</text>
+  <text x="246" y="182" font-size="9" text-anchor="middle" fill="#3a748f">黑格爾</text>
+
+  <rect x="320" y="96" width="132" height="150" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="386" y="118" font-size="12.5" text-anchor="middle" fill="#4d7932" font-weight="700">二元論</text>
+  <text x="386" y="134" font-size="9.5" text-anchor="middle" fill="#4c6f38">心與物是兩</text>
+  <text x="386" y="147" font-size="9.5" text-anchor="middle" fill="#4c6f38">種並存實體</text>
+  <text x="386" y="168" font-size="9" text-anchor="middle" fill="#4d7932">笛卡兒</text>
+
+  <rect x="460" y="96" width="132" height="150" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="526" y="118" font-size="12.5" text-anchor="middle" fill="#9e4638" font-weight="700">一元論</text>
+  <text x="526" y="134" font-size="9.5" text-anchor="middle" fill="#8a5540">萬物只是同</text>
+  <text x="526" y="147" font-size="9.5" text-anchor="middle" fill="#8a5540">一實體的樣態</text>
+  <text x="526" y="168" font-size="9" text-anchor="middle" fill="#9e4638">巴門尼德</text>
+  <text x="526" y="182" font-size="9" text-anchor="middle" fill="#9e4638">史賓諾莎</text>
+
+  <rect x="600" y="96" width="132" height="150" rx="3" fill="#f4f2f5" stroke="#b39ecf"/>
+  <text x="666" y="118" font-size="12.5" text-anchor="middle" fill="#653e98" font-weight="700">多元論</text>
+  <text x="666" y="134" font-size="9.5" text-anchor="middle" fill="#5d3e80">世界由眾多</text>
+  <text x="666" y="147" font-size="9.5" text-anchor="middle" fill="#5d3e80">基本單位組成</text>
+  <text x="666" y="168" font-size="9" text-anchor="middle" fill="#653e98">恩培多克勒</text>
+  <text x="666" y="182" font-size="9" text-anchor="middle" fill="#653e98">萊布尼茲</text>
+
+  <rect x="740" y="96" width="160" height="150" rx="3" fill="#f5f4f1" stroke="#cac2b0"/>
+  <text x="820" y="118" font-size="12.5" text-anchor="middle" fill="#9f5e2a" font-weight="700">歷程與生成</text>
+  <text x="820" y="134" font-size="9.5" text-anchor="middle" fill="#7d6a3a">世界不是東</text>
+  <text x="820" y="147" font-size="9.5" text-anchor="middle" fill="#7d6a3a">西而是事件</text>
+  <text x="820" y="168" font-size="9" text-anchor="middle" fill="#9f5e2a">赫拉克利特</text>
+  <text x="820" y="182" font-size="9" text-anchor="middle" fill="#9f5e2a">懷海德</text>
+
+<text x="470" y="272" font-size="11" text-anchor="middle" fill="#59707b">每位人物的具體論證，見下方列表與對應專頁；巴門尼德與赫拉克利特的正面對決、尼采的永恆回歸，見以下兩節深入</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>巴門尼德與赫拉克利特——存在還是變化，最初的岔路</h2>
+  <p class="sub">兩位同時代的希臘人，給出了兩個徹底互斥的答案，此後兩千多年的形上學都在這條岔路上選邊</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="巴門尼德與赫拉克利特對決結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一個說世界從未真正改變，一個說世界沒有一刻停止改變——兩人幾乎同時代，答案卻完全相反</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">這場分歧不是枝節爭論，而是西方形上學此後兩千多年反覆重演的基本戲碼</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">巴門尼德——存在者不生不滅</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">純憑邏輯推論：存在者不能來自不</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">存在，故不生不滅、不動不變、唯一</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">赫拉克利特——萬物皆流</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">同一條河你不能踏入兩次，變化才</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">是世界唯一不變的真相，火即是象徵</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">感官是騙子還是嚮導</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">巴門尼德主張生滅變化只是感官的</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">幻覺，唯有邏輯推論才通往真理</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">芝諾出手辯護</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">巴門尼德的學生以阿基里斯追不上</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">烏龜等悖論，反過來證明運動不可能</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">柏拉圖試圖用理型論調和這兩個對立答案，卻沒能讓爭論真正平息</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">柏拉圖讓理型世界繼承巴門尼德式的不變與永恆，感官世界則繼承赫拉克利特式的流變——這個折衷方案</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">後來成了西方形上學的主流敘事，但「不變的一」與「流變的多」孰為根本這個問題，其實從未真正被解決</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">兩千三百年後，一位哲學家用一個驚人的思想實驗，把赫拉克利特的流變推到了極限</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>尼采的永恆回歸——如果時間本身也是一個圓圈</h2>
+  <p class="sub">如果世界不是朝向終點前進的直線，而是無限重複的迴圈，此刻的你會作何感想</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="尼采永恆回歸結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">尼采晚年最私密、也最少被談論的宇宙論主張：這一切早已發生過無數次，還將再發生無數次</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">他自陳這個念頭是某天散步時突然襲來，震撼到讓他終生無法擺脫</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">永恆回歸的原始構想</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">主張宇宙的物質與能量有限，時間</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">卻無限，一切事件終將一模一樣重演</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">「最重的重量」思想實驗</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">設想一個惡魔告訴你此生將一絲不</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">差重演無數次，你會詛咒還是感激他</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">與赫拉克利特的驚人呼應</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">把「萬物皆流」推到極限，流變本</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">身竟繞成一個圓圈，變化即是永恆</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">學界的兩極解讀</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">部分學者視為認真的宇宙論主張，</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">另一派則視為純粹的倫理生活測試</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">無論是不是真的宇宙論，這個念頭本身就是一把測量生命的尺</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">尼采真正在意的，或許不是「這是否真的會發生」，而是「如果真的會發生，你現在的生活方式能不能</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">承受得住」——能夠坦然說「再來一次也可以」的人生，就是他所謂「肯定生命」的最高檢驗標準</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">以下依立場整理站內所有涉及此議題的哲學家，完整論證請點入各專頁</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>唯物論——世界只是物質</h2><span class="tag">MATERIALISM</span></div>
+  <div class="grid">
+    <div class="card mt"><div class="nm">德謨克利特<span class="it">Democritus</span><span class="yr">約前460–370</span></div><p>主張世界只有原子與虛空，一切依必然而生，感官所見的顏色冷熱皆屬約定而非實在；見〈古希臘哲學家光譜圖〉篇。</p></div>
+    <div class="card mt"><div class="nm">拉美特利<span class="it">La Mettrie</span><span class="yr">1709–1751</span></div><p>《人是機器》主張心靈只是物質裝置運作的產物，是近代唯物論最激進的宣告之一；見〈人是否為理性的動物〉篇。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>唯心論——世界是心靈的產物</h2><span class="tag">IDEALISM</span></div>
+  <div class="grid">
+    <div class="card id"><div class="nm">柏克萊<span class="it">Berkeley</span><span class="yr">1685–1753</span></div><p>「存在即被感知」，物質世界的存在依附於感知它的心靈，沒有心靈就沒有物質；見〈英國經驗論〉篇。</p></div>
+    <div class="card id"><div class="nm">黑格爾<span class="it">Hegel</span><span class="yr">1770–1831</span></div><p>主張整個世界是「絕對精神」自我展開、最終認識自身的辯證歷程；見他的專頁。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>二元論與一元論</h2><span class="tag">DUALISM & MONISM</span></div>
+  <div class="grid">
+    <div class="card du"><div class="nm">笛卡兒<span class="it">Descartes</span><span class="yr">1596–1650</span></div><p>主張心靈與物質是兩種各自獨立、並存的實體，世界由這兩套截然不同的規則共同組成；見〈笛卡兒－我思故我在〉篇。</p></div>
+    <div class="card mo"><div class="nm">巴門尼德<span class="it">Parmenides</span><span class="yr">約前515–450</span></div><p>存在者不生不滅、不動不變，感官所見的生滅只是意見，是西方一元論最早也最極端的版本；見本頁前一節深入展開。</p></div>
+    <div class="card mo"><div class="nm">史賓諾莎<span class="it">Spinoza</span><span class="yr">1632–1677</span></div><p>主張只有一個實體，就是神也是自然，心靈與物質只是這唯一實體的兩種屬性；見〈大陸理性論〉篇。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>多元論——世界由眾多基本單位組成</h2><span class="tag">PLURALISM</span></div>
+  <div class="grid">
+    <div class="card pl"><div class="nm">恩培多克勒<span class="it">Empedocles</span><span class="yr">約前494–434</span></div><p>提出土、水、火、氣四根說，萬物皆由這四種元素依「愛」與「爭」兩種力量聚合離散而成；見〈古希臘哲學家光譜圖〉篇。</p></div>
+    <div class="card pl"><div class="nm">萊布尼茲<span class="it">Leibniz</span><span class="yr">1646–1716</span></div><p>主張世界由無數各自封閉、彼此和諧共振的「單子」組成，每個單子都是宇宙的一面鏡子；見〈萊布尼茲－單子論〉篇。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>歷程與生成——世界不是東西而是事件</h2><span class="tag">PROCESS & BECOMING</span></div>
+  <div class="grid">
+    <div class="card pr"><div class="nm">赫拉克利特<span class="it">Heraclitus</span><span class="yr">約前535–475</span></div><p>萬物皆流，同一條河不能踏入兩次，變化本身才是世界唯一不變的真相；見本頁前一節深入展開。</p></div>
+    <div class="card pr"><div class="nm">叔本華<span class="it">Schopenhauer</span><span class="yr">1788–1860</span></div><p>主張世界的根柢是盲目、無目的的「意志」，我們所見的萬事萬物只是這股意志的表象；見他的專頁。</p></div>
+    <div class="card pr"><div class="nm">懷海德<span class="it">Whitehead</span><span class="yr">1861–1947</span></div><p>主張世界由無數瞬間生滅的「實際事態」構成，而非恆久不變的物質；見〈懷海德〉篇。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    你願意再把這一生、以及過去這無數次的一生，一模一樣地再活一遍嗎？
+    <cite>尼采《快樂的科學》第341節「最重的重量」，是他對「永恆回歸」這個構想最著名的表述方式——一則思想實驗，同時也是一把測量生命的尺。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁作為「世界的本質是什麼」這個問題的立場總覽與地圖，各家完整論證請見對應哲學家專頁及專業研究文獻。生卒年採通行西曆記載，部分古希臘年代為學界推定範圍。
+</footer>
+
+</div>
+</body>
+</html>

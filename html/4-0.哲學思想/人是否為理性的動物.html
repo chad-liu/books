@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人是否為理性的動物</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f4f2;--ink:#826c35;--muted:#59707b;
+    --amber:#9f5e2a;--rust:#9e4638;--slate:#3a748f;--olive:#4d7932;--purple:#653e98;
+    --rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--amber);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(194,184,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--amber);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .re .nm{color:var(--rust)} .pa .nm{color:var(--slate)} .un .nm{color:var(--olive)}
+  .ma .nm{color:var(--amber)} .fr .nm{color:var(--purple)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--amber);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Zoon Logon Echon・會思考的蘆葦與精巧的機器</p>
+  <h1>人是否為理性的動物——西方哲學家的立場地圖</h1>
+  <p class="lede">亞里斯多德一句「人是理性的動物」，兩千三百年來被當成西方對人性最基本的定義，卻幾乎每個世代都有人跳出來質疑：理性真的是人的本質，還是只是覆蓋在更深層驅力上的一層薄膜？本頁把散落在站內各專頁裡的立場收攏成一張地圖：亞里斯多德的靈魂位階見〈亞里士多德〉篇、笛卡兒的理性主體見〈笛卡兒－我思故我在〉篇、康德的理性自主見〈康德的實踐理性批判〉篇、帕斯卡的思考蘆葦見〈帕斯卡〉篇、佛洛伊德的本我／自我／超我見〈佛洛伊德與精神分析〉篇、尼采的阿波羅與戴奧尼索斯見〈尼采〉篇——這些站內都已深入，這裡不重複，只在列表裡摘要並指路。真正新增的，是站內完全沒觸及過的兩塊：休謨「理性是激情的奴隸」這句顛覆兩千年傳統的宣告，以及拉美特利《人是機器》這部把人徹底化約為物質裝置的禁書。</p>
+</header>
+
+<section>
+  <h2>光譜總覽——五種立場</h2>
+  <p class="sub">從「理性定義了人」到「理性只是工具」，光譜上每一站都有代表人物</p>
+  <div class="frame">
+<svg viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="人是否為理性動物立場光譜圖">
+<rect x="40" y="24" width="860" height="50" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="46" font-size="13" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">五種立場橫跨兩千三百年，分歧的核心在於：理性究竟是人的本質，還是眾多驅力之中的一個</text>
+<text x="470" y="64" font-size="10.5" text-anchor="middle" fill="#826c35">從「理性即人的定義」到「理性只是工具」，中間夾著一整部反覆拉鋸的思想史</text>
+
+  <rect x="40" y="96" width="164" height="150" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="122" y="118" font-size="12.5" text-anchor="middle" fill="#9f5e2a" font-weight="700">理性即本質</text>
+  <text x="122" y="134" font-size="9.5" text-anchor="middle" fill="#7d6a3a">理性是人與萬</text>
+  <text x="122" y="147" font-size="9.5" text-anchor="middle" fill="#7d6a3a">物的根本差異</text>
+  <text x="122" y="168" font-size="9" text-anchor="middle" fill="#9f5e2a">亞里斯多德</text>
+  <text x="122" y="182" font-size="9" text-anchor="middle" fill="#9f5e2a">笛卡兒</text>
+  <text x="122" y="196" font-size="9" text-anchor="middle" fill="#9f5e2a">康德</text>
+  <text x="122" y="210" font-size="9" text-anchor="middle" fill="#9f5e2a">帕斯卡</text>
+
+  <rect x="212" y="96" width="164" height="150" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="294" y="118" font-size="12.5" text-anchor="middle" fill="#3a748f" font-weight="700">服務於激情</text>
+  <text x="294" y="134" font-size="9.5" text-anchor="middle" fill="#3e6a80">理性只是手段，</text>
+  <text x="294" y="147" font-size="9.5" text-anchor="middle" fill="#3e6a80">慾望才是主人</text>
+  <text x="294" y="168" font-size="9" text-anchor="middle" fill="#3a748f">休謨</text>
+  <text x="294" y="182" font-size="9" text-anchor="middle" fill="#3a748f">盧梭</text>
+
+  <rect x="384" y="96" width="164" height="150" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="466" y="118" font-size="12.5" text-anchor="middle" fill="#4d7932" font-weight="700">潛意識的挑戰</text>
+  <text x="466" y="134" font-size="9.5" text-anchor="middle" fill="#4c6f38">理性只是冰山</text>
+  <text x="466" y="147" font-size="9.5" text-anchor="middle" fill="#4c6f38">露出水面的一角</text>
+  <text x="466" y="168" font-size="9" text-anchor="middle" fill="#4d7932">佛洛伊德</text>
+  <text x="466" y="182" font-size="9" text-anchor="middle" fill="#4d7932">尼采</text>
+  <text x="466" y="196" font-size="9" text-anchor="middle" fill="#4d7932">叔本華</text>
+
+  <rect x="556" y="96" width="164" height="150" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="638" y="118" font-size="12.5" text-anchor="middle" fill="#9e4638" font-weight="700">只是機器</text>
+  <text x="638" y="134" font-size="9.5" text-anchor="middle" fill="#8a5540">理性不過是物</text>
+  <text x="638" y="147" font-size="9.5" text-anchor="middle" fill="#8a5540">質裝置的運作</text>
+  <text x="638" y="168" font-size="9" text-anchor="middle" fill="#9e4638">拉美特利</text>
+
+  <rect x="728" y="96" width="172" height="150" rx="3" fill="#f4f2f5" stroke="#b39ecf"/>
+  <text x="814" y="118" font-size="12.5" text-anchor="middle" fill="#653e98" font-weight="700">自由而非理性</text>
+  <text x="814" y="134" font-size="9.5" text-anchor="middle" fill="#5d3e80">人沒有先天本</text>
+  <text x="814" y="147" font-size="9.5" text-anchor="middle" fill="#5d3e80">質，理性只是工具</text>
+  <text x="814" y="168" font-size="9" text-anchor="middle" fill="#653e98">沙特</text>
+  <text x="814" y="182" font-size="9" text-anchor="middle" fill="#653e98">現代認知科學</text>
+
+<text x="470" y="272" font-size="11" text-anchor="middle" fill="#59707b">每位人物的具體論證，見下方列表與對應專頁；休謨與拉美特利站內完全沒觸及過，見以下兩節深入</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>休謨的顛覆——理性是激情的奴隸</h2>
+  <p class="sub">一句話，把兩千年來「理性統治激情」的預設整個倒轉過來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="休謨理性是激情的奴隸結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從柏拉圖到笛卡兒，理性一向被想成該駕馭激情的車伕；休謨說：車伕其實是激情雇來的</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">《人性論》裡這句話，是近代哲學史上對理性至上論最激進的一次正面挑戰</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">反轉兩千年的傳統</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">主張理性從屬於情感，理性本身無</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">法單獨產生任何行動的動機</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">「情感本身無所謂錯」</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">理性只能判斷事實真假與手段是否</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">有效，無法判斷慾望本身理性與否</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">道德感源自情感而非理性</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">主張善惡判斷的根源是一種特殊的</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">道德情感反應，而非理性推理結果</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">後世的兩極評價</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">一派視為對啟蒙理性主義最致命的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">一擊，另一派質疑他把理性架空過頭</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這句話拆解的不只是道德哲學，還連帶動搖了整個「人是理性動物」的定義基礎</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">如果連道德判斷都不是理性推理的產物，那「理性」在人類心智裡剩下的角色，就只是計算達成慾望的</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">最佳手段——休謨把理性從「駕馭者」降格成「精算師」，這個降格後來被佛洛伊德與尼采各自延伸得更遠</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">另一條把人徹底降格的路線，走得比休謨更遠——直接把人本身說成一台機器</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>拉美特利——人是精巧的機器</h2>
+  <p class="sub">一本因太過激進而讓作者連遭兩國驅逐的禁書</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="拉美特利人是機器結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">笛卡兒說動物是機器、人有理性靈魂；拉美特利說：人也只是一台更精巧的機器</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#826c35">1747年匿名出版，內容太過激進，讓他先後被法國與荷蘭當局驅逐出境</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#9f5e2a" font-weight="700">《人是機器》——出版即遭查禁</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#7d6a3a">主張人類心靈本身就是身體這台精</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#7d6a3a">密機器運作的產物，沒有獨立的靈魂</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f3f4f4" stroke="#b8bec2"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#3a748f" font-weight="700">笛卡兒二元論的激進逆轉</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#3e6a80">笛卡兒把動物歸為機器、人類保留</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#3e6a80">理性靈魂；他主張人類同樣只是機器</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f4f5f2" stroke="#b8c2b8"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#4d7932" font-weight="700">流亡換來的庇護</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#4c6f38">因無神論爭議遭法國、荷蘭先後驅</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#4c6f38">逐，最終靠普魯士腓特烈大帝庇護安身</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f5f3f2" stroke="#c9b7b0"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#9e4638" font-weight="700">神經科學的遙遠回聲</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#8a5540">當代把心智化約為腦神經活動的物</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#8a5540">理主義立場，某種意義上是他的當代版本</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f5f4f2" stroke="#c4c0b5"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩百七十年前的禁書論點，換了一套詞彙後在今日的腦科學實驗室裡繼續被討論</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#826c35">拉美特利當年被視為無神論的異端邪說，今天卻幾乎是神經科學與認知科學的預設立場——這種立場翻轉</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#826c35">本身，正說明了「人是理性的動物」這句話，兩千三百年來從未真正被一次性回答過，只是不斷換了戰場</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">以下依立場整理站內所有涉及此議題的哲學家，完整論證請點入各專頁</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>理性即人的本質</h2><span class="tag">REASON AS ESSENCE</span></div>
+  <div class="grid">
+    <div class="card re"><div class="nm">亞里斯多德<span class="it">Aristotle</span><span class="yr">前384–前322</span></div><p>主張理性靈魂是人類獨有的最高層次功能，人類特有的「功能」即理性活動，是幸福的根基；見〈亞里士多德〉哲學研究專頁。</p></div>
+    <div class="card re"><div class="nm">笛卡兒<span class="it">Descartes</span><span class="yr">1596–1650</span></div><p>「我思故我在」以能思考的理性主體作為一切確定知識的起點；見〈笛卡兒－我思故我在〉篇。</p></div>
+    <div class="card re"><div class="nm">康德<span class="it">Kant</span><span class="yr">1724–1804</span></div><p>主張人之所以有尊嚴，正因為擁有能自我立法、不受外在因果決定的理性自主能力；見〈康德的實踐理性批判〉篇。</p></div>
+    <div class="card re"><div class="nm">帕斯卡<span class="it">Pascal</span><span class="yr">1623–1662</span></div><p>「人是一根會思考的蘆葦」：肉體脆弱渺小，卻因思考能力而擁有超越整個宇宙的尊嚴；見〈帕斯卡〉篇。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>理性服務於激情</h2><span class="tag">REASON SERVES PASSION</span></div>
+  <div class="grid">
+    <div class="card pa"><div class="nm">休謨<span class="it">Hume</span><span class="yr">1711–1776</span></div><p>「理性是且只應該是激情的奴隸」，理性只是達成慾望的計算工具，本身無法產生行動的動機；見本頁前一節深入展開。</p></div>
+    <div class="card pa"><div class="nm">盧梭<span class="it">Rousseau</span><span class="yr">1712–1778</span></div><p>主張過度依賴理性的文明社會腐蝕了人天生的良善本性，自然情感才是道德的真正源頭。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>潛意識與非理性驅力的挑戰</h2><span class="tag">THE UNCONSCIOUS CHALLENGE</span></div>
+  <div class="grid">
+    <div class="card un"><div class="nm">佛洛伊德<span class="it">Freud</span><span class="yr">1856–1939</span></div><p>本我、自我、超我的結構裡，理性化的「自我」只是在潛意識驅力與道德禁令之間調停的中介；見〈佛洛伊德與精神分析〉篇。</p></div>
+    <div class="card un"><div class="nm">尼采<span class="it">Nietzsche</span><span class="yr">1844–1900</span></div><p>阿波羅式的理性秩序只是表層，戴奧尼索斯式的原始生命衝動才是更根本的驅動力；見〈尼采〉篇。</p></div>
+    <div class="card un"><div class="nm">叔本華<span class="it">Schopenhauer</span><span class="yr">1788–1860</span></div><p>主張世界的根柢是盲目、無目的的「意志」，理智不過是意志用來達成目的的工具與表象。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>理性只是精巧的機器</h2><span class="tag">REASON AS MACHINERY</span></div>
+  <div class="grid">
+    <div class="card ma"><div class="nm">拉美特利<span class="it">La Mettrie</span><span class="yr">1709–1751</span></div><p>《人是機器》主張人類心靈只是身體這台精密機器運作的產物，沒有獨立於物質之外的靈魂；見本頁前一節深入展開。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>存在先於本質，理性是工具而非定義</h2><span class="tag">EXISTENCE OVER ESSENCE</span></div>
+  <div class="grid">
+    <div class="card fr"><div class="nm">沙特<span class="it">Sartre</span><span class="yr">1905–1980</span></div><p>人沒有預先寫定的理性本質，是先存在、再靠自由選擇決定自己是什麼；見〈存在主義〉篇。</p></div>
+    <div class="card fr"><div class="nm">現代認知科學<span class="it">Dual-Process Theory</span></div><p>雙重歷程理論主張人類判斷由快速直覺與緩慢理性兩套系統共同運作，理性往往只是為直覺結論事後找理由；見〈倫理學〉篇電車難題一節。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    理性是，而且應該只是，激情的奴隸；理性除了服侍激情、聽命於激情之外，不能宣稱有任何其他職責。
+    <cite>休謨《人性論》第二卷，是近代哲學史上對「理性統治激情」這個古老預設最直接、也最常被引用的反駁。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁作為「人是否為理性的動物」這個問題的立場總覽與地圖，各家完整論證請見對應哲學家專頁及專業研究文獻。生卒年採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>
