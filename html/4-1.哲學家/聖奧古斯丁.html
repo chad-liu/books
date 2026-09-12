@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聖奧古斯丁知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">拿起來，讀吧・花園裡的一則童謠</p>
+  <h1>聖奧古斯丁知識圖譜</h1>
+  <p class="lede">與〈中世紀哲學時間軸1〉篇的銜接：那篇已簡略提及他「內在的人」與《懺悔錄》對時間的著名提問，本頁不重複這部分，轉而聚焦他更完整的皈依歷程與神學體系。這位年輕時縱情聲色、加入摩尼教長達九年的北非青年，母親莫妮卡數十年如一日為他哭泣祈禱，他自己則寫下一句流傳千古的禱詞：「主啊，求你賜我貞潔，但現在還不要。」直到米蘭一座花園裡，一個孩童反覆吟唱的童謠，才讓他的人生徹底轉向。這份圖譜要梳理的，就是他這段跌宕的皈依之路、他晚年寫下的《上帝之城》如何回應羅馬淪陷的震撼，以及他與伯拉糾那場定調西方基督教命運的自由意志之爭。</p>
+</header>
+
+<section>
+  <h2>從摩尼教徒到希波主教——皈依之路</h2>
+  <p class="sub">一座花園裡孩童的吟唱聲，讓他的人生在瞬間徹底轉向</p>
+  <div class="frame">
+<svg viewBox="0 0 940 388" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="聖奧古斯丁皈依之路結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一位縱情聲色近二十年的青年，最終在一座花園裡，因一句童謠徹底翻轉了人生</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">母親數十年的眼淚、九年摩尼教徒生涯、米蘭主教的講道，共同鋪陳了這場戲劇性的轉折</text>
+
+  <rect x="40" y="115.5" width="200" height="135.2" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">縱情聲色的青年歲月</text>
+  <text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">370年代</text>
+  <text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">與情人同居生子，加</text>
+  <text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">入摩尼教尋求解答，</text>
+  <text x="140" y="204" font-size="11" text-anchor="middle" fill="#846a36">母親莫妮卡為此終日以淚洗面祈禱</text>
+
+  <rect x="260" y="115.5" width="200" height="135.2" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">米蘭聆聽安波羅修講道</text>
+  <text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">384年起</text>
+  <text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">遠赴米蘭任教，被主</text>
+  <text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">教安波羅修的新柏拉</text>
+  <text x="360" y="204" font-size="11" text-anchor="middle" fill="#995a3d">圖式講道深深打動，逐漸鬆動舊信</text>
+
+  <rect x="480" y="115.5" width="200" height="135.2" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">花園裡的童謠與皈依</text>
+  <text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">386年</text>
+  <text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">聽見孩童反覆吟唱「拿</text>
+  <text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">起來，讀吧」，隨手翻</text>
+  <text x="580" y="204" font-size="11" text-anchor="middle" fill="#3e7198">開聖經一句話，當下徹底皈依</text>
+
+  <rect x="700" y="115.5" width="200" height="135.2" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">受洗與出任希波主教</text>
+  <text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">387、396年</text>
+  <text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">受洗後返回北非，396</text>
+  <text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">年出任希波主教，此</text>
+  <text x="800" y="204" font-size="11" text-anchor="middle" fill="#337d46">後終生投入寫作與教會事務</text>
+
+<rect x="80" y="280.8" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="303.2" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「主啊，求你賜我貞潔，但現在還不要」——他自己筆下最誠實的一句禱詞</text>
+<text x="470" y="321.2" font-size="12" text-anchor="middle" fill="#7f6d34">奧古斯丁在《懺悔錄》裡毫不掩飾自己皈依前的掙扎與矛盾，這份誠實的自我剖析，讓《懺悔錄》至今</text>
+<text x="470" y="337.2" font-size="12" text-anchor="middle" fill="#7f6d34">仍被視為西方文學史上第一部真正意義下的自傳，也是他留給後世最私密的一份思想紀錄</text>
+<text x="470" y="353.2" font-size="11" text-anchor="middle" fill="#59707b">皈依之後，他把餘生投入了一場界定西方神學走向的思想工程</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>兩座城的神學——《上帝之城》與自由意志之爭</h2>
+  <p class="sub">羅馬淪陷震動了整個地中海世界，他的回應徹底改寫了西方對歷史的理解方式</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="聖奧古斯丁上帝之城與自由意志之爭結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">羅馬淪陷震動了整個地中海世界，他的回應徹底改寫了西方對歷史的理解方式</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">《上帝之城》的歷史神學，以及與伯拉糾的自由意志之爭，共同定調了此後千年的西方神學走向</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">《上帝之城》——回應羅馬淪陷</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#846a36">410年羅馬遭劫掠，異教徒歸咎基督</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">教，他著書系統回應這項指控</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">地上之城與上帝之城</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#995a3d">區分由自愛驅動的地上之城，與由愛</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">神驅動的上帝之城，重新定義歷史意義</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">與伯拉糾的自由意志之爭</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#3e7198">伯拉糾主張人憑自身意志即可行善向</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#3e7198">善，奧古斯丁堅決反對這種樂觀立場</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">原罪與恩典的優先性</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#337d46">主張人因原罪徹底敗壞，唯有神的恩</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#337d46">典先行介入，人才可能向善，被稱為「恩典博士」</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一場神學辯論，最終定調了西方基督教此後千餘年的核心教義走向</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#7f6d34">奧古斯丁對原罪與恩典優先性的堅持，最終在教會會議中壓倒伯拉糾一方，成為西方正統教義的基石，</text>
+<text x="470" y="365" font-size="12" text-anchor="middle" fill="#7f6d34">千餘年後更直接啟發了宗教改革時期喀爾文等人對預定論的發展，影響橫跨整部西方教會史</text>
+<text x="470" y="381" font-size="11" text-anchor="middle" fill="#59707b">他對「內在的人」與時間本質的思考，見〈中世紀哲學時間軸1〉篇</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>皈依之路</h2><span class="tag">CONVERSION</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">縱情聲色的青年歲月<span class="yr">370年代</span></div><p>與情人同居生子，加入摩尼教尋求解答，母親莫妮卡為此終日以淚洗面祈禱。</p></div>
+    <div class="card"><div class="nm">米蘭聆聽安波羅修講道<span class="yr">384年起</span></div><p>遠赴米蘭任教，被主教安波羅修的新柏拉圖式講道深深打動，逐漸鬆動舊信。</p></div>
+    <div class="card"><div class="nm">花園裡的童謠與皈依<span class="yr">386年</span></div><p>聽見孩童反覆吟唱「拿起來，讀吧」，隨手翻開聖經一句話，當下徹底皈依。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>上帝之城與自由意志之爭</h2><span class="tag">CITY OF GOD & FREE WILL</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">《上帝之城》</div><p>410年羅馬遭劫掠，異教徒歸咎基督教，他著書系統回應這項指控。</p></div>
+    <div class="card"><div class="nm">地上之城與上帝之城</div><p>區分由自愛驅動的地上之城，與由愛神驅動的上帝之城，重新定義歷史意義。</p></div>
+    <div class="card"><div class="nm">與伯拉糾的自由意志之爭</div><p>主張人因原罪徹底敗壞，唯有神的恩典先行介入才可能向善，被稱為「恩典博士」。</p></div>
+  </div>
+</section>
+
+<div class="callout">
+  <b>「主啊，賜我貞潔，但現在還不要」</b>　奧古斯丁在《懺悔錄》裡坦承，青年時期即使已被基督教教義打動，仍暗自向神祈禱延後徹底悔改的時刻——這句誠實到近乎自嘲的禱詞，後世常被引用來說明他皈依過程裡真實的內心掙扎，而非一夕之間毫無矛盾的轉變。
+</div>
+
+<section>
+  <blockquote>
+    拿起來，讀吧；拿起來，讀吧。
+    <cite>386年米蘭花園裡，鄰家孩童反覆吟唱的童謠（拉丁文 Tolle, lege），奧古斯丁隨即拿起手邊的聖經隨機翻開一頁，讀到的經文成了他皈依的臨門一腳，這段記述於《懺悔錄》第八卷。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦聖奧古斯丁的皈依歷程與神學體系，他對「內在的人」與時間本質的思考見〈中世紀哲學時間軸1〉篇，《懺悔錄》與《上帝之城》的完整內容請另行參閱專業譯本。生卒年：354–430，採通行西曆記載。
+</footer>
+
+</div>
+</body>
+</html>
