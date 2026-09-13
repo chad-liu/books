@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PISA 2025 書架</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:#0f1420;color:#e8d5b7;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+header{
+  background:linear-gradient(135deg,#17324d,#285b78);
+  padding:12px 20px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  border-bottom:2px solid #c9a94f;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+  flex:0 0 auto;
+}
+.glyph{font-size:1.1rem}
+.title{font-size:1.05rem;font-weight:700;color:#f2e6c9;letter-spacing:.04em;white-space:nowrap}
+select{
+  margin-left:auto;
+  background:#16213e;color:#e8d5b7;
+  border:1px solid #c9a94f;border-radius:6px;
+  padding:7px 12px;font-size:.92rem;font-family:inherit;
+  cursor:pointer;max-width:60vw;
+}
+select:focus{outline:none;box-shadow:0 0 0 2px rgba(201,169,79,.4)}
+.count{font-size:.78rem;color:#9ba4b4;white-space:nowrap}
+main{flex:1;min-height:0;background:#fff}
+iframe{width:100%;height:100%;border:0;display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="glyph">📚</span>
+  <span class="title">PISA 2025 書架</span>
+  <span class="count" id="count"></span>
+  <select id="picker"></select>
+</header>
+
+<main>
+  <iframe id="view" title="PISA 2025 報告內容"></iframe>
+</main>
+
+<script>
+var BOOKS = [
+  { name: "PISA 2025 結果報告",       file: "PISA_2025_結果報告.html" },
+  { name: "對台灣教育的啟示",          file: "PISA_2025_對台灣教育的建議.html" },
+  { name: "台灣學生閱讀力建議",        file: "PISA_2025_台灣學生閱讀力建議.html" },
+  { name: "台灣教育的其他觀察",        file: "PISA_2025_其他建議.html" }
+];
+
+var picker = document.getElementById('picker');
+var view = document.getElementById('view');
+var count = document.getElementById('count');
+
+count.textContent = BOOKS.length + ' 篇';
+
+BOOKS.forEach(function(b, i){
+  var opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = b.name;
+  picker.appendChild(opt);
+});
+
+function load(i){
+  view.src = encodeURIComponent(BOOKS[i].file).replace(/%2F/g, '/');
+  picker.value = i;
+  try { localStorage.setItem('pisa2025shelf.last', i); } catch(e){}
+}
+
+picker.addEventListener('change', function(){ load(+picker.value); });
+
+var start = 0;
+try {
+  var saved = +localStorage.getItem('pisa2025shelf.last');
+  if (saved >= 0 && saved < BOOKS.length) start = saved;
+} catch(e){}
+load(start);
+</script>
+
+</body>
+</html>
