@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>台灣PISA全球前五，OECD示警認知危機</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F6F1EA; --surface:#FFFFFF; --surface-2:#EFE6D8; --line:#E0D3BC;
+  --ink:#2A2018; --muted:#6B5D4C;
+  --accent:#B5541F; --accent-deep:#7A2E10; --accent-soft:#F4DDC9;
+  --gold:#A67C1E; --gold-soft:#F1E6C9;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1A140E; --surface:#241C14; --surface-2:#2E2418; --line:#42352272;
+    --ink:#F2E8DA; --muted:#C2AD91;
+    --accent:#E1976A; --accent-deep:#EAB489; --accent-soft:#3A2618;
+    --gold:#DCB966; --gold-soft:#3A2E17;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1A140E; --surface:#241C14; --surface-2:#2E2418; --line:#423522;
+  --ink:#F2E8DA; --muted:#C2AD91;
+  --accent:#E1976A; --accent-deep:#EAB489; --accent-soft:#3A2618;
+  --gold:#DCB966; --gold-soft:#3A2E17;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.num{font-family:"Roboto Mono","Noto Sans TC",monospace;font-variant-numeric:tabular-nums;}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #3D1A08 100%);color:#FBEFE4;padding-block:52px 36px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F0CDAE;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.5rem,3.6vw,2.3rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F2E1D2;max-width:66ch;}
+.hero .byline{margin-top:16px;font-size:.82rem;color:#D8B89C;}
+
+section{padding-block:40px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:24px;max-width:70ch;}
+.section-head h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.rec-head{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:var(--accent-deep);color:#fff;}
+.rec-num{font-family:"Roboto Mono",monospace;font-size:1.5rem;font-weight:700;color:var(--gold);flex:none;line-height:1.1;}
+.rec-head h3{color:#fff;font-size:1.1rem;margin-bottom:3px;}
+.rec-head .tag{font-size:.76rem;color:#F0CDAE;}
+.rec-body{padding:18px 22px;}
+.rec-body .evidence{background:var(--surface-2);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:.89rem;}
+.rec-body .evidence b{color:var(--accent);}
+.rec-body ul{margin:0;padding-left:1.2em;}
+.rec-body li{margin-bottom:7px;}
+.rec-body li:last-child{margin-bottom:0;}
+.rec-body li b{color:var(--accent-deep);}
+.rec.strength .rec-head{background:var(--violet);}
+.rec.strength .rec-num{color:#fff;}
+.rec.strength .evidence{border-left-color:var(--violet);}
+.rec.strength .evidence b{color:var(--violet);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:right;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line);font-family:"Roboto Mono",monospace;}
+.compare-table td:first-child{text-align:left;font-family:"Noto Sans TC",sans-serif;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+.flag-hi{color:var(--bad);font-weight:700;}
+.flag-lo{color:var(--good);font-weight:700;}
+.flag-mid{color:var(--gold);font-weight:700;}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:16px 20px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1rem;margin-top:22px;}
+
+footer{padding-block:30px;background:var(--accent-deep);color:#F0CDAE;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+footer a{color:#FBEFE4;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PISA 2025 × 媒體觀點摘要</div>
+    <h1>台灣 PISA 全球前五，OECD 為何示警「結構性認知危機」？</h1>
+    <p class="sub">2026年9月，OECD 發布 PISA 2025 全球成績，91國逾76萬名15歲學生受測。台灣科學、閱讀、數學與電腦化問題解決四項皆居全球前五，OECD 秘書長科爾曼卻同時警告全球正陷入「結構性認知危機」——OECD 國家數學平均下滑9分，閱讀更暴跌14分。本頁整理親子天下報導裡提出的四個教育盲點與因應建議。</p>
+    <p class="byline">整理自親子天下〈台灣 PISA 全球前五，OECD 卻警示中學生「認知危機」〉，吳和懋撰，2026年9月9日發布・原文連結見頁尾</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">四大教育盲點</div>
+      <h2>高分背後，連親師都可能沒察覺的隱憂</h2>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">01</div>
+        <div><h3>以為「沒收手機」就沒事了</h3><div class="tag">螢幕娛樂超過一小時，才是真正的成績殺手</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報導重點：</b>PISA 調查發現，高達28%的學生表示同學在科學課使用數位載具（不限手機，也包含平板、筆電）導致分心。當學生在校使用載具進行「休閒娛樂」每天超過一小時，科學與閱讀成績會呈現懸崖式暴跌。「草率閱讀者」比例更從2018年的6.6%翻倍至11.4%——孩子面對長文失去耐心，快速滑動並給出錯誤答案。</p></div>
+        <ul>
+          <li>單靠禁止攜帶手機無法解決問題，干擾源同樣來自學習用平板與筆電的娛樂性使用。</li>
+          <li>報導建議堅守「螢幕娛樂不超過一小時」的底線，作為搶救專注力的關鍵防線。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">02</div>
+        <div><h3>越早用AI越聰明？</h3><div class="tag">剝奪認知掙扎，AI恐淪為「代替大腦思考的拐杖」</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報導重點：</b>PISA調查的四個AI使用領域中，有三個領域顯示使用AI的學生科學成績反而低於不使用者，尤其是頻繁用AI「摘要文章」或「草擬寫作」的學生表現明顯較差。唯一例外是把AI定位為「幫助我學習」且「適度使用」（每月一次到每週兩次）的學生，表現才能與不使用者打平。</p></div>
+        <ul>
+          <li>OECD教育總監史萊賀提出「認知掙扎」（Cognitive Struggle）概念：腦神經連結的強化必須來自對抗未知知識的過程，依賴AI給完美解答，等於剝奪了思考機會。</li>
+          <li>報導以韓國、新加坡為例：表現優異的亞洲國家優先把AI部署在「教師端」，協助老師分析學情、產出引導性問題，而非直接讓學生用AI找答案。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">03</div>
+        <div><h3>高社經家庭能保障學業？</h3><div class="tag">缺乏時間管理，3C資源反成暴跌破口</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報導重點：</b>這波成績下滑跌幅最慘重的竟是優渥學生——全球高社經學生閱讀成績暴跌20分，弱勢生僅下滑4分；優勢生科學成績下滑8分，弱勢生則維持穩定。報導指出，若家長缺乏嚴格的時間管理與內容過濾，豐富的3C資源反而淪為無限制沉迷娛樂的載體。</p></div>
+        <ul>
+          <li>這項數據戳破了「家裡有錢、社經地位高，孩子學業就有保障」的傳統假設。</li>
+          <li>缺乏自律規範的科技資源，成了摧毀專注力最大的破口，與家庭社經地位高低無關。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">04</div>
+        <div><h3>考高分卻不想碰理科</h3><div class="tag">「熱情真空」與躺平心態，威脅東亞長期競爭力</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報導重點：</b>全球頂尖科學學生中，僅54%打算從事STEM（科學、技術、工程、數學）領域。史萊賀指出東亞與美國的強烈對比：中國、日本等東亞教育大國學生數理分數極高，卻因對STEM職涯缺乏吸引力與熱情而流失創新優勢；美國學生則更可能把科學科技視為未來職涯的一部分。</p></div>
+        <ul>
+          <li>報導推測，東亞用考試堆疊出分數，卻可能消磨了學生的內在好奇心，導致「考得好，但一點都不喜歡」的心態。</li>
+          <li>台灣同時被列為「性別差距顯著擴大」的體系，詳見下方對照表。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">性別落差對照</div>
+      <h2>數學打平、閱讀差39分：性別差距擴大在哪裡</h2>
+    </div>
+    <table class="compare-table">
+      <thead><tr><th>科目</th><th>台灣女生</th><th>台灣男生</th><th>台灣差距</th><th>OECD平均差距</th></tr></thead>
+      <tbody>
+        <tr><td>科學</td><td>545</td><td>535</td><td class="flag-lo">女領先10分</td><td>女領先2分</td></tr>
+        <tr><td>閱讀</td><td>528</td><td>489</td><td class="flag-hi">女領先39分</td><td>女領先30分</td></tr>
+        <tr><td>數學</td><td>546</td><td>547</td><td class="flag-mid">男領先1分</td><td>男領先14分</td></tr>
+      </tbody>
+    </table>
+    <p class="quote">報導解讀：女孩在數理科目全面突破（科學贏男生10分，數學僅落後1分），但男孩閱讀落後女生39分、比OECD平均男女落差再擴大9分——一則危機藏在另一則突破的陰影裡。資料來源：OECD (2026), PISA 2025 Results (Volume I), Table I.3, p.32-33。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">防線重塑</div>
+      <h2>報導給父母與老師的三個建議</h2>
+    </div>
+
+    <div class="rec strength">
+      <div class="rec-head">
+        <div class="rec-num">①</div>
+        <div><h3>建立一小時數位娛樂防線</h3></div>
+      </div>
+      <div class="rec-body"><p>確立時間邊界，嚴守校內數位休閒不超過一小時，守護專注力。</p></div>
+    </div>
+
+    <div class="rec strength">
+      <div class="rec-head">
+        <div class="rec-num">②</div>
+        <div><h3>實施認知負重訓練</h3></div>
+      </div>
+      <div class="rec-body"><p>對抗「草率閱讀」，刻意回歸紙本與長文本思考，增加認知奮鬥深度，重建思考韌性。</p></div>
+    </div>
+
+    <div class="rec strength">
+      <div class="rec-head">
+        <div class="rec-num">③</div>
+        <div><h3>堅守AI鷹架原則</h3></div>
+      </div>
+      <div class="rec-body"><p>引導使用AI須以「激發思考」為核心，嚴禁直接產出作業，將其轉化為加速學習的推進器。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為親子天下報導的整理摘要，依原文重新組織要點與段落，非逐字翻譯或全文轉載；完整內容與作者評論請見原文。<br>原文：<a href="https://www.parenting.com.tw/article/6002601" target="_blank" rel="noopener">親子天下〈台灣 PISA 全球前五，OECD 卻警示中學生「認知危機」〉</a>・作者：吳和懋</div>
+    <div>數據來源：OECD, PISA 2025 Database</div>
+  </div>
+</footer>
+
+</body>
+</html>
