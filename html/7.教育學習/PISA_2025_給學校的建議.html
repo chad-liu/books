@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>給國中校方的建議</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF0F0; --surface:#FFFFFF; --surface-2:#E2E6E4; --line:#CDD5D1;
+  --ink:#1C2321; --muted:#57655F;
+  --accent:#2C5F52; --accent-deep:#153B31; --accent-soft:#DCEAE5;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --slate:#455468; --slate-soft:#E4E8EF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111815; --surface:#1A241F; --surface-2:#222E27; --line:#324037;
+    --ink:#E6EFE9; --muted:#A2B5AB;
+    --accent:#7FBFA9; --accent-deep:#A6D9C4; --accent-soft:#1E3A31;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --slate:#9BAEC2; --slate-soft:#22303F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111815; --surface:#1A241F; --surface-2:#222E27; --line:#324037;
+  --ink:#E6EFE9; --muted:#A2B5AB;
+  --accent:#7FBFA9; --accent-deep:#A6D9C4; --accent-soft:#1E3A31;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --slate:#9BAEC2; --slate-soft:#22303F;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #0A1F18 100%);color:#E8F5EF;padding-block:52px 36px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#C7E5D8;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCEDE4;max-width:66ch;}
+
+section{padding-block:40px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:24px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:right;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line);font-family:"Roboto Mono",monospace;}
+.compare-table td:first-child{text-align:left;font-family:"Noto Sans TC",sans-serif;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+.flag-hi{color:var(--bad);font-weight:700;}
+.flag-lo{color:var(--good);font-weight:700;}
+
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.rec-head{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:var(--accent-deep);color:#fff;}
+.rec-num{font-family:"Roboto Mono",monospace;font-size:1.5rem;font-weight:700;color:var(--gold);flex:none;line-height:1.1;}
+.rec-head h3{color:#fff;font-size:1.1rem;margin-bottom:3px;}
+.rec-head .tag{font-size:.76rem;color:#C7E5D8;}
+.rec-body{padding:18px 22px;}
+.rec-body .evidence{background:var(--surface-2);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:.89rem;}
+.rec-body .evidence b{color:var(--accent);}
+.rec-body .action{background:var(--slate-soft);border-left:4px solid var(--slate);border-radius:0 10px 10px 0;padding:10px 16px;margin-top:10px;font-size:.88rem;}
+.rec-body .action b{color:var(--slate);}
+.rec-body ul{margin:0;padding-left:1.2em;}
+.rec-body li{margin-bottom:7px;}
+.rec-body li:last-child{margin-bottom:0;}
+.rec-body li b{color:var(--accent-deep);}
+
+.checklist{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 26px;}
+.checklist h3{margin-bottom:14px;}
+.checklist ul{margin:0;padding-left:0;list-style:none;}
+.checklist li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem;}
+.checklist li:last-child{border-bottom:none;}
+.checklist li::before{content:"☐";color:var(--accent);font-size:1.1rem;flex:none;}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:16px 20px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1rem;margin-top:22px;}
+
+footer{padding-block:30px;background:var(--accent-deep);color:#C7E5D8;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PISA 2025 × 給台灣國中╱高一學校行政的建議</div>
+    <h1>把個別老師的努力，<br>變成全校一致的制度</h1>
+    <p class="sub">前面幾份分析談了教學現場與家庭，這份聚焦「學校層級」能做的事——政策、資源分配、人力配置與校本課程設計，這些通常不是單一老師能決定，而需要校長與行政團隊主導。以下六項建議，皆依 PISA 2025 數據對照台灣現況提出。</p>
+    <table class="compare-table" style="margin-top:24px;">
+      <thead><tr><th>指標</th><th>台灣</th><th>OECD 平均</th></tr></thead>
+      <tbody>
+        <tr><td>學校禁用手機比例</td><td>43.3%</td><td class="flag-hi">49.5%</td></tr>
+        <tr><td>無師資短缺比例</td><td>24.0%</td><td class="flag-hi">28.8%</td></tr>
+        <tr><td>提供同儕互助輔導比例</td><td class="flag-lo">71.0%</td><td>51.2%</td></tr>
+        <tr><td>無教材短缺比例</td><td class="flag-lo">60.3%</td><td>43.8%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議一</div>
+      <h2>把手機政策說清楚、貫徹到底</h2>
+    </div>
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">01</div>
+        <div><h3>校園手機禁令的執行率低於國際平均</h3><div class="tag">對應：43.3% vs OECD 平均 49.5%</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報告怎麼說：</b>PISA 2025 發現，明確禁止校園手機使用的學校，學生分心比例較低；台灣此比例（43.3%）反而低於 OECD 平均（49.5%）。同時，台灣科目別數位裝置使用規範比例（80.0%）已高於平均，顯示制度設計並非完全空白，但「一致執行的全校性手機政策」仍有落差。</p></div>
+        <div class="action"><b>行政層面可以做的：</b>與教師團隊、家長會共同訂出全校一致的手機收納時機與方式（如到校即統一收納），並明訂例外情況（教學需要時由教師開放），避免各班各行其是、增加教師個別執行的壓力。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議二</div>
+      <h2>把既有的同儕輔導優勢，系統性導向最需要的學生</h2>
+    </div>
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">02</div>
+        <div><h3>資源已到位，關鍵在分配是否精準</h3><div class="tag">對應：同儕互助輔導 71.0%、無教材短缺 60.3%，皆優於平均</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報告怎麼說：</b>台灣提供同儕互助課業輔導、教材充足的比例都優於 OECD 平均，顯示資源投入本身並非台灣的弱項；但報告同時指出，台灣社經優劣勢學生的科學表現差距（91 分）高於平均（85 分），顯示既有資源未必精準投放到最需要的學生身上。報告點名 B-S-J-Z（中國）、加拿大、愛沙尼亞、日本、韓國、中國澳門等系統，已做到「融合度高且社經解釋力低」的公平典範。</p></div>
+        <div class="action"><b>行政層面可以做的：</b>建立校內學習扶助資源的優先分配機制（如以基礎學力篩檢結果，而非導師個人觀察決定名單），並定期檢視弱勢學生參與同儕輔導、補救教學的實際比例，而非僅統計「學校是否有提供」。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議三</div>
+      <h2>用資料檢視教學成效，而不是憑經驗直覺</h2>
+    </div>
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">03</div>
+        <div><h3>全球校長回報「用資料規劃教學改進」的比例正在下降</h3><div class="tag">對應：報告第二章指出的系統性趨勢</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報告怎麼說：</b>PISA 2025 分析全球閱讀表現下滑的成因時指出，OECD 國家平均而言，校長回報「運用資料規劃教學與學校改進行動」的比例較過去下降；部分閱讀降幅較大的國家，同時也減少了資料運用。報告特別提醒，此關聯雖非絕對，但顯示回饋機制轉弱，可能延遲學校發現學習落差並及時介入的時機。</p></div>
+        <div class="action"><b>行政層面可以做的：</b>建立每學期至少一次的校內學力數據檢視會議（如各年級段考、模擬考的長期趨勢，而非只看單次排名），並將結果具體轉化為下學期的教學調整重點，形成常態化的「資料—行動」循環，而非僅存檔備查。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議四</div>
+      <h2>正視師資壓力，把老師的心力留給教學</h2>
+    </div>
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">04</div>
+        <div><h3>師資短缺壓力略高於國際平均</h3><div class="tag">對應：無師資短缺比例 24.0% vs OECD 平均 28.8%</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報告怎麼說：</b>僅 24.0% 台灣學生就讀「完全無師資短缺」學校，低於 OECD 平均。同時，報告也指出，全球教師花在維持課堂秩序的時間比例上升（2018 年 13% 上升到 2024 年 16%），排擠了實際教學時間——即使正式授課時數不變，管理課堂秩序增加也會減少學習活動的時間。</p></div>
+        <div class="action"><b>行政層面可以做的：</b>檢視現有教師員額是否確實轉化為個別關注時間的增加（而非僅反映在整體數字上），並盤點導師與科任教師的非教學行政負擔，思考是否能由行政人力或系統工具分擔，讓教師有更多心力用於課堂經營與個別學生輔導。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議五</div>
+      <h2>建立系統性的學生歸屬感追蹤機制</h2>
+    </div>
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">05</div>
+        <div><h3>紀律與出席良好，不代表歸屬感良好</h3><div class="tag">對應：學校歸屬感指數 0.01，略低於平均 0.09</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報告怎麼說：</b>台灣學生在出席率（89.4% 無翹課）與常規紀律（0.59）上表現全球數一數二，但學校歸屬感指數卻略低於 OECD 平均。報告指出，霸凌雖比例不高（3% 網路霸凌），卻對應最大的表現落差；歸屬感也與好奇心、求助意願等多項正向指標相關。這類「隱性」的心理狀態，通常不會反映在出席或紀律數字上，需要主動的制度設計才能發現。</p></div>
+        <div class="action"><b>行政層面可以做的：</b>建立全校性、定期（如每學期一次）的簡易歸屬感╱班級氣氛匿名問卷，讓輔導室能在導師個人觀察之外，取得系統性資料；針對問卷顯示歸屬感偏低的班級或學生，建立明確的輔導轉介流程，而非僅依賴導師主動通報。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議六</div>
+      <h2>把環境科學的強項，設計成校本特色課程</h2>
+    </div>
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">06</div>
+        <div><h3>學生懂環境科學，但不覺得這能是一份工作</h3><div class="tag">對應：環境科學表現全球第三，職涯興趣僅 49.6%</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>報告怎麼說：</b>台灣學生環境科學表現（539 分）為全球第三高，但未來投入環保相關職涯的興趣（49.6%）低於 OECD 平均（61.6%）；報告同時指出，課堂中的環境學習機會與學生的環境素養、投入承諾正相關。這代表學校若能將既有的紮實知識，透過校本課程與實作連結到具體職涯圖像，有機會補上「知道但不覺得能做」的落差。</p></div>
+        <div class="action"><b>行政層面可以做的：</b>結合在地大學、綠色產業（如再生能源、循環經濟、永續供應鏈相關企業）設計參訪或專題實作課程，並在生涯規劃課程中，明確納入環境科學相關職涯的具體案例，而非僅停留在自然科的知識講授。</div>
+      </div>
+    </div>
+
+    <div class="checklist" style="margin-top:24px;">
+      <h3>本學期可以啟動的六項行政行動</h3>
+      <ul>
+        <li>召集教師與家長會，確認並公告全校一致的手機收納政策</li>
+        <li>檢視補救教學╱同儕輔導名單是否以篩檢資料而非導師觀察為準</li>
+        <li>排定每學期一次的校內學力數據檢視會議</li>
+        <li>盤點導師與科任教師的非教學行政負擔</li>
+        <li>設計並發送全校性歸屬感╱班級氣氛問卷</li>
+        <li>接洽在地大學或綠色產業，規劃環境科學相關的校本特色課程</li>
+      </ul>
+    </div>
+
+    <div class="quote">
+      <b>寫在最後：</b>個別教師的努力，若沒有學校制度的支撐，往往只能停留在單一班級的改變。PISA 2025 報告指出的落差——好奇心、成長型思維、歸屬感、公平性——這些既是教學現場的挑戰，也是需要校長與行政團隊透過政策、資源分配與制度設計，才能全校一致地補上的拼圖。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為基於 OECD《PISA 2025 Results (Volume I): Future-Ready Students》數據所做之原創建議，非原文翻譯。</div>
+    <div>資料來源：OECD, PISA 2025 Database</div>
+  </div>
+</footer>
+
+</body>
+</html>

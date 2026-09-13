@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>給國三家長的建議</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#FAF4EE; --surface:#FFFFFF; --surface-2:#F3E6D8; --line:#E6D2BC;
+  --ink:#2E241B; --muted:#7A6A57;
+  --accent:#B5622C; --accent-deep:#7A3E1A; --accent-soft:#F5DFC9;
+  --gold:#8C7A2E; --gold-soft:#EFE7C5;
+  --good:#3C7A56; --good-soft:#DFEEE3;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --blue:#3A6B8C; --blue-soft:#DCEAF1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1712; --surface:#28211A; --surface-2:#332A20; --line:#453626;
+    --ink:#F3E9DC; --muted:#C7B79E;
+    --accent:#E5A26C; --accent-deep:#F0BC8E; --accent-soft:#3A2A1A;
+    --gold:#D8C574; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --blue:#8FBBDA; --blue-soft:#1E2E3A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C1712; --surface:#28211A; --surface-2:#332A20; --line:#453626;
+  --ink:#F3E9DC; --muted:#C7B79E;
+  --accent:#E5A26C; --accent-deep:#F0BC8E; --accent-soft:#3A2A1A;
+  --gold:#D8C574; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --blue:#8FBBDA; --blue-soft:#1E2E3A;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:920px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #4A2610 100%);color:#FBEEE1;padding-block:52px 36px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F2D9BC;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F1E1CE;max-width:64ch;}
+
+section{padding-block:40px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:24px;max-width:70ch;}
+.section-head h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.tip-head{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:var(--accent-deep);color:#fff;}
+.tip-num{font-family:"Roboto Mono",monospace;font-size:1.5rem;font-weight:700;color:var(--gold);flex:none;line-height:1.1;}
+.tip-head h3{color:#fff;font-size:1.12rem;margin-bottom:3px;}
+.tip-head .tag{font-size:.76rem;color:#F1E1CE;}
+.tip-body{padding:18px 22px;}
+.tip-body .evidence{background:var(--surface-2);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:.89rem;}
+.tip-body .evidence b{color:var(--accent);}
+.tip-body .donot{background:var(--bad-soft);border-left:4px solid var(--bad);border-radius:0 10px 10px 0;padding:10px 16px;margin-top:12px;font-size:.88rem;}
+.tip-body .donot b{color:var(--bad);}
+.tip-body .doit{background:var(--good-soft);border-left:4px solid var(--good);border-radius:0 10px 10px 0;padding:10px 16px;margin-top:8px;font-size:.88rem;}
+.tip-body .doit b{color:var(--good);}
+.tip-body ul{margin:0;padding-left:1.2em;}
+.tip-body li{margin-bottom:7px;}
+.tip-body li:last-child{margin-bottom:0;}
+.tip-body li b{color:var(--accent-deep);}
+
+.checklist{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 26px;}
+.checklist h3{margin-bottom:14px;}
+.checklist ul{margin:0;padding-left:0;list-style:none;}
+.checklist li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem;}
+.checklist li:last-child{border-bottom:none;}
+.checklist li::before{content:"☐";color:var(--accent);font-size:1.1rem;flex:none;}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:16px 20px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1rem;margin-top:22px;}
+
+footer{padding-block:30px;background:var(--accent-deep);color:#F1E1CE;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PISA 2025 × 給台灣家長的建議</div>
+    <h1>孩子考得不錯，<br>但家長還能做些什麼？</h1>
+    <p class="sub">PISA 2025 報告分析了 15 歲學生（約國三、高一）的學習表現與生活樣貌。台灣學生成績全球頂尖，但報告也指出：家庭支持度正在下降、學生的好奇心與成長型思維偏低、對「努力能改變處境」的信心不足。這些不是靠補習就能補起來的，而是家庭日常互動可以影響的地方。以下是六項具體、可以今天就開始做的建議。</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議一</div>
+      <h2>比起「考幾分」，多問「今天學校發生了什麼」</h2>
+    </div>
+    <div class="tip">
+      <div class="tip-head">
+        <div class="tip-num">01</div>
+        <div><h3>用日常對話重建家庭支持</h3><div class="tag">對應：家庭支持指數下降、親子對話減少</div></div>
+      </div>
+      <div class="tip-body">
+        <div class="evidence"><b>報告怎麼說：</b>PISA 2025 發現，會詢問孩子「今天在學校做了什麼」的家長，孩子表現通常較好；但幾乎所有國家 2025 年的家庭支持都比 2022 年下降，其中男學生與弱勢家庭孩子的降幅更大。台灣的家庭支持指數也低於 OECD 平均。報告特別強調：這種關心的效果，來自「對日常學習與校園經驗的興趣」，而不是成績本身。</p></div>
+        <div class="doit"><b>可以做的：</b>每天固定一個時段（例如晚餐時間），問一個具體的開放式問題，像是「今天有沒有遇到什麼有趣或困擾的事？」，取代「考試考得怎樣」。</div>
+        <div class="donot"><b>容易陷入的誤區：</b>把「關心」等同於「檢查」——只問聯絡簿、只看成績單，孩子很快會把這解讀成「爸媽只在乎分數」，反而降低願意分享的意願。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議二</div>
+      <h2>讚美「努力與方法」，而不是「聰明」</h2>
+    </div>
+    <div class="tip">
+      <div class="tip-head">
+        <div class="tip-num">02</div>
+        <div><h3>在家中示範成長型思維</h3><div class="tag">對應：台灣成長型思維比例僅 45.5%（OECD 平均 69.3%）</div></div>
+      </div>
+      <div class="tip-body">
+        <div class="evidence"><b>報告怎麼說：</b>台灣學生相信「智力可以透過努力改變」的比例明顯低於全球平均，落差是所有指標中最大的之一。報告指出，具有成長型思維的學生相信「努力能改變處境」的可能性是固定型思維學生的三倍，也更可能在弱勢背景下仍有優異表現。家長與教師的鼓勵方式，是塑造孩子思維模式的重要來源之一。</p></div>
+        <div class="doit"><b>可以做的：</b>孩子考差時，把重點放在「這次用了什麼方法讀書？下次可以怎麼調整？」，而不是「你怎麼這麼粗心／不用功」；孩子考好時，肯定的是「你這次很有耐心地把每一題都檢查過」，而不是「你果然很聰明」。</div>
+        <div class="donot"><b>容易陷入的誤區：</b>「你很聰明」聽起來是稱讚，卻可能讓孩子把失敗解讀為「我不夠聰明」，進而害怕挑戰困難的題目或新的學習領域。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議三</div>
+      <h2>讓孩子看到你也在讀書、讀報、讀文章</h2>
+    </div>
+    <div class="tip">
+      <div class="tip-head">
+        <div class="tip-num">03</div>
+        <div><h3>閱讀習慣是「示範」出來的，不只是「要求」出來的</h3><div class="tag">對應：台灣閱讀分數較 2022 年下降 7 分</div></div>
+      </div>
+      <div class="tip-body">
+        <div class="evidence"><b>報告怎麼說：</b>PISA 分析發現，家長本身的閱讀習慣與樂趣，會直接影響孩子的閱讀投入；過去十年間，閱讀樂趣下滑的現象同時出現在家長與孩子身上，並非只是這一代學生的問題。報告也指出，能持續閱讀紙本書籍的學生，表現通常優於主要依賴社群瀏覽、極少完整閱讀書籍的學生。</p></div>
+        <div class="doit"><b>可以做的：</b>家中固定擺放孩子感興趣主題的書籍或雜誌（不限文學類，科普、運動、財經、設計都可以），並讓孩子看到家長自己也在閱讀，而非只是要求孩子讀書、自己滑手機。</div>
+        <div class="donot"><b>容易陷入的誤區：</b>把閱讀窄化為「讀完一本指定課外讀物寫心得」，容易讓孩子把閱讀與作業畫上等號，反而降低主動閱讀的意願。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議四</div>
+      <h2>手機與 AI：關鍵不是禁不禁止，而是用在哪裡</h2>
+    </div>
+    <div class="tip">
+      <div class="tip-head">
+        <div class="tip-num">04</div>
+        <div><h3>和孩子一起訂出「使用時機」的原則</h3><div class="tag">對應：休閒使用 vs 學習使用的表現差異</div></div>
+      </div>
+      <div class="tip-body">
+        <div class="evidence"><b>報告怎麼說：</b>PISA 2025 發現一個清楚的模式：適度使用數位裝置「學習」與較好的表現相關，但用於「課堂休閒娛樂」時，表現明顯下滑；超過四分之一學生表示同儕經常在課堂上被裝置分心。AI 使用方面，直接用 AI 完成作業的學生表現不如不用的學生，但「常用 AI＋有機會學習查核 AI 生成內容是否正確」的學生表現略優——顯示重點在於是否具備判斷 AI 內容的能力，而非單純禁用。</p></div>
+        <div class="doit"><b>可以做的：</b>與孩子討論並共同訂出「寫作業時手機收到看不到的地方」「用 AI 前先自己想過一次答案，再用 AI 核對而非直接抄」等具體原則，讓孩子理解原因，而非單方面沒收裝置。</div>
+        <div class="donot"><b>容易陷入的誤區：</b>完全禁止使用 AI 工具，可能讓孩子在同儕都已熟悉 AI 查核與運用方式時錯失培養判斷力的機會——報告特別提醒，AI 素養機會目前更集中在資源較多的家庭，家長的引導比單純禁用更關鍵。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議五</div>
+      <h2>和孩子聊聊「努力真的能改變處境」的例子</h2>
+    </div>
+    <div class="tip">
+      <div class="tip-head">
+        <div class="tip-num">05</div>
+        <div><h3>不要只談分數，也談談對未來的信心</h3><div class="tag">對應：台灣僅 52.4% 學生相信社會地位可以改變（OECD 平均 66.4%）</div></div>
+      </div>
+      <div class="tip-body">
+        <div class="evidence"><b>報告怎麼說：</b>台灣學生相信「透過努力可以改變自己處境」的比例，明顯低於 OECD 平均，是報告中台灣與國際落差最大的項目之一。這種信念與成長型思維、學業韌性高度相關——換句話說，孩子若不相信努力有用，也更難在遇到挫折時堅持下去。</p></div>
+        <div class="doit"><b>可以做的：</b>分享家庭中或身邊真實的「努力帶來改變」的例子（不限升學，也可以是工作、興趣、人際關係），讓孩子看到具體、貼近生活的案例，而不只是抽象的「要努力」。</div>
+        <div class="donot"><b>容易陷入的誤區：</b>過度強調單一升學路徑（明星高中、特定科系）的重要性，反而可能讓孩子覺得「只有一條路，走不到就沒機會了」，加深宿命感而非信心。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">建議六</div>
+      <h2>留意孩子「乖巧但疏離」的訊號</h2>
+    </div>
+    <div class="tip">
+      <div class="tip-head">
+        <div class="tip-num">06</div>
+        <div><h3>出席正常、成績穩定，不等於心理狀態良好</h3><div class="tag">對應：台灣學校歸屬感指數略低於 OECD 平均</div></div>
+      </div>
+      <div class="tip-body">
+        <div class="evidence"><b>報告怎麼說：</b>台灣學生在出席率、課堂紀律等指標上表現全球數一數二，但「學校歸屬感」——也就是學生是否感覺被同儕與師長接納——指數卻略低於 OECD 平均。報告提醒，歸屬感與好奇心、求助意願、學習投入等多項正向指標相關，紀律良好未必等於孩子在情感上感覺被支持。</p></div>
+        <div class="doit"><b>可以做的：</b>除了學業表現，也主動關心孩子在學校的同儕關係、有沒有想參加卻沒時間的社團或活動；留意孩子是否因為補習或考試準備，長期犧牲與朋友相處或休息的時間。</div>
+        <div class="donot"><b>容易陷入的誤區：</b>把「孩子沒有抱怨、按時上學、成績穩定」直接解讀為「一切都好」——報告顯示，這些外顯指標與孩子內心的歸屬感、投入感未必完全一致。</div>
+      </div>
+    </div>
+
+    <div class="checklist" style="margin-top:24px;">
+      <h3>本週可以開始的六件小事</h3>
+      <ul>
+        <li>晚餐時問一個具體的開放式問題，取代「考幾分」</li>
+        <li>孩子考差時，先聊方法而非結果</li>
+        <li>在家中放一本孩子感興趣的書╱雜誌，自己也翻一翻</li>
+        <li>和孩子一起討論、而非單方面規定手機與 AI 使用的時機</li>
+        <li>找一個努力帶來改變的真實例子，隨口聊聊</li>
+        <li>留意孩子有沒有時間和朋友相處、參加喜歡的活動</li>
+      </ul>
+    </div>
+
+    <div class="quote">
+      <b>寫在最後：</b>PISA 2025 報告反覆強調一件事——學習不只是分數，而是知識、好奇心、韌性與歸屬感的總和。台灣孩子在「知道多少」這件事上已經站在世界前段，家庭接下來能給的，或許正是報告數據中最缺的那一塊：讓孩子相信努力有意義、感覺被理解，並保有對世界的好奇。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為基於 OECD《PISA 2025 Results (Volume I): Future-Ready Students》數據所做之原創建議，非原文翻譯。</div>
+    <div>資料來源：OECD, PISA 2025 Database</div>
+  </div>
+</footer>
+
+</body>
+</html>
