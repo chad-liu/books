@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>台灣學生閱讀力建議</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F4F2EC; --surface:#FFFFFF; --surface-2:#EEE8DA; --line:#DED4BE;
+  --ink:#2A241C; --muted:#6B5F4E;
+  --accent:#7A3B2E; --accent-deep:#4F2419; --accent-soft:#F0DCD3;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#3C7A56; --good-soft:#DFEEE3;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B1712; --surface:#2A2318; --surface-2:#332B1E; --line:#453A28;
+    --ink:#F1E9DA; --muted:#C2B49A;
+    --accent:#E39A7E; --accent-deep:#F0B99B; --accent-soft:#3A2A22;
+    --gold:#E0B466; --gold-soft:#3A2E17;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B1712; --surface:#2A2318; --surface-2:#332B1E; --line:#453A28;
+  --ink:#F1E9DA; --muted:#C2B49A;
+  --accent:#E39A7E; --accent-deep:#F0B99B; --accent-soft:#3A2A22;
+  --gold:#E0B466; --gold-soft:#3A2E17;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.num{font-family:"Roboto Mono","Noto Sans TC",monospace;font-variant-numeric:tabular-nums;}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #2E140D 100%);color:#FBEDE5;padding-block:52px 36px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F2CFA3;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4.2vw,2.6rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F0DCCE;max-width:64ch;}
+
+.snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;}
+@media (max-width:820px){.snapshot{grid-template-columns:repeat(2,1fr);}}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:14px;text-align:center;}
+.stat .v{font-family:"Roboto Mono",monospace;font-weight:700;font-size:1.4rem;color:#fff;}
+.stat .l{font-size:.78rem;color:#EAD9CB;margin-top:4px;}
+
+section{padding-block:40px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:24px;max-width:70ch;}
+.section-head h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.rec-head{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:var(--accent-deep);color:#fff;}
+.rec-num{font-family:"Roboto Mono",monospace;font-size:1.5rem;font-weight:700;color:var(--gold);flex:none;line-height:1.1;}
+.rec-head h3{color:#fff;font-size:1.1rem;margin-bottom:3px;}
+.rec-head .tag{font-size:.76rem;color:#F0DCCE;}
+.rec-body{padding:18px 22px;}
+.rec-body .evidence{background:var(--surface-2);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:.89rem;}
+.rec-body .evidence b{color:var(--accent);}
+.rec-body ul{margin:0;padding-left:1.2em;}
+.rec-body li{margin-bottom:7px;}
+.rec-body li:last-child{margin-bottom:0;}
+.rec-body li b{color:var(--accent-deep);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;}
+.compare-table th{text-align:right;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line);font-family:"Roboto Mono",monospace;}
+.compare-table td:first-child{text-align:left;font-family:"Noto Sans TC",sans-serif;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+.flag-hi{color:var(--bad);font-weight:700;}
+.flag-lo{color:var(--good);font-weight:700;}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:16px 20px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1rem;margin-top:22px;}
+
+footer{padding-block:30px;background:var(--accent-deep);color:#F0DCCE;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PISA 2025 × 台灣閱讀力觀察</div>
+    <h1>分數還在前段班，<br>但「深讀」的能力正在流失</h1>
+    <p class="sub">台灣學生 2025 年閱讀平均 508 分，仍遠高於 OECD 平均（461 分），但相較 2022 年下降 7 分，且男女學生落差（39 分）大於全球平均（30 分）。全球數據顯示，閱讀衰退最嚴重的正是「長文本」「需要整合多重來源」「評估與反思」等高階閱讀任務——這正是 AI 時代最關鍵的能力。以下依報告數據，提出五項具體建議。</p>
+    <div class="snapshot">
+      <div class="stat"><div class="v">508</div><div class="l">台灣閱讀平均分數</div></div>
+      <div class="stat"><div class="v">-7</div><div class="l">2022→2025 分數變化</div></div>
+      <div class="stat"><div class="v">39分</div><div class="l">男女閱讀落差</div></div>
+      <div class="stat"><div class="v">8.4%</div><div class="l">倉促作答比例</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">現況對照</div>
+      <h2>台灣 vs. OECD 平均：閱讀相關指標</h2>
+    </div>
+    <table class="compare-table">
+      <thead><tr><th>指標</th><th>台灣</th><th>OECD 平均</th><th>評估</th></tr></thead>
+      <tbody>
+        <tr><td>閱讀平均分數（2025）</td><td>508</td><td>461</td><td class="flag-lo">大幅領先</td></tr>
+        <tr><td>閱讀分數變化（2022→2025）</td><td>-7 分</td><td>-14 分</td><td class="flag-lo">降幅小於平均</td></tr>
+        <tr><td>閱讀性別差距（女－男）</td><td>39 分</td><td>30 分</td><td class="flag-hi">男學生相對弱勢更明顯</td></tr>
+        <tr><td>倉促作答比例（快而錯）</td><td>8.4%</td><td>8.9%</td><td class="flag-lo">略優於平均</td></tr>
+        <tr><td>學校認為「上學有用」比例</td><td>69.7%</td><td>51.4%</td><td class="flag-lo">學習動機基礎良好</td></tr>
+        <tr><td>家庭支持指數</td><td>-0.27</td><td>-0.19</td><td class="flag-hi">家庭閱讀陪伴略顯不足</td></tr>
+        <tr><td>好奇心指數</td><td>-0.13</td><td>0.00</td><td class="flag-hi">主動探索動機偏低</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">五項建議</div>
+      <h2>把「解題型閱讀」升級為「深讀」</h2>
+      <p>報告分析全球閱讀衰退的四股力量——學生端的專注力與作答心態、學校端的教學支持、系統端的政策工具，以及社會端的數位習慣與家庭閱讀示範——以下建議依此架構，對應台灣現況提出具體作法。</p>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">01</div>
+        <div><h3>把「長文本、跨篇整合」的閱讀任務找回課堂</h3><div class="tag">對應：全球閱讀衰退最集中的任務類型</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>報告指出，2018 至 2025 年間，成功率下滑最快的正是「使用較長文本」「需要評估與反思等高階歷程」「須整合多個來源資訊」的閱讀任務；相對地，只需在文中定位單一資訊的簡單題型受影響最小。台灣雖然閱讀分數降幅小於平均（-7 分 vs -14 分），仍應提前因應這股全球趨勢。</p></div>
+        <ul>
+          <li><b>國文╱閱讀課：</b>增加「比較兩篇以上文本觀點異同」「從圖表、新聞、說明文等非連續文本中整合資訊」的教學活動比重，而非僅止於單一課文的內容理解。</li>
+          <li><b>跨科落實：</b>在自然、社會等科目的長篇資料閱讀（如實驗報告、時事分析）中，明確教導學生如何跨段落、跨段落來源比對與整合資訊，而非僅在國文課處理閱讀策略。</li>
+          <li><b>會考與教材：</b>持續增加長文本、圖文並陳題組的比重，並在教學上提前教導「先抓結構、再讀細節」等長文本閱讀策略，而非讓學生在考場上第一次面對長文。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">02</div>
+        <div><h3>訓練學生放慢速度，把「快而錯」的比例壓得更低</h3><div class="tag">對應：倉促作答比例</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>全球「倉促作答」（快速但答錯）比例從 2018 年的 4.6% 上升到 2025 年的 8.9%，近乎倍增。台灣目前為 8.4%，雖略優於平均，但仍是需要持續關注的趨勢方向，而非可以忽視的小數字。</p></div>
+        <ul>
+          <li><b>作答習慣：</b>在平時測驗與模擬考中，明確教導「先讀完題目與選項再作答」的具體策略，並在檢討時特別標註「因倉促而答錯」與「因不會而答錯」的差異，讓學生意識到自己的作答模式。</li>
+          <li><b>降低單次考試的急迫感：</b>檢視校內平時測驗的時間壓力設計，避免將「快速作答」本身當作能力指標，尤其是在需要理解、推論的閱讀測驗題型中。</li>
+          <li><b>持續追蹤：</b>建議教育主管機關比照 PISA 方法論，在校內閱讀測驗中同步分析「作答時間×正確率」，及早偵測倉促作答比例是否隨年級上升。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">03</div>
+        <div><h3>把男學生留在閱讀裡——用他們感興趣的文本切入</h3><div class="tag">對應：39 分的閱讀性別落差</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣閱讀性別差距（女高於男 39 分）大於 OECD 平均（30 分），但數學幾乎無性別差距（女 546／男 547）。這顯示問題不在「男學生能力較弱」，而是男學生與閱讀╱語文類文本的連結相對薄弱。</p></div>
+        <ul>
+          <li><b>選材多元化：</b>增加說明文、科普文章、體育／科技類報導、資訊圖表等男學生普遍較感興趣的文本類型，作為課堂閱讀素材，而非僅倚賴文學抒情類選文。</li>
+          <li><b>結合興趣領域：</b>將閱讀理解教學與男學生較常參與的領域（如遊戲攻略說明、科學實驗步驟、體育賽事分析）結合，讓「閱讀」與「找答案、解決問題」產生連結。</li>
+          <li><b>及早篩檢與扶助：</b>建議國小高年級即針對男學生進行閱讀理解篩檢，及早介入而非等到國中會考前才發現落差已經拉大。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">04</div>
+        <div><h3>重建家庭的閱讀對話，不只是簽聯絡簿</h3><div class="tag">對應：家庭支持指數偏低</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣家庭支持指數（-0.27）低於 OECD 平均（-0.19），且報告指出幾乎所有國家 2025 年家庭支持皆較 2022 年下降。報告同時引用先前研究：家長本身的閱讀習慣與樂趣，會直接影響孩子的閱讀投入——閱讀樂趣下滑的現象，同時出現在家長與孩子身上，而非僅是學生世代的問題。</p></div>
+        <ul>
+          <li><b>親職教育：</b>學校日、班親會可提供具體的「親子共讀對話」提示卡（如「今天讀到最有趣的是什麼？」），降低家長不知如何切入的門檻，取代單純詢問「功課寫完了嗎」。</li>
+          <li><b>家長以身作則：</b>可透過家長社群、親職講座，提醒家長自身的閱讀習慣（不限於陪讀，包含家長自己閱讀被孩子看見）對孩子閱讀樂趣的示範效果。</li>
+          <li><b>雙薪家庭的替代方案：</b>對於家庭陪伴時間有限的學生，學校可透過班級圖書角、晨讀時間、同儕讀書會等機制，部分補足家庭閱讀支持的缺口。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">05</div>
+        <div><h3>把「螢幕閱讀」導向深度，而不是滑動瀏覽</h3><div class="tag">對應：數位閱讀習慣轉變</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>報告指出，全球學生的閱讀方式正轉向社群瀏覽、搜尋資訊、線上聊天等「碎片化」數位閱讀，減少長篇小說、紙本雜誌與報紙的閱讀；能持續閱讀紙本書籍的學生，閱讀表現通常優於主要依賴數位裝置或極少閱讀書籍的學生。台灣學生使用數位裝置時的分心比例（53.0% 無分心）優於平均（39.2%），顯示數位治理基礎良好，但仍須引導閱讀「內容」的深度，而非僅管理裝置使用時機。</p></div>
+        <ul>
+          <li><b>保留紙本閱讀時間：</b>在既有數位治理基礎上，額外保留固定的紙本閱讀時段（如晨讀、班級圖書角借閱），讓學生持續練習長篇、連貫文本的閱讀耐性。</li>
+          <li><b>數位閱讀也要教策略：</b>將「如何在網路資訊中判斷可信度、避免只讀標題」納入資訊科技或閱讀課程，讓數位閱讀成為深度思考的入口，而非取代深讀的理由。</li>
+          <li><b>善用現有優勢：</b>台灣學生數位分心比例已優於平均，建議延續現行科目別裝置使用規範，並將「規範時段內做什麼」的重點，逐步從管理裝置轉向培養數位閱讀素養。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote">
+      <b>總結：</b>台灣學生的閱讀分數仍是全球強項，但報告揭示的全球趨勢——長文本能力下滑、倉促作答增加、家庭與社會閱讀習慣改變——並非台灣的例外。趁分數仍在高檔、降幅小於全球平均之際超前部署，比等到落差擴大後再補救更為有效。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為基於 OECD《PISA 2025 Results (Volume I): Future-Ready Students》數據所做之原創政策分析，非原文翻譯。</div>
+    <div>資料來源：OECD, PISA 2025 Database</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>PISA 2025 對台灣教育的啟示</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1F4F6; --surface:#FFFFFF; --surface-2:#E6EDF1; --line:#D6E0E5;
+  --ink:#152531; --muted:#54697A;
+  --accent:#1F6F8B; --accent-deep:#123B4D; --accent-soft:#DCEBF0;
+  --gold:#B5791E; --gold-soft:#F5E9D3;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B23A3A; --bad-soft:#F6E2E2;
+  --tw:#B5461B; --tw-soft:#FCE6DA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101820; --surface:#182430; --surface-2:#1F2E3B; --line:#2C3E4C;
+    --ink:#EAF1F4; --muted:#9BB0BE;
+    --accent:#5FB3D1; --accent-deep:#8FCBE2; --accent-soft:#1C3843;
+    --gold:#E0AC55; --gold-soft:#3A2E17;
+    --good:#6FCBA0; --good-soft:#153629;
+    --bad:#E48787; --bad-soft:#3A1E1E;
+    --tw:#F0916A; --tw-soft:#3C2318;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101820; --surface:#182430; --surface-2:#1F2E3B; --line:#2C3E4C;
+  --ink:#EAF1F4; --muted:#9BB0BE;
+  --accent:#5FB3D1; --accent-deep:#8FCBE2; --accent-soft:#1C3843;
+  --gold:#E0AC55; --gold-soft:#3A2E17;
+  --good:#6FCBA0; --good-soft:#153629;
+  --bad:#E48787; --bad-soft:#3A1E1E;
+  --tw:#F0916A; --tw-soft:#3C2318;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.num{font-family:"Roboto Mono","Noto Sans TC",monospace;font-variant-numeric:tabular-nums;}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;}
+
+.hero{
+  background:radial-gradient(1100px 480px at 85% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #0F2A38 100%);
+  color:#EAF4F7;padding-block:52px 36px;border-bottom:6px solid var(--tw);
+}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F2C79A;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4.2vw,2.7rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#CFE6EC;max-width:66ch;}
+
+nav.toc{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;}
+nav.toc .wrap{display:flex;gap:4px;padding-block:10px;}
+nav.toc a{flex:none;font-size:.86rem;font-weight:500;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:999px;}
+nav.toc a:hover{background:var(--surface-2);color:var(--ink);}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tw);background:var(--tw-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.98rem;}
+
+.snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media (max-width:820px){.snapshot{grid-template-columns:repeat(2,1fr);}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;}
+.stat .v{font-family:"Roboto Mono",monospace;font-weight:700;font-size:1.5rem;color:var(--accent-deep);}
+.stat .l{font-size:.8rem;color:var(--muted);margin-top:4px;}
+.stat .d{font-size:.82rem;font-weight:700;margin-top:2px;}
+.d.good{color:var(--good);} .d.bad{color:var(--bad);} .d.flat{color:var(--muted);}
+
+.rec{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:22px;
+}
+.rec-head{display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:var(--accent-deep);color:#fff;}
+.rec-num{font-family:"Roboto Mono",monospace;font-size:1.6rem;font-weight:700;color:var(--gold);flex:none;line-height:1;}
+.rec-head h3{color:#fff;font-size:1.18rem;margin-bottom:4px;}
+.rec-head .tag{font-size:.78rem;color:#BFE3EE;}
+.rec-body{padding:20px 24px;}
+.rec-body .evidence{
+  background:var(--surface-2);border-left:4px solid var(--tw);border-radius:0 10px 10px 0;
+  padding:12px 16px;margin-bottom:16px;font-size:.9rem;color:var(--ink);
+}
+.rec-body .evidence b{color:var(--tw);}
+.rec-body ul{margin:0;padding-left:1.2em;}
+.rec-body li{margin-bottom:8px;}
+.rec-body li:last-child{margin-bottom:0;}
+.rec-body li b{color:var(--accent-deep);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px;}
+.compare-table th{text-align:right;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line);font-family:"Roboto Mono",monospace;}
+.compare-table td:first-child{text-align:left;font-family:"Noto Sans TC",sans-serif;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+.compare-table tr.tw td{background:var(--tw-soft)!important;font-weight:700;}
+.gap-hi{color:var(--bad);font-weight:700;}
+.gap-lo{color:var(--good);font-weight:700;}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:16px 20px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1rem;color:var(--ink);margin-top:20px;}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#BFE3EE;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PISA 2025 × 台灣教育政策觀察</div>
+    <h1>成績亮眼，但缺了什麼？<br>從 PISA 2025 看台灣教育的下一步</h1>
+    <p class="sub">中華台北在科學（540）、數學（546）、閱讀（508）與電腦化問題解決（551）四項評量中皆位居全球前十，優於 OECD 平均甚多。但細看學生投入、心態與公平性等指標，可發現與頂尖表現不成比例的隱憂。本頁依據 PISA 2025 第一冊數據，整理六項具體政策建議。</p>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#snapshot">台灣現況一覽</a>
+    <a href="#r1">① 好奇心與成長心態</a>
+    <a href="#r2">② 社經與城鄉落差</a>
+    <a href="#r3">② 男學生閱讀落後</a>
+    <a href="#r4">④ 教師人力與家庭支持</a>
+    <a href="#r5">⑤ 適度使用 AI</a>
+    <a href="#r6">⑥ 環境教育與職涯</a>
+  </div>
+</nav>
+
+<section id="snapshot">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">現況一覽</div>
+      <h2>台灣的強項與待補的缺口</h2>
+      <p>以下數據皆取自 PISA 2025 第一冊「中華台北」欄位，並與 OECD 平均對照。</p>
+    </div>
+    <div class="snapshot">
+      <div class="stat"><div class="v">540</div><div class="l">科學平均分數</div><div class="d good">高於 OECD 平均 58 分</div></div>
+      <div class="stat"><div class="v">45.5%</div><div class="l">具成長型思維比例</div><div class="d bad">低於平均 23.8 個百分點</div></div>
+      <div class="stat"><div class="v">91分</div><div class="l">社經優劣勢學生分數差距</div><div class="d bad">高於平均（85 分）</div></div>
+      <div class="stat"><div class="v">-39分</div><div class="l">閱讀性別差距（女高於男）</div><div class="d bad">大於平均（-30 分）</div></div>
+    </div>
+
+    <table class="compare-table" style="margin-top:24px;">
+      <thead><tr><th>指標</th><th>台灣</th><th>OECD 平均</th><th>落差評估</th></tr></thead>
+      <tbody>
+        <tr class="tw"><td>科學／數學／閱讀平均分數</td><td>540／546／508</td><td>482／463／461</td><td class="gap-lo">明顯領先</td></tr>
+        <tr><td>好奇心指數</td><td>-0.13</td><td>0.00</td><td class="gap-hi">低於平均</td></tr>
+        <tr><td>認知適應力指數</td><td>-0.25</td><td>0.01</td><td class="gap-hi">低於平均</td></tr>
+        <tr><td>成長型思維比例</td><td>45.5%</td><td>69.3%</td><td class="gap-hi">落差最大項目之一</td></tr>
+        <tr><td>家庭支持指數</td><td>-0.27</td><td>-0.19</td><td class="gap-hi">略低於平均</td></tr>
+        <tr><td>學校無師資短缺比例</td><td>24.0%</td><td>28.8%</td><td class="gap-hi">師資壓力略高於平均</td></tr>
+        <tr><td>社經優劣勢學生分數差距</td><td>91 分</td><td>85 分</td><td class="gap-hi">公平性有進步空間</td></tr>
+        <tr><td>閱讀性別差距（女－男）</td><td>39 分</td><td>30 分</td><td class="gap-hi">男學生閱讀相對弱勢</td></tr>
+        <tr><td>環境科學表現</td><td>539</td><td>480</td><td class="gap-lo">全球前三高</td></tr>
+        <tr><td>學生環保職涯興趣</td><td>49.6%</td><td>61.6%</td><td class="gap-hi">興趣偏低</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt" id="r1">
+  <div class="wrap">
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">01</div>
+        <div><h3>從「解題精準」轉向「保有好奇心」——鬆綁應試導向教學</h3><div class="tag">對應：好奇心指數、成長型思維、認知適應力</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣學生在科學、數學、閱讀三科均進入全球前十，但好奇心指數（-0.13）、認知適應力（-0.25）皆低於 OECD 平均，成長型思維比例（45.5%）更較平均（69.3%）低了近 24 個百分點——是本次評量中台灣與 OECD 平均落差最大的指標之一。報告同時指出，成長型思維的學生相信社會流動機會的可能性是固定型思維學生的三倍，且與學業韌性高度相關。</p></div>
+        <ul>
+          <li><b>教學層面：</b>在國中教學仍以基礎學力測驗、會考導向的現況下，逐步增加探究式學習與開放式問題比重，讓學生體驗「不一定有標準答案」的科學與數學問題，而非僅止於熟練解題公式。</li>
+          <li><b>評量層面：</b>會考、學測命題可增加需要學生說明推理過程、比較多重解法的題型，降低單純記憶與反覆練習型考題的權重，減少「答錯等於能力不足」的固定型思維訊息。</li>
+          <li><b>教師增能：</b>將「成長型思維」的教學語言（如肯定努力與策略，而非天賦與聰明）納入教師研習課程，並可參考報告中韓國、日本等系統近年教師支持度提升的作法，強化教師在課堂上鼓勵學生從錯誤中學習的具體技巧。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="r2">
+  <div class="wrap">
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">02</div>
+        <div><h3>優先照顧弱勢學生，縮小社經與城鄉表現落差</h3><div class="tag">對應：學業韌性、社經地位與表現的關聯</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣社經優劣勢學生的科學表現差距達 <b>91 分</b>，略高於 OECD 平均（85 分）；弱勢學生中僅 10.9% 具備「學業韌性」（表現進入本國前段），也低於平均（11.9%）。報告特別指出，B-S-J-Z（中國）、加拿大、愛沙尼亞、日本、韓國與中國澳門等 7 個系統，已同時做到「融合度高、社經解釋力低於 10%、表現高於平均」，顯示公平與卓越可以並存。</p></div>
+        <ul>
+          <li><b>資源分配：</b>比照報告點名的標竿系統作法，將教學資源（如減C班額、增加輔導人力）優先且明確地投放至偏鄉、原住民重點學校與弱勢家庭學生集中的都會邊緣學校，而非齊頭式分配。</li>
+          <li><b>及早介入：</b>報告指出弱勢學生更容易落入「低表現」而非單純「低於平均」，建議國中小階段建立基礎學力篩檢機制，針對科學、數學基礎薄弱的弱勢學生提供補救教學，避免落差累積到 15 歲評量時已難以彌補。</li>
+          <li><b>移民╱新住民子女：</b>報告顯示台灣非移民與移民學生表現差距達 54 分；隨新住民子女人數增加，建議強化語言支持與文化銜接課程，避免語言隔閡轉化為學業落差。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="r3">
+  <div class="wrap">
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">03</div>
+        <div><h3>正視男學生的閱讀落後，及早介入而非等到會考</h3><div class="tag">對應：閱讀性別差距、求助行為</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣閱讀表現女學生（528 分）領先男學生（489 分）達 <b>39 分</b>，差距大於 OECD 平均的 30 分；相對地，數學則幾乎沒有性別差距（女 546／男 547）。這顯示落差並非普遍性別能力差異，而是集中在閱讀╱語文領域。</p></div>
+        <ul>
+          <li><b>選材與教法：</b>可參考報告中「學生閱讀習慣改變」的分析，針對男學生偏好的文本類型（如資訊型、圖表型、議題型文本）調整國文╱閱讀課的選文與教學活動設計，而非僅倚賴文學抒情類文本。</li>
+          <li><b>持續閱讀時間：</b>報告指出，全球「倉促作答」比例上升與長文本閱讀能力下滑有關；建議國中階段安排固定的長文本持續默讀（sustained reading）時段，特別關注男學生的閱讀持續力與專注度。</li>
+          <li><b>及早篩檢：</b>閱讀落差在 15 歲時已相當明顯，建議國小高年級即針對男學生進行閱讀理解篩檢與分組扶助，避免拖到國中才處理。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="r4">
+  <div class="wrap">
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">04</div>
+        <div><h3>正視教師人力壓力，同時重建家庭參與</h3><div class="tag">對應：師資短缺、家庭支持指數</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣僅 24.0% 學生就讀「完全無師資短缺」學校，低於 OECD 平均的 28.8%；家庭支持指數（-0.27）也低於平均（-0.19），且報告指出幾乎所有國家 2025 年家庭支持皆較 2022 年下降，男學生與弱勢學生降幅更大。同時，台灣同儕互助課業輔導提供率（71.0%）與教師支持指數（0.33）皆優於平均，顯示學校內部支持系統相對紮實，缺口更多出現在師資供給與家庭端。</p></div>
+        <ul>
+          <li><b>師資供給：</b>持續檢視少子化下的教師員額配置是否確實轉化為班級規模縮小與個別關注時間增加，而非僅反映在整體員額數字上；針對偏鄉與特殊科目（如自然科、雙語師資）短缺問題提出留任誘因。</li>
+          <li><b>家庭參與：</b>報告發現「家長詢問孩子在校情況」與較佳表現相關，建議透過學校日、班親會設計具體的親子對話引導工具（如簡易提問清單），協助雙薪家庭在有限時間內進行有效的學習關心，而非僅止於成績單簽名。</li>
+          <li><b>維持既有優勢：</b>台灣同儕互助課業輔導與教師支持皆表現良好，建議持續投資教師專業發展與同儕學習機制，作為彌補家庭支持不足的替代管道。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="r5">
+  <div class="wrap">
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">05</div>
+        <div><h3>善用既有的數位治理基礎，擴大而非放任 AI 使用</h3><div class="tag">對應：數位教學能量、AI 使用頻率、分心比例</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣學校數位教學能量指數（0.34）優於 OECD 平均（-0.03），科目別數位使用規範比例（80.0%）與無分心比例（53.0%）也都優於平均；但學生每週使用 AI 的比例（40.5%）低於平均（45.5%）。報告指出，「不使用 AI 完成特定作業的學生表現優於使用者」，但「頻繁使用 AI＋具備 AI 素養機會」的學生表現略優——這項機會目前在優勢學生中更普遍，恐加劇「AI 落差」。</p></div>
+        <ul>
+          <li><b>不是禁用，而是搭配素養：</b>台灣已有相對完整的科目別數位使用規範，建議進一步要求規範中明確納入「AI 生成內容查核」的教學步驟（如報告所述的 AI 素養機會），而非僅規範裝置使用時機。</li>
+          <li><b>避免 AI 落差擴大到偏鄉：</b>比照社經落差建議，AI 素養教學機會應優先確保偏鄉、資源相對不足學校的學生也能取得，而非僅集中在都會明星學校的特色課程中。</li>
+          <li><b>維持既有的分心管理：</b>台灣學生分心比例已優於平均，建議持續推動現行的科目別裝置使用規範與教室手機管理措施，作為政策範例向其他系統輸出經驗。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="r6">
+  <div class="wrap">
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">06</div>
+        <div><h3>環境科學表現全球頂尖，卻少有學生想以此為業——銜接綠領職涯</h3><div class="tag">對應：環境科學表現、環保職涯興趣、環境教育公平性</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣環境科學表現（539 分）為全球第三高，僅次於 B-S-J-Z（中國，594）與新加坡（561）；但學生對未來投入環保相關職涯的興趣僅 49.6%，低於 OECD 平均（61.6%），也遠低於越南（93.5%）、印尼（91.6%）等系統。同時，台灣環境科學表現的優劣勢學生差距（92 分）高於平均（85 分），顯示環境教育本身也存在公平性缺口。</p></div>
+        <ul>
+          <li><b>職涯銜接：</b>將既有紮實的環境科學課程內容，與台灣正在發展的綠色產業（如再生能源、循環經濟、永續供應鏈）具體職涯路徑連結，讓學生看見「懂環境科學」與「未來工作」之間的關聯，而非僅止於學科知識。</li>
+          <li><b>縮小環境教育的城鄉落差：</b>報告指出課堂中的環境學習機會與學生的環境素養、投入承諾正相關；建議優先強化資源相對不足學校的戶外環境教育與實作機會，而非僅仰賴教室內的知識講授。</li>
+          <li><b>將知識轉化為行動承諾：</b>報告特別提醒「關心環境但未必投入具體行動」的落差普遍存在，建議透過服務學習、社區環境行動方案，讓學生將既有的環境知識實際轉化為參與行為。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote">
+      <b>總結：</b>台灣教育系統的核心挑戰，不是「教得不夠好」，而是報告開宗明義所指出的：教育系統需要在核心學科上「聚焦深度而非廣度」，並讓課綱、教學與評量彼此一致地支持這個方向——台灣在深度知識傳授上已相當成功，下一步的關鍵在於讓學生同時保有好奇心、面對挑戰的韌性，以及縮小社經、性別與城鄉之間的機會落差。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為基於 OECD《PISA 2025 Results (Volume I): Future-Ready Students》數據所做之原創政策分析，非原文翻譯。</div>
+    <div>資料來源：OECD, PISA 2025 Database</div>
+  </div>
+</footer>
+
+</body>
+</html>
