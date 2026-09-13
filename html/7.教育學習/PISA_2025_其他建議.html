@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>台灣教育的其他觀察</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F0F3F0; --surface:#FFFFFF; --surface-2:#E4EBE3; --line:#D2DED0;
+  --ink:#1C2620; --muted:#57685A;
+  --accent:#3A6B4A; --accent-deep:#1F3F2A; --accent-soft:#DCEBDF;
+  --gold:#9C7A2E; --gold-soft:#F1E7CC;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131A15; --surface:#1E271F; --surface-2:#26312A; --line:#354238;
+    --ink:#E9F1E9; --muted:#A7BBA9;
+    --accent:#7FBE93; --accent-deep:#A6D9B4; --accent-soft:#233A2A;
+    --gold:#DCB966; --gold-soft:#3A2E17;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131A15; --surface:#1E271F; --surface-2:#26312A; --line:#354238;
+  --ink:#E9F1E9; --muted:#A7BBA9;
+  --accent:#7FBE93; --accent-deep:#A6D9B4; --accent-soft:#233A2A;
+  --gold:#DCB966; --gold-soft:#3A2E17;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.num{font-family:"Roboto Mono","Noto Sans TC",monospace;font-variant-numeric:tabular-nums;}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #0F241A 100%);color:#EAF5EE;padding-block:52px 36px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#CFE3C7;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#D9EBD9;max-width:66ch;}
+
+section{padding-block:40px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:24px;max-width:70ch;}
+.section-head h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.rec-head{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:var(--accent-deep);color:#fff;}
+.rec-num{font-family:"Roboto Mono",monospace;font-size:1.5rem;font-weight:700;color:var(--gold);flex:none;line-height:1.1;}
+.rec-head h3{color:#fff;font-size:1.1rem;margin-bottom:3px;}
+.rec-head .tag{font-size:.76rem;color:#CFE3C7;}
+.rec-body{padding:18px 22px;}
+.rec-body .evidence{background:var(--surface-2);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:14px;font-size:.89rem;}
+.rec-body .evidence b{color:var(--accent);}
+.rec-body ul{margin:0;padding-left:1.2em;}
+.rec-body li{margin-bottom:7px;}
+.rec-body li:last-child{margin-bottom:0;}
+.rec-body li b{color:var(--accent-deep);}
+.rec.strength .rec-head{background:var(--violet);}
+.rec.strength .rec-num{color:#fff;}
+.rec.strength .evidence{border-left-color:var(--violet);}
+.rec.strength .evidence b{color:var(--violet);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:right;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line);font-family:"Roboto Mono",monospace;}
+.compare-table td:first-child{text-align:left;font-family:"Noto Sans TC",sans-serif;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+.flag-hi{color:var(--bad);font-weight:700;}
+.flag-lo{color:var(--good);font-weight:700;}
+.flag-mid{color:var(--gold);font-weight:700;}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:16px 20px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1rem;margin-top:22px;}
+
+footer{padding-block:30px;background:var(--accent-deep);color:#CFE3C7;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PISA 2025 × 台灣教育觀察（續篇）</div>
+    <h1>分數之外：<br>歸屬感、社會流動信念與人才庫</h1>
+    <p class="sub">前兩份分析談了學習心態、公平性與閱讀力。這篇補上三個容易被亮眼分數掩蓋的面向——學生的學校歸屬感、對社會流動的信念，以及如何把電腦化問題解決的全球頂尖表現，轉化為科學人才政策——並指出兩項台灣做得好、值得延續甚至輸出的經驗。</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">現況對照</div>
+      <h2>本篇涉及的指標</h2>
+    </div>
+    <table class="compare-table">
+      <thead><tr><th>指標</th><th>台灣</th><th>OECD 平均</th><th>評估</th></tr></thead>
+      <tbody>
+        <tr><td>學校歸屬感指數</td><td>0.01</td><td>0.09</td><td class="flag-hi">略低於平均</td></tr>
+        <tr><td>認為社會地位可以改變的比例</td><td>52.4%</td><td>66.4%</td><td class="flag-hi">落差最大項目之一</td></tr>
+        <tr><td>求助行為指數</td><td>0.36</td><td>0.00</td><td class="flag-lo">明顯優於平均</td></tr>
+        <tr><td>電腦化問題解決分數</td><td>551</td><td>500</td><td class="flag-lo">全球前六</td></tr>
+        <tr><td>常規紀律指數</td><td>0.59</td><td>0.14</td><td class="flag-lo">全球數一數二</td></tr>
+        <tr><td>無翹課比例</td><td>89.4%</td><td>66.1%</td><td class="flag-lo">全球數一數二</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">三項需要留意的缺口</div>
+      <h2>成績頂尖，不代表學生感覺良好</h2>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">01</div>
+        <div><h3>學校歸屬感偏低，紀律良好不等於學生感覺被接納</h3><div class="tag">對應：學校歸屬感指數 0.01（低於平均 0.09）</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣學生在「無翹課」（89.4%）與「常規紀律」（0.59）兩項指標上表現全球數一數二，但「學校歸屬感」指數（0.01）卻略低於 OECD 平均（0.09）。報告指出，歸屬感與科學表現、好奇心、目標設定、求助行為等多項正向指標相關——紀律良好的教室，未必等於學生感覺自己被接納、重視。</p></div>
+        <ul>
+          <li><b>區分「服從」與「歸屬」：</b>學校常規管理若過度側重排名、比較與服從式管理，可能提升紀律與出席率，卻無法同步提升學生的情感連結；建議在班級經營中增加導師與學生一對一對話、班級事務參與決策的比重。</li>
+          <li><b>關注過度排程的副作用：</b>台灣學生課後補習、考試準備時間普遍偏長，建議學校與家長共同檢視學生行事曆是否留有足夠的同儕互動、社團參與時間，而非將所有時間填滿學科學習。</li>
+          <li><b>導入定期歸屬感調查：</b>建議校方比照 PISA 問卷精神，定期（而非僅靠導師觀察）以簡易量表追蹤班級學生的歸屬感與孤獨感，及早發現看似「乖巧但疏離」的學生。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <div class="rec-num">02</div>
+        <div><h3>學生不太相信「努力可以翻轉階級」——這比分數更值得正視</h3><div class="tag">對應：社會流動信念 52.4%（低於平均 66.4%）</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣僅 52.4% 學生不同意「社會地位無法真正改變」，明顯低於 OECD 平均的 66.4%，也是台灣與全球平均落差最大的指標之一。報告特別指出，相信社會流動機會的學生，展現成長型思維的可能性是不相信者的三倍，且與學業韌性密切相關——這與台灣成長型思維比例偏低（45.5%）很可能是同一組現象的兩面。</p></div>
+        <ul>
+          <li><b>生涯教育的角色：</b>國高中生涯規劃課程，除了介紹學群學系，也應納入「努力與策略如何實際改變個人處境」的具體案例（如技職體系翻轉、非明星高中升學案例），而非僅呈現單一的升學排名敘事。</li>
+          <li><b>檢視升學文化的隱性訊息：</b>過度強調「一試定終身」「明星高中／大學」的升學文化，可能無意間強化「出身決定一切」的宿命感；建議教育主管機關與媒體宣導多元升學與技職成功案例時，更明確連結「努力可以帶來改變」的訊息。</li>
+          <li><b>與成長型思維教學整合：</b>此議題與前述成長型思維建議高度相關，建議兩者在教師研習與課程設計上一併處理，而非個別看待——例如在生涯課程中，直接引用學生自身「透過努力克服挑戰」的班級經驗作為教材。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">兩項值得延續與輸出的優勢</div>
+      <h2>台灣做對的事，也值得被看見</h2>
+    </div>
+
+    <div class="rec strength">
+      <div class="rec-head">
+        <div class="rec-num">03</div>
+        <div><h3>求助行為是隱藏的強項，應該被有意識地放大</h3><div class="tag">對應：求助行為指數 0.36，全球數一數二</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣學生的求助行為指數（0.36）遠高於 OECD 平均（0.00），與好奇心（-0.13）、成長型思維（45.5%）等偏弱的指標形成對比——顯示台灣學生「願意主動求助」，但整體學習動機與心態仍待加強。這是報告中少數台灣明顯優於平均的學習行為指標，值得作為建構其他能力的起點。</p></div>
+        <ul>
+          <li><b>以求助文化為槓桿：</b>既然學生已習慣主動求助，建議教師與補救教學系統進一步優化「求助後的引導品質」，確保學生獲得的不只是正確答案，而是能延伸為好奇探索的鷹架式引導。</li>
+          <li><b>同儕互助制度化：</b>台灣同儕互助課業輔導提供率（71.0%）本已高於平均，建議進一步將「教別人」納入同儕輔導設計，因為教導他人本身就是提升好奇心與深度理解的有效方式。</li>
+          <li><b>作為心理安全感的證據：</b>求助行為與心理安全感有關，這項強項也可作為佐證，說明台灣課堂在某些面向上其實具備支持性氛圍，值得在推動歸屬感相關政策時作為既有基礎。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec strength">
+      <div class="rec-head">
+        <div class="rec-num">04</div>
+        <div><h3>電腦化問題解決全球前六，應銜接科學人才培育政策</h3><div class="tag">對應：電腦化問題解決 551 分，全球排名第五</div></div>
+      </div>
+      <div class="rec-body">
+        <div class="evidence"><b>數據依據：</b>台灣電腦化問題解決分數（551 分）僅次於中國澳門、新加坡、B-S-J-Z（中國）與日本，居全球第五；報告估算全球約 190 萬名科學頂尖表現學生中，台灣貢獻 1.9%，在預期投入 STEM 職業的頂尖人才庫中貢獻略升至 2.1%。這代表台灣學生不僅科學知識紮實，運用運算工具解決問題的實作能力也位居世界前段。</p></div>
+        <ul>
+          <li><b>及早銜接大學與產業：</b>建議將這群電腦化問題解決能力頂尖的學生，及早納入大學先修、產業實習或研究型高中專班的辨識機制，避免其能力僅停留在測驗分數，而未轉化為實際的學術或職涯路徑。</li>
+          <li><b>擴大而非窄化受益群體：</b>報告同時提醒，AI 與數位素養機會目前更集中在優勢學生身上；建議電腦化問題解決的強項培育計畫，同步檢視是否過度集中在特定明星高中或都會學校，錯失其他學校中同樣具備潛力的學生。</li>
+          <li><b>與科學教育政策整合：</b>電腦化問題解決與科學表現高度相關但非完全重疊，建議在 108 課綱的科技與自然科學領域中，更明確地將「運算思維」列為與科學探究並重的核心素養，而非附屬於資訊科技單一科目。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote">
+      <b>總結：</b>把四份分析放在一起看，台灣教育系統呈現的圖像相當一致：學科知識與紀律管理是強項，但學生的內在動機、對未來的信念，以及情感層面的歸屬感，才是接下來十年真正的政策戰場。報告開頭即指出，具韌性、能適應變化的「適任學習者」需要素養與投入兩者兼具——台灣目前在素養上遙遙領先，投入面向才是下一步該補齊的拼圖。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為基於 OECD《PISA 2025 Results (Volume I): Future-Ready Students》數據所做之原創政策分析，非原文翻譯。</div>
+    <div>資料來源：OECD, PISA 2025 Database</div>
+  </div>
+</footer>
+
+</body>
+</html>
