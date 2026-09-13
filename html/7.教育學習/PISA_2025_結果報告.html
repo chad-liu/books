@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>PISA 2025 結果報告</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1F4F6;
+  --surface:#FFFFFF;
+  --surface-2:#E6EDF1;
+  --line:#D6E0E5;
+  --ink:#152531;
+  --muted:#54697A;
+  --accent:#1F6F8B;
+  --accent-deep:#123B4D;
+  --accent-soft:#DCEBF0;
+  --gold:#B5791E;
+  --gold-soft:#F5E9D3;
+  --good:#2E7D5B;
+  --good-soft:#DEEFE6;
+  --bad:#B23A3A;
+  --bad-soft:#F6E2E2;
+  --tw:#B5461B;
+  --tw-soft:#FCE6DA;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --bg:#101820;
+    --surface:#182430;
+    --surface-2:#1F2E3B;
+    --line:#2C3E4C;
+    --ink:#EAF1F4;
+    --muted:#9BB0BE;
+    --accent:#5FB3D1;
+    --accent-deep:#8FCBE2;
+    --accent-soft:#1C3843;
+    --gold:#E0AC55;
+    --gold-soft:#3A2E17;
+    --good:#6FCBA0;
+    --good-soft:#153629;
+    --bad:#E48787;
+    --bad-soft:#3A1E1E;
+    --tw:#F0916A;
+    --tw-soft:#3C2318;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101820;
+  --surface:#182430;
+  --surface-2:#1F2E3B;
+  --line:#2C3E4C;
+  --ink:#EAF1F4;
+  --muted:#9BB0BE;
+  --accent:#5FB3D1;
+  --accent-deep:#8FCBE2;
+  --accent-soft:#1C3843;
+  --gold:#E0AC55;
+  --gold-soft:#3A2E17;
+  --good:#6FCBA0;
+  --good-soft:#153629;
+  --bad:#E48787;
+  --bad-soft:#3A1E1E;
+  --tw:#F0916A;
+  --tw-soft:#3C2318;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:"Noto Serif TC",serif;
+  text-wrap:balance;
+  margin:0;
+  color:var(--ink);
+}
+.num{font-family:"Roboto Mono","Noto Sans TC",monospace;font-variant-numeric:tabular-nums;}
+a{color:var(--accent-deep);}
+
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;}
+
+/* ---- HERO ---- */
+.hero{
+  background:
+    radial-gradient(1100px 480px at 85% -10%, var(--accent-soft), transparent 60%),
+    linear-gradient(180deg, var(--accent-deep) 0%, #0F2A38 100%);
+  color:#EAF4F7;
+  padding-block:56px 40px;
+  border-bottom:6px solid var(--gold);
+}
+.hero .eyebrow{
+  font-size:0.8rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#BFE3EE;font-weight:700;margin-bottom:14px;
+}
+.hero h1{
+  font-size:clamp(1.8rem,4.4vw,3rem);
+  font-weight:900;color:#fff;
+  margin-bottom:10px;
+}
+.hero .sub{
+  font-size:1.05rem;color:#CFE6EC;max-width:60ch;margin-bottom:28px;
+}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;
+}
+.hero-stat{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;
+  padding:14px 16px;
+}
+.hero-stat .v{font-family:"Roboto Mono",monospace;font-weight:700;font-size:1.5rem;color:#fff;}
+.hero-stat .l{font-size:.8rem;color:#B9D8E1;margin-top:2px;}
+
+/* ---- NAV ---- */
+nav.toc{
+  position:sticky;top:0;z-index:20;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  overflow-x:auto;
+  white-space:nowrap;
+}
+nav.toc .wrap{display:flex;gap:4px;padding-block:10px;}
+nav.toc a{
+  flex:none;
+  font-size:.86rem;font-weight:500;color:var(--muted);
+  text-decoration:none;padding:8px 12px;border-radius:999px;
+}
+nav.toc a:hover{background:var(--surface-2);color:var(--ink);}
+
+/* ---- SECTIONS ---- */
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{
+  display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);background:var(--accent-soft);
+  padding:4px 12px;border-radius:999px;margin-bottom:14px;
+}
+.section-head{margin-bottom:26px;max-width:70ch;}
+.section-head h2{font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.98rem;}
+
+/* ---- narrative cards ---- */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media (max-width:820px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:20px 22px;
+}
+section.alt .card{background:var(--bg);}
+.card h3{font-size:1.05rem;margin-bottom:10px;color:var(--accent-deep);}
+.card ul{margin:0;padding-left:1.15em;color:var(--ink);}
+.card li{margin-bottom:8px;}
+.card li:last-child{margin-bottom:0;}
+.card li b{color:var(--accent-deep);}
+
+.quote{
+  border-left:4px solid var(--gold);
+  background:var(--gold-soft);
+  padding:16px 20px;border-radius:0 10px 10px 0;
+  font-family:"Noto Serif TC",serif;font-size:1.02rem;color:var(--ink);
+}
+.quote cite{display:block;margin-top:8px;font-family:"Noto Sans TC",sans-serif;font-style:normal;font-size:.85rem;color:var(--muted);}
+
+/* ---- key figure strip ---- */
+.figstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px;}
+@media (max-width:820px){.figstrip{grid-template-columns:repeat(2,1fr);}}
+.figbox{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:16px;text-align:center;
+}
+.figbox .big{font-family:"Roboto Mono",monospace;font-weight:700;font-size:1.7rem;color:var(--accent-deep);}
+.figbox .cap{font-size:.82rem;color:var(--muted);margin-top:4px;}
+.figbox .delta{font-size:.85rem;font-weight:700;}
+.delta.bad{color:var(--bad);}
+.delta.good{color:var(--good);}
+
+/* ---- trend mini chart ---- */
+.trendchart{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;}
+.trendchart svg text{font-family:"Noto Sans TC",sans-serif;fill:var(--muted);font-size:11px;}
+.trendchart .cap{font-size:.85rem;color:var(--muted);margin-top:10px;}
+.legend{display:flex;gap:16px;font-size:.82rem;color:var(--muted);margin-top:8px;flex-wrap:wrap;}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- data table (main) ---- */
+.tablewrap{
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);
+}
+.tablescroll{overflow-x:auto;max-height:640px;overflow-y:auto;}
+table.data{
+  border-collapse:collapse;width:100%;font-size:.86rem;min-width:920px;
+}
+table.data thead th{
+  position:sticky;top:0;z-index:2;
+  background:var(--accent-deep);color:#fff;
+  font-weight:700;text-align:right;padding:10px 12px;
+  border-bottom:2px solid var(--gold);
+  white-space:nowrap;
+}
+table.data thead th:first-child{text-align:left;position:sticky;left:0;z-index:3;}
+table.data thead tr.grp th{background:#0F2A38;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;}
+table.data tbody td{
+  padding:8px 12px;text-align:right;border-bottom:1px solid var(--line);
+  font-family:"Roboto Mono",monospace;white-space:nowrap;
+}
+table.data tbody td:first-child{
+  text-align:left;font-family:"Noto Sans TC",sans-serif;font-weight:500;
+  position:sticky;left:0;background:var(--surface);z-index:1;
+  border-right:1px solid var(--line);
+}
+table.data tbody tr:nth-child(even) td{background:var(--surface-2);}
+table.data tbody tr:nth-child(even) td:first-child{background:var(--surface-2);}
+table.data tbody tr.oecd td{background:var(--accent-soft)!important;font-weight:700;}
+table.data tbody tr.tw td{background:var(--tw-soft)!important;}
+table.data tbody tr.tw td:first-child{color:var(--tw);font-weight:700;}
+.dif-pos{color:var(--good);font-weight:700;}
+.dif-neg{color:var(--bad);font-weight:700;}
+.controls{display:flex;gap:10px;padding:14px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);}
+.controls input[type=search]{
+  flex:1;min-width:180px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);
+  background:var(--bg);color:var(--ink);font-family:inherit;font-size:.9rem;
+}
+.controls input[type=search]:focus{outline:2px solid var(--accent);}
+.controls .hint{font-size:.8rem;color:var(--muted);}
+.swatch{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+
+/* ---- dimension cards (I.2 - I.8) ---- */
+.dim-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+}
+.dim-head{
+  background:var(--accent-deep);color:#fff;padding:14px 18px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+}
+.dim-head h3{color:#fff;font-size:1.05rem;}
+.dim-head span{font-size:.78rem;color:#BFE3EE;}
+.dim-body{padding:16px 18px;}
+.dim-body p.takeaway{color:var(--muted);font-size:.92rem;margin:0 0 14px;}
+.mini-table{width:100%;border-collapse:collapse;font-size:.84rem;}
+.mini-table th{
+  text-align:right;font-weight:700;color:var(--muted);padding:6px 8px;
+  border-bottom:1px solid var(--line);font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;
+}
+.mini-table th:first-child{text-align:left;}
+.mini-table td{
+  padding:7px 8px;text-align:right;border-bottom:1px solid var(--line);
+  font-family:"Roboto Mono",monospace;
+}
+.mini-table td:first-child{text-align:left;font-family:"Noto Sans TC",sans-serif;}
+.mini-table tr.hl td{background:var(--tw-soft);}
+.mini-table tr.hl td:first-child{color:var(--tw);font-weight:700;}
+.mini-table tr.avg td{background:var(--accent-soft);font-weight:700;}
+.tag{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:999px;font-weight:700;}
+.tag.top{background:var(--gold-soft);color:var(--gold);}
+.tag.low{background:var(--bad-soft);color:var(--bad);}
+
+footer{
+  padding-block:36px;background:var(--accent-deep);color:#BFE3EE;font-size:.85rem;
+}
+footer a{color:#fff;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+
+.note{font-size:.82rem;color:var(--muted);margin-top:10px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">OECD・國際學生能力評量計畫（PISA）</div>
+    <h1>PISA 2025 結果報告（第一冊）<br>面向未來的學生</h1>
+    <p class="sub">2025 年有超過 76 萬名學生、代表 91 個國家與經濟體約 3,300 萬名 15 歲學生參與評量。本屆以科學為主科，並涵蓋閱讀、數學與「數位世界學習」的創新評量。本頁整理報告重點內容與關鍵數據表，並將全文翻譯為繁體中文。</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="v">91</div><div class="l">參與國家╱經濟體</div></div>
+      <div class="hero-stat"><div class="v">76萬+</div><div class="l">參與學生數</div></div>
+      <div class="hero-stat"><div class="v">482</div><div class="l">OECD 科學平均分數</div></div>
+      <div class="hero-stat"><div class="v">20%</div><div class="l">三科皆未達基礎水準</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#overview">報告概觀</a>
+    <a href="#summary">執行摘要</a>
+    <a href="#chart">關鍵趨勢圖</a>
+    <a href="#table1">表現總覽（表 I.1）</a>
+    <a href="#dimensions">六大面向精簡對照</a>
+    <a href="#whatispisa">什麼是 PISA？</a>
+    <a href="#ch1">第一章</a>
+    <a href="#ch2">第二章</a>
+    <a href="#ch3">第三章</a>
+    <a href="#ch4">第四章</a>
+    <a href="#ch5">第五章</a>
+    <a href="#source">資料來源</a>
+  </div>
+</nav>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">序言重點</div>
+      <h2>閱讀力衰退、AI 崛起，PISA 2025 揭示的兩大轉折</h2>
+      <p>本報告由 OECD 秘書長 Mathias Cormann 與教育技能總監 Andreas Schleicher 共同撰寫前言，以下為重點翻譯整理。</p>
+    </div>
+    <div class="grid-2">
+      <div class="quote">
+        「PISA 從不只是指出問題所在，它的企圖始終是拉高『可能性』的標準——利用國際一致的量尺評量學生所知所能，並連結學生、教師、學校與家長的資料，理解表現差異的成因。」
+        <cite>—— Andreas Schleicher，教育技能總監</cite>
+      </div>
+      <div class="quote">
+        「政策制定者現在有這份獨特證據可供借鏡：聚焦少數核心主題並教到精熟，勝過膚淺地教完落落長的課綱清單。教師是讓教育體系真正運作的關鍵。」
+        <cite>—— Mathias Cormann，OECD 秘書長</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">十年趨勢</div>
+      <h2>科學、數學、閱讀表現十年來持續下滑</h2>
+      <p>OECD 國家平均而言，2015 至 2025 年間：科學分數下降 <b>7</b> 分（489→482）、數學下降 <b>22</b> 分（相當於超過一年學習進度）、閱讀下降幅度最大，達 <b>28</b> 分。</p>
+    </div>
+    <div class="figstrip">
+      <div class="figbox"><div class="big">482</div><div class="cap">科學平均分數</div><div class="delta bad">▼ 7 分（2015-2025）</div></div>
+      <div class="figbox"><div class="big">461</div><div class="cap">閱讀平均分數</div><div class="delta bad">▼ 28 分（2015-2025）</div></div>
+      <div class="figbox"><div class="big">463</div><div class="cap">數學平均分數</div><div class="delta bad">▼ 22 分（2015-2025）</div></div>
+      <div class="figbox"><div class="big">8.9%</div><div class="cap">「倉促作答」比例</div><div class="delta bad">2018 年以來近乎倍增</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">執行摘要</div>
+      <h2>六大重點發現</h2>
+      <p>以下依報告原始架構整理，涵蓋學生能力、學習態度、學習環境、數位化與 AI、家庭學校支持，以及環境素養六大主題。</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card">
+        <h3>① 學生知識與能力</h3>
+        <ul>
+          <li>中國 <b>京滬蘇浙（B-S-J-Z）</b>與<b>新加坡</b>在科學、數學、閱讀三科均為最頂尖表現；愛沙尼亞、日本、韓國、中國澳門、<b>中華台北</b>與英國同列三科前十。</li>
+          <li>約四分之三學生具備科學基礎能力（Level 2 以上）。</li>
+          <li>電腦化問題解決能力最高者為中國澳門（572）、新加坡（563）、B-S-J-Z（560）、日本（557）。</li>
+          <li>PISA 2025 錄得科學、閱讀、數學史上（有紀錄以來）最低的 OECD 平均表現。</li>
+          <li>哥斯大黎加、斯洛伐克、土耳其、英國（OECD 內）以及柬埔寨、薩爾瓦多、喬治亞、約旦、蒙古、蒙特內哥羅、菲律賓、沙烏地阿拉伯、泰國、阿聯、烏拉圭、烏茲別克（OECD 外）科學分數逆勢上升。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>② 學習投入與心態</h3>
+        <ul>
+          <li>57% 學生不覺得學新事物無聊，但此比例自 2022 年起在 60 個系統中下降，無任何系統出現相反趨勢。</li>
+          <li>60% 學生表示遇到困難會加倍努力，此比例在 32 個系統下降、17 個系統上升，馬來西亞與印尼增幅最大。</li>
+          <li>女學生的好奇心、恆毅力、求助行為、目標設定與成長型思維普遍高於男學生；男學生則在認知適應力略高。</li>
+          <li>社經優勢學生在各項投入指標上均高於弱勢學生。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>③ 安全與公平的學習環境</h3>
+        <ul>
+          <li>學生的學校歸屬感自 2022 年起在 39 個系統中提升，48 個系統中孤獨感學生比例下降。</li>
+          <li>2015-2025 年間，37 個教育系統的科學課堂常規紀律改善，韓國與克羅埃西亞尤其顯著。</li>
+          <li>霸凌與較低學業表現及歸屬感相關；網路霸凌比例雖低（3%），卻對應最大的表現落差。</li>
+          <li>社經背景可解釋 12% 的國內科學表現差異；2022-2025 年間差距縮小，主要來自優勢學生表現下滑，而非弱勢學生進步。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>④ 數位化與人工智慧</h3>
+        <ul>
+          <li>適度使用數位裝置學習與較佳表現相關；但用於課堂休閒娛樂時，表現明顯下滑。</li>
+          <li>平均 28% 學生表示同儕在大多數或每一堂科學課都會被數位裝置分心；B-S-J-Z、日本、韓國此比例不到 10%。</li>
+          <li>有明確手機使用政策（禁止或清楚規範）的學校，學生分心比例較低。</li>
+          <li>不使用 AI 完成特定作業的學生，表現優於使用者；但「頻繁使用 AI ＋具備 AI 素養機會」的學生表現略優——此機會在優勢學生中更普遍，恐加劇「AI 落差」。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>⑤ 家庭與學校支持</h3>
+        <ul>
+          <li>半數國家的學生反映科學課堂教師支持較 2015 年提升，韓國、日本、印尼、克羅埃西亞、斯洛伐克與越南增幅最大。</li>
+          <li>幾乎所有國家與經濟體的家庭支持均較 2022 年下降，男學生與弱勢學生降幅尤大。</li>
+          <li>提供同儕互助課業輔導與較佳科學表現相關。</li>
+          <li>校長回報教師短缺與師生比較 2022 年改善，但仍高於 2018 年水準；教材短缺與數位教學準備不足的疑慮則上升。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>⑥ 學生與環境議題</h3>
+        <ul>
+          <li>平均 74% 學生達到環境科學基礎能力（Level 2）。</li>
+          <li>表現較佳學生通常展現更強的環境意識、個人能動性與集體效能信念。</li>
+          <li>越南與印尼超過 90% 學生有興趣透過未來職涯貢獻環境保護，OECD 平均為 62%，女學生、社經優勢學生、高表現學生與具環保態度學生比例更高。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="chart">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">關鍵圖表</div>
+      <h2>三科表現十年趨勢（OECD 平均，2000-2025）</h2>
+      <p>翻譯自報告〈Infographic 1〉。分數自 2012（閱讀）／2015（科學、數學）左右起持續下滑，2022 至 2025 年跌勢未見反轉。</p>
+    </div>
+    <div class="trendchart">
+      <svg viewBox="0 0 860 320" width="100%" role="img" aria-label="科學、閱讀、數學十年趨勢折線圖">
+        <!-- axes -->
+        <line x1="70" y1="20" x2="70" y2="270" stroke="var(--line)" stroke-width="1"/>
+        <line x1="70" y1="270" x2="820" y2="270" stroke="var(--line)" stroke-width="1"/>
+        <text x="30" y="65">520</text>
+        <text x="30" y="115">500</text>
+        <text x="30" y="165">480</text>
+        <text x="30" y="215">460</text>
+        <line x1="70" y1="60" x2="820" y2="60" stroke="var(--line)" stroke-width="0.5" stroke-dasharray="3,4"/>
+        <line x1="70" y1="110" x2="820" y2="110" stroke="var(--line)" stroke-width="0.5" stroke-dasharray="3,4"/>
+        <line x1="70" y1="160" x2="820" y2="160" stroke="var(--line)" stroke-width="0.5" stroke-dasharray="3,4"/>
+        <line x1="70" y1="210" x2="820" y2="210" stroke="var(--line)" stroke-width="0.5" stroke-dasharray="3,4"/>
+
+        <!-- x labels: 2000 2003 2006 2009 2012 2015 2018 2022 2025 -->
+        <g>
+          <text x="70" y="290" text-anchor="middle">2000</text>
+          <text x="163" y="290" text-anchor="middle">2003</text>
+          <text x="256" y="290" text-anchor="middle">2006</text>
+          <text x="349" y="290" text-anchor="middle">2009</text>
+          <text x="442" y="290" text-anchor="middle">2012</text>
+          <text x="535" y="290" text-anchor="middle">2015</text>
+          <text x="628" y="290" text-anchor="middle">2018</text>
+          <text x="721" y="290" text-anchor="middle">2022</text>
+          <text x="814" y="290" text-anchor="middle">2025</text>
+        </g>
+
+        <!-- Science line (approx OECD trend 500->482) -->
+        <polyline fill="none" stroke="var(--accent)" stroke-width="3"
+          points="70,102 163,100 256,97 349,95 442,90 535,90 628,100 721,148 814,163"/>
+        <!-- Maths line (approx 500->463, sharper fall after 2015) -->
+        <polyline fill="none" stroke="var(--gold)" stroke-width="3"
+          points="70,102 163,98 256,96 349,100 442,95 535,90 628,112 721,180 814,213"/>
+        <!-- Reading line (peaks ~2012 then falls) -->
+        <polyline fill="none" stroke="var(--tw)" stroke-width="3" stroke-dasharray="2,0"
+          points="70,102 163,95 256,88 349,80 442,68 535,90 628,108 721,190 814,213"/>
+
+        <circle cx="814" cy="163" r="5" fill="var(--accent)"/>
+        <circle cx="814" cy="213" r="5" fill="var(--gold)"/>
+        <circle cx="814" cy="213" r="5" fill="var(--tw)"/>
+      </svg>
+      <div class="legend">
+        <span><i style="background:var(--accent)"></i>科學（489 → 482）</span>
+        <span><i style="background:var(--gold)"></i>數學（485 → 463）</span>
+        <span><i style="background:var(--tw)"></i>閱讀（489 → 461，2012 年後降幅最陡）</span>
+      </div>
+      <p class="cap">曲線依報告文字敘述之分數變化趨勢重繪，用於呈現走勢方向，非逐點精確數據；正式數值請見表 I.2.9（原文第 101 頁）。</p>
+    </div>
+  </div>
+</section>
+
+<section id="table1">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">表 I.1</div>
+      <h2>科學、閱讀、數學與電腦化問題解決表現總覽</h2>
+      <p>依 2025 年科學平均分數由高至低排列。橘色欄為 2022→2025 短期變化（粗體代表統計上顯著），藍色欄為頂尖表現者（Level 5-6）與低表現者（低於 Level 2）比例。<span class="swatch" style="background:var(--tw)"></span>標示為中華台北（台灣）。帶 * 之經濟體詮釋時須留意抽樣註記，詳見原文〈讀者指南〉。</p>
+    </div>
+
+    <div class="tablewrap">
+      <div class="controls">
+        <input type="search" id="t1search" placeholder="搜尋國家／經濟體，例如：台灣、日本、Korea…">
+        <span class="hint">共 <span id="t1count">0</span> 筆・可搜尋中英文名稱</span>
+      </div>
+      <div class="tablescroll">
+        <table class="data" id="t1">
+          <thead>
+            <tr class="grp">
+              <th></th><th colspan="4">2025 年平均分數</th><th colspan="3">2022→2025 變化</th><th colspan="2">頂尖／低表現占比</th>
+            </tr>
+            <tr>
+              <th>國家／經濟體</th><th>科學</th><th>閱讀</th><th>數學</th><th>問題解決</th>
+              <th>科學</th><th>閱讀</th><th>數學</th>
+              <th>頂尖 %</th><th>低表現 %</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="note">資料來源：OECD, PISA 2025 Database, Table I.1（原文第 28-29 頁）。m 表示無資料；* 表示須留意抽樣註記。</p>
+  </div>
+</section>
+
+<section class="alt" id="dimensions">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">表 I.2 - I.8　精簡對照</div>
+      <h2>其他六大面向：OECD 平均 vs. 中華台北 vs. 極端值</h2>
+      <p>以下七張表原文皆含約 90 個國家╱經濟體完整數據，因篇幅限制僅摘錄 OECD 平均、<span class="swatch" style="background:var(--tw)"></span>中華台北，以及各指標最高、最低的代表性經濟體，完整原始表格請參考文末來源連結。</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="dim-card">
+        <div class="dim-head"><h3>表 I.2　社經地位與移民背景</h3><span>科學表現</span></div>
+        <div class="dim-body">
+          <p class="takeaway">中華台北社經變異解釋力（11.4%）接近 OECD 平均，但優劣勢學生分數差距達 91 分，高於平均的 85 分；移民學生表現落後非移民學生 54 分。</p>
+          <table class="mini-table">
+            <thead><tr><th>國家／經濟體</th><th>社經解釋變異 %</th><th>弱勢中的資優生 %</th><th>優劣勢差距</th><th>非移民分數</th><th>移民分數</th></tr></thead>
+            <tbody>
+              <tr class="avg"><td>OECD 平均</td><td>11.6</td><td>11.9</td><td>85</td><td>497</td><td>455</td></tr>
+              <tr class="hl"><td>中華台北</td><td>11.4</td><td>10.9</td><td>91</td><td>543</td><td>489</td></tr>
+              <tr><td>中國澳門<span class="tag top">最公平</span></td><td>3.7</td><td>18.7</td><td>45</td><td>533</td><td>550</td></tr>
+              <tr><td>肯亞<span class="tag low">變異最小但分數低</span></td><td>0.2</td><td>25.7</td><td>8</td><td>352</td><td>294</td></tr>
+              <tr><td>盧安達<span class="tag low">解釋力最高</span></td><td>37.8</td><td>3.8</td><td>177</td><td>348</td><td>327</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-head"><h3>表 I.3　性別差異</h3><span>科學 / 閱讀 / 數學</span></div>
+        <div class="dim-body">
+          <p class="takeaway">OECD 平均閱讀女學生領先男學生 30 分，數學則男學生領先 13 分；中華台北模式相近，惟男學生數學僅微幅領先。</p>
+          <table class="mini-table">
+            <thead><tr><th>國家／經濟體</th><th>科學(女/男)</th><th>閱讀(女/男)</th><th>數學(女/男)</th></tr></thead>
+            <tbody>
+              <tr class="avg"><td>OECD 平均</td><td>483 / 481</td><td>476 / 446</td><td>456 / 470</td></tr>
+              <tr class="hl"><td>中華台北</td><td>545 / 535</td><td>528 / 489</td><td>546 / 547</td></tr>
+              <tr><td>盧安達<span class="tag low">科學女落後最多</span></td><td>306 / 332</td><td>298 / 304</td><td>302 / 325</td></tr>
+              <tr><td>巴勒斯坦當局<span class="tag low">閱讀差距最大</span></td><td>375 / 338</td><td>374 / 319</td><td>366 / 339</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="dim-card">
+        <div class="dim-head"><h3>表 I.4　學習投入與作答行為</h3><span>指數與百分比</span></div>
+        <div class="dim-body">
+          <p class="takeaway">中華台北學生求助行為（0.36）與科學本質信念（0.19）高於平均，但好奇心（-0.13）與成長型思維比例（45.5%）低於 OECD 平均。</p>
+          <table class="mini-table">
+            <thead><tr><th>國家／經濟體</th><th>恆毅力</th><th>好奇心</th><th>求助行為</th><th>成長型思維%</th><th>倉促作答%</th></tr></thead>
+            <tbody>
+              <tr class="avg"><td>OECD 平均</td><td>0.00</td><td>0.00</td><td>0.00</td><td>69.3</td><td>8.9</td></tr>
+              <tr class="hl"><td>中華台北</td><td>0.02</td><td>-0.13</td><td>0.36</td><td>45.5</td><td>8.4</td></tr>
+              <tr><td>哥斯大黎加<span class="tag top">恆毅力最高</span></td><td>0.51</td><td>0.31</td><td>0.36</td><td>58.7</td><td>9.6</td></tr>
+              <tr><td>波蘭<span class="tag low">恆毅力最低</span></td><td>-0.31</td><td>-0.26</td><td>0.05</td><td>69.9</td><td>8.4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-head"><h3>表 I.5　安全與公平的學習環境</h3><span>指數與百分比</span></div>
+        <div class="dim-body">
+          <p class="takeaway">中華台北課堂常規紀律指數（0.59）遠高於平均（0.14），無截堂比例（89.4%）也高於平均，但學生對社會流動的正向看法（52.4%）低於平均。</p>
+          <table class="mini-table">
+            <thead><tr><th>國家／經濟體</th><th>紀律指數</th><th>無霸凌%</th><th>無翹課%</th><th>歸屬感指數</th></tr></thead>
+            <tbody>
+              <tr class="avg"><td>OECD 平均</td><td>0.14</td><td>52.5</td><td>66.1</td><td>0.09</td></tr>
+              <tr class="hl"><td>中華台北</td><td>0.59</td><td>71.0</td><td>89.4</td><td>0.01</td></tr>
+              <tr><td>韓國<span class="tag top">紀律指數最高</span></td><td>1.32</td><td>73.1</td><td>96.6</td><td>0.31</td></tr>
+              <tr><td>阿根廷<span class="tag low">紀律指數最低</span></td><td>-0.43</td><td>45.1</td><td>71.8</td><td>-0.04</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="dim-card">
+        <div class="dim-head"><h3>表 I.6　數位化與人工智慧</h3><span>指數與百分比</span></div>
+        <div class="dim-body">
+          <p class="takeaway">中華台北學校數位教學能量指數（0.34）高於平均，且手機禁用比例（43.3%）與科目別數位使用規範（80.0%）皆優於 OECD 平均，惟略低於阿聯、烏茲別克等領先者。</p>
+          <table class="mini-table">
+            <thead><tr><th>國家／經濟體</th><th>學校數位能量</th><th>AI每週使用%</th><th>無分心%</th><th>手機禁用%</th></tr></thead>
+            <tbody>
+              <tr class="avg"><td>OECD 平均</td><td>-0.03</td><td>45.5</td><td>39.2</td><td>49.5</td></tr>
+              <tr class="hl"><td>中華台北</td><td>0.34</td><td>40.5</td><td>53.0</td><td>43.3</td></tr>
+              <tr><td>阿拉伯聯合大公國<span class="tag top">數位能量最高</span></td><td>0.98</td><td>64.3</td><td>39.2</td><td>90.1</td></tr>
+              <tr><td>肯亞<span class="tag low">數位能量最低</span></td><td>-1.16</td><td>45.7</td><td>65.6</td><td>59.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dim-card">
+        <div class="dim-head"><h3>表 I.7　家庭與學校支持</h3><span>指數與百分比</span></div>
+        <div class="dim-body">
+          <p class="takeaway">中華台北教師支持指數（0.33）優於 OECD 平均，且同儕互助課業輔導提供率（71.0%）與教材無短缺比例（60.3%）皆高於平均，家庭支持則略低。</p>
+          <table class="mini-table">
+            <thead><tr><th>國家／經濟體</th><th>家庭支持</th><th>教師支持</th><th>無師資短缺%</th><th>同儕輔導%</th></tr></thead>
+            <tbody>
+              <tr class="avg"><td>OECD 平均</td><td>-0.19</td><td>0.03</td><td>28.8</td><td>51.2</td></tr>
+              <tr class="hl"><td>中華台北</td><td>-0.27</td><td>0.33</td><td>24.0</td><td>71.0</td></tr>
+              <tr><td>阿爾巴尼亞<span class="tag top">家庭支持最高</span></td><td>0.42</td><td>0.97</td><td>76.5</td><td>70.7</td></tr>
+              <tr><td>瑞士<span class="tag low">家庭支持最低</span></td><td>-0.25</td><td>-0.10</td><td>37.1</td><td>34.3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="dim-card" style="max-width:720px;">
+      <div class="dim-head"><h3>表 I.8　學生與環境議題</h3><span>環境科學分量表</span></div>
+      <div class="dim-body">
+        <p class="takeaway">中華台北環境科學分數（539）並列全球第三高，優劣勢差距（92 分）高於平均，但學生投入環境相關活動比例（71.8%）與平均相近，未來職涯環保興趣（49.6%）低於平均。</p>
+        <table class="mini-table">
+          <thead><tr><th>國家／經濟體</th><th>環境科學分數</th><th>優劣勢差距</th><th>參與環境活動%</th><th>環保職涯興趣%</th></tr></thead>
+          <tbody>
+            <tr class="avg"><td>OECD 平均</td><td>480</td><td>85</td><td>71.9</td><td>61.6</td></tr>
+            <tr class="hl"><td>中華台北</td><td>539</td><td>92</td><td>71.8</td><td>49.6</td></tr>
+            <tr><td>中國京滬蘇浙<span class="tag top">環境科學最高</span></td><td>594</td><td>68</td><td>87.4</td><td>77.8</td></tr>
+            <tr><td>越南<span class="tag top">職涯興趣最高</span></td><td>465</td><td>88</td><td>93.5</td><td>68.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="whatispisa">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">導論</div>
+      <h2>什麼是 PISA？</h2>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>OECD 國際學生能力評量計畫</h3>
+        <p>為回答「公民應具備哪些知識與能力？」這個問題，並提供跨國可比較的學生表現證據，OECD 於 2000 年推出 PISA。PISA 是一項定期針對全球 15 歲學生進行的調查，評量學生是否具備充分參與社會與經濟生活所需的關鍵知識與技能。PISA 不僅測量學生能否重現所學內容，更評量他們能否將校內外所學延伸應用於真實生活問題。</p>
+        <p><b>PISA 的獨特之處：</b>①政策導向——連結學生學習成果（含學習態度）與背景資料，找出表現優異的學生、學校與教育系統特徵；②創新的「學生能力」概念——著重學生在真實情境中辨識、詮釋並解決問題的能力；③與終身學習高度相關——詢問學生的學習動機、自我信念與學習策略；④定期性——可追蹤各國達成關鍵學習目標的進度；⑤涵蓋範圍廣——2025 年涵蓋 38 個 OECD 國家與 53 個夥伴國家╱經濟體。</p>
+      </div>
+      <div class="card">
+        <h3>參與規模的成長</h3>
+        <p>PISA 歷屆參與國家╱經濟體數：2000/2002 年 43 國、2003 年 41 國、2006 年 57 國、2009/2010 年 75 國、2012 年 65 國、2015 年 72 國、2018 年 79 國、2022 年 81 國，2025 年（第九次評量）已達 <b>91 個國家與經濟體</b>。首次參與 PISA 2025 的包括：亞美尼亞、塔吉克（杜尚別）、厄瓜多、肯亞、伊拉克庫德斯坦地區、盧安達與尚比亞。</p>
+        <p class="note">完整參與名單詳見原文表 1（第 47 頁），含 38 個 OECD 會員國與 53 個夥伴國家╱經濟體，橫跨歐、美、亞、非、大洋洲。</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:20px;">
+      <div class="card">
+        <h3>2025 年評量的重點特色</h3>
+        <ul>
+          <li><b>評量內容：</b>PISA 2025 以科學為主科（與 2006、2015 年相同），並涵蓋閱讀、數學與電腦化問題解決；「數位世界學習」（LDW）首次於 2025 年納入評量。四項能力定義分別為：<b>科學素養</b>——以具反思能力的公民身分參與科學相關議題並運用科學知識做出明智決策；<b>數學素養</b>——在多元真實情境中進行數學推理、建構與詮釋；<b>閱讀素養</b>——理解、運用、評估、反思並投入文本以達成目標、發展知識並參與社會；<b>數位世界學習素養</b>——運用運算工具反覆進行知識建構與問題解決的自我調節能力。此外，22 個國家╱經濟體首次選擇性測試學生的英語外語能力。</li>
+          <li><b>學生：</b>超過 76 萬名學生完成評量，代表 91 個參與國家╱經濟體約 3,300 萬名 15 歲學生。受測學生年齡介於 15 歲 3 個月至 16 歲 2 個月，且至少完成 6 年正規教育；整體排除率須低於 5% 以確保國家平均分數的偏誤維持在正負 5 分以內。</li>
+          <li><b>評量方式：</b>與 2015、2018、2022 年相同，多數國家採電腦化測驗，每位學生作答共 2 小時；科學、數學、閱讀採多階段適性測驗，依學生前段作答表現指派後續題組。題型包含選擇題與建構反應題。另有 6 個國家╱經濟體（柬埔寨、塔吉克杜尚別、伊拉克庫德斯坦地區、模里西斯、盧安達、尚比亞）採紙本測驗，僅含科學、閱讀、數學的趨勢題。</li>
+          <li><b>問卷：</b>學生需完成約 35 分鐘的背景問卷，涵蓋學習態度、家庭與學校經驗；校長需完成學校問卷；部分國家並加測家長問卷與教師問卷。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>成果將分三冊發布</h3>
+        <ul>
+          <li><b>第一冊《面向未來的學生》</b>（本文件譯自此冊）：檢視青少年是否已準備好在快速變遷、高度連結的世界中發展、乃至未來領導。以多元視角分析 15 歲學生在科學、閱讀、數學與電腦化問題解決的素養，並探討好奇心、恆毅力、學習者能動性等投入相關態度，同時檢視安全公平的學習環境、家庭與學校支持，並以學生因應環境挑戰的準備度作結。</li>
+          <li><b>第二冊《以英語相連》</b>（即將發布）：分析 22 個參與英語外語評量國家的閱讀、聽力與口說能力表現。</li>
+          <li><b>第三冊《數位世界中的有效學習者》</b>（即將發布）：運用學生作答歷程資料，剖析學生如何自我調節學習與問題解決策略。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="ch1">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">第一章</div>
+      <h2>PISA 2025 中學生學習的多元面向</h2>
+      <p style="font-style:italic;">本章概述 PISA 2025 結果所呈現的學生學習關鍵面向。運用 2025 年評量與問卷資料，聚焦教育系統運作良好的三大核心要素：適任學習者的特徵、安全公平學習環境的重要性，以及支持性家庭與學校的角色；本章並檢視學生因應環境挑戰的準備度。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>適任學習者的多元架構</h3>
+      <p>面對快速變遷、日益複雜且高度連結的世界，年輕人是否已準備好發展、乃至未來領導？隨著社會與勞動市場加速變化，學生發展構成終身學習基礎的知識、技能與態度至關重要；升級與再培訓已成為個人因應變動需求所不可或缺的能力。學習日益需要在正規教育體系之外發生，因此學生必須更主動掌握學習的內容、方式與時機，教育系統也需思考如何更有效培養投入感、學習者能動性與有效的學習策略。</p>
+      <p>學習是一個動態歷程，同時受認知、情緒、社會與生理面向影響，並與周遭學習環境及情境持續互動。PISA 從多重角度檢視學生學習，適任學習者的特徵涵蓋學業表現、好奇心、恆毅力與自我調節能力等面向。如原文圖 I.1.1 所示，PISA 的適任學習者架構將學習者置於其所處情境與關係網絡之中：安全公平的學習環境（涵蓋學生的歸屬感與正向校園氛圍，兩者皆與更高的學生投入及素養相關）、以及支持性的家庭與學校（涵蓋家長╱監護人、家庭成員與教師的支持，以及充足的教學資源與人力），皆與學習核心層層相扣，共同支持學生發展在校內外邁向成功所需的能力。</p>
+      <p class="note">圖 I.1.2 進一步依「適任學習者」概念（結合學生素養與學習投入兩大構面）萃取關鍵特徵，並提供 OECD 平均值與各指標排名前三之教育系統對照；互動版圖表可於 PISA Dashboard 查詢。解讀 PISA 結果時，須留意社經地位、文化語言背景與制度特徵等脈絡因素，且 PISA 反映的是學生截至 15 歲累積的學習經驗，而非單一時間點或特定政策的直接成效。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>適任學習者：素養與投入兼具</h3>
+      <p>適任學習者不僅理解所學內容，更能有效運用該知識與技能，在真實情境中自信應用，並在正規教育結束後持續學以致用；這也需要在好奇心與恆毅力支持下持續學習的意願。以此作為操作型定義，適任學習者可從「素養」與「投入」兩大構面理解。</p>
+      <p>在<b>科學、閱讀、數學與電腦化問題解決</b>等多項素養指標上，同一群教育系統一致名列各領域頂尖表現（詳見圖 I.1.2 第一欄；各領域素養細節於第二章討論）。相較之下，學生自陳投入指標的結果較為分歧，不同系統在不同指標上各有領先（投入面向詳見第三章，圖 I.1.2 第二欄概覽如下）：前兩項指標與學習動機有關——<b>好奇心</b>與<b>恆毅力</b>；接續兩項聚焦自我調節學習，特別是<b>目標設定</b>與<b>求助行為</b>；最後三項則屬學習相關信念與行為，包括<b>成長型思維</b>、<b>對科學本質的信念</b>與<b>認知適應力</b>。比較第一與第二欄可發現，在素養構面領先的系統，僅部分與投入構面領先的系統重疊——這顯示強勁的學業表現不必然帶來高度的學生自評投入感，反之亦然，凸顯教育政策須以多元角度看待學習成果的必要性。跨國比較學生自陳結果時，須留意作答風格與文化規範差異可能造成的影響，因此跨國比較須謹慎解讀；儘管如此，這些結果仍具有價值，能呈現青少年如何自我感知並回報其投入狀況。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>系統的經濟與社會條件</h3>
+      <p>各國╱經濟體的經濟與社會條件——通常超出教育政策制定者與教育工作者的掌控範圍——會影響學生表現。舉例而言，較富裕的國家能在教育上投入更多資源，而部分國家則受限於較低的國民所得。因此，在解讀跨國教育系統表現時，須將國家財富納入考量。以簡單雙變數關係而言，各國╱經濟體平均分數變異中有 50% 與人均 GDP 相關（OECD 國家內部僅 9%）；國民所得較高的國家傾向獲得較高的 PISA 分數，惟此關係並非線性，在所得較高的國家間關係趨於平緩。</p>
+      <p>人均 GDP 反映各國潛在可用於教育的資源，卻無法直接衡量實際投入教育的財力。原文圖 I.1.3 比較各國 6 至 15 歲累積生均教育支出（經購買力平價調整，稱「生均支出」）與科學平均表現的關係：生均支出較高的教育系統傾向獲得較高科學分數，但僅止於一定門檻——約每生 8.5 萬美元以上，兩者關係即開始脫鉤。這顯示教育需要獲得足夠資源，而開發中國家教育經費往往不足；但超過一定門檻後，提高生均支出並不必然直接轉化為分數提升，投入增加須配合資源的有效配置與運用，方能真正轉化為教育品質的改善。</p>
+      <p>與素養構面不同，學生投入與教育經費之間並無明顯關聯：跨教育系統而言，經費支出與學生自陳好奇心之間並無一致關係；經費支出與學生自陳恆毅力之間雖呈現負相關，但關係微弱。這顯示更多的教育投入並不能自動保證更強的學生投入感，而即使在經費水準較低的系統中，學生投入感仍可能維持在較高水準。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>全球未來科學創新人才庫</h3>
+      <p>衡量未來科學創新貢獻人才庫的方式眾多，原文圖 I.1.4 提出其中一種情境：結合學生的科學素養表現，以及他們未來投入 STEM（科學、技術、工程與數學）職業的意願。紮實的科學素養基礎使學生得以理解複雜問題、進行批判思考並發展有效解方；同時，投入 STEM 領域的動機與意願則驅使學生將知識應用於真實情境、與他人協作並追求創新。兩者結合，共同構成達成科學進展、因應全球挑戰所需的知識、技能與態度。</p>
+      <p>圖 I.1.4 左側呈現各國╱經濟體「頂尖表現者」（科學素養達 Level 5 或 6）人數的估計值：91 個參與國家╱經濟體中，約有 <b>190 萬名</b>學生屬於科學頂尖表現者，圖中同時顯示各國對此全球人才庫的貢獻比例——須留意國家規模效應，例如美國* 雖然頂尖表現者占比相對不高，但因人口規模龐大，仍佔全球頂尖表現者總數的四分之一；反之，新加坡雖擁有全球數一數二的頂尖表現者比例，因人口基數小，對全球人才庫的貢獻不到 1%。</p>
+      <p>圖 I.1.4 右側則排除「表示 30 歲時不預期從事 STEM 相關職業」的頂尖表現學生，剩餘 <b>102 萬名</b>學生構成「未來科學創新者全球人才庫」——換言之，55% 的科學頂尖表現者預期未來投入 STEM 相關職業。各國╱經濟體對此人才庫的貢獻比例也隨之改變：右側圖中，美國* 貢獻 30%、B-S-J-Z（中國）貢獻 17%、日本 7%、英國 5%、土耳其與法國各 4%；中華台北在頂尖表現者總人數中占 1.9%，在預期投入 STEM 的人才庫中占 2.1%。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>長期趨勢：十年來持續下滑</h3>
+      <p>OECD 國家的平均趨勢呈現負向（原文圖 I.1.5）。PISA 2025 各科表現皆為歷來最低（科學除外，其 2022 年表現與 2025 年相近但不具統計顯著差異）。數學表現自 2003 年至 2018 年間大致維持穩定，但 2018 至 2025 年間急劇下滑；閱讀與科學則分別在 2012 年與 2009 年達到高峰，此後轉為下滑趨勢。OECD 平均分數變化：<span class="num">科學 503→506→505→497→493→491→488（2000-2025）</span>；<span class="num">閱讀 500→497→495→499→497→493→482→461</span>；<span class="num">數學 502→501→502→499→496→496→480→463</span>。</p>
+      <p>表現下滑的幅度因學生程度而異（原文圖 I.1.6）。位於量尺較低端的學生（第 25 百分位）比高端學生（第 75 百分位）經歷更陡峭的下滑：2015 至 2025 年間，低表現學生分數在科學下降 15 分、閱讀下降 38 分、數學下降 32 分；相對地，同期高表現學生分數在科學僅下降 8 分、閱讀 27 分、數學 23 分。原文第二章 Box I.2.2 提供解讀 PISA 分數變化的脈絡，指出各學科每年平均學習進度約相當於 20 分；惟不同系統間學習進度差異甚大，且隨時間變化，因此 15 歲當下的橫斷面數據未必能反映後續年度的學習增長，平均表現增長也未必反映量尺兩端學生的實際情況。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>學生投入感知的趨勢</h3>
+      <p>部分測量好奇心與恆毅力的投入題項於 2022 年與 2025 年皆有實施。原文圖 I.1.7 呈現各題項在 2022 至 2025 年間，出現正向、負向或無顯著變化的國家╱經濟體數量。除一項例外，其餘結果皆呈現負向趨勢，顯示多數教育系統 2025 年學生自陳好奇心與恆毅力皆有所降低；唯一的例外是「我比大多數人更好奇」此一題項，2025 年在 59 個國家╱經濟體中呈現正向趨勢。以「我對很多不同事物感到好奇」為例，39 個系統呈負向趨勢、20 個無顯著變化、僅 12 個正向；「我覺得學習新事物很無聊（不同意╱非常不同意）」則有 60 個系統呈正向趨勢（即不無聊比例上升）、11 個無顯著變化，無任何系統呈負向。恆毅力方面，「即使工作變得無聊，我仍會完成已開始的任務」有 39 個系統呈負向趨勢，僅 8 個正向。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>素養與投入感知的關係</h3>
+      <p>學生素養與投入緊密相關（詳見第三章）。儘管兩者常互相影響、共同形塑學習成果，本節仍將兩者作為分析上相對獨立的構面，以利更清楚檢視各系統的優勢與挑戰。原文圖 I.1.8 呈現各教育系統在學生素養與投入面向的相對位置：適任學習者依科學、閱讀、數學與電腦化問題解決表現定義為「素養學習者」，依好奇心、恆毅力、目標設定與求助行為定義為「投入學習者」，同時符合兩項條件者則為「適任學習者」（competent learners）。</p>
+      <p>綜合兩種角度，OECD 國家平均而言，<b>14%</b> 的學生同時具備投入相關態度並達到一定素養水準門檻。即使在三分之二以上學生達到素養門檻的國家╱經濟體中，僅新加坡與 B-S-J-Z（中國）超過四分之一學生同時具備此廣泛投入輪廓（分別為 28% 與 33%）。相對地，在所有 PISA 領域中素養門檻達成率低於 10% 的國家╱經濟體中，肯亞、科索沃與摩洛哥仍有超過三分之一學生（35%-38%）呈現「投入但未達素養門檻」的輪廓。</p>
+      <p>這些對比顯示，素養與投入雖有重疊，卻未完全一致：強勁的學業表現未必自動帶來更強的動機性投入，正向學習態度也未必與同等強勁的學業成果並存。原文圖 I.1.9 進一步以散布圖呈現：素養低於 OECD 平均的教育系統，傾向呈現較高的學生投入水準（位於右下象限）；而在素養接近或高於平均的系統中，投入學習者比例則有高有低（左上與右上象限皆有分布）。對教育系統而言，這些差異模式的政策意涵在於：學習投入不應被簡化視為學業成功的附帶產物，學業表現也不應被當作學生廣泛學習投入的替代指標——兩者皆需獨立關注，學校面臨的挑戰是創造能同時培養學生能力與學習取向的條件。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>趨勢之間的關聯</h3>
+      <p>學生素養與投入的趨勢彼此密切相關：表現呈現更負向趨勢的國家╱經濟體，其投入趨勢也傾向更為負向。例如，多數國家╱經濟體中，2025 年同意或非常同意「對許多不同事物感到好奇」的學生比例低於 2022 年（原文圖 I.1.7）；原文圖 I.1.10 顯示，好奇心下降幅度較大的系統，其閱讀表現下滑幅度也傾向更大；反之，閱讀表現趨勢為正向（或降幅較小）的系統，其自陳好奇心趨勢也傾向正向（或降幅較小）。</p>
+      <p>學生對學校實用性的看法趨勢，也與表現趨勢密切相關：在半數以上具可比資料的國家╱經濟體中，2025 年認為「上學是浪費時間」的學生比例低於 2022 年；2022 至 2025 年間，學生對學校實用性看法改善幅度較大的國家╱經濟體，其閱讀表現改善幅度也傾向較大。原文第二章 Box I.2.3 詳細討論了造成閱讀表現下滑的可能驅動因素，但值得在此強調：不僅表現本身在下滑，其他關鍵學習成果也同步在許多系統中下降，這使得以多元角度看待學生學習、而非孤立看待表現，變得更加重要。</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <h3>安全與公平的學習環境</h3>
+        <p>學生的素養與投入是在特定的安全公平學習情境中發展的（詳見圖 I.1.2 第三欄）。此構面涵蓋：①<b>學生的學校歸屬感</b>與<b>對學校教育價值的看法</b>（於第三章討論）；②學校環境的支持程度，包括<b>常規紀律氛圍</b>、<b>無霸凌</b>與<b>低翹課率</b>（於第四章後段討論）；③學習環境的公平性——學生的社經背景不應決定其未來，具體指標為<b>學業韌性</b>（於第二章討論）與<b>學生對社會流動的看法</b>（見 Box I.1.1）。</p>
+        <p>學生的學校歸屬感、對學校教育價值的看法、校園常規紀律、無霸凌、低翹課率，皆與圖 I.1.2 第一、二欄大多數成果呈正向關聯。例如，學校歸屬感與科學表現、好奇心、目標設定、求助行為及其他三項指標皆呈正相關（第三章表 I.3.1）；同樣地，常規紀律與科學表現、好奇心、恆毅力、目標設定及求助行為皆呈正相關（第四章表 I.4.1）。惟這些結果須謹慎解讀，因其本身並不足以建立因果關係。</p>
+        <p>學業韌性反映教育系統的公平程度：學業韌性學生是指來自社經弱勢背景，卻在本國╱經濟體科學表現名列頂尖的學生。感知社會流動性較高的學生，更有可能展現學業韌性（見 Box I.1.1）。</p>
+      </div>
+      <div class="card">
+        <h3>支持性的家庭與學校</h3>
+        <p>圖 I.1.2 第四欄由兩組指標構成。第一組涵蓋與第四章表 I.4.1 相關的四項指標：家長╱監護人對學生日常學習與校園經驗的關注程度，以<b>家庭支持</b>衡量；充足且具支持力的教師與同儕支持，則以<b>教師支持</b>、<b>無師資短缺</b>與<b>同儕互助課業輔導</b>衡量。</p>
+        <p>第二組為第四章詳細討論的數位化相關指標：學校運用數位資源強化教學的能力，以<b>學校數位教學準備度</b>衡量（表現較佳系統的校長傾向回報已具備此準備）；學校層級的數位政策，如<b>校園手機禁令</b>與<b>科目別數位裝置使用規範</b>，因其與課堂分心程度相關而納入；此外，也涵蓋校內與 AI 相關的學習機會，例如<b>學生評估 AI 生成資訊的頻率</b>，因為經常擁有此類學習機會並將 AI 用於學習的學生，往往表現較佳。</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>學生對環境挑戰的投入</h3>
+      <p>原文圖 I.1.11 概述第五章討論的關鍵指標：前三項為環境能動性的核心構成要素，最後一項則涉及學校內的學習機會：①環境知識與技能，以<b>環境科學表現</b>衡量；②學生對環境的態度，涵蓋<b>環境意識</b>、<b>對自身能促成環境改變能力的信念</b>，以及<b>對環境議題集體效能的信念</b>；③學生對環境保護的投入承諾，涵蓋<b>參與至少一項環境相關活動</b>與<b>未來職涯中對環境貢獻的興趣</b>；④學校提供的環境學習機會，以<b>課堂中的環境學習機會</b>衡量。</p>
+      <p>表現、態度與投入承諾三者相互關聯、相輔相成：課堂中較常獲得因應環境挑戰學習機會的學生，往往也展現較高的表現水準、更正向的態度與更強的投入承諾。儘管表現、態度與投入承諾呈正向關聯，仍有部分學生雖然關心環境，卻未展現保護環境的具體投入承諾，這類學生通常較少獲得課堂中的環境學習機會。</p>
+    </div>
+
+    <div class="quote">
+      <b>專欄 I.1.1　學生對社會流動的看法</b><br><br>
+      確保所有學生都能發揮潛能，社會流動性是關鍵要素。為捕捉學生對社會流動的信念，PISA 2025 新增題項，詢問學生是否同意「你在社會中的地位，是無法真正改變的」此一敘述；同意此敘述反映對社會流動性的感知較低，不同意則反映對社會流動機會的信念較強。
+      <br><br>
+      OECD 國家平均而言，三分之二學生不同意或非常不同意「社會地位無法真正改變」的說法。此比例因國家╱經濟體而異：泰國、菲律賓與印尼不到 40%，葡萄牙與以色列則達 75% 以上。學生對社會流動的感知，大致隨其社會實際流動性（以世界經濟論壇《全球社會流動報告》衡量）上升而提高；惟印尼、菲律賓、泰國與馬來西亞學生，相較其社會實際流動程度，顯得格外悲觀；葡萄牙、以色列、羅馬尼亞、喬治亞與亞美尼亞學生，則認為其社會流動性高於指數所反映的程度。
+      <br><br>
+      社經弱勢學生相信社會流動機會存在的可能性，普遍低於優勢學生：OECD 國家平均差距為 12 個百分點，差距最小者為巴勒斯坦當局與馬來西亞（不到 5 個百分點），最大者為羅馬尼亞、模里西斯、汶萊與中國香港（至少 18 個百分點）。男女學生相信社會結構具流動性的比例，在 OECD 國家平均及近半數國家╱經濟體中相近，其餘系統則呈現不同方向的性別差距。
+      <br><br>
+      社會流動感知、成長型思維與學業韌性三者相互關聯：感知社會流動機會較高的學生，展現成長型思維的可能性也較高，進而與較高的學業韌性可能性相關；學業韌性學生也傾向感知更強的社會流動前景。雖然這些關聯不代表因果關係，卻顯示一組相互強化的信念與成果，具有政策參考價值——例如透過強化學生對社會流動的感知（促進公平、透明與機會）搭配培養成長型思維的介入措施。具體而言：OECD 國家平均及所有國家╱經濟體，展現成長型思維的學生相信社會流動機會的可能性，是展現固定型思維學生的三倍，此比例在納入學生與學校社經背景後依然不變，在菲律賓與塔吉克（杜尚別）此差距更超過五倍。OECD 國家平均及幾乎所有國家╱經濟體中，多數學業韌性學生同時展現成長型思維——平均而言，近五分之四學業韌性學生具成長型思維，相對地，來自弱勢背景且非頂尖表現的學生中，僅約五分之三具成長型思維。OECD 國家平均及幾乎所有國家╱經濟體，多數學業韌性學生也相信社會流動機會——OECD 國家平均超過七成學業韌性學生同時相信社會流動機會，而弱勢背景且非頂尖表現學生中，此比例不到六成。
+    </div>
+
+    <p class="note">本章圖表索引（原文表 I.1.1.1）：圖 I.1.2 適任學習者的多元面向、圖 I.1.3 科學表現與教育支出、圖 I.1.4 全球未來科學創新人才庫、圖 I.1.5 三科表現長期趨勢、圖 I.1.6 高低表現者長期趨勢、圖 I.1.7 學生投入感知趨勢、圖 I.1.8 適任╱素養╱投入學習者、圖 I.1.9 投入學習者與素養學習者、圖 I.1.10 投入趨勢與表現趨勢、圖 I.1.12 社會流動、成長型思維與學業韌性。完整數據可透過 StatLink（https://stat.link/3r8tyd）下載。</p>
+  </div>
+</section>
+
+<section class="alt" id="ch2">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">第二章</div>
+      <h2>PISA 2025 學生表現</h2>
+      <p style="font-style:italic;">本章檢視 PISA 2025 學生在科學、閱讀與數學的表現，並報告電腦化問題解決的表現，探討國內╱國家間及校際╱學生間的表現差異。本章亦比較 2022 與 2025 年表現變化，並檢視過去十年的長期趨勢；最後檢視教育公平的兩大面向——融合性與公正性。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>本章重點</h3>
+      <ul>
+        <li>B-S-J-Z（中國）與新加坡是 PISA 2025 科學、數學、閱讀三科表現最頂尖的兩個系統：B-S-J-Z（中國）科學（597 分）與數學（612 分）平均分數最高，新加坡則閱讀（535 分）表現最高。</li>
+        <li>OECD 國家平均約四分之三學生達到科學基礎素養水準；然而僅有相對少數（7%）達到最高熟練等級，11 個系統中超過 75% 學生未達基礎水準，另有 7 個系統低於基礎水準的學生比例不到 15%。</li>
+        <li>電腦化問題解決方面，B-S-J-Z（中國）、中國澳門與新加坡平均分數最高（572、563、560 分）；OECD 國家平均約 26% 學生達到最高兩個熟練等級（Level 5 或 6），5% 表現低於 Level 1。</li>
+        <li>2022 至 2025 年間，科學平均表現大致持平，閱讀與數學則持續下滑：35 個 OECD 國家平均而言，科學表現無變化，閱讀下降約 14 分，數學下降 9 分。</li>
+        <li>PISA 2025 錄得三大核心領域至今最低的 OECD 平均表現。閱讀表現在約 2012 年達到高峰後開始下滑，科學則在過去十年間緩步下滑，數學則在 2018 年後急劇下滑。</li>
+        <li>2022 至 2025 年間，社經差距的縮小主要反映優勢學生表現下滑，而非弱勢學生表現提升：科學方面，弱勢學生表現持平，優勢學生下降 8 分；閱讀方面，弱勢學生下降 4 分，優勢學生下降達 20 分；數學方面，優勢學生下降 14 分，弱勢學生變化不具統計顯著性。</li>
+        <li>社經背景與學生成就仍高度相關：OECD 國家平均，社經地位可解釋國內科學表現變異的 12%；37% 弱勢學生為科學低表現者，優勢學生僅 12%。</li>
+        <li>部分教育系統同時展現融合性、社經公正性與強勁表現：B-S-J-Z（中國）、加拿大*、愛沙尼亞、愛爾蘭、日本、韓國與中國澳門等 7 個系統，融合度超過 75%、社經地位對科學表現變異的解釋力低於 10%，且表現高於 OECD 平均。</li>
+        <li>科學平均分數性別差距近乎為零，但此數字掩蓋了對比鮮明的兩極現象：在最低表現學生中，女學生高出男學生 12 分；在最高表現學生中，男學生則高出女學生 10 分。閱讀方面，OECD 國家平均女學生領先男學生 30 分；數學方面，男學生領先女學生 13 分。</li>
+        <li>OECD 29 個國家平均，41% 移民學生為社經弱勢，非移民學生僅 21%；71% 第一代移民學生在家中主要使用非評量語言。控制社經地位與在家使用語言後，移民學生在 13 個系統中科學表現優於非移民學生，另 10 個系統則無顯著差異。</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>科學、閱讀與數學平均表現</h3>
+      <p>PISA 2025 中，OECD 國家平均科學得分為 <b>482 分</b>。達到此平均分數的學生，其素養水準大致為：在適當引導下能運用科學想法、證據與表徵建構或評鑑解釋、簡單模型、探究與結論；能詮釋簡單數據、辨識模型與研究的優缺點或缺陷；能選擇合適的方法或證據來源，並運用相關證據與基本判準佐證其選擇、評估證據可信度。B-S-J-Z（中國，597 分）與新加坡（560 分）學生科學表現優於所有其他參與國家╱經濟體，平均而言，這些學生能處理更廣泛且更艱深的科學概念、更複雜的探究與資料來源，且被期待不僅能詮釋或選擇證據，更能評估論點、辨識錯誤並描述缺陷。</p>
+      <p>科學是 PISA 2025 的主科，但數學與閱讀表現同樣提供了重要的補充脈絡以利跨系統比較。數學方面，OECD 國家平均為 463 分；B-S-J-Z（中國）數學表現最高（612 分），其次為新加坡（563 分）。閱讀方面，排序則相反——新加坡平均表現最高（535 分），其次為 B-S-J-Z（中國，527 分）；OECD 國家平均閱讀得分為 461 分。</p>
+      <p>PISA 2025 中，所有科學表現高於 OECD 平均的國家╱經濟體，在數學與閱讀亦高於平均，僅有 4 個例外：比利時與立陶宛科學與數學高於平均，惟閱讀與平均無顯著差異；土耳其與美國* 科學與閱讀高於平均，惟數學與平均無顯著差異。整體而言，共有 18 個國家╱經濟體在科學、數學與閱讀三科皆高於 OECD 平均。</p>
+      <p>最高與最低表現系統之間的差距，提供了 PISA 2025 全球學生成就範圍的簡單縮影。科學方面，OECD 國家間最高與最低表現系統差距為 124 分，全體參與系統間則達 280 分；閱讀方面，OECD 國家間差距為 103 分，全體參與系統間為 234 分；數學方面，OECD 國家間差距為 145 分，全體參與系統間高達 301 分。原文 Box I.2.2 指出，15 歲學生平均每年約獲得 20 分的學習進度，此數字大致可視為相當於一個學年的學習量——此基準有助於解讀表現隨時間的變化，惟不應機械式套用於跨國平均分數的比較上。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>國內表現差異</h3>
+      <p>學生表現的變異程度（以標準差衡量）在高表現教育系統中往往大於低表現系統。科學平均表現與科學表現變異程度之間存在強烈相關。例如，柬埔寨的科學素養變異最小（63 分），數個平均表現低於 OECD 平均的國家╱經濟體同樣呈現較小的變異；惟此規律並非放諸四海皆準——在表現高於平均的系統中，B-S-J-Z（中國）、愛沙尼亞、立陶宛與中國澳門的表現變異相對較小（標準差低於 90 分）；同樣地，在表現低於平均的系統中，保加利亞、以色列、盧森堡、馬爾他、阿拉伯聯合大公國與尚比亞的表現變異相對較大（標準差超過 105 分）。</p>
+      <p>另一種衡量國內表現變異的方式，是國內最高與最低表現學生之間的分數差距（即十分位差）。科學方面，全體參與國家╱經濟體第 90 百分位與第 10 百分位表現的差距約為 237 分，OECD 國家平均則為 258 分。高低表現學生差距最大者為盧森堡與美國*（十分位差超過 290 分），顯示這些國家 15 歲學生的科學表現高度不均；差距最小者則多見於平均表現本身較低（低於 410 分）的國家╱經濟體，如柬埔寨、塔吉克（杜尚別）、印尼、科索沃與伊拉克庫德斯坦地區——在這些系統中，第 90 百分位的表現本身即低於 OECD 平均，較小的高低差距可能反映其整體表現分布較為壓縮，僅有相對少數學生能達到高熟練等級，即使第 90 百分位學生的表現仍低於 OECD 平均。</p>
+      <p>OECD 國家平均而言，國內科學表現變異中有 <b>31%</b> 來自校際差異，<b>69%</b> 來自校內差異——這意味著平均而言、且在多數國家╱經濟體中，學校層級特徵對學生表現差異的影響，可能小於學生層級與班級層級特徵（如學生背景、態度與學習行為，以及同校內不同年級或分組所造成的差異）。惟校際變異程度在各國間差異甚大：冰島、芬蘭與挪威*（依序）校際差異占比不到 10%；相對地，尚比亞、荷蘭*、肯亞、保加利亞、土耳其、盧安達、匈牙利、斯洛伐克、德國與羅馬尼亞（依序）校際差異占比達 50% 以上，顯示這些教育系統的學術分流程度較高，高低表現學生更可能集中在不同學校。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>學生在科學方面能做什麼</h3>
+      <p>PISA 將「具科學素養者」定義為能就科學、永續發展與科技進行理性論述以指引行動的人——這樣的人是終身保持見多識廣、具批判力的科學知識使用者，未必需要成為科學知識的生產者。具科學素養者理解主要科學概念、科學家的標準實踐方式、科學主張獲得證成的程度，以及使科學知識值得信賴的社會機制，使其得以評估科學資訊的可信度、做出明智的個人決策，並在影響環境的社會抉擇中發揮作用。</p>
+      <p>成功展現此素養需要三種可區分但相關的知識：<b>內容知識</b>（對自然與物質世界既有事實、概念、想法與主要解釋性理論的理解）、<b>程序知識</b>（熟悉科學家取得可靠有效資料所用的標準程序與實務，如辨識變項、重複測量以降低不確定性，以及如何適當呈現與傳達資料）、<b>知識論知識</b>（理解科學主張如何獲得證成的原理，包括觀察、模型、理論與論證的角色，以及理解科學的協作本質、同儕審查的重要性，與科學共識如何建立可信賴的知識）。具科學素養者將知識應用於真實世界的個人、地方或全球情境，PISA 據此界定三項具體能力：<b>以科學方式解釋現象</b>（辨識、建構並評鑑自然與科技現象的解釋與模型）、<b>建構並評鑑科學探究設計，並批判性詮釋科學資料與證據</b>（評鑑問題如何被科學地探究，並批判性詮釋資料）、<b>研究、評鑑並運用科學資訊進行決策與行動</b>（尋找資訊、評鑑其可信度與潛在缺陷，並用以指引決策）。</p>
+      <p>PISA 2025 科學量尺依熟練程度分為由高到低的 Level 6 至 Level 1b，各聚合等級所涵蓋的能力範圍與比例（OECD 平均）如下：<b>Level 5-6</b>（最低分數線 633/708 分，OECD 平均 7.2% 學生達此程度）——能運用涵蓋理論、模型、複雜資料與多重資訊來源的科學想法，建構並評鑑解釋，識別模型的優缺點，詮釋較進階的資料表徵，辨識有缺陷的詮釋，評估來源可信度，並在不熟悉或不確定的情境中運用科學、程序與知識論知識及社會╱倫理╱經濟考量做出並證成決策，同時考量其對社會的意涵；<b>Level 2-4</b>（最低分數線 410/484/559 分，OECD 平均 67.1% 學生達此程度）——學生能將科學知識運用於解釋日常現象、判讀證據、判斷簡單主張與來源，並運用相關可信資訊做出基本的證據導向決策，較高等級（3、4）則要求更進階的證成能力，如評鑑解釋或模型、詮釋圖表或表格資料、辨識詮釋中的缺陷、證成簡單研究設計、比較來源，以及評估證據是否支持某項主張；<b>Level 1a-1b</b>（最低分數線 261/335 分，OECD 平均 24.6% 學生僅達此程度）——學生通常能在情境具體、選項有限時，辨識出正確的科學概念，但尚未能可靠地運用科學來解釋、評估證據或提供支持，其推理通常侷限於低要求任務。</p>
+      <p>PISA 將 <b>Level 2</b> 視為學生有意義參與社會所需的基礎素養水準，因為這標誌著學生從「知道一些科學」轉變為「運用科學展現基礎科學素養」的分界點。低於此等級的學生可能對科學概念或熟悉情境中的簡單資訊有一定的熟悉度，但在 Level 2，學生被期待能更進一步：運用科學知識對日常現象提供簡單解釋、評鑑基礎探究面向、辨識支持結論的相關資訊或證據並證成其運用。具體而言，達到 Level 2 的學生能：區辨恰當的科學解釋與非科學解釋；對日常現象提供簡單的科學解釋；評鑑簡單的探究設計；詮釋簡單的資料關係（含離群值）；從圖表或表格中辨識支持某項主張的證據；為科學相關決策選擇相關的資訊來源；運用基本科學判準（如專業性、科學共識或基本準則）判斷來源可信度。</p>
+      <p>OECD 國家平均，<b>74%</b> 學生的科學素養達到 Level 2 或以上；16 個國家╱經濟體中，至少 80% 學生達到此水準。頂尖表現學生（Level 5 或 6）比例則顯示系統不僅能確保多數學生具備基礎能力，也能培養進階素養——OECD 國家平均約 7% 學生達到頂尖等級，14 個國家╱經濟體中此比例超過 10%。OECD 國家平均，<b>26%</b> 學生未達科學基礎素養（Level 2）；在 B-S-J-Z（中國）、中國澳門、新加坡、愛沙尼亞、日本、中華台北與韓國（依低表現者比例遞增排序）等 7 個系統，低表現者比例不到 15%，且這些系統中多數低表現學生仍落在 Level 1a，代表遠低於基礎水準的學生相對少見。相對地，11 個系統中超過 75% 學生低於基礎素養，其中塔吉克（杜尚別）、肯亞、巴拉圭、盧安達與尚比亞更有超過 10% 學生低於 Level 1b；黎巴嫩雖整體低表現比例未達 75%，Level 1b 以下學生比例亦超過 10%。這些結果顯示平均表現與熟練等級分布提供了關於教育系統品質與融合性的互補資訊：系統可能因多數學生達到高熟練等級、極少學生低於基礎水準而表現優異，或兩者兼具；反之，較低的平均表現通常伴隨較高比例學生低於 Level 2，顯示整體表現偏弱與確保多數學生掌握基礎科學能力的困難密切相關。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>三項科學能力子量尺的相對強弱</h3>
+      <p>PISA 2025 科學評量的每個題項皆歸類為三項科學能力子量尺之一：<b>以科學方式解釋現象</b>、<b>建構並評鑑科學探究設計並批判性詮釋科學資料與證據</b>、<b>研究、評鑑並運用科學資訊進行決策</b>。透過檢視各國╱經濟體在三項子量尺上的平均表現差異，可更細緻地了解各系統相對於其他參與系統，在哪些科學素養面向較為突出或較弱。</p>
+      <p>OECD 國家平均而言，學生在「以科學方式解釋現象」與「研究、評鑑並運用科學資訊進行決策」兩項子量尺上的相對表現優於「建構並評鑑科學探究設計」——亦即相較其他參與系統，OECD 國家在第一與第三項子量尺上的相對位置優於第二項。綜觀所有參與系統，情況則較為分歧：在最大的一組系統（23 個）中，學生在「研究、評鑑並運用科學資訊進行決策」的相對表現優於另外兩項子量尺，惟僅些微優於「以科學方式解釋現象」——此為 22 個系統的最強項；「建構並評鑑科學探究設計」最少作為最強項出現，僅見於 18 個系統，差距不大。僅韓國與阿拉伯聯合大公國在三項子量尺上表現均等。</p>
+      <p>進一步檢視科學表現最頂尖的 14 個系統（平均分數達 500 分以上），可見相對強弱輪廓亦有差異：B-S-J-Z（中國）、愛沙尼亞與中國澳門的最強項為「建構並評鑑科學探究設計」，日本與中華台北此項排名第二，顯示與多數其他高表現系統不同的輪廓；半數系統（14 個中的 7 個）最強項為「研究、評鑑並運用科學資訊進行決策」，另 3 個系統此項排名第二；相對地，「以科學方式解釋現象」僅在日本與中華台北為相對最強項，惟在其中 7 個高表現系統中排名第二。整體而言，PISA 2025 結果顯示，即使整體表現相近的國家╱經濟體，其科學能力輪廓仍存在差異；並無單一子量尺在明顯多數系統中普遍較強或較弱，而是各教育系統相對於其他參與系統，在不同科學素養面向上展現出各自的相對優勢。惟此結果須謹慎解讀：它們描述的是系統內部各子量尺間的相對差異，而非絕對能力的巨大落差——某系統排名相對較低的子量尺，在絕對意義上仍可能反映強勁表現，尤其是在高表現系統中。整體而言，子量尺結果為整體科學表現的解讀增添細節，顯示相近的平均分數，可能掩蓋科學素養三大面向截然不同的內部輪廓。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>電腦化問題解決</h3>
+      <p>PISA 2025 首次納入電腦化問題解決的創新評量，聚焦學生運用運算工具與實務進行反覆且自我調節的知識建構與問題解決之能力。學生完成兩個延伸測驗單元，過程中解決漸增複雜的任務，並可運用教學指引、回饋與範例等學習資源。學生在電腦化問題解決量尺上的表現，描述其運用運算工具（如建模或程式設計工具）及運算實務（如進行實驗、分析資料、建構並除錯運算成品）解決問題的程度。學生在此測驗中的表現亦仰賴其自我調節學習能力，包括如何維持動機與任務投入、監控進度並調整策略、評估自身表現；學生在數位世界中的成功能力，深受其自我調節學習能力影響——即如何管理自身學習，以及能否在任務具挑戰性或令人挫折時仍維持動機與投入。</p>
+      <p>電腦化問題解決方面，OECD 國家平均為 <b>500 分</b>。表現最頂尖的教育系統依序為中國澳門、新加坡、B-S-J-Z（中國）、日本、中華台北與中國香港（皆高於 545 分）；澳洲、愛沙尼亞、日本、韓國與紐西蘭* 為表現最頂尖的 OECD 國家（皆高於 530 分）。除此 10 個系統外，另有 15 個教育系統高於 OECD 平均，分數介於加拿大*（525 分）至盧森堡（506 分）之間。</p>
+      <p>在各評量領域皆持續高於 OECD 平均的系統，可視為具備廣泛紮實的表現。與科學、數學、閱讀先前觀察到的規律一致，幾乎所有科學表現高於 OECD 平均的國家╱經濟體，除丹麥、拉脫維亞、盧森堡與荷蘭* 外，電腦化問題解決亦高於 OECD 平均；同樣地，除拉脫維亞與盧森堡外（閱讀方面另加比利時、丹麥、立陶宛與荷蘭*，數學方面另加美國*），所有數學與閱讀表現高於 OECD 平均的國家╱經濟體，電腦化問題解決亦高於平均。</p>
+      <p>電腦化問題解決量尺依熟練程度由高至低分為 Level 6 至低於 Level 1。主要評量量尺代表學生整體電腦化問題解決能力，反映其在區塊式程式設計與電腦建模兩方面的進展，具體而言檢視學生能否執行如進行系統性實驗、分析所得資料，以及建構或除錯其數位創作等實務行動。低於 Level 1 的學生仍主要以粗略方式探索軟體介面，而非朝特定目標努力；達到 Level 1 後，學生開始以表層方式與這些工具互動，可能對簡單程式進行微幅修改或調整基礎模型中的單一輸入以觀察結果——此仍屬相對基礎的數位環境操作形式。Level 2、3 學生開始展現更有意義的進展：Level 2 開始運用簡單操作，如指示程式重複某動作、開始測試想法；Level 3 則能組合更廣泛的指令以建構具功能性的程式，並開始進行基本、受控的實驗以推論不同因素間的簡單關係——雖此量尺並無正式的基礎素養門檻，Level 3 仍可視為有用的參考基準，標誌學生已展現足夠紮實的知識技能得以更快速進展。Level 4 學生能建構中等複雜度的程式與模型，並開始運用程式碼中的重複模式，即使其解法可能仍含微小錯誤或效率不彰之處；Level 5、6 則可視為頂尖表現者範圍，Level 5 的程式設計與建模已相對精熟，Level 6 則代表高度發展的熟練程度，此等級學生能高效解決電腦化問題，產出最佳化、無問題且不含冗餘的程式。OECD 國家平均，約四分之一學生（26%）可視為電腦化問題解決的頂尖表現者，另 21% 達 Level 4、17% 達 Level 3、13% 達 Level 2、17% 達 Level 1，僅 5% 表現低於 Level 1。</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <h3>電腦化問題解決與科學表現的關聯</h3>
+      <p>在人工智慧日益普及的時代，運用運算工具與實務解決問題已成為基礎能力。跨教育系統而言，這些實務日益融入「傳統」學科領域，因建構運算成品的歷程本身即自然涉及運用更廣泛 STEM 學科的核心實務與概念，運算思維因此常與科學課程整合，顯示科學探究與電腦化問題解決能力之間存在強烈且自然的協同關係。</p>
+      <p>因此可預期學生在電腦化問題解決的表現，會與其他學科表現呈正相關，即便 PISA 2025 電腦化問題解決評量更著重學生如何在互動式數位環境中學習運用運算工具與實務。電腦化問題解決表現優異的學生，往往在其他學科也表現優異，反之亦然；同時，此評量亦設計用以捕捉一套與其他 PISA 領域相關但不可化約的能力組合。OECD 國家平均，電腦化問題解決與科學、閱讀、數學表現之國內相關係數分別為 <b>0.76、0.69、0.75</b>；相較之下，三大核心領域彼此間的相關更強，尤以科學與數學（0.88）為甚，顯示電腦化問題解決雖與其他領域高度相關，仍衡量一組相對獨立的能力組合。此評量的一項特色是，學生在測驗過程中可運用回饋與資源，意味著此領域的表現不僅反映學生已知的知識，也反映其在測驗歷程中有效學習、調適與回應的能力，在詮釋上與其他三個領域略有不同。</p>
+      <p>OECD 國家平均，電腦化問題解決表現變異中約 <b>43%</b> 可獨特地與科學表現（2025 年主科）相關聯，顯示表現變異有相當部分可單純由學生的科學表現解釋；但同時，電腦化問題解決變異中逾半數獨立於科學表現之外，進一步支持電腦化問題解決捕捉了超越科學等其他領域所測量能力的觀點。在阿爾巴尼亞*、亞美尼亞、亞塞拜然、保加利亞、喬治亞、匈牙利、吉爾吉斯、黎巴嫩、摩洛哥、巴勒斯坦當局與烏茲別克等 11 個國家╱經濟體，電腦化問題解決表現變異中不到 30% 與科學表現相關，顯示在這些系統中，電腦化問題解決的表現差異未必與科學表現一致——部分科學素養水準高的學生，電腦化問題解決得分相對較低（反之亦然）。相對地，在冰島、汶萊、卡達、紐西蘭*、澳洲、愛爾蘭、愛沙尼亞與加拿大*（依序遞增），電腦化問題解決表現變異中約 50% 以上，反映的正是科學評量所獨特捕捉的表現差異。</p>
+      <p>部分國家╱經濟體學生在電腦化問題解決的表現，相對其在其他 PISA 評量的分數而言，顯得偏高或偏低。此處運用「相對表現」的統計概念，檢視學生在電腦化問題解決的表現，相對於具有相似科學、數學或閱讀分數的其他學生而言的表現。若某國家╱經濟體的相對表現分數為正值，代表其學生在電腦化問題解決上的表現，優於其他科學素養相近的參與國學生。原文圖 I.2.4 呈現表現顯著高於或低於根據科學、閱讀或數學表現預期值的學生比例：在汶萊、中國香港、馬來西亞、中國澳門與菲律賓，超過 70% 學生電腦化問題解決表現顯著高於根據其科學素養預期的水準。在中國香港、馬來西亞、汶萊、菲律賓、中國澳門與冰島（依序）等 6 個國家╱經濟體，學生在控制科學表現後，電腦化問題解決分數高出預期達 30 分以上——這 6 個系統涵蓋不同電腦化問題解決表現水準（平均分數落在 Level 2 至 Level 5 之間），包含高表現與中等表現系統，但不含低表現系統，顯示電腦化問題解決的相對強勁表現並非僅限於表現最頂尖的系統，亦可見於科學素養僅為中等水準的系統。</p>
+      <p>相對表現最弱的國家為肯亞，其學生電腦化問題解決分數低於根據科學表現預期值約 87 分，其次為烏茲別克、亞塞拜然與亞美尼亞（分別低 55、43、42 分）。所有電腦化問題解決相對表現為負值的國家，科學表現皆低於 OECD 平均，唯二例外為芬蘭與頂尖表現者 B-S-J-Z（中國）。</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="source">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">引註與說明</div>
+      <h2>資料來源與使用限制</h2>
+    </div>
+    <div class="card" style="max-width:760px;">
+      <ul>
+        <li><b>引用格式：</b>OECD (2026), <i>PISA 2025 Results (Volume I): Future-Ready Students</i>, PISA, OECD Publishing, Paris, https://doi.org/10.1787/73451bc5-en。</li>
+        <li>本頁為原始報告（377 頁）之重點內容與關鍵表格中文整理版，聚焦執行摘要與八張「總覽表」（Table I.1-I.8），並非全文逐字翻譯；各章節（學生多元學習、表現分析、學習態度、校園生活、環境議題等）之詳細論述與附錄數據請參閱原文。</li>
+        <li>表 I.1 已完整轉錄原文全部參與國家╱經濟體；表 I.2-I.8 因篇幅限制僅摘錄 OECD 平均、中華台北與代表性極端值，完整表格可於原文 StatLink（https://stat.link/z1xqot）下載 Excel 版本。</li>
+        <li>「B-S-J-Z (China)」指中國參與評量之四個省市：北京、上海、江蘇、浙江。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>PISA 2025 Results (Volume I) © OECD 2026　｜　中文整理版僅供參考，正式數據以原文報告為準</div>
+    <div>資料來源：OECD PISA 2025 Database</div>
+  </div>
+</footer>
+
+<script>
+const rows = [
+["OECD 平均","OECD average",482,461,463,500,-3,-14,-9,11.9,19.7,false],
+["中國京滬蘇浙","B-S-J-Z (China)",597,527,612,560,null,null,null,55.5,1.8,false],
+["新加坡","Singapore",560,535,563,563,-2,-8,-18,42.3,6.8,false],
+["中國澳門","Macao (China)",541,501,549,572,-2,-9,-3,30.8,5.2,false],
+["中華台北","Chinese Taipei",540,508,546,551,2,-7,-1,35.0,9.1,true],
+["日本","Japan",538,503,525,557,-9,-13,-10,27.1,8.8,false],
+["愛沙尼亞","Estonia",527,499,508,541,1,-12,-2,18.0,7.4,false],
+["韓國","Korea",526,501,522,538,-2,-15,-5,28.1,9.4,false],
+["英國","United Kingdom",511,494,488,523,12,0,-1,18.2,12.0,false],
+["加拿大*","Canada",510,490,485,525,-5,-17,-12,17.4,12.0,false],
+["紐西蘭*","New Zealand",509,497,480,531,5,-4,1,20.8,13.8,false],
+["澳洲","Australia",509,491,478,532,-2,-7,-10,18.2,14.0,false],
+["芬蘭","Finland",504,473,469,507,-7,-16,-15,14.0,15.7,false],
+["美國*","United States",502,490,463,513,2,-14,-2,17.8,17.5,false],
+["瑞士","Switzerland",501,470,499,520,-1,-13,-9,18.1,15.0,false],
+["愛爾蘭","Ireland",500,500,480,511,-4,-16,-12,12.7,11.2,false],
+["奧地利","Austria",497,467,477,509,6,-13,-10,12.6,16.5,false],
+["中國香港","Hong Kong (China)",496,480,522,545,-25,-20,-19,22.9,10.0,false],
+["波蘭","Poland",495,482,484,507,-4,-7,-5,14.4,14.0,false],
+["土耳其","Türkiye",494,472,462,473,18,16,8,11.1,15.4,false],
+["捷克","Czechia",490,468,477,517,-7,-20,-10,12.8,15.4,false],
+["比利時","Belgium",490,466,480,508,-1,-13,-5,13.4,18.1,false],
+["立陶宛","Lithuania",488,464,480,512,-7,-15,-11,14.0,15.2,false],
+["德國","Germany",486,465,464,498,-7,-15,-11,14.0,20.7,false],
+["荷蘭*","Netherlands",485,441,483,506,-3,-18,-9,15.7,21.3,false],
+["瑞典","Sweden",485,466,464,503,-8,-21,-18,14.1,19.4,false],
+["斯洛維尼亞","Slovenia",484,445,460,486,-16,-24,-25,10.1,18.8,false],
+["法國","France",483,456,458,497,-4,-18,-16,9.8,21.3,false],
+["義大利","Italy",483,474,460,490,6,-7,-3,10.1,15.8,false],
+["葡萄牙","Portugal",482,462,460,501,-3,-15,-12,9.0,18.6,false],
+["匈牙利","Hungary",480,452,459,495,-6,-21,-13,7.6,19.7,false],
+["丹麥","Denmark",478,460,471,506,-16,-29,-19,8.9,16.0,false],
+["西班牙","Spain",477,451,457,499,-7,-23,-16,7.0,18.4,false],
+["克羅埃西亞","Croatia",476,453,455,464,-6,-22,-8,7.8,20.3,false],
+["斯洛伐克","Slovak Republic",475,448,469,497,13,1,5,11.0,21.1,false],
+["盧森堡","Luxembourg",474,443,458,506,null,null,null,11.4,25.0,false],
+["挪威*","Norway",470,453,452,491,-8,-24,-17,9.7,22.0,false],
+["拉脫維亞","Latvia",468,430,460,507,-25,-45,-23,6.7,21.6,false],
+["阿拉伯聯合大公國","United Arab Emirates",458,433,453,476,26,15,21,10.3,26.6,false],
+["越南","Viet Nam",457,392,443,461,null,null,null,4.2,26.0,false],
+["馬爾他","Malta",453,415,439,463,-13,-31,-27,8.3,29.4,false],
+["烏克蘭地區(17/27)","Ukrainian regions",448,418,431,478,-1,-8,-9,3.6,29.3,false],
+["烏拉圭","Uruguay",445,405,403,462,9,-7,-4,2.8,30.2,false],
+["智利","Chile",442,436,403,466,-1,-12,-9,2.6,28.8,false],
+["以色列","Israel",442,442,403,444,-23,-38,-25,8.8,29.0,false],
+["冰島","Iceland",441,422,433,490,-6,-14,-9,5.9,27.6,false],
+["汶萊","Brunei Darussalam",439,426,435,496,-6,-4,-7,3.4,33.0,false],
+["模里西斯","Mauritius",438,405,407,null,null,null,null,3.0,35.1,false],
+["烏茲別克","Uzbekistan",438,null,null,402,83,null,null,1.8,null,false],
+["蒙特內哥羅","Montenegro",435,418,411,423,32,13,5,1.9,33.0,false],
+["阿爾巴尼亞*","Albania",435,408,433,437,null,null,null,1.9,27.8,false],
+["卡達","Qatar",434,418,416,452,2,-1,2,5.0,35.8,false],
+["希臘","Greece",434,423,424,461,-7,-16,-6,3.3,31.4,false],
+["泰國","Thailand",432,392,407,476,23,13,13,1.2,36.9,false],
+["塞爾維亞","Serbia",429,415,417,437,-18,-26,-23,3.4,34.1,false],
+["羅馬尼亞","Romania",425,413,419,442,-3,-16,-9,1.4,38.5,false],
+["蒙古","Mongolia",424,374,419,443,12,-4,-6,1.4,38.6,false],
+["哥斯大黎加","Costa Rica",424,416,387,452,13,1,3,0.9,36.7,false],
+["喬治亞","Georgia",422,384,416,413,38,10,26,2.3,36.2,false],
+["摩爾多瓦","Moldova",422,404,410,452,5,-7,-4,1.5,39.0,false],
+["保加利亞","Bulgaria",421,387,405,425,0,-18,-12,4.1,41.9,false],
+["哈薩克","Kazakhstan",420,385,414,449,-4,-1,-12,1.4,41.1,false],
+["馬來西亞","Malaysia",419,393,397,484,3,5,-11,0.8,42.3,false],
+["哥倫比亞","Colombia",414,399,381,432,3,-9,-2,1.1,43.9,false],
+["墨西哥","Mexico",414,408,388,453,4,-7,-7,0.5,41.8,false],
+["沙烏地阿拉伯","Saudi Arabia",413,387,390,426,23,5,1,0.6,44.0,false],
+["賽普勒斯","Cyprus",411,379,412,427,0,-2,-7,4.6,43.5,false],
+["亞塞拜然","Azerbaijan",409,374,422,388,null,null,null,4.8,42.9,false],
+["巴西","Brazil",409,408,377,406,6,-2,-2,1.8,43.8,false],
+["約旦","Jordan",407,363,388,408,32,20,26,0.5,48.1,false],
+["秘魯","Peru",406,390,382,436,-2,-18,-9,0.5,46.6,false],
+["厄瓜多","Ecuador",393,385,366,422,null,null,null,0.2,53.6,false],
+["阿根廷","Argentina",393,389,367,403,-13,-12,-11,1.2,48.8,false],
+["印尼","Indonesia",389,365,364,427,6,7,-2,0.1,60.9,false],
+["薩爾瓦多","El Salvador",385,366,346,401,12,-2,3,0.1,61.3,false],
+["柬埔寨","Cambodia",382,347,366,null,35,18,29,0.5,67.1,false],
+["北馬其頓","North Macedonia",378,357,380,389,-1,-9,-9,0.9,55.8,false],
+["菲律賓","Philippines",373,367,371,434,17,20,16,0.3,64.3,false],
+["黎巴嫩","Lebanon",372,331,377,358,null,null,null,1.1,58.4,false],
+["亞美尼亞","Armenia",369,348,376,354,null,null,null,0.0,70.9,false],
+["吉爾吉斯","Kyrgyzstan",363,364,388,null,null,null,null,0.0,61.3,false],
+["多明尼加","Dominican Republic",361,346,339,379,0,-6,0,0.1,69.3,false],
+["巴勒斯坦當局","Palestinian Authority",359,321,355,393,-17,-18,-18,0.1,73.2,false],
+["摩洛哥","Morocco",358,340,350,359,0,-2,-5,0.1,73.8,false],
+["科索沃","Kosovo",357,340,350,359,0,-2,-5,0.1,73.8,false],
+["巴拉圭","Paraguay",355,352,334,352,-13,-21,-4,0.1,69.4,false],
+["伊拉克庫德斯坦地區","Kurdistan Region (Iraq)",352,312,339,null,null,null,null,0.0,76.8,false],
+["瓜地馬拉","Guatemala",351,337,334,369,-22,-37,-10,0.0,75.6,false],
+["尚比亞","Zambia",335,320,326,278,null,null,null,0.0,82.1,false],
+["肯亞","Kenya",335,320,326,278,null,null,null,0.0,82.1,false],
+["塔吉克(杜尚別)","Dushanbe (Tajikistan)",334,368,382,null,null,null,null,0.0,67.2,false],
+["盧安達","Rwanda",317,301,312,null,null,null,null,0.0,86.5,false]
+];
+
+const tbody = document.querySelector('#t1 tbody');
+function fmt(v){ return (v===null||v===undefined) ? 'm' : v; }
+function difCell(v){
+  if(v===null||v===undefined) return '<td>m</td>';
+  const cls = v>0?'dif-pos':(v<0?'dif-neg':'');
+  const sign = v>0?'+':'';
+  return `<td class="${cls}">${sign}${v}</td>`;
+}
+function render(filter){
+  tbody.innerHTML='';
+  let n=0;
+  rows.forEach(r=>{
+    const [zh,en,sci,rea,mat,cps,dsci,drea,dmat,top,low,isTW] = r;
+    if(filter && !(zh.includes(filter) || en.toLowerCase().includes(filter.toLowerCase()))) return;
+    n++;
+    const tr = document.createElement('tr');
+    if(zh==='OECD 平均') tr.className='oecd';
+    else if(isTW) tr.className='tw';
+    tr.innerHTML = `<td>${zh}<br><span style="font-size:.72rem;color:var(--muted);font-family:'Noto Sans TC'">${en}</span></td>
+      <td>${fmt(sci)}</td><td>${fmt(rea)}</td><td>${fmt(mat)}</td><td>${fmt(cps)}</td>
+      ${difCell(dsci)}${difCell(drea)}${difCell(dmat)}
+      <td>${fmt(top)}</td><td>${fmt(low)}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.querySelector('#t1count').textContent = n;
+}
+render('');
+document.querySelector('#t1search').addEventListener('input', e=>render(e.target.value.trim()));
+</script>
+
+</body>
+</html>
