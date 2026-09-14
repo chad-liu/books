@@ -47,10 +47,14 @@ def order_structure(folder, stems):
      'label': 顯示用標籤,
      'parent': 這個條目該掛在哪個「主頁」（本機檔名）底下，沒有則 None}。
 
-    只支援一層：形如「名字(附註)」的條目（如「蒙田(1533~1592)」）視為某人物的
-    主頁；緊接在它後面、直接以檔名比對成功的條目（如「蒙田時間軸」），依序掛在
-    這個主頁底下，直到下一個「名字(附註)」格式條目出現為止——用來讓檔案樹側欄
-    把同一人物第二頁以後的頁面顯示在主頁底下一層，不搬動任何實體檔案。
+    只支援一層，兩種觸發方式都只巢狀一層深、彼此獨立：
+    (1) 形如「名字(附註)」的條目（如「蒙田(1533~1592)」）視為某人物的主頁；
+        緊接在它後面、直接以檔名比對成功的條目（如「蒙田時間軸」），依序掛在
+        這個主頁底下，直到下一個「名字(附註)」格式條目或書架條目出現為止。
+    (2) 檔名以「書架」結尾的條目（如「PISA_2025_書架」）視為書架主頁，一律掛在
+        頂層（不會被前一個主頁收編），緊接在它後面的條目依序掛在它底下，直到
+        下一個主頁或書架條目出現為止——用來讓檔案樹側欄把同一書架衍生出的頁面
+        （如原始數據附錄）顯示在書架底下一層，不搬動任何實體檔案。
     空行、分隔線不影響分組；外部連結一律視為獨立條目，不參與分組也不重置分組。"""
     f = folder / 'order.md'
     if not f.exists():
@@ -65,7 +69,10 @@ def order_structure(folder, stems):
             items.append({'name': None, 'label': s, 'parent': None})
             continue
         if s in stems:
-            items.append({'name': s, 'label': s, 'parent': current_primary})
+            is_shelf = s.endswith('書架')
+            items.append({'name': s, 'label': s, 'parent': None if is_shelf else current_primary})
+            if is_shelf:
+                current_primary = s
             continue
         m = LOCAL_LABEL_RE.match(s)
         name = m.group('name').strip() if m else None
@@ -94,6 +101,20 @@ def collect():
         # order.md 有列的排前面並照其順序，沒列的接在後面依檔名排
         files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))
 
+        # 未列入 order.md 的「孤兒檔」也比照書架巢狀：檔名字首跟某個書架檔名
+        # （去掉結尾「書架」二字）相同的話，自動掛在該書架底下——書架本身通常
+        # 只在 order.md 列一行，但它衍生/收錄的原始頁面常常沒有各自列出。
+        # 不影響「未列入 order.md」的標記，純粹是檔案樹側欄的顯示分組。
+        shelf_prefixes = [(stem[:-2], stem) for stem in stems if stem.endswith('書架')]
+
+        def resolve_parent(stem):
+            if stem in parent_of:
+                return parent_of[stem]
+            for prefix, shelf in shelf_prefixes:
+                if stem != shelf and stem.startswith(prefix):
+                    return shelf
+            return None
+
         by_stem = {}
         top = []
         for p in files:
@@ -108,7 +129,7 @@ def collect():
                 'children': [],
             }
             by_stem[p.stem] = item
-            parent = parent_of.get(p.stem)
+            parent = resolve_parent(p.stem)
             if parent and parent in by_stem:
                 by_stem[parent]['children'].append(item)
             else:
