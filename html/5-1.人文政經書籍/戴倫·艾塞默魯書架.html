@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>戴倫·艾塞默魯書架</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:#0f1420;color:#e8d5b7;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+header{
+  background:linear-gradient(135deg,#17324d,#285b78);
+  padding:12px 20px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  border-bottom:2px solid #c9a94f;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+  flex:0 0 auto;
+}
+.glyph{font-size:1.1rem}
+.title{font-size:1.05rem;font-weight:700;color:#f2e6c9;letter-spacing:.04em;white-space:nowrap}
+select{
+  margin-left:auto;
+  background:#16213e;color:#e8d5b7;
+  border:1px solid #c9a94f;border-radius:6px;
+  padding:7px 12px;font-size:.92rem;font-family:inherit;
+  cursor:pointer;max-width:60vw;
+}
+select:focus{outline:none;box-shadow:0 0 0 2px rgba(201,169,79,.4)}
+.count{font-size:.78rem;color:#9ba4b4;white-space:nowrap}
+main{flex:1;min-height:0;background:#fff}
+iframe{width:100%;height:100%;border:0;display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="glyph">📚</span>
+  <span class="title">戴倫·艾塞默魯書架</span>
+  <span class="count" id="count"></span>
+  <select id="picker"></select>
+</header>
+
+<main>
+  <iframe id="view" title="戴倫·艾塞默魯作品知識圖譜"></iframe>
+</main>
+
+<script>
+var BOOKS = [
+  { name: "國家為什麼會失敗", file: "國家為什麼會失敗知識圖譜.html" },
+  { name: "自由的窄廊",       file: "自由的窄廊知識圖譜.html" },
+  { name: "權力與進步",       file: "權力與進步知識圖譜.html" }
+];
+
+var picker = document.getElementById('picker');
+var view = document.getElementById('view');
+var count = document.getElementById('count');
+
+count.textContent = BOOKS.length + ' 本';
+
+BOOKS.forEach(function(b, i){
+  var opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = b.name;
+  picker.appendChild(opt);
+});
+
+function load(i){
+  view.src = encodeURIComponent(BOOKS[i].file).replace(/%2F/g, '/');
+  picker.value = i;
+  try { localStorage.setItem('acemogluShelf.last', i); } catch(e){}
+}
+
+picker.addEventListener('change', function(){ load(+picker.value); });
+
+var start = 0;
+try {
+  var saved = +localStorage.getItem('acemogluShelf.last');
+  if (saved >= 0 && saved < BOOKS.length) start = saved;
+} catch(e){}
+load(start);
+</script>
+
+</body>
+</html>
