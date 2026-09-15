@@ -55,7 +55,10 @@ def order_structure(folder, stems):
         頂層（不會被前一個主頁收編），緊接在它後面的條目依序掛在它底下，直到
         下一個主頁或書架條目出現為止——用來讓檔案樹側欄把同一書架衍生出的頁面
         （如原始數據附錄）顯示在書架底下一層，不搬動任何實體檔案。
-    空行、分隔線不影響分組；外部連結一律視為獨立條目，不參與分組也不重置分組。"""
+    空行不影響分組（見「4-1.哲學家」用空行分隔仍要維持巢狀的哲學家小傳＋時間軸）；
+    分隔線（如 ---）會把 current_primary 重置為 None，用來明確結束目前的分組——
+    例如書架不是排在 order.md 最後一段時，用分隔線把它的子項目和後面不相干的條目
+    隔開，避免後面的條目被誤收編。外部連結一律視為獨立條目，不參與分組也不重置分組。"""
     f = folder / 'order.md'
     if not f.exists():
         return []
@@ -63,7 +66,10 @@ def order_structure(folder, stems):
     current_primary = None
     for line in f.read_text(encoding='utf-8').splitlines():
         s = line.strip()
-        if not s or SEP_RE.match(s):
+        if not s:
+            continue
+        if SEP_RE.match(s):
+            current_primary = None
             continue
         if URL_RE.match(s):
             items.append({'name': None, 'label': s, 'parent': None})
