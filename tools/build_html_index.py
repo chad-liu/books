@@ -50,6 +50,9 @@ border-radius:6px;color:#e8d5b7;padding:9px 13px;font-size:.95rem;font-family:in
 #q:focus{outline:none;border-color:#c9a94f}
 #q::placeholder{color:#6b7688}
 .hint{color:#9ba4b4;font-size:.82rem}
+.tree-link{background:#16213e;border:1px solid #2d4a7a;border-radius:6px;color:#c9a94f;
+padding:9px 13px;font-size:.9rem;text-decoration:none;white-space:nowrap;transition:border-color .15s}
+.tree-link:hover{border-color:#c9a94f;background:#1e3a5f}
 .empty{color:#6b7688;text-align:center;padding:50px;display:none}
 main{padding:8px 32px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-top:24px}
@@ -129,7 +132,9 @@ def build():
     out.append('</select>')
 
     out += ['<input id="q" type="search" placeholder="搜尋條目或分類…（按 / 快速聚焦）" autocomplete="off">',
-            '<span class="hint">Esc 清除</span>', '</div>', '</header>',
+            '<span class="hint">Esc 清除</span>',
+            '<a class="tree-link" href="treeview.html" target="_blank" rel="noopener">🌳 檔案樹</a>',
+            '</div>', '</header>',
             '<main>', '<div class="grid">']
 
     for i, (name, items) in enumerate(cards):
