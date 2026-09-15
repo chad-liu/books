@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>心智探奇知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:#b8442a} .re .nm{color:#8f5e14}
+  .fa .nm{color:#3d7a55} .hi .nm{color:#1f5c85}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">演化心理學經典・心智如何運作</p>
+  <h1>心智探奇</h1>
+  <p class="lede">眼睛如何從一堆光子重建出立體世界？為什麼會嫉妒、會做夢、會愛上另一個人？平克主張，人類心智並非一團模糊的神秘黑箱，而是由天擇打造出來、專門解決祖先生存與繁衍難題的一整組精密計算裝置。這份圖譜依全書七章的順序，把每一章的核心論證整理成一張知識圖。</p>
+</header>
+
+<div class="callout">
+  <b>前言的提問</b><br>
+  要解開心智之謎，平克主張需要同時握有兩把鑰匙：「心智計算理論」說明心智的運作方式是資訊處理，「自然選擇理論」說明這套處理系統為何長成現在這個樣子。兩者合而為一，才能真正理解視覺、推理、情感與社會關係這些看似截然不同的心智能力，其實共享同一套演化邏輯。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一部分　心智理論的前世今生</h2><span class="tag">心智運作的兩把鑰匙</span></div>
+  <p class="sub" style="margin:0">心智計算理論與自然選擇理論，是解開心智之謎不可或缺的兩套基礎框架</p>
+</section>
+
+<section>
+  <h2>01——心智是什麼</h2>
+  <p class="sub">讓機器人辨認一張臉、走過一個房間，遠比讓它下贏西洋棋更加困難</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心智是什麼結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">讓機器人辨認一張臉、走過房間，遠比讓它下贏西洋棋更困難</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這個機器人難題揭示，人類心智其實內建了極其複雜精密的運算能力，只是我們毫無自覺</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">機器人難題的啟示</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">電腦擅長邏輯運算卻拙於視覺與行走，反過來凸顯人類這些直覺能力</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">有多麼精密</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">機器人三定律的侷限</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">科幻小說式的簡單規則，遠遠不足以描述真實心智運作所需的龐大計</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">算架構</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">心智的反向工程</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">理解心智最有效的方法，是像拆解機器一樣，反推每項功能是為了解</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">決什麼問題</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">演化心理學對決標準模型</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">平克主張心智並非任由文化塑造的空白畫布，而是具備特定演化功能</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">的裝置</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">心智之所以難以研究，正是因為它把極其複雜的運算包裝成毫不費力的直覺</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">要真正拆解這套運算裝置，需要借助一套理解計算本質的理論架構</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章正式介紹心智計算理論，說明智能為何可以被理解成一種計算</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>02——心智計算理論</h2>
+  <p class="sub">智能的本質，就是資訊處理，也就是一種計算過程</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心智計算理論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">智能的本質，就是資訊處理，也就是一種計算過程</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這套理論說明了，思想、信念與欲望如何能夠是實際存在於大腦裡的物理歷程</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">智能等於計算</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">心智計算理論主張，思考的本質就是符號依照規則被運算處理，如同</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">電腦執行程式</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">塞爾與彭羅斯的反對意見</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">兩位重量級學者都曾挑戰這套理論，但平克逐一檢視後認為反駁並不</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">成立</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">神經網絡模型的特徵與侷限</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">神經網絡模型能模擬部分心智運作，卻仍需結合符號處理才能解釋完</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">整智能</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">意識的多重含義</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">意識一詞其實包含好幾種不同概念，釐清這些差異是討論意識問題的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">必要前提</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">心智計算理論說明了智能如何運作，卻沒有解釋這套運算系統最初從何而來</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">要回答這個問題，需要借助另一套同樣關鍵的理論工具</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章介紹自然選擇理論，說明天擇如何一步步打造出人類的智能</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>03——自然選擇理論</h2>
+  <p class="sub">變聰明從來不是演化的必然方向，人類智能的出現其實充滿了歷史偶然</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="自然選擇理論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">變聰明從來不是演化的必然方向，人類智能的出現充滿歷史偶然</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">天擇是目前已知唯一能夠打造出複雜精密適應機制的自然歷程</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">智能並非演化的必然終點</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">絕大多數物種在演化過程中並未朝向更高智能發展，聰明只是眾多策</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">略之一</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">天擇打造複雜適應機制</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">所有生命的精密構造，包括心智在內，都是天擇長期篩選下的產物而</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">非巧合</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">人類的認知利基</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">人類獨特地演化出依賴知識、工具與合作解決生存問題的策略，形成</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">認知利基</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">人類智能演化的有利條件</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">群居生活、長期扶養後代與工具使用等因素，共同為智能演化提供有</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">利條件</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">自然選擇理論說明了，心智的每一項精密能力，背後都對應祖先曾面對的具體生存難題</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 1 到此結束，接下來要正式運用這套架構，逐一檢視心智的四大核心能力</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">PART 2 從視覺感知開始，檢視大腦如何把光線轉換成立體世界的影像</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二部分　心智的四大能力</h2><span class="tag">視覺、推理、情感與社會關係</span></div>
+  <p class="sub" style="margin:0">用同一套演化邏輯，逐一檢視心智最核心的四項能力如何運作</p>
+</section>
+
+<section>
+  <h2>04——心智能力1：視覺感知</h2>
+  <p class="sub">從視網膜上的一堆光點，重建出立體世界的完整影像，是視覺系統驚人的計算成就</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心智能力視覺感知結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從視網膜上的一堆光點重建立體世界，是視覺系統驚人的計算成就</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">立體視覺、光影判讀與物體辨識，背後都仰賴大腦極其精密的演算法</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">立體視覺的運算原理</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">雙眼視差提供的些微差異，經大腦運算後被轉換成對物體遠近深度的</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">立體知覺</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">光影形狀的轉譯法則</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">大腦依循特定法則，把平面的光影變化解讀成三維物體的形狀與材質</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">資訊</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">二維影像到三維世界的重建</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">視覺系統必須從本質模糊、有歧義的二維訊號，推論出合理的三維樣</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">貌</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">物體辨識與空間想像</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">形狀線索與參考框架讓大腦快速辨識物體，心理意象則讓人能在腦中</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">模擬空間</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">視覺系統的每一項功能，都是為了解決祖先在真實環境中辨認獵物、天敵與路徑的演化難題</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">視覺提供了外界資訊，心智還需要另一套能力，才能根據這些資訊做出合理推論</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視推理能力，說明大腦如何運用邏輯、算術與機率做出判斷</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>05——心智能力2：推理</h2>
+  <p class="sub">人類的推理能力並非追求抽象邏輯的完美，而是演化出貼近實際生存情境的「生態智能」</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心智能力推理結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">人類推理並非追求抽象邏輯完美，而是貼近生存情境的生態智能</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">分類、信念與慾望的推論架構，以及邏輯算術機率這幾套工具，共同構成推理能力的基礎</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">生態智能優於抽象邏輯</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">人類推理系統天生更擅長處理具體、貼近生存情境的問題，而非純抽</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">象演算</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">分類本身就是一種推理</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">把事物歸類到特定類別，讓人得以據此推論該事物可能具備的其他特</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">徵</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">信念與慾望的解讀架構</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">用信念與慾望來解讀他人行為，是人類理解與預測周遭世界最有效的</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">工具</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">隱喻作為思考的基礎</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">人類大量仰賴隱喻來理解抽象概念，這些隱喻深植於日常語言與思考</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">模式中</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">推理能力證明，人類智能的設計目標是解決真實生存問題，而非通過抽象的邏輯測驗</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">除了理性推理，心智還演化出另一套同樣重要、卻經常被低估的能力</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視情感，說明看似非理性的情緒反應，其實同樣具備精密的演化功能</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>06——心智能力3：情感</h2>
+  <p class="sub">不同文化的人類，表現出來的基本情感卻驚人地相似，顯示情感同樣是演化的產物</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心智能力情感結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">不同文化的人類，表現出來的基本情感卻驚人地相似</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">噁心、恐懼、愛與悲傷等情感，各自對應著祖先曾經面對的特定生存與繁衍難題</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">情感的跨文化一致性</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">儘管文化表現方式各異，基本情感類型在全世界人類身上呈現高度一</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">致的模式</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">情感作為演化的解決方案</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">噁心防範致病食物、恐懼躲避危險，每種情感都對應特定的生存或繁</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">衍功能</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">幸福跑步機與延遲滿足</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">人類對快樂的感受會隨適應而遞減，如何延遲滿足追求長期利益同樣</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">是難題</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">利他、愛與悲傷的演化邏輯</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">這些看似無私或痛苦的情感，往往同樣能用促進基因延續的邏輯來解</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">釋</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">情感不是理性的對立面，而是天擇設計出來、幫助祖先做出正確生存決策的精密機制</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">個人的心智能力之外，人類還演化出處理群體與人際關係的複雜社會能力</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視社會關係，說明家庭、友誼與敵對關係背後共通的演化邏輯</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>07——心智能力4：社會關係</h2>
+  <p class="sub">從親子到夫妻，從朋友到對手，人類的每一種社會關係都有各自對應的演化邏輯</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="心智能力社會關係結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從親子到夫妻，從朋友到對手，每種社會關係都有各自的演化邏輯</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">血緣親疏與利益計算，共同形塑了人類複雜多樣的社會互動模式</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">親屬關係的演化邏輯</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">血緣關係越親近，個體之間互相幫助的演化誘因通常也越強，解釋了</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">家庭合作</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">親子與手足關係的張力</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">父母與子女、手足之間的利益並非完全一致，這種張力同樣可以用演</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">化解釋</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">兩性與婚姻關係的邏輯</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">男女在生殖策略上的先天差異，形塑了求偶、婚姻與夫妻互動裡的諸</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">多現象</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">朋友與敵人的社會網絡</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">互惠合作與結盟對抗，讓人類得以在複雜社會網絡裡同時管理友誼與</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">競爭</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">社會關係的複雜樣貌，同樣可以還原成天擇為了解決合作與競爭難題所設計出的具體策略</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">全書從心智理論一路走到四大核心能力，最終要回到一個更根本的問題：人該如何活出意義</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">結語要問，理解了心智的演化起源後，藝術與幽默這些看似無用的能力又扮演了什麼角色</text>
+</svg>
+  </div>
+</section>
+
+<section>
+<div class="callout">
+  <b>結語的迴響——活出生命的意義</b><br>
+  平克在結語裡指出，藝術與幽默看似對生存繁衍沒有直接用處，卻可能是演化賦予人類心智其他能力後，意外附帶的美好副產品。他提醒讀者，理解心智運作的演化起源，並不會讓生命的意義與美好因此消失，反而讓人更能欣賞這套精密系統如何造就了愛、幽默與藝術這些讓生命值得一活的體驗。
+</div>
+</section>
+
+<footer>
+  本頁依史蒂芬・平克《心智探奇：人類心智的起源與進化》整理各章核心論證與因果脈絡，著重呈現全書以心智計算理論與自然選擇理論解釋視覺、推理、情感與社會關係的整體架構，書中大量認知科學細節請另行參閱原書。
+</footer>
+
+</div>
+</body>
+</html>
