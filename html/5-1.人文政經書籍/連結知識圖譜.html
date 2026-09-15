@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>連結知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:#b8442a} .re .nm{color:#8f5e14}
+  .fa .nm{color:#3d7a55} .hi .nm{color:#1f5c85}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">資訊網路史・AI時代的民主危機</p>
+  <h1>連結</h1>
+  <p class="lede">我們習慣以為資訊越多、真相越清楚，社會就會做出越好的決策——哈拉瑞在這本探討資訊網路七萬年演化史的新作裡，正面挑戰這個「天真的資訊觀」。他主張，資訊真正的力量從來不在呈現真相，而在把人連結起來；而人工智慧的出現，第一次讓一種非人類的行為者，得以自主做決定、自行產生新想法，徹底改寫了這場遊戲規則。這份圖譜依全書十一章的順序，把每一章的核心論證整理成一張知識圖。</p>
+</header>
+
+<div class="callout">
+  <b>開場白的提問</b><br>
+  資訊科技突飛猛進，人類做的決策卻越來越糟——這個反直覺的現象，正是全書開場要正面處理的問題。哈拉瑞主張，答案藏在一個常被忽略的事實裡：資訊網路存在的目的，從來就不是呈現客觀真相，而是把人連結起來；而AI的出現，第一次讓非人類的行為者也能加入這場連結遊戲，前方的路，注定滿布荊棘。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一部　人類形成的網路</h2><span class="tag">資訊如何連結而非呈現真相</span></div>
+  <p class="sub" style="margin:0">從故事、文件到錯誤與抉擇，檢視人類資訊網路運作的基本邏輯</p>
+</section>
+
+<section>
+  <h2>第１章——資訊是什麼？</h2>
+  <p class="sub">我們以為資訊越多就越接近真相，這其實是一種天真的誤解</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="資訊是什麼結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">我們以為資訊越多就越接近真相，這其實是天真的誤解</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">資訊真正的力量，從來不在呈現客觀事實，而在把人連結起來</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">天真資訊觀的迷思</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">認為累積更多資訊必然帶來更多真相與更好決策，這種直覺其實禁不</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">起歷史檢驗</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">連結優先於真實</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">許多影響力最大的資訊系統，例如宗教與意識形態，靠的是凝聚人心</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">而非陳述事實</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">虛構故事的強大連結力</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">越是簡化甚至偏離事實的敘事，有時反而越容易在大規模人群中快速</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">傳播</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">網路觀取代真相觀</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">應該用資訊如何連結行為者的網路視角，取代資訊等於真相的素樸假</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">設</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">重新定義資訊的本質，是理解後續一切資訊網路演變的起點</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個網路視角，將貫穿全書對故事、文件、錯誤與政治制度的分析</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章正面檢視，故事這種最古老的資訊形式，如何創造出幾乎無限的連結能力</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第２章——故事：無限的連結</h2>
+  <p class="sub">故事讓素不相識的陌生人，得以想像自己與千萬人同屬一個共同體</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="故事無限的連結結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">故事讓陌生人得以想像自己與千萬人同屬一個共同體</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這種近乎無限的連結能力，是故事凌駕其他資訊形式最關鍵的優勢</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">故事創造想像共同體</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">共同相信同一套敘事，讓民族、宗教與公司等群體得以跨越血緣與地</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">理限制存在</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">連結規模不受事實侷限</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">故事不必完全符合事實，就能有效凝聚信眾，這也是它連結力量的隱</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">憂所在</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">錯誤敘事同樣能大規模傳播</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">陰謀論與謠言同樣借助故事的連結機制，得以快速擴散到龐大的群眾</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">之中</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">故事機制延續至今</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">從古代神話到現代社群媒體上的病毒式敘事，運作的底層邏輯其實一</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">脈相承</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">故事的連結力量是雙面刃，既能建立文明，也能讓謬誤以驚人速度擴散</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">隨著社會規模擴大，人類還需要另一種更精確的工具來記錄與核實資訊</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視文件這種資訊形式，如何取得連故事都難以企及的實際權力</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第３章——文件：紙老虎也會咬人</h2>
+  <p class="sub">一張看似無害的表格或證書，卻可能徹底改變一個人的命運</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文件紙老虎也會咬人結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一張看似無害的表格或證書，卻可能徹底改變一個人的命運</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">文件本身或許只是紙張，一旦被官僚體系採信，就能發揮真實可怕的強制力</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">官僚文件的權力來源</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">文件之所以有力量，不是因為內容必然正確，而是因為制度選擇相信</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">並據此行動</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">錯誤文件照樣能傷人</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">即使記載內容有誤，只要制度依此運作，當事人仍會承受文件帶來的</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">實際後果</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">從紙本到數位資料庫</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">現代社會的證件、信用紀錄與檔案，延續了文件掌控個人命運的古老</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">邏輯</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">官僚系統的雙重性格</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">文件系統既能提供治理所需的秩序，也可能淪為壓迫個人的冷酷工具</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">文件證明了資訊網路的力量，從來不需要以真確為前提，只需要被制度採信</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這也讓下一個問題變得格外重要：資訊網路該如何面對自己必然會犯下的錯誤</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章正面檢視，追求絕對正確為何終究只是一種幻想</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第４章——錯誤：絕對正確是一種幻想</h2>
+  <p class="sub">沒有一套資訊網路能夠永遠正確，聲稱絕對正確才是真正的危險訊號</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="錯誤絕對正確是一種幻想結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">沒有一套資訊網路能永遠正確，聲稱絕對正確才是危險訊號</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">健康的資訊網路不在於避免犯錯，而在於是否具備發現並修正錯誤的機制</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">絕對正確的誘人幻想</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">無論宗教經典或現代科學機構，一旦自稱不會犯錯，往往就埋下濫權</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">的種子</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">自我修正機制的重要性</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">同儕審查、司法覆核與新聞自由，都是讓資訊網路持續發現並修正錯</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">誤的設計</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">拒絕修正帶來的長期風險</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">缺乏修正機制的系統，錯誤會不斷累積，最終可能引發難以收拾的災</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">難後果</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">承認可能犯錯反而更可靠</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">願意承認自身侷限、保留修正空間的系統，長期而言比自稱完美的系</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">統可靠</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">判斷一套資訊網路是否值得信任，關鍵不在於它是否犯錯，而在於能不能修正錯誤</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這套判準，正好可以用來比較民主與極權這兩種截然不同的資訊處理制度</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用這套標準，檢視民主與極權制度數千年來各自的演變軌跡</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第５章——決擇：民主與極權制度簡史</h2>
+  <p class="sub">民主與極權的根本差異，其實是兩套截然不同的資訊處理方式</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="決擇民主與極權制度簡史結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">民主與極權的根本差異，其實是兩套截然不同的資訊處理方式</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">分散式處理加上自我修正機制，讓民主得以持續調整方向而不至於崩潰</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">民主的分散式資訊處理</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">權力分散在多個機構與公民手中，透過選舉與媒體不斷回饋並修正決</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">策方向</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">極權的集中式資訊處理</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">資訊與決策權集中在少數統治核心，缺乏有效管道回饋錯誤或制衡濫</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">權</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">修正機制的存續關鍵</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">民主體制即使決策失誤，也能靠既有機制逐步調整，這是它長期韌性</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">的來源</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">集中處理的脆弱性</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">極權體制看似高效，卻因缺乏修正管道，一旦決策失誤便可能一路走</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">向失控</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">民主與極權的優劣，最終取決於各自處理資訊與修正錯誤的能力，而非表面上的效率高低</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 1 到此結束，這套分析框架接下來要面對一位全新的參賽者：人工智慧</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">PART 2 正式檢視，電腦這種新成員與過去的印刷機究竟有何本質上的不同</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二部　非生物的網路</h2><span class="tag">AI是全新的一種行為者</span></div>
+  <p class="sub" style="margin:0">電腦與過去的印刷機、書寫系統截然不同，因為它能自主做決定</p>
+</section>
+
+<section>
+  <h2>第６章——新成員：電腦與印刷機不同之處</h2>
+  <p class="sub">印刷機只能複製人類寫下的內容，電腦卻能自己做決定、自己生成新內容</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="新成員電腦與印刷機不同之處結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">印刷機只能複製人類寫的內容，電腦卻能自己做決定、生成新內容</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">AI是資訊網路史上第一種具備自主性的非生物成員，這項本質差異改變了一切</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">被動工具與主動行為者的差異</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">印刷機、書寫系統都只是被動傳遞人類產出的內容，本身沒有決策能</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">力</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">AI具備自主決策能力</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">現代AI系統能在缺乏人類逐步指示的情況下，自行分析資料並做出</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">實際決定</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">AI能自行生成新內容</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">不同於過去的資訊科技，AI能創造出人類從未輸入、甚至意想不到</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">的全新內容</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">行為者角色的歷史性轉變</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">資訊網路裡首度出現非人類、卻具備類似能動性的成員，徹底改寫遊</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">戲規則</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">電腦與印刷機的差異不是程度之別，而是資訊網路裡出現全新物種的質變</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這種全天候運作、永不休止的新成員，也帶來了規模空前的監控可能性</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視AI驅動的網路監控，如何達到過去統治者連想像都不敢想像的規模</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第７章——不停歇：網路監控無所不在</h2>
+  <p class="sub">過去的秘密警察需要休息，AI驅動的監控系統卻能永不間斷地運作</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="不停歇網路監控無所不在結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">過去的秘密警察需要休息，AI驅動的監控系統卻能永不間斷</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">全天候、無死角的監控能力，是過去任何極權政體都不曾真正擁有過的技術條件</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">傳統監控的人力限制</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">過去的監控體系仰賴大量人力蒐集與分析情報，天生受限於人力與時</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">間成本</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">AI監控的全天候特性</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">演算法能不眠不休地即時處理海量數據，監控規模與密度遠超人力所</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">能負荷</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">監控技術的擴散風險</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">這類技術一旦成熟，不只極權政體，民主社會同樣可能面臨監控過度</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">擴張的誘惑</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">隱私與安全的兩難權衡</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">社會必須在維護安全與保障個人隱私之間，重新找到能被普遍接受的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">平衡點</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">AI讓無所不在的監控從理論上的噩夢，變成技術上可行的現實選項</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這種監控能力背後，還隱藏著另一層人類難以直接觀察的全新現實</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視存在於電腦與演算法之間、人類難以完全掌握的這層新現實</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第８章——易出錯：存在於電腦間的現實</h2>
+  <p class="sub">演算法之間彼此互動所形成的現實，人類往往既看不見也難以控制</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="易出錯存在於電腦間的現實結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">演算法彼此互動形成的現實，人類往往既看不見也難以控制</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這層存在於電腦之間的新現實，同樣會犯錯，卻常被誤認為客觀中立的真相</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">演算法互動創造的新現實</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">社群媒體推薦系統與廣告演算法彼此互動，形塑出人類難以直接觀察</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">的現實</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">看似中立實則充滿偏誤</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">演算法產出的結果經常被誤認為客觀公正，實際上內建了訓練資料的</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">偏誤</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">人類難以追蹤決策軌跡</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">演算法之間高速互動產生的結果，連工程師本身都未必能完整還原推</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">導過程</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">錯誤同樣會被放大傳播</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">這層電腦間現實一旦出錯，也可能透過網路效應被迅速放大，波及大</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">量使用者</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">電腦之間的互動已經形成一層新的現實，這層現實同樣不可靠，卻常被誤當成絕對真相</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 2 到此結束，這些新現實開始正面衝擊民主與極權這兩套既有的政治制度</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">PART 3 正式檢視，AI驅動的資訊網路如何具體衝擊當代的政治體制</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第三部　電腦政治學</h2><span class="tag">民主、極權與全球分裂</span></div>
+  <p class="sub" style="margin:0">AI重塑的資訊網路，正在同時考驗民主體制與極權統治的存續方式</p>
+</section>
+
+<section>
+  <h2>第９章——民主制度：我們還能對話嗎？</h2>
+  <p class="sub">社群媒體演算法偏好激化情緒的內容，正在侵蝕民主賴以運作的對話能力</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="民主制度我們還能對話嗎結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">社群媒體演算法偏好激化情緒，正侵蝕民主賴以運作的對話能力</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">民主制度的核心不是投票本身，而是公民之間仍然願意持續對話與妥協</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">演算法偏好極端與衝突</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">為了衝高使用者停留時間，推薦演算法傾向放大憤怒與對立，而非理</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">性討論</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">公共對話空間逐漸破碎</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">民眾被導向立場相近的同溫層，跨陣營對話的機會與意願因此持續萎</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">縮</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">假訊息與極化的加乘效應</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">演算法放大效應疊加刻意操弄的假訊息，讓社會分裂的速度遠超過去</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">任何時代</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">民主韌性面臨真正考驗</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">民主過去仰賴的自我修正機制，如今正被這股演算法驅動的極化力量</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">正面挑戰</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">民主能否存續，取決於社會能不能在演算法製造的噪音裡，重新找回對話與妥協的能力</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">相對於民主面臨的挑戰，極權政體反而可能從同樣的技術裡看到鞏固權力的全新契機</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視AI技術如何可能讓極權統治的效率與控制力大幅躍升</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第10章——極權主義：權力歸於演算法？</h2>
+  <p class="sub">過去極權政體的最大罩門，是必須仰賴人類幹部執行監控與鎮壓</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="極權主義權力歸於演算法結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">過去極權政體的最大罩門，是必須仰賴人類幹部執行監控</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">AI讓極權統治第一次有機會擺脫對人類幹部的依賴，達到近乎完美的集中控制</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">傳統極權的人力罩門</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">過去的極權統治仰賴大量人類幹部執行監控，這些幹部本身可能貪腐</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">或倒戈</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">AI取代人類執行監控</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">演算法能取代大量原本由人類幹部負責的監控與審查工作，且不會有</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">異心疲勞</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">社會信用式的全面評分</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">結合大數據評分與行為控制的制度，讓統治者得以更精細地獎懲每一</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">位公民</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">集中控制效率的躍升</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">這種技術讓極權統治的效率與滲透力大幅提升，逼近過去統治者夢寐</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">以求的控制</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">AI可能讓極權主義史上第一次擺脫對人類執行者的依賴，這是真正令人憂心之處</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這場AI競賽也正在演變成全球地緣政治角力，下一章檢視世界是否將因此走向分裂</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章檢視AI競爭如何在全球畫下一道新的矽幕，決定世界走向統一或分裂</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第11章——矽幕：全球帝國、或是全球分裂？</h2>
+  <p class="sub">過去的鐵幕分裂了東西方陣營，如今一道矽幕正沿著AI技術的界線重新劃分世界</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="矽幕全球帝國或是全球分裂結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">過去鐵幕分裂了東西方，如今矽幕正沿AI技術界線重新劃分世界</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">AI競賽最終走向單一全球體系，還是分裂成互不相容的區域陣營，仍是未定之數</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">美中AI競爭的地緣政治</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">兩大強權在晶片、演算法與資料主權上的競逐，正形塑二十一世紀的</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">地緣政治版圖</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">全球單一網路的可能性</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">若某一套技術標準取得壓倒性優勢，世界仍有可能整合進同一套全球</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">資訊網路</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">分裂成對立陣營的風險</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">若各國堅持發展互不相容的技術體系，世界也可能分裂成多個彼此隔</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">絕的數位陣營</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">中小型國家的抉擇壓力</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">夾在強權之間的國家，被迫在不同的技術陣營與價值體系之間做出艱</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">難的選邊站</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">矽幕最終畫在哪裡，將決定人類是走向新的全球整合，還是陷入更深的分裂對立</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">PART 3 到此結束，全書最後要回答，人類該如何具體因應這場史無前例的資訊網路變局</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">結語正面提出因應之道：打造能夠持續自我修正的制度機制</text>
+</svg>
+  </div>
+</section>
+
+<section>
+<div class="callout">
+  <b>結語的迴響——打造自我修正機制</b><br>
+  哈拉瑞在結語裡重申，面對AI帶來的資訊網路巨變，人類真正該追求的不是找到一套絕對正確、永不犯錯的制度，而是打造具備自我修正能力的機制——讓錯誤能被及時發現、被有效糾正，而不是任由它在系統裡不斷累積。他提醒讀者，這條路布滿荊棘，卻是唯一能讓民主與人類自主性存續下去的方向。
+</div>
+</section>
+
+<section>
+  <div class="band"><h2>本書受到的核心批評</h2><span class="tag">CRITICAL RECEPTION</span></div>
+  <p class="sub" style="margin:0 0 4px">這套聚焦資訊網路與AI風險的論證，同樣招來科技界與史學界不少嚴肅的質疑</p>
+  <div class="grid ri">
+    <div class="card"><div class="nm">與前作論述高度重疊</div><p>多篇書評指出，全書大量沿用《人類大歷史》裡故事凝聚合作的論證，以及《人類大命運》對演算法威脅的憂慮，被認為新意有限，更像是把既有主張套用到「資訊網路」這個新框架上，而非提出全新的核心洞見。</p></div>
+    <div class="card"><div class="nm">對AI風險的描述被批評過於擬人化</div><p>部分人工智慧研究者質疑，書中屢次形容AI能「自主做決定」「自行產生新想法」，這種擬人化的描述缺乏對機器學習實際運作機制的技術說明，容易誇大當前AI系統的自主性與能動性。</p></div>
+    <div class="card"><div class="nm">歷史案例的選擇性簡化</div><p>歷史學者延續對哈拉瑞一貫的批評，指出書中援引的宗教正典形成、獵巫手冊等歷史案例，經過高度篩選與簡化以符合資訊網路框架，未充分呈現這些歷史事件本身的複雜與爭議。</p></div>
+    <div class="card"><div class="nm">民主與極權的二分過於乾淨</div><p>政治學者認為，把民主等同於分散式、可自我修正的資訊處理，把極權等同於集中式、無法自我修正的資訊處理，這種對比雖具啟發性，卻掩蓋了現實中民主同樣容易受假訊息操縱、威權政體也可能局部自我調整的灰色地帶。</p></div>
+    <div class="card"><div class="nm">缺乏具體可行的政策解方</div><p>儘管全書大聲疾呼AI對民主構成的風險，書評普遍指出，作者最終提出的解方——打造自我修正機制——仍停留在抽象原則層次，並未提出具體的監理架構或技術治理方案，讀者得到的是診斷而非處方。</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <b>另一面的價值與整體反思</b><br>
+    這些批評多半不否定AI正在重塑資訊網路這個核心觀察，而是質疑書中警世敘事是否過於聳動、解方是否過於空泛。也有評論肯定，本書成功把資訊即真相這個常見迷思，轉化成公眾能夠理解的資訊即連結框架，即使沒有提出完整解方，光是重新界定問題本身，就已具有公共討論的價值——這或許正是哈拉瑞作品一貫的定位：提出尖銳問題，而非給出最終答案。
+  </div>
+</section>
+
+<footer>
+  本頁依哈拉瑞《連結：從石器時代到AI紀元》整理各章核心論證與因果脈絡，著重呈現全書從資訊網路本質、AI新成員登場到民主與極權制度衝擊的整體架構，書中大量案例與技術細節請另行參閱原書。
+</footer>
+
+</div>
+</body>
+</html>
