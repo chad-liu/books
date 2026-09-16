@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科學知識圖譜書架</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  background:#0f1420;color:#e8d5b7;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+header{
+  background:linear-gradient(135deg,#17324d,#285b78);
+  padding:12px 20px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  border-bottom:2px solid #c9a94f;
+  box-shadow:0 2px 12px rgba(0,0,0,.4);
+  flex:0 0 auto;
+}
+.glyph{font-size:1.1rem}
+.title{font-size:1.05rem;font-weight:700;color:#f2e6c9;letter-spacing:.04em;white-space:nowrap}
+select{
+  margin-left:auto;
+  background:#16213e;color:#e8d5b7;
+  border:1px solid #c9a94f;border-radius:6px;
+  padding:7px 12px;font-size:.92rem;font-family:inherit;
+  cursor:pointer;max-width:60vw;
+}
+select:focus{outline:none;box-shadow:0 0 0 2px rgba(201,169,79,.4)}
+.count{font-size:.78rem;color:#9ba4b4;white-space:nowrap}
+main{flex:1;min-height:0;background:#fff}
+iframe{width:100%;height:100%;border:0;display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="glyph">📚</span>
+  <span class="title">科學知識圖譜書架</span>
+  <span class="count" id="count"></span>
+  <select id="picker"></select>
+</header>
+
+<main>
+  <iframe id="view" title="科學知識圖譜"></iframe>
+</main>
+
+<script>
+var BOOKS = [
+  { name: "相對論",         file: "相對論知識圖譜.html" },
+  { name: "量子力學",       file: "量子力學知識圖譜.html" },
+  { name: "黑洞",           file: "黑洞知識圖譜.html" },
+  { name: "電子零件的種類", file: "電子零件的種類知識圖譜.html" },
+  { name: "真空管與電晶體", file: "真空管與電晶體知識圖譜.html" },
+  { name: "積體電路",       file: "積體電路知識圖譜.html" },
+  { name: "量子電腦",       file: "量子電腦知識圖譜.html" },
+  { name: "元宇宙",         file: "元宇宙知識圖譜.html" },
+  { name: "區塊鏈",         file: "區塊鏈知識圖譜.html" },
+  { name: "鐵路運輸",       file: "鐵路運輸知識圖譜.html" },
+  { name: "全球海運",       file: "全球海運知識圖譜.html" }
+];
+
+var picker = document.getElementById('picker');
+var view = document.getElementById('view');
+var count = document.getElementById('count');
+
+count.textContent = BOOKS.length + ' 篇';
+
+BOOKS.forEach(function(b, i){
+  var opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = b.name;
+  picker.appendChild(opt);
+});
+
+function load(i){
+  view.src = encodeURIComponent(BOOKS[i].file).replace(/%2F/g, '/');
+  picker.value = i;
+  try { localStorage.setItem('scienceshelf.last', i); } catch(e){}
+}
+
+picker.addEventListener('change', function(){ load(+picker.value); });
+
+var start = 0;
+try {
+  var saved = +localStorage.getItem('scienceshelf.last');
+  if (saved >= 0 && saved < BOOKS.length) start = saved;
+} catch(e){}
+load(start);
+</script>
+
+</body>
+</html>
