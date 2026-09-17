@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>應用材料知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEEFF4; --surface:#FFFFFF; --surface-2:#E2E4ED; --line:#CFD2DE;
+  --ink:#1A1D2B; --muted:#565A70;
+  --accent:#4A4E9C; --accent-deep:#262860; --accent-soft:#E0E1F3;
+  --gold:#8A6D1E; --gold-soft:#EFE4C4;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#7A4A8C; --violet-soft:#F0E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131420; --surface:#1C1D2E; --surface-2:#252739; --line:#3A3D54;
+    --ink:#E7E8F2; --muted:#A5A8C0;
+    --accent:#A0A3E8; --accent-deep:#CDD0F5; --accent-soft:#242645;
+    --gold:#D9BE72; --gold-soft:#3A3117;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#D2A4E0; --violet-soft:#3A2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131420; --surface:#1C1D2E; --surface-2:#252739; --line:#3A3D54;
+  --ink:#E7E8F2; --muted:#A5A8C0;
+  --accent:#A0A3E8; --accent-deep:#CDD0F5; --accent-soft:#242645;
+  --gold:#D9BE72; --gold-soft:#3A3117;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#D2A4E0; --violet-soft:#3A2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #0E0F2A 100%);color:#EBEBF9;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#C7C9F0;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCDDF5;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#C7C9F0;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#C7C9F0;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">國外公司 × 半導體設備產業</div>
+    <h1>應用材料（Applied Materials）知識圖譜</h1>
+    <p class="sub">全球營收規模最大的半導體設備公司，1967 年創立於美國矽谷，走的是與科林研發、KLA 等專精單一領域截然不同的「一站式」路線——產品線幾乎涵蓋沉積、蝕刻、離子佈植、化學機械研磨、檢測等大部分主要製程步驟。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1967</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">全球最大</div><div class="l">半導體設備公司（營收規模）</div></div>
+      <div class="stat"><div class="n">美國矽谷</div><div class="l">總部所在地</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與成長史</div>
+      <h2>從小型設備商到「半導體設備界的沃爾瑪」</h2>
+      <p>應用材料的成長軌跡幾乎與半導體產業本身的擴張同步，靠著持續併購與多元化的產品線策略，逐步從單一產品供應商成長為業界規模最大的設備公司。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1967 年創立於矽谷</h3>
+        <p>在半導體產業剛於美國西岸萌芽的年代創立，早期以離子佈植等特定製程設備起家。</p>
+      </div>
+      <div class="card">
+        <div class="tag">成長策略</div>
+        <h3>持續併購擴大產品線</h3>
+        <p>透過一系列併購，將沉積、蝕刻、化學機械研磨、檢測等多種製程設備技術逐步納入版圖，形成業界少見的「全製程覆蓋」產品組合。</p>
+      </div>
+      <div class="card">
+        <div class="tag">規模優勢</div>
+        <h3>營收規模居半導體設備業之首</h3>
+        <p>以總體營收規模而言，應用材料長期是全球最大的半導體設備供應商，客戶遍及晶圓代工、記憶體、邏輯晶片、顯示器與太陽能等多個領域。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　「一站式」產品策略</div>
+      <h2>不只做一件事：幾乎涵蓋整條製程</h2>
+      <p>相較於科林研發專精蝕刻與沉積、KLA 專精檢測與量測、艾斯摩爾獨霸微影，應用材料的策略路線是盡可能廣泛地涵蓋製程中的多個步驟，讓客戶得以在單一供應商處採購多種設備。</p>
+    </div>
+
+    <div class="diagram">
+      <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">半導體設備公司的定位光譜（示意）</text>
+        <line x1="80" y1="140" x2="820" y2="140" stroke="var(--line)" stroke-width="2"/>
+        <text x="80" y="165" text-anchor="middle" font-size="11" fill="var(--muted)">專精單一領域</text>
+        <text x="820" y="165" text-anchor="middle" font-size="11" fill="var(--muted)">涵蓋多製程步驟</text>
+
+        <circle cx="180" cy="140" r="8" fill="var(--violet)"/>
+        <text x="180" y="115" text-anchor="middle" font-size="12" fill="var(--ink)">艾斯摩爾</text>
+        <text x="180" y="185" text-anchor="middle" font-size="10.5" fill="var(--muted)">專精微影</text>
+
+        <circle cx="340" cy="140" r="8" fill="var(--accent)"/>
+        <text x="340" y="115" text-anchor="middle" font-size="12" fill="var(--ink)">科林研發</text>
+        <text x="340" y="185" text-anchor="middle" font-size="10.5" fill="var(--muted)">蝕刻＋沉積</text>
+
+        <circle cx="500" cy="140" r="8" fill="var(--good)"/>
+        <text x="500" y="115" text-anchor="middle" font-size="12" fill="var(--ink)">KLA</text>
+        <text x="500" y="185" text-anchor="middle" font-size="10.5" fill="var(--muted)">檢測＋量測</text>
+
+        <circle cx="720" cy="140" r="10" fill="var(--gold)"/>
+        <text x="720" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">應用材料</text>
+        <text x="720" y="185" text-anchor="middle" font-size="10.5" fill="var(--muted)">沉積、蝕刻、離子佈植、</text>
+        <text x="720" y="200" text-anchor="middle" font-size="10.5" fill="var(--muted)">化學機械研磨、檢測等</text>
+      </svg>
+      <p class="cap">同業普遍選擇專精單一製程步驟，應用材料則以廣泛的產品組合，成為多數晶圓廠採購清單上出現頻率最高的設備商之一。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　產業地位</div>
+      <h2>客戶結構最多元的設備供應商</h2>
+      <p>正因產品線橫跨多個製程步驟與應用領域，應用材料的客戶結構也比多數同業更加多元，業績表現與整體半導體資本支出景氣的連動性也相對全面。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>面向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>市場地位</td><td>以總營收規模計，長期為全球最大半導體設備供應商，產品組合涵蓋多數主要前段製程步驟。</td></tr>
+        <tr><td>客戶結構</td><td>橫跨晶圓代工、記憶體、邏輯晶片、先進封裝、顯示器面板、太陽能等多元應用領域。</td></tr>
+        <tr><td>與同業關係</td><td>在各個細分製程步驟上，仍須與艾斯摩爾（微影）、科林研發（蝕刻沉積）、KLA（檢測量測）等專精廠商競爭，並非每個領域都居於絕對領先。</td></tr>
+        <tr><td>策略優勢</td><td>廣泛產品線讓客戶得以簡化供應商管理，也讓應用材料在單一客戶的採購金額佔比上具有相對優勢。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　全球布局與地緣政治</div>
+      <h2>同樣站在半導體地緣政治的前線</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">出口管制</div>
+        <h3>美國出口管制政策的核心對象之一</h3>
+        <p>由於產品線廣泛、涉及製程步驟眾多，應用材料是美國半導體設備出口管制政策中受關注程度最高的公司之一，其政策變動對公司特定市場營收影響顯著。</p>
+      </div>
+      <div class="card">
+        <div class="tag">技術趨勢</div>
+        <h3>先進封裝與新材料應用的布局</h3>
+        <p>隨半導體製程逼近物理極限，先進封裝技術（如異質整合、晶片堆疊）與新材料應用成為新的成長領域，也是應用材料近年積極布局的重點方向。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業生態</div>
+        <h3>與晶圓代工廠的深度研發合作</h3>
+        <p>為因應製程節點持續推進，應用材料經常與主要晶圓代工與記憶體大廠建立長期研發合作關係，共同開發下一世代製程所需的設備能力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">多元化布局</div>
+        <h3>半導體以外的應用領域</h3>
+        <p>除半導體設備本業外，也涉足顯示器面板與太陽能相關製程設備市場，是公司營收結構中除半導體外的重要組成部分。</p>
+      </div>
+    </div>
+
+    <div class="quote">如果把整條半導體供應鏈比喻成一座精密的交響樂團，應用材料更像是同時演奏多種樂器的全才樂手——不是每一項都做到極致，但幾乎每一個聲部都不缺席。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為應用材料（Applied Materials）公司歷史、產品策略與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以應用材料官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
