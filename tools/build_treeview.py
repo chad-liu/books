@@ -90,57 +90,131 @@ def order_structure(folder, stems):
     return items
 
 
+GROUP_CHILD_RE = re.compile(r'^(\d+)-(\d+)\.(.+)$')
+GROUP_PARENT_RE = re.compile(r'^(\d+)\.(.+)$')
+
+
+def build_folder_node(folder):
+    """組出單一資料夾在檔案樹裡的節點：{'files': [...], 'total': N, 'orphans': N}。
+    資料夾內沒有任何 .html 檔時回傳 None（沿用舊行為：空資料夾不產生節點）。"""
+    files = sorted(p for p in folder.iterdir()
+                   if p.is_file() and p.suffix.lower() == '.html')
+    if not files:
+        return None
+
+    stems = {p.stem for p in files}
+    structure = order_structure(folder, stems)
+    labels = {it['name']: it['label'] for it in structure if it['name']}
+    parent_of = {it['name']: it['parent'] for it in structure if it['name']}
+    rank = {it['name']: i for i, it in enumerate(structure) if it['name']}
+    # order.md 有列的排前面並照其順序，沒列的接在後面依檔名排
+    files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))
+
+    # 未列入 order.md 的「孤兒檔」也比照書架巢狀：檔名字首跟某個書架檔名
+    # （去掉結尾「書架」二字）相同的話，自動掛在該書架底下——書架本身通常
+    # 只在 order.md 列一行，但它衍生/收錄的原始頁面常常沒有各自列出。
+    # 不影響「未列入 order.md」的標記，純粹是檔案樹側欄的顯示分組。
+    shelf_prefixes = [(stem[:-2], stem) for stem in stems if stem.endswith('書架')]
+
+    def resolve_parent(stem):
+        if stem in parent_of:
+            return parent_of[stem]
+        for prefix, shelf in shelf_prefixes:
+            if stem != shelf and stem.startswith(prefix):
+                return shelf
+        return None
+
+    by_stem = {}
+    top = []
+    orphans = 0
+    for p in files:
+        in_order = p.stem in rank
+        if not in_order:
+            orphans += 1
+        item = {
+            'n': labels.get(p.stem, p.stem) + '.html',
+            'p': 'html/%s/%s' % (folder.name, p.name),
+            's': p.stat().st_size,
+            'o': in_order,
+            'children': [],
+        }
+        by_stem[p.stem] = item
+        parent = resolve_parent(p.stem)
+        if parent and parent in by_stem:
+            by_stem[parent]['children'].append(item)
+        else:
+            top.append(item)
+    return {'files': top, 'total': len(files), 'orphans': orphans}
+
+
 def collect():
+    all_folders = sorted(p for p in HTML_ROOT.iterdir() if p.is_dir())
+    nodes = {folder.name: build_folder_node(folder) for folder in all_folders}
+
+    # 資料夾層級的巢狀分組：資料夾名稱形如「N-M.標籤」（如 1-1.西方歷史）視為
+    # 群組 N 的子資料夾；若同時存在一個沒有連字號、單純「N.標籤」的資料夾
+    # （如 1.歷史），就把它當成該群組的父節點，子資料夾在檔案樹側欄收合顯示在
+    # 它底下一層——實體檔案不搬動，跟書架的巢狀是同一種「純顯示分組」精神，
+    # 只是這次分組的對象是整個資料夾而不是資料夾內的單一檔案。
+    # 沒有對應「N.標籤」父資料夾時，「N-M.標籤」維持原本攤平的頂層顯示，
+    # 不影響既有的 3-0/3-1、5-0/5-1 這類純排序用的連字號資料夾。
+    children_by_group = {}
+    for folder in all_folders:
+        m = GROUP_CHILD_RE.match(folder.name)
+        if m:
+            g, c, _label = m.groups()
+            children_by_group.setdefault(g, []).append((int(c), folder.name))
+
+    grouped_children = set()
+    parent_name_by_group = {}
+    for folder in all_folders:
+        name = folder.name
+        if GROUP_CHILD_RE.match(name):
+            continue
+        m = GROUP_PARENT_RE.match(name)
+        if m and m.group(1) in children_by_group:
+            parent_name_by_group[m.group(1)] = name
+
     tree = []
     orphans = 0
-    for folder in sorted(p for p in HTML_ROOT.iterdir() if p.is_dir()):
-        files = sorted(p for p in folder.iterdir()
-                       if p.is_file() and p.suffix.lower() == '.html')
-        if not files:
+    for folder in all_folders:
+        name = folder.name
+        if name in grouped_children:
+            continue
+        m = GROUP_CHILD_RE.match(name)
+        if m and parent_name_by_group.get(m.group(1)) and parent_name_by_group[m.group(1)] != name:
+            continue  # 這個子資料夾會在其父節點底下處理，這裡先跳過
+
+        node = nodes[name]
+        m_parent = GROUP_PARENT_RE.match(name) if not GROUP_CHILD_RE.match(name) else None
+        g = m_parent.group(1) if m_parent else None
+
+        if g and g in children_by_group:
+            own_files = node['files'] if node else []
+            own_total = node['total'] if node else 0
+            own_orphans = node['orphans'] if node else 0
+            group_items = []
+            for _, child_name in sorted(children_by_group[g]):
+                grouped_children.add(child_name)
+                cnode = nodes.get(child_name)
+                if cnode is None:
+                    continue
+                own_total += cnode['total']
+                own_orphans += cnode['orphans']
+                group_items.append({
+                    'n': child_name,
+                    'group': True,
+                    'total': cnode['total'],
+                    'children': cnode['files'],
+                })
+            orphans += own_orphans
+            tree.append({'name': name, 'files': own_files + group_items, 'total': own_total})
             continue
 
-        stems = {p.stem for p in files}
-        structure = order_structure(folder, stems)
-        labels = {it['name']: it['label'] for it in structure if it['name']}
-        parent_of = {it['name']: it['parent'] for it in structure if it['name']}
-        rank = {it['name']: i for i, it in enumerate(structure) if it['name']}
-        # order.md 有列的排前面並照其順序，沒列的接在後面依檔名排
-        files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))
-
-        # 未列入 order.md 的「孤兒檔」也比照書架巢狀：檔名字首跟某個書架檔名
-        # （去掉結尾「書架」二字）相同的話，自動掛在該書架底下——書架本身通常
-        # 只在 order.md 列一行，但它衍生/收錄的原始頁面常常沒有各自列出。
-        # 不影響「未列入 order.md」的標記，純粹是檔案樹側欄的顯示分組。
-        shelf_prefixes = [(stem[:-2], stem) for stem in stems if stem.endswith('書架')]
-
-        def resolve_parent(stem):
-            if stem in parent_of:
-                return parent_of[stem]
-            for prefix, shelf in shelf_prefixes:
-                if stem != shelf and stem.startswith(prefix):
-                    return shelf
-            return None
-
-        by_stem = {}
-        top = []
-        for p in files:
-            in_order = p.stem in rank
-            if not in_order:
-                orphans += 1
-            item = {
-                'n': labels.get(p.stem, p.stem) + '.html',
-                'p': 'html/%s/%s' % (folder.name, p.name),
-                's': p.stat().st_size,
-                'o': in_order,
-                'children': [],
-            }
-            by_stem[p.stem] = item
-            parent = resolve_parent(p.stem)
-            if parent and parent in by_stem:
-                by_stem[parent]['children'].append(item)
-            else:
-                top.append(item)
-        tree.append({'name': folder.name, 'files': top, 'total': len(files)})
+        if node is None:
+            continue
+        orphans += node['orphans']
+        tree.append({'name': name, 'files': node['files'], 'total': node['total']})
     return tree, orphans
 
 
@@ -270,6 +344,26 @@ function setZoom(z){
 /* ---------- 樹狀選單 ---------- */
 function buildItem(it){
   var li = document.createElement('li');
+
+  // 資料夾層級的分組節點（如「1.歷史」底下的「1-1.西方歷史」）：純粹用來
+  // 收合/展開子資料夾的內容，沒有對應檔案可開，點擊只切換展開狀態。
+  if (it.group) {
+    li.classList.add('has-children', 'closed', 'group');
+    li.innerHTML = '<span class="tgl">▶</span><b>' + esc(it.n) +
+      '</b><span class="no" style="margin-left:6px">' + it.total + ' 項</span>';
+    var gcu = document.createElement('ul');
+    gcu.className = 'children';
+    it.children.forEach(function(c){ gcu.appendChild(buildItem(c)); });
+    li.appendChild(gcu);
+    var gtgl = function(e){
+      e.stopPropagation();
+      li.classList.toggle('closed');
+      li.querySelector('.tgl').textContent = li.classList.contains('closed') ? '▶' : '▼';
+    };
+    li.onclick = gtgl;
+    return li;
+  }
+
   li.dataset.path = it.p;
   li.title = it.p + '　(' + fmt(it.s) + ')';
   var label = esc(it.n.replace(/\.html$/,'')) +
@@ -511,8 +605,17 @@ def build():
 
     OUT.write_text('\n'.join(out), encoding='utf-8')
 
+    def find_missing(items):
+        out = []
+        for i in items:
+            if i.get('group'):
+                out.extend(find_missing(i['children']))
+            elif not i['o']:
+                out.append(i['n'])
+        return out
+
     for f in tree:
-        miss = [i['n'] for i in f['files'] if not i['o']]
+        miss = find_missing(f['files'])
         if miss:
             print('[未列入 order.md] %s：%s' % (f['name'], '、'.join(miss)))
 
