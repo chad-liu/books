@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>英特爾知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF0F3; --surface:#FFFFFF; --surface-2:#E1E5EA; --line:#CDD3DB;
+  --ink:#171C24; --muted:#525C6B;
+  --accent:#1C5FA8; --accent-deep:#0E2E52; --accent-soft:#DCE7F5;
+  --gold:#B5661E; --gold-soft:#F1DDC5;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1318; --surface:#181D24; --surface-2:#20262F; --line:#333C48;
+    --ink:#E5E9EE; --muted:#9DA9B8;
+    --accent:#7FADE0; --accent-deep:#BBD3F0; --accent-soft:#1C2A3B;
+    --gold:#E8A268; --gold-soft:#3A2A18;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1318; --surface:#181D24; --surface-2:#20262F; --line:#333C48;
+  --ink:#E5E9EE; --muted:#9DA9B8;
+  --accent:#7FADE0; --accent-deep:#BBD3F0; --accent-soft:#1C2A3B;
+  --gold:#E8A268; --gold-soft:#3A2A18;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #081528 100%);color:#E8F0FA;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#BFD6F0;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCE9F7;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#BFD6F0;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#BFD6F0;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">國外公司 × 半導體產業</div>
+    <h1>英特爾（Intel）知識圖譜</h1>
+    <p class="sub">1968 年創立於美國矽谷，長期以「設計＋製造」垂直整合模式（IDM）主導個人電腦處理器市場，「Intel Inside」曾是晶片品牌行銷的經典範例；然而在行動運算時代的關鍵決策失誤，加上先進製程進度落後，讓這家曾定義整個產業的巨人，近年陷入結構性轉型的挑戰。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1968</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">IDM</div><div class="l">傳統垂直整合經營模式</div></div>
+      <div class="stat"><div class="n">IDM 2.0</div><div class="l">近年轉型策略代號</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與輝煌年代</div>
+      <h2>定義個人電腦時代的處理器巨人</h2>
+      <p>英特爾的崛起與個人電腦產業的普及幾乎同步發生，長年靠著技術領先與強勢的品牌行銷，建立起難以撼動的市場地位。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1968 年由半導體業界傳奇人物創立</h3>
+        <p>公司由羅伯特．諾伊斯（Robert Noyce）與戈登．摩爾（Gordon Moore）等業界先驅共同創立，兩人皆是積體電路發展早期的關鍵人物。</p>
+      </div>
+      <div class="card">
+        <div class="tag">摩爾定律</div>
+        <h3>晶片產業數十年的技術路標</h3>
+        <p>戈登．摩爾提出「電晶體密度約每兩年翻倍」的觀察，這項後來被稱為摩爾定律的預測，長期成為整個半導體產業推進製程技術的節奏參考。</p>
+      </div>
+      <div class="card">
+        <div class="tag">品牌行銷</div>
+        <h3>「Intel Inside」重新定義晶片品牌行銷</h3>
+        <p>透過向消費者直接推廣處理器品牌（而非僅面向電腦廠商），英特爾成功讓一般消費者也認識並指名選購搭載其處理器的電腦，是 B2B 產業少見的成功消費端品牌策略案例。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　IDM 模式的興衰</div>
+      <h2>設計與製造一手包辦：垂直整合模式的優勢與代價</h2>
+      <p>與安謀、高通等「只設計不製造」的公司不同，英特爾長期堅持自行設計、自行製造的垂直整合模式（IDM），這套模式曾是優勢，卻也在產業典範轉移時成為包袱。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>時期</th><th>關鍵事件</th></tr></thead>
+      <tbody>
+        <tr><td>2005 年</td><td>蘋果曾詢問英特爾是否願意為 iPhone 供應處理器，英特爾評估後認為市場規模太小、利潤不足，選擇拒絕合作——這項決策日後被廣泛視為英特爾錯失行動市場的關鍵轉折點。</td></tr>
+        <tr><td>2007 年</td><td>iPhone 改採安謀架構晶片，正式開啟智慧型手機時代，英特爾自此被排除在這波行動運算浪潮的核心之外。</td></tr>
+        <tr><td>2008 年</td><td>英特爾推出低功耗的 Atom 處理器試圖迎戰安謀陣營，宣稱耗電量遠低於桌機晶片，但實際表現仍不敵安謀架構，加上成本偏高，最終未能打入主流行動市場。</td></tr>
+        <tr><td>2010 年代</td><td>隨行動裝置逐漸取代部分個人電腦的使用情境，英特爾在成長最快的運算市場區塊持續缺席，也讓其市場地位面臨結構性挑戰。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　製程落後危機與轉型</div>
+      <h2>從技術領先者到追趕者：先進製程的失速</h2>
+      <p>英特爾曾長期是全球半導體製程技術的領先者，但近十年在先進製程世代轉換上進度延宕，逐漸被台積電、三星電子等競爭對手超越，成為公司近年面臨的最大挑戰之一。</p>
+    </div>
+
+    <div class="diagram">
+      <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">傳統 IDM 模式 vs IDM 2.0 轉型策略（示意）</text>
+        <rect x="60" y="55" width="350" height="90" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="235" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">傳統 IDM 模式</text>
+        <text x="235" y="103" text-anchor="middle" font-size="11.5" fill="var(--muted)">設計與製造完全自主</text>
+        <text x="235" y="121" text-anchor="middle" font-size="11.5" fill="var(--muted)">產能僅供自家晶片使用</text>
+        <text x="235" y="139" text-anchor="middle" font-size="11.5" fill="var(--muted)">不對外提供代工服務</text>
+
+        <rect x="490" y="55" width="350" height="90" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="665" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">IDM 2.0 轉型策略</text>
+        <text x="665" y="103" text-anchor="middle" font-size="11.5" fill="var(--muted)">維持自家晶片設計製造</text>
+        <text x="665" y="121" text-anchor="middle" font-size="11.5" fill="var(--muted)">同時開放晶圓代工服務</text>
+        <text x="665" y="139" text-anchor="middle" font-size="11.5" fill="var(--muted)">向純晶圓代工模式借鏡</text>
+
+        <line x1="410" y1="100" x2="488" y2="100" stroke="var(--muted)" stroke-width="2" marker-end="url(#a2)"/>
+        <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+        <text x="450" y="90" text-anchor="middle" font-size="10.5" fill="var(--muted)">策略轉型</text>
+      </svg>
+      <p class="cap">近年英特爾推動「IDM 2.0」策略，除了持續設計製造自家晶片，也開始對外提供晶圓代工服務，某種程度上向台積電開創的純代工模式靠攏。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">製程延宕</div>
+        <h3>10 奈米、7 奈米世代的延誤</h3>
+        <p>英特爾在多個先進製程世代的量產時程上出現明顯延遲，讓長期保持的製程領先優勢逐漸被台積電、三星電子等競爭對手追平甚至超越。</p>
+      </div>
+      <div class="card">
+        <div class="tag">策略轉型</div>
+        <h3>「IDM 2.0」：重新擁抱晶圓代工業務</h3>
+        <p>公司近年推動代號「IDM 2.0」的策略轉型，除持續投資自家先進製程研發，也對外開放晶圓代工服務，爭取外部客戶訂單，試圖在製造端重新找回競爭力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">領導層變動</div>
+        <h3>資深業界人士重掌兵符</h3>
+        <p>面對製程落後與行動市場失利的雙重壓力，公司近年由曾在公司內部深耕多年的資深技術背景人士重新出任執行長，主導這波製造與策略轉型。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　地緣政治角色</div>
+      <h2>美國半導體自主政策裡的象徵性角色</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">政策地位</div>
+        <h3>美國《晶片法案》的核心受益者</h3>
+        <p>作為美國本土歷史最悠久、規模最大的半導體製造商，英特爾在美國推動半導體供應鏈在地化、降低對台灣先進製程依賴的政策中，扮演具高度象徵意義的核心角色。</p>
+      </div>
+      <div class="card">
+        <div class="tag">競爭格局</div>
+        <h3>與台積電、三星在代工市場的新戰線</h3>
+        <p>隨英特爾轉型投入晶圓代工業務，未來除了在自家處理器市場面對安謀陣營的持續競爭，也將在代工服務市場上直接與台積電、三星電子等既有龍頭正面交鋒。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業意涵</div>
+        <h3>「本土製造」敘事中的重要拼圖</h3>
+        <p>英特爾能否成功追回先進製程進度，被許多觀察者視為美國能否在地緣政治動盪下，重建本土先進晶片製造能力的重要指標之一。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業啟示</div>
+        <h3>典範轉移下的巨人困境</h3>
+        <p>英特爾的故事經常被引用來說明：即使是曾經定義整個產業規則的領導廠商，一旦在關鍵轉折點做出錯誤判斷，也可能在新典範確立後，被迫從主導者重新變回追趕者。</p>
+      </div>
+    </div>
+
+    <div class="quote">英特爾當年拒絕蘋果的那個會議室，如今經常被拿來當作商業史的警世案例——不是因為決策者愚蠢，而是因為即使是最擅長判斷市場的公司，也可能在典範轉移的臨界點上，用舊世界的邏輯去衡量新世界的機會。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為英特爾（Intel）公司歷史、經營模式與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以英特爾官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>

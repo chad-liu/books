@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>超微半導體知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F2EEED; --surface:#FFFFFF; --surface-2:#EAE0DE; --line:#DCCBC8;
+  --ink:#241716; --muted:#6B534E;
+  --accent:#C3272B; --accent-deep:#6B1215; --accent-soft:#F3D9D7;
+  --gold:#8A6D1E; --gold-soft:#EFE4C4;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#191110; --surface:#251A19; --surface-2:#2F2120; --line:#47302E;
+    --ink:#F2E4E1; --muted:#C6A9A4;
+    --accent:#EA6E6E; --accent-deep:#F3A19E; --accent-soft:#3A201F;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#191110; --surface:#251A19; --surface-2:#2F2120; --line:#47302E;
+  --ink:#F2E4E1; --muted:#C6A9A4;
+  --accent:#EA6E6E; --accent-deep:#F3A19E; --accent-soft:#3A201F;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #2C0A0C 100%);color:#F9E9E8;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F0C0BE;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F2DCDA;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#F0C0BE;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#F0C0BE;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">國外公司 × 半導體產業</div>
+    <h1>超微半導體（AMD）知識圖譜</h1>
+    <p class="sub">1969 年創立，長期是英特爾在 x86 處理器市場最主要（也經常是唯一）的競爭對手；曾一度陷入財務與技術雙重困境，直到 2014 年蘇姿丰接任執行長，靠 Zen 架構打了一場漂亮的翻身仗，如今同時在中央處理器與繪圖／AI 加速晶片兩條戰線上，與英特爾、輝達正面交鋒。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1969</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">2014</div><div class="l">蘇姿丰接任執行長</div></div>
+      <div class="stat"><div class="n">雙線作戰</div><div class="l">CPU（對英特爾）＋GPU（對輝達）</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與早期發展</div>
+      <h2>英特爾陰影下的「第二供應商」</h2>
+      <p>超微半導體創立初期的角色定位，很大程度上是圍繞著英特爾打轉——長期作為 x86 架構的交叉授權夥伴與替代供應商，存在本身就是產業界為避免單一供應商壟斷所形成的一種制衡角色。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1969 年由傑瑞．桑德斯等人創立</h3>
+        <p>創辦團隊多有半導體產業背景，公司早期以生產邏輯晶片與記憶體產品起家，逐步跨入處理器領域。</p>
+      </div>
+      <div class="card">
+        <div class="tag">x86 交叉授權</div>
+        <h3>與英特爾長期的競合關係</h3>
+        <p>超微半導體透過交叉授權協議取得生產相容 x86 架構處理器的權利，這層特殊關係讓它成為市場上少數能與英特爾直接競爭同類產品的公司。</p>
+      </div>
+      <div class="card">
+        <div class="tag">企業文化</div>
+        <h3>「真男人要有自己的晶圓廠」</h3>
+        <p>創辦人桑德斯曾以此名言強調自建晶圓廠、掌握製造能力的重要性，這句話後來也常被業界拿來對照超微半導體日後轉型為輕資產模式的路徑轉折。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　晶圓代工模式轉型</div>
+      <h2>從「自建晶圓廠」到擁抱純代工模式</h2>
+      <p>超微半導體的製造策略經歷了一次根本性的轉向，這個決定日後被證明是公司能夠輕裝上陣、專注設計競爭力的關鍵一步。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">2009 年</div>
+        <h3>分拆晶圓廠，成立 GlobalFoundries</h3>
+        <p>超微半導體將自有晶圓製造部門獨立分拆，成立格羅方德半導體（GlobalFoundries），自身轉型為不再自行製造的「無廠半導體公司」（fabless）。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2010 年代</div>
+        <h3>逐步轉向台積電代工先進製程</h3>
+        <p>隨著對先進製程節點的需求提升，超微半導體逐漸將更多高階產品的生產委託給台積電，成為其先進製程的重要客戶之一。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">轉型意義</div>
+        <h3>輕資產模式釋放設計端的競爭力</h3>
+        <p>脫離自建晶圓廠的資本重擔後，超微半導體得以將資源更集中投入處理器架構設計，為日後 Zen 架構的成功奠定基礎。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　蘇姿丰時代的翻身仗</div>
+      <h2>從財務困境到重返競爭核心</h2>
+      <p>在蘇姿丰接任執行長之前，超微半導體一度陷入產品競爭力不足、財務體質脆弱的困境；她主導的技術與策略轉型，堪稱近年半導體產業最常被引用的企業翻身案例之一。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>時期</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>2014 年之前</td><td>公司處理器產品線在效能與功耗表現上長期落後英特爾，加上財務壓力沉重，市場對公司前景多持保留態度。</td></tr>
+        <tr><td>2014 年</td><td>蘇姿丰接任執行長，主導公司技術路線與組織策略的全面調整，重新聚焦核心處理器架構的研發投資。</td></tr>
+        <tr><td>2017 年起</td><td>採用全新 Zen 架構的 Ryzen 桌上型處理器與 EPYC 伺服器處理器系列陸續推出，效能表現獲市場高度肯定，市占率逐步回升。</td></tr>
+        <tr><td>近年</td><td>公司股價與市值大幅成長，在消費級與資料中心處理器市場的競爭力，被普遍認為已重新站上能與英特爾正面較量的位置。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　雙線戰場：CPU 與 GPU</div>
+      <h2>同時挑戰英特爾與輝達的少數玩家</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">CPU 戰線</div>
+        <h3>與英特爾的 x86 處理器競爭</h3>
+        <p>在個人電腦與伺服器處理器市場，超微半導體的 Ryzen 與 EPYC 系列持續與英特爾的產品線正面競爭，是 x86 架構陣營裡少數具備完整競爭力的另一選擇。</p>
+      </div>
+      <div class="card">
+        <div class="tag">GPU 戰線</div>
+        <h3>與輝達的繪圖與 AI 加速晶片競爭</h3>
+        <p>超微半導體同時擁有自己的繪圖處理器產品線，在消費級顯示卡與資料中心 AI 加速晶片市場，與市占率領先的輝達展開競爭，雖規模上仍有差距，但是少數具備同時涉足兩大戰線能力的公司。</p>
+      </div>
+      <div class="card">
+        <div class="tag">遊戲機晶片</div>
+        <h3>橫跨兩大主機陣營的關鍵供應商</h3>
+        <p>超微半導體同時是市場上主要遊戲主機客製化晶片的供應商，讓其技術同時出現在彼此互為競爭對手的遊戲機產品裡，是公司產品線多元化布局的重要一環。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業意義</div>
+        <h3>維持產業競爭活力的關鍵存在</h3>
+        <p>若沒有超微半導體作為有力的競爭者，處理器與繪圖晶片市場可能更容易走向單一廠商主導的局面，其存在對整體產業的價格與創新節奏，具有一定的制衡意義。</p>
+      </div>
+    </div>
+
+    <div class="quote">超微半導體的故事提醒人們：在被視為「贏家全拿」的晶片產業裡，一家長期屈居第二的公司，只要撐過最艱困的財務寒冬，仍有機會靠對的技術路線與對的領導者，重新回到牌桌中央。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為超微半導體（AMD）公司歷史、經營模式與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以超微半導體官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
