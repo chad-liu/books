@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佛學學習藍圖｜SVG 知識樹</title>
+<style>
+:root{
+  --bg:#f5f1e8; --paper:#fffdf8; --ink:#29261f; --muted:#756d61;
+  --accent:#765536; --accent2:#a37a4d; --line:#cdbda7;
+  --green:#64745b; --blue:#5e7180; --rose:#8a6258;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+.container{width:min(1400px,94%);margin:auto}
+.hero{padding:56px 0 34px;text-align:center}
+.eyebrow{letter-spacing:.18em;color:var(--accent2);font-weight:700}
+h1{font-size:clamp(2rem,4vw,4rem);margin:.2em 0}
+.hero p{color:var(--muted);font-size:1.1rem;margin:auto;max-width:850px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,253,248,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;gap:8px;overflow:auto;padding:10px 0}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:7px 12px;
+  border-radius:999px;background:#eee7db;font-size:.9rem}
+section{padding:34px 0}
+.section-title{display:flex;align-items:end;gap:12px;margin-bottom:18px}
+.section-title h2{margin:0;font-size:1.8rem}
+.section-title span{color:var(--muted);font-size:.9rem}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 8px 24px rgba(64,45,24,.06)}
+.tree-wrap{padding:18px;overflow:auto}
+svg{display:block;width:100%;height:auto;min-width:900px}
+.svg-title{font-size:22px;font-weight:700;fill:var(--ink)}
+.svg-sub{font-size:14px;fill:var(--muted)}
+.node{fill:var(--paper);stroke:var(--line);stroke-width:2}
+.node.root{fill:#efe3d1;stroke:var(--accent)}
+.node.a{fill:#e8eee3;stroke:var(--green)}
+.node.b{fill:#e7edf1;stroke:var(--blue)}
+.node.c{fill:#f0e5df;stroke:var(--rose)}
+.node.d{fill:#eee7f0;stroke:#75627b}
+.node-text{font-size:18px;font-weight:700;fill:var(--ink)}
+.node-small{font-size:13px;fill:var(--muted)}
+.edge{fill:none;stroke:#a9957d;stroke-width:2.5}
+.arrow{fill:#a9957d}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.study-card{padding:20px}
+.study-card h3{margin:.1em 0 .35em}
+.study-card p{margin:0;color:var(--muted);font-size:.95rem}
+.badge{display:inline-block;padding:3px 9px;border-radius:999px;background:#eee7db;
+  color:var(--accent);font-size:.78rem;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;background:var(--paper);border-radius:18px;overflow:hidden}
+th,td{padding:12px 14px;border-bottom:1px solid #e4dacb;text-align:left;vertical-align:top}
+th{background:#eee7db;color:#493b2c}
+tr:last-child td{border-bottom:0}
+.qa{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.qa .card{padding:20px}
+.qa h3{margin-top:0}
+.quote{margin-top:30px;padding:24px;border-left:5px solid var(--accent2);
+  background:#eee7db;border-radius:12px;color:#493f34}
+footer{padding:40px 0 70px;text-align:center;color:var(--muted)}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.qa{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.grid,.qa{grid-template-columns:1fr}th,td{padding:9px}.hero{padding-top:35px}}
+@media print{nav{display:none}.card{box-shadow:none}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">BUDDHIST STUDY ROADMAP</div>
+    <h1>佛學學習藍圖</h1>
+    <p>從佛陀與早期佛教出發，經由緣起、無我與大乘思想，進入中觀、唯識、如來藏，再延伸至漢傳佛教的天台、華嚴、法相、禪與淨土。</p>
+  </div>
+</header>
+
+<nav>
+<div class="container nav">
+<a href="#tree">核心知識樹</a><a href="#route">學習路線</a><a href="#stages">八階段</a>
+<a href="#schools">漢傳宗派</a><a href="#year">一年計畫</a><a href="#questions">大哉問</a>
+</div>
+</nav>
+
+<main class="container">
+
+<section id="tree">
+<div class="section-title"><h2>① 佛學核心知識樹</h2><span>SVG 取代 ASCII Tree</span></div>
+<div class="card tree-wrap">
+<svg viewBox="0 0 1400 1080" role="img" aria-label="佛學學習核心知識樹">
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+    <path d="M0,0 L10,5 L0,10 z" class="arrow"/>
+  </marker>
+</defs>
+
+<!-- root -->
+<rect x="570" y="35" width="260" height="78" rx="20" class="node root"/>
+<text x="700" y="70" text-anchor="middle" class="node-text">佛學</text>
+<text x="700" y="94" text-anchor="middle" class="node-small">Buddhist Studies</text>
+
+<!-- main branches -->
+<path d="M700 113 V160 H180 V195" class="edge" marker-end="url(#arrow)"/>
+<path d="M700 113 V160 H520 V195" class="edge" marker-end="url(#arrow)"/>
+<path d="M700 113 V160 H880 V195" class="edge" marker-end="url(#arrow)"/>
+<path d="M700 113 V160 H1220 V195" class="edge" marker-end="url(#arrow)"/>
+
+<rect x="70" y="195" width="220" height="72" rx="16" class="node a"/>
+<text x="180" y="228" text-anchor="middle" class="node-text">佛教史</text>
+<text x="180" y="251" text-anchor="middle" class="node-small">起源 → 部派</text>
+
+<rect x="410" y="195" width="220" height="72" rx="16" class="node a"/>
+<text x="520" y="228" text-anchor="middle" class="node-text">基本教義</text>
+<text x="520" y="251" text-anchor="middle" class="node-small">苦、集、滅、道</text>
+
+<rect x="770" y="195" width="220" height="72" rx="16" class="node b"/>
+<text x="880" y="228" text-anchor="middle" class="node-text">大乘佛教</text>
+<text x="880" y="251" text-anchor="middle" class="node-small">菩薩道、般若</text>
+
+<rect x="1110" y="195" width="220" height="72" rx="16" class="node c"/>
+<text x="1220" y="228" text-anchor="middle" class="node-text">漢傳佛教</text>
+<text x="1220" y="251" text-anchor="middle" class="node-small">中國化與宗派化</text>
+
+<!-- history -->
+<path d="M180 267 V315 H105 V350" class="edge" marker-end="url(#arrow)"/>
+<path d="M180 267 V315 H255 V350" class="edge" marker-end="url(#arrow)"/>
+<rect x="20" y="350" width="170" height="68" rx="14" class="node"/>
+<text x="105" y="380" text-anchor="middle" class="node-text">佛陀與早期</text>
+<text x="105" y="403" text-anchor="middle" class="node-small">教團、戒律</text>
+<rect x="170" y="350" width="170" height="68" rx="14" class="node"/>
+<text x="255" y="380" text-anchor="middle" class="node-text">部派佛教</text>
+<text x="255" y="403" text-anchor="middle" class="node-small">阿毘達磨</text>
+
+<!-- basic doctrine -->
+<path d="M520 267 V315 H435 V350" class="edge" marker-end="url(#arrow)"/>
+<path d="M520 267 V315 H605 V350" class="edge" marker-end="url(#arrow)"/>
+<rect x="350" y="350" width="170" height="68" rx="14" class="node"/>
+<text x="435" y="380" text-anchor="middle" class="node-text">四聖諦／八正道</text>
+<text x="435" y="403" text-anchor="middle" class="node-small">解脫的實踐架構</text>
+<rect x="520" y="350" width="170" height="68" rx="14" class="node"/>
+<text x="605" y="380" text-anchor="middle" class="node-text">緣起／五蘊／無我</text>
+<text x="605" y="403" text-anchor="middle" class="node-small">存在與經驗分析</text>
+
+<!-- Mahayana -->
+<path d="M880 267 V315 H795 V350" class="edge" marker-end="url(#arrow)"/>
+<path d="M880 267 V315 H965 V350" class="edge" marker-end="url(#arrow)"/>
+<rect x="710" y="350" width="170" height="68" rx="14" class="node b"/>
+<text x="795" y="380" text-anchor="middle" class="node-text">般若</text>
+<text x="795" y="403" text-anchor="middle" class="node-small">空與智慧</text>
+<rect x="880" y="350" width="170" height="68" rx="14" class="node b"/>
+<text x="965" y="380" text-anchor="middle" class="node-text">菩薩道</text>
+<text x="965" y="403" text-anchor="middle" class="node-small">菩提心、六度</text>
+
+<!-- philosophy -->
+<path d="M880 418 V465 H735 V500" class="edge" marker-end="url(#arrow)"/>
+<path d="M880 418 V465 H880 V500" class="edge" marker-end="url(#arrow)"/>
+<path d="M880 418 V465 H1025 V500" class="edge" marker-end="url(#arrow)"/>
+<rect x="650" y="500" width="170" height="68" rx="14" class="node d"/>
+<text x="735" y="530" text-anchor="middle" class="node-text">中觀</text>
+<text x="735" y="553" text-anchor="middle" class="node-small">龍樹、二諦、中道</text>
+<rect x="795" y="500" width="170" height="68" rx="14" class="node d"/>
+<text x="880" y="530" text-anchor="middle" class="node-text">唯識</text>
+<text x="880" y="553" text-anchor="middle" class="node-small">心識、種子、轉識成智</text>
+<rect x="940" y="500" width="170" height="68" rx="14" class="node d"/>
+<text x="1025" y="530" text-anchor="middle" class="node-text">如來藏／佛性</text>
+<text x="1025" y="553" text-anchor="middle" class="node-small">成佛可能性</text>
+
+<!-- Chinese schools -->
+<path d="M1220 267 V315 H1120 V350" class="edge" marker-end="url(#arrow)"/>
+<path d="M1220 267 V315 H1220 V350" class="edge" marker-end="url(#arrow)"/>
+<path d="M1220 267 V315 H1320 V350" class="edge" marker-end="url(#arrow)"/>
+<rect x="1035" y="350" width="170" height="68" rx="14" class="node c"/>
+<text x="1120" y="380" text-anchor="middle" class="node-text">天台／三論</text>
+<text x="1120" y="403" text-anchor="middle" class="node-small">法華、三諦、中觀</text>
+<rect x="1135" y="430" width="170" height="68" rx="14" class="node c"/>
+<text x="1220" y="460" text-anchor="middle" class="node-text">華嚴</text>
+<text x="1220" y="483" text-anchor="middle" class="node-small">法界緣起、事事無礙</text>
+<rect x="1235" y="350" width="170" height="68" rx="14" class="node c"/>
+<text x="1320" y="380" text-anchor="middle" class="node-text">法相／禪／淨土</text>
+<text x="1320" y="403" text-anchor="middle" class="node-small">唯識、禪修、念佛</text>
+
+<!-- synthesis -->
+<path d="M180 418 V620 H700 V690" class="edge" marker-end="url(#arrow)"/>
+<path d="M605 418 V620 H700 V690" class="edge" marker-end="url(#arrow)"/>
+<path d="M880 568 V620 H700 V690" class="edge" marker-end="url(#arrow)"/>
+<path d="M1220 498 V620 H700 V690" class="edge" marker-end="url(#arrow)"/>
+<rect x="520" y="690" width="360" height="92" rx="20" class="node root"/>
+<text x="700" y="728" text-anchor="middle" class="node-text">佛學的整合</text>
+<text x="700" y="755" text-anchor="middle" class="node-small">智慧 × 慈悲 × 戒定慧 × 生命實踐</text>
+
+<path d="M700 782 V830" class="edge" marker-end="url(#arrow)"/>
+<rect x="410" y="830" width="580" height="105" rx="20" class="node"/>
+<text x="700" y="865" text-anchor="middle" class="node-text">核心方向：理解苦 → 看見緣起 → 體會無我 → 開展智慧與慈悲</text>
+<text x="700" y="895" text-anchor="middle" class="node-small">由知識理解走向觀照、修行與生命轉化</text>
+</svg>
+</div>
+</section>
+
+<section id="route">
+<div class="section-title"><h2>② 核心學習路線</h2><span>由基礎到宗派</span></div>
+<div class="card tree-wrap">
+<svg viewBox="0 0 1400 330" role="img" aria-label="佛學核心學習路線">
+<defs>
+<marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+<path d="M0,0 L10,5 L0,10 z" class="arrow"/>
+</marker>
+</defs>
+<text x="700" y="35" text-anchor="middle" class="svg-title">一條可以反覆循環的佛學學習路線</text>
+<g transform="translate(30,85)">
+<rect x="0" y="0" width="150" height="72" rx="16" class="node root"/><text x="75" y="43" text-anchor="middle" class="node-text">苦</text>
+<path d="M150 36 H205" class="edge" marker-end="url(#arr2)"/>
+<rect x="205" y="0" width="150" height="72" rx="16" class="node a"/><text x="280" y="43" text-anchor="middle" class="node-text">四聖諦</text>
+<path d="M355 36 H410" class="edge" marker-end="url(#arr2)"/>
+<rect x="410" y="0" width="150" height="72" rx="16" class="node a"/><text x="485" y="43" text-anchor="middle" class="node-text">緣起</text>
+<path d="M560 36 H615" class="edge" marker-end="url(#arr2)"/>
+<rect x="615" y="0" width="150" height="72" rx="16" class="node b"/><text x="690" y="43" text-anchor="middle" class="node-text">無我</text>
+<path d="M765 36 H820" class="edge" marker-end="url(#arr2)"/>
+<rect x="820" y="0" width="150" height="72" rx="16" class="node b"/><text x="895" y="43" text-anchor="middle" class="node-text">大乘</text>
+<path d="M970 36 H1025" class="edge" marker-end="url(#arr2)"/>
+<rect x="1025" y="0" width="150" height="72" rx="16" class="node d"/><text x="1100" y="43" text-anchor="middle" class="node-text">中觀／唯識</text>
+<path d="M1175 36 H1230" class="edge" marker-end="url(#arr2)"/>
+<rect x="1230" y="0" width="120" height="72" rx="16" class="node c"/><text x="1290" y="43" text-anchor="middle" class="node-text">漢傳</text>
+</g>
+<text x="700" y="215" text-anchor="middle" class="svg-sub">深入後再回到「苦、緣起、無我」：佛學不是只累積知識，而是讓理解與實踐互相驗證。</text>
+</svg>
+</div>
+</section>
+
+<section id="stages">
+<div class="section-title"><h2>③ 八階段學習地圖</h2><span>建議循序漸進</span></div>
+<div class="grid">
+<div class="card study-card"><span class="badge">01</span><h3>佛教起源</h3><p>佛陀生平、教團形成、四聖諦。先建立「佛教究竟要解決什麼問題」的基本框架。</p></div>
+<div class="card study-card"><span class="badge">02</span><h3>早期佛教</h3><p>八正道、緣起、無常、無我、五蘊。理解佛教最核心的分析方法。</p></div>
+<div class="card study-card"><span class="badge">03</span><h3>部派佛教</h3><p>阿毘達磨與部派思想。觀察早期佛教如何發展出細密的教義分析。</p></div>
+<div class="card study-card"><span class="badge">04</span><h3>大乘佛教</h3><p>菩提心、六度、菩薩道與般若思想，理解大乘的理想與修行方向。</p></div>
+<div class="card study-card"><span class="badge">05</span><h3>大乘哲學</h3><p>中觀與唯識：空性、二諦、心識、種子，以及不同的解釋路徑。</p></div>
+<div class="card study-card"><span class="badge">06</span><h3>佛性思想</h3><p>如來藏、佛性與成佛可能性，並注意不同經論對相關概念的不同表述。</p></div>
+<div class="card study-card"><span class="badge">07</span><h3>漢傳佛教</h3><p>三論、天台、華嚴、法相、禪、淨土，看印度思想如何在中國形成新的宗派體系。</p></div>
+<div class="card study-card"><span class="badge">08</span><h3>實踐與深化</h3><p>禪修、念佛、止觀、戒定慧，將經典閱讀與生命經驗連結起來。</p></div>
+</div>
+</section>
+
+<section id="schools">
+<div class="section-title"><h2>④ 漢傳佛教主要宗派</h2><span>把哲學與修行放在同一張地圖</span></div>
+<table>
+<thead><tr><th>宗派</th><th>核心經論／來源</th><th>主要思想</th><th>實踐特色</th></tr></thead>
+<tbody>
+<tr><td><strong>三論宗</strong></td><td>《中論》《百論》《十二門論》</td><td>空、中道、二諦</td><td>以般若與中觀思想破除執著</td></tr>
+<tr><td><strong>天台宗</strong></td><td>《法華經》</td><td>三諦圓融、五時八教、一念三千</td><td>止觀、教觀雙運</td></tr>
+<tr><td><strong>華嚴宗</strong></td><td>《華嚴經》</td><td>法界緣起、事事無礙</td><td>由法界觀理解萬法互攝</td></tr>
+<tr><td><strong>法相宗</strong></td><td>唯識系經論</td><td>心識、種子、阿賴耶識、轉識成智</td><td>精細分析認知與修行轉化</td></tr>
+<tr><td><strong>禪宗</strong></td><td>般若、如來藏等多重思想資源</td><td>直指、見性、當下觀照</td><td>坐禪、參禪、公案等傳統</td></tr>
+<tr><td><strong>淨土宗</strong></td><td>淨土三經</td><td>阿彌陀佛、極樂世界、信願行</td><td>念佛與淨土信仰</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="year">
+<div class="section-title"><h2>⑤ 一年佛學學習計畫</h2><span>12 個月建立完整骨架</span></div>
+<table>
+<thead><tr><th>月份</th><th>主題</th><th>關鍵概念</th></tr></thead>
+<tbody>
+<tr><td>01</td><td>佛陀與佛教起源</td><td>佛陀、僧團、四聖諦</td></tr>
+<tr><td>02</td><td>四聖諦與八正道</td><td>苦、集、滅、道；戒定慧</td></tr>
+<tr><td>03</td><td>緣起與無我</td><td>十二因緣、五蘊、無常</td></tr>
+<tr><td>04</td><td>部派與阿毘達磨</td><td>法、心、心所、部派發展</td></tr>
+<tr><td>05</td><td>大乘佛教</td><td>菩提心、菩薩道、六度</td></tr>
+<tr><td>06</td><td>般若</td><td>空、般若、《心經》《金剛經》</td></tr>
+<tr><td>07</td><td>中觀</td><td>龍樹、二諦、中道、八不</td></tr>
+<tr><td>08</td><td>唯識</td><td>八識、種子、三性、轉識成智</td></tr>
+<tr><td>09</td><td>如來藏與佛性</td><td>佛性、成佛可能性、相關經論</td></tr>
+<tr><td>10</td><td>天台與華嚴</td><td>三諦、一念三千、法界緣起</td></tr>
+<tr><td>11</td><td>禪與淨土</td><td>禪修、念佛、信願行</td></tr>
+<tr><td>12</td><td>總整理</td><td>把歷史、教義、哲學與實踐重新串成一張圖</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="questions">
+<div class="section-title"><h2>⑥ 佛學「大哉問」</h2><span>把知識轉成思考問題</span></div>
+<div class="qa">
+<div class="card"><h3>我究竟是誰？</h3><p>五蘊、無我、識、佛性：佛教如何理解「自我」與人格連續性？</p></div>
+<div class="card"><h3>世界究竟是什麼？</h3><p>緣起、空性、法界、唯識：外在世界與認知經驗如何被理解？</p></div>
+<div class="card"><h3>為什麼會痛苦？</h3><p>四聖諦、無明、愛取、十二因緣：苦的形成與止息如何被分析？</p></div>
+<div class="card"><h3>空是不是虛無？</h3><p>龍樹、中觀、二諦與中道：空性如何避免落入「什麼都不存在」？</p></div>
+<div class="card"><h3>眾生為什麼能成佛？</h3><p>菩提心、如來藏、佛性：不同大乘傳統如何說明成佛可能性？</p></div>
+<div class="card"><h3>佛教如何面對人生？</h3><p>戒、定、慧、慈悲與智慧：哲學理解如何進入實際生活與修行？</p></div>
+</div>
+<div class="quote">
+<strong>總綱：</strong> 苦 → 四聖諦 → 八正道 → 緣起 → 無我 → 部派佛教 → 大乘 → 菩薩道 → 般若 → 中觀／唯識／如來藏 → 漢傳佛教 → 天台／華嚴／法相／禪／淨土 → 佛學哲學與生命實踐。
+</div>
+</section>
+
+</main>
+<footer>
+<div class="container">佛學學習藍圖 · Inline SVG 版本 · 可直接離線開啟、列印與修改</div>
+</footer>
+</body>
+</html>
