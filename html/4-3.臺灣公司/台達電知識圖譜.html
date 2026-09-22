@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>台達電子（Delta Electronics）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF2F0; --surface:#FFFFFF; --surface-2:#DEE8E2; --line:#C5D8CE;
+  --ink:#14241B; --muted:#456855;
+  --accent:#22814D; --accent-deep:#12492B; --accent-soft:#D6F0E2; --band:#12492B;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111814; --surface:#1A231E; --surface-2:#232F28; --line:#37493F;
+    --ink:#E7EFEA; --muted:#9CB4A7;
+    --accent:#6CD099; --accent-deep:#B3EACC; --accent-soft:#1D3528;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111814; --surface:#1A231E; --surface-2:#232F28; --line:#37493F;
+  --ink:#E7EFEA; --muted:#9CB4A7;
+  --accent:#6CD099; --accent-deep:#B3EACC; --accent-soft:#1D3528;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #071A0F 100%);color:#E9F6EF;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B5E2C8;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCF0E5;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B5E2C8;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#B5E2C8;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 電源與能源管理</div>
+    <h1>台達電子（Delta Electronics）知識圖譜</h1>
+    <p class="sub">1971 年由鄭崇華創立，從電視機用的線圈零件起家，靠「把電轉換得更有效率」這一件事，成長為全球最大的交換式電源供應器廠商。它的產品幾乎不會出現在消費者眼前，卻藏在伺服器、基地台、工廠產線與電動車充電樁裡。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1971</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">交換式電源</div><div class="l">全球市占長期領先</div></div>
+      <div class="stat"><div class="n">轉換效率</div><div class="l">貫穿五十年的核心命題</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與發展歷程</div>
+      <h2>從一顆線圈開始的電源王國</h2>
+      <p>台達電的成長是一條不斷往上游技術與系統整合延伸的路徑——每一次轉型，都建立在同一套電力電子的底層能力上。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1971 年</div>
+        <h3>創立於台灣</h3>
+        <p>初期生產電視機用的線圈與變壓器等零組件，是典型的電子零件代工起點，規模與技術門檻都還不高。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1980 年代</div>
+        <h3>轉向交換式電源供應器</h3>
+        <p>切入技術門檻更高的交換式電源供應器，這個決定讓公司從單純的零件供應商，轉型為能提供完整電源模組的系統廠商。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1990 - 2000 年代</div>
+        <h3>隨個人電腦與網通產業一同成長</h3>
+        <p>個人電腦、伺服器與網通設備的普及帶動龐大電源需求，台達電憑藉規模與效率表現，逐步取得全球市占的領先地位。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2000 年代至今</div>
+        <h3>從電源產品擴展到能源管理</h3>
+        <p>業務版圖從單一電源產品，延伸至工業自動化、樓宇自動化、資料中心基礎設施與電動車相關解決方案。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 265" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">三次往上走的轉型</text>
+
+        <rect x="30" y="48" width="250" height="92" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="155" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">零組件</text>
+        <text x="155" y="96" text-anchor="middle" font-size="10.5" fill="var(--muted)">線圈、變壓器</text>
+        <text x="155" y="116" text-anchor="middle" font-size="10.5" fill="var(--muted)">替品牌廠代工單一零件</text>
+        <text x="155" y="133" text-anchor="middle" font-size="9.5" fill="var(--muted)">議價能力低</text>
+
+        <rect x="325" y="48" width="250" height="92" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="450" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">電源模組</text>
+        <text x="450" y="96" text-anchor="middle" font-size="10.5" fill="var(--ink)">交換式電源供應器</text>
+        <text x="450" y="116" text-anchor="middle" font-size="10.5" fill="var(--ink)">整合成可獨立運作的模組</text>
+        <text x="450" y="133" text-anchor="middle" font-size="9.5" fill="var(--ink)">技術門檻明顯提高</text>
+
+        <rect x="620" y="42" width="250" height="104" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="745" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">能源管理系統</text>
+        <text x="745" y="90" text-anchor="middle" font-size="10.5" fill="var(--ink)">自動化、資料中心基礎設施</text>
+        <text x="745" y="110" text-anchor="middle" font-size="10.5" fill="var(--ink)">電動車充電與能源解決方案</text>
+        <text x="745" y="130" text-anchor="middle" font-size="9.5" fill="var(--ink)">賣的是整套系統，不只是零件</text>
+
+        <line x1="280" y1="94" x2="323" y2="94" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-dt1)"/>
+        <line x1="575" y1="94" x2="618" y2="94" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-dt1)"/>
+        <defs><marker id="arrow-dt1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="150" y="170" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="198" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">共通的底層能力：電力電子與電源轉換技術</text>
+
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">三個階段做的事看起來差很多，倚賴的卻是同一套把電高效率轉換、分配與控制的技術；</text>
+        <text x="450" y="260" text-anchor="middle" font-size="11" fill="var(--muted)">每一次擴張都是把這套能力用到更大的系統上。</text>
+      </svg>
+      <p class="cap">台達電的多角化不是跨行，而是把同一項核心技術，從零件一路帶到整套系統。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　核心技術：電源轉換</div>
+      <h2>效率百分比背後的巨大差距</h2>
+      <p>台達電的核心競爭力可以濃縮成一個數字——電源轉換效率。這個看似枯燥的百分比，在資料中心的規模下會被放大成驚人的電費與散熱成本差異。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">什麼是電源轉換</div>
+        <h3>從市電到晶片要的電</h3>
+        <p>插座送來的是高壓交流電，晶片需要的是低壓直流電，中間必須經過整流與轉換——這就是電源供應器在做的事。</p>
+      </div>
+      <div class="card">
+        <div class="tag">效率的意義</div>
+        <h3>沒轉換成功的電都變成熱</h3>
+        <p>轉換過程不可能百分之百有效率，損失掉的電會以熱的形式散失，既浪費電費，又增加設備的散熱負擔。</p>
+      </div>
+      <div class="card">
+        <div class="tag">雙重成本</div>
+        <h3>省下的電要算兩次</h3>
+        <p>在資料中心，每少損失一度電，不只省下那度電本身，還省下把那些熱排掉所需的空調耗電，效益因此被放大。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">電走過的那一段路</text>
+
+        <rect x="25" y="70" width="180" height="62" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="115" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">市電</text>
+        <text x="115" y="116" text-anchor="middle" font-size="10" fill="var(--muted)">高壓交流電</text>
+
+        <rect x="265" y="64" width="200" height="74" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="365" y="90" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">電源供應器</text>
+        <text x="365" y="111" text-anchor="middle" font-size="10" fill="var(--ink)">整流、降壓、穩壓</text>
+        <text x="365" y="128" text-anchor="middle" font-size="9.5" fill="var(--ink)">台達電的主戰場</text>
+
+        <rect x="525" y="70" width="180" height="62" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="615" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">晶片</text>
+        <text x="615" y="116" text-anchor="middle" font-size="10" fill="var(--muted)">低壓直流電</text>
+
+        <line x1="205" y1="101" x2="263" y2="101" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-dt2)"/>
+        <line x1="465" y1="101" x2="523" y2="101" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-dt2)"/>
+        <defs>
+          <marker id="arrow-dt2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker>
+          <marker id="arrow-dt2b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--bad)"/></marker>
+        </defs>
+
+        <line x1="365" y1="138" x2="365" y2="176" stroke="var(--bad)" stroke-width="2" marker-end="url(#arrow-dt2b)"/>
+        <rect x="245" y="180" width="240" height="56" rx="10" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="365" y="204" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--bad)">轉換損耗 → 熱</text>
+        <text x="365" y="223" text-anchor="middle" font-size="10" fill="var(--muted)">既浪費電，又得再花電把熱排掉</text>
+
+        <rect x="735" y="60" width="140" height="84" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="805" y="86" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">效率 90%</text>
+        <text x="805" y="105" text-anchor="middle" font-size="10" fill="var(--muted)">損失 10%</text>
+        <text x="805" y="126" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">效率 96%</text>
+
+        <text x="805" y="160" text-anchor="middle" font-size="10" fill="var(--muted)">損失減為 4%</text>
+        <text x="805" y="178" text-anchor="middle" font-size="10" fill="var(--muted)">等於少掉六成廢熱</text>
+
+        <text x="450" y="262" text-anchor="middle" font-size="11" fill="var(--muted)">單台設備上，這幾個百分點幾乎感覺不到；但整座資料中心成千上萬台一起算，</text>
+        <text x="450" y="278" text-anchor="middle" font-size="11" fill="var(--muted)">省下的電費與空調成本就足以構成採購決策的關鍵理由。</text>
+      </svg>
+      <p class="cap">效率之所以是賣點，因為損耗不只浪費一次——它變成熱，還要再耗電把它帶走。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　三大事業版圖</div>
+      <h2>電源之外，還做些什麼</h2>
+      <p>台達電如今的營收結構已不只是電源供應器，但三塊業務的技術根源仍然是同一個。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>事業領域</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>電源及零組件</td><td>涵蓋伺服器、個人電腦、網通設備等各類電源供應器與相關零組件，是集團歷史最久、規模最大的核心業務。</td></tr>
+        <tr><td>自動化</td><td>包含工業自動化（驅動器、控制器等）與樓宇自動化，切入製造業產線與建築節能市場。</td></tr>
+        <tr><td>基礎設施</td><td>涵蓋資料中心基礎設施、電信電源、電動車充電設備與能源管理系統等領域。</td></tr>
+        <tr><td>技術共通性</td><td>三塊業務看似分散，底層都倚賴同一套電力電子技術——如何把電高效率地轉換、分配與控制。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">三塊業務，一個技術根源</text>
+
+        <rect x="35" y="48" width="260" height="96" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="165" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">電源及零組件</text>
+        <text x="165" y="97" text-anchor="middle" font-size="10.5" fill="var(--ink)">伺服器、PC、網通電源</text>
+        <text x="165" y="117" text-anchor="middle" font-size="10.5" fill="var(--ink)">歷史最久、規模最大</text>
+        <text x="165" y="136" text-anchor="middle" font-size="9.5" fill="var(--ink)">集團的基本盤</text>
+
+        <rect x="320" y="48" width="260" height="96" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="450" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">自動化</text>
+        <text x="450" y="97" text-anchor="middle" font-size="10.5" fill="var(--muted)">工業自動化：驅動器、控制器</text>
+        <text x="450" y="117" text-anchor="middle" font-size="10.5" fill="var(--muted)">樓宇自動化：建築節能</text>
+        <text x="450" y="136" text-anchor="middle" font-size="9.5" fill="var(--muted)">面向製造業與建築業</text>
+
+        <rect x="605" y="48" width="260" height="96" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="735" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">基礎設施</text>
+        <text x="735" y="97" text-anchor="middle" font-size="10.5" fill="var(--muted)">資料中心、電信電源</text>
+        <text x="735" y="117" text-anchor="middle" font-size="10.5" fill="var(--muted)">電動車充電、能源管理</text>
+        <text x="735" y="136" text-anchor="middle" font-size="9.5" fill="var(--muted)">近年成長動能所在</text>
+
+        <line x1="165" y1="144" x2="165" y2="166" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="450" y1="144" x2="450" y2="166" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="735" y1="144" x2="735" y2="166" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="165" y1="166" x2="735" y2="166" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="450" y1="166" x2="450" y2="186" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-dt3)"/>
+        <defs><marker id="arrow-dt3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="230" y="190" width="440" height="52" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="214" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">電力電子技術</text>
+        <text x="450" y="233" text-anchor="middle" font-size="10.5" fill="var(--muted)">把電高效率地轉換、分配與控制</text>
+
+        <text x="450" y="264" text-anchor="middle" font-size="11" fill="var(--muted)">從電源供應器到工廠驅動器再到充電樁，處理的都是同一件事，只是規模與應用場景不同。</text>
+      </svg>
+      <p class="cap">三塊業務不是各做各的，而是同一項核心能力在不同市場的延伸。</p>
+    </div>
+
+    <div class="section-head" style="margin-top:36px;">
+      <h2 style="font-size:1.2rem;">主要應用場景</h2>
+    </div>
+    <div class="tag-row">
+      <span>資料中心與 AI 伺服器</span><span>電動車與充電設施</span><span>工廠自動化產線</span><span>通訊基地台</span><span>綠建築與樓宇節能</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　成長動能與挑戰</div>
+      <h2>AI 機櫃的耗電，成了新的戰場</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">成長動能</div>
+        <h3>AI 伺服器推升電源規格</h3>
+        <p>AI 運算機櫃的功耗遠高於傳統伺服器，對電源供應器的功率密度與轉換效率提出更嚴苛的要求，是近年電源廠商重要的成長來源。</p>
+      </div>
+      <div class="card">
+        <div class="tag">成長動能</div>
+        <h3>電動車與充電基礎設施</h3>
+        <p>電動車的車用電源模組與充電設備，是電力電子技術的另一個大規模應用場景，也是集團積極布局的方向。</p>
+      </div>
+      <div class="card">
+        <div class="tag">轉型課題</div>
+        <h3>從代工走向自有解決方案</h3>
+        <p>長期以代工與零組件供應為主，近年積極往系統整合與自有品牌解決方案發展，以提高附加價值與議價能力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">經營特色</div>
+        <h3>把節能做成品牌敘事</h3>
+        <p>創辦人鄭崇華長期倡議環境與節能議題，使「能源效率」不只是產品規格，也成為公司對外形象的核心之一。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">機櫃愈耗電，電源愈值錢</text>
+
+        <rect x="60" y="52" width="340" height="150" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="230" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">傳統伺服器機櫃</text>
+        <rect x="150" y="96" width="160" height="22" rx="3" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1"/>
+        <text x="230" y="140" text-anchor="middle" font-size="10.5" fill="var(--muted)">功耗相對有限</text>
+        <text x="230" y="160" text-anchor="middle" font-size="10.5" fill="var(--muted)">電源是必要零件，但不稀缺</text>
+        <text x="230" y="182" text-anchor="middle" font-size="10" fill="var(--muted)">採購時價格是主要考量</text>
+
+        <rect x="500" y="52" width="340" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="670" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">AI 運算機櫃</text>
+        <rect x="560" y="90" width="220" height="16" rx="2" fill="var(--accent)" opacity="0.35"/>
+        <rect x="560" y="110" width="220" height="16" rx="2" fill="var(--accent)" opacity="0.35"/>
+        <text x="670" y="150" text-anchor="middle" font-size="10.5" fill="var(--ink)">功耗大幅提高，散熱壓力同步上升</text>
+        <text x="670" y="170" text-anchor="middle" font-size="10.5" fill="var(--ink)">要求更高功率密度與轉換效率</text>
+        <text x="670" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">電源從成本項變成技術門檻</text>
+
+        <line x1="400" y1="127" x2="496" y2="127" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-dt4)"/>
+        <defs><marker id="arrow-dt4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="234" text-anchor="middle" font-size="11" fill="var(--muted)">當機櫃功耗高到一定程度，能不能在有限空間裡塞進足夠且夠有效率的電源，</text>
+        <text x="450" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">就從「買得到就好」變成少數廠商才做得到的事——這正是台達電五十年累積的價值所在。</text>
+      </svg>
+      <p class="cap">AI 把電源從不起眼的配角，推上了資料中心設計的關鍵位置。</p>
+    </div>
+
+    <div class="quote">台達電的生意本質上很單純：讓電從插座走到晶片的這段路上，少浪費一點。放在單一台裝置上，這個差距小到沒人在意；但放大到一整座資料中心、一整個國家的用電，它就成了值得投入五十年的題目。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為台達電子（Delta Electronics）公司歷史、核心技術與事業版圖之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以台達電子官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
