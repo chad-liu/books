@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>穩懋半導體（WIN Semiconductors）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEEEF2; --surface:#FFFFFF; --surface-2:#DEDDE9; --line:#C4C3DA;
+  --ink:#171528; --muted:#47456E;
+  --accent:#342D9F; --accent-deep:#1C175E; --accent-soft:#D9D7F4; --band:#1C175E;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2E7D7A; --teal-soft:#DCF0EE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13121C; --surface:#1C1B27; --surface-2:#252433; --line:#39384D;
+    --ink:#E7E7EF; --muted:#A09EB7;
+    --accent:#8983E2; --accent-deep:#C7C4F3; --accent-soft:#201E3E;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#7FCBC5; --teal-soft:#173330;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#13121C; --surface:#1C1B27; --surface-2:#252433; --line:#39384D;
+  --ink:#E7E7EF; --muted:#A09EB7;
+  --accent:#8983E2; --accent-deep:#C7C4F3; --accent-soft:#201E3E;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#7FCBC5; --teal-soft:#173330;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0A0824 100%);color:#EDECFA;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#BEBBEE;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DEDCF6;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#BEBBEE;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#BEBBEE;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 化合物半導體</div>
+    <h1>穩懋半導體（WIN Semiconductors）知識圖譜</h1>
+    <p class="sub">這個資料夾裡所有的半導體公司，做的都是矽——只有這一家不是。穩懋是全球規模最大的砷化鎵純代工廠，專門生產那些「矽做不好」的晶片：手機裡負責發射訊號的射頻元件，以及臉部辨識所需的微型雷射。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1999</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">砷化鎵</div><div class="l">而不是矽</div></div>
+      <div class="stat"><div class="n">全球最大</div><div class="l">砷化鎵純代工廠</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　一個不一樣的材料</div>
+      <h2>半導體不等於矽</h2>
+      <p>提到半導體，多數人想到的是矽晶圓。但矽只是半導體材料的其中一種，在某些應用上，它的物理特性根本不夠用。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">半導體材料的分工</text>
+
+        <rect x="330" y="44" width="240" height="50" rx="12" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="66" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">半導體材料</text>
+        <text x="450" y="85" text-anchor="middle" font-size="10.5" fill="var(--muted)">不是只有一種</text>
+
+        <line x1="450" y1="94" x2="450" y2="112" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="230" y1="112" x2="670" y2="112" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="230" y1="112" x2="230" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-win1)"/>
+        <line x1="670" y1="112" x2="670" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-win1)"/>
+        <defs><marker id="arrow-win1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="60" y="136" width="340" height="86" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="230" y="162" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">矽（Si）</text>
+        <text x="230" y="184" text-anchor="middle" font-size="10.5" fill="var(--muted)">處理器、記憶體、多數邏輯晶片</text>
+        <text x="230" y="204" text-anchor="middle" font-size="10" fill="var(--muted)">便宜、量產成熟、產業鏈完整</text>
+
+        <rect x="500" y="136" width="340" height="86" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="670" y="162" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">化合物半導體</text>
+        <text x="670" y="184" text-anchor="middle" font-size="10.5" fill="var(--ink)">砷化鎵、氮化鎵等</text>
+        <text x="670" y="204" text-anchor="middle" font-size="10" fill="var(--ink)">用在矽做不好的高頻與光電應用</text>
+
+        <text x="450" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">兩者不是競爭關係，而是各自負責不同的工作——穩懋做的，是右邊這一塊。</text>
+      </svg>
+      <p class="cap">矽撐起了運算，化合物半導體則負責通訊與光電這些矽力有未逮的領域。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">1999 年</div>
+        <h3>創立於桃園</h3>
+        <p>成立時即鎖定砷化鎵晶圓代工這個當時規模還很小的領域，走的是與台灣主流矽晶圓產業不同的路。</p>
+      </div>
+      <div class="card">
+        <div class="tag">商業模式</div>
+        <h3>純代工，不做自有產品</h3>
+        <p>與台積電相同的邏輯：只替客戶製造，不推出自有品牌晶片，因此能同時服務彼此競爭的設計公司。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業地位</div>
+        <h3>全球最大的砷化鎵代工廠</h3>
+        <p>在這個規模不大但技術門檻明確的利基市場裡，穩懋長期居於全球領先地位。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　矽做不到的兩件事</div>
+      <h2>為什麼非得換材料不可</h2>
+      <p>砷化鎵之所以無法被矽取代，原因不在製程或成本，而在材料本身的物理性質——有兩件事，矽先天就做不好。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 288" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">砷化鎵的兩項物理優勢</text>
+
+        <rect x="40" y="46" width="370" height="158" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">一、電子跑得比較快</text>
+        <text x="225" y="98" text-anchor="middle" font-size="10.5" fill="var(--ink)">砷化鎵的電子遷移率高於矽</text>
+        <text x="225" y="120" text-anchor="middle" font-size="10.5" fill="var(--ink)">在高頻訊號下表現更好、損耗更低</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">用途：手機射頻功率放大器</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">手機要把訊號送到基地台，靠的就是它</text>
+        <text x="225" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">頻段愈多、頻率愈高，需求愈大</text>
+
+        <rect x="490" y="46" width="370" height="158" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">二、它能發光，矽不能</text>
+        <text x="675" y="98" text-anchor="middle" font-size="10.5" fill="var(--ink)">砷化鎵屬於直接能隙材料</text>
+        <text x="675" y="120" text-anchor="middle" font-size="10.5" fill="var(--ink)">電子躍遷時能有效率地放出光子</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">用途：雷射與光電元件</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">矽是間接能隙，發光效率極差</text>
+        <text x="675" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">這是材料本質的差別，改製程也沒用</text>
+
+        <rect x="150" y="222" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="250" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">高頻通訊與發光，是矽再怎麼微縮也補不上的兩塊</text>
+
+        <text x="450" y="284" text-anchor="middle" font-size="10.5" fill="var(--muted)">這與世界先進那頁的道理相通：不是每種電路都該用同一套材料與製程去做。</text>
+      </svg>
+      <p class="cap">砷化鎵的存在理由不是「比矽好」，而是它剛好擅長矽先天做不好的那兩件事。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">高頻</div>
+        <h3>電子遷移率決定了頻率上限</h3>
+        <p>訊號頻率愈高，材料中電子的反應速度就愈關鍵。砷化鎵在這方面的先天條件，讓它成為射頻元件的主流選擇。</p>
+      </div>
+      <div class="card">
+        <div class="tag">發光</div>
+        <h3>直接能隙才能有效率發光</h3>
+        <p>矽的能隙結構使它幾乎無法有效發光，這是物理限制而非技術問題；要做雷射與光源，就必須換材料。</p>
+      </div>
+      <div class="card">
+        <div class="tag">代價</div>
+        <h3>貴、脆、晶圓尺寸小</h3>
+        <p>砷化鎵基板價格遠高於矽，材料較脆且晶圓尺寸小，因此只用在真正需要它的地方，不會取代矽。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　它的晶片在哪裡</div>
+      <h2>一支手機裡的砷化鎵</h2>
+      <p>穩懋的產品不會出現在規格表上，但每支手機都裝著好幾顆——它們負責的是「把訊號送出去」與「把光打出去」。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩大應用</text>
+
+        <rect x="40" y="48" width="370" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">射頻前端模組</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">手機與基地台之間的通訊</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">功率放大器負責把訊號放大送出</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">支援的頻段愈多，用的顆數就愈多</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">從 4G 到 5G，單機用量持續增加</text>
+
+        <rect x="490" y="48" width="370" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">垂直共振腔面射型雷射</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">俗稱 VCSEL 的微型雷射元件</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">投射不可見光點來量測距離</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">用途：臉部辨識、距離感測</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">手機導入 3D 感測後需求大幅上升</text>
+
+        <text x="450" y="230" text-anchor="middle" font-size="11" fill="var(--muted)">前者用到「電子跑得快」，後者用到「能發光」——剛好對應砷化鎵的兩項物理優勢。</text>
+        <text x="450" y="248" text-anchor="middle" font-size="11" fill="var(--muted)">材料特性決定了應用範圍，這在半導體業裡是相當純粹的一種關係。</text>
+        <text x="450" y="266" text-anchor="middle" font-size="10.5" fill="var(--muted)">此外也應用於光通訊、衛星通訊與部分感測元件。</text>
+      </svg>
+      <p class="cap">兩大應用恰好各自對應前一節的兩項材料特性，這是材料科學直接決定商業版圖的例子。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>客戶結構</td><td>客戶多為專精射頻的無廠半導體公司，這些公司再供應給手機品牌，穩懋位在供應鏈相對上游的位置。</td></tr>
+        <tr><td>需求連動</td><td>營運與智慧型手機的出貨週期、通訊規格世代交替密切相關，屬於波動較明顯的產業。</td></tr>
+        <tr><td>技術門檻</td><td>化合物半導體的製程與矽差異很大，設備、材料與良率調校自成一套體系，新進者不易快速追上。</td></tr>
+        <tr><td>市場規模</td><td>相較於矽晶圓代工，化合物半導體市場規模小得多，但競爭者數量也相對有限。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　挑戰與新方向</div>
+      <h2>小池塘裡的大魚，也有自己的煩惱</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">客戶集中</div>
+        <h3>需求高度綁在手機上</h3>
+        <p>射頻與感測元件的用量與智慧型手機出貨高度連動，一旦手機市場成長趨緩，營運隨即受到影響。</p>
+      </div>
+      <div class="card">
+        <div class="tag">競爭</div>
+        <h3>中國大陸的化合物半導體布局</h3>
+        <p>中國大陸近年積極投入化合物半導體產能，這個原本競爭者不多的利基市場，壓力正在增加。</p>
+      </div>
+      <div class="card">
+        <div class="tag">新方向</div>
+        <h3>氮化鎵的功率與射頻應用</h3>
+        <p>氮化鎵能承受更高的電壓與功率，在快速充電、電動車與基地台等領域有明確需求，是重要的延伸方向。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構課題</div>
+        <h3>市場規模的天花板</h3>
+        <p>化合物半導體終究是個利基市場，即使做到全球第一，規模也遠不及矽晶圓代工，成長空間有其限制。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 265" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">從砷化鎵延伸到氮化鎵</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">砷化鎵：既有主力</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">手機射頻、VCSEL 感測</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">需求綁在消費性電子的循環上</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">市占領先但成長受手機市場牽制</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">是穩定的基本盤</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">氮化鎵：延伸方向</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">能承受更高電壓與功率</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">快充、電動車、基地台等應用</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">需求不隨手機循環起伏</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">但也要面對新的競爭者</text>
+
+        <line x1="410" y1="118" x2="486" y2="118" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-win4)"/>
+        <defs><marker id="arrow-win4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="226" text-anchor="middle" font-size="11" fill="var(--muted)">從一種化合物半導體延伸到另一種，用的是同一套「非矽材料」的製程知識與設備體系，</text>
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">這是在既有能力範圍內找新市場，而不是跨進一個全然陌生的領域。</text>
+        <text x="450" y="261" text-anchor="middle" font-size="10.5" fill="var(--muted)">跟台達電把電力電子能力延伸到新應用，是類似的思路。</text>
+      </svg>
+      <p class="cap">往氮化鎵延伸，是把同一套化合物半導體的專業用到需求性質不同的市場上。</p>
+    </div>
+
+    <div class="quote">穩懋是這個資料夾裡最「窄」的一家公司——它只做一種材料、服務一個不大的市場。但它示範了利基策略的極致：當你選定的那塊地方剛好是物理上無可替代的，市場小一點也沒關係，因為沒有人能用更便宜的方法繞過你。矽再怎麼進步，也發不出光。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為穩懋半導體（WIN Semiconductors）公司背景、技術特性與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以穩懋半導體官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
