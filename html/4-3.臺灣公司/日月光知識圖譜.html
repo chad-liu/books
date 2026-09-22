@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>日月光（ASE Technology）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F5EDEA; --surface:#FFFFFF; --surface-2:#EAD9D3; --line:#D8BFB5;
+  --ink:#2A1B15; --muted:#7A5F52;
+  --accent:#A8492F; --accent-deep:#6B2B18; --accent-soft:#F0D4C7;
+  --gold:#A8862E; --gold-soft:#F1E4C7;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C120D; --surface:#241712; --surface-2:#2E1D17; --line:#4A2E22;
+    --ink:#F0E2DA; --muted:#C2A296;
+    --accent:#E8825F; --accent-deep:#F0A98A; --accent-soft:#3A2018;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C120D; --surface:#241712; --surface-2:#2E1D17; --line:#4A2E22;
+  --ink:#F0E2DA; --muted:#C2A296;
+  --accent:#E8825F; --accent-deep:#F0A98A; --accent-soft:#3A2018;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #200E08 100%);color:#F9E9E2;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F0C4B2;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F5DBCF;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#F0C4B2;margin-top:2px;}
+
+section{padding-block:44px;counter-reset:none;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#F5DBCF;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 半導體封裝測試產業</div>
+    <h1>日月光（ASE Technology）知識圖譜</h1>
+    <p class="sub">全球最大的委外半導體封裝測試廠（OSAT），1984 年創立於高雄，2018 年與矽品精密（SPIL）合併成立日月光投控，掌握半導體製造流程中「後段」的封裝與測試環節，是台灣半導體供應鏈中與晶圓代工同樣關鍵的一環。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1984</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">全球第一</div><div class="l">委外封測市占</div></div>
+      <div class="stat"><div class="n">2018</div><div class="l">與矽品精密合併</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與核心業務</div>
+      <h2>半導體製造的「最後一哩路」：封裝與測試</h2>
+      <p>晶片從晶圓廠出來只是半成品，還需經過切割、封裝、測試等後段工序才能成為可用的最終產品，這正是日月光的核心業務範疇。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1984 年創立於高雄</h3>
+        <p>從封裝測試代工起家，逐步發展為涵蓋封裝、測試、材料等完整服務的半導體後段製造集團。</p>
+      </div>
+      <div class="card">
+        <div class="tag">核心業務</div>
+        <h3>封裝（Assembly）與測試（Test）</h3>
+        <p>將晶圓廠產出的裸晶（die）切割、封裝保護並連接電路，再透過測試確保良率與可靠度，是連接晶圓製造與終端產品之間不可或缺的環節。</p>
+      </div>
+      <div class="card">
+        <div class="tag">商業模式</div>
+        <h3>OSAT 委外封裝測試</h3>
+        <p>如同台積電之於晶圓代工，日月光是全球規模最大的委外封裝測試服務供應商（Outsourced Semiconductor Assembly and Test），服務對象涵蓋幾乎所有主要 IC 設計與晶圓代工公司。</p>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">半導體製造流程與日月光的位置</text>
+
+        <rect x="20" y="60" width="180" height="70" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="110" y="88" text-anchor="middle" font-size="12.5" fill="var(--ink)">IC 設計</text>
+        <text x="110" y="106" text-anchor="middle" font-size="11" fill="var(--muted)">Fabless：高通、輝達等</text>
+
+        <rect x="245" y="60" width="180" height="70" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="335" y="88" text-anchor="middle" font-size="12.5" fill="var(--ink)">晶圓代工</text>
+        <text x="335" y="106" text-anchor="middle" font-size="11" fill="var(--muted)">Foundry：台積電等</text>
+
+        <rect x="470" y="55" width="190" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="565" y="83" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">封裝測試</text>
+        <text x="565" y="102" text-anchor="middle" font-size="11" fill="var(--ink)">OSAT：日月光</text>
+        <text x="565" y="119" text-anchor="middle" font-size="10" fill="var(--muted)">日月光的核心角色</text>
+
+        <rect x="705" y="60" width="175" height="70" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="792" y="88" text-anchor="middle" font-size="12.5" fill="var(--ink)">終端產品</text>
+        <text x="792" y="106" text-anchor="middle" font-size="11" fill="var(--muted)">手機／PC／伺服器等</text>
+
+        <line x1="200" y1="95" x2="243" y2="95" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="425" y1="95" x2="468" y2="95" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="660" y1="95" x2="703" y2="95" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow)"/>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <text x="450" y="175" text-anchor="middle" font-size="11.5" fill="var(--muted)">日月光位於晶圓代工之後、終端產品之前，是半導體「前段」製造與「後段」成品之間的關鍵橋樑</text>
+      </svg>
+      <p class="cap">半導體供應鏈中的四個主要環節：IC 設計、晶圓代工、封裝測試、終端產品，日月光專精於封裝測試這個「後段」環節。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　發展歷程時間軸</div>
+      <h2>從封測代工到全球最大整合集團</h2>
+      <p>日月光的成長軌跡，一路伴隨著台灣半導體產業從代工起步到全球分工核心的整體歷程。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1984 年</div>
+        <h3>創立於高雄</h3>
+        <p>以半導體封裝代工起家，逐步累積技術與客戶基礎，奠定日後擴張的根基。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1990 年代 - 2000 年代</div>
+        <h3>垂直整合與海外擴張</h3>
+        <p>陸續併購測試廠商、佈局海外據點，業務版圖從封裝延伸至測試，成為涵蓋完整後段製程的服務供應商。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2018 年</div>
+        <h3>與矽品精密（SPIL）合併</h3>
+        <p>兩大封測廠整合成立日月光投控（ASE Technology Holding），大幅提升全球市占率與產能規模，鞏固全球最大 OSAT 地位。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2020 年代</div>
+        <h3>先進封裝成長動能</h3>
+        <p>隨著摩爾定律微縮速度趨緩，先進封裝技術（如系統級封裝 SiP、2.5D／3D 封裝）成為延續晶片效能提升的重要途徑，日月光在此領域投入大量資源，服務 AI 與高效能運算晶片需求。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　產業地位與供應鏈角色</div>
+      <h2>與晶圓代工互補、不競爭的夥伴關係</h2>
+      <p>日月光的角色經常被外界忽略，但沒有封裝測試，再先進的晶圓製程也無法變成可用的成品。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>供應鏈角色</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>與晶圓代工的關係</td><td>日月光的封測業務與台積電等晶圓代工廠是互補而非競爭關係——晶圓廠產出裸晶，日月光負責將其封裝為可用的成品晶片，兩者共同構成完整的半導體供應鏈。</td></tr>
+        <tr><td>客戶結構</td><td>服務對象涵蓋全球主要 IC 設計公司（Fabless）與部分 IDM 廠商，客戶群幾乎涵蓋整個半導體產業的下游需求。</td></tr>
+        <tr><td>先進封裝趨勢</td><td>在後摩爾定律時代，透過先進封裝技術（如多晶片整合、異質整合）成為晶片效能提升的另一條路徑，與晶圓代工廠在先進封裝領域形成既合作又競爭的微妙關係。</td></tr>
+        <tr><td>全球產能佈局</td><td>除台灣（高雄為核心基地）外，於中國、東南亞、美國等地均設有生產據點，因應客戶在地化與供應鏈韌性需求。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-head" style="margin-top:36px;">
+      <h2 style="font-size:1.2rem;">服務領域</h2>
+    </div>
+    <div class="tag-row">
+      <span>傳統封裝</span><span>系統級封裝（SiP）</span><span>覆晶封裝</span><span>測試服務</span><span>材料供應</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　產業地位與挑戰</div>
+      <h2>隱形冠軍的挑戰：技術升級與地緣政治</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">產業地位</div>
+        <h3>全球 OSAT 龍頭</h3>
+        <p>合併矽品後，日月光在全球委外封測市場的規模與市占率長期居於領先地位，是半導體供應鏈中知名度相對較低卻不可或缺的一環。</p>
+      </div>
+      <div class="card">
+        <div class="tag">技術挑戰</div>
+        <h3>先進封裝技術門檻提升</h3>
+        <p>隨著晶片效能需求提升，封裝技術從單純的保護與連接，演進為影響晶片整體效能的關鍵環節，對研發投入與技術能力要求持續提高。</p>
+      </div>
+      <div class="card">
+        <div class="tag">地緣政治</div>
+        <h3>供應鏈分散布局壓力</h3>
+        <p>與台灣其他半導體業者類似，日月光也面臨在地緣政治風險下分散全球產能佈局的壓力與挑戰。</p>
+      </div>
+      <div class="card">
+        <div class="tag">客戶集中度</div>
+        <h3>依賴少數大型客戶</h3>
+        <p>部分業務營收高度集中於少數大型 IC 設計與系統廠客戶，客戶訂單波動對營運表現有一定影響。</p>
+      </div>
+    </div>
+
+    <div class="quote">如果說台積電是半導體供應鏈中最受矚目的「前段」明星，日月光就是同樣不可或缺、卻長期站在鎂光燈之外的「後段」隱形冠軍——沒有封裝測試，再先進的晶圓製程也無法變成消費者手中的產品。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為日月光（ASE Technology）公司歷史、核心業務與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以日月光投控官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>鴻海科技集團（Foxconn）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F6EEF2; --surface:#FFFFFF; --surface-2:#E9DCE4; --line:#D6C0CE;
+  --ink:#2A1722; --muted:#7A5A6C;
+  --accent:#8C3F63; --accent-deep:#571F3D; --accent-soft:#F0D7E4;
+  --gold:#A8862E; --gold-soft:#F1E4C7;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1017; --surface:#26161F; --surface-2:#301C28; --line:#4A2E3D;
+    --ink:#F0DDE8; --muted:#C298B0;
+    --accent:#E88CB4; --accent-deep:#F0AFCB; --accent-soft:#3A1E2C;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C1017; --surface:#26161F; --surface-2:#301C28; --line:#4A2E3D;
+  --ink:#F0DDE8; --muted:#C298B0;
+  --accent:#E88CB4; --accent-deep:#F0AFCB; --accent-soft:#3A1E2C;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #1A0A12 100%);color:#F8E7EF;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#EDC0D8;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F3D9E6;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#EDC0D8;margin-top:2px;}
+
+section{padding-block:44px;counter-reset:none;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#F3D9E6;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 電子代工製造產業</div>
+    <h1>鴻海科技集團（Foxconn）知識圖譜</h1>
+    <p class="sub">全球規模最大的電子專業製造服務（EMS）集團之一，1974 年由郭台銘創立於台北，以蘋果 iPhone 最大組裝夥伴聞名於世，旗下透過富士康等子公司在中國大陸建立龐大生產基地，近年積極布局電動車、半導體與 AI 伺服器等新事業領域。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1974</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">全球最大之一</div><div class="l">電子代工集團</div></div>
+      <div class="stat"><div class="n">新北</div><div class="l">總部所在地</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與商業模式</div>
+      <h2>從塑膠零件廠到蘋果最大組裝夥伴</h2>
+      <p>鴻海的核心競爭力在於極致的製造規模與垂直整合能力，用龐大產能與速度優勢，成為全球品牌不可或缺的生產夥伴。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1974 年由郭台銘創立</h3>
+        <p>最初以生產塑膠零組件起家，之後逐步跨入電腦連接器、機殼等電子零組件製造，奠定日後大規模電子代工的技術基礎。</p>
+      </div>
+      <div class="card">
+        <div class="tag">商業模式</div>
+        <h3>EMS 專業電子製造服務</h3>
+        <p>與 ODM 廠商「深度參與設計」不同，EMS 模式更聚焦於依客戶規格進行大規模、高效率的製造與組裝，鴻海是全球此一領域規模最大的廠商之一。</p>
+      </div>
+      <div class="card">
+        <div class="tag">垂直整合優勢</div>
+        <h3>從零組件到系統組裝一手包辦</h3>
+        <p>集團版圖涵蓋連接器、機殼、印刷電路板等關鍵零組件，到最終產品組裝測試，垂直整合程度高，是其大規模接單能力的重要基礎。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　發展歷程時間軸</div>
+      <h2>從連接器工廠到全球最大代工帝國</h2>
+      <p>鴻海的擴張歷程，某種程度上也是全球電子產業供應鏈移往中國大陸、再逐步分散布局的縮影。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1974 年</div>
+        <h3>創立於台北，從塑膠與電子零組件起步</h3>
+        <p>早期以連接器等電子零組件代工建立技術與客戶基礎。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1988 年起</div>
+        <h3>赴中國大陸設廠，展開大規模生產布局</h3>
+        <p>在深圳等地設立大型生產基地（即外界熟知的「富士康」），憑藉當地充沛勞動力與政策優惠，建立起全球規模最大的電子代工版圖之一。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2000 年代 - 2010 年代</div>
+        <h3>成為蘋果 iPhone 最大組裝夥伴</h3>
+        <p>隨著蘋果智慧型手機熱銷全球，鴻海承接絕大部分 iPhone 組裝訂單，員工規模一度達到百萬人以上，成為外界討論科技供應鏈與勞動條件議題時經常關注的焦點。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2020 年代</div>
+        <h3>拓展電動車、半導體與 AI 伺服器新事業</h3>
+        <p>推出 MIH 電動車開放平台，切入半導體與 AI 伺服器代工領域，並因應地緣政治情勢加速在印度、越南等地分散生產基地，尋求新的成長曲線。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　事業版圖與客戶結構</div>
+      <h2>從消費性電子代工到多元化新事業</h2>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>事業群</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>消費性電子組裝</td><td>以蘋果 iPhone 代工聞名，同時也為其他品牌代工手機、平板、筆電等消費性電子產品，是集團歷史最悠久、規模最大的核心業務。</td></tr>
+        <tr><td>雲端與網通設備</td><td>為雲端服務商與網通設備品牌提供伺服器、路由器等硬體製造服務，近年隨 AI 伺服器需求成長而擴大布局。</td></tr>
+        <tr><td>電動車（MIH 平台）</td><td>推出開放式電動車軟硬體平台 MIH，仿效 PC 產業「開放標準」模式，希望複製電子代工的成功經驗到電動車產業。</td></tr>
+        <tr><td>半導體與新事業</td><td>投資布局半導體製造與設計相關業務，尋求從單純組裝代工，往產業鏈更上游延伸。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-head" style="margin-top:36px;">
+      <h2 style="font-size:1.2rem;">主要客戶</h2>
+    </div>
+    <div class="tag-row">
+      <span>蘋果</span><span>亞馬遜</span><span>索尼</span><span>惠普</span><span>任天堂</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　產業地位與挑戰</div>
+      <h2>代工帝國的機會與轉型壓力</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">產業地位</div>
+        <h3>全球規模最大的電子代工集團之一</h3>
+        <p>長期是全球 EMS 產業規模最大的廠商之一，也是台灣員工規模最龐大的企業集團。</p>
+      </div>
+      <div class="card">
+        <div class="tag">供應鏈集中度風險</div>
+        <h3>高度依賴蘋果單一客戶</h3>
+        <p>蘋果相關業務長期占集團營收相當大的比重，客戶集中度偏高是外界持續關注的結構性風險。</p>
+      </div>
+      <div class="card">
+        <div class="tag">地緣政治</div>
+        <h3>加速分散中國以外的生產基地</h3>
+        <p>因應中美貿易緊張與供應鏈韌性考量，近年積極在印度、越南等地擴大投資設廠，降低對單一生產基地的依賴。</p>
+      </div>
+      <div class="card">
+        <div class="tag">轉型挑戰</div>
+        <h3>從「代工思維」走向「系統整合」</h3>
+        <p>電動車、半導體等新事業能否成功複製電子代工的規模優勢，是鴻海能否擺脫代工業務毛利率長期偏低宿命的關鍵。</p>
+      </div>
+    </div>
+
+    <div class="quote">鴻海的故事，是全球化製造分工最極致的案例之一——用近乎軍事化的生產紀律與龐大規模，把「代工」做到全球無人能及的地步，如今則試圖證明，同樣的能力也能複製到電動車與半導體這些更高附加價值的新戰場。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為鴻海科技集團（Foxconn／Hon Hai）公司歷史、商業模式與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以鴻海科技集團官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
