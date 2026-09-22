@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>東京威力科創知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1EEF0; --surface:#FFFFFF; --surface-2:#E8E0E3; --line:#D8CBD0;
+  --ink:#221A1D; --muted:#665359;
+  --accent:#9C3457; --accent-deep:#551A2E; --accent-soft:#F0DBE2;
+  --gold:#8A6D1E; --gold-soft:#EFE4C4;
+  --good:#2E7D5B; --good-soft:#DEEFE6;
+  --bad:#B2483A; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181114; --surface:#241A1E; --surface-2:#2E2126; --line:#45323A;
+    --ink:#F2E4E9; --muted:#C6A9B4;
+    --accent:#E888A8; --accent-deep:#F0B0C6; --accent-soft:#3A2028;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181114; --surface:#241A1E; --surface-2:#2E2126; --line:#45323A;
+  --ink:#F2E4E9; --muted:#C6A9B4;
+  --accent:#E888A8; --accent-deep:#F0B0C6; --accent-soft:#3A2028;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--accent-deep) 0%, #2C0F1B 100%);color:#F8E8ED;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#F0C0D0;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F2DCE4;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#F0C0D0;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--accent-deep);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--accent-deep);color:#F0C0D0;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">國外公司 × 半導體設備產業</div>
+    <h1>東京威力科創（Tokyo Electron）知識圖譜</h1>
+    <p class="sub">日本最大的半導體製程設備商，1963 年創立於東京，在「塗佈顯影設備」（coater/developer）這項與艾斯摩爾微影機緊密搭配的關鍵設備領域，長期居於全球近乎壟斷的地位；產品線同時橫跨蝕刻、薄膜沉積、清洗設備等多個環節，是日本半導體設備產業當之無愧的代表企業。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1963</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">近乎壟斷</div><div class="l">塗佈顯影設備市場地位</div></div>
+      <div class="stat"><div class="n">日本東京</div><div class="l">總部所在地</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與發展歷程</div>
+      <h2>從代理國外設備，到自主技術的長期積累</h2>
+      <p>東京威力科創的成長路徑，某種程度上是日本半導體設備產業從技術引進到自主研發的縮影——早期靠代理國外先進設備切入市場，逐步累積出自己的核心技術能力。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1963 年</div>
+        <h3>創立於東京</h3>
+        <p>公司草創初期以代理進口半導體與電子設備業務起家，逐步累積對半導體製程設備的技術理解與客戶關係。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1970 - 1980 年代</div>
+        <h3>發展自主製程設備技術</h3>
+        <p>隨日本半導體產業在全球市場快速崛起，東京威力科創逐步從代理商轉型為具備自主研發能力的設備製造商，產品線持續擴充。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">近數十年</div>
+        <h3>鞏固塗佈顯影設備的全球領先地位</h3>
+        <p>透過長期深耕，公司在塗佈顯影設備領域建立起近乎壟斷的市場地位，並持續在蝕刻、薄膜沉積等其他製程設備領域擴大版圖。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　核心技術領域</div>
+      <h2>微影製程前後段不可或缺的隱形夥伴</h2>
+      <p>提到微影製程，多數人會直接聯想到艾斯摩爾的 EUV 機台，但實際上完整的微影流程還需要「塗佈」與「顯影」這兩道前後段工序，而這正是東京威力科創幾乎獨佔的技術領域。</p>
+    </div>
+
+    <div class="diagram">
+      <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">微影製程的三個階段（簡化示意）</text>
+        <rect x="40" y="55" width="250" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="165" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">① 塗佈</text>
+        <text x="165" y="102" text-anchor="middle" font-size="11" fill="var(--muted)">在晶圓表面均勻</text>
+        <text x="165" y="118" text-anchor="middle" font-size="11" fill="var(--muted)">塗上光阻材料</text>
+        <text x="165" y="134" text-anchor="middle" font-size="10.5" fill="var(--muted)">（東京威力科創）</text>
+
+        <rect x="325" y="55" width="250" height="80" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="450" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">② 曝光</text>
+        <text x="450" y="102" text-anchor="middle" font-size="11" fill="var(--muted)">用光源將電路圖案</text>
+        <text x="450" y="118" text-anchor="middle" font-size="11" fill="var(--muted)">投影到光阻層上</text>
+        <text x="450" y="134" text-anchor="middle" font-size="10.5" fill="var(--muted)">（艾斯摩爾）</text>
+
+        <rect x="610" y="55" width="250" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="735" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">③ 顯影</text>
+        <text x="735" y="102" text-anchor="middle" font-size="11" fill="var(--muted)">洗去曝光後的部分</text>
+        <text x="735" y="118" text-anchor="middle" font-size="11" fill="var(--muted)">光阻，顯出圖案</text>
+        <text x="735" y="134" text-anchor="middle" font-size="10.5" fill="var(--muted)">（東京威力科創）</text>
+
+        <line x1="290" y1="95" x2="323" y2="95" stroke="var(--muted)" stroke-width="2" marker-end="url(#a3)"/>
+        <line x1="575" y1="95" x2="608" y2="95" stroke="var(--muted)" stroke-width="2" marker-end="url(#a3)"/>
+        <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+      </svg>
+      <p class="cap">艾斯摩爾負責「曝光」這個最受矚目的中間環節，但前後段的塗佈與顯影，幾乎完全由東京威力科創包辦——沒有這兩道工序，再精密的曝光設備也無用武之地。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">塗佈顯影設備</div>
+        <h3>近乎壟斷的關鍵地位</h3>
+        <p>在全球塗佈顯影設備市場，東京威力科創的市占率長期居於壓倒性領先，幾乎是每一座採用艾斯摩爾微影機的晶圓廠，都必須配套採購的設備夥伴。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產品線廣度</div>
+        <h3>不只塗佈顯影，也涉足蝕刻與沉積</h3>
+        <p>除核心強項外，公司產品線也涵蓋電漿蝕刻設備、薄膜沉積設備與晶圓清洗設備，定位介於專精單一領域（如科林研發）與全製程覆蓋（如應用材料）之間，某種程度上可視為「日本版的應用材料」。</p>
+      </div>
+      <div class="card">
+        <div class="tag">技術互補性</div>
+        <h3>與艾斯摩爾形成緊密的產業共生關係</h3>
+        <p>微影設備與塗佈顯影設備的規格需高度協調配合，兩家公司雖分屬不同國家、不同企業體系，卻在半導體微影製程的整體解決方案上形成密不可分的技術協作關係。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　產業地位</div>
+      <h2>日本半導體設備產業的代表企業</h2>
+      <p>東京威力科創是全球半導體製程設備市場規模最大的幾家公司之一，也是日本半導體設備產業實力的具體展現——儘管日本晶片製造本身的全球地位已不如上世紀鼎盛時期，設備與材料領域卻仍保有相當份量的話語權。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>面向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>市場地位</td><td>以整體營收規模計，是全球前幾大半導體設備供應商之一，在塗佈顯影設備領域市占率尤其突出。</td></tr>
+        <tr><td>客戶結構</td><td>客戶涵蓋全球主要晶圓代工廠、記憶體製造商與邏輯晶片大廠，產品廣泛應用於先進與成熟製程。</td></tr>
+        <tr><td>與艾斯摩爾的關係</td><td>兩家公司的設備在微影製程中緊密搭配使用，形成事實上的產業協作關係，儘管彼此並無股權或正式合資關係。</td></tr>
+        <tr><td>日本設備材料優勢</td><td>日本在半導體設備與材料（如光阻、矽晶圓、特殊化學品）領域長期保有領先地位，東京威力科創是這股實力在設備端最具代表性的公司之一。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　地緣政治與日本半導體產業復興</div>
+      <h2>日本重新爭取半導體製造話語權的關鍵拼圖</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">產業政策</div>
+        <h3>日本政府積極扶植半導體產業復興</h3>
+        <p>近年日本政府大力投入資源支持半導體產業發展（如支持新設先進製程晶圓廠的相關計畫），東京威力科創作為日本設備產業的代表企業，是這波產業復興政策中重要的技術與供應鏈支柱之一。</p>
+      </div>
+      <div class="card">
+        <div class="tag">出口管制協調</div>
+        <h3>美日荷三方協調的出口管制角色</h3>
+        <p>作為關鍵半導體設備供應國，日本與美國、荷蘭在先進晶片製造設備的出口管制政策上保持協調立場，東京威力科創的產品同樣受到相關管制政策的規範與關注。</p>
+      </div>
+      <div class="card">
+        <div class="tag">供應鏈韌性</div>
+        <h3>分散於多國的設備供應體系</h3>
+        <p>先進製程的完整設備供應體系分散在荷蘭（艾斯摩爾）、美國（科林研發、應用材料、科磊）、日本（東京威力科創）等不同國家，這種地理分散性既是供應鏈韌性的來源，也是地緣政治風險管理上必須持續關注的課題。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業啟示</div>
+        <h3>「隱形冠軍」策略的日本版本</h3>
+        <p>東京威力科創的成功路徑，反映出日本製造業一貫擅長的「隱形冠軍」策略——不追求消費端的品牌知名度，而是在產業鏈某個關鍵環節上，建立起外界難以輕易取代的專業地位。</p>
+      </div>
+    </div>
+
+    <div class="quote">半導體供應鏈的故事，經常被簡化成台積電與艾斯摩爾的雙人舞，但東京威力科創的存在提醒人們：真正讓一片晶圓走完製程的，是一整條橫跨多國、彼此緊密咬合的設備供應鏈，缺了任何一環，再先進的技術也無法真正落地量產。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為東京威力科創（Tokyo Electron）公司歷史、技術領域與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以東京威力科創官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
