@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>宏碁（Acer）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F0F2EE; --surface:#FFFFFF; --surface-2:#E1E6DB; --line:#CDD7C1;
+  --ink:#1A2112; --muted:#50613D;
+  --accent:#487119; --accent-deep:#2B440E; --accent-soft:#DFEECD; --band:#2B440E;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151811; --surface:#1F231A; --surface-2:#292F23; --line:#404937;
+    --ink:#EBEFE7; --muted:#A9B49C;
+    --accent:#9FD364; --accent-deep:#CEEAAE; --accent-soft:#2A351C;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151811; --surface:#1F231A; --surface-2:#292F23; --line:#404937;
+  --ink:#EBEFE7; --muted:#A9B49C;
+  --accent:#9FD364; --accent-deep:#CEEAAE; --accent-soft:#2A351C;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0F1806 100%);color:#EFF5E6;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#CCE2A8;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E4EFD4;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#CCE2A8;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#CCE2A8;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 個人電腦品牌</div>
+    <h1>宏碁（Acer）知識圖譜</h1>
+    <p class="sub">1976 年由施振榮等人創立，是台灣科技業最早的一批公司之一，比台積電、華碩都還要早。它不只留下一個電腦品牌，還留下了兩樣影響整個產業的東西——「微笑曲線」這套思考框架，以及一串從它身上分出去、後來各自成為大公司的血脈。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1976</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">微笑曲線</div><div class="l">施振榮提出的產業框架</div></div>
+      <div class="stat"><div class="n">2001</div><div class="l">品牌與代工分家</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　台灣科技業的源頭之一</div>
+      <h2>從它身上分出去的那些公司</h2>
+      <p>宏碁的歷史意義不只在於自己做了什麼，也在於它是台灣好幾家大公司的共同起點——有的是被分割出去，有的是創辦人從這裡走出去的。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">1976 年</div>
+        <h3>施振榮等人創立</h3>
+        <p>成立於台灣個人電腦產業尚未成形的年代，早期從電子零組件與技術服務起步，是台灣最早投入資訊產業的公司之一。</p>
+      </div>
+      <div class="card">
+        <div class="tag">人才外流</div>
+        <h3>華碩創辦團隊出自宏碁</h3>
+        <p>1989 年創立華碩的四位工程師原本任職於宏碁，離開後自立門戶，日後成長為另一家全球級的台灣品牌。</p>
+      </div>
+      <div class="card">
+        <div class="tag">組織分割</div>
+        <h3>緯創與明基先後獨立</h3>
+        <p>2000 年代初的集團重整中，代工業務分割成為緯創，另一塊品牌業務則獨立為明基，形成多家公司並存的格局。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">一條產業血脈</text>
+
+        <rect x="330" y="42" width="240" height="56" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">宏碁（1976）</text>
+        <text x="450" y="86" text-anchor="middle" font-size="10.5" fill="var(--ink)">台灣最早的資訊業者之一</text>
+
+        <line x1="450" y1="98" x2="450" y2="116" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="150" y1="116" x2="750" y2="116" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="150" y1="116" x2="150" y2="136" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-ac1)"/>
+        <line x1="450" y1="116" x2="450" y2="136" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-ac1)"/>
+        <line x1="750" y1="116" x2="750" y2="136" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-ac1)"/>
+        <defs><marker id="arrow-ac1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="28" y="140" width="244" height="72" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="150" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">華碩（1989）</text>
+        <text x="150" y="185" text-anchor="middle" font-size="10" fill="var(--muted)">四位工程師離職創業</text>
+        <text x="150" y="202" text-anchor="middle" font-size="10" fill="var(--muted)">人才外流，不是分割</text>
+
+        <rect x="328" y="140" width="244" height="72" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="450" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">緯創（2001）</text>
+        <text x="450" y="185" text-anchor="middle" font-size="10" fill="var(--muted)">代工業務分割獨立</text>
+        <text x="450" y="202" text-anchor="middle" font-size="10" fill="var(--muted)">品牌留在宏碁</text>
+
+        <rect x="628" y="140" width="244" height="72" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="750" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">明基（2001）</text>
+        <text x="750" y="185" text-anchor="middle" font-size="10" fill="var(--muted)">另一塊事業獨立為品牌</text>
+        <text x="750" y="202" text-anchor="middle" font-size="10" fill="var(--muted)">集團重整的一部分</text>
+
+        <line x1="150" y1="212" x2="150" y2="230" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow-ac1)"/>
+        <rect x="28" y="234" width="244" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="150" y="255" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">和碩（2008-2010）</text>
+        <text x="150" y="272" text-anchor="middle" font-size="9.5" fill="var(--muted)">華碩再分割出的代工公司</text>
+
+        <text x="560" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">台灣資訊硬體業有相當一部分的公司，</text>
+        <text x="560" y="270" text-anchor="middle" font-size="11" fill="var(--muted)">都能往回追到宏碁這個源頭。</text>
+      </svg>
+      <p class="cap">華碩、緯創、明基乃至再下一代的和碩，都與宏碁有直接的血緣關係。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　微笑曲線</div>
+      <h2>一張圖，解釋了台灣代工業的所有焦慮</h2>
+      <p>施振榮在 1990 年代初提出的這套框架，說明了同一條產業鏈上，為什麼有些位置賺得多、有些位置怎麼努力都賺不多。它至今仍是理解台灣科技業最好用的一把尺。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">微笑曲線：附加價值沿產業鏈的分布</text>
+
+        <path d="M 164 78 C 270 190, 350 186, 450 186 C 550 186, 630 190, 736 78" fill="none" stroke="var(--accent)" stroke-width="3"/>
+
+        <circle cx="164" cy="78" r="6" fill="var(--accent)"/>
+        <circle cx="450" cy="186" r="6" fill="var(--bad)"/>
+        <circle cx="736" cy="78" r="6" fill="var(--accent)"/>
+
+        <text x="164" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">高附加價值</text>
+        <text x="736" y="60" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">高附加價值</text>
+        <text x="450" y="166" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--bad)">低附加價值</text>
+
+        <rect x="28" y="202" width="268" height="82" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="162" y="228" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">研發與技術</text>
+        <text x="162" y="250" text-anchor="middle" font-size="10" fill="var(--ink)">專利、關鍵製程、架構設計</text>
+        <text x="162" y="268" text-anchor="middle" font-size="10" fill="var(--ink)">難以取代，因此能取價</text>
+
+        <rect x="316" y="202" width="268" height="82" rx="10" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="450" y="228" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">製造與組裝</text>
+        <text x="450" y="250" text-anchor="middle" font-size="10" fill="var(--muted)">規模、良率、成本控制</text>
+        <text x="450" y="268" text-anchor="middle" font-size="10" fill="var(--muted)">可被替換，議價空間最小</text>
+
+        <rect x="604" y="202" width="268" height="82" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="738" y="228" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">品牌與服務</text>
+        <text x="738" y="250" text-anchor="middle" font-size="10" fill="var(--ink)">通路、品牌信任、售後</text>
+        <text x="738" y="268" text-anchor="middle" font-size="10" fill="var(--ink)">掌握定價權與客戶關係</text>
+
+        <text x="450" y="308" text-anchor="middle" font-size="11" fill="var(--muted)">這條曲線解釋了台灣科技業近三十年的集體行動：所有人都想從谷底往兩端爬。</text>
+      </svg>
+      <p class="cap">產業鏈兩端的附加價值高，中間的製造組裝最低——這就是「微笑」的形狀由來。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">往左爬</div>
+        <h3>掌握不可替代的技術</h3>
+        <p>把資源投入研發與關鍵製程，讓客戶找不到第二家供應商——台積電與安謀走的是這條路。</p>
+      </div>
+      <div class="card">
+        <div class="tag">往右爬</div>
+        <h3>經營品牌與客戶關係</h3>
+        <p>直接面對終端使用者，靠品牌信任取得定價權——宏碁與華碩選的是這一端。</p>
+      </div>
+      <div class="card">
+        <div class="tag">留在中間</div>
+        <h3>把規模做到別人追不上</h3>
+        <p>若留在製造端，唯一的辦法是把規模與效率推到極致，讓成本本身成為門檻——鴻海是這條路的極端案例。</p>
+      </div>
+      <div class="card">
+        <div class="tag">框架的意義</div>
+        <h3>它是一張地圖，不是一道命令</h3>
+        <p>微笑曲線的價值在於讓經營者看清自己站在哪裡、往哪邊移動比較有勝算，而不是宣稱製造本身沒有價值。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　品牌之路的高峰與挫敗</div>
+      <h2>爬到全球前列，又摔了一跤</h2>
+      <p>宏碁是少數真正把品牌做上國際舞台的台灣公司，但也因此完整體驗了品牌商要承受的市場風險。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>階段</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>2000 年代</td><td>分家之後專注品牌，以靈活的通路策略與具競爭力的價格，在全球個人電腦市場快速擴張市占。</td></tr>
+        <tr><td>2009 - 2010 年前後</td><td>市占率攀上高峰，一度躋身全球個人電腦品牌的前段班，是台灣品牌在國際市場最亮眼的時期之一。</td></tr>
+        <tr><td>小筆電浪潮</td><td>低價小筆電熱潮期間出貨大幅成長，但這類產品單價與毛利偏低，且市場風向轉變得極快。</td></tr>
+        <tr><td>2011 年前後</td><td>平板電腦興起、小筆電需求急速萎縮，加上個人電腦市場整體成長趨緩，公司營運與獲利受到明顯衝擊。</td></tr>
+        <tr><td>2014 年起</td><td>經營團隊調整後推動轉型，縮減低毛利業務比重，把重心移往電競等較高價值的產品線。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 284" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">衝量的代價</text>
+
+        <rect x="40" y="48" width="370" height="152" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">高峰：市占衝上全球前列</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">靈活的通路策略與價格競爭力</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">小筆電浪潮帶動出貨量大增</text>
+        <text x="225" y="148" text-anchor="middle" font-size="10" fill="var(--ink)">但成長來自單價低、毛利薄的產品</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">市占數字漂亮，獲利體質卻脆弱</text>
+
+        <rect x="490" y="48" width="370" height="152" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">挫敗：風向一轉就被反噬</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">平板問世，小筆電需求急速萎縮</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">個人電腦市場整體成長趨緩</text>
+        <text x="675" y="148" text-anchor="middle" font-size="10" fill="var(--muted)">低毛利結構無法吸收衝擊</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">營運與獲利受到明顯打擊</text>
+
+        <line x1="410" y1="124" x2="486" y2="124" stroke="var(--bad)" stroke-width="2.5" marker-end="url(#arrow-ac3)"/>
+        <defs><marker id="arrow-ac3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--bad)"/></marker></defs>
+
+        <text x="450" y="236" text-anchor="middle" font-size="11" fill="var(--muted)">用微笑曲線來看，這是一次警告：品牌端雖然位在曲線右側，但如果賣的是低價標準品，</text>
+        <text x="450" y="254" text-anchor="middle" font-size="11" fill="var(--muted)">實際上仍然困在谷底——位置對了，產品組合不對，一樣賺不到錢。</text>
+        <text x="450" y="272" text-anchor="middle" font-size="10.5" fill="var(--muted)">華碩的 Eee PC 是同一波浪潮的另一個當事人。</text>
+      </svg>
+      <p class="cap">站在品牌端不保證高毛利，賣什麼樣的產品同樣決定了你實際落在曲線的哪個位置。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　轉型與現況</div>
+      <h2>不再只想當一家賣電腦的公司</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">產品轉向</div>
+        <h3>把重心移往電競</h3>
+        <p>縮減低毛利產品比重，將資源集中到電競筆電與相關周邊，鎖定願意為效能付較高價格的客群。</p>
+      </div>
+      <div class="card">
+        <div class="tag">組織策略</div>
+        <h3>分拆多家子公司獨立經營</h3>
+        <p>把新事業拆成獨立公司各自發展，讓規模較小的業務不必被本業的營運節奏綁住，也便於外界單獨評價。</p>
+      </div>
+      <div class="card">
+        <div class="tag">新事業</div>
+        <h3>跨足雲端、智慧醫療等領域</h3>
+        <p>嘗試把資訊硬體以外的服務與解決方案發展成新的成長來源，降低對個人電腦單一市場的依賴。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構課題</div>
+        <h3>個人電腦市場的長期趨緩</h3>
+        <p>本業所在的市場成長有限，如何讓新事業的規模成長到足以改變整體營運結構，仍是持續的挑戰。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 265" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩種應對成熟市場的方式</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">在本業內往上走</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">同樣是賣電腦，改賣單價更高的</text>
+        <text x="225" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">電競機種與高階產品</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">優點：沿用既有通路與研發能力</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">限制：市場天花板仍受 PC 產業牽制</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">往本業之外分拆</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">把雲端、智慧醫療等新事業</text>
+        <text x="675" y="120" text-anchor="middle" font-size="10.5" fill="var(--ink)">拆成獨立公司各自成長</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10" fill="var(--ink)">優點：不被本業的節奏與包袱綁住</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">限制：新事業規模短期難以扛起集團</text>
+
+        <text x="450" y="222" text-anchor="middle" font-size="11" fill="var(--muted)">宏碁兩條路同時在走——這也呼應了它一貫的做法：遇到結構問題時，先動組織，再談業務。</text>
+        <text x="450" y="242" text-anchor="middle" font-size="11" fill="var(--muted)">從 2001 年分出緯創，到近年分拆子公司群，用的是同一套思路。</text>
+        <text x="450" y="260" text-anchor="middle" font-size="10.5" fill="var(--muted)">緯創、和碩的誕生，本質上都是這種組織手術的產物。</text>
+      </svg>
+      <p class="cap">用組織調整來解決結構問題，是宏碁從分家到分拆一脈相承的作法。</p>
+    </div>
+
+    <div class="quote">宏碁留給台灣產業最重要的資產，也許不是任何一款電腦，而是微笑曲線這張圖。它讓幾個世代的台灣經營者意識到：努力把東西做得更便宜，永遠只能待在谷底；真正的問題不是「怎麼做得更好」，而是「我該站在哪裡」。這個資料夾裡的每一家公司，其實都在回答這個問題。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為宏碁（Acer）公司歷史、經營理念與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以宏碁官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
