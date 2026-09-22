@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>大立光電（Largan）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1EEF2; --surface:#FFFFFF; --surface-2:#E8DEE8; --line:#D8C4D9;
+  --ink:#231424; --muted:#664568;
+  --accent:#85338A; --accent-deep:#4E1B50; --accent-soft:#F0DAF1; --band:#4E1B50;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2E7D7A; --teal-soft:#DCF0EE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B131B; --surface:#261C27; --surface-2:#2F222F; --line:#483649;
+    --ink:#EEE7EE; --muted:#B59FB7;
+    --accent:#D077D4; --accent-deep:#E9BBEC; --accent-soft:#381D39;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#7FCBC5; --teal-soft:#173330;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B131B; --surface:#261C27; --surface-2:#2F222F; --line:#483649;
+  --ink:#EEE7EE; --muted:#B59FB7;
+  --accent:#D077D4; --accent-deep:#E9BBEC; --accent-soft:#381D39;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#7FCBC5; --teal-soft:#173330;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #1C071D 100%);color:#F8E9F8;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#E2BCE4;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#F0DCF1;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#E2BCE4;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#E2BCE4;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 光學元件</div>
+    <h1>大立光電（Largan）知識圖譜</h1>
+    <p class="sub">在一個以薄毛利聞名的硬體產業裡，大立光是異數——它只做一種零件：手機相機鏡頭，卻長年維持遠高於同業的毛利率，也長期是台灣股價最高的公司。它的護城河不在專利或規模，而在一件很難用錢買到的東西：良率。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1987</div><div class="l">創立於台中</div></div>
+      <div class="stat"><div class="n">塑膠鏡頭</div><div class="l">而非玻璃</div></div>
+      <div class="stat"><div class="n">高毛利</div><div class="l">硬體業少見的結構</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　一家不太像硬體廠的硬體廠</div>
+      <h2>零件商，卻站在微笑曲線的左端</h2>
+      <p>宏碁那頁提過的微笑曲線裡，製造與組裝位在谷底。但大立光同樣是做零件的，獲利結構卻完全不像谷底——原因在於它賣的其實不是零件，而是別人做不出來的良率。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 268" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">同樣做零件，位置卻不同</text>
+
+        <rect x="40" y="48" width="370" height="150" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">一般零組件製造</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">規格由客戶定義，多家都做得出來</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">競爭焦點是成本與交期</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">客戶隨時可以換供應商</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--muted)">位在微笑曲線的谷底，毛利被壓縮</text>
+
+        <rect x="490" y="48" width="370" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">大立光的位置</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">規格接近物理極限，少有人做得到</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">競爭焦點是良率與製程 know-how</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">客戶想換供應商也未必換得了</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">實際上站在曲線左端的技術端</text>
+
+        <text x="450" y="228" text-anchor="middle" font-size="11" fill="var(--muted)">決定你在微笑曲線上的位置的，不是你做的東西叫什麼，而是有多少人能替代你——</text>
+        <text x="450" y="246" text-anchor="middle" font-size="11" fill="var(--muted)">當一個零件只有少數幾家做得出合格品，它就不再是「零件」那個等級的生意了。</text>
+        <text x="450" y="264" text-anchor="middle" font-size="10.5" fill="var(--muted)">這是整個資料夾裡對微笑曲線最好的一個反例式註解。</text>
+      </svg>
+      <p class="cap">同樣做零組件，可替代性決定了毛利，而不是產品類別本身。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">1987 年</div>
+        <h3>創立於台中</h3>
+        <p>從光學鏡片起步，長期專注在塑膠鏡片的設計與製造，是台灣少見的深度單一領域公司。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產品</div>
+        <h3>手機相機鏡頭模組的鏡片</h3>
+        <p>隨著手機相機成為規格競爭的重點，鏡頭的畫質表現直接影響產品評價，這讓鏡片供應商的地位大幅提升。</p>
+      </div>
+      <div class="card">
+        <div class="tag">經營風格</div>
+        <h3>低調、封閉、專注</h3>
+        <p>公司對外資訊相對保守，也少有跨領域擴張，把資源集中在把單一件事做到別人追不上的程度。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　難在哪裡</div>
+      <h2>塑膠鏡片：便宜的材料，昂貴的手藝</h2>
+      <p>手機鏡頭用的不是玻璃，而是射出成型的塑膠非球面鏡片。材料本身不貴，難的是要在極小的尺寸上，把形狀做到光學等級的精準。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 288" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">為什麼這件事這麼難</text>
+
+        <rect x="25" y="48" width="205" height="106" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="127" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">形狀複雜</text>
+        <text x="127" y="96" text-anchor="middle" font-size="10" fill="var(--ink)">非球面曲線</text>
+        <text x="127" y="114" text-anchor="middle" font-size="10" fill="var(--ink)">每一片形狀都不同</text>
+        <text x="127" y="134" text-anchor="middle" font-size="9.5" fill="var(--ink)">用來修正各種光學像差</text>
+
+        <rect x="240" y="48" width="205" height="106" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="342" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">精度極高</text>
+        <text x="342" y="96" text-anchor="middle" font-size="10" fill="var(--ink)">誤差容許到極小的尺度</text>
+        <text x="342" y="114" text-anchor="middle" font-size="10" fill="var(--ink)">差一點畫質就不合格</text>
+        <text x="342" y="134" text-anchor="middle" font-size="9.5" fill="var(--ink)">模具本身就是關鍵技術</text>
+
+        <rect x="455" y="48" width="205" height="106" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="557" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">層層疊加</text>
+        <text x="557" y="96" text-anchor="middle" font-size="10" fill="var(--ink)">一顆鏡頭由多片組成</text>
+        <text x="557" y="114" text-anchor="middle" font-size="10" fill="var(--ink)">每片都要對準</text>
+        <text x="557" y="134" text-anchor="middle" font-size="9.5" fill="var(--ink)">誤差會一路累積放大</text>
+
+        <rect x="670" y="48" width="205" height="106" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="772" y="74" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">量要夠大</text>
+        <text x="772" y="96" text-anchor="middle" font-size="10" fill="var(--ink)">手機是以億計的市場</text>
+        <text x="772" y="114" text-anchor="middle" font-size="10" fill="var(--ink)">做得出來還要做得快</text>
+        <text x="772" y="134" text-anchor="middle" font-size="9.5" fill="var(--ink)">且每一顆品質都要一致</text>
+
+        <rect x="150" y="182" width="600" height="56" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">四個條件必須同時成立</text>
+        <text x="450" y="225" text-anchor="middle" font-size="10.5" fill="var(--muted)">做得出一片不難，要每天做出幾百萬片且良率穩定，才是真正的門檻</text>
+
+        <text x="450" y="266" text-anchor="middle" font-size="11" fill="var(--muted)">這種能力無法靠買設備取得，只能靠多年反覆試錯累積——這也是它難以被快速追上的原因。</text>
+        <text x="450" y="284" text-anchor="middle" font-size="10.5" fill="var(--muted)">模具、材料配方與製程參數的調校，構成了外人看不見的核心資產。</text>
+      </svg>
+      <p class="cap">單看一片鏡片並不神奇，難的是在龐大的量產規模下，讓每一片都合格。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">良率</div>
+        <h3>這一行的勝負關鍵</h3>
+        <p>精密光學件的不良率若高一些，成本結構就完全不同。良率的差距會直接轉換成毛利的差距。</p>
+      </div>
+      <div class="card">
+        <div class="tag">know-how</div>
+        <h3>買不到的那部分</h3>
+        <p>模具設計、成型參數、檢測方法多半是內部累積的經驗，不會寫在任何規格書上，也難以透過挖角快速複製。</p>
+      </div>
+      <div class="card">
+        <div class="tag">規格推進</div>
+        <h3>每一代手機都在加難度</h3>
+        <p>畫素提高、光圈變大、模組要更薄，這些要求讓鏡片設計持續逼近物理極限，也持續拉開有能力者與其他人的距離。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　與客戶的關係</div>
+      <h2>供應鏈裡少數說得上話的零件商</h2>
+      <p>在手機供應鏈裡，零件商通常處於弱勢；但當某個零件只有少數人做得好，議價的天平就會往供應商那邊偏一些。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>面向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>客戶結構</td><td>客戶為全球主要手機品牌與相機模組廠，其中高階機種的訂單對營收影響特別大。</td></tr>
+        <tr><td>議價地位</td><td>由於能穩定供應高階規格的廠商有限，相較於一般零組件供應商，其議價空間明顯較好。</td></tr>
+        <tr><td>需求驅動</td><td>手機相機的規格競賽是主要成長動能：畫素、光圈、鏡頭顆數的提升都會增加鏡片需求。</td></tr>
+        <tr><td>主要對手</td><td>台灣的玉晶光等同業，以及中國大陸的光學廠商，後者近年在中低階市場的進展尤其明顯。</td></tr>
+        <tr><td>集中度風險</td><td>營收高度集中在智慧型手機應用，一旦手機市場成長趨緩或規格停滯，影響會直接反映出來。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">可替代性決定議價權</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">有很多家做得出來</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">客戶可以同時談好幾家</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">以價格作為主要比較基準</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">供應商被迫削價競爭</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">這是多數零組件廠的處境</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">只有少數幾家做得好</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">客戶的選擇有限</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">比較基準變成「誰交得出貨」</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">價格不再是唯一考量</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">毛利結構因此完全不同</text>
+
+        <text x="450" y="224" text-anchor="middle" font-size="11" fill="var(--muted)">這條原理在這個資料夾裡反覆出現：艾斯摩爾、蔡司、台積電的優勢本質上都是同一件事——</text>
+        <text x="450" y="242" text-anchor="middle" font-size="11" fill="var(--muted)">不是做得比別人好一點，而是好到別人根本交不出合格品。</text>
+        <text x="450" y="258" text-anchor="middle" font-size="10.5" fill="var(--muted)">差別只在於大立光做的是鏡片，而它們做的是設備與晶圓。</text>
+      </svg>
+      <p class="cap">議價權來自不可替代性，這條原理對設備、晶圓與鏡片一體適用。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　挑戰</div>
+      <h2>當規格競賽慢下來</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">成長動能</div>
+        <h3>手機相機規格的提升趨緩</h3>
+        <p>畫素與鏡頭顆數的增加曾是主要成長來源，但當規格提升對使用者感受的邊際效益下降，換機誘因也隨之減弱。</p>
+      </div>
+      <div class="card">
+        <div class="tag">競爭</div>
+        <h3>中國大陸光學廠的追趕</h3>
+        <p>對手在中低階市場的份額持續擴大，並逐步往高階規格推進，壓縮了原本相對寬鬆的競爭環境。</p>
+      </div>
+      <div class="card">
+        <div class="tag">集中度</div>
+        <h3>幾乎全押在手機上</h3>
+        <p>營收高度依賴智慧型手機應用，缺乏其他規模相當的市場來分攤這個產業的循環風險。</p>
+      </div>
+      <div class="card">
+        <div class="tag">新方向</div>
+        <h3>車用與其他光學應用</h3>
+        <p>車用鏡頭、感測與擴增實境等新應用是可能的延伸方向，但這些市場的規模與時程都還需要時間驗證。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">護城河還在，但池塘不再擴大</text>
+
+        <rect x="40" y="48" width="370" height="134" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">依然成立的部分</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">高階規格的良率門檻仍然很高</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">累積的製程經驗難以被快速複製</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">在最難的那一段仍具優勢</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">技術護城河沒有消失</text>
+
+        <rect x="490" y="48" width="370" height="134" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">改變了的部分</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">手機市場整體成長趨緩</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">規格提升帶來的換機誘因下降</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">對手在中低階持續蠶食</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">護城河守得住，但城裡的人變少了</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">技術優勢與成長性是兩件事：守得住地盤，不代表地盤本身還在長大。</text>
+        <text x="450" y="236" text-anchor="middle" font-size="11" fill="var(--muted)">這也是所有高度專注型公司遲早要面對的問題。</text>
+      </svg>
+      <p class="cap">護城河的有效性，終究受限於它所圍起來的市場還有多大。</p>
+    </div>
+
+    <div class="quote">大立光在這個資料夾裡是最好的一個反證：誰說做零件就一定賺不到錢。它證明了微笑曲線的谷底不是由「你做的是哪一類產品」決定，而是由「有多少人做得出跟你一樣的東西」決定。當答案是「幾乎沒有」的時候，即使你做的只是一片幾公釐大的塑膠，也能站到曲線的另一端去。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為大立光電（Largan）公司背景、技術門檻與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以大立光電官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
