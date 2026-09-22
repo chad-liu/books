@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>台燿科技（Taiwan Union Technology）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1F2F0; --surface:#FFFFFF; --surface-2:#E1E4E0; --line:#CBCFC9;
+  --ink:#1D1F1B; --muted:#555C51;
+  --accent:#49643D; --accent-deep:#2B3B23; --accent-soft:#E6E9E4; --band:#2B3B23;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181917; --surface:#222421; --surface-2:#2C2E2B; --line:#434641;
+    --ink:#E9EAE9; --muted:#AEB1AC;
+    --accent:#9EB196; --accent-deep:#D0D8CD; --accent-soft:#2E332B;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181917; --surface:#222421; --surface-2:#2C2E2B; --line:#434641;
+  --ink:#E9EAE9; --muted:#AEB1AC;
+  --accent:#9EB196; --accent-deep:#D0D8CD; --accent-soft:#2E332B;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0F110D 100%);color:#EBEFE9;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#C5CBC3;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E2E5E1;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#C5CBC3;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+footer{padding-block:32px;background:var(--band);color:#C5CBC3;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 電路板材料</div>
+    <h1>台燿科技（Taiwan Union Technology）知識圖譜</h1>
+    <p class="sub">欣興那一頁提到載板的關鍵材料握在少數人手上。台燿做的就是材料這一端——電路板並不是板廠從零調配出來的，而是先有人把樹脂、玻璃纖維布與銅箔壓成一張板材，板廠再拿去加工。當訊號速度愈來愈快，這張板材的配方就從不重要，變成決定成敗的事。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1974</div><div class="l">創立，原本做光學玻璃</div></div>
+      <div class="stat"><div class="n">1997</div><div class="l">轉型銅箔基板</div></div>
+      <div class="stat"><div class="n">低損耗</div><div class="l">高速應用的關鍵指標</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　板材是什麼</div>
+      <h2>電路板廠買的是一張現成的板子</h2>
+      <p>銅箔基板是印刷電路板的原料：把樹脂浸過的玻璃纖維布疊起來，上下貼上銅箔，加熱加壓成一張硬板。板廠買到的就是這張板，再在上面蝕刻出線路。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">一張板材的三種成分</text>
+
+        <rect x="30" y="50" width="270" height="130" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="165" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">玻璃纖維布</text>
+        <text x="165" y="102" text-anchor="middle" font-size="10.5" fill="var(--ink)">提供強度與尺寸穩定性</text>
+        <text x="165" y="124" text-anchor="middle" font-size="10.5" fill="var(--ink)">讓板子受熱時不會亂變形</text>
+        <text x="165" y="148" text-anchor="middle" font-size="10" fill="var(--ink)">織法與纖維種類會影響電性</text>
+        <text x="165" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">高速板要用特殊規格的布</text>
+
+        <rect x="315" y="50" width="270" height="130" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">樹脂</text>
+        <text x="450" y="102" text-anchor="middle" font-size="10.5" fill="var(--ink)">把玻纖布與銅箔黏成一體</text>
+        <text x="450" y="124" text-anchor="middle" font-size="10.5" fill="var(--ink)">同時是包住訊號線的絕緣體</text>
+        <text x="450" y="148" text-anchor="middle" font-size="10" fill="var(--ink)">配方決定損耗、耐熱與可靠度</text>
+        <text x="450" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">這是整個行業最核心的機密</text>
+
+        <rect x="600" y="50" width="270" height="130" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="735" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">銅箔</text>
+        <text x="735" y="102" text-anchor="middle" font-size="10.5" fill="var(--ink)">訊號實際走的地方</text>
+        <text x="735" y="124" text-anchor="middle" font-size="10.5" fill="var(--ink)">板廠會把它蝕刻成線路</text>
+        <text x="735" y="148" text-anchor="middle" font-size="10" fill="var(--ink)">厚度與表面狀態都有講究</text>
+        <text x="735" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">後面會看到它為什麼重要</text>
+
+        <text x="450" y="212" text-anchor="middle" font-size="11" fill="var(--muted)">三種材料壓在一起之後，它就不只是結構件——訊號從頭到尾都被包在這些材料裡面走。</text>
+        <text x="450" y="234" text-anchor="middle" font-size="11" fill="var(--muted)">因此板材的性質，會直接變成電路的性質，這是它在高速應用裡地位改變的原因。</text>
+        <text x="450" y="256" text-anchor="middle" font-size="10.5" fill="var(--muted)">低速的年代沒有人在意板材；高速的年代，它成了第一個被檢討的對象。</text>
+      </svg>
+      <p class="cap">板材不只是承載線路的底板，它同時是包住訊號的絕緣環境。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　訊號會被材料吃掉</div>
+      <h2>頻率愈高，絕緣體愈不老實</h2>
+      <p>訊號在銅線上跑的時候，周圍的絕緣材料並不是完全被動的旁觀者。電場會讓材料裡的分子跟著擺動，而擺動要消耗能量——這些能量就從訊號裡扣掉了。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 292" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">為什麼高速板非用好材料不可</text>
+
+        <rect x="40" y="48" width="370" height="150" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">低速訊號</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">電場變化慢，材料跟得上</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">損耗小到可以忽略</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">用最普通的板材就夠了</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">板材只要夠硬、夠耐熱</text>
+        <text x="225" y="188" text-anchor="middle" font-size="10" fill="var(--muted)">價格是唯一的考量</text>
+
+        <rect x="490" y="48" width="370" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">高速訊號</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">電場每秒反轉數十億次</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">材料被反覆拉扯，持續消耗能量</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">訊號走沒多遠就衰減到辨識不出來</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">於是必須換成損耗更低的樹脂</text>
+        <text x="675" y="188" text-anchor="middle" font-size="10" fill="var(--ink)">板材從消耗品變成規格品</text>
+
+        <rect x="120" y="222" width="660" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="250" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">速度愈快，絕緣材料偷走的能量就愈多——這是電磁學寫死的</text>
+
+        <text x="450" y="286" text-anchor="middle" font-size="10.5" fill="var(--muted)">所以伺服器與高速交換器用的板材，跟家電用的雖然外觀相同，價格卻可以差上數倍。</text>
+      </svg>
+      <p class="cap">絕緣材料在高頻下會持續吸走訊號能量，這使得樹脂配方變成高速電路的關鍵規格。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　銅箔的兩難</div>
+      <h2>高頻電流只走表面，所以表面不能太粗</h2>
+      <p>這是高速板材裡最漂亮的一個矛盾。頻率愈高，電流愈是擠在導體的最外層流動；此時銅箔表面如果凹凸不平，電流就得沿著起伏繞路，損耗跟著上升。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 288" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">粗糙度的兩面</text>
+
+        <rect x="40" y="48" width="370" height="146" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">表面粗：黏得牢，但損耗大</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">凹凸讓樹脂咬得住銅箔</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">板子不容易分層剝離</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">但高頻電流必須沿著起伏繞路</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">實際走的距離變長，損耗上升</text>
+        <text x="225" y="186" text-anchor="middle" font-size="10" fill="var(--ink)">速度愈快，這個代價愈明顯</text>
+
+        <rect x="490" y="48" width="370" height="146" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">表面平：損耗小，但黏不住</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">電流可以走直線，損耗低</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">正是高速訊號想要的條件</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">但樹脂沒有東西可以咬住</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">結合力下降，可靠度成為問題</text>
+        <text x="675" y="186" text-anchor="middle" font-size="10" fill="var(--ink)">於是要靠化學處理另尋解法</text>
+
+        <rect x="120" y="218" width="660" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="246" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">要電性好就得平滑，要黏得牢就得粗糙——兩個要求方向相反</text>
+
+        <text x="450" y="282" text-anchor="middle" font-size="10.5" fill="var(--muted)">解決這種互相衝突的要求，正是材料公司的價值所在：不是找到最好的材料，而是找到最好的折衷。</text>
+      </svg>
+      <p class="cap">銅箔粗糙度同時影響結合力與高頻損耗，兩者的要求恰好相反。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>銅箔基板產業的特性</th></tr></thead>
+      <tbody>
+        <tr><td>核心能力</td><td>樹脂配方與壓合製程的累積，屬於不易反向拆解的化學與製程知識。</td></tr>
+        <tr><td>認證時程</td><td>新板材要通過終端客戶的可靠度驗證，時間以季甚至年計，導入後不易被替換。</td></tr>
+        <tr><td>客戶位置</td><td>直接客戶是電路板廠，但規格常由終端的晶片與系統廠指定，等於隔層決定。</td></tr>
+        <tr><td>成本結構</td><td>銅與玻纖布等原料佔比高，原物料價格波動會直接壓縮毛利。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　位置與挑戰</div>
+      <h2>從光學玻璃走到訊號材料</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">轉型</div>
+        <h3>換過一次跑道的公司</h3>
+        <p>成立時做的是光學玻璃，後來轉向銅箔基板，這種在既有材料能力上換題目的做法，在台灣製造業裡並不常見。</p>
+      </div>
+      <div class="card">
+        <div class="tag">機會</div>
+        <h3>速度愈快，材料愈值錢</h3>
+        <p>高速運算與網通設備持續推高傳輸速率，低損耗板材的需求與單價也跟著往上，這是產品組合升級的主要動力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">競爭</div>
+        <h3>對手是日商與國內同業</h3>
+        <p>高階板材長期由少數幾家掌握，技術差距一旦縮小，價格競爭就會迅速回到檯面上。</p>
+      </div>
+      <div class="card">
+        <div class="tag">風險</div>
+        <h3>需求跟著終端一起擺盪</h3>
+        <p>板材位於供應鏈上游，終端需求的變化會經由板廠的庫存調整被放大後才傳到自己身上。</p>
+      </div>
+    </div>
+
+    <div class="quote">整個電子業都在追求更快的傳輸速度，但很少有人注意到，速度的代價最後是由材料承擔的——訊號跑得愈快，包住它的那層樹脂就被折磨得愈厲害。台燿做的事情不會出現在任何一份規格表的第一頁，卻決定了那些規格能不能成立。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為台燿科技（Taiwan Union Technology）公司背景、技術特性與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以台燿科技官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>

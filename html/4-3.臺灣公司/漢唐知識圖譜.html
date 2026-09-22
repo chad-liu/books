@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>漢唐集成（United Integrated Services）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F3EFF0; --surface:#FFFFFF; --surface-2:#E7DCDD; --line:#D6C2C4;
+  --ink:#241718; --muted:#67464A;
+  --accent:#8C1523; --accent-deep:#540B13; --accent-soft:#EEE0E1; --band:#540B13;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2F6E72; --teal-soft:#DDECEC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1B1516; --surface:#261F20; --surface-2:#312829; --line:#4C3C3D;
+    --ink:#EBE7E8; --muted:#B7A6A8;
+    --accent:#CD7983; --accent-deep:#E3C2C6; --accent-soft:#3C2225;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#83C3C7; --teal-soft:#1B3233;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1B1516; --surface:#261F20; --surface-2:#312829; --line:#4C3C3D;
+  --ink:#EBE7E8; --muted:#B7A6A8;
+  --accent:#CD7983; --accent-deep:#E3C2C6; --accent-soft:#3C2225;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#83C3C7; --teal-soft:#1B3233;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #16090B 100%);color:#F3EAEB;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#D3BABD;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E9DDDE;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#D3BABD;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+footer{padding-block:32px;background:var(--band);color:#D3BABD;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 高科技廠務工程</div>
+    <h1>漢唐集成（United Integrated Services）知識圖譜</h1>
+    <p class="sub">欣興那一頁提到，半導體的產能要用年來計算，因為廠房蓋起來就是那麼慢。漢唐做的正是那個「慢」的部分——晶圓廠不是一棟建築，而是一整套讓奈米製程得以運作的環境系統。台積電決定要蓋新廠時，真正動手的是這類公司。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1982</div><div class="l">創立</div></div>
+      <div class="stat"><div class="n">無塵室</div><div class="l">看不見的製造條件</div></div>
+      <div class="stat"><div class="n">專案型</div><div class="l">營收隨建廠週期起伏</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　晶圓廠不是一棟建築</div>
+      <h2>牆蓋好了，工程才剛開始</h2>
+      <p>一座晶圓廠真正昂貴的部分不在結構體，而在裡面那一整套環境系統：空氣要乾淨、水要純、氣體要穩、地板不能震、廢棄物要安全地送走。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">廠務系統要同時照顧的五件事</text>
+
+        <rect x="24" y="52" width="164" height="142" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="106" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">空氣</text>
+        <text x="106" y="102" text-anchor="middle" font-size="9.5" fill="var(--ink)">持續過濾與換氣</text>
+        <text x="106" y="122" text-anchor="middle" font-size="9.5" fill="var(--ink)">溫濕度不能漂移</text>
+        <text x="106" y="142" text-anchor="middle" font-size="9.5" fill="var(--ink)">氣流方向要固定</text>
+        <text x="106" y="164" text-anchor="middle" font-size="9" fill="var(--ink)">把粒子往下往外趕</text>
+        <text x="106" y="182" text-anchor="middle" font-size="9" fill="var(--ink)">一停就等於停產</text>
+
+        <rect x="200" y="52" width="164" height="142" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="282" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">超純水</text>
+        <text x="282" y="102" text-anchor="middle" font-size="9.5" fill="var(--ink)">清洗晶圓用的水</text>
+        <text x="282" y="122" text-anchor="middle" font-size="9.5" fill="var(--ink)">純度遠高於飲用水</text>
+        <text x="282" y="142" text-anchor="middle" font-size="9.5" fill="var(--ink)">連溶解的氣體都要除掉</text>
+        <text x="282" y="164" text-anchor="middle" font-size="9" fill="var(--ink)">用量極大，還要回收再用</text>
+        <text x="282" y="182" text-anchor="middle" font-size="9" fill="var(--ink)">水質不穩就會出現缺陷</text>
+
+        <rect x="376" y="52" width="164" height="142" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="458" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">特殊氣體</text>
+        <text x="458" y="102" text-anchor="middle" font-size="9.5" fill="var(--ink)">製程要用的各種氣體</text>
+        <text x="458" y="122" text-anchor="middle" font-size="9.5" fill="var(--ink)">有些易燃，有些劇毒</text>
+        <text x="458" y="142" text-anchor="middle" font-size="9.5" fill="var(--ink)">管路與偵測都不能出錯</text>
+        <text x="458" y="164" text-anchor="middle" font-size="9" fill="var(--ink)">安全設計是最高優先</text>
+        <text x="458" y="182" text-anchor="middle" font-size="9" fill="var(--ink)">流量還必須非常穩定</text>
+
+        <rect x="552" y="52" width="164" height="142" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="634" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">防震</text>
+        <text x="634" y="102" text-anchor="middle" font-size="9.5" fill="var(--ink)">曝光機對振動極敏感</text>
+        <text x="634" y="122" text-anchor="middle" font-size="9.5" fill="var(--ink)">人走過、車經過都算干擾</text>
+        <text x="634" y="142" text-anchor="middle" font-size="9.5" fill="var(--ink)">結構與基座要特別設計</text>
+        <text x="634" y="164" text-anchor="middle" font-size="9" fill="var(--ink)">這是蓋房子時就要決定的事</text>
+        <text x="634" y="182" text-anchor="middle" font-size="9" fill="var(--ink)">事後很難補救</text>
+
+        <rect x="728" y="52" width="148" height="142" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="802" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">排氣與廢水</text>
+        <text x="802" y="102" text-anchor="middle" font-size="9.5" fill="var(--ink)">製程產生的廢氣廢水</text>
+        <text x="802" y="122" text-anchor="middle" font-size="9.5" fill="var(--ink)">要分類處理再排出</text>
+        <text x="802" y="142" text-anchor="middle" font-size="9.5" fill="var(--ink)">受到嚴格法規規範</text>
+        <text x="802" y="164" text-anchor="middle" font-size="9" fill="var(--ink)">與環境責任直接相關</text>
+        <text x="802" y="182" text-anchor="middle" font-size="9" fill="var(--ink)">也是營運許可的前提</text>
+
+        <rect x="150" y="224" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="252" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">五套系統必須同時到位，缺一套，最先進的機台也不能開機</text>
+
+        <text x="450" y="290" text-anchor="middle" font-size="10.5" fill="var(--muted)">所以廠務不是建築業的延伸，而是製程條件的一部分——它決定的是機台能不能發揮應有的水準。</text>
+      </svg>
+      <p class="cap">廠務系統提供的是製程所需的環境條件，它與機台同樣屬於生產能力的一部分。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　乾淨到什麼程度</div>
+      <h2>一顆看不見的灰塵，就是一塊落石</h2>
+      <p>無塵室的等級是用「每立方公尺允許多少顆粒子」來定義的。這個要求之所以誇張，是因為在奈米尺度下，一顆連肉眼都看不見的粉塵，尺寸遠大於電路本身。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 256" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">為什麼潔淨度要求這麼極端</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">用日常尺度來理解</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">電路的線寬以奈米計</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">空氣中的微塵卻以微米計</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">兩者相差可達千倍以上</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">等於在馬路上掉下一塊巨石</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">所以要做的事</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">空氣持續循環過濾，不斷把粒子帶走</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">氣流由上往下，避免粒子飄回晶圓</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">室內維持正壓，不讓外面的空氣灌進來</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">而最大的粒子來源，其實是人</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">潔淨度不是打掃出來的，而是靠一整套持續運轉的系統維持——它一刻都不能停。</text>
+        <text x="450" y="240" text-anchor="middle" font-size="11" fill="var(--muted)">這也是為什麼廠務系統的耗電量，往往佔掉一座晶圓廠相當可觀的一部分。</text>
+      </svg>
+      <p class="cap">潔淨度是靠持續運轉的系統維持的狀態，不是一次性的清潔工作。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　為什麼時程是關鍵</div>
+      <h2>晚三個月完工，就是晚三個月開始賺錢</h2>
+      <p>晶圓廠的設備極其昂貴，資本一旦投下去就開始計算折舊。廠務工程能不能準時交付，直接決定那些機台何時可以開始產出——時間本身就是錢。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">瓶頸</div>
+        <h3>擴產的實際限制之一</h3>
+        <p>客戶宣布擴產之後，真正決定何時能量產的，往往是廠房與廠務系統能多快完成，而不是機台買不買得到。</p>
+      </div>
+      <div class="card">
+        <div class="tag">信任</div>
+        <h3>做過的人才有機會再做</h3>
+        <p>這類工程出錯的代價極高，客戶傾向選擇有實績的承包商，使得資歷本身成為進入門檻。</p>
+      </div>
+      <div class="card">
+        <div class="tag">跟著走</div>
+        <h3>客戶去哪裡就跟到哪裡</h3>
+        <p>當半導體客戶到海外設廠，廠務承包商也必須具備跨地區執行專案的人力與管理能力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">後續</div>
+        <h3>蓋完之後還有維運</h3>
+        <p>廠務系統需要長期維護與升級，這部分的收入比建廠專案穩定，也是與客戶維持關係的方式。</p>
+      </div>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>高科技廠務工程的特性</th></tr></thead>
+      <tbody>
+        <tr><td>營收模式</td><td>以專案為單位，依工程進度認列，營收與獲利隨在手訂單與施工節奏波動。</td></tr>
+        <tr><td>訂單能見度</td><td>大型專案的期程長，在手訂單通常能提供數季以上的營運能見度。</td></tr>
+        <tr><td>客戶集中</td><td>半導體與光電大廠的擴產計畫主導需求，客戶集中度高是必然結果。</td></tr>
+        <tr><td>執行風險</td><td>工期延誤、原物料與人力成本上升都會直接侵蝕專案毛利，管理能力就是獲利能力。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　景氣的另一種節奏</div>
+      <h2>它領先，也因此先冷</h2>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 254" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">廠務工程與半導體景氣的時間關係</text>
+
+        <rect x="40" y="48" width="370" height="142" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">走在前面</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">客戶要先蓋廠，才能生產</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">所以廠務訂單比出貨早發生</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">在手訂單可視為擴產的先行指標</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">看它接了多少，就知道誰要擴產</text>
+
+        <rect x="490" y="48" width="370" height="142" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">也先受影響</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">景氣一有疑慮，最先被延後的</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">往往就是還沒動工的新廠計畫</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">既有專案做完，新案卻沒接上</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">營收會出現明顯的空窗</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">領先指標的另一面，就是它也領先地感受到寒意——這是專案型生意的共同特性。</text>
+        <text x="450" y="240" text-anchor="middle" font-size="11" fill="var(--muted)">因此在手訂單的變化，往往比當期營收更能說明這類公司的處境。</text>
+      </svg>
+      <p class="cap">廠務工程走在半導體景氣之前，這使它同時是先行指標與先受衝擊者。</p>
+    </div>
+
+    <div class="quote">半導體的討論總是聚焦在製程與機台，但那些機台必須站在夠穩的地板上、呼吸夠乾淨的空氣、喝夠純的水，才可能做出符合規格的晶片。漢唐這類公司做的事情從來不會出現在晶片的規格表上，卻是那張規格表能夠成立的前提。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為漢唐集成（United Integrated Services）公司背景、業務特性與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以漢唐集成官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
