@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>力積電（PSMC）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EFEEF2; --surface:#FFFFFF; --surface-2:#E1DDE9; --line:#CBC3DA;
+  --ink:#1C1528; --muted:#53466D;
+  --accent:#4F2D95; --accent-deep:#2D1859; --accent-soft:#E1D8F3; --band:#2D1859;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2E7D7A; --teal-soft:#DCF0EE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15121C; --surface:#1F1B27; --surface-2:#292433; --line:#3F384D;
+    --ink:#E9E7EF; --muted:#A79EB7;
+    --accent:#9D7CDE; --accent-deep:#D1C0F1; --accent-soft:#291E3E;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#7FCBC5; --teal-soft:#173330;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15121C; --surface:#1F1B27; --surface-2:#292433; --line:#3F384D;
+  --ink:#E9E7EF; --muted:#A79EB7;
+  --accent:#9D7CDE; --accent-deep:#D1C0F1; --accent-soft:#291E3E;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#7FCBC5; --teal-soft:#173330;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #100722 100%);color:#F0ECF9;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#C9B9EC;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E3DAF5;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#C9B9EC;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#C9B9EC;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 晶圓代工產業</div>
+    <h1>力積電（PSMC）知識圖譜</h1>
+    <p class="sub">這個資料夾裡唯一一家「下市之後又重新上市」的公司。它原本是記憶體廠，在 DRAM 崩跌中輸掉整場戰役、於 2012 年被迫下市；接著把原本用來做 DRAM 的廠房改去替別人代工，2021 年重新掛牌。它的故事不是關於贏，而是關於輸掉之後還能做什麼。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1994</div><div class="l">以 DRAM 廠起家</div></div>
+      <div class="stat"><div class="n">2012</div><div class="l">從證交所下市</div></div>
+      <div class="stat"><div class="n">2021</div><div class="l">以代工廠身分重新上市</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　從記憶體廠到下市</div>
+      <h2>那場沒有撐過去的循環</h2>
+      <p>力積電的前身是台灣的 DRAM 大廠之一。在記憶體產業那種週期性極端的環境裡，它剛好站在了被淘汰的那一邊。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1994 年</div>
+        <h3>以 DRAM 製造起家</h3>
+        <p>由黃崇仁主導成立，投入當時被視為明星產業的動態隨機存取記憶體（DRAM）製造，並透過與日本廠商的技術合作取得製程。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2000 年代</div>
+        <h3>在景氣循環中持續擴產</h3>
+        <p>DRAM 屬於高度標準化的產品，廠商只能靠規模與成本競爭，這使得各家在景氣好時都大舉投資擴充產能。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2008 年前後</div>
+        <h3>金融危機與價格崩跌同時到來</h3>
+        <p>全球金融風暴壓縮需求，DRAM 價格重挫，加上先前的擴產陸續開出，供需失衡的程度遠超過業者的財務承受能力。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2012 年</div>
+        <h3>下市</h3>
+        <p>累積虧損與財務壓力使公司股票自證交所下市，對一家曾被視為明星產業代表的企業而言，是相當嚴重的挫敗。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 268" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">DRAM 淘汰賽的兩邊</text>
+
+        <rect x="40" y="48" width="370" height="146" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">活下來的一邊</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">三星、SK 海力士、美光</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">資本更雄厚、或有集團支撐</text>
+        <text x="225" y="144" text-anchor="middle" font-size="10.5" fill="var(--muted)">在低谷期收購對手的產能</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">最終形成三強寡占的格局</text>
+
+        <rect x="490" y="48" width="370" height="146" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">沒撐過去的一邊</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">台灣與日本的多家 DRAM 業者</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">規模不足以攤平循環低谷的虧損</text>
+        <text x="675" y="144" text-anchor="middle" font-size="10.5" fill="var(--muted)">被併購、退出，或如力晶般下市</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">產業集中度因此大幅提高</text>
+
+        <text x="450" y="228" text-anchor="middle" font-size="11" fill="var(--muted)">美光那一頁談的是勝方視角——靠併購爾必達、華亞科等壯大；這一頁則是同一場戰役的另一邊。</text>
+        <text x="450" y="246" text-anchor="middle" font-size="11" fill="var(--muted)">在完全商品化的產業裡，決定生死的往往不是誰做得比較好，而是誰的口袋比較深。</text>
+        <text x="450" y="264" text-anchor="middle" font-size="10.5" fill="var(--muted)">今日記憶體三強寡占的格局，就是這場淘汰賽的結果。</text>
+      </svg>
+      <p class="cap">同一場 DRAM 淘汰賽，美光是買方，力晶是被淘汰的一方——結果造就了今天的三強格局。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　轉型：從賣產品到賣產能</div>
+      <h2>不賣自己的晶片了，改賣製造服務</h2>
+      <p>下市之後，公司做了一個關鍵決定：不再把產能拿來生產自有品牌的記憶體，而是替其他公司代工。這等於把商業模式整個換掉。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">同一批廠房，兩種生意</text>
+
+        <rect x="40" y="48" width="370" height="150" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">過去：自己做 DRAM 來賣</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">產品規格標準化，價格由供需決定</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">要自己承擔市場價格的漲跌</text>
+        <text x="225" y="144" text-anchor="middle" font-size="10.5" fill="var(--muted)">跌價時每出一片就虧一片</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--muted)">賺的是產品的價差，風險全在自己身上</text>
+
+        <rect x="490" y="48" width="370" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">現在：替別人代工</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">客戶下單，依約定價格提供產能</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">產品賣不賣得掉是客戶的事</text>
+        <text x="675" y="144" text-anchor="middle" font-size="10.5" fill="var(--ink)">收入相對可預期</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">賺的是製造服務費，風險結構完全不同</text>
+
+        <line x1="410" y1="120" x2="486" y2="120" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-ps2)"/>
+        <defs><marker id="arrow-ps2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="232" text-anchor="middle" font-size="11" fill="var(--muted)">這個轉換在這個資料夾裡出現過好幾次：聯電 1995 年從 IDM 轉純代工、超微 2009 年把晶圓廠分拆出去，</text>
+        <text x="450" y="250" text-anchor="middle" font-size="11" fill="var(--muted)">走的都是同一個方向——別再賭自己產品的價格，改收製造這件事的錢。</text>
+        <text x="450" y="268" text-anchor="middle" font-size="10.5" fill="var(--muted)">差別在於，力晶是在已經輸掉之後才轉的。</text>
+      </svg>
+      <p class="cap">從賣產品改成賣產能，本質上是把市場風險交還給客戶，自己只賺製造的錢。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">關鍵資產</div>
+        <h3>廠房與製程還在</h3>
+        <p>DRAM 崩跌摧毀的是產品的獲利能力，但晶圓廠、設備與製程人員仍然具備價值，可以轉去做別的事。</p>
+      </div>
+      <div class="card">
+        <div class="tag">模式差異</div>
+        <h3>不再承擔產品價格風險</h3>
+        <p>代工收的是製造服務的費用，不必再賭記憶體現貨價格的漲跌，營運的波動性因此明顯下降。</p>
+      </div>
+      <div class="card">
+        <div class="tag">2019 年</div>
+        <h3>組織重整，力積電成為營運主體</h3>
+        <p>集團進行架構調整，由力積電承接晶圓代工的營運業務，母公司則轉為控股與投資的角色。</p>
+      </div>
+      <div class="card">
+        <div class="tag">2021 年</div>
+        <h3>重新掛牌上市</h3>
+        <p>以晶圓代工廠的身分重新在證交所掛牌，距離 2012 年下市約九年，是台灣資本市場少見的例子。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　現在的定位</div>
+      <h2>不在先進製程的名單上，也活得下去</h2>
+      <p>力積電做的是成熟製程代工，客戶要的不是最尖端的效能，而是穩定、便宜、夠用的晶片——這類需求的數量，遠比想像中龐大。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>產品領域</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>記憶體代工</td><td>延續原本的記憶體製程專長，替客戶代工生產各類記憶體晶片，是與其他邏輯代工廠明顯不同的一塊。</td></tr>
+        <tr><td>電源管理晶片</td><td>幾乎所有電子產品都需要的基礎元件，製程需求不高但用量龐大，是成熟製程的典型應用。</td></tr>
+        <tr><td>顯示驅動晶片</td><td>面板顯示所需的驅動 IC，屬於成熟製程的大宗需求之一。</td></tr>
+        <tr><td>影像感測元件</td><td>手機與各類裝置的相機模組所需，對製程有特殊要求但不必追求最先進節點。</td></tr>
+        <tr><td>產能布局</td><td>除既有廠區外，亦規劃新廠以擴充成熟製程產能，因應客戶對非先進節點的長期需求。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 272" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">晶片不是只有一種</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">先進製程的世界</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">手機處理器、AI 運算晶片</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">追求效能與能效的極限</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">參與者極少，資本門檻極高</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">媒體與市場關注度集中在這裡</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">成熟製程的世界</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">電源管理、顯示驅動、感測元件</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">要的是穩定、便宜、供貨不斷</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">用量龐大，幾乎每個裝置都需要</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">關注度低，但市場真實存在</text>
+
+        <text x="450" y="226" text-anchor="middle" font-size="11" fill="var(--muted)">一支手機裡最貴的是處理器，但數量最多的是這些不起眼的成熟製程晶片；</text>
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">少了任何一顆，整支手機一樣不能用——這正是成熟製程代工存在的理由。</text>
+        <text x="450" y="264" text-anchor="middle" font-size="10.5" fill="var(--muted)">格羅方德與聯電也是看準了這一點，才先後退出先進製程競賽。</text>
+      </svg>
+      <p class="cap">先進製程吸引所有目光，但支撐日常電子產品運作的，多半是這些不被討論的成熟製程晶片。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　這個故事的意義</div>
+      <h2>輸掉一場仗，不等於出局</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">資產的再利用</div>
+        <h3>廠房沒有跟著產品一起死</h3>
+        <p>記憶體事業失敗了，但晶圓廠本身仍是有價值的生產資產。重新定義它的用途，公司就還有第二次機會。</p>
+      </div>
+      <div class="card">
+        <div class="tag">商業模式</div>
+        <h3>換一個賺錢的方式</h3>
+        <p>從承擔產品價格風險，改成收取製造服務費用，等於把最致命的那個風險源頭移除掉。</p>
+      </div>
+      <div class="card">
+        <div class="tag">市場選擇</div>
+        <h3>不去打贏不了的仗</h3>
+        <p>避開先進製程的軍備競賽，專注在需求穩定、競爭者較能共存的成熟製程領域。</p>
+      </div>
+      <div class="card">
+        <div class="tag">現實提醒</div>
+        <h3>成熟製程也不是避風港</h3>
+        <p>中國大陸近年大量投入成熟製程產能，這個領域的競爭同樣在加劇，轉型並不代表從此高枕無憂。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">一條不太一樣的軌跡</text>
+
+        <rect x="25" y="62" width="196" height="76" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="123" y="88" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">1994　創立</text>
+        <text x="123" y="110" text-anchor="middle" font-size="10" fill="var(--muted)">投入 DRAM 製造</text>
+        <text x="123" y="127" text-anchor="middle" font-size="10" fill="var(--muted)">當時的明星產業</text>
+
+        <rect x="237" y="62" width="196" height="76" rx="10" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="335" y="88" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--bad)">2012　下市</text>
+        <text x="335" y="110" text-anchor="middle" font-size="10" fill="var(--muted)">循環淘汰下的失敗者</text>
+        <text x="335" y="127" text-anchor="middle" font-size="10" fill="var(--muted)">資本市場的終點</text>
+
+        <rect x="449" y="62" width="196" height="76" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="547" y="88" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">2019　重整</text>
+        <text x="547" y="110" text-anchor="middle" font-size="10" fill="var(--muted)">轉型代工並調整架構</text>
+        <text x="547" y="127" text-anchor="middle" font-size="10" fill="var(--muted)">力積電成為營運主體</text>
+
+        <rect x="661" y="56" width="214" height="88" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="768" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">2021　重新上市</text>
+        <text x="768" y="104" text-anchor="middle" font-size="10" fill="var(--ink)">以晶圓代工廠的身分</text>
+        <text x="768" y="121" text-anchor="middle" font-size="10" fill="var(--ink)">距離下市約九年</text>
+        <text x="768" y="137" text-anchor="middle" font-size="9.5" fill="var(--ink)">台灣資本市場少見的例子</text>
+
+        <line x1="221" y1="99" x2="235" y2="99" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-ps4)"/>
+        <line x1="433" y1="99" x2="447" y2="99" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-ps4)"/>
+        <line x1="645" y1="99" x2="659" y2="99" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-ps4)"/>
+        <defs><marker id="arrow-ps4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <text x="450" y="192" text-anchor="middle" font-size="11" fill="var(--muted)">這個資料夾裡的多數公司談的是怎麼變得更強，這一家談的是輸掉之後怎麼重新站起來。</text>
+        <text x="450" y="212" text-anchor="middle" font-size="11" fill="var(--muted)">兩種故事都值得看，但後者在產業史裡其實更常見，只是比較少被拿出來講。</text>
+        <text x="450" y="238" text-anchor="middle" font-size="10.5" fill="var(--muted)">重新上市不代表問題都解決了，只代表它還在牌桌上。</text>
+      </svg>
+      <p class="cap">從創立、下市到重新掛牌，這條軌跡在台灣資本市場上相當罕見。</p>
+    </div>
+
+    <div class="quote">力積電是這個資料夾裡唯一一家真正「輸過」的公司——不是成長趨緩、不是毛利被壓縮，而是徹底出局、股票下市。它後來的重新上市之所以值得記下來，不是因為它變得多強大，而是因為它示範了一件事：當你賴以為生的產品沒有價值了，工廠、製程與人不一定跟著沒有價值，前提是你願意承認原本那條路已經走不通。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為力積電（PSMC）公司歷史、轉型過程與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以力積電官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
