@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>美律實業（Merry Electronics）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF1EF; --surface:#FFFFFF; --surface-2:#DFE7E1; --line:#C7D6CC;
+  --ink:#18251C; --muted:#4A6451;
+  --accent:#376746; --accent-deep:#1E3E28; --accent-soft:#DEEDE3; --band:#1E3E28;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A16; --surface:#1D2520; --surface-2:#273029; --line:#3B4A3F;
+    --ink:#E8EDE9; --muted:#A2B4A7;
+    --accent:#84C297; --accent-deep:#C4E3CD; --accent-soft:#24382A;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A16; --surface:#1D2520; --surface-2:#273029; --line:#3B4A3F;
+  --ink:#E8EDE9; --muted:#A2B4A7;
+  --accent:#84C297; --accent-deep:#C4E3CD; --accent-soft:#24382A;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0A1810 100%);color:#EAF3ED;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B8D9C3;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DDEEE3;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B8D9C3;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#B8D9C3;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 電聲元件</div>
+    <h1>美律實業（Merry Electronics）知識圖譜</h1>
+    <p class="sub">這個資料夾裡談過晶片、面板、鏡頭與電源，美律負責的是另一個完全不同的物理領域——聲音。它做喇叭、麥克風與耳機，是台灣少見專注在電聲的公司。而聲學有一個晶片產業沒有的難題：它受限於「要推動多少空氣」這件事，沒辦法靠微縮解決。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1975</div><div class="l">創立於台中</div></div>
+      <div class="stat"><div class="n">電聲</div><div class="l">喇叭、麥克風、耳機</div></div>
+      <div class="stat"><div class="n">真無線</div><div class="l">近年最大的產品轉折</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與定位</div>
+      <h2>做聲音的那一家</h2>
+      <p>美律成立於 1975 年的台中，是台灣電子業起步很早的一批公司之一，長期專注在把電訊號變成聲音、或把聲音變成電訊號這件事上。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">1975 年</div>
+        <h3>創立於台中</h3>
+        <p>從電聲元件的製造起步，與同在台中的大立光一樣，屬於台灣中部精密製造聚落的代表企業之一。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產品本質</div>
+        <h3>能量的轉換</h3>
+        <p>喇叭把電訊號轉成空氣振動，麥克風做相反的事。這類元件的核心是機械與電磁的設計，與純電子晶片是不同的知識體系。</p>
+      </div>
+      <div class="card">
+        <div class="tag">商業模式</div>
+        <h3>替品牌代工，不掛自己的名字</h3>
+        <p>主要以設計製造服務供應國際品牌，產品最後掛的是客戶的商標，屬於典型的零組件與成品代工模式。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 258" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">聲音的兩個方向</text>
+
+        <rect x="40" y="52" width="370" height="128" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">放音：電 → 聲</text>
+        <text x="225" y="104" text-anchor="middle" font-size="10.5" fill="var(--ink)">喇叭、耳機單體</text>
+        <text x="225" y="126" text-anchor="middle" font-size="10.5" fill="var(--ink)">用電磁力推動振膜，擠壓空氣</text>
+        <text x="225" y="150" text-anchor="middle" font-size="10" fill="var(--ink)">要發出低音，就得推動更多空氣</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">這是後面所有限制的源頭</text>
+
+        <rect x="490" y="52" width="370" height="128" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="675" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">收音：聲 → 電</text>
+        <text x="675" y="104" text-anchor="middle" font-size="10.5" fill="var(--muted)">麥克風</text>
+        <text x="675" y="126" text-anchor="middle" font-size="10.5" fill="var(--muted)">空氣振動讓振膜移動，轉成電訊號</text>
+        <text x="675" y="150" text-anchor="middle" font-size="10" fill="var(--muted)">難處在於雜訊抑制與一致性</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">多麥克風陣列還需精準配對</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">兩個方向用的是同一套機電原理，只是能量流動的方向相反——這是電聲這門學問的基本盤。</text>
+        <text x="450" y="236" text-anchor="middle" font-size="11" fill="var(--muted)">而它與半導體最大的差異在於：這裡處理的是實體的空氣，不是抽象的訊號。</text>
+        <text x="450" y="254" text-anchor="middle" font-size="10.5" fill="var(--muted)">實體世界的限制，沒辦法靠設計繞過去。</text>
+      </svg>
+      <p class="cap">電聲元件做的是能量轉換，而轉換的另一端是空氣——這決定了它的物理限制。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　聲音的物理限制</div>
+      <h2>喇叭為什麼不能一直縮小</h2>
+      <p>晶片可以愈做愈小而且愈來愈好，喇叭不行。原因很單純：低音需要推動大量空氣，而推動空氣需要體積——這件事沒有捷徑。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 288" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">微縮的兩種命運</text>
+
+        <rect x="40" y="48" width="370" height="152" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">晶片：愈小愈好</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">電晶體縮小，速度更快、更省電</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">同樣面積能放進更多功能</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">微縮帶來全面的好處</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--muted)">所以整個產業都往這個方向走</text>
+        <text x="225" y="190" text-anchor="middle" font-size="10" fill="var(--muted)">摩爾定律成立的領域</text>
+
+        <rect x="490" y="48" width="370" height="152" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">喇叭：愈小愈難</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">聲音的本質是空氣的振動</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">低頻需要推動大量空氣</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">振膜小、腔體小，低音就出不來</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">這是物理限制，不是技術不夠好</text>
+        <text x="675" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">摩爾定律在這裡完全不成立</text>
+
+        <rect x="150" y="224" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="252" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">耳機愈做愈小，聲學工程師的工作就愈難</text>
+
+        <text x="450" y="284" text-anchor="middle" font-size="10.5" fill="var(--muted)">這與世界先進「類比電路不適合微縮」、穩懋「矽不能發光」是同一類的物理天花板。</text>
+      </svg>
+      <p class="cap">同樣是把東西做小，半導體愈做愈好，聲學卻愈做愈難——差別在於它要對付的是實體的空氣。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">低頻</div>
+        <h3>低音最吃體積</h3>
+        <p>頻率愈低，需要推動的空氣量愈大。小型耳機單體先天不利於重現低頻，必須靠結構設計與調音來補償。</p>
+      </div>
+      <div class="card">
+        <div class="tag">腔體</div>
+        <h3>殼子也是聲學元件</h3>
+        <p>耳機外殼內部的空間、開孔與阻尼材料都會影響音色，不只是外觀件——這使得結構與聲學必須一起設計。</p>
+      </div>
+      <div class="card">
+        <div class="tag">一致性</div>
+        <h3>每一顆都要聽起來一樣</h3>
+        <p>量產的難處在於機械件的微小差異就會造成音色差異，維持一致性需要長期的製程與檢測經驗。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　從有線到真無線</div>
+      <h2>一條線消失，整個生意就變了</h2>
+      <p>真無線耳機的普及，是美律這類公司近年最大的轉折——因為它把原本單純的聲學產品，變成了一台完整的微型電子裝置。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 292" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">產品內容物的變化</text>
+
+        <rect x="40" y="48" width="370" height="156" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">有線耳機</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">發聲單體</text>
+        <text x="225" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">外殼與線材</text>
+        <text x="225" y="144" text-anchor="middle" font-size="10.5" fill="var(--muted)">結構相對單純</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">核心競爭力：聲學調校與量產一致性</text>
+        <text x="225" y="190" text-anchor="middle" font-size="10" fill="var(--muted)">單價低，本質是零組件生意</text>
+
+        <rect x="490" y="48" width="370" height="156" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">真無線耳機</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">發聲單體 ＋ 藍牙晶片 ＋ 電池</text>
+        <text x="675" y="120" text-anchor="middle" font-size="10.5" fill="var(--ink)">麥克風陣列 ＋ 感測器 ＋ 充電盒</text>
+        <text x="675" y="144" text-anchor="middle" font-size="10.5" fill="var(--ink)">還要處理韌體、配對與降噪演算法</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">核心競爭力：系統整合能力</text>
+        <text x="675" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">單價高，本質變成微型裝置生意</text>
+
+        <line x1="410" y1="126" x2="486" y2="126" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-me3)"/>
+        <defs><marker id="arrow-me3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="234" text-anchor="middle" font-size="11" fill="var(--muted)">少了一條線，產品卻多了電池、晶片、天線與韌體——單價與技術門檻都跟著往上跳。</text>
+        <text x="450" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">對供應商而言，這等於從「做零件」升級成「做整機」，是往微笑曲線右邊移動了一段。</text>
+        <text x="450" y="272" text-anchor="middle" font-size="10.5" fill="var(--muted)">代價是要管理的技術與供應鏈複雜度，也一起變高了。</text>
+        <text x="450" y="288" text-anchor="middle" font-size="10.5" fill="var(--muted)">而且產品的成敗，開始受電池續航與連線穩定度這類非聲學因素影響。</text>
+      </svg>
+      <p class="cap">真無線把耳機從聲學零件變成了微型電子裝置，供應商要具備的能力也跟著改變。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>產品領域</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>耳機與頭戴裝置</td><td>涵蓋真無線耳機、頭戴式耳機與各類音訊裝置的設計製造，是近年營收的重要來源。</td></tr>
+        <tr><td>電聲元件</td><td>喇叭、受話器、麥克風等元件，供應給手機與各類消費性電子產品，是公司起家的本業。</td></tr>
+        <tr><td>客戶結構</td><td>以國際消費性電子與音訊品牌為主，訂單集中度較高是這類代工業務的共同特性。</td></tr>
+        <tr><td>競爭環境</td><td>面對中國大陸電聲廠商的成本競爭，以及品牌客戶對價格與交期的持續要求。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　往醫療延伸</div>
+      <h2>同樣是聲音，換一個規管等級</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">新方向</div>
+        <h3>助聽器與聽力照護</h3>
+        <p>助聽器本質上也是「把聲音處理後送進耳朵」的裝置，與公司既有的電聲與微型化能力高度相關。</p>
+      </div>
+      <div class="card">
+        <div class="tag">門檻</div>
+        <h3>醫材法規是另一種護城河</h3>
+        <p>醫療等級產品需要通過各國的認證與臨床要求，門檻高、時程長，但一旦建立就不容易被價格競爭直接衝擊。</p>
+      </div>
+      <div class="card">
+        <div class="tag">趨勢</div>
+        <h3>人口高齡化帶來的需求</h3>
+        <p>聽力輔助的需求隨人口結構改變而長期成長，且這個市場的循環性遠低於消費性電子。</p>
+      </div>
+      <div class="card">
+        <div class="tag">挑戰</div>
+        <h3>與消費電子完全不同的遊戲</h3>
+        <p>醫材的通路、驗證與品牌信任建立方式都與消費性產品不同，不是把既有產品改個規格就能跨過去。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">同一項能力，兩種市場</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">消費性音訊</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">跟著手機與消費電子的循環走</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">產品週期短、換代快</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">價格競爭激烈</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">量大，但毛利受壓</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">聽力照護</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">需求來自人口結構，不是流行</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">產品週期長、法規門檻高</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">價格競爭相對和緩</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">量小，但單價與黏著度較好</text>
+
+        <line x1="410" y1="118" x2="486" y2="118" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-me4)"/>
+        <defs><marker id="arrow-me4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="224" text-anchor="middle" font-size="11" fill="var(--muted)">用同一套微型電聲能力，切進一個循環性低、法規構成屏障的市場——</text>
+        <text x="450" y="242" text-anchor="middle" font-size="11" fill="var(--muted)">這與研華往醫療走、國巨往車規走、緯創往醫材走，是同一種脫離消費電子紅海的思路。</text>
+        <text x="450" y="258" text-anchor="middle" font-size="10.5" fill="var(--muted)">難處也一樣：認證與客戶信任都要用年來計算。</text>
+      </svg>
+      <p class="cap">醫療級應用提供的不只是更好的毛利，更是一種不隨消費電子循環起伏的需求結構。</p>
+    </div>
+
+    <div class="quote">美律做的事情在這個資料夾裡最容易被低估——喇叭聽起來一點都不高科技。但正因為聲音是實體的空氣振動，它反而是少數無法靠「做得更小、更快」來取得進步的領域。當整個電子業都在享受微縮帶來的紅利時，聲學工程師面對的卻是一個一百年來都沒變過的物理限制。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為美律實業（Merry Electronics）公司背景、技術特性與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以美律實業官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
