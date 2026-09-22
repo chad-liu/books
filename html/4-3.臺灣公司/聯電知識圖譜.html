@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>聯華電子（UMC）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEEFF1; --surface:#FFFFFF; --surface-2:#E0E2E6; --line:#C8CCD5;
+  --ink:#191D24; --muted:#4E5565;
+  --accent:#404D68; --accent-deep:#232B3E; --accent-soft:#DFE3EC; --band:#232B3E;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2E7D7A; --teal-soft:#DCF0EE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161A; --surface:#1E2025; --surface-2:#272A30; --line:#3C4049;
+    --ink:#E8EAED; --muted:#A2A8B3;
+    --accent:#8E9FC2; --accent-deep:#C6CFE2; --accent-soft:#252B37;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#7FCBC5; --teal-soft:#173330;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161A; --surface:#1E2025; --surface-2:#272A30; --line:#3C4049;
+  --ink:#E8EAED; --muted:#A2A8B3;
+  --accent:#8E9FC2; --accent-deep:#C6CFE2; --accent-soft:#252B37;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#7FCBC5; --teal-soft:#173330;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0D1018 100%);color:#EBEDF2;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B9C2D6;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DEE2EC;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B9C2D6;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#B9C2D6;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 晶圓代工產業</div>
+    <h1>聯華電子（UMC）知識圖譜</h1>
+    <p class="sub">台灣第一家半導體公司，1980 年就從工研院衍生成立，比台積電還早七年。它孕育出聯發科等一整批 IC 設計公司，也在 2018 年做了一個罕見的決定——公開宣布不再追逐最先進製程。那是一次承認自己贏不了，然後改去贏別的東西的選擇。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1980</div><div class="l">台灣第一家半導體公司</div></div>
+      <div class="stat"><div class="n">1995</div><div class="l">從 IDM 轉型純晶圓代工</div></div>
+      <div class="stat"><div class="n">2018</div><div class="l">宣布不再追先進製程</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　台灣半導體的起點</div>
+      <h2>比台積電更早的那一家</h2>
+      <p>談台灣半導體，多數人第一個想到台積電。但真正的起點是聯電——它是工研院技術移轉出來的第一家公司，開啟了整個產業。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1980 年</div>
+        <h3>自工研院衍生成立</h3>
+        <p>台灣第一家半導體公司，由工研院的積體電路技術移轉而來，是「政府主導、技轉民營」這套產業政策的第一個成果。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1980 - 1990 年代初</div>
+        <h3>以 IDM 模式經營</h3>
+        <p>早期同時做設計與製造，推出自有的晶片產品——這與日後的純代工定位完全不同，也埋下後來轉型的伏筆。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">1995 年</div>
+        <h3>轉型為純晶圓代工</h3>
+        <p>將設計部門分割出去，自身專注於替客戶代工製造，正式走上與台積電相同的商業模式。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2000 年</div>
+        <h3>五合一合併</h3>
+        <p>將旗下數家晶圓製造子公司合併回母公司，整合產能與資源，成為規模完整的單一代工廠。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">工研院技轉的兩家公司</text>
+
+        <rect x="330" y="44" width="240" height="52" rx="12" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="68" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">工業技術研究院</text>
+        <text x="450" y="87" text-anchor="middle" font-size="10.5" fill="var(--muted)">承接國外技術並移轉民營</text>
+
+        <line x1="450" y1="96" x2="450" y2="114" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="230" y1="114" x2="670" y2="114" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="230" y1="114" x2="230" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um1)"/>
+        <line x1="670" y1="114" x2="670" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um1)"/>
+        <defs><marker id="arrow-um1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="70" y="138" width="320" height="76" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="230" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">聯電（1980）</text>
+        <text x="230" y="186" text-anchor="middle" font-size="10.5" fill="var(--ink)">台灣第一家半導體公司</text>
+        <text x="230" y="204" text-anchor="middle" font-size="10" fill="var(--ink)">起步時是 IDM，自己設計也自己做</text>
+
+        <rect x="510" y="138" width="320" height="76" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="670" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">台積電（1987）</text>
+        <text x="670" y="186" text-anchor="middle" font-size="10.5" fill="var(--muted)">七年後才成立</text>
+        <text x="670" y="204" text-anchor="middle" font-size="10" fill="var(--muted)">一開始就是純代工，不做自有產品</text>
+
+        <text x="450" y="242" text-anchor="middle" font-size="11" fill="var(--muted)">同一個母體、相隔七年的兩家公司，卻因為一開始的商業模式不同，日後走上了截然不同的路。</text>
+      </svg>
+      <p class="cap">聯電與台積電都源自工研院，差別在於一個先做了七年 IDM，另一個從出生就是純代工。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　聯家軍</div>
+      <h2>它生出了台灣半條 IC 設計業</h2>
+      <p>聯電轉型純代工時，把原本的設計部門一一分割出去。這些公司後來各自長大，成為台灣 IC 設計產業的骨幹——其中最有名的一家叫聯發科。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">從聯電分出去的 IC 設計公司</text>
+
+        <rect x="330" y="44" width="240" height="56" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">聯華電子</text>
+        <text x="450" y="89" text-anchor="middle" font-size="10.5" fill="var(--ink)">1995 年轉型純代工，設計部門陸續獨立</text>
+
+        <line x1="450" y1="100" x2="450" y2="118" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="150" y1="118" x2="750" y2="118" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="150" y1="118" x2="150" y2="138" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um2)"/>
+        <line x1="450" y1="118" x2="450" y2="138" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um2)"/>
+        <line x1="750" y1="118" x2="750" y2="138" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um2)"/>
+        <defs><marker id="arrow-um2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="28" y="142" width="244" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="150" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">聯發科</text>
+        <text x="150" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">1997 年分割獨立</text>
+        <text x="150" y="208" text-anchor="middle" font-size="10" fill="var(--ink)">後來成為手機晶片大廠</text>
+
+        <rect x="328" y="142" width="244" height="80" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="450" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">聯詠</text>
+        <text x="450" y="190" text-anchor="middle" font-size="10" fill="var(--muted)">顯示驅動 IC 等產品</text>
+        <text x="450" y="208" text-anchor="middle" font-size="10" fill="var(--muted)">台灣主要 IC 設計業者之一</text>
+
+        <rect x="628" y="142" width="244" height="80" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="750" y="168" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">智原等其他公司</text>
+        <text x="750" y="190" text-anchor="middle" font-size="10" fill="var(--muted)">設計服務與矽智財</text>
+        <text x="750" y="208" text-anchor="middle" font-size="10" fill="var(--muted)">合稱「聯家軍」</text>
+
+        <text x="450" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">聯電因為做過 IDM，才會有設計團隊可以分出去——這正是它與從未做過自有產品的台積電最大的不同。</text>
+      </svg>
+      <p class="cap">聯電的 IDM 出身，意外讓它成為台灣 IC 設計產業最重要的人才與公司來源之一。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">聯發科</div>
+        <h3>最知名的一家</h3>
+        <p>1997 年自聯電分割獨立，如今是全球主要的手機晶片設計公司之一，規模已遠超當年的起點。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業影響</div>
+        <h3>撐起台灣 IC 設計業的一角</h3>
+        <p>這批公司分布在手機晶片、顯示驅動、設計服務等領域，構成台灣 IC 設計產業相當重要的一塊版圖。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構意義</div>
+        <h3>分出去，才能服務所有人</h3>
+        <p>把設計部門獨立，聯電才能以中立代工廠的身分承接訂單——這與台積電堅持不與客戶競爭是同一個道理。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　與台積電的分岔</div>
+      <h2>同樣做代工，為什麼差距愈拉愈大</h2>
+      <p>兩家公司都源自工研院、都做晶圓代工，但台積電在先進製程上逐步取得決定性領先。差異並非單一原因造成，而是起點與選擇累積的結果。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>面向</th><th>差異</th></tr></thead>
+      <tbody>
+        <tr><td>起始定位</td><td>台積電自 1987 年成立起就是純代工；聯電則先做了十多年 IDM，1995 年才轉型，起跑的專注度不同。</td></tr>
+        <tr><td>客戶信任</td><td>純代工要的是「不與客戶競爭」的信任感，台積電沒有自有產品的歷史包袱，在這一點上先天占優。</td></tr>
+        <tr><td>資本投入</td><td>先進製程的軍備競賽需要持續且龐大的資本支出，領先者能以更高的獲利支撐下一輪投資，差距因此自我強化。</td></tr>
+        <tr><td>製程世代</td><td>隨著節點微縮的難度與成本急遽上升，能跟上的廠商愈來愈少，落後者要追回來的代價也愈來愈高。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">領先為什麼會自我強化</text>
+
+        <rect x="335" y="44" width="230" height="46" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="450" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">製程領先一個世代</text>
+
+        <rect x="650" y="110" width="230" height="46" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="765" y="138" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">拿到最好的訂單與價格</text>
+
+        <rect x="335" y="176" width="230" height="46" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="450" y="204" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">獲利足以支撐下一輪投資</text>
+
+        <rect x="20" y="110" width="230" height="46" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="135" y="138" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">投入更多研發與設備</text>
+
+        <path d="M 565 67 L 620 67 L 620 110" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um3)"/>
+        <path d="M 765 156 L 765 199 L 565 199" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um3)"/>
+        <path d="M 335 199 L 135 199 L 135 156" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um3)"/>
+        <path d="M 135 110 L 135 67 L 333 67" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-um3)"/>
+        <defs><marker id="arrow-um3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <text x="450" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">正向循環</text>
+        <text x="450" y="145" text-anchor="middle" font-size="10" fill="var(--muted)">落後者則反過來被同一個循環推開</text>
+
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">在這種結構下，追趕者要贏不只是技術問題，而是要有能力承受長期投入而暫時看不到回報。</text>
+      </svg>
+      <p class="cap">先進製程的競賽有很強的贏者恆贏特性，這正是聯電後來重新評估策略的根本原因。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　2018 年的選擇</div>
+      <h2>公開宣布不追了</h2>
+      <p>2018 年，聯電宣布停止投入更先進節點的研發，把資源轉向成熟與特殊製程。在一個以「不斷推進」為榮的產業裡，這是相當罕見的表態。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">決定內容</div>
+        <h3>停止追逐更先進的節點</h3>
+        <p>不再投入最先進製程的研發競賽，把資本支出集中在既有的成熟與特殊製程產能上。</p>
+      </div>
+      <div class="card">
+        <div class="tag">理由</div>
+        <h3>投入與回報不成比例</h3>
+        <p>先進製程的研發與建廠成本極高，若無法取得足夠的市占與訂單，投入很難回收，反而拖累整體財務表現。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結果</div>
+        <h3>改以獲利能力為目標</h3>
+        <p>放棄規模與技術排名的競逐後，經營重心轉向資本支出紀律與獲利率，公司的財務體質因此改善。</p>
+      </div>
+      <div class="card">
+        <div class="tag">巧合</div>
+        <h3>格羅方德同年做了同樣的決定</h3>
+        <p>同樣在 2018 年，美國的格羅方德也宣布退出最先進製程競賽。兩家公司在地球兩端做出相同判斷。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 272" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩家公司，同一年，同一個決定</text>
+
+        <rect x="40" y="48" width="370" height="128" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">聯電（台灣）</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">源自工研院，做過 IDM 再轉代工</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">長期是全球主要代工廠之一</text>
+        <text x="225" y="148" text-anchor="middle" font-size="10" fill="var(--ink)">2018 年宣布不再追逐先進節點</text>
+
+        <rect x="490" y="48" width="370" height="128" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">格羅方德（美國）</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">由超微半導體分拆而來</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">有主權基金支持的雄厚資本</text>
+        <text x="675" y="148" text-anchor="middle" font-size="10" fill="var(--muted)">同年也宣布退出先進製程競賽</text>
+
+        <rect x="180" y="196" width="540" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="224" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">出身、資本背景都不同，卻算出了同一個答案</text>
+
+        <text x="450" y="266" text-anchor="middle" font-size="11" fill="var(--muted)">當兩家條件迥異的公司在同一年做出相同判斷，說明那已經不是策略偏好，而是產業的客觀現實。</text>
+      </svg>
+      <p class="cap">同一年、兩家背景完全不同的代工廠得出相同結論——先進製程的競賽，玩家名單已經定了。</p>
+    </div>
+
+    <div class="quote">聯電的故事有一種少見的誠實：它比台積電更早出發，最後卻主動退出了那場競賽。在一個習慣用「技術領先」衡量成敗的產業裡，承認自己不該繼續砸錢，需要的不是技術能力，而是另一種判斷力——知道哪一場仗不值得打，本身就是一種本事。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為聯華電子（UMC）公司歷史、策略選擇與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以聯華電子官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
