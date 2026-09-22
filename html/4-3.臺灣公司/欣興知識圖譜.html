@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>欣興電子（Unimicron）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EFF0F3; --surface:#FFFFFF; --surface-2:#DCDFE7; --line:#C3C7D5;
+  --ink:#171A23; --muted:#474F66;
+  --accent:#1A3587; --accent-deep:#0D1E51; --accent-soft:#E0E3ED; --band:#0D1E51;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16171B; --surface:#1F2126; --surface-2:#282B31; --line:#3C404B;
+    --ink:#E8E8EB; --muted:#A7ABB6;
+    --accent:#7C90CA; --accent-deep:#C3CBE2; --accent-soft:#23293B;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16171B; --surface:#1F2126; --surface-2:#282B31; --line:#3C404B;
+  --ink:#E8E8EB; --muted:#A7ABB6;
+  --accent:#7C90CA; --accent-deep:#C3CBE2; --accent-soft:#23293B;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0A0C15 100%);color:#EAECF4;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B6BEDA;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#D8DDEC;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B6BEDA;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+footer{padding-block:32px;background:var(--band);color:#B6BEDA;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 印刷電路板與載板</div>
+    <h1>欣興電子（Unimicron）知識圖譜</h1>
+    <p class="sub">晶片上的接點細到以微米計，主機板上的線路卻粗得多。這兩者不能直接接在一起，中間必須有一塊板子負責把間距慢慢放大——這塊板子叫 IC 載板，欣興是全球做這件事最大的公司之一。它不製造晶片，但少了它，晶片哪裡也去不了。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1990</div><div class="l">創立</div></div>
+      <div class="stat"><div class="n">載板</div><div class="l">晶片與電路板之間</div></div>
+      <div class="stat"><div class="n">2～3 年</div><div class="l">新廠從動工到量產</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　載板是什麼</div>
+      <h2>一塊負責「翻譯間距」的板子</h2>
+      <p>晶片對外的接點密度高得驚人，而一般電路板的製程遠遠做不到那麼細。載板的工作，就是在極短的距離內把這個落差一層一層轉換過去。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">從晶片到主機板的三個階層</text>
+
+        <rect x="30" y="50" width="200" height="110" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="130" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">晶片</text>
+        <text x="130" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">接點極細、極密</text>
+        <text x="130" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">數量可達數千個</text>
+        <text x="130" y="142" text-anchor="middle" font-size="10" fill="var(--muted)">由晶圓製程決定</text>
+
+        <rect x="252" y="42" width="396" height="126" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">IC 載板</text>
+        <text x="450" y="94" text-anchor="middle" font-size="10.5" fill="var(--ink)">上面接晶片，下面接電路板</text>
+        <text x="450" y="114" text-anchor="middle" font-size="10.5" fill="var(--ink)">用多層線路把密集的接點逐層攤開</text>
+        <text x="450" y="134" text-anchor="middle" font-size="10.5" fill="var(--ink)">同時提供支撐、散熱與訊號完整性</text>
+        <text x="450" y="156" text-anchor="middle" font-size="10" fill="var(--ink)">它是整顆封裝的地基</text>
+
+        <rect x="670" y="50" width="200" height="110" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="770" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">主機板</text>
+        <text x="770" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">線路相對粗</text>
+        <text x="770" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">製程成本必須夠低</text>
+        <text x="770" y="142" text-anchor="middle" font-size="10" fill="var(--muted)">面積大，無法做得太精細</text>
+
+        <line x1="230" y1="105" x2="248" y2="105" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-un1)"/>
+        <line x1="648" y1="105" x2="666" y2="105" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-un1)"/>
+        <defs><marker id="ar-un1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="206" text-anchor="middle" font-size="11" fill="var(--muted)">載板存在的理由很單純：晶片做得到的精細度，電路板做不到，中間必須有人銜接。</text>
+        <text x="450" y="228" text-anchor="middle" font-size="11" fill="var(--muted)">而晶片的接點愈密、數量愈多，這個銜接就愈難做——載板的難度是被晶片推上去的。</text>
+        <text x="450" y="250" text-anchor="middle" font-size="10.5" fill="var(--muted)">因此先進製程每往前一步，載板就得跟著往前一步。</text>
+      </svg>
+      <p class="cap">載板是晶片與電路板之間的轉換層，它的規格由上游的封裝需求決定。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　為什麼難做</div>
+      <h2>愈薄、愈大、愈多層，就愈容易翹</h2>
+      <p>高階載板的層數可以多達數十層，面積又要夠大，厚度卻要夠薄。這幾個要求彼此衝突，使得良率成為整個行業最難跨過的門檻。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">高階載板的四個工程難點</text>
+
+        <rect x="24" y="52" width="200" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="124" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">層數多</text>
+        <text x="124" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">線路要一層層堆上去</text>
+        <text x="124" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">每一層都要與前一層對準</text>
+        <text x="124" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">任何一層出錯整片報廢</text>
+        <text x="124" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">層數愈多，累積良率愈低</text>
+        <text x="124" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">製程時間也拉得很長</text>
+
+        <rect x="238" y="52" width="200" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="338" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">線路細</text>
+        <text x="338" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">線寬與間距不斷縮小</text>
+        <text x="338" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">已接近半導體的做法</text>
+        <text x="338" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">需要更精密的曝光與蝕刻</text>
+        <text x="338" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">設備投資規模跟著上升</text>
+        <text x="338" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">微小的粉塵就足以毀掉良品</text>
+
+        <rect x="452" y="52" width="200" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="552" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">翹曲難控</text>
+        <text x="552" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">不同材料受熱膨脹的幅度不同</text>
+        <text x="552" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">加熱過程中板子容易變形</text>
+        <text x="552" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">板子一翹，接點就對不上</text>
+        <text x="552" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">面積愈大、愈薄，愈難壓平</text>
+        <text x="552" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">這是最典型的材料難題</text>
+
+        <rect x="666" y="52" width="210" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="771" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">材料受制於人</text>
+        <text x="771" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">關鍵絕緣膜的供應來源極少</text>
+        <text x="771" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">產能擴充速度不由板廠決定</text>
+        <text x="771" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">材料缺，產線再多也沒用</text>
+        <text x="771" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">與信越化學的角色相似</text>
+        <text x="771" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">上游的瓶頸會直接傳導下來</text>
+
+        <rect x="150" y="216" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="244" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">四個難點互相拉扯，使得高階載板的良率遠低於一般電路板</text>
+
+        <text x="450" y="286" text-anchor="middle" font-size="10.5" fill="var(--muted)">這也是為什麼載板不是「印刷電路板的高階版」，而是一門需要另外累積的技術。</text>
+      </svg>
+      <p class="cap">層數、線寬、翹曲與材料四件事同時逼近極限，良率因此成為載板業真正的護城河。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　供給的時間差</div>
+      <h2>為什麼載板一缺就缺好幾年</h2>
+      <p>需求可以在一季之內跳起來，產能卻要好幾年才長得出來。這個時間差是載板產業最鮮明的特徵，也是它價格波動的根源。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 286" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">需求與供給的速度差</text>
+
+        <rect x="40" y="48" width="370" height="148" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">需求：可以瞬間跳升</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">一個新應用起飛</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">載板需求可能在數季內倍增</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">而且高階晶片用的面積更大</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">同樣一片產能，能做的片數變少</text>
+        <text x="225" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">等於需求被放大了兩次</text>
+
+        <rect x="490" y="48" width="370" height="148" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">供給：只能慢慢長</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">建廠、裝機、試產要兩三年</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">關鍵材料的擴產也同樣緩慢</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">良率還需要時間爬升</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">投資決策又必須賭數年後的需求</text>
+        <text x="675" y="186" text-anchor="middle" font-size="10" fill="var(--ink)">賭錯就是多年的過剩</text>
+
+        <rect x="120" y="220" width="660" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="248" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">需求以季為單位變動，供給以年為單位反應——缺貨與過剩都會拖很久</text>
+
+        <text x="450" y="280" text-anchor="middle" font-size="10.5" fill="var(--muted)">這個結構與晶圓代工的擴產節奏相同，只是載板的投資門檻低一些，因此更容易一窩蜂。</text>
+      </svg>
+      <p class="cap">需求與供給反應速度不對等，是載板價格大起大落的結構性原因。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>載板產業的特性</th></tr></thead>
+      <tbody>
+        <tr><td>資本支出</td><td>新廠投資規模龐大且回收期長，擴產決策等同於對數年後需求的押注。</td></tr>
+        <tr><td>良率</td><td>高階產品良率偏低，良率的些微改善就能明顯改變獲利，是技術差距的直接體現。</td></tr>
+        <tr><td>材料</td><td>關鍵絕緣材料供應來源集中，上游的產能與價格直接影響板廠的排程。</td></tr>
+        <tr><td>客戶</td><td>以處理器、繪圖晶片與網通晶片等高階應用為主，需求隨這些終端市場起伏。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　位置與挑戰</div>
+      <h2>不在鎂光燈下，卻常常是瓶頸</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">角色</div>
+        <h3>整條鏈最容易被忽略的一環</h3>
+        <p>談先進製程時很少有人提到載板，但當它缺貨時，再先進的晶片也組不成產品——它的重要性通常在缺貨時才被看見。</p>
+      </div>
+      <div class="card">
+        <div class="tag">趨勢</div>
+        <h3>先進封裝把載板的規格往上推</h3>
+        <p>多顆晶粒封在一起使載板面積變大、層數變多、精度要求更高，技術門檻被上游拉著走。</p>
+      </div>
+      <div class="card">
+        <div class="tag">競爭</div>
+        <h3>對手來自日韓與同業擴產</h3>
+        <p>高階載板長期由少數幾家掌握，但擴產潮一旦同時到來，價格壓力會迅速浮現。</p>
+      </div>
+      <div class="card">
+        <div class="tag">風險</div>
+        <h3>景氣反轉時折舊跑不掉</h3>
+        <p>大規模投資留下的折舊是固定成本，需求一旦下滑，獲利的跌幅會比營收明顯得多。</p>
+      </div>
+    </div>
+
+    <div class="quote">半導體的故事總是圍繞著線寬又縮小了多少，但一顆晶片要變成能用的東西，還得有一塊板子把它幾千個接點妥當地接出來。欣興做的就是這件不上頭條的事——直到某一年全世界忽然發現，缺的不是晶片，是墊在晶片底下的那塊板子。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為欣興電子（Unimicron）公司背景、技術特性與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以欣興電子官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>

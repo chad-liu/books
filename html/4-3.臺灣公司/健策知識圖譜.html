@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>健策精密工業（JENTECH）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F0F2F1; --surface:#FFFFFF; --surface-2:#E0E4E3; --line:#C9CFCE;
+  --ink:#1B201E; --muted:#515D59;
+  --accent:#3B655A; --accent-deep:#223C35; --accent-soft:#E4E9E8; --band:#223C35;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#171919; --surface:#212423; --surface-2:#2B2E2D; --line:#414645;
+    --ink:#E9EAEA; --muted:#ACB2B0;
+    --accent:#94B2AA; --accent-deep:#CDD8D5; --accent-soft:#2B3431;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#171919; --surface:#212423; --surface-2:#2B2E2D; --line:#414645;
+  --ink:#E9EAEA; --muted:#ACB2B0;
+  --accent:#94B2AA; --accent-deep:#CDD8D5; --accent-soft:#2B3431;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #0D1110 100%);color:#EBEFEE;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B8C6C2;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCE4E2;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B8C6C2;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+footer{padding-block:32px;background:var(--band);color:#B8C6C2;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 散熱與精密沖壓</div>
+    <h1>健策精密工業（JENTECH）知識圖譜</h1>
+    <p class="sub">晶片愈算愈快，就會愈來愈熱。而熱如果排不出去，再厲害的晶片也只能自己降速——效能的天花板，這些年已經從「電晶體不夠快」變成了「熱送不走」。健策做的就是站在晶片正上方、負責把熱接走的那塊金屬。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">均熱片</div><div class="l">貼在晶片上的第一關</div></div>
+      <div class="stat"><div class="n">熱阻</div><div class="l">這個行業的核心指標</div></div>
+      <div class="stat"><div class="n">液冷</div><div class="l">風冷之後的下一步</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　熱的天花板</div>
+      <h2>算得快，代價就是熱</h2>
+      <p>電晶體每切換一次就會產生一點熱，一顆晶片每秒切換的次數以億計。當這些熱來不及散掉，晶片會自動降低運作速度保護自己——買來的效能就這樣被溫度吃掉了。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 256" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">效能的限制換了一個位置</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">過去：受限於電晶體</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">要更快，就把電晶體做小一點</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">微縮同時帶來速度與省電</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">散熱只是附帶要處理的小事</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">一顆風扇就能解決</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">現在：受限於熱</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">功耗持續攀升，熱點愈來愈集中</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">溫度一到上限，晶片自己就降頻</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">散熱設計因此直接決定實際效能</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">它不再是附屬品，而是規格的一部分</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">這是一條與美律、世界先進、穩懋相同的線索：物理設下的限制，工程只能繞過，不能取消。</text>
+        <text x="450" y="238" text-anchor="middle" font-size="11" fill="var(--muted)">差別在於，散熱的限制不是來自元件本身，而是來自「熱往哪裡去」這個更古老的問題。</text>
+      </svg>
+      <p class="cap">當微縮不再自動帶來省電，散熱就從配角變成決定效能上限的主角。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　均熱片在做什麼</div>
+      <h2>熱點很小，散熱器很大，中間需要有人接手</h2>
+      <p>晶片發熱的區域可能只有指甲蓋大小，散熱器卻是它的好幾倍。如果直接接觸，熱會擠在中間那一小塊出不去。均熱片的工作，就是先把集中的熱攤開。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 296" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">熱從晶片走到空氣，要過四道關</text>
+
+        <rect x="24" y="52" width="200" height="138" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="124" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">一　晶片本身</text>
+        <text x="124" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">熱集中在很小的區域</text>
+        <text x="124" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">單位面積的發熱密度極高</text>
+        <text x="124" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">這是整條路徑的起點</text>
+        <text x="124" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">面積小，代表很難一次送走</text>
+        <text x="124" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">所以必須先想辦法攤開</text>
+
+        <rect x="238" y="52" width="200" height="138" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="338" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">二　介面材料</text>
+        <text x="338" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">兩片金屬貼合仍有微小空隙</text>
+        <text x="338" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">空氣是很糟的導熱材料</text>
+        <text x="338" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">要用膏狀或片狀材料填滿</text>
+        <text x="338" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">這一層常是整段路徑的瓶頸</text>
+        <text x="338" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">薄一點、貼緊一點，差很多</text>
+
+        <rect x="452" y="52" width="200" height="138" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="552" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">三　均熱片</text>
+        <text x="552" y="102" text-anchor="middle" font-size="10" fill="var(--ink)">把集中的熱往四周攤開</text>
+        <text x="552" y="122" text-anchor="middle" font-size="10" fill="var(--ink)">讓後面的散熱器用得上全部面積</text>
+        <text x="552" y="142" text-anchor="middle" font-size="10" fill="var(--ink)">同時兼任晶片的保護蓋</text>
+        <text x="552" y="164" text-anchor="middle" font-size="9.5" fill="var(--ink)">平整度要求極高，不能翹</text>
+        <text x="552" y="182" text-anchor="middle" font-size="9.5" fill="var(--ink)">這正是健策的主戰場</text>
+
+        <rect x="666" y="52" width="210" height="138" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="771" y="78" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">四　散熱器與風</text>
+        <text x="771" y="102" text-anchor="middle" font-size="10" fill="var(--muted)">用鰭片把面積放到最大</text>
+        <text x="771" y="122" text-anchor="middle" font-size="10" fill="var(--muted)">再靠氣流或液體帶走</text>
+        <text x="771" y="142" text-anchor="middle" font-size="10" fill="var(--muted)">最後熱進入機房的空氣裡</text>
+        <text x="771" y="164" text-anchor="middle" font-size="9.5" fill="var(--muted)">整段路徑由最差的一關決定</text>
+        <text x="771" y="182" text-anchor="middle" font-size="9.5" fill="var(--muted)">任何一關卡住，前面都白做</text>
+
+        <rect x="150" y="216" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="244" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">散熱是一條串聯的路徑，總效果由最糟的那一段決定</text>
+
+        <text x="450" y="284" text-anchor="middle" font-size="10.5" fill="var(--muted)">所以散熱這門生意比的不是誰的材料最好，而是誰能讓四段路徑都不出現瓶頸。</text>
+      </svg>
+      <p class="cap">熱從晶片到空氣要串過四段路徑，均熱片負責的是把熱點攤開的那一段。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　從風冷到液冷</div>
+      <h2>當風已經吹不動那麼多熱</h2>
+      <p>伺服器晶片的功耗一路往上，風冷開始力不從心：要嘛風扇吵得受不了，要嘛機櫃裡塞不下更大的散熱器。於是資料中心開始改用液體把熱帶走。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩種帶走熱的方式</text>
+
+        <rect x="40" y="48" width="370" height="146" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">風冷</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">靠空氣流過鰭片把熱帶走</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">結構單純、成本低、維護容易</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">但空氣的帶熱能力有限</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">功耗一高就只能加大風扇</text>
+        <text x="225" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">體積、噪音與耗電同時惡化</text>
+
+        <rect x="490" y="48" width="370" height="146" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">液冷</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">讓液體流過貼著晶片的冷板</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">單位體積能帶走的熱遠多於空氣</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">同樣空間能支撐更高的功耗</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">代價是管路、接頭與漏液的風險</text>
+        <text x="675" y="186" text-anchor="middle" font-size="10" fill="var(--ink)">整個機房的設計都要跟著改</text>
+
+        <line x1="410" y1="120" x2="486" y2="120" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-jt3)"/>
+        <defs><marker id="ar-jt3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="224" text-anchor="middle" font-size="11" fill="var(--muted)">對做金屬散熱件的公司而言，液冷不是威脅而是機會——冷板同樣是一塊要貼著晶片的精密金屬件。</text>
+        <text x="450" y="246" text-anchor="middle" font-size="11" fill="var(--muted)">而且它的加工精度、氣密與平整度要求，比傳統散熱片更嚴格，單價自然也更高。</text>
+      </svg>
+      <p class="cap">液冷改變的是帶走熱的介質，貼著晶片那塊精密金屬件的角色反而更重要了。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>散熱零組件產業的特性</th></tr></thead>
+      <tbody>
+        <tr><td>核心能力</td><td>精密沖壓、金屬加工與表面平整度控制，是把材料的導熱能力真正發揮出來的關鍵。</td></tr>
+        <tr><td>需求驅動</td><td>與高效能運算的功耗趨勢直接掛鉤，晶片愈耗電，散熱件的規格與價值就愈高。</td></tr>
+        <tr><td>材料成本</td><td>以銅等金屬為主要原料，原物料價格波動會直接反映在成本結構上。</td></tr>
+        <tr><td>客戶結構</td><td>終端集中於少數大型晶片與伺服器客戶，訂單集中度高是這類零組件廠的共同特徵。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　機會與風險</div>
+      <h2>被別人的功耗推著走</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">機會</div>
+        <h3>高功耗晶片把規格往上拉</h3>
+        <p>運算需求持續攀升，使散熱從成本項變成效能項，願意為好散熱付出的價格也跟著提高。</p>
+      </div>
+      <div class="card">
+        <div class="tag">機會</div>
+        <h3>先進封裝需要更大的均熱片</h3>
+        <p>多顆晶粒封在一起使發熱面積變大、平整度要求更嚴，這類零件的技術含量因而上升。</p>
+      </div>
+      <div class="card">
+        <div class="tag">風險</div>
+        <h3>客戶集中，議價空間有限</h3>
+        <p>需求來自少數幾個大型客戶，任何一家的產品規劃調整，都會直接影響出貨與稼動。</p>
+      </div>
+      <div class="card">
+        <div class="tag">風險</div>
+        <h3>散熱方案本身也會被改寫</h3>
+        <p>若業界轉向其他散熱架構，既有的產品形態可能被跳過，必須持續跟著新架構調整。</p>
+      </div>
+    </div>
+
+    <div class="quote">整個電子業花了幾十年讓晶片愈算愈快，卻很少有人注意到：這些運算最後都會變成熱，而熱必須有地方去。健策這類公司做的事情在規格表上不會出現，但當一台伺服器因為溫度而無法跑到標稱效能時，問題往往就出在這幾公釐厚的金屬上。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為健策精密工業（JENTECH）公司背景、技術特性與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以健策精密工業官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
