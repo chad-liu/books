@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>國外公司一覽表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F2F2F3; --surface:#FFFFFF; --surface-2:#E3E4E6; --line:#CBCCD0;
+  --ink:#1C1D20; --muted:#55575E;
+  --accent:#3C4250; --accent-deep:#23262E; --accent-soft:#E6E7E9; --band:#23262E;
+  --on-deep:#FFFFFF;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#18181A; --surface:#222325; --surface-2:#2C2D30; --line:#434448;
+    --ink:#E9E9EA; --muted:#AEAFB3;
+    --accent:#A3A8B4; --accent-deep:#D3D5DA; --accent-soft:#2E3036; --on-deep:#1C1D20;
+    --gold:#DCB966; --gold-soft:#3A3417;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#18181A; --surface:#222325; --surface-2:#2C2D30; --line:#434448;
+  --ink:#E9E9EA; --muted:#AEAFB3;
+  --accent:#A3A8B4; --accent-deep:#D3D5DA; --accent-soft:#2E3036; --on-deep:#1C1D20;
+  --gold:#DCB966; --gold-soft:#3A3417;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;}
+h1,h2{font-family:"Noto Serif TC",serif;margin:0;color:var(--ink);text-wrap:balance;}
+a{color:inherit;}
+.wrap{max-width:1500px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:linear-gradient(180deg, var(--band) 0%, #101114 100%);color:#EDEDEF;padding-block:44px 34px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B6B8C0;font-weight:700;margin-bottom:12px;}
+.hero h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:900;color:#fff;margin-bottom:10px;}
+.hero .sub{font-size:.98rem;color:#DDDEE2;max-width:78ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:9px 15px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.2rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.74rem;color:#B6B8C0;margin-top:2px;}
+.hero .xlink{margin-top:18px;font-size:.88rem;color:#DDDEE2;}
+.hero .xlink a{color:#fff;border-bottom:1px solid rgba(255,255,255,.45);text-decoration:none;}
+.hero .xlink a:hover{border-bottom-color:#fff;}
+
+.tools{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:14px;}
+.tools .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+#q{flex:1 1 220px;min-width:180px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:.92rem;}
+#q:focus{outline:2px solid var(--accent);outline-offset:1px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chips button{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:5px 13px;font:inherit;font-size:.82rem;cursor:pointer;}
+.chips button:hover{border-color:var(--accent);color:var(--ink);}
+.chips button[aria-pressed="true"]{background:var(--accent-deep);border-color:var(--accent-deep);color:var(--on-deep);}
+#count{font-size:.84rem;color:var(--muted);margin-left:auto;font-family:"Roboto Mono",monospace;}
+
+main{padding-block:26px 40px;}
+.tablebox{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:.88rem;}
+thead th{position:sticky;top:0;text-align:left;font-weight:700;color:#fff;background:var(--band);padding:11px 13px;white-space:nowrap;cursor:pointer;user-select:none;}
+thead th::after{content:"";opacity:.4;margin-left:5px;}
+thead th[aria-sort="ascending"]::after{content:"\2191";opacity:1;}
+thead th[aria-sort="descending"]::after{content:"\2193";opacity:1;}
+tbody td{padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top;}
+tbody tr:nth-child(even) td{background:var(--surface-2);}
+tbody tr:hover td{background:var(--accent-soft);}
+tbody tr.hide{display:none;}
+td a{font-weight:700;color:var(--accent-deep);text-decoration:none;border-bottom:1px solid var(--line);}
+td a:hover{border-bottom-color:var(--accent);}
+.full{display:block;font-size:.74rem;color:var(--muted);font-weight:400;margin-top:2px;}
+.code{font-family:"Roboto Mono",monospace;font-weight:700;}
+.mkt{display:block;font-size:.72rem;color:var(--muted);margin-top:2px;}
+.num{font-family:"Roboto Mono",monospace;font-weight:700;}
+.note{display:inline-block;margin-left:5px;font-size:.66rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);border:1px solid var(--line);border-radius:4px;padding:0 4px;cursor:help;vertical-align:1px;}
+.c-year,.c-size{text-align:right;white-space:nowrap;}
+.c-hq{white-space:nowrap;}
+.c-prod{min-width:170px;}
+.c-desc{min-width:260px;}
+.empty{padding:28px;text-align:center;color:var(--muted);display:none;}
+
+.foot{margin-top:22px;font-size:.84rem;color:var(--muted);}
+.foot ul{margin:8px 0 0;padding-left:1.2em;}
+.foot li{margin-bottom:4px;}
+
+@media (max-width:980px){
+  .tablebox{border:0;background:transparent;overflow:visible;}
+  table,tbody,tr,td{display:block;width:100%;}
+  thead{display:none;}
+  tbody tr{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 15px;margin-bottom:12px;}
+  tbody tr:nth-child(even) td,tbody tr:hover td{background:transparent;}
+  tbody td{border:0;padding:3px 0;display:grid;grid-template-columns:5.5em 1fr;gap:12px;align-items:baseline;}
+  tbody td::before{content:attr(data-label);font-size:.76rem;color:var(--muted);}
+  tbody td .v{min-width:0;}
+  .c-year,.c-size,.c-hq{text-align:left;white-space:normal;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">國外公司 × 總覽</div>
+    <h1>國外公司一覽表</h1>
+    <p class="sub">這個資料夾裡每一家公司的基本資料與定位。這些公司分屬荷蘭、德國、美國、英國與日本，沒有共通的官方登記資料，因此以各公司近期公開揭露的資訊整理；「實收資本額」在跨國之間無法直接比較，改以總部與員工規模呈現。點公司名稱可以直接跳到該公司的知識圖譜。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">14</div><div class="l">收錄公司</div></div>
+      <div class="stat"><div class="n">51.9</div><div class="l">員工數合計（萬人）</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">個業別</div></div>
+
+    </div>
+    <div class="xlink">另有 <a href="../4-3.臺灣公司/臺灣公司一覽表.html">臺灣公司一覽表</a>，收錄 34 家臺灣上市櫃公司。</div>
+  </div>
+</div>
+
+<div class="tools">
+  <div class="wrap">
+    <input id="q" type="search" placeholder="搜尋公司、代號、產品或關鍵字⋯⋯" autocomplete="off">
+    <div class="chips" id="chips"><button type="button" data-f="" aria-pressed="true">全部</button><button type="button" data-f="半導體設備">半導體設備</button><button type="button" data-f="材料與光學">材料與光學</button><button type="button" data-f="晶片製造">晶片製造</button><button type="button" data-f="晶片設計與矽智財">晶片設計與矽智財</button><button type="button" data-f="投資控股">投資控股</button></div>
+    <div id="count"></div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="tablebox">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-type="text">公司</th>
+            <th data-type="text">股票代號</th>
+            <th data-type="text">業別</th>
+            <th data-type="num" class="c-year">創辦年份</th>
+            <th data-type="text" class="c-hq">總部</th>
+            <th data-type="num" class="c-size">員工規模</th>
+            <th data-type="text" class="c-prod">主要產品</th>
+            <th data-type="text" class="c-desc">概略介紹</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr data-ind="半導體設備"><td data-label="公司"><div class="v"><a href="東京威力科創知識圖譜.html">東京威力科創</a><span class="full">Tokyo Electron Limited</span></div></td><td data-label="股票代號" data-sort="8035"><div class="v"><span class="code">8035</span><span class="mkt">東京證交所</span></div></td><td data-label="業別"><div class="v">半導體設備</div></td><td data-label="創辦年份" data-sort="1963"><div class="v">1963</div></td><td data-label="總部"><div class="v">日本 東京</div></td><td data-label="員工規模" data-sort="19400"><div class="v"><span class="num">約 19,400 人</span></div></td><td data-label="主要產品"><div class="v">塗佈顯影、蝕刻、清洗等設備</div></td><td data-label="概略介紹"><div class="v">日本最大的半導體設備商，塗佈顯影環節與艾斯摩爾的機台緊密搭配。</div></td></tr>
+<tr data-ind="半導體設備"><td data-label="公司"><div class="v"><a href="應用材料知識圖譜.html">應用材料</a><span class="full">Applied Materials, Inc.</span></div></td><td data-label="股票代號" data-sort="AMAT"><div class="v"><span class="code">AMAT</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">半導體設備</div></td><td data-label="創辦年份" data-sort="1967"><div class="v">1967</div></td><td data-label="總部"><div class="v">美國 加州聖塔克拉拉</div></td><td data-label="員工規模" data-sort="36600"><div class="v"><span class="num">約 36,600 人</span></div></td><td data-label="主要產品"><div class="v">薄膜沉積、蝕刻、離子植入等製程設備</div></td><td data-label="概略介紹"><div class="v">產品線最廣的半導體設備商，一片晶圓的製程幾乎每一道都碰得到。</div></td></tr>
+<tr data-ind="半導體設備"><td data-label="公司"><div class="v"><a href="美商科磊知識圖譜.html">美商科磊</a><span class="note" title="1975 年創立為 KLA Instruments，1997 年與 Tencor 合併">註</span><span class="full">KLA Corporation</span></div></td><td data-label="股票代號" data-sort="KLAC"><div class="v"><span class="code">KLAC</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">半導體設備</div></td><td data-label="創辦年份" data-sort="1975"><div class="v">1975</div></td><td data-label="總部"><div class="v">美國 加州米爾皮塔斯</div></td><td data-label="員工規模" data-sort="15600"><div class="v"><span class="num">約 15,600 人</span></div></td><td data-label="主要產品"><div class="v">製程檢測與量測設備</div></td><td data-label="概略介紹"><div class="v">不做製程，只負責看見缺陷——它賣的是整條產線的眼睛。</div></td></tr>
+<tr data-ind="半導體設備"><td data-label="公司"><div class="v"><a href="科林研發知識圖譜.html">科林研發</a><span class="full">Lam Research Corporation</span></div></td><td data-label="股票代號" data-sort="LRCX"><div class="v"><span class="code">LRCX</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">半導體設備</div></td><td data-label="創辦年份" data-sort="1980"><div class="v">1980</div></td><td data-label="總部"><div class="v">美國 加州弗里蒙特</div></td><td data-label="員工規模" data-sort="19800"><div class="v"><span class="num">約 19,800 人</span></div></td><td data-label="主要產品"><div class="v">蝕刻與薄膜沉積設備</div></td><td data-label="概略介紹"><div class="v">專精把材料精準地刻掉或長上去，記憶體堆疊層數愈高就愈倚重它。</div></td></tr>
+<tr data-ind="半導體設備"><td data-label="公司"><div class="v"><a href="艾斯摩爾知識圖譜.html">艾斯摩爾</a><span class="full">ASML Holding N.V.</span></div></td><td data-label="股票代號" data-sort="ASML"><div class="v"><span class="code">ASML</span><span class="mkt">泛歐阿姆斯特丹／那斯達克</span></div></td><td data-label="業別"><div class="v">半導體設備</div></td><td data-label="創辦年份" data-sort="1984"><div class="v">1984</div></td><td data-label="總部"><div class="v">荷蘭 費爾德霍芬</div></td><td data-label="員工規模" data-sort="44000"><div class="v"><span class="num">約 44,000 人</span></div></td><td data-label="主要產品"><div class="v">微影設備（含極紫外光機台）</div></td><td data-label="概略介紹"><div class="v">全世界唯一能供應極紫外光微影機台的公司，先進製程真正的單點瓶頸。</div></td></tr>
+<tr data-ind="材料與光學"><td data-label="公司"><div class="v"><a href="蔡司光學知識圖譜.html">蔡司光學</a><span class="note" title="由卡爾蔡司基金會持有，未公開發行股票；員工數為蔡司集團整體">註</span><span class="full">Carl Zeiss AG</span></div></td><td data-label="股票代號" data-sort="—"><div class="v"><span class="code">—</span><span class="mkt">未上市</span></div></td><td data-label="業別"><div class="v">材料與光學</div></td><td data-label="創辦年份" data-sort="1846"><div class="v">1846</div></td><td data-label="總部"><div class="v">德國 上考芬</div></td><td data-label="員工規模" data-sort="46000"><div class="v"><span class="num">約 46,000 人</span></div></td><td data-label="主要產品"><div class="v">微影光學系統、鏡頭、量測儀器、醫材</div></td><td data-label="概略介紹"><div class="v">艾斯摩爾機台裡最關鍵的光學系統來自這裡；它由基金會持有，不對外募資。</div></td></tr>
+<tr data-ind="材料與光學"><td data-label="公司"><div class="v"><a href="信越化學知識圖譜.html">信越化學</a><span class="full">Shin-Etsu Chemical Co., Ltd.</span></div></td><td data-label="股票代號" data-sort="4063"><div class="v"><span class="code">4063</span><span class="mkt">東京證交所</span></div></td><td data-label="業別"><div class="v">材料與光學</div></td><td data-label="創辦年份" data-sort="1926"><div class="v">1926</div></td><td data-label="總部"><div class="v">日本 東京</div></td><td data-label="員工規模" data-sort="27300"><div class="v"><span class="num">約 27,300 人</span></div></td><td data-label="主要產品"><div class="v">矽晶圓、聚氯乙烯、光阻材料</div></td><td data-label="概略介紹"><div class="v">上游材料的隱形巨人，矽晶圓供應的龍頭，本業其實橫跨化工與半導體。</div></td></tr>
+<tr data-ind="晶片製造"><td data-label="公司"><div class="v"><a href="英特爾知識圖譜.html">英特爾</a><span class="full">Intel Corporation</span></div></td><td data-label="股票代號" data-sort="INTC"><div class="v"><span class="code">INTC</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">晶片製造</div></td><td data-label="創辦年份" data-sort="1968"><div class="v">1968</div></td><td data-label="總部"><div class="v">美國 加州聖塔克拉拉</div></td><td data-label="員工規模" data-sort="85000"><div class="v"><span class="num">約 85,000 人</span></div></td><td data-label="主要產品"><div class="v">處理器、晶片製造與代工服務</div></td><td data-label="概略介紹"><div class="v">曾經同時定義設計與製程，如今在製程追趕與跨入代工之間重新尋找位置。</div></td></tr>
+<tr data-ind="晶片製造"><td data-label="公司"><div class="v"><a href="美光科技知識圖譜.html">美光科技</a><span class="full">Micron Technology, Inc.</span></div></td><td data-label="股票代號" data-sort="MU"><div class="v"><span class="code">MU</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">晶片製造</div></td><td data-label="創辦年份" data-sort="1978"><div class="v">1978</div></td><td data-label="總部"><div class="v">美國 愛達荷州波夕</div></td><td data-label="員工規模" data-sort="53000"><div class="v"><span class="num">約 53,000 人</span></div></td><td data-label="主要產品"><div class="v">動態隨機存取記憶體、快閃記憶體</div></td><td data-label="概略介紹"><div class="v">少數仍在檯面上的記憶體大廠，與南亞科面對的是同一種劇烈循環。</div></td></tr>
+<tr data-ind="晶片製造"><td data-label="公司"><div class="v"><a href="格羅方德知識圖譜.html">格羅方德</a><span class="full">GLOBALFOUNDRIES Inc.</span></div></td><td data-label="股票代號" data-sort="GFS"><div class="v"><span class="code">GFS</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">晶片製造</div></td><td data-label="創辦年份" data-sort="2009"><div class="v">2009</div></td><td data-label="總部"><div class="v">美國 紐約州馬爾他</div></td><td data-label="員工規模" data-sort="14300"><div class="v"><span class="num">約 14,300 人</span></div></td><td data-label="主要產品"><div class="v">特殊與成熟製程晶圓代工</div></td><td data-label="概略介紹"><div class="v">從超微分出的製造部門，後來放棄追最先進製程，改攻特殊應用。</div></td></tr>
+<tr data-ind="晶片設計與矽智財"><td data-label="公司"><div class="v"><a href="超微半導體知識圖譜.html">超微半導體</a><span class="full">Advanced Micro Devices, Inc.</span></div></td><td data-label="股票代號" data-sort="AMD"><div class="v"><span class="code">AMD</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">晶片設計與矽智財</div></td><td data-label="創辦年份" data-sort="1969"><div class="v">1969</div></td><td data-label="總部"><div class="v">美國 加州聖塔克拉拉</div></td><td data-label="員工規模" data-sort="32100"><div class="v"><span class="num">約 32,100 人</span></div></td><td data-label="主要產品"><div class="v">處理器、繪圖晶片、資料中心加速器</div></td><td data-label="概略介紹"><div class="v">長年的挑戰者，靠模組化設計與把製造交給台積電完成翻身。</div></td></tr>
+<tr data-ind="晶片設計與矽智財"><td data-label="公司"><div class="v"><a href="安謀知識圖譜.html">安謀</a><span class="full">Arm Holdings plc</span></div></td><td data-label="股票代號" data-sort="ARM"><div class="v"><span class="code">ARM</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">晶片設計與矽智財</div></td><td data-label="創辦年份" data-sort="1990"><div class="v">1990</div></td><td data-label="總部"><div class="v">英國 劍橋</div></td><td data-label="員工規模" data-sort="9600"><div class="v"><span class="num">約 9,600 人</span></div></td><td data-label="主要產品"><div class="v">處理器架構與矽智財授權</div></td><td data-label="概略介紹"><div class="v">自己不做晶片，靠授權指令集收租，成為行動裝置的共同語言。</div></td></tr>
+<tr data-ind="晶片設計與矽智財"><td data-label="公司"><div class="v"><a href="輝達知識圖譜.html">輝達</a><span class="full">NVIDIA Corporation</span></div></td><td data-label="股票代號" data-sort="NVDA"><div class="v"><span class="code">NVDA</span><span class="mkt">那斯達克</span></div></td><td data-label="業別"><div class="v">晶片設計與矽智財</div></td><td data-label="創辦年份" data-sort="1993"><div class="v">1993</div></td><td data-label="總部"><div class="v">美國 加州聖塔克拉拉</div></td><td data-label="員工規模" data-sort="42000"><div class="v"><span class="num">約 42,000 人</span></div></td><td data-label="主要產品"><div class="v">繪圖處理器、資料中心運算平台</div></td><td data-label="概略介紹"><div class="v">把繪圖晶片變成通用運算平台，真正的護城河是軟體生態而不是晶片本身。</div></td></tr>
+<tr data-ind="投資控股"><td data-label="公司"><div class="v"><a href="軟銀集團知識圖譜.html">軟銀集團</a><span class="note" title="員工數為合併基礎，包含安謀等子公司">註</span><span class="full">SoftBank Group Corp.</span></div></td><td data-label="股票代號" data-sort="9984"><div class="v"><span class="code">9984</span><span class="mkt">東京證交所</span></div></td><td data-label="業別"><div class="v">投資控股</div></td><td data-label="創辦年份" data-sort="1981"><div class="v">1981</div></td><td data-label="總部"><div class="v">日本 東京</div></td><td data-label="員工規模" data-sort="73900"><div class="v"><span class="num">約 73,900 人</span></div></td><td data-label="主要產品"><div class="v">投資控股（持有安謀等資產）</div></td><td data-label="概略介紹"><div class="v">嚴格說不是科技公司而是資金的調度者，安謀是它最重要的資產之一。</div></td></tr>
+        </tbody>
+      </table>
+      <div class="empty" id="empty">沒有符合的公司</div>
+    </div>
+
+    <div class="foot">
+      <strong>資料說明</strong>
+      <ul>
+        <li>股票代號為各公司主要掛牌市場的代號；艾斯摩爾同時在泛歐阿姆斯特丹與那斯達克掛牌，蔡司則未公開發行股票。</li>
+        <li>業別為本知識庫依業務性質所做的分類，不是任何證券交易所的官方分類。</li>
+        <li>創辦年份為公司最初成立的年份，與目前掛牌實體的設立日期未必相同。</li>
+        <li>員工人數取自各公司近期公開揭露或公開報導的概略數字，各公司的統計基準與截算時點並不一致，僅供規模比較，不宜逐一對照。</li>
+        <li>標示「註」的公司有額外的說明，將滑鼠移到標記上可查看。</li>
+        <li>主要產品與概略介紹為本知識庫的整理，非官方說明；正式資訊請以各公司公告與財報為準。</li>
+
+      </ul>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  var tbl=document.getElementById('tbl'),tb=tbl.tBodies[0];
+  var rows=[].slice.call(tb.rows),q=document.getElementById('q');
+  var chips=document.getElementById('chips'),count=document.getElementById('count'),empty=document.getElementById('empty');
+  var filter='';
+  rows.forEach(function(r){r._t=r.textContent.toLowerCase();});
+
+  function apply(){
+    var s=q.value.trim().toLowerCase(),n=0;
+    rows.forEach(function(r){
+      var ok=(!s||r._t.indexOf(s)>-1)&&(!filter||r.dataset.ind===filter);
+      r.classList.toggle('hide',!ok); if(ok)n++;
+    });
+    count.textContent=n+' / '+rows.length;
+    empty.style.display=n?'none':'block';
+  }
+  q.addEventListener('input',apply);
+
+  chips.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    filter=b.dataset.f;
+    [].forEach.call(chips.children,function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    apply();
+  });
+
+  var ths=[].slice.call(tbl.tHead.rows[0].cells);
+  ths.forEach(function(th,i){
+    th.addEventListener('click',function(){
+      var desc=th.getAttribute('aria-sort')==='ascending';
+      ths.forEach(function(x){x.removeAttribute('aria-sort');});
+      th.setAttribute('aria-sort',desc?'descending':'ascending');
+      var num=th.dataset.type==='num';
+      rows.sort(function(a,b){
+        var x=a.cells[i],y=b.cells[i];
+        var va=x.dataset.sort!==undefined?x.dataset.sort:x.textContent;
+        var vb=y.dataset.sort!==undefined?y.dataset.sort:y.textContent;
+        var r=num?(parseFloat(va)-parseFloat(vb)):String(va).localeCompare(String(vb),'zh-Hant');
+        return desc?-r:r;
+      });
+      rows.forEach(function(r){tb.appendChild(r);});
+    });
+  });
+
+  apply();
+})();
+</script>
+
+</body>
+</html>
