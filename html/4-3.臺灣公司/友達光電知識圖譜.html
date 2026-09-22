@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>友達光電（AUO）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF1F2; --surface:#FFFFFF; --surface-2:#DEE8E8; --line:#C5D8D8;
+  --ink:#142324; --muted:#426566;
+  --accent:#1F7375; --accent-deep:#114445; --accent-soft:#D7EFEF; --band:#114445;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131B1B; --surface:#1C2626; --surface-2:#232E2F; --line:#374848;
+    --ink:#E7EEEE; --muted:#A0B5B6;
+    --accent:#70CBCD; --accent-deep:#B9E8E9; --accent-soft:#1F3838;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131B1B; --surface:#1C2626; --surface-2:#232E2F; --line:#374848;
+  --ink:#E7EEEE; --muted:#A0B5B6;
+  --accent:#70CBCD; --accent-deep:#B9E8E9; --accent-soft:#1F3838;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #071A1A 100%);color:#E9F6F6;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B5E2E3;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCF0F0;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B5E2E3;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#B5E2E3;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 顯示面板產業</div>
+    <h1>友達光電（AUO）知識圖譜</h1>
+    <p class="sub">台灣兩大面板廠之一，本身就是一連串合併的產物——名字裡的「友」與「達」，分別來自聯友光電與達碁科技。它所在的產業，是台灣所有科技業裡資本最密集、景氣循環也最殘酷的一塊：蓋一座廠要上千億，而產品的價格幾乎完全由供需決定。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">2001</div><div class="l">由兩家公司合併成立</div></div>
+      <div class="stat"><div class="n">2006</div><div class="l">再合併廣輝電子</div></div>
+      <div class="stat"><div class="n">面板</div><div class="l">資本最密集的產業之一</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　合併而生的公司</div>
+      <h2>名字就寫著它的身世</h2>
+      <p>友達不是從零創立的公司，而是台灣面板業整併浪潮的結果。有趣的是，它的兩條血脈分別來自宏碁與廣達——這個資料夾裡的另外兩家公司。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">友達的合併系譜</text>
+
+        <rect x="40" y="46" width="230" height="72" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="155" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">達碁科技</text>
+        <text x="155" y="93" text-anchor="middle" font-size="10" fill="var(--muted)">源自宏碁集團</text>
+        <text x="155" y="110" text-anchor="middle" font-size="10" fill="var(--muted)">宏碁的顯示器事業</text>
+
+        <rect x="40" y="134" width="230" height="72" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="155" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">聯友光電</text>
+        <text x="155" y="181" text-anchor="middle" font-size="10" fill="var(--muted)">另一家面板業者</text>
+        <text x="155" y="198" text-anchor="middle" font-size="10" fill="var(--muted)">與達碁合併</text>
+
+        <path d="M 270 82 L 320 82 L 320 116 L 368 116" fill="none" stroke="var(--muted)" stroke-width="2"/>
+        <path d="M 270 170 L 320 170 L 320 136 L 368 136" fill="none" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="366" y1="126" x2="378" y2="126" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au1)"/>
+        <defs><marker id="arrow-au1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+        <text x="320" y="72" text-anchor="middle" font-size="9.5" fill="var(--muted)">2001 年合併</text>
+
+        <rect x="390" y="92" width="230" height="68" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="505" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">友達光電</text>
+        <text x="505" y="139" text-anchor="middle" font-size="10.5" fill="var(--ink)">「聯友」＋「達碁」</text>
+
+        <rect x="390" y="196" width="230" height="68" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="505" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">廣輝電子</text>
+        <text x="505" y="243" text-anchor="middle" font-size="10" fill="var(--muted)">源自廣達集團的面板事業</text>
+
+        <line x1="505" y1="196" x2="505" y2="164" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au1)"/>
+        <text x="585" y="184" text-anchor="middle" font-size="9.5" fill="var(--muted)">2006 年合併</text>
+
+        <line x1="620" y1="126" x2="656" y2="126" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow-au1b)"/>
+        <defs><marker id="arrow-au1b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <rect x="660" y="88" width="210" height="76" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="765" y="114" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">台灣兩大面板廠之一</text>
+        <text x="765" y="135" text-anchor="middle" font-size="10" fill="var(--muted)">與群創並列</text>
+        <text x="765" y="152" text-anchor="middle" font-size="10" fill="var(--muted)">隸屬明基友達集團</text>
+
+        <text x="450" y="290" text-anchor="middle" font-size="11" fill="var(--muted)">宏碁與廣達各自投入的面板事業，最後都匯進了同一家公司——這是面板業高資本門檻下的必然結果。</text>
+      </svg>
+      <p class="cap">友達的血脈同時來自宏碁與廣達，它的誕生就是台灣面板業整併的縮影。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">2001 年</div>
+        <h3>達碁與聯友合併成立友達</h3>
+        <p>兩家面板業者合併，取兩家名字各一字為「友達」，是台灣面板業第一波大型整併。</p>
+      </div>
+      <div class="card">
+        <div class="tag">2006 年</div>
+        <h3>再合併廣輝電子</h3>
+        <p>併入源自廣達集團的面板事業，進一步擴大產能規模，鞏固在台灣面板業的地位。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業背景</div>
+        <h3>「兩兆雙星」政策的主角之一</h3>
+        <p>2000 年代初，台灣將半導體與影像顯示列為重點扶植產業，面板業在政策與資本的推動下快速擴張。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　面板為什麼這麼難賺</div>
+      <h2>蓋得起廠，不代表撐得住循環</h2>
+      <p>面板是典型的資本密集型商品產業：投資門檻極高，產品卻高度標準化。這兩件事加在一起，構成了一個難以脫身的結構。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">資本密集 ＋ 商品化 ＝ 難解的循環</text>
+
+        <rect x="325" y="44" width="250" height="48" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="450" y="64" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">蓋新廠需投入鉅額資本</text>
+        <text x="450" y="82" text-anchor="middle" font-size="10" fill="var(--ink)">動輒上千億元的資本支出</text>
+
+        <rect x="640" y="108" width="240" height="48" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="760" y="128" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">產能必須開滿才划算</text>
+        <text x="760" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">折舊壓力迫使工廠不能停</text>
+
+        <rect x="325" y="172" width="250" height="48" rx="10" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="450" y="192" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--bad)">供給過剩，價格崩跌</text>
+        <text x="450" y="210" text-anchor="middle" font-size="10" fill="var(--muted)">規格標準化，無法靠差異化撐價</text>
+
+        <rect x="20" y="108" width="240" height="48" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="140" y="128" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">虧損，但不能收手</text>
+        <text x="140" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">停產損失更大，只能繼續開</text>
+
+        <path d="M 575 68 L 610 68 L 610 108" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au2)"/>
+        <path d="M 760 156 L 760 196 L 575 196" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au2)"/>
+        <path d="M 325 196 L 140 196 L 140 156" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au2)"/>
+        <path d="M 140 108 L 140 68 L 323 68" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au2)"/>
+        <defs><marker id="arrow-au2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <text x="450" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">面板業的循環</text>
+        <text x="450" y="145" text-anchor="middle" font-size="10" fill="var(--muted)">而且下一輪還得繼續投資</text>
+
+        <text x="450" y="256" text-anchor="middle" font-size="11" fill="var(--muted)">與記憶體產業的循環很像，但面板更棘手：技術世代每隔幾年就要換一次，</text>
+        <text x="450" y="274" text-anchor="middle" font-size="11" fill="var(--muted)">不跟進就淘汰，跟進又是新一輪的鉅額支出——這是一場停不下來的軍備競賽。</text>
+      </svg>
+      <p class="cap">高資本門檻原本應該是護城河，但當產品完全標準化時，它反而變成了退不出去的陷阱。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">資本門檻</div>
+        <h3>一座廠就是一筆天文數字</h3>
+        <p>新世代面板廠的建置成本極高，且設備會隨技術世代快速折舊，財務壓力遠高於一般製造業。</p>
+      </div>
+      <div class="card">
+        <div class="tag">商品化</div>
+        <h3>規格標準，難以差異化</h3>
+        <p>同尺寸同規格的面板在客戶眼中幾乎可以互換，價格因此幾乎完全由供需決定，廠商缺乏訂價能力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">退出困難</div>
+        <h3>停產的損失大於硬撐</h3>
+        <p>龐大的固定成本與折舊使得減產反而更痛，導致產業在低迷期仍持續供給，讓價格更難回升。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　產業重心的移轉</div>
+      <h2>面板製造為什麼一路往西走</h2>
+      <p>顯示面板的生產重心，數十年間從日本移到韓國與台灣，再移到中國大陸。每一次移轉的邏輯都很像：誰願意用國家級的資本硬撐，誰就拿得到這個產業。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">生產重心的四次移動</text>
+
+        <rect x="25" y="52" width="196" height="94" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="123" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">日本</text>
+        <text x="123" y="100" text-anchor="middle" font-size="10" fill="var(--muted)">最早量產的發源地</text>
+        <text x="123" y="118" text-anchor="middle" font-size="10" fill="var(--muted)">技術領先但成本偏高</text>
+        <text x="123" y="136" text-anchor="middle" font-size="9.5" fill="var(--muted)">逐步退出大尺寸領域</text>
+
+        <rect x="237" y="52" width="196" height="94" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="335" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">韓國</text>
+        <text x="335" y="100" text-anchor="middle" font-size="10" fill="var(--muted)">大財團以鉅資投入</text>
+        <text x="335" y="118" text-anchor="middle" font-size="10" fill="var(--muted)">在循環低谷仍持續擴產</text>
+        <text x="335" y="136" text-anchor="middle" font-size="9.5" fill="var(--muted)">後轉向 OLED</text>
+
+        <rect x="449" y="46" width="196" height="106" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="547" y="72" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">台灣</text>
+        <text x="547" y="94" text-anchor="middle" font-size="10" fill="var(--ink)">兩兆雙星政策帶動擴張</text>
+        <text x="547" y="112" text-anchor="middle" font-size="10" fill="var(--ink)">友達與群創為代表</text>
+        <text x="547" y="130" text-anchor="middle" font-size="9.5" fill="var(--ink)">面對兩面夾擊</text>
+        <text x="547" y="146" text-anchor="middle" font-size="9.5" fill="var(--ink)">被迫尋找新定位</text>
+
+        <rect x="661" y="52" width="214" height="94" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="768" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">中國大陸</text>
+        <text x="768" y="100" text-anchor="middle" font-size="10" fill="var(--muted)">地方政府與政策大力支持</text>
+        <text x="768" y="118" text-anchor="middle" font-size="10" fill="var(--muted)">以規模與成本取得主導權</text>
+        <text x="768" y="136" text-anchor="middle" font-size="9.5" fill="var(--muted)">成為目前產能重心</text>
+
+        <line x1="221" y1="99" x2="235" y2="99" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au3)"/>
+        <line x1="433" y1="99" x2="447" y2="99" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au3)"/>
+        <line x1="645" y1="99" x2="659" y2="99" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-au3)"/>
+        <defs><marker id="arrow-au3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="150" y="178" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="206" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">共同規律：撐得過虧損期的一方，最後拿走這個產業</text>
+
+        <text x="450" y="250" text-anchor="middle" font-size="11" fill="var(--muted)">在一個無法靠差異化取勝的產業裡，勝負往往取決於誰的資金背景更能忍受長期虧損，</text>
+        <text x="450" y="268" text-anchor="middle" font-size="11" fill="var(--muted)">而不是誰的技術比較好——這正是台灣面板廠最難處理的一件事。</text>
+      </svg>
+      <p class="cap">面板產業的每一次重心移轉，比的都不是技術高低，而是誰的口袋更深、更能熬。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　轉型：離開紅海</div>
+      <h2>不跟你比大，改跟你比難</h2>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>方向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>車用顯示</td><td>車用面板對可靠度、溫度耐受與供應年限要求嚴格，認證期長，一旦打入供應鏈關係相對穩固，是轉型的重點方向。</td></tr>
+        <tr><td>醫療與工控</td><td>醫療影像、工業控制等專業用途的顯示產品，數量不大但規格特殊，價格競爭不像消費市場那樣激烈。</td></tr>
+        <tr><td>高階與利基應用</td><td>電競、專業繪圖等對規格要求高的顯示器領域，客戶願意為性能付出溢價。</td></tr>
+        <tr><td>從賣面板到賣方案</td><td>不只供應面板本身，而是提供整合顯示系統與相關軟硬體的解決方案，以提高附加價值。</td></tr>
+        <tr><td>集團體系</td><td>與明基、佳世達同屬明基友達集團，集團內在顯示相關產業鏈上分工布局。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 265" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩種不同的競爭方式</text>
+
+        <rect x="40" y="48" width="370" height="146" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">消費性標準面板</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">電視、螢幕用的標準規格面板</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">比的是誰的成本低、產能大</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">對手擁有政策與規模優勢</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--muted)">在這個戰場上，努力不一定有用</text>
+
+        <rect x="490" y="48" width="370" height="146" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">車用、醫療與利基應用</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">嚴格認證、長期供應承諾</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">比的是可靠度與客戶信任</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">單量小但價格與黏著度較高</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">規模優勢在這裡不管用</text>
+
+        <line x1="410" y1="120" x2="486" y2="120" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-au4)"/>
+        <defs><marker id="arrow-au4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="226" text-anchor="middle" font-size="11" fill="var(--muted)">既然在「比大」的戰場上贏不了，就換到「比難」的戰場——這與日月光往先進封裝走、</text>
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">國巨往車規元件走，是同一種脫離商品化競爭的思路。</text>
+        <text x="450" y="260" text-anchor="middle" font-size="10.5" fill="var(--muted)">差別在於，面板的轉型難度更高，因為既有產能的包袱太大。</text>
+      </svg>
+      <p class="cap">轉向利基市場不是放棄競爭，而是換到一個規模優勢失效、經驗與信任才算數的戰場。</p>
+    </div>
+
+    <div class="quote">友達的處境提醒了一件事：不是所有的努力都能改變結局。在一個產品完全標準化、而對手背後站著國家資本的產業裡，把成本再壓低一成並不能解決問題。真正的出路往往不是「做得更好」，而是「換一個戰場」——這句話說起來簡單，但對一家已經蓋了無數座廠的公司來說，轉身的成本高得驚人。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為友達光電（AUO）公司歷史、產業結構與轉型方向之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以友達光電官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
