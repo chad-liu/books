@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>明基（BenQ）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#EEF1F0; --surface:#FFFFFF; --surface-2:#DEE8E4; --line:#C5D8D1;
+  --ink:#15231E; --muted:#45685C;
+  --accent:#2C7259; --accent-deep:#184435; --accent-soft:#D7EFE6; --band:#184435;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131B18; --surface:#1C2623; --surface-2:#232F2B; --line:#374842;
+    --ink:#E7EEEC; --muted:#A0B6AE;
+    --accent:#75CCAE; --accent-deep:#BAE8D8; --accent-soft:#1F372F;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131B18; --surface:#1C2623; --surface-2:#232F2B; --line:#374842;
+  --ink:#E7EEEC; --muted:#A0B6AE;
+  --accent:#75CCAE; --accent-deep:#BAE8D8; --accent-soft:#1F372F;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #071A13 100%);color:#E9F6F1;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#B5E2D2;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#DCF0E9;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#B5E2D2;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#B5E2D2;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 顯示與影像品牌</div>
+    <h1>明基（BenQ）知識圖譜</h1>
+    <p class="sub">宏碁家族樹的第三支——原本是宏碁的周邊事業，2001 年獨立為自有品牌。它留下台灣企業史上最具代表性的一次跨國併購失敗（西門子手機），也在跌倒之後重新聚焦，在投影機與顯示器領域站穩位置。而它後來的分家，是這個資料夾裡同一個劇本的第三次上演。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">2001</div><div class="l">自宏碁獨立為品牌</div></div>
+      <div class="stat"><div class="n">2005</div><div class="l">併購西門子手機事業</div></div>
+      <div class="stat"><div class="n">2007</div><div class="l">再分割出佳世達</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　從宏碁周邊事業到自有品牌</div>
+      <h2>先有製造，才想要有名字</h2>
+      <p>明基的前身是宏碁的周邊產品事業，長年替人做鍵盤、掃描器、顯示器。獨立成為品牌，是一次從幕後走到幕前的嘗試。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">1984 年</div>
+        <h3>作為宏碁的周邊事業成立</h3>
+        <p>早期以鍵盤、掃描器、顯示器等電腦周邊產品的製造為主，是宏碁集團底下負責周邊裝置的一塊。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2001 年</div>
+        <h3>啟用 BenQ 品牌，脫離宏碁獨立</h3>
+        <p>在宏碁集團重整的同一波動作中獨立出來，改以全新的自有品牌經營，與同時分割出去的緯創走向不同方向。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2000 年代前期</div>
+        <h3>快速擴張產品線</h3>
+        <p>從顯示器與投影機出發，陸續跨入數位相機、手機等消費性電子產品，試圖在多個品類建立品牌聲量。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2005 年</div>
+        <h3>併購西門子手機事業</h3>
+        <p>為了一舉取得手機市場的規模與技術，明基接手德國西門子的手機部門，是當時台灣企業最受矚目的跨國併購之一。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">從幕後走到幕前</text>
+
+        <rect x="40" y="52" width="330" height="128" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="205" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">2001 年之前</text>
+        <text x="205" y="104" text-anchor="middle" font-size="10.5" fill="var(--muted)">宏碁集團的周邊事業單位</text>
+        <text x="205" y="126" text-anchor="middle" font-size="10.5" fill="var(--muted)">做鍵盤、掃描器、顯示器</text>
+        <text x="205" y="150" text-anchor="middle" font-size="10" fill="var(--muted)">產品掛別人的名字出貨</text>
+        <text x="205" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">擅長製造，但沒有自己的臉</text>
+
+        <rect x="530" y="52" width="330" height="128" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="695" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">2001 年之後</text>
+        <text x="695" y="104" text-anchor="middle" font-size="10.5" fill="var(--ink)">啟用 BenQ 自有品牌</text>
+        <text x="695" y="126" text-anchor="middle" font-size="10.5" fill="var(--ink)">直接面對消費者銷售</text>
+        <text x="695" y="150" text-anchor="middle" font-size="10" fill="var(--ink)">要自己建立知名度與通路</text>
+        <text x="695" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">從製造思維切換到品牌思維</text>
+
+        <line x1="370" y1="116" x2="526" y2="116" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-bq1)"/>
+        <defs><marker id="arrow-bq1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+        <text x="448" y="106" text-anchor="middle" font-size="9.5" fill="var(--muted)">品牌獨立</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">從代工轉品牌最難的不是做出產品，而是原本不必面對的所有事——</text>
+        <text x="450" y="234" text-anchor="middle" font-size="11" fill="var(--muted)">通路怎麼鋪、廣告怎麼打、消費者為什麼要記得你的名字。</text>
+        <text x="450" y="254" text-anchor="middle" font-size="10.5" fill="var(--muted)">明基選擇用「快速擴張品類」的方式建立聲量。</text>
+      </svg>
+      <p class="cap">獨立成為品牌，意味著要從零建立消費者認知——這正是明基後續一連串動作的出發點。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　西門子手機案</div>
+      <h2>台灣企業史上最貴的一堂課</h2>
+      <p>2005 年接手西門子手機部門，是明基希望一次補齊規模、技術與品牌的豪賭。結果證明，併購能買到資產，卻買不到把它們轉虧為盈的能力。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">併購邏輯</div>
+        <h3>一次補齊三件事</h3>
+        <p>手機市場當時規模龐大，透過併購可以同時取得出貨規模、專利技術與歐洲市場的品牌通路，比自己慢慢做快得多。</p>
+      </div>
+      <div class="card">
+        <div class="tag">關鍵問題</div>
+        <h3>接手的是一個虧損中的事業</h3>
+        <p>西門子的手機部門當時已處於虧損狀態，明基買下的是一個需要立刻止血、而非可以直接收割的資產。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結果</div>
+        <h3>德國子公司於 2006 年聲請破產</h3>
+        <p>成本結構與虧損幅度超出負荷，德國的手機子公司在併購後約一年即聲請破產保護，明基承受了鉅額損失。</p>
+      </div>
+      <div class="card">
+        <div class="tag">教訓</div>
+        <h3>買得到資產，買不到體質</h3>
+        <p>這樁案例常被引用來說明：跨國併購真正的難點不在交易本身，而在併購後能否重整成本結構與組織文化。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 285" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">併購買到了什麼，沒買到什麼</text>
+
+        <rect x="40" y="48" width="370" height="152" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">買到的</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">手機出貨規模與市占</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">專利技術與研發團隊</text>
+        <text x="225" y="144" text-anchor="middle" font-size="10.5" fill="var(--ink)">歐洲市場的品牌與通路</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">這些都是自己從頭做要花很多年的東西</text>
+        <text x="225" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">看起來是一次划算的捷徑</text>
+
+        <rect x="490" y="48" width="370" height="152" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">沒買到的</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">可以獲利的成本結構</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">重整組織與人事的空間</text>
+        <text x="675" y="144" text-anchor="middle" font-size="10.5" fill="var(--muted)">跨文化整合團隊的能力</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">接手的是正在虧損、且難以快速調整的事業</text>
+        <text x="675" y="190" text-anchor="middle" font-size="10" fill="var(--muted)">資產愈大，止血的難度也愈大</text>
+
+        <line x1="410" y1="124" x2="486" y2="124" stroke="var(--bad)" stroke-width="2.5" marker-end="url(#arrow-bq2)"/>
+        <defs><marker id="arrow-bq2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--bad)"/></marker></defs>
+
+        <rect x="180" y="216" width="540" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="244" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">2006 年，德國手機子公司聲請破產保護</text>
+
+        <text x="450" y="280" text-anchor="middle" font-size="11" fill="var(--muted)">併購的成敗往往不在簽約那一天決定，而在接手之後的十二個月。</text>
+      </svg>
+      <p class="cap">這樁併購買到的都是看得見的資產，真正缺的那一項——把虧損事業轉正的能力——沒有辦法用錢買。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　第三次分家</div>
+      <h2>同一個劇本，台灣演了三次</h2>
+      <p>2007 年，明基把製造業務分割為佳世達，自己保留品牌——這正是宏碁與華碩先後做過的同一件事。三次分家橫跨七年，出自三家不同的公司。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">台灣硬體業的三次品牌／代工分家</text>
+
+        <rect x="25" y="48" width="270" height="118" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="160" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">2001 年</text>
+        <rect x="55" y="88" width="100" height="36" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="105" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">宏碁</text>
+        <rect x="165" y="88" width="100" height="36" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="215" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">緯創</text>
+        <text x="160" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">品牌留下，代工分出</text>
+
+        <rect x="315" y="48" width="270" height="118" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">2007 年</text>
+        <rect x="345" y="88" width="100" height="36" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="395" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">明基</text>
+        <rect x="455" y="88" width="100" height="36" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="505" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">佳世達</text>
+        <text x="450" y="146" text-anchor="middle" font-size="10" fill="var(--ink)">品牌留下，代工分出</text>
+
+        <rect x="605" y="48" width="270" height="118" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="740" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">2008 - 2010 年</text>
+        <rect x="635" y="88" width="100" height="36" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="685" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">華碩</text>
+        <rect x="745" y="88" width="100" height="36" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="795" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">和碩</text>
+        <text x="740" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">品牌留下，代工分出</text>
+
+        <rect x="150" y="192" width="600" height="52" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="216" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">三家公司、七年之內，做出完全相同的切割</text>
+        <text x="450" y="235" text-anchor="middle" font-size="10.5" fill="var(--muted)">理由也一致：品牌與代工放在同一家公司，會讓客戶不敢下單</text>
+
+        <text x="450" y="268" text-anchor="middle" font-size="11" fill="var(--muted)">當三家獨立的公司先後做出同樣的選擇，那就不是巧合或模仿，而是產業結構逼出來的答案。</text>
+        <text x="450" y="286" text-anchor="middle" font-size="10.5" fill="var(--muted)">用微笑曲線來看：兩端與谷底，本來就該由不同的公司去站。</text>
+      </svg>
+      <p class="cap">宏碁、明基、華碩先後把品牌與代工拆開，是台灣硬體業最具規律性的一種組織演化。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">明基</div>
+        <h3>留下品牌與產品定義</h3>
+        <p>專注在顯示器、投影機等自有品牌產品的規劃、設計與通路經營，直接面對消費者。</p>
+      </div>
+      <div class="card">
+        <div class="tag">佳世達</div>
+        <h3>承接製造與代工業務</h3>
+        <p>取得原本的製造能量，以代工身分服務各方客戶，不再受限於集團自有品牌的角色衝突。</p>
+      </div>
+      <div class="card">
+        <div class="tag">集團關係</div>
+        <h3>明基友達集團的架構</h3>
+        <p>明基、佳世達與面板廠友達光電同屬一個集團體系，在顯示相關產業鏈上各自占據不同位置。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　重新聚焦</div>
+      <h2>從什麼都做，到把一件事做好</h2>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>面向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>投影機</td><td>經歷手機挫敗後聚焦的重點產品線之一，在全球投影機市場建立起相當的品牌地位與市占。</td></tr>
+        <tr><td>顯示器</td><td>延續自周邊事業時代的老本行，涵蓋一般與電競、專業繪圖等不同用途的螢幕產品。</td></tr>
+        <tr><td>商用與教育顯示</td><td>切入會議室、教室等商用情境的互動顯示與投影方案，屬於單價與黏著度較高的市場。</td></tr>
+        <tr><td>生活與健康產品</td><td>延伸至照明、健康相關的消費產品，是品牌多角化的嘗試。</td></tr>
+        <tr><td>集團其他事業</td><td>明基友達集團體系也涵蓋醫療、材料等領域，各自由不同公司經營。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩種品牌策略</text>
+
+        <rect x="40" y="48" width="370" height="146" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--bad)">早期：靠品類數量衝聲量</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">顯示器、投影機、相機、手機同時做</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">每個品類都要投入行銷與通路</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">資源被攤薄，難有絕對強項</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--muted)">手機的挫敗把這條路的風險放到最大</text>
+
+        <rect x="490" y="48" width="370" height="146" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">之後：收斂到自己真的強的地方</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">聚焦投影機與顯示相關產品</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">沿用周邊事業時代累積的光學與製造底子</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">在特定品類做到全球前列</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">品牌辨識度反而比什麼都做時更清楚</text>
+
+        <line x1="410" y1="120" x2="486" y2="120" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-bq4)"/>
+        <defs><marker id="arrow-bq4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="226" text-anchor="middle" font-size="11" fill="var(--muted)">品牌資源有限，鋪得愈廣，每一處就愈薄；收斂看似退守，卻讓消費者終於記得住你擅長什麼。</text>
+        <text x="450" y="246" text-anchor="middle" font-size="11" fill="var(--muted)">這與華碩靠 ROG 鎖定單一客群的邏輯是同一件事。</text>
+        <text x="450" y="264" text-anchor="middle" font-size="10.5" fill="var(--muted)">差別只在於，明基是繞了一大圈、付出代價之後才走到這一步。</text>
+      </svg>
+      <p class="cap">收斂產品線不是保守，而是讓有限的品牌資源集中到能贏的地方。</p>
+    </div>
+
+    <div class="quote">明基的故事在這個資料夾裡是最坎坷的一條線：它想用併購一步登天，結果摔得最重。但它也證明了另一件事——跌倒之後把戰線收回來、專心把投影機這類事情做到全球前列，同樣是一條走得通的路。不是每家公司都需要很大，但每家公司都需要知道自己強在哪裡。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為明基（BenQ）公司歷史、併購事件與品牌策略之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以明基官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
