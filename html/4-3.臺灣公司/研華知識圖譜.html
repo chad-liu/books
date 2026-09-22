@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>研華科技（Advantech）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1F2EE; --surface:#FFFFFF; --surface-2:#E4E6DB; --line:#D0D5BE;
+  --ink:#1E2112; --muted:#59603E;
+  --accent:#62741B; --accent-deep:#38430F; --accent-soft:#E7EECE; --band:#38430F;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --violet:#5D4A8C; --violet-soft:#E9E3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#171811; --surface:#22231A; --surface-2:#2C2F23; --line:#454937;
+    --ink:#EDEFE7; --muted:#B0B49C;
+    --accent:#BBD161; --accent-deep:#DEEAAE; --accent-soft:#30351D;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --violet:#B6A4E0; --violet-soft:#2C2440;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#171811; --surface:#22231A; --surface-2:#2C2F23; --line:#454937;
+  --ink:#EDEFE7; --muted:#B0B49C;
+  --accent:#BBD161; --accent-deep:#DEEAAE; --accent-soft:#30351D;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --violet:#B6A4E0; --violet-soft:#2C2440;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #141807 100%);color:#F0F3E4;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#D3DFA4;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E6EDD2;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#D3DFA4;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#D3DFA4;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 工業電腦產業</div>
+    <h1>研華科技（Advantech）知識圖譜</h1>
+    <p class="sub">1983 年創立的台灣工業電腦大廠，在一個以代工為主流的產業環境裡，選了一條少見的路——做自有品牌、走少量多樣。它的電腦不放在辦公桌上，而是裝在工廠產線、醫療設備、自助機台與交通號誌裡，一裝就是十年。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1983</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">自有品牌</div><div class="l">而非代工路線</div></div>
+      <div class="stat"><div class="n">少量多樣</div><div class="l">與消費電子相反的邏輯</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與經營路線</div>
+      <h2>在代工王國裡，選了品牌這條路</h2>
+      <p>台灣多數硬體廠靠規模代工壯大，研華卻反其道而行——不追求出貨量，而是靠品牌、通路與產品廣度撐起相對優渥的毛利結構。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1983 年由劉克振等人創立</h3>
+        <p>創業初期投入工業用電腦板卡與相關產品，鎖定的是工廠與設備商，而非一般消費者市場。</p>
+      </div>
+      <div class="card">
+        <div class="tag">路線選擇</div>
+        <h3>堅持自有品牌</h3>
+        <p>在台灣硬體業普遍以代工為主的年代選擇經營自有品牌，直接面對終端客戶與通路，是相對少數的作法。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構差異</div>
+        <h3>毛利結構與消費電子截然不同</h3>
+        <p>工業電腦單價高、出貨量小、客戶轉換成本高，使其毛利率明顯高於以量取勝的消費性電子代工業務。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩條路線，兩種獲利結構</text>
+
+        <rect x="50" y="46" width="360" height="158" rx="12" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="230" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">代工路線</text>
+        <text x="230" y="96" text-anchor="middle" font-size="10.5" fill="var(--muted)">台灣硬體業的主流模式</text>
+        <text x="230" y="118" text-anchor="middle" font-size="10.5" fill="var(--muted)">出貨量極大、品項集中</text>
+        <text x="230" y="140" text-anchor="middle" font-size="10.5" fill="var(--muted)">客戶是少數品牌大廠</text>
+        <text x="230" y="166" text-anchor="middle" font-size="10" fill="var(--muted)">靠規模攤平成本，單位毛利薄，</text>
+        <text x="230" y="184" text-anchor="middle" font-size="10" fill="var(--muted)">議價能力掌握在客戶手上</text>
+
+        <rect x="490" y="46" width="360" height="158" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="670" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">品牌路線（研華）</text>
+        <text x="670" y="96" text-anchor="middle" font-size="10.5" fill="var(--ink)">自有品牌，直接面對終端客戶</text>
+        <text x="670" y="118" text-anchor="middle" font-size="10.5" fill="var(--ink)">出貨量小、品項極多</text>
+        <text x="670" y="140" text-anchor="middle" font-size="10.5" fill="var(--ink)">客戶是大量分散的設備商與工廠</text>
+        <text x="670" y="166" text-anchor="middle" font-size="10" fill="var(--ink)">靠產品廣度與轉換成本撐住價格，</text>
+        <text x="670" y="184" text-anchor="middle" font-size="10" fill="var(--ink)">毛利率明顯較高</text>
+
+        <text x="450" y="234" text-anchor="middle" font-size="11" fill="var(--muted)">代工要的是「一種產品做到最便宜」，品牌要的是「很多種產品都有貨」——</text>
+        <text x="450" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">兩者需要的組織能力、庫存策略與客戶關係完全不同，很難在同一家公司裡並存。</text>
+      </svg>
+      <p class="cap">同樣做硬體，研華與廣達、鴻海走的是結構上相反的兩條路。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　核心業務：工業電腦</div>
+      <h2>跟你桌上那台，完全是兩回事</h2>
+      <p>工業電腦與消費電腦最大的差別不在效能，而在使用環境與生命週期——這兩件事決定了整個產業的遊戲規則。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">使用環境</div>
+        <h3>裝在工廠、醫院與戶外</h3>
+        <p>要能承受高溫、低溫、粉塵、震動與電源不穩，這些在辦公室裡不存在的條件，是工業電腦的基本設計前提。</p>
+      </div>
+      <div class="card">
+        <div class="tag">生命週期</div>
+        <h3>一裝十年，還要買得到同一型</h3>
+        <p>產線設備不會每兩年換一次，客戶要求同規格產品長期供應，這讓零件選用與庫存管理的難度遠高於消費電子。</p>
+      </div>
+      <div class="card">
+        <div class="tag">出貨型態</div>
+        <h3>少量多樣</h3>
+        <p>單一型號可能只出貨數百台，但型號數量極多。這種結構無法靠大量生產壓低成本，卻也讓價格競爭沒那麼殘酷。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 285" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">工業電腦 vs 消費電腦</text>
+
+        <rect x="30" y="46" width="150" height="44" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <rect x="190" y="46" width="330" height="44" rx="8" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="355" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">消費電腦</text>
+        <rect x="530" y="46" width="340" height="44" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="700" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">工業電腦（研華的領域）</text>
+
+        <rect x="30" y="98" width="150" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="105" y="126" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">使用環境</text>
+        <rect x="190" y="98" width="330" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="355" y="126" text-anchor="middle" font-size="11" fill="var(--ink)">室內、恆溫、乾淨</text>
+        <rect x="530" y="98" width="340" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="700" y="126" text-anchor="middle" font-size="11" fill="var(--ink)">高低溫、粉塵、震動、電源不穩</text>
+
+        <rect x="30" y="152" width="150" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="105" y="180" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">生命週期</text>
+        <rect x="190" y="152" width="330" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="355" y="180" text-anchor="middle" font-size="11" fill="var(--ink)">兩三年換機，舊型很快停產</text>
+        <rect x="530" y="152" width="340" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="700" y="180" text-anchor="middle" font-size="11" fill="var(--ink)">十年以上，同規格需長期供應</text>
+
+        <rect x="30" y="206" width="150" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="105" y="234" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">出貨結構</text>
+        <rect x="190" y="206" width="330" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="355" y="234" text-anchor="middle" font-size="11" fill="var(--ink)">少數型號、每款出貨百萬台</text>
+        <rect x="530" y="206" width="340" height="46" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="700" y="234" text-anchor="middle" font-size="11" fill="var(--ink)">型號極多、每款可能只出數百台</text>
+
+        <text x="450" y="276" text-anchor="middle" font-size="11" fill="var(--muted)">正因為換機成本高、規格又得長期供應，客戶一旦選定就不容易更換供應商——這是這門生意的護城河。</text>
+      </svg>
+      <p class="cap">工業電腦比的不是效能規格，而是耐不耐操、供不供得久、型號齊不齊。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　事業版圖與應用場景</div>
+      <h2>藏在各行各業裡的電腦</h2>
+      <p>研華的產品線橫跨從單一板卡到整機系統，並依不同產業的需求發展出各自的專用機種。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>產品／面向</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>嵌入式板卡與模組</td><td>提供設備商作為產品內部的運算核心，由客戶整合進自己的機器裡，是研華最基礎的產品層次。</td></tr>
+        <tr><td>工業電腦整機</td><td>機箱式、無風扇、面板式等各類完整電腦系統，可直接部署在產線或設備現場。</td></tr>
+        <tr><td>產業專用系統</td><td>依醫療、零售、交通、能源等不同產業的規範與使用情境，發展各自的專用機種與配套。</td></tr>
+        <tr><td>物聯網與邊緣運算</td><td>將現場設備的數據蒐集、傳輸與就地運算整合起來，是近年從硬體往解決方案延伸的重點方向。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">從一塊板子到一整套系統</text>
+
+        <rect x="35" y="50" width="195" height="96" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="132" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">嵌入式板卡</text>
+        <text x="132" y="98" text-anchor="middle" font-size="10" fill="var(--muted)">只賣運算核心</text>
+        <text x="132" y="117" text-anchor="middle" font-size="10" fill="var(--muted)">由客戶自行整合</text>
+        <text x="132" y="136" text-anchor="middle" font-size="9.5" fill="var(--muted)">附加價值最低</text>
+
+        <rect x="252" y="50" width="195" height="96" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="349" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">工業電腦整機</text>
+        <text x="349" y="98" text-anchor="middle" font-size="10" fill="var(--ink)">無風扇、面板式等</text>
+        <text x="349" y="117" text-anchor="middle" font-size="10" fill="var(--ink)">可直接部署到現場</text>
+        <text x="349" y="136" text-anchor="middle" font-size="9.5" fill="var(--ink)">研華的核心產品</text>
+
+        <rect x="469" y="50" width="195" height="96" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="566" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">產業專用系統</text>
+        <text x="566" y="98" text-anchor="middle" font-size="10" fill="var(--ink)">醫療、零售、交通</text>
+        <text x="566" y="117" text-anchor="middle" font-size="10" fill="var(--ink)">符合各產業規範</text>
+        <text x="566" y="136" text-anchor="middle" font-size="9.5" fill="var(--ink)">需要領域知識</text>
+
+        <rect x="686" y="44" width="184" height="108" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="778" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">物聯網解決方案</text>
+        <text x="778" y="92" text-anchor="middle" font-size="10" fill="var(--ink)">數據蒐集與邊緣運算</text>
+        <text x="778" y="111" text-anchor="middle" font-size="10" fill="var(--ink)">硬體＋軟體＋服務</text>
+        <text x="778" y="130" text-anchor="middle" font-size="9.5" fill="var(--ink)">附加價值最高</text>
+        <text x="778" y="146" text-anchor="middle" font-size="9.5" fill="var(--ink)">近年發展重點</text>
+
+        <line x1="230" y1="98" x2="250" y2="98" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-adv3)"/>
+        <line x1="447" y1="98" x2="467" y2="98" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-adv3)"/>
+        <line x1="664" y1="98" x2="684" y2="98" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-adv3)"/>
+        <defs><marker id="arrow-adv3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <line x1="35" y1="172" x2="870" y2="172" stroke="var(--accent)" stroke-width="2"/>
+        <line x1="35" y1="166" x2="35" y2="178" stroke="var(--accent)" stroke-width="2"/>
+        <line x1="870" y1="166" x2="870" y2="178" stroke="var(--accent)" stroke-width="2"/>
+        <text x="452" y="194" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">愈往右，愈需要懂客戶的產業，而不只是懂硬體</text>
+        <text x="450" y="232" text-anchor="middle" font-size="11" fill="var(--muted)">往右走能提高附加價值，但也意味著必須理解醫院怎麼運作、零售現場有什麼限制、</text>
+        <text x="450" y="250" text-anchor="middle" font-size="11" fill="var(--muted)">工廠的產線如何排程——這些是硬體規格表上讀不到的知識。</text>
+        <text x="450" y="270" text-anchor="middle" font-size="10.5" fill="var(--muted)">這也是研華近年強調與各領域夥伴合作的原因。</text>
+      </svg>
+      <p class="cap">產品階梯愈往上，賣的就愈不是硬體本身，而是對某個產業的理解。</p>
+    </div>
+
+    <div class="section-head" style="margin-top:36px;">
+      <h2 style="font-size:1.2rem;">主要應用場景</h2>
+    </div>
+    <div class="tag-row">
+      <span>工廠自動化與產線設備</span><span>醫療儀器與院內系統</span><span>零售與自助服務機台</span><span>交通與車載系統</span><span>能源與環境監控</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　經營模式與挑戰</div>
+      <h2>從賣硬體，到賣「懂這個產業」</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">護城河</div>
+        <h3>客戶轉換成本高</h3>
+        <p>設備一旦導入就要用上多年，更換供應商牽涉重新驗證與整合，使既有客戶關係相對穩固，也支撐了價格。</p>
+      </div>
+      <div class="card">
+        <div class="tag">經營模式</div>
+        <h3>與領域夥伴共同開發</h3>
+        <p>面對醫療、零售、交通等差異極大的產業，研華近年強調與熟悉各領域的夥伴合作開發解決方案，而非全部自己做。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構挑戰</div>
+        <h3>少量多樣帶來的管理負擔</h3>
+        <p>型號數量龐大、每款出貨量小，使得零件採購、庫存管理與長期供應承諾的複雜度遠高於單一產品的大量生產。</p>
+      </div>
+      <div class="card">
+        <div class="tag">轉型課題</div>
+        <h3>軟體與服務能力的補強</h3>
+        <p>往物聯網與解決方案延伸，需要的是軟體、雲端與產業知識，這與硬體公司原本擅長的能力並不相同。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 265" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">解決方案為什麼要找夥伴一起做</text>
+
+        <rect x="310" y="44" width="280" height="54" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="68" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">研華</text>
+        <text x="450" y="88" text-anchor="middle" font-size="10.5" fill="var(--ink)">硬體、平台與長期供應能力</text>
+
+        <line x1="450" y1="98" x2="450" y2="116" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="160" y1="116" x2="740" y2="116" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="160" y1="116" x2="160" y2="136" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-adv4)"/>
+        <line x1="450" y1="116" x2="450" y2="136" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-adv4)"/>
+        <line x1="740" y1="116" x2="740" y2="136" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-adv4)"/>
+        <defs><marker id="arrow-adv4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="35" y="140" width="250" height="76" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="160" y="166" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">醫療領域夥伴</text>
+        <text x="160" y="188" text-anchor="middle" font-size="10" fill="var(--muted)">懂院內流程與法規</text>
+        <text x="160" y="206" text-anchor="middle" font-size="10" fill="var(--muted)">研華不具備的知識</text>
+
+        <rect x="325" y="140" width="250" height="76" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="450" y="166" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">零售領域夥伴</text>
+        <text x="450" y="188" text-anchor="middle" font-size="10" fill="var(--muted)">懂門市現場與結帳流程</text>
+        <text x="450" y="206" text-anchor="middle" font-size="10" fill="var(--muted)">需求與醫療完全不同</text>
+
+        <rect x="615" y="140" width="250" height="76" rx="10" fill="var(--violet-soft)" stroke="var(--violet)" stroke-width="1.5"/>
+        <text x="740" y="166" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">交通領域夥伴</text>
+        <text x="740" y="188" text-anchor="middle" font-size="10" fill="var(--muted)">懂車載與號誌系統</text>
+        <text x="740" y="206" text-anchor="middle" font-size="10" fill="var(--muted)">各有各的規範</text>
+
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">每個產業的規範、流程與痛點都不一樣，一家硬體公司不可能全部自己摸透；</text>
+        <text x="450" y="260" text-anchor="middle" font-size="11" fill="var(--muted)">與其自建，不如把平台開放給真正懂那個產業的人，一起把方案做出來。</text>
+      </svg>
+      <p class="cap">往解決方案走的最大障礙不是技術，而是領域知識——這也是研華選擇合作而非自建的原因。</p>
+    </div>
+
+    <div class="quote">研華的產品幾乎不會被消費者看見——它在工廠的控制櫃裡、在醫院的推車上、在便利商店的自助機台後面。這門生意不靠爆款，而靠「十年後你還買得到同一型」這種聽起來很無趣、卻極難做到的承諾。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為研華科技（Advantech）公司歷史、經營模式與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以研華科技官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
