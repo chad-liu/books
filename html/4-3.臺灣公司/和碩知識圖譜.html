@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>和碩聯合科技（Pegatron）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F2F1EE; --surface:#FFFFFF; --surface-2:#E6E5DB; --line:#D5D3BE;
+  --ink:#212012; --muted:#5F5C3A;
+  --accent:#716914; --accent-deep:#423D0B; --accent-soft:#EEEBC9; --band:#423D0B;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2E7D7A; --teal-soft:#DCF0EE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#181711; --surface:#23231A; --surface-2:#2F2E23; --line:#494737;
+    --ink:#EFEEE7; --muted:#B4B29C;
+    --accent:#D4CA5E; --accent-deep:#EBE5AD; --accent-soft:#36341C;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#7FCBC5; --teal-soft:#173330;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#181711; --surface:#23231A; --surface-2:#2F2E23; --line:#494737;
+  --ink:#EFEEE7; --muted:#B4B29C;
+  --accent:#D4CA5E; --accent-deep:#EBE5AD; --accent-soft:#36341C;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#7FCBC5; --teal-soft:#173330;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #161404 100%);color:#F5F3E4;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#DCD7A6;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#ECE9D2;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#DCD7A6;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#DCD7A6;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 資訊硬體代工</div>
+    <h1>和碩聯合科技（Pegatron）知識圖譜</h1>
+    <p class="sub">台灣第二場「品牌與代工分家」的產物——2008 年華碩啟動組織分割，把代工業務切出來成立和碩，理由與七年前宏碁分出緯創如出一轍。獨立之後，它最大的一塊生意並不是筆電，而是消費性電子組裝，其中又以蘋果產品的比重最受矚目。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">2008 - 2010</div><div class="l">自華碩分割獨立</div></div>
+      <div class="stat"><div class="n">四大家之一</div><div class="l">台灣筆電代工</div></div>
+      <div class="stat"><div class="n">消費電子</div><div class="l">實際比重最高的業務</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　從華碩分家</div>
+      <h2>同一個劇本，演了第二次</h2>
+      <p>2001 年宏碁分出緯創，2008 年華碩分出和碩——兩次分家的理由幾乎一模一樣，這說明它不是個案，而是這個產業的結構性規律。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">分家之前</div>
+        <h3>華碩同時是品牌商與代工廠</h3>
+        <p>華碩既有自有品牌的主機板與筆電，也替其他國際品牌代工，與宏碁當年面臨的是同一種角色衝突。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2008 年</div>
+        <h3>宣布品牌與代工分割</h3>
+        <p>華碩啟動組織重整，將代工製造業務分割出去，讓品牌與代工分屬不同公司，以消除客戶的疑慮。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2010 年</div>
+        <h3>和碩正式獨立掛牌</h3>
+        <p>分割後的和碩聯合科技完成獨立並掛牌交易，由童子賢擔任董事長，華碩則專注於自有品牌經營。</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">分家之後</div>
+        <h3>業務重心轉向消費性電子組裝</h3>
+        <p>獨立後的和碩承接大量消費性電子產品的組裝訂單，這塊業務的規模逐漸超越原本的筆電代工。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩次分家，同一個理由</text>
+
+        <rect x="40" y="48" width="370" height="130" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">2001 年</text>
+        <rect x="80" y="88" width="140" height="40" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="150" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">宏碁</text>
+        <rect x="230" y="88" width="140" height="40" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="300" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">緯創</text>
+        <text x="225" y="150" text-anchor="middle" font-size="10.5" fill="var(--muted)">品牌留在宏碁，代工分給緯創</text>
+        <text x="225" y="168" text-anchor="middle" font-size="10" fill="var(--muted)">台灣第一場品牌與代工分家</text>
+
+        <rect x="490" y="48" width="370" height="130" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">2008 - 2010 年</text>
+        <rect x="530" y="88" width="140" height="40" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="600" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">華碩</text>
+        <rect x="680" y="88" width="140" height="40" rx="8" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="750" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">和碩</text>
+        <text x="675" y="150" text-anchor="middle" font-size="10.5" fill="var(--ink)">品牌留在華碩，代工分給和碩</text>
+        <text x="675" y="168" text-anchor="middle" font-size="10" fill="var(--ink)">七年後，同一個劇本再演一次</text>
+
+        <line x1="150" y1="128" x2="150" y2="140" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="300" y1="128" x2="300" y2="140" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="600" y1="128" x2="600" y2="140" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="750" y1="128" x2="750" y2="140" stroke="var(--muted)" stroke-width="2"/>
+
+        <rect x="150" y="204" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="232" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">共同理由：沒有品牌，才接得到所有品牌的單</text>
+
+        <text x="450" y="268" text-anchor="middle" font-size="11" fill="var(--muted)">兩家台灣品牌先後做出同樣的切割，說明這不是個別公司的選擇，而是代工這門生意的結構性要求。</text>
+      </svg>
+      <p class="cap">宏碁與華碩先後走上同一條路，把品牌與代工拆開，是台灣硬體業最具代表性的兩次組織手術。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　核心業務：消費性電子組裝</div>
+      <h2>名義上是筆電四大家，實際重心在別處</h2>
+      <p>和碩雖被歸類在筆電代工四大家，但獨立之後真正撐起營收的是消費性電子產品的組裝，特別是智慧型手機。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>業務領域</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>消費性電子組裝</td><td>智慧型手機等消費產品的組裝業務規模龐大，是獨立後營收占比最高的一塊，其中蘋果相關產品備受關注。</td></tr>
+        <tr><td>筆記型電腦</td><td>承接自華碩時代的代工本業，仍是四大家之一，但在整體營收中的比重已不如消費電子。</td></tr>
+        <tr><td>主機板與零組件</td><td>延續華碩體系在主機板領域的製造基礎，供應品牌與通路市場。</td></tr>
+        <tr><td>車用電子與通訊</td><td>近年布局的新方向，希望把既有製造能力延伸到毛利結構較好的領域。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">手機組裝廠在供應鏈中的位置</text>
+
+        <rect x="25" y="58" width="195" height="76" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="122" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">品牌廠</text>
+        <text x="122" y="105" text-anchor="middle" font-size="10" fill="var(--muted)">定義產品與規格</text>
+        <text x="122" y="122" text-anchor="middle" font-size="10" fill="var(--muted)">掌握設計與定價</text>
+
+        <rect x="255" y="58" width="195" height="76" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="352" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">零組件供應商</text>
+        <text x="352" y="105" text-anchor="middle" font-size="10" fill="var(--muted)">晶片、面板、鏡頭</text>
+        <text x="352" y="122" text-anchor="middle" font-size="10" fill="var(--muted)">電池、被動元件</text>
+
+        <rect x="485" y="52" width="195" height="88" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="582" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">組裝廠</text>
+        <text x="582" y="99" text-anchor="middle" font-size="10" fill="var(--ink)">和碩、鴻海等</text>
+        <text x="582" y="117" text-anchor="middle" font-size="10" fill="var(--ink)">把數百個零件組成成品</text>
+        <text x="582" y="133" text-anchor="middle" font-size="9.5" fill="var(--ink)">承擔良率與交期壓力</text>
+
+        <rect x="715" y="58" width="160" height="76" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="795" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">消費者</text>
+        <text x="795" y="105" text-anchor="middle" font-size="10" fill="var(--muted)">買到的是品牌</text>
+
+        <line x1="220" y1="96" x2="253" y2="96" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-pg2)"/>
+        <line x1="450" y1="96" x2="483" y2="96" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-pg2)"/>
+        <line x1="680" y1="96" x2="713" y2="96" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-pg2)"/>
+        <defs><marker id="arrow-pg2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="150" y="168" width="600" height="54" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="191" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">組裝是價值鏈上最靠近成品、卻未必最賺錢的一段</text>
+        <text x="450" y="210" text-anchor="middle" font-size="10.5" fill="var(--muted)">關鍵零件的價值由供應商拿走，品牌與通路的溢價由品牌廠拿走</text>
+
+        <text x="450" y="250" text-anchor="middle" font-size="11" fill="var(--muted)">組裝廠的本事在於：在極短時間內把數千萬台產品做出來、良率穩定、準時交貨——難，但不容易賣到高價。</text>
+      </svg>
+      <p class="cap">組裝這一段的門檻在規模與紀律，而不在技術獨佔性，這決定了它的議價空間。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　客戶集中度的兩面</div>
+      <h2>大客戶是靠山，也是風險</h2>
+      <p>能拿到全球最大消費電子品牌的訂單是實力證明，但當單一客戶占比過高，公司的命運就與對方的產品週期緊緊綁在一起。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">正面</div>
+        <h3>訂單規模與技術門檻</h3>
+        <p>能承接頂級品牌的大量訂單，代表其製造良率、保密管理與量產爬坡能力通過了最嚴格的檢驗，本身就是門檻。</p>
+      </div>
+      <div class="card">
+        <div class="tag">正面</div>
+        <h3>穩定的產能利用率</h3>
+        <p>大客戶的長期訂單能填滿產線，讓龐大的廠房與人力投資得以攤提，這是小客戶拼湊不出來的規模效益。</p>
+      </div>
+      <div class="card">
+        <div class="tag">風險</div>
+        <h3>議價能力被壓縮</h3>
+        <p>當營收高度依賴少數客戶，價格談判的主導權就不在自己手上，毛利率長期被壓在偏低的水準。</p>
+      </div>
+      <div class="card">
+        <div class="tag">風險</div>
+        <h3>訂單調整的衝擊被放大</h3>
+        <p>客戶若調整供應商分配或產品策略，對高度集中的代工廠而言，影響會直接反映在營收與產能利用率上。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 265" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">同一件事的兩面</text>
+
+        <rect x="310" y="44" width="280" height="50" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="66" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">高度依賴少數大客戶</text>
+        <text x="450" y="85" text-anchor="middle" font-size="10.5" fill="var(--ink)">營收集中在頂級品牌的訂單上</text>
+
+        <line x1="450" y1="94" x2="450" y2="112" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="230" y1="112" x2="670" y2="112" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="230" y1="112" x2="230" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-pg3)"/>
+        <line x1="670" y1="112" x2="670" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-pg3)"/>
+        <defs><marker id="arrow-pg3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="70" y="136" width="320" height="86" rx="10" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/>
+        <text x="230" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)">靠山</text>
+        <text x="230" y="184" text-anchor="middle" font-size="10.5" fill="var(--muted)">龐大且穩定的訂單填滿產線</text>
+        <text x="230" y="202" text-anchor="middle" font-size="10.5" fill="var(--muted)">通過最嚴格檢驗的製造能力</text>
+        <text x="230" y="218" text-anchor="middle" font-size="9.5" fill="var(--muted)">本身就是進入門檻</text>
+
+        <rect x="510" y="136" width="320" height="86" rx="10" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="2"/>
+        <text x="670" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">風險</text>
+        <text x="670" y="184" text-anchor="middle" font-size="10.5" fill="var(--muted)">價格談判的主導權不在自己手上</text>
+        <text x="670" y="202" text-anchor="middle" font-size="10.5" fill="var(--muted)">客戶調整策略時衝擊被放大</text>
+        <text x="670" y="218" text-anchor="middle" font-size="9.5" fill="var(--muted)">毛利率長期受壓</text>
+
+        <text x="450" y="252" text-anchor="middle" font-size="11" fill="var(--muted)">這不是和碩獨有的處境——鴻海同樣面對客戶集中的課題，差別只在規模與分散的程度。</text>
+      </svg>
+      <p class="cap">大客戶帶來的穩定與脆弱是同一枚硬幣的兩面，無法只取其中一邊。</p>
+    </div>
+
+    <div class="section-head" style="margin-top:36px;">
+      <h2 style="font-size:1.2rem;">主要業務領域</h2>
+    </div>
+    <div class="tag-row">
+      <span>智慧型手機組裝</span><span>筆記型電腦代工</span><span>主機板與零組件</span><span>車用電子</span><span>通訊與網通產品</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　地緣布局與轉型</div>
+      <h2>把工廠搬去哪裡，也成了策略問題</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">地緣布局</div>
+        <h3>生產基地的分散要求</h3>
+        <p>受中美貿易情勢與客戶供應鏈韌性考量影響，組裝廠被要求在中國以外增設產能，印度、東南亞成為主要選項。</p>
+      </div>
+      <div class="card">
+        <div class="tag">取捨</div>
+        <h3>分散布局推高單位成本</h3>
+        <p>新廠區的人力訓練、供應鏈配套與良率爬坡都需要時間，短期內難免影響效率，卻是客戶的明確要求。</p>
+      </div>
+      <div class="card">
+        <div class="tag">轉型方向</div>
+        <h3>往車用電子延伸</h3>
+        <p>車用電子的認證門檻高、產品週期長，一旦打入供應鏈關係相對穩定，是代工廠改善獲利結構的共同選項。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構課題</div>
+        <h3>與四大家相同的天花板</h3>
+        <p>不論轉向哪裡，核心問題仍是：如何讓同一套大規模製造能力，賣出比純組裝更好的價格。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">產能分散的代價與理由</text>
+
+        <rect x="60" y="48" width="340" height="140" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="230" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">集中生產</text>
+        <text x="230" y="98" text-anchor="middle" font-size="10.5" fill="var(--muted)">單一大型基地、供應鏈聚落成熟</text>
+        <text x="230" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">人力熟練、良率穩定</text>
+        <text x="230" y="142" text-anchor="middle" font-size="10.5" fill="var(--muted)">單位成本最低</text>
+        <text x="230" y="166" text-anchor="middle" font-size="10" fill="var(--muted)">代價：一旦出事，沒有備援</text>
+
+        <rect x="500" y="48" width="340" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="670" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">分散布局</text>
+        <text x="670" y="98" text-anchor="middle" font-size="10.5" fill="var(--ink)">多國設廠，印度與東南亞為主要選項</text>
+        <text x="670" y="120" text-anchor="middle" font-size="10.5" fill="var(--ink)">新廠需要時間磨合與訓練</text>
+        <text x="670" y="142" text-anchor="middle" font-size="10.5" fill="var(--ink)">單位成本上升</text>
+        <text x="670" y="166" text-anchor="middle" font-size="10" fill="var(--ink)">換得的是供應鏈韌性與客戶信心</text>
+
+        <line x1="400" y1="118" x2="496" y2="118" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow-pg4)"/>
+        <defs><marker id="arrow-pg4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="222" text-anchor="middle" font-size="11" fill="var(--muted)">這個轉變不是代工廠主動選擇的效率優化，而是客戶與地緣情勢共同施加的要求；</text>
+        <text x="450" y="240" text-anchor="middle" font-size="11" fill="var(--muted)">誰能用最小的效率損失完成分散，誰就保得住訂單。</text>
+      </svg>
+      <p class="cap">產能該擺在哪裡，如今已不只是成本計算，而是客戶關係與地緣風險的綜合題。</p>
+    </div>
+
+    <div class="quote">和碩的身世說明了一件事：在代工這門生意裡，「你是誰的人」比「你能做什麼」更關鍵。華碩必須把它放出去，它才接得到別人的訂單；而接到最大客戶的訂單之後，它又得面對另一個問題——當你的產線幾乎為一個客戶而轉，你到底有多少主導權。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為和碩聯合科技（Pegatron）公司歷史、業務組成與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以和碩聯合科技官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
