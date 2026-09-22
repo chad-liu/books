@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>聯強國際（Synnex Technology International）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F2F2F0; --surface:#FFFFFF; --surface-2:#E4E4E0; --line:#CFD0C8;
+  --ink:#20201B; --muted:#5C5D50;
+  --accent:#65673A; --accent-deep:#3C3D21; --accent-soft:#E9E9E4; --band:#3C3D21;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2F6E72; --teal-soft:#DDECEC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#191917; --surface:#242421; --surface-2:#2E2E2B; --line:#464741;
+    --ink:#EAEAE9; --muted:#B2B2AC;
+    --accent:#B2B393; --accent-deep:#D8D9CC; --accent-soft:#34342A;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#83C3C7; --teal-soft:#1B3233;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#191917; --surface:#242421; --surface-2:#2E2E2B; --line:#464741;
+  --ink:#EAEAE9; --muted:#B2B2AC;
+  --accent:#B2B393; --accent-deep:#D8D9CC; --accent-soft:#34342A;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#83C3C7; --teal-soft:#1B3233;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #1A1B0E 100%);color:#F0F0E8;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#C9CAB2;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E3E4D6;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#C9CAB2;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+footer{padding-block:32px;background:var(--band);color:#C9CAB2;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 通路與運籌</div>
+    <h1>聯強國際（Synnex Technology International）知識圖譜</h1>
+    <p class="sub">這個資料夾裡絕大多數公司都在製造東西，聯強不是。它不設計晶片、不蓋廠房，它做的是把別人做好的產品送到需要的人手上。這聽起來不像高科技，但它背後有一套完全不同的競爭邏輯——不是比誰的毛利高，而是比誰的貨轉得快。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1988</div><div class="l">自神通集團分出</div></div>
+      <div class="stat"><div class="n">通路</div><div class="l">3C 產品的中間層</div></div>
+      <div class="stat"><div class="n">運籌</div><div class="l">真正的核心能力</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　通路商在做什麼</div>
+      <h2>站在品牌與店家之間的那一層</h2>
+      <p>電腦、手機、零組件從工廠出來之後，不會直接跳到消費者手上。中間有一段負責備貨、拆整、配送、收款與售後的工作，這就是通路商的位置。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 236" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">產品從工廠到使用者的路徑</text>
+
+        <rect x="30" y="50" width="180" height="92" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="120" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">品牌與製造商</text>
+        <text x="120" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">負責設計與生產</text>
+        <text x="120" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">不想管零售端的碎事</text>
+
+        <rect x="252" y="42" width="396" height="108" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">通路商</text>
+        <text x="450" y="94" text-anchor="middle" font-size="10.5" fill="var(--ink)">整批進貨、拆成小量、配送到各地店家</text>
+        <text x="450" y="114" text-anchor="middle" font-size="10.5" fill="var(--ink)">同時承擔庫存、帳期與售後維修</text>
+        <text x="450" y="134" text-anchor="middle" font-size="10" fill="var(--ink)">把「一次一大批」變成「隨時一小批」</text>
+
+        <rect x="690" y="50" width="180" height="92" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="780" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">零售店與系統商</text>
+        <text x="780" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">要的是少量、多樣</text>
+        <text x="780" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">而且最好今天就到</text>
+
+        <line x1="210" y1="96" x2="248" y2="96" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-sy1)"/>
+        <line x1="648" y1="96" x2="686" y2="96" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-sy1)"/>
+        <defs><marker id="ar-sy1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="188" text-anchor="middle" font-size="11" fill="var(--muted)">通路商創造的價值，在於化解「製造端想大批出貨」與「零售端只想小量進貨」之間的落差。</text>
+        <text x="450" y="208" text-anchor="middle" font-size="11" fill="var(--muted)">這個落差愈大、產品種類愈多，中間這一層的存在價值就愈高。</text>
+        <text x="450" y="228" text-anchor="middle" font-size="10.5" fill="var(--muted)">反過來說，當品牌能自己直達消費者時，這一層就會被質疑。</text>
+      </svg>
+      <p class="cap">通路商的價值來自兩端的節奏不一致，而不是來自它自己做了什麼產品。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　真正的核心能力</div>
+      <h2>它其實是一家物流公司</h2>
+      <p>聯強最常被提起的不是它賣什麼，而是它的運籌體系——大型物流中心、自建車隊、當日到貨與快速維修，這些才是它跟一般貿易商拉開差距的地方。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">運籌中心</div>
+        <h3>把倉庫當生產線經營</h3>
+        <p>大型物流中心搭配自動化揀貨與分流，讓「收到訂單到出貨」的時間壓縮到極短，這是規模化之後才划算的投資。</p>
+      </div>
+      <div class="card">
+        <div class="tag">配送</div>
+        <h3>速度本身就是賣點</h3>
+        <p>對零售店家而言，能不能今天補到貨直接影響能不能成交，因此配送時效往往比價格差幾十塊更有說服力。</p>
+      </div>
+      <div class="card">
+        <div class="tag">維修</div>
+        <h3>售後也被納進同一套系統</h3>
+        <p>維修中心與物流網路整合，讓故障品的收送與回廠流程跟著既有車隊跑，變成通路服務的一部分而非額外成本。</p>
+      </div>
+      <div class="card">
+        <div class="tag">資訊系統</div>
+        <h3>沒有系統就撐不起規模</h3>
+        <p>成千上萬個品項、數千家下游客戶、隨時變動的價格與庫存，全靠資訊系統管理，這是規模愈大愈難複製的部分。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　薄毛利的數學</div>
+      <h2>賺錢的方式跟製造業完全相反</h2>
+      <p>通路商的毛利率通常只有幾個百分點，遠低於這個資料夾裡任何一家製造商。但這不代表它不賺錢——它賺錢的方式是把同一筆資金在一年內用很多次。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 302" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩種賺錢方式</text>
+
+        <rect x="40" y="48" width="370" height="152" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">製造商：靠毛利</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">每賣一件，賺走較大的價差</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">但要先投入廠房與設備</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">資金週轉一次要很久</text>
+        <text x="225" y="172" text-anchor="middle" font-size="10" fill="var(--muted)">護城河是技術與產能</text>
+        <text x="225" y="190" text-anchor="middle" font-size="10" fill="var(--muted)">怕的是技術被超越</text>
+
+        <rect x="490" y="48" width="370" height="152" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">通路商：靠周轉</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">每賣一件，只賺走很小的價差</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">但同一筆錢一年可以用很多次</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">薄利乘以高次數，總額就出來了</text>
+        <text x="675" y="172" text-anchor="middle" font-size="10" fill="var(--ink)">護城河是規模與運籌效率</text>
+        <text x="675" y="190" text-anchor="middle" font-size="10" fill="var(--ink)">怕的是庫存賣不掉、跌價</text>
+
+        <rect x="120" y="224" width="660" height="48" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="244" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">獲利 ≈ 每次的薄利 × 一年周轉的次數</text>
+        <text x="450" y="264" text-anchor="middle" font-size="10.5" fill="var(--ink)">所以通路商真正在意的不是「賣得貴不貴」，而是「貨在倉庫躺了幾天」</text>
+
+        <text x="450" y="296" text-anchor="middle" font-size="10.5" fill="var(--muted)">庫存多躺一天，就多一天的資金成本與跌價風險——這是通路業最根本的壓力來源。</text>
+      </svg>
+      <p class="cap">同樣是做生意，製造業拉高單件利潤，通路業提高資金使用次數——兩條路都能通。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>通路業的特性</th></tr></thead>
+      <tbody>
+        <tr><td>毛利率</td><td>通常僅數個百分點，遠低於製造業，代表定價空間極小，成本控管是生存問題。</td></tr>
+        <tr><td>庫存風險</td><td>3C 產品跌價快，滯銷庫存的損失可能直接吃掉數月的獲利。</td></tr>
+        <tr><td>應收帳款</td><td>下游店家數量多、規模小，倒帳風險分散但需持續管理信用額度。</td></tr>
+        <tr><td>規模效應</td><td>物流中心與資訊系統屬於固定成本，出貨量愈大，單位成本愈低，形成正向循環。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　中間層的挑戰</div>
+      <h2>當品牌可以直接找到消費者</h2>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 266" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">兩股相反的力量</text>
+
+        <rect x="40" y="48" width="370" height="140" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">往下壓的力量</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">品牌自建官網與直營通路</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">大型電商平台直接對接消費者</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">個人電腦市場成長趨緩</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">中間層被質疑「還需不需要」</text>
+
+        <rect x="490" y="48" width="370" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">往上撐的力量</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">品項愈多，備貨與配送愈難自己做</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">企業客戶仍需要在地服務與維修</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">電商本身也需要有人負責倉配</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">運籌能力可以直接對外承接</text>
+
+        <text x="450" y="220" text-anchor="middle" font-size="11" fill="var(--muted)">結論不是「通路會消失」，而是「單純轉手賺價差的通路會消失」。</text>
+        <text x="450" y="240" text-anchor="middle" font-size="11" fill="var(--muted)">留下來的，是那些把倉儲、配送與售後做成別人難以複製的服務的公司。</text>
+        <text x="450" y="256" text-anchor="middle" font-size="10.5" fill="var(--muted)">聯強押的正是後者。</text>
+      </svg>
+      <p class="cap">電商衝擊的是「轉手」這個動作，而不是「把貨準時送到」這件事。</p>
+    </div>
+
+    <div class="quote">在一個充滿工程師與晶圓廠的產業聚落裡，聯強提醒了一件容易被忽略的事：一個產品要真正到達使用者手上，需要的不只是把它做出來。當所有人都在談技術門檻時，能把幾萬種貨在隔天送到全台各地這件事，本身也是一種門檻——只是它不寫在規格表上。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為聯強國際（Synnex Technology International）公司背景、商業模式與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以聯強國際官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>

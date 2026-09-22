@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>文曄科技（WT Microelectronics）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F1F1F1; --surface:#FFFFFF; --surface-2:#E3E1E0; --line:#CECBCA;
+  --ink:#1F1D1C; --muted:#5B5553;
+  --accent:#5F4C42; --accent-deep:#382C26; --accent-soft:#E9E6E5; --band:#382C26;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2F6E72; --teal-soft:#DDECEC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#191818; --surface:#232222; --surface-2:#2E2C2C; --line:#464342;
+    --ink:#EAE9E9; --muted:#B1AEAD;
+    --accent:#ADA099; --accent-deep:#D6D1CE; --accent-soft:#322E2C;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#83C3C7; --teal-soft:#1B3233;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#191818; --surface:#232222; --surface-2:#2E2C2C; --line:#464342;
+  --ink:#EAE9E9; --muted:#B1AEAD;
+  --accent:#ADA099; --accent-deep:#D6D1CE; --accent-soft:#322E2C;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#83C3C7; --teal-soft:#1B3233;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #17110E 100%);color:#F0ECEA;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#CBC0BA;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E4DCD8;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#CBC0BA;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+footer{padding-block:32px;background:var(--band);color:#CBC0BA;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 半導體通路</div>
+    <h1>文曄科技（WT Microelectronics）知識圖譜</h1>
+    <p class="sub">聯強把成品送到消費者手上，文曄做的是更前面一段：把晶片送到製造商手上。同樣叫通路商，但賣零件給工程師跟賣電腦給店家，是兩種完全不同的生意——後者比的是速度，前者比的是懂不懂客戶要解決什麼問題。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1993</div><div class="l">創立</div></div>
+      <div class="stat"><div class="n">代理</div><div class="l">原廠與系統廠之間</div></div>
+      <div class="stat"><div class="n">2023</div><div class="l">併購擴大全球版圖</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　半導體通路商</div>
+      <h2>晶片不是在官網上下單買的</h2>
+      <p>半導體原廠的客戶動輒上萬家，其中大多數的採購量對原廠來說太小，不值得派業務去服務。這些客戶的需求，就由代理商承接。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">為什麼原廠需要代理商</text>
+
+        <rect x="30" y="50" width="180" height="100" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="120" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">半導體原廠</text>
+        <text x="120" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">業務資源有限</text>
+        <text x="120" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">只顧得了最大的幾家客戶</text>
+        <text x="120" y="140" text-anchor="middle" font-size="10" fill="var(--muted)">長尾客戶照顧不到</text>
+
+        <rect x="252" y="42" width="396" height="116" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-deep)">半導體代理商</text>
+        <text x="450" y="94" text-anchor="middle" font-size="10.5" fill="var(--ink)">代表原廠去服務數以千計的中小型客戶</text>
+        <text x="450" y="114" text-anchor="middle" font-size="10.5" fill="var(--ink)">替客戶備料、拆量、排程、處理帳期</text>
+        <text x="450" y="134" text-anchor="middle" font-size="10.5" fill="var(--ink)">並提供選料與設計上的技術協助</text>
+        <text x="450" y="152" text-anchor="middle" font-size="10" fill="var(--ink)">原廠省下業務成本，客戶得到即時支援</text>
+
+        <rect x="690" y="50" width="180" height="100" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="780" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">系統與模組廠</text>
+        <text x="780" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">一次只要幾千顆</text>
+        <text x="780" y="120" text-anchor="middle" font-size="10.5" fill="var(--muted)">但品項雜、問題多</text>
+        <text x="780" y="140" text-anchor="middle" font-size="10" fill="var(--muted)">需要有人隨叫隨到</text>
+
+        <line x1="210" y1="100" x2="248" y2="100" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-wt1)"/>
+        <line x1="648" y1="100" x2="686" y2="100" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-wt1)"/>
+        <defs><marker id="ar-wt1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <text x="450" y="200" text-anchor="middle" font-size="11" fill="var(--muted)">代理商存在的理由，是原廠「服務小客戶不划算」與客戶「離不開技術支援」這兩件事同時成立。</text>
+        <text x="450" y="222" text-anchor="middle" font-size="11" fill="var(--muted)">因此代理權的取得與維持，本身就是這門生意最關鍵的資產。</text>
+        <text x="450" y="244" text-anchor="middle" font-size="10.5" fill="var(--muted)">拿不到重要原廠的線，規模再大也沒有東西可以賣。</text>
+      </svg>
+      <p class="cap">代理商不是單純的轉手，而是原廠業務體系向外延伸的一段。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　賣的不只是晶片</div>
+      <h2>把一顆 IC 變成客戶做得出來的產品</h2>
+      <p>半導體通路商跟一般貿易商最大的差別，在於它養了一批工程師。客戶要的往往不是「這顆多少錢」，而是「我這個設計該選哪顆、怎麼接、為什麼不會動」。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">技術支援</div>
+        <h3>現場工程師是關鍵人力</h3>
+        <p>代理商的應用工程師協助客戶選型、除錯與導入，實質上分擔了原廠的技術服務工作，也是黏住客戶的主要方式。</p>
+      </div>
+      <div class="card">
+        <div class="tag">設計導入</div>
+        <h3>在設計階段就決定勝負</h3>
+        <p>一旦某顆 IC 被寫進客戶的設計裡，往後數年的採購就跟著走，因此爭取設計導入遠比爭取單筆訂單重要。</p>
+      </div>
+      <div class="card">
+        <div class="tag">備料</div>
+        <h3>少量多樣的庫存管理</h3>
+        <p>客戶要的品項雜、單量小、交期急，代理商必須預測需求提前備貨，這也是庫存風險的主要來源。</p>
+      </div>
+      <div class="card">
+        <div class="tag">資金</div>
+        <h3>替客戶墊資金也是服務</h3>
+        <p>提供帳期等於替下游客戶墊一段營運資金，這讓代理商的資產負債表看起來更像半個金融業。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　規模的競賽</div>
+      <h2>這個行業正在變成大者恆大</h2>
+      <p>近年半導體代理業出現明顯的整併趨勢：原廠傾向把代理權集中給少數幾家能覆蓋全球、資金雄厚的通路商，中小型代理商的空間被壓縮。</p>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 292" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">為什麼規模會自我強化</text>
+
+        <rect x="40" y="48" width="370" height="150" rx="12" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="225" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">小型代理商</text>
+        <text x="225" y="100" text-anchor="middle" font-size="10.5" fill="var(--muted)">代理線少，能提供的選擇有限</text>
+        <text x="225" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">資金有限，備料與帳期撐不久</text>
+        <text x="225" y="146" text-anchor="middle" font-size="10.5" fill="var(--muted)">難以支撐跨國客戶的統一供貨</text>
+        <text x="225" y="170" text-anchor="middle" font-size="10" fill="var(--muted)">原廠愈來愈不想多開一條線給它</text>
+        <text x="225" y="188" text-anchor="middle" font-size="10" fill="var(--muted)">於是規模更難長大</text>
+
+        <rect x="490" y="48" width="370" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="675" y="74" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">大型代理商</text>
+        <text x="675" y="100" text-anchor="middle" font-size="10.5" fill="var(--ink)">代理線齊全，客戶可一次配齊料號</text>
+        <text x="675" y="122" text-anchor="middle" font-size="10.5" fill="var(--ink)">資金雄厚，備料與帳期都撐得住</text>
+        <text x="675" y="146" text-anchor="middle" font-size="10.5" fill="var(--ink)">全球據點能服務跨國客戶</text>
+        <text x="675" y="170" text-anchor="middle" font-size="10" fill="var(--ink)">原廠更願意把代理權交給它</text>
+        <text x="675" y="188" text-anchor="middle" font-size="10" fill="var(--ink)">於是規模繼續放大</text>
+
+        <line x1="410" y1="120" x2="486" y2="120" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#ar-wt3)"/>
+        <defs><marker id="ar-wt3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker></defs>
+
+        <rect x="150" y="222" width="600" height="46" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="250" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">在這種結構下，「不夠大」本身就是最大的風險</text>
+
+        <text x="450" y="286" text-anchor="middle" font-size="10.5" fill="var(--muted)">這解釋了為什麼近年這個行業的大型併購會一樁接一樁——長大是防守，不是進攻。</text>
+      </svg>
+      <p class="cap">代理權向大型通路商集中，使規模成為一種會自我強化的優勢。</p>
+    </div>
+
+    <table class="compare-table" style="margin-top:28px;">
+      <thead><tr><th>面向</th><th>半導體通路業的特性</th></tr></thead>
+      <tbody>
+        <tr><td>營收結構</td><td>營收規模龐大但毛利率極薄，數字上的「大」與獲利上的「厚」是兩回事。</td></tr>
+        <tr><td>代理權</td><td>與原廠的合約關係是核心資產，更換代理商會直接改變營收版圖。</td></tr>
+        <tr><td>庫存風險</td><td>晶片價格波動劇烈，景氣反轉時的庫存跌價是最主要的獲利殺手。</td></tr>
+        <tr><td>資金成本</td><td>大量備料與下游帳期需要沉重的營運資金，利率環境會直接影響獲利。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　風險在哪裡</div>
+      <h2>賺得薄，但風險扛得厚</h2>
+    </div>
+
+    <div class="diagram" style="margin-top:26px;">
+      <svg viewBox="0 0 900 262" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">通路商承接的三種風險</text>
+
+        <rect x="30" y="50" width="270" height="132" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="165" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">庫存跌價</text>
+        <text x="165" y="102" text-anchor="middle" font-size="10.5" fill="var(--muted)">晶片景氣反轉時</text>
+        <text x="165" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">手上的料可能瞬間不值錢</text>
+        <text x="165" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">而通路商的毛利極薄</text>
+        <text x="165" y="166" text-anchor="middle" font-size="10" fill="var(--muted)">跌價幾個百分點就足以致命</text>
+
+        <rect x="315" y="50" width="270" height="132" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="450" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">應收帳款</text>
+        <text x="450" y="102" text-anchor="middle" font-size="10.5" fill="var(--muted)">貨先出，錢後收</text>
+        <text x="450" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">等於替客戶承擔信用風險</text>
+        <text x="450" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">客戶數量多，管理成本高</text>
+        <text x="450" y="166" text-anchor="middle" font-size="10" fill="var(--muted)">景氣差時倒帳風險同步上升</text>
+
+        <rect x="600" y="50" width="270" height="132" rx="12" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="1.5"/>
+        <text x="735" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">代理權變動</text>
+        <text x="735" y="102" text-anchor="middle" font-size="10.5" fill="var(--muted)">原廠若收回或改派代理</text>
+        <text x="735" y="122" text-anchor="middle" font-size="10.5" fill="var(--muted)">一條線的營收可能直接消失</text>
+        <text x="735" y="146" text-anchor="middle" font-size="10" fill="var(--muted)">這是自己無法完全控制的變數</text>
+        <text x="735" y="166" text-anchor="middle" font-size="10" fill="var(--muted)">也是併購擴張的動機之一</text>
+
+        <text x="450" y="216" text-anchor="middle" font-size="11" fill="var(--muted)">通路商賺的是幾個百分點的價差，卻替整條供應鏈吸收了庫存、資金與信用三種風險。</text>
+        <text x="450" y="238" text-anchor="middle" font-size="11" fill="var(--muted)">這個報酬與風險的不對稱，正是它必須靠規模與周轉速度來彌補的原因。</text>
+        <text x="450" y="258" text-anchor="middle" font-size="10.5" fill="var(--muted)">也是它在景氣循環中波動遠比表面數字劇烈的原因。</text>
+      </svg>
+      <p class="cap">薄毛利搭配厚風險，使得規模與資金實力成為這個行業的入場門檻。</p>
+    </div>
+
+    <div class="quote">半導體供應鏈的討論通常停在晶圓廠與封測廠，很少往下走到「這顆晶片最後怎麼到某家做電源供應器的中型工廠手上」。文曄這類公司的存在提醒我們：一條供應鏈能運作，靠的不只是能不能做出來，還包括有沒有人願意承擔把東西擺在倉庫裡等客戶下單的那份風險。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為文曄科技（WT Microelectronics）公司背景、商業模式與產業定位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以文曄科技官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
