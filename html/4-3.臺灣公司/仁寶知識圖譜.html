@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>仁寶電腦（Compal）知識圖譜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Roboto+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#F0EEF2; --surface:#FFFFFF; --surface-2:#E3DEE8; --line:#D1C8DA;
+  --ink:#1E1727; --muted:#5B4B6C;
+  --accent:#653D8F; --accent-deep:#3A2154; --accent-soft:#E8DEF2; --band:#3A2154;
+  --gold:#A87A2E; --gold-soft:#F1E4C7;
+  --good:#2B7454; --good-soft:#DEEFE6;
+  --bad:#AA4537; --bad-soft:#F6E1DC;
+  --teal:#2E7D7A; --teal-soft:#DCF0EE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17131B; --surface:#211C26; --surface-2:#2B2532; --line:#42394C;
+    --ink:#EAE7EE; --muted:#AAA0B6;
+    --accent:#A77DD4; --accent-deep:#D5C0EC; --accent-soft:#2D203C;
+    --gold:#DCB966; --gold-soft:#3A3417;
+    --good:#8FCBA6; --good-soft:#1E3327;
+    --bad:#E88C7C; --bad-soft:#3A2119;
+    --teal:#7FCBC5; --teal-soft:#173330;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17131B; --surface:#211C26; --surface-2:#2B2532; --line:#42394C;
+  --ink:#EAE7EE; --muted:#AAA0B6;
+  --accent:#A77DD4; --accent-deep:#D5C0EC; --accent-soft:#2D203C;
+  --gold:#DCB966; --gold-soft:#3A3417;
+  --good:#8FCBA6; --good-soft:#1E3327;
+  --bad:#E88C7C; --bad-soft:#3A2119;
+  --teal:#7FCBC5; --teal-soft:#173330;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:"Noto Serif TC",serif;text-wrap:balance;margin:0;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding-inline:20px;}
+
+.hero{background:radial-gradient(1000px 460px at 88% -10%, var(--accent-soft), transparent 60%), linear-gradient(180deg, var(--band) 0%, #130A1E 100%);color:#F1EAF8;padding-block:56px 40px;border-bottom:6px solid var(--gold);}
+.hero .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#CFBCE6;font-weight:700;margin-bottom:14px;}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:#fff;margin-bottom:12px;}
+.hero .sub{font-size:1.02rem;color:#E6DCF2;max-width:70ch;}
+.hero .stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+.hero .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:10px 16px;min-width:120px;}
+.hero .stat .n{font-family:"Roboto Mono",monospace;font-size:1.3rem;font-weight:700;color:#fff;}
+.hero .stat .l{font-size:.75rem;color:#CFBCE6;margin-top:2px;}
+
+section{padding-block:44px;}
+section.alt{background:var(--surface);}
+.kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.section-head{margin-bottom:26px;max-width:72ch;}
+.section-head h2{font-size:clamp(1.35rem,2.5vw,1.8rem);margin-bottom:8px;}
+.section-head p{color:var(--muted);margin:0;font-size:.96rem;}
+
+svg text{font-family:"Noto Sans TC","PingFang TC",sans-serif;}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:8px;overflow-x:auto;}
+.cap{font-size:.82rem;color:var(--muted);margin-top:10px;text-align:center;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;}
+.card h3{font-size:1.02rem;margin-bottom:8px;color:var(--accent-deep);}
+.card p{margin:0;font-size:.9rem;color:var(--muted);}
+.card .tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--accent-deep);background:var(--accent-soft);padding:2px 9px;border-radius:999px;margin-bottom:8px;}
+
+.timeline{position:relative;margin-top:26px;padding-left:28px;border-left:3px solid var(--line);}
+.tl-item{position:relative;margin-bottom:26px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);}
+.tl-item .yr{font-family:"Roboto Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.95rem;}
+.tl-item h3{font-size:1rem;margin:4px 0 4px;}
+.tl-item p{margin:0;font-size:.9rem;color:var(--muted);}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:.87rem;margin-top:8px;}
+.compare-table th{text-align:left;font-weight:700;color:#fff;background:var(--band);padding:9px 12px;}
+.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+.compare-table tr:nth-child(even) td{background:var(--surface-2);}
+
+.quote{border-left:4px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 10px 10px 0;font-family:"Noto Serif TC",serif;font-size:1.05rem;margin-top:26px;}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag-row span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.85rem;color:var(--ink);}
+
+footer{padding-block:32px;background:var(--band);color:#CFBCE6;font-size:.85rem;}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">臺灣公司 × 資訊硬體代工</div>
+    <h1>仁寶電腦（Compal）知識圖譜</h1>
+    <p class="sub">1984 年創立，長年與廣達並列全球最大的筆記型電腦代工廠，兩家公司在出貨量上互有領先，被稱為筆電代工雙雄。相較於同業近年集中押注 AI 伺服器，仁寶的產品版圖更廣，也把不少心力投在消費性裝置與智慧醫療等方向。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1984</div><div class="l">創立年份</div></div>
+      <div class="stat"><div class="n">筆電雙雄</div><div class="l">與廣達長年互爭龍頭</div></div>
+      <div class="stat"><div class="n">金仁寶</div><div class="l">所屬集團</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">01　創立與集團背景</div>
+      <h2>金仁寶集團底下的資訊硬體主力</h2>
+      <p>仁寶不是一家獨立運作的公司，而是金仁寶集團的一部分——這個集團結構，也影響了它在產品布局上的選擇。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">創立背景</div>
+        <h3>1984 年創立</h3>
+        <p>成立於台灣資訊硬體產業起步的年代，早期從電子產品製造切入，隨個人電腦市場成長逐步將重心移向筆記型電腦代工。</p>
+      </div>
+      <div class="card">
+        <div class="tag">集團結構</div>
+        <h3>與金寶電子同屬一個集團</h3>
+        <p>仁寶與金寶電子同屬金仁寶集團，由許勝雄擔任集團核心領導者，兩家公司在產品線上各有分工。</p>
+      </div>
+      <div class="card">
+        <div class="tag">產業地位</div>
+        <h3>筆電代工四大家之一</h3>
+        <p>與廣達、緯創、和碩並列台灣筆電代工四大家，長期承接國際品牌的筆電設計與製造訂單。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 255" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">集團裡的分工</text>
+
+        <rect x="325" y="44" width="250" height="52" rx="12" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="68" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">金仁寶集團</text>
+        <text x="450" y="87" text-anchor="middle" font-size="10.5" fill="var(--muted)">由許勝雄領導的企業集團</text>
+
+        <line x1="450" y1="96" x2="450" y2="114" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="255" y1="114" x2="645" y2="114" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="255" y1="114" x2="255" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp1)"/>
+        <line x1="645" y1="114" x2="645" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp1)"/>
+        <defs><marker id="arrow-cp1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="105" y="138" width="300" height="76" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="255" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">仁寶電腦</text>
+        <text x="255" y="186" text-anchor="middle" font-size="10.5" fill="var(--ink)">資訊硬體代工主力</text>
+        <text x="255" y="204" text-anchor="middle" font-size="10" fill="var(--ink)">筆電、平板、智慧裝置</text>
+
+        <rect x="495" y="138" width="300" height="76" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="645" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">金寶電子</text>
+        <text x="645" y="186" text-anchor="middle" font-size="10.5" fill="var(--muted)">集團內的另一塊製造版圖</text>
+        <text x="645" y="204" text-anchor="middle" font-size="10" fill="var(--muted)">與仁寶產品線各有分工</text>
+
+        <text x="450" y="244" text-anchor="middle" font-size="11" fill="var(--muted)">集團架構讓不同性質的製造業務分屬不同公司經營，各自面對自己的客戶與市場節奏。</text>
+      </svg>
+      <p class="cap">仁寶在集團裡扮演資訊硬體代工的主力，與金寶各自負責不同的產品領域。</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">02　核心業務：筆電代工</div>
+      <h2>一台筆電是怎麼來的</h2>
+      <p>筆電代工看起來只是「幫別人做電腦」，實際的分工比想像中細——品牌廠與代工廠各自負責的環節，決定了利潤怎麼分配。</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">分工位置</div>
+        <h3>設計與製造都做，但不掛自己的名字</h3>
+        <p>仁寶屬於 ODM，從產品設計階段就參與，完成後貼上客戶的品牌出貨，消費者不會知道機器是誰做的。</p>
+      </div>
+      <div class="card">
+        <div class="tag">競爭態勢</div>
+        <h3>與廣達長年互爭出貨龍頭</h3>
+        <p>兩家公司在全球筆電代工的出貨量上長期互有領先，被外界並稱筆電代工雙雄，競爭相當直接。</p>
+      </div>
+      <div class="card">
+        <div class="tag">結構限制</div>
+        <h3>規模龐大但毛利偏低</h3>
+        <p>代工業務的議價能力掌握在品牌客戶手上，出貨量再大，單台能留下的利潤仍然有限，這是整個產業的共同處境。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:30px;">
+      <svg viewBox="0 0 900 275" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">一台筆電的分工與價值分配</text>
+
+        <rect x="25" y="52" width="190" height="72" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="120" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">品牌廠</text>
+        <text x="120" y="99" text-anchor="middle" font-size="10" fill="var(--muted)">定義產品定位與規格</text>
+        <text x="120" y="116" text-anchor="middle" font-size="10" fill="var(--muted)">掌握通路與行銷</text>
+
+        <rect x="250" y="46" width="400" height="84" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">仁寶（ODM）</text>
+        <text x="450" y="94" text-anchor="middle" font-size="10.5" fill="var(--ink)">產品設計、零組件採購、量產製造、品質管理</text>
+        <text x="450" y="114" text-anchor="middle" font-size="10" fill="var(--ink)">承擔開發成本、庫存壓力與交期風險</text>
+
+        <rect x="685" y="52" width="190" height="72" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="780" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">消費者</text>
+        <text x="780" y="99" text-anchor="middle" font-size="10" fill="var(--muted)">看到的是品牌標誌</text>
+        <text x="780" y="116" text-anchor="middle" font-size="10" fill="var(--muted)">不會知道誰製造</text>
+
+        <line x1="215" y1="88" x2="248" y2="88" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp2)"/>
+        <text x="231" y="78" text-anchor="middle" font-size="9" fill="var(--muted)">下單</text>
+        <line x1="650" y1="88" x2="683" y2="88" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp2)"/>
+        <text x="666" y="78" text-anchor="middle" font-size="9" fill="var(--muted)">貼牌</text>
+        <defs><marker id="arrow-cp2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="150" y="156" width="600" height="56" rx="10" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="180" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">做最多事的一方，未必是拿最多利潤的一方</text>
+        <text x="450" y="199" text-anchor="middle" font-size="10.5" fill="var(--muted)">品牌與通路掌握定價權，代工廠則在成本與交期的壓力之間求取空間</text>
+
+        <text x="450" y="240" text-anchor="middle" font-size="11" fill="var(--muted)">這種結構不是仁寶獨有，而是台灣整個資訊硬體代工業共同的處境；</text>
+        <text x="450" y="258" text-anchor="middle" font-size="11" fill="var(--muted)">也因此，各家近年都在找「同樣的製造能力能不能賣得更貴」的答案。</text>
+      </svg>
+      <p class="cap">ODM 承擔了設計、採購與製造的多數工作，利潤分配卻由品牌端的定價權決定。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">03　產品多角化</div>
+      <h2>不只筆電：往消費裝置與醫療延伸</h2>
+      <p>相較於部分同業集中押注單一成長主軸，仁寶的產品線分布得比較廣，涵蓋多種終端裝置與新興應用。</p>
+    </div>
+
+    <table class="compare-table">
+      <thead><tr><th>產品領域</th><th>概況</th></tr></thead>
+      <tbody>
+        <tr><td>筆記型電腦</td><td>公司規模最大的核心業務，長期是全球出貨量名列前茅的筆電代工廠之一。</td></tr>
+        <tr><td>平板與智慧裝置</td><td>涵蓋平板電腦、穿戴式裝置等消費性終端產品，是筆電之外的重要出貨來源。</td></tr>
+        <tr><td>顯示器與電視</td><td>大尺寸顯示產品的組裝製造，屬於成熟但競爭激烈的領域。</td></tr>
+        <tr><td>伺服器與雲端硬體</td><td>同樣布局資料中心相關硬體，但相較於部分同業，這塊業務在營收中的比重相對沒那麼集中。</td></tr>
+        <tr><td>智慧醫療與醫材</td><td>近年投入的新方向，嘗試把既有的電子製造能力應用到醫療器材與健康照護領域。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">產品版圖的分散</text>
+
+        <rect x="330" y="44" width="240" height="52" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="450" y="68" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-deep)">電子製造與設計能力</text>
+        <text x="450" y="87" text-anchor="middle" font-size="10.5" fill="var(--ink)">從筆電代工累積而來</text>
+
+        <line x1="450" y1="96" x2="450" y2="114" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="128" y1="114" x2="772" y2="114" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="128" y1="114" x2="128" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp3)"/>
+        <line x1="289" y1="114" x2="289" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp3)"/>
+        <line x1="450" y1="114" x2="450" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp3)"/>
+        <line x1="611" y1="114" x2="611" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp3)"/>
+        <line x1="772" y1="114" x2="772" y2="134" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp3)"/>
+        <defs><marker id="arrow-cp3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="42" y="138" width="172" height="82" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="128" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--accent-deep)">筆記型電腦</text>
+        <text x="128" y="186" text-anchor="middle" font-size="10" fill="var(--ink)">規模最大的本業</text>
+        <text x="128" y="205" text-anchor="middle" font-size="10" fill="var(--ink)">出貨量全球前列</text>
+
+        <rect x="203" y="138" width="172" height="82" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="289" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">平板與穿戴</text>
+        <text x="289" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">消費性終端裝置</text>
+        <text x="289" y="205" text-anchor="middle" font-size="10" fill="var(--muted)">貼近本業的延伸</text>
+
+        <rect x="364" y="138" width="172" height="82" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="450" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">顯示器與電視</text>
+        <text x="450" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">大尺寸產品組裝</text>
+        <text x="450" y="205" text-anchor="middle" font-size="10" fill="var(--muted)">競爭激烈的成熟市場</text>
+
+        <rect x="525" y="138" width="172" height="82" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="611" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">伺服器硬體</text>
+        <text x="611" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">資料中心相關產品</text>
+        <text x="611" y="205" text-anchor="middle" font-size="10" fill="var(--muted)">占比相對不那麼集中</text>
+
+        <rect x="686" y="138" width="172" height="82" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="772" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)">智慧醫療</text>
+        <text x="772" y="186" text-anchor="middle" font-size="10" fill="var(--muted)">醫材與健康照護</text>
+        <text x="772" y="205" text-anchor="middle" font-size="10" fill="var(--muted)">近年投入的新方向</text>
+
+        <text x="450" y="250" text-anchor="middle" font-size="11" fill="var(--muted)">分散的好處是不押注在單一產品循環上，壞處是資源被攤薄，較難在某個領域做到壓倒性領先——</text>
+        <text x="450" y="268" text-anchor="middle" font-size="11" fill="var(--muted)">這是多角化策略無法迴避的取捨。</text>
+      </svg>
+      <p class="cap">產品線分散降低了單一市場的風險，代價則是難以集中資源打出壓倒性優勢。</p>
+    </div>
+
+    <div class="section-head" style="margin-top:36px;">
+      <h2 style="font-size:1.2rem;">主要產品領域</h2>
+    </div>
+    <div class="tag-row">
+      <span>筆記型電腦</span><span>平板與穿戴裝置</span><span>顯示器與電視</span><span>伺服器與雲端硬體</span><span>智慧醫療與醫材</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">04　四大家的分岔</div>
+      <h2>同樣做筆電，後來卻走向不同方向</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">共同起點</div>
+        <h3>都從筆電代工出發</h3>
+        <p>廣達、仁寶、緯創、和碩四家都以筆電代工為核心成長起來，商業模式與客戶結構在早期相當接近。</p>
+      </div>
+      <div class="card">
+        <div class="tag">分岔關鍵</div>
+        <h3>AI 伺服器押注的深淺不同</h3>
+        <p>面對資料中心與 AI 運算需求，各家投入的力道與時機不一，使得近年的營運表現與市場評價出現明顯差距。</p>
+      </div>
+      <div class="card">
+        <div class="tag">仁寶的選擇</div>
+        <h3>維持較廣的產品分布</h3>
+        <p>相較於集中押注單一成長主軸，仁寶的資源分布較廣，涵蓋消費裝置與醫療等領域，風險與爆發力都相對分散。</p>
+      </div>
+      <div class="card">
+        <div class="tag">共同課題</div>
+        <h3>毛利率的天花板</h3>
+        <p>不論往哪個方向走，四家面對的核心問題是一樣的：如何讓同一套製造能力，賣出比筆電更好的價格。</p>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:28px;">
+      <svg viewBox="0 0 900 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <text x="450" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">筆電代工四大家的分岔</text>
+
+        <rect x="330" y="44" width="240" height="50" rx="12" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="450" y="66" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">共同起點：筆電代工</text>
+        <text x="450" y="84" text-anchor="middle" font-size="10" fill="var(--muted)">出貨量大、毛利薄、客戶是品牌廠</text>
+
+        <line x1="450" y1="94" x2="450" y2="112" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="128" y1="112" x2="772" y2="112" stroke="var(--muted)" stroke-width="2"/>
+        <line x1="128" y1="112" x2="128" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp4)"/>
+        <line x1="343" y1="112" x2="343" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp4)"/>
+        <line x1="557" y1="112" x2="557" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp4)"/>
+        <line x1="772" y1="112" x2="772" y2="132" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrow-cp4)"/>
+        <defs><marker id="arrow-cp4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--muted)"/></marker></defs>
+
+        <rect x="25" y="136" width="206" height="92" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="128" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">廣達</text>
+        <text x="128" y="184" text-anchor="middle" font-size="10" fill="var(--muted)">重押 AI 伺服器</text>
+        <text x="128" y="202" text-anchor="middle" font-size="10" fill="var(--muted)">營收結構明顯轉向</text>
+        <text x="128" y="219" text-anchor="middle" font-size="9.5" fill="var(--muted)">集中度高</text>
+
+        <rect x="240" y="136" width="206" height="92" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+        <text x="343" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent-deep)">仁寶</text>
+        <text x="343" y="184" text-anchor="middle" font-size="10" fill="var(--ink)">維持較廣的產品分布</text>
+        <text x="343" y="202" text-anchor="middle" font-size="10" fill="var(--ink)">消費裝置 ＋ 智慧醫療</text>
+        <text x="343" y="219" text-anchor="middle" font-size="9.5" fill="var(--ink)">分散度高</text>
+
+        <rect x="454" y="136" width="206" height="92" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="557" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">緯創</text>
+        <text x="557" y="184" text-anchor="middle" font-size="10" fill="var(--muted)">分拆緯穎攻雲端</text>
+        <text x="557" y="202" text-anchor="middle" font-size="10" fill="var(--muted)">母子公司各有戰場</text>
+        <text x="557" y="219" text-anchor="middle" font-size="9.5" fill="var(--muted)">結構重組</text>
+
+        <rect x="669" y="136" width="206" height="92" rx="10" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5"/>
+        <text x="772" y="162" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">和碩</text>
+        <text x="772" y="184" text-anchor="middle" font-size="10" fill="var(--muted)">同為四大家之一</text>
+        <text x="772" y="202" text-anchor="middle" font-size="10" fill="var(--muted)">亦自品牌廠分割而來</text>
+        <text x="772" y="219" text-anchor="middle" font-size="9.5" fill="var(--muted)">消費電子比重高</text>
+
+        <text x="450" y="260" text-anchor="middle" font-size="11" fill="var(--muted)">四家起點幾乎相同，差別在於面對新機會時「押多深」——押得深的爆發力強但波動也大，</text>
+        <text x="450" y="278" text-anchor="middle" font-size="11" fill="var(--muted)">分散的較穩但難有壓倒性表現。沒有哪一種必然正確，只是承擔的風險型態不同。</text>
+      </svg>
+      <p class="cap">同一批公司、同一個起點，因為對新機會押注的深淺不同，十年後的樣貌就此分歧。</p>
+    </div>
+
+    <div class="quote">筆電代工四大家是一場有趣的對照實驗：起跑點幾乎一樣，做的事情也高度重疊，但面對 AI 這一波，有人全力押上、有人分散布局。仁寶選的是後者——少了爆發性的故事，卻也少了押錯方向的風險。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>本頁為仁寶電腦（Compal）公司歷史、業務組成與產業地位之原創整理，內容綜合自公開產業報導與一般認知之公司發展脈絡，僅供知識參考，正式數據請以仁寶電腦官方公告與財報為準。</div>
+  </div>
+</footer>
+
+</body>
+</html>
