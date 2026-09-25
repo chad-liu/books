@@ -1,6 +1,8 @@
 台大開放式課程：哲學講座(https://philosophy-religion.vercel.app/index.html)
 
 哲學史學習藍圖
+西方哲學史學習藍圖(Claude)
+西方哲學學習藍圖(ChatGPT)
 
 中國哲學史學習藍圖
 

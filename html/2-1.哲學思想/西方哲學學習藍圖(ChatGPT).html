@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西方哲學學習藍圖｜SVG 哲學樹</title>
+<style>
+  :root{
+    --bg:#f6f3ed; --ink:#263238; --muted:#65727a; --card:#fffdf8;
+    --line:#9aa7ad; --accent:#5b7083; --gold:#b08a45;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+  }
+  header{padding:28px 5vw 18px;text-align:center}
+  h1{margin:0 0 8px;font-size:clamp(28px,4vw,46px);letter-spacing:.04em}
+  .subtitle{color:var(--muted);font-size:15px}
+  .toolbar{
+    display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+    padding:8px 5vw 18px
+  }
+  button{
+    border:1px solid #c5c0b5;background:var(--card);border-radius:999px;
+    padding:8px 14px;cursor:pointer;font:inherit;color:var(--ink)
+  }
+  button:hover{background:#eee9df}
+  .canvas-wrap{
+    margin:0 auto 28px;width:min(1500px,96vw);overflow:auto;
+    border:1px solid #ddd6c9;border-radius:18px;background:#faf8f3;
+    box-shadow:0 8px 30px rgba(55,45,30,.08)
+  }
+  svg{display:block;width:1600px;height:940px;min-width:1600px}
+  .edge{fill:none;stroke:var(--line);stroke-width:2.5}
+  .edge.major{stroke:#687a84;stroke-width:3.5}
+  .node{cursor:pointer}
+  .node rect{fill:var(--card);stroke:#aeb8bb;stroke-width:2;rx:12}
+  .node:hover rect{stroke:var(--gold);stroke-width:3}
+  .node text{fill:var(--ink);font-size:16px;font-weight:600}
+  .node .small{font-size:12px;font-weight:400;fill:var(--muted)}
+  .root rect{fill:#3f5665;stroke:#3f5665}
+  .root text{fill:white}
+  .era rect{fill:#e9e4d8;stroke:#b8ad99}
+  .era text{font-size:14px}
+  .legend{
+    width:min(1200px,92vw);margin:0 auto 30px;padding:18px 22px;
+    background:var(--card);border:1px solid #ddd6c9;border-radius:16px
+  }
+  .legend h2{margin:0 0 12px;font-size:20px}
+  .legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+  .legend-item{font-size:14px;color:#4f5b61}
+  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px;background:#b08a45}
+  .note{color:var(--muted);font-size:13px;line-height:1.7;margin-top:12px}
+  .popup-backdrop{display:none;position:fixed;inset:0;background:rgba(25,30,32,.38);z-index:1000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(2px)}
+  .popup-backdrop.show{display:flex}
+  .popup{position:relative;width:min(560px,92vw);max-height:75vh;overflow:auto;background:#fffdf8;border:1px solid #d6cdbd;border-radius:18px;box-shadow:0 18px 60px rgba(0,0,0,.24);padding:28px 30px}
+  .popup h3{margin:0 35px 12px 0;font-size:24px}
+  .popup p{line-height:1.9;margin:0;color:#46545a}
+  .close{position:absolute;right:13px;top:10px;border:0;background:transparent;font-size:30px;line-height:1;color:#6d777c;padding:3px 8px;cursor:pointer}
+  .close:hover{color:#222;background:#eee9df;border-radius:50%}
+  @media(max-width:700px){
+    header{padding-top:20px}
+    .canvas-wrap{border-radius:10px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>西方哲學學習藍圖</h1>
+  <div class="subtitle">從古希臘到當代：以「時代 × 問題 × 學派 × 哲學家」建立可循序學習的知識地圖</div>
+</header>
+
+<div class="toolbar">
+  <button onclick="zoom(1.15)">＋ 放大</button>
+  <button onclick="zoom(.87)">－ 縮小</button>
+  <button onclick="resetZoom()">重設</button>
+  <button onclick="window.print()">列印／另存 PDF</button>
+</div>
+
+<div class="canvas-wrap" id="canvasWrap">
+<svg id="map" viewBox="0 0 1500 900" xmlns="http://www.w3.org/2000/svg" aria-label="西方哲學學習樹">
+  <defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity=".12"/></filter>
+  </defs>
+
+  <!-- ROOT -->
+  <g class="node root" onclick="show('root')">
+    <rect x="650" y="28" width="200" height="62" filter="url(#shadow)"/>
+    <text x="750" y="57" text-anchor="middle">西方哲學</text>
+    <text x="750" y="77" text-anchor="middle" class="small" fill="white">Philosophy</text>
+  </g>
+
+  <!-- MAIN BRANCHES -->
+  <path class="edge major" d="M750 90 V125 M170 125 H1330 M170 125 V150 M420 125 V150 M670 125 V150 M920 125 V150 M1170 125 V150 M1330 125 V150"/>
+
+  <!-- ANCIENT -->
+  <g class="node era" onclick="show('ancient')">
+    <rect x="75" y="150" width="190" height="58"/>
+    <text x="170" y="176" text-anchor="middle">① 古代哲學</text>
+    <text x="170" y="195" text-anchor="middle" class="small">前6世紀－5世紀</text>
+  </g>
+  <!-- MEDIEVAL -->
+  <g class="node era" onclick="show('medieval')">
+    <rect x="325" y="150" width="190" height="58"/>
+    <text x="420" y="176" text-anchor="middle">② 中世紀哲學</text>
+    <text x="420" y="195" text-anchor="middle" class="small">5－15世紀</text>
+  </g>
+  <!-- EARLY MODERN -->
+  <g class="node era" onclick="show('modern')">
+    <rect x="575" y="150" width="190" height="58"/>
+    <text x="670" y="176" text-anchor="middle">③ 近代哲學</text>
+    <text x="670" y="195" text-anchor="middle" class="small">17－18世紀</text>
+  </g>
+  <!-- 19C -->
+  <g class="node era" onclick="show('nineteenth')">
+    <rect x="825" y="150" width="190" height="58"/>
+    <text x="920" y="176" text-anchor="middle">④ 19世紀哲學</text>
+    <text x="920" y="195" text-anchor="middle" class="small">革命、歷史、存在</text>
+  </g>
+  <!-- 20C -->
+  <g class="node era" onclick="show('twentieth')">
+    <rect x="1075" y="150" width="190" height="58"/>
+    <text x="1170" y="176" text-anchor="middle">⑤ 20世紀哲學</text>
+    <text x="1170" y="195" text-anchor="middle" class="small">分析／歐陸</text>
+  </g>
+  <!-- CONTEMP -->
+  <g class="node era" onclick="show('contemporary')">
+    <rect x="1235" y="150" width="190" height="58"/>
+    <text x="1330" y="176" text-anchor="middle">⑥ 當代哲學</text>
+    <text x="1330" y="195" text-anchor="middle" class="small">後期20－21世紀</text>
+  </g>
+
+  <!-- ANCIENT TREE -->
+  <path class="edge" d="M170 208 V250 M95 250 H245 M95 250 V275 M170 250 V275 M245 250 V275"/>
+  <g class="node" onclick="show('pre')"><rect x="40" y="275" width="110" height="62"/><text x="95" y="300" text-anchor="middle">前蘇格拉底</text><text x="95" y="321" text-anchor="middle" class="small">泰利斯・赫拉克利特</text></g>
+  <g class="node" onclick="show('socrates')"><rect x="115" y="275" width="110" height="62"/><text x="170" y="300" text-anchor="middle">蘇格拉底</text><text x="170" y="321" text-anchor="middle" class="small">倫理／辯證</text></g>
+  <g class="node" onclick="show('plato')"><rect x="190" y="275" width="110" height="62"/><text x="245" y="300" text-anchor="middle">柏拉圖</text><text x="245" y="321" text-anchor="middle" class="small">理念論／政治</text></g>
+  <path class="edge" d="M170 337 V370"/>
+  <g class="node" onclick="show('aristotle')"><rect x="105" y="370" width="130" height="62"/><text x="170" y="395" text-anchor="middle">亞里斯多德</text><text x="170" y="416" text-anchor="middle" class="small">邏輯／形上學／倫理</text></g>
+  <g class="node" onclick="show('hellenistic')"><rect x="45" y="450" width="250" height="58"/><text x="170" y="475" text-anchor="middle">希臘化哲學</text><text x="170" y="496" text-anchor="middle" class="small">斯多噶・伊比鳩魯・懷疑論</text></g>
+  <path class="edge" d="M170 432 V450"/>
+
+  <!-- MEDIEVAL -->
+  <path class="edge" d="M420 208 V250 M350 250 H490 M350 250 V275 M420 250 V275 M490 250 V275"/>
+  <g class="node" onclick="show('augustine')"><rect x="295" y="275" width="110" height="62"/><text x="350" y="300" text-anchor="middle">奧古斯丁</text><text x="350" y="321" text-anchor="middle" class="small">信仰與理性</text></g>
+  <g class="node" onclick="show('scholastic')"><rect x="365" y="275" width="110" height="62"/><text x="420" y="300" text-anchor="middle">經院哲學</text><text x="420" y="321" text-anchor="middle" class="small">阿奎那・安瑟倫</text></g>
+  <g class="node" onclick="show('nominalism')"><rect x="435" y="275" width="110" height="62"/><text x="490" y="300" text-anchor="middle">唯名論</text><text x="490" y="321" text-anchor="middle" class="small">奧卡姆</text></g>
+  <g class="node" onclick="show('renaissance')"><rect x="305" y="370" width="230" height="58"/><text x="420" y="395" text-anchor="middle">文藝復興與人文主義</text><text x="420" y="416" text-anchor="middle" class="small">通往近代的思想轉型</text></g>
+  <path class="edge" d="M420 337 V370"/>
+
+  <!-- MODERN -->
+  <path class="edge" d="M670 208 V250 M600 250 H740 M600 250 V275 M670 250 V275 M740 250 V275"/>
+  <g class="node" onclick="show('rationalism')"><rect x="545" y="275" width="110" height="62"/><text x="600" y="300" text-anchor="middle">理性主義</text><text x="600" y="321" text-anchor="middle" class="small">笛卡兒・斯賓諾莎</text></g>
+  <g class="node" onclick="show('empiricism')"><rect x="615" y="275" width="110" height="62"/><text x="670" y="300" text-anchor="middle">經驗主義</text><text x="670" y="321" text-anchor="middle" class="small">洛克・休謨</text></g>
+  <g class="node" onclick="show('kant')"><rect x="685" y="275" width="110" height="62"/><text x="740" y="300" text-anchor="middle">康德</text><text x="740" y="321" text-anchor="middle" class="small">批判哲學</text></g>
+  <g class="node" onclick="show('enlightenment')"><rect x="545" y="370" width="250" height="58"/><text x="670" y="395" text-anchor="middle">啟蒙思想</text><text x="670" y="416" text-anchor="middle" class="small">自然權利・公共理性・政治哲學</text></g>
+  <path class="edge" d="M670 337 V370"/>
+
+  <!-- 19C -->
+  <path class="edge" d="M920 208 V250 M850 250 H990 M850 250 V275 M920 250 V275 M990 250 V275"/>
+  <g class="node" onclick="show('idealism')"><rect x="795" y="275" width="110" height="62"/><text x="850" y="300" text-anchor="middle">德國觀念論</text><text x="850" y="321" text-anchor="middle" class="small">費希特・謝林・黑格爾</text></g>
+  <g class="node" onclick="show('marx')"><rect x="865" y="275" width="110" height="62"/><text x="920" y="300" text-anchor="middle">馬克思</text><text x="920" y="321" text-anchor="middle" class="small">歷史／政治經濟</text></g>
+  <g class="node" onclick="show('exist19')"><rect x="935" y="275" width="110" height="62"/><text x="990" y="300" text-anchor="middle">存在思想</text><text x="990" y="321" text-anchor="middle" class="small">祁克果・尼采</text></g>
+  <g class="node" onclick="show('util')"><rect x="795" y="370" width="250" height="58"/><text x="920" y="395" text-anchor="middle">功利主義／自由主義</text><text x="920" y="416" text-anchor="middle" class="small">邊沁・J.S. Mill</text></g>
+  <path class="edge" d="M920 337 V370"/>
+
+  <!-- 20C -->
+  <path class="edge" d="M1170 208 V250 M1100 250 H1240 M1100 250 V275 M1170 250 V275 M1240 250 V275"/>
+  <g class="node" onclick="show('analytic')"><rect x="1045" y="275" width="110" height="62"/><text x="1100" y="300" text-anchor="middle">分析哲學</text><text x="1100" y="321" text-anchor="middle" class="small">弗雷格・羅素・維根斯坦</text></g>
+  <g class="node" onclick="show('phenomenology')"><rect x="1115" y="275" width="110" height="62"/><text x="1170" y="300" text-anchor="middle">現象學</text><text x="1170" y="321" text-anchor="middle" class="small">胡塞爾・海德格</text></g>
+  <g class="node" onclick="show('existential')"><rect x="1185" y="275" width="110" height="62"/><text x="1240" y="300" text-anchor="middle">存在主義</text><text x="1240" y="321" class="small" text-anchor="middle">沙特・卡繆</text></g>
+  <g class="node" onclick="show('critical')"><rect x="1045" y="370" width="250" height="58"/><text x="1170" y="395" text-anchor="middle">法蘭克福學派／結構主義</text><text x="1170" y="416" text-anchor="middle" class="small">批判理論・語言・社會結構</text></g>
+  <path class="edge" d="M1170 337 V370"/>
+
+  <!-- CONTEMPORARY -->
+  <path class="edge" d="M1330 208 V250 M1260 250 H1400 M1260 250 V275 M1330 250 V275 M1400 250 V275"/>
+  <g class="node" onclick="show('poststruct')"><rect x="1205" y="275" width="110" height="62"/><text x="1260" y="300" text-anchor="middle">後結構主義</text><text x="1260" y="321" text-anchor="middle" class="small">傅柯・德希達</text></g>
+  <g class="node" onclick="show('rawls')"><rect x="1275" y="275" width="110" height="62"/><text x="1330" y="300" text-anchor="middle">政治哲學</text><text x="1330" y="321" text-anchor="middle" class="small">羅爾斯・諾齊克</text></g>
+  <g class="node" onclick="show('mind')"><rect x="1345" y="275" width="110" height="62"/><text x="1400" y="300" text-anchor="middle">心靈／認知</text><text x="1400" y="321" text-anchor="middle" class="small">意識・AI・認知</text></g>
+  <g class="node" onclick="show('applied')"><rect x="1205" y="370" width="250" height="58"/><text x="1330" y="395" text-anchor="middle">應用與跨學科哲學</text><text x="1330" y="416" text-anchor="middle" class="small">科技倫理・環境倫理・生命倫理</text></g>
+  <path class="edge" d="M1330 337 V370"/>
+
+  <!-- QUESTION AXIS -->
+  <g class="node" onclick="show('questions')">
+    <rect x="440" y="555" width="620" height="74" fill="#f0ebe1" stroke="#b7aa93" rx="16"/>
+    <text x="750" y="585" text-anchor="middle" font-size="20" font-weight="700">哲學的核心問題軸</text>
+    <text x="750" y="610" text-anchor="middle" class="small">存在 → 知識 → 真理 → 心靈 → 道德 → 政治 → 語言 → 科技與未來</text>
+  </g>
+  <path class="edge major" d="M750 508 V555"/>
+
+  <!-- LEARNING PATH -->
+  <g class="node" onclick="show('path')">
+    <rect x="180" y="675" width="1140" height="120" fill="#fffdf8" stroke="#b8b0a2" rx="18"/>
+    <text x="750" y="705" text-anchor="middle" font-size="20" font-weight="700">建議學習路徑</text>
+    <text x="750" y="735" text-anchor="middle" class="small">① 哲學導論 → ② 古希臘 → ③ 中世紀 → ④ 近代（理性主義／經驗主義／康德）</text>
+    <text x="750" y="760" text-anchor="middle" class="small">→ ⑤ 19世紀（黑格爾／馬克思／尼采） → ⑥ 20世紀（分析／現象學／存在主義）</text>
+    <text x="750" y="785" text-anchor="middle" class="small">→ ⑦ 當代專題：政治、倫理、心靈、語言、科學、AI、環境</text>
+  </g>
+</svg>
+</div>
+
+<div class="popup-backdrop" id="popupBackdrop" onclick="closePopup(event)">
+  <div class="popup" id="popup" role="dialog" aria-modal="true">
+    <button class="close" onclick="closePopup()" aria-label="關閉">×</button>
+    <h3 id="popupTitle"></h3>
+    <p id="popupText"></p>
+  </div>
+</div>
+
+<section class="legend">
+  <h2>如何使用這張藍圖</h2>
+  <div class="legend-grid">
+    <div class="legend-item">● <b>縱向</b>：按照時代理解思想如何演變。</div>
+    <div class="legend-item">● <b>橫向</b>：比較同一問題在不同時代的答案。</div>
+    <div class="legend-item">● <b>節點</b>：點擊哲學家或學派，可查看學習重點。</div>
+    <div class="legend-item">● <b>問題軸</b>：用問題串聯不同哲學傳統。</div>
+  </div>
+  <div class="note">
+    這是一張「學習地圖」而非完整哲學史。哲學家與學派之間存在跨時代影響、內部分歧與多重歸類；
+    圖中採取教學上較容易掌握的主幹分類。
+  </div>
+</section>
+
+<script>
+const info = {
+root:["西方哲學","建議先建立「問題意識」，再沿時代閱讀原典與導論。核心問題包括：什麼是真實？如何知道？何謂善？人如何共同生活？語言如何表達思想？"],
+ancient:["古代哲學","從自然哲學進入倫理、政治、形上學與邏輯。重點人物：泰利斯、赫拉克利特、蘇格拉底、柏拉圖、亞里斯多德，以及希臘化時代的斯多噶、伊比鳩魯、懷疑論。"],
+medieval:["中世紀哲學","古希臘哲學與基督教神學互相轉化與辯論；核心議題包括上帝存在、信仰與理性、普遍者問題、自然法與形上學。"],
+modern:["近代哲學","從科學革命與認識論問題出發。理性主義強調理性結構，經驗主義強調經驗來源，康德試圖重新界定兩者的關係。"],
+nineteenth:["19世紀哲學","黑格爾的歷史辯證、馬克思的社會與歷史理論、尼采的價值批判，以及功利主義與自由主義，形成多條通往現代哲學的路線。"],
+twentieth:["20世紀哲學","形成分析哲學與歐陸哲學等不同傳統；語言、邏輯、意識、存在、歷史、權力與社會批判成為重要問題。"],
+contemporary:["當代哲學","議題高度分化並跨學科，包括政治正義、心靈哲學、認知科學、科技倫理、AI、環境倫理與生命倫理等。"],
+pre:["前蘇格拉底","從神話敘事逐步轉向以 logos 探究自然與存在。可比較泰利斯的本原、赫拉克利特的變化與巴門尼德的存在論。"],
+socrates:["蘇格拉底","把哲學焦點強烈地轉向人的生活與德性；透過對話、反詰與「認識自己」探問何謂善的生活。"],
+plato:["柏拉圖","以理念論、靈魂論、知識論與政治哲學建立龐大體系。《理想國》《會飲》《斐多》是重要入口。"],
+aristotle:["亞里斯多德","建立形式邏輯、形上學、自然哲學與德性倫理等系統；《形上學》《尼各馬可倫理學》是重要原典。"],
+hellenistic:["希臘化哲學","斯多噶派討論德性與命運；伊比鳩魯派討論快樂、死亡與寧靜；懷疑論則檢討判斷與知識的可能性。"],
+augustine:["奧古斯丁","將古典哲學資源與基督教思想結合，討論時間、記憶、意志、惡與上帝。"],
+scholastic:["經院哲學","透過論證與異議整理哲學與神學問題。阿奎那大量吸收亞里斯多德哲學，討論存在、因果、自然法與上帝。"],
+nominalism:["唯名論","圍繞普遍者是否具有獨立實在性等問題展開；奧卡姆也強調避免不必要的實體與假設。"],
+renaissance:["文藝復興與人文主義","重新閱讀古典文本，強調語言、修辭、人的尊嚴與世俗政治思考，逐步形成近代思想環境。"],
+rationalism:["理性主義","笛卡兒從懷疑與「我思」出發；斯賓諾莎以實體與必然性建構形上學；萊布尼茲提出單子論等。"],
+empiricism:["經驗主義","洛克分析心靈與經驗的關係；貝克萊批判物質實體概念；休謨進一步檢討因果、歸納與自我。"],
+kant:["康德","《純粹理性批判》重新處理經驗與先驗條件；倫理學則以義務、自律與定言令式為核心。"],
+enlightenment:["啟蒙思想","重視理性批判、知識傳播、宗教寬容與政治制度等議題；不同思想家對自由、平等與國家有不同主張。"],
+idealism:["德國觀念論","康德之後，費希特、謝林、黑格爾重新處理主體、自然、自由與歷史的關係。"],
+marx:["馬克思","分析資本主義生產關係、階級、勞動與商品；以歷史唯物論理解社會變遷。"],
+exist19:["祁克果與尼采","祁克果關注個體、選擇與信仰；尼采批判傳統道德與價值來源。兩者常被視為後來存在思想的重要先聲。"],
+util:["功利主義／自由主義","邊沁以效用原則思考倫理與制度；J.S. Mill 同時討論自由、個體性與功利原則。"],
+analytic:["分析哲學","重視論證、邏輯與語言分析。弗雷格、羅素、早期與後期維根斯坦等形成不同階段的語言哲學。"],
+phenomenology:["現象學","胡塞爾以意向性與現象描述重新思考意識；海德格將現象學推向存在論問題。"],
+existential:["存在主義","關注自由、選擇、責任、荒謬與存在處境。沙特與卡繆雖常並列，但兩人的哲學立場並不完全相同。"],
+critical:["法蘭克福學派／結構主義","批判理論分析資本主義、文化與支配；結構主義則從語言、符號與社會結構尋找規律。"],
+poststruct:["後結構主義","傅柯研究知識、權力與制度；德希達以解構分析文本與二元對立。兩者不宜簡化成單一學派。"],
+rawls:["當代政治哲學","羅爾斯從公平與正義的制度設計出發；諾齊克則以權利與最小國家等論證提出不同路線。"],
+mind:["心靈／認知哲學","研究意識、身心關係、人工智慧、認知與語言等問題，並與心理學、神經科學及電腦科學交叉。"],
+applied:["應用與跨學科哲學","把哲學方法用於現實問題，例如生命倫理、環境倫理、科技倫理、AI治理、醫療決策與動物倫理。"],
+questions:["核心問題軸","建議每讀一位哲學家都問：①他認為什麼存在？②知識如何可能？③真理是什麼？④心靈與世界如何關聯？⑤何謂善？⑥正義如何可能？⑦語言如何表達世界？⑧科技會如何改變人的處境？"],
+path:["學習路徑","初學者可先用一門哲學史或導論建立全景，再選一條主線深入：認識論、倫理學、政治哲學、形上學、科學哲學、心靈哲學、語言哲學或美學。"]
+};
+function show(key){
+  const x=info[key]||info.root;
+  document.getElementById("popupTitle").textContent=x[0];
+  document.getElementById("popupText").textContent=x[1];
+  document.getElementById("popupBackdrop").classList.add("show");
+}
+function closePopup(e){
+  if(e && e.target !== document.getElementById("popupBackdrop")) return;
+  document.getElementById("popupBackdrop").classList.remove("show");
+}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")document.getElementById("popupBackdrop").classList.remove("show")});
+let scale=1;
+function zoom(f){
+  scale=Math.max(.65,Math.min(1.45,scale*f));
+  document.getElementById("map").style.transform="scale("+scale+")";
+  document.getElementById("map").style.transformOrigin="top left";
+}
+function resetZoom(){scale=1;document.getElementById("map").style.transform="scale(1)"}
+</script>
+</body>
+</html>
