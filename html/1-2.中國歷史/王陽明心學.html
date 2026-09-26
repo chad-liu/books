@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>王陽明心學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#263238;--muted:#7d6e33;
+    --celadon:#327977;--cinnabar:#a24034;--ochre:#8b6939;--rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--cinnabar);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,188,169,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:10px;letter-spacing:.02em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .ev .nm{color:var(--cinnabar)} .doc .nm{color:var(--celadon)}
+  .sch .nm{color:var(--ochre)} .leg .nm{color:#17324d}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--celadon);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 宋明理學人物）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">心即理・知行合一・致良知</p>
+  <h1>王陽明心學</h1>
+  <p class="lede">王陽明的學問是被逼出來的。他照著朱熹的方法格了七天竹子，格出一場大病；十多年後被貶到貴州龍場，在那個沒有書、沒有人、隨時可能死掉的地方，他忽然想通了一件事——要找的理，從來不在竹子裡。這一頁談的就是這個轉向，以及它後來如何裂解成好幾個彼此不承認的門派。</p>
+</header>
+
+<section>
+  <h2>一生的幾個轉折</h2>
+  <p class="sub">從格竹的挫敗，到「此心光明」</p>
+  <div class="frame">
+<svg viewBox="0 0 900 318" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="王陽明生平重要事件時間軸">
+<line x1="60" y1="150" x2="850" y2="150" stroke="#c5c0b5" stroke-width="1.5"/>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <circle cx="92" cy="150" r="5" fill="#59707b"/>
+  <text x="92" y="176" font-size="11.5" fill="#17324d" font-weight="700">1472</text>
+  <text x="92" y="194" font-size="10" fill="#59707b">生於浙江餘姚</text>
+
+  <circle cx="232" cy="150" r="6" fill="#327977"/>
+  <text x="232" y="124" font-size="12" fill="#327977" font-weight="700">格竹</text>
+  <text x="232" y="106" font-size="10" fill="#59707b">依朱熹之法格亭前竹</text>
+  <text x="232" y="88" font-size="10" fill="#59707b">七日不得，反而病倒</text>
+
+  <circle cx="372" cy="150" r="6" fill="#a24034"/>
+  <text x="372" y="176" font-size="11.5" fill="#17324d" font-weight="700">1506</text>
+  <text x="372" y="194" font-size="10" fill="#59707b">上疏忤劉瑾，廷杖</text>
+  <text x="372" y="212" font-size="10" fill="#59707b">貶貴州龍場驛丞</text>
+
+  <circle cx="512" cy="150" r="8" fill="#a24034"/>
+  <text x="512" y="122" font-size="13.5" fill="#a24034" font-weight="700">1508　龍場悟道</text>
+  <text x="512" y="102" font-size="10.5" fill="#59707b">「聖人之道，吾性自足」</text>
+  <text x="512" y="84" font-size="10.5" fill="#59707b">向來求理於事物，是走錯了方向</text>
+
+  <circle cx="632" cy="150" r="6" fill="#8b6939"/>
+  <text x="632" y="176" font-size="11.5" fill="#17324d" font-weight="700">1519</text>
+  <text x="632" y="194" font-size="10" fill="#59707b">平寧王宸濠之亂</text>
+  <text x="632" y="212" font-size="10" fill="#59707b">四十餘日而定</text>
+
+  <circle cx="742" cy="150" r="6" fill="#327977"/>
+  <text x="742" y="124" font-size="12" fill="#327977" font-weight="700">1521　揭致良知</text>
+  <text x="742" y="106" font-size="10" fill="#59707b">五十歲，始以三字立教</text>
+  <text x="742" y="88" font-size="10" fill="#59707b">同年封新建伯</text>
+
+  <circle cx="820" cy="150" r="6" fill="#a24034"/>
+  <text x="820" y="176" font-size="11.5" fill="#17324d" font-weight="700">1527</text>
+  <text x="820" y="194" font-size="10" fill="#59707b">天泉證道</text>
+  <text x="820" y="212" font-size="10" fill="#59707b">留下四句教</text>
+</g>
+
+<rect x="230" y="246" width="440" height="52" rx="6" fill="#f8eeec" stroke="#d5a89f"/>
+<text x="450" y="268" font-size="12.5" fill="#a24034" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">1529 年正月，平廣西亂後病逝於歸途</text>
+<text x="450" y="288" font-size="11" fill="#7a3228" text-anchor="middle">弟子問遺言，答：「此心光明，亦復何言。」</text>
+
+<text x="450" y="30" font-size="11" fill="#59707b" text-anchor="middle">他一生的兩個身分很少同時被記住：一個是講學的思想家，一個是能在四十幾天內平定藩王叛亂的統帥。</text>
+<text x="450" y="48" font-size="11" fill="#59707b" text-anchor="middle">而他自己認為，這兩件事用的是同一套工夫。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>跟朱熹到底差在哪裡</h2>
+  <p class="sub">分歧點極小，只在「格物」兩個字怎麼讀</p>
+  <div class="frame">
+<svg viewBox="0 0 900 352" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="朱熹與王陽明對格物的兩種解釋">
+<rect x="150" y="24" width="600" height="46" rx="6" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="450" y="44" font-size="12.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">兩人讀的是同一句話：《大學》「致知在格物」</text>
+<text x="450" y="62" font-size="10.5" fill="#546e7a" text-anchor="middle">爭的不是要不要做工夫，而是工夫應該下在哪裡</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="60" y="94" width="360" height="176" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+  <text x="240" y="122" font-size="14" fill="#327977" font-weight="700">朱熹・即物窮理</text>
+  <text x="240" y="148" font-size="11" fill="#2a5a58">格，是「至」；物，是天下萬事萬物</text>
+  <text x="240" y="168" font-size="11" fill="#2a5a58">一物有一物之理，須逐一去窮究</text>
+  <text x="240" y="188" font-size="11" fill="#2a5a58">今日格一件，明日格一件，積累既久</text>
+  <text x="240" y="208" font-size="11" fill="#2a5a58">而後豁然貫通</text>
+  <text x="240" y="234" font-size="10.5" fill="#59707b">理在事物之中，心去認識它</text>
+  <text x="240" y="254" font-size="10.5" fill="#59707b">學問是一個由外而內、由分而合的過程</text>
+
+  <rect x="480" y="94" width="360" height="176" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="660" y="122" font-size="14" fill="#a24034" font-weight="700">王陽明・格心之非</text>
+  <text x="660" y="148" font-size="11" fill="#7a3228">格，是「正」；物，是意念所在之事</text>
+  <text x="660" y="168" font-size="11" fill="#7a3228">正其不正，以歸於正</text>
+  <text x="660" y="188" font-size="11" fill="#7a3228">工夫下在起心動念處，不在竹子上</text>
+  <text x="660" y="208" font-size="11" fill="#7a3228">心外無理，心外無物</text>
+  <text x="660" y="234" font-size="10.5" fill="#59707b">理即在心中，不必外求</text>
+  <text x="660" y="254" font-size="10.5" fill="#59707b">學問是一個向內端正、當下即是的過程</text>
+</g>
+
+<text x="450" y="298" font-size="11" fill="#546e7a" text-anchor="middle">格竹那件事之所以關鍵，是因為陽明是真的照朱熹的方法做了，做到病倒，才確信這條路走不通。</text>
+<text x="450" y="318" font-size="11" fill="#546e7a" text-anchor="middle">他的反對不是讀書讀出來的意見，而是實作失敗之後的結論——這也是他日後強調「須在事上磨鍊」的由來。</text>
+<text x="450" y="340" font-size="10.5" fill="#59707b" text-anchor="middle">要注意的是，陽明並未否定朱熹的目標，他反對的是達成那個目標的路徑。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>知行合一與致良知</h2>
+  <p class="sub">前者是他早年的教法，後者是他晚年自認最簡易直截的三個字</p>
+  <div class="frame">
+<svg viewBox="0 0 900 356" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="知行合一與致良知的結構">
+<rect x="50" y="24" width="380" height="150" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+<text x="240" y="52" font-size="14" fill="#a24034" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">知行合一</text>
+<text x="240" y="78" font-size="11" fill="#7a3228" text-anchor="middle">不是「知道了之後要去做」</text>
+<text x="240" y="98" font-size="11" fill="#7a3228" text-anchor="middle">而是「真知本來就已經含著行」</text>
+<text x="240" y="120" font-size="10.5" fill="#59707b" text-anchor="middle">看到美色自然就喜歡，聞到惡臭自然就厭惡</text>
+<text x="240" y="138" font-size="10.5" fill="#59707b" text-anchor="middle">中間沒有一個「決定要不要」的空隙</text>
+<text x="240" y="160" font-size="10.5" fill="#59707b" text-anchor="middle">所以說孝而不能孝，只能說他其實並不真知孝</text>
+
+<rect x="470" y="24" width="380" height="150" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+<text x="660" y="52" font-size="14" fill="#327977" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">致良知</text>
+<text x="660" y="78" font-size="11" fill="#2a5a58" text-anchor="middle">良知是人人本有的是非之心</text>
+<text x="660" y="98" font-size="11" fill="#2a5a58" text-anchor="middle">不必學而知，不必慮而得</text>
+<text x="660" y="120" font-size="10.5" fill="#59707b" text-anchor="middle">「致」不是求得，而是推到底、不打折扣地實行</text>
+<text x="660" y="138" font-size="10.5" fill="#59707b" text-anchor="middle">明明知道該怎麼做，卻找理由繞過去</text>
+<text x="660" y="160" font-size="10.5" fill="#59707b" text-anchor="middle">那就是良知被遮蔽了，工夫就下在這裡</text>
+
+<rect x="150" y="196" width="600" height="62" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="450" y="220" font-size="12.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">兩者其實是同一件事的兩種說法</text>
+<text x="450" y="240" font-size="10.5" fill="#546e7a" text-anchor="middle">知行合一說的是「知與行本來不分」，致良知說的是「那個本來不分的知，就是良知」</text>
+
+<text x="450" y="290" font-size="11" fill="#546e7a" text-anchor="middle">這套講法之所以有力量，在於它把道德的根據從外部的經典與權威，搬回到每個人自己身上。</text>
+<text x="450" y="310" font-size="11" fill="#546e7a" text-anchor="middle">不識字的人也有良知，所以人人皆可為聖人——這句話在明代中葉是極具爆炸性的。</text>
+<text x="450" y="332" font-size="10.5" fill="#59707b" text-anchor="middle">也正因為如此，它後來會被推到什麼地方去，連陽明自己都未必料得到。</text>
+<text x="450" y="350" font-size="10.5" fill="#59707b" text-anchor="middle">下一節談的就是這個。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>四句教與王門的分裂</h2>
+  <p class="sub">1527 年天泉橋上的一場對話，埋下了後學分歧的種子</p>
+  <div class="frame">
+<svg viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四句教與王門後學分派">
+<rect x="120" y="22" width="660" height="82" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="450" y="46" font-size="12.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">四句教</text>
+<text x="450" y="68" font-size="12" fill="#263238" font-family="'Noto Serif TC',serif" text-anchor="middle">無善無惡心之體　·　有善有惡意之動</text>
+<text x="450" y="90" font-size="12" fill="#263238" font-family="'Noto Serif TC',serif" text-anchor="middle">知善知惡是良知　·　為善去惡是格物</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="80" y="126" width="340" height="112" rx="8" fill="#faf7f1" stroke="#cbb894" stroke-width="1.5"/>
+  <text x="250" y="152" font-size="13" fill="#8b6939" font-weight="700">錢德洪・四有</text>
+  <text x="250" y="176" font-size="10.5" fill="#6b5228">四句都要，一句都不能少</text>
+  <text x="250" y="196" font-size="10.5" fill="#6b5228">人有習心，必須在意念上實下工夫</text>
+  <text x="250" y="218" font-size="10" fill="#59707b">重漸修，守住為善去惡這一關</text>
+
+  <rect x="480" y="126" width="340" height="112" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="650" y="152" font-size="13" fill="#a24034" font-weight="700">王畿・四無</text>
+  <text x="650" y="176" font-size="10.5" fill="#7a3228">心體既然無善無惡，意、知、物也應如此</text>
+  <text x="650" y="196" font-size="10.5" fill="#7a3228">上根之人一悟本體，即是工夫</text>
+  <text x="650" y="218" font-size="10" fill="#59707b">重頓悟，直接從心體上立根</text>
+</g>
+
+<rect x="200" y="256" width="500" height="46" rx="6" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="450" y="276" font-size="11.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">陽明的裁決：兩說相取為用，不可各執一邊</text>
+<text x="450" y="294" font-size="10.5" fill="#546e7a" text-anchor="middle">他說接引上根之人用王畿之說，接引中下之人用錢德洪之說，偏執任何一邊都會出問題</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="50" y="324" width="256" height="82" rx="8" fill="#eef4f3" stroke="#a8c4c2"/>
+  <text x="178" y="348" font-size="12.5" fill="#327977" font-weight="700">江右王門</text>
+  <text x="178" y="370" font-size="10" fill="#2a5a58">鄒守益、聶豹、羅洪先</text>
+  <text x="178" y="388" font-size="10" fill="#59707b">主歸寂、主收攝，最為守成</text>
+
+  <rect x="322" y="324" width="256" height="82" rx="8" fill="#f8eeec" stroke="#d5a89f"/>
+  <text x="450" y="348" font-size="12.5" fill="#a24034" font-weight="700">浙中王門</text>
+  <text x="450" y="370" font-size="10" fill="#7a3228">王畿、錢德洪</text>
+  <text x="450" y="388" font-size="10" fill="#59707b">親炙弟子，也是分歧的起點</text>
+
+  <rect x="594" y="324" width="256" height="82" rx="8" fill="#faf7f1" stroke="#cbb894"/>
+  <text x="722" y="348" font-size="12.5" fill="#8b6939" font-weight="700">泰州學派</text>
+  <text x="722" y="370" font-size="10" fill="#6b5228">王艮、羅汝芳、李贄</text>
+  <text x="722" y="388" font-size="10" fill="#59707b">走向平民與狂放，爭議也最大</text>
+</g>
+</svg>
+  </div>
+  <p class="sub" style="margin-left:0;margin-top:12px;margin-bottom:0">黃宗羲《明儒學案》分王門為多支，其中以浙中、江右、泰州三者篇幅最重，也最能代表三種走向。</p>
+</section>
+
+<section>
+  <div class="band"><h2>生平關鍵</h2><span class="tag">LIFE</span></div>
+  <div class="grid ev">
+    <div class="card"><span class="nm">格竹</span><span class="yr">青年時期</span><p>依朱熹「即物窮理」之法，對著亭前竹子格了七日，不但沒有格出理，反而勞思成疾。這次失敗是他日後轉向的起點。</p></div>
+    <div class="card"><span class="nm">龍場悟道</span><span class="yr">1508</span><p>因得罪劉瑾被貶貴州龍場驛丞。在瘴癘荒僻之地忽然大悟：聖人之道，吾性自足，向來求理於事物者誤也。心學由此成立。</p></div>
+    <div class="card"><span class="nm">平寧王之亂</span><span class="yr">1519</span><p>寧王朱宸濠起兵，陽明以巡撫之身臨機調度，四十餘日即擒之。他一生事功之盛，在思想家中極為罕見。</p></div>
+    <div class="card"><span class="nm">始揭致良知</span><span class="yr">1521</span><p>五十歲時始以「致良知」三字立教，自謂是聖門正法眼藏。同年十二月封新建伯。</p></div>
+    <div class="card"><span class="nm">天泉證道</span><span class="yr">1527</span><p>赴廣西前夜，於紹興天泉橋與錢德洪、王畿論四句教，是心學史上最關鍵的一場對話。</p></div>
+    <div class="card"><span class="nm">此心光明</span><span class="yr">1529</span><p>平定廣西之亂後病重，卒於歸途。弟子問有何遺言，答以「此心光明，亦復何言」。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心主張</h2><span class="tag">DOCTRINE</span></div>
+  <div class="grid doc">
+    <div class="card"><span class="nm">心即理</span><p>理不在事物之中等待被認識，而就在心上。心外無理，心外無物——這是與程朱一系最根本的分歧。</p></div>
+    <div class="card"><span class="nm">知行合一</span><p>不是知了再行，而是真知本身就已含行。知而不行，只是未知；他用好色惡臭作比，中間沒有猶豫的空隙。</p></div>
+    <div class="card"><span class="nm">致良知</span><p>良知是人人本有的是非之心，「致」是把它推到底、不打折扣地落實。晚年他認為這三個字最簡易直截。</p></div>
+    <div class="card"><span class="nm">格物新解</span><p>格是「正」而不是「至」，物是意念所在之事。工夫下在起心動念處，正其不正以歸於正。</p></div>
+    <div class="card"><span class="nm">事上磨鍊</span><p>反對空談靜坐，主張在具體事務中檢驗與鍛鍊。他自己帶兵治民的經歷，正是這句話的註腳。</p></div>
+    <div class="card"><span class="nm">滿街聖人</span><p>既然良知人人本有，成聖就不再是讀書人的專利。這個推論在明代中葉具有強烈的社會意涵。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>王門後學</h2><span class="tag">SCHOOLS</span></div>
+  <div class="grid sch">
+    <div class="card"><span class="nm">王畿</span><span class="yr">1498－1583</span><p>浙中王門。主四無說，重悟本體，與禪門的距離最近，也因此最常被批評為蹈空。</p></div>
+    <div class="card"><span class="nm">錢德洪</span><span class="yr">1496－1574</span><p>浙中王門。主四有說，重實下工夫；《傳習錄》與陽明年譜的編定，他出力最多。</p></div>
+    <div class="card"><span class="nm">鄒守益</span><span class="yr">1491－1562</span><p>江右王門。以戒慎恐懼為主，主張良知須靠敬畏保任，被視為最能守住陽明本旨的一支。</p></div>
+    <div class="card"><span class="nm">聶豹・羅洪先</span><p>江右王門。提出歸寂、主靜之說，認為須先歸於寂然之體，良知才有著落，與王畿一系形成對照。</p></div>
+    <div class="card"><span class="nm">王艮</span><span class="yr">1483－1541</span><p>泰州學派之祖。鹽丁出身，講學面向庶民，提出「百姓日用即道」，把心學推向平民社會。</p></div>
+    <div class="card"><span class="nm">李贄</span><span class="yr">1527－1602</span><p>泰州一系的極端發展。以童心說批判假道學，終因思想被視為離經叛道而下獄，自刎而死。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>後續影響</h2><span class="tag">LEGACY</span></div>
+  <div class="grid leg">
+    <div class="card"><span class="nm">《傳習錄》</span><p>陽明語錄與論學書信的結集，由徐愛、錢德洪等弟子陸續編定，是理解心學最直接的文本。</p></div>
+    <div class="card"><span class="nm">晚明的思想鬆動</span><p>心學把道德根據收歸個人，間接助長了晚明對禮教與權威的鬆動，也招來「猖狂者參之以情識」的批評。</p></div>
+    <div class="card"><span class="nm">清初的反彈</span><p>明亡之後，顧炎武等人把空談心性視為亡國之由，學風轉向考據實學，心學一度沉寂。</p></div>
+    <div class="card"><span class="nm">東傳日本</span><p>陽明學傳入日本後自成一系，中江藤樹、大鹽平八郎為代表；幕末志士亦多受其重行動的精神影響。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    無善無惡心之體，有善有惡意之動，知善知惡是良知，為善去惡是格物。
+    <cite>王陽明「四句教」，天泉證道（1527）</cite>
+  </blockquote>
+</section>
+
+<footer>
+  年代依主要事件發生年份。龍場悟道的具體情節多見於《年譜》與後世傳述，其戲劇性的敘事細節，同時代的直接記載相對簡略。四句教的文字在《傳習錄》與《年譜》所載略有出入，本頁採通行的版本；天泉證道當晚的對話內容，主要出自錢德洪與王畿各自的記述，兩人立場不同，記載亦有詳略之別。王門分派依黃宗羲《明儒學案》，該書的分類與褒貶本身即帶有黃宗羲自己的判斷立場，尤其對泰州一系的評價，學界迄今仍有討論。
+</footer>
+
+</div>
+</body>
+</html>
