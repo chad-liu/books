@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>考據實學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#263238;--muted:#7d6e33;
+    --celadon:#327977;--cinnabar:#a24034;--ochre:#8b6939;--rule:#c4c0b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--cinnabar);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:58ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:860px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(195,188,169,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:10px;letter-spacing:.02em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#59707b}
+  .sx .nm{color:var(--cinnabar)} .kj .nm{color:var(--celadon)}
+  .mt .nm{color:var(--ochre)} .lg .nm{color:#17324d}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--celadon);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 宋明理學人物）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">經世・樸學・由字通道</p>
+  <h1>考據實學</h1>
+  <p class="lede">王陽明說滿街都是聖人，一百多年後明朝亡了。清初的讀書人把帳算在空談心性頭上，於是學風整個掉頭：不再問「本心是什麼」，改問「這個字在漢代到底怎麼念、這句話是不是後人偽造的」。這看起來像是從哲學退回訓詁，但它留下的其實是中國學術史上第一套嚴格的實證方法。</p>
+</header>
+
+<section>
+  <h2>明亡之後，學風整個掉頭</h2>
+  <p class="sub">從「空談誤國」的清算，到三百年的故紙堆</p>
+  <div class="frame">
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="明清之際到晚清的學風演變時間軸">
+<line x1="60" y1="168" x2="850" y2="168" stroke="#c5c0b5" stroke-width="1.5"/>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <circle cx="98" cy="168" r="7" fill="#a24034"/>
+  <text x="98" y="142" font-size="13" fill="#a24034" font-weight="700">1644 明亡</text>
+  <text x="98" y="122" font-size="10" fill="#59707b">學術的斷裂點</text>
+
+  <circle cx="240" cy="168" r="6" fill="#a24034"/>
+  <text x="240" y="194" font-size="12" fill="#a24034" font-weight="700">明清之際・實學</text>
+  <text x="240" y="214" font-size="10" fill="#59707b">顧炎武、黃宗羲、王夫之</text>
+  <text x="240" y="232" font-size="10" fill="#59707b">主張經世致用，反空疏</text>
+
+  <circle cx="390" cy="168" r="6" fill="#327977"/>
+  <text x="390" y="142" font-size="12" fill="#327977" font-weight="700">1704 前後・辨偽</text>
+  <text x="390" y="122" font-size="10" fill="#59707b">閻若璩《尚書古文疏證》</text>
+  <text x="390" y="104" font-size="10" fill="#59707b">考定傳世古文尚書為偽</text>
+
+  <circle cx="540" cy="168" r="8" fill="#327977"/>
+  <text x="540" y="194" font-size="13.5" fill="#327977" font-weight="700">乾嘉・考據全盛</text>
+  <text x="540" y="214" font-size="10.5" fill="#59707b">惠棟、戴震、段玉裁、二王、錢大昕</text>
+  <text x="540" y="232" font-size="10.5" fill="#59707b">文字、音韻、訓詁成為主戰場</text>
+
+  <circle cx="690" cy="168" r="6" fill="#8b6939"/>
+  <text x="690" y="142" font-size="12" fill="#8b6939" font-weight="700">道咸・今文復興</text>
+  <text x="690" y="122" font-size="10" fill="#59707b">劉逢祿、龔自珍、魏源</text>
+  <text x="690" y="104" font-size="10" fill="#59707b">考據轉出議政的能量</text>
+
+  <circle cx="822" cy="168" r="6" fill="#8b6939"/>
+  <text x="822" y="194" font-size="12" fill="#8b6939" font-weight="700">晚清</text>
+  <text x="822" y="214" font-size="10" fill="#59707b">康有為《新學偽經考》</text>
+  <text x="822" y="232" font-size="10" fill="#59707b">以辨偽之刀改制</text>
+</g>
+
+<rect x="200" y="268" width="500" height="50" rx="6" fill="#f8eeec" stroke="#d5a89f"/>
+<text x="450" y="290" font-size="12" fill="#a24034" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">同一把刀，前後砍向不同的對象</text>
+<text x="450" y="308" font-size="10.5" fill="#7a3228" text-anchor="middle">清初拿它清算宋明，乾嘉拿它整理群經，晚清拿它推翻古文經、為變法開路</text>
+
+<text x="450" y="34" font-size="11" fill="#546e7a" text-anchor="middle">這段學術史最容易被誤會的地方，是把「考據」看成單純的鑽故紙堆。</text>
+<text x="450" y="52" font-size="11" fill="#546e7a" text-anchor="middle">但它在清初是帶著強烈現實關懷出發的，到晚清又再度變成政治武器——中間那一百多年的沉潛，才是需要解釋的部分。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>考據是一套什麼樣的技術</h2>
+  <p class="sub">戴震：由字以通其詞，由詞以通其道</p>
+  <div class="frame">
+<svg viewBox="0 0 900 344" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="考據學的方法鏈">
+<rect x="140" y="22" width="620" height="46" rx="6" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="450" y="42" font-size="12.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">核心信念：經典的意思不能靠體會，只能靠語言證據一層層逼近</text>
+<text x="450" y="60" font-size="10.5" fill="#546e7a" text-anchor="middle">宋儒直接談義理，清儒認為那是跳過了中間的手續</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="44" y="94" width="184" height="96" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+  <text x="136" y="120" font-size="13" fill="#327977" font-weight="700">文字</text>
+  <text x="136" y="144" font-size="10" fill="#2a5a58">先確定這個字的本形本義</text>
+  <text x="136" y="162" font-size="10" fill="#2a5a58">段玉裁《說文解字注》</text>
+  <text x="136" y="180" font-size="9.5" fill="#59707b">形是入口</text>
+
+  <rect x="250" y="94" width="184" height="96" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+  <text x="342" y="120" font-size="13" fill="#327977" font-weight="700">音韻</text>
+  <text x="342" y="144" font-size="10" fill="#2a5a58">古音與今音不同，通假須靠音</text>
+  <text x="342" y="162" font-size="10" fill="#2a5a58">錢大昕：古無輕唇音</text>
+  <text x="342" y="180" font-size="9.5" fill="#59707b">音是關鍵樞紐</text>
+
+  <rect x="456" y="94" width="184" height="96" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+  <text x="548" y="120" font-size="13" fill="#327977" font-weight="700">訓詁</text>
+  <text x="548" y="144" font-size="10" fill="#2a5a58">用漢儒舊注解釋詞義</text>
+  <text x="548" y="162" font-size="10" fill="#2a5a58">王念孫、王引之父子</text>
+  <text x="548" y="180" font-size="9.5" fill="#59707b">義由音求，不由臆測</text>
+
+  <rect x="662" y="94" width="194" height="96" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="759" y="120" font-size="13" fill="#a24034" font-weight="700">校勘・辨偽・輯佚</text>
+  <text x="759" y="144" font-size="10" fill="#7a3228">比對版本、判定真偽</text>
+  <text x="759" y="162" font-size="10" fill="#7a3228">從類書中把亡佚的書拼回來</text>
+  <text x="759" y="180" font-size="9.5" fill="#59707b">確保你讀的是原本</text>
+</g>
+
+<g stroke="#c5c0b5" stroke-width="1.5" fill="none">
+  <path d="M228 142 L248 142"/>
+  <path d="M434 142 L454 142"/>
+  <path d="M640 142 L660 142"/>
+</g>
+
+<rect x="140" y="214" width="620" height="52" rx="6" fill="#faf7f1" stroke="#cbb894"/>
+<text x="450" y="236" font-size="12" fill="#8b6939" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">終點仍然是「道」，不是字</text>
+<text x="450" y="254" font-size="10.5" fill="#6b5228" text-anchor="middle">戴震反覆強調，訓詁只是手段；問題是後來多數人停在手段上，這也是它日後被批評的地方</text>
+
+<text x="450" y="296" font-size="11" fill="#546e7a" text-anchor="middle">這套方法最了不起的地方，是它建立了一個可以公開檢驗的標準：你說某字該這樣解，就得拿出旁證。</text>
+<text x="450" y="316" font-size="11" fill="#546e7a" text-anchor="middle">誰的證據多、誰的推論嚴密，誰就贏——這在中國學術史上是新的遊戲規則。</text>
+<text x="450" y="336" font-size="10.5" fill="#59707b" text-anchor="middle">代價則是：能被檢驗的問題才值得問，於是問題愈問愈細、也愈離現實愈遠。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>吳派與皖派：兩種尊漢學的方式</h2>
+  <p class="sub">同樣反對宋儒，但一個信家法，一個信證據</p>
+  <div class="frame">
+<svg viewBox="0 0 900 318" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="吳派與皖派的比較">
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="60" y="30" width="360" height="184" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+  <text x="240" y="58" font-size="14" fill="#327977" font-weight="700">吳派・惠棟</text>
+  <text x="240" y="78" font-size="10.5" fill="#59707b">1697－1758・蘇州</text>
+  <text x="240" y="104" font-size="11" fill="#2a5a58">主張凡是漢代的解釋就值得相信</text>
+  <text x="240" y="124" font-size="11" fill="#2a5a58">因為漢去古未遠，家法師承有據</text>
+  <text x="240" y="146" font-size="11" fill="#2a5a58">治學重在蒐羅漢注、恢復舊說</text>
+  <text x="240" y="172" font-size="10.5" fill="#59707b">長處是把散佚的漢代經說系統地救回來</text>
+  <text x="240" y="192" font-size="10.5" fill="#59707b">短處是容易變成以時代早晚定是非</text>
+
+  <rect x="480" y="30" width="360" height="184" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="660" y="58" font-size="14" fill="#a24034" font-weight="700">皖派・戴震</text>
+  <text x="660" y="78" font-size="10.5" fill="#59707b">1724－1777・徽州</text>
+  <text x="660" y="104" font-size="11" fill="#7a3228">漢注也要拿證據檢驗，不因古而必信</text>
+  <text x="660" y="124" font-size="11" fill="#7a3228">由字通詞，由詞通道，層層有據</text>
+  <text x="660" y="146" font-size="11" fill="#7a3228">考據的最終目的仍是求道</text>
+  <text x="660" y="172" font-size="10.5" fill="#59707b">長處是方法自覺強，能上達義理</text>
+  <text x="660" y="192" font-size="10.5" fill="#59707b">《孟子字義疏證》甚至回頭批判宋儒</text>
+</g>
+
+<rect x="170" y="238" width="560" height="52" rx="6" fill="#faf7f1" stroke="#cbb894"/>
+<text x="450" y="260" font-size="12" fill="#8b6939" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">戴震最尖銳的一句話，是衝著宋儒去的</text>
+<text x="450" y="278" font-size="10.5" fill="#6b5228" text-anchor="middle">他說人死於法，猶有憐之者；死於理，其誰憐之——以理殺人，是考據學罕見地直接觸及現實的一刻</text>
+
+<text x="450" y="312" font-size="10.5" fill="#59707b" text-anchor="middle">後來揚州學派（汪中、焦循、阮元）調和兩派，阮元主持編刻《皇清經解》，等於為這門學問做了總結。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>為什麼會轉向考據</h2>
+  <p class="sub">兩種解釋，各自都有道理，也各自都不夠</p>
+  <div class="frame">
+<svg viewBox="0 0 900 328" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="考據學興起原因的兩種解釋">
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="60" y="28" width="360" height="176" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="240" y="56" font-size="13.5" fill="#a24034" font-weight="700">外緣解釋・文字獄說</text>
+  <text x="240" y="82" font-size="11" fill="#7a3228">清廷屢興文字獄，議論時政風險極高</text>
+  <text x="240" y="102" font-size="11" fill="#7a3228">學者只好退回經書，埋首訓詁校勘</text>
+  <text x="240" y="124" font-size="11" fill="#7a3228">四庫全書的編纂同時也是一次清查</text>
+  <text x="240" y="150" font-size="10.5" fill="#59707b">說得通的地方：清初的經世之志確實消退了</text>
+  <text x="240" y="170" font-size="10.5" fill="#59707b">說不通的地方：壓力無法解釋方法為何如此精密</text>
+  <text x="240" y="190" font-size="10.5" fill="#59707b">也無法解釋為何在壓力鬆動後仍持續發展</text>
+
+  <rect x="480" y="28" width="360" height="176" rx="8" fill="#eef4f3" stroke="#a8c4c2" stroke-width="1.5"/>
+  <text x="660" y="56" font-size="13.5" fill="#327977" font-weight="700">內在理路說・余英時</text>
+  <text x="660" y="82" font-size="11" fill="#2a5a58">宋明儒爭義理，爭到最後必須回到經典</text>
+  <text x="660" y="102" font-size="11" fill="#2a5a58">要判誰的解釋對，就得先問經文原意為何</text>
+  <text x="660" y="124" font-size="11" fill="#2a5a58">於是義理之爭自然逼出文獻之學</text>
+  <text x="660" y="150" font-size="10.5" fill="#59707b">說得通的地方：解釋了方法上的連續性</text>
+  <text x="660" y="170" font-size="10.5" fill="#59707b">清儒表面上反宋學，骨子裡仍在回應宋學的問題</text>
+  <text x="660" y="190" font-size="10.5" fill="#59707b">說不通的地方：低估了政治環境的實際作用</text>
+</g>
+
+<rect x="150" y="230" width="600" height="52" rx="6" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="450" y="252" font-size="12" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">比較合理的讀法是兩者並用</text>
+<text x="450" y="270" font-size="10.5" fill="#546e7a" text-anchor="middle">內在理路決定了學術「會往哪裡走」，外在壓力決定了它「走得多快、走得多遠」</text>
+
+<text x="450" y="308" font-size="10.5" fill="#59707b" text-anchor="middle">這組爭論本身也是個好例子：同一批史料，換一個提問的角度，看到的因果就完全不同。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>明清之際的實學</h2><span class="tag">PRACTICAL</span></div>
+  <div class="grid sx">
+    <div class="card"><span class="nm">顧炎武</span><span class="yr">1613－1682</span><p>公認的清學開山。主張經學即理學，以音韻訓詁治經；《日知錄》《天下郡國利病書》《音學五書》兼顧考證與經世。</p></div>
+    <div class="card"><span class="nm">黃宗羲</span><span class="yr">1610－1695</span><p>《明夷待訪錄》直指君主為天下之大害，是傳統中罕見的體制批判；《明儒學案》則開創了學術史的寫法。</p></div>
+    <div class="card"><span class="nm">王夫之</span><span class="yr">1619－1692</span><p>隱居船山四十年著述。主氣論，反對離氣言理；《讀通鑑論》以史論政，著作到晚清才廣為人知。</p></div>
+    <div class="card"><span class="nm">顏元・李塨</span><p>顏李學派。反對靜坐讀書，主張習行——學問要在動手做的事情上檢驗，是清初實學中最激烈的一支。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>乾嘉學者</h2><span class="tag">SCHOLARS</span></div>
+  <div class="grid kj">
+    <div class="card"><span class="nm">閻若璩</span><span class="yr">1636－1704</span><p>費三十餘年作《尚書古文疏證》，舉百餘條證據判傳世古文尚書為偽。此案被視為考據學方法成熟的標誌。</p></div>
+    <div class="card"><span class="nm">惠棟</span><span class="yr">1697－1758</span><p>吳派宗師。主張漢儒去古未遠，其說最可信，治學以蒐輯漢注、恢復舊說為主。</p></div>
+    <div class="card"><span class="nm">戴震</span><span class="yr">1724－1777</span><p>皖派宗師。提出由字通詞、由詞通道的治學次第，並以《孟子字義疏證》回頭批判宋儒的理欲之辨。</p></div>
+    <div class="card"><span class="nm">段玉裁</span><span class="yr">1735－1815</span><p>戴震弟子。《說文解字注》是文字學的巔峰之作，把形、音、義三者的關係整理成可操作的系統。</p></div>
+    <div class="card"><span class="nm">王念孫・王引之</span><p>父子二人以音韻通訓詁，《讀書雜志》《經義述聞》《經傳釋詞》被視為訓詁學的典範。</p></div>
+    <div class="card"><span class="nm">錢大昕</span><span class="yr">1728－1804</span><p>兼擅經史。《廿二史考異》把考據方法用到史書上，並提出古無輕唇音等重要的古音判斷。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心方法</h2><span class="tag">METHOD</span></div>
+  <div class="grid mt">
+    <div class="card"><span class="nm">文字</span><p>從字形入手確定本義，是整條方法鏈的起點。《說文》成為清儒共同的依據與戰場。</p></div>
+    <div class="card"><span class="nm">音韻</span><p>古今音不同，通假與異文都要靠古音才能判斷。音韻學因此從附庸變成考據的樞紐。</p></div>
+    <div class="card"><span class="nm">訓詁</span><p>以漢儒舊注釋義，並要求義必有據。王引之所謂「揆之本文而協，驗之他卷而通」，是最簡明的標準。</p></div>
+    <div class="card"><span class="nm">校勘</span><p>比對不同版本，判斷何者為是。抄刻既久必有訛誤，讀錯字往往就會解錯整句。</p></div>
+    <div class="card"><span class="nm">辨偽</span><p>判定典籍的真偽與成書年代。閻若璩之後，這門工夫成為清儒最具殺傷力的武器。</p></div>
+    <div class="card"><span class="nm">輯佚</span><p>從類書、古注中把已亡佚的書一條條抄回來重編，是清代整理古籍最耗工的部分。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>後續影響</h2><span class="tag">LEGACY</span></div>
+  <div class="grid lg">
+    <div class="card"><span class="nm">今文經學的復興</span><p>劉逢祿一系重提今文，龔自珍、魏源藉以議政，考據所累積的辨偽能力終於轉出現實關懷。</p></div>
+    <div class="card"><span class="nm">康有為的用法</span><p>《新學偽經考》斷古文經為劉歆偽造，《孔子改制考》把孔子講成改制的先驅，辨偽之刀直接為變法開路。</p></div>
+    <div class="card"><span class="nm">章太炎與國學</span><p>古文經學一系由章太炎承接，訓詁小學成為近代國學的根柢，也培養出一整代的語文學者。</p></div>
+    <div class="card"><span class="nm">走進現代學術</span><p>胡適把清儒的工夫概括為「大膽的假設，小心的求證」；傅斯年主持史語所，把重證據的傳統接上現代學科建制。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    經之至者道也，所以明道者其詞也，所以成詞者字也。由字以通其詞，由詞以通其道，必有漸。
+    <cite>戴震〈與是仲明論學書〉</cite>
+  </blockquote>
+</section>
+
+<footer>
+  年代依通行說法。清初學風轉向的解釋，本頁並列文字獄說與余英時的內在理路說，兩者在學界仍有爭論，並無定論。顧炎武《日知錄》原文作「保天下者，匹夫之賤與有責焉耳矣」，今日通行的「天下興亡，匹夫有責」八字是後人的濃縮，非顧氏原句。吳派、皖派之分主要沿用章太炎、梁啟超以來的說法，實際上兩派學者交往密切，界線不若名目所示那般清楚。閻若璩之後仍有為古文尚書辯護者，其真偽在清代並非一時定讞。
+</footer>
+
+</div>
+</body>
+</html>
