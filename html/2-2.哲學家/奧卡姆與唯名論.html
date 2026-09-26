@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奧卡姆與唯名論</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f5f5f2;--ink:#263238;--muted:#59707b;
+    --azure:#2f6690;--rust:#a2543a;--sage:#4a7350;--gold:#8a6a2f;
+    --rule:#c2c4b5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--rust);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,4.8vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(192,196,162,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--gold);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#546e7a}
+  .li .nm{color:var(--rust)} .dp .nm{color:var(--azure)}
+  .cp .nm{color:var(--sage)} .lg .nm{color:var(--gold)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--rust);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 達爾文與演化論）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Via Moderna</p>
+  <h1>奧卡姆與唯名論</h1>
+  <p class="lede">大家都聽過奧卡姆剃刀，而「如無必要，勿增實體」這句話，奧卡姆從來沒有寫過——它出現在他死後將近三百年，而且是在一本註解他主要論敵的書裡。真正屬於他的，是一個更難也更徹底的主張：世界上存在的只有一個一個的個別事物，「人類」「紅色」這些共同的名目，都只是心裡的記號。</p>
+</header>
+
+<section>
+  <h2>問題從哪裡來：共相之爭</h2>
+  <p class="sub">一段波菲利寫在導論裡、卻擱置不答的話，困擾了中世紀八百年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="共相問題的來源與四種立場">
+<rect x="150" y="22" width="640" height="76" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="470" y="46" font-size="13" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">問題的出處：波菲利《導論》，經波愛修斯譯介傳入拉丁世界</text>
+<text x="470" y="68" font-size="10.5" fill="#546e7a" text-anchor="middle">種與屬究竟是真實存在，還是只存在於思想之中？若真實存在，是有形的還是無形的？</text>
+<text x="470" y="88" font-size="10.5" fill="#546e7a" text-anchor="middle">是與可感事物分離，還是就在可感事物之中？——他提出這三問，然後說此事過於艱深，就此帶過</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="34" y="122" width="212" height="142" rx="8" fill="#eaf0f5" stroke="#b0c5d6" stroke-width="1.5"/>
+  <text x="140" y="148" font-size="12.5" fill="#2f6690" font-weight="700">極端實在論</text>
+  <text x="140" y="168" font-size="10" fill="#59707b">共相先於事物</text>
+  <text x="140" y="190" font-size="10.5" fill="#234e6e">「人類」本身是真實的存在</text>
+  <text x="140" y="208" font-size="10.5" fill="#234e6e">個別的人只是分有了它</text>
+  <text x="140" y="230" font-size="10" fill="#234e6e">柏拉圖一系，香浦的威廉</text>
+  <text x="140" y="250" font-size="10" fill="#59707b">代價：共相成了另一層世界</text>
+
+  <rect x="258" y="122" width="212" height="142" rx="8" fill="#eaf0f5" stroke="#b0c5d6" stroke-width="1.5"/>
+  <text x="364" y="148" font-size="12.5" fill="#2f6690" font-weight="700">溫和實在論</text>
+  <text x="364" y="168" font-size="10" fill="#59707b">共相在事物之中</text>
+  <text x="364" y="190" font-size="10.5" fill="#234e6e">共同本性內在於個別事物</text>
+  <text x="364" y="208" font-size="10.5" fill="#234e6e">理智把它抽象出來而成概念</text>
+  <text x="364" y="230" font-size="10" fill="#234e6e">亞里斯多德一系，阿奎那</text>
+  <text x="364" y="250" font-size="10" fill="#59707b">中世紀最主流的答案</text>
+
+  <rect x="482" y="122" width="212" height="142" rx="8" fill="#eef3ef" stroke="#aec6b3" stroke-width="1.5"/>
+  <text x="588" y="148" font-size="12.5" fill="#4a7350" font-weight="700">概念論</text>
+  <text x="588" y="168" font-size="10" fill="#59707b">共相是心中的概念</text>
+  <text x="588" y="190" font-size="10.5" fill="#33523a">不是實體，但也不只是聲音</text>
+  <text x="588" y="208" font-size="10.5" fill="#33523a">它是有意義的語詞與概念</text>
+  <text x="588" y="230" font-size="10" fill="#33523a">阿伯拉爾試圖走的中道</text>
+  <text x="588" y="250" font-size="10" fill="#59707b">調和的嘗試</text>
+
+  <rect x="706" y="122" width="212" height="142" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="812" y="148" font-size="12.5" fill="#a2543a" font-weight="700">唯名論</text>
+  <text x="812" y="168" font-size="10" fill="#59707b">共相後於事物</text>
+  <text x="812" y="190" font-size="10.5" fill="#7a3c28">實際存在的只有個別事物</text>
+  <text x="812" y="208" font-size="10.5" fill="#7a3c28">共相只是記號，只是名目</text>
+  <text x="812" y="230" font-size="10" fill="#7a3c28">洛色林，而後是奧卡姆</text>
+  <text x="812" y="250" font-size="10" fill="#59707b">最徹底，也最具破壞力</text>
+</g>
+
+<text x="470" y="300" font-size="11" fill="#546e7a" text-anchor="middle">這場爭論看起來抽象，賭注卻極大：如果「人性」不是真實的東西，原罪如何在全人類身上成立？</text>
+<text x="470" y="320" font-size="11" fill="#546e7a" text-anchor="middle">如果教會不是一個實在的整體而只是一群信徒的集合，它的權威又從何而來？</text>
+<text x="470" y="344" font-size="10.5" fill="#59707b" text-anchor="middle">共相之爭從來不只是邏輯問題，它牽動的是神學、教會與政治的根基。</text>
+<text x="470" y="366" font-size="10.5" fill="#59707b" text-anchor="middle">這也是為什麼洛色林的主張在十一世紀被判為異端，而奧卡姆終其後半生都在被追訴。</text>
+<text x="470" y="388" font-size="10.5" fill="#59707b" text-anchor="middle">立場之間的差別很細，後果卻天差地遠。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>奧卡姆的答案：只有個別事物</h2>
+  <p class="sub">他不只說共相不存在，還說明了為什麼我們仍然會有共同的概念</p>
+  <div class="frame">
+<svg viewBox="0 0 940 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="奧卡姆對共相的解釋">
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="26" width="400" height="140" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="240" y="54" font-size="13.5" fill="#a2543a" font-weight="700">本體論上：世界只由個別物組成</text>
+  <text x="240" y="80" font-size="11" fill="#7a3c28">沒有「共同本性」這種東西存在於事物之中</text>
+  <text x="240" y="100" font-size="11" fill="#7a3c28">蘇格拉底與柏拉圖之所以都是人</text>
+  <text x="240" y="120" font-size="11" fill="#7a3c28">不是因為他們共有一個「人性」</text>
+  <text x="240" y="142" font-size="10.5" fill="#7a3c28">而只是因為他們彼此相似</text>
+
+  <rect x="500" y="26" width="400" height="140" rx="8" fill="#eef3ef" stroke="#aec6b3" stroke-width="1.5"/>
+  <text x="700" y="54" font-size="13.5" fill="#4a7350" font-weight="700">認識論上：共相是心中的記號</text>
+  <text x="700" y="80" font-size="11" fill="#33523a">概念是心靈自然產生的記號</text>
+  <text x="700" y="100" font-size="11" fill="#33523a">它能指稱許多個別物，所以是「共」的</text>
+  <text x="700" y="120" font-size="11" fill="#33523a">但記號本身仍是一個個別的心理事件</text>
+  <text x="700" y="142" font-size="10.5" fill="#33523a">共相是它的功能，不是它的身分</text>
+</g>
+
+<text x="470" y="196" font-size="11.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">這一步很關鍵：他保住了知識的普遍性，卻沒有為此增加任何一種存在物</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="120" y="216" width="330" height="92" rx="8" fill="#eaf0f5" stroke="#b0c5d6" stroke-width="1.5"/>
+  <text x="285" y="242" font-size="12" fill="#2f6690" font-weight="700">直觀認識</text>
+  <text x="285" y="264" font-size="10.5" fill="#234e6e">直接面對眼前這個個別事物</text>
+  <text x="285" y="284" font-size="10.5" fill="#234e6e">據以判斷它存在或不存在</text>
+  <text x="285" y="302" font-size="10" fill="#59707b">知識的起點在這裡</text>
+
+  <rect x="490" y="216" width="330" height="92" rx="8" fill="#eaf0f5" stroke="#b0c5d6" stroke-width="1.5"/>
+  <text x="655" y="242" font-size="12" fill="#2f6690" font-weight="700">抽象認識</text>
+  <text x="655" y="264" font-size="10.5" fill="#234e6e">撇開存在與否，只把握內容</text>
+  <text x="655" y="284" font-size="10.5" fill="#234e6e">共同的概念由此形成</text>
+  <text x="655" y="302" font-size="10" fill="#59707b">但它奠基於前者，不能獨立</text>
+</g>
+
+<text x="470" y="340" font-size="11" fill="#546e7a" text-anchor="middle">把知識的起點放在「直接碰到這一個東西」，等於把經驗擺到了推論之前——這條線索日後會通向近代經驗論。</text>
+<text x="470" y="364" font-size="10.5" fill="#59707b" text-anchor="middle">不過奧卡姆本人的目的是神學的，不是為了替自然科學鋪路。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>剃刀：最有名的那句話不是他說的</h2>
+  <p class="sub">它出現在他身後近三百年，而且出自一本註解司各脫的書</p>
+  <div class="frame">
+<svg viewBox="0 0 940 376" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="奧卡姆剃刀的實際出處與原始表述">
+<rect x="180" y="22" width="580" height="64" rx="8" fill="#faf7f1" stroke="#cbb894" stroke-width="1.5"/>
+<text x="470" y="46" font-size="12.5" fill="#8a6a2f" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">流傳最廣的版本</text>
+<text x="470" y="68" font-size="11" fill="#6b5228" text-anchor="middle">如無必要，勿增實體　Entia non sunt multiplicanda praeter necessitatem</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="110" width="410" height="124" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="245" y="136" font-size="12.5" fill="#a2543a" font-weight="700">但這句話查無實據</text>
+  <text x="245" y="160" font-size="10.5" fill="#7a3c28">現存奧卡姆的著作裡找不到這個句子</text>
+  <text x="245" y="180" font-size="10.5" fill="#7a3c28">目前公認的來源是愛爾蘭方濟會士龐奇</text>
+  <text x="245" y="200" font-size="10.5" fill="#7a3c28">1639 年他在一部註解裡寫下近似的表述</text>
+  <text x="245" y="222" font-size="10" fill="#59707b">而且他稱之為經院學者的「通行公理」，並未歸給奧卡姆</text>
+
+  <rect x="490" y="110" width="410" height="124" rx="8" fill="#eaf0f5" stroke="#b0c5d6" stroke-width="1.5"/>
+  <text x="695" y="136" font-size="12.5" fill="#2f6690" font-weight="700">奧卡姆自己的說法</text>
+  <text x="695" y="160" font-size="10.5" fill="#234e6e">不應無必要地設定多數</text>
+  <text x="695" y="180" font-size="10.5" fill="#234e6e">能用較少者完成的，用較多者是徒勞</text>
+  <text x="695" y="200" font-size="10.5" fill="#234e6e">意思相通，但他用的是別的措辭</text>
+  <text x="695" y="222" font-size="10" fill="#59707b">而且這類節約原則在他之前就已經有人用</text>
+</g>
+
+<rect x="140" y="252" width="660" height="52" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="470" y="274" font-size="11.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">最大的反諷：龐奇那部註解，註的是鄧斯・司各脫</text>
+<text x="470" y="294" font-size="10.5" fill="#546e7a" text-anchor="middle">而司各脫正是奧卡姆在共相與形上學問題上最主要的論敵</text>
+
+<text x="470" y="330" font-size="11" fill="#546e7a" text-anchor="middle">另外要注意，這把刀在奧卡姆手上是形上學與邏輯的工具，不是科學方法的格言。</text>
+<text x="470" y="350" font-size="11" fill="#546e7a" text-anchor="middle">他用它來削掉共相、關係、量這些被當成獨立存在物的東西，把十個範疇壓縮到實體與性質兩類。</text>
+<text x="470" y="370" font-size="10.5" fill="#59707b" text-anchor="middle">而且他明確不把它套在上帝身上——上帝全能，本來就可以用迂迴的方式做事。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>後果：上帝可以不這樣安排</h2>
+  <p class="sub">唯名論真正的破壞力，出現在神學而不是邏輯</p>
+  <div class="frame">
+<svg viewBox="0 0 940 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="唯名論在神學與思想史上的後果">
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="24" width="410" height="120" rx="8" fill="#f8eeec" stroke="#d5a89f" stroke-width="1.5"/>
+  <text x="245" y="50" font-size="12.5" fill="#a2543a" font-weight="700">絕對權能與規定權能</text>
+  <text x="245" y="74" font-size="10.5" fill="#7a3c28">就絕對權能而言，上帝能做任何不矛盾的事</text>
+  <text x="245" y="94" font-size="10.5" fill="#7a3c28">現存的秩序只是祂實際選擇的那一套</text>
+  <text x="245" y="114" font-size="10.5" fill="#7a3c28">祂原本大可以安排成另一個樣子</text>
+  <text x="245" y="134" font-size="10" fill="#59707b">世界因此是偶然的，不是必然的</text>
+
+  <rect x="490" y="24" width="410" height="120" rx="8" fill="#eaf0f5" stroke="#b0c5d6" stroke-width="1.5"/>
+  <text x="695" y="50" font-size="12.5" fill="#2f6690" font-weight="700">信仰與理性就此分家</text>
+  <text x="695" y="74" font-size="10.5" fill="#234e6e">若秩序出於自由意志而非必然</text>
+  <text x="695" y="94" font-size="10.5" fill="#234e6e">理性就無法從世界推出上帝必定如何</text>
+  <text x="695" y="114" font-size="10.5" fill="#234e6e">神學的根據只能回到啟示與信仰</text>
+  <text x="695" y="134" font-size="10" fill="#59707b">阿奎那那種綜合工程，到這裡鬆脫了</text>
+</g>
+
+<rect x="120" y="164" width="700" height="50" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="470" y="186" font-size="11.5" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">這不是懷疑論，而是把理性與信仰各自的地界劃得更清楚</text>
+<text x="470" y="204" font-size="10.5" fill="#546e7a" text-anchor="middle">代價是：兩者不再能互相支援，中世紀那個一體的知識圖像於是裂開</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="234" width="276" height="90" rx="8" fill="#eef3ef" stroke="#aec6b3"/>
+  <text x="178" y="258" font-size="12" fill="#4a7350" font-weight="700">大學裡的新路</text>
+  <text x="178" y="280" font-size="10" fill="#33523a">唯名論一系被稱為「新路」</text>
+  <text x="178" y="298" font-size="10" fill="#33523a">與實在論的「舊路」分庭抗禮</text>
+  <text x="178" y="316" font-size="9.5" fill="#59707b">十四、十五世紀的主要學派之爭</text>
+
+  <rect x="332" y="234" width="276" height="90" rx="8" fill="#eef3ef" stroke="#aec6b3"/>
+  <text x="470" y="258" font-size="12" fill="#4a7350" font-weight="700">通向宗教改革</text>
+  <text x="470" y="280" font-size="10" fill="#33523a">理性既無法擔保救恩</text>
+  <text x="470" y="298" font-size="10" fill="#33523a">信仰與恩典的份量就更重</text>
+  <text x="470" y="316" font-size="9.5" fill="#59707b">路德所受的神學訓練即屬此一傳統</text>
+
+  <rect x="624" y="234" width="276" height="90" rx="8" fill="#eef3ef" stroke="#aec6b3"/>
+  <text x="762" y="258" font-size="12" fill="#4a7350" font-weight="700">教權與俗權分離</text>
+  <text x="762" y="280" font-size="10" fill="#33523a">他晚年大量寫政治論著</text>
+  <text x="762" y="298" font-size="10" fill="#33523a">反對教宗擁有世俗的全權</text>
+  <text x="762" y="316" font-size="9.5" fill="#59707b">這與他被追訴的處境直接相關</text>
+</g>
+
+<text x="470" y="352" font-size="10.5" fill="#59707b" text-anchor="middle">一個關於「共同名詞指涉什麼」的技術問題，最後牽動了教會權威、救恩觀與政治秩序。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>生平</h2><span class="tag">LIFE</span></div>
+  <div class="grid li">
+    <div class="card"><span class="nm">出身與受學</span><span class="yr">約 1287</span><p>生於英格蘭薩里郡的奧卡姆村，年少即入方濟會，後於牛津受學與講授《四部語錄》，因未取得正式教職而有「可敬的肇端者」之稱。</p></div>
+    <div class="card"><span class="nm">傳喚至亞維農</span><span class="yr">1324</span><p>其學說被指控涉嫌異端，奉召至教廷所在的亞維農接受審查。他在此期間轉而研究教宗關於方濟會清貧的諭令。</p></div>
+    <div class="card"><span class="nm">出走與絕罰</span><span class="yr">1328</span><p>與方濟會總會長切塞納的米凱萊等人出逃，遭絕罰。他們投奔與教宗對立的神聖羅馬皇帝路易四世。</p></div>
+    <div class="card"><span class="nm">慕尼黑歲月</span><span class="yr">1330 以後</span><p>在皇帝庇護下居於慕尼黑，餘生大量撰寫政治論著，處理教權與俗權的界線問題，約 1347 年於當地去世。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>論爭中的人物</h2><span class="tag">DISPUTANTS</span></div>
+  <div class="grid dp">
+    <div class="card"><span class="nm">波菲利</span><span class="it">Porphyrius</span><p>在《導論》中提出共相的三個問題卻聲明不予處理，經波愛修斯譯註後，這段話成為中世紀反覆爭辯的起點。</p></div>
+    <div class="card"><span class="nm">洛色林</span><span class="it">Roscellinus</span><p>十一世紀的極端唯名論者。因以此立場解釋三位一體而被判定有三神論之嫌，顯示這個問題的神學風險。</p></div>
+    <div class="card"><span class="nm">阿伯拉爾</span><span class="it">Abaelardus</span><p>洛色林與香浦的威廉兩人的學生，兩邊都批評。他主張共相是有意義的語詞與概念，被視為概念論的代表。</p></div>
+    <div class="card"><span class="nm">阿奎那</span><span class="it">Aquinas</span><p>溫和實在論的集大成者。共同本性內在於個別事物，理智將其抽象而成普遍概念，是中世紀最具支配性的答案。</p></div>
+    <div class="card"><span class="nm">鄧斯・司各脫</span><span class="it">Duns Scotus</span><p>奧卡姆最主要的論敵。他以共同本性與形式區分處理個體化問題，而奧卡姆的剃刀正是衝著這類區分而來。</p></div>
+    <div class="card"><span class="nm">切塞納的米凱萊</span><span class="it">Michael of Cesena</span><p>方濟會總會長，清貧之爭的核心人物。奧卡姆隨他出逃亞維農，其去世後由奧卡姆接手領導這群異議修士。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>核心概念</h2><span class="tag">CONCEPTS</span></div>
+  <div class="grid cp">
+    <div class="card"><span class="nm">唯名論</span><p>實際存在的只有個別事物，共相並非事物中的成分，而是能夠指稱許多個體的記號。</p></div>
+    <div class="card"><span class="nm">記號與指代</span><p>他發展出細緻的指代理論，分析同一個語詞在不同語句中究竟代表個別物、概念，還是語詞本身。</p></div>
+    <div class="card"><span class="nm">直觀認識</span><p>對眼前個別事物的直接把握，是知識的起點，也是判斷某物存在與否的依據。</p></div>
+    <div class="card"><span class="nm">節約原則</span><p>不應無必要地設定多數。他據此削減範疇的數量，主張關係與量並非獨立於實體與性質之外的東西。</p></div>
+    <div class="card"><span class="nm">上帝的絕對權能</span><p>上帝能做一切不涉矛盾之事；現行的秩序出於自由的選擇而非必然，世界因此帶有徹底的偶然性。</p></div>
+    <div class="card"><span class="nm">新路</span><span class="it">via moderna</span><p>以唯名論為核心的教學路線，與實在論的「舊路」在十四世紀以後的大學中長期對峙。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>後續影響</h2><span class="tag">LEGACY</span></div>
+  <div class="grid lg">
+    <div class="card"><span class="nm">經驗論的遠源</span><p>把知識奠基於對個別事物的直接認識，這條線索日後在英國經驗論中重新出現，儘管兩者的關懷並不相同。</p></div>
+    <div class="card"><span class="nm">宗教改革的背景</span><p>理性無法擔保救恩，信仰與恩典的份量因而加重。路德所受的神學訓練即出自這個傳統。</p></div>
+    <div class="card"><span class="nm">剃刀的再發明</span><p>節約原則在近代被重新詮釋為科學方法的準則，這是後世的挪用，與奧卡姆原本的形上學用意有相當距離。</p></div>
+    <div class="card"><span class="nm">當代的唯名論</span><p>二十世紀分析哲學重新處理抽象對象是否存在的問題，唯名論在本體論承諾的討論中再度成為活的選項。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    不應無必要地設定多數。能夠以較少者完成的事，若用較多者去做，便是徒勞。
+    <cite>奧卡姆對節約原則的兩種表述（意譯）</cite>
+  </blockquote>
+</section>
+
+<footer>
+  生卒年依通行說法，其生年約在 1287 年前後、卒年約在 1347 年，學界所採的數字互有出入。「如無必要，勿增實體」一語不見於奧卡姆現存著作，目前公認出自 1639 年龐奇註解鄧斯・司各脫之作，且他稱之為經院學者的通行公理而未歸於奧卡姆；類似的節約原則在奧卡姆之前亦已有人使用，將其專稱為「奧卡姆剃刀」是後世的習慣。極端實在論、溫和實在論、概念論、唯名論的四分法便於入門，但中世紀各家的實際主張遠較此複雜，且多數人並不以這些標籤自居。唯名論與宗教改革之間的關聯，學界長期討論而看法不一，本頁所述為其中一種較常見的敘述，不宜視為定論。
+</footer>
+
+</div>
+</body>
+</html>
