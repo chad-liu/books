@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理性論與經驗論</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&family=EB+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#f6f5f1;--ink:#263238;--muted:#59707b;
+    --azure:#2f5f96;--rust:#9b4a3b;--violet:#63498a;--brass:#8a6a2f;
+    --rule:#c5c3b4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+    font-size:20px;color:var(--rust);letter-spacing:.04em;margin:0 0 6px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(27px,4.8vw,38px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(197,195,180,.7)}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .it{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:14px;
+    color:var(--brass);margin-left:8px}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:#546e7a}
+  .ra .nm{color:var(--azure)} .em .nm{color:var(--rust)}
+  .cx .nm{color:var(--brass)} .kt .nm{color:var(--violet)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--azure);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 英國經驗論）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it{color:#59707b}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#607d8b}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+  .xref{margin:0 0 20px;font-size:13px;color:#546e7a;background:#f1f5f8;
+    border-left:4px solid #285b78;border-radius:8px;padding:11px 16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Ratio et Experientia</p>
+  <h1>理性論與經驗論</h1>
+  <p class="lede">這場對決常被簡化成「知識來自理性還是來自經驗」，但真正的賭注要大得多：數學與物理看起來既普遍又必然，而經驗永遠只能告訴我們「到目前為止都是這樣」。那個「必然」究竟從哪裡來？兩邊各自給了答案，也各自走進了死胡同，最後是休謨把兩邊的地基一起拆掉，逼出了康德。</p>
+</header>
+
+<p class="xref">本頁是<strong>大陸理性論</strong>與<strong>英國經驗論</strong>兩頁的接續。那兩頁各自介紹一個陣營，這一頁只處理兩者之間的正面交鋒，以及這場交鋒如何收場。</p>
+
+<section>
+  <h2>爭的到底是什麼</h2>
+  <p class="sub">兩個經常被混在一起的問題：知識從哪裡來，與知識憑什麼算數</p>
+  <div class="frame">
+<svg viewBox="0 0 940 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="理性論與經驗論的三個爭點">
+<rect x="150" y="20" width="640" height="66" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="470" y="44" font-size="13" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">共同的難題：數學與新物理學看起來既普遍又必然</text>
+<text x="470" y="66" font-size="10.5" fill="#546e7a" text-anchor="middle">但經驗只能給我們「至今為止都如此」，永遠給不出「必然如此」——那個必然性從何而來？</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="110" width="400" height="182" rx="8" fill="#eaf0f7" stroke="#b2c6dc" stroke-width="1.5"/>
+  <text x="240" y="138" font-size="14" fill="#2f5f96" font-weight="700">理性論</text>
+  <text x="240" y="160" font-size="10" fill="#59707b">笛卡兒・史賓諾莎・萊布尼茲</text>
+  <text x="240" y="188" font-size="11" fill="#234a75">來源：心靈本有天賦觀念</text>
+  <text x="240" y="210" font-size="11" fill="#234a75">保證：清楚明白的理智直觀</text>
+  <text x="240" y="232" font-size="11" fill="#234a75">方法：從自明前提演繹</text>
+  <text x="240" y="258" font-size="10.5" fill="#234a75">典範是幾何學——史賓諾莎索性把倫理學</text>
+  <text x="240" y="276" font-size="10.5" fill="#234a75">寫成定義、公理、命題的形式</text>
+
+  <rect x="500" y="110" width="400" height="182" rx="8" fill="#f9eeeb" stroke="#d8a99e" stroke-width="1.5"/>
+  <text x="700" y="138" font-size="14" fill="#9b4a3b" font-weight="700">經驗論</text>
+  <text x="700" y="160" font-size="10" fill="#59707b">洛克・柏克萊・休謨</text>
+  <text x="700" y="188" font-size="11" fill="#763328">來源：心靈初生如白板</text>
+  <text x="700" y="210" font-size="11" fill="#763328">保證：追溯到感官印象</text>
+  <text x="700" y="232" font-size="11" fill="#763328">方法：觀察與歸納</text>
+  <text x="700" y="258" font-size="10.5" fill="#763328">洛克《人類理解論》第一卷整卷</text>
+  <text x="700" y="276" font-size="10.5" fill="#763328">就在拆天賦觀念這個前提</text>
+</g>
+
+<text x="470" y="326" font-size="11" fill="#546e7a" text-anchor="middle">要注意兩件事。第一，沒有理性論者否認經驗有用，也沒有經驗論者否認推理有效——爭的是誰更根本。</text>
+<text x="470" y="346" font-size="11" fill="#546e7a" text-anchor="middle">第二，「理性論」與「經驗論」這兩個標籤是後來的哲學史寫作整理出來的，當事人並不這樣自稱。</text>
+<text x="470" y="370" font-size="10.5" fill="#59707b" text-anchor="middle">萊布尼茲在回應洛克時，用一句話把整個分歧壓縮到了極限：</text>
+<text x="470" y="388" font-size="10.5" fill="#59707b" text-anchor="middle">凡在理智中者，無不先在感覺中——除了理智自身。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>兩條路各自走到了死胡同</h2>
+  <p class="sub">問題不在於對手的反駁，而在於各自把自己的前提推到底之後的結果</p>
+  <div class="frame">
+<svg viewBox="0 0 940 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="理性論與經驗論各自的內部困境">
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="24" width="400" height="212" rx="8" fill="#eaf0f7" stroke="#b2c6dc" stroke-width="1.5"/>
+  <text x="240" y="52" font-size="13" fill="#2f5f96" font-weight="700">理性論的困境</text>
+  <text x="240" y="78" font-size="10.5" fill="#234a75">清楚明白的觀念，憑什麼保證符合世界？</text>
+  <text x="240" y="98" font-size="10.5" fill="#234a75">笛卡兒只好訴諸上帝不欺騙我們</text>
+  <text x="240" y="118" font-size="10.5" fill="#234a75">但上帝存在的證明又用到清楚明白——循環</text>
+  <text x="240" y="144" font-size="10.5" fill="#234a75">史賓諾莎把演繹推到底，得到只有一個實體</text>
+  <text x="240" y="164" font-size="10.5" fill="#234a75">代價是個別事物與自由意志都被取消</text>
+  <text x="240" y="190" font-size="10.5" fill="#234a75">萊布尼茲得到無窗的單子，只好加上預定和諧</text>
+  <text x="240" y="216" font-size="10" fill="#59707b">三套形上學互不相容，卻都自稱是必然真理</text>
+
+  <rect x="500" y="24" width="400" height="212" rx="8" fill="#f9eeeb" stroke="#d8a99e" stroke-width="1.5"/>
+  <text x="700" y="52" font-size="13" fill="#9b4a3b" font-weight="700">經驗論的困境</text>
+  <text x="700" y="78" font-size="10.5" fill="#763328">洛克：觀念都來自經驗，那「實體」是什麼？</text>
+  <text x="700" y="98" font-size="10.5" fill="#763328">他只能說，是某個我們不知道的支撐者</text>
+  <text x="700" y="118" font-size="10.5" fill="#763328">柏克萊：既然如此，物質實體就是多餘的假設</text>
+  <text x="700" y="144" font-size="10.5" fill="#763328">存在即被知覺，只剩下心靈與觀念</text>
+  <text x="700" y="164" font-size="10.5" fill="#763328">休謨：照同樣的標準，心靈實體也一樣是多餘</text>
+  <text x="700" y="190" font-size="10.5" fill="#763328">自我不過是一束知覺，並無一個承載者</text>
+  <text x="700" y="216" font-size="10" fill="#59707b">同一把尺往下削，削到最後連自己也削掉了</text>
+</g>
+
+<rect x="130" y="258" width="680" height="54" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="470" y="280" font-size="12" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">兩邊的毛病其實是同一個形狀：把自己的原則貫徹到底，就得到自己也不想要的結論</text>
+<text x="470" y="300" font-size="10.5" fill="#546e7a" text-anchor="middle">理性論推出了說不清如何驗證的形上學，經驗論推出了連因果與自我都站不住的世界</text>
+
+<text x="470" y="342" font-size="11" fill="#546e7a" text-anchor="middle">這也說明為什麼這場爭論不可能靠「各取所長」來調和：兩邊的問題都出在共同接受的那個提問方式上。</text>
+<text x="470" y="362" font-size="11" fill="#546e7a" text-anchor="middle">只要還在問「知識究竟源於理性還是源於經驗」，就會落在這條斜坡的某一段。</text>
+<text x="470" y="386" font-size="10.5" fill="#59707b" text-anchor="middle">真正的出路是換一個問題——但在那之前，還要先有人把地基徹底拆一次。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>休謨的一擊：因果與歸納兩個都保不住</h2>
+  <p class="sub">這一擊不只打在經驗論自己身上，同時也抽掉了理性論的立足點</p>
+  <div class="frame">
+<svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="休謨對因果與歸納的雙重質疑">
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="24" width="400" height="152" rx="8" fill="#f9eeeb" stroke="#d8a99e" stroke-width="1.5"/>
+  <text x="240" y="52" font-size="13" fill="#9b4a3b" font-weight="700">因果：我們從未看見「必然」</text>
+  <text x="240" y="78" font-size="10.5" fill="#763328">撞球甲撞上乙，乙移動了</text>
+  <text x="240" y="98" font-size="10.5" fill="#763328">我們實際觀察到的只有兩件事：</text>
+  <text x="240" y="118" font-size="10.5" fill="#763328">時間上的先後，以及一再重複的連結</text>
+  <text x="240" y="140" font-size="10.5" fill="#763328">至於那個「必然使之發生」的連繫</text>
+  <text x="240" y="160" font-size="10.5" fill="#763328">從來沒有出現在任何一次知覺裡</text>
+
+  <rect x="500" y="24" width="400" height="152" rx="8" fill="#f9eeeb" stroke="#d8a99e" stroke-width="1.5"/>
+  <text x="700" y="52" font-size="13" fill="#9b4a3b" font-weight="700">歸納：論證本身是循環的</text>
+  <text x="700" y="78" font-size="10.5" fill="#763328">由過去推未來，預設了自然會保持齊一</text>
+  <text x="700" y="98" font-size="10.5" fill="#763328">那麼這個預設本身憑什麼成立？</text>
+  <text x="700" y="118" font-size="10.5" fill="#763328">說「過去一向如此」——這正是用歸納證歸納</text>
+  <text x="700" y="140" font-size="10.5" fill="#763328">說「理性可以證明」——但其反面並不矛盾</text>
+  <text x="700" y="160" font-size="10.5" fill="#763328">兩條路都走不通</text>
+</g>
+
+<rect x="130" y="198" width="680" height="72" rx="8" fill="#faf7f1" stroke="#cbb894" stroke-width="1.5"/>
+<text x="470" y="222" font-size="12.5" fill="#8a6a2f" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">他的結論不是「因果不存在」，而是「它的根據不在理性裡」</text>
+<text x="470" y="244" font-size="10.5" fill="#6b5228" text-anchor="middle">我們之所以相信因果，是因為重複的經驗在心中養成了習慣——是人性，不是邏輯</text>
+<text x="470" y="262" font-size="10.5" fill="#6b5228" text-anchor="middle">科學照常運作，但它站的不是原先以為的那塊地基</text>
+
+<text x="470" y="306" font-size="11" fill="#546e7a" text-anchor="middle">這一擊之所以致命，在於它同時掃到兩邊：經驗論給不出因果的必然性，理性論也拿不出證明。</text>
+<text x="470" y="326" font-size="11" fill="#546e7a" text-anchor="middle">若因果只是習慣，那麼建立在因果推論之上的整個自然科學與傳統形上學，都失去了原先宣稱的地位。</text>
+<text x="470" y="352" font-size="10.5" fill="#59707b" text-anchor="middle">康德後來坦承，正是休謨的這個詰難，把他從獨斷的睡夢中喚醒。</text>
+<text x="470" y="372" font-size="10.5" fill="#59707b" text-anchor="middle">在此之前他自認安穩地待在理性論的傳統裡。</text>
+<text x="470" y="394" font-size="10.5" fill="#59707b" text-anchor="middle">休謨自己並不想毀掉科學，他要的是讓人看清科學實際靠什麼支撐。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>康德的轉向：不問來源，改問條件</h2>
+  <p class="sub">換掉問題本身，這場僵局才有出口</p>
+  <div class="frame">
+<svg viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="康德如何重新設定問題">
+<rect x="120" y="22" width="700" height="66" rx="8" fill="#f4f1f8" stroke="#c0b2d4" stroke-width="1.5"/>
+<text x="470" y="46" font-size="13" fill="#63498a" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">舊問題：知識來自理性，還是來自經驗？</text>
+<text x="470" y="70" font-size="11.5" fill="#4a356a" text-anchor="middle">康德的新問題：既普遍必然、又能擴充內容的判斷，究竟如何可能？</text>
+
+<g font-family="'Noto Serif TC',serif" text-anchor="middle">
+  <rect x="40" y="110" width="272" height="126" rx="8" fill="#f4f1f8" stroke="#c0b2d4"/>
+  <text x="176" y="136" font-size="12" fill="#63498a" font-weight="700">哥白尼式的翻轉</text>
+  <text x="176" y="160" font-size="10.5" fill="#4a356a">不是我們的認識去符合對象</text>
+  <text x="176" y="180" font-size="10.5" fill="#4a356a">而是對象必須符合我們的認識形式</text>
+  <text x="176" y="204" font-size="10" fill="#59707b">如同不再讓星空繞著觀測者轉</text>
+  <text x="176" y="222" font-size="10" fill="#59707b">而是承認觀測者自己在動</text>
+
+  <rect x="334" y="110" width="272" height="126" rx="8" fill="#f4f1f8" stroke="#c0b2d4"/>
+  <text x="470" y="136" font-size="12" fill="#63498a" font-weight="700">兩種能力缺一不可</text>
+  <text x="470" y="160" font-size="10.5" fill="#4a356a">感性提供直觀，形式是時間與空間</text>
+  <text x="470" y="180" font-size="10.5" fill="#4a356a">知性提供概念，形式是範疇</text>
+  <text x="470" y="204" font-size="10" fill="#59707b">思維無內容則空</text>
+  <text x="470" y="222" font-size="10" fill="#59707b">直觀無概念則盲</text>
+
+  <rect x="628" y="110" width="272" height="126" rx="8" fill="#f4f1f8" stroke="#c0b2d4"/>
+  <text x="764" y="136" font-size="12" fill="#63498a" font-weight="700">因果的新位置</text>
+  <text x="764" y="160" font-size="10.5" fill="#4a356a">它既不是從經驗歸納出來的</text>
+  <text x="764" y="180" font-size="10.5" fill="#4a356a">也不是現成擺在心裡的天賦觀念</text>
+  <text x="764" y="204" font-size="10" fill="#59707b">它是知性的範疇之一</text>
+  <text x="764" y="222" font-size="10" fill="#59707b">是經驗之所以成為經驗的條件</text>
+</g>
+
+<rect x="130" y="258" width="680" height="54" rx="8" fill="#f8fafc" stroke="#d7e0e6"/>
+<text x="470" y="280" font-size="12" fill="#17324d" font-family="'Noto Serif TC',serif" font-weight="700" text-anchor="middle">兩邊各對了一半：經驗論說對了內容全部來自經驗，理性論說對了形式不來自經驗</text>
+<text x="470" y="300" font-size="10.5" fill="#546e7a" text-anchor="middle">錯的是兩邊都假定形式與內容必須同源</text>
+
+<text x="470" y="342" font-size="11" fill="#546e7a" text-anchor="middle">代價也很清楚：既然我們只能透過自己的形式去接收，我們所認識的就只是現象，而非物自身。</text>
+<text x="470" y="362" font-size="11" fill="#546e7a" text-anchor="middle">科學的普遍必然性保住了，形上學想跨過經驗去談論上帝、靈魂與世界整體的野心則被關在門外。</text>
+<text x="470" y="386" font-size="10.5" fill="#59707b" text-anchor="middle">這個解決方案本身立刻成為新的爭論起點——德意志觀念論就是從這裡長出來的。</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>理性論陣營</h2><span class="tag">RATIONALISM</span></div>
+  <div class="grid ra">
+    <div class="card"><span class="nm">笛卡兒</span><span class="yr">1596－1650</span><p>以方法懷疑找到不可懷疑的起點，再以清楚明白為真理標準向外重建知識。但這個標準本身需要上帝擔保，而上帝的證明又用到這個標準。</p></div>
+    <div class="card"><span class="nm">史賓諾莎</span><span class="yr">1632－1677</span><p>把演繹推到極致，《倫理學》整本以定義、公理、命題寫成。結論是只有一個實體，心與物只是它的兩種屬性——二元論的難題因此消失，個別性也一併消失。</p></div>
+    <div class="card"><span class="nm">萊布尼茲</span><span class="yr">1646－1716</span><p>主張實體是無數各自封閉的單子。單子沒有窗戶，彼此不能真正互動，只能靠上帝預先安排好的和諧來解釋世界的秩序。</p></div>
+    <div class="card"><span class="nm">《人類理智新論》</span><span class="yr">1704 成書・1765 出版</span><p>萊布尼茲逐章回應洛克之作。因洛克於成書當年去世，他不願與死者爭辯而擱置，直到六十年後才問世。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>經驗論陣營</h2><span class="tag">EMPIRICISM</span></div>
+  <div class="grid em">
+    <div class="card"><span class="nm">洛克</span><span class="yr">1632－1704</span><p>《人類理解論》第一卷專門駁斥天賦觀念，主張心靈初生如白板，一切觀念來自感覺與反省。但他仍保留了一個說不清楚的「實體」。</p></div>
+    <div class="card"><span class="nm">柏克萊</span><span class="yr">1685－1753</span><p>依洛克自己的原則推論：既然我們只能接觸到觀念，物質實體就是多餘的假設。存在即被知覺，世界的持存則由上帝的知覺維繫。</p></div>
+    <div class="card"><span class="nm">休謨</span><span class="yr">1711－1776</span><p>把同一把尺用到底。實體、因果、自我都經不起檢驗；剩下的是習慣與人性。他自稱這是溫和的懷疑論，而非否定知識。</p></div>
+    <div class="card"><span class="nm">休謨之叉</span><span class="it">Hume's Fork</span><p>一切推理不是觀念之間的關係（數學，必然但不涉事實），就是事實問題（涉事實但非必然）。形上學命題兩者皆非，因此他主張付之一炬。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>爭論的關鍵概念</h2><span class="tag">CONCEPTS</span></div>
+  <div class="grid cx">
+    <div class="card"><span class="nm">天賦觀念</span><span class="it">ideae innatae</span><p>爭論的第一個戰場。理性論主張某些觀念非由經驗得來，洛克則逐條反駁；萊布尼茲改以「傾向」而非「現成觀念」來重述這個立場。</p></div>
+    <div class="card"><span class="nm">白板</span><span class="it">tabula rasa</span><p>洛克用以說明心靈初始狀態的比喻。它不否認心靈有能力，只否認心靈一開始就帶著內容。</p></div>
+    <div class="card"><span class="nm">先天與後天</span><p>知識是否依賴經驗才能成立。這一組區分與「分析／綜合」交叉之後，才逼出康德真正要問的那個位置。</p></div>
+    <div class="card"><span class="nm">先天綜合判斷</span><p>既不依賴經驗、又能擴充內容的判斷。康德認為數學與自然科學的基本原理正屬此類，整部《純粹理性批判》都在解釋它如何可能。</p></div>
+    <div class="card"><span class="nm">歸納問題</span><p>由已觀察推及未觀察的正當性問題。休謨指出其論證無法不循環，這個難題至今仍是知識論的核心議題之一。</p></div>
+    <div class="card"><span class="nm">物自身</span><span class="it">Ding an sich</span><p>不透過我們的認識形式而獨立存在的東西。康德認為它必須被設定，卻永遠無法被認識——這是他方案的代價。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="band"><h2>之後呢</h2><span class="tag">AFTER</span></div>
+  <div class="grid kt">
+    <div class="card"><span class="nm">德意志觀念論</span><p>康德留下的物自身立刻被質疑：一個永不可知的東西，憑什麼說它存在？費希特、謝林、黑格爾各自試圖取消這道界線。</p></div>
+    <div class="card"><span class="nm">實證主義與經驗論的再起</span><p>十九世紀以後，經驗論以另一種形式回來，最終在二十世紀初的邏輯經驗論手上再次嘗試清算形上學。</p></div>
+    <div class="card"><span class="nm">歸納問題的餘波</span><p>休謨的難題並未被解決。波普爾選擇放棄歸納、改以否證來刻畫科學方法，本身就是對這個難題的一種回應。</p></div>
+    <div class="card"><span class="nm">標籤的限度</span><p>把近代哲學切成理性論與經驗論兩陣營，是十九世紀哲學史寫作的整理方式。它便於入門，卻會掩蓋各家之間實際的往來與差異。</p></div>
+  </div>
+</section>
+
+<section>
+  <blockquote>
+    凡在理智之中者，無不先在感覺之中——除了理智自身。
+    <cite>萊布尼茲《人類理智新論》，改寫經院格言以回應洛克</cite>
+  </blockquote>
+</section>
+
+<footer>
+  「理性論」與「經驗論」作為兩個對立陣營的敘述框架，主要成形於十九世紀以後的哲學史寫作，當事人並不如此自我定位，各家之間的立場差異也遠比標籤所示複雜——例如洛克保留了直觀知識，萊布尼茲則承認絕大多數觀念的取得離不開經驗。休謨對因果與歸納的論述散見於《人性論》與《人類理解研究》，兩書的措辭與重點略有不同，本頁採其大意。康德自述受休謨喚醒一語出自《未來形上學導論》序言，至於究竟是休謨的哪一部分論述、在哪一年起了作用，學界迄今仍有不同考訂。本頁的敘述線索為求清晰而簡化，實際的思想史發展並非如此整齊的三段式。
+</footer>
+
+</div>
+</body>
+</html>
