@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美國多元假象知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:#b8442a} .re .nm{color:#8f5e14}
+  .fa .nm{color:#3d7a55} .hi .nm{color:#1f5c85}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">美國政治・高等教育論戰</p>
+  <h1>美國多元假象</h1>
+  <p class="lede">希瑟・麥克・唐納是曼哈頓研究所的研究員，她在這本二○一八年出版的論戰之書裡主張：美國大學已被一套把人化約為膚色、性別與性取向的世界觀所主導，而這套世界觀正透過畢業生擴散到企業、媒體與政府。全書分四部，依序處理種族優待與隱性偏見、校園性侵制度與 #MeToo、大學行政體系的擴張，以及她自己的正面主張——大學的宗旨是傳遞知識。這是一本立場鮮明、爭議極大的書，這份圖譜依全書十六章的順序呈現作者的論證脈絡，並在文末整理它受到的主要批評，兩邊對照閱讀。</p>
+</header>
+
+<div class="callout">
+  <b>閱讀這份圖譜的前提</b><br>
+  以下各章的圖表呈現的是<b>作者的主張與她所提出的理由</b>，不是對這些主張的背書。本書屬於政治論戰性質，書中許多關鍵論斷（尤其是第3章的不匹配理論、第5章對種族落差成因的解釋、第6章對性侵統計的處理）在學界仍有實質爭議，甚至有相反的研究結論。為了讓讀者能自行判斷，各章的收尾帶會標示該章論證方式的強處與弱點，文末並附上六項核心批評。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一部　種族</h2><span class="tag">PART ONE</span></div>
+  <p class="sub" style="margin:0">從校園噤聲事件出發，檢視平權錄取、微歧視與隱性偏見</p>
+</section>
+
+<section>
+  <h2>第1章——歇斯底里的校園</h2>
+  <p class="sub">作者以自身兩度被封殺的經歷，描述校園噤聲行動與教職員的缺席</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歇斯底里的校園結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者主張校園不寬容不是心理現象，而是一種思想現象</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">其核心是把西方文化整體視為種族主義與性別歧視的世界觀</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">作者的親身遭遇</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">二○一七年她在克萊蒙特麥肯納學院的演講被學生封鎖，前一天在加</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">州大學洛杉磯分校也遭抗議</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">教職員的集體缺席</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">她指出擁有學術自由特權的教師，在這類事件中幾乎完全沉默</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">噤聲的思想根源</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">當學生被教導把自己視為實存的受壓迫者，反對意見就成了必須被壓</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">制的傷害</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">擴散到校園之外</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">她認為安全空間與反射式指控已影響企業與政府，並以谷歌備忘錄事</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">件為例</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章確立全書的敘事策略：從一連串校園事件推論出整體風氣的轉變</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">值得注意的是，作者同時是當事人與敘述者，所舉案例也多半集中在少數菁英院校</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章轉向制度面：加州禁止種族優待之後，大學實際上如何因應</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第2章——硬用「平權行動」的錄取方式</h2>
+  <p class="sub">加州禁止種族優待後，大學用各種替代方案延續原有目標</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="硬用「平權行動」的錄取方式結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">加州選民在一九九六年通過二○九號法案，禁止種族與性別差別待遇</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者指出教育體系隨即發展出一整套替代方案來延續原有目標</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">二○九號法案</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">由沃德・康納利發起，禁止公立機構在錄取與雇用上給予種族優待</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">訴訟與抵制</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">原告主張要求政府平等對待所有人反而違反第十四修正案的平等保護</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">條款</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">行政體系的因應</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">柏克萊增設負責包容性的副校長職位，作者視之為對選民意志的持續</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">抗議</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">多元化成為官方意識形態</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她主張「由社會設計的種族比例」已取得不容挑戰的地位</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者要論證的是：當意識形態與法律衝突時，體制選擇繞過法律</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章大量倚賴加州的個案，能否推廣到其他州則是另一個問題</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章從制度轉向效果：種族優待錄取對受惠者本身是否有利</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第3章——「平權行動」的災難</h2>
+  <p class="sub">引用杜克大學研究，主張優待錄取讓受惠學生反而學得更少</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="「平權行動」的災難結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者引用研究主張，進入準備不足的學校反而學得更少</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這就是所謂「不匹配」的論點，而杜克大學的資料是她的主要證據</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">杜克的分數落差</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">書中引用的數字顯示黑人錄取生的學測總分平均較白人低約一百四十</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">分</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">成績趨同是假象</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">大四時的成績差距縮小近五成，看似證明優待政策正確</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">轉系效應</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">二○一二年三位杜克研究者指出，趨同來自大量學生從理科轉往評分</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">較寬鬆的科系</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">作者的結論</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她主張優待錄取把學生放到不適合的位置，代價由受惠者自己承擔</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">「不匹配理論」是全書最依賴外部實證研究的一章，也是爭議最集中的一章</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者把它當成已確立的結論陳述，但這在經濟學與法學界至今沒有定論</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">相關爭議詳見文末核心批評；下一章回到校園日常：微歧視</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第4章——「微歧視」的鬧劇</h2>
+  <p class="sub">以加州大學洛杉磯分校的個案，質疑微歧視概念與校方的處置方式</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="「微歧視」的鬧劇結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者以一位資深教授被控種族歧視的個案，質疑微歧視概念</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">她關注的重點是校方在指控出現後選擇安撫而非釐清事實</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">魯斯特事件</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">比較教育學者瓦爾・魯斯特因糾正學生論文的文法與拼字，被指製造</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">不安全氛圍</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">校方的回應模式</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">學生衝進課堂靜坐後，校方站在學生一方，作者認為犧牲了教授的名</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">譽</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">蛋殼腦袋原告</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">她借用侵權法的比喻，形容校園正在培養異常脆弱、經不起輕微碰撞</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">的學生</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">對概念本身的質疑</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">微歧視用來指認原本看不出來的種族主義，因此幾乎無法被否證</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章把批評的對象從學生轉到行政體系：真正的問題在校方的誘因</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者承認個案不等於全貌，但主張同樣的模式在各校重複出現</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章處理支撐這整套論述的學術基礎：隱性偏見</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第5章——大家都是無意識的種族主義者？</h2>
+  <p class="sub">質疑內隱聯結測驗的統計基礎，並提出爭議極大的替代解釋</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="大家都是無意識的種族主義者？結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">隱性偏見被用來解釋顯性歧視減少後仍然存在的種族落差</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者主張其統計基礎正在崩潰，並提出一套替代解釋</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">隱性偏見的吸引力</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">它同時解釋了種族落差為何持續，又不需要指控任何人是種族主義者</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">對測驗的質疑</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">她引用內隱聯結測驗重測信度偏低、對實際行為預測力薄弱的研究</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">為何需要無意識解釋</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">作者認為那是因為討論群體之間的文化與行為差異在學界已成禁忌</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">作者的替代主張</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她主張當前落差主因是文化與行為差異——本書最具爭議的論斷</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">測量工具的批評與替代解釋，是兩個必須分開評價的主張</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">前者有相當的方法學文獻支持，後者則是作者自己的因果推論</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">兩者的差別在文末核心批評中另有說明；第二部轉向性別議題</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二部　性別</h2><span class="tag">PART TWO</span></div>
+  <p class="sub" style="margin:0">質疑校園性侵統計，並批評裁決程序與 #MeToo 的方法移植</p>
+</section>
+
+<section>
+  <h2>第6章——校園性侵的謊言</h2>
+  <p class="sub">質疑五分之一的校園性侵統計，主張問題出在定義與調查方法</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="校園性侵的謊言結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者質疑「五分之一女大生遭性侵」這個廣為流傳的數字</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">她主張落差來自調查的定義方式，而非受害者不敢發聲</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">五分之一的數字</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">書中指出該比例若屬實，將遠高於美國最危險城市的犯罪率</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">危機中心的冷清</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">她以性侵危機處理中心鮮少接到電話為例，質疑統計與現場的落差</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">定義的擴張</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">調查把醉酒後的後悔、不情願的親吻與強暴放進同一個類別計算</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">防治產業的誘因</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">作者主張低通報率反而被用來爭取更多經費與更多行政職位</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">方法學上的質疑與「不存在問題」是兩回事，作者的論證在這裡最容易被誤讀</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">她攻擊的是統計與制度，但行文語氣常被讀成否定現象本身</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章從統計轉向文化：校園性規範正在往哪個方向倒退</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第7章——校園中的新維多利亞主義</h2>
+  <p class="sub">主張反性侵運動重新引入了它原本反對的傳統性別規範</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="校園中的新維多利亞主義結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者主張校園女性主義正在重新引入它原本反對的傳統規範</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">男性再度成為保護者，女性則被描繪成需要被保護的一方</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">性革命拋棄的準則</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">她回顧一九六○年代之前的求偶規範與宿舍門禁，作為對照的起點</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">保護者角色的復辟</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">以保護女性安全為名，校方重新介入學生的性關係</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">事後的自由裁量</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">她批評制度允許當事人在事後宣稱該行為並非自己所願</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">正當程序的犧牲</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">仲裁委員會不適用刑事程序的證據標準，被告的防禦權受限</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">正當程序這條批評後來在法院與法規層面獲得相當程度的回應</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">但她對性文化本身的評價，是價值立場而非可驗證的主張，兩者宜分開看</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章以哥倫比亞大學為例，看這套制度在校園裡的具體形貌</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第8章——小家碧玉的哥大女學生</h2>
+  <p class="sub">以哥倫比亞大學的必修方案，描述性教育如何被行政化</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="小家碧玉的哥大女學生結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">哥倫比亞大學要求所有學生完成一套性尊重必修活動</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者以它為例，說明性議題如何被轉化為行政與治療程序</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">尊重性意願方案</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">全校學生須觀看指定影片並繳交反思報告，或參加替代的工作坊</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">選項的形貌</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">選單包含電影放映、創作藝術品、察覺心念研討會與供人平復情緒的</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">編織區</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">沒有挑戰的那件事</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">作者指出整套方案聚焦在「對性持正面態度」，未觸及酒醉濫交的風</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">氣</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">保持沉默的權利</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">有人質疑強制參與反而剝奪了不願談論此事者的選擇</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章的批評重點不是性教育本身，而是它被設計成無從拒絕的程序</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者的立論方式仍然是單一學校的方案細節，推論到整體風氣</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把場景從校園移到職場：#MeToo 與校園邏輯的接軌</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第9章——監督性欲：#MeToo</h2>
+  <p class="sub">主張校園的反性侵方法被原封不動移植到職場</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="監督性欲：#MeToo結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者主張校園反性侵運動的方法被直接移植到職場</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">結果是不同程度的行為被放進同一個譴責框架</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">溫斯坦案的性質</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">她承認職場權力落差真實而懸殊，與校園酒醉約砲並不相同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">方法的移植</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">指控與裁決的程序、舉證標準與譴責方式，沿用自校園的那一套</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">程度差異被抹平</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">從涉嫌性侵到不必要的觸碰被歸為一類，公開區分者反遭圍剿</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">金球獎的例子</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她以黑衣聲援與紅毯服裝之間的張力，質疑運動內部的論述矛盾</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章是全書少數作者主動承認對方論點有實質基礎的地方</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">她的攻擊點是程序與比例原則，而不是騷擾行為本身的嚴重性</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第三部轉向支撐這一切的組織條件：大學的行政體系</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第三部　官僚文化</h2><span class="tag">PART THREE</span></div>
+  <p class="sub" style="margin:0">把問題歸因於大學行政體系的擴張及其對科學與言論的影響</p>
+</section>
+
+<section>
+  <h2>第10章——多元文化大學</h2>
+  <p class="sub">把大學學費上漲與行政膨脹，歸因於多元化官僚體系的擴張</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="多元文化大學結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者主張大學真正的成本壓力來自行政人員的持續膨脹</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">而多元化職位的增設，是這波膨脹中最不受檢視的一塊</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">行政人員的膨脹</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">她指出學費上漲廣為人知，行政職位的成長卻很少被公開討論</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">多元化的職位體系</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">從副校長到各學院的專責辦公室，形成一套自我維繫的組織</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">經費爭論的錯位</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">外界以為刪減州預算危及文化傳承，她認為問題出在大學自己的優先</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">順序</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">核心課程的缺口</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她指出沒有一所分校敢把評論者列舉的經典名單當成核心課程</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把成本上升歸因於單一原因，是這一章最容易被挑戰的地方</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">研究高教成本的經濟學者通常把行政成長歸給合規、學生服務與設施競爭</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看同一套壓力延伸到硬科學時會發生什麼事</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第11章——身分認同政治對科學的危害</h2>
+  <p class="sub">主張多元化壓力正在改變科學的教學方式與資格評估</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="身分認同政治對科學的危害結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者主張多元化壓力已從人文社科延伸到理工領域</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">她擔心的是教學標準與資格評估的調整，最終會影響競爭力</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">壓力延伸到硬科學</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">理工科系因多元化不足而受到聯邦機構與專業團體的壓力</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">教學方式的調整</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">書中引述課程改為小組協作、減少強調個人數學解題能力的作法</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">研究經費的流向</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">她列舉國家科學基金會投入隱性偏見工具與微歧視矯正的補助金額</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">作者的憂慮</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">若入學與評分標準隨之鬆動，長期將損及美國的科學創新能力</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章的證據形態是零星引述與補助案例，而非系統性的成效評估</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">她所主張的因果鏈——多元化壓力導致標準下降導致競爭力下滑——並未被實證檢驗</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章是一個具體事件：兩位法學教授的投書引發的風波</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第12章——資產階級行為的喧然大波</h2>
+  <p class="sub">以威克斯投書事件，說明可公開討論的範圍正在收縮</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="資產階級行為的喧然大波結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩位法學教授倡議恢復中產階級價值觀的投書，引發強烈反彈</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者用這個事件說明可公開討論的思想範圍正在收縮</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">投書的內容</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">威克斯與亞歷山大主張婚內生養、努力工作、自律與尊重權威等價值</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">被定性為仇恨言論</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">儘管作者明言這些價值不專屬白人，仍被研究生工會指為煽動仇恨</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">校方與同儕的反應</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">法學院院長公開切割，多位同系教授連署發表公開信</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">作者的論點</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她認為真正的問題是校方與教師群體選擇了哪一邊</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章是全書關於言論範圍的主張中，事件脈絡最完整的一個</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">不過爭議的實質內容——那篇投書本身的論斷是否成立——書中並未認真處理</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第四部離開批判，轉向作者自己的正面主張：大學該做什麼</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第四部　大學的宗旨</h2><span class="tag">PART FOUR</span></div>
+  <p class="sub" style="margin:0">從批判轉為辯護：經典課程與知識傳遞為何值得保留</p>
+</section>
+
+<section>
+  <h2>第13章——人文學科與我們的關係</h2>
+  <p class="sub">以加州大學洛杉磯分校英語系的改制，說明經典必修如何被取代</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="人文學科與我們的關係結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">二○一一年加州大學洛杉磯分校英語系取消了經典作品必修</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者視之為文化與過去關係的一次重大轉折</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">改制的內容</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">喬叟一門、莎士比亞兩門、彌爾頓一門的必修，改為四大領域任選三</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">門</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">四大領域</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">性別種族與性研究、帝國與後殖民研究、體裁與批判理論、創意寫作</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">為何是這一系</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">她指出該系原本是少數堅持以作品成文年代脈絡詮釋的英語系</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">作者的判斷</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她認為改制等於正式宣告學生是否讀過這些作品已無關緊要</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者在這裡的論證方式從批判轉為辯護：她要說明經典為何值得保留</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">她援引杜波依斯與道格拉斯，主張經典曾是被排除者自我解放的資源</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用校外的市場作為對照，凸顯大學課程的取向</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第14章——經典課程的豐厚益處</h2>
+  <p class="sub">以校外的人文課程市場，對照大學課程的取向</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="經典課程的豐厚益處結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">校外的人文課程市場蓬勃發展，賣的正是大學不再教的內容</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者用這個對照質問大學的課程究竟在服務誰</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">校外的市場</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">以販售人文與科學錄音課程的公司為例，它只製作最具市場性的產品</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">目錄裡的語彙</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">喜悅、美麗、偉大這些詞彙，作者說早已從學院論述中消失</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">課程的對照</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">她把某校的美國史選課清單與校外課程的美國建國主題並列比較</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">家長的消費者心態</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她批評家長為子女挑學校時看的是證書與人脈，而非課程本身</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這一章的對照很有說服力，但兩個市場的受眾與目的其實並不相同</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">成人自費選修與學位課程的設計限制不同，直接對比有其侷限</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章直接處理全書的核心問題：大學的宗旨究竟是什麼</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第15章——大學真正的宗旨</h2>
+  <p class="sub">主張大學最緊迫的任務是傳遞知識，而非破除假論述</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="大學真正的宗旨結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">耶魯校長主張大學教育的主要宗旨是教導學生辨識假論述</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">作者認為這個說法本身就搞錯了大學教育的目的</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">沙洛維的說法</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">他告訴新生，耶魯的教育要讓人辨識那些加劇憤怒、恐懼與厭惡的論</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">述</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">作者的第一個反駁</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">她以耶魯萬聖節服裝事件為例，質疑該校並未展現不輕信的態度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">作者的第二個反駁</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">更重要的是，破除迷思即使做到了，也不是大學的首要任務</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">她的正面主張</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">任何大學最緊迫的任務是傳遞知識，如此而已</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這是全書唯一一處作者把自己的主張壓縮成一句話</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">值得注意的是，「傳遞哪些知識」這個問題，正是全書爭論的起點</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">最後一章以一組建築上的對照收束全書</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第16章——從文化到杯子蛋糕</h2>
+  <p class="sub">以柏克萊法學院外牆的銘文與校園的旗幟運動作為對照收束</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="從文化到杯子蛋糕結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者以柏克萊校園裡兩種語言的對照收束全書</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">一邊是邀請學生進入學術生活，一邊是邀請學生陳述自己的受害經驗</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">外牆的銘文</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">法學院牆上刻著卡多佐一九二五年的演說，召喚學生學習前人的智慧</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">與正義的戒律</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">旗幟運動的對照</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">校園另一端的多元化活動，作者形容為文化再教育營式的語言</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">治療式的官僚語言</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">她批評「正直地聆聽」這類說法，把學務官員定位成心理療程的引路</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">人</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">全書的收束</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">她主張真正該讓校方焦慮的，是學生畢業前學到了多少知識</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">全書終於一個價值宣示：把遺產傳下去，而不是把學生依特徵分類</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這是一本立場鮮明的論戰之書，它的力量與弱點都來自同一個來源</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">文末整理本書出版後受到的主要批評，供對照閱讀</text>
+</svg>
+  </div>
+</section>
+
+
+<section>
+<div class="callout">
+  <b>全書的核心命題</b><br>
+  作者主張：問題的根源是一套「人由膚色、性別與性取向定義，而西方文明正是靠歧視這些特徵而運作」的世界觀。她認為這套世界觀在大學裡催生了龐大的行政體系，而這個體系有自我擴張的誘因——校園衝突愈多，它的存在愈有正當性。她的正面主張很簡短：大學最緊迫的任務是傳遞知識。全書的力量來自個案的具體與行文的銳利，弱點也來自同一處：以事件取代統計、以單一歸因取代多重成因。
+</div>
+</section>
+
+<blockquote>
+  任何大學最緊迫的任務是傳遞知識，如此而已。
+  <cite>——《美國多元假象》第15章，作者對大學宗旨的主張</cite>
+</blockquote>
+
+<section style="margin-top:20px">
+  <div class="band"><h2>本書受到的核心批評</h2><span class="tag">CRITICAL RECEPTION</span></div>
+  <p class="sub" style="margin:0 0 4px">這是一本論戰之書，以下批評涉及它的取樣方式、實證基礎與因果推論</p>
+  <div class="grid ri">
+    <div class="card"><div class="nm">以少數菁英校園的軼事，推論出整體高教的圖像</div><p>全書的論證結構是把一連串高知名度事件（克萊蒙特麥肯納、米德柏理、耶魯萬聖節、加州大學洛杉磯分校靜坐）串成趨勢。批評者指出這些案例高度集中在少數菁英私立學院，佔全美四千餘所高等教育機構的極小部分，而社區學院與州立大學的日常樣貌幾乎未被觸及。用這樣的取樣談「大學沉淪」，難以支撐全稱式的結論。</p></div>
+    <div class="card"><div class="nm">「不匹配理論」被當成定論陳述，實際上學界並無共識</div><p>第2、3章的核心論證倚賴桑德與泰勒提出的不匹配假說。這個假說確實有支持它的實證研究（包括書中引用的杜克大學轉系分析），但也有規模相當的研究得出相反結論，方法上的爭論集中在如何處理選擇效應與對照組的界定。本書把它當成已經確立的事實來鋪陳後續論證，是相當重要的一步推論跳躍。</p></div>
+    <div class="card"><div class="nm">對內隱聯結測驗的批評有據，接續的因果推論則沒有</div><p>第5章指出內隱聯結測驗重測信度偏低、對個別行為的預測力薄弱，這些是心理計量文獻中確實存在且被廣泛承認的問題，連測驗的原始開發者後來也不建議用於個人診斷。但作者從「這個工具測不準」推進到「當前種族落差主因是文化與行為差異」，後者是完全獨立的因果主張，需要它自己的證據，而本書並未提供同等強度的支持。</p></div>
+    <div class="card"><div class="nm">對校園性侵統計的處理被指選擇性</div><p>第6章對「五分之一」數字的方法學批評（自選樣本、偏低的回覆率、把廣泛行為歸入同一類別）有其依據，這些問題在調查方法文獻中確有討論。但批評者指出本書幾乎只援引指向低估計值的資料，對國家犯罪被害調查本身已知的低報問題則略過不提，行文也經常從「統計有問題」滑向「現象被虛構」。</p></div>
+    <div class="card"><div class="nm">正當程序的批評相對站得住，文化論斷則是價值立場</div><p>即使不同意本書整體立場的評論者，也大多承認第7、8章對第九條款裁決程序的批評有實質基礎：舉證標準、交互詰問與被告防禦權的爭議，在其後多年的聯邦法院判決與二○二○年的規則修訂中獲得相當程度的回應。但同一批評論者也指出，她對約砲文化與「新維多利亞主義」的評價屬於社會保守主義的價值判斷，卻以分析的語氣呈現，兩者在書中並未區分。</p></div>
+    <div class="card"><div class="nm">把行政膨脹幾乎全歸因於多元化官僚</div><p>第10章將大學成本上升與行政人員成長主要歸給多元化職位。研究高等教育成本的經濟學者一般把行政擴張歸因於法規合規、學生服務、資訊系統、校園設施與體育競爭等多項因素，多元化相關辦公室在多數學校的預算中佔比不大。單一歸因使這一章的診斷力被削弱，也讓真正值得討論的成本問題失焦。</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <b>另一面的價值與整體反思</b><br>
+    這些批評並不表示書中所有主張都站不住。第7、8章對第九條款裁決程序的正當程序批評，在其後的聯邦法院判決與二○二○年的規則修訂中獲得相當程度的回應；第5章對內隱聯結測驗心理計量性質的質疑，也與心理學界內部的檢討方向一致。真正的問題是本書把強弱不等的主張以同樣的確定語氣並置——方法學上的有效批評、學界尚無共識的假說，以及作者自己的價值判斷，在行文中沒有被區分開來。比較可靠的讀法是逐章拆開評估，並對照持相反立場的研究與評論，而不是整本接受或整本拒斥。
+  </div>
+</section>
+
+<footer>
+  本頁依希瑟・麥克・唐納《美國多元假象：一味迎合種族和性別議題，使大學沉淪，並逐漸侵蝕我們的文化》整理全書十六章的論證脈絡，並補入本書出版後的主要批評。圖表內容為作者主張之整理，不代表本站立場；書中大量的事件細節、法庭文件與注釋出處請另行參閱原書。
+</footer>
+
+</div>
+</body>
+</html>
