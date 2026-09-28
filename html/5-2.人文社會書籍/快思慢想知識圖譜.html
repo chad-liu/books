@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>快思慢想知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:#b8442a} .re .nm{color:#8f5e14}
+  .fa .nm{color:#3d7a55} .hi .nm{color:#1f5c85}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">認知心理學・判斷與決策的兩套系統</p>
+  <h1>快思慢想</h1>
+  <p class="lede">康納曼把四十年的判斷與決策研究，寫成兩個虛構角色的故事：自動、快速、永不休息的系統一，以及費力、緩慢、能省則省的系統二。全書從注意力與促發談起，一路走過捷徑與偏見、過度自信、展望理論與框架效應，最後停在經驗自我與記憶自我的分裂上。這份圖譜依全書三十八章的順序，把每一章的核心論證整理成一張知識圖，並在文末整理這本書出版後受到的主要學術批評。</p>
+</header>
+
+<div class="callout">
+  <b>前言的目標</b><br>
+  康納曼說他寫這本書的場景是辦公室的茶水間：他希望讀者能因為這本書，擁有更豐富的語彙去談論別人與自己的判斷。理由很實際——指出別人的錯誤遠比看出自己的錯誤容易，而別人有見地的評論，往往比自我勉勵更能促成改變。他也預先聲明，把焦點放在錯誤上並不是要貶低人類智慧，就像醫學教科書談論疾病並不否認健康。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一部　兩個系統</h2><span class="tag">PART ONE</span></div>
+  <p class="sub" style="margin:0">把心智拆成自動的系統一與費力的系統二，建立全書共用的語彙</p>
+</section>
+
+<section>
+  <h2>第1章——故事中的人物</h2>
+  <p class="sub">康納曼用兩個虛構角色，把心智運作拆成自動的系統一與費力的系統二</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="故事中的人物結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">心智運作可以拆成自動的系統一與費力的系統二</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">兩個系統既分工又衝突，錯覺即使被指認出來，也依然看得見</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">系統一：自動又快速</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">看臉辨情緒、讀出招牌上的字、閃避路上的危險，都毫不費力地自動</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">發生，無法關掉</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">系統二：費力的注意力</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">17×24 這類運算需要刻意分配注意力，只要力氣被抽走，系統</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">二就做不下去</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">分工與衝突</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">系統一持續產生印象與直覺，系統二負責背書或否決；兩者衝突時需</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">要自我控制</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">錯覺的頑固</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">繆萊二氏錯覺即使量過也還是看起來一長一短，認知錯覺同樣無法靠</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">知道就消除</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩個系統是方便的虛構角色，用來討論心智，而不是大腦裡的真實零件</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼明言這兩個「人物」是敘事上的簡稱，作用在於讓人有語彙可以談論自己的判斷</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章先把系統二講清楚：它的力氣從哪裡來，又為什麼總是能省則省</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第2章——注意力和努力</h2>
+  <p class="sub">瞳孔大小忠實記錄心智用了多少力氣，也暴露出系統二的節能本性</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="注意力和努力結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">瞳孔的變化，忠實記錄了心智工作得有多辛苦</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">系統二的容量有限，於是演化出「最少力氣法則」：能不思考就不思考</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">瞳孔是心智的窗口</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">赫思發現瞳孔隨心智負荷放大，康納曼據此把費力程度變成可以即時</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">測量的指標</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">「加一」作業的極限</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">跟著節拍器把四位數每位加一，幾乎沒有人能處理超過四位數，是系</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">統二的天花板</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">最少力氣法則</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">同一件事若有省力的做法，人就會採用省力的那個；技術熟練代表同</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">一作業耗力下降</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">轉換與時間壓力</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">在作業之間切換本身就耗資源，時間壓力再加上來，最耗腦力的慢思</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">考其實迫人快想</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">心智努力是有限資源，注意力被占滿時，明顯的事物也會視而不見</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">「大猩猩實驗」式的選擇性盲視，正是有限注意力被完全投入的自然後果</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章接著看：既然系統二懶散，它在什麼情況下會乾脆放棄監督系統一</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第3章——懶惰的控制者</h2>
+  <p class="sub">自我控制與認知努力共用同一池力氣，用完了，判斷與德行都會鬆動</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="懶惰的控制者結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">自我控制和認知努力共用同一池有限的力氣</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">系統二疲累或忙碌時，會偷懶地讓系統一的直覺答案直接通關</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">自我耗損</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">先做過需要自我控制的事，接下來的自制力就下降；補充葡萄糖能部</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">分回復表現</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">認知忙碌的代價</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">記著七個數字的同時做選擇，人會偏向享樂、更容易說出自私與性別</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">歧視的話</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">球棒與球</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">球棒和球共一塊一毛、球棒貴一元，多數名校學生答十分錢——直覺</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">答案沒被檢查</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">理性不等於智力</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">史坦諾維奇主張，願意懷疑並檢查直覺的傾向是獨立能力，與智力測</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">驗分數並不相同</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">懶惰不是缺陷而是設計：檢查每個直覺的成本，遠高於偶爾犯錯的代價</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這也解釋了為什麼聰明人同樣會在簡單題目上出錯——不是算不出來，是沒去算</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章轉向系統一的內部：它靠什麼機制在無聲之中產生那些印象與直覺</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第4章——聯結的機器</h2>
+  <p class="sub">聯結記憶的活化擴散，讓觀念、情緒與身體動作彼此促發</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="聯結的機器結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">觀念在聯結記憶中彼此活化，形成看不見的促發效應</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">促發不只在觀念之間，也發生在情緒、姿勢與環境之間，而且完全無法內省</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">活化擴散</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">「香蕉」與「嘔吐」並列幾秒鐘，就自動生出因果情節，並活化一整</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">串相關概念</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">觀念的促發</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">看過 EAT 之後把 SO_P 補成 SOUP，看過 WAS</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">H 則補成 SOAP，自己毫無察覺</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">行為的促發</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">讀過與老年有關的字詞後走得比較慢；投票地點在校舍會提高支持教</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">育預算的比例</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">身體反向影響心智</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">用牙齒橫咬鉛筆迫使臉部做出笑容，同一則漫畫就變得比較好笑</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">促發研究指向一個不安的結論：我們的選擇常受到不自知的線索牽引</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼在此提醒，系統一建構的故事往往連貫得令人信服，而系統二通常照單全收</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">須注意：本章倚重的社會促發實驗，日後正是全書爭議最大的部分，詳見文末核心批評</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第5章——認知放鬆度</h2>
+  <p class="sub">順不順、熟不熟，被系統一直接當成真不真</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="認知放鬆度結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">認知放鬆這個儀表，測量的是事情進行得順不順</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">順暢感會被誤讀成真實、熟悉與喜歡，成為說服力的隱形來源</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">流暢就當成真</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">清楚的字體、高對比、押韻的句子，都會提高陳述被判斷為真的比例</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">熟悉感偽裝成真相</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">重複出現就提高可信度；重複的是句子的一部分也有效，因為熟悉感</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">無法溯源</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">單純曝露效應</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">毫無意義的字詞只要出現過，就比沒出現過的更受偏好，連未被意識</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">到也一樣</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">心情與直覺的交換</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">好心情放大直覺與創造力，也降低警覺；壞心情使人多疑，卻更少上</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">直覺的當</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">認知放鬆是把雙面刃：它讓溝通更有效，也讓錯誤訊息更容易被接受</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">想要說服人，就讓訊息易讀易記；想要對方仔細思考，反而該讓字體變得難讀</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章進一步看系統一如何靠常模與因果故事，把世界整理成可預期的樣子</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第6章——常模、驚訝與原因</h2>
+  <p class="sub">系統一維護一套世界常模，違反常模就驚訝，違反了就編出原因</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="常模、驚訝與原因結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">系統一持續維護一套世界模式，用常模判斷什麼算正常</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">重複兩次就不再驚訝；不尋常一旦出現，因果解釋會立刻自動生成</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">常模與世界模式</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">哪些事件會同時出現、什麼算合理，全都靠聯結記憶累積成一套背景</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">期望</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">重複就變正常</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">同一件巧合出現第二次，驚訝程度就大幅下降——新經驗只要一點重</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">複就被吸收</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">因果直覺先於統計</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">「香蕉使人嘔吐」式的因果連結自動成形，而統計推論則需要系統二</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">費力執行</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">看見意圖</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">米修特的撞球式因果與海德的三角形追逐實驗顯示，物理因果與意圖</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">歸因都是自動的</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">因果思考是系統一的母語，統計思考則是後天才學得的外語</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這個落差是全書許多偏誤的共同根源：我們太快找到原因，卻太慢想到機率</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看系統一如何在證據不足時，直接跳到結論並且深信不疑</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第7章——驟下結論的機制</h2>
+  <p class="sub">證據不足時系統一仍照樣結案，而且不覺得自己少了什麼</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="驟下結論的機制結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">系統一擅長跳入結論，並自動消除模稜兩可</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">偏向相信、誇大一致性、只看眼前證據，共同造就了難以察覺的過度自信</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">模稜兩可被抹掉</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">同一個形狀在字母情境讀成 B、在數字情境讀成 13，而人完全</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">沒意識到自己做了選擇</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">偏向相信</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">系統一只會嘗試把陳述當真來理解，懷疑與否證是系統二的工作，累</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">了就做不到</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">月暈效應</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">喜歡一個人的某項特質，就連帶高估其他未觀察的特質；順序先後就</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">足以改變評分</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">WYSIATI</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">所看到的就是全貌：以少量證據編出的連貫故事，反而帶來更高的主</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">觀信心</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">信心來自故事的連貫性，而不是證據的數量與品質</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">因此正確的做法是先各自獨立判斷再討論，避免彼此的印象互相污染</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章轉入判斷的機制：系統一究竟持續在替我們評估哪些東西</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第8章——我們如何做出判斷</h2>
+  <p class="sub">系統一不停做著沒被要求的基本評估，並把量表任意對換</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="我們如何做出判斷結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">系統一持續進行一組基本評估，不待要求就自動運作</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">它擅長平均與原型、擅長跨量表配對強度，卻不會做總和</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">基本評估</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">危險與否、好壞、支配性與可信度，都在看見臉孔的百毫秒內自動評</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">定完成</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">平均容易、總和困難</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">一疊線條的平均長度可以一瞥而知，總長度卻算不出來——原型可得</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">，加總不可得</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">強度配對</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">犯罪嚴重度可以對應到罰金，也可以對應到音量或亮度，量表之間自</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">動換算</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">心智的發散性</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">只問公司財務是否穩健，心智卻順便算出你有多喜歡它的產品，答案</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">被多算的量污染</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這些自動評估之所以重要，是因為它們隨時可以被拿去替代較難的問題</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">換句話說，很多「直覺」其實是拿一個現成的答案去回答另一個問題</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把這個機制講清楚：替代與各式各樣的判斷捷徑</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第9章——回答一個比較容易的問題</h2>
+  <p class="sub">答不出來的問題，被悄悄換成答得出來的問題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="回答一個比較容易的問題結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">難題若答不出來，系統一會換一個相關的簡單題來回答</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">捷徑就是被回答的那個簡單問題，而替代本身完全不被察覺</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">目標問題與捷徑問題</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">「這位候選人會當選嗎」被換成「她看起來像不像個贏家」，答案順</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">勢移植過去</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">立體式的替代</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">紙面上的人像因透視線索被看成立體，尺寸判斷自動沿用立體印象，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">無法憑意志關掉</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">心情替代滿意度</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">先問約會次數再問生活幸福，答案就高度相關；問題順序改變了被替</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">代的內容</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">情意捷徑</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">喜歡一個方案，就覺得它成本低、效益高——好惡先形成，理由後補</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">上</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">替代解釋了為什麼我們對不完全了解的問題，也總能立刻有意見</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼的建議很簡單卻困難：先問自己「我回答的是原來那個問題嗎」</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第二部起，正式進入這些捷徑各自造成的系統性偏誤</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二部　捷徑與偏見</h2><span class="tag">PART TWO</span></div>
+  <p class="sub" style="margin:0">逐一拆解判斷捷徑，說明統計式思考為什麼這麼難</p>
+</section>
+
+<section>
+  <h2>第10章——小數原則</h2>
+  <p class="sub">小樣本的極端結果被當成真實訊號，因為我們不夠懷疑</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="小數原則結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">小樣本必然產生極端結果，卻常被解讀成有意義的型態</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">人對樣本大小不敏感，又急著找因果解釋，於是把雜訊當成訊號</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">腎臟癌的郡</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">發生率最低與最高的郡，都是人口稀少的鄉村——真正的原因只是樣</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">本太小</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">懷疑壓不過自信</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">系統二能算出樣本需要多大，但除非被刻意啟動，系統一只管相信眼</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">前的型態</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">隨機不像隨機</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">二戰倫敦轟炸的落點分布、籃球的熱手感，都是隨機序列被誤讀成模</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">式</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">成功的小學校</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">績優小學校的「發現」曾促使大筆經費投入，其實變異大只是因為人</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">數少</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">若不主動追問樣本大小，統計直覺會系統性地高估證據的強度</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章也是全書的自我提醒：對小樣本結果保持懷疑，是研究者自己最難做到的事</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看另一個更赤裸的例子：一個毫無訊息量的數字如何左右估計值</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第11章——錨點</h2>
+  <p class="sub">毫無訊息的數字照樣會把估計值拉過去</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="錨點結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">任意的數字也能當錨，把後續的估計整批拉往它的方向</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">錨定同時透過系統二的調整不足與系統一的促發兩條路徑運作</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">幸運大輪盤</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">轉出 10 的人估聯合國非洲成員比例為 25%，轉出 65 </text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">的人估 45%——輪盤毫無訊息</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">兩種機制</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">系統二從錨點出發調整卻停得太早；系統一則把錨點當成可能為真，</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">選擇性地活化證據</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">錨點指數</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">錨定效應可以被量化，許多研究落在五成上下，代表估計值幾乎被錨</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">牽著走一半</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">談判與判決</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">開價、求償金額、慈善勸募的建議捐額，都是被刻意設置的錨，連法</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">官也難免</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">面對錨點，唯一有效的抵抗是主動去想「這個數字如果錯了會怎樣」</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼建議談判時明確拒絕荒謬的開價，而不是試著從那個數字往回調整</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章進入另一個主力捷徑：靠「想不想得起來」判斷發生的頻率</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第12章——可用性的科學</h2>
+  <p class="sub">頻率被換成提取的難易，而流暢度比想起幾個更關鍵</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="可用性的科學結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">判斷頻率時，人實際使用的是例子進入心中的容易程度</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">決定答案的是提取的流暢感，而不是最後真正想起來的數量</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">可用性捷徑</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">估算離婚率、危險植物或死亡原因時，能輕易想起例子的類別就被判</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">斷得比較大</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">流暢度勝過數量</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">被要求舉六個果斷例子的人比舉十二個的人更覺得自己果斷——十二</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">個太難舉了</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">讓提取變難</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">同時做記憶負荷作業、或維持皺眉表情，都會改變人對自身特質的判</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">斷</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">個人貢獻的膨脹</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">夫妻各自估計的家事貢獻加起來遠超過百分之百，因為自己做的事最</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">容易想起</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">可用性偏誤的根源不是記憶內容不準，而是提取感受被誤讀成頻率</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">警覺的方式是改問「我是根據統計，還是根據剛好想到的例子在判斷」</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把可用性接上情緒與風險，看它如何一路放大成公共政策的扭曲</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第13章——可用性、情緒和風險</h2>
+  <p class="sub">風險知覺由情緒與媒體能見度決定，而非死亡人數</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="可用性、情緒和風險結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">大眾的風險知覺由情緒與能見度決定，而非統計數字</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">媒體、情緒與政治誘因彼此放大，形成可用性級聯</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">災難循環</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">大地震後狂買保險、採取防護，記憶淡去後警覺同步鬆懈，循環一再</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">重演</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">情意捷徑</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">對一項技術的好惡先定調，收益與風險的評估隨後配合好惡而調整</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">大眾與專家之爭</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">史洛維克主張大眾的恐懼有其價值，桑思坦主張專家統計應主導，兩</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">派各有道理</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">可用性級聯</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">蘋果殺蟲劑 Alar 事件顯示，媒體與公眾反應可自我放大到與</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">實際風險脫節</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">風險知覺的偏誤會直接轉成資源配置的偏誤：怕的花大錢，致命的沒人管</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼不主張忽視大眾恐懼，但主張制度要有能力擋下級聯造成的過度反應</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章回到實驗室，看最基本的統計素養如何被表徵性直覺擠掉</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第14章——湯姆的專業</h2>
+  <p class="sub">一段人格描述就足以把基率完全趕出判斷</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="湯姆的專業結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">表徵性直覺讓人依「像不像」判斷，而完全忽略基率</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">證據愈薄弱，就愈該倚靠基率，但直覺的做法恰好相反</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">湯姆 W 的問題</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">一段刻板的人格描述，就讓受試者把各研究領域的實際人數比例整批</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">拋開</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">表徵性的兩宗罪</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">一是過度願意預測罕見事件，二是對證據品質不敏感——薄弱證據也</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">照樣用</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">貝氏推論的紀律</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">以基率為起點，再依證據的診斷力調整，而不是直接被相似度接管</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">管教直覺</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">先問「基率是多少」，再問「我手上的證據有多可靠」，把兩者刻意</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">分開</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">表徵性直覺本身常常有用，問題出在它完全不理會證據的強弱</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼強調正確做法不是壓抑直覺，而是把直覺當成需要被修正的初始估計</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章用一個著名到引起爭議的例子，逼出直覺與邏輯的直接衝突</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第15章——琳達：少就是多</h2>
+  <p class="sub">多加一個條件反而顯得更可能，邏輯輸給了合理性</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="琳達：少就是多結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">愈具體的描述愈像真的，於是機率判斷違反了集合的邏輯</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這個聯合謬誤連受過統計訓練的人也難以避免</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">琳達問題</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">多數人認為「銀行員兼女性主義者」比「銀行員」更可能，違反集合</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">包含關係</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">合理性壓過機率</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">系統一評估的是故事有多連貫，而連貫度和機率是兩種不同的東西</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">少就是多</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">細節增加使故事更像真，也使機率必然下降，兩者恰好反向而行</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">換成頻率就改善</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">問「一百個人裡有幾個」而不是問機率，謬誤比例大幅下降，集合關</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">係變得可見</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一件事換個問法，正確率就大不相同，說明錯誤來自表述而非能力不足</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼也承認琳達問題招來大量批評，並把爭議本身當成有價值的討論</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章追問一個更細的問題：什麼樣的基率才有機會被人採用</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第16章——因果基率勝過統計基率</h2>
+  <p class="sub">只有帶著因果意味的基率，才進得了直覺的判斷</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="因果基率勝過統計基率結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">純統計的基率會被忽略，帶有因果意味的基率才會被採用</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">同樣的數字，包裝成因果故事就能改變判斷</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">計程車問題</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">85% 的車屬綠色車行、目擊者八成可靠，正確答案 41%，多</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">數人卻答 80%</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">換成因果版</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">若說綠色車行「肇事率特別高」，同一個 85% 立刻被納入判斷</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">，因為它有了因果角色</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">刻板印象的雙面</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">統計基率一旦被理解成群體特質，就會被積極套用，變成刻板印象</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">個案勝過數據</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">尼斯貝特的研究顯示，看一兩個活生生的案例比讀統計更能改變人的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">推論習慣</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">要讓統計資訊被採納，往往得先把它翻譯成一個有因果的故事</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這既是教學上的實用建議，也是一個警訊：說服力和正確性並不是同一件事</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章處理一個純粹統計、卻幾乎沒有人有直覺的現象：迴歸</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第17章——迴歸到平均值</h2>
+  <p class="sub">極端表現之後的回落，不需要任何原因</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="迴歸到平均值結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">極端的表現之後必然回落，這是統計必然，不是因果</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">看不見迴歸，就會把運氣的波動誤判成獎懲的效果</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">飛行教官的錯覺</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">稱讚後表現變差、責罵後變好，教官因此相信懲罰有效——其實只是</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">迴歸</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">表現＝能力＋運氣</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">成功需要一點天分加上很多運氣；極端成功中運氣的成分特別大</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">迴歸不需要解釋</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">高爾頓當年花了數年才理解，相關係數小於一就必然出現雙向迴歸</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">運動雜誌封面魔咒</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">登上封面的選手隨後成績下滑，被歸因於壓力，實際上封面本身就選</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">中了極端值</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">迴歸最反直覺的地方在於：它沒有原因，而系統一非要有原因才滿意</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">凡是以極端值為起點的觀察，都必須先扣掉迴歸，才談得上效果</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把迴歸帶進實務：直覺預測該如何被修正回合理的範圍</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第18章——馴服直覺的預測</h2>
+  <p class="sub">直覺預測太極端，要靠刻意的四個步驟把它拉回來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="馴服直覺的預測結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">直覺預測完全不含迴歸，因此一律過於極端</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">修正的方法有明確步驟，代價是必須放棄戲劇性的預測</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">直覺沒有迴歸</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">從一段令人印象深刻的描述直接外推業績，等於假設證據的預測力是</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">百分之百</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">修正四步驟</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">先估基線、再做直覺預測、估算證據與結果的相關、按相關把預測拉</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">回基線</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">極端預測難放棄</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">中庸的預測顯得懦弱、沒有洞見，因此即使正確也難以在組織裡生存</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">接受可預期的錯誤</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">校正後的預測會錯過真正的異常值，這是換取整體準確度必須付的代</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">價</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">無偏誤的預測必然比直覺平淡，這正是它能長期正確的原因</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼也承認：若目標是抓住罕見的極端成功，校正後的預測反而幫不上忙</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第三部轉向另一個主題：我們對自己的理解有多少是錯覺</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第三部　過度自信</h2><span class="tag">PART THREE</span></div>
+  <p class="sub" style="margin:0">我們對世界的理解與對自己的信心，遠比證據所能支持的更多</p>
+</section>
+
+<section>
+  <h2>第19章——了解的錯覺</h2>
+  <p class="sub">過去被編成連貫的故事，於是未來看起來可以預測</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="了解的錯覺結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">我們用少量證據編出過去的故事，並誤以為自己理解了世界</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">後見之明讓意外事件事後看來理所當然，過度自信由此而生</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">敘述的謬論</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">塔里指出，好故事簡單、具體、聚焦在幾個鮮明事件，並自動把運氣</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">寫成必然</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">後見之明偏誤</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">事情發生後，人會改寫自己原先的看法，並真心相信自己早就知道</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">結果偏見</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">以結果評斷決策，使決策者過度保守，也讓醫療與治理的問責機制失</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">焦</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">成功的公式</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">暢銷管理書歸納的成功要素，其實高度混入了月暈效應與迴歸，效果</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">被誇大</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">了解的錯覺讓我們高估世界的可預測性，也高估自己的理解程度</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼特別提醒：一個笨決定即使結果很好，仍然是笨決定</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把這個錯覺推到極端：整個專業以效度的錯覺為基礎的情況</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第20章——效度的錯覺</h2>
+  <p class="sub">主觀的自信只反映故事的連貫，不反映預測的準確</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="效度的錯覺結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">主觀自信來自故事的連貫性，與實際預測效度幾乎無關</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">在不可預測的環境裡，專業訓練無法變出預測能力</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">軍官甄選的教訓</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">以色列陸軍的團隊測驗給出清楚印象與強烈信心，對後續表現的預測</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">卻幾近無用</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">選股的錯覺</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">個別投資人與多數基金經理人的績效缺乏跨年度穩定性，技術的成分</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">遠低於自我認知</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">自信從何而來</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">連貫的故事加上 WYSIATI，就足以生成高度自信，證據的數</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">量幾乎不影響</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">豪豬型專家</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">泰特洛克的長期研究顯示，用一套大理論解釋一切的專家，輸給簡單</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">的外推</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">問題不在專家訓練不足，而在有些領域本身就無法被預測</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼的區分很關鍵：低效度環境裡的自信，是環境的產物而非能力的訊號</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章給出替代方案：在這些領域，簡單的公式為什麼會贏過人的判斷</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第21章——直覺 vs.公式</h2>
+  <p class="sub">簡單的統計公式，在低效度環境裡穩定勝過專家判斷</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="直覺 vs.公式結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在多數低效度環境中，簡單公式的預測優於專家的臨床判斷</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">公式的優勢來自它不會被無關線索打動，也不會前後不一致</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">米爾的小書</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">米爾回顧二十項研究，統計預測幾乎全面勝過受訓輔導員的整體判斷</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">簡單加總就夠</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">道斯指出等權重的加總往往不輸複雜迴歸，因為它更不容易過度配適</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">樣本</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">阿普伽評分</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">把新生兒五項指標各評零到二分再加總，取代了資深醫師的整體印象</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">，救了無數嬰兒</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">對演算法的敵意</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">公式的錯誤讓人無法接受，人的錯誤卻能被原諒，這種不對稱阻礙了</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">採用</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">公式不是比人聰明，而是比人穩定——在雜訊多的環境裡這就足夠</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼也強調：結構化的面談與事先訂好的評分規則，比自由印象可靠得多</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章則處理相反的情形：哪些直覺是真的，並且值得信任</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第22章——專家的直覺</h2>
+  <p class="sub">直覺可靠有兩個條件：環境足夠規律，而且練習得到回饋</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="專家的直覺結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">專家直覺的本質是辨識，可靠與否取決於兩個環境條件</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">環境要有足夠規律，練習過程也要能得到清楚而及時的回饋</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">對抗合作</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">康納曼與主張自然決策的克萊恩共同撰文，把分歧與共識同時寫清楚</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">直覺就是辨識</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">消防隊長與棋手的「第六感」是熟悉線索被快速辨認，而非神秘的預</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">感</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">兩個必要條件</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">規律可學的環境，加上長期而清楚的回饋；缺一項，自信就與準確脫</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">鉤</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">自信不是指標</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">主觀確定感無法用來判斷直覺可不可信，只能靠環境與練習史來評估</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">能不能相信直覺，答案不在人身上，而在他所處的環境與學習史</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章也示範了學術爭議的另一種可能：把分歧寫成一篇共同的論文</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章回到組織實務：為什麼幾乎所有計畫都會低估時間與成本</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第23章——外在看法</h2>
+  <p class="sub">只看自己的計畫細節，就會系統性低估時間與成本</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="外在看法結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">陷在案子內部的細節裡，就會系統性低估時間與成本</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">外在看法要求先看同類案子的實際分布，再談自己這一件</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">教科書的七年</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">團隊估計一至兩年半完成，實際花了約八年，而且產品最後沒有被採</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">用</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">計畫的謬論</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">以最順利的情境為基準做規劃，卻無法預見所有可能出錯的地方</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">參考類別預測</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">弗林夫柏的方法：先找出同類計畫的實際統計，再依本案特殊性調整</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">沉沒成本的拉力</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">不願承認錯誤使資源繼續投入，讓原本該停的計畫愈拖愈大</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">外在看法之所以難用，是因為它逼人放棄自己案子的獨特感</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼承認，當年即使算出了外在看法的答案，團隊還是選擇忽略它</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把樂觀放到更大的尺度：它既是偏誤，也是經濟體的引擎</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第24章——資本主義的引擎</h2>
+  <p class="sub">樂觀偏誤是最顯著的認知偏誤，也是創業與成長的燃料</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="資本主義的引擎結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">樂觀既是最顯著的認知偏誤，也是創業與成長的動力</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">問題不在樂觀本身，而在它伴隨的控制錯覺與競爭忽略</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">樂觀的兩面</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">樂觀的人較能從挫折反彈、較健康、人緣較好，也較容易低估風險</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">創業的妄想</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">多數新創失敗，但創業者對自身成功機率的估計遠高於同業的實際存</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">活率</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">競爭忽略</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">進入市場時只算自己準備了什麼，沒算其他人也在同時做同樣的判斷</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">事前驗屍</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">克萊恩的方法：在拍板前假設一年後徹底失敗，請每個人寫下失敗的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">原因</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">樂觀不需要被消滅，但需要被制度化的懷疑所平衡</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">事前驗屍之所以有效，是因為它把質疑變成被指定的任務，而不是個人的不忠</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第四部轉入選擇本身：經濟學的理性模型在哪裡與人性分道揚鑣</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第四部　選擇</h2><span class="tag">PART FOUR</span></div>
+  <p class="sub" style="margin:0">從展望理論出發，檢視理性選擇模型與真實人性的落差</p>
+</section>
+
+<section>
+  <h2>第25章——白努利的錯誤</h2>
+  <p class="sub">效用該掛在財富的變化上，而不是財富的狀態上</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="白努利的錯誤結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">效用理論長年把效用掛在財富狀態，忽略了參考點</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">只要改成用「相對於參考點的變化」來描述，許多異常就消失了</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">邊際效用遞減</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">白努利以財富的對數效用解釋風險趨避，這一步在當時是重大突破</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">狀態模型的盲點</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">同樣擁有一百萬，一個是從五百萬跌下來、一個是從十萬漲上來，感</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">受完全不同</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">參考點決定得失</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">快樂與痛苦來自變化，而理論若只看終點，就無法區分獲利與損失</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">錯誤為何存續百年</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">理論太優雅、太好用，使得反例被當成邊緣個案而長期被容忍</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">一個理論的盲點可以存續兩百多年，只因為沒有人從外面去看它</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼坦言自己當年正是因為不熟悉效用理論，才沒被它的權威擋住視線</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把這個修正寫成完整的理論：展望理論</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第26章——展望理論</h2>
+  <p class="sub">參考點、敏感度遞減與損失規避，三個特質重寫了選擇理論</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="展望理論結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">展望理論用三個認知特質取代財富狀態的效用函數</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">參考點、敏感度遞減與損失規避，共同決定了選擇的形狀</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">三個認知特質</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">評估以參考點為基準；得失都有敏感度遞減；損失的權重大於等量的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">獲利</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">損失規避係數</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">多數實驗估出的比值落在一點五到兩點五之間，賭局要贏兩倍才值得</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">冒險</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">S 形價值函數</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">在獲利區凹、在損失區凸，並在參考點處出現明顯的折點</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">理論的盲點</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">未處理失望與後悔，也未處理零機率與極小機率的邊界情形</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">展望理論的力量在於它只描述行為，不假設人應該怎麼選</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼特別點出它的缺陷，作為一個理論被接受時應有的誠實</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看損失規避在市場上最直接的痕跡：稟賦效應</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第27章——稟賦效應</h2>
+  <p class="sub">一旦擁有，同一件東西的賣價就高於買價</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="稟賦效應結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">擁有本身就改變了估價，因為放棄被算成損失</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">無異曲線少了參考點，因此無法解釋買價與賣價的落差</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">無異曲線的缺口</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">經濟學的等優圖假設狀態相同即偏好相同，完全沒有「現在擁有什麼</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">」的位置</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">馬克杯實驗</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">隨機分到杯子的人索價，遠高於沒分到的人願付的價格，交易量遠低</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">於預測</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">兩種持有</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">為使用而持有的東西才有稟賦效應；為交易而持有的存貨則沒有</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">經驗會削弱效應</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">有交易經驗的人與商人較少出現稟賦效應，習慣把物品視為可替換的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">價值</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">稟賦效應把損失規避帶進市場，直接挑戰了標準的交易理論</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">值得注意的是它有明確的邊界條件：不是每一種持有都會產生這個效應</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把損失規避推得更廣：壞事在心智裡為什麼總是比好事大聲</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第28章——壞的事件</h2>
+  <p class="sub">壞比好更有力量，於是現況總是被優先防衛</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="壞的事件結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">負面訊息享有優先通道，壞事的心理重量大於等量的好事</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">目標一旦被設成參考點，達不到就被當成損失</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">壞比好更有力</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">威脅性的字詞與表情引發更快的反應，負面印象也比正面印象更難翻</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">轉</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">杏仁核的捷徑</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">受試者未意識到看過恐懼的眼睛，杏仁核仍然活化，威脅偵測繞過了</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">意識</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">目標即參考點</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">高爾夫選手救平標準桿的推桿比抓博蒂更準，因為前者是避免損失</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">現況的防衛</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">改革中受損的一方，抗爭強度大於受益者的支持力度，因此改革常常</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">失敗</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">損失規避解釋了制度為什麼傾向僵固：損失方總是叫得比獲益方大聲</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼也指出，法律與慣例中對「既有權利」的保護，正是損失規避的制度化</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章回到機率本身：權重與機率之間為什麼不是同一條直線</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第29章——四象限型態</h2>
+  <p class="sub">機率被轉成決策權重，於是風險態度分成四個象限</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="四象限型態結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">機率並非線性地進入決策，而是被轉換成決策權重</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">可能性效應與確定效應交叉作用，形成四種風險態度</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">可能性效應</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">從零到百分之五的變化，心理上遠大於從百分之四十到四十五的變化</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">確定效應</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">從百分之九十五到百分之百的那一小步，值得付出不成比例的代價</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">亞列士矛盾</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">這些不一致無法被期望效用理論容納，逼出了決策權重的概念</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">四象限型態</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">高機率獲利求穩、高機率損失冒險；低機率獲利買希望、低機率損失</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">買保險</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">四象限同時解釋了買保險與買彩券、庭外和解與硬拚到底</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼指出它也造成系統性代價：絕望的一方願意接受很差的賭局</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章聚焦低機率的那一角：罕見事件為什麼總被過度加權</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第30章——罕見事件</h2>
+  <p class="sub">罕見事件被高估，也被過度加權，兩者要分開來看</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="罕見事件結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">罕見事件的機率被高估，被賦予的決策權重又更高</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">描述得愈生動、愈具體，這個權重就被推得愈高</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">巴士上的炸彈</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">康納曼自述明知風險極小，仍然避開公車旁的位置——因為念頭本身</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">令人不安</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">高估與過度加權</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">前者是判斷機率偏高，後者是即使知道機率也照樣給它過多重量</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">生動的描述</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">把結果講得具體、把機率寫成頻率，都會使同一個機率被放大</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">分母的忽略</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">「每一千人死一人」比「零點一趴」可怕得多，因為前者讓人看見那</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">個人</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一個機率換一種說法，就能改變決策，這對風險溝通是雙面刃</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼建議刻意列出其他可能結果，讓機率加總回到百分之百</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章從單一決策放大到一連串決策：框架寬窄如何改變結果</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第31章——風險政策</h2>
+  <p class="sub">把決策一件一件看，會累積出整體上不理性的結果</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="風險政策結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">窄框架讓人逐案決策，累積成整體不理性的組合</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">廣框架與風險政策能抵抗每一次的損失規避</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">兩個決策合起來看</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">分開選會挑出被劣勢支配的組合；併在一起看，答案立刻翻轉</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">山謬森的問題</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">拒絕單次賭局卻接受一百次，只有在拒絕每一次時才自相矛盾</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">窄框架的代價</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">逐案審視會過度反應於單次損失，投資人查看價格愈頻繁，決策愈保</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">守</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">風險政策</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">事先訂好一套適用於同類決策的規則，讓個別案件不必重新掙扎</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">廣框架不是要人無視風險，而是讓風險在正確的層級被計算</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">組織層面的後果最明顯：每位主管各自趨避風險，整體就變得過度保守</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看另一種切割世界的方式：心智帳戶如何左右我們的取捨</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第32章——計分</h2>
+  <p class="sub">我們替生活記帳，而結帳的方式決定了選擇</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="計分結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">心智帳戶把錢與經驗分門別類，結帳方式決定了選擇</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">悔恨與責任的預期，同樣被算進了帳本裡</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">心智帳戶</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">同一筆錢放在不同帳戶就有不同用途，理性代理人不需要帳戶，普通</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">人需要</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">處置效應</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">投資人偏好賣掉獲利的股票、留住虧損的，為了不在帳戶虧損時關帳</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">沉沒成本</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">已經投入的成本不該影響後續決策，但關掉一個虧損帳戶太痛苦</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">悔恨與責任</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">偏離常規造成的損失特別令人後悔，於是人選擇不作為以避免被責怪</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">記帳方式不是中立的：它決定了什麼被算成損失，也決定了誰要負責</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼提醒，預期的悔恨常常被過度加權，因為它太容易被想像出來</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看評估情境的改變如何直接翻轉偏好</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第33章——逆轉</h2>
+  <p class="sub">單獨看與放在一起看，偏好會整個顛倒過來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="逆轉結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">單獨評估靠情緒與類別常模，聯合評估才會啟動比較</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">兩種情境給出相反的偏好，理性所要求的一致性隨之破裂</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">單獨評估靠情緒</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">分開評估時只能用類別內的常模判斷，情緒反應直接決定數字</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">類別決定基準</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">海豚與農場工人、餐具組的完整與破損，比較的基準隨類別而變</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">不公平的逆轉</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">分開審理的案子判出不一致的賠償金，放在一起看才發現無法自圓其</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">說</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">聯合評估較理性</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">能同時看見選項時，系統二有機會介入，決策品質通常較高</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">偏好逆轉直接違反經濟學的一致性要求，也難以用「品味不同」解釋</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">實務上的啟示很明確：重要的評估要盡可能安排成可以並列比較的形式</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把這個現象推到極致：純粹的措辭差異也能改變選擇</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第34章——框架和真實界</h2>
+  <p class="sub">邏輯上等價的兩種說法，心理上完全不等價</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="框架和真實界結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">邏輯上等價的描述，在心理上並不等價</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">措辭選擇了參考點，也因此選擇了人們的偏好</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">義大利贏與法國輸</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">真值條件相同的兩句話，喚起的情緒與聯想完全不同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">存活與死亡框架</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">同一個療程說「九成存活」或「一成死亡」，醫師與病人的選擇顯著</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">不同</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">空虛的直覺</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">耗油量以每加侖里程或每里耗油表示，會導出相反的汰換優先順序</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">預設選項的力量</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">器官捐贈同意率的巨大國際差異，主要來自表格是預設加入還是預設</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">退出</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">既然框架無可避免，選擇框架本身就是一個必須被負責的決定</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼由此支持「選擇建築」：把預設值設計成對多數人長期有利的那一邊</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第五部離開決策，轉向另一個更根本的分裂：誰在替我們衡量幸福</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第五部　兩個自我</h2><span class="tag">PART FIVE</span></div>
+  <p class="sub" style="margin:0">經驗自我與記憶自我偏好不同，幸福的定義因此分裂</p>
+</section>
+
+<section>
+  <h2>第35章——兩個自我</h2>
+  <p class="sub">經驗自我承受生活，記憶自我卻負責做選擇</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="兩個自我結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">經驗自我承受每一刻的感受，記憶自我負責評分與選擇</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">兩者的規則不同，於是我們常為記憶而選擇，讓自己承受更多痛苦</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">兩種效用</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">邊沁的經驗效用講的是痛苦與快樂，經濟學的決策效用講的是想要的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">程度</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">大腸鏡實驗</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">檢查時間較長但結尾較不痛的病人，事後回憶反而較好，也較願意再</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">做</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">峰終定律</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">整段經驗的評價，取決於最痛的那一刻與結束時的感受</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">長度的忽略</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">痛苦持續多久幾乎不影響回憶評分，這使記憶自我成為很差的證人</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">記憶自我掌握了選擇權，而它評分的規則並不以總體感受為目標</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">冷手實驗顯示，人會選擇重複那個客觀上更痛、但記憶較好的版本</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把這個機制推到人生尺度：我們用故事的方式評價一生</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第36章——生命像個故事</h2>
+  <p class="sub">一生被當成一個故事來評分，結尾因此被過度加權</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="生命像個故事結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">我們用故事的方式評價經驗，於是結尾被過度加權</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">時間長度被忽略，導致對整段人生的評價偏離實際感受</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">茶花女的結尾</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">歌劇最後十分鐘的二重唱決定了整齣戲的感受，前面的時間幾乎不計</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">入</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">珍的一生</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">得知她在生命最後幾年變得不快樂，受試者對她整個人生的評分大幅</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">下降</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">失憶的度假</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">若度假結束後記憶會被抹除，人的選擇會完全不同——多數人是為記</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">憶而旅行</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">為記憶而活</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">拚命拍照、努力經營可敘述的經歷，可能犧牲了當下實際的感受</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把人生當故事來評分，代價是當下的感受被系統性地低估</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼並未主張記憶自我錯了，而是指出兩個自我的利益確實會衝突</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章改從經驗自我出發，重新測量什麼叫做幸福</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第37章——經驗到的幸福</h2>
+  <p class="sub">改從經驗自我測量，幸福變成時間如何被使用的問題</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="經驗到的幸福結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">若從經驗自我測量，幸福就成了時間如何被度過的問題</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">痛苦的時間比例，比整體滿意度更能反映真實處境</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">日重建法</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">請人重建前一天的每個片段並評分情緒，得到以時間加權的幸福測量</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">U 指數</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">計算處於不愉快狀態的時間比例，把幸福轉成可比較的公共指標</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">收入的兩種效果</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">低收入時增加收入明顯減少痛苦，過了滿足水準後效果大幅遞減</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">注意力與同伴</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">情緒最受當下活動與相處對象影響，通勤與獨自照護是常見的低點</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">以時間加權的幸福測量，把政策目標從提高滿意度轉向減少受苦</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">康納曼主張優先處理極端貧窮者的憂鬱，因為那裡的 U 指數最高</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">最後一章回到記憶自我：當我們被問起人生，究竟在回答什麼</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第38章——對生活的沉思</h2>
+  <p class="sub">問起生活滿意度時，我們回答的是被聚焦的那一件事</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="對生活的沉思結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">被問起生活滿意度時，人回答的是當下被聚焦的那件事</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">聚焦錯覺讓任何被想到的因素，都顯得比實際更重要</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">滿意度是誰的答案</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">生活滿意度問卷問的是記憶自我，答案高度受到問題前後脈絡影響</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">聚焦錯覺</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">「你想的都不是那麼重要」——除了你正在想它的那一刻</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">結婚的曲線</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">滿意度在婚前上升、婚後逐年回落，顯示感情預測系統性地失準</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">錯誤的欲望</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">誤以為得到某樣東西就會快樂，於是把時間花在不會帶來幸福的追求</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">上</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">要判斷什麼真正影響幸福，必須問它會不會長期占據你的注意力</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">加州氣候的例子最傳神：住久了就不再想它，於是它也不再帶來快樂</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">全書至此完成三組對照：兩個系統、經濟人與普通人、兩個自我</text>
+</svg>
+  </div>
+</section>
+
+
+<section>
+<div class="callout">
+  <b>全書的核心命題</b><br>
+  康納曼在總結裡把全書收束成三組對照：自動的系統一與費力的系統二、理論國度裡的「經濟人」與真實世界裡的「普通人」、承受生活的經驗自我與負責評分的記憶自我。他的結論不是人類不理性——他明言對這個說法感到畏縮——而是普通人並不符合理性代理人模型的描述，因此人們常常需要幫助才能做出較好的判斷，而制度與選擇建築正是可以提供這種幫助的地方。
+</div>
+</section>
+
+<blockquote>
+  「不理性」是個很強烈的字，它帶有衝動、情緒化，和倔強抵制理性說法的味道。事實上，我們的研究只是顯示普通人不是理性代理人模式描述的那樣而已。
+  <cite>——《快思慢想》總結，論經濟人與普通人</cite>
+</blockquote>
+
+<section style="margin-top:20px">
+  <div class="band"><h2>本書受到的核心批評</h2><span class="tag">CRITICAL RECEPTION</span></div>
+  <p class="sub" style="margin:0 0 4px">這本書的影響力極大，但其中幾章的實證基礎在出版後十餘年間受到了嚴重挑戰</p>
+  <div class="grid ri">
+    <div class="card"><div class="nm">第4章的社會促發研究大規模重製失敗</div><p>全書第4章「聯結的機器」倚重的行為促發實驗——讀老年詞彙走得較慢、金錢線索使人自利等——在其後十餘年的獨立重製中多數未能複現。康納曼本人於 2017 年公開回應心理學者史欽馬克的批評，承認自己對這些統計檢定力不足的研究過度信任，這一節不應被當作可靠結論閱讀。</p></div>
+    <div class="card"><div class="nm">自我耗損的證據被多實驗室重製推翻</div><p>第3章用來說明系統二會疲累的「自我耗損」，主要根據鮑邁斯特一系列小樣本實驗。2016 年由二十多個實驗室、約兩千名受試者共同執行的預先註冊重製，測得的效果量接近於零；葡萄糖能回復自我控制的說法也未獲支持。這使該章的核心機制目前處於高度爭議狀態。</p></div>
+    <div class="card"><div class="nm">大量經典結論建立在小樣本上，恰好違反書中第10章的忠告</div><p>書中許多招牌實驗以數十名大學生為樣本，卻被寫成強而有力的普遍結論。批評者指出這正是第10章「小數原則」所警告的錯誤：作者一面提醒讀者懷疑小樣本，一面對自己領域的小樣本結果表現出過高的信心。康納曼後來也承認了這項不一致。</p></div>
+    <div class="card"><div class="nm">系統一／系統二被質疑是方便的隱喻，而非可檢驗的機制</div><p>吉仁澤等學者批評雙系統架構缺乏可否證性：任何行為都能事後歸給其中一個系統，因此解釋力看似很強，預測力卻很弱。康納曼自己在書中即聲明兩個系統是虛構角色，但批評者認為全書實際上仍把它們當成實體在使用，容易誤導讀者。</p></div>
+    <div class="card"><div class="nm">生態理性學派主張捷徑是適應工具，不是缺陷</div><p>吉仁澤長期主張，實驗室觀察到的偏誤多半是題目設計的產物：琳達問題取決於「可能性」一詞的語意歧義，基率忽略在改用自然頻率後大幅消失。在他看來，簡捷法則在資訊不足的真實環境中往往勝過複雜運算，把它們一律稱為偏誤是誤判。</p></div>
+    <div class="card"><div class="nm">損失規避是否為普遍法則，近年受到正面挑戰</div><p>蓋爾與拉克等學者系統回顧後主張，損失規避並非放諸四海的通則：在許多情境下人對得失的反應對稱，稟賦效應也可用交易經驗不足與實驗程序造成的偏差解釋。這項爭議直接觸及第26至28章的理論核心，目前尚未有定論。</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <b>另一面的價值與整體反思</b><br>
+    這些批評的分布並不平均：受創最重的是第3、4章倚重的社會促發與自我耗損研究，而展望理論、框架效應、迴歸忽略、計畫謬論與兩個自我等章節的核心結果，仍然站得相當穩。康納曼本人公開承認其中一部分錯誤，反而成為心理學重製危機裡少見的示範。比較務實的讀法是：把本書當作一套討論判斷的語彙與問題清單，而不是一份已經定案的結論表——這也正是他在前言裡為這本書設定的目標。
+  </div>
+</section>
+
+<footer>
+  本頁依丹尼爾・康納曼《快思慢想》整理三十八章的核心論證與章節之間的推進關係，並補入本書出版後的主要學術批評。書中大量實驗細節、數學附錄與兩篇收錄的原始論文（〈不確定情況下的判斷〉、〈選擇，價值和框架〉）請另行參閱原書。
+</footer>
+
+</div>
+</body>
+</html>

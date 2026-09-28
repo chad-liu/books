@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雜訊知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:#b8442a} .re .nm{color:#8f5e14}
+  .fa .nm{color:#3d7a55} .hi .nm{color:#1f5c85}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">判斷科學・被忽視的另一種誤差</p>
+  <h1>雜訊</h1>
+  <p class="lede">康納曼、席波尼與桑思坦把矛頭指向一種幾乎沒有人在談的錯誤：不是所有人一起偏向同一邊的偏誤，而是本該相同的判斷彼此不一致的雜訊。同一個案件交給不同法官、不同核保人員、不同醫師，甚至交給同一個人在不同的早晨，結果都可能相差甚遠。全書從量刑與保險的實測出發，建立誤差的測量架構，拆解雜訊的心理來源，再提出一整套稱為「決策保健」的降噪做法。這份圖譜依全書二十八章的順序，把每一章的核心論證整理成一張知識圖，並在文末整理本書受到的主要批評。</p>
+</header>
+
+<div class="callout">
+  <b>序言的比喻</b><br>
+  四隊人馬在射擊場打靶。A隊彈著點集中在靶心；B隊全部偏向同一角落，這是偏誤；C隊散布在靶面各處，這是雜訊；D隊既偏又散。關鍵在於：把靶紙翻到背面、看不見靶心時，你依然看得出C隊和D隊的彈著點很分散。這正是全書的立論基礎——即使無法確認什麼才是正確答案，雜訊仍然可以被測量，而且可以被減少。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一部　尋找雜訊</h2><span class="tag">PART ONE</span></div>
+  <p class="sub" style="margin:0">從量刑與保險的實例出發，示範雜訊如何被發現與測量</p>
+</section>
+
+<section>
+  <h2>第1章——犯罪與量刑雜訊</h2>
+  <p class="sub">同樣的罪行落到不同法官手上，刑度可能差上好幾年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="犯罪與量刑雜訊結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同樣的案件交給不同法官，判決結果可能天差地遠</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">法蘭科法官稱之為「無法無天」：自由裁量權製造出系統性的不公平</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">法蘭科的控訴</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">聯邦法官法蘭科在一九七三年指出，量刑差異之大已經構成一種殘酷</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">的恣意</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">量刑實驗的落差</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">同一批假設案件交給不同法官，刑期從緩刑到十幾年都有，差距遠超</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">過想像</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">量刑基準的興衰</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">一九八四年量刑改革法建立基準並確實縮小差異，卻在二○○五年被</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">改為僅供參考</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">不相干因素也左右判決</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">研究指出開庭時段、當地球隊前一天輸贏，都與判決寬嚴出現相關</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">只要涉及判斷，就免不了差異——而差異遠比任何人預期的更大</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章要建立的直覺是：不公平不只來自偏見，也來自純粹的隨機變異</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">須留意：其中「法官肚子餓會變嚴格」的研究後來受到嚴重質疑，詳見文末核心批評</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第2章——系統雜訊</h2>
+  <p class="sub">保險公司的雜訊審查，揭穿了「大家判斷差不多」的錯覺</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="系統雜訊結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">雜訊審查讓同一批人判斷同一批案件，變異立刻現形</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">實測的差異約為主管預期的五倍，而每個人都以為自己是例外</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">保險公司的雜訊審查</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">四十八位核保人員與六十八位理賠人員，針對同樣的案件各自獨立報</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">價</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">預期一成，實測五倍</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">主管與八百多位跨行業高階主管猜測差異約一成，實測核保中位數差</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">異達五成五</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">理賠也一樣</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">理賠人員的中位數差異為四成三，而這是中位數——半數案例的差距</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">還更大</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">意見一致的錯覺</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">每個人都相信同事會做出跟自己相近的判斷，因為從來沒有人真正比</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">對過</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">系統雜訊之所以長期隱形，是因為沒有人把判斷擺在一起看</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這裡也劃出關鍵界線：不必要的變異是雜訊，有意義的多樣性則不是</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章處理一個常見的反駁：那些一輩子只做一次的決策，也有雜訊嗎</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第3章——單一決策</h2>
+  <p class="sub">只做一次的決策，其實是只發生一次的重複決策</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="單一決策結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">獨一無二的決策同樣有雜訊，只是無從比對而看不見</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">把單一決策想成「只發生一次的重複決策」，減少雜訊的方法就同樣適用</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">重複決策的可比性</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">量刑、核保、診斷、報稅都是重複決策，可以靠雜訊審查把變異量出</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">來</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">單一決策的難題</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">伊波拉、新冠這類危機只發生一次，沒有平行世界可以拿來比較</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">反事實思維</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">各國面對同一波疫情的反應差異極大，正是決策含有雜訊的間接證據</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">結論其實一樣</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">不論決策做一次還是一百次，目標都該是同時減少偏誤與雜訊</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把單一決策視為絕無僅有，反而會放棄所有能改善它的紀律</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者直言這個看法比表面上更反直覺，卻是全書後半建議能成立的前提</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第二部轉入測量：既然判斷是用頭腦當儀器，就該像儀器一樣被校準</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二部　你的頭腦也是一把尺</h2><span class="tag">PART TWO</span></div>
+  <p class="sub" style="margin:0">把判斷視為測量，拆解誤差的結構與雜訊的成分</p>
+</section>
+
+<section>
+  <h2>第4章——什麼是判斷</h2>
+  <p class="sub">判斷是以人腦為儀器的測量，目標是準確而不是說服</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="什麼是判斷結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">判斷是用頭腦當儀器進行的測量，目標是逼近真實數值</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">即使永遠無法確認何者正確，雜訊仍然可以被測量</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">判斷不是意見</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">判斷問題允許分歧，但預設大家「應該」會接近；口味與偏好則不是</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">判斷問題</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">判斷完成的內在訊號</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">覺得自己想通了的那種連貫感，是判斷結束的訊號，卻不是正確的保</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">證</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">預測性與評估性</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">前者可以事後驗證，後者牽涉價值取捨，但兩者都不該有不必要的變</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">異</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">不知答案也能測雜訊</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">靶紙背面看不到靶心，仍然看得出彈著點有多分散——這就是雜訊</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">雜訊的可測量性，是整本書之所以能提出具體建議的關鍵</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一步也讓「無法驗證的判斷該如何改善」這個看似矛盾的問題有了出路</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把偏誤與雜訊放進同一個方程式，計算它們各自的代價</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第5章——誤差的測量</h2>
+  <p class="sub">偏誤與雜訊對整體誤差的貢獻，在數學上完全對等</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="誤差的測量結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在均方差的計算裡，偏誤與雜訊對誤差的貢獻完全對等</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">誤差不會互相抵消，平均而言「剛好正確」一點幫助也沒有</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">射擊場的四支隊伍</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">準確、有偏誤、有雜訊、兩者兼具——四張靶紙定義了全書的基本語</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">彙</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">誤差不會抵消</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">一半高估一半低估的預測，整體誤差並不會因為平均正確而變小</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">誤差方程式</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">均方差等於偏誤的平方加上雜訊的平方，兩者以同樣的方式進入總誤</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">差</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">因此同等重要</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">減少一單位的雜訊，對整體誤差的改善與減少同量的偏誤完全相同</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這個等式是全書的槓桿：它讓雜訊從「難免的小事」變成可計價的成本</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者也指出，雜訊占總誤差的比重往往大於偏誤，只是從來沒有人去量</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把系統雜訊拆開，看它究竟由哪些成分組成</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第6章——雜訊分析</h2>
+  <p class="sub">系統雜訊可以拆成水準雜訊與型態雜訊兩個成分</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雜訊分析結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">系統雜訊可以拆解成水準雜訊與型態雜訊</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">前者是整體寬嚴的差異，後者是對特定案件的獨特反應</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">一九八一年的雜訊審查</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">兩百多位聯邦法官對同一批案件量刑，結果成為量刑改革的實證基礎</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">刑度抽籤</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">被告實際拿到的刑期，有很大一部分取決於抽到哪一位法官</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">水準雜訊</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">有些法官整體偏嚴、有些偏寬，這種平均值的差異即水準雜訊</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">型態雜訊</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">同一位法官在某類案件特別嚴厲、另一類特別寬容，形成個人獨有的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">型態</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">兩種成分的平方相加等於系統雜訊的平方，各自需要不同的對策</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">在這份審查裡型態雜訊與水準雜訊規模相當，都不能被忽略</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章再切一刀：同一個人在不同時刻，也不是同一個判斷者</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第7章——場合雜訊</h2>
+  <p class="sub">同一個人在不同場合，判斷也不會完全相同</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="場合雜訊結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">同一個人在不同時刻對同一案件的判斷並不一致</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">心情、疲倦、天氣、順序都會介入，而我們幾乎察覺不到</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">罰球的比喻</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">頂尖球員的動作練過千萬次，命中率仍然到不了百分之百——判斷也</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">一樣</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">內在的群眾</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">同一個人隔一段時間再判斷一次，兩次取平均就能提高準確度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">外在的觸發因素</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">情緒、疲勞、看診時段、室外氣溫、案件出現的順序，都被觀察到有</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">影響</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">大腦本身的變異</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">記憶研究顯示，表現的起伏有相當部分來自神經運作本身的效率波動</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">場合雜訊提醒我們：判斷者不是一個固定的儀器，而是會漂移的儀器</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">不過作者也強調，你和昨天的你，仍然比你和今天的別人更相似</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把範圍擴大到群體：一起討論通常不會把雜訊平均掉</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第8章——群體如何擴大雜訊</h2>
+  <p class="sub">群體動力不會抵消雜訊，反而經常把它放大</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="群體如何擴大雜訊結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">群體討論不會抵消雜訊，群體動力反而會放大它</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">誰先發言、誰比較有自信，就足以讓相似的群體走向相反的結論</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">歌曲下載實驗</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">薩根尼克讓同樣的歌曲在多個平行世界競爭，排行榜結果卻各不相同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">資訊瀑布</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">前面的人表態之後，後面的人跟著走，獨立資訊就不再進入決策</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">群體極化</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">討論之後，群體的立場往往比成員原先的平均更極端</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">審議的代價</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">統計式群體（各自判斷後再平均）雜訊較低，審議式群體反而較高</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">群體不是雜訊的解藥，除非先確保成員的判斷彼此獨立</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這也預告了第五部最重要的一條建議：先各自判斷，再整合</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第三部轉向可驗證的領域，比較人、模型與規則的預測表現</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第三部　預測性判斷中的雜訊</h2><span class="tag">PART THREE</span></div>
+  <p class="sub" style="margin:0">比較人、模型與規則的預測表現，並界定預測能力的上限</p>
+</section>
+
+<section>
+  <h2>第9章——判斷與模型</h2>
+  <p class="sub">簡單的線性模型穩定勝過臨床判斷，因為它沒有雜訊</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="判斷與模型結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在預測性判斷上，簡單的線性模型穩定勝過人的臨床判斷</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">模型的優勢主要不是比較聰明，而是完全沒有雜訊</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">莫妮卡與娜塔莉</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">看著五項評分預測兩年後的績效，多數人心算一下就下判斷，這就是</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">臨床判斷</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">米爾：模型打敗你</text>
+  <text x="695" y="156" font-size="12" text-anchor="middle" fill="#96604f">以既有資料配適出的最佳模型，預測表現持續優於做出這些判斷的專</text>
+  <text x="695" y="172" font-size="12" text-anchor="middle" fill="#96604f">業人士</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">高伯格：你的模型打敗你</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">用你自己的判斷配適出的模型，預測得比你本人更準——差別就是你</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">的雜訊</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">差距來自不一致</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">同一位專家對同一案件兩次判斷都未必相同，模型卻永遠給出同樣的</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">答案</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">高伯格的結果最刺耳：複製你的判斷規則，就能贏過你本人</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這說明人類判斷的失準，有很大一塊不是想錯，而是想得不一致</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章追問：那乾脆用更簡單的規則，甚至演算法，會怎麼樣</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第10章——無雜訊的規則</h2>
+  <p class="sub">規則愈簡單往往愈穩健，因為它不會過度配適也不會漂移</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="無雜訊的規則結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">愈簡單的規則往往愈穩健，因為它不會過度配適樣本</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">從等權重模型到機器學習，機械方法的共同優勢都是沒有雜訊</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">等權重模型</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">把預測因子標準化後等權重相加，表現常常不輸精細計算的迴歸係數</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">連隨機權重也不差</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">只要方向正確，隨機選定的權重也能逼近最佳模型的表現</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">機器學習與保釋</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">以大量案件訓練的模型，能在不提高羈押率的情況下明顯降低棄保率</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">為什麼不用規則</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">人對演算法的錯誤特別不能容忍，也不願放棄個案化處理的感覺</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">規則的價值不在於聰明，而在於它讓相同的案件得到相同的處理</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">但作者同時預告：規則本身也有代價，第六部會正面處理</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章面對一個更根本的限制：有些事情本來就無法預測</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第11章——客觀的無知</h2>
+  <p class="sub">未來有一大塊是任何人都無法知道的，而我們拒絕承認</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="客觀的無知結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">未來有一大塊取決於無人能知的事，這是客觀的無知</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">專家的自信來自判斷完成的內在訊號，而不是預測的效度</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">客觀的無知</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">不是資訊不足，而是決定結果的因素在判斷當下根本尚未存在</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">過度自信的專家</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">愈資深的主管愈信任自己的直覺，而直覺帶來的是確定感而非準確度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">模型也好不到哪去</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">機械方法勝過人類判斷，但在高度不確定的領域，它的絕對準確度同</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">樣有限</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">否認自己的無知</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">承認不可預測會讓人失去行動的正當性，於是我們選擇繼續預測</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">預測能力的上限由世界決定，不是由判斷者的努力決定</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章也界定了降噪的邊界：雜訊可以消除，客觀的無知不行</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章追問：既然這麼多事無法預測，為什麼世界看起來仍然可以理解</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第12章——常態之谷</h2>
+  <p class="sub">事件無法預測，事後卻總是看起來理所當然</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="常態之谷結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">我們無法預測事件，卻總能在事後把它解釋得理所當然</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">因果思維隨時把意外納入常態，於是雜訊始終不被看見</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">脆弱家庭研究</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">上百組研究團隊用大量資料預測家庭的生活軌跡，準確度低到令人不</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">安</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">了解與預測的落差</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">能解釋不等於能預測；事後的理解感往往只是敘事能力的產物</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">因果思維</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">系統一持續生成因果故事，任何結果出現後都能被迅速接納</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">常態之谷</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">世界看似井然有序，是因為我們只在事情發生後才去理解它</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">正是這種事後的連貫感，讓我們相信判斷的分歧只是別人搞錯了</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">看不見雜訊的根本原因不在資料，而在我們理解世界的方式</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第四部深入心理層面：雜訊究竟從哪些認知機制產生</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第四部　雜訊的發生</h2><span class="tag">PART FOUR</span></div>
+  <p class="sub" style="margin:0">從捷思法、配對與量表出發，說明雜訊的心理機制</p>
+</section>
+
+<section>
+  <h2>第13章——捷思法、偏誤與雜訊</h2>
+  <p class="sub">同樣的心理偏誤，在不同人身上就變成雜訊</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="捷思法、偏誤與雜訊結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">心理偏誤不必然造成統計偏誤，也可能造成雜訊</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">唯有人人共有、方向一致的偏誤，才會整體偏向同一邊</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">兩種偏誤要分開</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">心理偏誤是認知機制，統計偏誤是誤差同向；程度因人而異時就成了</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">雜訊</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">替代</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">被問難題時改答容易的題，例如用相似度取代機率、用憤怒取代刑度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">結論偏誤</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">先有立場再找理由，證據被用來支持已經到手的結論</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">過度追求連貫性</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">月暈效應與順序效應讓早期印象決定後續解讀，第一印象因此被放大</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把偏誤與雜訊區分開來，是這本書相對《快思慢想》最主要的推進</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">同一套捷思法之所以產生分歧，是因為每個人被觸發的程度並不相同</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章拆解一個更基本的動作：判斷如何在量表上找到一個位置</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第14章——配對</h2>
+  <p class="sub">判斷就是把印象配對到量表上的某個數值</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="配對結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">判斷的核心動作，是把主觀印象配對到量表上的數值</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">配對很自然，卻同時是偏誤與雜訊的重要來源</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">配對與連貫性</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">看見烏雲就答「很可能下雨」，印象自動轉換成機率，過程毫無阻力</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">強度的配對</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">犯行的嚴重程度可以配對到刑度，也可以配對到音量或亮度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">配對忽略迴歸</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">用描述的鮮明程度去配對預測值，結果就是預測一律過於極端</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">絕對判斷的限制</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">人在單一量表上大約只能可靠區分七個等級，超過就開始產生雜訊</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">配對讓判斷變得輕鬆，代價是它同時忽略了基準率與量表的極限</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者由此推導出一條實用建議：比較型判斷比絕對評分更精確</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把焦點放到量表本身：量表沒定義好，雜訊就無可避免</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第15章——量表</h2>
+  <p class="sub">量表若沒有共同定義，判斷就注定充滿雜訊</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="量表結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">量表定義不清，判斷就必然充滿雜訊</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">懲罰性賠償研究顯示，憤怒排序相當一致，金額卻天差地遠</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">憤怒假設</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">被問「該罰多少」時，人實際回答的是「我有多生氣」——又一次替</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">代</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">排序一致，金額不一致</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">同一批案件的排序在陪審員之間相當穩定，換算成美元後卻極度分散</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">任意定錨</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">第一個案件挑出的數字成為後續所有金額的錨，絕對數值因此幾乎沒</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">有意義</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">改成排序就降噪</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">把裁決金額換成相對排序後，雜訊比例從九成四降到不到五成</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這是全書最有力的示範：換一個量表，同一批人的雜訊立刻減半</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">諷刺的是，法律刻意禁止向陪審團提供其他案件的金額作為參照</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章處理最難纏的一種雜訊：每個人獨有的反應型態</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第16章——型態</h2>
+  <p class="sub">型態雜訊像性格一樣穩定，卻幾乎無法預測</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="型態結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">型態雜訊是個人獨有的反應型態，穩定卻難以預測</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">它不是隨機失誤，而更像判斷者的性格</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">茱莉的例子</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">同一份成長經歷的描述，不同的人會被不同的細節打動，得出不同的</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">評估</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">穩定而非暫時</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">同一位判斷者隔一段時間再看，獨有的型態多半仍然存在</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">性格的類比</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">就像性格特質，型態能事後描述，卻很難事前預測會在哪個案件上出</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">現</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">占比最大的成分</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">在多項分析中，型態雜訊的規模大於水準雜訊，是系統雜訊的主體</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">型態雜訊最令人不安之處在於：它正是我們稱讚為「獨到見解」的東西</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這也說明為什麼提升個人能力不足以解決問題——雜訊不在能力，而在差異</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把前面的拆解整合起來，回答雜訊為何長期隱形</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第17章——雜訊的來源</h2>
+  <p class="sub">雜訊通常大於偏誤，卻因為是統計現象而看不見</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="雜訊的來源結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">誤差的三層拆解，把雜訊的來源整合成一張圖</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">雜訊往往大於偏誤，卻因為只存在於統計中而長期隱形</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">三層拆解</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">總誤差拆成偏誤與雜訊，系統雜訊再拆成水準雜訊、型態雜訊與場合</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">雜訊</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">型態雜訊居多</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">在保釋與量刑的分析中，型態雜訊的占比都明顯超過水準雜訊</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">雜訊通常大於偏誤</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">研究者原本關心兩者的比重，很快就發現雜訊才是被低估的那一項</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">統計現象的隱形</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">偏誤可以在單一案件中被指認，雜訊必須看過一整群判斷才會現身</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這正是雜訊問題的核心難處：它在個案裡永遠不會被看見</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">而人們只在個案裡做判斷、只在個案裡被問責，於是雜訊無人負責</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第五部轉向實務：組織究竟能做些什麼來減少雜訊</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第五部　提升判斷力</h2><span class="tag">PART FIVE</span></div>
+  <p class="sub" style="margin:0">決策保健：六個領域的具體降噪做法</p>
+</section>
+
+<section>
+  <h2>第18章——優越的判斷者</h2>
+  <p class="sub">判斷品質取決於你知道什麼、想得多好，以及怎麼想</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="優越的判斷者結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">優良判斷取決於所知、思考能力與思考方法三件事</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">在無法驗證的領域，所謂專家可能只是「榮譽專家」</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">專家與榮譽專家</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">氣象預報可被驗證，政治評論不行；後者的權威來自同儕認可而非準</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">確度</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">智力確實有用</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">一般認知能力與判斷品質正相關，這個平凡的結論常被刻意迴避</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">認知風格</text>
+  <text x="245" y="247.5" font-size="12" text-anchor="middle" fill="#37607a">主動開放心態——願意被新資訊改變想法——比智力更能預測判斷品</text>
+  <text x="245" y="263.5" font-size="12" text-anchor="middle" fill="#37607a">質</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">超級預測者</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">少數人的預測穩定勝過同儕，其特徵是持續更新而非堅持立場</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">挑選判斷者確實有效，但能改善的幅度遠小於改善流程</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章也把「良好判斷力」從人格讚美拆解成可辨識的特徵</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章正式提出全書的核心處方：決策保健</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第19章——移除偏誤與決策保健</h2>
+  <p class="sub">降噪像洗手：你不知道會擋掉哪隻細菌，但就是要做</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="移除偏誤與決策保健結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">去偏誤是針對特定錯誤，決策保健則是通用的預防</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">洗手的人不知道自己擋掉了哪一種病菌，但仍然應該洗手</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">事後與事前去偏誤</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">一種是在判斷後修正，一種是在判斷前改變流程，後者效果較持久</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">去偏誤的限制</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">偏誤種類太多、方向不定，事後修正往往在錯誤發生後才被想起</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">決策觀察者</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">指派一個人專責觀察流程，配合檢核表辨識正在發生的偏誤</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">決策保健的比喻</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">降噪的效果看不見也說不出，這正是它不受歡迎的原因</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">降噪不迷人：成功的樣子就是什麼事都沒發生</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者坦言這是決策保健最大的推廣障礙，因為它永遠無法邀功</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">接下來六章是實例：鑑識、預測、醫療、績效、召募、策略決策</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第20章——鑑識科學的資訊排序</h2>
+  <p class="sub">指紋鑑定不該先知道嫌犯是誰，資訊順序會改變結論</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="鑑識科學的資訊排序結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">連指紋鑑定都有場合雜訊與脈絡造成的確認偏誤</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">控制資訊進入的順序，是最具體可行的降噪手段</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">梅費爾德誤判案</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">馬德里爆炸案後，聯邦調查局三位鑑識人員都認定指紋屬於一名無關</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">的美國律師</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">鑑定者的場合雜訊</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">同一位鑑識人員在不同時間看同一組指紋，結論未必一致</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">脈絡的汙染</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">先被告知嫌犯已認罪或已被逮捕，鑑定結果就會朝該方向傾斜</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">線性序列揭露法</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">先只看現場採得的證據並記錄判讀，再逐步揭露其餘資訊</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">在鑑識領域，雜訊不是抽象問題，而是會把無辜的人送進監獄</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一章也示範了降噪的一般原則：先排序資訊，再做判斷</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看另一個高度專業的領域：職業預測者</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第21章——預測的挑選與總合</h2>
+  <p class="sub">多個獨立判斷取平均，是最可靠也最便宜的降噪法</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="預測的挑選與總合結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">總合多個獨立判斷，是成本最低而效果最穩定的降噪法</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">挑選更好的預測者、訓練與組隊，也都能再往上加分</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">信賴區間太窄</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">財務長給的八成信賴區間，實際只涵蓋約三分之一的結果</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">優良判斷計畫</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">大型預測競賽找出穩定勝出的超級預測者，並驗證訓練確有效果</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">永遠的測試版</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">持續小幅更新機率估計，比堅持原判斷準確得多</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">挑選與總合並用</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">把最優秀預測者的判斷加以總合，準確度改善最為顯著</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">平均多個獨立判斷之所以有效，前提永遠是「獨立」兩個字</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這也回頭解釋了第8章：先討論再判斷，會毀掉總合的全部好處</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章走進醫療現場，看診斷指引能改善多少</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第22章——醫療診斷指引</h2>
+  <p class="sub">醫療判斷的變異遠大於外界想像，指引確實有效</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="醫療診斷指引結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從影像判讀到精神科診斷，醫療判斷的變異都遠超預期</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">明確的診斷指引與評分量表，能實質縮小這些差異</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">白袍症候群</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">同一個人在不同醫師手上，得到的是持續加藥或是一句「你沒有高血</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">壓」</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">判讀的差異</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">放射科、病理科對同一份影像或切片的判讀，一致性常低得令人不安</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">診斷指引的價值</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">把診斷拆成明確的項目與門檻，可觀地減少醫師之間的差異</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">精神科最嚴重</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">精神疾病診斷的一致性在各科中偏低，長期改版仍未根本解決</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">醫療領域的雜訊有清楚的受害者，因此也是降噪最有說服力的場域</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者強調指引不是取代醫師，而是讓專業判斷有共同的起點</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章換到幾乎每個上班族都經歷過的場景：績效評鑑</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第23章——績效評鑑量表的制定</h2>
+  <p class="sub">績效評分中大約只有四分之一是訊號</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="績效評鑑量表的制定結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">績效評鑑的變異中，真正來自績效本身的不到三成</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">多年來的改良多半無效，關鍵在於量表與比較方式</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">四分之一是訊號</text>
+  <text x="245" y="156" font-size="12" text-anchor="middle" fill="#8a6a35">多項研究顯示可歸因於當事人表現的變異僅約兩到三成，其餘都是系</text>
+  <text x="245" y="172" font-size="12" text-anchor="middle" fill="#8a6a35">統雜訊</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">三百六十度也沒救</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">增加評鑑者只是讓雜訊更清楚地顯現，並沒有讓評分更準</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">相對判斷較可靠</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">請評鑑者排序或兩兩比較，比要求在抽象量表上給絕對分數精確得多</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">排序但不強制分配</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">強制常態分配會製造新的不公，因為各團隊的真實分布並不相同</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">績效評鑑的問題不在評鑑者不認真，而在他們手上的量表沒有共同定義</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">把絕對評分改成有明確錨點的比較，是成本最低的改善</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章談另一種高風險判斷：人員召募</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第24章——人員召募結構化</h2>
+  <p class="sub">非結構化面試的預測力很低，卻是最受信任的工具</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="人員召募結構化結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">非結構化面試的預測效度很低，卻幾乎無人願意放棄</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">把面試結構化，是人事判斷中證據最扎實的改善</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">面試的風險</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">自由對談的面試對日後工作表現的預測力，遠低於面試官的主觀信心</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">面試官在編故事</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">少量線索就足以生成連貫印象，之後的問答只是在確認它</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">結構化面試</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">對每位求職者問同樣的問題、逐項評分，並事先訂好評分標準</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">直覺留到最後</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">各項獨立評分全部完成後，再讓整體判斷與直覺進場</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">結構化不是禁止直覺，而是規定直覺出場的順序</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">這一條原則在下一章被擴大成一套通用的決策流程</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把全書所有降噪手段整合成中介評估法</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第25章——中介評估法</h2>
+  <p class="sub">把重大決策拆成獨立評分的項目，像面試求職者一樣評估方案</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="中介評估法結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">把選項當成求職者，拆成若干獨立的中介評估再整合</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">這套方法綜合了前面所有的決策保健策略</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">選項就像求職者</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">策略方案也可以被拆解成幾個可以分別評估的面向</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">定義中介評估</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">在看到資料之前就先議定要評估哪些項目，避免事後量身訂做</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">保持獨立</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">各項評估由不同的人分別完成，並在整合前避免互相影響</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">直覺最後才用</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">所有項目評分完成後才進行整體討論，讓直覺建立在完整資訊上</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">中介評估法的精神很簡單：先分開、再獨立、最後才整合</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者坦承其中的差別細微到粗心的旁觀者甚至察覺不到，效果卻相當可觀</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第六部退後一步：雜訊該減到多少才是恰當的</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第六部　雜訊的最適水準</h2><span class="tag">PART SIX</span></div>
+  <p class="sub" style="margin:0">降噪的成本、尊嚴的代價，以及規定與準則的取捨</p>
+</section>
+
+<section>
+  <h2>第26章——減少雜訊的成本</h2>
+  <p class="sub">降噪本身有成本，而且無雜訊不等於沒有錯誤</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="減少雜訊的成本結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">降噪有成本，而且一致並不保證正確</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">一個毫無雜訊卻帶有偏誤的演算法，可能比有雜訊的人更糟</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">降噪的實際代價</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">增加評分者、建立指引、反覆審視，都需要時間、人力與金錢</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">一致而錯誤</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">規則把所有案件推向同一個方向，若方向錯了，錯誤就會整批放大</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">演算法的公平爭議</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">風險評估工具是否對特定族群不利，至今仍是未有定論的爭論</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">要算清楚再做</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">值不值得降噪，取決於誤差的代價、雜訊的規模與措施的成本</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者在這裡主動替反對者把論點說到最強，再逐一回應</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">他們的結論不是「一律降噪」，而是「先量出來，再決定值不值得」</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章面對最難回應的反對意見：尊嚴</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第27章——尊嚴</h2>
+  <p class="sub">人希望被當成一個人對待，而個別化處理必然帶來雜訊</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="尊嚴結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">人希望被真人聽見、被當成獨特的個體對待</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">而個別化處理正是雜訊的來源，這是真正的兩難</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">被當成人對待</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">被規則或演算法直接駁回，與被真人聽過再拒絕，感受完全不同</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">規則會被規避</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">明確的門檻同時也是可以被鑽的漏洞，行為會朝規則的邊界移動</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">雜訊有嚇阻力</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">刑度不可預測時，風險趨避的人反而更不敢犯——雜訊偶爾有副作用</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">僵化的代價</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">過度標準化可能壓抑創意、打擊士氣，讓新構想沒有出現的空間</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">這是全書唯一一章正面承認：有些雜訊的代價，我們或許願意承擔</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">作者不同意這些反對意見足以否定降噪，但認為它們必須被認真回應</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">最後一章把選擇具體化為一個日常抉擇：要規定，還是要準則</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第28章——規定或準則</h2>
+  <p class="sub">規定把判斷前移到制定時，準則把判斷留給現場</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="規定或準則結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">規定把判斷前移到制定的時候，準則把判斷留給現場</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">兩者都不能消滅判斷，只能決定它發生在哪裡</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">規定與準則</text>
+  <text x="245" y="162" font-size="12" text-anchor="middle" fill="#8a6a35">「時速不得超過六十」是規定，「必須謹慎駕駛」是準則</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">規定需要先知道</text>
+  <text x="695" y="162" font-size="12" text-anchor="middle" fill="#96604f">制定明確規定的前提，是事先就足夠了解會遇到什麼情況</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">受制的雜訊再現</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">規定會把裁量擠到別處，例如檢察官的起訴選擇，雜訊並未真正消失</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">我們常選錯</text>
+  <text x="695" y="247.5" font-size="12" text-anchor="middle" fill="#446b53">作者認為人們經常在該用規定時採用準則，只因為沒注意到雜訊的存</text>
+  <text x="695" y="263.5" font-size="12" text-anchor="middle" fill="#446b53">在</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">要規定還是要準則，本質上是在問：我們願意為一致性付出多少代價</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">全書的立場是：至少先把雜訊量出來，再來決定要容忍多少</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">結語想像一個雜訊很少的世界——雜訊審查成為例行公事的那種組織</text>
+</svg>
+  </div>
+</section>
+
+
+<section>
+<div class="callout">
+  <b>全書的核心命題</b><br>
+  只要有判斷，就會有雜訊，而且雜訊比你想的還要多。作者把誤差拆成偏誤與雜訊，證明兩者在整體誤差中的地位完全對等，再把系統雜訊拆成水準雜訊、型態雜訊與場合雜訊。他們的結論不是要用規則消滅所有判斷，而是：雜訊是可以測量的，所以組織應該先做一次雜訊審查，量出來之後再決定要用哪些決策保健策略、願意付出多少代價。結語描繪的是一個雜訊審查已成年度例行事務的世界。
+</div>
+</section>
+
+<blockquote>
+  判斷就像罰球：無論我們多麼想精準呈現這個動作，沒有兩次罰球是完全相同的。你不是永遠不變的。
+  <cite>——《雜訊》第7章，關於場合雜訊</cite>
+</blockquote>
+
+<section style="margin-top:20px">
+  <div class="band"><h2>本書受到的核心批評</h2><span class="tag">CRITICAL RECEPTION</span></div>
+  <p class="sub" style="margin:0 0 4px">「雜訊是被忽視的誤差」這個命題廣受認同，論證方式與實務主張則招來不少質疑</p>
+  <div class="grid ri">
+    <div class="card"><div class="nm">偏誤／雜訊的二分，預設了「正確答案」一定存在</div><p>射擊場的比喻要能成立，靶心必須存在。但在量刑、績效評鑑、招生這類評估性判斷中，究竟什麼是正確答案本身就是價值問題。批評者指出，作者雖然區分了預測性判斷與評估性判斷，實際論證卻仍把所有分歧一律當成誤差，可能把合理的價值多元也算進了雜訊。</p></div>
+    <div class="card"><div class="nm">減少雜訊不等於更接近正確</div><p>降噪只縮小變異，不保證縮短與真值的距離。一個完全一致卻有系統性偏誤的規則，造成的傷害會被整批放大。作者在第26章確實提出這一點，但批評者認為全書的實務建議仍把降噪當成預設的善，對「先確認方向正確」著墨相對不足。</p></div>
+    <div class="card"><div class="nm">幾個關鍵數字來自顧問專案，外界無法獨立驗證</div><p>核保人員中位數差異百分之五十五、理賠百分之四十三這些最常被引用的數字，來自作者所屬顧問公司的客戶專案，未經同儕審查，原始資料也無法公開檢視。這些數字在書中承擔了極重的說服功能，卻是唯一無法被外部研究者重做的部分。</p></div>
+    <div class="card"><div class="nm">書中引用的部分研究，本身已受到重製危機波及</div><p>第1章提到「法官肚子餓時會變得比較嚴格」，其依據的以色列假釋研究後來被指出案件排序並非隨機（有律師代理的案件被安排在前段），效果量之大在心理學上也難以成立。同樣地，天氣、球賽輸贏影響判決的相關研究多屬觀察性資料，因果解讀需要保留。</p></div>
+    <div class="card"><div class="nm">對演算法取代判斷的公平性與問責，著墨仍嫌不足</div><p>把判斷交給規則與演算法是全書最主要的降噪手段，但演算法可能把歷史資料中的不平等固定下來，出錯時也難以究責。第26、27章雖然觸及風險評估工具的爭議與尊嚴問題，篇幅遠小於推薦演算法的章節，被認為對這條路徑過於樂觀。</p></div>
+    <div class="card"><div class="nm">結構重複冗長，第四部與《快思慢想》大量重疊</div><p>這是書評最普遍的一項意見：全書反覆重述同一個核心訊息，統計章節的鋪陳偏重，讀來近似一份加長的顧問報告。第13至16章討論捷思法、替代、配對與月暈效應的部分，對讀過《快思慢想》的人而言是再一次複習，新意有限。</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <b>另一面的價值與整體反思</b><br>
+    這些批評多半不否定本書最核心的貢獻：把「不一致」從管理上的雜音提升為可以被定義、被測量、被計價的誤差來源，並提供了雜訊審查這個任何組織都能實際執行的工具。爭議集中在兩個地方——什麼時候分歧算是誤差、什麼時候算是合理的多元，以及把判斷交給規則之後由誰負責。比較務實的讀法是：先照書中的方法把雜訊量出來，至於要降到多低、用什麼手段降，仍然是價值判斷，而不是本書已經替讀者決定好的事。
+  </div>
+</section>
+
+<footer>
+  本頁依丹尼爾・康納曼、奧利維・席波尼、凱斯・桑思坦《雜訊：人類判斷的缺陷》整理二十八章的核心論證與章節之間的推進關係，並補入本書出版後的主要批評。書中的統計推導、誤差方程式細節，以及三份附錄（雜訊審查執行方式、決策觀察者檢核表、修正預測的四個步驟）請另行參閱原書。
+</footer>
+
+</div>
+</body>
+</html>
