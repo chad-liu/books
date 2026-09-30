@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>近現代唯識學復興：清末至今</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDEFEA; --paper-2:#E3E7E1; --ink:#20262B; --muted:#5B676D;
+  --rule:#C3CAC3; --accent:#2F4F6F; --accent-soft:#DAE3EB; --ochre:#86672B;
+  --node:#F7F8F5; --line:#6E7B82;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU","Noto Serif CJK TC",serif;
+  --brush:"LXGW WenKai TC","Kaiti TC","DFKai-SB","BiauKai",var(--serif);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#161A1D; --paper-2:#1D2226; --ink:#E2E5E0; --muted:#9AA5A9;
+    --rule:#343C42; --accent:#9DB9D4; --accent-soft:#223244; --ochre:#CDAA66;
+    --node:#1F2529; --line:#7F8B91;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#161A1D; --paper-2:#1D2226; --ink:#E2E5E0; --muted:#9AA5A9;
+  --rule:#343C42; --accent:#9DB9D4; --accent-soft:#223244; --ochre:#CDAA66;
+  --node:#1F2529; --line:#7F8B91;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  font-size:17.5px;line-height:1.95;font-feature-settings:"palt" 0;text-rendering:optimizeLegibility}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ---------- hero ---------- */
+header.hero{padding:clamp(48px,9vw,112px) clamp(20px,5vw,64px) 40px;border-bottom:1px solid var(--rule);background:var(--paper-2)}
+.hero-inner{max-width:1120px;margin:0 auto}
+.hero .era{font-family:var(--brush);color:var(--ochre);font-size:1.15rem;margin:0 0 .4em;letter-spacing:.08em}
+.hero h1{font-family:var(--brush);font-weight:700;font-size:clamp(2.6rem,8vw,5.4rem);line-height:1.12;margin:0;letter-spacing:.04em}
+.hero .lede{max-width:36em;margin-top:1.4em;font-size:1.06rem;color:var(--ink)}
+.hero .lede p{margin:0}
+.hero .lede strong{font-weight:600;color:var(--accent)}
+.rail{list-style:none;padding:0;margin:2.4em 0 0;display:flex;flex-wrap:wrap;gap:0;counter-reset:st;max-width:1120px}
+.rail li{position:relative;flex:1 1 150px;padding:14px 18px 0 0;font-size:.95rem;line-height:1.55;border-top:2px solid var(--accent);counter-increment:st}
+.rail li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--paper-2);border:2px solid var(--accent)}
+.rail li:last-child{border-top-style:dotted}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 96px;display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
+@media (min-width:1080px){.wrap{grid-template-columns:230px minmax(0,1fr)}}
+nav.toc{font-size:.9rem;line-height:1.5}
+nav.toc details{border-bottom:1px solid var(--rule);padding:16px 0}
+nav.toc summary{cursor:pointer;font-family:var(--brush);font-size:1.1rem;color:var(--muted)}
+nav.toc ol{list-style:none;margin:12px 0 0;padding:0}
+nav.toc li a{display:flex;gap:.6em;padding:5px 0;color:var(--muted);text-decoration:none}
+nav.toc li a:hover{color:var(--accent)}
+nav.toc .tn{flex:0 0 2.2em;color:var(--ochre);font-family:var(--brush)}
+@media (min-width:1080px){
+  nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding-top:48px}
+  nav.toc details{border:0;padding:0}
+  nav.toc summary{pointer-events:none;list-style:none}
+  nav.toc summary::-webkit-details-marker{display:none}
+}
+main{max-width:40em;min-width:0}
+section{padding-top:56px}
+h2{font-family:var(--brush);font-weight:700;font-size:clamp(1.55rem,3.6vw,2.05rem);line-height:1.35;margin:0 0 .9em;display:flex;gap:.55em;align-items:baseline}
+h2 .num{flex:none;color:var(--ochre);font-size:.8em;min-width:1.8em}
+h2 strong{font-weight:inherit}
+h3{font-family:var(--brush);font-size:1.35rem;margin:2em 0 .6em;color:var(--accent)}
+h4{font-size:1.06rem;font-weight:700;margin:1.8em 0 .5em}
+h4 strong{font-weight:inherit}
+p{margin:0 0 1.05em}
+strong{font-weight:600}
+blockquote{margin:1.4em 0;padding:.2em 0 .2em 1.2em;border-left:3px solid var(--accent);font-size:1.05rem}
+blockquote p{margin:.2em 0}
+ul,ol{padding-left:1.4em;margin:0 0 1.1em}
+li{margin:.25em 0}
+
+/* ---------- tables ---------- */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.6em 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.6;min-width:440px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--brush);font-weight:700;color:var(--accent);border-bottom:2px solid var(--accent);font-size:1.02rem}
+td:first-child{white-space:nowrap}
+
+/* ---------- diagrams ---------- */
+figure.diagram{margin:2em 0 2.2em;padding:22px 0 12px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+figure.diagram .scroll{margin:0}
+figure.diagram svg{display:block;margin:0 auto;width:100%;height:auto;min-width:var(--minw,0)}
+figure.diagram.d1 svg{max-width:420px}
+figure.diagram.d5 svg,figure.diagram.d6 svg{max-width:300px}
+figure.diagram.d2 svg,figure.diagram.d7 svg{max-width:560px}
+figure.diagram.d3 svg,figure.diagram.d4 svg{max-width:500px}
+figure.diagram.d8{margin-left:0;margin-right:0}
+@media (min-width:1080px){figure.diagram.d8{margin-right:-120px}}
+figcaption{font-size:.85rem;color:var(--muted);text-align:center;margin-top:10px}
+svg text{font-family:var(--serif);font-size:15px;fill:var(--ink)}
+svg .nd rect{fill:var(--node);stroke:var(--rule);stroke-width:1.2}
+svg .nd.key rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.4}
+svg .nd.key text{font-weight:600}
+svg .nd.list rect{fill:none;stroke:var(--rule);stroke-dasharray:3 3}
+svg .nd.list text{fill:var(--muted)}
+svg .nd.era text{fill:var(--ochre);font-family:var(--brush);font-size:16px}
+svg .edge{fill:none;stroke:var(--line);stroke-width:1.3}
+svg .ahead{fill:var(--line)}
+
+footer{border-top:1px solid var(--rule);padding:28px clamp(20px,5vw,64px);color:var(--muted);font-size:.85rem;text-align:center}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,1 L9,5 L0,9 z" class="ahead"/></marker></defs></svg>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="era">清末至今</p>
+    <h1>近現代唯識學復興</h1>
+    <div class="lede"><p>近現代（清末至今）的<strong>唯識學復興</strong>，其實是中國佛教史上一個非常特殊的現象：它不是單純「恢復一個失傳宗派」，而是伴隨著<strong>晚清佛教復興、近代學術轉型、中日佛學交流、佛教現代化與中國哲學重建</strong>而重新形成的一套思想運動。</p></div>
+    <ol class="rail" aria-label="發展脈絡"><li>清末經典回流</li><li>民初唯識學復興</li><li>支那內學院與武昌佛學院的論爭</li><li>新唯識論</li><li>1949後兩岸不同發展</li><li>當代佛學研究的學術化</li></ol>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="toc" aria-label="目錄">
+    <details open><summary>目錄</summary><ol><li><a href="#s0"><span class="tn">一</span>為什麼清末會重新出現唯識學？</a></li>
+<li><a href="#s1"><span class="tn">二</span>楊仁山：近代唯識復興的起點</a></li>
+<li><a href="#s2"><span class="tn">三</span>章太炎：唯識進入近代哲學與思想界</a></li>
+<li><a href="#s3"><span class="tn">四</span>民國初年的核心人物：歐陽竟無</a></li>
+<li><a href="#s4"><span class="tn">五</span>支那內學院究竟在研究什麼？</a></li>
+<li><a href="#s5"><span class="tn">六</span>歐陽竟無 vs 太虛：近代佛教史最重要的思想分歧之一</a></li>
+<li><a href="#s6"><span class="tn">七</span>這場論爭其實是「唯識 vs 如來藏」？</a></li>
+<li><a href="#s7"><span class="tn">八</span>唯識復興的另一位巨擘：呂澂</a></li>
+<li><a href="#s8"><span class="tn">九</span>韓清淨與三時學會</a></li>
+<li><a href="#s9"><span class="tn">十</span>熊十力：從「佛教唯識」走向「中國哲學新唯識」</a></li>
+<li><a href="#s10"><span class="tn">十一</span>「新唯識」與「法相唯識」不要混為一談</a></li>
+<li><a href="#s11"><span class="tn">十二</span>印順：另一種超越唯識中心的道路</a></li>
+<li><a href="#s12"><span class="tn">十三</span>1949年以後：唯識復興進入新的階段</a></li>
+<li><a href="#s13"><span class="tn">十四</span>當代唯識研究已經變成「佛教學」</a></li>
+<li><a href="#s14"><span class="tn">十五</span>從清末到今天的完整時間軸</a></li>
+<li><a href="#s15"><span class="tn">十六</span>最值得掌握的「人物關係圖」</a></li>
+<li><a href="#s16"><span class="tn">十七</span>最核心的歷史意義</a></li>
+<li><a href="#s17"><span class="tn">十八</span>民國後的發展</a></li>
+<li><a href="#s18"><span class="tn">十九</span>整體評價</a></li>
+<li><a href="#s19"><span class="tn">二十</span>一句話總結</a></li></ol></details>
+  </nav>
+  <main><section><h2 id="s0"><span class="num">一</span><span class="ht">為什麼清末會重新出現唯識學？</span></h2>
+<p>唯識學（法相唯識宗）在唐代由玄奘、窺基建立完整的宗派體系，但入宋以後迅速衰微，窺基《成唯識論述記》等重要註疏在中國本土逐漸失傳，反而保存在日本。明末雖有王肯堂、智旭、明昱等人重新研讀《成唯識論》，但缺乏唐疏依據，理解有限。因此清末以來的唯識「復興」，一方面是文獻的回歸，另一方面是這套高度系統化、重分析的思想，剛好回應了中國知識界面對西方哲學與科學衝擊時的需要。</p>
+<p>19世紀末，唯識「復興」最重要的人物之一是</p>
+<p>楊仁山（楊文會，1837–1911）。</p>
+<p>復興的起點是楊文會（仁山，1837–1911）。他在1866年創立金陵刻經處，後來隨曾紀澤出使英國時結識日本學者南條文雄，透過南條從日本取回了近三百種中國已佚的典籍，其中包括窺基的《成唯識論述記》、《因明入正理論疏》等唯識與因明要籍。這讓中國學者第一次能重新接觸到玄奘、窺基一系的唯識典籍。</p>
+<p>1908年他又設立祇洹精舍，培養出歐陽漸、太虛等人，可以說奠定了此後兩大系統的人脈基礎。</p>
+<p>因此，唯識復興的第一個關鍵不是「有人突然發明唯識」，而是：</p>
+<h4><strong>「文獻的重新發現」</strong></h4>
+<p>可以畫成：</p>
+<figure class="diagram d1"><div class="scroll"><svg viewBox="0 0 420 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="從唐代唯識到民初復興的文獻回流">
+<title>從唐代唯識到民初復興的文獻回流</title>
+<path class="edge" d="M170.0,49.5 V82.5" marker-end="url(#ah)"/>
+<path class="edge" d="M170.0,119.5 V152.5" marker-end="url(#ah)"/>
+<path class="edge" d="M170.0,189.5 V227.5" marker-end="url(#ah)"/>
+<path class="edge" d="M170.0,254.5 V292.5" marker-end="url(#ah)"/>
+<path class="edge" d="M170.0,329.5 V362.5" marker-end="url(#ah)"/>
+<path class="edge" d="M170.0,399.5 V432.5" marker-end="url(#ah)"/>
+<path class="edge" d="M170.0,469.5 V502.5" marker-end="url(#ah)"/>
+<path class="edge" d="M206.5,312 H288.5"/>
+<g class="nd plain">
+<rect x="103.5" y="14.5" width="133.0" height="35.0" rx="4"/>
+<text x="170" y="32.0" text-anchor="middle" dominant-baseline="central">唐代玄奘、窺基</text>
+</g>
+<g class="nd plain">
+<rect x="96.0" y="84.5" width="148.0" height="35.0" rx="4"/>
+<text x="170" y="102.0" text-anchor="middle" dominant-baseline="central">宋元以後逐漸式微</text>
+</g>
+<g class="nd plain">
+<rect x="66.0" y="154.5" width="208.0" height="35.0" rx="4"/>
+<text x="170" y="172.0" text-anchor="middle" dominant-baseline="central">明清佛教以禪、淨土等為主</text>
+</g>
+<g class="nd era">
+<text x="170" y="242.0" text-anchor="middle" dominant-baseline="central">19世紀</text>
+</g>
+<g class="nd key">
+<rect x="133.5" y="294.5" width="73.0" height="35.0" rx="4"/>
+<text x="170" y="312.0" text-anchor="middle" dominant-baseline="central">楊仁山</text>
+</g>
+<g class="nd plain">
+<rect x="111.0" y="364.5" width="118.0" height="35.0" rx="4"/>
+<text x="170" y="382.0" text-anchor="middle" dominant-baseline="central">中日佛教交流</text>
+</g>
+<g class="nd plain">
+<rect x="73.5" y="434.5" width="193.0" height="35.0" rx="4"/>
+<text x="170" y="452.0" text-anchor="middle" dominant-baseline="central">唯識、因明典籍重新流通</text>
+</g>
+<g class="nd key">
+<rect x="103.5" y="504.5" width="133.0" height="35.0" rx="4"/>
+<text x="170" y="522.0" text-anchor="middle" dominant-baseline="central">民初唯識學復興</text>
+</g>
+<g class="nd plain">
+<rect x="288.5" y="294.5" width="103.0" height="35.0" rx="4"/>
+<text x="340" y="312.0" text-anchor="middle" dominant-baseline="central">金陵刻經處</text>
+</g>
+</svg></div><figcaption>從唐代唯識到民初復興的文獻回流</figcaption></figure>
+<p>這一點非常重要。</p>
+<p><strong>近代唯識復興首先是一場「文獻復興」。</strong></p>
+
+</section><section><h2 id="s1"><span class="num">二</span><span class="ht">楊仁山：近代唯識復興的起點</span></h2>
+<p>楊仁山本身並不是單純的「唯識宗復興者」。</p>
+<p>他的特色是：</p>
+<blockquote>
+<p><strong>以整理、刊刻、流通佛典，為近代佛學重新建立文獻基礎。</strong></p>
+</blockquote>
+<p>他的門下後來出現一批極重要人物，例如：</p>
+<ul>
+<li>章太炎</li>
+<li>歐陽竟無</li>
+<li>梅光羲</li>
+<li>李證剛等</li>
+</ul>
+<p>其中真正把唯識研究推向高度專門化的，是：</p>
+<p>歐陽竟無。</p>
+<p>因此可以說：</p>
+<blockquote>
+<p><strong>楊仁山提供「經典」；歐陽竟無建立「學院」；呂澂等人進一步建立「學術研究」。</strong></p>
+</blockquote>
+
+<h3>晚清知識分子的唯識熱</h3>
+<p>在僧團之外，唯識也成為晚清改革派與革命派的思想資源。譚嗣同《仁學》融入唯識概念；章太炎因「蘇報案」入獄期間（1903–1906）精讀《瑜伽師地論》、《成唯識論》等，出獄後以唯識詮釋莊子，寫成《齊物論釋》，並在〈建立宗教論〉中主張以唯識為新宗教的哲學基礎。梁啟超也多次推崇唯識的「心理學」性格。對這批知識分子來說，唯識嚴密的名相分析與認識論架構，被視為足以與康德、西方心理學對話，甚至被形容為「最科學」的佛學。</p>
+</section><section><h2 id="s2"><span class="num">三</span><span class="ht">章太炎：唯識進入近代哲學與思想界</span></h2>
+<p>另一條非常重要的線索是：</p>
+<p>章太炎（1869–1936）。</p>
+<p>章太炎並非佛教宗派意義上的唯識學者，但他把法相唯識思想帶進了：</p>
+<ul>
+<li>哲學</li>
+<li>認識論</li>
+<li>心理學</li>
+<li>語言學</li>
+<li>國族思想</li>
+<li>中西哲學比較</li>
+</ul>
+<p>這使唯識不再只是寺院中的宗派學問。</p>
+<p>而變成知識分子可以用來思考：</p>
+<blockquote>
+<p>「世界究竟是什麼？」</p>
+<p>「我們如何認識世界？」</p>
+<p>「所謂『我』究竟是什麼？」</p>
+<p>「主體與客體的關係是什麼？」</p>
+</blockquote>
+<p>因此，近代唯識復興有一個非常重要的轉變：</p>
+<p><strong>從「宗派佛學」走向「哲學問題」。</strong></p>
+
+</section><section><h2 id="s3"><span class="num">四</span><span class="ht">民國初年的核心人物：歐陽竟無</span></h2>
+<p>如果要選一位最能代表「近代中國唯識學復興」的人物，我會選：</p>
+<p>歐陽竟無（1871–1943）。</p>
+<p>他是楊仁山的弟子，後來建立：</p>
+<h3>支那內學院</h3>
+<p>支那內學院位於南京，是民國時期研究佛學的重要中心。</p>
+<p>研究資料指出，歐陽竟無所創辦的支那內學院，使近代佛學教育逐漸走向<strong>專業化、學術化</strong>，並成為近代唯識研究的重要基地。</p>
+<p>這是唯識復興第二階段的核心：</p>
+<blockquote>
+<p><strong>從「經典復興」進入「制度化研究」。</strong></p>
+</blockquote>
+
+</section><section><h2 id="s4"><span class="num">五</span><span class="ht">支那內學院究竟在研究什麼？</span></h2>
+<p>支那內學院並不是只講「唯識很重要」。</p>
+<p>它實際上涉及一整套印度大乘佛教學術體系：</p>
+<figure class="diagram d2"><div class="scroll"><svg viewBox="0 0 560 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="支那內學院的研究範圍">
+<title>支那內學院的研究範圍</title>
+<path class="edge" d="M280.0,49.5 V75.0 H100.0 V100.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,49.5 V100.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,49.5 V75.0 H460.0 V100.5" marker-end="url(#ah)"/>
+<path class="edge" d="M100.0,137.5 V185.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,137.5 V185.5" marker-end="url(#ah)"/>
+<path class="edge" d="M460.0,137.5 V185.5" marker-end="url(#ah)"/>
+<path class="edge" d="M100.0,222.5 V272.5" marker-end="url(#ah)"/>
+<g class="nd key">
+<rect x="228.5" y="14.5" width="103.0" height="35.0" rx="4"/>
+<text x="280" y="32.0" text-anchor="middle" dominant-baseline="central">支那內學院</text>
+</g>
+<g class="nd plain">
+<rect x="63.5" y="102.5" width="73.0" height="35.0" rx="4"/>
+<text x="100" y="120.0" text-anchor="middle" dominant-baseline="central">唯識學</text>
+</g>
+<g class="nd plain">
+<rect x="243.5" y="102.5" width="73.0" height="35.0" rx="4"/>
+<text x="280" y="120.0" text-anchor="middle" dominant-baseline="central">因明學</text>
+</g>
+<g class="nd plain">
+<rect x="416.0" y="102.5" width="88.0" height="35.0" rx="4"/>
+<text x="460" y="120.0" text-anchor="middle" dominant-baseline="central">佛典研究</text>
+</g>
+<g class="nd plain">
+<rect x="56.0" y="187.5" width="88.0" height="35.0" rx="4"/>
+<text x="100" y="205.0" text-anchor="middle" dominant-baseline="central">法相系統</text>
+</g>
+<g class="nd plain">
+<rect x="221.0" y="187.5" width="118.0" height="35.0" rx="4"/>
+<text x="280" y="205.0" text-anchor="middle" dominant-baseline="central">邏輯／認識論</text>
+</g>
+<g class="nd plain">
+<rect x="416.0" y="187.5" width="88.0" height="35.0" rx="4"/>
+<text x="460" y="205.0" text-anchor="middle" dominant-baseline="central">梵漢文獻</text>
+</g>
+<g class="nd key">
+<rect x="41.0" y="274.5" width="118.0" height="35.0" rx="4"/>
+<text x="100" y="292.0" text-anchor="middle" dominant-baseline="central">印度佛教原典</text>
+</g>
+</svg></div><figcaption>支那內學院的研究範圍</figcaption></figure>
+<p>而歐陽竟無特別強調：</p>
+<blockquote>
+<p><strong>回到印度佛教原典與玄奘所傳的唯識系統。</strong></p>
+</blockquote>
+<p>這與當時中國佛教中盛行的「如來藏—真如—佛性」思想形成非常重要的張力。</p>
+
+</section><section><h2 id="s5"><span class="num">六</span><span class="ht">歐陽竟無 vs 太虛：近代佛教史最重要的思想分歧之一</span></h2>
+<p>民初唯識復興不能只看歐陽竟無。</p>
+<p>另一位核心人物是：</p>
+<p>太虛（1890–1947）。</p>
+<p>太虛創辦：</p>
+<h3>武昌佛學院</h3>
+<p>於是民初形成一個非常有意思的局面：</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>支那內學院</th>
+<th>武昌佛學院</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>歐陽竟無</td>
+<td>太虛</td>
+</tr>
+<tr>
+<td>居士學術傳統較強</td>
+<td>僧團改革色彩較強</td>
+</tr>
+<tr>
+<td>強調印度原典</td>
+<td>強調中國佛教的現代轉化</td>
+</tr>
+<tr>
+<td>重視唯識</td>
+<td>廣泛吸收各宗</td>
+</tr>
+<tr>
+<td>學術研究</td>
+<td>佛教改革與人間佛教</td>
+</tr>
+<tr>
+<td>法相唯識色彩強</td>
+<td>人間佛教色彩強</td>
+</tr>
+</tbody>
+</table></div>
+<p>這並不是簡單的「誰對誰錯」。</p>
+<p>它反映的是一個更大的問題：</p>
+<blockquote>
+<p><strong>現代中國佛教究竟應該「回到印度佛教」，還是「改造中國佛教」？</strong></p>
+</blockquote>
+<p>相關研究把民初內學院與武昌佛學院的爭論概括為：歐陽竟無傾向以印度唯識大乘作為佛教改革的重要根據，而太虛則更重視從中國佛教傳統內部進行創造性的轉化。</p>
+
+</section><section><h2 id="s6"><span class="num">七</span><span class="ht">這場論爭其實是「唯識 vs 如來藏」？</span></h2>
+<p>某種程度上可以這樣理解，但需要稍微精確一些。</p>
+<p>核心問題是：</p>
+<h4>「佛教的根本理論應該如何理解？」</h4>
+<p>可以簡化成兩條路線：</p>
+<figure class="diagram d3"><div class="scroll"><svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="民初佛學改革的兩條路線">
+<title>民初佛學改革的兩條路線</title>
+<path class="edge" d="M260.0,49.5 V74.0 H130.0 V98.5" marker-end="url(#ah)"/>
+<path class="edge" d="M130.0,135.5 V176.5" marker-end="url(#ah)"/>
+<path class="edge" d="M130.0,213.5 V267.0" marker-end="url(#ah)"/>
+<path class="edge" d="M130.0,367.0 V414.8 H260.0 V462.5" marker-end="url(#ah)"/>
+<path class="edge" d="M260.0,49.5 V74.0 H390.0 V98.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,135.5 V176.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,213.5 V267.0" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,367.0 V414.8 H260.0 V462.5" marker-end="url(#ah)"/>
+<g class="nd plain">
+<rect x="201.0" y="14.5" width="118.0" height="35.0" rx="4"/>
+<text x="260" y="32.0" text-anchor="middle" dominant-baseline="central">民初佛學改革</text>
+</g>
+<g class="nd plain">
+<rect x="71.0" y="100.5" width="118.0" height="35.0" rx="4"/>
+<text x="130" y="118.0" text-anchor="middle" dominant-baseline="central">印度唯識系統</text>
+</g>
+<g class="nd plain">
+<rect x="331.0" y="100.5" width="118.0" height="35.0" rx="4"/>
+<text x="390" y="118.0" text-anchor="middle" dominant-baseline="central">中國佛學傳統</text>
+</g>
+<g class="nd key">
+<rect x="86.0" y="178.5" width="88.0" height="35.0" rx="4"/>
+<text x="130" y="196.0" text-anchor="middle" dominant-baseline="central">歐陽竟無</text>
+</g>
+<g class="nd key">
+<rect x="361.0" y="178.5" width="58.0" height="35.0" rx="4"/>
+<text x="390" y="196.0" text-anchor="middle" dominant-baseline="central">太虛</text>
+</g>
+<g class="nd list">
+<rect x="86.0" y="269.0" width="88.0" height="98.0" rx="4"/>
+<text x="130" y="286.5" text-anchor="middle" dominant-baseline="central">阿賴耶識</text>
+<text x="130" y="307.5" text-anchor="middle" dominant-baseline="central">八識</text>
+<text x="130" y="328.5" text-anchor="middle" dominant-baseline="central">三性</text>
+<text x="130" y="349.5" text-anchor="middle" dominant-baseline="central">三無性</text>
+</g>
+<g class="nd list">
+<rect x="353.5" y="269.0" width="73.0" height="98.0" rx="4"/>
+<text x="390" y="286.5" text-anchor="middle" dominant-baseline="central">真如</text>
+<text x="390" y="307.5" text-anchor="middle" dominant-baseline="central">佛性</text>
+<text x="390" y="328.5" text-anchor="middle" dominant-baseline="central">如來藏</text>
+<text x="390" y="349.5" text-anchor="middle" dominant-baseline="central">性空</text>
+</g>
+<g class="nd key">
+<rect x="171.0" y="464.5" width="178.0" height="35.0" rx="4"/>
+<text x="260" y="482.0" text-anchor="middle" dominant-baseline="central">現代佛教應如何建立？</text>
+</g>
+</svg></div><figcaption>民初佛學改革的兩條路線</figcaption></figure>
+<p>所以唯識復興並不只是「研究八識」。</p>
+<p>它其實牽涉：</p>
+<p><strong>印度佛教 → 中國佛教 → 現代佛教</strong></p>
+<p>三者之間的重新定位。</p>
+
+</section><section><h2 id="s7"><span class="num">八</span><span class="ht">唯識復興的另一位巨擘：呂澂</span></h2>
+<p>接下來必須談：</p>
+<p>呂澂（1896–1989）。</p>
+<p>如果說：</p>
+<ul>
+<li>楊仁山＝文獻復興</li>
+<li>歐陽竟無＝思想與教育</li>
+<li>太虛＝佛教改革</li>
+</ul>
+<p>那麼：</p>
+<blockquote>
+<p><strong>呂澂更接近「現代佛教學術研究者」。</strong></p>
+</blockquote>
+<p>他大量研究：</p>
+<ul>
+<li>唯識</li>
+<li>因明</li>
+<li>印度佛教史</li>
+<li>佛典版本</li>
+<li>梵漢譯本</li>
+<li>古唯識學</li>
+<li>法相學</li>
+</ul>
+<p>尤其重要的是，他並不只是接受唐代玄奘—窺基系統，而開始重新研究：</p>
+<blockquote>
+<p><strong>「玄奘以前的印度唯識學到底是什麼樣子？」</strong></p>
+</blockquote>
+<p>因此出現了：</p>
+<h4>「新唯識」與「古唯識」的問題。</h4>
+<p>近代研究資料也指出，歐陽竟無、韓清淨、呂澂等人形成重要的唯識研究群體，並帶動因明學復興。</p>
+
+</section><section><h2 id="s8"><span class="num">九</span><span class="ht">韓清淨與三時學會</span></h2>
+<p>另一個重要中心是：</p>
+<p>韓清淨。</p>
+<p>他在北京建立：</p>
+<h3>三時學會</h3>
+<p>因此民初唯識研究並非南京一地，而逐漸形成：</p>
+<figure class="diagram d4"><div class="scroll"><svg viewBox="0 0 500 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="民初唯識學的南京系與北京系">
+<title>民初唯識學的南京系與北京系</title>
+<path class="edge" d="M250.0,49.5 V72.5 H130.0 V95.5" marker-end="url(#ah)"/>
+<path class="edge" d="M130.0,122.5 V160.5" marker-end="url(#ah)"/>
+<path class="edge" d="M130.0,197.5 V242.0" marker-end="url(#ah)"/>
+<path class="edge" d="M130.0,300.0 V340.2 H250.0 V380.5" marker-end="url(#ah)"/>
+<path class="edge" d="M250.0,49.5 V72.5 H370.0 V95.5" marker-end="url(#ah)"/>
+<path class="edge" d="M370.0,122.5 V160.5" marker-end="url(#ah)"/>
+<path class="edge" d="M370.0,197.5 V242.0" marker-end="url(#ah)"/>
+<path class="edge" d="M370.0,300.0 V340.2 H250.0 V380.5" marker-end="url(#ah)"/>
+<g class="nd plain">
+<rect x="198.5" y="14.5" width="103.0" height="35.0" rx="4"/>
+<text x="250" y="32.0" text-anchor="middle" dominant-baseline="central">民初唯識學</text>
+</g>
+<g class="nd era">
+<text x="130" y="110.0" text-anchor="middle" dominant-baseline="central">南京系</text>
+</g>
+<g class="nd key">
+<rect x="78.5" y="162.5" width="103.0" height="35.0" rx="4"/>
+<text x="130" y="180.0" text-anchor="middle" dominant-baseline="central">支那內學院</text>
+</g>
+<g class="nd list">
+<rect x="86.0" y="244.0" width="88.0" height="56.0" rx="4"/>
+<text x="130" y="261.5" text-anchor="middle" dominant-baseline="central">歐陽竟無</text>
+<text x="130" y="282.5" text-anchor="middle" dominant-baseline="central">呂澂等</text>
+</g>
+<g class="nd era">
+<text x="370" y="110.0" text-anchor="middle" dominant-baseline="central">北京系</text>
+</g>
+<g class="nd key">
+<rect x="326.0" y="162.5" width="88.0" height="35.0" rx="4"/>
+<text x="370" y="180.0" text-anchor="middle" dominant-baseline="central">三時學會</text>
+</g>
+<g class="nd list">
+<rect x="326.0" y="244.0" width="88.0" height="56.0" rx="4"/>
+<text x="370" y="261.5" text-anchor="middle" dominant-baseline="central">韓清淨</text>
+<text x="370" y="282.5" text-anchor="middle" dominant-baseline="central">周叔迦等</text>
+</g>
+<g class="nd key">
+<rect x="191.0" y="382.5" width="118.0" height="35.0" rx="4"/>
+<text x="250" y="400.0" text-anchor="middle" dominant-baseline="central">唯識研究復興</text>
+</g>
+</svg></div><figcaption>民初唯識學的南京系與北京系</figcaption></figure>
+<p>這使唯識成為民國佛學中非常重要的專門研究領域。</p>
+
+</section><section><h2 id="s9"><span class="num">十</span><span class="ht">熊十力：從「佛教唯識」走向「中國哲學新唯識」</span></h2>
+<p>這裡出現一個非常關鍵的轉折：</p>
+<p>熊十力（1885–1968）。</p>
+<p>他的《新唯識論》幾乎可以說是近代中國思想史上的一個「爆炸點」。</p>
+<p>但要特別注意：</p>
+<blockquote>
+<p><strong>熊十力的「新唯識論」並不等於傳統玄奘法相唯識。</strong></p>
+</blockquote>
+<p>他早年受到歐陽竟無系統影響，但後來逐漸形成自己的哲學體系。</p>
+<p>他的問題變成：</p>
+<blockquote>
+<p>「唯識能不能成為中國現代哲學？」</p>
+</blockquote>
+<p>因此：</p>
+<figure class="diagram d5"><div class="scroll"><svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="從印度唯識到新唯識論">
+<title>從印度唯識到新唯識論</title>
+<path class="edge" d="M190.0,47.5 V74.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,111.5 V138.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,175.5 V202.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,239.5 V266.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,303.5 V330.5" marker-end="url(#ah)"/>
+<g class="nd plain">
+<rect x="146.0" y="12.5" width="88.0" height="35.0" rx="4"/>
+<text x="190.0" y="30.0" text-anchor="middle" dominant-baseline="central">印度唯識</text>
+</g>
+<g class="nd plain">
+<rect x="146.0" y="76.5" width="88.0" height="35.0" rx="4"/>
+<text x="190.0" y="94.0" text-anchor="middle" dominant-baseline="central">玄奘唯識</text>
+</g>
+<g class="nd plain">
+<rect x="146.0" y="140.5" width="88.0" height="35.0" rx="4"/>
+<text x="190.0" y="158.0" text-anchor="middle" dominant-baseline="central">歐陽竟無</text>
+</g>
+<g class="nd key">
+<rect x="153.5" y="204.5" width="73.0" height="35.0" rx="4"/>
+<text x="190.0" y="222.0" text-anchor="middle" dominant-baseline="central">熊十力</text>
+</g>
+<g class="nd plain">
+<rect x="131.0" y="268.5" width="118.0" height="35.0" rx="4"/>
+<text x="190.0" y="286.0" text-anchor="middle" dominant-baseline="central">《新唯識論》</text>
+</g>
+<g class="nd key">
+<rect x="123.5" y="332.5" width="133.0" height="35.0" rx="4"/>
+<text x="190.0" y="350.0" text-anchor="middle" dominant-baseline="central">中國哲學本體論</text>
+</g>
+</svg></div><figcaption>從印度唯識到新唯識論</figcaption></figure>
+<p>這是唯識復興非常重要的第二次轉化。</p>
+
+</section><section><h2 id="s10"><span class="num">十一</span><span class="ht">「新唯識」與「法相唯識」不要混為一談</span></h2>
+<p>這是理解近代佛學最重要的區別之一。</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>法相唯識</th>
+<th>新唯識</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>玄奘、窺基系統</td>
+<td>熊十力等</td>
+</tr>
+<tr>
+<td>印度瑜伽行派</td>
+<td>中國哲學重新詮釋</td>
+</tr>
+<tr>
+<td>八識</td>
+<td>本體論問題</td>
+</tr>
+<tr>
+<td>阿賴耶識</td>
+<td>體用、本心</td>
+</tr>
+<tr>
+<td>三性</td>
+<td>本體與現象</td>
+</tr>
+<tr>
+<td>佛教宗學</td>
+<td>現代哲學</td>
+</tr>
+<tr>
+<td>重視佛典傳承</td>
+<td>重視哲學創造</td>
+</tr>
+</tbody>
+</table></div>
+<p>所以：</p>
+<blockquote>
+<p><strong>「唯識復興」最後產生了兩條不同道路。</strong></p>
+</blockquote>
+<h4>第一條：</h4>
+<p><strong>復興古典唯識</strong></p>
+<p>歐陽竟無 → 呂澂 → 韓清淨</p>
+<h4>第二條：</h4>
+<p><strong>把唯識轉化成現代中國哲學</strong></p>
+<p>熊十力 → 牟宗三 → 新儒家相關討論</p>
+
+</section><section><h2 id="s11"><span class="num">十二</span><span class="ht">印順：另一種超越唯識中心的道路</span></h2>
+<p>還有一個非常重要的人物：</p>
+<p>印順（1906–2005）。</p>
+<p>印順受到民初佛學研究傳統影響，但並沒有把唯識視為佛教唯一的核心。</p>
+<p>他重新建立了一條：</p>
+<figure class="diagram d6"><div class="scroll"><svg viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="印順重建的佛教思想路線">
+<title>印順重建的佛教思想路線</title>
+<path class="edge" d="M190.0,47.5 V74.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,111.5 V138.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,175.5 V202.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,239.5 V266.5" marker-end="url(#ah)"/>
+<path class="edge" d="M190.0,303.5 V330.5" marker-end="url(#ah)"/>
+<g class="nd plain">
+<rect x="146.0" y="12.5" width="88.0" height="35.0" rx="4"/>
+<text x="190.0" y="30.0" text-anchor="middle" dominant-baseline="central">原始佛教</text>
+</g>
+<g class="nd plain">
+<rect x="161.0" y="76.5" width="58.0" height="35.0" rx="4"/>
+<text x="190.0" y="94.0" text-anchor="middle" dominant-baseline="central">阿含</text>
+</g>
+<g class="nd plain">
+<rect x="146.0" y="140.5" width="88.0" height="35.0" rx="4"/>
+<text x="190.0" y="158.0" text-anchor="middle" dominant-baseline="central">般若性空</text>
+</g>
+<g class="nd plain">
+<rect x="161.0" y="204.5" width="58.0" height="35.0" rx="4"/>
+<text x="190.0" y="222.0" text-anchor="middle" dominant-baseline="central">中觀</text>
+</g>
+<g class="nd plain">
+<rect x="123.5" y="268.5" width="133.0" height="35.0" rx="4"/>
+<text x="190.0" y="286.0" text-anchor="middle" dominant-baseline="central">大乘佛教發展史</text>
+</g>
+<g class="nd key">
+<rect x="146.0" y="332.5" width="88.0" height="35.0" rx="4"/>
+<text x="190.0" y="350.0" text-anchor="middle" dominant-baseline="central">人間佛教</text>
+</g>
+</svg></div><figcaption>印順重建的佛教思想路線</figcaption></figure>
+<p>因此，他既不同於太虛，也不同於歐陽竟無。</p>
+<p>研究指出，印順既不完全接受太虛的如來藏取向，也不同於歐陽竟無專宗護法一系唯識，而是更重視阿含與大乘初期性空思想。</p>
+<p>所以到了20世紀中期：</p>
+<blockquote>
+<p><strong>唯識已經不再是唯一的「現代佛教哲學候選人」。</strong></p>
+</blockquote>
+<p>中觀、般若、阿含、人間佛教等也重新受到重視。</p>
+
+</section><section><h2 id="s12"><span class="num">十三</span><span class="ht">1949年以後：唯識復興進入新的階段</span></h2>
+<p>1949年之後，中國佛教發展出不同的歷史路徑。</p>
+<p>尤其值得注意的是：</p>
+<h4>臺灣</h4>
+<p>以及</p>
+<h4>中國大陸</h4>
+<p>兩邊的佛學研究與佛教活動逐漸形成不同環境。</p>
+<p>臺灣後來成為漢傳佛學研究的重要基地之一，並保存、整理與重新出版大量民國佛學資料。</p>
+<p>例如現代佛教學術叢刊就重新整理了大量民國時期唯識論爭資料，包括：</p>
+<ul>
+<li>歐陽竟無</li>
+<li>太虛</li>
+<li>印順</li>
+<li>梅光羲</li>
+<li>熊十力</li>
+<li>呂澂等人的相關著作。</li>
+</ul>
+
+</section><section><h2 id="s13"><span class="num">十四</span><span class="ht">當代唯識研究已經變成「佛教學」</span></h2>
+<p>今天的唯識研究和民國時期又有很大的不同。</p>
+<p>早期問題是：</p>
+<blockquote>
+<p><strong>「唯識是否能救中國佛教？」</strong></p>
+</blockquote>
+<p>後來變成：</p>
+<blockquote>
+<p><strong>「唯識是不是一種哲學？」</strong></p>
+</blockquote>
+<p>現在則更接近：</p>
+<blockquote>
+<p><strong>「瑜伽行派在印度佛教史中究竟如何發展？」</strong></p>
+</blockquote>
+<p>因此研究方法也改變了。</p>
+<figure class="diagram d7"><div class="scroll"><svg viewBox="0 0 560 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="近代唯識研究的三種取向">
+<title>近代唯識研究的三種取向</title>
+<path class="edge" d="M280.0,49.5 V72.5 H95.0 V95.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,49.5 V95.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,49.5 V72.5 H465.0 V95.5" marker-end="url(#ah)"/>
+<path class="edge" d="M95.0,132.5 V181.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,132.5 V181.5" marker-end="url(#ah)"/>
+<path class="edge" d="M465.0,132.5 V181.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,260.5 V315.5" marker-end="url(#ah)"/>
+<path class="edge" d="M280.0,352.5 V400.5" marker-end="url(#ah)"/>
+<g class="nd key">
+<rect x="221.0" y="14.5" width="118.0" height="35.0" rx="4"/>
+<text x="280" y="32.0" text-anchor="middle" dominant-baseline="central">近代唯識研究</text>
+</g>
+<g class="nd plain">
+<rect x="51.0" y="97.5" width="88.0" height="35.0" rx="4"/>
+<text x="95" y="115.0" text-anchor="middle" dominant-baseline="central">宗派研究</text>
+</g>
+<g class="nd plain">
+<rect x="236.0" y="97.5" width="88.0" height="35.0" rx="4"/>
+<text x="280" y="115.0" text-anchor="middle" dominant-baseline="central">哲學研究</text>
+</g>
+<g class="nd plain">
+<rect x="406.0" y="97.5" width="118.0" height="35.0" rx="4"/>
+<text x="465" y="115.0" text-anchor="middle" dominant-baseline="central">歷史文獻研究</text>
+</g>
+<g class="nd list">
+<rect x="58.5" y="183.5" width="73.0" height="77.0" rx="4"/>
+<text x="95" y="201.0" text-anchor="middle" dominant-baseline="central">法相宗</text>
+<text x="95" y="222.0" text-anchor="middle" dominant-baseline="central">八識</text>
+<text x="95" y="243.0" text-anchor="middle" dominant-baseline="central">三性</text>
+</g>
+<g class="nd list">
+<rect x="236.0" y="183.5" width="88.0" height="77.0" rx="4"/>
+<text x="280" y="201.0" text-anchor="middle" dominant-baseline="central">認識論</text>
+<text x="280" y="222.0" text-anchor="middle" dominant-baseline="central">心識哲學</text>
+<text x="280" y="243.0" text-anchor="middle" dominant-baseline="central">主體性</text>
+</g>
+<g class="nd list">
+<rect x="436.0" y="183.5" width="58.0" height="77.0" rx="4"/>
+<text x="465" y="201.0" text-anchor="middle" dominant-baseline="central">梵文</text>
+<text x="465" y="222.0" text-anchor="middle" dominant-baseline="central">藏文</text>
+<text x="465" y="243.0" text-anchor="middle" dominant-baseline="central">漢譯</text>
+</g>
+<g class="nd plain">
+<rect x="236.0" y="317.5" width="88.0" height="35.0" rx="4"/>
+<text x="280" y="335.0" text-anchor="middle" dominant-baseline="central">比較哲學</text>
+</g>
+<g class="nd key">
+<rect x="221.0" y="402.5" width="118.0" height="35.0" rx="4"/>
+<text x="280" y="420.0" text-anchor="middle" dominant-baseline="central">現代佛學研究</text>
+</g>
+</svg></div><figcaption>近代唯識研究的三種取向</figcaption></figure>
+<p>也就是：</p>
+<blockquote>
+<p><strong>從「護教」逐漸走向「學術研究」。</strong></p>
+</blockquote>
+
+</section><section><h2 id="s14"><span class="num">十五</span><span class="ht">從清末到今天的完整時間軸</span></h2>
+<p>我會把近現代唯識復興分成 <strong>八個階段</strong>：</p>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>時期</th>
+<th style="text-align: right;">時間</th>
+<th>核心人物</th>
+<th>主要事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 文獻復興</td>
+<td style="text-align: right;">1870–1910</td>
+<td>楊仁山</td>
+<td>金陵刻經處、中日佛學交流</td>
+</tr>
+<tr>
+<td>② 思想啟蒙</td>
+<td style="text-align: right;">1890–1915</td>
+<td>章太炎</td>
+<td>唯識進入近代思想界</td>
+</tr>
+<tr>
+<td>③ 唯識復興</td>
+<td style="text-align: right;">1900–1920</td>
+<td>歐陽竟無、韓清淨</td>
+<td>唯識與因明重新興盛</td>
+</tr>
+<tr>
+<td>④ 學院化</td>
+<td style="text-align: right;">1920–1930</td>
+<td>歐陽竟無、呂澂、太虛</td>
+<td>支那內學院、武昌佛學院</td>
+</tr>
+<tr>
+<td>⑤ 思想論爭</td>
+<td style="text-align: right;">1920–1940</td>
+<td>歐陽、太虛、印順</td>
+<td>唯識、如來藏、中觀之爭</td>
+</tr>
+<tr>
+<td>⑥ 哲學轉化</td>
+<td style="text-align: right;">1920–1960</td>
+<td>熊十力</td>
+<td>《新唯識論》</td>
+</tr>
+<tr>
+<td>⑦ 兩岸傳承</td>
+<td style="text-align: right;">1950–1990</td>
+<td>印順、呂澂等</td>
+<td>佛學研究與佛教教育延續</td>
+</tr>
+<tr>
+<td>⑧ 全球學術化</td>
+<td style="text-align: right;">1990–至今</td>
+<td>當代佛學者</td>
+<td>梵、藏、漢文獻與比較哲學</td>
+</tr>
+</tbody>
+</table></div>
+
+</section><section><h2 id="s15"><span class="num">十六</span><span class="ht">最值得掌握的「人物關係圖」</span></h2>
+<p>如果把整個近代唯識復興濃縮成一張圖，大概是：</p>
+<figure class="diagram d8"><div class="scroll" style="--minw:620px"><svg viewBox="0 0 780 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="近代唯識復興人物關係圖">
+<title>近代唯識復興人物關係圖</title>
+<path class="edge" d="M390.0,49.5 V80.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,117.5 V147.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,174.5 V208.0" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,266.0 V290.2 H80.0 V314.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,266.0 V290.2 H270.0 V314.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,266.0 V290.2 H530.0 V314.5" marker-end="url(#ah)"/>
+<path class="edge" d="M390.0,266.0 V290.2 H710.0 V314.5" marker-end="url(#ah)"/>
+<path class="edge" d="M80.0,351.5 V389.5" marker-end="url(#ah)"/>
+<path class="edge" d="M270.0,351.5 V384.5" marker-end="url(#ah)"/>
+<path class="edge" d="M530.0,351.5 V384.5" marker-end="url(#ah)"/>
+<path class="edge" d="M80.0,416.5 V464.5" marker-end="url(#ah)"/>
+<path class="edge" d="M270.0,421.5 V443.0 H205.0 V464.5" marker-end="url(#ah)"/>
+<path class="edge" d="M270.0,421.5 V443.0 H335.0 V464.5" marker-end="url(#ah)"/>
+<path class="edge" d="M530.0,421.5 V443.0 H470.0 V464.5" marker-end="url(#ah)"/>
+<path class="edge" d="M530.0,421.5 V443.0 H595.0 V464.5" marker-end="url(#ah)"/>
+<path class="edge" d="M80.0,501.5 V534.5" marker-end="url(#ah)"/>
+<path class="edge" d="M470.0,501.5 V534.5" marker-end="url(#ah)"/>
+<path class="edge" d="M80.0,571.5 V604.5" marker-end="url(#ah)"/>
+<g class="nd plain">
+<rect x="338.5" y="14.5" width="103.0" height="35.0" rx="4"/>
+<text x="390" y="32.0" text-anchor="middle" dominant-baseline="central">玄奘、窺基</text>
+</g>
+<g class="nd plain">
+<rect x="346.0" y="82.5" width="88.0" height="35.0" rx="4"/>
+<text x="390" y="100.0" text-anchor="middle" dominant-baseline="central">唐代唯識</text>
+</g>
+<g class="nd era">
+<text x="390" y="162.0" text-anchor="middle" dominant-baseline="central">宋元以後衰微</text>
+</g>
+<g class="nd key">
+<rect x="338.2" y="210.0" width="103.6" height="56.0" rx="4"/>
+<text x="390" y="227.5" text-anchor="middle" dominant-baseline="central">楊仁山</text>
+<text x="390" y="248.5" text-anchor="middle" dominant-baseline="central">1837–1911</text>
+</g>
+<g class="nd key">
+<rect x="43.5" y="316.5" width="73.0" height="35.0" rx="4"/>
+<text x="80" y="334.0" text-anchor="middle" dominant-baseline="central">章太炎</text>
+</g>
+<g class="nd key">
+<rect x="226.0" y="316.5" width="88.0" height="35.0" rx="4"/>
+<text x="270" y="334.0" text-anchor="middle" dominant-baseline="central">歐陽竟無</text>
+</g>
+<g class="nd key">
+<rect x="501.0" y="316.5" width="58.0" height="35.0" rx="4"/>
+<text x="530" y="334.0" text-anchor="middle" dominant-baseline="central">太虛</text>
+</g>
+<g class="nd plain">
+<rect x="666.0" y="316.5" width="88.0" height="35.0" rx="4"/>
+<text x="710" y="334.0" text-anchor="middle" dominant-baseline="central">其他弟子</text>
+</g>
+<g class="nd era">
+<text x="80" y="404.0" text-anchor="middle" dominant-baseline="central">近代哲學化</text>
+</g>
+<g class="nd plain">
+<rect x="218.5" y="386.5" width="103.0" height="35.0" rx="4"/>
+<text x="270" y="404.0" text-anchor="middle" dominant-baseline="central">支那內學院</text>
+</g>
+<g class="nd plain">
+<rect x="478.5" y="386.5" width="103.0" height="35.0" rx="4"/>
+<text x="530" y="404.0" text-anchor="middle" dominant-baseline="central">武昌佛學院</text>
+</g>
+<g class="nd key">
+<rect x="43.5" y="466.5" width="73.0" height="35.0" rx="4"/>
+<text x="80" y="484.0" text-anchor="middle" dominant-baseline="central">熊十力</text>
+</g>
+<g class="nd plain">
+<rect x="176.0" y="466.5" width="58.0" height="35.0" rx="4"/>
+<text x="205" y="484.0" text-anchor="middle" dominant-baseline="central">呂澂</text>
+</g>
+<g class="nd plain">
+<rect x="298.5" y="466.5" width="73.0" height="35.0" rx="4"/>
+<text x="335" y="484.0" text-anchor="middle" dominant-baseline="central">梅光羲</text>
+</g>
+<g class="nd key">
+<rect x="441.0" y="466.5" width="58.0" height="35.0" rx="4"/>
+<text x="470" y="484.0" text-anchor="middle" dominant-baseline="central">印順</text>
+</g>
+<g class="nd plain">
+<rect x="558.5" y="466.5" width="73.0" height="35.0" rx="4"/>
+<text x="595" y="484.0" text-anchor="middle" dominant-baseline="central">法尊等</text>
+</g>
+<g class="nd plain">
+<rect x="21.0" y="536.5" width="118.0" height="35.0" rx="4"/>
+<text x="80" y="554.0" text-anchor="middle" dominant-baseline="central">《新唯識論》</text>
+</g>
+<g class="nd plain">
+<rect x="381.0" y="536.5" width="178.0" height="35.0" rx="4"/>
+<text x="470" y="554.0" text-anchor="middle" dominant-baseline="central">中觀／阿含／人間佛教</text>
+</g>
+<g class="nd plain">
+<rect x="21.0" y="606.5" width="118.0" height="35.0" rx="4"/>
+<text x="80" y="624.0" text-anchor="middle" dominant-baseline="central">現代中國哲學</text>
+</g>
+</svg></div><figcaption>近代唯識復興人物關係圖</figcaption></figure>
+
+</section><section><h2 id="s16"><span class="num">十七</span><span class="ht">最核心的歷史意義</span></h2>
+<p>近代唯識復興真正重要的地方，不只是「唯識重新流行」。</p>
+<p>它至少完成了 <strong>五個轉變</strong>：</p>
+<h4>① 從失傳經典 → 現代文獻</h4>
+<p>楊仁山等人使唯識經論重新流通。</p>
+<h4>② 從宗派佛學 → 學術佛學</h4>
+<p>支那內學院、三時學會等使唯識成為專門研究領域。</p>
+<h4>③ 從佛教教義 → 哲學問題</h4>
+<p>章太炎、熊十力等把唯識帶入中國哲學。</p>
+<h4>④ 從中國佛教 → 印度佛教史</h4>
+<p>呂澂等開始重新追問「印度唯識原貌」。</p>
+<h4>⑤ 從護教 → 現代佛學</h4>
+<p>今天的唯識研究已經進一步進入：</p>
+<p><strong>印度佛教史、梵藏漢文獻學、認識論、心識哲學、比較哲學與宗教研究。</strong></p>
+
+</section><section><h2 id="s17"><span class="num">十八</span><span class="ht">民國後的發展</span></h2>
+<h4>民國時期的三大重鎮</h4>
+<p>民國時期唯識研究形成所謂「南歐北韓」加上太虛一系的格局。</p>
+<p>南京支那內學院：歐陽漸（竟無，1871–1943）於1922年正式成立，門下有呂澂、王恩洋、黃懺華等。這是一個以居士為主、學術性極強的團體，重視校勘與原典。歐陽竟無提出「法相、唯識分宗」之說，認為兩者雖同出瑜伽行派但義理有別；更重要的是內學院對中國本土的如來藏、本覺思想展開嚴厲批判，王恩洋《大乘起信論料簡》認為《起信論》不合正統唯識義理。呂澂後來以「性寂」與「性覺」區分印度佛學與中國佛學的根本差異，認為中國化的「本覺」說偏離了原意。</p>
+<p>北京三時學會：韓清淨於1927年成立，側重《瑜伽師地論》的精細研究，代表作是《瑜伽師地論科句披尋記》，學風以嚴謹解經見長。</p>
+<p>太虛與武昌佛學院：太虛（1890–1947）1922年創辦武昌佛學院，同樣重視法相唯識，並把唯識作為與現代科學、哲學對話的橋樑。但他的立場與內學院不同，主張「八宗平等」，維護《起信論》與中國各宗的正當性，因此與內學院在《起信論》真偽及判教問題上多次交鋒。這場爭論也受到梁啟超《大乘起信論考證》所引介的日本學界考證影響。</p>
+<h4>熊十力與《新唯識論》之爭</h4>
+<p>最具思想史意義的事件是熊十力的轉向。熊氏早年在內學院隨歐陽竟無學唯識，後來卻以儒家《易經》「體用不二」的立場改造唯識，於1932年出版文言本《新唯識論》（1944年有語體本），批評護法系唯識的種子說與阿賴耶識架構割裂了體用。內學院隨即由劉定權（衡如）撰《破新唯識論》反駁，熊十力再以《破破新唯識論》回應；1948年印順也寫了〈評熊十力的新唯識論〉。這場論爭不只是佛學內部的辯論，更成為當代新儒家（牟宗三等）建立自身形上學的起點——新儒家某種程度上是在「批判唯識」中成形的。</p>
+<h4>1949年以後的分流</h4>
+<ol>
+<li>
+<p>中國大陸：內學院在1952年結束，但呂澂在1950–60年代仍完成《中國佛學源流略講》、《印度佛學源流略講》等重要著作。三時學會一系的韓鏡清則長期從事藏文唯識典籍的翻譯。改革開放後，唯識重新成為學院研究題目，一個重要趨勢是將唯識與胡塞爾現象學比較，例如倪梁康等學者的研究。</p>
+</li>
+<li>
+<p>台灣：太虛一系的僧人來台後延續唯識講學，如慈航、演培（有《成唯識論講記》）。影響最深遠的是印順（1906–2005），他在1944年出版《唯識學探源》，並提出大乘佛教的「三系判教」：性空唯名、虛妄唯識、真常唯心。這個判教把唯識定位為印度大乘的一個獨立發展階段，同時延續了內學院對如來藏思想的某種批判精神，對台灣佛教學界影響極大。于凌波等人則做了不少普及性的唯識著作。</p>
+</li>
+<li>
+<p>香港：羅時憲（1914–1993）於1965年創立佛教法相學會，著有《成唯識論述記刪注》等，其弟子李潤生等人持續以講座、導讀的方式傳承，是目前華人世界少數仍保有傳統唯識講學脈絡的地方。學者吳汝鈞則嘗試以「唯識現象學」的角度做哲學重構。</p>
+</li>
+</ol>
+</section><section><h2 id="s18"><span class="num">十九</span><span class="ht">整體評價</span></h2>
+<p>這一百多年的唯識復興有幾個特點值得注意。</p>
+<ol>
+<li>它高度依賴文獻回流（先是日本，後來擴展到梵文、藏文原典），使研究從宗派傳承轉向文獻學與思想史。</li>
+<li>它常被當作佛教「現代化」的工具，用來證明佛教具備理性、科學的性格。</li>
+<li>也是最深刻的一點，唯識成為反省中國佛教本身的利器：內學院到印順對如來藏、本覺思想的批評，某種程度上與1980年代日本的「批判佛教」（袴谷憲昭、松本史朗）遙相呼應，都在追問「中國化佛教是否偏離了印度原義」。</li>
+</ol>
+<p>不過另一方面，也有學者認為這種批判過度以印度唯識為標準，忽略了中國佛學自身的創造性。</p>
+</section><section><h2 id="s19"><span class="num">二十</span><span class="ht">一句話總結</span></h2>
+<p>如果要把「清末至今唯識學復興」濃縮成一條線：</p>
+<blockquote>
+<p><strong>楊仁山「找回經典」 → 章太炎「思想化」 → 歐陽竟無「學院化」 → 呂澂「學術化」 → 熊十力「哲學化」 → 印順「重新定位」 → 當代「全球佛學研究化」。</strong></p>
+</blockquote>
+<p>而其中最大的思想轉折，可以理解為：</p>
+<blockquote>
+<p><strong>「復興唯識宗」→「研究唯識學」→「用唯識思考現代哲學」→「把唯識放回印度佛教史與全球佛學研究」。</strong></p>
+</blockquote>
+<p>這也解釋了為什麼「近代唯識復興」不能只理解成一個佛教宗派的復興；它其實是<strong>中國近代思想史、佛教現代化史與中國哲學史交會的一條主線</strong>。相關近代佛教史研究也將章太炎的法相唯識、歐陽竟無與太虛的法義論爭，以及熊十力的新唯識論列為近代佛教哲學發展的重要部分。</p></section></main>
+</div>
+<footer>近現代唯識學復興　閱讀筆記</footer>
+<script>if(window.matchMedia("(max-width:1079px)").matches){var d=document.querySelector("nav.toc details");if(d)d.removeAttribute("open");}</script>
+</body>
+</html>

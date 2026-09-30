@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>近現代佛學學習藍圖｜清末至今唯識學復興</title>
+<style>
+:root{
+  --bg:#f6f2e9; --ink:#29251f; --muted:#6f675d;
+  --line:#9d907d; --panel:#fffdf8; --accent:#8b5e34;
+  --indian:#b56b45; --chinese:#6d7d5c; --modern:#657b9b;
+  --philosophy:#866b93; --study:#7b776e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif}
+header{padding:28px 38px 18px;border-bottom:1px solid #d7cec0;background:#fbf8f0}
+h1{margin:0 0 8px;font-size:30px;letter-spacing:.04em}
+.subtitle{color:var(--muted);font-size:15px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+button{border:1px solid #cfc4b5;background:#fffaf1;border-radius:18px;padding:7px 13px;cursor:pointer;color:#433b32}
+button:hover{background:#eee4d4}
+button.active{background:#6d5b47;color:white;border-color:#6d5b47}
+main{padding:18px 24px 36px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 auto 12px;max-width:1500px;color:#5f584f;font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.wrap{max-width:1500px;margin:auto;position:relative}
+svg{width:100%;height:auto;display:block;background:linear-gradient(180deg,#faf7ef,#f3eee3);border:1px solid #d9d0c3;border-radius:16px;box-shadow:0 5px 22px #0000000c}
+svg text{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif}
+.node{cursor:pointer}
+.node rect,.node circle{stroke-width:1.6;transition:.15s}
+.node:hover rect,.node:hover circle{filter:brightness(1.04);stroke:#51473c;stroke-width:2.5}
+.node text{pointer-events:none}
+.small{font-size:12px;fill:#625b52}
+.year{font-size:13px;font-weight:700;fill:#6f6252}
+.title{font-size:15px;font-weight:700}
+.detail{font-size:12px;fill:#6b6258}
+.connector{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.connector.dashed{stroke-dasharray:6 5}
+.period{font-size:13px;font-weight:700;fill:#7a6e60;letter-spacing:.08em}
+#backdrop{position:fixed;inset:0;background:#241d1599;display:none;z-index:10}
+#modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,calc(100vw - 32px));max-height:82vh;overflow:auto;background:var(--panel);border-radius:18px;box-shadow:0 20px 70px #0008;display:none;z-index:11;padding:25px}
+#modal h2{margin:0 36px 5px 0;font-size:23px}
+#modal .meta{color:#8b5e34;font-size:13px;font-weight:700;margin-bottom:16px}
+#modal p{line-height:1.8;margin:9px 0}
+#modal ul{line-height:1.8;margin-top:7px}
+#close{position:absolute;right:16px;top:12px;border:0;background:transparent;font-size:26px;padding:2px 8px}
+.note{max-width:1500px;margin:16px auto 0;padding:15px 18px;background:#fffaf1;border:1px solid #ddd1c1;border-radius:12px;line-height:1.75;color:#5d554c;font-size:14px}
+footer{text-align:center;color:#8a8177;font-size:12px;padding:12px 0 24px}
+@media(max-width:900px){h1{font-size:24px}main{padding:10px}.wrap{overflow:auto}svg{min-width:1100px}.wrap{overflow-x:auto}}
+</style>
+</head>
+<body>
+<header>
+  <h1>近現代佛學學習藍圖：清末至今的唯識學復興</h1>
+  <div class="subtitle">從「經典復興」→「學院化」→「學術化」→「哲學化」→「當代佛學研究」</div>
+  <div class="toolbar">
+    <button class="active" data-filter="all">全部</button>
+    <button data-filter="text">文獻／典籍</button>
+    <button data-filter="person">人物</button>
+    <button data-filter="school">學院／學術中心</button>
+    <button data-filter="thought">思想分流</button>
+  </div>
+</header>
+
+<main>
+<div class="legend">
+  <span><i class="dot" style="background:var(--indian)"></i>印度／古典唯識源流</span>
+  <span><i class="dot" style="background:var(--chinese)"></i>中國佛教傳承</span>
+  <span><i class="dot" style="background:var(--modern)"></i>近現代人物／機構</span>
+  <span><i class="dot" style="background:var(--philosophy)"></i>哲學轉化與思想分流</span>
+</div>
+
+<div class="wrap">
+<svg id="map" viewBox="0 0 1500 930" role="img" aria-label="近現代佛學唯識復興學習藍圖">
+  <!-- period bands -->
+  <rect x="25" y="25" width="1450" height="100" rx="15" fill="#eee7da"/>
+  <rect x="25" y="140" width="1450" height="155" rx="15" fill="#f1ece2"/>
+  <rect x="25" y="310" width="1450" height="155" rx="15" fill="#eee9df"/>
+  <rect x="25" y="480" width="1450" height="155" rx="15" fill="#f0ebe2"/>
+  <rect x="25" y="650" width="1450" height="255" rx="15" fill="#ebe6dc"/>
+
+  <text x="48" y="55" class="period">古典源流｜唐代</text>
+  <text x="48" y="170" class="period">第一階段｜清末：文獻復興</text>
+  <text x="48" y="340" class="period">第二階段｜民初：唯識復興與學院化</text>
+  <text x="48" y="510" class="period">第三階段｜1920–1940：思想分流</text>
+  <text x="48" y="680" class="period">第四階段｜1949後至今：傳承、重估與全球學術化</text>
+
+  <!-- main connectors -->
+  <path class="connector" d="M210 92 C210 135 210 145 210 185"/>
+  <path class="connector" d="M340 222 C430 222 475 222 550 222"/>
+  <path class="connector" d="M690 222 C770 222 810 222 890 222"/>
+  <path class="connector" d="M1030 222 C1120 222 1160 222 1240 222"/>
+  <path class="connector" d="M1240 260 C1240 325 1240 350 1240 385"/>
+  <path class="connector" d="M890 260 C890 320 890 345 890 385"/>
+  <path class="connector" d="M550 260 C550 325 550 345 550 385"/>
+  <path class="connector" d="M550 460 C550 505 430 520 350 555"/>
+  <path class="connector" d="M690 460 C760 505 790 520 850 555"/>
+  <path class="connector" d="M890 460 C1000 510 1070 525 1130 555"/>
+  <path class="connector" d="M1240 460 C1240 520 1240 535 1240 555"/>
+  <path class="connector" d="M350 635 C350 690 350 705 350 745"/>
+  <path class="connector" d="M850 635 C850 690 850 705 850 745"/>
+  <path class="connector" d="M1130 635 C1130 690 1130 705 1130 745"/>
+  <path class="connector" d="M1240 635 C1240 690 1240 705 1240 745"/>
+  <path class="connector dashed" d="M350 805 C500 850 690 850 850 805"/>
+  <path class="connector dashed" d="M850 805 C950 850 1050 850 1130 805"/>
+
+  <!-- Classical -->
+  <g class="node" data-type="text" data-key="xuanzang" transform="translate(120,62)">
+    <rect width="180" height="60" rx="12" fill="#d9c1ad"/>
+    <text x="90" y="25" text-anchor="middle" class="title">玄奘</text>
+    <text x="90" y="46" text-anchor="middle" class="detail">602–664｜瑜伽行派漢傳化</text>
+  </g>
+  <g class="node" data-type="text" data-key="kuiji" transform="translate(320,62)">
+    <rect width="180" height="60" rx="12" fill="#d9c1ad"/>
+    <text x="90" y="25" text-anchor="middle" class="title">窺基</text>
+    <text x="90" y="46" text-anchor="middle" class="detail">632–682｜法相宗系統化</text>
+  </g>
+  <path class="connector" d="M300 92 L320 92"/>
+
+  <!-- Qing revival -->
+  <g class="node" data-type="person" data-key="yang" transform="translate(130,190)">
+    <rect width="160" height="70" rx="13" fill="#c8d2bf"/>
+    <text x="80" y="27" text-anchor="middle" class="title">楊仁山</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">1837–1911</text>
+    <text x="80" y="64" text-anchor="middle" class="small">金陵刻經處</text>
+  </g>
+  <g class="node" data-type="person" data-key="zhang" transform="translate(400,190)">
+    <rect width="150" height="70" rx="13" fill="#d3c5d8"/>
+    <text x="75" y="27" text-anchor="middle" class="title">章太炎</text>
+    <text x="75" y="49" text-anchor="middle" class="detail">1869–1936</text>
+    <text x="75" y="64" text-anchor="middle" class="small">唯識與近代思想</text>
+  </g>
+  <g class="node" data-type="person" data-key="ouyang" transform="translate(550,190)">
+    <rect width="140" height="70" rx="13" fill="#aebed2"/>
+    <text x="70" y="27" text-anchor="middle" class="title">歐陽竟無</text>
+    <text x="70" y="49" text-anchor="middle" class="detail">1871–1943</text>
+    <text x="70" y="64" text-anchor="middle" class="small">唯識復興核心</text>
+  </g>
+  <g class="node" data-type="person" data-key="han" transform="translate(890,190)">
+    <rect width="140" height="70" rx="13" fill="#aebed2"/>
+    <text x="70" y="27" text-anchor="middle" class="title">韓清淨</text>
+    <text x="70" y="49" text-anchor="middle" class="detail">1884–1949</text>
+    <text x="70" y="64" text-anchor="middle" class="small">三時學會</text>
+  </g>
+  <g class="node" data-type="school" data-key="sanzhi" transform="translate(1030,190)">
+    <rect width="150" height="70" rx="13" fill="#b9c5d5"/>
+    <text x="75" y="27" text-anchor="middle" class="title">三時學會</text>
+    <text x="75" y="49" text-anchor="middle" class="detail">北京｜唯識研究</text>
+    <text x="75" y="64" text-anchor="middle" class="small">典籍與講學</text>
+  </g>
+  <g class="node" data-type="school" data-key="neixue" transform="translate(1240,190)">
+    <rect width="160" height="70" rx="13" fill="#b9c5d5"/>
+    <text x="80" y="27" text-anchor="middle" class="title">支那內學院</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">南京｜1922起</text>
+    <text x="80" y="64" text-anchor="middle" class="small">內學研究基地</text>
+  </g>
+
+  <!-- Academy nodes -->
+  <g class="node" data-type="school" data-key="wuchang" transform="translate(470,380)">
+    <rect width="160" height="80" rx="13" fill="#b9c5d5"/>
+    <text x="80" y="29" text-anchor="middle" class="title">武昌佛學院</text>
+    <text x="80" y="51" text-anchor="middle" class="detail">太虛｜1922</text>
+    <text x="80" y="68" text-anchor="middle" class="small">佛教教育改革</text>
+  </g>
+  <g class="node" data-type="person" data-key="lucheng" transform="translate(810,380)">
+    <rect width="160" height="80" rx="13" fill="#aebed2"/>
+    <text x="80" y="29" text-anchor="middle" class="title">呂澂</text>
+    <text x="80" y="51" text-anchor="middle" class="detail">1896–1989</text>
+    <text x="80" y="68" text-anchor="middle" class="small">佛教文獻學</text>
+  </g>
+  <g class="node" data-type="person" data-key="meiguangxi" transform="translate(1160,380)">
+    <rect width="160" height="80" rx="13" fill="#aebed2"/>
+    <text x="80" y="29" text-anchor="middle" class="title">梅光羲</text>
+    <text x="80" y="51" text-anchor="middle" class="detail">1880–1947</text>
+    <text x="80" y="68" text-anchor="middle" class="small">唯識與佛學教育</text>
+  </g>
+
+  <!-- Thought split -->
+  <g class="node" data-type="thought" data-key="classical" transform="translate(270,555)">
+    <rect width="160" height="80" rx="13" fill="#d5c4ae"/>
+    <text x="80" y="27" text-anchor="middle" class="title">古典唯識</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">八識｜三性｜三無性</text>
+    <text x="80" y="67" text-anchor="middle" class="small">玄奘—窺基系統</text>
+  </g>
+  <g class="node" data-type="thought" data-key="taixu" transform="translate(770,555)">
+    <rect width="160" height="80" rx="13" fill="#c6d0c0"/>
+    <text x="80" y="27" text-anchor="middle" class="title">太虛思想</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">佛教改革｜人間佛教</text>
+    <text x="80" y="67" text-anchor="middle" class="small">兼容多宗傳統</text>
+  </g>
+  <g class="node" data-type="thought" data-key="newweishi" transform="translate(1050,555)">
+    <rect width="160" height="80" rx="13" fill="#d3c5d8"/>
+    <text x="80" y="27" text-anchor="middle" class="title">新唯識論</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">熊十力｜哲學轉化</text>
+    <text x="80" y="67" text-anchor="middle" class="small">體用、本體論</text>
+  </g>
+  <g class="node" data-type="thought" data-key="yinshun" transform="translate(1160,555)">
+    <rect width="160" height="80" rx="13" fill="#c6d0c0"/>
+    <text x="80" y="27" text-anchor="middle" class="title">印順思想</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">阿含｜中觀｜大乘史</text>
+    <text x="80" y="67" text-anchor="middle" class="small">重新定位唯識</text>
+  </g>
+
+  <!-- Contemporary -->
+  <g class="node" data-type="person" data-key="xiong" transform="translate(270,745)">
+    <rect width="160" height="80" rx="13" fill="#d3c5d8"/>
+    <text x="80" y="27" text-anchor="middle" class="title">熊十力</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">1885–1968</text>
+    <text x="80" y="67" text-anchor="middle" class="small">《新唯識論》</text>
+  </g>
+  <g class="node" data-type="person" data-key="yinshun2" transform="translate(770,745)">
+    <rect width="160" height="80" rx="13" fill="#c6d0c0"/>
+    <text x="80" y="27" text-anchor="middle" class="title">印順</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">1906–2005</text>
+    <text x="80" y="67" text-anchor="middle" class="small">佛教思想史研究</text>
+  </g>
+  <g class="node" data-type="thought" data-key="modernstudy" transform="translate(1050,745)">
+    <rect width="160" height="80" rx="13" fill="#b9c5d5"/>
+    <text x="80" y="27" text-anchor="middle" class="title">當代唯識研究</text>
+    <text x="80" y="49" text-anchor="middle" class="detail">梵｜藏｜漢文獻</text>
+    <text x="80" y="67" text-anchor="middle" class="small">佛教學／比較哲學</text>
+  </g>
+
+  <!-- bottom concepts -->
+  <g class="node" data-type="thought" data-key="concepts" transform="translate(500,820)">
+    <rect width="350" height="58" rx="13" fill="#fffaf0" stroke="#b8aa97"/>
+    <text x="175" y="25" text-anchor="middle" class="title">核心概念：阿賴耶識・末那識・八識・三性・三無性</text>
+    <text x="175" y="45" text-anchor="middle" class="small">從認識論、心識論到解脫論</text>
+  </g>
+  <g class="node" data-type="thought" data-key="method" transform="translate(880,820)">
+    <rect width="330" height="58" rx="13" fill="#fffaf0" stroke="#b8aa97"/>
+    <text x="165" y="25" text-anchor="middle" class="title">研究方法轉型</text>
+    <text x="165" y="45" text-anchor="middle" class="small">宗派復興 → 文獻學 → 歷史研究 → 比較哲學</text>
+  </g>
+</svg>
+</div>
+
+<div class="note">
+<b>使用方式：</b>點擊任何節點查看詳細說明；上方分類按鈕可隱藏其他節點。
+本圖特別把「傳統法相唯識」、「民國唯識復興」與「熊十力的新唯識論」分開，
+避免把「唯識學」與「新唯識論」視為完全相同的思想系統。
+</div>
+</main>
+
+<div id="backdrop"></div>
+<div id="modal">
+  <button id="close" aria-label="關閉">×</button>
+  <h2 id="mtitle"></h2>
+  <div id="mmeta" class="meta"></div>
+  <div id="mbody"></div>
+</div>
+
+<footer>近現代佛學學習藍圖｜可作為唯識學、民國佛學與中國近代思想史的導讀地圖</footer>
+
+<script>
+const data = {
+xuanzang:{t:"玄奘",m:"602–664｜唐代",b:`<p>唐代唯識學漢傳化的關鍵人物。赴印度求法，回國後主持大量佛典翻譯。</p><ul><li>代表譯典：《解深密經》《瑜伽師地論》《成唯識論》等相關典籍</li><li>建立以瑜伽行派文獻為核心的漢傳唯識學資源</li><li>其譯學成為後來法相宗與近代唯識復興的重要古典依據</li></ul>`},
+kuiji:{t:"窺基",m:"632–682｜唐代",b:`<p>玄奘弟子，後世通常視為法相宗的重要系統化人物。</p><ul><li>整理與闡釋唯識教義</li><li>代表作包括《成唯識論述記》等</li><li>對後世研究五位、百法、三性等具有重要影響</li></ul>`},
+yang:{t:"楊仁山",m:"1837–1911｜清末佛學復興",b:`<p>近代中國佛教復興的重要奠基者。其核心貢獻之一，是透過金陵刻經處大量刊刻佛典，重建近代佛學的文獻基礎。</p><ul><li>金陵刻經處</li><li>與日本佛教學者交流</li><li>促成失傳或罕見佛典重新流通</li><li>門下及相關學人後來成為民初佛學復興的重要力量</li></ul>`},
+zhang:{t:"章太炎",m:"1869–1936｜近代思想界",b:`<p>把佛學、法相唯識等帶入近代中國思想與哲學討論的重要人物。</p><ul><li>關注認識、心識與主體問題</li><li>使佛教思想與近代哲學、思想革命發生連結</li><li>不宜簡化為單純的唯識宗派人物</li></ul>`},
+ouyang:{t:"歐陽竟無",m:"1871–1943｜支那內學院",b:`<p>民國唯識復興的核心人物之一。強調佛學的專門研究、印度大乘佛教文獻與唯識學的系統整理。</p><ul><li>創辦支那內學院</li><li>重視唯識、因明與佛典研究</li><li>強調回到印度佛學與經論本身</li><li>與太虛等形成民初佛學改革與學術路線的重要對話</li></ul>`},
+han:{t:"韓清淨",m:"1884–1949｜北京",b:`<p>民國時期唯識學的重要研究者，與三時學會關係密切。</p><ul><li>推動唯識經論研究與講學</li><li>與南京支那內學院系統形成北京方面的重要學術力量</li></ul>`},
+sanzhi:{t:"三時學會",m:"北京｜民國時期",b:`<p>近代唯識研究的重要學術團體之一，與韓清淨等學者的研究活動密切相關。</p><ul><li>唯識經論研究</li><li>講學與佛典整理</li><li>代表民初佛學從寺院傳統走向專門研究的一面</li></ul>`},
+neixue:{t:"支那內學院",m:"南京｜1920年代起",b:`<p>近代中國佛學研究史上的重要學術中心。歐陽竟無主持，使唯識、因明與佛典研究形成較完整的學院化環境。</p><ul><li>重視印度佛學與原典</li><li>培養近代佛學研究人才</li><li>對呂澂等人的學術發展影響深遠</li></ul>`},
+wuchang:{t:"武昌佛學院",m:"太虛｜1922",b:`<p>太虛推動的現代佛教教育機構。與支那內學院形成民初佛學發展中兩種不同而又互相對話的路線。</p><ul><li>重視僧教育與佛教現代化</li><li>兼攝多宗佛學</li><li>與太虛的人間佛教、佛教改革思想相連</li></ul>`},
+lucheng:{t:"呂澂",m:"1896–1989｜現代佛教學術研究",b:`<p>近代中國佛教文獻學與唯識、因明研究的重要學者。</p><ul><li>重視梵、藏、漢佛典與思想史</li><li>重新考察印度瑜伽行派與漢傳唯識</li><li>使唯識研究逐步從宗派立場轉向文獻與歷史研究</li></ul>`},
+meiguangxi:{t:"梅光羲",m:"1880–1947｜民國佛學",b:`<p>近代佛學教育與唯識研究的重要人物，與民國佛教學術網絡關係密切。</p><ul><li>推動唯識學講習</li><li>參與近代佛學教育與經論弘傳</li></ul>`},
+classical:{t:"古典唯識",m:"玄奘—窺基系統",b:`<p>學習近現代唯識之前，先掌握古典唯識的基本框架。</p><ul><li><b>八識：</b>前五識、意識、末那識、阿賴耶識</li><li><b>三性：</b>遍計所執性、依他起性、圓成實性</li><li><b>三無性：</b>相無性、生無性、勝義無性</li><li><b>轉依：</b>從染污識的運作走向解脫智慧</li></ul>`},
+taixu:{t:"太虛思想",m:"1890–1947｜佛教改革",b:`<p>太虛並非單純的唯識宗派復興者，而是試圖以現代教育、組織與思想改革重新建構中國佛教。</p><ul><li>武昌佛學院</li><li>佛教現代化</li><li>人間佛教思想的重要先驅</li><li>與歐陽竟無形成重要思想對話</li></ul>`},
+newweishi:{t:"新唯識論",m:"熊十力｜20世紀中國哲學",b:`<p>「新唯識論」與玄奘—窺基的傳統法相唯識不可直接畫等號。熊十力受到佛學影響後，將唯識問題轉化為中國哲學的本體論與體用論問題。</p><ul><li>代表人物：熊十力</li><li>重要著作：《新唯識論》</li><li>關注體用、本體與現象等問題</li><li>後來與現代新儒家思想發展產生關聯</li></ul>`},
+yinshun:{t:"印順思想",m:"1906–2005｜佛教思想史",b:`<p>印順重新考察印度佛教與中國佛教思想發展，並不把唯識視為理解大乘佛教的唯一道路。</p><ul><li>重視阿含、般若、中觀與大乘佛教史</li><li>重新定位唯識與如來藏等思想</li><li>與人間佛教的現代發展有重要關聯</li></ul>`},
+xiong:{t:"熊十力",m:"1885–1968｜新唯識論",b:`<p>20世紀中國哲學的重要人物。早年受民國佛學影響，後形成具有中國哲學特色的「新唯識論」。</p><ul><li>《新唯識論》</li><li>將唯識問題轉為本體論、體用論問題</li><li>與傳統法相唯識存在明顯差異</li></ul>`},
+yinshun2:{t:"印順",m:"1906–2005｜現代佛學",b:`<p>以佛教思想史與印度佛教研究為基礎，重新整理阿含、大乘、中觀、唯識與如來藏的歷史關係。</p>`},
+modernstudy:{t:"當代唯識研究",m:"20世紀後期至今",b:`<p>當代研究逐漸從「復興某一宗派」轉向佛教學、文獻學、思想史與比較哲學。</p><ul><li>梵文、藏文、漢文材料互證</li><li>印度瑜伽行派思想史</li><li>唯識與中觀、如來藏比較</li><li>心識哲學、認識論、比較哲學</li></ul>`},
+concepts:{t:"唯識學核心概念",m:"建議學習順序",b:`<p>建議按照「心識 → 種子 → 三性 → 三無性 → 轉依」逐步掌握。</p><ul><li>八識與阿賴耶識</li><li>末那識與我執</li><li>種子、熏習與現行</li><li>三性、三無性</li><li>轉識成智與解脫論</li></ul>`},
+method:{t:"研究方法的轉型",m:"清末至今",b:`<p>近現代唯識復興本身也反映佛學研究方法的轉型。</p><ul><li>清末：經典刊刻與傳承恢復</li><li>民初：學院、講學與宗派論爭</li><li>20世紀：文獻學、思想史與哲學化</li><li>當代：跨語言文獻、歷史批判與比較哲學</li></ul>`}
+};
+
+const modal=document.getElementById("modal"), back=document.getElementById("backdrop");
+function show(k){
+ const d=data[k]; if(!d)return;
+ document.getElementById("mtitle").textContent=d.t;
+ document.getElementById("mmeta").textContent=d.m;
+ document.getElementById("mbody").innerHTML=d.b;
+ modal.style.display="block"; back.style.display="block";
+}
+document.querySelectorAll(".node").forEach(n=>n.addEventListener("click",()=>show(n.dataset.key)));
+function close(){modal.style.display="none";back.style.display="none"}
+document.getElementById("close").onclick=close; back.onclick=close;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+
+document.querySelectorAll(".toolbar button").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+   document.querySelectorAll(".toolbar button").forEach(b=>b.classList.remove("active"));
+   btn.classList.add("active");
+   const f=btn.dataset.filter;
+   document.querySelectorAll(".node").forEach(n=>{
+     n.style.opacity=(f==="all"||n.dataset.type===f)?"1":"0.12";
+   });
+ });
+});
+</script>
+</body>
+</html>
