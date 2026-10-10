@@ -73,8 +73,16 @@ footer{color:#6b7688;font-size:.8rem;padding:34px 32px 0;text-align:center}
 """
 
 
-def local_href(folder_name, filename):
-    return 'html/' + quote(folder_name) + '/' + quote(filename) + '.html'
+def local_href(folder_name, rel):
+    """rel 是相對分類資料夾的路徑（不含 .html），可含子資料夾，例如
+    「佛學總論/佛學學習藍圖」。每一段各自 quote，斜線保留成路徑分隔。"""
+    parts = [quote(folder_name)] + [quote(s) for s in rel.split('/')]
+    return 'html/' + '/'.join(parts) + '.html'
+
+
+def display_label(rel):
+    """條目顯示名只取最後一段檔名，不把子資料夾名字也印出來。"""
+    return rel.rsplit('/', 1)[-1]
 
 
 def parse_order(folder):
@@ -82,7 +90,14 @@ def parse_order(folder):
     if not order_file.exists():
         return None
 
-    html_files = {p.stem for p in folder.glob('*.html')}
+    # 連子資料夾一起收：分類資料夾底下再分子資料夾時（如 3-2.佛學 分成
+    # 佛學總論、印度佛教…），order.md 以「子資料夾/檔名」引用。資料夾本身
+    # 是平的時候鍵就等於檔名，與原本行為相同。
+    # 「XXX_files」是瀏覽器另存網頁的資源資料夾，裡面的 .html 不是獨立頁面
+    html_files = {p.relative_to(folder).with_suffix('').as_posix()
+                  for p in folder.rglob('*.html')
+                  if not any(s.endswith('_files')
+                             for s in p.relative_to(folder).parts[:-1])}
     items = []
     for raw in order_file.read_text(encoding='utf-8').splitlines():
         line = raw.strip()
@@ -96,12 +111,14 @@ def parse_order(folder):
             items.append({'label': label, 'href': m.group('url'), 'external': True})
             continue
         if line in html_files:
-            items.append({'label': line, 'href': local_href(folder.name, line), 'external': False})
+            items.append({'label': display_label(line),
+                          'href': local_href(folder.name, line), 'external': False})
             continue
         m2 = LOCAL_LABEL_RE.match(line)
         name = m2.group('name').strip() if m2 else None
         if name and name in html_files:
-            items.append({'label': line, 'href': local_href(folder.name, name), 'external': False})
+            items.append({'label': display_label(line),
+                          'href': local_href(folder.name, name), 'external': False})
             continue
         print('[警告] %s/order.md 列了「%s」但資料夾內找不到對應的 .html 檔，已略過'
               % (folder.name, line))

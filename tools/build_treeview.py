@@ -94,21 +94,35 @@ GROUP_CHILD_RE = re.compile(r'^(\d+)-(\d+)\.(.+)$')
 GROUP_PARENT_RE = re.compile(r'^(\d+)\.(.+)$')
 
 
+def is_saved_asset(path, folder):
+    """瀏覽器「另存網頁」會把資源丟進與主檔同名的「XXX_files」資料夾，裡面的
+    .html 是附屬資源（如 saved_resource.html）而不是獨立頁面，不列入檔案樹。"""
+    return any(part.endswith('_files')
+               for part in path.relative_to(folder).parts[:-1])
+
+
 def build_folder_node(folder):
     """組出單一資料夾在檔案樹裡的節點：{'files': [...], 'total': N, 'orphans': N}。
     資料夾內沒有任何 .html 檔時回傳 None（沿用舊行為：空資料夾不產生節點）。"""
-    files = sorted(p for p in folder.iterdir()
-                   if p.is_file() and p.suffix.lower() == '.html')
+    # 連子資料夾一起收：分類資料夾底下再分子資料夾時（如 3-2.佛學 分成
+    # 佛學總論、印度佛教…），以「子資料夾/檔名」當鍵，order.md 也用同樣寫法
+    # 引用。資料夾本身是平的時候鍵就等於檔名，與原本行為相同。
+    def key_of(p):
+        return p.relative_to(folder).with_suffix('').as_posix()
+
+    files = sorted((p for p in folder.rglob('*.html')
+                    if p.is_file() and not is_saved_asset(p, folder)),
+                   key=key_of)
     if not files:
         return None
 
-    stems = {p.stem for p in files}
+    stems = {key_of(p) for p in files}
     structure = order_structure(folder, stems)
     labels = {it['name']: it['label'] for it in structure if it['name']}
     parent_of = {it['name']: it['parent'] for it in structure if it['name']}
     rank = {it['name']: i for i, it in enumerate(structure) if it['name']}
     # order.md 有列的排前面並照其順序，沒列的接在後面依檔名排
-    files.sort(key=lambda p: (rank.get(p.stem, len(rank)), p.name))
+    files.sort(key=lambda p: (rank.get(key_of(p), len(rank)), key_of(p)))
 
     # 未列入 order.md 的「孤兒檔」也比照書架巢狀：檔名字首跟某個書架檔名
     # （去掉結尾「書架」二字）相同的話，自動掛在該書架底下——書架本身通常
@@ -128,18 +142,20 @@ def build_folder_node(folder):
     top = []
     orphans = 0
     for p in files:
-        in_order = p.stem in rank
+        key = key_of(p)
+        in_order = key in rank
         if not in_order:
             orphans += 1
         item = {
-            'n': labels.get(p.stem, p.stem) + '.html',
-            'p': 'html/%s/%s' % (folder.name, p.name),
+            # 顯示名只取最後一段檔名，路徑則保留子資料夾
+            'n': labels.get(key, key).rsplit('/', 1)[-1] + '.html',
+            'p': 'html/%s/%s' % (folder.name, key + '.html'),
             's': p.stat().st_size,
             'o': in_order,
             'children': [],
         }
-        by_stem[p.stem] = item
-        parent = resolve_parent(p.stem)
+        by_stem[key] = item
+        parent = resolve_parent(key)
         if parent and parent in by_stem:
             by_stem[parent]['children'].append(item)
         else:
