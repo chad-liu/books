@@ -139,7 +139,7 @@ def build_folder_node(folder):
         return None
 
     by_stem = {}
-    top = []
+    top = []          # [(所屬子資料夾 or None, item)]
     orphans = 0
     for p in files:
         key = key_of(p)
@@ -159,8 +159,31 @@ def build_folder_node(folder):
         if parent and parent in by_stem:
             by_stem[parent]['children'].append(item)
         else:
-            top.append(item)
-    return {'files': top, 'total': len(files), 'orphans': orphans}
+            sub = key.rsplit('/', 1)[0] if '/' in key else None
+            top.append((sub, item))
+
+    # 子資料夾在檔案樹裡自成一層（收合式的 group 節點），檔案縮排到它底下。
+    # 子資料夾的先後＝它在 order.md 第一次出現的位置；order.md 沒提到的
+    # 接在最後。資料夾本身是平的時候完全不會產生 group 節點。
+    files_out, groups, seen = [], {}, []
+    for sub, item in top:
+        if sub is None:
+            files_out.append(item)
+            continue
+        if sub not in groups:
+            groups[sub] = []
+            seen.append(sub)
+        groups[sub].append(item)
+    sub_rank = {}
+    for key, i in rank.items():
+        s = key.rsplit('/', 1)[0] if '/' in key else None
+        if s is not None and s not in sub_rank:
+            sub_rank[s] = i
+    for sub in sorted(seen, key=lambda s: (sub_rank.get(s, len(rank)), s)):
+        kids = groups[sub]
+        files_out.append({'n': sub, 'group': True,
+                          'total': len(kids), 'children': kids})
+    return {'files': files_out, 'total': len(files), 'orphans': orphans}
 
 
 def collect():

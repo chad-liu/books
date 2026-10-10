@@ -63,6 +63,10 @@ display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
 .card h3 .cnt{color:#9ba4b4;font-size:.78rem;font-weight:400;margin-left:7px}
 ol{list-style-position:inside;font-size:.9rem;padding-left:.2rem}
 li{padding:3px 0;border-bottom:1px dashed #21304f}
+li.grp{list-style:none;border-bottom:none;padding:9px 0 0}
+li.grp>b{color:#8fa3c4;font-size:.84rem;font-weight:600;letter-spacing:.04em}
+li.grp>.cnt{color:#6b7688;font-size:.72rem;margin-left:6px}
+li.grp>ol{margin-top:3px;padding-left:.9rem;border-left:1px solid #24365c}
 li:last-child{border-bottom:none}
 li::marker{color:#6b7688}
 li a{color:#b8c5d6;text-decoration:none;display:inline;padding:2px 4px;border-radius:4px}
@@ -83,6 +87,11 @@ def local_href(folder_name, rel):
 def display_label(rel):
     """條目顯示名只取最後一段檔名，不把子資料夾名字也印出來。"""
     return rel.rsplit('/', 1)[-1]
+
+
+def group_of(rel):
+    """條目所屬的子資料夾（卡片裡的分組小標）；直接放在分類資料夾下就沒有分組。"""
+    return rel.rsplit('/', 1)[0] if '/' in rel else None
 
 
 def parse_order(folder):
@@ -108,17 +117,20 @@ def parse_order(folder):
         m = URL_RE.match(line)
         if m:
             label = m.group('label').strip() or m.group('url')
-            items.append({'label': label, 'href': m.group('url'), 'external': True})
+            items.append({'label': label, 'href': m.group('url'),
+                          'external': True, 'group': None})
             continue
         if line in html_files:
             items.append({'label': display_label(line),
-                          'href': local_href(folder.name, line), 'external': False})
+                          'href': local_href(folder.name, line),
+                          'external': False, 'group': group_of(line)})
             continue
         m2 = LOCAL_LABEL_RE.match(line)
         name = m2.group('name').strip() if m2 else None
         if name and name in html_files:
             items.append({'label': display_label(line),
-                          'href': local_href(folder.name, name), 'external': False})
+                          'href': local_href(folder.name, name),
+                          'external': False, 'group': group_of(name)})
             continue
         print('[警告] %s/order.md 列了「%s」但資料夾內找不到對應的 .html 檔，已略過'
               % (folder.name, line))
@@ -154,14 +166,35 @@ def build():
             '</div>', '</header>',
             '<main>', '<div class="grid">']
 
+    def entry_li(it):
+        cls = ' ext' if it['external'] else ''
+        return ('<li data-t="%s"><a class="%s" href="%s" target="_blank" '
+                'rel="noopener">%s</a></li>'
+                % (escape(it['label']), cls.strip(), escape(it['href']),
+                   escape(it['label'])))
+
     for i, (name, items) in enumerate(cards):
         out.append('<article class="card" id="cat-%d" data-name="%s">' % (i, escape(name)))
         out.append('<h3>%s<span class="cnt">%d 項</span></h3>' % (escape(name), len(items)))
         out.append('<ol>')
+        # 有子資料夾的分類：同一個子資料夾的條目收進一個分組小標底下，
+        # 順序完全照 order.md（子資料夾第一次出現的位置就是它的位置）。
+        # 沒有子資料夾的分類維持原本的平列。
+        cur = None
         for it in items:
-            cls = ' ext' if it['external'] else ''
-            out.append('<li data-t="%s"><a class="%s" href="%s" target="_blank" rel="noopener">%s</a></li>'
-                       % (escape(it['label']), cls.strip(), escape(it['href']), escape(it['label'])))
+            g = it.get('group')
+            if g != cur:
+                if cur is not None:
+                    out.append('</ol></li>')
+                if g is not None:
+                    n = sum(1 for x in items if x.get('group') == g)
+                    out.append('<li class="grp" data-g="%s"><b>%s</b>'
+                               '<span class="cnt">%d</span><ol>'
+                               % (escape(g), escape(g), n))
+                cur = g
+            out.append(entry_li(it))
+        if cur is not None:
+            out.append('</ol></li>')
         out.append('</ol></article>')
 
     out += ['</div>', '<div class="empty">找不到符合的項目</div>', '</main>',
@@ -177,7 +210,22 @@ function run() {
   document.querySelectorAll('.card').forEach(function (c) {
     var hitCard = c.dataset.name.toLowerCase().indexOf(t) >= 0;
     var any = hitCard;
-    c.querySelectorAll('li').forEach(function (li) {
+    // 分組（子資料夾）小標：組名本身命中就整組顯示，否則看組內條目，
+    // 整組都沒命中時連小標一起收起來。
+    c.querySelectorAll('li.grp').forEach(function (g) {
+      var hitGrp = hitCard || (!!t && g.dataset.g.toLowerCase().indexOf(t) >= 0);
+      var anyKid = false;
+      g.querySelectorAll('li[data-t]').forEach(function (li) {
+        var hit = !t || hitGrp || li.dataset.t.toLowerCase().indexOf(t) >= 0;
+        li.style.display = hit ? '' : 'none';
+        if (hit) anyKid = true;
+      });
+      g.style.display = (!t || anyKid) ? '' : 'none';
+      if (anyKid) any = true;
+    });
+    // 不屬於任何分組的條目（沒有子資料夾的分類）
+    c.querySelectorAll('li[data-t]').forEach(function (li) {
+      if (li.closest('li.grp')) return;
       var hit = !t || hitCard || li.dataset.t.toLowerCase().indexOf(t) >= 0;
       li.style.display = hit ? '' : 'none';
       if (hit) any = true;
