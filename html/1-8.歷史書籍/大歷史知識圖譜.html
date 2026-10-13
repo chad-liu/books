@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大歷史知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#546e7a;
+    --navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--copper:#d7655d;--steel:#4b89a8;--verde:#5d9b75;
+    --shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.08em;margin:0 0 12px}
+  .lede{margin:0;color:#dce7ef;font-size:15px;max-width:70ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.06em;margin:0 0 4px;color:var(--navy)}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;
+    background:var(--navy2);color:#fff;font-family:"Noto Sans TC",sans-serif;
+    font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin:0 0 16px 41px;color:var(--muted);font-size:13.5px}
+  section{background:var(--paper);border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section.part-divider{background:transparent;box-shadow:none;padding:8px 4px 4px;margin-bottom:6px}
+  section.part-divider .sub{margin-left:0;font-size:13px}
+  .frame{background:#f8fafc;border:1px solid var(--rule);border-radius:10px;padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .band h2{font-size:22px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule);margin-top:4px}
+  .card{padding:15px 16px;border-bottom:1px solid var(--rule);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:#b8442a} .re .nm{color:#8f5e14}
+  .fa .nm{color:#3d7a55} .hi .nm{color:#1f5c85}
+  blockquote{margin:0;background:var(--paper);border-radius:12px;
+    padding:18px 22px;border-left:5px solid var(--copper);box-shadow:var(--shadow);
+    font-family:"Noto Serif TC",serif;font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border-radius:12px;border-left:5px solid var(--brass);
+    padding:18px 22px;margin-bottom:22px;font-size:14px;text-align:left;
+    box-shadow:var(--shadow);color:var(--body)}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--navy)}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">大歷史・從宇宙到人類世界</p>
+  <h1>大歷史</h1>
+  <p class="lede">一般歷史從文字出現才開始，辛西婭・史托克斯・布朗卻把時間軸拉回一百三十七億年前的大霹靂，再一路講到恆星、地球、生命、人類、農業、城市、帝國、工業化，直到我們面對的環境與未來。她把這段旅程當作一個「科學性的創世故事」，讓人類史回到宇宙與地球的脈絡裡。這份圖譜依全書兩大部、十三章的順序，整理每一章的核心論證。</p>
+</header>
+
+<div class="callout">
+  <b>前言的提問：用最大的尺度看歷史</b><br>
+  如果把人類的故事放進宇宙與地球的歷史裡，我們會看到什麼不一樣的東西？作者主張，歷史不該只講國家與朝代，而應該先回答「我們從哪裡來」，再追問人類如何從漁獵採集走到全球互相依存的社會。每一章最後的「待解之謎」，提醒讀者這個故事並非定論，仍有大量問題等待後人探索。
+</div>
+
+<section class="part-divider">
+  <div class="band"><h2>第一部　深邃的宇宙</h2><span class="tag">THE DEPTHS OF TIME AND SPACE</span></div>
+  <p class="sub" style="margin:0">從大霹靂到智人占據全世界：宇宙、地球、生命與早期人類</p>
+</section>
+
+<section>
+  <h2>第一章——膨脹的宇宙</h2>
+  <p class="sub">一百三十七億年至四十六億年前：從大霹靂到太陽系的誕生</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="膨脹的宇宙結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">從一個難以想像的事件開始：大霹靂</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">宇宙膨脹、冷卻，星系與恆星陸續形成，最後孕育出太陽與地球</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">霧起霧散</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">宇宙從高溫高密的狀態迅速膨脹，約三十萬年後冷卻到光線能穿透</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">閃爍的星系</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">物質在重力作用下聚集成星系與恆星，核反應產生更重的化學元素</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">太陽的誕生</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">約四十六億年前，超新星爆炸的衝擊帶動物質聚攏，形成太陽與行星</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">待解之謎</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">這個故事奠基於科學家目前的理論，宇宙的起點與未來仍有不少未知</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">人類身體裡的元素，來自恆星內部與超新星爆炸</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">從最大的尺度看，我們與宇宙的歷史並非分開，這是大歷史敘事的出發點</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章把鏡頭拉近，看地球如何一步步孕育出生命</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第二章——孕育生命的地球</h2>
+  <p class="sub">四十六億年至五百萬年前：生命從單細胞演化到靈長類</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="孕育生命的地球結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">地球上的生命，花了將近四十億年才走到人類前夕</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">從細胞出現到動物上岸、恐龍滅絕，生命與地球彼此塑造</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">細胞與生命過程</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">三十九億年前出現的早期細胞，開始利用能量並自我複製</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">新細胞與兩性伴侶</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">更複雜的細胞出現，有性生殖加速了生物的多樣性與演化速度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">植物與動物上岸</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">植物覆蓋陸地、改變大氣，動物隨之離開海洋，適應新的環境</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">恐龍到黑猩猩</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">大滅絕之後，哺乳動物擴展，靈長類逐漸演化出與人類相近的祖先</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">生命史充滿偶然、滅絕與重新開始，並非一條筆直的進步階梯</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">地球的環境與生命不斷互相改變，人類是這段漫長過程的晚近產物</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章聚焦我們自己：人類這個新物種是如何出現的</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第三章——人類：一個新物種的誕生</h2>
+  <p class="sub">五百萬年至三萬年前：從直立人到智人占據全世界</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="人類新物種的誕生結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">人類是漫長演化中的一個新物種</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">從直立人到智人，人類逐步擴散，並逐漸取代其他人屬物種</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">從分歧演化到直立人</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">人類與黑猩猩分家後，演化出直立行走與更大的腦，難以精確劃出界</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">線</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">直立人的後裔</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">直立人的後代分化成幾個不同群體，各自適應不同的地區與環境</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">智人占據全世界</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">智人從非洲擴散到各大陸，並逐步取代其他人屬，成為唯一倖存者</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">待解之謎</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">智人最早在哪裡、何時出現，與其他人類的關係為何，仍存在爭論</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">人類的獨特之處，在於逐步累積的合作、工具與溝通能力</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">我們是演化的結果，不是終點，也並非從一開始就注定成為地球的主宰</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看智人如何在冰河時期靠漁獵與採集生活</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第四章——先進的漁獵與採集技術</h2>
+  <p class="sub">三萬五千年至一萬年前：冰河時期的漁獵採集社會</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="先進的漁獵與採集技術結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">漁獵採集者靠語言與合作，在冰河時期生存</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">海平面變動與基因流動，讓人類群體不斷遷徙並適應新環境</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">漁獵採集者的語言</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">專家相信這時期人類已有語言，使知識累積與群體合作成為可能</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">海平面上升</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">冰河消退使海平面上升，淹沒陸橋與沿海營地，迫使人群重新遷徙</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">基因流動與適應</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">人群遷徙與通婚帶來基因交流，並逐漸產生對不同環境的適應</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">待解之謎</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">我們該如何評價漁獵採集時代的生活？這是一個涉及價值判斷的問題</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">漁獵採集生活並非單純的原始，而是長期適應環境的成熟策略</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">約一萬年前氣候轉暖，為下一階段的人類歷史，也就是農業，創造了條件</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">第二部要講的，就是這溫暖的一萬年裡發生的事</text>
+</svg>
+  </div>
+</section>
+
+<section class="part-divider">
+  <div class="band"><h2>第二部　溫暖的一萬年</h2><span class="tag">TEN THOUSAND WARM YEARS</span></div>
+  <p class="sub" style="margin:0">從農業起源到全球化與現代危機：人類在間冰期創造的文明</p>
+</section>
+
+<section>
+  <h2>第五章——早期農業</h2>
+  <p class="sub">西元前八千年至西元前三千五百年：馴化動植物與定居生活</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="早期農業結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">馴化動植物，改變了人類與土地的關係</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">定居村落出現後，人口、財產與社會分工都開始改變</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">植物和動物被馴化</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">人類不是最早或唯一的農夫，許多地區各自獨立發展出農業</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">三個小鎮</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">從敘利亞等地的聚落可看到定居、儲糧與村落規模逐漸擴大的過程</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">定居的影響</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">定居帶來人口增加、財產累積與分工，也帶來疾病與不平等</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">持續存在的漁獵者</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">並非所有人都轉向農業，漁獵採集者與游牧者長期並存</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">農業不是單一的發明，而是各地逐步摸索出的不同生存方式</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">定居與糧食剩餘，為城市、國家與階層化的社會鋪好了基礎</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看這些聚落如何發展成最早的城市</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第六章——早期城市</h2>
+  <p class="sub">西元前三千五百年至西元前八百年：最早的城市與國家</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="早期城市結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">糧食剩餘孕育出最早的城市文明</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">蘇美人、印度、埃及與中國，各自發展出城市與政治組織</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">蘇美人</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">美索不達米亞的蘇美城市發展出灌溉、文字、神廟與階層化的社會</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">印度、埃及與中國</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">其他河谷流域各自發展出城市文化，形式不同卻有相似的挑戰</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">城市的轉捩點</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">城市集中了人口、財富與權力，也帶來戰爭、剝削與環境壓力</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">待解之謎</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">文明是在某一處發展後再流傳，還是在多處獨立發生，仍有討論</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">城市讓人類得以大規模合作，同時也把不平等制度化</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">早期城市的興衰，預示了後來帝國在資源、人口與權力之間的拉扯</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看這些城市如何連成橫跨歐亞非的網絡</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第七章——歐亞非的網絡</h2>
+  <p class="sub">西元前八百年至西元二百年：古典文明與世界性宗教</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐亞非的網絡結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">印度、中國、希臘與羅馬，構成古典時代的文明網絡</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">帝國擴張與商路連結，也促成思想與世界性宗教的傳播</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">印度與中國</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">印度發展出多元的宗教與城邦，中國則在祖先崇拜與政治統一中前進</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">希臘與羅馬</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">希臘城邦發展出辯論與哲學，羅馬則以軍事與法律建立龐大帝國</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">人口、環境與宗教</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">漢與羅馬帝國時期人口與環境壓力上升，世界性宗教開始擴散</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">待解之謎</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">世界性宗教為何在這個時期集中出現，史學家和哲學家看法不一</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">古典文明各有特色，但已透過貿易與征服彼此影響</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">帝國與宗教提供了超越血緣與城邦的新認同，也創造新的衝突來源</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看這張網絡如何擴展，並出現新的核心</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第八章——歐亞非網絡的擴展</h2>
+  <p class="sub">西元二百年至一千年：伊斯蘭興起與中國復興</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐亞非網絡的擴展結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">歐亞非網絡持續擴大，新的中心陸續崛起</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">伊斯蘭世界與復興的中國，成為連接各地的重要樞紐</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">中央核心</text>
+  <text x="245" y="156.0" font-size="12" text-anchor="middle" fill="#8a6a35">西元二百至六百年間，歐亞非的核心區域交織著帝國與宗教勢力的變</text>
+  <text x="245" y="172.0" font-size="12" text-anchor="middle" fill="#8a6a35">動</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">伊斯蘭興起與中國復興</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">伊斯蘭世界迅速擴張，中國隋唐統一再度成為網絡中的重要力量</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">網絡的邊緣與界線</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">網絡邊緣的區域與核心互相影響，界線隨貿易與征戰不斷移動</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">複雜社會的代價</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">社會越複雜，越需要更多資源與勞力，也帶來階級與環境負擔</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">網絡的擴大促進了知識與商品流動，也擴散了疾病與衝突</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">複雜社會需要付出代價，這是理解之後帝國興衰的重要線索</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章換個視角，看美洲獨立發展的文明</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第九章——美洲文明的興起</h2>
+  <p class="sub">西元二百年至一千四百五十年：與歐亞非隔絕的獨立文明</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="美洲文明的興起結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美洲在與歐亞非隔絕下，獨立發展出複雜文明</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">中美洲與南美洲各自形成城市中心，並適應截然不同的環境</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">人類的出現</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">人類約一萬四千年前以前就已進入美洲，逐步散布到各個區域</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">中美洲的城市中心</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">中美洲發展出以玉米為基礎的農業與城市，文字與曆法也相當發達</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">南美洲的城市中心</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">安地斯山區的垂直地形促成獨特的資源調度，發展出龐大的帝國組織</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">歐亞非脈絡下的美洲</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">美洲提供了人類社會獨立演化的對照，讓我們比較不同的發展路徑</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">美洲文明證明，複雜社會可以在沒有歐亞非影響下獨立出現</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">但這種隔絕，也讓美洲在與歐亞非接觸後，面臨疾病與軍事上的劇烈衝擊</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章回到歐亞非，看蒙古如何串起大陸</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第十章——歐亞非一體化</h2>
+  <p class="sub">西元一千年至一千五百年：蒙古擴張與歐亞網絡的整合</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="歐亞非一體化結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">蒙古的擴張，讓歐亞大陸連成一個整體</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">帝國的征服帶來破壞，也推動了貿易、技術與疾病的傳播</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">蒙古的興起與擴張</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">蒙古人在草原上組成強大騎兵，建立橫跨歐亞的龐大帝國</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">元帝國與明帝國</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">蒙古統治中國後建立元朝，之後漢人政權重建，改變了中國的對外態</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">度</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">伊斯蘭世界與歐洲</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">蒙古影響了伊斯蘭世界的政治，而歐洲在這段時期也逐步恢復活力</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">歐亞核心的邊陲</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">歐洲與亞洲的太平洋沿岸，在此階段還只是歐亞核心之外的邊陲</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">蒙古時代使東西交流空前緊密，也讓黑死病等疾病沿商路擴散</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">歐洲在這個時期仍是邊陲，但已累積了日後向外擴張的條件</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看十五世紀以後的航海，如何把世界真正連在一起</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第十一章——航海通世界</h2>
+  <p class="sub">西元一四五○年至一八○○年：航海大發現與全球貿易</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="航海通世界結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">航海技術讓世界各大洲第一次連在一起</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">哥倫布橫渡大西洋後，歐洲主導了一個全球交換的新體系</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">時勢造英雄</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">到一五○○年前後，全球網絡已準備好，哥倫布的航行是時代的產物</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">初次相遇</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">歐洲人與美洲原住民相遇後，征服、疾病與文化衝突隨之而來</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">全球交易</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">白銀、作物與奴隸沿全球航線流動，重塑各大洲的經濟與社會</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">宗教、科學與戰爭</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">宗教改革、科學革命與戰爭，同時推動歐洲內部的劇烈轉變</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">全球貿易帶來財富與交流，也造成奴隸貿易等沉重的代價</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">奴隸貿易對非洲的影響，是本章留給讀者的重要待解之謎</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">下一章看工業化如何再次改變人類社會的規模</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第十二章——工業化</h2>
+  <p class="sub">西元一七五○年至二○○○年：資本主義、工業革命與世界大戰</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="工業化結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">工業化改變了人類社會，也改變了地球</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">資產階級的崛起、工業革命、帝國主義與世界大戰，構成現代世界</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">資產階級的力量</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">商人與工業家取得經濟與政治影響力，推動社會朝市場與資本傾斜</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">工業革命</text>
+  <text x="695" y="162.0" font-size="12" text-anchor="middle" fill="#96604f">新能源與機械使生產力大幅提升，工業化成為全球性現象</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">帝國主義與世界大戰</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">工業國家爭奪資源與市場，最終引爆兩次規模空前的世界大戰</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">美國領導全世界</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">二戰後美國成為主導力量，全球經濟與政治進入新的格局</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">工業化帶來前所未有的財富與人口成長，也帶來前所未有的破壞力</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">資本主義的定義與評價，是這一章留下的重要待解之謎</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">最後一章要把視線轉向現在與未來，看人類如今面臨的處境</text>
+</svg>
+  </div>
+</section>
+
+<section>
+  <h2>第十三章——現在與未來</h2>
+  <p class="sub">人類是否能在地球有限的資源下，走向可持續的未來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 416" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="現在與未來結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">人類已成為改變地球的力量</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#546e7a">空氣、森林、土壤、水與輻射，都顯示出人類活動的深遠影響</text>
+
+  <rect x="40" y="115.5" width="410" height="71.5" rx="3" fill="#fdf5e7" stroke="#e0b775"/>
+  <text x="245" y="138.0" font-size="14" text-anchor="middle" fill="#8f5e14" font-weight="700">幾種全球尺度</text>
+  <text x="245" y="162.0" font-size="12" text-anchor="middle" fill="#8a6a35">二○○○年地球有六十一億人，各種全球性的問題因此相互牽連</text>
+
+  <rect x="490" y="115.5" width="410" height="71.5" rx="3" fill="#fdeeeb" stroke="#dda695"/>
+  <text x="695" y="138.0" font-size="14" text-anchor="middle" fill="#b8442a" font-weight="700">試驗地球</text>
+  <text x="695" y="156.0" font-size="12" text-anchor="middle" fill="#96604f">人類以智慧與巧思提高生產力，卻也在無意中進行一場大規模的地球</text>
+  <text x="695" y="172.0" font-size="12" text-anchor="middle" fill="#96604f">實驗</text>
+
+  <rect x="40" y="207" width="410" height="71.5" rx="3" fill="#eaf2f7" stroke="#8fb4c9"/>
+  <text x="245" y="229.5" font-size="14" text-anchor="middle" fill="#1f5c85" font-weight="700">空氣、森林、土壤、水</text>
+  <text x="245" y="253.5" font-size="12" text-anchor="middle" fill="#37607a">都市化、燃料與農業活動，持續改變大氣、森林、土壤與水資源</text>
+
+  <rect x="490" y="207" width="410" height="71.5" rx="3" fill="#ecf5ef" stroke="#9dc3a9"/>
+  <text x="695" y="229.5" font-size="14" text-anchor="middle" fill="#3d7a55" font-weight="700">輻射與短期事態</text>
+  <text x="695" y="253.5" font-size="12" text-anchor="middle" fill="#446b53">核武與輻射帶來新的風險，人類正處於前所未有的環境與政治困境</text>
+
+<rect x="80" y="308.5" width="780" height="87.2" rx="3" fill="#f6f9fb" stroke="#d7e0e6"/>
+<text x="470" y="331" font-size="14" text-anchor="middle" fill="#59707b" font-family="'Noto Serif TC',serif" font-weight="600">作者以宇宙的長遠視角提醒我們，人類只是很年輕的物種</text>
+<text x="470" y="349" font-size="12" text-anchor="middle" fill="#546e7a">我們能否調整行為、走向可持續的未來，是全書最後也最迫切的待解之謎</text>
+<text x="470" y="365" font-size="11" text-anchor="middle" fill="#59707b">大歷史的意義，在於讓我們在最大的脈絡中，重新思考自己的選擇</text>
+</svg>
+  </div>
+</section>
+
+<section>
+<div class="callout">
+  <b>全書的核心提醒</b><br>
+  大歷史把宇宙、地球、生命與人類放在同一個時間軸上，讓我們看見人類社會是長期演化的結果，而不是歷史的起點與終點。每一章末尾的「待解之謎」，也提醒讀者：這個故事建立在目前的科學理解之上，並隨著新的發現而修正。最終，它邀請我們以更長遠、更跨領域的視野，思考人類下一步該如何選擇。
+</div>
+</section>
+
+<section>
+  <div class="band"><h2>本書受到的核心批評</h2><span class="tag">CRITICAL RECEPTION</span></div>
+  <p class="sub" style="margin:0 0 4px">大歷史作為一種嶄新的歷史寫法，也引來史學界與科學界針對方法與立場的不少質疑</p>
+  <div class="grid ri">
+    <div class="card"><div class="nm">被批評為廣度犧牲深度</div><p>把一百三十七億年壓縮進一本書，必然得大量取捨。批評者認為，這樣的寫法容易讓重要的歷史事件與爭論只剩概述，專業歷史學者在各章中，往往會覺得自己熟悉的領域被簡化得過於粗略，難以呈現各地區、各時期的複雜細節。</p></div>
+    <div class="card"><div class="nm">被視為現代版創世神話</div><p>作者自己稱它是「科學性的創世故事」，這種定位同時也是爭議點。有學者擔心，宏大敘事容易夾帶進步、目的論或某種價值觀，使一個本來基於科學的故事，不知不覺帶有安排好的方向感，與強調偶然與多元的現代史學傾向相衝突。</p></div>
+    <div class="card"><div class="nm">跨學科整合的專業門檻</div><p>大歷史需要同時掌握天文、地質、生物、人類學與歷史等多個領域。批評者指出，單一作者很難在每個領域都達到專家水準，書中部分科學細節與歷史詮釋，可能依賴二手資料，或採用其中一方的主流看法，而把仍在爭論的問題簡化處理。</p></div>
+    <div class="card"><div class="nm">敘事重心與取材偏向</div><p>雖然全書努力涵蓋歐亞非與美洲，批評者仍指出，近代部分的敘事重心還是落在歐洲與美國如何主導現代世界。後半部的工業化與全球化，往往以西方的經驗作為主軸，其他地區的角色相對被放在「被影響」的位置。</p></div>
+    <div class="card"><div class="nm">末章帶有倡議色彩</div><p>第十三章談環境危機與人類未來，立場鮮明。支持者認為這是歷史學應有的現實關懷，也有批評者認為，歷史學者一旦進入預測與倡議，就超出了史料能支持的範圍，使全書後段的分析性質減弱、規範性質增強。</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <b>另一面的價值與整體反思</b><br>
+    這些批評多半不否認大歷史的價值，而是提醒它的界線：它擅長提供宏觀脈絡與跨學科的連結，卻不能取代針對特定時代與地區的深入研究。即使是批評者，也普遍肯定本書把「待解之謎」明白寫出來，讓讀者看到知識的邊界；把它當作一張大尺度的地圖，再搭配專題著作補足細節，會是更穩妥的讀法。
+  </div>
+</section>
+
+<footer>
+  知識圖譜｜依《大歷史：從宇宙大霹靂到今天的人類世界》兩大部、十三章順序整理｜原著：辛西婭・史托克斯・布朗
+</footer>
+
+</div>
+</body>
+</html>
