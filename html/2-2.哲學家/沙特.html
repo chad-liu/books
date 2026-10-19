@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>沙特知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">主張人完全自由，晚年卻轉向結構分析・第一位主動拒領諾貝爾文學獎的人・他人即地獄常被讀錯</p>
+  <h1>沙特知識圖譜</h1>
+  <p class="lede">〈存在主義〉頁已寫過存在先於本質、絕對自由與《存在與虛無》，〈卡繆知識圖譜〉也已處理一九五一至五二年那場終結兩人友誼的論戰，這裡都不重複。這一頁處理兩件較少被提起的事：第一，一個把自由推到極限的哲學家，為什麼晚年會寫出《辯證理性批判》這樣一部談結構與歷史的著作；第二，他從創辦《現代》雜誌到上街售報的三十五年政治介入，以及他為什麼認為寫作者沒有不表態的權利——包括一九六四年那次拒領諾貝爾文學獎，他拒絕的理由與「介入」是同一條思路。</p>
+</header>
+<section>
+  <h2>《辯證理性批判》：把自由接回歷史</h2>
+  <p class="sub">為什麼一個主張人完全自由的哲學家，晚年會走向馬克思主義的結構分析</p>
+  <div class="frame">
+<svg viewBox="0 0 940 378.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沙特晚期轉向結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">一九六〇年的《辯證理性批判》，是沙特試圖把早期的個人自由理論接上歷史與集體的一次大工程</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他不再只談個別意識如何選擇，而是追問：既然人是自由的，為什麼歷史看起來總是重複同樣的結構？</text>
+<rect x="40" y="115.5" width="200" height="126.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">早期的起點</text>
+<text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1943年</text>
+<text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">《存在與虛無》以個別</text>
+<text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">意識的自由為核心，</text>
+<text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">較少處理集體與歷史</text>
+<text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">這一階段的內容見〈存在主義〉頁</text>
+<rect x="260" y="115.5" width="200" height="126.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">遇到的難題</text>
+<text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1950年代</text>
+<text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">若人完全自由，壓迫</text>
+<text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">結構為何能長期延續？</text>
+<text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">個人選擇解釋不了</text>
+<text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">這促使他轉向馬克思主義的分析工具</text>
+<rect x="480" y="115.5" width="200" height="126.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">《辯證理性批判》</text>
+<text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1960年</text>
+<text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">提出「實踐惰性」：人</text>
+<text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">的行動會固結成反過來</text>
+<text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">制約後人的物質結構</text>
+<text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">他稱存在主義是馬克思主義的飛地</text>
+<rect x="700" y="115.5" width="200" height="126.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">未完成的第二卷</text>
+<text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1985年</text>
+<text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">第二卷生前未完成，</text>
+<text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">過世後才整理出版，</text>
+<text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">體系終究沒有收尾</text>
+<text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">晚年視力惡化後已無法獨力寫作</text>
+<rect x="80" y="272" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="294.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">這次轉向的核心，是把「自由」放回它會被卡住的地方</text>
+<text x="470" y="312.5" font-size="12" text-anchor="middle" fill="#7f6d34">早期的沙特幾乎把自由推到極限——人在任何處境下都仍在選擇。但這解釋不了階級、制度與匱乏</text>
+<text x="470" y="328.5" font-size="12" text-anchor="middle" fill="#7f6d34">為何能持續限制人。「實踐惰性」是他的答案：自由的產物會變成物，然後回過頭來限制自由</text>
+<text x="470" y="344.5" font-size="11" text-anchor="middle" fill="#59707b">也因此，他晚年的政治行動不是哲學之外的插曲，而是同一條思路的延伸</text>
+</svg>
+  </div>
+</section>
+<section>
+  <h2>介入：從創刊到上街</h2>
+  <p class="sub">沙特認為寫作者沒有不表態的權利，這條原則貫穿他戰後的三十五年</p>
+  <div class="frame">
+<svg viewBox="0 0 940 461" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沙特政治介入軌跡圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">沙特把「介入」視為寫作者的義務，從一九四五年創辦刊物開始，持續到生命的最後幾年</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他的立場屢次改變，但介入本身從未中斷</text>
+<rect x="40" y="115.5" width="410" height="94.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">創辦《現代》雜誌</text>
+<text x="245" y="156" font-size="11" text-anchor="middle" fill="#846a36">1945年</text>
+<text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">與波娃等人創刊，主張文學應介入當下，</text>
+<text x="245" y="188" font-size="12" text-anchor="middle" fill="#846a36">此後成為法國左翼論述的重要陣地</text>
+<rect x="490" y="115.5" width="410" height="94.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">阿爾及利亞戰爭中表態</text>
+<text x="695" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1960年</text>
+<text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">公開支持阿爾及利亞獨立，並簽署主張</text>
+<text x="695" y="188" font-size="12" text-anchor="middle" fill="#995a3d">士兵有權拒絕服役的《一二一人宣言》</text>
+<rect x="40" y="230" width="410" height="94.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="245" y="252.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">支持一九六八年的學生運動</text>
+<text x="245" y="270.5" font-size="11" text-anchor="middle" fill="#3e7198">1968年</text>
+<text x="245" y="286.5" font-size="12" text-anchor="middle" fill="#3e7198">在五月風暴中站到學生一邊，並公開</text>
+<text x="245" y="302.5" font-size="12" text-anchor="middle" fill="#3e7198">訪談運動的代表性人物</text>
+<rect x="490" y="230" width="410" height="94.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="695" y="252.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">上街販售左翼刊物</text>
+<text x="695" y="270.5" font-size="11" text-anchor="middle" fill="#337d46">1970年代</text>
+<text x="695" y="286.5" font-size="12" text-anchor="middle" fill="#337d46">掛名激進刊物負責人並親自上街發售，</text>
+<text x="695" y="302.5" font-size="12" text-anchor="middle" fill="#337d46">當局未予逮捕</text>
+<rect x="80" y="354.5" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="377" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">他的政治判斷多次被後來的事實推翻，但他從不認為可以不表態</text>
+<text x="470" y="395" font-size="12" text-anchor="middle" fill="#7f6d34">沙特對蘇聯、對毛派運動的評估都歷經反覆，有些立場日後被廣泛批評。然而在他的框架裡，</text>
+<text x="470" y="411" font-size="12" text-anchor="middle" fill="#7f6d34">拒絕選邊本身就已經是一種選擇——沉默不會讓人免責，只會讓人裝作自己不自由</text>
+<text x="470" y="427" font-size="11" text-anchor="middle" fill="#59707b">與卡繆的決裂正是這種立場最著名的一次代價，該段始末見另一頁</text>
+</svg>
+  </div>
+</section>
+<section>
+  <h2>一九六四年：第一位主動拒領諾貝爾文學獎的人</h2>
+  <p class="sub">他事前已去信請求不要考慮自己，獎項仍然公布，於是公開拒絕</p>
+  <div class="frame">
+<svg viewBox="0 0 940 378.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沙特拒絕諾貝爾獎始末圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">一九六四年，沙特成為第一位主動拒領諾貝爾文學獎的得主</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">他事前已去信請求不要考慮自己，但信件沒有來得及產生作用</text>
+<rect x="40" y="115.5" width="200" height="126.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">自傳《詞語》出版</text>
+<text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1964年</text>
+<text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">回顧童年與他如何走上</text>
+<text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">寫作之路，被視為他</text>
+<text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">文學成就的總結</text>
+<text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">出版同年即傳出獲獎消息</text>
+<rect x="260" y="115.5" width="200" height="126.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">事前去信婉拒</text>
+<text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1964年10月</text>
+<text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">得知可能獲獎後主動致</text>
+<text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">函學院，請求不要將他</text>
+<text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">列入考慮</text>
+<text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">信件未能及時改變評選結果</text>
+<rect x="480" y="115.5" width="200" height="126.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">公開宣布拒絕受獎</text>
+<text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1964年10月</text>
+<text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">獎項仍然公布後，他隨</text>
+<text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">即發表聲明拒領，並</text>
+<text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">說明拒絕的理由</text>
+<text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">他未出席頒獎，獎金亦未領取</text>
+<rect x="700" y="115.5" width="200" height="126.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">並非針對這一個獎</text>
+<text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">一貫立場</text>
+<text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">他戰後已婉拒榮譽軍團</text>
+<text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">勳章，拒絕的是官方</text>
+<text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">榮譽這件事本身</text>
+<text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">他聲明若獲列寧獎也同樣會拒絕</text>
+<rect x="80" y="272" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="294.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">他要守住的不是清高，而是一個發言位置</text>
+<text x="470" y="312.5" font-size="12" text-anchor="middle" fill="#7f6d34">沙特的理由始終圍繞同一點：作家的力量來自他只以自己的名義說話。一旦掛上官方頭銜，</text>
+<text x="470" y="328.5" font-size="12" text-anchor="middle" fill="#7f6d34">他此後每一次政治表態都會被那個頭銜加權，而那份權威不是他自己掙來的，也不受他控制</text>
+<text x="470" y="344.5" font-size="11" text-anchor="middle" fill="#59707b">拒絕的完整理由另見哲學家資料夾該頁</text>
+</svg>
+  </div>
+</section>
+<section>
+  <div class="band"><h2>他拒絕諾貝爾獎的三個理由</h2><span class="tag">THE REFUSAL</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">作家不該變成機構</div><p>他主張作家一旦接受官方榮譽，就等於讓自己被體制收編，從此以機構的身分發言。</p></div>
+    <div class="card"><div class="nm">簽名的重量會改變</div><p>他指出「沙特」與「諾貝爾獎得主沙特」不是同一個簽名，後者會替他的政治表態加上他不願要的權威。</p></div>
+    <div class="card"><div class="nm">冷戰格局下的偏向</div><p>他表示當時的文化榮譽實際上分屬兩個陣營，並聲明若有人授予他列寧獎，他同樣會拒絕。</p></div>
+  </div>
+</section>
+<section>
+  <div class="notes">
+    <div class="note"><b>「他人即地獄」不是厭世</b><span>這句出自劇作《禁閉》，常被讀成人際關係必然痛苦。沙特本人後來特地澄清：他的意思是，當一個人只能透過他人的眼光來認識自己、而這層關係又已經扭曲時，他人才成為地獄——這是對特定狀態的描述，不是對人際關係的全稱判斷。</span></div>
+    <div class="note"><b>他起初也不接受「存在主義」這個標籤</b><span>這個名稱最初帶有外界貼標籤的意味，沙特一開始同樣抗拒，後來才接受並主動為它辯護。他與卡繆在這點上的差別不在接不接受，而在接受之後怎麼用。</span></div>
+    <div class="note"><b>與共產黨的關係反覆而非一貫</b><span>他長期與法國共產黨既合作又衝突，對蘇聯的評估也多次修正，一九五六年匈牙利事件後公開決裂。把他簡化成「親蘇」或「反蘇」都不準確。</span></div>
+    <div class="note"><b>晚年失明終結了他的寫作</b><span>一九七〇年代初視力嚴重惡化後，他無法再獨力寫作，後期的思想主要透過口述與長篇對談留下，這也是第二卷始終未能完成的直接原因。</span></div>
+  </div>
+</section>
+<div class="callout">
+  <b>與波娃：五十一年，沒有結婚</b><br>
+  沙特與西蒙・波娃一九二〇年代末在高等師範學院的考試準備中結識，此後維持了五十一年的伴侶與思想夥伴關係，直到沙特一九八〇年過世。兩人始終沒有結婚，也沒有要求彼此排他，而是以一種公開約定的方式區分彼此關係的主次。<br>
+  這段關係常被浪漫化為一種理想典範，<b>但雙方留下的書信與日記出版後，也引來關於權力不對等與對第三方的影響等批評</b>。兩人最終合葬於巴黎蒙帕納斯公墓。波娃本人的思想另見〈存在主義〉頁。
+</div>
+
+<section>
+  <blockquote>
+    他人即地獄。
+    <cite>劇作《禁閉》。三個死者被關進同一個房間，沒有刑具也沒有出口，彼此的注視就是全部的懲罰。沙特後來強調這句話描述的是關係已經扭曲後的狀態，而不是說與人相處本身就是地獄。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦沙特晚期的理論轉向與政治介入。存在先於本質、絕對自由、壞信仰與《存在與虛無》的內容，已見<a href="../2-1.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%AD%98%E5%9C%A8%E4%B8%BB%E7%BE%A9.html">〈存在主義〉</a>，此處不重複；他與卡繆在一九五一至五二年的論戰始末，見<a href="../2-2.%E5%93%B2%E5%AD%B8%E5%AE%B6/%E5%8D%A1%E7%B9%86.html">〈卡繆知識圖譜〉</a>。上街售報未遭逮捕一事的相關軼聞流傳甚廣但出處不一，此處僅記述事實部分；他的小說與劇作本頁僅在必要處提及，未另立作品專節。
+</footer>
+
+</div>
+</body>
+</html>

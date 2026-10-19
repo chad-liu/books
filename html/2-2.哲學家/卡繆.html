@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>卡繆知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">唯一嚴肅的哲學問題是自殺・連信仰之躍也被他當成逃避・一本書結束一段友誼</p>
+  <h1>卡繆知識圖譜</h1>
+  <p class="lede">〈存在主義〉頁已寫過卡繆在譜系上的位置，以及他公開拒絕「存在主義者」這個標籤，這裡不重複。這一頁處理兩件更細的事：第一，《薛西弗斯的神話》的論證究竟怎麼推進——它如何把自殺當成起點，又為什麼連訴諸信仰也被歸為「哲學性的自殺」而排除；第二，一九五一年《反抗者》出版後引發的論戰，如何在一年內結束他與沙特的友誼，而那場爭執真正的分歧點又在哪裡。</p>
+</header>
+<section>
+  <h2>《薛西弗斯的神話》：論證怎麼推進</h2>
+  <p class="sub">從「自殺是不是首要的哲學問題」出發，排除兩條出路，最後抵達反抗</p>
+  <div class="frame">
+<svg viewBox="0 0 940 378.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="薛西弗斯的神話論證結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">《薛西弗斯的神話》不是從「人生有沒有意義」開始，而是從一個更直接的問題開始</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">它把自殺當作首要的哲學問題，然後逐步排除兩條看似合理的出路</text>
+<rect x="40" y="115.5" width="200" height="126.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">起點：自殺是首要問題</text>
+<text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">論證第一步</text>
+<text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">若生命沒有終極意義，</text>
+<text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">那麼繼續活下去是否</text>
+<text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">還有理由？</text>
+<text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">他主張這是首要的哲學問題</text>
+<rect x="260" y="115.5" width="200" height="126.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">荒謬不在人也不在世界</text>
+<text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">論證第二步</text>
+<text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">荒謬產生於兩者的對峙</text>
+<text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">——人要求意義，世界</text>
+<text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">保持沉默</text>
+<text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">取消任何一方，荒謬就消失了</text>
+<rect x="480" y="115.5" width="200" height="126.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">否決兩條出路</text>
+<text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">論證第三步</text>
+<text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">肉體的自殺取消了人；</text>
+<text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">訴諸信仰的跳躍取消了</text>
+<text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">世界的沉默</text>
+<text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">他稱後者為哲學性的自殺</text>
+<rect x="700" y="115.5" width="200" height="126.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">第三條路：反抗</text>
+<text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">論證第四步</text>
+<text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">既不自殺也不跳躍，而</text>
+<text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">是保持這份張力，在</text>
+<text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">清醒中繼續生活</text>
+<text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">反抗不是解決荒謬，而是拒絕取消它</text>
+<rect x="80" y="272" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="294.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">這個論證的特點，是把兩個最常見的答案都當成逃避而排除掉</text>
+<text x="470" y="312.5" font-size="12" text-anchor="middle" fill="#7f6d34">多數面對虛無的思路，不是走向結束生命，就是走向某種超越性的信仰。卡繆認為這兩者都以</text>
+<text x="470" y="328.5" font-size="12" text-anchor="middle" fill="#7f6d34">取消問題的方式回答問題：前者消去提問的人，後者消去世界的沉默。他要求留在原地承受矛盾</text>
+<text x="470" y="344.5" font-size="11" text-anchor="middle" fill="#59707b">全書以一句結論收尾：必須想像薛西弗斯是快樂的</text>
+</svg>
+  </div>
+</section>
+<section>
+  <h2>一九五二年：一本書結束一段友誼</h2>
+  <p class="sub">《反抗者》引發的論戰，使卡繆與沙特終生不再往來</p>
+  <div class="frame">
+<svg viewBox="0 0 940 493" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="卡繆與沙特決裂結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">一九五一年《反抗者》出版後，卡繆與沙特之間長年的友誼在一年內徹底結束</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">爭執的核心不是個人恩怨，而是革命暴力能否以歷史的必然性被正當化</text>
+<rect x="40" y="115.5" width="410" height="110.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">《反抗者》出版</text>
+<text x="245" y="156" font-size="11" text-anchor="middle" fill="#846a36">1951年</text>
+<text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">書中追問反抗如何在革命過程中</text>
+<text x="245" y="188" font-size="12" text-anchor="middle" fill="#846a36">倒轉為新的壓迫，並質疑以歷史</text>
+<text x="245" y="204" font-size="12" text-anchor="middle" fill="#846a36">必然性為名的暴力</text>
+<rect x="490" y="115.5" width="410" height="110.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">《現代》雜誌刊出嚴厲書評</text>
+<text x="695" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1952年</text>
+<text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">沙特主編的刊物刊出法蘭西斯・</text>
+<text x="695" y="188" font-size="12" text-anchor="middle" fill="#995a3d">讓松撰寫的長篇負評，指其論述</text>
+<text x="695" y="204" font-size="12" text-anchor="middle" fill="#995a3d">脫離實際歷史處境</text>
+<rect x="40" y="246" width="410" height="110.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="245" y="268.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">卡繆致信「主編先生」</text>
+<text x="245" y="286.5" font-size="11" text-anchor="middle" fill="#3e7198">1952年</text>
+<text x="245" y="302.5" font-size="12" text-anchor="middle" fill="#3e7198">他越過書評作者，直接去信刊物</text>
+<text x="245" y="318.5" font-size="12" text-anchor="middle" fill="#3e7198">主編沙特，認為對方應為這篇</text>
+<text x="245" y="334.5" font-size="12" text-anchor="middle" fill="#3e7198">評論的立場負責</text>
+<rect x="490" y="246" width="410" height="110.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="695" y="268.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">沙特親自撰文回覆</text>
+<text x="695" y="286.5" font-size="11" text-anchor="middle" fill="#337d46">1952年</text>
+<text x="695" y="302.5" font-size="12" text-anchor="middle" fill="#337d46">沙特以公開信回應，語氣嚴厲，</text>
+<text x="695" y="318.5" font-size="12" text-anchor="middle" fill="#337d46">兩人的友誼自此結束，終生</text>
+<text x="695" y="334.5" font-size="12" text-anchor="middle" fill="#337d46">未再修復</text>
+<rect x="80" y="386.5" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="409" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">兩人分歧的真正所在，是手段與目的之間能不能用歷史來抵銷</text>
+<text x="470" y="427" font-size="12" text-anchor="middle" fill="#7f6d34">沙特一方認為，在具體的歷史處境中，革命所需的暴力可以依其解放目標被理解；卡繆則主張</text>
+<text x="470" y="443" font-size="12" text-anchor="middle" fill="#7f6d34">一旦以未來的正義為名容許當下的殺戮，反抗就已經變成它原本要反對的東西</text>
+<text x="470" y="459" font-size="11" text-anchor="middle" fill="#59707b">這場論戰也使卡繆在當時法國左翼知識圈中相當孤立</text>
+</svg>
+  </div>
+</section>
+<section>
+  <div class="band"><h2>論戰的三個焦點</h2><span class="tag">THE QUARREL</span></div>
+  <div class="grid re">
+    <div class="card"><div class="nm">歷史的必然性</div><p>沙特一方主張應在具體歷史進程中判斷行動；卡繆則拒絕讓「歷史的方向」成為免責理由。</p></div>
+    <div class="card"><div class="nm">革命與暴力</div><p>卡繆並未主張絕對的不抵抗，而是反對以解放之名把暴力常態化、制度化。</p></div>
+    <div class="card"><div class="nm">手段與目的</div><p>爭點在於未來的正義能否折抵當下的犧牲；卡繆認為一旦折抵，反抗即已變質。</p></div>
+  </div>
+</section>
+<section>
+  <div class="notes">
+    <div class="note"><b>他拒絕「存在主義者」這個標籤</b><span>卡繆本人公開否認屬於存在主義，也不接受沙特的政治介入路線；但思想史上「荒謬」與「反抗」這組概念仍多被放在存在主義譜系中討論。這一點在〈存在主義〉頁已有處理。</span></div>
+    <div class="note"><b>「荒謬」不是一種情緒</b><span>在他的用法裡，荒謬不是沮喪或虛無感，而是一種關係——人對意義的要求與世界的沉默之間的落差。把它讀成心情，會錯過整個論證。</span></div>
+    <div class="note"><b>反抗不等於革命</b><span>《反抗者》刻意區分兩者：反抗是對不義的直接拒絕，革命則是以體系取代體系；他認為後者容易在過程中吞掉前者。</span></div>
+    <div class="note"><b>論證的對象是讀者自己</b><span>兩本論文都不以建立體系為目標，而是要求讀者在讀完之後對自己的生活作出判斷，這也是它們常被歸為文學而非學院哲學的原因之一。</span></div>
+  </div>
+</section>
+<div class="callout">
+  <b>「既非受害者，也非劊子手」</b><br>
+  這是卡繆在二戰結束後一系列文章的標題，也可以視為他整個政治思考的主軸：拒絕在「成為被殺的人」與「成為殺人的人」之間二選一。他要找的是第三個位置——承認政治暴力的現實，卻不接受它被賦予正當性。<br>
+  這個立場在冷戰初期的法國知識圈相當難以維持：對左翼而言他過於保留，對右翼而言他又始終反對殖民體制與死刑。<b>他的孤立不是偶然，而是這個立場的直接代價。</b>
+</div>
+
+<section>
+  <blockquote>
+    我反抗，故我們存在。
+    <cite>《反抗者》。這句話刻意改寫笛卡兒的「我思故我在」：卡繆認為反抗之所以重要，是因為它在拒絕不義的那一刻，就已經預設了某種所有人共有的東西，因此結論不是「我在」而是「我們在」。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦《薛西弗斯的神話》的論證結構與一九五二年的卡繆—沙特論戰。他在存在主義譜系中的座標、以及他拒絕該標籤一事，已見<a href="../2-1.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%AD%98%E5%9C%A8%E4%B8%BB%E7%BE%A9.html">〈存在主義〉</a>，此處不重複。生平、作品與諾貝爾獎見文學家資料夾的<a href="../6-2.%E6%AD%90%E7%BE%8E%E6%96%87%E5%AD%B8%E5%AE%B6/%E5%8D%A1%E7%B9%86.html">〈卡繆知識圖譜〉</a>。論戰過程為多篇文章往復，此處僅列關鍵節點；譯名依知識庫既有頁面作「卡繆」。
+</footer>
+
+</div>
+</body>
+</html>

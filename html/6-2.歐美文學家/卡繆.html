@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>卡繆知識圖譜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ground:#eef2f5;--paper:#f2f4f5;--ink:#7f6c34;--muted:#59707b;
+    --rule:#d7e0e6;--body:#7f6d34;
+    --brass:#8d671b;--copper:#b94e1d;--steel:#2171b6;--verde:#327b50;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:40px}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:14px;color:var(--copper);
+    letter-spacing:.5em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.1em;margin:0 0 12px}
+  .lede{margin:0;color:var(--muted);font-size:15px;max-width:60ch}
+  h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:20px;
+    letter-spacing:.1em;margin:0 0 4px}
+  .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px}
+  section{margin-bottom:56px}
+  .frame{background:var(--paper);border:1px solid var(--rule);padding:8px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .frame svg{display:block;min-width:900px;width:100%;height:auto}
+  .grid{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    border-top:1px solid var(--rule)}
+  .card{padding:15px 16px;border-bottom:1px solid rgba(51,58,52,.9);text-align:left}
+  .card .nm{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;letter-spacing:.06em}
+  .card .yr{font-size:11.5px;color:var(--muted);margin-left:8px}
+  .card p{margin:3px 0 0;font-size:13.5px;color:var(--body)}
+  .ri .nm{color:var(--copper)} .re .nm{color:var(--brass)}
+  .fa .nm{color:var(--verde)} .hi .nm{color:var(--steel)}
+  .band{display:flex;align-items:baseline;gap:12px;margin:0 0 2px}
+  .tag{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .notes{margin-top:20px;display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .note{border-left:2px solid var(--brass);padding-left:14px}
+  .note b{font-family:"Noto Serif TC",serif;font-weight:600;display:block;font-size:14px}
+  .note span{font-size:13px;color:var(--muted)}
+  blockquote{margin:0;padding:16px 20px;background:var(--paper);
+    border-left:3px solid var(--copper);font-family:"Noto Serif TC",serif;
+    font-size:15px;letter-spacing:.04em}
+  blockquote cite{display:block;font-family:"Noto Sans TC",sans-serif;font-style:normal;
+    font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:0}
+  .callout{background:var(--paper);border:1px solid var(--rule);padding:18px 20px;
+    margin-bottom:40px;font-size:14px;text-align:left}
+  .callout b{font-family:"Noto Serif TC",serif;letter-spacing:.04em;color:var(--brass)}
+  footer{border-top:1px solid var(--rule);padding-top:20px;color:var(--muted);font-size:12.5px}
+
+  /* === 統一淺色版面（比照 經濟指標2）=== */
+  body{background:#eef2f5;color:#263238}
+  .wrap{max-width:1100px;padding:28px 20px 64px;counter-reset:sec}
+  header{background:linear-gradient(135deg,#17324d,#285b78);color:#fff;border:0;
+    border-radius:14px;padding:38px 42px;margin-bottom:26px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .eyebrow{color:#bcd4e4}
+  h1{color:#fff}
+  .lede{color:#dce7ef;max-width:70ch}
+  h2{color:#17324d}
+  section{background:#fff;border:0;border-radius:12px;padding:22px 24px;
+    margin-bottom:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  .frame{background:#f8fafc;border:1px solid #d7e0e6;border-radius:10px}
+  .grid{border-top:1px solid #d7e0e6}
+  .card{border-bottom:1px solid #d7e0e6}
+  .card p{color:#546e7a}
+  .sub,.tag,.card .yr,.card .it,.card .gk{color:#59707b}
+  .note{border-left:3px solid #e49b3d}
+  .note b{color:#17324d}
+  .note span{color:#546e7a}
+  blockquote{background:#fff;border:0;border-left:5px solid #d7655d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08)}
+  blockquote cite{color:#59707b}
+  .callout{background:#fff;border:0;border-left:5px solid #e49b3d;border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);color:#546e7a}
+  .callout b{color:#17324d}
+  footer{margin-top:26px;background:#e7edf1;border:0;border-radius:10px;
+    padding:14px 20px;color:#526b76}
+  section>h2{display:flex;align-items:center;gap:11px}
+  section>h2::before{counter-increment:sec;content:counter(sec);
+    flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:#285b78;color:#fff;
+    font-family:"Noto Sans TC",sans-serif;font-size:15px;font-weight:700;letter-spacing:0;
+    display:flex;align-items:center;justify-content:center}
+  .sub{margin-left:41px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">一歲喪父・小學老師替他爭取獎學金・諾貝爾獎兩年後死於車禍，車上留著未完成的手稿</p>
+  <h1>卡繆知識圖譜</h1>
+  <p class="lede">〈歐美文學家總覽〉篇並未收錄卡繆，因此這裡從他的出身寫起：法屬阿爾及利亞的貧民區、在他不滿一歲時戰死的父親、不識字的母親，以及那位替他爭取獎學金、使他得以升學的小學老師。也要談十七歲的肺結核如何同時關掉運動與學院兩條路、把他推向報社與寫作，以及一九六〇年那場車禍與車上尋獲的《第一人》手稿。荒謬哲學的論證與他和沙特的決裂，另有專頁處理，這裡不重複。</p>
+</header>
+<section>
+  <h2>從阿爾及利亞的貧民區到諾貝爾獎</h2>
+  <p class="sub">卡繆出身貧窮、一歲喪父，使他得以繼續升學的是一位主動替他爭取獎學金的小學老師</p>
+  <div class="frame">
+<svg viewBox="0 0 940 378.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="卡繆早年與諾貝爾獎結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">卡繆出生於法屬阿爾及利亞的貧窮家庭，父親在他不滿一歲時戰死，由不識字的母親扶養長大</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">一位小學老師的介入，改變了他原本幾乎註定的人生路線</text>
+<rect x="40" y="115.5" width="200" height="126.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">出生於法屬阿爾及利亞</text>
+<text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1913年</text>
+<text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">父親是農場工人，母親</text>
+<text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">是聽力受損、不識字的</text>
+<text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">西班牙裔移民後代</text>
+<text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">童年在阿爾及爾的貧民區度過</text>
+<rect x="260" y="115.5" width="200" height="126.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">父親戰死於馬恩河</text>
+<text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1914年</text>
+<text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">第一次世界大戰爆發</text>
+<text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">後隨即陣亡，卡繆當</text>
+<text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">時還不滿一歲</text>
+<text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">他對父親沒有任何直接記憶</text>
+<rect x="480" y="115.5" width="200" height="126.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">小學老師爭取獎學金</text>
+<text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">1920年代</text>
+<text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">老師路易・傑爾曼看出</text>
+<text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">他的天分，說服家人</text>
+<text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">讓他繼續升學</text>
+<text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">否則極可能提早進入勞動市場</text>
+<rect x="700" y="115.5" width="200" height="126.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">獲諾貝爾文學獎</text>
+<text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1957年</text>
+<text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">四十四歲獲獎，是歷來</text>
+<text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">最年輕的得主之一，</text>
+<text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">領獎後致信當年的老師</text>
+<text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">他把榮譽歸給那位小學老師</text>
+<rect x="80" y="272" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="294.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">使他得以持續升學的不是家庭條件，而是一位看出他天分的小學老師</text>
+<text x="470" y="312.5" font-size="12" text-anchor="middle" fill="#7f6d34">卡繆成長的環境裡，同齡孩子多半在完成基礎教育後就進入勞動市場；他之所以能進入中學與</text>
+<text x="470" y="328.5" font-size="12" text-anchor="middle" fill="#7f6d34">大學，關鍵是老師路易・傑爾曼主動替他爭取獎學金。多年後他在諾貝爾獎的場合特別提到這件事</text>
+<text x="470" y="344.5" font-size="11" text-anchor="middle" fill="#59707b">但另一件事幾乎同時發生——一場疾病關掉了他原本的兩條出路</text>
+</svg>
+  </div>
+</section>
+<section>
+  <h2>守門員、肺結核，與被關上的兩條路</h2>
+  <p class="sub">十七歲的一紙診斷，同時結束了他的運動生涯與進入學院的可能</p>
+  <div class="frame">
+<svg viewBox="0 0 940 461" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="卡繆肺結核與職業轉向結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">卡繆在大學時期是校隊守門員，十七歲確診肺結核後，運動與學院兩條路同時被關上</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">疾病使他無法參加教師資格考，也不能從軍，最後把他推向新聞與寫作</text>
+<rect x="40" y="115.5" width="410" height="94.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="245" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">大學球隊的守門員</text>
+<text x="245" y="156" font-size="11" text-anchor="middle" fill="#846a36">青年時期</text>
+<text x="245" y="172" font-size="12" text-anchor="middle" fill="#846a36">曾為阿爾及爾大學球隊擔任守門員，</text>
+<text x="245" y="188" font-size="12" text-anchor="middle" fill="#846a36">終生以此自豪並多次提及球隊經驗</text>
+<rect x="490" y="115.5" width="410" height="94.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="695" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">十七歲確診肺結核</text>
+<text x="695" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1930年</text>
+<text x="695" y="172" font-size="12" text-anchor="middle" fill="#995a3d">當時尚無有效療法，疾病反覆發作，</text>
+<text x="695" y="188" font-size="12" text-anchor="middle" fill="#995a3d">也讓他長期與死亡的可能性共處</text>
+<rect x="40" y="230" width="410" height="94.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="245" y="252.5" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">學院與從軍兩條路皆斷</text>
+<text x="245" y="270.5" font-size="11" text-anchor="middle" fill="#3e7198">1930年代</text>
+<text x="245" y="286.5" font-size="12" text-anchor="middle" fill="#3e7198">健康因素使他無法參加教師資格考，</text>
+<text x="245" y="302.5" font-size="12" text-anchor="middle" fill="#3e7198">二戰期間也因肺病未能從軍</text>
+<rect x="490" y="230" width="410" height="94.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="695" y="252.5" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">轉向新聞與寫作</text>
+<text x="695" y="270.5" font-size="11" text-anchor="middle" fill="#337d46">1930年代起</text>
+<text x="695" y="286.5" font-size="12" text-anchor="middle" fill="#337d46">先後任職於阿爾及爾的報紙，二戰期間</text>
+<text x="695" y="302.5" font-size="12" text-anchor="middle" fill="#337d46">參與地下刊物《戰鬥報》的編務</text>
+<rect x="80" y="354.5" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="377" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">這場病把他從既定軌道上推開，卻也把他推進了報社與寫作</text>
+<text x="470" y="395" font-size="12" text-anchor="middle" fill="#7f6d34">依傳統路線，取得教師資格是當時出身寒微者最穩定的上升管道；肺結核讓這條路走不通。</text>
+<text x="470" y="411" font-size="12" text-anchor="middle" fill="#7f6d34">他改以新聞工作維生，戰時投入地下刊物，這段經歷直接塑造了他日後的題材與文體</text>
+<text x="470" y="427" font-size="11" text-anchor="middle" fill="#59707b">他最重要的小說與論文，都是在這段時期之後陸續完成的</text>
+</svg>
+  </div>
+</section>
+<section>
+  <div class="band"><h2>荒謬系列</h2><span class="tag">THE ABSURD</span></div>
+  <div class="grid ri">
+    <div class="card"><div class="nm">《異鄉人》<span class="yr">1942</span></div><p>以冷淡平靜的語調敘述一樁命案與審判，主角因不符社會期待的情感表現而被定罪。</p></div>
+    <div class="card"><div class="nm">《薛西弗斯的神話》<span class="yr">1942</span></div><p>論文形式，處理「人生若無終極意義，是否該自殺」這個問題。</p></div>
+    <div class="card"><div class="nm">《卡利古拉》<span class="yr">劇作</span></div><p>以羅馬皇帝為題的戲劇，推演一個人若徹底實踐荒謬的邏輯會走向何處。</p></div>
+  </div>
+</section>
+<section>
+  <div class="band"><h2>反抗系列</h2><span class="tag">THE REVOLT</span></div>
+  <div class="grid fa">
+    <div class="card"><div class="nm">《鼠疫》<span class="yr">1947</span></div><p>以北非城市奧蘭封城為背景，寫人們面對無差別災難時的分工與承擔。</p></div>
+    <div class="card"><div class="nm">《反抗者》<span class="yr">1951</span></div><p>論文形式，追問反抗在什麼條件下會倒轉成它原本反對的壓迫。</p></div>
+    <div class="card"><div class="nm">《正義者》<span class="yr">劇作</span></div><p>以刺殺行動為題，處理「為了正義是否可以殺人」的界線問題。</p></div>
+  </div>
+</section>
+<section>
+  <div class="band"><h2>其他重要作品</h2><span class="tag">OTHERS</span></div>
+  <div class="grid hi">
+    <div class="card"><div class="nm">《墮落》<span class="yr">1956</span></div><p>獨白體小說，一名前律師在酒館向陌生人自述，層層揭露自我辯解的機制。</p></div>
+    <div class="card"><div class="nm">《放逐與王國》<span class="yr">1957</span></div><p>短篇小說集，多篇以北非為背景處理疏離與歸屬。</p></div>
+    <div class="card"><div class="nm">《第一人》<span class="yr">1994</span></div><p>未完成的自傳性小說，車禍現場尋獲，三十多年後才出版。</p></div>
+  </div>
+</section>
+<section>
+  <h2>一九六〇年的車禍，與車上的未完成手稿</h2>
+  <p class="sub">獲獎兩年多後的一場意外，以及三十多年後才問世的遺稿</p>
+  <div class="frame">
+<svg viewBox="0 0 940 378.5" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="卡繆車禍與遺稿結構圖">
+<rect x="40" y="30" width="860" height="55.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="52.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">獲得諾貝爾獎兩年多之後，卡繆在一場車禍中過世，得年四十六歲</text>
+<text x="470" y="70.5" font-size="12" text-anchor="middle" fill="#7f6d34">車上找到的未完成手稿，直到三十多年後才整理出版</text>
+<rect x="40" y="115.5" width="200" height="126.5" rx="3" fill="#f6f4f1" stroke="#cac2b0"/>
+<text x="140" y="138" font-size="14" text-anchor="middle" fill="#8d671b" font-weight="700">與出版人同車返回巴黎</text>
+<text x="140" y="156" font-size="11" text-anchor="middle" fill="#846a36">1960年1月</text>
+<text x="140" y="172" font-size="12" text-anchor="middle" fill="#846a36">搭乘友人兼出版人米歇</text>
+<text x="140" y="188" font-size="12" text-anchor="middle" fill="#846a36">爾・伽利瑪駕駛的車輛</text>
+<text x="140" y="204" font-size="12" text-anchor="middle" fill="#846a36">自南法返回巴黎</text>
+<text x="140" y="220" font-size="11" text-anchor="middle" fill="#846a36">原本另有其他交通方式可選</text>
+<rect x="260" y="115.5" width="200" height="126.5" rx="3" fill="#f6f2f1" stroke="#cab5b0"/>
+<text x="360" y="138" font-size="14" text-anchor="middle" fill="#b94e1d" font-weight="700">途中發生車禍</text>
+<text x="360" y="156" font-size="11" text-anchor="middle" fill="#995a3d">1960年1月4日</text>
+<text x="360" y="172" font-size="12" text-anchor="middle" fill="#995a3d">車輛於途中失控撞樹，</text>
+<text x="360" y="188" font-size="12" text-anchor="middle" fill="#995a3d">卡繆當場身亡，駕駛者</text>
+<text x="360" y="204" font-size="12" text-anchor="middle" fill="#995a3d">數日後亦不治</text>
+<text x="360" y="220" font-size="11" text-anchor="middle" fill="#995a3d">得年四十六歲</text>
+<rect x="480" y="115.5" width="200" height="126.5" rx="3" fill="#f2f3f5" stroke="#b1bec9"/>
+<text x="580" y="138" font-size="14" text-anchor="middle" fill="#2171b6" font-weight="700">口袋裡的火車票</text>
+<text x="580" y="156" font-size="11" text-anchor="middle" fill="#3e7198">事發當時</text>
+<text x="580" y="172" font-size="12" text-anchor="middle" fill="#3e7198">依流傳的記載，他身上</text>
+<text x="580" y="188" font-size="12" text-anchor="middle" fill="#3e7198">留有一張未使用的火車</text>
+<text x="580" y="204" font-size="12" text-anchor="middle" fill="#3e7198">票，原可改搭火車</text>
+<text x="580" y="220" font-size="11" text-anchor="middle" fill="#3e7198">屬事後轉述，非當場紀錄</text>
+<rect x="700" y="115.5" width="200" height="126.5" rx="3" fill="#f2f5f4" stroke="#b5c4b8"/>
+<text x="800" y="138" font-size="14" text-anchor="middle" fill="#327b50" font-weight="700">車中發現未完成手稿</text>
+<text x="800" y="156" font-size="11" text-anchor="middle" fill="#337d46">1960年／1994年</text>
+<text x="800" y="172" font-size="12" text-anchor="middle" fill="#337d46">殘骸中尋獲自傳性小說</text>
+<text x="800" y="188" font-size="12" text-anchor="middle" fill="#337d46">《第一人》的手稿，</text>
+<text x="800" y="204" font-size="12" text-anchor="middle" fill="#337d46">由家屬整理後出版</text>
+<text x="800" y="220" font-size="11" text-anchor="middle" fill="#337d46">出版時距他過世已逾三十年</text>
+<rect x="80" y="272" width="780" height="86.5" rx="3" fill="#f2f4f5" stroke="#d7e0e6"/>
+<text x="470" y="294.5" font-size="14" text-anchor="middle" fill="#59707b" font-weight="600" font-family="'Noto Serif TC',serif">《第一人》把他帶回起點：一個追索父親、也追索自己出身的故事</text>
+<text x="470" y="312.5" font-size="12" text-anchor="middle" fill="#7f6d34">這部未完成的自傳性小說，寫的正是他童年的阿爾及利亞、早逝的父親與不識字的母親。</text>
+<text x="470" y="328.5" font-size="12" text-anchor="middle" fill="#7f6d34">手稿在事故現場尋獲，家屬整理後於一九九四年出版，成為理解他全部作品的一把回頭鑰匙</text>
+<text x="470" y="344.5" font-size="11" text-anchor="middle" fill="#59707b">一個以「荒謬」聞名的作者，以一場突如其來的意外結束，這個巧合常被論者提及</text>
+</svg>
+  </div>
+</section>
+<div class="callout">
+  <b>阿爾及利亞戰爭裡，他兩邊都不討好</b><br>
+  卡繆是在阿爾及利亞出生長大的法國人，戰爭爆發後他曾公開呼籲交戰雙方至少對平民停火，但未獲接受。他既反對殖民體制下的不平等，也反對針對平民的恐怖攻擊，結果同時受到左翼與殖民支持者的批評。<br>
+  一九五七年在斯德哥爾摩面對一名阿爾及利亞學生的質問時，他的回答常被濃縮成「在正義與母親之間，我選擇母親」這句廣為流傳的話。<b>但這是後人簡化後的轉述，並非他的原話</b>——他當時說的是自己譴責一切恐怖手段，包括可能傷及他母親與家人的盲目攻擊，並表示自己相信正義，但會先保護母親。引用時宜回到較完整的脈絡，而不是只取那句對仗工整的簡化版。
+</div>
+
+<section>
+  <blockquote>
+    今天，媽媽死了。也許是昨天，我不知道。
+    <cite>《異鄉人》開篇。以近乎事務性的語氣陳述至親之死，正是全書的基調——主角最終被定罪，表面上因為一樁命案，實際上更因為他在母親葬禮上沒有流淚。</cite>
+  </blockquote>
+</section>
+
+<footer>
+  本頁聚焦卡繆的生平與作品，〈歐美文學家總覽〉篇未收錄他，故自其出身寫起。荒謬哲學的論證結構與他和沙特的論戰，另見哲學家資料夾的<a href="../2-2.%E5%93%B2%E5%AD%B8%E5%AE%B6/%E5%8D%A1%E7%B9%86.html">〈卡繆知識圖譜〉</a>；他在存在主義譜系中的定位見<a href="../2-1.%E5%93%B2%E5%AD%B8%E6%80%9D%E6%83%B3/%E5%AD%98%E5%9C%A8%E4%B8%BB%E7%BE%A9.html">〈存在主義〉</a>。口袋火車票等細節屬事後流傳的記載，已於文中標明。年份為公開事件的關鍵節點，實際過程多為漸進發展。
+</footer>
+
+</div>
+</body>
+</html>
