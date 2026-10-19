@@ -84,9 +84,9 @@ patch 有版本標記，重貼前會把舊區塊整段移除，所以可重複�
 
 Timeline（https://chad-liu.github.io/Timeline/ ，另一個 repo）有人物的生平時間軸。兩邊不整合，只互相連結：
 
-- `tools\timeline_links.json` 列出哪些 `html\` 頁面要連到哪幾條時間軸（id 對應 Timeline 的 `Data\<id>.md`）。
-- `python tools/add_timeline_links.py` 依此在頁面的 `<footer>` 前插入「生平時間軸：…↗」區塊，以 `<!--timeline-links-->` 標記，可重複執行、保留原檔換行；`--check` 只列出會變動的頁面。
-- 反方向由 Timeline 各 md 的 `related:` 欄位連回這裡的頁面。
+- **對應關係只維護在 Timeline 那一側**：Timeline 各 md 的 `related:` 欄位列出連到本站的頁面，建置時連同生卒年輸出到公開的人物索引 https://chad-liu.github.io/Timeline/people.json 。本站不另存對應表（舊的 `tools\timeline_links.json` 已移除）。
+- `python tools/add_timeline_links.py` 讀 `people.json`，把每位人物 `related` 裡指向 `https://chad-liu.github.io/books/html/` 的頁面反推出來，在該頁 `<footer>` 前插入「生平時間軸：名字（生卒年）↗」區塊。一頁可以有多位人物，順序照 `people.json`（先類別、再依出生）。區塊以 `<!--timeline-links-->` 標記，可重複執行、保留原檔換行；`--check` 只列出會變動的頁面。它處理的範圍是「被 related 到的頁面」∪「`html\` 底下已有區塊的 `.html`」，所以**某頁不再被任何人 related 到時，重跑會清掉它殘留的舊區塊**。
+- 要新增或拿掉某頁的連結，就去改 Timeline 該人物的 `related:`，push、等部署完成後再重跑腳本。Timeline 還沒部署時，可以先 `npm run build`，再用 `--source D:/Notes-Timeline/dist/people.json` 讀本機檔案。如果 `people.json` 沒有 `related` 欄位（舊版），腳本會直接中止，避免把所有區塊清光。
 - `treeview.html#f=html/<路徑>` 可直接開啟檔案樹裡的某個檔案（見 `plan_treeview.md`）。
 
 ## 知識地圖首頁（`tools\build_html_index.py`）
