@@ -80,6 +80,15 @@ patch 有版本標記，重貼前會把舊區塊整段移除，所以可重複�
 
 圖多的書 base64 內嵌後單一行就可能到 388 MB。`convert_output_to_tw()` 與 `apply_text_fixes()` 都是固定 4 MB 分段處理，分段邊界會保留尾巴避免切斷待替換字串；簡繁轉換另外只對漢字串呼叫 OpenCC，跳過 base64。**不要改回整份讀進記憶體**——之前那樣做在該檔上被系統砍掉過。
 
+## 與 Liu's Timeline 的互連（`tools\add_timeline_links.py`）
+
+Timeline（https://chad-liu.github.io/Timeline/ ，另一個 repo）有人物的生平時間軸。兩邊不整合，只互相連結：
+
+- `tools\timeline_links.json` 列出哪些 `html\` 頁面要連到哪幾條時間軸（id 對應 Timeline 的 `Data\<id>.md`）。
+- `python tools/add_timeline_links.py` 依此在頁面的 `<footer>` 前插入「生平時間軸：…↗」區塊，以 `<!--timeline-links-->` 標記，可重複執行、保留原檔換行；`--check` 只列出會變動的頁面。
+- 反方向由 Timeline 各 md 的 `related:` 欄位連回這裡的頁面。
+- `treeview.html#f=html/<路徑>` 可直接開啟檔案樹裡的某個檔案（見 `plan_treeview.md`）。
+
 ## 知識地圖首頁（`tools\build_html_index.py`）
 
 依 `plan2.md` 規劃，跟電子書庫完全獨立的第二套建置腳本：

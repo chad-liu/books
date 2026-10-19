@@ -325,6 +325,8 @@ function activate(i){
   var want = url(t.p);
   if ($('#view').getAttribute('src') !== want) $('#view').setAttribute('src', want);
   saveTabs();
+  // 網址列同步成 #f=<路徑>，複製網址就能分享或從別的網站深連結到這個檔案
+  history.replaceState(null, '', '#f=' + encodeURIComponent(t.p));
 }
 function showEmpty(){
   active=-1; $('#empty').style.display='flex'; $('#panes').style.display='none';
@@ -334,6 +336,43 @@ function showEmpty(){
 function url(p){ return p.split('/').map(encodeURIComponent).join('/'); }
 function saveTabs(){ LS('tabs', tabs.map(function(t){ return {p:t.p,n:t.n,s:t.s}; }));
   LS('active', active); }
+
+/* ---------- 深連結 #f=<路徑> ---------- */
+/* 例：treeview.html#f=html/2-2.哲學家/康德.html（路徑同檔案樹的 p，可 URL 編碼）。
+   在樹裡找到該檔就開成新分頁（已開啟則切過去），並展開它所在的資料夾。 */
+function findItem(p){
+  var hit = null;
+  function walk(items){
+    items.forEach(function(it){
+      if (hit) return;
+      if (it.p === p) hit = it;
+      else if (it.children) walk(it.children);
+    });
+  }
+  TREE.forEach(function(f){ walk(f.files); });
+  return hit;
+}
+function openFromHash(){
+  var m = location.hash.match(/^#f=(.+)$/);
+  if (!m) return false;
+  var p; try { p = decodeURIComponent(m[1]); } catch(e){ return false; }
+  var it = findItem(p);
+  if (!it) return false;
+  var i = tabs.findIndex(function(t){ return t.p === it.p; });
+  if (i < 0){ tabs.push({ p:it.p, n:it.n, s:it.s }); i = tabs.length - 1; }
+  activate(i); renderTabs(); saveTabs();
+  var li = document.querySelector('#side li[data-path="'+CSS.escape(it.p)+'"]');
+  if (li){
+    for (var el = li.parentElement; el && el.id !== 'side'; el = el.parentElement){
+      if (el.classList.contains('closed')) el.classList.remove('closed');
+      if (el.classList.contains('fold')) syncArrow(el);
+      var tg = el.tagName === 'LI' && el.querySelector(':scope > .tgl');
+      if (tg) tg.textContent = '▼';
+    }
+    li.scrollIntoView({block:'center'});
+  }
+  return true;
+}
 
 /* ---------- 啟動 ---------- */
 function init(){
@@ -369,8 +408,10 @@ function init(){
   // 還原上次開啟的分頁
   var saved = LS('tabs') || [];
   saved.forEach(function(s){ tabs.push({p:s.p,n:s.n,s:s.s}); });
-  if (tabs.length){ renderTabs(); activate(Math.min(LS('active')||0, tabs.length-1)); }
+  if (openFromHash()) { /* 網址指定的檔案優先 */ }
+  else if (tabs.length){ renderTabs(); activate(Math.min(LS('active')||0, tabs.length-1)); }
   else showEmpty();
+  window.addEventListener('hashchange', openFromHash);
 }
 document.addEventListener('DOMContentLoaded', init);
 </script>
