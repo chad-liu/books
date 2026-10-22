@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>世界人口歷史時間軸＋各國人口比較圖</title>
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--ink:#172338;--muted:#65738a;--line:#dce4ef;--blue:#2457c5;--teal:#078577;--gold:#d28b17;--rose:#c34c68;--purple:#7954b8;--shadow:0 8px 24px #1b355410}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif}
+header{padding:34px 22px 26px;background:linear-gradient(120deg,#122b55,#2457c5 65%,#168d9a);color:white}
+header .wrap,main{max-width:1180px;margin:auto}h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.2;margin:0 0 12px}header p{max-width:850px;color:#e2ecff;margin:0}
+main{padding:22px;display:grid;gap:20px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}h2{font-size:1.25rem;margin:0 0 6px}h3{font-size:1rem;margin:0 0 6px}.sub{color:var(--muted);font-size:.92rem;margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{padding:16px;border-radius:14px;background:#f2f6ff;border:1px solid #e1eaff}.stat .k{font-size:.82rem;color:var(--muted)}.stat .v{font-size:1.65rem;font-weight:750;letter-spacing:-.03em}.stat .d{font-size:.82rem;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:12px 0 16px}.control{display:grid;gap:5px;min-width:150px}.control label{font-size:.85rem;color:var(--muted);font-weight:650}select,input[type=range]{width:100%}select{padding:9px 11px;border:1px solid #cbd6e6;border-radius:9px;background:white;color:var(--ink);font:inherit}input[type=range]{accent-color:var(--blue)}button{border:0;background:var(--blue);color:white;padding:10px 14px;border-radius:9px;font:inherit;font-weight:650;cursor:pointer}button.secondary{background:#eaf0fb;color:#24416e}button:hover{filter:brightness(.96)}.range-value{font-weight:750;color:var(--blue);min-width:80px}
+.timeline{display:grid;gap:14px}.timeline-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.timeline-top input{flex:1;min-width:200px}.event-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.event{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff;cursor:pointer;text-align:left;color:var(--ink);transition:.15s}.event:hover,.event.active{border-color:var(--blue);background:#f1f6ff;transform:translateY(-1px)}.event .year{font-size:.8rem;color:var(--blue);font-weight:800}.event .name{font-weight:750;margin:3px 0}.event .desc{font-size:.88rem;color:var(--muted)}
+.chart-wrap{position:relative;width:100%;min-height:290px}.chart-wrap canvas{display:block;width:100%;height:320px}.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.86rem;color:var(--muted);margin-top:8px}.legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{padding:10px 9px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:#53627a;background:#f7f9fc;font-weight:700}tbody tr:hover{background:#f7faff}.table-scroll{overflow-x:auto}
+.note{padding:12px 14px;background:#fff8e8;border:1px solid #f3dfae;border-radius:12px;color:#6b531d;font-size:.9rem}
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}.pill{display:inline-block;padding:3px 8px;background:#eaf0fb;color:#2b4e8b;border-radius:99px;font-size:.78rem;font-weight:700}.source-list{margin:8px 0 0;padding-left:20px}.source-list a{color:var(--blue)}footer{text-align:center;color:var(--muted);font-size:.82rem;padding:0 20px 30px}
+@media(max-width:760px){main{padding:12px}.panel{padding:15px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.event-list{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.chart-wrap canvas{height:280px}.stat .v{font-size:1.4rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>世界人口歷史時間軸</h1>
+<p>從史前農業革命、古典文明、工業革命，到 2100 年人口預測。互動切換歷史節點、比較國家與區域，並查看資料表。古代數字是學術估計，現代與未來數字採近似值。</p>
+</div></header>
+<main>
+<section class="stats" aria-label="關鍵人口指標">
+<div class="stat"><div class="k">世界人口（2025 約）</div><div class="v">82.3 億</div><div class="d">全球仍在成長，速度放緩</div></div>
+<div class="stat"><div class="k">歷史人口轉折</div><div class="v">約 1800 年</div><div class="d">世界人口達到約 10 億</div></div>
+<div class="stat"><div class="k">世界人口達 80 億</div><div class="v">2022 年</div><div class="d">聯合國公布的里程碑</div></div>
+<div class="stat"><div class="k">預測人口高峰</div><div class="v">約 103 億</div><div class="d">2080 年代中期，中方案</div></div>
+</section>
+
+<section class="panel">
+<h2>一、世界人口歷史時間軸</h2>
+<p class="sub">選取事件可查看當時人口規模與背景；拖曳年份滑桿，探索不同時代。</p>
+<div class="timeline">
+<div class="timeline-top">
+<div class="control" style="flex:1"><label for="yearRange">探索年份</label><input id="yearRange" type="range" min="-10000" max="2100" step="100" value="2025"></div>
+<div class="range-value" id="yearLabel">2025 年</div>
+<div class="control"><label for="eraFilter">時代篩選</label><select id="eraFilter"><option value="all">全部時代</option><option value="ancient">史前與古代</option><option value="medieval">中世紀</option><option value="modern">近代</option><option value="future">未來預測</option></select></div>
+</div>
+<div class="stats" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+<div class="stat"><div class="k">所選年份的世界人口（約）</div><div class="v" id="selectedPop">82.3 億</div><div class="d" id="selectedContext">現代估計</div></div>
+<div class="stat"><div class="k">人口變化的主要力量</div><div class="v" id="selectedDriver" style="font-size:1.15rem">生育率下降</div><div class="d" id="selectedDriverDesc">人口增長放緩，區域差異擴大</div></div>
+</div>
+<div class="event-list" id="eventList"></div>
+</div>
+</section>
+
+<section class="panel">
+<h2>二、世界人口成長曲線</h2>
+<p class="sub">選擇線性或對數尺度。滑鼠移到曲線上，可查看該節點的年份與人口數。</p>
+<div class="controls">
+<div class="control"><label for="scaleMode">縱軸尺度</label><select id="scaleMode"><option value="linear">線性尺度</option><option value="log">對數尺度（適合觀察古代）</option></select></div>
+<div class="control"><label for="chartMode">資料範圍</label><select id="chartMode"><option value="all">古代至 2100 年</option><option value="modern">1800–2100 年</option></select></div>
+<button id="resetWorld" class="secondary">重設圖表</button>
+</div>
+<div class="chart-wrap"><canvas id="worldChart" aria-label="世界人口歷史曲線"></canvas></div>
+<div class="legend"><span><i class="dot" style="background:#2457c5"></i>歷史估計／人口估計</span><span><i class="dot" style="background:#d28b17"></i>未來預測</span></div>
+<div id="chartTooltip" class="sub" aria-live="polite">將滑鼠移至圖表附近查看資料點。</div>
+</section>
+
+<section class="panel">
+<h2>三、主要國家人口比較</h2>
+<p class="sub">可選擇國家、年份區間與圖表類型。數值單位為百萬人（million）；空白代表不提供可靠的可比估計。</p>
+<div class="controls">
+<div class="control"><label for="countrySelect">比較國家／地區</label><select id="countrySelect" multiple size="6" style="min-width:220px"><option value="China" selected>中國</option><option value="India" selected>印度</option><option value="United States" selected>美國</option><option value="Japan" selected>日本</option><option value="Indonesia" selected>印尼</option><option value="Nigeria" selected>奈及利亞</option><option value="Brazil">巴西</option><option value="Russia">俄羅斯</option><option value="Pakistan">巴基斯坦</option><option value="Germany">德國</option><option value="United Kingdom">英國</option><option value="World">世界</option><option value="Africa">非洲</option><option value="Europe">歐洲</option><option value="Asia">亞洲</option><option value="Latin America">拉丁美洲</option><option value="Northern America">北美洲</option></select></div>
+<div class="control"><label for="compareMode">圖表類型</label><select id="compareMode"><option value="line">人口變化折線圖</option><option value="bar">指定年份長條圖</option></select></div>
+<div class="control"><label for="compareYear">長條圖年份</label><select id="compareYear"><option>1800</option><option>1900</option><option>1950</option><option>2000</option><option selected>2025</option><option>2050</option><option>2100</option></select></div>
+<div class="control"><label for="compareRange">折線圖期間</label><select id="compareRange"><option value="all">1800–2100</option><option value="recent">1950–2100</option><option value="future">2025–2100</option></select></div>
+<button id="drawCompare">更新比較圖</button>
+</div>
+<div class="chart-wrap"><canvas id="compareChart" aria-label="國家人口比較圖"></canvas></div>
+<div id="compareLegend" class="legend"></div>
+<div class="table-scroll" style="margin-top:18px"><table id="compareTable"><thead></thead><tbody></tbody></table></div>
+</section>
+
+<section class="two-col">
+<div class="panel">
+<h2>四、人口變化的五個轉折</h2>
+<p class="sub">理解人口曲線背後的歷史機制。</p>
+<div style="display:grid;gap:13px">
+<div><span class="pill">農業革命</span><h3>定居與糧食生產</h3><div class="sub">農業提高人口承載能力，村落與早期城市逐漸形成。</div></div>
+<div><span class="pill">古典與中世紀</span><h3>帝國、戰爭與疫病</h3><div class="sub">農業生產與國家治理支持人口集中；瘟疫、飢荒與戰亂造成波動。</div></div>
+<div><span class="pill">工業革命</span><h3>死亡率下降</h3><div class="sub">交通、糧食供應、衛生與醫療進步，人口增長開始加速。</div></div>
+<div><span class="pill">20 世紀</span><h3>人口爆發</h3><div class="sub">許多國家死亡率先下降，生育率稍後下降，形成快速增長。</div></div>
+<div><span class="pill">21 世紀</span><h3>低生育率與老齡化</h3><div class="sub">東亞與歐洲多國人口老化或減少；非洲仍是主要人口增長區。</div></div>
+</div>
+</div>
+<div class="panel">
+<h2>五、資料說明與限制</h2>
+<p class="sub">請將本頁視為歷史教育與趨勢比較工具，而非精確的人口普查資料庫。</p>
+<ul class="source-list">
+<li>古代人口：學者依考古、歷史文獻與農業承載力推估，研究間差異可能很大。</li>
+<li>國家疆界：歷史上的「中國、俄羅斯、印度」等地理範圍與現代國界並不相同。</li>
+<li>現代估計：不同機構與資料版本可能有小幅差異。</li>
+<li>未來數字：為人口學模型的中方案預測，會隨生育率、死亡率與移民假設改變。</li>
+</ul>
+<h3 style="margin-top:16px">建議參考資料</h3>
+<ul class="source-list">
+<li><a href="https://ourworldindata.org/grapher/population" target="_blank" rel="noopener">Our World in Data：世界與各國人口</a></li>
+<li><a href="https://population.un.org/wpp/" target="_blank" rel="noopener">聯合國：World Population Prospects</a></li>
+<li><a href="https://www.census.gov/data/tables/time-series/demo/international-programs/historical-est-worldpop.html" target="_blank" rel="noopener">美國人口普查局：歷史世界人口估計</a></li>
+</ul>
+</div>
+</section>
+<div class="note"><strong>閱讀提示：</strong>人口總量不是唯一指標。年齡結構、出生率、死亡率、移民及人口分布，往往比單一總數更能解釋一個國家的未來。</div>
+</main>
+<footer>世界人口歷史時間軸與比較圖｜單一 HTML 檔案，無需外部圖表函式庫</footer>
+
+<script>
+const worldData=[
+[-10000,0.05],[-5000,0.05],[-3000,0.14],[-1000,0.5],[-500,1.0],[1,2.0],[500,2.3],[1000,2.8],[1300,4.0],[1400,3.7],[1500,4.6],[1600,5.5],[1700,6.0],[1800,10.0],[1850,12.6],[1900,16.5],[1925,20.0],[1950,25.0],[1960,30.0],[1974,40.0],[1987,50.0],[1999,60.0],[2011,70.0],[2022,80.0],[2025,82.3],[2030,85.0],[2050,97.0],[2060,100.0],[2085,103.0],[2100,102.0]
+];
+const events=[
+{year:-10000,era:"ancient",title:"農業革命",pop:.05,driver:"農業與定居",desc:"農業與畜牧逐漸普及，人口承載能力提高。"},
+{year:-3000,era:"ancient",title:"早期城市文明",pop:.14,driver:"灌溉與城市",desc:"兩河流域、尼羅河流域及亞洲早期文明發展。"},
+{year:1,era:"ancient",title:"古典帝國時代",pop:2,driver:"農業帝國",desc:"羅馬、漢帝國等大型國家支撐龐大人口。"},
+{year:500,era:"medieval",title:"古典帝國轉型",pop:2.3,driver:"戰爭與疫病",desc:"政權更替、衝突與疾病造成區域人口波動。"},
+{year:1000,era:"medieval",title:"中世紀人口恢復",pop:2.8,driver:"農業擴張",desc:"部分地區農業與商業發展，人口逐步增加。"},
+{year:1300,era:"medieval",title:"中世紀高峰前期",pop:4,driver:"土地開墾",desc:"農業擴張與城市成長推動人口上升。"},
+{year:1400,era:"medieval",title:"黑死病衝擊後",pop:3.7,driver:"傳染病",desc:"黑死病重創歐洲及地中海周邊人口。"},
+{year:1500,era:"modern",title:"跨洋交流時代",pop:4.6,driver:"全球交流",desc:"跨洋航行改變美洲、歐亞與非洲的人口分布。"},
+{year:1700,era:"modern",title:"前工業時代",pop:6,driver:"農業生產",desc:"全球仍以農業社會為主，人口成長相對緩慢。"},
+{year:1800,era:"modern",title:"人口突破約十億",pop:10,driver:"工業革命",desc:"農業、交通、衛生與醫療進步逐步降低死亡率。"},
+{year:1900,era:"modern",title:"工業化擴張",pop:16.5,driver:"公共衛生",desc:"工業化、城市化與糧食流通帶動人口成長。"},
+{year:1950,era:"modern",title:"戰後人口轉折",pop:25,driver:"醫療進步",desc:"疫苗、抗生素與公共衛生改善，人口快速增加。"},
+{year:1974,era:"modern",title:"世界人口四十億",pop:40,driver:"人口爆發",desc:"許多發展中國家死亡率下降，生育率仍偏高。"},
+{year:2000,era:"modern",title:"全球化時代",pop:61,driver:"人口慣性",desc:"人口仍增加，但不同國家的生育率差異擴大。"},
+{year:2022,era:"modern",title:"世界人口八十億",pop:80,driver:"增長放緩",desc:"聯合國確認世界人口達到八十億。"},
+{year:2025,era:"modern",title:"當代人口格局",pop:82.3,driver:"生育率下降",desc:"全球人口仍增加，部分國家已開始人口下降。"},
+{year:2050,era:"future",title:"人口接近百億",pop:97,driver:"區域分化",desc:"非洲人口增長與多地老齡化同時發生。"},
+{year:2085,era:"future",title:"預測人口高峰",pop:103,driver:"人口轉型",desc:"聯合國中方案預測全球人口在 2080 年代中期達峰。"},
+{year:2100,era:"future",title:"世紀末預測",pop:102,driver:"人口老化",desc:"全球人口可能略低於預測高峰，區域差異持續。"}
+];
+const countries={
+"China":{"1800":330,"1900":400,"1950":544,"2000":1267,"2025":1416,"2050":1260,"2100":633},
+"India":{"1800":200,"1900":238,"1950":357,"2000":1059,"2025":1464,"2050":1680,"2100":1505},
+"United States":{"1800":5,"1900":76,"1950":158,"2000":282,"2025":347,"2050":381,"2100":421},
+"Japan":{"1800":30,"1900":44,"1950":84,"2000":127,"2025":123,"2050":105,"2100":77},
+"Indonesia":{"1800":8,"1900":40,"1950":70,"2000":214,"2025":286,"2050":321,"2100":296},
+"Nigeria":{"1800":12,"1900":16,"1950":38,"2000":123,"2025":238,"2050":359,"2100":477},
+"Brazil":{"1800":3,"1900":17,"1950":54,"2000":175,"2025":213,"2050":217,"2100":163},
+"Russia":{"1800":35,"1900":67,"1950":103,"2000":147,"2025":144,"2050":136,"2100":126},
+"Pakistan":{"1800":null,"1900":null,"1950":40,"2000":138,"2025":255,"2050":372,"2100":487},
+"Germany":{"1800":24,"1900":56,"1950":69,"2000":82,"2025":84,"2050":80,"2100":75},
+"United Kingdom":{"1800":16,"1900":38,"1950":50,"2000":59,"2025":70,"2050":75,"2100":75},
+"World":{"1800":1000,"1900":1650,"1950":2500,"2000":6140,"2025":8230,"2050":9700,"2100":10200},
+"Africa":{"1800":100,"1900":133,"1950":229,"2000":811,"2025":1540,"2050":2500,"2100":3800},
+"Europe":{"1800":200,"1900":408,"1950":549,"2000":727,"2025":744,"2050":703,"2100":592},
+"Asia":{"1800":600,"1900":930,"1950":1402,"2000":3710,"2025":4800,"2050":5200,"2100":4600},
+"Latin America":{"1800":20,"1900":74,"1950":167,"2000":519,"2025":668,"2050":730,"2100":650},
+"Northern America":{"1800":7,"1900":82,"1950":172,"2000":315,"2025":388,"2050":425,"2100":500}
+};
+const labels={"China":"中國","India":"印度","United States":"美國","Japan":"日本","Indonesia":"印尼","Nigeria":"奈及利亞","Brazil":"巴西","Russia":"俄羅斯","Pakistan":"巴基斯坦","Germany":"德國","United Kingdom":"英國","World":"世界","Africa":"非洲","Europe":"歐洲","Asia":"亞洲","Latin America":"拉丁美洲","Northern America":"北美洲"};
+const colors=["#2457c5","#078577","#c34c68","#d28b17","#7954b8","#268bb5","#7a8b35","#db6b38","#53657d","#c14ca0","#39845b","#8b6d4a"];
+const fmtYear=y=>y<0?`公元前 ${Math.abs(y).toLocaleString()} 年`:`${y.toLocaleString()} 年`;
+const fmtPop=n=>n==null?"—":n>=1000?(n/1000).toFixed(n>=10000?1:2)+" 十億人":n.toFixed(n<1?2:1)+" 億人";
+function interp(year){if(year<=worldData[0][0])return worldData[0][1];for(let i=1;i<worldData.length;i++){let [y2,p2]=worldData[i], [y1,p1]=worldData[i-1];if(year<=y2){let t=(year-y1)/(y2-y1);return p1+(p2-p1)*t;}}return worldData.at(-1)[1];}
+const yearRange=document.getElementById("yearRange"),yearLabel=document.getElementById("yearLabel"),eventList=document.getElementById("eventList");
+function renderEvents(){const filter=document.getElementById("eraFilter").value;eventList.innerHTML="";events.filter(e=>filter==="all"||e.era===filter).forEach(e=>{const b=document.createElement("button");b.className="event"+(Number(yearRange.value)===e.year?" active":"");b.innerHTML=`<div class="year">${fmtYear(e.year)} · 約 ${e.pop<1?(e.pop*100).toFixed(0)+" 百萬":e.pop.toFixed(1)+" 億"}人</div><div class="name">${e.title}</div><div class="desc">${e.desc}</div>`;b.addEventListener("click",()=>{yearRange.value=e.year;updateYear();});eventList.appendChild(b);});}
+function updateYear(){let y=+yearRange.value;yearLabel.textContent=fmtYear(y);document.getElementById("selectedPop").textContent=fmtPop(interp(y));let ev=events.reduce((best,e)=>Math.abs(e.year-y)<Math.abs(best.year-y)?e:best,events[0]);document.getElementById("selectedContext").textContent=`最接近的歷史節點：${ev.title}`;document.getElementById("selectedDriver").textContent=ev.driver;document.getElementById("selectedDriverDesc").textContent=ev.desc;renderEvents();}
+yearRange.addEventListener("input",updateYear);document.getElementById("eraFilter").addEventListener("change",renderEvents);
+
+function setupCanvas(canvas){const rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;canvas.width=Math.max(300,rect.width*dpr);canvas.height=Math.max(240,rect.height*dpr);const ctx=canvas.getContext("2d");ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,w:canvas.width/dpr,h:canvas.height/dpr};}
+function drawLineChart(canvas,series,opts={}){const {ctx,w,h}=setupCanvas(canvas);ctx.clearRect(0,0,w,h);const pad={l:58,r:20,t:18,b:42},pw=w-pad.l-pad.r,ph=h-pad.t-pad.b;let all=series.flatMap(s=>s.data.filter(d=>d.v!=null));if(!all.length)return;let xmin=Math.min(...all.map(d=>d.x)),xmax=Math.max(...all.map(d=>d.x));let ymin=opts.log?Math.max(.01,Math.min(...all.map(d=>d.v))):0,ymax=Math.max(...all.map(d=>d.v));if(opts.log)ymax=Math.pow(10,Math.ceil(Math.log10(ymax)));else ymax=ymax*1.08;const X=x=>pad.l+(x-xmin)/(xmax-xmin||1)*pw;const Y=v=>{if(opts.log)return pad.t+(Math.log10(ymax)-Math.log10(Math.max(v,.01)))/(Math.log10(ymax)-Math.log10(ymin))*ph;return pad.t+(1-v/ymax)*ph;};
+ctx.font="12px system-ui";ctx.lineWidth=1;ctx.strokeStyle="#e4eaf2";ctx.fillStyle="#68768b";
+for(let i=0;i<=5;i++){let val=opts.log?Math.pow(10,Math.log10(ymin)+(Math.log10(ymax)-Math.log10(ymin))*i/5):ymax*i/5;let yy=Y(val);ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke();ctx.textAlign="right";ctx.textBaseline="middle";ctx.fillText(opts.log?(val>=1?val.toFixed(val<10?1:0):val.toFixed(2)):val.toFixed(val<10?1:0),pad.l-8,yy);}
+for(let i=0;i<=5;i++){let x=xmin+(xmax-xmin)*i/5,xx=X(x);ctx.beginPath();ctx.moveTo(xx,pad.t);ctx.lineTo(xx,h-pad.b);ctx.stroke();ctx.textAlign="center";ctx.textBaseline="top";ctx.fillText(Math.round(x).toLocaleString(),xx,h-pad.b+10);}
+series.forEach((s,si)=>{ctx.beginPath();ctx.strokeStyle=s.color||colors[si%colors.length];ctx.lineWidth=s.width||2.5;let started=false;s.data.forEach(d=>{if(d.v==null){started=false;return;}if(!started){ctx.moveTo(X(d.x),Y(d.v));started=true;}else ctx.lineTo(X(d.x),Y(d.v));});ctx.stroke();s.data.forEach(d=>{if(d.v==null)return;ctx.beginPath();ctx.fillStyle=s.color||colors[si%colors.length];ctx.arc(X(d.x),Y(d.v),2.7,0,Math.PI*2);ctx.fill();});});
+canvas._plot={series,opts,pad,pw,ph,xmin,xmax,ymin,ymax,X,Y,w,h};}
+function drawBarChart(canvas,series,year){const {ctx,w,h}=setupCanvas(canvas);ctx.clearRect(0,0,w,h);const vals=series.map(s=>({name:s.name,v:s.data.find(d=>d.x===year)?.v,color:s.color})).filter(d=>d.v!=null);const pad={l:60,r:20,t:20,b:55},pw=w-pad.l-pad.r,ph=h-pad.t-pad.b,max=Math.max(...vals.map(d=>d.v))*1.12;ctx.font="12px system-ui";ctx.strokeStyle="#e4eaf2";ctx.fillStyle="#68768b";for(let i=0;i<=5;i++){let v=max*i/5,y=pad.t+ph*(1-i/5);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();ctx.textAlign="right";ctx.textBaseline="middle";ctx.fillText(v>=1000?(v/1000).toFixed(1)+"B":Math.round(v).toLocaleString(),pad.l-8,y);}let step=pw/Math.max(vals.length,1),bw=Math.min(42,step*.62);vals.forEach((d,i)=>{let x=pad.l+step*i+(step-bw)/2,hh=d.v/max*ph,y=pad.t+ph-hh;ctx.fillStyle=d.color;ctx.fillRect(x,y,bw,hh);ctx.save();ctx.translate(x+bw/2,h-pad.b+10);ctx.rotate(-.45);ctx.textAlign="right";ctx.textBaseline="middle";ctx.fillStyle="#53627a";ctx.fillText(d.name,0,0);ctx.restore();});}
+function renderWorld(){const mode=document.getElementById("chartMode").value;let data=worldData.filter(d=>mode==="all"||d[0]>=1800);let s=[{name:"世界人口",color:"#2457c5",data:data.filter(d=>d[0]<=2025).map(d=>({x:d[0],v:d[1]}))},{name:"未來預測",color:"#d28b17",data:data.filter(d=>d[0]>=2025).map(d=>({x:d[0],v:d[1]}))}];drawLineChart(document.getElementById("worldChart"),s,{log:document.getElementById("scaleMode").value==="log"});}
+function selectedCountries(){return [...document.getElementById("countrySelect").selectedOptions].map(o=>o.value);}
+function renderCompare(){let chosen=selectedCountries();if(!chosen.length){document.getElementById("compareLegend").textContent="請至少選擇一個國家或區域。";return;}let names=chosen.map(k=>({key:k,name:labels[k],color:colors[chosen.indexOf(k)%colors.length]}));const mode=document.getElementById("compareMode").value,year=+document.getElementById("compareYear").value,range=document.getElementById("compareRange").value;let years=range==="recent"?[1950,2000,2025,2050,2100]:range==="future"?[2025,2050,2100]:[1800,1900,1950,2000,2025,2050,2100];let series=names.map(n=>({name:n.name,color:n.color,data:years.map(y=>({x:y,v:countries[n.key][String(y)]==null?null:countries[n.key][String(y)]}))}));if(mode==="bar"){drawBarChart(document.getElementById("compareChart"),series,year);}else{let lineSeries=series.map(s=>({...s,data:s.data.filter(d=>range==="all"?d.x>=1800:range==="recent"?d.x>=1950:d.x>=2025)}));drawLineChart(document.getElementById("compareChart"),lineSeries);}
+document.getElementById("compareLegend").innerHTML=names.map(n=>`<span><i class="dot" style="background:${n.color}"></i>${n.name}</span>`).join("");
+let yearsForTable=[1800,1900,1950,2000,2025,2050,2100];document.querySelector("#compareTable thead").innerHTML="<tr><th>國家／區域（百萬人）</th>"+yearsForTable.map(y=>`<th>${y}</th>`).join("")+"</tr>";document.querySelector("#compareTable tbody").innerHTML=names.map(n=>`<tr><td>${n.name}</td>${yearsForTable.map(y=>{let v=countries[n.key][String(y)];return `<td>${v==null?"—":v.toLocaleString("en-US")}</td>`}).join("")}</tr>`).join("");
+}
+document.getElementById("scaleMode").addEventListener("change",renderWorld);document.getElementById("chartMode").addEventListener("change",renderWorld);document.getElementById("resetWorld").addEventListener("click",()=>{document.getElementById("scaleMode").value="linear";document.getElementById("chartMode").value="all";renderWorld();});document.getElementById("drawCompare").addEventListener("click",renderCompare);document.getElementById("compareMode").addEventListener("change",renderCompare);document.getElementById("compareYear").addEventListener("change",renderCompare);document.getElementById("compareRange").addEventListener("change",renderCompare);
+document.getElementById("worldChart").addEventListener("mousemove",e=>{const c=e.currentTarget,p=c._plot;if(!p)return;const r=c.getBoundingClientRect(),mx=e.clientX-r.left;let x=p.xmin+(mx-p.pad.l)/p.pw*(p.xmax-p.xmin);let all=p.series.flatMap(s=>s.data).filter(d=>d.v!=null);let d=all.reduce((a,b)=>Math.abs(a.x-x)<Math.abs(b.x-x)?a:b);document.getElementById("chartTooltip").textContent=`${fmtYear(d.x)}：${d.v.toFixed(d.v<1?2:1)} 億人`;});
+window.addEventListener("resize",()=>{renderWorld();renderCompare();});updateYear();renderWorld();renderCompare();
+</script>
+</body>
+</html>
