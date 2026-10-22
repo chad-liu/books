@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1937-中日戰爭：泥沼的數學</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">日本史・公元 1937 年</p>
+  <h1>1937-中日戰爭：泥沼的數學</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>1937 年 7 月 7 日盧溝橋事件——<strong>中日全面戰爭</strong>爆發：淞滬會戰（死傷 40 萬級）、南京（大屠殺的爭議）、武漢會戰後陷入僵持——<strong>日本陷入「支那泥沼」</strong>：投入百萬大軍、戰費膨脹、國際孤立（美國廢商約 1939、凍結資產＋石油禁運 1941）——<strong>通往太平洋戰爭（<a href="1941-%E5%A4%AA%E5%B9%B3%E6%B4%8B%E6%88%B0%E7%88%AD.html">1941-太平洋戰爭</a>）的直路</strong>。這樁案件是「勝利的泥沼化」：戰術全勝、戰略全敗。</p></section>
+<section><h2>前因 -- 多因素的局勢</h2><ul><li><strong>政治</strong>：二二六後的統制派（東條）抬頭（<a href="1931-%E6%BB%BF%E6%B4%B2%E4%BA%8B%E8%AE%8A%E8%88%87%E8%BB%8D%E5%9C%8B%E4%B8%BB%E7%BE%A9.html">1931-滿洲事變與軍國主義</a>）——「不擴大」方針的空洞化。</li><li><strong>軍事</strong>：關東軍、華北駐屯軍的獨走體質——現地軍的既成事實傳統。</li><li><strong>中國</strong>：西安事變（1936）後的國共合作＋南京國民政府的抗戰決心——「三月亡華」的誤判對象。</li><li><strong>國際</strong>：德意的擴張（歐洲綏靖）——日本誤判「列強無暇東顧」。</li></ul></section>
+<section><h2>線索與推理 -- 因素咬合</h2><h3>線索一：「三月亡華」的誤判——國力函數的錯估</h3><p>陸軍參謀本部的估計：中國軍隊一觸即潰、三月解決——<strong>用甲午、日俄的經驗外推</strong>：</p><div class="math">$$\text{實際戰力} = \text{（裝備）} \times \text{（空間）} \times \text{（民族主義）} \times \text{（國際援助）}$$</div><p>日本只算了第一項——中國的空間（戰略縱深：以空間換時間）＋民族主義（全面抗戰）＋蘇美援助——<strong>三項乘數把「三月」變成「八年」</strong>。淞滬（1937.8–11）日軍死傷 4 萬——<strong>第一仗就打碎速戰幻想</strong>。</p><h3>線索二：泥沼的財政——「戰費的指數」</h3><div class="tablewrap"><table><thead><tr><th>年度</th><th>戰費佔財政比</th></tr></thead><tbody><tr><td>1937</td><td>約 30%</td></tr><tr><td>1938</td><td>約 50%</td></tr><tr><td>1940</td><td>約 70%＋</td></tr></tbody></table></div><div class="math">$$\text{戰爭可持續度} = \frac{\text{佔領區收益}}{\text{戰費} + \text{國際制裁成本}}$$</div><p>佔領區（華北、華中）的收益被游擊戰與維持費抵銷——<strong>分子停滯、分母指數增長</strong>。近衛三原則（1938 不以國民政府為對手）→ 汪兆銘工作（1940 汪政權）——<strong>政治解決的嘗試皆敗</strong>（重慶不降、延安擴大）——泥沼的確認。</p><h3>線索三：ABCD 包圍網——「制裁的絞索」</h3><p>美國：廢商約（1939）→ 廢鐵禁運（1940）→ 石油凍結（1941.7）——<strong>日本石油 80% 仰賴美國</strong>：</p><div class="math">$$\text{開戰壓力} = \frac{\text{石油儲備}}{\text{消耗速度}} \approx 2\text{年}$$</div><p>「坐以待斃 vs 一戰求活」——海軍的燃料時鐘滴答作響——<strong>南部進出（法屬印度支那 1941）→ ABCD 包圍 → 珍珠港的因果鏈</strong>。中日戰爭的泥沼，逼出太平洋戰爭的賭博——<strong>兩場戰爭是同一條絞索的兩端</strong>。</p></section>
+<section><h2>破案時刻</h2><ul><li>1937.7.7：盧溝橋事件——全面戰爭爆發。</li><li>1937.8–11：淞滬會戰——40 萬級死傷、日慘勝。</li><li>1937.12：南京陷落（大屠殺）——國際形象的崩壞。</li><li>1938.6–10：徐州、武漢會戰——佔領武漢，但重慶不降——僵持確認。</li><li>1938.11：近衛三原則；1940.3：汪兆銘政權——政治解決的失敗。</li><li>1941.7：南部佛印進駐 → 美石油禁運——絞索收緊。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li><strong>軍事</strong>：百萬大軍陷華——太平洋戰場的兵力分散；「泥沼」的教訓（無人學會）。</li><li><strong>經濟</strong>：戰時統制（國家總動員法 1938）——統制經濟的完成；民生壓迫。</li><li><strong>國際</strong>：孤立 → 三國同盟（1940）→ ABCD 包圍 → 珍珠港（<a href="1941-%E5%A4%AA%E5%B9%B3%E6%B4%8B%E6%88%B0%E7%88%AD.html">1941-太平洋戰爭</a>）。</li><li><strong>中國</strong>：國共力量對比的改變（共產黨的敵後擴大）——內戰與 1949 的遠因；南京的歷史記憶（至今的外交變數）。</li></ul></section>
+<section><h2>因素影響筆記</h2><pre><code>二二六統制派＋現地軍獨走 ──→ 7.7 盧溝橋 ──→ 淞滬慘勝（速戰幻想破滅）
+                                                        ↓
+三月→八年（空間×民族主義×援助）──→ 戰費指數 ──→ 政治解決失敗（汪政權）
+                                                        ↓
+                                        美國禁運（石油時鐘）──→ 1941 珍珠港</code></pre><p><strong>偵探結語</strong>：中日戰爭案件的數學是：<strong>戰術的勝利加總，可能是戰略的失敗</strong>——日本贏了每一場會戰，輸了整場戰爭。泥沼沒有 teachable moment，只有沉沒成本；而沉沒成本的最大債主，是1941年12月8日的珍珠港。</p></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/日本史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/日本史/1937-中日戰爭.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
