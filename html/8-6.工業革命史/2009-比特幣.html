@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2009-比特幣：白皮書、創世區塊與去中心化信任的多因案件</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">工業革命史・公元 2009 年</p>
+  <h1>2009-比特幣：白皮書、創世區塊與去中心化信任的多因案件</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>2009 年 1 月 3 日創世區塊挖出，兇手不是某個天才的靈光，而是 2008 金融海嘯摧毀銀行信任、密碼龐克二十年鋪路、工作量證明點燃引線的三重咬合；比特幣以降「信任中介成本」為武器，證明沒有銀行也能轉帳。</p></section>
+<section><h2>前因 -- 多因素的局勢</h2><ul><li><strong>經濟</strong>：2008 雷曼倒閉、各國印鈔救市，法幣濫發恐懼＋「銀行大到不能倒卻能作惡」激起另類貨幣渴求。</li><li><strong>政治</strong>：密碼龐克（cypherpunk）無政府自由意志傳統——1990 年代 DigiCash、E-gold 被政府掐死，教訓是「中心化必被拔插頭」。</li><li><strong>法律</strong>：創世區塊留言「Chancellor on brink of second bailout for banks」（2009-01-03《泰晤士報》），把對銀行紓困的憤怒鑄進鏈上，政治宣言即出生紙。</li><li><strong>金融</strong>：雙花問題（double-spending）是數位現金三十年死結：無中介則一幣多花，有中介則重回銀行。</li><li><strong>技術</strong>：Hashcash（Adam Back 1997）＋b-money（Wei Dai）＋Bit Gold（Szabo）＋Merkle 樹＋P2P，零件早已躺在桌上，只差組裝圖。</li><li><strong>心理</strong>：金融海嘯後的虛無與極客浪漫——與其上街，不如寫 code 另起爐灶。</li></ul></section>
+<section><h2>線索與推理 -- 因素咬合</h2><h3>線索1：白皮書——八頁紙的組裝圖</h3><p>2008-10-31 中本聰（Satoshi Nakamoto）貼出《Bitcoin: A Peer-to-Peer Electronic Cash System》，定義：交易打包成區塊、節點比算力投票、作惡成本高於誠實收益。因果鏈：</p><div class="math">$$\text{交易廣播} \to \text{節點打包＋解 PoW} \to \text{最長鏈即真相} \to \text{雙花需重寫全鏈} \to \text{作惡不划算}$$</div><pre><code># 拜占庭將軍問題的算力解
+while True:
+  block = collect(tx_pool) + prev_hash + nonce
+  if sha256(sha256(block)) &lt; target:  # 工作量證明
+    broadcast(block); break
+  nonce += 1
+# 誠實鏈最長最重，叛將要追上需燒掉同等電力</code></pre><h3>線索2：工作量證明 vs 拜占庭將軍問題</h3><p>分散式系統經典難題：互不信任的將軍如何約定同一進攻時間？中本聰答案：用電力投票、機率終局。學術對照：</p><div class="tablewrap"><table><thead><tr><th>傳統 BFT（PBFT）</th><th>比特幣 PoW</th></tr></thead><tbody><tr><td>需已知節點名單、2/3 誠實</td><td>匿名可進出，靠算力權重</td></tr><tr><td>即時確定性</td><td>機率確定性（6 確認≈不可逆）</td></tr><tr><td>高效但中心化傾向</td><td>耗能但抗審查、抗關停</td></tr></tbody></table></div><p>推理：PoW 把「信任的成本」從牌照＋法庭轉成電費——貴，但誰也關不掉。</p><h3>線索3：信任的成本理論——兇手是中介費</h3><p>Coase 交易成本＋銀行學：每筆轉帳要付清算費、詐欺準備金、監管合規費與「銀行會不會倒」的風險溢價。比特幣的出價：</p><div class="math">$$\text{去中介} \to \text{跨境匯款費 6\%→&lt;1\%} \to \text{無銀行帳戶者可持幣} \to \text{信任外包給數學＋賽局}$$</div><p>代價是波動性與私鑰自負——銀行偷走你的錢 vs 自己弄丟私鑰，兩種恐懼二選一。</p><h3>線索4：創世區塊——50 枚挖不出來的神話</h3><p>2009-01-03 中本聰挖出 block 0（獎勵 50 BTC 永不可花，因寫死在程式），六天後 Hal Finney 收到第一筆轉帳（block 170，10 BTC）。鏈式公式：</p><div class="math">$$\text{創世區塊＋報紙標題} \to \text{時間戳不可偽造} \to \text{公平啟動神話} \to \text{社群信仰鑄成}$$</div><p>沒有預挖、沒有公司，公平性本身就是估值引擎。</p></section>
+<section><h2>破案時刻</h2><ul><li>2008-10-31：中本聰發布比特幣白皮書（metzdowd 密碼學郵件組）。</li><li>2009-01-03：創世區塊誕生，內嵌紓困標題。</li><li>2009-01-09：Bitcoin v0.1 開源釋出；12 日 Finney 收首筆轉帳。</li><li>2010-05-22：披薩日（10,000 BTC 買兩披薩），首次定價。</li><li>2011–2013：Mt.Gox 竄起又崩、絲路暗網案，投機＋惡名雙至。</li><li>2015 起：區塊鏈（blockchain）一詞出圈，以太坊把帳本變電腦。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li><strong>制度</strong>：DeFi、穩定幣、央行數位貨幣（CBDC）全被逼應戰，「貨幣非國家專利」重回檯面。</li><li><strong>經濟</strong>：總量 2100 萬枚＋四年減半，數位稀缺＋通縮敘事吸納黃金派資金，波動卻十倍於黃金。</li><li><strong>技術</strong>：區塊鏈＋智能合約＋零知識證明開枝散葉，PoS 等綠色共識試圖洗掉耗能原罪（劍橋估比特幣年耗電逾百 TWh）。</li><li><strong>世界</strong>：薩爾瓦多 2021 列為法幣、中美洲匯款走廊實測，制裁規避與洗錢疑慮並存。</li><li><strong>教訓</strong>：去中心化不是免費午餐——省下銀行費，付給礦機電費與波動稅；中本聰 2011 年消失，更留下「無主系統誰負責」的永恆考題。</li></ul></section>
+<section><h2>因素影響筆記</h2><ol><li>2008 海嘯＋印鈔救市 → 銀行信任崩盤，另類貨幣需求爆棚。</li><li>密碼龐克三十年零件（Hashcash＋Merkle＋P2P） → 只差組裝，中本聰補上最後一塊。</li><li>PoW 解拜占庭難題 → 匿名共識可行，雙花死結打開。</li><li>信任成本轉嫁（中介費→電費） → 抗審查誕生，代價是耗能與波動。</li><li>創世區塊＋公平啟動神話 → 無主信仰成護城河，鏈上宗教就此開宗。</li></ol></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/工業革命史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/工業革命史/2009-比特幣.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>

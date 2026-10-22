@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1971-微處理器：英特爾4004、積體電路與摩爾定律的多因案件</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">工業革命史・公元 1971 年</p>
+  <h1>1971-微處理器：英特爾4004、積體電路與摩爾定律的多因案件</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>1971 年 11 月 15 日，英特爾發表 4004——指甲蓋大的晶片上塞進 2300 個電晶體，完整裝下一顆 4 位元 CPU。兇手不是單一的電路天才，而是積體電路成熟、計算器廠商的客製需求、矽閘極工藝突破與摩爾定律自我實現的預期四者咬合，把「一台電腦」壓縮成「一顆晶片」。</p></section>
+<section><h2>前因 -- 多因素的局勢</h2><ul><li><strong>經濟</strong>：1960 年代末計算器大戰殺價，日本 Busicom 需要便宜晶片組，願意出錢讓英特爾客製 12 顆晶片——訂單就是研發經費。</li><li><strong>技術</strong>：1958–1959 年基爾比（TI）與諾伊斯（仙童）發明積體電路；1968 年費金（Federico Faggin）在仙童開發矽閘極（SGT），速度翻倍、面積減半。</li><li><strong>組織</strong>：1968 年諾伊斯、摩爾出走創英特爾，主攻記憶體（1101、1103 DRAM），霍夫（Ted Hoff）、馬佐爾（Stan Mazor）、費金恰好聚齊架構＋邏輯＋工藝鐵三角。</li><li><strong>資訊</strong>：大型電腦（IBM System/360）證明通用可程式架構的威力，問題只剩「能否縮小」；摩爾 1965 年論文給出縮小路線圖。</li><li><strong>市場</strong>：嵌入式控制（計算器、收銀機、儀器）需求浮現，不需要巨型算力，只需要便宜、可程式的小算力。</li><li><strong>競爭</strong>：德州儀器、四相（Four-Phase）、Garrett 同場賽跑，誰先把 CPU 做成單晶片，誰就定義下一代標準。</li></ul></section>
+<section><h2>線索與推理 -- 因素咬合</h2><h3>線索1：Busicom 的 12 顆變 4 顆——通用架構的逆轉勝</h3><p>霍夫審視 Busicom 要求的 12 顆專用晶片，提議改做 4 顆通用晶片（4001 ROM、4002 RAM、4003 移位暫存、4004 CPU），靠程式而非硬線實現計算器功能。因果鏈：</p><div class="math">$$\text{專用硬線邏輯} \to \text{通用 CPU＋記憶體} \to \text{晶片數↓、彈性↑} \to \text{微處理器範式誕生}$$</div><p>必要時的設計邏輯可用 pseudocode 表達：</p><pre><code># Busicom 方案：每功能一顆硬線晶片（12顆）
+# Hoff 方案：取指—解碼—執行迴圈
+while power_on:
+  instr = ROM[PC]; PC += 1
+  execute(instr, RAM, IO)  # 同一顆4004跑不同程式即不同機器</code></pre><p>推理：微處理器的本質是把硬體多樣性搬到軟體裡，硬體越通用，規模越大。</p><h3>線索2：矽閘極工藝——沒有它就沒有 4004</h3><p>費金 1968 年的 SGT 用多晶矽取代鋁閘，電晶體更快更小，4004 才能在 12 mm² 上跑 740 kHz。其 Wright／摩爾雙重奏：</p><div class="math">$$C_n = C_1 \cdot n^{-b} \quad\text{且}\quad N(t) = N_0 \cdot 2^{t/2\text{年}}$$</div><div class="tablewrap"><table><thead><tr><th>指標</th><th>4004（1971）</th><th>8080（1974）</th></tr></thead><tbody><tr><td>電晶體數</td><td>2,300</td><td>6,000</td></tr><tr><td>時脈</td><td>740 kHz</td><td>2 MHz</td></tr><tr><td>製程</td><td>10 μm</td><td>6 μm</td></tr><tr><td>應用</td><td>Busicom 計算器</td><td>Altair 8800 微電腦</td></tr></tbody></table></div><p>工藝每進一步，架構的想像空間就放大一圈。</p><h3>線索3：摩爾定律——預言即產能計畫</h3><p>摩爾 1965 年預言每年電晶體密度翻倍（1975 年修正為約兩年一倍），英特爾把它當成產品路線圖與說客话术：客戶敢為下一代軟體投資，因為算力必然便宜。自我實現迴路：</p><div class="math">$$\text{預期密度↑} \to \text{軟體投資↑} \to \text{晶片需求↑} \to \text{研發經費↑} \to \text{密度真的↑}$$</div><p>微處理器不是被發明一次，而是被這條曲線連續發明了五十年。</p><h3>線索4：從計算器到電腦——通用性的意外後果</h3><p>英特爾起初向 Busicom 買回 4004 外銷權時只想多賣晶片，沒料到 1974 年 8080＋1975 年 Altair 8800 引爆個人電腦。1971 年的嵌入式小算力，變成 1981 年 IBM PC 的大歷史：</p><div class="math">$$\text{便宜可程式晶片} \to \text{業餘者電腦} \to \text{作業系統＋軟體生態} \to \text{PC 革命}$$</div></section>
+<section><h2>破案時刻</h2><ul><li>1958–1959：基爾比、諾伊斯各自發明積體電路。</li><li>1965：摩爾在《電子學》發表密度翻倍預言。</li><li>1968：諾伊斯、摩爾創立英特爾；費金完成矽閘極技術。</li><li>1969–1970：Busicom 下單 12 顆計算器晶片；霍夫提出 4 晶片通用方案。</li><li>1971-11-15：英特爾 4004 發表（廣告標語「新時代的微電腦」），售價 30 美元。</li><li>1972–1974：8008、8080 相繼問世，8 位元時代開啟。</li><li>1975：摩爾定律修正為兩年一倍；Altair 8800 採用 8080，PC 史前史開始。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li><strong>技術</strong>：運算從房間級縮到晶片級，嵌入式→PC→手機→物聯網皆為同一譜系。</li><li><strong>經濟</strong>：英特爾＋微軟「Wintel」生態攫取 PC 時代超額利潤，半導體成為戰略物資。</li><li><strong>社會</strong>：電腦從機構資產變成個人工具，軟體業、駭客文化、資訊自由皆由此開枝。</li><li><strong>世界</strong>：美、日、韓、台圍繞製程展開半世紀軍備賽，摩爾定律即地緣政治節拍器。</li><li><strong>教訓</strong>：通用＋可程式擊敗專用硬線是反覆上演的劇本（CPU→GPU→NPU皆然）；為特定客戶做的架構，若足夠通用，就能吃掉所有客戶。</li></ul></section>
+<section><h2>因素影響筆記</h2><ol><li>Busicom 訂單提供經費與場景 → 通用 CPU 構想有第一個買家。</li><li>積體電路＋矽閘極工藝成熟 → 2300 電晶體可擠進單晶片，物理上可行。</li><li>霍夫—馬佐爾—費金鐵三角齊聚英特爾 → 架構、邏輯、工藝無縫咬合。</li><li>摩爾定律提供路線圖與信心 → 客戶敢押注，研發敢投入，預言自我實現。</li><li>通用可程式思想下放 → 一顆計算器晶片意外長成電腦的心臟。</li></ol></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/工業革命史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/工業革命史/1971-微處理器.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
