@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1569-墨卡托投影：把圓地球攤平成方格紙</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">大航海時代・公元 1569 年</p>
+  <h1>1569-墨卡托投影：把圓地球攤平成方格紙</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>1569 年，佛蘭德製圖師格拉杜斯·墨卡托（Gerardus Mercator）在杜伊斯堡出版世界地圖《航海用新版地球平面圖》（Nova et Aucta Orbis Terrae Descriptio），18 張圖幅拼成 2×1.3 公尺大壁掛。圖上高緯地區被拉得巨大——格陵蘭看起來跟非洲一樣大，阿拉斯加腫如饅頭，水手卻愛不釋手：因為圖上任意兩點連直線，就是恆向線（loxodrome），照著羅盤方位角一路開就到。本案的兇手是<strong>等角數學</strong>：用一個故意扭曲面積的投影，換取角度不變，讓羅盤第一次可以直接讀地圖。</p></section>
+<section><h2>前因 -- 多因素的局勢</h2><ul><li><strong>航海</strong>：葡萄牙、西班牙船隊在大西洋、印度洋跑恆向線，卻無圖可用——球面航線畫到平面圖上全是曲線，領航員靠死算（dead reckoning）加減猜。</li><li><strong>製圖</strong>：托勒密圓錐、等距投影保面積不保角，水手量角度全錯；1550 年代安特衛普印刷業發達，大幅銅版地圖可量產。</li><li><strong>數學</strong>：三角學、對數尚未發明（納皮爾 1614），墨卡托憑手工積分逼近，緯度間距按正割函數拉開。</li><li><strong>商業</strong>：安特衛普、阿姆斯特丹商人要可靠海圖避開暗礁與葡西封鎖線，願付高價買圖；墨卡托靠賣地球儀、地圖維生。</li><li><strong>宗教</strong>：墨卡托曾因新教嫌疑入獄七個月，出獄後避居杜伊斯堡，對「普世、客觀」的地圖有執念——一張所有船都能用的圖，就是和平。</li></ul></section>
+<section><h2>線索與推理 -- 因素咬合</h2><h3>線索一：等角的代價——公式即扭曲</h3><p>墨卡托投影公式（球面版）：</p><div class="math">$$x = \lambda - \lambda_0, \quad y = \ln\left[\tan\left(\frac{\pi}{4} + \frac{\varphi}{2}\right)\right]$$</div><p>$\varphi$ 為緯度， $\lambda$ 為經度。 $y$ 對 $\varphi$ 的拉伸倍率是 $\sec\varphi$ （正割）：赤道 1 倍、緯度 60° 時 2 倍、80° 時近 6 倍。面積扭曲倍率是 $\sec^2\varphi$ ——格陵蘭（高緯）看起來 14 倍大。這是刻意為之：<strong>用面積的謊言，換角度的真話</strong>。羅盤方位角 $\theta$ 在圖上處處可量，船長再也不用解球面三角。</p><h3>線索二：恆向線 vs 大圓——省腦還是省路？</h3><p>兩種航線對比：</p><div class="tablewrap"><table><thead><tr><th></th><th>恆向線（墨卡托直線）</th><th>大圓（球面最短）</th></tr></thead><tbody><tr><td>圖上形狀</td><td>直線</td><td>曲線（高緯上凸）</td></tr><tr><td>操作</td><td>羅盤定一方位開到底</td><td>需不斷變向，需天文定位</td></tr><tr><td>航程</td><td>較長（高緯多 5–10%）</td><td>最短</td></tr><tr><td>適用</td><td>中低緯、領航技術差時</td><td>高緯、遠洋</td></tr></tbody></table></div><p>16 世紀水手寧可多跑 5% 的路，也不要算錯彎沉船。墨卡托把「省腦」放在「省路」前面——<strong>技術史的常態：好用的先贏，最優的後到</strong>。大圓航法要等到 19 世紀航海鐘＋天文鐘普及才實用。</p><h3>線索三：權力的投影——地圖即話語</h3><p>墨卡托把歐洲放在中央、本初子午線穿過（後定格林威治），高緯白人國家視覺上更大。後世批評「歐洲中心、帝國主義地圖」，1950 年代後有伽爾-彼得斯等角積投影反撲。但偵探要分清：1569 年的選擇是航海工程，不是殖民陰謀——<strong>等角是羅盤逼的，不是種族逼的</strong>。地圖的政治含義是後人貼上去的，墨卡托只想讓船不觸礁。</p></section>
+<section><h2>破案時刻</h2><ul><li>1569 年：墨卡托大世界地圖出版，印數極少，僅存三份。</li><li>1570 年：奧特柳斯《寰宇概觀》 atlas 暢銷，反襯墨卡托曲高和寡——水手買得起小圖，買不起壁掛。</li><li>1599 年：賴特（Edward Wright）發表《航海中的某些錯誤》用數學解釋墨卡托分帶表，投影才真正普及。</li><li>1600 年代：荷蘭東印度公司（VOC，見 <a href="1602-%E8%8D%B7%E8%98%AD%E6%9D%B1%E5%8D%B0%E5%BA%A6%E5%85%AC%E5%8F%B8.html">1602-荷蘭東印度公司</a>）規定領航員必備墨卡托海圖，投影成為全球標準。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li><strong>航海</strong>：恆向線法＋羅盤＋墨卡托圖構成 17－18 世紀標準領航術，大西洋三角貿易、馬尼拉大帆船（見 <a href="1571-%E9%A6%AC%E5%B0%BC%E6%8B%89%E5%A4%A7%E5%B8%86%E8%88%B9.html">1571-馬尼拉大帆船</a>）都靠它。</li><li><strong>科學</strong>：投影問題催生積分學（ $\int \sec x\,dx$ ），邦德、布里格斯為算分帶表推進對數與微積分。</li><li><strong>日常</strong>：Google Maps、Web Mercator 沿用至今——你手機裡的街景，骨子裡是 1569 年的正割函數。</li><li><strong>爭議</strong>：面積扭曲誤導大眾地理認知（非洲真實可裝下美、中、印），教室掛圖 21 世紀紛紛換投影，但航海圖仍用墨卡托——術業有專攻。</li></ul></section>
+<section><h2>因素影響筆記</h2><ol><li><strong>羅盤領航 → 等角需求</strong>：工具決定地圖的數學。</li><li><strong> $\sec\varphi$ 拉伸 → 角度保真</strong>：一個公式，兩種後果（好用＋扭曲）。</li><li><strong>印刷＋公司制 → 普及</strong>：VOC 的強制配圖比學術讚美更有效。</li><li><strong>工程選擇 → 政治隱喻</strong>：後世的批判是第二層歷史，第一層只是讓船活著回來。</li></ol></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/大航海時代」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/大航海時代/1569-墨卡托投影.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>

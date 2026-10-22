@@ -90,8 +90,7 @@ def order_structure(folder, stems):
     return items
 
 
-GROUP_CHILD_RE = re.compile(r'^(\d+)-(\d+)\.(.+)$')
-GROUP_PARENT_RE = re.compile(r'^(\d+)\.(.+)$')
+PREFIX_RE = re.compile(r'^(\d+(?:-\d+)*)\.(.+)$')   # 資料夾編號階層，如 1、1-6、1-6-1
 
 
 def is_saved_asset(path, folder):
@@ -190,70 +189,69 @@ def collect():
     all_folders = sorted(p for p in HTML_ROOT.iterdir() if p.is_dir())
     nodes = {folder.name: build_folder_node(folder) for folder in all_folders}
 
-    # 資料夾層級的巢狀分組：資料夾名稱形如「N-M.標籤」（如 1-1.西方歷史）視為
-    # 群組 N 的子資料夾；若同時存在一個沒有連字號、單純「N.標籤」的資料夾
-    # （如 1.歷史），就把它當成該群組的父節點，子資料夾在檔案樹側欄收合顯示在
-    # 它底下一層——實體檔案不搬動，跟書架的巢狀是同一種「純顯示分組」精神，
-    # 只是這次分組的對象是整個資料夾而不是資料夾內的單一檔案。
-    # 沒有對應「N.標籤」父資料夾時，「N-M.標籤」維持原本攤平的頂層顯示，
-    # 不影響既有的 3-0/3-1、5-0/5-1 這類純排序用的連字號資料夾。
-    children_by_group = {}
+    # 資料夾層級的巢狀分組（編號階層）：資料夾名稱以「編號.標籤」開頭，編號由
+    # 連字號分段，如 1.歷史、1-6.世界發展史、1-6-1.大航海時代。去掉最後一段編號
+    # 就是它的「父編號」：1-6-1 的父是 1-6，1-6 的父是 1。父編號有對應資料夾時，
+    # 子資料夾在檔案樹側欄收合顯示在父資料夾底下一層（可以多層）；父資料夾自己
+    # 的檔案排在前面、子資料夾的 group 節點接在後面。實體檔案不搬動，跟書架的
+    # 巢狀是同一種「純顯示分組」精神，只是分組對象是整個資料夾。
+    # 找不到父資料夾時（如 3-0/3-1 這類純排序用的連字號資料夾）維持攤平的
+    # 頂層顯示；同一個編號對應到多個資料夾時視為有歧義，不分組。
+    by_prefix = {}
     for folder in all_folders:
-        m = GROUP_CHILD_RE.match(folder.name)
+        m = PREFIX_RE.match(folder.name)
         if m:
-            g, c, _label = m.groups()
-            children_by_group.setdefault(g, []).append((int(c), folder.name))
+            by_prefix.setdefault(m.group(1), []).append(folder.name)
 
-    grouped_children = set()
-    parent_name_by_group = {}
+    def parent_of(name):
+        m = PREFIX_RE.match(name)
+        if not m:
+            return None
+        parts = m.group(1).split('-')
+        for k in range(len(parts) - 1, 0, -1):      # 由近到遠找最近的祖先編號
+            cands = by_prefix.get('-'.join(parts[:k]), [])
+            if len(cands) == 1:
+                return cands[0]
+        return None
+
+    def sort_key(name):
+        return tuple(int(x) for x in PREFIX_RE.match(name).group(1).split('-'))
+
+    children_of, roots = {}, []
     for folder in all_folders:
-        name = folder.name
-        if GROUP_CHILD_RE.match(name):
-            continue
-        m = GROUP_PARENT_RE.match(name)
-        if m and m.group(1) in children_by_group:
-            parent_name_by_group[m.group(1)] = name
+        par = parent_of(folder.name)
+        if par and par != folder.name:
+            children_of.setdefault(par, []).append(folder.name)
+        else:
+            roots.append(folder.name)
+    for kids in children_of.values():
+        kids.sort(key=sort_key)
+
+    def build(name):
+        node = nodes[name]
+        files = list(node['files']) if node else []
+        total = node['total'] if node else 0
+        orphans = node['orphans'] if node else 0
+        for child in children_of.get(name, []):
+            sub = build(child)
+            if sub is None:
+                continue
+            total += sub['total']
+            orphans += sub['orphans']
+            files.append({'n': child, 'group': True,
+                          'total': sub['total'], 'children': sub['files']})
+        if node is None and not files:
+            return None
+        return {'files': files, 'total': total, 'orphans': orphans}
 
     tree = []
     orphans = 0
-    for folder in all_folders:
-        name = folder.name
-        if name in grouped_children:
+    for name in roots:
+        sub = build(name)
+        if sub is None:
             continue
-        m = GROUP_CHILD_RE.match(name)
-        if m and parent_name_by_group.get(m.group(1)) and parent_name_by_group[m.group(1)] != name:
-            continue  # 這個子資料夾會在其父節點底下處理，這裡先跳過
-
-        node = nodes[name]
-        m_parent = GROUP_PARENT_RE.match(name) if not GROUP_CHILD_RE.match(name) else None
-        g = m_parent.group(1) if m_parent else None
-
-        if g and g in children_by_group:
-            own_files = node['files'] if node else []
-            own_total = node['total'] if node else 0
-            own_orphans = node['orphans'] if node else 0
-            group_items = []
-            for _, child_name in sorted(children_by_group[g]):
-                grouped_children.add(child_name)
-                cnode = nodes.get(child_name)
-                if cnode is None:
-                    continue
-                own_total += cnode['total']
-                own_orphans += cnode['orphans']
-                group_items.append({
-                    'n': child_name,
-                    'group': True,
-                    'total': cnode['total'],
-                    'children': cnode['files'],
-                })
-            orphans += own_orphans
-            tree.append({'name': name, 'files': own_files + group_items, 'total': own_total})
-            continue
-
-        if node is None:
-            continue
-        orphans += node['orphans']
-        tree.append({'name': name, 'files': node['files'], 'total': node['total']})
+        orphans += sub['orphans']
+        tree.append({'name': name, 'files': sub['files'], 'total': sub['total']})
     return tree, orphans
 
 
