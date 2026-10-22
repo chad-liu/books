@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1960 科斯定理：外部性、產權與交易成本的偵探案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">世界發展史・公元 1960 年</p>
+  <h1>1960 科斯定理：外部性、產權與交易成本的偵探案</h1>
+</header>
+
+<section><h2>案發現場</h2><p>1959–60 年，芝加哥。經濟學家科斯（Ronald Coase）在一場關於<strong>無線電頻譜</strong>的論戰中，拋出《社會成本問題》（The Problem of Social Cost，1960）——經濟學史上被引用最多的論文之一。當時的正統：<strong>外部性</strong>（externality）=一方加害另一方（工廠排煙害了鄰居）→政府應課稅或管制（庇古 Pigou 的傳統）。</p><p>科斯的反轉：他的例子是<strong>牧牛者與農夫</strong>——牛越界吃了農作物。誰是加害者？科斯說：<strong>不是單向的加害</strong>——限制牛（牧牛者受害）或不種作物（農夫受害），是<strong>互惠的妨害</strong>（reciprocal harm）：問題是「兩種有價值的活動如何共存」。</p><blockquote><p><strong>如果外部性是互惠的，政府該站哪一邊？科斯的定理說了什麼、沒說什麼？「交易成本」為什麼成為理解一切制度的鑰匙？</strong></p></blockquote></section>
+<section><h2>偵查過程</h2><p><strong>線索一：產權的實驗（數字偵查）。</strong> 科斯的思想實驗（數字可具體化）：牧牛者的牛群（40 頭）越界吃農作物，年損害 100 元。<strong>制輪與柵欄</strong>：修柵欄成本 75 元/年；牛群減 1 頭，牧牛者少賺 20 元/頭（第 40 頭的邊際利潤 20 元、第 39 頭 30 元……）。</p><div class="tablewrap"><table><thead><tr><th>產權分配</th><th>談判結果</th></tr></thead><tbody><tr><td>農夫有權（可索賠 100 元）</td><td>牧牛者：修柵欄（75 元）&lt;賠償（100 元）→<strong>修柵欄</strong></td></tr><tr><td>牧牛者有權（可放牛）</td><td>農夫：付牧牛者最多 100 元請他修柵欄→<strong>修柵欄</strong>（付 75–100 元間成交）</td></tr></tbody></table></div><p><strong>兩種產權分配，結果相同（柵欄修了）</strong>——若<strong>交易成本為零</strong>，資源落到<strong>最高價值的用途</strong>，與產權初始分配無關（分配只影響財富，不影響效率）——這是<strong>科斯定理</strong>：</p><div class="math">$$\text{交易成本} = 0 \Rightarrow \text{效率結果與產權初始分配無關}$$</div><p><strong>線索二：定理的反面（真正的洞見）。</strong> 但科斯的重點<strong>不是</strong>「產權無關」——是反面：<strong>真實世界交易成本永遠&gt;0</strong>（找到對方、談判、執行的成本）；交易成本高時（百萬農夫 vs 千萬居民、空氣污染——無法一對一談判），<strong>產權初始分配與制度選擇才是關鍵</strong>：</p><div class="math">$$\text{交易成本} &gt; 0 \Rightarrow \text{制度的選擇（法院/立法/市場/不做）決定效率}$$</div><p>偵查的重點：<strong>科斯定理是「反面教材」</strong>——它的用意是逼人問：<strong>這個問題的交易成本是多少？該用哪種制度解？</strong> 而不是「政府別管」。</p><p><strong>線索三：交易成本=制度的鑰匙（理論的放大）。</strong> 科斯此前的《廠商的性質》（1937）已埋下種子：<strong>為什麼有公司？</strong>——因為市場有交易成本（找供應商、議價、執行契約），公司用「命令」替代「價格」以省交易成本——<strong>公司與市場是可替代的協調機制</strong>，邊界由交易成本決定。1960 的《社會成本問題》把這把鑰匙放大：<strong>一切制度（公司、法院、立法、市場、社群規範）都是降低特定交易成本的工具</strong>——制度經濟學（Williamson 的交易成本經濟學、1991/2009 諾獎）由此奠基。</p><p><strong>線索四：應用的爆發（理論的市場）。</strong> 科斯框架的應用：</p><ul><li><strong>頻譜</strong>：無線電頻譜的干擾爭論（1959）→1994 年 FCC 頻譜<strong>拍賣</strong>（產權+市場替代行政分配）；</li><li><strong>碳交易</strong>：污染的產權化——1997 京都議定書、2005 歐盟碳市場（排污權=可交易資產，呼應 <a href="1666-%E5%80%AB%E6%95%A6%E5%A4%A7%E7%81%AB%E8%88%87%E4%BF%9D%E9%9A%AA.html">1666-倫敦大火與保險</a> 的「風險市場化」——<strong>外部性與風險都是可市場化的東西</strong>）；</li><li><strong>法與經濟學</strong>：法院開始計算「責任歸屬的交易成本」——法律（law）×經濟學（economy）的融合學科誕生。</li></ul><p><strong>線索五：批評與邊界（定理的適用範圍）。</strong> 批評：<strong>議價的行為偏差</strong>（最後通牒、公平感——人不是「理性談判者」）；<strong>財富效應</strong>（產權分配影響支付意願——結果不僅影響財富也影響效率）；<strong>策略行為</strong>（拖延談判）。偵查的重點：<strong>定理在「零交易成本+理性行為」的實驗室成立</strong>；真實世界的應用必須先量<strong>交易成本</strong>——科斯本人的教誨：「不要在真空裡比較制度，要問真實世界的交易成本。」</p></section>
+<section><h2>結案報告</h2><ol><li><strong>外部性的對稱化</strong>：加害不是單向（牛 vs 作物）——<strong>妨害是互惠的</strong>；政策問題從「誰是加害者」變成「哪種制度成本最低」。</li><li><strong>交易成本=制度的鑰匙</strong>：公司（1937）與社會成本（1960）兩案合流——<strong>一切制度都是降低特定交易成本的工具</strong>；制度經濟學由此奠基。</li><li><strong>應用的市場化</strong>：頻譜拍賣、碳交易——外部性（與風險一樣）被產權化、市場化；法與經濟學成為法院的語言。</li><li><strong>偵探教訓</strong>：遇到外部性，別問「誰加害誰」，問三件事：<strong>交易成本多少？有哪些制度可選（法院/立法/市場/不做）？哪個在真實世界成本最低？</strong>——科斯的方法是把「政府 vs 市場」的意識形態之爭，換成「制度成本」的工程計算。</li></ol></section>
+<section><h2>證據與工具</h2><p><strong>跨領域影響矩陣：</strong></p><div class="tablewrap"><table><thead><tr><th>領域</th><th>發明</th><th>互動</th></tr></thead><tbody><tr><td>經濟</td><td>科斯定理、交易成本</td><td>外部性的對稱化</td></tr><tr><td>法律</td><td>法與經濟學</td><td>法院的成本計算</td></tr><tr><td>環境</td><td>碳交易、排污權</td><td>外部性的市場化</td></tr><tr><td>通訊</td><td>頻譜拍賣（1994）</td><td>行政分配→市場分配</td></tr><tr><td>制度</td><td>制度經濟學（Williamson）</td><td>制度=交易成本的解</td></tr></tbody></table></div><p><strong>科斯定理的兩面：</strong></p><div class="tablewrap"><table><thead><tr><th>情境</th><th>結論</th></tr></thead><tbody><tr><td>交易成本 = 0</td><td>效率與產權初始分配<strong>無關</strong>（雙方談成最高價值用途）</td></tr><tr><td>交易成本 &gt; 0（真實世界）</td><td><strong>制度選擇（法院/立法/市場/不做）決定效率</strong></td></tr></tbody></table></div><p><strong>思想實驗的數字（牧牛者 vs 農夫）：</strong></p><div class="tablewrap"><table><thead><tr><th>方案</th><th>成本/年</th><th>損害</th><th>比較</th></tr></thead><tbody><tr><td>修柵欄</td><td>75</td><td>0</td><td><strong>最省</strong></td></tr><tr><td>賠償農夫</td><td>100</td><td>0</td><td>較貴</td></tr><tr><td>減少牛群 1 頭</td><td>20（少賺）</td><td>損害降</td><td>部分解</td></tr></tbody></table></div><p>（無論產權歸誰，雙方都會談成「修柵欄」——效率與初始分配無關；談不成的部分才是制度的戰場。）</p><p><strong>結論：</strong> 1960 年的科斯案是「外部性→產權→交易成本」的偵探案：妨害是互惠的，真正的問題不是「誰加害誰」，而是<strong>哪種制度的交易成本最低</strong>。科斯定理在零交易成本下說「產權無關」——但它的真正用意是反面：<strong>真實世界的交易成本，讓制度的選擇成為一切的關鍵</strong>。制度經濟學、碳交易、頻譜拍賣都是這把鑰匙開的鎖。</p></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/世界發展史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/世界發展史/1960-科斯定理.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>

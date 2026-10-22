@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2009 比特幣：去中心化帳本與「誰來記帳」的千年問題</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">世界發展史・公元 2009 年</p>
+  <h1>2009 比特幣：去中心化帳本與「誰來記帳」的千年問題</h1>
+</header>
+
+<section><h2>案發現場</h2><p>2009 年 1 月 3 日，比特幣創世區塊誕生——區塊內嵌入當日《泰晤士報》頭版標題：「財政大臣處於第二次救助銀行的邊緣」——<strong>時間戳就是宣言</strong>：這套系統是 2008 年危機（<a href="2008-%E5%85%A8%E7%90%83%E9%87%91%E8%9E%8D%E5%8D%B1%E6%A9%9F.html">2008-全球金融危機</a>）信任崩潰的回應。此前（2008 年 10 月），化名中本聰（Satoshi Nakamoto）的白皮書《比特幣：一種點對點的電子現金系統》已定義了目標：<strong>無需可信第三方的電子支付</strong>。</p><blockquote><p><strong>會計的千年問題——誰記帳、誰稽核、誰防竄改——如何被密碼學解掉？「去中心化」的代價是什麼？比特幣是貨幣、資產還是帳本工程？</strong></p></blockquote></section>
+<section><h2>偵查過程</h2><p><strong>線索一：雙花問題（帳本的古典死結）。</strong> 電子現金的古典難題：<strong>雙花</strong>（double spending）——數位資訊可複製，同一筆錢花兩次。古典解法：<strong>可信第三方記帳</strong>（銀行、清算所——只有一本帳，由它管）；但 2008 的教訓：<strong>第三方也是人</strong>（倒閉、挪用、救助）——中本聰的問題：<strong>能不能沒有帳房，而帳仍然唯一？</strong> 偵查的重點：會計學的千年問題——<strong>誰記帳、誰稽核、誰防竄改</strong>——在 2009 年被重新表述為「去中心化」的工程題。</p><p><strong>線索二：工作量證明（記帳權的取得）。</strong> 比特幣的解法：<strong>記帳權靠算力競爭</strong>——礦工解 SHA-256 雜湊難題，先解出者取得打包區塊的權利（並得獎勵）；其他全節點<strong>驗證</strong>。防竄改：<strong>鏈式雜湊</strong>——每個區塊包含前一區塊的雜湊值：</p><div class="math">$$H_n = \text{SHA-256}(H_{n-1} \| \text{交易集} \| \text{隨機數})$$</div><p>改動歷史任何一筆交易→該區塊雜湊變→之後<strong>所有</strong>區塊全變——竄改需重算全鏈的難題（經濟上不可行）。偵查的重點：<strong>帳本的防竄改不靠保險櫃，靠數學</strong>——篡改的成本隨鏈長指數上升；「誰記帳」的問題變成「算力投票」的問題。</p><p><strong>線索三：共識與分岔（拜占庭將軍問題）。</strong> 去中心化的難題：<strong>網路延遲讓節點看到的交易順序不同</strong>——誰的版本是對的？這是<strong>拜占庭容錯</strong>（BFT）的古典問題：叛徒（惡意節點）存在時如何達成共識。中本聰的解法：<strong>最長鏈原則</strong>——永遠接受工作量最大的鏈；攻擊者要翻轉共識，需控制<strong>超過 50% 算力</strong>（51% 攻擊——理論上可行、經濟上代價巨大）。偵查的重點：<strong>共識不需要信任，需要「誠實比撒謊更賺錢」的誘因設計</strong>——比特幣把安全性建立在<strong>博弈論</strong>（攻擊的成本&gt;收益）而非法律或機構上；這是「以誘因代替機構」的制度工程。</p><p><strong>線索四：貨幣的三角（比特幣是什麼）。</strong> 比特幣同時挑戰三個領域：</p><ul><li><strong>貨幣</strong>：固定發行量（2,100 萬枚、四年減半）——對抗通脹（與 <a href="1971-%E5%B0%BC%E5%85%8B%E6%A3%AE%E8%A1%9D%E6%93%8A.html">1971-尼克森衝擊</a> 的信用本位對照——<strong>比特幣是「商品本位」的數位復古</strong>，錨=演算法而非黃金）；</li><li><strong>法律</strong>：無許可的系統挑戰<strong>反洗錢、資本管制、徵稅</strong>——各國的回應（合法化、禁止、監管交易所）——<strong>去中心化技術與主權法律的持久拉鋸</strong>；</li><li><strong>會計</strong>：<strong>區塊鏈=公共可稽核帳本</strong>——每筆交易公開、可驗、不可改——「複式簿記」的千年升級（呼應 <a href="1202-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E8%A8%88%E7%AE%97%E4%B9%8B%E6%9B%B8.html">1202-斐波那契計算之書</a> 的記帳革命：位值記數讓記帳便宜，區塊鏈讓稽核去中心）。</li></ul><p><strong>線索五：代價與泡沫（工程的反面）。</strong> 去中心化的代價：<strong>能源</strong>（PoW 的算力競賽——年耗電量超過中等國家）、<strong>延展性</strong>（每秒數筆 vs Visa 數千筆——分層解法：閃電網路）、<strong>波動與泡沫</strong>（2017、2021 的價格狂潮——資產屬性浮現：比特幣的「貨幣」職能弱、「投機資產」職能強）；後續：<strong>以太坊</strong>（智能合約——把「程式=契約」寫進鏈上）、權益證明（PoS——用持幣替代算力，解能源問題）。偵查的重點：<strong>去中心化=用冗餘換信任</strong>——每個節點存全帳（安全）也重複計算（浪費）——制度的成本從「信任機構」轉為「計算與能源」。</p></section>
+<section><h2>結案報告</h2><ol><li><strong>帳本的去中心化</strong>：鏈式雜湊+工作量證明+最長鏈原則——「誰記帳、誰稽核」的千年問題被「算力投票+數學防竄改」解掉；<strong>安全性建立在博弈論（誠實更賺錢）而非機構上</strong>。</li><li><strong>信用本位的對照組</strong>：固定發行量的比特幣是「商品本位的數位復古」——錨從黃金（<a href="1971-%E5%B0%BC%E5%85%8B%E6%A3%AE%E8%A1%9D%E6%93%8A.html">1971-尼克森衝擊</a>）變成演算法；貨幣的「信用」從央行制度轉為程式規則。</li><li><strong>技術×法律×貨幣的三角</strong>：去中心化系統與主權法律（反洗錢、資本管制）的持久拉鋸——<strong>無許可的技術與有許可的法律的邊界戰</strong>。</li><li><strong>偵探教訓</strong>：比特幣案的核心不是「虛擬貨幣」而是<strong>制度工程</strong>：用誘因設計（挖礦獎勵）+數學（雜湊鏈）替代機構（銀行、清算所）——<strong>信任可以是被計算出來的，代價是能源與冗餘</strong>。</li></ol></section>
+<section><h2>證據與工具</h2><p><strong>跨領域影響矩陣：</strong></p><div class="tablewrap"><table><thead><tr><th>領域</th><th>發明</th><th>互動</th></tr></thead><tbody><tr><td>會計</td><td>公共可稽核帳本</td><td>複式簿記的千年升級</td></tr><tr><td>密碼學</td><td>鏈式雜湊、PoW</td><td>防竄改靠數學</td></tr><tr><td>貨幣</td><td>固定發行量</td><td>信用本位的對照組</td></tr><tr><td>法律</td><td>反洗錢/管制的拉鋸</td><td>無許可 vs 主權</td></tr><tr><td>博弈</td><td>最長鏈、51% 攻擊</td><td>誠實比撒謊更賺錢</td></tr></tbody></table></div><p><strong>去中心化帳本的三層防線：</strong></p><div class="tablewrap"><table><thead><tr><th>層</th><th>機制</th><th>防的是</th></tr></thead><tbody><tr><td>雜湊鏈</td><td>$H_n$ 含 $H_{n-1}$</td><td>竄改歷史</td></tr><tr><td>工作量證明</td><td>算力競爭取得記帳權</td><td>偽造記帳權</td></tr><tr><td>最長鏈原則</td><td>接受工作量最大的鏈</td><td>分岔與否認</td></tr></tbody></table></div><p><strong>拜占庭容錯的數字（共識的門檻）：</strong></p><div class="math">$$\text{誠實算力} &gt; 50\% \Rightarrow \text{誠實鏈以機率優勢勝出} \quad (\text{攻擊者需 }&gt; 50\% \text{ 算力且承擔幣值崩潰的自傷})$$</div><p><strong>結論：</strong> 2009 年的比特幣是「誰來記帳」的千年問題的工程解：鏈式雜湊防竄改、工作量證明分配記帳權、最長鏈原則達成共識——<strong>信任被計算出來，代價是能源與冗餘</strong>。它是會計史（記帳的去中心）、貨幣史（信用本位的對照組）與法律史（無許可技術 vs 主權規則）的三角交點——2008 年的信任崩潰是土壤，密碼學與博弈論是磚石。</p></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/世界發展史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/世界發展史/2009-比特幣.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
