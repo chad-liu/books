@@ -189,12 +189,13 @@ def collect():
     all_folders = sorted(p for p in HTML_ROOT.iterdir() if p.is_dir())
     nodes = {folder.name: build_folder_node(folder) for folder in all_folders}
 
-    # 資料夾層級的巢狀分組（編號階層）：資料夾名稱以「編號.標籤」開頭，編號由
-    # 連字號分段，如 1.歷史、1-6.世界發展史、1-6-1.大航海時代。去掉最後一段編號
-    # 就是它的「父編號」：1-6-1 的父是 1-6，1-6 的父是 1。父編號有對應資料夾時，
-    # 子資料夾在檔案樹側欄收合顯示在父資料夾底下一層（可以多層）；父資料夾自己
-    # 的檔案排在前面、子資料夾的 group 節點接在後面。實體檔案不搬動，跟書架的
-    # 巢狀是同一種「純顯示分組」精神，只是分組對象是整個資料夾。
+    # 資料夾層級的巢狀分組：資料夾名稱以「編號.標籤」開頭，編號由連字號分段。
+    # 只看第一段：第一段相同、且前面還有連字號分段的（如 1-6.世界發展史、
+    # 1-6-1.大航海時代），都是第一段編號對應資料夾（如 1.歷史）的子資料夾，
+    # 彼此同一層，不論後面接幾段編號；在檔案樹側欄收合顯示在父資料夾底下一層，
+    # 依完整編號的數字排序（1-6 排在 1-6-1 前面，再來才是 1-7）。父資料夾
+    # 自己的檔案排在前面、子資料夾的 group 節點接在後面。實體檔案不搬動，跟
+    # 書架的巢狀是同一種「純顯示分組」精神，只是分組對象是整個資料夾。
     # 找不到父資料夾時（如 3-0/3-1 這類純排序用的連字號資料夾）維持攤平的
     # 頂層顯示；同一個編號對應到多個資料夾時視為有歧義，不分組。
     by_prefix = {}
@@ -208,11 +209,10 @@ def collect():
         if not m:
             return None
         parts = m.group(1).split('-')
-        for k in range(len(parts) - 1, 0, -1):      # 由近到遠找最近的祖先編號
-            cands = by_prefix.get('-'.join(parts[:k]), [])
-            if len(cands) == 1:
-                return cands[0]
-        return None
+        if len(parts) < 2:                          # 單純「N.標籤」是群組本身，沒有父層
+            return None
+        cands = by_prefix.get(parts[0], [])         # 只看第一段編號
+        return cands[0] if len(cands) == 1 else None
 
     def sort_key(name):
         return tuple(int(x) for x in PREFIX_RE.match(name).group(1).split('-'))

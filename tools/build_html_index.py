@@ -137,9 +137,22 @@ def parse_order(folder):
     return items
 
 
+PREFIX_RE = re.compile(r'^(\d+(?:-\d+)*)\.')
+
+
+def folder_sort_key(p):
+    """資料夾排序：名稱開頭的編號（如 1-6、1-6-1）依數字分段比較，讓 1-6 排在
+    1-6-1 前面（純字串排序時 '-' 比 '.' 小，會讓 1-6-1 跑到 1-6 前面）；
+    沒有編號前綴的資料夾排在有編號的後面，彼此依名稱排序。"""
+    m = PREFIX_RE.match(p.name)
+    if m:
+        return (0, tuple(int(x) for x in m.group(1).split('-')), p.name)
+    return (1, (), p.name)
+
+
 def build():
     cards = []
-    for folder in sorted(p for p in HTML_ROOT.iterdir() if p.is_dir()):
+    for folder in sorted((p for p in HTML_ROOT.iterdir() if p.is_dir()), key=folder_sort_key):
         items = parse_order(folder)
         if items is None:
             print('[略過] %s 沒有 order.md' % folder.name)
