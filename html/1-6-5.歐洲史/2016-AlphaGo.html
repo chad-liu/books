@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2016-AlphaGo：李世乭的眼淚與深度學習的多因案件</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">歐洲史・公元 2016 年</p>
+  <h1>2016-AlphaGo：李世乭的眼淚與深度學習的多因案件</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>2016 年 3 月，倫敦 DeepMind 的 AlphaGo 以 4:1 擊敗韓國棋聖李世乭（Lee Sedol），首爾決戰全球 6 億人次觀看；第 37 手（第五線肩衝）被稱為「神之一手」。偵辦發現：這不是「電腦變聰明」的單因事件，而是算力指數、深度網路、強化學習、圍棋數據化與英美資本—歐陸人才—東亞棋壇多因素咬合的產物。人類學到的判詞：<strong>直覺是可以被梯度下降逼近的</strong>。</p></section>
+<section><h2>前因 -- 多因素的局勢</h2><ul><li><strong>算力</strong>：GPU＋TPU＋摩爾遺產（見 美洲史/1957、歐洲史/1984）——2016 年訓練成本已降到新創可負擔。</li><li><strong>算法</strong>：2012 年 AlexNet（ImageNet）證明深度卷積有效；2013–2015 年 DQN 打 Atari——「感知＋決策」兩塊拼圖就位。</li><li><strong>數據</strong>：六段以上棋譜 16 萬局＋自我對弈三千萬局——人類三千年棋譜一夕變成訓練集。</li><li><strong>人才</strong>：哈薩比斯（神經科學＋遊戲）＋席爾瓦（強化學習）＋黃士傑（圍棋業餘六段，台灣人）——跨界小隊。</li><li><strong>資本</strong>：谷歌 2014 年收購 DeepMind（約 6 億美元）——大廠為「登月」買單。</li><li><strong>舞台</strong>：韓國棋院＋李世乭的賭徒性格（主動應戰、輸後淚戰）——最強對手＋最戲劇化劇本。</li></ul></section>
+<section><h2>線索與推理 -- 因素咬合</h2><h3>線索1：圍棋為何最晚淪陷</h3><p>複雜度對照表：</p><div class="tablewrap"><table><thead><tr><th>棋類</th><th>狀態空間</th><th>暴力搜尋</th><th>淪陷年份</th></tr></thead><tbody><tr><td>西洋棋</td><td>$10^{47}$</td><td>Alpha-Beta＋剪枝可行</td><td>1997（深藍勝卡斯帕羅夫）</td></tr><tr><td>圍棋</td><td>$10^{170}$</td><td>暴力不可行</td><td>2016（AlphaGo）</td></tr><tr><td>德州撲克</td><td>非完整資訊</td><td>CFR＋抽象</td><td>2017（Libratus）</td></tr></tbody></table></div><p>偵探要點：圍棋分支因子約 250、局面數遠超原子總數——<strong>傳統搜尋的屍體埋在這裡</strong>。AlphaGo 的兇器不是更快的搜尋，而是「直覺函數」：策略網路（policy network，下哪裡像高手）＋價值網路（value network，局面誰優）——<strong>把棋感變成可微分的函數</strong>。</p><h3>線索2：兩個網路＋蒙地卡羅的合成公式</h3><div class="math">$$\text{AlphaGo} = \text{策略網路（模仿高手）} + \text{價值網路（判斷優劣）} + \text{MCTS（前瞻驗證）} + \text{自我對弈（無限陪練）}$$</div><p>先監督學習吃人類棋譜（學會像人），再強化學習自我對弈（學會不像人）——第 37 手正是人類棋譜概率僅萬分之一的手，價值網路卻說它好。<strong>先學人，再背叛人</strong>——這是所有超人 AI 的作案手法。</p><h3>線索3：為什麼是倫敦—首爾軸線</h3><p>DeepMind 在倫敦（歐洲人才＋美資）→ 挑戰首爾（東亞圍棋心臟）→ 直播回矽谷（谷歌敘事）。歐洲出算法、美國出錢、東亞出對手與觀眾——<strong>全球化分工的一次展演</strong>。若對手是無名棋手，影響力砍半；李世乭的傳奇性（上帝之手傳人）是 AlphaGo 神話的另一半作者。</p><h3>線索4：眼淚的社會學</h3><p>李世乭賽後「我代表人類輸了」的發言＋韓國舉國震動 → 2017 年韓國宣布 AI 國家戰略（3.5 億美元）、中國 2017 年《新一代 AI 規劃》（2030 年 1,500 億美元目標）。一場棋賽改寫三國預算——<strong>象徵事件是預算的開關</strong>。偵探註記：技術史從不只比論文引用，比的是「誰的眼淚上了頭條」。</p></section>
+<section><h2>破案時刻</h2><ul><li>2014：谷歌收購 DeepMind。</li><li>2015-10：AlphaGo 5:0 勝樊麾（二段）——預告。</li><li>2016-03-09–15：首爾四季酒店 4:1 勝李世乭；第 37 手封神。</li><li>2017-05：烏鎮 3:0 勝柯潔後退役（棋壇版塊封存）。</li><li>2017-10：AlphaZero 自我對弈 8 小時超越 AlphaGo——人類棋譜不再需要。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li><strong>技術</strong>：範式轉向——從特徵工程到端到端＋自我對弈；AlphaFold（2020）是同門師弟。</li><li><strong>產業</strong>：AI 投資爆炸（2016 後全球 AI 創投×5）；TPU、GPU 缺貨的序幕。</li><li><strong>政策</strong>：中韓歐相繼推 AI 國家戰略；歐盟 AI 法案（2024）的遠因。</li><li><strong>哲學</strong>：棋手從「背定式」轉向「學 AI 定式」——人類向機器學棋；「創造力是否可計算」成顯學。</li><li><strong>教訓</strong>：奇點公式＝算力 × 數據 × 跨界小隊 × 象徵舞台。</li></ul></section>
+<section><h2>因素影響筆記</h2><ol><li>複雜度：圍棋 $10^{170}$ → 暴力死 → 直覺函數生。</li><li>合成：策略＋價值＋MCTS＋自弈 → 先學人再叛人。</li><li>軸線：倫敦算法＋美資＋首爾對手 → 全球展演。</li><li>眼淚：象徵事件 → 三國預算開關。</li><li>師弟：AlphaGo → AlphaZero → AlphaFold（方法遷移）。</li></ol></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/歐洲史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/歐洲史/2016-AlphaGo.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
