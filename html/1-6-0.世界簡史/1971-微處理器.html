@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1971-微處理器：四位工程師把電腦縮成指甲</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">世界簡史・公元 1971 年</p>
+  <h1>1971-微處理器：四位工程師把電腦縮成指甲</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>1971 年 11 月，英特爾發布 4004：2300 個電晶體、每秒 9 萬次運算、售價 30 美元。訂單來自日本計算機公司 Busicom——原本要做 12 顆客製晶片，英特爾工程師霍夫（Ted Hoff）提議「做一顆通用 CPU＋軟體定義功能」。這樁案件的兇手是「通用化」：<strong>把硬體差異搬到軟體裡，複雜度從生產線轉移到程式碼</strong>——電腦從此從設備變成平台。</p></section>
+<section><h2>前因 -- 多因素的局勢</h2><ul><li><strong>科技</strong>：積體電路（1958）＋矽閘技術——電晶體數逼近可做 CPU 的門檻。</li><li><strong>經濟</strong>：計算器價格戰——Busicom 殺價到英特爾幾乎無利可圖，逼出通用方案。</li><li><strong>組織</strong>：仙童分拆潮——諾伊斯、摩爾出走創英特爾，記憶體生意養著 CPU 夢。</li><li><strong>資訊</strong>：軟體可複製、硬體須重造——把功能寫進軟體等於把成本結構翻掉。</li><li><strong>心理</strong>：大型主機廠商（IBM）認定電腦＝大鐵櫃——盲點留給小公司。</li></ul></section>
+<section><h2>線索與推理 -- 因素咬合</h2><h3>線索一：摩爾定律的自我實現</h3><div class="math">$$N(t) = N_0 \cdot 2^{t/2}, \quad \text{成本/功能} \propto 2^{-t/2}$$</div><p>摩爾 1965 年預言、1975 年修訂為兩年翻倍。英特爾把預言變成路線圖（Tick-Tock），競爭者被迫跟跑。<strong>預言＋路線圖＋資本支出＝自我實現</strong>——經濟學上最成功的「喊話變現」。</p><h3>線索二：通用化的成本數學</h3><div class="tablewrap"><table><thead><tr><th>方案</th><th>設計成本</th><th>邊際成本</th><th>適用</th></tr></thead><tbody><tr><td>12 顆客製晶片</td><td>高×12</td><td>低</td><td>單一計算器</td></tr><tr><td>1 顆通用 CPU＋ROM 軟體</td><td>高×1＋軟體</td><td>軟體複製≈零</td><td>計算器＋收銀機＋紅綠燈</td></tr></tbody></table></div><p>霍夫的洞見：<strong>用馮紐曼架構吃掉多樣性</strong>。硬體同質、軟體分化——後來 PC、手機 SoC、GPU 通吃 AI，全是同一招。</p><h3>線索三：指令集的生態鎖定</h3><p>4004→8008→8080→x86，指令集相容變成護城河：軟體為舊 CPU 寫的，必須在新 CPU 跑。IBM PC 1981 選 8088，MS-DOS 綁定 x86，贏者通吃三十年。與<a href="1602-%E8%8D%B7%E8%98%AD%E6%9D%B1%E5%8D%B0%E5%BA%A6%E5%85%AC%E5%8F%B8%E8%88%87%E9%87%91%E8%9E%8D%E9%9D%A9%E5%91%BD.html">1602-荷蘭東印度公司與金融革命</a>的特許對照：<strong>指令集＝數位時代的特許狀</strong>。</p><h3>線索四：從計算器到個人電腦</h3><p>1975 Altair、1977 Apple II、1981 IBM PC——微處理器把電腦價格從百萬美元砍到千美元，<a href="1991-%E5%85%A8%E7%90%83%E8%B3%87%E8%A8%8A%E7%B6%B2.html">1991-全球資訊網</a> 的節點爆炸沒有 4004 就沒有物理載體。ARM 後來用精簡指令＋授權模式反殺，證明<strong>架構會輪迴</strong>。</p></section>
+<section><h2>破案時刻</h2><ul><li>1971.11 4004 發布；Busicom 買斷條款被英特爾買回（6 萬美元）——英特爾拿回通用 CPU 銷售權。</li><li>1974 8080 點燃業餘電腦熱；1978 x86 誕生——此後五十年個人運算的地基。</li><li>真相：最偉大的晶片生於一筆虧本生意——殺價逼出通用化。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li><strong>經濟</strong>：電腦價格崩塌→個人電腦→軟體產業→平台經濟——硬體微利、軟體暴利的分工確立。</li><li><strong>組織</strong>：英特爾＋微軟的 Wintel 聯盟、後來的 ARM 授權網——兩種生態模式。</li><li><strong>地理</strong>：矽谷→台灣代工→全球供應鏈——設計與製造分家（見台積電案）。</li><li><strong>後續</strong>：手機 SoC、GPU、AI 晶片——每一次運算革命都是 1971 的重演。</li></ul></section>
+<section><h2>因素影響筆記</h2><ol><li><strong>經濟（殺價）→ 科技（通用化）</strong>：虧本訂單逼出最賺錢的架構。</li><li><strong>科技（摩爾）→ 組織（路線圖）</strong>：預言變成產業紀律。</li><li><strong>資訊（軟體零邊際成本）→ 經濟（贏者通吃）</strong>：指令集鎖定是網路效應的硬體版。</li></ol></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/世界簡史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/世界簡史/1971-微處理器.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
