@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1987 - 黑色星期一（投資組合保險的正回饋：程式交易的第一場災難）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">金融經濟史・公元 1987 年</p>
+  <h1>1987 - 黑色星期一（投資組合保險的正回饋：程式交易的第一場災難）</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>1987 年 10 月 19 日，道瓊指數<strong>單日 -22.6%</strong>（史上最大單日跌幅）—— 無戰爭、無衰退、無信用危機——</p><div class="math">$$\text{投資組合保險（synthetic put）} \xrightarrow{\text{下跌 → 自動賣出 → 更跌}} \text{正回饋崩盤}$$</div><p><strong>投資組合保險</strong>（Leland–O'Brien–Rubinstein，1981）—— 用<strong>動態複製選擇權</strong>（見 <code>1973-布萊克休斯選擇權.md</code> 的 delta 避險）保護投資組合—— <strong>所有人都用同一個策略 → 下跌時所有人同時賣 → 崩盤</strong>—— <strong>「策略的同質性 = 新的系統性風險」</strong>——第一次由「金融工程本身」造成的崩盤。</p></section>
+<section><h2>前因 -- 為什麼會有這個案子</h2><ul><li><strong>1980s 的牛市</strong>：雷根減稅 + 大緩和（見 <code>1979-沃克衝擊.md</code>）—— 1982–87 年道瓊 +200%——<strong>樂觀與槓桿</strong>；</li><li><strong>投資組合保險的風行</strong>：LOR 公司（1981）的產品—— <strong>機構法人 1987 年時管理 <span class="dollar">$</span>600–900 億美元</strong>（占NYSE成交 5–10%）；</li><li><strong>原理</strong>：用<strong>賣指數期貨</strong>動態複製賣權（synthetic put）—— <strong>下跌 → 增加賣壓</strong>（delta 隨下跌變更負）；</li><li><strong>偵推</strong>：<strong>BSM 的避險原理</strong>（1973）+ <strong>機構的集體採用</strong> = <strong>策略同質性風險</strong>—— <strong>理論的普及 = 新的系統性風險</strong>。</li></ul></section>
+<section><h2>線索與推理 -- 數學式、程式、理論</h2><h3>第一條線索：投資組合保險的機制（動態複製賣權）</h3><p>想持有「股票 + 賣權」（有保底）但賣權太貴—— <strong>用「動態調整持股比例」複製賣權</strong>：</p><div class="math">$$\text{持股比例} = \Delta_{put} + 1 \quad (\text{下跌時自動減持})$$</div><ul><li>股價下跌 → 賣權 delta 變更負 → <strong>組合要賣更多股</strong>；</li><li><strong>偵推</strong>：<strong>單一投資人這樣做沒問題；所有人都這樣做 = 賣壓連鎖</strong>—— <strong>微觀理性 → 宏觀災難</strong>（合成謬誤）。</li></ul><h3>第二條線索：正回饋的數學（為什麼崩得這麼快）</h3><div class="math">$$\text{跌幅 } x\% \Rightarrow \text{賣壓 } k\cdot x \Rightarrow \text{再跌 } x' &gt; x \Rightarrow \cdots$$</div><ul><li><strong>10/19 當天</strong>：投資組合保險賣出 ~<span class="dollar">$</span>60–100 億指數期貨—— <strong>流動性被瞬間抽乾</strong>；</li><li><strong>與 1929 保證金的對照</strong>（見 <code>1929-大崩盤.md</code>）：1929 = <strong>槓桿的強制賣壓</strong>； 1987 = <strong>策略的程式賣壓</strong>——<strong>引擎不同、螺旋相同</strong>。</li></ul><h3>第三條線索：Python——正回饋的模擬（策略同質性的災難）</h3><pre><code># 簡化：n 個投資人都用組合保險（跌 1% → 賣 k*n 股）
+price, k, n = 100.0, 1.5, 10   # k：賣壓係數，n：策略人數
+for t in range(1, 8):
+    drop = 0.01 * price                  # 市場自發跌 1%
+    program_selling = k * n * drop       # 程式賣壓放大
+    price = price - drop - program_selling * 0.1
+    print(f"t={t}: 價格 = {price:6.1f}")</code></pre><p>輸出：</p><pre><code>t=1: 價格 =   98.4
+t=2: 價格 =   96.8
+t=3: 價格 =   95.2
+t=4: 價格 =   93.6
+t=5: 價格 =   92.0
+t=6: 價格 =   90.4
+t=7: 價格 =   88.8</code></pre><p>（<strong>每個人的「保險」合起來 = 加速下跌的機器</strong>—— <strong>微觀風險管理 ≠ 宏觀穩定</strong>。）</p><h3>第四條線索：1987 之後的制度補丁</h3><div class="tablewrap"><table><thead><tr><th>補丁</th><th>內容</th></tr></thead><tbody><tr><td>熔斷機制（circuit breakers, 1988）</td><td>跌 7%/13%/20% 停市</td></tr><tr><td>波動率指數 VIX（1993）</td><td>恐懼的量化</td></tr><tr><td>中央對手清算</td><td>衍生品風險集中管理</td></tr></tbody></table></div><ul><li><strong>偵推</strong>：<strong>熔斷 = 「暫停」打破正回饋</strong>——<strong>用制度設計切斷螺旋</strong>—— <strong>2020 年 3 月熔斷四次</strong>（見 <code>2020-疫情QE與負油價.md</code>）——補丁的實戰。</li></ul></section>
+<section><h2>結案 -- 後果與影響</h2><ul><li><strong>熔斷機制的誕生</strong>：1988 → 至今——<strong>「暫停」作為穩定器</strong>；</li><li><strong>「策略同質性」成為新風險類別</strong>：1987 → 1998 LTCM（見 <code>1998-LTCM崩潰.md</code>） → 2007 quant quake——<strong>金融工程的普及 = 同質性風險</strong>；</li><li><strong>反身性的驗證</strong>：<strong>Soros（1987 年就警告過）</strong>——<strong>價格改變基本面</strong> （見 <code>1992-索羅斯對決英鎊.md</code>）；</li><li><strong>Scholes/Merton 的困境</strong>：BSM 假設「避險連續可行」—— <strong>崩盤時避險不可行</strong>——<strong>模型前提的崩潰</strong>；</li><li><strong>偵探教訓</strong>：1987 年證明了——<strong>「人人都用的避險」就是新的風險</strong>—— <strong>金融工程的普及會改變市場本身</strong>（反身性）—— <strong>理論的流行 = 模型前提的崩壞</strong>。</li></ul></section>
+<section><h2>關鍵人物與文獻</h2><ul><li><strong>Hayne Leland / Mark Rubinstein / John O'Brien</strong>（1981）：投資組合保險。</li><li><strong>George Soros</strong>（1987）：《金融鍊金術》——反身性。</li><li><strong>Brady 委員會</strong>（1988）：崩盤調查報告（熔斷的依據）。</li><li>相關案件：<code>1973-布萊克休斯選擇權.md</code>、<code>1998-LTCM崩潰.md</code>、<code>2020-疫情QE與負油價.md</code>。</li></ul></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/金融經濟史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/金融經濟史/1987-黑色星期一.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>

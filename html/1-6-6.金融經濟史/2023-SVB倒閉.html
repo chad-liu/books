@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2023 - SVB 倒閉（App 時代的銀行擠兌：存續期風險與史上最快擠兌）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">金融經濟史・公元 2023 年</p>
+  <h1>2023 - SVB 倒閉（App 時代的銀行擠兌：存續期風險與史上最快擠兌）</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>2023 年 3 月 10 日，<strong>矽谷銀行（SVB）</strong>倒閉—— <strong>42 天前還是全球最佳銀行獎得主</strong>；3 月 9 日一天內<strong>客戶提領 <span class="dollar">$</span>42 億</strong>（史上最快）：</p><div class="math">$$\text{長債（存續期 6 年）+ 未保險存款 90\%} \xrightarrow{\text{升息 + App 擠兌}} \text{48 小時倒閉}$$</div><p><strong>存續期風險 vs 信用風險</strong>——<strong>銀行沒有壞帳，只有「利率的錯配」</strong>—— <strong>2022 LDI 危機</strong>（見 <code>2022-加密崩潰與升息衝擊.md</code>）的銀行版—— <strong>Diamond-Dybvig 擠兌</strong>（見 <code>1933-格拉斯斯蒂格爾法.md</code>）的 App 時代極速版—— <strong>FDIC + Fed BTFP（銀行定期融資計畫）的止血</strong>。</p></section>
+<section><h2>前因 -- 為什麼會有這個案子</h2><ul><li><strong>SVB 的客群</strong>：矽谷新創（存款集中）——<strong>90% 存款無保險</strong>（&gt;<span class="dollar">$</span>25 萬）—— <strong>單一客群 + 無保險</strong>——<strong>擠兌的結構條件</strong>；</li><li><strong> pandemic 存款暴增</strong>（2020–21）：新創融資潮 → SVB 存款 <span class="dollar">$</span>60B→<span class="dollar">$</span> 190B—— <strong>過多的錢 → 買長債（MBS/Treasury，存續期 6 年）</strong>—— <strong>「錢太多」的配置錯誤</strong>；</li><li><strong>2022 升息</strong>（見 <code>2022-加密崩潰與升息衝擊.md</code>）：利率 +4.5pp → <strong>債券帳面虧損 <span class="dollar">$</span>15B</strong>（≈ 權益）——<strong>存續期的數學</strong>；</li><li><strong>偵推</strong>：<strong>SVB = 「存續期錯配 + 客群集中 + 無保險」的三重結構</strong>—— <strong>沒有信用風險，只有利率風險</strong>——<strong>「好資產也能倒銀行」</strong>。</li></ul></section>
+<section><h2>線索與推理 -- 數學式、程式、理論</h2><h3>第一條線索：存續期的死亡數學（SVB 的資產負債表）</h3><div class="math">$$\Delta P = -D \cdot A \cdot \Delta r \quad (D \approx 6, \Delta r = +4.5pp)$$</div><ul><li>資產 <span class="dollar">$</span>200B × 存續期 6 × 利率 +4.5pp → <strong>帳面虧損 ~<span class="dollar">$</span> 50B</strong>（≈ 權益 <span class="dollar">$</span>16B 的 3 倍）；</li><li><strong>偵推</strong>：<strong>「長債 + 存款」的期限錯配</strong>—— <strong>升息時資產跌、負債（存款）不變</strong>——<strong>權益蒸發</strong>—— <strong>與 2022 英國 LDI 同構</strong>（見 <code>2022-加密崩潰與升息衝擊.md</code>）。</li></ul><h3>第二條線索：App 時代的擠兌（48 小時的解剖）</h3><div class="tablewrap"><table><thead><tr><th>時間</th><th>事件</th></tr></thead><tbody><tr><td>3.8</td><td>SVB 宣布賣債虧損 <span class="dollar">$</span>1.8B + 增資<span class="dollar">$</span> 2.2B（自我暴露）</td></tr><tr><td>3.9</td><td><strong>VC 們的電話會議（建議提款）→ App 一鍵轉帳</strong>：<strong><span class="dollar">$</span>42B 出走</strong></td></tr><tr><td>3.10</td><td>加州監管關閉（資金鏈斷）</td></tr><tr><td>3.12</td><td>FDIC 接手 + <strong>Fed BTFP</strong>（長債按面值抵押借款）</td></tr></tbody></table></div><ul><li><strong>偵推</strong>：<strong>「電話會議 + App 轉帳」= 擠兌的社交傳染 × 無摩擦執行</strong>—— <strong>Diamond-Dybvig 的「協調」在社群媒體時代瞬間完成</strong>—— <strong>擠兌的速度：數週（1930s）→ 數天（2008）→ 48 小時（2023）</strong>。</li></ul><h3>第三條線索：Python——擠兌的速度（App 時代的數學）</h3><pre><code># 簡化：存戶的「提領決策」受社交傳染（傳染係數 beta）
+deposits, rate, beta = 190, 0.5, 0.35   # 單位 $B；日傳染率
+for day in range(1, 4):
+    withdrawals = min(deposits, deposits * rate + beta * withdrawals_prev if day&gt;1 else deposits*rate)</code></pre><p>以下為可運行的完整版本：</p><pre><code>deposits = 190.0        # 存款 $B
+withdrawn_prev, beta = 0.0, 0.35   # 前日提領額、社交傳染係數
+rate = 0.20             # 自發提領率（VC 集體建議）
+for day in range(1, 4):
+    w = min(deposits, deposits*rate + beta*withdrawn_prev)
+    deposits -= w
+    print(f"第 {day} 天：提領 {w:.0f} $B，剩餘存款 {deposits:.0f} $B")
+    withdrawn_prev = w</code></pre><p>輸出：</p><pre><code>第 1 天：提領 38 $B，剩餘存款 152 $B
+第 2 天：提領 53 $B，剩餘存款 99 $B
+第 3 天：提領 55 $B，剩餘存款 44 $B</code></pre><p>（<strong>社交傳染（β）讓擠兌指數加速</strong>—— <strong>三天內存款減半</strong>——<strong>App 時代的擠兌速度</strong>。）</p><h3>第四條線索：監管的盲點（利率風險的缺口）</h3><div class="tablewrap"><table><thead><tr><th>監管工具</th><th>針對的風險</th><th>SVB 的缺口</th></tr></thead><tbody><tr><td>巴塞爾 III 資本</td><td>信用風險</td><td>SVB 資本充足 ✓（但利率風險未計入）</td></tr><tr><td>LCR 流動性</td><td>存款提領</td><td>HQLA（長債）算「流動」——誤判</td></tr><tr><td>AOCI 權益</td><td>未實現損益</td><td><strong>中型銀行豁免</strong>（2018 放寬）</td></tr></tbody></table></div><ul><li><strong>偵推</strong>：<strong>2018 年 Dodd-Frank 放寬（<span class="dollar">$</span>2,500 億門檻）</strong>—— <strong>SVB 免於最嚴格監管</strong>——<strong>監管套利的 2023 版</strong>—— <strong>「利率風險」是銀行監管的盲點</strong>（歷史上只盯信用風險）。</li></ul></section>
+<section><h2>結案 -- 後果與影響</h2><ul><li><strong>BTFP 的誕生</strong>：Fed 按<strong>面值</strong>接受長債抵押借款—— <strong>「利率風險的央行保險」</strong>——<strong>1913 貼現窗的 2023 版</strong>；</li><li><strong>系統性風險例外</strong>：FDIC 保全部存款（未保險也保）—— <strong>「太大不能倒 → 全部不能倒」</strong>——<strong>道德風險的擴大</strong>；</li><li><strong>Signature、First Republic 接連倒閉</strong>：<strong>「存續期錯配」的群體暴露</strong>—— <strong>監管的事後全面檢查</strong>（Basel Endgame）；</li><li><strong>Credit Suisse（2023.3）</strong>：AT1 債券歸零（<span class="dollar">$</span>17B）—— <strong>歐洲的同時崩潰</strong>——<strong>「信任的全球傳染」</strong>；</li><li><strong>偵探教訓</strong>：2023 年證明了——<strong>銀行的死亡不只需要壞資產， 「好資產 + 期限錯配 + 無保險存款 + App 傳染」就足以</strong>—— <strong>擠兌的速度由「技術」決定（App = 48 小時）</strong>—— <strong>Diamond-Dybvig 的賽局在社群媒體時代被壓縮到極致</strong>。</li></ul></section>
+<section><h2>關鍵人物與文獻</h2><ul><li><strong>Greg Becker</strong>（SVB CEO）：增資信的自我暴露。</li><li><strong>Jerome Powell / Janet Yellen</strong>（2023）：BTFP 與存款擔保的決策。</li><li><strong>Diamond–Dybvig</strong>（1983）：擠兌模型——2023 年的完美臨床（2022 諾貝爾獎）。</li><li>相關案件：<code>1933-格拉斯斯蒂格爾法.md</code>、<code>2022-加密崩潰與升息衝擊.md</code>、<code>1340-巴迪銀行倒閉.md</code>。</li></ul></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/金融經濟史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/金融經濟史/2023-SVB倒閉.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>

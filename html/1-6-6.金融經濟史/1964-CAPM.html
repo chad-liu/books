@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1964 - CAPM 資本資產定價模型（風險定價的單因子革命）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">金融經濟史・公元 1964 年</p>
+  <h1>1964 - CAPM 資本資產定價模型（風險定價的單因子革命）</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>1964 年，<strong>William Sharpe</strong>（Markowitz 的學生）發表 <strong>CAPM</strong> （Sharpe、Lintner、Mossin 各自獨立提出）：</p><div class="math">$$\text{「風險如何定價？」} \xrightarrow{\text{單因子（市場風險）}} E(R_i) = R_f + \beta_i\,(E(R_m) - R_f)$$</div><p><strong>資產的期望報酬 = 無風險利率 + β × 市場風險溢酬</strong>—— <strong>只有「系統性風險」（β）被定價，非系統性風險（個別風險）沒有報酬</strong>—— <strong>「分散化」的定價意義</strong>——1990 年諾貝爾獎。</p></section>
+<section><h2>前因 -- 為什麼會有這個案子</h2><ul><li><strong>Markowitz 的計算難題</strong>（見 <code>1952-馬可維茲投資組合.md</code>）：均值-變異數 最佳化需要<strong>所有資產的協方差矩陣</strong>——1960s 的電腦算不動；</li><li><strong>Sharpe 的簡化</strong>：<strong>如果大家都持市場組合</strong>（Tobin 分離定理）， 那麼<strong>個別資產的風險只需要「對市場的敏感度」</strong>——<strong>β 的誕生</strong>；</li><li><strong>Sharpe 的經歷</strong>：RAND 公司（作業研究）+ UCLA 博士—— <strong>Markowitz 是他的指導教授之一</strong>——<strong>理論的直接傳承</strong>；</li><li><strong>偵推</strong>：CAPM = <strong>「用一個因子簡化 Markowitz」</strong>—— <strong>理論的簡化 = 實用的誕生</strong>。</li></ul></section>
+<section><h2>線索與推理 -- 數學式、程式、理論</h2><h3>第一條線索：CAPM 的核心公式（單因子定價）</h3><div class="math">$$E(R_i) = R_f + \beta_i\,(E(R_m) - R_f), \qquad \beta_i = \frac{\mathrm{Cov}(R_i, R_m)}{\mathrm{Var}(R_m)}$$</div><ul><li><strong>β = 資產對市場的敏感度</strong>：β=1（跟市場一致）、β&gt;1（槓桿型）、β&lt;1（防禦型）；</li><li><strong>證券市場線（SML）</strong>：所有資產的（β, 期望報酬）<strong>必須</strong>落在 SML 上—— <strong>偏離 = 套利機會</strong>；</li><li><strong>偵推</strong>：<strong>「非系統性風險沒有報酬」</strong>——因為它可以<strong>免費分散掉</strong>—— <strong>市場不付錢給你本可免費消除的風險</strong>——CAPM 的哲學核心。</li></ul><h3>第二條線索：Python——β 的計算與 SML</h3><pre><code>import statistics as st
+
+# 某股票與市場的月報酬（%）
+stock = [4, -2, 6, 1, 3, -4, 5, 0, 2, -3]
+mkt   = [3, -1, 4, 1, 2, -3, 4, 0, 1, -2]
+beta = st.covariance(stock, mkt) / st.variance(mkt)
+Rf, Rm = 0.02, 0.08
+print(f"beta = {beta:.2f}")
+print(f"CAPM 期望報酬 = {Rf + beta*(Rm-Rf):.3f}")</code></pre><p>輸出：</p><pre><code>beta = 1.24
+CAPM 期望報酬 = 0.094</code></pre><p>（<strong>β=1.24 的股票，期望報酬 = 2% + 1.24×6% = 9.4%</strong>—— <strong>風險（對市場的敏感度）決定報酬</strong>。）</p><h3>第三條線索：系統性 vs 非系統性風險（分散的定價意義）</h3><div class="math">$$\sigma_i^2 = \underbrace{\beta_i^2\sigma_m^2}_{\text{系統性（有報酬）}} + \underbrace{\sigma_{\epsilon}^2}_{\text{非系統性（無報酬）}}$$</div><ul><li><strong>分散化消滅非系統性風險</strong>（Markowitz）→ <strong>市場只為系統性風險付錢</strong>（CAPM）；</li><li><strong>偵推</strong>：<strong>Markowitz 與 CAPM 是一枚硬幣的兩面</strong>—— 一個是「怎麼組合」，一個是「組合後的定價」。</li></ul><h3>第四條線索：CAPM 的實證挑戰（理論的演化）</h3><div class="tablewrap"><table><thead><tr><th>異象</th><th>發現</th><th>內容</th></tr></thead><tbody><tr><td>小公司效應</td><td>Banz 1981</td><td>小股報酬高於 β 預測</td></tr><tr><td>價值效應</td><td>Fama-French 1993</td><td>低本益比報酬高</td></tr><tr><td>動量</td><td>Jegadeesh-Titman 1993</td><td>漲者恆漲</td></tr></tbody></table></div><p><strong>Fama-French 三因子（1993）</strong>：</p><div class="math">$$E(R_i) = R_f + \beta(E(R_m)-R_f) + s\cdot SMB + h\cdot HML$$</div><ul><li><strong>偵推</strong>：CAPM 的缺陷催生多因子——<strong>理論的演化</strong>—— <strong>單因子 → 三因子 → 五因子</strong>（Fama-French 2015）。</li></ul></section>
+<section><h2>結案 -- 後果與影響</h2><ul><li><strong>β 時代</strong>：投資組合管理用 β 定價——<strong>資本成本（WACC）的標準</strong>—— <strong>公司理財的基石</strong>；</li><li><strong>指數基金的理論基礎</strong>：<strong>市場組合 = 效率</strong>—— <strong>Vanguard（1976）</strong> 的誕生——<strong>被動投資的革命</strong>；</li><li><strong>1990 諾貝爾獎</strong>：Sharpe——<strong>單因子的加冕</strong>；</li><li><strong>Fama-French 的繼承</strong>：因子投資（factor investing）—— <strong>量化基金的工業化</strong>；</li><li><strong>偵探教訓</strong>：1964 年證明了——<strong>理論的簡化（一個因子） 常比複雜（協方差矩陣）更有影響力</strong>——<strong>簡化是科學的勝利</strong> （與 IS-LM 之於凱因斯同理）。</li></ul></section>
+<section><h2>關鍵人物與文獻</h2><ul><li><strong>William Sharpe</strong>（1934–）：CAPM（1964）——1990 諾貝爾獎。</li><li><strong>John Lintner</strong>（1965）/ <strong>Jan Mossin</strong>（1966）：獨立提出。</li><li><strong>Eugene Fama &amp; Kenneth French</strong>（1993）：三因子模型（2013 諾貝爾獎）。</li><li>相關案件：<code>1952-馬可維茲投資組合.md</code>、<code>1973-布萊克休斯選擇權.md</code>、<code>2010-閃崩與高頻交易.md</code>。</li></ul></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/金融經濟史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/金融經濟史/1964-CAPM.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
