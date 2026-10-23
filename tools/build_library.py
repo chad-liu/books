@@ -438,7 +438,9 @@ def epub_meta(path):
 
     cleaned = _clean_title(pick('title'), path.stem)      # 尚未套用修正表的書名
     ov = title_overrides().get(cleaned) or {}
-    return ov.get('title') or cleaned, (ov.get('author') or pick('creator'))
+    # author 寫成空字串表示刻意不顯示作者（合著者一長串時用），不要退回 metadata
+    author = ov['author'] if ov.get('author') is not None else pick('creator')
+    return ov.get('title') or cleaned, author
 
 
 TITLES_FILE = BOOKS_ROOT / 'tools' / 'titles.json'
@@ -449,7 +451,8 @@ def title_overrides():
     """回傳 {原書名: {'title': 新書名, 'author': 新作者或 None}}。
 
     titles.json 的值可以是字串（只改書名），也可以是
-    {"title": ..., "author": ...}（順便改作者，metadata 寫 Unknown 時用得到）。
+    {"title": ..., "author": ...}（順便改作者，metadata 寫 Unknown 時用得到；
+    author 給空字串則不顯示作者）。
     """
     global _title_overrides
     if _title_overrides is None:
@@ -641,10 +644,23 @@ def run_reader(src, out):
     # titles.json 有指定修正時，連閱讀器頁首一起換掉，
     # 才不會首頁寫「手沖」、打開書卻是「手衝」
     title, author = epub_meta(src)
-    if title_overrides().get(_raw_key(src)):
+    override = title_overrides().get(_raw_key(src))
+    if override:
         cmd += ['--title', title, '--author', author]
-    return subprocess.run(cmd, capture_output=True, text=True,
-                          encoding='utf-8', errors='replace', env=CHILD_ENV)
+    r = subprocess.run(cmd, capture_output=True, text=True,
+                       encoding='utf-8', errors='replace', env=CHILD_ENV)
+    # skill 收到空的 --author 會退回 metadata，只好產出後自己把頁首作者清掉
+    if override and not author and r.returncode == 0 and out.exists():
+        clear_header_author(out)
+    return r
+
+
+def clear_header_author(out):
+    """拿掉閱讀器頁首的作者列與分頁標題裡的「── 作者」。"""
+    text = out.read_text(encoding='utf-8', errors='replace')
+    text = re.sub(r'(<title>.*?) ── [^<]*(</title>)', r'\1\2', text, count=1, flags=re.S)
+    text = re.sub(r'(<div class="header-author">)[^<]*(</div>)', r'\1\2', text, count=1)
+    out.write_text(text, encoding='utf-8')
 
 
 def run_shelf(srcs, out):
