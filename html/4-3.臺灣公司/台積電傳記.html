@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台積電（TSMC）傳記</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+
+  section>h2{scroll-margin-top:14px}
+  h3.sec{font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;margin:28px 0 10px;
+    color:var(--navy);padding-bottom:6px;border-bottom:2px solid var(--rule);scroll-margin-top:14px}
+  h3.sec:first-of-type{margin-top:6px}
+  h4{font-family:"Noto Serif TC",serif;font-weight:600;font-size:16px;margin:16px 0 6px;color:var(--navy2)}
+  ul.toc,ul.toc ul{margin:0;padding-left:1.4em}
+  ul.toc>li{margin:10px 0;font-weight:600}
+  ul.toc ul{margin-top:4px}
+  ul.toc ul li{font-weight:400;margin:3px 0}
+  pre.mermaid{background:#fff;text-align:center;overflow-x:auto;padding:12px 8px;
+    font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:13px}
+  pre.mermaid svg{max-width:100%;height:auto}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">公司・台積電</p>
+  <h1>台積電（TSMC）傳記</h1>
+</header>
+
+<section id="toc"><h2>目錄</h2><ul class="toc"><li><a href="#ch1">第1章 張忠謀之路(1931-1985)</a><ul><li><a href="#s1-1">1.1-亂世少年與麻省理工</a></li><li><a href="#s1-2">1.2-德州儀器的二十五年</a></li><li><a href="#s1-3">1.3-通用儀器與返台前夜</a></li></ul></li><li><a href="#ch2">第2章 代工模式的誕生(1985-1994)</a><ul><li><a href="#s2-1">2.1-工研院與飛利浦合資</a></li><li><a href="#s2-2">2.2-純晶圓代工的理念革命</a></li><li><a href="#s2-3">2.3-早期客戶與上市之路</a></li></ul></li><li><a href="#ch3">第3章 技術爬坡(1997-2011)</a><ul><li><a href="#s3-1">3.1-銅製程與三百毫米晶圓</a></li><li><a href="#s3-2">3.2-與聯電之爭與浸潤式微影</a></li><li><a href="#s3-3">3.3-FinFET豪賭與重掌帥印</a></li></ul></li><li><a href="#ch4">第4章 登頂(2010-2020)</a><ul><li><a href="#s4-1">4.1-行動裝置浪潮與蘋果訂單</a></li><li><a href="#s4-2">4.2-七奈米超越三星英特爾</a></li><li><a href="#s4-3">4.3-華為海思事件與五奈米</a></li></ul></li><li><a href="#ch5">第5章 地緣政治時代(2020-2026)</a><ul><li><a href="#s5-1">5.1-晶片短缺與護國神山</a></li><li><a href="#s5-2">5.2-美國日本德國擴廠</a></li><li><a href="#s5-3">5.3-二奈米與魏哲家時代</a></li></ul></li></ul></section>
+
+<section id="ch1"><h2>第1章 張忠謀之路(1931-1985)</h2><article id="s1-1"><h3 class="sec">1.1 亂世少年與麻省理工(1931-1955)</h3><h4>寧波少年的大逃難</h4><p>張忠謀 1931 年 7 月 10 日生於浙江寧波，父親張錫綸是鄞縣財政局長。抗日戰爭爆發後，全家自南京輾轉廣州、香港、重慶、上海，十年間搬家十餘次。這段顛沛流離的童年在他自傳中被反覆提起：火車上躲避轟炸、在重慶南開中學借讀、在上海南洋模範中學插班。動盪讓他養成兩個終身特質——對「穩定秩序」的渴望，以及在陌生環境中快速適應的生存能力。</p><p>1949 年，18 歲的張忠謀隨家人赴香港，考入美國哈佛大學，一年後轉入麻省理工學院（MIT）機械系。選擇 MIT 而非哈佛文理，是父親務實的建議：「學工比較容易找事。」這個決定把他推向了戰後美國工程教育的心臟。</p><h4>史丹佛博士與半導體的召喚</h4><p>1952 年張忠謀自 MIT 取得學士、1953 年取得碩士，隨後進入福特汽車工作，卻發現自己對汽車毫無熱情；又赴史丹佛大學攻讀博士，因經濟壓力中途輟學，先就業、十年後才回頭拿下博士學位。這段「中斷」後來被證明是幸運：1955 年他求職時，正值蕭克利（Shockley）西遷、仙童（Fairchild）醞釀成立前夜，半導體業求才若渴。比起純學術路線，提早進入產業界讓他完整經歷了電晶體邁向積體電路的十年。</p><p>他在 1955 年先進入希凡尼亞（Sylvania）半導體部門，月薪比福特高出一美元——這「一美元的差距」把他帶進了半導體史。1958 年，他跳槽到德州儀器（Texas Instruments, TI），師從傑克·基爾比（Jack Kilby）時代的核心團隊。</p><p>真正塑造他技術人格的是 MIT 與史丹佛的訓練：嚴謹的固態物理、統計品質觀念，以及美國大企業的工程管理語言。當時半導體仍是「黑藝術」，良率靠老師傅經驗；張忠謀是最早把「良率是統計與紀律問題」帶入生產線的人之一。</p><pre class="mermaid">flowchart TD
+    A[1931寧波出生&lt;br/&gt;戰亂遷徙] --&gt; B[1949赴美&lt;br/&gt;哈佛轉MIT機械系]
+    B --&gt; C[1952-53 MIT碩士&lt;br/&gt;工程紀律養成]
+    C --&gt; D[福特失意&lt;br/&gt;史丹佛輟學]
+    D --&gt; E[1955進入Sylvania&lt;br/&gt;半導體啟蒙]
+    E --&gt; F[1958加入TI&lt;br/&gt;命運轉折點]
+    style F fill:#f9f,stroke:#333</pre><h4>從機械到半導體的躍遷</h4><p>以今日眼光看，張忠謀的學路並非天才型直線，而是一次次務實修正：機械→半導體、博士→就業、東岸→德州。每一次轉向都遠離舒適圈，卻更靠近產業爆發點。當他在 1958 年走進 TI 大門時，積體電路尚未發明，但一切要素——鍺轉矽、平面製程、軍方訂單——都已就位。他趕上了最好的班車。</p><div class="math">$$P(\text{成功}) = P(\text{能力}) \times P(\text{站在風口}) \times P(\text{堅持})$$</div><p>張忠謀後來自述：「我一生都是 orangutan（人猿）——別人爬樹，我也爬，只是爬得慢而穩。」亂世少年學會的第一課，就是不抱怨環境，只問自己能在環境中佔據什麼位置。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：中日戰爭與國共內戰造成的流亡童年 → 塑造適應力與對秩序的信仰；父親務實主義 → 放棄文人路、選擇 MIT 工科 → 進入戰後美國工程體系。</li><li><strong>本節如何引發後果</strong>：MIT 的統計與製造思維 + 提早進入半導體業 → 使他在 TI 能以「良率管理」嶄露頭角（見 1.2）；史丹佛博士中斷 → 十年後以 TI 副總裁身分回校補博士，恰恰證明「產業成就反哺學術」的路徑，也預示他日後「實業重於學位」的管理哲學。</li></ul></article><article id="s1-2"><h3 class="sec">1.2 德州儀器的二十五年(1958-1972)</h3><h4>從小工程師到三號人物</h4><p>1958 年張忠謀加入德州儀器時，TI 剛與仙童競逐積體電路發明權，傑克·基爾比在 TI 做出第一塊鍺積體電路。張忠謀的第一份工作是改善鍺電晶體的生產良率。他把 MIT 學到的統計製程管制（SPC）引入生產線，用數據而非經驗找缺陷源，良率在一年內大幅提升，從此被高層注意到。</p><p>1961 年，TI 資助他重返史丹佛，一年內拿下電機博士——創下史丹佛罕見的「一年博士」。1964 年他升任鍺電晶體部門經理，1965 年升任積體電路部門總經理，1967 年成為 TI 半導體集團副總裁，1972 年升任集團副總裁，成為 TI 僅次於董事長與總裁的三號人物，也是當時美國大企業中職位最高的華人。</p><p>關鍵戰役有二。其一是 <strong>256 位元 RAM 與 MOS 之戰</strong>：1960 年代末，TI 在雙極（bipolar）技術上領先，卻輕視新興的 MOS 技術；張忠謀力主投入 MOS 與記憶體研發，主導開發出早期 256 位元 RAM，並推動 TI 在 MOS 上追趕仙童與英特爾。其二是 <strong>4K DRAM 的抉擇</strong>：他主張 TI 全力投入半導體記憶體，與摩托羅拉、英特爾正面競爭；雖然 TI 後來在 DRAM 上未成霸主，但這段經歷讓他透徹理解「技術路線一旦選錯，規模再大也救不回」。</p><h4>學到的與沒學到的</h4><p>在 TI，張忠謀學會了三件事：第一，<strong>良率即利潤</strong>——半導體是製造業，製程穩定度決定成本；第二，<strong>大企業的紀律</strong>——預算、目標、績效考核的完整體系；第三，<strong>美國式研發管理</strong>——用專案與里程碑推進技術。</p><p>但他也看到了 TI 的病灶：官僚、派系，以及 IDM（整合元件製造）模式下「設計」與「製造」互相掣肘。TI 既做產品又做製程，資源永遠向當紅產品傾斜，製造部門淪為配角。這個觀察在他心中埋下一顆種子：<strong>設計與製造分開，製造專注到極致，會不會更有效率？</strong> 純代工的念頭，萌芽於 TI 的走廊。</p><p>1972 年，張忠謀競逐 TI 總裁失利（敗給 G. H. Brock），心灰意冷離開待了 14 年的公司（一說 1958–1972 為 TI 年資，合計德儀生涯約 14 年；加上前後半導體資歷常被概括為「德儀 25 年經驗」的起點）。失利反而把他推向更大的舞台。</p><pre class="mermaid">flowchart LR
+    A[1958加入TI&lt;br/&gt;良率工程師] --&gt; B[統計品管&lt;br/&gt;良率大躍進]
+    B --&gt; C[1964-65&lt;br/&gt;部門總經理]
+    C --&gt; D[256位元RAM&lt;br/&gt;MOS轉型]
+    D --&gt; E[1972集團副總裁&lt;br/&gt;三號人物]
+    E --&gt; F{競逐總裁失利}
+    F --&gt;|離開| G[轉往通用儀器]
+    F --&gt;|若留下| H[終身TI人&lt;br/&gt;無台積電]
+    style F fill:#ff9,stroke:#333</pre><h4>天花板與出走</h4><p>張忠謀在 TI 碰到華人當時在美國企業幾乎共同的天花板：技術可以到頂，總裁需要「自己人」。他的離開既是個人挫折，也是產業史的幸運——若他當上 TI 總裁，台灣半導體史可能要重寫。正如他後來說：「TI 教會我一切，除了教我如何當老闆。」</p><div class="math">$$良率 = \frac{好晶粒數}{總晶粒數} = f(\text{缺陷密度}, 晶圓面積)$$</div><p>這個簡單公式是他在 TI 二十五年（廣義半導體資歷）經驗的結晶：半導體競爭的本質是數學，是缺陷密度的戰爭。日後台積電的一切管理——夜鷹計畫、統計製程管制、機台利用率——都源於此。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：MIT 統計訓練（1.1）+ TI 的積體電路創業氛圍 → 張忠謀以良率管理快速晉升；TI 的 IDM 內耗 → 萌生「設計製造分離」直覺。</li><li><strong>本節如何引發後果</strong>：TI 總裁競逐失敗 → 被迫離開舒適圈、接掌通用儀器（見 1.3），從「專業經理人」轉向「企業領導人」；MOS 與記憶體之戰的教訓 → 日後台積電堅持「不與客戶競爭、只做製造」的戒律；良率至上的信念 → 成為台積電技術文化的基因。</li></ul></article><article id="s1-3"><h3 class="sec">1.3 通用儀器與返台前夜(1972-1985)</h3><h4>從老三到老闆</h4><p>1972 年離開 TI 後，張忠謀接任通用儀器（General Instrument, GI）總裁，成為美國大型半導體公司最早的華人總裁之一。GI 當時以電視調諧器、機上盒與半導體起家，張忠謀大刀闊斧整頓：裁撤虧損部門、聚焦半導體、推動消費電子晶片。在他任內（1972–1979），GI 營收與獲利顯著改善，他證明了自己不只能管工廠，也能當 CEO。</p><p>但 GI 的董事會文化與 TI 迥異：短視、內鬥、只看季度財報。1979 年張忠謀與董事會決裂，轉任通用儀器營運長一年後離開，短暫赴紐約擔任通用儀器之外的顧問與投資人。這段「一把手初體驗」既是成功也是挫折：成功在於證明領導力，挫折在於讓他看清——<strong>沒有股權與理念認同的總裁，只是高級打工仔</strong>。</p><p>1980–1985 年，他進入半導體生涯的沉澱期：擔任創投顧問、觀察日本半導體崛起（NEC、東芝、日立以 DRAM 橫掃美國），並目睹美國 IDM 模式在日本「產官學一體」攻勢下節節敗退。日本通產省主導的 VLSI 計畫讓他深思：<strong>政府之力若用得好，可以是半導體的槓桿，而非包袱。</strong></p><h4>來自台灣的邀請</h4><p>1985 年，台灣行政院政務委員李國鼎與工研院院長徐賢修透過關係，邀請 54 歲的張忠謀返台擔任工研院院長。當時台灣半導體幾乎為零：只有工研院電子所從 RCA 引進的 7 微米 CMOS 技術，以及一家虧損的聯華電子（UMC，1980 年成立）。許多人不解：一個美國大公司總裁，為何要去一個年預算不及 TI 零頭的研究機構？</p><p>張忠謀的算計有三層：其一，在美國的天花板已現，GI 經驗讓他渴望「自己開創」；其二，台灣政府（李國鼎、孫運璿）展現出日本通產省式的決心，願意出錢、出政策；其三，他心中「設計製造分離」的構想，在美國大公司體制內無人理睬——台灣這張白紙，反而是最佳試驗場。</p><p>1985 年秋天，他舉家遷台，接下工研院院長聘書。兩年後，台積電誕生。</p><pre class="mermaid">flowchart TD
+    A[1972 TI失意離開] --&gt; B[1972-79 通用儀器總裁&lt;br/&gt;證明CEO能力]
+    B --&gt; C[1979 董事會決裂&lt;br/&gt;看清打工仔極限]
+    C --&gt; D[1980-85 沉澱期&lt;br/&gt;目睹日本崛起]
+    D --&gt; E[1985 李國鼎邀請&lt;br/&gt;工研院院長]
+    E --&gt; F[1987 台積電創立]
+    style E fill:#9f9,stroke:#333</pre><h4>命運的伏筆</h4><p>通用儀器的七年，是張忠謀從「將」到「帥」的成人禮。他學會了取捨（砍部門）、用人（找對的副手）、以及與政府打交道。而 1980 年代初日本半導體對美國的碾壓，給了他最關鍵的歷史教材：<strong>後進者可以用新商業模式彎道超車</strong>——日本用的是國家隊與製造紀律，他將用的，是純代工。</p><div class="math">$$後進優勢 = 模仿成本 &lt; 創新成本 + 體制包袱^{-1}$$</div><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：TI 的管理紀律（1.2）→ 在 GI 得以施展 CEO 手腕；GI 董事會短視 → 激發「必須自己創業、掌握股權與理念」的決心；日本 VLSI 的刺激 → 相信政府 + 新模式可以顛覆既有霸主。</li><li><strong>本節如何引發後果</strong>：GI 的一把手資歷 → 讓李國鼎敢把工研院與半導體大業託付給他；對 IDM 弊病與日本模式的雙重理解 → 直接導出下一章「工研院出技術、飛利浦出品牌、台積電只做代工」的合資設計（見 2.1）。</li></ul></article></section>
+
+<section id="ch2"><h2>第2章 代工模式的誕生(1985-1994)</h2><article id="s2-1"><h3 class="sec">2.1 工研院與飛利浦合資(1985-1987)</h3><h4>兩億美元的賭局</h4><p>1985 年張忠謀接任工研院院長，兼任聯電董事長，很快發現聯電（UMC）同時做設計與製造、自有品牌與代工混雜，正是他反對的 IDM 老路。他提出分拆另立新公司的構想：<strong>一家不做產品、只做代工的公司</strong>。當時幾乎所有人反對——工研院官員問：「不做產品要賣給誰？」台灣商人問：「幫別人代工能賺什麼錢？」</p><p>張忠謀的說帖直指產業結構：設計公司（fabless）正在美國萌芽，但建一座晶圓廠要上億美元，小設計公司建不起；大 IDM 又不願真心代工（怕養大競爭對手、產能先供自家）。中間有一個真空地帶——<strong>中立、可信、只做製造的代工廠</strong>。他估算籌資需約 2 億美元（當時約新台幣 80 億元），行政院開發基金出資 48.3%、荷蘭飛利浦（Philips）以技術授權與現金換 27.6%、民間企業認購其餘 24.1%。</p><p>飛利浦的加入是關鍵一筆：它帶來 0.5–2 微米 CMOS 製程技術授權、品牌背書與歐洲客戶，更重要的是讓「台灣代工」在國際上有了信用狀。1987 年 2 月 21 日，台灣積體電路製造公司（TSMC）在新竹科學園區正式成立，資本額 22.8 億新台幣，張忠謀兼任董事長，工研院電子所約 100 多位工程師整批轉入，第一座廠（一廠）以工研院既有廠房改建。</p><h4>為什麼是飛利浦？</h4><p>飛利浦當時是歐洲 IDM 巨頭，為何願意扶持未來的競爭者？原因有三：一是飛利浦想降低製造成本、把部分產能外包；二是荷蘭政府鼓勵對亞洲技術合作；三是張忠謀在 TI、GI 的人脈與信譽。飛利浦副總裁范德維爾（F. Barlow）與張忠謀一拍即合。這個合資結構日後證明是神來之筆：官方資金扛住重資本風險、外資技術墊高起點、民間資本保持市場紀律。</p><pre class="mermaid">flowchart TD
+    A[1985 張忠謀任工研院院長] --&gt; B[聯電IDM困境&lt;br/&gt;自有品牌vs代工衝突]
+    B --&gt; C[純代工構想&lt;br/&gt;填補真空地帶]
+    C --&gt; D{籌資2億美元}
+    D --&gt; E[開發基金48.3%]
+    D --&gt; F[飛利浦27.6%&lt;br/&gt;技術+品牌]
+    D --&gt; G[民間24.1%]
+    E &amp; F &amp; G --&gt; H[1987.2.21 台積電成立]
+    style H fill:#9f9,stroke:#333</pre><h4>白手起家的第一廠</h4><p>創業之初的台積電寒酸至極：廠房是工研院舊廠、設備是二手與拼湊、技術落後英特爾至少兩個世代（當時主流已進 1 微米，台積電從 2 微米起步）。但它有兩項無形資產：張忠謀的紀律（夜鷹計畫、SOP、良率文化），以及「不與客戶競爭」的信用承諾。這兩項資產，在未來三十年複利增長為護城河。</p><div class="math">$$代工價值 = 客戶節省的建廠成本 - 代工毛利 &gt; 0 \Rightarrow 雙贏$$</div><p>這個不等式成立，是整個台積電故事的數學基礎。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：TI 的 IDM 內耗教訓（1.2）+ GI 的 CEO 經驗與政府打交道能力（1.3）+ 台灣官方資金與飛利浦技術供給 → 三方合資成為可能；美國 fabless 萌芽 → 提供需求面的真空。</li><li><strong>本節如何引發後果</strong>：合資成立 → 解決「錢與技術」的初始約束，但留下「客戶在哪裡」的問題 → 必須發明純代工的商業話術與信任機制（見 2.2）；飛利浦技術起點 → 決定早期只能做成熟製程、靠良率與服務取勝的路徑。</li></ul></article><article id="s2-2"><h3 class="sec">2.2 純晶圓代工的理念革命(1987-1991)</h3><h4>不與客戶競爭</h4><p>台積電成立時，張忠謀立下一條鐵律：<strong>永不設計、永不賣自有品牌產品，永遠不與客戶競爭</strong>。在 1987 年，這句話近乎異端——當時所有半導體公司都以自有產品為榮，代工是 IDM 產能過剩時的施捨。但張忠謀看到的是分工的必然：隨著摩爾定律推進，建廠成本指數上升（ $C_{fab} \propto 2^{n}$ ），設計成本也在上升，單一公司同時負擔兩端將不堪重負。分工才能讓各自專注，整體創新加速。</p><p>為落實信用，台積電發明一整套制度：客戶的設計資料嚴格隔離（不同客戶團隊物理隔離）、業務人員不得洩露產能資訊、產能分配透明化。張忠謀親自拜訪美國潛在客戶，保證「你的競爭對手也是我的客戶，我對誰都一樣」。這種「瑞士中立」定位，讓彼此廝殺的設計公司敢把命根子（GDSII）交出來。</p><h4>Fabless 生態的助產士</h4><p>純代工模式與無廠半導體（fabless）互為因果、互相驅動：沒有可信代工，fabless 不敢創業；沒有 fabless，代工沒有訂單。1987–1991 年，台積電的早期客戶包括英特爾（小量外包）、Altera（可程式邏輯）、以及後來的 Broadcom 前身、Nvidia 前身概念團隊。真正關鍵的是與 <strong>Altera、Xilinx、Adaptec</strong> 等公司的合作：它們把最先進的產品交給台積電，台積電用超預期的良率與交期回報。</p><p>張忠謀還推動「開放創新平台」（後成 Open Innovation Platform 前身）：提供標準元件庫（standard cell library）與設計手冊，讓小公司不必懂製造也能投片。這等於把晶圓廠的圍牆拆掉，把製造能力「API 化」。IDM 把製程視為機密，台積電卻把製程文件化、模組化——開放反而帶來更多訂單。</p><h4>虧損前四年</h4><p>理念雖美，現實殘酷：1987–1990 年台積電連年虧損，產能利用率不足，飛利浦一度想撤資，民間股東抱怨連連。轉機在 1991 年：全球半導體回暖 + fabless 浪潮 + 台積電良率追上國際水準，當年開始獲利。張忠謀用四年證明：信任是最貴的固定資產，攤提前很長，攤提後極厚。</p><pre class="mermaid">flowchart LR
+    A[鐵律:不與客戶競爭] --&gt; B[客戶敢交設計]
+    B --&gt; C[訂單-&gt;良率提升]
+    C --&gt; D[開放平台&lt;br/&gt;標準庫降低門檻]
+    D --&gt; E[更多Fabless誕生]
+    E --&gt;|回饋| B
+    C --&gt; F[1991轉虧為盈]
+    style A fill:#ff9,stroke:#333
+    style F fill:#9f9,stroke:#333</pre><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：TI 內耗（1.2）提供反面教材 → 萃取出「中立代工」正解；合資解決錢與技術（2.1）→ 剩下信任問題必須用制度回答。</li><li><strong>本節如何引發後果</strong>：「不競爭」信用 + 開放平台 → 孵化 fabless 生態 → 帶來 1990 年代訂單洪流（見 2.3）；1991 年獲利 → 證明模式可行 → 吸引資本市場支持後續三廠、四廠擴建，也為聯電被迫跟進轉型埋下伏線（見 3.2）。</li></ul></article><article id="s2-3"><h3 class="sec">2.3 早期客戶與上市之路(1991-1994)</h3><h4>從虧損到上市</h4><p>1991 年轉盈後，台積電進入高速擴張：二廠（1990 投產）、三廠（1992 動工）相繼上線，製程從 1.0 微米推進到 0.8、0.6 微米。客戶結構質變：從零星外包變成長約大單，Altera、Adaptec、Cirrus Logic 把主力產品線移入，英特爾也在特定晶片組上委單——連 IDM 龍頭都承認台積電的成本與良率優勢。</p><p>1993 年 9 月，台積電股票在台灣證券交易所掛牌上市（2330），成為當時台灣最大的民營科技 IPO 之一。上市募集的資金投入四廠與 Fab 5（第一座 8 吋廠的前期規劃），產能利用率長期維持 90% 以上。1994 年營收突破新台幣 200 億元，毛利率超過 40%——證明代工不是微利，而是在高利用率下接近軟體業的高槓桿生意：</p><div class="math">$$毛利率 = 1 - \frac{固定折舊 + 變動成本}{單價 \times 利用率 \times 良率}$$</div><p>利用率與良率雙高時，折舊被攤薄，利潤爆發。</p><h4>蔣尚義的到來</h4><p>1994 年前後的另一條暗線是人才。1990 年代初，張忠謀延攬在 TI、惠普任職的 <strong>蔣尚義</strong>（後任研發副總、共同營運長）返台。蔣尚義帶來美國最前沿的 CMOS 與記憶體研發管理經驗，主導 0.5 微米以下研發，為下一章的銅製程與 300mm 埋下人才種子。同時，孫元成、劉德音（1993 加入）、魏哲家（1998 加入）等幹才陸續到位，「台積電大聯盟」的人才梯隊成形。</p><h4>IDM 時代的黃昏</h4><p>1994 年，台積電與聯電合計已佔全球代工市場大半，fabless 公司數量從 1980 年代的十餘家暴增至上百家。IDM 巨頭（TI、摩托羅拉、飛利浦）紛紛關閉老舊小廠、轉單台積電——它們親手餵大了顛覆者。張忠謀在 1994 年法說會上預言：「未來全世界只需要幾家最先進的晶圓廠，其餘都將外包。」當時被視為狂言，十年後成為現實。</p><pre class="mermaid">flowchart TD
+    A[1991轉盈] --&gt; B[二廠三廠擴產&lt;br/&gt;0.8/0.6微米]
+    B --&gt; C[Altera/Adaptec長約&lt;br/&gt;Intel委單]
+    C --&gt; D[1993上市2330&lt;br/&gt;募資擴廠]
+    D --&gt; E[1994營收破200億&lt;br/&gt;毛利40%+]
+    E --&gt; F[IDM關廠轉單&lt;br/&gt;模式確立]
+    A --&gt; G[蔣尚義/劉德音到位&lt;br/&gt;研發梯隊]
+    G --&gt; F</pre><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：「不競爭」信用（2.2）→ 換來大客戶長約 → 利用率拉滿 → 高毛利 → 上市成功；人才引進 → 研發能力從「跟隨飛利浦」轉向「自主研發」。</li><li><strong>本節如何引發後果</strong>：上市資金 + 高利用率現金流 → 支撐下一章動輒數十億美元的銅製程、300mm 與浸潤式豪賭（見 3.1、3.2）；IDM 外包潮 → 代工市場規模膨脹 → 引來聯電轉型對決與三星覬覦，為技術爬坡期的競爭埋下戰線。</li></ul></article></section>
+
+<section id="ch3"><h2>第3章 技術爬坡(1997-2011)</h2><article id="s3-1"><h3 class="sec">3.1 銅製程與三百毫米晶圓(1997-2003)</h3><h4>兩場豪賭</h4><p>1990 年代末，半導體撞上兩道牆。第一道是互連延遲：隨著線寬縮小，傳統鋁導線電阻與電容延遲超過電晶體本身， $RC$ delay 成為瓶頸；IBM 率先研發出銅鑲嵌（copper damascene）製程，但良率極低、污染風險大，無人敢量產。第二道是晶圓尺寸：8 吋（200mm）晶圓逼近經濟極限，12 吋（300mm）可讓每片晶粒數增加約 2.25 倍，但一座 12 吋廠投資超過 30 億美元，失敗即滅頂。</p><p>1997–1998 年，在蔣尚義與孫元成主導下，台積電決定兩場仗一起打：1998 年宣布銅製程量產（0.25/0.18 微米世代），與 IBM、摩托羅拉幾乎同步，甚至在量產良率上反超；2000–2001 年 Fab 12（竹科第一座 12 吋廠）動工，2001 年試產，正逢網路泡沫破裂、半導體史上最慘衰退。張忠謀力排眾議不停建，反而加碼——因為他算過：衰退時建廠成本最低，復甦時產能就是定價權。</p><p>結果：2002–2003 年復甦來臨時，台積電手握業界最成熟的銅製程 + 最先投產的 12 吋產能，Nvidia、ATI、Broadcom 的高階訂單蜂擁而至，市占一舉拉開與聯電的差距。</p><h4>夜鷹計畫與研發紀律</h4><p>技術豪賭敢贏，靠的是研發紀律。蔣尚義建立的「夜鷹計畫」（Nighthawk）、技術委員會與階段關卡（stage-gate）制度，把研發從天才靈感變成可管理的工程：每代製程定義明確的良率、缺陷密度（ $D_0$ ）與可靠性目標，不達標不轉量產。這套源自 TI 的統計文化，在台積電被發揮到極致——工程師笑稱「在台積電，數據會說話，官大也沒用」。</p><pre class="mermaid">flowchart TD
+    A[互連瓶頸RC delay&lt;br/&gt;8吋經濟極限] --&gt; B[IBM銅製程&lt;br/&gt;無人敢量產]
+    B --&gt; C[1998台積電銅量產&lt;br/&gt;蔣尚義拍板]
+    A --&gt; D[12吋廠30億美元&lt;br/&gt;高風險]
+    D --&gt; E[2000 Fab12動工&lt;br/&gt;泡沫中不停建]
+    C &amp; E --&gt; F[2002復甦&lt;br/&gt;訂單爆發]
+    F --&gt; G[拉開與聯電差距]
+    style C fill:#ff9,stroke:#333
+    style E fill:#ff9,stroke:#333</pre><h4>規模的複利</h4><p>銅製程與 12 吋的勝利，確立了台積電此後二十年的公式：<strong>用資本開支換技術領先，用技術領先換訂單，用訂單現金再投入更大的資本開支</strong>。競爭對手一次豪賭失敗就掉隊，台積電則把豪賭變成常態——因為它的良率體系讓豪賭的勝率遠高於同業。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：上市資金與高利用率現金流（2.3）→ 供得起 30 億美元賭注；TI/惠普研發人才（蔣尚義、孫元成）→ 具備消化 IBM 銅技術並量產的能力；網路泡沫的低建廠成本 → 反週期投資回報最大化。</li><li><strong>本節如何引發後果</strong>：銅 + 12 吋領先 → 產能與成本優勢 → 在下一輪浸潤式微影競賽中有本錢再賭（見 3.2）；與聯電的技術差距從半年拉大到一年以上 → 直接導致 2000 年代聯電轉型掉隊、人才倒戈，為「雙雄變一強」定調。</li></ul></article><article id="s3-2"><h3 class="sec">3.2 與聯電之爭與浸潤式微影(2000-2007)</h3><h4>雙雄對決的終結</h4><p>2000 年前後，聯電在曹興誠帶領下宣布放棄自有品牌、全力轉型純代工，與台積電正面對決，一度在 0.18 微米世代緊咬。但台積電以三招拉開差距：第一，銅製程與 12 吋的先發產能（見 3.1）；第二，專利與人才磁吸——聯電 2005 年和艦案、何建廷案等爭議重創士氣，部分戰將轉投台積電；第三，也是最致命的，是對下一代微影的路線抉擇。</p><h4>157nm 乾式 vs 193nm 浸潤式</h4><p>2002–2003 年，全行業為下一代微影路線爭吵：英特爾、IBM 主張跳往 157nm F2 乾式微影；台積電微影處長林本堅（Burn Lin）逆勢主張 <strong>193nm 浸潤式微影（immersion lithography）</strong>——在鏡頭與晶圓之間墊一層水，靠折射率（ $n \approx 1.44$ ）把等效波長縮短，延續 193nm 機台壽命。當時被譏為「洗澡式曝光」，英特爾甚至拒絕評估。</p><p>張忠謀與蔣尚義拍板力挺林本堅，並說服關鍵夥伴 ASML 全力開發浸潤式機台（TWINSCAN XT:1900i 系列）。2004 年台積電率先以浸潤式量產 90nm，2005–2007 年推進至 65/45nm，良率與成本雙勝。堅持 157nm 的陣營血本無歸，英特爾被迫回頭跟進時，已落後兩年。ASML 自此與台積電結為生死同盟——台積電給方向、給訂單、給製程回饋，ASML 給最優先的機台與工程師。</p><p>2005 年聯電在 90nm 良率上失足、大客戶（Xilinx、Broadcom 部分訂單）轉單台積電，雙雄格局就此終結：台積電市占突破 45%，聯電跌破 15% 且再未追近。</p><pre class="mermaid">flowchart TD
+    A[2000 聯電轉型純代工&lt;br/&gt;雙雄對決] --&gt; B{微影路線之爭}
+    B --&gt;|Intel/IBM| C[157nm乾式&lt;br/&gt;高成本高風險]
+    B --&gt;|林本堅/台積電| D[193nm浸潤式&lt;br/&gt;水墊折射]
+    D --&gt; E[說服ASML&lt;br/&gt;結盟開發]
+    E --&gt; F[2004浸潤式量產90nm]
+    F --&gt; G[聯電90nm失足&lt;br/&gt;訂單轉移]
+    C --&gt; H[157nm失敗&lt;br/&gt;對手落後兩年]
+    G &amp; H --&gt; I[台積電市占45%+&lt;br/&gt;一強格局]
+    style D fill:#9f9,stroke:#333</pre><div class="math">$$NA_{eff} = n \cdot \sin\theta, \quad CD \propto \frac{\lambda}{NA_{eff}}$$</div><p>一層水把 $n$ 從 1 提高到 1.44，摩爾定律續命至少三個世代——這是物理光學送給製造紀律的禮物。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：銅 + 12 吋的現金與信心（3.1）→ 敢在微影上再賭一把；林本堅的光學洞見 + 蔣尚義的研發紀律 → 把異想變成量產；ASML 當時居於尼康、佳能之後、急需差異化 → 願意與台積電共押冷門。</li><li><strong>本節如何引發後果</strong>：浸潤式勝利 → 台積電–ASML 同盟固化 → 為 EUV 世代的優先供貨與共同研發鋪路（見 4.2）；聯電掉隊 → 2009 年後退出先進製程競賽 → 台積電在 FinFET 世代只需對決三星與英特爾，戰線簡化。</li></ul></article><article id="s3-3"><h3 class="sec">3.3 FinFET豪賭與重掌帥印(2005-2011)</h3><h4>交棒危機</h4><p>2005 年，74 歲的張忠謀交棒給蔡力行，轉任董事長。然而 2008 年金融海嘯重創半導體，蔡力行以裁員、凍薪應對，重創台積電「不裁員」的文化與士氣；同時在 40nm 世代良率出包，Nvidia 執行長黃仁勳公開抱怨，訂單一度轉向聯電與三星。2009 年 6 月，張忠謀以 78 歲高齡重掌 CEO，發動「新台積電運動」：恢復雇用、加薪、重建紀律，並親自督軍下一代電晶體。</p><h4>平面 vs 鰭式</h4><p>背景是物理極限：28nm 之後，平面（planar）電晶體漏電失控， $I_{off}$ 指數上升，功耗牆擋住微縮。三星與英特爾押注 <strong>FinFET（鰭式場效電晶體）</strong>——把通道立起來、三面包覆閘極，大幅抑制短通道效應；台積電內部一度爭論是否先推改良平面（HKMG + planar）求穩。梁孟松（時任先進技術負責人之一）等人主張直攻 FinFET。</p><p>2011 年，台積電宣布 16nm FinFET 路線圖（後以 16FF/16FF+ 量產），與三星 14nm、英特爾 14nm（Tri-Gate）正面對決。為了 FinFET，台積電投入空前研發資源，並與蘋果深度綁定（見 4.1）——沒有大客戶的量保證，不敢開這麼大的製程賭局。2009–2011 年的重整（恢復士氣、整頓 40nm、確立 28nm HKMG 量產領先）為 FinFET 攒足了本錢：28nm 台積電市占超過七成，賺來的現金全數投入 16/20nm 研發。</p><p>梁孟松於 2009 年前後因升遷爭議離職、輾轉赴三星（引發著名的競業訴訟與洩密爭議），一度被視為人才流失；但劉德音、魏哲家接掌研發與業務，蔣尚義回鍋顧問，梯隊無縫接軌，反而證明了台積電體系重於個人。</p><pre class="mermaid">flowchart TD
+    A[2005交棒蔡力行] --&gt; B[2008海嘯裁員&lt;br/&gt;40nm良率事件]
+    B --&gt; C[2009張忠謀回鍋&lt;br/&gt;78歲重掌帥印]
+    C --&gt; D[整頓28nm HKMG&lt;br/&gt;市占七成]
+    D --&gt; E{電晶體路線}
+    E --&gt;|穩妥| F[改良平面&lt;br/&gt;短命]
+    E --&gt;|激進| G[16nm FinFET&lt;br/&gt;直攻]
+    G --&gt; H[綁定蘋果&lt;br/&gt;以量養研發]
+    H --&gt; I[2015量產領先&lt;br/&gt;決戰三星]
+    style C fill:#ff9,stroke:#333
+    style G fill:#9f9,stroke:#333</pre><h4>老帥的最後一戰</h4><p>張忠謀回鍋的兩年，是台積電史上最驚險的轉折：若 28nm 守不住，蘋果不會把 A 系列交出來；若 FinFET 選錯，高通、蘋果將倒向三星。兩關都過，台積電才從「代工一哥」變成「技術盟主」。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：40nm 教訓 + 海嘯士氣危機 → 觸發回鍋；28nm HKMG 的現金流 → 供得起 FinFET 豪賭；浸潤式同盟（3.2）→ ASML 機台保障 FinFET 所需的多重曝光產能。</li><li><strong>本節如何引發後果</strong>：16nm FinFET 路線確立 + 蘋果訂單（見 4.1）→ 在 2015–2016 年與三星的 A9 代工對決（雙採購、台積電版續航勝出）中獲勝 → 奠定 7nm 獨拿蘋果的基礎（見 4.2）；梁孟松事件 → 強化營業秘密與競業管理，也讓三星短期獲益、長期仍敗給體系戰。</li></ul></article></section>
+
+<section id="ch4"><h2>第4章 登頂(2010-2020)</h2><article id="s4-1"><h3 class="sec">4.1 行動裝置浪潮與蘋果訂單(2010-2014)</h3><h4>iPhone 重新定義晶片</h4><p>2010 年 iPhone 4 引爆智慧型手機浪潮，行動 SoC 成為半導體成長最快的市場：要求極致效能功耗比（ $Performance/Watt$ ）、一年一世代的節奏、千萬級出貨量。傳統 PC 晶片（英特爾）節奏太慢、功耗太高；高通、蘋果（A 系列）、Nvidia Tegra 等 ARM 陣營需要一個能跟上手機節奏的製造夥伴。三星當時既是蘋果代工廠、又是手機競爭者（Galaxy 告 iPhone），蘋果如芒在背——「把命脈交給敵人」不可忍。</p><p>2013–2014 年，蘋果決定將 A8 處理器（iPhone 6）由三星轉單台積電 20nm。這是台積電史上最重要的訂單：蘋果要求產能（包下數座廠）、良率（高於三星）、保密（獨立產線、獨立團隊）。魏哲家（業務與營運）親自督軍，劉德音（研發）保證 20nm SoC 製程準時量產。2014 年 A8 準時交貨，iPhone 6 狂賣，台積電 20nm 營收佔比一季之內衝上兩成。</p><h4>三星的陰影</h4><p>拿下蘋果之前，台積電先嚐過失去的滋味：2011–2013 年 A5/A6/A7 皆由三星代工，高通 28nm 也曾分單三星。轉折點是 28nm（2012）：台積電良率與產能大勝，三星 28nm 良率不穩、高通回頭加單；加上 2012–2013 年蘋果三星專利大戰，蘋果去三星化決心已定。台積電的「不做手機」中立性，在此成為決定性優勢——蘋果寧可與不做產品的台積電分享藍圖，也不願再讓三星看到 A 系列的架構。</p><p>2015 年 A9（iPhone 6s）蘋果採雙採購（三星 14nm + 台積電 16nm），實測台積電版續航與發熱更優，輿論譁然（「晶片門」Chipgate）；2016 年 A10 起蘋果全數回歸台積電，此後再未離開。</p><pre class="mermaid">flowchart TD
+    A[2010 iPhone引爆&lt;br/&gt;行動SoC浪潮] --&gt; B[三星代工蘋果&lt;br/&gt;又是敵人又是廠商]
+    B --&gt; C[蘋果去三星化&lt;br/&gt;尋找中立代工]
+    C --&gt; D[2012台積電28nm大勝&lt;br/&gt;高通回頭]
+    D --&gt; E[2014 A8轉單台積電20nm&lt;br/&gt;iPhone6大賣]
+    E --&gt; F[2015 A9雙採購&lt;br/&gt;台積電版勝出]
+    F --&gt; G[2016起蘋果全單&lt;br/&gt;綁定至今]
+    style E fill:#9f9,stroke:#333</pre><h4>一個客戶，半壁江山</h4><p>蘋果訂單佔台積電營收一度超過兩成，帶來甜蜜的煩惱：議價壓力、產能排擠（聯發科、高通抱怨拿不到產能）、技術路線被單一客戶牽引。但正面效應更大：蘋果的量與利潤資助了 16nm、10nm、7nm 的研發（每年資本開支破百億美元），蘋果的嚴苛要求（PPA、良率爬坡速度）逼出台積電的極限。這是「以大客戶養大研發」的正循環。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：28nm 大勝與中立信用（3.3）+ 蘋果三星專利戰 → 蘋果轉單的動機與信心；20nm 準時量產能力 → 接得住 A8 的量與時程。</li><li><strong>本節如何引發後果</strong>：蘋果的量與錢 → 資助 FinFET 世代決戰（見 4.2），讓台積電敢在 10/7nm 上全速衝刺；A9 雙採購的勝利 → 三星在行動 SoC 代工上信用破產 → 高通、輝達後續跟進轉單，台積電在 7nm 時代獨大。</li></ul></article><article id="s4-2"><h3 class="sec">4.2 七奈米超越三星英特爾(2014-2018)</h3><h4>三強鼎立的結局</h4><p>2014–2018 年是先進製程的決戰期。英特爾在 14nm  MULTIPATTERNING 上延宕、10nm 連年跳票（2015→2017→2019），摩爾定律在 Santa Clara 熄火；三星 14/10nm 雖早量產，但良率與 PPA（功耗效能面積）遜色，高通驍龍 810 的發熱門重創其口碑。台積電採取「小步快跑」：20nm（平面最後一代）→ 16FF/16FF+（FinFET）→ 10nm（短命過渡）→ 7nm（決勝），每一代都準時、每一代都滿載。</p><p>關鍵是 EUV 的抉擇。ASML 的極紫外光（EUV， $\lambda = 13.5nm$ ）機台研發十餘年，一台要價逾億美元，英特爾、三星態度猶豫；台積電與 ASML 對賭：以巨額預購鎖定首批 EUV（NXE:3350/3400），並投入浸潤式多重曝光作為過渡，確保 7nm（DUV 多重曝光版）2017 年風險量產、2018 年以 7nm+（EUV）領先全行。高通、蘋果、海思、AMD、Nvidia 全數押注台積電 7nm——客戶用訂單投票，英特爾第一次在製造上被代工廠超越。</p><p>2018 年：台積電 7nm 量產（蘋果 A12、華為麒麟 980、AMD Zen 2）；三星 7nm EUV 落後半年以上且無大客戶；英特爾 10nm 跳票、被迫承認「製程領先不再」。半導體王座易主——<strong>設計在美國、製造在台灣</strong>的新分工確立。</p><h4>張忠謀退休</h4><p>2018 年 6 月，87 歲的張忠謀正式退休，交棒給劉德音（董事長）與魏哲家（總裁）雙首長制。他留下的台積電：市值逾 2000 億美元、全球市占逾五成、先進製程市占近九成。退休演說只強調一句：「誠信正直、承諾、創新、客戶信任。」——與 1987 年創業時同一套詞。</p><pre class="mermaid">flowchart TD
+    A[2014 三強鼎立&lt;br/&gt;Intel/三星/台積電] --&gt; B[Intel 10nm跳票&lt;br/&gt;2015-&gt;2019]
+    A --&gt; C[三星14/10nm&lt;br/&gt;良率PPA不佳]
+    A --&gt; D[台積電小步快跑&lt;br/&gt;16-&gt;10-&gt;7nm]
+    D --&gt; E[重押ASML EUV&lt;br/&gt;預購鎖定首批]
+    E --&gt; F[2018 7nm量產&lt;br/&gt;A12/麒麟980/Zen2]
+    B &amp; C --&gt; G[客戶集體轉單]
+    F &amp; G --&gt; H[王座易主&lt;br/&gt;製造在台灣]
+    H --&gt; I[2018張忠謀退休&lt;br/&gt;雙首長接班]
+    style F fill:#9f9,stroke:#333</pre><h4>技術為王的證明</h4><p>7nm 的勝利，本質是三場勝利的疊加：浸潤式同盟（3.2）保證過渡產能、FinFET 豪賭（3.3）保證電晶體架構、蘋果訂單（4.1）保證研發經費。三者缺一不可。這也解釋為何三星、英特爾單點突破卻全局落敗——它們缺的不是技術，而是「可信中立 + 大客戶量 + 製造紀律」的體系。</p><div class="math">$$PPA_{7nm} = f(\text{FinFET} + \text{EUV/多重曝光} + D_0) \quad 台積電三項全優$$</div><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：ASML 同盟（3.2）→ EUV 優先供貨；蘋果資金（4.1）→ 撐起百億美元資本開支；對手失誤（Intel 跳票、三星良率）→ 客戶集中轉單形成雪球。</li><li><strong>本節如何引發後果</strong>：7nm 獨大 → 囊括蘋果、AMD（Zen 逆襲英特爾）、輝達 AI 晶片 → 為 5/3nm 的絕對領先與高毛利（&gt;50%）奠基；王座易主 → 觸發美國「製造回流」的焦慮與華為圍堵（見 4.3、5.2），技術勝利引來地緣政治反噬。</li></ul></article><article id="s4-3"><h3 class="sec">4.3 華為海思事件與五奈米(2018-2020)</h3><h4>第二大客戶的殞落</h4><p>2018–2019 年，海思（HiSilicon）已是台積電第二大客戶（僅次於蘋果，佔比近一成），麒麟 980/990（7nm）與昇騰 AI 晶片、5G 基地台晶片（天罡）皆由台積電代工，華為手機全球市占逼近三星。2019 年 5 月，美國商務部以國家安全為由將華為列入實體清單；2020 年 5 月升級禁令——<strong>凡使用美國技術代工給華為者須申請許可</strong>，精準掐住台積電（美系 EDA、IP、設備佔比極高）。</p><p>台積電在 120 天緩衝期內為海思趕工出貨（2020 年 9 月 15 日斷供前），麒麟 9000（5nm）成為絕響。此後華為手機市占崩盤，海思營收蒸發九成。台積電短期痛失近一成營收，長期卻因禍得福：空出的 7/5nm 產能瞬間被蘋果、AMD、輝達、高通、聯發科瓜分，2020 年營收反而逆勢成長 25%，毛利率突破 53%。</p><h4>5nm 的加冕</h4><p>與此同時，2020 年台積電 5nm（N5）量產（蘋果 A14/M1、史上第一代 5nm 手機 SoC），電晶體密度達每平方毫米約 1.7 億顆，功耗效能雙壓三星 5nm。蘋果 M1（Mac 轉 ARM）全線採用台積電 5nm，標誌 PC 處理器亦倒向台灣製造。2018–2020 年，張忠謀退休後的雙首長制經受住「斷供海思 + 疫情 + 中美脫鉤」三重考驗，證明體系已可無創辦人運轉。</p><p>這場事件給台積電上了地緣政治第一課：<strong>技術中立在國家安全邏輯前不堪一擊</strong>。過去「誰都是客戶」的瑞士模式，第一次被出口管制打破。台積電被迫選邊——而它的設備、EDA、IP 與最大客戶都在美國，選擇並不困難，但代價是從此成為大國博弈的棋子與籌碼。</p><pre class="mermaid">flowchart TD
+    A[2018海思第二大客戶&lt;br/&gt;麒麟980/990] --&gt; B[2019.5實體清單&lt;br/&gt;2020.5升級禁令]
+    B --&gt; C[美國技術含量規則&lt;br/&gt;EDA/IP/設備卡脖子]
+    C --&gt; D[2020.9.15斷供&lt;br/&gt;麒麟9000絕響]
+    D --&gt; E[營收缺口一成]
+    E --&gt; F[蘋果/AMD/輝達瓜分產能&lt;br/&gt;2020營收+25%]
+    A --&gt; G[2020 5nm量產&lt;br/&gt;A14/M1]
+    G --&gt; F
+    F --&gt; H[中立神話破滅&lt;br/&gt;地緣政治第一課]
+    style B fill:#f96,stroke:#333
+    style G fill:#9f9,stroke:#333</pre><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：7nm 獨大（4.2）→ 海思重度依賴台積電 → 美國發現「掐台積電即掐華為」的最短路徑；5nm 研發（蘋果資金鏈）→ 斷供陣痛可被新製程紅利對沖。</li><li><strong>本節如何引發後果</strong>：斷供海思 → 示範了出口管制的威力 → 美國順勢推動晶片法案、要求在地設廠（見 5.2）；5nm 成功 + 疫情遠距需求 → 引爆 2020–2021 全球晶片短缺（見 5.1），台積電從「重要供應商」升格為「兵家必爭之地」。</li></ul></article></section>
+
+<section id="ch5"><h2>第5章 地緣政治時代(2020-2026)</h2><article id="s5-1"><h3 class="sec">5.1 晶片短缺與護國神山(2020-2022)</h3><h4>一顆晶片停一輛車</h4><p>2020 年底至 2021 年，新冠疫情造成詭異的供需錯配：車廠年初砍單、年中需求報復性反彈，疊加遠距辦公（筆電、伺服器）、5G、顯卡挖礦四重需求，全球晶圓代工產能（尤其是 28nm 以上成熟製程與 5/7nm 先進製程）全面爆滿。車用 MCU 缺貨導致通用、福特、豐田減產，德國經濟部長寫信向台灣求援——「護國神山」（Silicon Shield）一詞從台灣輿論走向《經濟學人》封面。</p><p>台積電的回應是 2021 年宣布三年 1000 億美元資本開支：在竹科（Fab 20 超大晶圓廠 GigaFab）、中科、南科擴建 5/3nm，並調漲成熟製程代工價、優先保障車用客戶。2021–2022 年營收連創新高（2022 年營收 2.26 兆新台幣、毛利率 59.6% 歷史峰值），市值一度超越騰訊與三星，成為亞洲市值王。台灣社會對台積電的情感也達頂點：工程師是婚戀市場頂配，缺水缺電時全民為它讓路（2021 年大旱水車馳援南科）。</p><h4>矽盾的兩面</h4><p>「護國神山」論述認為：台灣掌握全球九成先進製程產能，美國與中國都不敢讓兩岸開戰——晶片即嚇阻。但批評者指出：矽盾也可能是「人質」——正因太重要，各國才加速扶植本土產能、逼台積電外移，最終掏空台灣。2021–2022 年的短缺，既證明了台積電不可或缺，也種下了各國「去台化」的動機。繁榮與脆弱，同一枚硬幣。</p><pre class="mermaid">flowchart TD
+    A[2020疫情錯配&lt;br/&gt;車廠砍單又追單] --&gt; B[遠距+5G+挖礦&lt;br/&gt;四重需求疊加]
+    B --&gt; C[2020年底大缺貨&lt;br/&gt;車廠停產]
+    C --&gt; D[德部長求援&lt;br/&gt;護國神山出圈]
+    D --&gt; E[台積電3年1000億美元&lt;br/&gt;擴產+漲價]
+    E --&gt; F[2022營收2.26兆&lt;br/&gt;毛利59.6%巔峰]
+    F --&gt; G{矽盾論戰}
+    G --&gt;|樂觀| H[嚇阻戰爭]
+    G --&gt;|悲觀| I[各國去台化&lt;br/&gt;逼外移]
+    I --&gt; J[亞利桑那/熊本設廠]
+    style E fill:#9f9,stroke:#333</pre><div class="math">$$利用率 \to 100\% \Rightarrow 議價權 \to 供應商 \Rightarrow 漲價 + 預付款擴廠$$</div><p>短缺把三十年積累的信任一次性變現為定價權——客戶從「要求降價」變成「付預付款搶產能」。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：5nm 領先 + 海思空出的產能被秒殺（4.3）→ 產能本就緊繃；疫情錯配 → 引爆點；車用缺貨的外溢政治效應 → 把商業問題升級為外交問題。</li><li><strong>本節如何引發後果</strong>：短缺的暴利（千億美元擴產底氣）→ 支撐美日德三地設廠的巨額開支（見 5.2）；「太重要所以必須分散」的邏輯 → 各國晶片法案補貼競賽 → 台積電從台灣公司變成跨國產能網絡，開啟下一節的全球化陣痛。</li></ul></article><article id="s5-2"><h3 class="sec">5.2 美國日本德國擴廠(2020-2025)</h3><h4>三座海外新城</h4><p>地緣壓力下，台積電被迫走出「根留台灣」：<strong>亞利桑那（美國）</strong> 2020 年宣布设 Fab 21（5/4/3nm，總投資 650 億美元，美國史上最大外商直接投資），2024 年量產 4nm，蘋果、輝達、AMD 包產能，獲美國晶片法案 66 億美元補助；<strong>熊本（日本）</strong> 2021 年與 Sony、Denso 合資 JASM（22/28nm 與 12/16nm 成熟特殊製程），2024 年開幕量產，2025 年宣布二廠（6nm），主攻車用與影像感測；<strong>德勒斯登（德國）</strong> 2023 年宣布與 Bosch、Infineon、NXP 合資 ESMC（28/22nm、16/12nm FinFET），2024 年動土，主攻歐洲車用。</p><p>三地邏輯各異：美國要的是「最先進製程在美生產」（國安）；日本要的是「成熟製程不斷鏈」（經濟安保 + 九州半導體復興）；德國要的是「車用晶片自主」（歐洲晶片法案）。台積電的應對是差異化：最先進（2nm 以下）研發與量產初期永遠在台灣（竹科 Fab 20、新竹寶山），海外廠落後 N-1 世代——既滿足盟友，又守住「台灣最優先」的底線（劉德音所謂「根留台灣」）。</p><h4>全球化的代價</h4><p>海外擴廠的陣痛真實而昂貴：亞利桑那建廠成本是台灣的 4–5 倍（人力、法規、工會、文化衝突），量產時程兩度延後，2023–2024 年一度傳出與工會、 Austin 承包商摩擦，以及台灣工程師外派的家庭與工時爭議；熊本相對順利（日本營建效率與九州水電優勢），德國則面臨歐洲人力成本與環評。2022–2023 年半導體下行週期中，龐大資本開支（每年 300–400 億美元）壓縮自由現金流，毛利率從 59.6% 回落至 50% 出頭——華爾街開始質疑「地緣稅」（geopolitical tax）。</p><p>但 2024 年 AI 浪潮（輝達 H100/B200、蘋果 M3/M4、AMD MI300 全數台積電 5/3nm）讓產能再度滿載，證明：<strong>只要技術領先兩個世代，成本劣勢可被轉嫁</strong>。海外廠的虧損，被台灣廠的超額利潤覆蓋——全球化是稅，也是保險費。</p><pre class="mermaid">flowchart TD
+    A[美國晶片法案&lt;br/&gt;日本經濟安保&lt;br/&gt;歐洲晶片法案] --&gt; B[亞利桑那Fab21&lt;br/&gt;4/3nm 650億美元]
+    A --&gt; C[熊本JASM&lt;br/&gt;28-12nm]
+    A --&gt; D[德勒斯登ESMC&lt;br/&gt;車用28-12nm]
+    B --&gt; E[成本4-5倍&lt;br/&gt;工會文化陣痛]
+    C --&gt; F[相對順利&lt;br/&gt;2024量產]
+    D --&gt; G[2024動土&lt;br/&gt;車用鏈]
+    E &amp; F &amp; G --&gt; H[台灣N-1策略&lt;br/&gt;2nm根留台灣]
+    H --&gt; I[2024 AI爆單&lt;br/&gt;地緣稅被覆蓋]
+    style H fill:#9f9,stroke:#333</pre><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：晶片短缺的政治化（5.1）+ 海思斷供示範（4.3）→ 美日歐以補貼 + 市場准入為槓桿要求在地生產；AI 訂單的利潤 → 付得起海外虧損。</li><li><strong>本節如何引發後果</strong>：海外產能網絡 → 台積電從「台灣之光」變成「全球基礎設施」→ 必須以更強的技術代差（2nm/A16）維持議價權（見 5.3）；雙首長制在跨國管理上的負荷 → 促成 2024 年交棒魏哲家單一領導，開啟新治理時代。</li></ul></article><article id="s5-3"><h3 class="sec">5.3 二奈米與魏哲家時代(2020-2026)</h3><h4>從 FinFET 到 GAA</h4><p>2020 年代的技術主線是電晶體結構再革命：FinFET 在 3nm 逼近極限，台積電 3nm（N3，2022 量產，蘋果 A17/M3 首發）仍以改良 FinFET（FinFlex）守住 PPA 領先（三星搶先上 GAA 卻良率慘淡）；真正的換代是 <strong>2nm（N2，2025 風險量產、2026 量產）</strong>——首採奈米片（nanosheet）環繞式閘極（GAA），疊加背面供電（backside power delivery，A16 製程），號稱同功耗效能提升 10–15%、功耗降低 25–30%。</p><p>為 N2，台積電在新竹寶山（Fab 20）與高雄建超大 GigaFab，EUV 機台（NXE:3600/3800，高數值孔徑 High-NA 評估中）全數優先到貨；蘋果、輝達、AMD、博通、聯發科已預訂首批產能，英特爾亦將部分 Nova Lake 委外——<strong>連昔日霸主都成了客戶</strong>，完成了 1987 年「IDM 終將外包」預言的最後一塊拼圖。A16（1.6nm，2026–2027）與系統級晶圓（CoWoS、SoIC、3D Fabric）則把競爭從電晶體推向封裝與系統整合——台積電的敵人不再是某家公司，而是物理本身。</p><h4>魏哲家時代與護國神山爭論</h4><p>2024 年 6 月，劉德音退休，魏哲家接任董事長兼總裁，結束雙首長制。魏哲家（1998 年加入，業務與營運出身，客戶口中的「小張忠謀」）風格更貼近客戶與一線：親自主持蘋果、輝達產能協調，以幽默直率著稱。他面對的三重考驗：其一，<strong>地緣政治常態化</strong>——美國大選、兩岸局勢、關稅與出口管制年年加碼，台積電需在合規與商機間走鋼索；其二，<strong>AI 依賴症</strong>——2024–2025 年輝達佔營收比重飆升，AI 伺服器 CoWoS 產能決定獲利天花板，若 AI 資本開支退潮何以為繼；其三，<strong>台灣社會契約</strong>——用電（2025 年用電佔全台逾 8%）、用水、人才磁吸與房價（竹科、中科、南科高雄），「護國神山」是否也是「吸血神山」的爭論不息。</p><p>張忠謀 2024 年公開示警「全球化已死」，魏哲家則務實回應「台灣最優先、全球有佈局」。2025–2026 年台積電市值突破一兆美元（全球前十），毛利率重返 55% 以上——數字證明體系仍在巔峰，但歷史從不承諾巔峰永駐：正如仙童、英特爾的前車之鑑，<strong>領先者的敵人永遠是下一場典範轉移</strong>（量子？矽光子？Chiplet 架構？）。</p><pre class="mermaid">flowchart TD
+    A[FinFET極限&lt;br/&gt;3nm FinFlex守成] --&gt; B[2nm N2 GAA奈米片&lt;br/&gt;2025-26量產]
+    B --&gt; C[背面供電A16&lt;br/&gt;CoWoS/SoIC系統整合]
+    C --&gt; D[蘋果/輝達/AMD預訂&lt;br/&gt;Intel也成客戶]
+    D --&gt; E[2024魏哲家接班&lt;br/&gt;單一領導]
+    E --&gt; F{三重考驗}
+    F --&gt; G[地緣常態化]
+    F --&gt; H[AI依賴症]
+    F --&gt; I[用電用水人才契約]
+    G &amp; H &amp; I --&gt; J[兆美元市值&lt;br/&gt;巔峰與警惕]
+    style B fill:#9f9,stroke:#333
+    style E fill:#ff9,stroke:#333</pre><div class="math">$$領導力交棒 = 制度成熟度 \times 文化連續性 - 創辦人依賴$$</div><p>台積電用 2018（張忠謀退）、2024（劉德音退）兩次交棒證明等式為正——這是它與仙童、英特爾最大的不同。</p><h4>因果鏈</h4><ul><li><strong>前因驅動</strong>：7/5nm 的體系勝利（4.2、4.3）→ 攢足研發與 EUV 資源 → 敢在 GAA 上後發先至；海外擴廠的 N-1 策略（5.2）→ 2nm 根留台灣 → 守住技術與議價中樞；AI 爆發 → 為 2nm 提供確定的首發大客戶。</li><li><strong>本節如何引發（未來）後果</strong>：2nm/A16 若再勝 → 先進製程代差拉大到三代以上 → 海外「地緣稅」可持續轉嫁，台灣議價權延續；反之，若 GAA 良率失手或 AI 退潮、或地緣斷鏈加劇 → 三十年的正循環（大客戶→大研發→大領先）可能逆轉——這正是全書因果鏈留給讀者的開放結局：<strong>台積電的歷史，就是一部把偶然變成必然、又時刻警惕必然變回偶然的歷史。</strong></li></ul></article></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「傳記/台積電」（https://github.com/cccbook/cccbook2026），本頁僅調整排版並合併為單頁。　原始檔：md/歷史/公司/台積電/
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+if (typeof mermaid !== "undefined") {
+  mermaid.initialize({
+    startOnLoad: true, securityLevel: "strict", theme: "base",
+    fontFamily: '"Noto Sans TC","Microsoft JhengHei",sans-serif',
+    themeVariables: {primaryColor: "#e8f0f6", primaryBorderColor: "#285b78", primaryTextColor: "#17324d",
+                     lineColor: "#285b78", secondaryColor: "#fdf8ee", tertiaryColor: "#f6f9fb"},
+    flowchart: {useMaxWidth: true, htmlLabels: true}
+  });
+}
+</script>
+</body>
+</html>
