@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2022-生成式AI與工作重構</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">社會結構史・公元 2022 年</p>
+  <h1>2022-生成式AI與工作重構</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>2022 年 11 月 30 日，OpenAI 發布 ChatGPT——兩個月內用戶破億，史上最快的技術採用。這樁「對話框」案件是勞動結構的新一輪重構：生成式 AI 首次衝擊<strong>非常規認知工作</strong>（寫作、程式、設計、分析）——此前自動化只吃掉常規任務（工廠、文書）；2020 COVID 已把遠距工作常態化（辦公的物理束縛解除），AI 再把「知識任務」拆解自動化。Autor 的任務模型：就業不是「職業被取代」而是「任務被重分配」——Eloundou 等（2023）估計：80% 勞動力的至少 10% 任務受 AI 影響。<strong>每一次技術躍升（蒸汽 1769 → 流水線 1908 → 電腦 1971 → 生成式 AI）都重畫一次勞動的階層圖</strong>——這次輪到白領與創意工作。</p></section>
+<section><h2>前因 -- 為什麼會有這個案子</h2><ul><li><strong>深度學習的累積</strong>：Transformer（2017）+ 大規模預訓練（GPT 系列 2018-20）+ RLHF——「生成」的技術鏈就緒。</li><li><strong>COVID 的遠距革命</strong>（2020）：遠距工作常態化 → 知識工作的「任務化」與「數位化」——AI 應用的接口就緒。</li><li><strong>算力與數據</strong>：GPU 叢集（1971 案的算力曲線的 AI 版）+ 網路語料——訓練的資源就緒。</li><li><strong>自動化的既有軌跡</strong>：常規任務已被電腦吃掉（1971 案）——「非常規認知任務」是最後的堡壘。</li></ul></section>
+<section><h2>線索與推理 -- 數學式、理論、表格</h2><h3>線索一：任務模型——職業 vs 任務</h3><p>Autor-Levy-Murnane（2003）與 Autor（2015）的任務模型：職業是任務的集合，技術吃「任務」而非「職業」：</p><div class="tablewrap"><table><thead><tr><th>任務類型</th><th>技術的影響</th><th>實例</th></tr></thead><tbody><tr><td>常規手動</td><td>機器人化（1971 案前後）</td><td>流水線</td></tr><tr><td>常規認知</td><td>電腦化（1971 案）</td><td>會計、文書</td></tr><tr><td>非常規手動</td><td>難（機器人仍弱）</td><td>水電工、照護</td></tr><tr><td><strong>非常規認知</strong></td><td><strong>生成式 AI（本案）</strong></td><td>寫作、程式、設計、分析</td></tr></tbody></table></div><p><strong>推理</strong>：生成式 AI 的獨特之處是首次吃掉「非常規認知」——白領與創意工作首次進入自動化射程——階層圖重畫的轉折。</p><h3>線索二：暴露度的估計</h3><p>Eloundou-Manning 等（2023）「GPTs are GPTs」：以任務暴露度（exposure）估計——</p><div class="math">$$\text{暴露度} = \frac{\text{AI 可縮短 50\% 時間的任務}}{\text{職業總任務}}$$</div><ul><li>約 80% 美國勞動力至少 10% 任務受影響；</li><li>約 19% 勞動力 50% 以上任務受影響；</li><li>高教育、高薪職業（寫作、程式、法律、金融）暴露度反而最高——<strong>與以往自動化相反的階層方向</strong>（以往吃低技能，這次先吃高技能）。</li></ul><p><strong>推理</strong>：「AI 暴露度與工資/教育正相關」——階層衝擊的方向反轉——中產白領首次成為自動化的前沿。</p><h3>線索三：副駕駛模式——人機的新分工</h3><p>「AI 副駕駛」（copilot）模式：AI 生成初稿/程式，人類編輯/決策——</p><div class="math">$$\text{生產力} = \text{人類判斷} \times \text{AI 起草速度}$$</div><p>實證（Peng et al. 2023）：程式任務提速 55%；寫作任務（Noy-Zhang 2023）：品質持平、時間減 40%——<strong>任務重分配</strong>而非職業消失：初稿自動化、判斷與責任仍留人類（與泰勒 1908、福特流水線的「分工極細化」同構，但這次分工是「人機」而非「人-人」）。</p><h3>線索四：遠距 + AI 的組織重構</h3><p>2020 COVID 的遠距革命（Zoom、非同步協作）→ 辦公的物理束縛解除 → 城市 CBD 的辦公需求下降（2023 美國辦公室使用率僅 50%）→ 房地產、通勤、城市稅基的重構；AI 加持的「一人公司」（副駕駛讓小團隊做大事）→ 企業邊界的再縮小（1991 案 Coase 定理的 AI 版）。<strong>紅利滯後模式的續集</strong>（1882 電力滯後 40 年、1971 電腦滯後 20 年）：AI 的組織重構（流程再設計）將決定紅利兌現的速度。</p></section>
+<section><h2>結案 -- 後果與影響</h2><ul><li><strong>白領自動化時代</strong>：非常規認知任務進入射程——教育溢價的方向重估（哪些技能保值：判斷、人際、體力）。</li><li><strong>任務重分配而非失業</strong>：副駕駛模式 → 新任務湧現（提示工程、AI 稽核）——歷史模式：技術吃任務也創任務（蒸汽 → 機械師；電腦 → 程式設計師）。</li><li><strong>組織與城市的再重構</strong>：遠距 + AI → 辦公空間、城市稅基、通勤結構的再調整——1882 案城市垂直化的反轉壓力。</li><li><strong>治理的新課題</strong>：AI 的著作權、責任、偏誤——「演算法治理」從平台（2007 案）擴到生成內容。</li><li><strong>千年鏈條的最新環</strong>：蒸汽（1769）→ 流水線（1908）→ 電腦（1971）→ 生成式 AI（本案）——每次躍升都重現「剩餘如何分配」（1867 案）與「組織如何重構」（1882 案）的母題。</li></ul></section>
+<section><h2>關鍵人物與文獻</h2><ul><li><strong>Sam Altman, OpenAI</strong>：ChatGPT 的發布方。</li><li><strong>David Autor</strong>：任務模型與勞動市場的權威。</li><li>文獻：<ul><li>D. Autor, F. Levy, R. Murnane, "The Skill Content of Recent Technological Change," <em>QJE</em> 118, 1279 (2003).</li><li>T. Eloundou et al., "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models," arXiv 2023 / <em>Science</em> 2024.</li><li>S. Peng et al., "The Impact of AI on Developer Productivity: Evidence from GitHub Copilot," 2023.</li><li>S. Noy, W. Zhang, "Experimental Evidence on the Productivity Effects of Generative AI," <em>Science</em> 381, 187 (2023).</li><li>D. Autor, "Applying AI to Rebuild Middle Class Jobs," NBER, 2024.</li></ul></li></ul></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/社會結構史」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/社會結構史/2022-生成式AI與工作重構.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
