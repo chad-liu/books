@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1969-ARPANET與軍事網路起源：把指揮部拆成封包</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">武器與戰法・公元 1969 年</p>
+  <h1>1969-ARPANET與軍事網路起源：把指揮部拆成封包</h1>
+</header>
+
+<section><h2>案件摘要</h2><p>西元 1969 年 10 月 29 日，加州大學洛杉磯分校（UCLA）的一台電腦向史丹佛研究所（SRI）的電腦送出兩個字母「LO」——原本要傳的是「LOGIN」，系統在傳到第三個字母時當機。這樁看似笨拙的「案發現場」，是人類戰爭指揮體系被重寫的第一秒：美國國防部高等研究計畫署（ARPA）出資的 ARPANET 通車了。它的兇手不是槍炮，而是一個數學思想——<strong>分封交換（packet switching）</strong>：把訊息切碎、各自尋路、到點重組。本案的結論：<strong>從此指揮體系不再需要「中心」，打掉任何一個節點，訊息會自己繞路</strong>——集中指揮的戰爭，從這一天開始走向分散式殺傷鏈。</p></section>
+<section><h2>前因 -- 為什麼會有這個案子</h2><ul><li>1962 年古巴飛彈危機（<a href="1962-%E7%9B%B8%E4%BA%92%E4%BF%9D%E8%AD%89%E6%AF%80%E6%BB%85%E8%88%87%E5%8D%9A%E5%BC%88%E8%AB%96.html">1962-相互保證毀滅與博弈論</a>）的教訓：核時代的指揮鏈必須在「遭受第一次打擊後仍然存活」——傳統星狀電話網只要炸掉交換中心就全癱。</li><li>蘭德公司的保羅·巴蘭（1964）提出分散式通訊網構想：<strong>沒有中心，就沒有斬首</strong>。</li><li>1965 年越戰空騎（<a href="1965-%E7%9B%B4%E5%8D%87%E6%A9%9F%E7%A9%BA%E9%A8%8E%E9%9D%A9%E5%91%BD.html">1965-直升機空騎革命</a>）暴露的矛盾：戰場越分散，越需要即時通訊——無線電的話音網頻寬不夠、易被竊聽定位。</li></ul></section>
+<section><h2>線索與推理 -- 分散如何戰勝集中</h2><h3>線索一：分封交換的排隊數學</h3><p>傳統電路交換像佔線的鐵路：通話期間整條線被獨佔。分封交換則把訊息切成小包，每個包獨立選路：</p><div class="math">$$U = \frac{\lambda}{\mu} \quad\text{（鏈路利用率 = 到達率 / 服務率）}$$</div><p>電路交換在通話空檔照樣佔線（ $U$ 長期低於 0.3）；分封交換讓多條訊息<strong>統計多工</strong>，同一條線的利用率可推高到 0.8 以上。軍事意義直白：<strong>同樣的電纜與頻寬，分封網能承載數倍的指揮流量</strong>——而且流量越大，分散選路的優勢越明顯。</p><h3>線索二：存活率的拓撲證明</h3><p>設每個節點被摧毀的機率為 $p$ ，星狀網中心被毀則全網癱瘓：</p><div class="math">$$P_{\text{星狀存活}} = 1 - p_{\text{中心}}$$</div><p>分散式網格中，兩點之間有 $k$ 條獨立路徑，全斷才失聯：</p><div class="math">$$P_{\text{失聯}} \approx p^k \quad\text{（$k$ 條路徑同時被毀）}$$</div><p>$p = 0.3$ 、 $k = 4$ 時，失聯機率僅約 0.008。<strong>冗餘度把「斬首」的數學期望壓到接近零</strong>——這正是核嚇阻可信度的技術地基：二次打擊的命令一定送得出去（<a href="1957-%E6%B4%B2%E9%9A%9B%E9%A3%9B%E5%BD%88%E8%88%87%E4%BA%BA%E9%80%A0%E8%A1%9B%E6%98%9F.html">1957-洲際飛彈與人造衛星</a>的指揮配套）。</p><h3>線索三：從話音到資料——指揮的顆粒度革命</h3><div class="tablewrap"><table><thead><tr><th></th><th>無線電話音網</th><th>ARPANET 資料網</th></tr></thead><tbody><tr><td>傳遞單位</td><td>一整段通話</td><td>封包（各自尋路）</td></tr><tr><td>被竊聽</td><td>整段被聽</td><td>需重組全部封包才可讀</td></tr><tr><td>節點被毀</td><td>通話中斷</td><td>封包自動繞路</td></tr><tr><td>可傳內容</td><td>只有聲音</td><td>座標、雷達圖、命令</td></tr></tbody></table></div><p><strong>指揮的顆粒度從「一句話」變成「一個封包」</strong>——1991 年海灣戰爭的「平行作戰」（<a href="1991-%E6%B5%B7%E7%81%A3%E6%88%B0%E7%88%AD%E8%88%87%E8%B3%87%E8%A8%8A%E5%8C%96.html">1991-海灣戰爭與資訊化</a>）與 1940 年道丁體系的資料流（<a href="1940-%E4%B8%8D%E5%88%97%E9%A1%9B%E7%A9%BA%E6%88%B0%E8%88%87%E9%9B%B7%E9%81%94.html">1940-不列顛空戰與雷達</a>），在這裡匯合成同一條技術血脈。</p></section>
+<section><h2>破案時刻</h2><ul><li>1969 年 10 月 29 日：UCLA→SRI，第一個封包上路（「LO」事件）。</li><li>1969 年底：四節點成網（UCLA、SRI、UCSB、猶他大學）。</li><li>1983 年：軍用部分拆分為 MILNET——<strong>民用網際網路與軍用指揮網正式分家又同源</strong>。</li></ul></section>
+<section><h2>後果 -- 改變了什麼</h2><ul><li>指揮體系從「中心—邊緣」變成「網格」：斬首戰的效益被拓撲數學永久攤薄。</li><li>資料鏈（Link-16、衛星鏈路）成為 1982 年貝卡谷地（<a href="1982-%E8%B2%9D%E5%8D%A1%E8%B0%B7%E5%9C%B0%E9%9B%BB%E5%AD%90%E6%88%B0.html">1982-貝卡谷地電子戰</a>）之後所有體系戰的血管。</li><li>諷刺的迴力鏢：分散網格養大了 2007 年的網路武器（<a href="2007-%E9%9C%87%E7%B6%B2%E8%88%87%E7%B6%B2%E8%B7%AF%E6%88%B0.html">2007-震網與網路戰</a>）與 2022 年星鏈戰場（<a href="2022-%E4%BF%84%E7%83%8F%E6%88%B0%E7%88%AD%E8%88%87FPV%E7%84%A1%E4%BA%BA%E6%A9%9F.html">2022-俄烏戰爭與FPV無人機</a>）——<strong>讓指揮部活下來的技術，也讓戰場透明化</strong>。</li></ul></section>
+<section><h2>戰法演進筆記</h2><ol><li><strong>沒有中心，就沒有斬首</strong>： $P_{\text{失聯}} \approx p^k$ ——冗餘度是指揮存活的第一性原理。</li><li><strong>統計多工即戰力</strong>：頻寬利用率的躍升直接等於指揮容量的躍升。</li><li><strong>顆粒度決定戰法</strong>：從話音到封包，殺傷鏈的每一環從此都可以數位化、自動化——無人機時代（<a href="2001-%E5%8F%8D%E6%81%90%E6%88%B0%E7%88%AD%E8%88%87%E6%AD%A6%E8%A3%9D%E7%84%A1%E4%BA%BA%E6%A9%9F.html">2001-反恐戰爭與武裝無人機</a>）的殺傷鏈跨洲傳輸，起點就是這兩個字母「LO」。</li></ol></section>
+
+<footer>
+  內容轉自 cccbook/cccbook2026 儲存庫「歷史/世界史/武器與戰法」（https://github.com/cccbook/cccbook2026），本頁僅調整排版。　原始檔：md/歷史/世界史/武器與戰法/1969-ARPANET與軍事網路起源.md
+</footer>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof renderMathInElement !== "function") return;
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    throwOnError: false, strict: false
+  });
+});
+</script>
+</body>
+</html>
