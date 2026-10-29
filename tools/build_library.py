@@ -857,9 +857,15 @@ display:flex;flex-direction:column;transition:border-color .15s,transform .15s}
 .card h3 a:hover{color:#c9a94f}
 .card h3 .cnt{color:#9ba4b4;font-size:.78rem;font-weight:400;margin-left:7px}
 ul{list-style:none;font-size:.88rem}
-li{padding:2px 0;border-bottom:1px dashed #21304f}
+li{padding:2px 0;border-bottom:1px dashed #21304f;display:flex;align-items:center;gap:4px}
 li:last-child{border-bottom:none}
-li a{color:#b8c5d6;text-decoration:none;display:block;padding:2px 4px;border-radius:4px}
+li a{color:#b8c5d6;text-decoration:none;display:block;flex:1;padding:2px 4px;border-radius:4px}
+.rd{background:none;border:none;cursor:pointer;font-size:.85rem;padding:2px 4px;
+border-radius:4px;opacity:.18;filter:grayscale(1)}
+li:hover .rd{opacity:.6}
+.rd:hover,li.on .rd{opacity:1;filter:none}
+li.on > a{color:#d8c187}
+#reading .card{border-color:#c9a94f}
 li a:hover{background:#1e3a5f;color:#c9a94f}
 li.set a{color:#d8c187}
 .shelves{margin:-4px 0 8px}
@@ -936,6 +942,58 @@ function gotoBook() {
 }
 window.addEventListener('load', gotoBook);
 window.addEventListener('hashchange', gotoBook);
+
+// 「正在讀」：每本書右側的 📖 切換，清單只存書的連結在這台瀏覽器的 localStorage，
+// 所以重建首頁不會遺失；書被改名或下架、連結對不上的就不顯示
+var RKEY = 'library-reading';
+var reading = [];
+try { reading = JSON.parse(localStorage.getItem(RKEY)) || []; } catch (e) {}
+var bookLis = document.querySelectorAll('main section:not(#reading) li');
+
+bookLis.forEach(function (li) {
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'rd';
+  b.textContent = '📖';
+  li.appendChild(b);
+});
+
+function renderReading() {
+  var byHref = {};
+  bookLis.forEach(function (li) {
+    var h = li.querySelector('a').getAttribute('href');
+    var on = reading.indexOf(h) >= 0;
+    byHref[h] = li;
+    li.classList.toggle('on', on);
+    li.querySelector('.rd').title = on ? '移出正在讀' : '加入正在讀';
+  });
+  var shown = reading.filter(function (h) { return byHref[h]; });
+  var ul = document.getElementById('reading-list');
+  ul.innerHTML = '';
+  shown.forEach(function (h) {
+    var li = byHref[h].cloneNode(true);
+    li.removeAttribute('id');
+    li.classList.remove('jump-target', 'fade');
+    ul.appendChild(li);
+  });
+  document.getElementById('reading').hidden = !shown.length;
+  document.getElementById('reading-n').textContent = shown.length + ' 本';
+  var opt = cat.querySelector('option[value="reading"]');
+  opt.textContent = '📖 正在讀（' + shown.length + ' 本）';
+  opt.disabled = !shown.length;
+  if (q.value.trim()) run();
+}
+
+document.querySelector('main').addEventListener('click', function (e) {
+  var b = e.target.closest('.rd');
+  if (!b) return;
+  var h = b.parentNode.querySelector('a').getAttribute('href');
+  var i = reading.indexOf(h);
+  if (i >= 0) reading.splice(i, 1); else reading.unshift(h);
+  try { localStorage.setItem(RKEY, JSON.stringify(reading)); } catch (e) {}
+  renderReading();
+});
+renderReading();
 </script>"""
 
 
@@ -1013,14 +1071,19 @@ def build_index(manifest):
            '<div class="tools">']
 
     ordered = sorted(cards, key=cat_key)
-    out.append('<select id="cat"><option value="">📚 跳到類別…</option>')
+    out.append('<select id="cat"><option value="">📚 跳到類別…</option>'
+               '<option value="reading">📖 正在讀</option>')
     for i, c in enumerate(ordered):
         n = sum(len(x['entries']) for x in cards[c].values())
         out.append('<option value="sec-%d">%s（%d 本）</option>' % (i, escape(c), n))
     out.append('</select>')
 
     out += ['<input id="q" type="search" placeholder="搜尋書名、作者或資料夾…（按 / 快速聚焦）" autocomplete="off">',
-            '<span class="hint">Esc 清除</span>', '</div>', '</header>', '<main>']
+            '<span class="hint">Esc 清除</span>', '</div>', '</header>', '<main>',
+            # 內容由首頁的 JS 依 localStorage 填入
+            '<section id="reading" hidden><h2>📖 正在讀<span class="n" id="reading-n"></span></h2>',
+            '<div class="grid"><article class="card" data-name="正在讀"><ul id="reading-list"></ul>'
+            '</article></div></section>']
 
     for i, cat in enumerate(ordered):
         folders = cards[cat]
