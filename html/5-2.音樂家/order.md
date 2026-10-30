@@ -2,7 +2,7 @@
 韓德爾(1685~1759，George Frideric Handel)
 巴赫(1685~1750，Johann Sebastian Bach)
 海頓(1732~1809，Franz Joseph Haydn)
-莫札特生平大事記
+莫札特(1756~1791，Wolfgang Amadeus Mozart)
 貝多芬(1770~1827，Ludwig van Beethoven)
 羅西尼(1792~1868，Gioachino Antonio Rossini)
 舒伯特(1797~1828，Franz Peter Schubert)
@@ -14,7 +14,7 @@
 華格納(1813~1883，Wilhelm Richard Wagner)
 威爾第(1813~1901，Giuseppe Verdi)
 法朗克(1822~1890，César Franck)
-法朗克（César Franck）生平大事記
+法朗克生平大事記
 拉羅(1823~1892，Édouard Lalo)
 拉羅（Édouard Lalo）生平大事記
 史麥塔納(1824~1884，Bedřich Smetana)
