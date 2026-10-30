@@ -14,9 +14,7 @@
 華格納(1813~1883，Wilhelm Richard Wagner)
 威爾第(1813~1901，Giuseppe Verdi)
 法朗克(1822~1890，César Franck)
-法朗克生平大事記
 拉羅(1823~1892，Édouard Lalo)
-拉羅（Édouard Lalo）生平大事記
 史麥塔納(1824~1884，Bedřich Smetana)
 布魯克納(1824~1896，Joseph Anton Bruckner)
 布拉姆斯(1833~1897，Johannes Brahms)
@@ -26,12 +24,10 @@
 德弗札克(1841~1904，Antonín Leopold Dvořák)
 葛利格(1843~1907，Edvard Hagerup Grieg)
 艾爾加(1857~1934，Edward Elgar)
-艾爾加(1857~1934，Edward Elgar)生平大事記
 普契尼(1858~1924，Giacomo Puccini)
 馬勒(1860~1911，Gustav Mahler)
 德布西(1862~1918，Achille Claude Debussy)
 理查·史特勞斯(1864~1949，Richard Strauss)
-理查史特勞斯（Richard Strauss）生平大事記
 西貝流士(1865~1957，Jean Sibelius)
 拉赫曼尼諾夫(1873~1943，Sergei Vasilyevich Rachmaninoff)
 荀白克(1874~1951，Arnold Schoenberg)
@@ -41,4 +37,3 @@
 蓋西文(1898~1937，George Gershwin)
 蕭士塔高維奇(1906~1975，Dmitri Dmitriyevich Shostakovich)
 布列頓(1913~1976，Benjamin Britten)
-布列頓(1913~1976，Benjamin Britten)生平大事記
