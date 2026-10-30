@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李斯特生平</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#eef2f5;--paper:#ffffff;--ink:#263238;--muted:#59707b;
+    --rule:#d7e0e6;--body:#37474f;--navy:#17324d;--navy2:#285b78;
+    --brass:#e49b3d;--zebra:#f6f9fb;--link:#1f5c85;--shadow:0 3px 10px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 64px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    border-radius:14px;padding:34px 42px;margin-bottom:26px;box-shadow:var(--shadow)}
+  .eyebrow{font-family:"Noto Serif TC",serif;font-size:13px;color:#bcd4e4;
+    letter-spacing:.4em;margin:0 0 10px}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;line-height:1.5;
+    font-size:clamp(22px,4vw,32px);letter-spacing:.05em;margin:0}
+  section{background:var(--paper);border-radius:12px;padding:22px 26px;
+    margin-bottom:20px;box-shadow:var(--shadow)}
+  section>h2{font-family:"Noto Serif TC",serif;font-weight:600;font-size:21px;
+    letter-spacing:.06em;margin:0 0 12px;color:var(--navy);
+    border-left:5px solid var(--navy2);padding-left:12px}
+  h3{font-family:"Noto Serif TC",serif;font-weight:600;font-size:17px;
+    margin:18px 0 8px;color:var(--navy)}
+  p{margin:0 0 14px;color:var(--body);font-size:15px}
+  ul,ol{margin:0 0 14px;padding-left:1.7em;color:var(--body);font-size:15px}
+  li{margin:6px 0}
+  strong{color:var(--ink)}
+  a{color:var(--link)}
+  .xref{color:var(--muted);border-bottom:1px dotted var(--muted);cursor:help}
+  code{background:var(--zebra);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.92em}
+  blockquote{margin:4px 0 16px;padding:12px 18px;background:#fdf8ee;border-left:5px solid var(--brass);
+    border-radius:0 10px 10px 0;color:#4a3b1c}
+  blockquote p{margin:0;color:#4a3b1c}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid var(--rule);border-radius:10px;margin:8px 0 16px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;line-height:1.65}
+  th{background:var(--navy2);color:#fff;font-weight:600;text-align:left;padding:9px 12px}
+  td{padding:8px 12px;vertical-align:top;border-top:1px solid var(--rule);color:var(--body)}
+  tbody tr:nth-child(even) td{background:var(--zebra)}
+  pre{margin:8px 0 16px;padding:14px 16px;background:#f8fafc;border:1px solid var(--rule);
+    border-radius:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;
+    font-family:"Sarasa Mono TC","Noto Sans Mono CJK TC","MingLiU","NSimSun","SimSun",monospace;
+    font-size:13px;line-height:1.55;color:var(--ink);white-space:pre}
+  pre code{background:none;border:0;padding:0;font:inherit}
+  .math{overflow-x:auto;overflow-y:hidden;margin:6px 0 14px;padding:2px 0}
+  p .katex .base,li .katex .base,td .katex .base{white-space:normal}
+  footer{margin-top:26px;background:#e7edf1;border-radius:10px;
+    padding:14px 20px;color:#526b76;font-size:12px}
+
+  .sub{margin:12px 0 0;color:#d4e4ef;font-size:15px;letter-spacing:.04em}
+  h4{font-size:15px;margin:14px 0 6px;color:var(--navy2);font-weight:600}
+  figure{margin:10px 0 16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  figure svg{display:block;width:100%;max-width:480px;height:auto;margin:0 auto}
+
+  .profile{display:flex;gap:22px;align-items:flex-start}
+  .profile .cover{flex:0 0 auto;width:210px;max-width:38%;height:auto;border-radius:10px;border:1px solid var(--rule);display:block}
+  .facts{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;font-size:15px}
+  .facts dt{color:var(--muted)}
+  .facts dd{margin:0;color:var(--body)}
+  .periods,.timeline{list-style:none;margin:0;padding:0}
+  .periods>li{display:grid;grid-template-columns:130px 1fr;gap:0 16px;padding:10px 0;border-top:1px solid var(--rule)}
+  .periods>li:first-child{border-top:0;padding-top:0}
+  .periods .range{font-family:"Noto Serif TC",serif;font-weight:700;color:var(--navy);font-size:16px}
+  .periods h3{margin:0 0 4px}
+  .periods p{margin:0}
+  .timeline>li{display:grid;grid-template-columns:104px 1fr;gap:0 18px;padding:0 0 24px}
+  .timeline>li:last-child{padding-bottom:0}
+  .timeline .date{text-align:right;padding-top:1px}
+  .timeline .date b{display:block;font-family:"Noto Serif TC",serif;font-size:20px;line-height:1.3;color:var(--navy)}
+  .timeline .date span{display:block;font-size:13px;color:var(--muted);line-height:1.5}
+  .timeline .card{border-left:4px solid var(--accent,#285b78);padding:0 0 0 16px}
+  .timeline h3{margin:0 0 4px}
+  .timeline p{margin:0 0 10px}
+  .timeline .place{color:var(--muted);font-size:13px;margin:0 0 8px}
+  .timeline figure{margin:8px 0 12px;overflow:visible}
+  .timeline figure img{display:block;max-width:100%;max-height:380px;width:auto;height:auto;border-radius:8px;border:1px solid var(--rule)}
+  .srcnote p{font-size:13px;color:var(--muted);margin:0 0 8px;word-break:break-word}
+  @media(max-width:560px){
+    .profile{flex-direction:column}.profile .cover{max-width:70%}
+    .periods>li{grid-template-columns:1fr}
+    .timeline>li{grid-template-columns:1fr;gap:4px 0}
+    .timeline .date{text-align:left;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+    .timeline .date b{display:inline}
+    .facts{grid-template-columns:1fr;gap:0}.facts dd{margin-bottom:8px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap" style="--accent:#c92a2a">
+
+<header>
+  <p class="eyebrow">音樂家・浪漫時期</p>
+  <h1>李斯特生平</h1>
+  <p class="sub">李斯特·費倫茨（Liszt Ferenc／Franz Liszt，1811–1886），匈牙利作曲家，「鋼琴之王」</p>
+</header>
+
+<section class="profile"><img class="cover" src="https://chad-liu.github.io/Timeline/data/images/liszt-cover.jpg" alt="李斯特生平" onerror="this.style.display='none'"><dl class="facts"><dt>出生</dt><dd>1811 年 10 月 22 日</dd><dt>逝世</dt><dd>1886 年 7 月 31 日</dd><dt>時期</dt><dd>浪漫時期</dd></dl></section>
+<section><h2>人生分期</h2><ol class="periods"><li><div class="range">1811–1821</div><div><h3>童年</h3><p class="place">雷丁(Raiding)</p><p>出生在匈牙利王國的小村莊多博爾揚（今奧地利雷丁）。父親亞當是埃斯特哈齊親王的莊園管事，也是熱心的業餘音樂家；母親是奧地利的德意志人，所以李斯特從小說德語，晚年才學會用匈牙利文寫作。不到5歲就會在鋼琴上即興演奏。</p></div></li><li><div class="range">1821–1823</div><div><h3>維也納求學</h3><p>在貴族資助下到維也納學習，隨貝多芬的學生徹爾尼學琴，徹爾尼教了他一年半、分文不取；也隨宮廷樂長薩列里學作曲。</p></div></li><li><div class="range">1823–1835</div><div><h3>巴黎時期</h3><p>全家遷居巴黎。巴黎音樂院以不收外國人為由拒絕他入學，他改隨私人老師學習，以神童之姿巡演法國與英國。父親死後他靠教琴養活自己和母親，經歷一段宗教懷疑與內省的低潮，也結識雨果、喬治·桑、白遼士、蕭邦等人。</p></div></li><li><div class="range">1835–1839</div><div><h3>與達古爾特伯爵夫人：瑞士與義大利</h3><p>為避開醜聞，與已婚的達古爾特伯爵夫人移居日內瓦，之後遊歷瑞士與義大利，生下三個孩子。這段旅程日後孕育出鋼琴曲集《巡禮之年》。</p></div></li><li><div class="range">1839–1847</div><div><h3>巡演全歐：李斯特狂熱</h3><p>為籌建波昂貝多芬紀念碑而展開巡演，八年間公開演出超過一千場，所到之處掀起被海涅稱為「李斯特狂熱」的熱潮。他也把大量演出收入捐給慈善事業。35歲時在巔峰狀態中退出巡演舞台。</p></div></li><li><div class="range">1848–1861</div><div><h3>威瑪宮廷樂長</h3><p class="place">Weimar</p><p>定居威瑪，擔任宮廷樂長，指揮宮廷音樂會、舉辦白遼士與華格納作品的音樂節，並創造「交響詩」這種新形式，讓威瑪成為新音樂的重鎮。他與華格納、白遼士等人被稱為「新德意志樂派」，與布拉姆斯陣營形成「浪漫派之戰」。</p></div></li><li><div class="range">1861–1869</div><div><h3>羅馬時期</h3><p class="place">Rome</p><p>原定在羅馬與卡洛琳公主成婚卻臨時受阻。之後接連失去兒子與女兒，隱居羅馬近郊的修道院，加入方濟會並領受小品，人稱「李斯特神父」。</p></div></li><li><div class="range">1869–1886</div><div><h3>「三分生活」：羅馬、威瑪、布達佩斯</h3><p>每年往返羅馬、威瑪與布達佩斯三地，在威瑪開設大師班、擔任布達佩斯皇家音樂院院長，教學分文不取，扶持了許多年輕音樂家。晚年作品轉向陰鬱，並有預示20世紀無調性音樂的實驗。</p></div></li></ol></section>
+<section><h2>生平事件</h2><ol class="timeline"><li><div class="date"><time datetime="1811-10-22"><b>1811</b><span>10 月 22 日</span></time></div><div class="card"><h3>出生</h3><p class="place">雷丁</p><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1811-father.jpg" alt="出生" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>父親亞當在埃斯特哈齊親王手下擔任莊園管事，會彈鋼琴、吉他與長笛，與海頓、胡梅爾都有私交。李斯特也從彌撒與巡迴鄉間的吉普賽樂隊接觸到音樂。</p></div></li><li><div class="date"><time datetime="1820"><b>1820</b></time></div><div class="card"><h3>9歲首次公開演出</h3><p>在肖普朗舉行第一場公開音樂會，成功後又在普雷斯堡與埃斯特哈齊親王的宮廷演出。一群富有的贊助人因此出資讓他到維也納深造。</p></div></li><li><div class="date"><time datetime="1822-12-01"><b>1822</b><span>12 月 1 日</span></time></div><div class="card"><h3>維也納首演</h3><p>演出大獲成功，受到奧地利與匈牙利貴族圈的歡迎，也見到了貝多芬與舒伯特。他的老師徹爾尼與薩列里，都對他的即興與視奏能力讚嘆不已。</p></div></li><li><div class="date"><time datetime="1823-04-13"><b>1823</b><span>4 月 13 日</span></time></div><div class="card"><h3>「貝多芬之吻」</h3><p>在維也納的告別音樂會上，據說貝多芬走上台親吻他的額頭，彷彿為他施行藝術的洗禮。這個故事流傳甚廣，但真實性仍有爭議。</p></div></li><li><div class="date"><time datetime="1824"><b>1824</b></time></div><div class="card"><h3>第一部出版作品</h3><p>11歲時寫的《迪亞貝利圓舞曲變奏》收錄在迪亞貝利邀集50位作曲家合寫的變奏曲集中，他是年紀最小的作者，書中稱他「十一歲的男孩」。（同一主題，貝多芬寫成了著名的《迪亞貝利變奏曲》。）</p></div></li><li><div class="date"><time datetime="1824-03-08"><b>1824</b><span>3 月 8 日</span></time></div><div class="card"><h3>巴黎首場音樂會</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1824-paris.jpg" alt="巴黎首場音樂會" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>前一年全家遷居巴黎，雖然巴黎音樂院以不收外國人為由拒絕他入學，但他的系列音樂會非常成功。之後隨父親巡演法國與英國，還為英王喬治四世演奏。</p></div></li><li><div class="date"><time datetime="1825-10"><b>1825</b><span>10 月</span></time></div><div class="card"><h3>唯一的歌劇《唐·桑契》首演</h3><p>在他14歲生日前不久首演，反應熱烈，但只演了四場，如今已鮮為人知。</p></div></li><li><div class="date"><time datetime="1827"><b>1827</b></time></div><div class="card"><h3>父親去世</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1827-mother.jpg" alt="父親去世" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>父親死於傷寒，李斯特停止巡演，留在巴黎教琴養活母親，常從清晨教到深夜，也從此染上抽菸喝酒的習慣。他愛上學生卡洛琳·聖克里克，卻遭對方的父親拆散，隨後大病一場，巴黎報紙甚至誤登了他的訃聞。</p></div></li><li><div class="date"><time datetime="1830-12-04"><b>1830</b><span>12 月 4 日</span></time></div><div class="card"><h3>結識白遼士</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1830-matinee.jpg" alt="結識白遼士" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>在白遼士《幻想交響曲》首演前一天兩人相識，很快成為摯友。白遼士的配器手法對李斯特日後的交響詩影響很大。</p></div></li><li><div class="date"><time datetime="1832-02-26"><b>1832</b><span>2 月 26 日</span></time></div><div class="card"><h3>出席蕭邦巴黎首演</h3><p>在普萊耶爾音樂廳聽了蕭邦的巴黎首演，大為讚嘆，兩人到1833年中已成為好友。</p></div></li><li><div class="date"><time datetime="1832-04"><b>1832</b><span>4 月</span></time></div><div class="card"><h3>聽帕格尼尼演奏</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1832-paganini.jpg" alt="聽帕格尼尼演奏" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>聽完帕格尼尼的音樂會後，立志要在鋼琴上達到帕格尼尼在小提琴上的境界，有時一天練琴長達14小時。後來寫出《帕格尼尼大練習曲》。</p></div></li><li><div class="date"><time datetime="1833-04-02"><b>1833</b><span>4 月 2 日</span></time></div><div class="card"><h3>與蕭邦首次同台</h3><p>在白遼士為妻子籌辦的慈善音樂會上合奏雙鋼琴奏鳴曲。同年李斯特開始與達古爾特伯爵夫人交往，也擔任了白遼士的婚禮證婚人。</p></div></li><li><div class="date"><time datetime="1835-12-18"><b>1835</b><span>12 月 18 日</span></time></div><div class="card"><h3>長女布蘭丁出生</h3><p class="place">日內瓦</p><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1835-dagoult.jpg" alt="長女布蘭丁出生" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>為避開醜聞，與伯爵夫人移居日內瓦。他在新成立的日內瓦音樂院任教，也為音樂刊物撰稿。</p></div></li><li><div class="date"><time datetime="1837-03-31"><b>1837</b><span>3 月 31 日</span></time></div><div class="card"><h3>與塔爾貝格的「鋼琴決鬥」</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1837-thalberg.jpg" alt="與塔爾貝格的「鋼琴決鬥」" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>為了平息兩派樂迷的爭論，兩位鋼琴大師在貝爾焦約索公主的沙龍同台較量，為義大利難民募款。公主拒絕判定勝負，留下名言：「塔爾貝格是世界第一的鋼琴家，李斯特則是獨一無二。」</p></div></li><li><div class="date"><time datetime="1837-12-24"><b>1837</b><span>12 月 24 日</span></time></div><div class="card"><h3>女兒科西瑪出生</h3><p class="place">科莫</p><p>與伯爵夫人在義大利旅居期間出生，日後先後嫁給李斯特的學生畢羅與華格納。這段遊歷瑞士與義大利的經驗，後來寫成鋼琴曲集《巡禮之年》。</p></div></li><li><div class="date"><time datetime="1838"><b>1838</b></time></div><div class="card"><h3>《帕格尼尼大練習曲》出版</h3><p>六首以鋼琴重現帕格尼尼小提琴炫技的練習曲（後修訂為《帕格尼尼大練習曲》），其中包括著名的〈鐘〉。</p></div></li><li><div class="date"><time datetime="1839"><b>1839</b></time></div><div class="card"><h3>為貝多芬紀念碑募款</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1839-danhauser.jpg" alt="為貝多芬紀念碑募款" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>得知波昂的貝多芬紀念碑計畫因資金不足快要告吹，承諾以音樂會籌款。伯爵夫人帶著孩子回到巴黎，李斯特則展開全歐巡演，兩人關係漸行漸遠。</p></div></li><li><div class="date"><time datetime="1841-04-25"><b>1841</b><span>4 月 25 日</span></time></div><div class="card"><h3>與蕭邦最後一次同台</h3><p>在巴黎為貝多芬紀念碑舉辦的慈善音樂會。兩人此後漸行漸遠，原因眾說紛紜。</p></div></li><li><div class="date"><time datetime="1841-12"><b>1841</b><span>12 月</span></time></div><div class="card"><h3>柏林音樂會：「李斯特狂熱」興起</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1841-lehmann.jpg" alt="柏林音樂會：「李斯特狂熱」興起" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>1841到1842年冬天在柏林的系列音樂會，掀起前所未見的狂熱。女性樂迷爭搶他的雪茄菸蒂、咖啡渣、手帕與手套，詩人海涅後來把這種現象命名為「李斯特狂熱」。</p></div></li><li><div class="date"><time datetime="1842-05"><b>1842</b><span>5 月</span></time></div><div class="card"><h3>為漢堡大火災民義演</h3><p>他把大量演出收入捐給慈善事業，包括科隆大教堂與佩斯聖史蒂芬大教堂的建築基金、醫院與學校。漢堡大火後也為無家可歸的災民舉行義演。</p></div></li><li><div class="date"><time datetime="1844-05"><b>1844</b><span>5 月</span></time></div><div class="card"><h3>與達古爾特伯爵夫人分手</h3><p>1841與1843年夏天兩人還曾帶孩子在萊因河的島上度假，但最終在這年正式分手。</p></div></li><li><div class="date"><time datetime="1847"><b>1847</b></time></div><div class="card"><h3>在基輔結識卡洛琳公主</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1847-barabas.jpg" alt="在基輔結識卡洛琳公主" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>巡演烏克蘭時結識波蘭裔的卡洛琳·賽恩-維根斯坦公主。她認識李斯特才幾週，就決定隨他前往威瑪。</p></div></li><li><div class="date"><time datetime="1847-09"><b>1847</b><span>9 月</span></time></div><div class="card"><h3>最後一場收費音樂會</h3><p>在伊莉莎白格勒舉行生涯最後一場收費演出，35歲時在巔峰狀態中退出巡演舞台，從此專心作曲，也讓他的演奏傳奇從未褪色。</p></div></li><li><div class="date"><time datetime="1848-07"><b>1848</b><span>7 月</span></time></div><div class="card"><h3>定居威瑪擔任宮廷樂長</h3><p>六年前已獲威瑪宮廷「特別樂長」的頭銜，這時正式定居。卡洛琳公主隨後也來到威瑪，兩人在秋天開始同居。</p></div></li><li><div class="date"><time datetime="1850-08-28"><b>1850</b><span>8 月 28 日</span></time></div><div class="card"><h3>指揮華格納《羅恩格林》首演</h3><p>在威瑪推出華格納歌劇《羅恩格林》的首演，並舉辦白遼士與華格納作品的音樂節，大力推廣新音樂。</p></div></li><li><div class="date"><time datetime="1857"><b>1857</b></time></div><div class="card"><h3>科西瑪嫁給畢羅；加入方濟會第三會</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1857-wagner.jpg" alt="科西瑪嫁給畢羅；加入方濟會第三會" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>女兒科西瑪嫁給李斯特的學生、鋼琴大師漢斯·馮·畢羅（她後來改嫁華格納）。同年6月李斯特加入方濟會第三會。</p></div></li><li><div class="date"><time datetime="1858"><b>1858</b></time></div><div class="card"><h3>辭去威瑪宮廷樂長</h3><p>新任劇院總監處處刁難，削減演出、否決他的曲目，甚至在他推出的歌劇首演上組織抗議，李斯特憤而辭職。</p></div></li><li><div class="date"><time datetime="1859-12-13"><b>1859</b><span>12 月 13 日</span></time></div><div class="card"><h3>兒子丹尼爾去世</h3><p>年僅20歲，死因不明。1860年代成為李斯特私人生活中最悲傷的十年。</p></div></li><li><div class="date"><time datetime="1861-10-22"><b>1861</b><span>10 月 22 日</span></time></div><div class="card"><h3>羅馬婚禮受阻</h3><p>卡洛琳終於取得前一段婚姻的撤銷，兩人預定在李斯特50歲生日當天於羅馬成婚，梵蒂岡卻在前一天派人阻止。此後卡洛琳放棄結婚的念頭，隱居寫作批判教會的長篇著作。</p></div></li><li><div class="date"><time datetime="1862-09-11"><b>1862</b><span>9 月 11 日</span></time></div><div class="card"><h3>女兒布蘭丁去世</h3><p>產後手術引發敗血症，年僅26歲。李斯特寫信給朋友，表示要退隱獨居。</p></div></li><li><div class="date"><time datetime="1863-06-20"><b>1863</b><span>6 月 20 日</span></time></div><div class="card"><h3>隱居羅薩利奧聖母修道院</h3><p>搬進羅馬近郊修道院的一個簡樸小房間，房裡放著一架鋼琴，他仍持續作曲。中文維基提到的名曲《森林的細語》就寫於這段時期。</p></div></li><li><div class="date"><time datetime="1865-04-25"><b>1865</b><span>4 月 25 日</span></time></div><div class="card"><h3>領受剪髮禮，成為「李斯特神父」</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1865-abbe.jpg" alt="領受剪髮禮，成為「李斯特神父」" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>由霍恩洛厄樞機主持剪髮禮，7月又領受四個小品，此後人們常稱他「李斯特神父」。他身穿神父黑袍在各地授課，分文不取。</p></div></li><li><div class="date"><time datetime="1867-06-08"><b>1867</b><span>6 月 8 日</span></time></div><div class="card"><h3>《匈牙利加冕彌撒》</h3><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1867-emperor.jpg" alt="《匈牙利加冕彌撒》" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>為法蘭茲·約瑟夫一世與伊莉莎白（茜茜）加冕為匈牙利國王與王后而作，在布達的馬提亞斯教堂首演，由他親自指揮。匈牙利人視他為民族英雄。</p></div></li><li><div class="date"><time datetime="1869-01"><b>1869</b><span>1 月</span></time></div><div class="card"><h3>重返威瑪開設大師班</h3><p>應威瑪大公之邀回到威瑪，在宮廷園丁的小屋開設鋼琴大師班，一教就是十七年。他被視為「大師班」這種教學形式的開創者。</p></div></li><li><div class="date"><time datetime="1875-11-14"><b>1875</b><span>11 月 14 日</span></time></div><div class="card"><h3>布達佩斯皇家音樂院成立</h3><p>匈牙利國會通過設立皇家音樂院，李斯特獲提名為院長。這所學校在1925年改名為李斯特音樂院。從此他每年往返羅馬、威瑪與布達佩斯，自稱「三分生活」。</p></div></li><li><div class="date"><time datetime="1881-07"><b>1881</b><span>7 月</span></time></div><div class="card"><h3>摔下樓梯，健康衰退</h3><p>在威瑪住處摔下樓梯，臥床數週，之後白內障、牙病與疲勞接踵而來。晚年常感到絕望與死亡的陰影，他說：「我心中有一股深沉的悲傷，不時必須化為聲音傾洩而出。」</p></div></li><li><div class="date"><time datetime="1886-01-13"><b>1886</b><span>1 月 13 日</span></time></div><div class="card"><h3>在羅馬為德布西演奏</h3><p>在羅馬的梅迪奇別墅為年輕的德布西等人演奏《巡禮之年》中的〈泉水邊〉與他改編的舒伯特《聖母頌》。德布西日後形容李斯特踩踏板的方式「就像呼吸一樣」。</p></div></li><li><div class="date"><time datetime="1886-07-31"><b>1886</b><span>7 月 31 日</span></time></div><div class="card"><h3>逝世</h3><p class="place">拜魯特</p><figure><img src="https://chad-liu.github.io/Timeline/data/images/liszt-1886-nadar.jpg" alt="逝世" loading="lazy" onerror="this.closest('figure').style.display='none'"></figure><p>到拜魯特支持女兒科西瑪主辦的華格納音樂節，期間發燒、咳嗽，於午夜前去世，享年74歲，官方死因為肺炎。依科西瑪的意願安葬於拜魯特市立墓園。</p></div></li></ol></section>
+<section class="srcnote"><h2>資料來源與說明</h2><p>內容整理自中文維基百科「李斯特·費倫茨」與英文維基百科「Franz Liszt」條目（CC BY-SA 4.0），並以台灣用語改寫摘要。</p><p><a href="https://zh.wikipedia.org/zh-tw/李斯特·費倫茨" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-tw/李斯特·費倫茨</a></p><p><a href="https://en.wikipedia.org/wiki/Franz_Liszt" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Franz_Liszt</a></p><p>中文條目的生平章節較簡略，細節主要參考英文條目。</p><p>圖片皆為 Wikimedia Commons 上的公有領域作品（封面：Herman Biow 1843 年所攝肖像）。</p></section>
+
+<footer>
+  本頁僅調整排版；圖片連結自 Timeline 網站（chad-liu.github.io/Timeline）。　原始檔：md/音樂/音樂家/李斯特(1811~1886，Liszt Ferenc／Franz Liszt).md
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,19 +1,44 @@
-貝多芬生平大事記
+韋瓦第(1678~1741，Antonio Lucio Vivaldi)
+韓德爾(1685~1759，George Frideric Handel)
+巴赫(1685~1750，Johann Sebastian Bach)
+海頓(1732~1809，Franz Joseph Haydn)
+莫札特生平大事記
+貝多芬(1770~1827，Ludwig van Beethoven)
+羅西尼(1792~1868，Gioachino Antonio Rossini)
+舒伯特(1797~1828，Franz Peter Schubert)
+白遼士(1803~1869，Louis-Hector Berlioz)
+孟德爾頌(1809~1847，Jakob Ludwig Felix Mendelssohn Bartholdy)
+蕭邦(1810~1849，Frédéric François Chopin)
+舒曼(1810~1856，Robert Schumann)
+李斯特(1811~1886，Liszt Ferenc／Franz Liszt)
+華格納(1813~1883，Wilhelm Richard Wagner)
+威爾第(1813~1901，Giuseppe Verdi)
+法朗克(1822~1890，César Franck)
 法朗克（César Franck）生平大事記
+拉羅(1823~1892，Édouard Lalo)
 拉羅（Édouard Lalo）生平大事記
-艾爾加（Edward Elgar）生平大事記
+史麥塔納(1824~1884，Bedřich Smetana)
+布魯克納(1824~1896，Joseph Anton Bruckner)
+布拉姆斯(1833~1897，Johannes Brahms)
+鮑羅定(1833~1887，Alexander Borodin)
+比才(1838~1875，Georges Bizet)
+柴可夫斯基(1840~1893，Pyotr Ilyich Tchaikovsky)
+德弗札克(1841~1904，Antonín Leopold Dvořák)
+葛利格(1843~1907，Edvard Hagerup Grieg)
+艾爾加(1857~1934，Edward Elgar)
+艾爾加(1857~1934，Edward Elgar)生平大事記
+普契尼(1858~1924，Giacomo Puccini)
+馬勒(1860~1911，Gustav Mahler)
+德布西(1862~1918，Achille Claude Debussy)
+理查·史特勞斯(1864~1949，Richard Strauss)
 理查史特勞斯（Richard Strauss）生平大事記
-布列頓（Benjamin Britten）生平大事記
----
-福特萬格勒（Wilhelm Furtwängler）生平大事記
-海飛茲（Jascha Heifetz）生平大事記
-霍洛維茲（Vladimir Horowitz）生平大事記
-密爾斯坦（Nathan Milstein）生平大事記
-卡拉揚（Herbert von Karajan）生平大事記
-大衛・歐伊斯特拉夫（David Oistrakh）生平大事記
-李希特（Sviatoslav Richter）生平大事記
-伯恩斯坦（Leonard Bernstein）生平大事記
-瑪麗亞・卡拉絲（Maria Callas）生平大事記
-卡洛斯・克萊伯生平大事記（1930–2004）
-帕華洛帝（Luciano Pavarotti）生平大事記
-杜普蕾（Jacqueline du Pré）生平大事記
+西貝流士(1865~1957，Jean Sibelius)
+拉赫曼尼諾夫(1873~1943，Sergei Vasilyevich Rachmaninoff)
+荀白克(1874~1951，Arnold Schoenberg)
+拉威爾(1875~1937，Joseph Maurice Ravel)
+巴爾托克(1881~1945，Bartók Béla)
+普羅高菲夫(1891~1953，Sergei Sergeyevich Prokofiev)
+蓋西文(1898~1937，George Gershwin)
+蕭士塔高維奇(1906~1975，Dmitri Dmitriyevich Shostakovich)
+布列頓(1913~1976，Benjamin Britten)
+布列頓(1913~1976，Benjamin Britten)生平大事記
