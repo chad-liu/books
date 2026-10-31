@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>喬久內生平大事記｜互動時間軸</title>
+<style>
+:root{--ink:#20312e;--muted:#5d706b;--accent:#9a633d;--accent2:#d9b68d;--paper:#fbf8f1;--card:#fffdf8;--line:#dfd4c3;--green:#dce8df}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+header{background:linear-gradient(135deg,#203b35,#426257);color:#fff;padding:46px 22px 38px}
+.hero{max-width:1100px;margin:auto}
+.kicker{letter-spacing:.18em;text-transform:uppercase;color:#e7cba8;font-size:.82rem;font-weight:700}
+h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.2;margin:.35em 0}
+.subtitle{font-size:1.08rem;color:#e9eee9;max-width:800px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.pill{border:1px solid #ffffff55;border-radius:999px;padding:5px 12px;font-size:.88rem}
+nav{position:sticky;top:0;z-index:10;background:#fffdf2ee;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.navinner{max-width:1100px;margin:auto;display:flex;gap:8px;overflow:auto;padding:10px 18px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:7px 12px;border-radius:999px;font-size:.92rem}
+nav a:hover{background:var(--green)}
+main{max-width:1100px;margin:30px auto;padding:0 20px 60px}
+section{scroll-margin-top:80px;margin:34px 0}
+h2{font-size:1.65rem;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+h2:before{content:"";width:7px;height:1.25em;background:var(--accent);border-radius:8px}
+.lead{font-size:1.08rem;color:#334742}
+.callout{background:#f0e7d8;border-left:4px solid var(--accent);padding:16px 19px;border-radius:0 12px 12px 0}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+input,select,button{font:inherit;border:1px solid #cfc4b3;border-radius:10px;padding:10px 12px;background:white;color:var(--ink)}
+input{flex:1;min-width:220px}
+button{cursor:pointer;background:#29463e;color:#fff;border-color:#29463e}
+button.secondary{background:white;color:var(--ink);border-color:#cfc4b3}
+.timeline{position:relative;margin:22px 0 0 8px;padding-left:27px}
+.timeline:before{content:"";position:absolute;left:7px;top:7px;bottom:5px;width:2px;background:var(--line)}
+.event{position:relative;margin:0 0 14px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #40302008}
+.event:before{content:"";position:absolute;left:-27px;top:21px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--accent)}
+.event summary{list-style:none;cursor:pointer;padding:15px 18px;display:grid;grid-template-columns:125px 1fr 22px;gap:14px;align-items:center}
+.event summary::-webkit-details-marker{display:none}
+.year{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+.event-title{font-weight:750}
+.event summary:after{content:"＋";color:var(--accent);font-size:1.15rem}
+.event[open] summary:after{content:"－"}
+.detail{padding:0 18px 18px 157px;color:#43534e}
+.detail p{margin:0 0 9px}
+.tag{display:inline-block;background:var(--green);border-radius:999px;padding:2px 9px;font-size:.8rem;margin:4px 5px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{margin:0 0 8px;color:#70472d;font-size:1.12rem}
+.card p{margin:0;color:#465650}
+.artwork{border-top:3px solid var(--accent2)}
+.small{font-size:.92rem;color:var(--muted)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#e9e1d3}
+tr:last-child td{border-bottom:0}
+footer{background:#203b35;color:#e9eee9;padding:25px 20px;text-align:center;font-size:.9rem}
+a{color:#86542f}
+.no-results{display:none;padding:20px;background:#fff4e8;border-radius:12px}
+@media(max-width:650px){.event summary{grid-template-columns:1fr 22px;gap:2px}.year{grid-column:1}.event-title{grid-column:1}.event summary:after{grid-column:2;grid-row:1/3}.detail{padding:0 16px 16px}.timeline{padding-left:23px}.event:before{left:-23px}th,td{padding:9px;font-size:.92rem}}
+@media print{nav,.controls,.printbtn{display:none!important}body{background:#fff}.event{break-inside:avoid;box-shadow:none}.event:not([open]) .detail{display:block}header{background:#fff!important;color:#000;padding:20px 0}.subtitle{color:#333}.meta{display:none}main{max-width:none;margin:0;padding:0}section{margin:22px 0}footer{background:#fff;color:#333}}
+</style>
+</head>
+<body>
+<header>
+ <div class="hero">
+  <div class="kicker">VENETIAN RENAISSANCE · ARTIST TIMELINE</div>
+  <h1>喬久內生平大事記</h1>
+  <div class="subtitle">威尼斯文藝復興畫家，以含蓄的情感、詩意的風景與神祕的畫面氣氛著稱。作品數量不多，作者歸屬卻長期受到藝術史學界討論。</div>
+  <div class="meta"><span class="pill">約 1477／1478－1510</span><span class="pill">義大利文藝復興</span><span class="pill">威尼斯畫派</span><span class="pill">互動時間軸</span></div>
+ </div>
+</header>
+<nav><div class="navinner">
+<a href="#overview">人物概覽</a><a href="#timeline">生平時間軸</a><a href="#works">代表作品</a><a href="#style">藝術特色</a><a href="#titian">與提香比較</a><a href="#legacy">歷史地位</a>
+</div></nav>
+<main>
+<section id="overview">
+<h2>一、人物概覽</h2>
+<p class="lead"><strong>喬久內</strong>（Giorgione，原名通常記作 Giorgio Barbarelli da Castelfranco）是義大利威尼斯畫派的重要畫家，活躍於十五世紀末至十六世紀初。他的藝術將人物、自然景色、光線與情緒融合，為威尼斯繪畫發展出更具詩意和心理暗示的方向。</p>
+<div class="callout"><strong>閱讀提示：</strong>喬久內生平資料有限，確切出生年份、部分作品的年代，以及若干名畫的作者歸屬，都存在學術爭議。以下採用常見的約略年代，並將有爭議之處明確標示。</div>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h3>生卒</h3><p>約 1477／1478 年出生於卡斯特弗蘭科；1510 年前後逝世於威尼斯，常被認為死於瘟疫。</p></div>
+<div class="card"><h3>藝術圈</h3><p>與喬凡尼・貝里尼所代表的威尼斯畫派傳統有關，並與年輕的提香有密切的藝術聯繫。</p></div>
+<div class="card"><h3>關鍵特色</h3><p>柔和色彩、細膩光線、詩性風景、人物與環境的融合，以及不易被單一故事解釋的神祕感。</p></div>
+</div>
+</section>
+<section id="timeline">
+<h2>二、生平時間軸</h2>
+<p class="small">點選各事件可展開詳細說明。可用關鍵字搜尋，或依時期篩選。</p>
+<div class="controls">
+<input id="search" type="search" placeholder="搜尋年代、作品、人物或事件……" aria-label="搜尋時間軸">
+<select id="period" aria-label="依時期篩選"><option value="all">所有時期</option><option value="early">早年與學藝</option><option value="career">創作成熟期</option><option value="late">晚年與身後</option></select>
+<button class="secondary" id="expand">全部展開</button><button class="secondary" id="collapse">全部收合</button><button class="printbtn" onclick="window.print()">列印／另存 PDF</button>
+</div>
+<div class="timeline" id="timelineList">
+<details class="event" data-period="early" data-search="1477 1478 出生 卡斯特弗蘭科 威尼托">
+<summary><span class="year">約 1477／1478</span><span class="event-title">出生於卡斯特弗蘭科</span></summary><div class="detail"><p>喬久內出生於義大利北部威尼托地區的卡斯特弗蘭科（Castelfranco Veneto）。他的早年生活與學藝過程缺乏完整文獻，因此許多細節只能依作品、同時代記錄與後世傳記推估。</p><span class="tag">早年</span><span class="tag">生平資料有限</span></div></details>
+<details class="event" data-period="early" data-search="1490年代 學藝 喬凡尼 貝里尼 威尼斯 畫室">
+<summary><span class="year">1490 年代</span><span class="event-title">進入威尼斯藝術環境，可能受貝里尼影響</span></summary><div class="detail"><p>喬久內逐漸進入威尼斯的藝術圈。學者通常認為他受到喬凡尼・貝里尼（Giovanni Bellini）及威尼斯繪畫傳統的影響；但他的具體師承與訓練經過，並沒有足夠文獻可完全確認。</p><span class="tag">學藝</span><span class="tag">威尼斯畫派</span></div></details>
+<details class="event" data-period="early" data-search="約1500 早期作品 色彩 風景 人物">
+<summary><span class="year">約 1500 年前後</span><span class="event-title">逐漸形成個人風格</span></summary><div class="detail"><p>他的繪畫開始展現柔和的色彩層次、細膩的光線，以及人物與自然環境相互呼應的構圖。相較於清楚講述宗教故事的傳統作品，喬久內的畫面常保留較多含蓄與曖昧的空間。</p><span class="tag">風格形成</span></div></details>
+<details class="event" data-period="career" data-search="約1500 1504 卡斯特弗蘭科祭壇畫 聖母子 聖利伯拉萊">
+<summary><span class="year">約 1500－1504</span><span class="event-title">創作《卡斯特弗蘭科祭壇畫》</span></summary><div class="detail"><p>《卡斯特弗蘭科祭壇畫》（Castelfranco Altarpiece）是喬久內較具代表性的早期作品之一。畫面以聖母子為中心，人物姿態安定，色彩與空間具有沉靜、柔和的氣質。此作也顯示他如何在傳統宗教題材中融入個人化的氣氛營造。</p><span class="tag">宗教畫</span><span class="tag">重要委託作品</span></div></details>
+<details class="event" data-period="career" data-search="約1504 1506 暴風雨 The Tempest 風景 神祕">
+<summary><span class="year">約 1504－1508</span><span class="event-title">創作《暴風雨》</span></summary><div class="detail"><p>《暴風雨》（The Tempest）是喬久內最著名、也最常引發討論的作品之一。畫中有一名抱著嬰兒的女子、一名持杖男子，以及遠方城市與閃電。畫面究竟描繪何種故事，至今沒有公認的定論；作品的重要性在於風景不再只是人物故事的背景，而成為情緒與意義的核心。</p><span class="tag">代表作</span><span class="tag">詮釋有爭議</span></div></details>
+<details class="event" data-period="career" data-search="約1505 三位哲學家 三賢士 三位數學家">
+<summary><span class="year">約 1505－1509</span><span class="event-title">《三位哲學家》成為重要代表作</span></summary><div class="detail"><p>《三位哲學家》（The Three Philosophers）描繪三名年齡與形象各異的人物，站在岩洞與風景前。畫中人物究竟代表哲學家、天文學家、賢士，或具有其他象徵意義，學界曾提出多種解釋。作品以人物、洞穴、遠景和光線構成沉思而神祕的氛圍。</p><span class="tag">人物與風景</span><span class="tag">象徵詮釋</span></div></details>
+<details class="event" data-period="career" data-search="約1506 勞拉 Laura 肖像 女性">
+<summary><span class="year">1506 年前後</span><span class="event-title">創作《勞拉》肖像</span></summary><div class="detail"><p>《勞拉》（Laura）是喬久內少數具有明確日期或題記線索的作品之一，常被視為其肖像畫的重要例子。人物以柔和的光線呈現，形象既具體又帶有含蓄的心理感受，反映當時威尼斯肖像畫的革新。</p><span class="tag">肖像畫</span></div></details>
+<details class="event" data-period="career" data-search="1507 總督宮 委託 壁畫">
+<summary><span class="year">1507 年</span><span class="event-title">獲委託為威尼斯總督宮創作</span></summary><div class="detail"><p>文獻記載喬久內曾受委託為威尼斯總督宮（Doge’s Palace）創作作品。相關作品後來未能完整保存，因此今天無法直接從原作全面評估其面貌。這項委託顯示他在當時威尼斯藝術界已受到重視。</p><span class="tag">公共委託</span><span class="tag">作品已佚</span></div></details>
+<details class="event" data-period="career" data-search="1508 德國商館 Fondaco dei Tedeschi 提香 壁畫">
+<summary><span class="year">1508 年前後</span><span class="event-title">參與德國商館外牆壁畫計畫</span></summary><div class="detail"><p>喬久內與提香（Titian）曾參與威尼斯德國商館（Fondaco dei Tedeschi）的外牆壁畫裝飾。壁畫大多因風化而失傳，僅存部分殘片與記錄。這項合作也反映兩位畫家在威尼斯藝術環境中的交會；作品的具體分工仍有討論空間。</p><span class="tag">壁畫</span><span class="tag">提香</span></div></details>
+<details class="event" data-period="late" data-search="1510 逝世 瘟疫 威尼斯 死亡">
+<summary><span class="year">1510 年</span><span class="event-title">逝世，年紀約三十出頭</span></summary><div class="detail"><p>喬久內於 1510 年前後逝世，常見說法認為他死於當時的瘟疫，年紀約三十出頭。由於生命短暫、存世作品有限，他的藝術生涯留下許多空白，也使作品歸屬與創作年代成為藝術史研究的重要課題。</p><span class="tag">英年早逝</span></div></details>
+<details class="event" data-period="late" data-search="身後 伊莎貝拉 埃斯特 收藏 畫作 作品歸屬">
+<summary><span class="year">1510 年後</span><span class="event-title">作品聲望延續，收藏與作者歸屬引發討論</span></summary><div class="detail"><p>喬久內逝世後，他的作品仍受到收藏家與藝術愛好者重視。早期作品的歸屬問題，以及他與提香的風格關係，長期影響後世對其作品的認定。由於當時畫家之間存在合作、模仿與工作坊製作，並非所有傳統上歸於喬久內的畫作都能確定由他親筆完成。</p><span class="tag">藝術史研究</span><span class="tag">作者歸屬問題</span></div></details>
+</div>
+<div class="no-results" id="noResults">找不到符合條件的事件，請換一個關鍵字或選擇「所有時期」。</div>
+</section>
+<section id="works">
+<h2>三、代表作品</h2>
+<div class="grid">
+<div class="card artwork"><h3>《暴風雨》</h3><p>約 1504－1508 年。以人物、城市、閃電與自然景觀構成神祕場景，故事含義至今仍有多種解釋。</p><p class="small">關鍵：風景、氣氛、曖昧敘事</p></div>
+<div class="card artwork"><h3>《三位哲學家》</h3><p>約 1505－1509 年。三名人物面對洞穴與遠景，作品的象徵意義與人物身分一直受到討論。</p><p class="small">關鍵：沉思、象徵、空間層次</p></div>
+<div class="card artwork"><h3>《卡斯特弗蘭科祭壇畫》</h3><p>約 1500－1504 年。以聖母子為中心，將宗教主題與寧靜、柔和的色彩氣氛結合。</p><p class="small">關鍵：宗教畫、色彩、靜謐感</p></div>
+<div class="card artwork"><h3>《勞拉》</h3><p>1506 年前後。以柔和光線呈現女性形象，是研究喬久內肖像畫的重要作品。</p><p class="small">關鍵：肖像、心理氣質、光線</p></div>
+<div class="card artwork"><h3>《沉睡的維納斯》</h3><p>約 1508－1510 年。常與喬久內聯繫，亦被認為可能由提香完成或續作。作品將裸女與寧靜風景結合，對後世威尼斯繪畫影響深遠。</p><p class="small">關鍵：人體藝術、風景、作者歸屬</p></div>
+<div class="card artwork"><h3>德國商館外牆壁畫</h3><p>約 1508 年。喬久內與提香參與的壁畫計畫，原作大多已佚失，今日僅能從殘存部分與文獻了解。</p><p class="small">關鍵：壁畫、合作、失傳作品</p></div>
+</div>
+</section>
+<section id="style">
+<h2>四、藝術風格與創新</h2>
+<div class="grid">
+<div class="card"><h3>1. 風景成為主角</h3><p>自然不只是人物故事的背景，也能承載情緒、暗示與象徵。這是《暴風雨》等作品最受重視的特徵。</p></div>
+<div class="card"><h3>2. 色彩與光線的融合</h3><p>運用柔和的色調與細膩的明暗變化，讓人物、建築與景色融入同一個視覺氛圍。</p></div>
+<div class="card"><h3>3. 詩意與神祕感</h3><p>作品往往不提供明確的故事答案，觀者必須從人物姿態、環境與細節自行思考可能的含義。</p></div>
+<div class="card"><h3>4. 人物與環境相互呼應</h3><p>人物不再只是敘事中心；他們與地景、天空、建築之間的關係，共同形成作品的情感與意義。</p></div>
+</div>
+</section>
+<section id="titian">
+<h2>五、喬久內與提香比較</h2>
+<table>
+<thead><tr><th>比較面向</th><th>喬久內</th><th>提香</th></tr></thead>
+<tbody>
+<tr><td>生涯</td><td>約 1477／1478－1510，生涯短暫，作品不多。</td><td>約 1488／1490－1576，生涯漫長，持續創作數十年。</td></tr>
+<tr><td>畫面氣質</td><td>常帶有詩意、含蓄、神祕與沉思的氛圍。</td><td>題材廣泛，從宏大宗教畫、神話畫到肖像皆有，表現力與變化豐富。</td></tr>
+<tr><td>風景功能</td><td>風景常是作品意義與情緒的核心。</td><td>風景能營造氣氛，也常與人物、敘事和戲劇性動作結合。</td></tr>
+<tr><td>作品歸屬</td><td>存世作品少，許多作品的作者歸屬仍有爭議。</td><td>作品數量多，雖也有工作坊合作與歸屬問題，但藝術生涯記錄相對完整。</td></tr>
+<tr><td>歷史影響</td><td>以創新的詩性風景和神祕氣氛，成為威尼斯畫派的重要先驅。</td><td>將威尼斯畫派的色彩、肖像與大型敘事繪畫推向更廣泛的影響。</td></tr>
+</tbody></table>
+<p class="small">兩人的關係不宜簡化為單純的師徒關係。喬久內的藝術風格對提香早期創作有重要影響，兩人也曾參與同一壁畫計畫；然而具體合作方式與部分作品的歸屬，仍存在研究上的討論。</p>
+</section>
+<section id="legacy">
+<h2>六、歷史地位與影響</h2>
+<div class="callout"><strong>核心意義：</strong>喬久內的重要性不只在於幾幅名畫，更在於他使風景、色彩、光線與情緒成為繪畫意義的主要來源之一。即使作品不多，他的藝術仍是理解威尼斯畫派由十五世紀走向十六世紀的重要關鍵。</div>
+<ul>
+<li><strong>推動風景的獨立價值：</strong>自然景觀不再只是陪襯，能與人物共同構成作品的主題。</li>
+<li><strong>強化色彩與氛圍：</strong>透過柔和的色彩關係與光線，營造難以用文字完全說明的情緒。</li>
+<li><strong>留下開放的詮釋空間：</strong>作品的含蓄與不確定性，持續吸引藝術史家與觀者提出不同解讀。</li>
+<li><strong>影響威尼斯繪畫發展：</strong>他的探索與提香等畫家的創作，共同推動威尼斯畫派在色彩、風景與人物表現上的革新。</li>
+</ul>
+</section>
+<section id="notes">
+<h2>七、閱讀與研究提醒</h2>
+<ul>
+<li>喬久內的出生年份常記為約 1477 或 1478 年，生平細節不如許多同時代大畫家完整。</li>
+<li>《暴風雨》與《三位哲學家》的題材解讀沒有唯一公認答案。</li>
+<li>《沉睡的維納斯》及其他部分作品涉及喬久內與提香之間的作者歸屬或合作問題。</li>
+<li>此頁適合作為入門時間軸；若要用於學術研究，建議再對照博物館作品目錄與藝術史研究文獻。</li>
+</ul>
+</section>
+</main>
+<!--timeline-links--><nav class="timeline-links" style="max-width:960px;margin:28px auto 0;padding:0 16px;text-align:center;font-size:14px;color:#475569">生平時間軸：<a href="https://chad-liu.github.io/Timeline/#v=vertical&t=Giorgione" target="_blank" rel="noopener" style="color:#1d4ed8;text-decoration:none;margin:0 6px;white-space:nowrap">喬久內（1477–1510） ↗</a></nav><!--/timeline-links-->
+<footer>喬久內生平大事記｜互動 HTML 學習頁面 · 可使用「列印／另存 PDF」保存</footer>
+<script>
+const search=document.getElementById('search'), period=document.getElementById('period');
+const events=[...document.querySelectorAll('.event')], noResults=document.getElementById('noResults');
+function filterEvents(){
+ const q=search.value.trim().toLocaleLowerCase(), p=period.value; let shown=0;
+ events.forEach(e=>{const hay=(e.innerText+' '+(e.dataset.search||'')).toLocaleLowerCase();const ok=(!q||hay.includes(q))&&(p==='all'||e.dataset.period===p);e.style.display=ok?'':'none';if(ok)shown++;});
+ noResults.style.display=shown?'none':'block';
+}
+search.addEventListener('input',filterEvents);period.addEventListener('change',filterEvents);
+document.getElementById('expand').addEventListener('click',()=>events.forEach(e=>{if(e.style.display!=='none')e.open=true}));
+document.getElementById('collapse').addEventListener('click',()=>events.forEach(e=>e.open=false));
+</script>
+</body>
+</html>
