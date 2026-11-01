@@ -1,0 +1,510 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="曾國藩生平大事記：從湖南寒門士子到晚清中興重臣">曾國藩生平大事記：從湖南寒門士子到晚清中興重臣</h1>
+<p><strong>曾國藩（1811年－1872年）</strong>，原名子城，字伯涵，號滌生，湖南湘鄉人，是清朝晚期重要的政治家、軍事統帥、理學人物與散文家。他出身湖南地方士紳家庭，透過科舉進入官僚體系，後來因太平天國運動爆發而奉命在湖南組建湘軍，逐步成為清廷平定太平天國的重要軍事領袖。</p>
+<p>曾國藩一生經歷了道光、咸豐、同治三朝，見證清朝由盛轉衰、內憂外患加劇的歷史過程。他的主要歷史成就包括組建湘軍、參與鎮壓太平天國、推動晚清軍政改革，以及參與洋務運動的早期發展。</p>
+<p>然而，曾國藩的歷史評價也存在明顯爭議。他在清朝國家秩序受到挑戰時，協助朝廷恢復統治；但湘軍在戰爭中的攻城與鎮壓行動，也伴隨大量人員傷亡與社會破壞。因此，理解曾國藩，既要分析他的政治與軍事成就，也要考察其行動對晚清社會造成的影響。</p>
+<p>以下依照年代，整理曾國藩從出生、科舉入仕、創建湘軍、平定太平天國、推動洋務運動，到晚年治理直隸與去世的生平大事，並補充各階段的歷史背景、主要人物與重要意義。</p>
+<hr>
+<h1 id="一、曾國藩早年成長與科舉入仕（18111852年）">一、曾國藩早年成長與科舉入仕（1811—1852年）</h1>
+<h2 id="1811年｜出生於湖南湘鄉">1811年｜出生於湖南湘鄉</h2>
+<ul>
+<li><strong>公曆：</strong> 1811年11月26日。</li>
+<li><strong>清朝年號：</strong> 嘉慶十六年。</li>
+<li><strong>出生地：</strong> 湖南湘鄉，今湖南省婁底市雙峰縣一帶。</li>
+<li><strong>原名：</strong> 曾子城。</li>
+<li><strong>字：</strong> 伯涵。</li>
+<li><strong>號：</strong> 滌生。</li>
+<li><strong>諡號：</strong> 文正。</li>
+<li><strong>主要身分：</strong> 清朝官員、湘軍統帥、理學家、文學家。</li>
+</ul>
+<p>曾國藩出生於湖南地方士紳家庭，家族重視農業、教育與儒家倫理。雖然其家族並非當時最顯赫的世家大族，但透過長期累積的經濟資源與教育投入，逐步建立了向上發展的條件。</p>
+<p>曾國藩的祖父曾玉屏重視家族發展，父親曾麟書則長期投入科舉，希望透過讀書取得功名。</p>
+<p>曾國藩早年的成長環境，使他逐漸形成重視勤勉、自律、家族責任與儒家道德的思想。這些觀念後來不僅影響他的個人生活，也成為他管理軍隊、選拔人才與治理地方的重要依據。<a href="https://whhlyt.hunan.gov.cn/whhlyt/english/Culture/CulturalFigures/202205/t20220527_24654725.html?utm_source=chatgpt.com">Hunan Culture and Tourism Department</a></p>
+<h2 id="1820年代｜接受傳統儒學教育">1820年代｜接受傳統儒學教育</h2>
+<p>曾國藩自幼接受儒家經典教育，長期準備科舉考試。</p>
+<p>當時的科舉制度，是清朝士人進入官僚體系的重要途徑。對於出身地方士紳家庭的人而言，取得功名不僅代表個人學術成就，也有助於提升家族的社會地位。</p>
+<p>曾國藩在求學過程中，逐步建立以儒家經典為核心的知識體系，尤其重視修身、立志、克制私欲與履行家庭責任。</p>
+<p>然而，他的成長並非一路順遂。曾國藩曾多次應試，經歷挫折後才逐步取得較高的科舉資格。</p>
+<p>這段經歷也使他更加重視持續努力與日常自我約束。</p>
+<h2 id="1833年｜考取秀才">1833年｜考取秀才</h2>
+<p>曾國藩通過地方科舉考試，取得秀才資格。</p>
+<p>秀才是傳統科舉體系中的重要起點，取得此資格後，士人便有機會繼續參加更高層級的考試。</p>
+<p>這一階段標誌著曾國藩逐步從地方讀書人，進入具有進一步發展可能性的士人階層。</p>
+<h2 id="1834年｜考取舉人">1834年｜考取舉人</h2>
+<p>曾國藩通過湖南鄉試，取得舉人資格。</p>
+<p>舉人可以繼續參加京師舉行的會試，進一步爭取進入中央官僚體系。</p>
+<p>對曾國藩而言，這是家族多年教育投入的重要成果，也為他日後進入北京的政治與學術圈奠定基礎。</p>
+<h2 id="1838年｜考取進士，進入翰林院">1838年｜考取進士，進入翰林院</h2>
+<p><strong>重大事件：曾國藩取得進士資格，正式進入清朝中央官僚體系。</strong></p>
+<p>1838年，曾國藩考中進士，隨後進入翰林院。</p>
+<p>翰林院是清朝重要的學術與文職機構，任職者通常具有較高的科舉資格，並可能獲得進一步升遷的機會。</p>
+<p>這次考試是曾國藩人生的重要轉折。</p>
+<p>他從湖南地方士人，正式進入以北京為中心的政治體系，開始接觸更廣泛的官僚網絡與學術思想。</p>
+<p>曾國藩在京任職期間，持續研究儒家經典，也與其他官員、學者建立關係。這些人際網絡後來成為他組建湘軍、推動地方軍政事務的重要支持。<a href="https://cir.nii.ac.jp/crid/1050576966671307904?utm_source=chatgpt.com">CiNii Research</a></p>
+<h2 id="18391840年代｜在北京任官，逐步升遷">1839—1840年代｜在北京任官，逐步升遷</h2>
+<p>曾國藩進入翰林院後，逐漸累積中央政府的行政經驗。</p>
+<p>他在京期間，不僅研究儒學，也持續思考官員應如何修身、如何履行政治責任，以及如何處理國家治理問題。</p>
+<p>這段經歷對他後來的影響主要有三方面：</p>
+<ol>
+<li><strong>建立官僚經驗：</strong> 熟悉清朝中央行政體系的運作。</li>
+<li><strong>形成政治人脈：</strong> 與其他官員、士人建立長期聯繫。</li>
+<li><strong>深化儒家思想：</strong> 將個人修養與政治責任結合起來。</li>
+</ol>
+<h2 id="1840年代｜官職逐步提升">1840年代｜官職逐步提升</h2>
+<p>曾國藩在道光年間持續升遷，曾擔任重要的中央文職。</p>
+<p>他逐漸成為清朝官僚體系中受到重視的人物，並在1847年前後取得較高的中央官職。</p>
+<p>此時的曾國藩仍以文官身分發展，尚未成為軍事統帥。</p>
+<p>他後來之所以能夠在地方迅速建立軍隊，與他早年累積的官僚人脈、地方士紳關係，以及對行政制度的理解有密切關係。</p>
+<h2 id="1850年｜太平天國運動爆發">1850年｜太平天國運動爆發</h2>
+<p><strong>重大事件：太平天國運動開始。</strong></p>
+<p>1850年前後，洪秀全領導的拜上帝會在廣西逐步發展，並於1851年正式建立太平天國。</p>
+<p>太平天國以宗教思想、社會改革主張與反清政治動員吸引大量追隨者，迅速發展為對清朝統治構成重大威脅的軍事力量。</p>
+<p>清朝原有的綠營等軍事力量，在應對大規模戰爭時暴露出許多問題。</p>
+<p>太平軍向湖南、湖北及長江流域發展，清朝地方官員不得不尋求新的軍事組織方式。</p>
+<p>這場運動將深刻改變曾國藩的人生，使他從中央文官轉變為晚清最重要的軍事領袖之一。</p>
+<h2 id="1852年｜母親去世，曾國藩返鄉守制">1852年｜母親去世，曾國藩返鄉守制</h2>
+<p>1852年，曾國藩的母親去世，他依照傳統禮制返鄉守制。</p>
+<p>按照儒家倫理，官員遇到父母去世，通常需要離職返家服喪，這是當時政治與家庭倫理的重要規範。</p>
+<p>然而，太平軍勢力持續擴張，湖南地方治安與軍事形勢日益緊張。</p>
+<p>清廷因此命曾國藩協助湖南地方辦理團練事務，希望利用地方士紳與民間力量，補充正規軍的不足。</p>
+<p><strong>歷史轉折：</strong> 曾國藩原本是一名中央文官，卻因戰爭與政治需要，開始投入地方軍事組織的建立。</p>
+<p>這個轉變為湘軍的形成創造了條件，也使曾國藩日後獲得遠超一般文官的政治與軍事影響力。<a href="https://www.dpm.org.cn/lemmas/241724.html?utm_source=chatgpt.com">DPM</a></p>
+<hr>
+<h1 id="二、湘軍的建立與早期作戰（18531859年）">二、湘軍的建立與早期作戰（1853—1859年）</h1>
+<h2 id="1853年｜在湖南組建地方團練">1853年｜在湖南組建地方團練</h2>
+<p>曾國藩開始在湖南組織地方團練，招募兵員、訓練士卒，並建立相應的軍事管理制度。</p>
+<p>所謂團練，原本是地方社會為維持治安與防禦而組織的民間武裝；曾國藩則逐步將其發展成具有較完整指揮體系的軍事力量。</p>
+<p>他十分重視軍官的選拔、士兵的紀律，以及軍隊內部的組織關係。</p>
+<p>與部分依靠傳統綠營編制的軍隊相比，湘軍更加強調將領與部屬之間的信任，以及由地方士紳提供的資源支持。</p>
+<h2 id="1854年｜湘軍正式出省作戰">1854年｜湘軍正式出省作戰</h2>
+<p>1854年，曾國藩率領湘軍投入對太平軍的作戰。</p>
+<p>湘軍不僅包括陸軍，也逐漸建立水師，以適應長江流域的戰爭環境。</p>
+<p>曾國藩希望透過軍事組織、儒家倫理與嚴格紀律，打造一支不同於傳統官軍的部隊。</p>
+<p>不過，湘軍成立初期並非戰無不勝，曾國藩在戰場上曾遭遇挫敗。</p>
+<p>早期的作戰經驗，使他逐漸認識到，軍隊的建立不能只靠道德訓誡，還必須具備可靠的補給、訓練、指揮與戰略規劃。</p>
+<h2 id="1854年｜湘軍在湖南、湖北一帶與太平軍交戰">1854年｜湘軍在湖南、湖北一帶與太平軍交戰</h2>
+<p>湘軍在長江中游地區持續作戰，試圖遏止太平軍的擴張。</p>
+<p>此時的太平軍仍然具有相當強大的戰鬥力，且已建立較完整的軍事組織。</p>
+<p>曾國藩必須在水陸協同、軍隊補給與戰場部署方面不斷調整策略。</p>
+<p>湘軍逐漸形成自己的作戰體系，但仍需要時間累積經驗。</p>
+<h2 id="1855年｜湘軍遭遇挫敗，持續調整戰略">1855年｜湘軍遭遇挫敗，持續調整戰略</h2>
+<p>太平軍在長江流域仍然掌握相當強的軍事主動權。</p>
+<p>曾國藩所率湘軍面臨水師作戰與後勤供應的困難，軍事行動並非一路順利。</p>
+<p>這段時期顯示，曾國藩的成功並非完全來自個人才能，而是建立在長期戰爭、組織調整與將領協作之上。</p>
+<h2 id="1856年｜太平天國內部發生天京事變">1856年｜太平天國內部發生天京事變</h2>
+<p><strong>重大事件：天京事變。</strong></p>
+<p>太平天國內部爆發嚴重的政治與軍事衝突，東王楊秀清等重要人物捲入權力鬥爭，造成大量人員死亡。</p>
+<p>天京事變削弱了太平天國的領導核心，使其內部凝聚力受到重大打擊。</p>
+<p>對曾國藩而言，太平天國內部的分裂提供了軍事反攻的機會。</p>
+<p>不過，湘軍仍面臨自身的困難，曾國藩也曾因戰事失利而承受巨大壓力。</p>
+<p>這一階段的重要意義，在於太平天國雖然尚未被擊敗，但其內部矛盾已開始影響整體戰爭走向。</p>
+<h2 id="1857年｜父親去世，曾國藩返鄉">1857年｜父親去世，曾國藩返鄉</h2>
+<p>曾國藩的父親曾麟書去世，曾國藩再度返鄉服喪。</p>
+<p>這段時間，他仍須面對軍事責任與傳統禮制之間的衝突。</p>
+<p>清廷在太平天國戰爭中需要地方軍事力量，但地方軍隊與中央政府之間也存在權力分配的問題。</p>
+<p>曾國藩所建立的湘軍，逐漸成為清朝平亂不可或缺的力量。</p>
+<h2 id="1858年｜重新投入軍事行動">1858年｜重新投入軍事行動</h2>
+<p>曾國藩重新積極參與湘軍事務，並繼續推動對太平軍的作戰。</p>
+<p>湘軍在此時逐步改善指揮、補給與水陸協同能力。</p>
+<p>曾國藩與左宗棠、胡林翼等地方官員及軍事人物的關係，也在戰爭過程中持續發展。</p>
+<p>這些政治與軍事網絡，成為晚清地方軍事力量崛起的重要基礎。</p>
+<h2 id="1859年｜湘軍逐漸取得戰略優勢">1859年｜湘軍逐漸取得戰略優勢</h2>
+<p>隨著太平天國內部矛盾持續，以及清軍各部隊逐步調整作戰方式，湘軍在部分戰場上開始取得更有利的局面。</p>
+<p>然而，太平天國仍控制重要城市與大片土地，戰爭遠未結束。</p>
+<p>曾國藩此時的主要任務，是整合各支部隊、改善軍事補給，並為下一階段的長江流域戰事作準備。</p>
+<hr>
+<h1 id="三、湘軍擴張與洋務運動的開端（18601863年）">三、湘軍擴張與洋務運動的開端（1860—1863年）</h1>
+<h2 id="1860年｜出任兩江總督，掌握東南軍政大權">1860年｜出任兩江總督，掌握東南軍政大權</h2>
+<p><strong>重大事件：曾國藩成為清廷平定太平天國的重要軍政領袖。</strong></p>
+<p>1860年，清朝面臨嚴重的內憂外患。一方面，太平天國控制長江流域的重要地區；另一方面，英法聯軍進攻北京，清廷在第二次鴉片戰爭中遭遇重大挫折。</p>
+<p>在這種情勢下，清廷任命曾國藩為兩江總督，並授予其督辦江南軍務等重要職權。</p>
+<p>兩江總督管轄的核心地區包括江蘇、安徽、江西等地，具有重要的經濟、軍事與交通價值。</p>
+<p>曾國藩因此取得更大的軍事指揮權，開始統籌多支清軍，並逐步將戰略重心放在攻取太平天國的重要據點。</p>
+<h3 id="歷史意義">歷史意義</h3>
+<ol>
+<li><strong>地方軍事權力進一步集中：</strong> 湘軍不再只是湖南地方團練，而成為清廷倚重的主要軍事力量。</li>
+<li><strong>曾國藩的政治地位提升：</strong> 他從地方軍事組織者，轉變為能夠影響東南地區政局的重要大員。</li>
+<li><strong>晚清中央與地方的關係發生變化：</strong> 清廷必須依賴地方督撫及其所掌握的軍隊維持統治，地方軍事力量的重要性日益增加。</li>
+</ol>
+<h2 id="1861年｜安慶攻防戰與安慶內軍械所">1861年｜安慶攻防戰與安慶內軍械所</h2>
+<p>1861年，湘軍持續進攻太平天國控制的安慶。</p>
+<p>安慶位於長江沿岸，是太平天國在長江中游的重要軍事據點，也是南京以西的重要屏障。</p>
+<p>曾國藩所部經過長期圍攻，最終攻下安慶，為進一步進攻太平天國首都天京創造了條件。</p>
+<p>同年，曾國藩在安慶設立內軍械所，嘗試利用西方技術製造槍炮等軍事裝備。</p>
+<h3 id="安慶內軍械所的歷史意義">安慶內軍械所的歷史意義</h3>
+<p>安慶內軍械所是晚清早期近代軍事工業發展的重要案例之一。</p>
+<p>曾國藩逐漸認識到，僅靠傳統軍事制度與兵器，難以有效應對當時的戰爭環境。</p>
+<p>因此，他開始支持引進西方技術，改善清軍裝備。</p>
+<p>這項措施反映出一個重要的思想轉變：<strong>在維護清朝傳統政治秩序的同時，也可以吸收西方的科學技術與軍事知識。</strong></p>
+<p>這種思路後來成為洋務運動的重要思想基礎。<a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/9781444338232.wbeow713?utm_source=chatgpt.com">Wiley Online Library</a></p>
+<h2 id="1862年｜協調湘軍與淮軍，準備進攻天京">1862年｜協調湘軍與淮軍，準備進攻天京</h2>
+<p>1862年，曾國藩繼續部署對太平天國的軍事行動。</p>
+<p>他的部將李鴻章在曾國藩的支持下，逐步建立淮軍，並赴上海一帶協助清廷維持局勢。</p>
+<p>上海是當時中國重要的通商口岸，也是外國商業與軍事勢力高度集中的地區。</p>
+<p>淮軍的建立，使清廷在江南地區獲得另一支重要的地方軍事力量。</p>
+<p>曾國藩、李鴻章與其他地方官員之間的合作，成為晚清軍事政治的重要特徵。</p>
+<p>同時，清軍也在外國軍事力量的協助下，逐步加強對太平天國的壓力。</p>
+<h2 id="1863年｜湘軍持續逼近天京">1863年｜湘軍持續逼近天京</h2>
+<p>1863年，湘軍與其他清軍部隊持續向天京周邊推進。</p>
+<p>天京是太平天國的首都，位於今日南京。只要天京仍然掌握在太平天國手中，清廷就無法宣告這場戰爭已經結束。</p>
+<p>曾國藩逐步採取包圍、切斷補給與持續進攻的方式，試圖削弱太平天國的防禦能力。</p>
+<p>然而，天京的防禦仍然相當堅固，清軍也付出了極大的傷亡代價。</p>
+<p>這一階段，戰爭已逐漸進入決定太平天國存亡的最後階段。</p>
+<hr>
+<h1 id="四、攻陷天京與太平天國滅亡（1864年）">四、攻陷天京與太平天國滅亡（1864年）</h1>
+<h2 id="1864年7月19日｜湘軍攻陷天京">1864年7月19日｜湘軍攻陷天京</h2>
+<p><strong>重大事件：湘軍攻陷天京，太平天國的中央政權覆滅。</strong></p>
+<p>經過長期圍攻，湘軍於1864年7月攻破天京。</p>
+<p>太平天國的首都陷落，標誌著這場持續十餘年的大規模內戰進入決定性結局。</p>
+<p>洪秀全已於同年6月去世，其子洪天貴福繼位，但太平天國政權已經陷入難以挽回的危機。</p>
+<p>湘軍攻入天京後，城內發生嚴重的殺戮與破壞。太平天國的政治、軍事與行政中心遭到摧毀。</p>
+<p>這場戰爭造成極其龐大的生命損失，並使長江流域許多地區遭受長期破壞。不同研究對整場太平天國戰爭的死亡人數估計差異很大，因此不宜將單一數字視為毫無爭議的定論。</p>
+<h3 id="天京陷落的歷史意義">天京陷落的歷史意義</h3>
+<p><strong>第一，太平天國中央政權覆滅。</strong></p>
+<p>太平天國失去首都與主要政治中心，已無法維持原有的中央政權。</p>
+<p>不過，部分太平軍殘部仍繼續抵抗，其他反清武裝也沒有立即消失。</p>
+<p><strong>第二，曾國藩達到軍事生涯的高峰。</strong></p>
+<p>曾國藩成為清廷平定太平天國的重要功臣，政治地位與聲望達到頂峰。</p>
+<p><strong>第三，湘軍與地方督撫的影響力大幅提升。</strong></p>
+<p>清廷在戰爭中高度依賴湘軍、淮軍等地方武裝，中央政府對軍隊的控制方式因此發生長期變化。</p>
+<p><strong>第四，曾國藩的歷史評價出現重大爭議。</strong></p>
+<p>從清廷的立場來看，天京陷落意味著國家秩序得到恢復；但從太平天國及受戰爭波及的民眾立場來看，湘軍的軍事鎮壓伴隨大量傷亡與破壞。</p>
+<p>因此，評價曾國藩時，不能只看軍事勝利，也必須考察戰爭的社會代價。</p>
+<h2 id="1864年｜獲封一等侯爵">1864年｜獲封一等侯爵</h2>
+<p>天京陷落後，曾國藩因軍功受到清廷嘉獎，獲封一等侯爵，爵號為毅勇侯。</p>
+<p>這是清朝對曾國藩軍事貢獻的重要肯定，也反映出地方漢人官僚與軍事領袖在晚清政治中的地位日益上升。</p>
+<p>不過，曾國藩的成功也使清廷面臨新的問題：一支由地方官員建立、由將領直接掌握的軍隊，在平亂後應如何處理？</p>
+<p>若繼續保留龐大軍隊，可能威脅中央政府的權威；若立即裁撤，又可能造成治安與軍事防衛的困難。</p>
+<p>曾國藩後來逐步裁撤部分湘軍，正是為了回應這種政治現實。</p>
+<hr>
+<h1 id="五、戰後重建、裁撤湘軍與捻軍戰爭（18651867年）">五、戰後重建、裁撤湘軍與捻軍戰爭（1865—1867年）</h1>
+<h2 id="1865年｜奉命處理捻軍問題">1865年｜奉命處理捻軍問題</h2>
+<p>太平天國中央政權覆滅後，華北與其他地區仍存在反清武裝。</p>
+<p>其中，捻軍是清廷面臨的重要軍事對手。</p>
+<p>捻軍的組成與活動方式，與太平天國並不完全相同。其活動具有流動性，能夠在廣大地區轉移，使清軍難以透過單純的城市圍攻方式徹底消滅。</p>
+<p>1865年，曾國藩奉命督辦剿捻事務。</p>
+<p>然而，曾國藩原本較擅長組織長期圍攻與經營固定戰線，面對機動性較高的捻軍時，未能取得預期成果。</p>
+<p>這顯示軍事策略往往具有情境限制：能夠擊敗太平天國的作戰模式，不一定適用於所有敵對勢力。</p>
+<h2 id="1866年｜剿捻戰事持續受挫">1866年｜剿捻戰事持續受挫</h2>
+<p>曾國藩繼續指揮清軍對捻軍作戰，但戰事並不順利。</p>
+<p>捻軍善於利用地形與機動性，清軍則受到情報、補給與跨區域協同等問題限制。</p>
+<p>曾國藩嘗試調整部署，但始終未能有效消滅捻軍的主要力量。</p>
+<p>這段經歷使他的軍事聲望受到一定影響，也凸顯晚清軍隊在面對不同戰爭型態時的適應困難。</p>
+<h2 id="1867年｜調整軍事部署">1867年｜調整軍事部署</h2>
+<p>曾國藩持續處理捻軍問題，並在清廷要求下調整作戰部署。</p>
+<p>捻軍戰爭的複雜性，使清廷不得不重新考慮軍事指揮、地方行政與不同軍隊之間的合作方式。</p>
+<p>曾國藩的軍事經驗雖然豐富，但他並非每次都能成功。</p>
+<p>從歷史研究的角度來看，這一階段有助於避免將曾國藩塑造成無所不能的軍事天才。</p>
+<hr>
+<h1 id="六、出任直隸總督與天津教案（18681870年）">六、出任直隸總督與天津教案（1868—1870年）</h1>
+<h2 id="1868年｜調任直隸總督">1868年｜調任直隸總督</h2>
+<p>1868年，曾國藩奉調出任直隸總督。</p>
+<p>直隸是清朝京畿地區的重要行政區域，包含北京周邊的廣大地區，具有特殊的政治與戰略地位。</p>
+<p>直隸總督不僅要處理地方行政、財政與治安，也需要承擔維護京師周邊秩序的重要責任。</p>
+<p>曾國藩調任直隸，顯示清廷希望運用其政治資歷與行政能力，處理首都周邊的複雜事務。</p>
+<p>然而，曾國藩在天津教案中的處置，將成為他晚年最受爭議的政治事件之一。</p>
+<h2 id="1869年｜處理地方行政與社會問題">1869年｜處理地方行政與社會問題</h2>
+<p>曾國藩在直隸任內，繼續處理地方行政、治安與民生事務。</p>
+<p>當時清朝與西方國家的關係十分複雜。第二次鴉片戰爭後，外國勢力在中國享有多項條約權利，傳教活動、領事保護與司法管轄問題經常引起衝突。</p>
+<p>地方官員必須同時面對外國外交壓力、民間疑慮與清廷維持秩序的要求。</p>
+<p>這些問題在1870年的天津教案中集中爆發。</p>
+<h2 id="1870年｜天津教案爆發">1870年｜天津教案爆發</h2>
+<p><strong>重大事件：天津教案。</strong></p>
+<p>1870年，天津發生涉及天主教堂、修女與幼童死亡的重大衝突。</p>
+<p>當時，民間流傳有關教會拐帶幼童等指控，社會疑慮迅速擴大，最終演變成暴力事件，造成法國人及其他外國人死亡，也有中國教民及其他相關人員遭到殺害。</p>
+<p>事件發生後，法國方面要求清廷追究責任，清朝面臨嚴重的外交壓力。</p>
+<p>曾國藩奉命前往天津查辦。</p>
+<h3 id="曾國藩面臨的困境">曾國藩面臨的困境</h3>
+<p>曾國藩必須在幾項互相衝突的要求之間作出選擇：</p>
+<ol>
+<li>維持地方秩序，防止衝突繼續擴大。</li>
+<li>回應外國政府的外交要求。</li>
+<li>調查案件中的犯罪行為與責任。</li>
+<li>處理民眾對傳教活動與外國特權的不滿。</li>
+</ol>
+<p>曾國藩最後採取較為妥協的外交處理方式，對相關中國人員進行懲處，並努力避免清廷與法國爆發更大規模的衝突。</p>
+<p>然而，他的處置遭到不少批評。批評者認為，他在外國壓力面前過於退讓，未能充分維護中國民眾的權益。</p>
+<h3 id="天津教案的歷史意義">天津教案的歷史意義</h3>
+<p>天津教案反映出晚清外交的深層困境。</p>
+<p>一方面，清廷必須面對外國軍事與外交力量，避免因單一事件引發新的戰爭；另一方面，外國享有的特殊權利又使中國地方官員在處理涉外案件時，面臨司法與政治上的不平等。</p>
+<p>曾國藩的處置有其外交現實考量，但這並不能消除其決策所引起的爭議。</p>
+<p><strong>因此，天津教案是理解曾國藩晚年政治評價的重要事件：他的治理選擇既反映清廷的現實困境，也暴露出晚清國家主權與外交能力的不足。</strong> <a href="https://www.dpm.org.cn/lemmas/241724.html?utm_source=chatgpt.com">DPM</a></p>
+<h2 id="1870年｜調回兩江總督">1870年｜調回兩江總督</h2>
+<p>天津教案引起廣泛爭議後，曾國藩離開直隸總督任職體系，後來重新出任兩江總督。</p>
+<p>兩江地區經濟發達，長江流域與上海周邊具有重要的財政、交通與軍事價值。</p>
+<p>曾國藩回到自己較熟悉的東南地區，繼續處理地方行政與洋務相關事務。</p>
+<hr>
+<h1 id="七、晚年治理與去世（18711872年）">七、晚年治理與去世（1871—1872年）</h1>
+<h2 id="1871年｜持續推動地方治理與洋務事務">1871年｜持續推動地方治理與洋務事務</h2>
+<p>曾國藩晚年繼續擔任兩江總督，處理地方行政、財政、軍事與外交相關問題。</p>
+<p>太平天國戰爭雖已結束，但清朝仍然面臨人口流失、土地荒廢、財政困難與地方秩序重建等挑戰。</p>
+<p>同時，西方工業與軍事技術的優勢日益明顯，清廷部分官員開始推動以引進西方技術為核心的改革。</p>
+<p>曾國藩支持製造近代軍事裝備、引進技術與培養相關人才。他的洋務實踐，為後來李鴻章等人推動的近代軍事工業發展提供了重要基礎。</p>
+<p>不過，曾國藩所支持的改革主要著眼於軍事、技術與實用層面，並未主張全面改變清朝傳統政治制度。</p>
+<h2 id="1872年3月12日｜曾國藩在南京去世">1872年3月12日｜曾國藩在南京去世</h2>
+<ul>
+<li><strong>公曆：</strong> 1872年3月12日。</li>
+<li><strong>清朝年號：</strong> 同治十一年。</li>
+<li><strong>享年：</strong> 約60周歲，傳統虛歲計為62歲。</li>
+<li><strong>去世地點：</strong> 南京。</li>
+</ul>
+<p>曾國藩在兩江總督任內去世，結束了其長達數十年的政治生涯。</p>
+<p>他去世時，清朝雖然已經平定太平天國中央政權，但並未因此消除所有危機。</p>
+<p>地方軍事力量的崛起、國家財政困難、西方列強的壓力，以及傳統政治制度的限制，仍然是清朝無法迴避的問題。</p>
+<p>曾國藩的政治遺產因此具有雙重性：他協助清廷維持了統治秩序，也在客觀上推動了地方督撫與區域軍事力量的擴張。<a href="https://whhlyt.hunan.gov.cn/whhlyt/english/Culture/CulturalFigures/202205/t20220527_24654725.html?utm_source=chatgpt.com">Hunan Culture and Tourism Department</a></p>
+<hr>
+<h1 id="八、曾國藩生平大事記總表">八、曾國藩生平大事記總表</h1>
+<p>以下將曾國藩一生的重要事件，按照年代整理成表格，方便快速查閱與複習。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重大事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1811年</td>
+<td>出生於湖南湘鄉</td>
+<td>曾國藩生涯的起點</td>
+</tr>
+<tr>
+<td>1820年代</td>
+<td>接受儒家經典教育</td>
+<td>形成重視修身與自律的思想基礎</td>
+</tr>
+<tr>
+<td>1833年</td>
+<td>考取秀才</td>
+<td>進入地方士人階層</td>
+</tr>
+<tr>
+<td>1834年</td>
+<td>考取舉人</td>
+<td>取得進一步參加科舉的資格</td>
+</tr>
+<tr>
+<td>1838年</td>
+<td>考中進士，進入翰林院</td>
+<td>正式進入清朝中央官僚體系</td>
+</tr>
+<tr>
+<td>1839—1840年代</td>
+<td>在北京任官並逐步升遷</td>
+<td>累積行政經驗與政治人脈</td>
+</tr>
+<tr>
+<td>1850年</td>
+<td>太平天國運動爆發</td>
+<td>清朝面臨重大內戰危機</td>
+</tr>
+<tr>
+<td>1851年</td>
+<td>太平天國正式建立</td>
+<td>反清勢力發展為政權</td>
+</tr>
+<tr>
+<td>1852年</td>
+<td>母親去世，返鄉守制</td>
+<td>人生轉向地方軍政事務</td>
+</tr>
+<tr>
+<td>1853年</td>
+<td>在湖南組建團練</td>
+<td>湘軍發展的重要起點</td>
+</tr>
+<tr>
+<td>1854年</td>
+<td>湘軍出省作戰</td>
+<td>由地方武裝轉向區域性軍事力量</td>
+</tr>
+<tr>
+<td>1855年</td>
+<td>湘軍持續與太平軍交戰</td>
+<td>累積軍事經驗</td>
+</tr>
+<tr>
+<td>1856年</td>
+<td>太平天國發生天京事變</td>
+<td>太平天國內部遭受重大打擊</td>
+</tr>
+<tr>
+<td>1857年</td>
+<td>父親去世，返鄉服喪</td>
+<td>面臨家庭倫理與軍事責任的衝突</td>
+</tr>
+<tr>
+<td>1858年</td>
+<td>重新投入湘軍事務</td>
+<td>持續推動對太平軍的作戰</td>
+</tr>
+<tr>
+<td>1859年</td>
+<td>湘軍逐漸調整戰略</td>
+<td>為後續攻勢作準備</td>
+</tr>
+<tr>
+<td>1860年</td>
+<td>出任兩江總督</td>
+<td>掌握更大的東南軍政權力</td>
+</tr>
+<tr>
+<td>1861年</td>
+<td>攻下安慶</td>
+<td>為進攻天京創造條件</td>
+</tr>
+<tr>
+<td>1861年</td>
+<td>設立安慶內軍械所</td>
+<td>推動早期軍事工業發展</td>
+</tr>
+<tr>
+<td>1862年</td>
+<td>支持李鴻章建立淮軍</td>
+<td>強化清軍在江南地區的力量</td>
+</tr>
+<tr>
+<td>1863年</td>
+<td>湘軍持續逼近天京</td>
+<td>太平天國進入存亡關頭</td>
+</tr>
+<tr>
+<td>1864年</td>
+<td>湘軍攻陷天京</td>
+<td>太平天國中央政權覆滅</td>
+</tr>
+<tr>
+<td>1864年</td>
+<td>獲封一等毅勇侯</td>
+<td>政治與軍事聲望達到高峰</td>
+</tr>
+<tr>
+<td>1865年</td>
+<td>奉命處理捻軍問題</td>
+<td>軍事任務轉向華北與其他地區</td>
+</tr>
+<tr>
+<td>1866年</td>
+<td>剿捻戰事持續受挫</td>
+<td>顯示其軍事策略存在限制</td>
+</tr>
+<tr>
+<td>1867年</td>
+<td>調整軍事部署</td>
+<td>持續處理晚清內部戰事</td>
+</tr>
+<tr>
+<td>1868年</td>
+<td>出任直隸總督</td>
+<td>負責京畿周邊重要行政區域</td>
+</tr>
+<tr>
+<td>1869年</td>
+<td>處理地方行政與社會問題</td>
+<td>面對複雜的地方治理與涉外問題</td>
+</tr>
+<tr>
+<td>1870年</td>
+<td>天津教案爆發</td>
+<td>面臨嚴重外交危機</td>
+</tr>
+<tr>
+<td>1870年</td>
+<td>調回兩江總督</td>
+<td>返回東南地區任職</td>
+</tr>
+<tr>
+<td>1871年</td>
+<td>持續推動地方治理與洋務事務</td>
+<td>參與晚清戰後重建與技術改革</td>
+</tr>
+<tr>
+<td>1872年</td>
+<td>在南京去世</td>
+<td>結束其政治生涯</td>
+</tr>
+</tbody></table>
+<p>以上年代依據曾國藩生平研究及相關歷史資料整理；個別事件的具體月份、任職起訖及軍事行動細節，可能因史料與研究採用的紀年方式而略有差異。<a href="https://whhlyt.hunan.gov.cn/whhlyt/english/Culture/CulturalFigures/202205/t20220527_24654725.html?utm_source=chatgpt.com">Hunan Culture and Tourism Department</a></p>
+<hr>
+<h1 id="九、曾國藩的重要歷史成就與爭議">九、曾國藩的重要歷史成就與爭議</h1>
+<h2 id="1-軍事成就：建立湘軍並擊敗太平天國">1. 軍事成就：建立湘軍並擊敗太平天國</h2>
+<p>曾國藩最廣為人知的成就，是組建並領導湘軍。</p>
+<p>湘軍不僅是一支軍事力量，也代表晚清軍事組織方式的重要轉變。</p>
+<p>它依靠地方士紳、軍官私人關係與區域資源建立組織，逐漸成為清廷倚重的主要軍事力量。</p>
+<p>湘軍攻陷天京，是曾國藩軍事生涯的高峰。</p>
+<p>然而，太平天國戰爭造成的巨大生命損失與社會破壞，也使曾國藩的軍事成就具有不可忽視的道德爭議。</p>
+<h2 id="2-政治成就：成為晚清重要的地方督撫">2. 政治成就：成為晚清重要的地方督撫</h2>
+<p>曾國藩先後擔任兩江總督、直隸總督等重要職務，掌握地方行政、軍事與財政方面的權力。</p>
+<p>他在清朝危機時期，協助政府維持統治秩序。</p>
+<p>但湘軍的成功也帶來長期影響：清廷必須更多依賴地方官員與私人化的軍事組織，使地方督撫的權力不斷增強。</p>
+<p>這種變化對晚清政治產生深遠影響，並成為理解清朝後期中央與地方關係的重要線索。</p>
+<h2 id="3-洋務成就：重視西方軍事技術">3. 洋務成就：重視西方軍事技術</h2>
+<p>曾國藩是晚清洋務運動早期的重要人物之一。</p>
+<p>他在安慶設立內軍械所，支持製造近代軍事裝備，也重視西方技術的實際用途。</p>
+<p>洋務運動的基本思路，是在維持傳統政治與文化秩序的前提下，引進西方的軍事、工業與科學技術。</p>
+<p>曾國藩的改革雖然具有開創性，但其範圍仍相當有限，並未從根本上改變清朝的政治制度。</p>
+<h2 id="4-思想成就：重視修身、勤勉與自我約束">4. 思想成就：重視修身、勤勉與自我約束</h2>
+<p>曾國藩長期研究儒家經典，特別重視修身、克己、慎獨與持續反省。</p>
+<p>他將個人道德修養與政治責任結合起來，並把這套思想運用於家庭教育、官員管理與軍隊組織。</p>
+<p>其家書、日記與文章，後來成為研究晚清士人思想與傳統儒家倫理的重要材料。</p>
+<p>不過，曾國藩的個人修養思想與其政治、軍事行動之間，也存在值得討論的張力：一位強調仁義與道德的人，如何在殘酷的內戰中承擔鎮壓責任？這是評價曾國藩時無法迴避的問題。</p>
+<hr>
+<h1 id="十、曾國藩、李鴻章與左宗棠的關係">十、曾國藩、李鴻章與左宗棠的關係</h1>
+<p>理解曾國藩的歷史地位，也可以將他與晚清另外兩位重要人物比較。</p>
+<table>
+<thead>
+<tr>
+<th>比較面向</th>
+<th>曾國藩</th>
+<th>李鴻章</th>
+<th>左宗棠</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要身分</td>
+<td>湘軍統帥、地方督撫、洋務先驅</td>
+<td>淮軍領袖、外交與洋務重臣</td>
+<td>湘軍重要將領、地方督撫</td>
+</tr>
+<tr>
+<td>主要軍事成就</td>
+<td>領導湘軍攻陷天京</td>
+<td>建立淮軍，參與晚清多項軍事與政治事務</td>
+<td>平定西北部分戰事，後來主持新疆軍務</td>
+</tr>
+<tr>
+<td>洋務發展</td>
+<td>支持早期軍械製造與技術引進</td>
+<td>積極推動近代軍工、企業與海軍建設</td>
+<td>重視軍事與農業建設，推動西北治理</td>
+</tr>
+<tr>
+<td>政治風格</td>
+<td>重視紀律、儒家倫理與組織管理</td>
+<td>長於外交協商與實務行政</td>
+<td>個性強硬，重視軍事行動與地方經營</td>
+</tr>
+<tr>
+<td>歷史定位</td>
+<td>晚清地方軍事力量與洋務運動的重要奠基者</td>
+<td>晚清洋務與外交的重要代表</td>
+<td>晚清重要軍事統帥與地方治理者</td>
+</tr>
+</tbody></table>
+<p>三人並非彼此完全獨立的歷史人物，而是透過師友、軍事與官僚網絡彼此聯繫。</p>
+<p>曾國藩尤其重要的一點，是他所建立的政治與軍事網絡，對晚清後續的地方軍事組織、人才流動與洋務發展產生了深遠影響。</p>
+<hr>
+<h1 id="十一、總結：曾國藩為何是晚清重要人物？">十一、總結：曾國藩為何是晚清重要人物？</h1>
+<p>曾國藩的一生，可以概括為三個階段：</p>
+<p><strong>第一階段：科舉入仕（1811—1852年）。</strong> 他透過科舉進入中央官僚體系，逐步建立學術素養、行政經驗與政治人脈。</p>
+<p><strong>第二階段：組建湘軍與平定太平天國（1853—1864年）。</strong> 他從地方團練組織者轉變為清朝重要的軍事領袖，並在攻陷天京後達到政治生涯的高峰。</p>
+<p><strong>第三階段：戰後治理與洋務實踐（1865—1872年）。</strong> 他處理捻軍戰事、出任直隸總督與兩江總督，參與外交危機處理，並繼續推動軍事技術與地方治理方面的改革。</p>
+<p>曾國藩最重要的歷史意義，在於他不僅改變了太平天國戰爭的走向，也反映出晚清國家治理模式的轉變。</p>
+<p>他透過地方士紳、私人化軍事組織與儒家倫理建立湘軍，協助清廷度過重大危機；但同一套組織方式，也使地方軍事力量日益壯大，改變了清朝中央與地方的權力關係。</p>
+<p><strong>因此，曾國藩既是清朝危機中的重要支柱，也是晚清政治結構轉型的重要代表。</strong> 他的生平不僅是一位官員的升遷與軍事勝利史，更是理解十九世紀中國內戰、國家治理、地方權力與近代化起步的重要切入點。</p>
+<h3 id="延伸閱讀">延伸閱讀</h3>
+<ul>
+<li><a href="https://whhlyt.hunan.gov.cn/whhlyt/english/Culture/CulturalFigures/202205/t20220527_24654725.html?utm_source=chatgpt.com">湖南省文化和旅遊廳：曾國藩生平介紹</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/9781444338232.wbeow713?utm_source=chatgpt.com">Wiley《戰爭百科全書》：曾國藩與湘軍</a></li>
+<li><a href="https://ctext.org/datawiki.pl?if=gb&remap=gb&res=381392&utm_source=chatgpt.com">中國哲學書電子化計劃：曾國藩年譜相關資料</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

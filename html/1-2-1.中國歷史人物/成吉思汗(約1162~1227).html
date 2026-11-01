@@ -1,0 +1,562 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="成吉思汗生平大事記（約11621227年）">成吉思汗生平大事記（約1162—1227年）</h1>
+<p>成吉思汗（Genghis Khan，約1162—1227年），本名<strong>孛兒只斤·鐵木真</strong>（Temüjin），是蒙古帝國的創建者，也是世界歷史上影響深遠的軍事與政治領袖之一。</p>
+<p>他在蒙古草原部落長期分裂、相互征戰的環境中崛起，透過軍事征服、部落聯盟、政治整合與軍事制度改革，於1206年統一蒙古高原主要部落，被推舉為「成吉思汗」，建立蒙古帝國。此後，他率軍向中亞、東亞等地擴張，為後來蒙古帝國及其繼承者建立橫跨歐亞大陸的統治體系奠定基礎。</p>
+<p><strong>歷史定位：</strong></p>
+<ul>
+<li><strong>政治方面：</strong> 統一蒙古高原主要部落，建立新的政治與軍事秩序。</li>
+<li><strong>軍事方面：</strong> 善用騎兵、情報、機動作戰及多兵種協同，建立高效率的軍事組織。</li>
+<li><strong>制度方面：</strong> 強化軍事編制、統治者權威與命令傳遞，並重視對不同族群和專業人才的運用。</li>
+<li><strong>世界史方面：</strong> 其征服戰爭造成大規模人口傷亡與城市破壞，同時也為後來歐亞大陸部分地區的貿易、交通與文化交流創造了新的條件。</li>
+</ul>
+<blockquote>
+<p><strong>年代說明：</strong> 成吉思汗的出生年份存在不同說法，常見的傳統年代為1162年；部分研究則採用其他年份。以下以1162年作為常見的編年起點，並對部分年代或事件順序保留必要的歷史彈性。</p>
+</blockquote>
+<hr>
+<h1 id="一、成吉思汗生平大事記：詳細時間軸">一、成吉思汗生平大事記：詳細時間軸</h1>
+<h2 id="（一）童年與家族困境：1162約1180年">（一）童年與家族困境：1162—約1180年</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡（約）</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1162年</td>
+<td align="right">0歲</td>
+<td>傳統說法認為鐵木真出生於蒙古高原斡難河流域附近。</td>
+<td>出身於蒙古孛兒只斤氏族，當時蒙古各部落尚未形成統一國家。</td>
+</tr>
+<tr>
+<td>約1170—1171年</td>
+<td align="right">9歲左右</td>
+<td>父親也速該在外出途中遭塔塔兒人毒害或殺害。</td>
+<td>家族失去主要領導者，政治地位迅速衰落。</td>
+</tr>
+<tr>
+<td>約1170年代</td>
+<td align="right">少年時期</td>
+<td>也速該死後，部分部眾離去，鐵木真與母親訶額侖及家人陷入困境。</td>
+<td>經歷貧困、部族排斥與生存危機，逐漸形成強烈的權力意識。</td>
+</tr>
+<tr>
+<td>約1170年代後期</td>
+<td align="right">少年時期</td>
+<td>鐵木真在家族內部衝突中殺死異母兄弟別克帖兒。</td>
+<td>顯示當時草原社會資源競爭激烈，也反映他為爭取家族主導權所採取的強硬手段。</td>
+</tr>
+<tr>
+<td>約1180年前後</td>
+<td align="right">青年時期</td>
+<td>鐵木真逐漸建立自己的追隨者網絡，開始與其他部落領袖建立關係。</td>
+<td>從弱小的氏族成員逐漸轉變為具有政治影響力的草原領袖。</td>
+</tr>
+</tbody></table>
+<p><strong>這一階段的關鍵：</strong> 鐵木真並非一開始就擁有強大的軍隊或穩固的政治地位。他的崛起與個人領導能力、家族支持、部落聯盟，以及對草原政治規則的掌握密切相關。</p>
+<p>上述早年事件主要依據《蒙古秘史》等史料重建，部分細節與年代仍有爭議。<a href="https://www.iranicaonline.org/articles/cengiz-khan/?utm_source=chatgpt.com">Iranica Online</a></p>
+<h2 id="（二）建立勢力與統一蒙古各部：約11801206年">（二）建立勢力與統一蒙古各部：約1180—1206年</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>約1180年代</td>
+<td>鐵木真迎娶孛兒帖，與弘吉剌部建立姻親關係。</td>
+<td>婚姻與親族關係是草原政治聯盟的重要基礎。</td>
+</tr>
+<tr>
+<td>約1180年代</td>
+<td>孛兒帖遭蔑兒乞部擄走，鐵木真聯合克烈部首領脫斡鄰勒（王汗）及札木合等人出兵營救。</td>
+<td>鐵木真藉由軍事聯盟擴大自己的影響力。</td>
+</tr>
+<tr>
+<td>約1180—1190年代</td>
+<td>鐵木真與札木合曾結為安答，即結義兄弟，後來逐漸分道揚鑣。</td>
+<td>兩人對部眾、領導權及政治秩序的競爭，成為蒙古統一過程的重要衝突。</td>
+</tr>
+<tr>
+<td>約1190年代</td>
+<td>鐵木真逐步吸收其他部落的戰士與人才，建立自己的軍事集團。</td>
+<td>其勢力逐漸超越單一氏族，形成更具組織性的政治力量。</td>
+</tr>
+<tr>
+<td>1196年前後</td>
+<td>鐵木真與王汗等人參與對塔塔兒人的軍事行動。</td>
+<td>透過共同作戰擴大影響力，並與金朝對草原部落的政策產生關聯。</td>
+</tr>
+<tr>
+<td>約1190年代末至1201年</td>
+<td>鐵木真與札木合及其他部落勢力多次交戰。</td>
+<td>蒙古高原的權力競爭逐漸演變為爭奪整個草原的領導權。</td>
+</tr>
+<tr>
+<td>1201年</td>
+<td>札木合被部分部落推舉為古兒汗，與鐵木真對抗。</td>
+<td>草原上的競爭者開始形成較明確的政治陣營。</td>
+</tr>
+<tr>
+<td>1202年</td>
+<td>鐵木真大敗塔塔兒部。</td>
+<td>削弱重要敵對勢力，進一步擴大對蒙古東部地區的控制。</td>
+</tr>
+<tr>
+<td>1203年</td>
+<td>鐵木真擊敗克烈部王汗。</td>
+<td>先前的盟友轉為主要競爭者，戰敗後克烈部勢力瓦解。</td>
+</tr>
+<tr>
+<td>1204年</td>
+<td>鐵木真擊敗乃蠻部首領太陽汗。</td>
+<td>蒙古高原西部的重要對手被消滅或吸收，鐵木真的優勢大幅擴大。</td>
+</tr>
+<tr>
+<td>約1205年</td>
+<td>札木合最終落敗，結束與鐵木真的長期權力競爭。</td>
+<td>鐵木真已成為蒙古高原最具優勢的政治與軍事領袖之一。</td>
+</tr>
+<tr>
+<td><strong>1206年</strong></td>
+<td>蒙古各部首領舉行忽里勒台大會，推舉鐵木真為「成吉思汗」。</td>
+<td><strong>蒙古帝國正式建立，蒙古高原主要部落完成政治整合。</strong></td>
+</tr>
+</tbody></table>
+<p>鐵木真的統一策略並不只是消滅對手。他也將被征服部落的戰士納入新的軍事體系，重組部眾與指揮關係，逐步削弱原有部族貴族的獨立權力。<a href="https://www.iranicaonline.org/articles/cengiz-khan/?utm_source=chatgpt.com">Iranica Online</a></p>
+<h3 id="1206年：成吉思汗稱號的意義">1206年：成吉思汗稱號的意義</h3>
+<p>1206年是成吉思汗生平最重要的轉折點。</p>
+<p>在此之前，他主要是一位爭奪草原霸權的部落領袖；在此之後，他成為統一蒙古各部的最高統治者，開始建立能夠持續擴張的帝國。</p>
+<p>其重要變革包括：</p>
+<ol>
+<li><strong>政治統一：</strong> 將原本分散的部落納入共同的統治架構。</li>
+<li><strong>軍事整編：</strong> 強化以十戶、百戶、千戶、萬戶為基礎的組織與指揮體系。</li>
+<li><strong>人才任用：</strong> 重視個人能力、忠誠與軍事貢獻，並吸收不同部落的人才。</li>
+<li><strong>擴張準備：</strong> 將原本以草原內部爭霸為主的軍事力量，轉化為對外征服的重要工具。</li>
+</ol>
+<p>因此，1206年不只是一次領袖加冕，也代表蒙古政治秩序的重大重組。<a href="https://afe.easia.columbia.edu/mongols/pop/genghis/genghis_pop.htm?utm_source=chatgpt.com">East Asia Forum</a></p>
+<hr>
+<h2 id="（三）建立帝國與征服金朝、西夏：12071218年">（三）建立帝國與征服金朝、西夏：1207—1218年</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1206年後</td>
+<td>成吉思汗著手整頓軍事與政治制度。</td>
+<td>將統一草原的成果轉化為較穩定的國家組織。</td>
+</tr>
+<tr>
+<td>1207年</td>
+<td>蒙古軍向北方及西北方向擴張，迫使部分部族與政權臣服。</td>
+<td>蒙古的控制範圍開始超出蒙古高原核心區域。</td>
+</tr>
+<tr>
+<td>1209年</td>
+<td>蒙古軍進攻西夏，西夏最終接受蒙古方面提出的臣服條件。</td>
+<td>蒙古取得西北方向的戰略優勢，也為後續攻金創造條件。</td>
+</tr>
+<tr>
+<td>1211年</td>
+<td>蒙古軍大舉進攻金朝。</td>
+<td>蒙古與北中國主要政權之間展開長期戰爭。</td>
+</tr>
+<tr>
+<td>1211—1214年</td>
+<td>蒙古軍攻擊金朝北部領土，運用騎兵機動與圍城作戰。</td>
+<td>蒙古軍逐漸發展出應對農業定居國家及城防體系的戰爭方式。</td>
+</tr>
+<tr>
+<td>1214年</td>
+<td>金朝與蒙古達成暫時和議，金朝支付財物並作出政治讓步。</td>
+<td>戰爭暫時緩和，但雙方衝突並未根本解決。</td>
+</tr>
+<tr>
+<td>1214—1215年</td>
+<td>金朝遷都汴京（今開封），蒙古軍繼續進攻。</td>
+<td>金朝北部防線與政治中心受到重大衝擊。</td>
+</tr>
+<tr>
+<td><strong>1215年</strong></td>
+<td><strong>蒙古軍攻陷金朝中都，即今北京一帶的古代都城區域。</strong></td>
+<td>蒙古對華北的軍事壓力進一步擴大。</td>
+</tr>
+<tr>
+<td>1217年左右</td>
+<td>蒙古將領木華黎受命主持對金朝的主要戰事。</td>
+<td>成吉思汗得以將更多精力轉向西方與中亞。</td>
+</tr>
+<tr>
+<td>1218年</td>
+<td>蒙古軍攻滅西遼政權。</td>
+<td>蒙古勢力進入中亞，直接接近花剌子模帝國的勢力範圍。</td>
+</tr>
+</tbody></table>
+<p>這一時期，成吉思汗的軍隊逐步從擅長草原機動作戰的騎兵軍隊，發展成能夠運用攻城器械、工程技術及被征服地區人才的軍事力量。<a href="https://www.history.com/articles/genghis-khan?utm_source=chatgpt.com">HISTORY</a></p>
+<h3 id="金朝與西夏的位置">金朝與西夏的位置</h3>
+<ul>
+<li><strong>金朝：</strong> 女真族建立的政權，統治中國北方，是蒙古東南方向最重要的對手之一。</li>
+<li><strong>西夏：</strong> 以黨項族為核心建立的政權，位於今中國西北地區，是蒙古向西北擴張的重要對象。</li>
+<li><strong>西遼：</strong> 契丹人建立的政權，控制中亞部分地區，其滅亡使蒙古更直接地進入中亞政治舞台。</li>
+</ul>
+<p>這些戰爭讓蒙古帝國逐步掌握連接東亞與中亞的重要戰略區域。</p>
+<hr>
+<h2 id="（四）花剌子模戰爭與蒙古西征：12181224年">（四）花剌子模戰爭與蒙古西征：1218—1224年</h2>
+<p>這是成吉思汗生平中影響最深遠的軍事行動之一。</p>
+<h3 id="戰爭的起因">戰爭的起因</h3>
+<p>1218年前後，蒙古方面派遣商隊與使節前往花剌子模帝國，希望發展商業及外交關係。</p>
+<p>然而，蒙古商隊在花剌子模邊境城市訛答剌遭到扣留，商隊成員遭殺害；其後，蒙古派出的外交使節也遭遇嚴重傷害。</p>
+<p>成吉思汗認為這是對蒙古的重大挑釁，最終決定發動大規模遠征。商隊事件及使節遭遇，是戰爭爆發的重要直接原因。<a href="https://scholarworks.iu.edu/dspace/bitstreams/2d361131-d0af-4f1b-85ba-a54d54c58be7/download?utm_source=chatgpt.com">IUScholarWorks</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1218年</td>
+<td>蒙古商隊在訛答剌遭到扣留，商業與外交衝突升高。</td>
+<td>蒙古與花剌子模之間的關係急劇惡化。</td>
+</tr>
+<tr>
+<td>1218—1219年</td>
+<td>蒙古方面要求花剌子模追究相關責任，雙方關係持續緊張。</td>
+<td>外交危機逐步轉化為全面戰爭。</td>
+</tr>
+<tr>
+<td><strong>1219年</strong></td>
+<td><strong>成吉思汗親率大軍西征花剌子模帝國。</strong></td>
+<td>蒙古軍正式向中亞展開大規模征服。</td>
+</tr>
+<tr>
+<td>1219年</td>
+<td>蒙古軍攻打訛答剌。</td>
+<td>花剌子模邊境的重要城市遭到圍攻。</td>
+</tr>
+<tr>
+<td>1220年</td>
+<td>蒙古軍攻陷布哈拉與撒馬爾罕等重要城市。</td>
+<td>花剌子模的政治、經濟與軍事體系遭受重大打擊。</td>
+</tr>
+<tr>
+<td>1220年</td>
+<td>花剌子模沙穆罕默德二世逃亡，最終死於裏海附近一帶。</td>
+<td>中央政權失去主要統治者，抵抗力量逐漸分散。</td>
+</tr>
+<tr>
+<td>1220—1221年</td>
+<td>蒙古將領哲別、速不台等率軍向西追擊，進入伊朗高原及高加索周邊地區。</td>
+<td>蒙古軍的活動範圍進一步延伸至西亞與歐亞交界地帶。</td>
+</tr>
+<tr>
+<td>1221年</td>
+<td>蒙古軍攻打花剌子模的重要據點，包括玉龍傑赤等地，戰事極為激烈。</td>
+<td>花剌子模帝國的主要城市與抵抗力量受到嚴重破壞。</td>
+</tr>
+<tr>
+<td>1221—1222年</td>
+<td>成吉思汗之子拖雷等人參與呼羅珊地區的戰事。</td>
+<td>蒙古軍對中亞及伊朗東北部的控制持續擴大。</td>
+</tr>
+<tr>
+<td>1223年</td>
+<td>哲別、速不台率領的蒙古軍在卡爾卡河戰役擊敗基輔羅斯諸侯與庫曼勢力組成的聯軍。</td>
+<td>蒙古軍首次大規模進入東歐政治舞台。</td>
+</tr>
+<tr>
+<td>約1224年</td>
+<td>成吉思汗的主要西征行動告一段落，蒙古軍逐步返回東方。</td>
+<td>蒙古已在中亞建立廣大的軍事優勢與政治影響力。</td>
+</tr>
+</tbody></table>
+<h3 id="西征的重要城市與地區">西征的重要城市與地區</h3>
+<table>
+<thead>
+<tr>
+<th>地區或城市</th>
+<th>現今位置</th>
+<th>戰爭中的重要性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>訛答剌（Otrar）</td>
+<td>哈薩克斯坦南部</td>
+<td>商隊事件的發生地，也是戰爭初期的重要攻城目標。</td>
+</tr>
+<tr>
+<td>布哈拉（Bukhara）</td>
+<td>烏茲別克斯坦</td>
+<td>中亞重要的商業與宗教文化城市。</td>
+</tr>
+<tr>
+<td>撒馬爾罕（Samarkand）</td>
+<td>烏茲別克斯坦</td>
+<td>花剌子模的重要政治、軍事與經濟中心。</td>
+</tr>
+<tr>
+<td>玉龍傑赤（Gurganj）</td>
+<td>今土庫曼斯坦、烏茲別克斯坦附近的歷史區域</td>
+<td>花剌子模的重要都城之一，遭遇激烈圍城與破壞。</td>
+</tr>
+<tr>
+<td>卡爾卡河（Kalka River）</td>
+<td>今烏克蘭一帶</td>
+<td>1223年蒙古軍擊敗羅斯諸侯與庫曼聯軍的戰場。</td>
+</tr>
+</tbody></table>
+<h3 id="西征的歷史影響">西征的歷史影響</h3>
+<p>成吉思汗的西征不僅改變了中亞的政治版圖，也帶來嚴重的人口傷亡與城市破壞。</p>
+<p><strong>主要影響包括：</strong></p>
+<ol>
+<li><strong>花剌子模帝國瓦解：</strong> 中央統治體系遭到重創，原有領土被蒙古及後續繼承政權逐步控制。</li>
+<li><strong>中亞政治重組：</strong> 許多城市與地方政權被納入蒙古帝國的統治網絡。</li>
+<li><strong>東西交通格局改變：</strong> 蒙古勢力掌握部分絲綢之路的重要通道，為後來跨區域商業與人員往來創造新的政治條件。</li>
+<li><strong>戰爭與人口災難：</strong> 多地發生屠殺、破壞、人口遷徙與經濟衰退，部分灌溉與農業系統也遭受嚴重損害。</li>
+</ol>
+<p>蒙古征服帶來的交流與整合，不能抵銷戰爭造成的人道災難；兩者都是理解這段歷史不可忽略的面向。<a href="https://www.history.com/articles/genghis-khan?utm_source=chatgpt.com">HISTORY</a></p>
+<hr>
+<h2 id="（五）晚年與最後一次遠征：12251227年">（五）晚年與最後一次遠征：1225—1227年</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>約1225年</td>
+<td>成吉思汗完成主要西征行動後返回蒙古核心地區。</td>
+<td>帝國進入整頓既有征服成果與安排後續軍事行動的階段。</td>
+</tr>
+<tr>
+<td>1225—1226年</td>
+<td>蒙古與西夏之間的關係再度惡化，蒙古決定再次出兵。</td>
+<td>西夏成為成吉思汗晚年最後一場重大戰爭的對象。</td>
+</tr>
+<tr>
+<td>1226年</td>
+<td>成吉思汗率軍進攻西夏。</td>
+<td>蒙古試圖徹底消除西北方向的政治與軍事威脅。</td>
+</tr>
+<tr>
+<td>1226—1227年</td>
+<td>蒙古軍持續攻打西夏領土與重要城鎮。</td>
+<td>西夏政權遭受決定性的軍事打擊。</td>
+</tr>
+<tr>
+<td><strong>1227年</strong></td>
+<td><strong>成吉思汗在對西夏的戰爭期間去世。</strong></td>
+<td>蒙古帝國失去創建者，但其征服與擴張仍由後代繼續推進。</td>
+</tr>
+<tr>
+<td>1227年</td>
+<td>西夏政權滅亡。</td>
+<td>西夏結束近兩百年的歷史，蒙古進一步鞏固中國西北的控制。</td>
+</tr>
+</tbody></table>
+<p>成吉思汗去世的確切原因仍有爭議。不同記載涉及疾病、受傷等說法，不能將某一種傳聞視為已經完全確定的事實。他的陵墓確切位置至今也未獲普遍確認。<a href="https://www.history.com/articles/genghis-khan?utm_source=chatgpt.com">HISTORY</a></p>
+<hr>
+<h1 id="二、成吉思汗的重要制度與軍事改革">二、成吉思汗的重要制度與軍事改革</h1>
+<p>成吉思汗的歷史地位不只來自征服，也來自他將分散的草原部落整合為具有高度組織能力的帝國。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>主要內容</th>
+<th>歷史影響</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>千戶制</td>
+<td>以十戶、百戶、千戶及萬戶等層級組織軍民。</td>
+<td>強化兵員組織、軍事動員與指揮效率。</td>
+</tr>
+<tr>
+<td>軍事指揮</td>
+<td>依據統治者的命令與軍事編制調度兵力。</td>
+<td>降低傳統部族各自為政造成的協調問題。</td>
+</tr>
+<tr>
+<td>人才任用</td>
+<td>重用具有軍事、行政或專業能力的人才。</td>
+<td>使蒙古帝國得以吸收不同部族與被征服地區的人力資源。</td>
+</tr>
+<tr>
+<td>騎兵戰術</td>
+<td>運用騎射、快速機動、迂迴包抄及佯退等戰術。</td>
+<td>使蒙古軍能夠在廣闊草原與多種地形中保持作戰優勢。</td>
+</tr>
+<tr>
+<td>圍城技術</td>
+<td>吸收並運用被征服地區的工匠、工程人才與攻城技術。</td>
+<td>提升蒙古軍攻擊城市、堡壘及定居國家的能力。</td>
+</tr>
+<tr>
+<td>法律與紀律</td>
+<td>強調軍令、統治秩序與服從規範，相關傳統常與「大札撒」聯繫。</td>
+<td>有助於維持軍事組織與帝國統治，但具體法典內容及形式仍有史料爭議。</td>
+</tr>
+<tr>
+<td>宗教政策</td>
+<td>在不同時期與地區，對多種宗教群體採取一定程度的容忍與實用性安排。</td>
+<td>有利於統治宗教、文化背景不同的族群，但實際政策並非處處一致。</td>
+</tr>
+<tr>
+<td>商業與交通</td>
+<td>重視商隊、使節及交通網絡對帝國運作的作用。</td>
+<td>為後來蒙古統治時期的跨區域貿易與交流奠定部分基礎。</td>
+</tr>
+</tbody></table>
+<p>需要注意的是，蒙古帝國後來形成的驛站、行政制度與跨歐亞交通網絡，有不少是在成吉思汗的後繼者統治下進一步發展的，不應全部歸功於成吉思汗個人。<a href="https://afe.easia.columbia.edu/mongols/pop/genghis/genghis_pop.htm?utm_source=chatgpt.com">East Asia Forum</a></p>
+<hr>
+<h1 id="三、成吉思汗與世界歷史的關係">三、成吉思汗與世界歷史的關係</h1>
+<h2 id="1-與中國歷史的關係">1. 與中國歷史的關係</h2>
+<p>成吉思汗在位期間，蒙古帝國主要與金朝及西夏交戰。</p>
+<ul>
+<li><strong>1209年：</strong> 西夏接受蒙古的臣服條件。</li>
+<li><strong>1211年：</strong> 蒙古開始大規模進攻金朝。</li>
+<li><strong>1215年：</strong> 蒙古軍攻陷金朝中都。</li>
+<li><strong>1227年：</strong> 西夏滅亡。</li>
+</ul>
+<p>但成吉思汗本人並未完成對整個中國的征服。蒙古滅金的戰爭在他死後繼續進行，南宋也直到後來才被蒙古帝國的繼承政權征服。蒙古帝國後來的中國統治與元朝建立，主要與其孫子忽必烈有關。</p>
+<h2 id="2-與中亞及伊斯蘭世界的關係">2. 與中亞及伊斯蘭世界的關係</h2>
+<p>花剌子模戰爭使蒙古軍隊進入中亞與伊朗東北部，重創當地原有的政治秩序。</p>
+<p>這場戰爭也使蒙古帝國與伊斯蘭世界的關係發生重大變化。其後，蒙古帝國不同支系在中亞、伊朗及其他地區建立各自的統治體系，逐漸發展出不同的政治與文化特色。</p>
+<h2 id="3-與歐洲歷史的關係">3. 與歐洲歷史的關係</h2>
+<p>1223年，蒙古軍在卡爾卡河戰役擊敗羅斯諸侯與庫曼聯軍，顯示其軍事活動已經延伸至東歐。</p>
+<p>不過，這並不代表成吉思汗已經征服歐洲。蒙古大規模入侵東歐與中歐的行動，主要發生於他去世後的1230至1240年代，由拔都、速不台等人率軍推進。</p>
+<h2 id="4-與全球交流史的關係">4. 與全球交流史的關係</h2>
+<p>成吉思汗建立的帝國，為後來歐亞大陸大範圍的政治整合創造了條件。</p>
+<p>在蒙古帝國及其後繼政權統治下，商人、使節、工匠、宗教人士與技術人才得以在部分地區之間移動，促進了商品、知識與文化的交流。</p>
+<p>但這種交流並不是毫無代價的和平繁榮：戰爭、人口損失、強制遷徙與經濟破壞，同樣是蒙古擴張歷史的重要組成部分。<a href="https://education.nationalgeographic.org/resource/mongol-khans/?utm_source=chatgpt.com">National Geographic Education</a></p>
+<hr>
+<h1 id="四、成吉思汗生平的重要年份速查表">四、成吉思汗生平的重要年份速查表</h1>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>事件</th>
+<th>關鍵字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1162年</td>
+<td>傳統說法中的出生年份</td>
+<td>鐵木真</td>
+</tr>
+<tr>
+<td>約1170—1171年</td>
+<td>父親也速該去世</td>
+<td>家族危機</td>
+</tr>
+<tr>
+<td>約1180年代</td>
+<td>與王汗等人建立政治與軍事聯盟</td>
+<td>聯盟</td>
+</tr>
+<tr>
+<td>1201年</td>
+<td>札木合被推舉為古兒汗</td>
+<td>草原爭霸</td>
+</tr>
+<tr>
+<td>1202年</td>
+<td>擊敗塔塔兒部</td>
+<td>部落征服</td>
+</tr>
+<tr>
+<td>1203年</td>
+<td>擊敗克烈部王汗</td>
+<td>勢力擴張</td>
+</tr>
+<tr>
+<td>1204年</td>
+<td>擊敗乃蠻部太陽汗</td>
+<td>統一蒙古</td>
+</tr>
+<tr>
+<td><strong>1206年</strong></td>
+<td><strong>正式稱成吉思汗，蒙古帝國建立</strong></td>
+<td><strong>帝國創建</strong></td>
+</tr>
+<tr>
+<td>1209年</td>
+<td>西夏接受蒙古臣服條件</td>
+<td>西北擴張</td>
+</tr>
+<tr>
+<td>1211年</td>
+<td>大舉進攻金朝</td>
+<td>蒙金戰爭</td>
+</tr>
+<tr>
+<td>1215年</td>
+<td>攻陷金朝中都</td>
+<td>華北戰事</td>
+</tr>
+<tr>
+<td>1218年</td>
+<td>西遼政權滅亡</td>
+<td>進入中亞</td>
+</tr>
+<tr>
+<td><strong>1219年</strong></td>
+<td><strong>開始大規模西征花剌子模</strong></td>
+<td><strong>蒙古西征</strong></td>
+</tr>
+<tr>
+<td>1220年</td>
+<td>布哈拉、撒馬爾罕遭蒙古軍攻陷</td>
+<td>中亞征服</td>
+</tr>
+<tr>
+<td>1223年</td>
+<td>卡爾卡河戰役</td>
+<td>進入東歐</td>
+</tr>
+<tr>
+<td>約1225年</td>
+<td>返回蒙古核心地區</td>
+<td>整頓帝國</td>
+</tr>
+<tr>
+<td>1226年</td>
+<td>再次進攻西夏</td>
+<td>最後遠征</td>
+</tr>
+<tr>
+<td><strong>1227年</strong></td>
+<td><strong>成吉思汗去世，西夏滅亡</strong></td>
+<td><strong>晚年與遺產</strong></td>
+</tr>
+</tbody></table>
+<p>資料參考：哥倫比亞大學「蒙古人在世界歷史中的地位」、大英百科全書相關歷史資料的二手整理，以及《伊朗百科全書》與聯合國教科文組織絲綢之路研究資料。<a href="https://www.iranicaonline.org/articles/cengiz-khan/?utm_source=chatgpt.com">Iranica Online</a></p>
+<hr>
+<h1 id="五、成吉思汗的歷史評價">五、成吉思汗的歷史評價</h1>
+<p>成吉思汗是一位具有巨大歷史影響力、同時也伴隨極大破壞性的人物。</p>
+<h3 id="主要歷史成就">主要歷史成就</h3>
+<ul>
+<li>結束蒙古高原主要部落長期分裂的局面。</li>
+<li>建立具有高度軍事組織能力的蒙古帝國。</li>
+<li>推動蒙古勢力向東亞、中亞及東歐擴張。</li>
+<li>為後來跨越歐亞大陸的政治整合、交通與商業交流創造條件。</li>
+</ul>
+<h3 id="主要爭議與負面影響">主要爭議與負面影響</h3>
+<ul>
+<li>征服戰爭造成大量平民死亡。</li>
+<li>許多城市遭到攻陷、掠奪或破壞。</li>
+<li>部分地區的農業、灌溉及商業活動受到嚴重衝擊。</li>
+<li>蒙古帝國的擴張伴隨強制遷徙、人口流動與社會秩序重組。</li>
+</ul>
+<p><strong>總結而言，成吉思汗不只是軍事征服者，也是蒙古帝國的制度奠基者。</strong> 他在短短數十年間改變了蒙古高原、中國北方、中亞及東歐部分地區的政治格局。若要理解他的歷史地位，既要看到他整合草原力量與建立帝國的能力，也必須正視征服戰爭造成的人口傷亡和文明破壞。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

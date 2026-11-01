@@ -1,0 +1,697 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="李鴻章生平大事記：從淮軍統帥到晚清外交重臣">李鴻章生平大事記：從淮軍統帥到晚清外交重臣</h1>
+<p><strong>李鴻章（1823年2月15日－1901年11月7日）</strong>，字少荃，亦作子黻、漸甫，號儀叟，安徽合肥人，諡號文忠，是晚清最具影響力的政治家、軍事統帥與外交人物之一。他與曾國藩、左宗棠、張之洞並列為晚清重要的中興大臣。</p>
+<p>李鴻章早年透過科舉進入清朝官僚體系，後來追隨曾國藩參與鎮壓太平天國，並以淮軍統帥的身分崛起。太平天國戰爭結束後，他逐步成為洋務運動的重要領導者，推動近代軍事工業、電報、鐵路、採礦與海軍建設。</p>
+<p>然而，李鴻章最受後世關注的，往往是他所處理的重大外交危機，包括日本侵臺、朝鮮問題、中法戰爭、甲午戰爭與義和團事件。他曾代表清廷簽訂《馬關條約》與《辛丑條約》，因而長期承受割地、賠款與外交妥協的歷史責任。</p>
+<p>評價李鴻章，必須同時考察他的改革努力、軍事建設、外交手腕，以及清朝政治制度的限制。<strong>他既是晚清近代化的重要推動者，也是清朝在國際競爭中屢遭挫敗的核心決策人物之一。</strong> <a href="https://www.ehanlin.com.tw/app/keyword/%E5%9C%8B%E4%B8%AD/%E6%AD%B7%E5%8F%B2/%E6%9D%8E%E9%B4%BB%E7%AB%A0.html?utm_source=chatgpt.com">翰林雲端學院 - 線上學習首選 - 免費試用小中高課程</a></p>
+<p>以下依照年代，詳細整理李鴻章從早年求學、科舉入仕、建立淮軍、推動洋務運動，到甲午戰爭、簽訂《辛丑條約》及去世的生平大事，並補充重要事件的背景與歷史意義。</p>
+<hr>
+<h1 id="一、早年成長與科舉入仕（18231850年）">一、早年成長與科舉入仕（1823—1850年）</h1>
+<h2 id="1823年｜出生於安徽合肥">1823年｜出生於安徽合肥</h2>
+<ul>
+<li><strong>公曆：</strong> 1823年2月15日。</li>
+<li><strong>清朝年號：</strong> 道光三年。</li>
+<li><strong>出生地：</strong> 安徽省合肥縣，今安徽省合肥市一帶。</li>
+<li><strong>字：</strong> 少荃，亦有子黻、漸甫等字的記載。</li>
+<li><strong>號：</strong> 儀叟。</li>
+<li><strong>諡號：</strong> 文忠。</li>
+<li><strong>父親：</strong> 李文安，清朝官員。</li>
+</ul>
+<p>李鴻章出生於安徽合肥的地方士紳家庭。父親李文安透過科舉取得功名，家族重視傳統儒學教育，也希望子弟藉由科舉進入官僚體系。</p>
+<p>李鴻章自幼接受經史教育，逐步建立傳統士人的知識基礎。</p>
+<p>不過，與後來的政治生涯相比，他的早年並沒有特別突出的軍事經歷。他最初的人生道路，是典型的清代讀書人透過科舉進入官場的發展模式。</p>
+<h2 id="1840年｜考取秀才">1840年｜考取秀才</h2>
+<p>李鴻章取得秀才資格，正式進入科舉士人的行列。</p>
+<p>當時，科舉是清朝選拔官員的重要制度。秀才雖然還不能直接進入高級官僚體系，但已經取得繼續參加鄉試、會試等考試的資格。</p>
+<p>對李鴻章而言，這是他日後取得更高功名的重要起點。</p>
+<h2 id="1843年｜取得優貢資格">1843年｜取得優貢資格</h2>
+<p>李鴻章在科舉與地方教育體系中繼續發展，取得優貢資格。</p>
+<p>這段時間，他持續準備更高層級的考試，也開始接觸更廣泛的士人網絡。</p>
+<h2 id="1845年｜赴京應試，與曾國藩建立師生關係">1845年｜赴京應試，與曾國藩建立師生關係</h2>
+<p>李鴻章前往北京準備會試，並透過師友關係拜入曾國藩門下。</p>
+<p>曾國藩當時已經是受到重視的官員與儒學人物，重視經世致用，也就是不只研究經典義理，更要思考如何將知識應用於行政、軍事與國家治理。</p>
+<p>曾國藩對李鴻章的影響，後來遠遠超出一般的學術師生關係。</p>
+<p>當太平天國運動爆發後，李鴻章轉向軍事與地方行政工作，曾國藩的支持與提攜，成為他建立淮軍的重要條件。</p>
+<h2 id="1847年｜考中進士，進入翰林院">1847年｜考中進士，進入翰林院</h2>
+<p><strong>重大事件：李鴻章取得進士資格，進入清朝中央官僚體系。</strong></p>
+<p>1847年，李鴻章考中進士，之後進入翰林院任職。</p>
+<p>這是他從地方士人轉變為正式官員的重要階段。</p>
+<p>翰林院是清朝重要的文職與學術機構，許多官員透過在此任職，逐步進入中央政治核心。</p>
+<p>李鴻章早期的仕途以文職為主，當時尚未展現後來統帥淮軍、處理外交危機的角色。</p>
+<h2 id="18471850年｜在北京任職">1847—1850年｜在北京任職</h2>
+<p>李鴻章持續在中央官僚體系中累積經驗，熟悉奏摺、公文與行政程序。</p>
+<p>這些經驗後來成為他的重要優勢。</p>
+<p>李鴻章不僅需要在戰場上調度軍隊，也經常必須處理財政、軍需、官員任命、外交談判與政策執行等複雜事務。</p>
+<p>他早年累積的公文處理能力與行政經驗，對其日後的政治生涯具有重要影響。</p>
+<h2 id="1850年｜太平天國運動爆發">1850年｜太平天國運動爆發</h2>
+<p>1850年前後，洪秀全領導的拜上帝會逐漸發展，並於1851年正式建立太平天國。</p>
+<p>太平天國以反清為政治目標，迅速發展成為威脅清朝統治的大規模軍事力量。</p>
+<p>清朝原有的軍事體系難以迅速應付這場戰爭，各地官員開始組織團練，利用地方士紳、民間武裝與區域資源補充正規軍。</p>
+<p>這場內戰將徹底改變李鴻章的人生，使他從文官轉變為軍事領袖，並為他日後成為晚清重臣創造條件。</p>
+<hr>
+<h1 id="二、從文官轉向軍事：淮軍的崛起（18531864年）">二、從文官轉向軍事：淮軍的崛起（1853—1864年）</h1>
+<h2 id="1853年｜奉命回鄉辦理團練">1853年｜奉命回鄉辦理團練</h2>
+<p>太平天國勢力持續擴張，安徽及周邊地區戰事頻繁。</p>
+<p>李鴻章奉命回鄉協助辦理團練，開始參與地方軍事事務。</p>
+<p>然而，早期的李鴻章缺乏成熟的軍事指揮經驗，在戰事中並非屢戰屢勝。</p>
+<p>這段經歷使他逐步認識到，軍事行動除了需要勇氣與紀律，也需要情報、補給、戰略部署，以及對地方社會與政治情勢的理解。</p>
+<h2 id="1858年｜進入曾國藩幕府">1858年｜進入曾國藩幕府</h2>
+<p>李鴻章在軍事活動中遭遇困難後，進入曾國藩幕府，協助處理軍政公文與行政事務。</p>
+<p>曾國藩此時正在組織湘軍，努力建立一支能夠長期作戰的軍事力量。</p>
+<p>李鴻章在幕府中負責公文、奏摺、軍政協調等工作，逐漸展現出行政能力與處理複雜事務的才幹。</p>
+<p>他在曾國藩幕府的經歷，使自己從缺乏經驗的地方軍事參與者，逐漸成長為能夠處理軍政事務的重要人物。</p>
+<h2 id="1861年｜開始籌組淮軍">1861年｜開始籌組淮軍</h2>
+<p>太平天國在長江流域持續擴張，清廷與地方官員面臨極大壓力。</p>
+<p>曾國藩支持李鴻章返回安徽，組織以淮河流域及安徽地方武裝為基礎的新軍。</p>
+<p>這支軍隊後來被稱為<strong>淮軍</strong>。</p>
+<p>淮軍最初依靠地方團練與士紳網絡招募兵員，之後逐漸發展成具有較完整指揮體系的軍事組織。</p>
+<p>與傳統清軍相比，淮軍更重視地方將領的指揮權，也逐步吸收西方槍炮與軍事技術。</p>
+<p>淮軍的形成，是李鴻章政治生涯的重要轉折點。</p>
+<h2 id="1862年｜率淮軍赴上海，建立軍事聲望">1862年｜率淮軍赴上海，建立軍事聲望</h2>
+<p><strong>重大事件：李鴻章率淮軍前往上海，成為晚清重要軍事領袖。</strong></p>
+<p>1862年，李鴻章率領淮軍前往上海，協助清廷抵抗太平軍。</p>
+<p>上海當時已是重要的通商口岸，具有商業、財政與交通上的戰略價值。</p>
+<p>清廷、地方士紳及外國勢力都不希望上海落入太平軍之手，因此淮軍的到來具有重大意義。</p>
+<p>李鴻章逐步改善淮軍的裝備與訓練，並利用上海的特殊環境接觸西方軍事技術。</p>
+<p>當時，上海周邊也有由外國人參與組織的武裝力量，常被稱為「常勝軍」。淮軍與這些部隊曾在特定戰事中合作，但彼此的組織、指揮體系與政治目的並不完全相同。</p>
+<h3 id="歷史意義">歷史意義</h3>
+<ol>
+<li><strong>淮軍逐漸成為重要的地方軍事力量。</strong></li>
+<li><strong>李鴻章開始掌握更大的軍事與政治權力。</strong></li>
+<li><strong>上海成為清朝接觸西方軍事技術的重要窗口。</strong></li>
+<li><strong>地方軍事組織與近代化武器的結合，逐漸改變晚清的軍事格局。</strong></li>
+</ol>
+<h2 id="1863年｜淮軍在江南地區持續作戰">1863年｜淮軍在江南地區持續作戰</h2>
+<p>淮軍與湘軍等清軍部隊持續進攻太平天國控制的城鎮。</p>
+<p>李鴻章逐步擴大淮軍的規模與影響力，並利用軍事勝利鞏固自己在清廷中的地位。</p>
+<p>不過，戰爭中的勝利也伴隨嚴重的社會破壞。</p>
+<p>江南地區人口密集、經濟發達，長期戰亂使城市、農村與商業活動遭受重大損失。</p>
+<h2 id="1863年｜蘇州之戰與殺降爭議">1863年｜蘇州之戰與殺降爭議</h2>
+<p>淮軍與相關清軍部隊攻取蘇州，這是太平天國在江南的重要據點。</p>
+<p>蘇州陷落後，發生涉及降將被殺的重大爭議事件。</p>
+<p>此事與常勝軍將領戈登等人的衝突密切相關，也長期影響李鴻章的歷史評價。</p>
+<p>它反映出晚清戰爭中一個重要問題：在軍事勝利、將領承諾與政治考量互相衝突時，統帥如何處理投降者的命運。</p>
+<p>這件事也提醒我們，李鴻章的軍事成就不能只以攻城略地來衡量，還必須考察其作戰決策與戰爭倫理。</p>
+<h2 id="1864年｜天京陷落，太平天國中央政權覆滅">1864年｜天京陷落，太平天國中央政權覆滅</h2>
+<p>1864年，曾國藩所率湘軍攻陷天京，太平天國的中央政權宣告覆滅。</p>
+<p>李鴻章及其淮軍在江南戰場的作戰，對清廷平定太平天國具有重要貢獻。</p>
+<p>然而，天京陷落並不代表所有反清武裝都立即消失，清廷仍然需要面對其他地區的軍事問題。</p>
+<p>太平天國戰爭結束後，李鴻章的政治地位大幅提升，也開始將更多精力投入地方治理、軍事建設與洋務事業。</p>
+<hr>
+<hr>
+<h1 id="三、平定捻軍與成為晚清重臣（18651870年）">三、平定捻軍與成為晚清重臣（1865—1870年）</h1>
+<h2 id="1865年｜奉命參與剿滅捻軍">1865年｜奉命參與剿滅捻軍</h2>
+<p>太平天國中央政權覆滅後，清朝仍面臨捻軍的威脅。</p>
+<p>捻軍主要活動於安徽、河南、山東、江蘇等地，具有高度機動性，能夠迅速轉移，讓清軍難以透過傳統的城市攻防戰將其消滅。</p>
+<p>李鴻章受命參與剿捻事務，開始將淮軍的作戰經驗運用於新的戰場。</p>
+<p>與攻打太平天國控制的城市相比，捻軍戰爭更加考驗情報、騎兵機動能力、補給與跨地區協同。</p>
+<h2 id="1866年｜捻軍分裂，清軍調整作戰策略">1866年｜捻軍分裂，清軍調整作戰策略</h2>
+<p>捻軍內部逐漸分化，形成不同的軍事集團，清廷則持續調整作戰部署。</p>
+<p>李鴻章與其他清軍將領共同參與對捻軍的作戰，試圖限制其活動範圍，並破壞其補給與組織網絡。</p>
+<p>這段時期顯示，晚清的內戰已不只是單純的城市爭奪，而是涉及廣大區域、人口流動與地方社會秩序的長期衝突。</p>
+<h2 id="1867年｜擔任湖廣總督，繼續參與剿捻">1867年｜擔任湖廣總督，繼續參與剿捻</h2>
+<p>李鴻章於1867年升任湖廣總督，後續仍參與剿捻軍事事務。</p>
+<p>捻軍戰事持續考驗清廷的軍事指揮能力，也使李鴻章更加重視軍隊機動、火器裝備與地方行政的配合。</p>
+<p>李鴻章並非單獨完成剿捻事業，曾國藩及其他清軍將領也在不同階段參與相關部署。</p>
+<h2 id="1868年｜捻軍主要勢力被平定">1868年｜捻軍主要勢力被平定</h2>
+<p>至1868年，東捻軍、西捻軍的主要勢力相繼被清軍擊敗。</p>
+<p>清廷重新取得部分華北與中原地區的控制權，李鴻章也因軍功進一步獲得朝廷重用。</p>
+<p>不過，太平天國與捻軍戰爭對人口、農業與地方財政造成的破壞，仍需要很長時間才能恢復。</p>
+<h3 id="這一階段的歷史意義">這一階段的歷史意義</h3>
+<p>李鴻章在平定太平天國與捻軍的過程中，逐漸建立自己的政治與軍事網絡。</p>
+<p>這些經驗使他不再只是曾國藩所提攜的部屬，而是逐步成為能夠獨立掌握軍隊、地方行政與中央政治資源的晚清重臣。</p>
+<hr>
+<h1 id="四、出任直隸總督與洋務運動的發展（18701883年）">四、出任直隸總督與洋務運動的發展（1870—1883年）</h1>
+<h2 id="1870年｜天津教案爆發，李鴻章出任直隸總督">1870年｜天津教案爆發，李鴻章出任直隸總督</h2>
+<p><strong>重大事件：天津教案與李鴻章政治地位的提升。</strong></p>
+<p>1870年，天津發生涉及天主教堂、修女與幼童死亡的重大衝突。民間對教會活動的疑慮與流言迅速擴大，最終演變為暴力事件，多名外國人與中國人死亡。</p>
+<p>事件發生後，清廷面臨法國等外國勢力的強烈外交壓力。</p>
+<p>曾國藩奉命查辦天津教案，但因外交處置引發爭議，後來由李鴻章接任直隸總督。</p>
+<p>直隸是北京周邊的重要行政區域，直隸總督的職位具有極高的政治與戰略地位。</p>
+<p>李鴻章此後長期掌握北方軍政與外交事務，成為清廷處理外國交涉的重要人物。</p>
+<h3 id="歷史意義-1">歷史意義</h3>
+<ol>
+<li>李鴻章的政治地位進一步提升。</li>
+<li>清廷更加依賴熟悉軍事與外交事務的地方大員。</li>
+<li>天津教案反映出傳教活動、外國特權與地方社會之間的嚴重矛盾。</li>
+</ol>
+<h2 id="1871年｜推動北方軍政與外交事務">1871年｜推動北方軍政與外交事務</h2>
+<p>李鴻章在直隸總督任內，逐步將軍事、行政與外交事務結合處理。</p>
+<p>當時，清朝與列強的關係十分複雜，外國勢力透過條約取得通商、領事保護與其他權利。</p>
+<p>地方官員必須在維持社會秩序、回應外國要求與維護清廷權威之間尋求平衡。</p>
+<p>李鴻章長期處理這類事務，逐漸成為清朝最重要的外交決策人物之一。</p>
+<h2 id="1872年｜參與推動幼童赴美留學">1872年｜參與推動幼童赴美留學</h2>
+<p>李鴻章支持學習西方知識、培養近代人才的政策。</p>
+<p>1872年，清廷開始分批派遣幼童赴美留學，這項計畫與曾國藩、容閎等人的倡議及推動密切相關。</p>
+<p>留美幼童計畫的目標，是讓年輕學生學習西方語言、科學、工程與其他知識，為中國培養近代化所需的人才。</p>
+<p>這項計畫後來受到保守勢力與政治環境變化的影響，未能完全按照原先設想持續發展。</p>
+<p>但它仍是晚清教育與人才培養史上的重要嘗試。</p>
+<h2 id="1874年｜日本出兵臺灣">1874年｜日本出兵臺灣</h2>
+<p><strong>重大事件：日本出兵臺灣，清日關係進一步緊張。</strong></p>
+<p>1874年，日本以琉球漂流民在臺灣遇害為由，出兵臺灣南部。</p>
+<p>這次事件涉及琉球的政治地位、臺灣原住民族地區的管轄，以及清朝與日本對東亞秩序的不同理解。</p>
+<p>清廷經過交涉，最終與日本達成協議，支付款項，日軍撤離臺灣。</p>
+<p>這場事件顯示，日本在明治維新後正積極擴張對外影響力，清朝則開始面臨來自日本日益增大的戰略壓力。</p>
+<p>李鴻章在此後處理對日外交時，必須同時考量臺灣、琉球與朝鮮等問題。</p>
+<h2 id="1875年｜推動海防建設">1875年｜推動海防建設</h2>
+<p>1874年日本出兵臺灣後，清廷對海防問題的重視程度提高。</p>
+<p>李鴻章等官員主張強化海軍、建造軍艦、修築軍港，並引進西方軍事技術。</p>
+<p>當時，清朝內部對於國防資源應優先用於海防還是陸防，仍存在不同意見。</p>
+<p>李鴻章認為，沿海地區、通商口岸與長江流域的安全，必須依靠現代化海軍及相應的軍事工業。</p>
+<p>這種主張成為他日後推動北洋海軍建設的重要思想基礎。</p>
+<h2 id="1876年｜簽訂《煙臺條約》">1876年｜簽訂《煙臺條約》</h2>
+<p>1876年，清廷與英國簽訂《煙臺條約》，處理馬嘉理事件及相關外交問題。</p>
+<p>這項條約涉及外交道歉、賠款與通商等事項，也反映出英國利用外交與軍事優勢，要求清廷作出讓步的情況。</p>
+<p>李鴻章在晚清外交體系中日益受到重用，之後更頻繁參與處理重大涉外事件。</p>
+<h2 id="1878年｜開平礦務局創辦">1878年｜開平礦務局創辦</h2>
+<p>李鴻章支持發展近代採礦業，開平礦務局於1878年前後開始創辦。</p>
+<p>煤炭是蒸汽機、鐵路與近代工業的重要能源。</p>
+<p>發展煤礦不僅能夠供應工業生產，也能支援軍事與交通建設，減少對外國能源供應的依賴。</p>
+<p>開平礦務局的發展，反映出洋務運動逐漸從軍事工業擴展到民用企業與基礎產業。</p>
+<h2 id="1880年｜加強電報建設">1880年｜加強電報建設</h2>
+<p>李鴻章支持建立近代電報系統。</p>
+<p>電報能夠大幅縮短訊息傳遞時間，對軍事指揮、商業活動與行政管理都具有重要作用。</p>
+<p>在傳統交通與通信條件下，中央政府難以及時掌握遠方戰事與地方情況。</p>
+<p>電報網絡的建立，則有助於清廷更快速地傳遞命令、處理外交事件與協調各地軍事行動。</p>
+<h2 id="1881年｜天津至上海電報線完成">1881年｜天津至上海電報線完成</h2>
+<p>天津至上海的電報線於1881年完成重要建設，之後逐步提供通信服務。</p>
+<p>這是中國近代通信史上的重要進展。</p>
+<p>電報系統的發展，也與李鴻章支持的近代企業、軍事建設及商業改革密切相關。</p>
+<h2 id="1882年｜朝鮮壬午兵變">1882年｜朝鮮壬午兵變</h2>
+<p>1882年，朝鮮發生壬午兵變，朝鮮內部政治矛盾與對外關係問題進一步惡化。</p>
+<p>清朝派兵介入，並加強對朝鮮事務的影響力。</p>
+<p>李鴻章是清廷處理朝鮮問題的重要決策者之一。</p>
+<p>當時，日本也積極擴大在朝鮮的政治影響，清日兩國在朝鮮問題上的競爭日益激烈。</p>
+<p>朝鮮問題後來成為1894年甲午戰爭的重要背景之一。</p>
+<h2 id="1883年｜中法關係日益緊張">1883年｜中法關係日益緊張</h2>
+<p>法國逐步擴張在越南的影響力，並試圖進一步控制越南及周邊地區。</p>
+<p>清朝傳統上將越南視為朝貢體系的一部分，因此法國的行動引起清廷不滿。</p>
+<p>李鴻章必須在軍事準備與外交談判之間尋求平衡。</p>
+<p>然而，清朝的軍事與財政能力仍有許多限制，外交妥協也不一定能夠阻止列強繼續擴張。</p>
+<hr>
+<h1 id="五、中法戰爭與北洋海軍的建立（18841893年）">五、中法戰爭與北洋海軍的建立（1884—1893年）</h1>
+<h2 id="1884年｜中法戰爭爆發">1884年｜中法戰爭爆發</h2>
+<p><strong>重大事件：清朝與法國在越南及中國東南沿海發生戰爭。</strong></p>
+<p>中法戰爭的核心問題，是法國企圖擴張對越南的控制，而清朝則希望維持自身在越南及周邊地區的傳統影響力。</p>
+<p>戰爭期間，清軍與法軍在越南、廣西、臺灣及中國東南沿海等地發生衝突。</p>
+<p>清朝雖然在部分陸上戰事中取得成果，但整體軍事與外交形勢並不理想。</p>
+<p>這場戰爭顯示，洋務運動雖然引進西方技術，卻尚未使清朝建立足以在各個戰場與西方列強全面抗衡的軍事體系。</p>
+<h2 id="1885年｜簽訂《中法新約》">1885年｜簽訂《中法新約》</h2>
+<p>1885年，清朝與法國簽訂《中法新約》，承認法國在越南的保護權與相關安排。</p>
+<p>清朝對越南的傳統宗主權實質上受到重大削弱。</p>
+<p>李鴻章參與相關外交交涉，但這項條約的形成涉及清廷多方決策，不能將全部責任單獨歸於一人。</p>
+<p>中法戰爭及其後的外交安排，反映出清朝在面對列強時，軍事力量、外交策略與國家制度之間存在嚴重落差。</p>
+<h2 id="1885年｜天津設立武備學堂">1885年｜天津設立武備學堂</h2>
+<p>李鴻章支持近代軍事教育，天津武備學堂於1885年前後設立。</p>
+<p>近代軍事學堂旨在培養具有新式軍事知識的軍官，學習內容包括戰術、操練、測繪與相關技術。</p>
+<p>這類教育機構是晚清軍事改革的一部分，也反映出李鴻章不只重視武器採購，還希望培養能夠操作與管理近代軍隊的人才。</p>
+<h2 id="1888年｜北洋海軍正式成軍">1888年｜北洋海軍正式成軍</h2>
+<p><strong>重大事件：北洋海軍正式建立。</strong></p>
+<p>李鴻章長期推動海軍建設，北洋海軍於1888年正式成軍，成為清朝近代海軍的重要核心。</p>
+<p>北洋海軍擁有定遠、鎮遠等大型軍艦，並建立相應的軍官、港口與訓練體系。</p>
+<p>它曾被視為亞洲較具實力的近代海軍之一。</p>
+<h3 id="北洋海軍的歷史意義">北洋海軍的歷史意義</h3>
+<ol>
+<li><strong>海軍建設邁入制度化階段：</strong> 清朝開始以較完整的編制建立近代海軍。</li>
+<li><strong>軍事技術逐步近代化：</strong> 引進西式軍艦、火炮與相關訓練。</li>
+<li><strong>海防思想發生變化：</strong> 清廷更加重視海上交通與沿海安全。</li>
+<li><strong>為甲午戰爭埋下重要伏筆：</strong> 海軍的實際戰力仍取決於訓練、維修、彈藥、指揮與財政供應，而不只是軍艦數量。</li>
+</ol>
+<p>北洋海軍的建立是洋務運動的重要成就，但其後的衰弱也暴露出晚清軍事改革的深層限制。</p>
+<h2 id="18891893年｜北洋海軍與洋務事業持續發展">1889—1893年｜北洋海軍與洋務事業持續發展</h2>
+<p>這一時期，李鴻章持續處理海軍建設、外交事務與近代企業發展。</p>
+<p>然而，清廷財政資源有限，軍事支出還必須與其他政府開支競爭。</p>
+<p>此外，近代化並不只是購買武器，也需要穩定的維修體系、彈藥供應、專業人才、戰術訓練與有效的指揮制度。</p>
+<p>北洋海軍在這些方面存在不同程度的問題。</p>
+<p>甲午戰爭爆發後，這些限制將在戰場上更加明顯地暴露出來。</p>
+<hr>
+<h1 id="六、甲午戰爭與《馬關條約》（18941895年）">六、甲午戰爭與《馬關條約》（1894—1895年）</h1>
+<h2 id="1894年｜朝鮮東學黨之亂與清日關係惡化">1894年｜朝鮮東學黨之亂與清日關係惡化</h2>
+<p>1894年，朝鮮爆發東學黨之亂，朝鮮政府向清朝請求出兵協助平亂。</p>
+<p>清朝派兵進入朝鮮，日本也隨即出兵，雙方在朝鮮半島的軍事存在迅速增加。</p>
+<p>當時，清朝與日本都希望擴大或維持自己在朝鮮的政治影響力。兩國雖曾就朝鮮問題進行交涉，但最終未能避免戰爭。</p>
+<p>李鴻章長期負責處理朝鮮事務，對日本的軍事與外交動向有所掌握。然而，清廷內部對日本實力的判斷、是否應該開戰，以及如何進行戰爭準備，並沒有完全一致的看法。</p>
+<h2 id="1894年7月｜甲午戰爭爆發">1894年7月｜甲午戰爭爆發</h2>
+<p><strong>重大事件：清朝與日本正式進入戰爭狀態。</strong></p>
+<p>1894年夏季，清日雙方在朝鮮及黃海一帶發生軍事衝突，戰爭全面展開。</p>
+<p>清朝原本期待憑藉北洋海軍與陸軍力量遏止日本，但戰爭發展很快超出清廷預期。</p>
+<p>日本在明治維新後，持續推動軍事、教育、工業與行政改革，逐漸建立較具組織能力的近代軍隊。</p>
+<p>相較之下，清朝雖然引進西式武器，卻受到軍事指揮分散、後勤不穩、財政不足與制度改革不完整等因素限制。</p>
+<h3 id="李鴻章在甲午戰爭中的角色">李鴻章在甲午戰爭中的角色</h3>
+<p>李鴻章是北洋海軍的主要建設者，也是清廷處理對日外交的重要官員。</p>
+<p>他傾向避免與日本進行全面戰爭，希望透過外交手段維持朝鮮局勢。</p>
+<p>然而，戰爭一旦爆發，他便必須承擔北洋海軍與相關軍事部署的責任。</p>
+<p>因此，甲午戰爭既是對李鴻章外交判斷的考驗，也是對其多年軍事建設成果的檢驗。</p>
+<h2 id="1894年9月｜黃海海戰">1894年9月｜黃海海戰</h2>
+<p>黃海海戰是甲午戰爭中的重要海戰。</p>
+<p>北洋海軍與日本聯合艦隊在黃海交戰，雙方均遭受損失。</p>
+<p>這場海戰沒有使北洋海軍立即完全覆滅，但清朝海軍在此後逐漸失去主動權，部分軍艦受損，作戰能力受到影響。</p>
+<p>黃海海戰也暴露出軍艦性能、火炮使用、射擊訓練、指揮與海軍制度等方面的問題。</p>
+<h2 id="1894年末｜清軍在陸上戰場持續失利">1894年末｜清軍在陸上戰場持續失利</h2>
+<p>日本軍隊逐步向遼東半島與中國東北地區推進，清軍在多處戰場遭遇失敗。</p>
+<p>清朝的軍事防線逐漸崩潰，李鴻章所掌握的北洋軍事力量面臨嚴重危機。</p>
+<p>甲午戰爭的失敗，不只是某一支軍隊的問題，也反映出晚清軍事改革的局限。</p>
+<p>洋務運動雖然建立了一批近代軍事企業與海軍力量，卻沒有同步完成全國軍事制度、財政體系與指揮系統的整體改革。</p>
+<h2 id="1895年初｜威海衛之戰，北洋海軍覆滅">1895年初｜威海衛之戰，北洋海軍覆滅</h2>
+<p>1895年初，日本軍隊進攻威海衛，北洋海軍的主要基地受到威脅。</p>
+<p>清軍在陸上防禦與海上作戰中相繼失利，北洋海軍逐漸陷入無法挽回的局面。</p>
+<p>最終，北洋海軍的主要作戰力量覆滅。</p>
+<p>這場失敗象徵李鴻章多年經營的海軍建設遭到重大打擊，也使清朝在東亞的戰略地位急遽下降。</p>
+<h3 id="北洋海軍失敗的原因">北洋海軍失敗的原因</h3>
+<p>北洋海軍的覆滅，不能只歸因於單一原因。</p>
+<p>主要因素包括：</p>
+<ol>
+<li><strong>軍事制度問題：</strong> 清朝各地軍事力量分散，缺乏統一而有效的全國指揮體系。</li>
+<li><strong>後勤與財政問題：</strong> 軍艦維修、彈藥補充與持續訓練受到資源限制。</li>
+<li><strong>作戰能力差距：</strong> 日本海軍在訓練、協同作戰與部分戰術運用方面取得優勢。</li>
+<li><strong>戰略判斷問題：</strong> 清廷對戰爭規模、敵方能力及可能後果的估計存在不足。</li>
+</ol>
+<p>甲午戰爭使晚清近代化的問題全面暴露，也動搖了中國傳統天下秩序的政治基礎。</p>
+<h2 id="1895年3月｜李鴻章赴日本談判">1895年3月｜李鴻章赴日本談判</h2>
+<p>清朝戰敗後，李鴻章奉命前往日本，與日本首相伊藤博文等人進行和平談判。</p>
+<p>談判地點在日本下關。</p>
+<p>對李鴻章而言，這是他外交生涯中最艱難的時刻之一。</p>
+<p>他必須在戰敗的現實下，盡可能降低清朝需要承擔的割地、賠款與其他條件。</p>
+<p>談判期間，李鴻章曾遭到日本人槍擊受傷。這起事件引起國際關注，也使談判氣氛與進程受到影響。</p>
+<h2 id="1895年4月17日｜簽訂《馬關條約》">1895年4月17日｜簽訂《馬關條約》</h2>
+<p><strong>重大事件：清朝與日本簽訂《馬關條約》。</strong></p>
+<p>馬關條約是甲午戰爭的主要和平條約。</p>
+<p>主要內容包括：</p>
+<ul>
+<li>清朝承認朝鮮的獨立地位，結束原有的宗藩關係。</li>
+<li>清朝割讓臺灣、澎湖列島給日本。</li>
+<li>清朝割讓遼東半島，但後來因俄、德、法三國干涉，日本被迫同意歸還。</li>
+<li>清朝支付巨額賠款。</li>
+<li>清朝進一步開放通商與其他經濟權利。</li>
+</ul>
+<h3 id="《馬關條約》的歷史意義">《馬關條約》的歷史意義</h3>
+<p><strong>第一，臺灣與澎湖進入日本殖民統治時期。</strong></p>
+<p>1895年條約簽訂後，臺灣與澎湖被割讓給日本，臺灣自此進入長達五十年的日本統治時期。</p>
+<p><strong>第二，清朝在東亞的政治地位遭受重大打擊。</strong></p>
+<p>清朝戰敗後，傳統宗藩體系進一步瓦解，日本則成為東亞的重要強權。</p>
+<p><strong>第三，列強加速爭奪中國利益。</strong></p>
+<p>甲午戰爭的結果使列強更加看清清朝的軍事弱點，隨後進一步擴大在中國的租借地、勢力範圍與經濟利益。</p>
+<p><strong>第四，李鴻章的歷史評價陷入重大爭議。</strong></p>
+<p>李鴻章是簽約代表，因此長期被視為清朝戰敗與割地賠款的象徵。</p>
+<p>不過，條約的形成並非單純由李鴻章個人決定，而是與清廷的戰略判斷、軍事失敗、財政能力及國際環境密切相關。</p>
+<p>他既需要為外交談判的結果承擔責任，也受到清朝整體國力與決策體系的限制。</p>
+<hr>
+<h1 id="七、甲午戰爭後的外交與晚清危機（18961899年）">七、甲午戰爭後的外交與晚清危機（1896—1899年）</h1>
+<h2 id="1896年｜赴俄國參與尼古拉二世加冕典禮">1896年｜赴俄國參與尼古拉二世加冕典禮</h2>
+<p>1896年，李鴻章出訪俄國，參與俄國皇帝尼古拉二世的加冕相關活動。</p>
+<p>此行除了外交禮儀，也涉及清朝如何在甲午戰敗後重新安排對外關係。</p>
+<p>清廷希望藉由與俄國交涉，限制日本在東北亞的擴張。</p>
+<p>然而，俄國本身也具有擴大在中國東北影響力的戰略目標，因此清俄之間並非毫無矛盾的盟友關係。</p>
+<h2 id="1896年｜簽訂《中俄密約》">1896年｜簽訂《中俄密約》</h2>
+<p><strong>重大事件：清俄簽訂《中俄密約》。</strong></p>
+<p>《中俄密約》是甲午戰爭後清朝試圖調整外交戰略的重要事件。</p>
+<p>清廷希望藉由與俄國建立更密切的合作，制衡日本的軍事威脅。</p>
+<p>然而，俄國也藉此擴大在中國東北的戰略與鐵路利益。</p>
+<p>這項密約反映出晚清外交的困境：清朝希望利用列強之間的矛盾維護自身利益，但列強也利用清朝的弱勢擴張在華權益。</p>
+<p>李鴻章的外交策略具有現實考量，但其結果並未使清朝擺脫列強壓力。</p>
+<h2 id="1897年｜德國強占膠州灣">1897年｜德國強占膠州灣</h2>
+<p>1897年，德國以傳教士遇害事件為由，出兵占領膠州灣，並在此後取得租借權。</p>
+<p>這一事件是列強爭奪中國沿海據點的重要轉折。</p>
+<p>德國的行動刺激其他列強進一步爭取租借地與勢力範圍，清朝的主權與領土完整受到更大壓力。</p>
+<h2 id="1898年｜列強爭奪租借地與勢力範圍">1898年｜列強爭奪租借地與勢力範圍</h2>
+<p>1898年前後，俄國、英國、法國、德國等列強相繼擴大在中國的租借地與特殊權益。</p>
+<p>這一時期常被稱為列強瓜分中國危機加劇的階段。</p>
+<p>清朝雖然仍保有形式上的國家統治權，但在部分地區的軍事、交通、經濟與外交決策上，受到列強越來越大的限制。</p>
+<p>李鴻章繼續參與相關外交事務，但他所面對的問題，已經不只是單一國家的衝突，而是多個列強同時競逐中國利益的複雜局面。</p>
+<h2 id="1898年｜戊戌變法">1898年｜戊戌變法</h2>
+<p>1898年，光緒帝支持康有為、梁啟超等人推動戊戌變法，希望改革政治、教育、軍事與行政制度。</p>
+<p>然而，變法遭到以慈禧太后為代表的保守政治勢力反對，最終迅速失敗。</p>
+<p>戊戌變法反映出清朝內部對改革方向存在嚴重分歧。</p>
+<p>李鴻章長期支持洋務運動，重視軍事技術與實業建設，但他所代表的改革路線，與主張更深入政治制度改革的維新派並不完全相同。</p>
+<p>這種差異也反映出晚清改革的困境：引進技術是否足夠？如果不進一步改革政治、財政與行政制度，國家是否仍能有效應對列強挑戰？</p>
+<h2 id="1899年｜義和團運動逐漸發展">1899年｜義和團運動逐漸發展</h2>
+<p>1899年前後，義和團運動在華北逐漸擴大。</p>
+<p>義和團與民間宗教信仰、反教會情緒、地方社會矛盾及列強在華特權等因素密切相關。</p>
+<p>隨著運動發展，清廷內部對義和團應採取何種政策，也出現嚴重分歧。</p>
+<p>這場運動後來演變成1900年的重大國際危機，並使李鴻章再度被推到外交談判的最前線。</p>
+<hr>
+<h1 id="八、義和團事件與《辛丑條約》（19001901年）">八、義和團事件與《辛丑條約》（1900—1901年）</h1>
+<h2 id="1900年｜義和團運動演變為重大國際危機">1900年｜義和團運動演變為重大國際危機</h2>
+<p>1900年，義和團運動迅速發展，華北地區的教會、外國人與相關設施成為衝突對象。</p>
+<p>清廷內部對如何處理義和團存在不同立場，局勢日益失控。</p>
+<p>在北京，外國使館區遭到圍困，國際局勢急遽惡化。</p>
+<p>清廷與列強之間的衝突最終演變成大規模軍事介入。</p>
+<h2 id="1900年6月｜八國聯軍出兵中國">1900年6月｜八國聯軍出兵中國</h2>
+<p><strong>重大事件：八國聯軍入侵中國。</strong></p>
+<p>1900年，英國、法國、德國、俄國、日本、美國、義大利與奧匈帝國等國組成聯軍，向中國北方進軍。</p>
+<p>聯軍最終攻入北京，清廷被迫逃離京城。</p>
+<p>這場戰爭對清朝造成嚴重的政治與軍事打擊，也使列強在中國的特權進一步擴大。</p>
+<p>李鴻章當時主要在南方處理政務，並未直接指揮北京的軍事防禦。</p>
+<p>隨著戰局惡化，清廷需要重新尋找能夠與列強談判的人物。</p>
+<h2 id="1900年｜東南互保">1900年｜東南互保</h2>
+<p>義和團事件期間，部分東南省份的地方督撫採取避免戰火擴大的措施，與外國勢力維持一定程度的地方秩序。</p>
+<p>這種安排通常稱為「東南互保」。</p>
+<p>李鴻章與張之洞、劉坤一等地方大員在相關政治協調中扮演重要角色。</p>
+<p>東南互保反映出晚清中央權威受到重大挑戰，地方督撫已具有相當大的自主決策能力。</p>
+<p>從歷史角度來看，這一事件既避免了部分地區立即陷入大規模戰爭，也進一步顯示清朝中央與地方之間的權力結構已經發生深刻變化。</p>
+<h2 id="1900年下半年｜奉命參與對列強議和">1900年下半年｜奉命參與對列強議和</h2>
+<p>八國聯軍攻入北京後，清廷開始尋求與列強議和。</p>
+<p>李鴻章奉命參與相關談判，並與慶親王奕劻等人共同處理外交交涉。</p>
+<p>這是李鴻章外交生涯最後一項重大任務。</p>
+<p>當時的清朝軍事力量已遭受重創，談判籌碼有限。李鴻章雖然具有豐富的外交經驗，但仍然必須面對列強提出的嚴苛條件。</p>
+<h2 id="1901年9月7日｜簽訂《辛丑條約》">1901年9月7日｜簽訂《辛丑條約》</h2>
+<p><strong>重大事件：清朝與十一國簽訂《辛丑條約》。</strong></p>
+<p>辛丑條約是義和團事件後，清廷與列強達成的重大協議。</p>
+<p>主要內容包括：</p>
+<ul>
+<li>清朝支付巨額賠款，總額為白銀4.5億兩，並附加利息，分期償還。</li>
+<li>清廷懲處被列強認定負有責任的官員。</li>
+<li>北京使館區及相關地區的外國駐兵權得到保障。</li>
+<li>清朝在部分軍事與外交事務上受到更嚴格的限制。</li>
+</ul>
+<p>這項條約對清朝的財政、主權與國際地位造成長期影響。</p>
+<h3 id="《辛丑條約》的歷史意義">《辛丑條約》的歷史意義</h3>
+<p><strong>第一，清朝財政負擔進一步加重。</strong></p>
+<p>巨額賠款需要透過長期財政收入償還，對清朝政府及民眾造成沉重負擔。</p>
+<p><strong>第二，列強在中國的特權進一步擴大。</strong></p>
+<p>清朝在軍事、外交與部分行政事務上的自主性受到更大限制。</p>
+<p><strong>第三，晚清改革壓力進一步上升。</strong></p>
+<p>義和團事件與八國聯軍的入侵，使清廷更加清楚地認識到原有制度的嚴重問題。此後，清廷推動新政，試圖改革教育、軍事與行政體系。</p>
+<p><strong>第四，李鴻章的外交生涯以沉重的妥協告終。</strong></p>
+<p>李鴻章雖然努力參與談判，但清朝的軍事與政治弱勢，使他難以取得有利條件。</p>
+<p>因此，《辛丑條約》不僅是李鴻章個人的歷史事件，也是晚清國家危機的集中體現。</p>
+<h2 id="1901年11月7日｜李鴻章在北京去世">1901年11月7日｜李鴻章在北京去世</h2>
+<ul>
+<li><strong>公曆：</strong> 1901年11月7日。</li>
+<li><strong>清朝年號：</strong> 光緒二十七年。</li>
+<li><strong>去世地點：</strong> 北京。</li>
+<li><strong>享年：</strong> 78歲。</li>
+<li><strong>諡號：</strong> 文忠。</li>
+</ul>
+<p>李鴻章在簽訂《辛丑條約》後不久去世，結束了近半世紀的政治與軍事生涯。</p>
+<p>他一生經歷太平天國戰爭、捻軍戰爭、洋務運動、中法戰爭、甲午戰爭與義和團事件，幾乎參與了晚清最重要的內政與外交危機。</p>
+<p>他去世時，清朝仍然存在，但國家的財政、軍事與外交體系已經面臨深刻危機。</p>
+<p>李鴻章的歷史地位，也因此具有明顯的雙重性：他曾積極推動近代軍事與工業建設，卻未能阻止清朝在國際競爭中持續失利。</p>
+<hr>
+<h1 id="九、李鴻章生平大事記總表">九、李鴻章生平大事記總表</h1>
+<p>以下將李鴻章一生的重要事件濃縮為年代總表，方便快速複習與查閱。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重大事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1823年</td>
+<td>出生於安徽合肥</td>
+<td>晚清重要政治人物的生涯起點</td>
+</tr>
+<tr>
+<td>1840年</td>
+<td>考取秀才</td>
+<td>進入科舉士人階層</td>
+</tr>
+<tr>
+<td>1843年</td>
+<td>取得優貢資格</td>
+<td>持續發展科舉仕途</td>
+</tr>
+<tr>
+<td>1845年</td>
+<td>赴京應試，拜入曾國藩門下</td>
+<td>建立重要師生關係</td>
+</tr>
+<tr>
+<td>1847年</td>
+<td>考中進士，進入翰林院</td>
+<td>正式進入清朝官僚體系</td>
+</tr>
+<tr>
+<td>1850年</td>
+<td>太平天國運動爆發</td>
+<td>清朝面臨大規模內戰</td>
+</tr>
+<tr>
+<td>1853年</td>
+<td>奉命回鄉辦理團練</td>
+<td>開始參與地方軍事事務</td>
+</tr>
+<tr>
+<td>1858年</td>
+<td>進入曾國藩幕府</td>
+<td>累積軍政與行政經驗</td>
+</tr>
+<tr>
+<td>1861年</td>
+<td>開始籌組淮軍</td>
+<td>建立自己的軍事力量</td>
+</tr>
+<tr>
+<td>1862年</td>
+<td>率淮軍赴上海</td>
+<td>軍事與政治地位提升</td>
+</tr>
+<tr>
+<td>1863年</td>
+<td>淮軍攻取蘇州</td>
+<td>江南戰局出現重大變化</td>
+</tr>
+<tr>
+<td>1864年</td>
+<td>天京陷落，太平天國中央政權覆滅</td>
+<td>清廷重新取得長江流域的重要據點</td>
+</tr>
+<tr>
+<td>1865年</td>
+<td>參與剿捻</td>
+<td>軍事任務轉向華北與中原</td>
+</tr>
+<tr>
+<td>1867年</td>
+<td>出任湖廣總督</td>
+<td>進入高階地方官僚體系</td>
+</tr>
+<tr>
+<td>1868年</td>
+<td>捻軍主要勢力被平定</td>
+<td>清廷逐步恢復部分地區的控制</td>
+</tr>
+<tr>
+<td>1870年</td>
+<td>天津教案後出任直隸總督</td>
+<td>成為清廷重要的軍政與外交人物</td>
+</tr>
+<tr>
+<td>1872年</td>
+<td>支持幼童赴美留學計畫</td>
+<td>參與近代人才培養</td>
+</tr>
+<tr>
+<td>1874年</td>
+<td>日本出兵臺灣</td>
+<td>清日關係進一步緊張</td>
+</tr>
+<tr>
+<td>1875年</td>
+<td>推動海防建設</td>
+<td>強化清朝海軍與沿海防衛</td>
+</tr>
+<tr>
+<td>1876年</td>
+<td>《煙臺條約》</td>
+<td>清朝與英國處理重大外交爭端</td>
+</tr>
+<tr>
+<td>1878年</td>
+<td>開平礦務局創辦</td>
+<td>推動近代採礦業</td>
+</tr>
+<tr>
+<td>1881年</td>
+<td>天津至上海電報線完成重要建設</td>
+<td>近代通信系統逐步發展</td>
+</tr>
+<tr>
+<td>1882年</td>
+<td>朝鮮壬午兵變</td>
+<td>清日對朝鮮的競爭加劇</td>
+</tr>
+<tr>
+<td>1884年</td>
+<td>中法戰爭爆發</td>
+<td>清朝面臨新的對外戰爭</td>
+</tr>
+<tr>
+<td>1885年</td>
+<td>簽訂《中法新約》</td>
+<td>清朝對越南的傳統影響力受到削弱</td>
+</tr>
+<tr>
+<td>1885年</td>
+<td>天津武備學堂設立</td>
+<td>推動近代軍事教育</td>
+</tr>
+<tr>
+<td>1888年</td>
+<td>北洋海軍正式成軍</td>
+<td>洋務運動的重要成果</td>
+</tr>
+<tr>
+<td>1894年</td>
+<td>甲午戰爭爆發</td>
+<td>清朝與日本全面交戰</td>
+</tr>
+<tr>
+<td>1894年9月</td>
+<td>黃海海戰</td>
+<td>北洋海軍遭受重大考驗</td>
+</tr>
+<tr>
+<td>1895年初</td>
+<td>威海衛之戰</td>
+<td>北洋海軍主要作戰力量覆滅</td>
+</tr>
+<tr>
+<td>1895年4月17日</td>
+<td>簽訂《馬關條約》</td>
+<td>清朝割讓臺灣、澎湖並支付巨額賠款</td>
+</tr>
+<tr>
+<td>1896年</td>
+<td>赴俄參與加冕活動</td>
+<td>調整甲午戰敗後的外交關係</td>
+</tr>
+<tr>
+<td>1896年</td>
+<td>簽訂《中俄密約》</td>
+<td>清俄合作與列強競爭交織</td>
+</tr>
+<tr>
+<td>1897年</td>
+<td>德國強占膠州灣</td>
+<td>列強爭奪中國利益加劇</td>
+</tr>
+<tr>
+<td>1898年</td>
+<td>戊戌變法</td>
+<td>清朝內部改革與政治衝突加劇</td>
+</tr>
+<tr>
+<td>1899年</td>
+<td>義和團運動逐漸發展</td>
+<td>清朝面臨新的內外危機</td>
+</tr>
+<tr>
+<td>1900年</td>
+<td>八國聯軍出兵中國</td>
+<td>清朝遭受重大軍事與外交打擊</td>
+</tr>
+<tr>
+<td>1900年</td>
+<td>東南互保</td>
+<td>地方督撫自主性進一步提高</td>
+</tr>
+<tr>
+<td>1901年9月7日</td>
+<td>簽訂《辛丑條約》</td>
+<td>清朝承擔巨額賠款與更多限制</td>
+</tr>
+<tr>
+<td>1901年11月7日</td>
+<td>李鴻章在北京去世</td>
+<td>結束其政治與外交生涯</td>
+</tr>
+</tbody></table>
+<p>李鴻章生卒年份、主要官職與重大外交事件，可參考晚清人物史料及相關歷史研究。<a href="https://www.uleader.com/history/story.php?id=3735&utm_source=chatgpt.com">uleader.com</a></p>
+<hr>
+<h1 id="十、李鴻章的主要成就與歷史爭議">十、李鴻章的主要成就與歷史爭議</h1>
+<h2 id="1-軍事成就：建立淮軍">1. 軍事成就：建立淮軍</h2>
+<p>李鴻章的重要成就之一，是建立淮軍並使其成為晚清主要軍事力量。</p>
+<p>淮軍在鎮壓太平天國與捻軍的戰爭中發揮重要作用，並逐步吸收西方武器與訓練方式。</p>
+<p>但淮軍也具有濃厚的地方性與將領私人網絡色彩。這種組織方式雖然能提高軍隊的凝聚力，卻使清廷中央政府更難直接控制全部軍事力量。</p>
+<h2 id="2-洋務成就：推動近代軍事工業與實業">2. 洋務成就：推動近代軍事工業與實業</h2>
+<p>李鴻章是洋務運動最重要的代表人物之一。</p>
+<p>他支持發展近代軍事工業、海軍、電報、採礦與其他實業，嘗試以西方技術強化清朝的軍事和經濟能力。</p>
+<p>然而，洋務運動並未全面改革清朝的政治、財政與軍事制度，部分企業也受到管理效率、資金來源與官僚體制等問題限制。</p>
+<p>因此，洋務運動既是中國近代化的重要起點，也是一場未能完全達成目標的改革。</p>
+<h2 id="3-外交成就與限制：善於交涉，卻難以扭轉國力差距">3. 外交成就與限制：善於交涉，卻難以扭轉國力差距</h2>
+<p>李鴻章長期處理清朝與西方列強、日本及俄國的關係。</p>
+<p>他熟悉外交談判，能夠在複雜的國際局勢中尋求妥協與利益平衡。</p>
+<p>然而，外交手腕無法完全彌補軍事、財政與制度上的弱勢。</p>
+<p>《馬關條約》與《辛丑條約》正是這種困境的典型例子。</p>
+<p>李鴻章需要承擔談判結果的政治責任，但這些結果也反映出清朝整體國力不足，以及決策制度存在的深層問題。</p>
+<h2 id="4-政治爭議：改革者與舊制度的代表">4. 政治爭議：改革者與舊制度的代表</h2>
+<p>李鴻章既支持西方軍事與工業技術，也長期維護清朝皇權與既有政治體系。</p>
+<p>他願意引進新技術，卻沒有推動足以徹底改變清朝政治結構的全面改革。</p>
+<p>這使他成為一個具有矛盾性的歷史人物：他看見傳統制度的弱點，也努力改善部分問題，但其改革仍受到既有政治秩序的限制。</p>
+<hr>
+<h1 id="十一、李鴻章與曾國藩、左宗棠、張之洞的比較">十一、李鴻章與曾國藩、左宗棠、張之洞的比較</h1>
+<table>
+<thead>
+<tr>
+<th>比較面向</th>
+<th>曾國藩</th>
+<th>李鴻章</th>
+<th>左宗棠</th>
+<th>張之洞</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要身分</td>
+<td>湘軍統帥、政治家</td>
+<td>淮軍統帥、外交重臣</td>
+<td>軍事統帥、地方大員</td>
+<td>地方大員、洋務改革者</td>
+</tr>
+<tr>
+<td>主要軍事成就</td>
+<td>領導湘軍攻陷天京</td>
+<td>建立淮軍，參與平定太平天國與捻軍</td>
+<td>主持西北軍事行動，收復新疆</td>
+<td>推動新式軍事與地方防務</td>
+</tr>
+<tr>
+<td>洋務事業</td>
+<td>支持早期軍械製造</td>
+<td>推動海軍、軍工、電報與實業</td>
+<td>重視西北治理與軍事建設</td>
+<td>推動工業、教育與軍事改革</td>
+</tr>
+<tr>
+<td>外交角色</td>
+<td>主要以內政與軍事為主</td>
+<td>晚清最重要的外交決策人物之一</td>
+<td>主要以軍事與地方治理見長</td>
+<td>參與晚清改革與外交政策</td>
+</tr>
+<tr>
+<td>主要歷史意義</td>
+<td>地方軍事組織與清朝中興</td>
+<td>洋務運動與晚清外交</td>
+<td>西北疆域與邊疆治理</td>
+<td>洋務教育與制度改革</td>
+</tr>
+<tr>
+<td>歷史爭議</td>
+<td>湘軍鎮壓太平天國的手段</td>
+<td>不平等條約與外交妥協</td>
+<td>軍事征服與邊疆治理代價</td>
+<td>改革成效與傳統政治秩序的限制</td>
+</tr>
+</tbody></table>
+<p>四人都在晚清國家危機中扮演重要角色，但各自的重點不同。</p>
+<p>曾國藩的核心成就是建立湘軍與平定太平天國；李鴻章則將軍事組織、近代工業與外交事務結合起來，成為晚清最具代表性的洋務領袖之一。</p>
+<hr>
+<h1 id="十二、總結：李鴻章為何是中國近代史的重要人物？">十二、總結：李鴻章為何是中國近代史的重要人物？</h1>
+<p>李鴻章的一生，可以概括為四個階段：</p>
+<p><strong>第一階段：科舉入仕（1823—1852年）。</strong> 他透過科舉進入清朝官僚體系，並在曾國藩門下接觸經世致用的思想。</p>
+<p><strong>第二階段：建立淮軍與平定內亂（1853—1868年）。</strong> 他從地方團練參與者成長為軍事領袖，建立淮軍，參與平定太平天國與捻軍。</p>
+<p><strong>第三階段：推動洋務與海軍建設（1870—1893年）。</strong> 他積極發展軍事工業、電報、採礦與北洋海軍，試圖提高清朝的軍事與經濟能力。</p>
+<p><strong>第四階段：外交危機與晚清衰敗（1894—1901年）。</strong> 他經歷甲午戰爭、簽訂《馬關條約》，並在義和團事件後參與簽訂《辛丑條約》，最終於1901年去世。</p>
+<p>從中國近代史的角度來看，李鴻章的重要性，在於他處於傳統帝國向近代國家轉型的關鍵時期。</p>
+<p>他看見西方軍事與工業技術的優勢，也努力推動近代化建設；然而，單靠購買軍艦、設立工廠與引進技術，仍不足以徹底解決清朝在政治制度、財政管理、軍事組織與外交戰略上的問題。</p>
+<p><strong>李鴻章既是晚清自強運動的重要推動者，也是清朝在近代國際秩序中遭遇挫敗的見證者與決策參與者。</strong></p>
+<p>理解李鴻章，不能只把他看作簽訂不平等條約的外交官，也不能只把他視為近代化的先驅。更重要的是，透過他的生平，理解一個面臨內戰、工業革命與列強競爭的傳統帝國，為何即使開始改革，仍然難以在短時間內扭轉國勢。</p>
+<h3 id="延伸閱讀">延伸閱讀</h3>
+<ul>
+<li><a href="https://navy.mnd.gov.tw/MediaRoom/Paper_Info.aspx?AID=209&ID=30203&utm_source=chatgpt.com">中國近代史研究資料：李鴻章與洋務運動</a></li>
+<li><a href="https://www.ehanlin.com.tw/app/keyword/%E5%9C%8B%E4%B8%AD/%E6%AD%B7%E5%8F%B2/%E6%9D%8E%E9%B4%BB%E7%AB%A0.html?utm_source=chatgpt.com">李鴻章生平與主要事蹟</a></li>
+<li><a href="https://artsandculture.google.com/entity/m01k_v9?hl=zh-TW&utm_source=chatgpt.com">李鴻章人物傳記與年代整理</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

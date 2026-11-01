@@ -1,0 +1,664 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="梁啟超生平大事記（18731929）">梁啟超生平大事記（1873—1929）</h1>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p><strong>梁啟超</strong>（1873年2月23日—1929年1月19日），字卓如、任甫，號任公，又號「飲冰室主人」，廣東新會人，是中國近代重要的政治改革家、思想家、新聞工作者、文學家、史學家與教育家。</p>
+<p>梁啟超是清末維新運動的重要人物，早年師從康有為，積極參與「公車上書」與戊戌變法。1898年變法失敗後，他流亡日本，透過報刊、政論與著述傳播新思想。辛亥革命後，他先後參與政黨組織、擔任政府職務，並在反對袁世凱復辟帝制的護國運動中發揮重要作用。晚年則逐漸將重心轉向學術研究、教育與文化建設。</p>
+<p>梁啟超一生的重要特色，是<strong>從清末的君主立憲改革，經歷民初的共和政治，再轉向學術與文化事業</strong>。他的政治主張曾多次轉變，但始終關注國家富強、國民素質、制度改革與中國如何回應世界變局。<a href="https://museum.mof.gov.tw/singlehtml/e5e41f7426964fee825cd37a87a6ca75?cntId=867e982e89674df7a7ca17c0d0f15f7d&utm_source=chatgpt.com">Museum of Finance</a></p>
+<hr>
+<h1 id="二、少年求學時期（18731894）">二、少年求學時期（1873—1894）</h1>
+<h2 id="1-1873年：出生於廣東新會">1. 1873年：出生於廣東新會</h2>
+<p><strong>1873年2月23日</strong>，梁啟超出生於廣東省新會縣。</p>
+<ul>
+<li>家庭具有傳統儒學教育背景，幼年即接受經史教育。</li>
+<li>少年時期熟讀儒家經典，展現出良好的記憶力與寫作能力。</li>
+<li>傳統經學訓練為他日後從事政治論述、歷史研究及文化批判奠定基礎。</li>
+</ul>
+<p>梁啟超雖然出身於傳統士人家庭，但後來並未停留於科舉與經學的範圍內，而是逐漸接觸西方政治制度、社會思想及近代國際關係，成為試圖將傳統學術與現代知識結合的代表人物。</p>
+<h2 id="2-18841889年：參加科舉，嶄露頭角">2. 1884—1889年：參加科舉，嶄露頭角</h2>
+<ul>
+<li><strong>1884年</strong>：參加科舉考試，取得秀才資格的過程，相關生平年表多記其少年時期即通過縣、府等級考試。</li>
+<li><strong>1887年</strong>：進入廣州學海堂等學術環境繼續求學。</li>
+<li><strong>1889年</strong>：考中舉人，進一步取得傳統士人社會中的功名。</li>
+</ul>
+<p>梁啟超少年時代的求學經歷，反映出他原本沿著清代傳統士人的道路前進。不過，隨著清朝在內政、軍事與外交上不斷遭遇危機，他逐漸認為，僅靠傳統經學與科舉制度，無法解決中國面臨的根本問題。<a href="https://edata.nlpi.edu.tw/CNH/Personage/personage.aspx?ID=0000032&utm_source=chatgpt.com">eData</a></p>
+<h2 id="3-1890年：拜康有為為師">3. 1890年：拜康有為為師</h2>
+<p>梁啟超赴廣州求學期間，接觸康有為的學術與政治思想，後來正式拜康有為為師。</p>
+<p>康有為主張重新解釋儒家經典，並以此論證政治制度改革的必要性。梁啟超受到其影響，開始將學術研究與國家改革結合起來。</p>
+<p>師徒二人後來並稱「康梁」，成為清末維新運動最具代表性的思想與政治組合之一。</p>
+<h2 id="4-18911894年：在萬木草堂接受新思想訓練">4. 1891—1894年：在萬木草堂接受新思想訓練</h2>
+<p>梁啟超在康有為主持的萬木草堂學習，接觸傳統經學以外的思想，逐漸形成改革政治制度、推動教育革新及開啟民智的主張。</p>
+<p>這一時期的重要影響包括：</p>
+<ol>
+<li><strong>重新詮釋儒學</strong>：不再僅將儒家經典視為維護既有秩序的依據，而嘗試從中尋找改革的思想資源。</li>
+<li><strong>關注西方制度</strong>：開始思考議會、憲政、法律及現代國家的運作方式。</li>
+<li><strong>重視教育與傳播</strong>：逐漸認識到，政治改革不能只依靠少數官員，也需要改變社會大眾的知識與觀念。</li>
+<li><strong>形成改革救國的方向</strong>：認為中國必須調整政治與社會制度，才能回應列強競爭及國家危機。</li>
+</ol>
+<p><strong>這一階段的核心意義</strong>，是梁啟超從傳統士人轉變為近代改革思想家的起點。</p>
+<hr>
+<h1 id="三、維新運動與戊戌變法（18951898）">三、維新運動與戊戌變法（1895—1898）</h1>
+<h2 id="5-1895年：參與「公車上書」">5. 1895年：參與「公車上書」</h2>
+<p>1895年，清政府在甲午戰爭中戰敗，與日本簽訂《馬關條約》，中國面臨割地、賠款及主權受損的嚴重危機。</p>
+<p>當年，康有為、梁啟超等人聯合赴京參加會試的舉人，發起著名的「公車上書」，主張反對和約、推動改革。</p>
+<p>主要訴求包括：</p>
+<ul>
+<li>反對接受喪權辱國的條約。</li>
+<li>呼籲清政府進行政治與制度改革。</li>
+<li>提倡培養人才、改革教育。</li>
+<li>主張發展工商業、增強國家實力。</li>
+<li>希望以制度改革避免中國進一步衰弱。</li>
+</ul>
+<p>「公車上書」的重要性，不僅在於反對《馬關條約》，更在於它將國家危機轉化為公開的政治改革訴求，使士人開始以聯名上書及公共論述的方式參與國家事務。</p>
+<p>需要注意的是，「公車上書」後來成為維新運動的重要象徵，但其實際上書過程、簽名人數與奏摺是否正式遞交等細節，史學研究中仍有不同考證。</p>
+<h2 id="6-1895年：參與強學會與報刊宣傳">6. 1895年：參與強學會與報刊宣傳</h2>
+<p>公車上書後，梁啟超持續投入維新活動。</p>
+<ul>
+<li>參與強學會相關活動，推動新知識與改革主張的傳播。</li>
+<li>參與創辦、編輯宣傳維新思想的報刊。</li>
+<li>嘗試透過報刊將政治改革從少數官員與士人之間的討論，擴展為更廣泛的公共議題。</li>
+</ul>
+<p>梁啟超逐漸發現，報刊可以突破傳統官僚體系的限制，成為傳播知識、評論政治及動員社會的重要工具。</p>
+<h2 id="7-1896年：主筆《時務報》，成為維新派重要宣傳家">7. 1896年：主筆《時務報》，成為維新派重要宣傳家</h2>
+<p>1896年，梁啟超參與《時務報》的編輯工作，並以主筆身分發表大量政論文章。</p>
+<p>《時務報》主要宣傳：</p>
+<ul>
+<li>政治制度改革。</li>
+<li>學校教育與人才培養。</li>
+<li>西方政治、法律與經濟知識。</li>
+<li>工商業發展與國家富強。</li>
+<li>對清朝官僚制度與社會積弊的批判。</li>
+</ul>
+<p>梁啟超的文章善於結合歷史典故、現實政治與新知識，文字富有感染力，因而對晚清知識界產生相當大的影響。</p>
+<p>他的新聞與政論活動，也使他逐漸成為中國近代報刊史上具有代表性的人物。</p>
+<h2 id="8-1897年：主持湖南時務學堂教學">8. 1897年：主持湖南時務學堂教學</h2>
+<p>1897年，梁啟超受聘擔任湖南長沙時務學堂的總教習，投入教育改革。</p>
+<p>時務學堂希望培養具有新知識與改革意識的人才。梁啟超在教學中重視政治、歷史、經濟及時事，鼓勵學生理解國家現況，而非僅以傳統科舉內容作為學習目標。</p>
+<p>這一時期，他的重要教育理念包括：</p>
+<ol>
+<li>教育應與國家及社會的實際需要相結合。</li>
+<li>學生應具備理解時局、分析問題的能力。</li>
+<li>新知識的引進不應只停留於技術層面，也應涉及政治制度與社會思想。</li>
+<li>人才培養是國家改革的重要基礎。</li>
+</ol>
+<h2 id="9-1898年：參與戊戌變法">9. 1898年：參與戊戌變法</h2>
+<p>1898年，在光緒帝支持下，清政府展開維新變法，史稱「戊戌變法」或「百日維新」。</p>
+<p>梁啟超赴北京參與相關活動，成為維新派的重要成員。</p>
+<p>改革涉及的方向包括：</p>
+<ul>
+<li>改革官僚制度與行政體制。</li>
+<li>發展新式教育，籌辦京師大學堂。</li>
+<li>改革科舉考試內容。</li>
+<li>鼓勵工商業與新式企業發展。</li>
+<li>推動軍事制度改革。</li>
+<li>引進西方知識與新式人才。</li>
+</ul>
+<p>梁啟超並非所有改革政策的唯一制定者，但他是維新思想的重要宣傳者與推動者之一。</p>
+<h2 id="10-1898年9月：戊戌政變，流亡日本">10. 1898年9月：戊戌政變，流亡日本</h2>
+<p>1898年9月，維新運動遭到強烈反對，慈禧太后重新掌握實際政治權力，變法失敗。</p>
+<p>光緒帝受到控制，維新派遭到逮捕與迫害，譚嗣同等人被處死。梁啟超在危急情勢下離開中國，前往日本。</p>
+<p><strong>戊戌變法的失敗，是梁啟超人生的重要轉折點。</strong></p>
+<p>在此之前，他主要希望透過清朝皇帝與官僚體制推動改革；此後，他轉向海外流亡與報刊宣傳，將政治活動的重心放在思想傳播、國民教育及憲政主張上。<a href="https://edata.nlpi.edu.tw/CNH/Personage/personage.aspx?ID=0000032&utm_source=chatgpt.com">eData</a></p>
+<hr>
+<h1 id="四、流亡日本與思想轉變（18981904）">四、流亡日本與思想轉變（1898—1904）</h1>
+<h2 id="11-18981899年：在日本重新展開政治活動">11. 1898—1899年：在日本重新展開政治活動</h2>
+<p>戊戌變法失敗後，梁啟超流亡日本。日本在明治維新後建立了近代國家制度，成為當時中國改革派觀察西方制度與尋求救國道路的重要中介。</p>
+<p>梁啟超在日本接觸新的政治觀念與社會學說，並透過報刊繼續影響中國知識界。</p>
+<p>這一階段的主要工作包括：</p>
+<ul>
+<li>繼續宣傳政治改革與憲政思想。</li>
+<li>研究日本及西方的政治制度。</li>
+<li>介紹西方歷史、社會與國家發展的觀念。</li>
+<li>聯繫海外華人及維新派人士。</li>
+<li>思考中國如何建立具有現代國民意識的社會。</li>
+</ul>
+<p>梁啟超的流亡並未使他退出政治舞臺，反而讓他獲得相對自由的寫作與傳播空間。</p>
+<h2 id="12-1898年：創辦《清議報》">12. 1898年：創辦《清議報》</h2>
+<p>梁啟超流亡日本後，參與創辦《清議報》，繼續宣傳維新思想。</p>
+<p>《清議報》的主要任務，是批判清朝政治弊端、介紹世界局勢，並向中國讀者傳播改革理念。</p>
+<p>在戊戌變法失敗後，梁啟超仍然認為中國需要改變政治制度，但他當時並未立即轉向推翻清朝的革命路線，而是繼續支持以君主立憲為核心的改革方向。</p>
+<p>這使他與主張以革命推翻清朝的孫中山等人，在政治策略上逐漸產生分歧。</p>
+<h2 id="13-18991900年：宣傳新思想，參與自立軍相關活動">13. 1899—1900年：宣傳新思想，參與自立軍相關活動</h2>
+<p>梁啟超在日本與海外華人社群之間奔走，持續尋求政治改革的可能性。</p>
+<p>1900年前後，清朝面臨義和團運動與八國聯軍等重大危機。康有為、梁啟超等維新人士也曾與唐才常等人的自立軍活動有所聯繫，希望藉此推動政治變革。</p>
+<p>然而，自立軍起義未能成功，相關人士受到鎮壓，維新派試圖透過軍事行動改變清朝政治局勢的努力再次受挫。</p>
+<p>這一事件顯示，梁啟超雖然以報刊與思想宣傳見長，但他所處的時代並不允許政治改革只停留在文字與理念上；改革派也不斷面臨如何取得實際政治力量的難題。</p>
+<h2 id="14-1902年：創辦《新民叢報》，提出「新民」思想">14. 1902年：創辦《新民叢報》，提出「新民」思想</h2>
+<p>1902年，梁啟超在日本創辦《新民叢報》，並發表一系列影響深遠的政論文章。</p>
+<p>其中最重要的思想主題之一，是「新民」。</p>
+<p>所謂「新民」，不只是增加知識或學會新技術，而是希望改變傳統社會中的國民觀念，使人民逐漸具備現代國家所需要的責任感、公共意識與政治能力。</p>
+<p>梁啟超認為，中國積弱不只是政府制度的問題，也與人民的思想、社會習慣及公共生活方式有關。</p>
+<p>因此，國家改革應同時包含政治制度改革與國民素質的提升。</p>
+<p>「新民」思想的重要內容包括：</p>
+<ol>
+<li><strong>國民意識</strong>：人民不應只將自己視為家族或地方社會的一員，也應理解自己與國家整體的關係。</li>
+<li><strong>公共責任</strong>：國家事務不應完全由少數官員決定，人民也應關注公共利益。</li>
+<li><strong>權利與義務</strong>：現代國民既應了解自身權利，也應承擔相應的公共責任。</li>
+<li><strong>思想解放</strong>：應打破妨礙知識與社會發展的陳舊觀念。</li>
+<li><strong>教育改革</strong>：培養具有新知識與判斷能力的人才，是國家現代化的重要條件。</li>
+</ol>
+<p>梁啟超的這些論述，對近代中國的國民觀念、民族主義與政治思想發展產生了重要影響。</p>
+<h2 id="15-19021906年：發表《新民說》及相關政論">15. 1902—1906年：發表《新民說》及相關政論</h2>
+<p>《新民說》是梁啟超流亡日本時期的重要思想成果，集中表達他對國民、國家與現代社會的思考。</p>
+<p>在這些文章中，他試圖回答一個根本問題：</p>
+<p><strong>中國若要成為現代國家，除了改變政府，人民本身需要具備哪些新的觀念與能力？</strong></p>
+<p>他認為，現代國家不能僅依靠君主或官僚推動，也需要具有公共精神、責任意識及政治參與能力的國民。</p>
+<p>不過，梁啟超當時仍然主張君主立憲，並不贊成立即以革命推翻清朝。他認為政治制度的轉型應兼顧秩序、教育與社會承受能力。</p>
+<p>因此，他的思想具有雙重特徵：一方面積極引進現代政治觀念，另一方面仍試圖透過漸進改革維持政治秩序。</p>
+<h2 id="16-19031904年：與革命派展開論戰">16. 1903—1904年：與革命派展開論戰</h2>
+<p>隨著革命思想在海外華人社群及中國知識界中逐漸發展，梁啟超與孫中山等革命派人士的分歧日益明顯。</p>
+<p>梁啟超主要傾向君主立憲與漸進改革，革命派則主張推翻清朝，建立共和政體。</p>
+<p>雙方爭論的核心問題包括：</p>
+<ul>
+<li>清朝是否還有改革的可能？</li>
+<li>中國應採取漸進改革，還是革命方式？</li>
+<li>政治秩序與自由、民主之間應如何取得平衡？</li>
+<li>中國是否已具備建立共和制度的條件？</li>
+<li>國家富強應優先依靠制度改革，還是先改變政權？</li>
+</ul>
+<p>這場論戰反映了清末中國面對國家危機時，不同改革力量對政治轉型路徑的不同判斷。</p>
+<hr>
+<h1 id="五、立憲運動與清末政治改革（19051911）">五、立憲運動與清末政治改革（1905—1911）</h1>
+<h2 id="17-1905年：清廷宣布預備立憲">17. 1905年：清廷宣布預備立憲</h2>
+<p>1905年，清政府派遣官員出國考察憲政制度，之後宣布籌備立憲。</p>
+<p>梁啟超及其他立憲派人士認為，清政府若能真正推動憲政改革，仍有可能逐步建立現代政治制度。</p>
+<p>但他們也面臨一項矛盾：一方面希望清廷推動改革，另一方面又必須面對清政府是否真正願意限制皇權、建立責任政治的問題。</p>
+<h2 id="18-1906年：持續倡導君主立憲">18. 1906年：持續倡導君主立憲</h2>
+<p>1906年，清政府正式宣布預備立憲。</p>
+<p>梁啟超持續透過文章與政治活動，論述君主立憲的必要性。他認為，憲政制度可以透過法律規範政府權力，建立較穩定的政治秩序，並讓國民逐步參與公共事務。</p>
+<p>與革命派相比，梁啟超更擔心激烈的政權更替可能造成長期動亂，因此希望透過制度改革完成政治轉型。</p>
+<p>然而，清廷後來公布的立憲安排，並未充分滿足立憲派對政治參與與權力限制的期待。</p>
+<h2 id="19-1907年：參與推動政聞社">19. 1907年：參與推動政聞社</h2>
+<p>1907年，梁啟超等立憲派人士參與政聞社的組織與活動，嘗試建立更有組織性的政治力量。</p>
+<p>政聞社希望推動憲政、監督政府，並使立憲主張不再只依靠個別知識分子的文章，而能形成較具持續性的政治運動。</p>
+<p>這反映梁啟超逐漸從報刊論述走向組織化的政治參與。</p>
+<p>不過，政聞社的活動受到清政府限制，發展空間有限。</p>
+<h2 id="20-19081910年：對清廷立憲進程逐漸失望">20. 1908—1910年：對清廷立憲進程逐漸失望</h2>
+<p>清廷雖然宣布立憲，但相關制度的推動緩慢，皇族與官僚仍掌握重要權力。</p>
+<p>梁啟超等立憲派人士對清政府的改革誠意產生疑慮。</p>
+<p>1909年，各省諮議局陸續成立，地方士紳與立憲人士開始透過有限的制度管道參與政治。</p>
+<p>1910年，立憲派人士進一步要求加速召開國會，希望政府能建立更具代表性的政治制度。</p>
+<p>然而，清政府對國會與權力改革仍持保留態度，使立憲運動陷入困境。</p>
+<h2 id="21-1911年：辛亥革命爆發，清朝統治崩潰">21. 1911年：辛亥革命爆發，清朝統治崩潰</h2>
+<p>1911年，武昌起義爆發，革命迅速擴展至各省，清朝統治開始瓦解。</p>
+<p>梁啟超原本主張君主立憲，並不以推翻清朝為首要目標。但隨著革命發展、清廷改革失去公信力，原先立憲派與革命派之間的政治界線也逐漸發生變化。</p>
+<p>辛亥革命的爆發，證明清政府已無法透過有限的改革措施維持原有統治。</p>
+<p>對梁啟超而言，這是又一次重要的政治轉折：他必須在清朝滅亡後，重新思考中國應建立何種政治制度，以及如何避免革命後的國家陷入混亂。<a href="https://edata.nlpi.edu.tw/CNH/Personage/personage.aspx?ID=0000032&utm_source=chatgpt.com">eData</a></p>
+<hr>
+<h1 id="六、民國初年的政治活動（19121915）">六、民國初年的政治活動（1912—1915）</h1>
+<h2 id="22-1912年：回國，投入共和政治">22. 1912年：回國，投入共和政治</h2>
+<p>1912年，清帝退位，中華民國成立。梁啟超結束長期流亡，回到中國。</p>
+<p>清朝滅亡後，他面臨新的政治問題：既然君主立憲的改革道路已經終結，中國應如何建立穩定的共和制度？</p>
+<p>梁啟超逐漸接受共和國家的現實，開始參與民國初年的政黨活動與政治建設。</p>
+<p>他認為，推翻君主並不代表現代國家已經建立。共和制度要能真正運作，仍然需要法治、穩定的政府、政治責任，以及具有公共意識的國民。</p>
+<h2 id="23-1912年：創辦《庸言》雜誌">23. 1912年：創辦《庸言》雜誌</h2>
+<p>回國後，梁啟超在天津創辦《庸言》雜誌，繼續透過報刊發表政治評論。</p>
+<p>此時，他關注的重點逐漸從清末的變法維新，轉向民國的政治秩序、憲法制度與國家治理。</p>
+<p>他希望透過政論影響政治人物與社會大眾，避免民國只剩下形式上的共和，而缺乏真正的制度運作。</p>
+<h2 id="24-1913年：組織進步黨，出任司法總長">24. 1913年：組織進步黨，出任司法總長</h2>
+<p>1913年，梁啟超參與整合共和黨、民主黨等政治力量，組成進步黨，成為民國初年重要的政治人物之一。</p>
+<p>同年，他進入袁世凱政府，出任司法總長。</p>
+<p>這一時期，他試圖透過政府職務推動法制建設，並參與國家制度的調整。</p>
+<p>然而，袁世凱逐漸集中政治權力，與梁啟超原本重視的憲政原則產生衝突。</p>
+<p>梁啟超的政治處境也開始變得複雜：他希望維持政府運作與國家秩序，卻又必須面對政府本身是否遵守共和制度的問題。</p>
+<h2 id="25-1914年：與袁世凱的政治分歧加深">25. 1914年：與袁世凱的政治分歧加深</h2>
+<p>1914年，袁世凱進一步削弱國會與政黨政治，民國初年的憲政體制受到嚴重衝擊。</p>
+<p>梁啟超逐漸與袁世凱分道揚鑣，對其集權政策日益不滿。</p>
+<p>他認為，民國的建立應當意味著權力受到法律與制度的限制，而不是由新的強人取代舊的皇帝。</p>
+<p>這一階段的重要意義，在於梁啟超開始把維護共和制度置於對特定政治人物的合作之上。</p>
+<h2 id="26-1915年：反對袁世凱復辟帝制">26. 1915年：反對袁世凱復辟帝制</h2>
+<p>1915年，袁世凱推動帝制運動，企圖恢復君主制度，自任皇帝。</p>
+<p>梁啟超公開反對袁世凱稱帝，並透過政論文章批判帝制復辟。</p>
+<p>他與學生及政治盟友蔡鍔等人聯繫，逐漸投入反袁活動。</p>
+<p>對梁啟超而言，袁世凱稱帝不只是政權形式的改變，更代表民國成立後所追求的共和制度可能遭到根本破壞。</p>
+<p>這使他從民初一度參與袁世凱政府的政治人物，轉變為反對帝制復辟的重要力量。</p>
+<hr>
+<h1 id="七、護國運動與反袁鬥爭（19151917）">七、護國運動與反袁鬥爭（1915—1917）</h1>
+<h2 id="27-1915年末：護國運動醞釀">27. 1915年末：護國運動醞釀</h2>
+<p>袁世凱的帝制計畫引起各方反對，雲南等地的反袁力量開始組織軍事行動。</p>
+<p>梁啟超透過政治宣傳與人際網絡，支持反對帝制的運動。</p>
+<p>他的角色主要在於政治論述、組織聯繫與輿論動員，而不是單純以軍事指揮者的身分參與戰爭。</p>
+<h2 id="28-1915年12月：護國戰爭爆發">28. 1915年12月：護國戰爭爆發</h2>
+<p>1915年12月，雲南方面宣布反對袁世凱稱帝，護國戰爭爆發。</p>
+<p>梁啟超支持護國力量，與蔡鍔等反袁人士共同推動反對帝制的政治運動。</p>
+<p>護國運動的目標，是迫使袁世凱放棄帝制、恢復共和制度。</p>
+<h2 id="29-1916年：袁世凱取消帝制，隨後去世">29. 1916年：袁世凱取消帝制，隨後去世</h2>
+<p>1916年，反袁軍事與政治壓力不斷增加，袁世凱被迫取消帝制，並於同年6月去世。</p>
+<p>護國運動因此取得重要成果。</p>
+<p>梁啟超在這場運動中扮演了重要的政治宣傳與聯絡角色，也再次證明他能夠利用文字、政治網絡與公共輿論影響重大事件。</p>
+<p>然而，袁世凱去世並未解決中國的根本政治問題。中央政府權威衰退，各地軍事勢力逐漸形成，民國開始進入軍閥政治與政局反覆的時期。</p>
+<h2 id="30-1916年：短暫參與護國政府政治事務">30. 1916年：短暫參與護國政府政治事務</h2>
+<p>護國運動期間，梁啟超參與相關政治組織與政府事務。</p>
+<p>他希望藉由反袁運動恢復共和政治，並建立較穩定的中央政府。</p>
+<p>但他很快發現，即使帝制復辟遭到挫敗，軍事力量與地方政治勢力仍然可能凌駕憲政制度。</p>
+<p>因此，梁啟超此後對政治的期待逐漸轉向制度、教育與文化建設，並更加重視政治秩序背後的社會與思想條件。</p>
+<h2 id="31-1917年：反對張勳復辟，出任財政總長">31. 1917年：反對張勳復辟，出任財政總長</h2>
+<p>1917年，張勳發動復辟，擁立清朝末代皇帝溥儀重新登基。</p>
+<p>梁啟超公開反對復辟，支持段祺瑞方面的討逆行動。復辟很快失敗。</p>
+<p>此後，梁啟超一度出任北洋政府財政總長，試圖處理民國初年嚴重的財政與金融問題。</p>
+<p>但政府內部的政治角力、軍事開支與各方利益衝突，使財政改革難以順利推行。他不久便辭去職務，逐漸減少直接參與政府行政。</p>
+<hr>
+<h1 id="八、歐洲考察與思想再轉變（19181922）">八、歐洲考察與思想再轉變（1918—1922）</h1>
+<h2 id="32-1918年末：赴歐洲考察">32. 1918年末：赴歐洲考察</h2>
+<p>第一次世界大戰於1918年結束。歐洲各國在戰爭後面臨政治制度重整、社會改革與思想變遷。</p>
+<p>1918年底，梁啟超與張君勱、蔣百里等人前往歐洲，名義上與巴黎和會中國代表團的會外顧問工作有關，也藉機考察歐洲的政治、社會與文化發展。</p>
+<p>這趟旅程使他有機會親身觀察西方現代文明的成果與困境。</p>
+<p>他不再只是透過書籍與日本轉述來認識西方，而是直接接觸歐洲戰後的社會現實。</p>
+<h2 id="33-1919年：觀察第一次世界大戰後的歐洲">33. 1919年：觀察第一次世界大戰後的歐洲</h2>
+<p>梁啟超在歐洲期間，關注戰爭對政治制度、社會生活與思想文化的影響。</p>
+<p>第一次世界大戰造成巨大傷亡，也動搖了部分知識分子對西方文明必然進步的信念。</p>
+<p>梁啟超原先相當重視西方政治制度、科學知識與現代化經驗，但這次考察使他更加注意到：西方文明雖然擁有先進的科學與制度，也可能因民族競爭、軍事主義與權力衝突而走向災難。</p>
+<p>因此，他開始反思中國是否應該毫無保留地模仿西方，以及中國傳統文化在現代世界中是否仍有可以發揮的價值。</p>
+<h2 id="34-1920年：回國後更加重視文化與學術建設">34. 1920年：回國後更加重視文化與學術建設</h2>
+<p>梁啟超回國後，逐漸將重心從直接的政治鬥爭轉向學術、文化與教育。</p>
+<p>他與張君勱、蔣百里等人保持聯繫，參與思想文化活動。</p>
+<p>這一時期，他更重視不同文明之間的比較，也更加關心科學、哲學、宗教與人生觀之間的關係。</p>
+<p>梁啟超的思想並非簡單地由崇尚西方轉向排斥西方，而是開始嘗試重新思考：中國應如何吸收現代知識，同時保留批判與選擇的能力。</p>
+<h2 id="35-1920年：參與共學社相關文化活動">35. 1920年：參與共學社相關文化活動</h2>
+<p>梁啟超與張君勱等人參與共學社相關活動，推動學術交流與新知識的傳播。</p>
+<p>1920年前後，他的主要關注包括：</p>
+<ul>
+<li>介紹西方思想與學術成果。</li>
+<li>促進中國知識界與國際學術界的交流。</li>
+<li>探討科學與人生觀的關係。</li>
+<li>研究中國歷史與傳統文化。</li>
+<li>思考現代社會應如何建立新的價值秩序。</li>
+</ul>
+<p>這些活動反映出他晚年逐漸從政治改革家轉向更全面的文化思想家。</p>
+<h2 id="36-1922年：發表《敬業與樂業》">36. 1922年：發表《敬業與樂業》</h2>
+<p>1922年，梁啟超發表著名演講〈敬業與樂業〉。</p>
+<p>這篇文章強調，工作不應只是謀生手段，也應當包含對職責的尊重與對工作的投入。</p>
+<p>「敬業」是認真履行自己的職責；「樂業」則是從工作中尋找意義與價值。</p>
+<p>文章的核心思想，是將個人責任、職業倫理與社會生活結合起來，認為每個人都可以透過認真工作與積極態度，為社會作出貢獻。</p>
+<p>〈敬業與樂業〉後來成為華文教育中經常選讀的文章，也反映梁啟超晚年重視個人修養、公共責任與社會倫理的思想。</p>
+<h2 id="37-19221923年：探討科學與人生觀">37. 1922—1923年：探討科學與人生觀</h2>
+<p>梁啟超晚年十分關注科學知識與人生價值之間的關係。</p>
+<p>他認為，科學能夠幫助人們理解自然現象、改善生活條件，但科學方法並不必然能回答所有有關人生意義、道德責任與價值選擇的問題。</p>
+<p>因此，他主張既要重視科學，也要重視哲學、倫理與文化思考。</p>
+<p>這一立場反映出他在經歷西方文明與世界大戰的衝擊後，試圖尋找一種既不排斥現代科學，也不把人類生活完全化約為科學技術的思想方向。</p>
+<hr>
+<h1 id="九、晚年學術生涯與文化貢獻（19231929）">九、晚年學術生涯與文化貢獻（1923—1929）</h1>
+<h2 id="38-1923年：持續推動中國歷史研究">38. 1923年：持續推動中國歷史研究</h2>
+<p>梁啟超晚年將大量時間投入史學研究，試圖重新思考中國歷史的研究方法與歷史書寫方式。</p>
+<p>他認為，歷史不應只是帝王將相的紀錄，也應研究社會制度、思想文化與整體人類生活。</p>
+<p>他希望中國史學能夠擺脫單純記錄朝代更替的框架，建立更具分析能力與現代意識的歷史研究方法。</p>
+<h2 id="39-1923年：發表《中國歷史研究法》">39. 1923年：發表《中國歷史研究法》</h2>
+<p>《中國歷史研究法》是梁啟超史學思想的重要著作之一。</p>
+<p>他在書中討論歷史研究的目的、材料運用、史料判斷與研究方法，主張研究者應對史料進行辨析，而不能只憑傳聞或沿襲舊說。</p>
+<p>這部著作的重要貢獻，在於嘗試將近代學術方法引入中國史學，並強調歷史研究應具有明確的問題意識與分析架構。</p>
+<h2 id="40-1924年前後：持續參與學術與教育活動">40. 1924年前後：持續參與學術與教育活動</h2>
+<p>1920年代中期，梁啟超逐漸將主要精力投入講學、著述與學術交流。</p>
+<p>他與多所學術機構及知識界人士保持密切聯繫，並持續發表歷史、政治思想與文化方面的研究。</p>
+<p>此時的梁啟超已不再以建立政治組織或擔任政府職務為主要目標，而是希望透過教育與學術，影響下一代知識分子的思想與研究方向。</p>
+<h2 id="41-1925年：任教清華學校研究院">41. 1925年：任教清華學校研究院</h2>
+<p>1925年，梁啟超擔任清華學校研究院導師，投入學術研究與人才培養。</p>
+<p>當時的清華研究院是中國近代學術發展的重要機構之一，集結了一批具有影響力的學者。</p>
+<p>梁啟超在教學與研究中，重視中國歷史、思想文化與學術方法，也鼓勵學生對傳統知識進行重新檢視。</p>
+<p>他的學術活動，體現出一個重要轉變：早年他希望透過政治改革改變中國，晚年則更重視透過知識、教育與文化研究，建立長期的社會基礎。</p>
+<h2 id="42-1926年前後：參與圖書館與學術文化建設">42. 1926年前後：參與圖書館與學術文化建設</h2>
+<p>梁啟超晚年曾擔任圖書館及學術機構相關職務，繼續投入知識傳播與文化建設。</p>
+<p>他重視圖書整理、文獻保存與學術資源的普及，認為現代國家的文化發展不能只依靠少數學者的個人研究，也需要完善的公共學術設施。</p>
+<p>這與他早年提倡報刊、學校及新式教育的理念具有連續性：無論政治主張如何改變，他始終認為知識傳播是國家進步的重要條件。</p>
+<h2 id="43-1927年：逐漸淡出公共政治活動">43. 1927年：逐漸淡出公共政治活動</h2>
+<p>1927年前後，梁啟超進一步減少公開政治活動，將生活重心放在家庭、學術與著述。</p>
+<p>經歷清末改革、戊戌變法、辛亥革命、袁世凱稱帝及民初政治動盪後，他對政治制度改革的困難有了深刻體會。</p>
+<p>晚年的梁啟超仍關心國家前途，但更希望透過學術研究、教育與文化建設，為中國的長期發展奠定基礎。</p>
+<h2 id="44-1929年1月19日：病逝於北京">44. 1929年1月19日：病逝於北京</h2>
+<p>1929年1月19日，梁啟超病逝，享年55歲。</p>
+<p>他留下大量政治評論、歷史研究、文學作品與思想著述。後來編纂的《飲冰室合集》，保存了他一生的重要文章與學術成果。</p>
+<p>梁啟超的逝世，象徵一位經歷晚清變法、民國建國與近代思想轉型的重要人物的離去。</p>
+<p>他的政治理想未能在有生之年完全實現，但他對報刊、教育、國民意識、史學與思想文化的貢獻，持續影響中國近代知識界。<a href="https://museum.mof.gov.tw/singlehtml/e5e41f7426964fee825cd37a87a6ca75?cntId=867e982e89674df7a7ca17c0d0f15f7d&utm_source=chatgpt.com">Museum of Finance</a></p>
+<hr>
+<h1 id="十、梁啟超生平大事記總表">十、梁啟超生平大事記總表</h1>
+<p>以下依年代整理梁啟超一生的重要事件，方便複習與查閱。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡約</th>
+<th>重大事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1873年</strong></td>
+<td align="right">0歲</td>
+<td>出生於廣東新會</td>
+<td>開啟其傳統士人家庭的求學歷程</td>
+</tr>
+<tr>
+<td>1884年</td>
+<td align="right">11歲</td>
+<td>少年時期參加科舉考試</td>
+<td>接受傳統經學與科舉教育</td>
+</tr>
+<tr>
+<td>1887年</td>
+<td align="right">14歲</td>
+<td>進入廣州學海堂等學術環境求學</td>
+<td>擴展傳統學術訓練</td>
+</tr>
+<tr>
+<td>1889年</td>
+<td align="right">16歲</td>
+<td>考中舉人</td>
+<td>取得傳統士人功名</td>
+</tr>
+<tr>
+<td>1890年</td>
+<td align="right">17歲</td>
+<td>拜康有為為師</td>
+<td>開始接受維新思想</td>
+</tr>
+<tr>
+<td>1891—1894年</td>
+<td align="right">18—21歲</td>
+<td>在萬木草堂學習</td>
+<td>形成改革政治與教育的初步思想</td>
+</tr>
+<tr>
+<td><strong>1895年</strong></td>
+<td align="right">22歲</td>
+<td>參與公車上書</td>
+<td>以政治行動回應《馬關條約》</td>
+</tr>
+<tr>
+<td>1895年</td>
+<td align="right">22歲</td>
+<td>參與強學會及維新宣傳</td>
+<td>推動政治改革思想傳播</td>
+</tr>
+<tr>
+<td><strong>1896年</strong></td>
+<td align="right">23歲</td>
+<td>參與《時務報》編輯工作</td>
+<td>成為維新派重要政論家</td>
+</tr>
+<tr>
+<td>1897年</td>
+<td align="right">24歲</td>
+<td>擔任湖南時務學堂總教習</td>
+<td>投入新式教育與人才培養</td>
+</tr>
+<tr>
+<td><strong>1898年</strong></td>
+<td align="right">25歲</td>
+<td>參與戊戌變法</td>
+<td>成為晚清維新運動的重要人物</td>
+</tr>
+<tr>
+<td>1898年9月</td>
+<td align="right">25歲</td>
+<td>戊戌政變後流亡日本</td>
+<td>政治活動轉向海外與報刊宣傳</td>
+</tr>
+<tr>
+<td>1898—1899年</td>
+<td align="right">25—26歲</td>
+<td>參與《清議報》活動</td>
+<td>延續維新思想傳播</td>
+</tr>
+<tr>
+<td>1900年</td>
+<td align="right">27歲</td>
+<td>與自立軍相關人士有所聯繫</td>
+<td>維新派嘗試以政治與軍事活動改變局勢</td>
+</tr>
+<tr>
+<td><strong>1902年</strong></td>
+<td align="right">29歲</td>
+<td>創辦《新民叢報》</td>
+<td>擴大近代國民思想與政治觀念的傳播</td>
+</tr>
+<tr>
+<td>1902—1906年</td>
+<td align="right">29—33歲</td>
+<td>發表《新民說》</td>
+<td>系統探討國民意識與國家現代化</td>
+</tr>
+<tr>
+<td>1903—1904年</td>
+<td align="right">30—31歲</td>
+<td>與革命派展開論戰</td>
+<td>顯示改良與革命兩條路線的分歧</td>
+</tr>
+<tr>
+<td>1905年</td>
+<td align="right">32歲</td>
+<td>清廷宣布預備立憲，立憲派活動發展</td>
+<td>梁啟超持續支持憲政改革</td>
+</tr>
+<tr>
+<td>1906年</td>
+<td align="right">33歲</td>
+<td>清廷正式宣布預備立憲</td>
+<td>立憲運動進入新階段</td>
+</tr>
+<tr>
+<td>1907年</td>
+<td align="right">34歲</td>
+<td>參與政聞社活動</td>
+<td>嘗試組織化推動憲政</td>
+</tr>
+<tr>
+<td>1909—1910年</td>
+<td align="right">36—37歲</td>
+<td>持續推動立憲及加速國會改革</td>
+<td>對清廷改革成效逐漸失望</td>
+</tr>
+<tr>
+<td><strong>1911年</strong></td>
+<td align="right">38歲</td>
+<td>辛亥革命爆發</td>
+<td>清朝統治瓦解，政治路線面臨轉變</td>
+</tr>
+<tr>
+<td><strong>1912年</strong></td>
+<td align="right">39歲</td>
+<td>回國，創辦《庸言》</td>
+<td>轉向民國政治與制度建設</td>
+</tr>
+<tr>
+<td><strong>1913年</strong></td>
+<td align="right">40歲</td>
+<td>組織進步黨，出任司法總長</td>
+<td>參與民國初年的政黨政治</td>
+</tr>
+<tr>
+<td>1914年</td>
+<td align="right">41歲</td>
+<td>與袁世凱的政治分歧加深</td>
+<td>逐漸轉向反對袁氏集權</td>
+</tr>
+<tr>
+<td><strong>1915年</strong></td>
+<td align="right">42歲</td>
+<td>反對袁世凱稱帝</td>
+<td>投入反帝制政治運動</td>
+</tr>
+<tr>
+<td>1915年末</td>
+<td align="right">42歲</td>
+<td>支持護國運動</td>
+<td>參與維護共和制度的政治行動</td>
+</tr>
+<tr>
+<td><strong>1916年</strong></td>
+<td align="right">43歲</td>
+<td>護國運動取得成果，袁世凱去世</td>
+<td>帝制復辟失敗</td>
+</tr>
+<tr>
+<td><strong>1917年</strong></td>
+<td align="right">44歲</td>
+<td>反對張勳復辟，短暫出任財政總長</td>
+<td>再次參與共和政治與政府行政</td>
+</tr>
+<tr>
+<td>1918年末</td>
+<td align="right">45歲</td>
+<td>前往歐洲考察</td>
+<td>直接觀察西方戰後社會與思想</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td align="right">46歲</td>
+<td>考察歐洲戰後局勢</td>
+<td>重新思考西方文明與現代化</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td align="right">47歲</td>
+<td>參與共學社相關文化活動</td>
+<td>更加重視學術、文化與思想交流</td>
+</tr>
+<tr>
+<td><strong>1922年</strong></td>
+<td align="right">49歲</td>
+<td>發表〈敬業與樂業〉</td>
+<td>闡述職業倫理與社會責任</td>
+</tr>
+<tr>
+<td>1923年</td>
+<td align="right">50歲</td>
+<td>發表《中國歷史研究法》</td>
+<td>推動中國史學方法的現代轉型</td>
+</tr>
+<tr>
+<td><strong>1925年</strong></td>
+<td align="right">52歲</td>
+<td>擔任清華學校研究院導師</td>
+<td>投入學術研究與人才培養</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td align="right">53歲</td>
+<td>參與圖書館與學術文化建設</td>
+<td>推動知識保存與傳播</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td align="right">54歲</td>
+<td>逐漸淡出公共政治活動</td>
+<td>將重心轉向家庭與學術</td>
+</tr>
+<tr>
+<td><strong>1929年1月19日</strong></td>
+<td align="right">55歲</td>
+<td>病逝</td>
+<td>留下豐富的政治、歷史與文化著作</td>
+</tr>
+</tbody></table>
+<p>年代與年齡依公曆概算；部分早年求學及政治活動的具體年份，可能因史料記載方式而有差異。主要年表可參考國立公共資訊圖書館的近代史人物資料，以及財政部財政史料陳列室的梁啟超人物介紹。<a href="https://museum.mof.gov.tw/singlehtml/e5e41f7426964fee825cd37a87a6ca75?cntId=867e982e89674df7a7ca17c0d0f15f7d&utm_source=chatgpt.com">Museum of Finance</a></p>
+<hr>
+<h1 id="十一、梁啟超的重要著作與思想貢獻">十一、梁啟超的重要著作與思想貢獻</h1>
+<p>梁啟超不只是一位政治人物，也是一位跨越政治、歷史、文學、教育與思想領域的學者。</p>
+<h2 id="1-政治思想與國民意識">1. 政治思想與國民意識</h2>
+<table>
+<thead>
+<tr>
+<th>著作或文章</th>
+<th>大致年代</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《變法通議》相關文章</td>
+<td>1890年代</td>
+<td>論述政治、教育與社會改革的必要性</td>
+</tr>
+<tr>
+<td>《新民說》</td>
+<td>1902—1906年</td>
+<td>探討現代國民的素質、責任與國家意識</td>
+</tr>
+<tr>
+<td>《中國積弱溯源論》等政論</td>
+<td>清末</td>
+<td>分析中國積弱的原因與改革方向</td>
+</tr>
+<tr>
+<td>《五十年中國進化概論》</td>
+<td>1923年</td>
+<td>回顧近代中國思想與社會變遷</td>
+</tr>
+</tbody></table>
+<h2 id="2-歷史研究">2. 歷史研究</h2>
+<table>
+<thead>
+<tr>
+<th>著作</th>
+<th>大致年代</th>
+<th>主要貢獻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《新史學》</td>
+<td>1902年</td>
+<td>批判傳統史學的局限，提出歷史研究革新的主張</td>
+</tr>
+<tr>
+<td>《中國歷史研究法》</td>
+<td>1922—1923年前後</td>
+<td>探討史料、研究方法與歷史書寫</td>
+</tr>
+<tr>
+<td>《中國近三百年學術史》</td>
+<td>1920年代</td>
+<td>梳理清代以來的學術思想發展</td>
+</tr>
+<tr>
+<td>《先秦政治思想史》</td>
+<td>1920年代</td>
+<td>研究先秦時代的政治觀念與思想流派</td>
+</tr>
+</tbody></table>
+<h2 id="3-文學與教育">3. 文學與教育</h2>
+<table>
+<thead>
+<tr>
+<th>著作或文章</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>〈少年中國說〉</td>
+<td>以年輕一代象徵中國的未來，表達國家革新的期待</td>
+</tr>
+<tr>
+<td>〈敬業與樂業〉</td>
+<td>討論職業倫理、個人責任與社會價值</td>
+</tr>
+<tr>
+<td>《飲冰室合集》所收文章</td>
+<td>涵蓋政治、歷史、文學、哲學、教育與國際觀察</td>
+</tr>
+</tbody></table>
+<p>梁啟超的著作橫跨多個領域，反映出他不只希望改變政府制度，也希望改變人們理解國家、歷史與自身責任的方式。<a href="https://dict.revised.moe.edu.tw/dictView.jsp?ID=65014&la=0&powerMode=0&utm_source=chatgpt.com">Revised Dictionary</a></p>
+<hr>
+<h1 id="十二、如何評價梁啟超的一生？">十二、如何評價梁啟超的一生？</h1>
+<h2 id="1-他是近代中國政治改革的重要推動者">1. 他是近代中國政治改革的重要推動者</h2>
+<p>梁啟超參與公車上書、戊戌變法與清末立憲運動，長期試圖透過制度改革，使中國從傳統帝制走向現代國家。</p>
+<p>他的政治主張雖然多次改變，但始終關心中國如何建立較有效的政府、培養人才及回應世界局勢。</p>
+<h2 id="2-他是近代報刊與公共論述的重要代表">2. 他是近代報刊與公共論述的重要代表</h2>
+<p>梁啟超善於運用報刊與政論文章傳播新思想。</p>
+<p>他使政治議題不再只是朝廷內部或少數官員之間的事，也逐漸成為知識界與社會大眾可以討論的公共問題。</p>
+<p>近代中國政治思想、新聞事業及公共輿論的發展，都可以看到他留下的影響。</p>
+<h2 id="3-他對「國民」與「國家」的關係提出重要思考">3. 他對「國民」與「國家」的關係提出重要思考</h2>
+<p>梁啟超認為，國家的強弱不只取決於軍隊、財政與政治制度，也與人民的教育、知識、公共責任及國民意識密切相關。</p>
+<p>這種思考使政治改革的範圍從政府制度擴大到教育、文化與社會生活。</p>
+<h2 id="4-他的政治立場並非一成不變">4. 他的政治立場並非一成不變</h2>
+<p>梁啟超早年支持君主立憲，反對立即推翻清朝；民國成立後，他接受共和政治；袁世凱稱帝時，他又積極投入反袁運動。</p>
+<p>這些轉變有時顯示他對政治局勢的判斷受到現實條件影響，也反映出晚清至民初的政治環境極不穩定。</p>
+<p>評價梁啟超時，既不能將他簡化為始終堅持單一理想的改革英雄，也不宜僅因其政治立場的變動而否定他的思想與學術貢獻。</p>
+<h2 id="5-他晚年的學術成就超越了單純的政治活動">5. 他晚年的學術成就超越了單純的政治活動</h2>
+<p>梁啟超晚年將重心轉向史學、文化與教育，對近代中國史學方法、思想史研究及學術傳播產生了重要影響。</p>
+<p>他的歷史研究強調方法與問題意識，也反映出他試圖以學術方式重新理解中國傳統及其現代轉型。</p>
+<hr>
+<h2 id="十三、總結：梁啟超一生的四個階段">十三、總結：梁啟超一生的四個階段</h2>
+<p>若要掌握梁啟超的生平，可以用以下四個階段概括：</p>
+<p><strong>第一階段：傳統士人轉型為維新思想家（1873—1894）</strong><br>他接受傳統經學教育，後來拜康有為為師，逐漸形成改革政治與教育的思想。</p>
+<p><strong>第二階段：維新運動與流亡日本（1895—1911）</strong><br>他參與公車上書、戊戌變法，變法失敗後流亡日本，透過《清議報》《新民叢報》等刊物傳播改革思想，並持續倡導君主立憲。</p>
+<p><strong>第三階段：參與共和政治與護國運動（1912—1917）</strong><br>民國成立後，他投入政黨與政府事務；袁世凱企圖稱帝時，他轉而支持反袁行動，維護共和制度。</p>
+<p><strong>第四階段：轉向學術、教育與文化建設（1918—1929）</strong><br>歐洲考察後，他更加關注文明、文化與人生問題，晚年任教清華研究院，致力於歷史研究與知識傳播。</p>
+<p><strong>梁啟超最重要的歷史意義，在於他不僅親身經歷了中國從晚清帝制走向民國共和的劇烈轉型，也持續以政治實踐、報刊寫作、教育活動與學術研究，思考中國如何成為一個現代國家。</strong></p>
+<p>他的一生，正好呈現了近代中國從「救亡圖存」走向「制度改革」，再進一步探索「國民、文化與現代文明」的思想歷程。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

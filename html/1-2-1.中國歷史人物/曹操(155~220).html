@@ -1,0 +1,562 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="曹操生平大事記：從東漢末年軍閥到曹魏政權奠基者">曹操生平大事記：從東漢末年軍閥到曹魏政權奠基者</h1>
+<p><strong>曹操（155年－220年）</strong>，字孟德，小字阿瞞，沛國譙縣人（今安徽省亳州市一帶），是東漢末年最重要的政治家、軍事家與文學家之一。他在漢末群雄割據的局勢中，逐步統一中國北方，迎奉漢獻帝至許都，掌握東漢中央政權，並奠定曹魏政權的基礎。</p>
+<p>曹操一生最重要的歷史意義，在於他透過軍事征服、政治整合、人才任用、屯田制度與行政改革，重建北方地區的統治秩序。他生前始終以漢朝丞相的身分掌握最高實權，直到220年去世後，其子曹丕才正式代漢稱帝，建立魏朝。曹操後來被追尊為魏武帝。</p>
+<p>以下按照年代，從曹操的家世與早年經歷，依序整理至黃巾之亂、討伐董卓、迎奉漢獻帝、官渡之戰、赤壁之戰、統一北方、漢中之戰，以及曹魏政權的形成，並補充各階段的歷史背景與影響。</p>
+<hr>
+<h1 id="一、曹操生平大事記：詳細年代時間軸">一、曹操生平大事記：詳細年代時間軸</h1>
+<h2 id="第一階段：早年成長與踏入仕途（155183年）">第一階段：早年成長與踏入仕途（155—183年）</h2>
+<h3 id="155年｜曹操出生">155年｜曹操出生</h3>
+<ul>
+<li><strong>年代：</strong> 東漢桓帝永興元年。</li>
+<li><strong>出生地：</strong> 沛國譙縣，今安徽省亳州市。</li>
+<li><strong>字：</strong> 孟德。</li>
+<li><strong>小字：</strong> 阿瞞。</li>
+<li><strong>父親：</strong> 曹嵩。</li>
+<li><strong>養祖父：</strong> 曹騰，東漢朝廷宦官，曾受到皇帝信任。</li>
+</ul>
+<p>曹操出身於具有一定政治資源的家庭。其父曹嵩是曹騰的養子，曾在東漢朝廷擔任高級官職，因此曹操得以進入當時的政治與官僚體系。</p>
+<p>不過，曹操的家世也具有一定的特殊性。曹氏與宦官集團的關係，使他在以儒學門第為重要社會資本的士人階層中，未必能獲得與傳統高門士族相同的地位。</p>
+<p>這種背景有助於理解曹操後來為何特別重視實際才能，以及他為何經常與部分傳統士族發生衝突。</p>
+<h3 id="174年左右｜進入仕途">174年左右｜進入仕途</h3>
+<p>曹操青年時期開始進入東漢官僚體系，曾獲舉為孝廉，並逐步擔任不同官職。</p>
+<p>當時，察舉制度是漢代選拔官員的重要途徑，地方官員與士人可以透過推薦進入仕途。</p>
+<p>曹操在早年已經接觸到漢代行政、司法與軍事體系，這些經驗成為他日後治理北方的重要基礎。</p>
+<h3 id="177年左右｜擔任洛陽北部尉">177年左右｜擔任洛陽北部尉</h3>
+<p>曹操曾任洛陽北部尉，負責京城北部地區的治安。</p>
+<p>據史書記載，他為了整頓京城秩序，對違反禁令者採取嚴厲措施，即使違法者具有權貴背景，也不輕易寬貸。</p>
+<p><strong>歷史意義：</strong></p>
+<ol>
+<li>顯示曹操早年已具有強烈的紀律觀念。</li>
+<li>反映他對法令執行與行政效率的重視。</li>
+<li>為其後來強調軍紀、賞罰分明的統治方式提供了早期例證。</li>
+</ol>
+<p>需要注意的是，後世小說與戲曲對曹操早年的描寫，經常加入戲劇化情節，不宜全部視為可靠史實。</p>
+<hr>
+<h2 id="第二階段：黃巾之亂與軍事生涯的開始（184189年）">第二階段：黃巾之亂與軍事生涯的開始（184—189年）</h2>
+<h3 id="184年｜黃巾之亂爆發">184年｜黃巾之亂爆發</h3>
+<p><strong>重大事件：</strong> 黃巾之亂。</p>
+<p>東漢末年，朝廷政治腐敗、土地兼併嚴重，加上災荒與社會矛盾，導致各地民眾的不滿持續累積。</p>
+<p>184年，以張角為首的太平道勢力發動大規模起事，參與者頭戴黃巾，因此史稱黃巾之亂。</p>
+<p>這場起事雖然遭到漢朝政府鎮壓，但其影響極為深遠：地方軍事力量迅速擴張，中央政府對地方的控制逐漸削弱，各地軍事將領開始掌握更多實際權力。</p>
+<p>曹操在此時參與鎮壓黃巾軍，開始累積軍事經驗。</p>
+<h3 id="184年｜參與鎮壓潁川黃巾軍">184年｜參與鎮壓潁川黃巾軍</h3>
+<p>曹操獲任騎都尉，參與討伐潁川一帶的黃巾軍。</p>
+<p>這是曹操軍事生涯的重要起點。</p>
+<p>透過戰場經驗，他逐漸熟悉軍隊指揮、戰場部署與軍事動員，也開始建立自己的軍事聲望。</p>
+<h3 id="184188年｜逐步累積行政與軍事經驗">184—188年｜逐步累積行政與軍事經驗</h3>
+<p>在黃巾之亂以後，曹操繼續擔任不同官職，曾任濟南相等職務。</p>
+<p>在地方任職期間，他展現出強硬的行政作風，並嘗試整頓地方政治秩序。</p>
+<p>這一階段的重要性，在於曹操尚未成為獨立割據的軍閥，卻已經具備官僚、軍事與地方治理方面的經驗。</p>
+<h3 id="188年｜東漢中央軍事體制調整">188年｜東漢中央軍事體制調整</h3>
+<p>東漢朝廷為強化京城防衛，設置西園八校尉等軍事編制。</p>
+<p>曹操曾參與相關軍事體系，進一步接近中央權力核心。</p>
+<p>然而，當時朝廷內部的外戚、宦官與士人之間衝突激烈，漢朝政治秩序已經陷入深刻危機。</p>
+<h3 id="189年｜董卓入京，東漢政局劇變">189年｜董卓入京，東漢政局劇變</h3>
+<p><strong>重大事件：</strong> 董卓掌握朝廷。</p>
+<p>漢靈帝去世後，朝廷內部發生激烈權力鬥爭。董卓率軍進入洛陽，控制中央政權，廢少帝劉辯，改立陳留王劉協為帝，即漢獻帝。</p>
+<p>董卓的專權引起各地政治勢力不滿，中央政權進一步失去公信力。</p>
+<p>曹操不願完全依附董卓，離開洛陽，逐步尋求建立自己的軍事力量。</p>
+<p><strong>階段總結：</strong></p>
+<p>184—189年間，曹操從一般官員逐漸成長為具有軍事經驗與政治判斷力的人物。黃巾之亂削弱了漢朝中央權威，而董卓入京則進一步加速東漢政權的瓦解。</p>
+<hr>
+<h2 id="第三階段：討伐董卓與建立獨立勢力（190196年）">第三階段：討伐董卓與建立獨立勢力（190—196年）</h2>
+<h3 id="190年｜關東諸侯討伐董卓">190年｜關東諸侯討伐董卓</h3>
+<p><strong>重大事件：</strong> 關東諸侯討伐董卓。</p>
+<p>190年，關東地區多名諸侯與地方軍事領袖組成聯盟，共同討伐董卓。</p>
+<p>參與者包括袁紹、袁術、曹操等人。</p>
+<p>曹操積極參與討董行動，希望藉此恢復政治秩序，同時建立自己的軍事聲望。</p>
+<p>不過，討董聯盟內部各懷目的，缺乏穩定的共同指揮體系，因此未能迅速消滅董卓勢力。</p>
+<h3 id="190年｜曹操在滎陽一帶受挫">190年｜曹操在滎陽一帶受挫</h3>
+<p>曹操曾率軍追擊董卓部隊，在滎陽一帶遭遇挫敗。</p>
+<p>這次失利說明，曹操雖然具有政治抱負，但早期軍事力量仍然有限，尚不足以單獨左右全國局勢。</p>
+<p>此後，他逐漸轉向經營自己的根據地，而不是單純依靠諸侯聯盟。</p>
+<h3 id="191年｜逐步建立兗州周邊的勢力">191年｜逐步建立兗州周邊的勢力</h3>
+<p>曹操開始在中原地區擴張勢力，並與其他地方軍事領袖競爭。</p>
+<p>當時北方局勢相當複雜，袁紹、袁術、陶謙、公孫瓚等人各自控制不同地區。</p>
+<p>曹操必須在軍事行動、地方治理與政治聯盟之間取得平衡，才能維持自己的生存與發展。</p>
+<h3 id="192年｜收編青州黃巾軍">192年｜收編青州黃巾軍</h3>
+<p>曹操在擊敗部分黃巾軍勢力後，收編其中大量人員，逐漸形成具有規模的軍事力量，史稱「青州兵」。</p>
+<p>青州兵成為曹操早期軍事擴張的重要基礎。</p>
+<p>這一做法也反映出曹操在軍事上的實用主義：他不只消滅敵人，也會將擊敗的對手轉化為自己的資源。</p>
+<p>同年，曹操逐步取得兗州的控制權，建立較穩固的政治與軍事根據地。</p>
+<h3 id="193年｜陶謙與曹操衝突">193年｜陶謙與曹操衝突</h3>
+<p>曹操與徐州牧陶謙發生戰爭。</p>
+<p>曹操進攻徐州，戰事造成當地嚴重破壞。關於戰爭中的屠殺規模與具體情節，後世文獻存在不同記載，仍須區分史料記述與文學敘事。</p>
+<p>徐州之戰反映出曹操為了擴張勢力，能夠採取非常強硬的軍事手段。</p>
+<p>同時，這場戰爭也使曹操與徐州地方勢力的矛盾加深。</p>
+<h3 id="194年｜呂布進入兗州，曹操面臨危機">194年｜呂布進入兗州，曹操面臨危機</h3>
+<p>曹操出兵徐州期間，兗州部分勢力倒向呂布。</p>
+<p>呂布乘機進入兗州，曹操的根據地一度陷入危機。</p>
+<p>曹操與呂布展開激烈爭奪，雙方互有勝負。</p>
+<p>這是曹操早期生涯的重要考驗：如果失去兗州，他先前建立的政治與軍事基礎便可能瓦解。</p>
+<h3 id="195年｜曹操逐步收復兗州">195年｜曹操逐步收復兗州</h3>
+<p>經過持續作戰，曹操逐漸恢復對兗州主要地區的控制。</p>
+<p>與此同時，漢獻帝仍然處於流離與權力爭奪之中，朝廷無法有效控制各地軍閥。</p>
+<p>曹操開始有機會將自己的地方勢力，進一步轉化為具有全國政治合法性的中央政權。</p>
+<h3 id="196年｜迎奉漢獻帝，遷都許縣">196年｜迎奉漢獻帝，遷都許縣</h3>
+<p><strong>重大事件：</strong> 曹操迎奉漢獻帝，將朝廷遷往許縣。</p>
+<p>漢獻帝在董卓死後，仍然受到不同軍事勢力控制。曹操迎接漢獻帝至許縣，今河南省許昌一帶，並逐漸掌握朝廷的實際運作。</p>
+<p>這是曹操一生最重要的政治轉折之一。</p>
+<p>其主要影響包括：</p>
+<ol>
+<li><strong>取得政治合法性：</strong> 曹操可以朝廷名義發布詔令。</li>
+<li><strong>提升軍事動員能力：</strong> 以皇帝名義號令各地政治與軍事勢力。</li>
+<li><strong>吸引人才：</strong> 許多希望重建秩序的官員與士人前來投效。</li>
+<li><strong>建立中央行政機構：</strong> 曹操不再只是地方軍閥，而是逐步成為控制漢朝中央政權的實際領袖。</li>
+</ol>
+<p>後世常用「挾天子以令諸侯」概括這一政策。</p>
+<p>不過，這句話是對其政治效果的概括，不能完全取代對當時政治情勢的分析。迎奉漢獻帝既是曹操擴張權力的策略，也使他獲得了在名義上維持漢朝中央政府運作的條件。</p>
+<hr>
+<h1 id="二、曹操權力擴張的關鍵時期（197208年）">二、曹操權力擴張的關鍵時期（197—208年）</h1>
+<h2 id="197年｜宛城之戰，曹操遭遇挫敗">197年｜宛城之戰，曹操遭遇挫敗</h2>
+<p>曹操進攻張繡控制的宛城，張繡一度投降，後來又突然反叛。</p>
+<p>曹操在戰事中遭到重大損失，其子曹昂、侄子曹安民及部將典韋等人均在相關事件中喪生。</p>
+<p>這場戰事顯示，即使曹操已經掌握朝廷，他仍然必須面對地方軍閥的激烈抵抗。</p>
+<p>宛城之戰也成為曹操早期軍事生涯中，極具代表性的挫敗之一。</p>
+<h2 id="198年｜擊敗呂布">198年｜擊敗呂布</h2>
+<p>曹操持續進攻呂布，最終圍攻下邳。</p>
+<p>呂布部下發生離心，曹操軍隊攻破下邳，呂布被俘並遭處死。</p>
+<p>呂布勢力的覆滅，使曹操消除了中原地區的重要競爭者，也進一步鞏固了兗州與豫州一帶的控制權。</p>
+<p>同年，曹操亦持續處理與張繡等勢力的衝突。</p>
+<h2 id="199年｜袁紹成為北方最主要的競爭對手">199年｜袁紹成為北方最主要的競爭對手</h2>
+<p>袁紹出身於著名的汝南袁氏家族，具有廣泛的政治人脈，並控制冀州、青州、幽州、并州等地的部分重要區域。</p>
+<p>在軍事力量、人口資源與地理範圍方面，袁紹一度具有相當優勢。</p>
+<p>曹操則控制漢朝中央朝廷及中原地區的重要據點。</p>
+<p>兩人之間的競爭，逐漸成為決定北方政治格局的關鍵衝突。</p>
+<h2 id="200年｜官渡之戰，曹操擊敗袁紹">200年｜官渡之戰，曹操擊敗袁紹</h2>
+<p><strong>重大事件：</strong> 官渡之戰。</p>
+<p>官渡之戰是曹操統一北方過程中的決定性戰役之一。</p>
+<p>袁紹率領大軍南下，企圖擊敗曹操，進而控制中原。然而，曹操利用戰略部署、情報掌握與對敵方補給的打擊，逐漸扭轉戰局。</p>
+<p>戰事的重要轉折之一，是曹操襲擊袁紹軍隊的重要糧食補給據點烏巢。</p>
+<p>袁軍的糧草受到重大損失，軍中士氣隨之動搖。曹操把握機會發動攻勢，最終擊敗袁紹。</p>
+<h3 id="官渡之戰的歷史意義">官渡之戰的歷史意義</h3>
+<p><strong>第一，改變南北力量對比。</strong></p>
+<p>戰前，袁紹是北方最強大的軍事領袖之一；戰後，其勢力遭到重大削弱。</p>
+<p><strong>第二，顯示曹操善於以有限資源取得戰略優勢。</strong></p>
+<p>曹操並非單純依靠兵力取勝，而是重視敵軍補給、情報、時機與軍隊士氣。</p>
+<p><strong>第三，為統一北方奠定基礎。</strong></p>
+<p>官渡之戰並未立即消滅袁紹勢力，但為曹操日後進一步控制河北創造了條件。</p>
+<p><strong>第四，確立曹操作為北方最重要政治軍事領袖的地位。</strong></p>
+<p>此後，曹操逐漸取得對北方局勢的主導權。</p>
+<h2 id="201年｜倉亭之戰與袁紹勢力持續衰退">201年｜倉亭之戰與袁紹勢力持續衰退</h2>
+<p>袁紹在官渡之戰失敗後，仍然保有相當勢力。</p>
+<p>曹操繼續對袁紹方面發動軍事行動，雙方在倉亭一帶交戰，袁軍再次受挫。</p>
+<p>袁紹雖未立即失去所有領地，但其軍事優勢已經大不如前。</p>
+<h2 id="202年｜袁紹去世，袁氏內部爆發權力鬥爭">202年｜袁紹去世，袁氏內部爆發權力鬥爭</h2>
+<p>袁紹去世後，其子袁譚與袁尚等人爭奪繼承權。</p>
+<p>袁氏集團原本具有相當龐大的資源，但內部缺乏穩定的權力交接機制，使曹操獲得逐步擴張的機會。</p>
+<p>這個事件也反映出，政治組織能否維持內部團結，與軍事力量本身同樣重要。</p>
+<h2 id="203年｜曹操持續進攻袁氏勢力">203年｜曹操持續進攻袁氏勢力</h2>
+<p>曹操利用袁氏兄弟之間的矛盾，逐步擴大在北方的影響力。</p>
+<p>袁譚、袁尚彼此爭鬥，使原本能夠與曹操抗衡的勢力進一步分裂。</p>
+<p>曹操則透過軍事打擊與政治分化，逐步削弱袁氏集團。</p>
+<h2 id="204年｜攻下鄴城">204年｜攻下鄴城</h2>
+<p>曹操攻破鄴城，這是袁氏在河北的重要政治中心。</p>
+<p>鄴城的失守，象徵曹操對河北地區的控制取得重大進展。</p>
+<p>此後，他得以將北方更多的人口、土地與行政資源納入自己的統治體系。</p>
+<h2 id="205年｜袁譚敗亡">205年｜袁譚敗亡</h2>
+<p>曹操擊敗袁譚，進一步消滅袁氏在青州等地的主要勢力。</p>
+<p>袁氏集團逐漸失去重新恢復北方霸權的可能。</p>
+<h2 id="206年｜持續鞏固北方統治">206年｜持續鞏固北方統治</h2>
+<p>曹操繼續處理河北與中原地區的軍事、行政問題。</p>
+<p>此時，他的目標已不再只是維持根據地，而是逐步建立涵蓋北方廣大地區的統治秩序。</p>
+<h2 id="207年｜白狼山之戰，擊敗烏桓">207年｜白狼山之戰，擊敗烏桓</h2>
+<p><strong>重大事件：</strong> 白狼山之戰。</p>
+<p>曹操北征烏桓，與張遼等將領共同參與相關軍事行動。</p>
+<p>此役擊敗烏桓的重要勢力，削弱了袁氏殘餘勢力與北方部族相互依靠的局面。</p>
+<p>白狼山之戰的勝利，使曹操得以鞏固北方邊境，並進一步提升其軍事聲望。</p>
+<h3 id="207年｜北方局勢大致底定">207年｜北方局勢大致底定</h3>
+<p>經過多年戰爭，曹操已經擊敗袁紹的主要繼承勢力，並削弱其他北方競爭者。</p>
+<p>至此，曹操基本確立了對北方主要地區的優勢。</p>
+<p>然而，中國尚未統一。長江流域仍有孫權等勢力，而劉備也正在尋求新的政治與軍事根據地。</p>
+<h2 id="208年｜赤壁之戰，曹操南征受挫">208年｜赤壁之戰，曹操南征受挫</h2>
+<p><strong>重大事件：</strong> 赤壁之戰。</p>
+<p>曹操在北方取得優勢後，開始向南方擴張。</p>
+<p>208年，曹操南下，企圖進一步控制荊州及長江流域。當時，劉備與孫權結成聯盟，共同抵抗曹操。</p>
+<p>雙方在長江中游一帶展開戰爭，曹軍最終遭到重大挫敗。</p>
+<p>赤壁之戰的具體戰事過程，史料與後世《三國演義》的描寫並不完全相同。傳統敘事常強調周瑜、諸葛亮與火攻的作用，但討論歷史時，應注意小說情節與正史記載的差異。</p>
+<h3 id="赤壁之戰的歷史意義">赤壁之戰的歷史意義</h3>
+<p><strong>第一，曹操未能迅速統一全國。</strong></p>
+<p>曹操原本希望藉由南征，進一步控制長江以南的政治與軍事勢力，但赤壁之戰使其南進計畫受阻。</p>
+<p><strong>第二，孫權政權得以維持。</strong></p>
+<p>孫權成功抵抗曹操，鞏固了江東的統治。</p>
+<p><strong>第三，劉備獲得發展空間。</strong></p>
+<p>劉備在赤壁之戰後逐步擴大自身影響力，為日後取得益州奠定條件。</p>
+<p><strong>第四，三國鼎立的基本格局逐漸形成。</strong></p>
+<p>曹操控制北方，孫權立足江東，劉備則逐步發展西南勢力。</p>
+<p>赤壁之戰並不代表三國鼎立在208年就已完全定型，但它確實是中國政治版圖走向三分的重要轉折點。</p>
+<hr>
+<h1 id="三、曹操建立北方政權與晚年發展（209220年）">三、曹操建立北方政權與晚年發展（209—220年）</h1>
+<h2 id="209年｜赤壁之戰後重整北方">209年｜赤壁之戰後重整北方</h2>
+<p>赤壁之戰失利後，曹操返回北方，重新整頓軍事與行政體系。</p>
+<p>他並未因南征失敗而喪失北方的主導權，而是繼續透過內政改革、軍事部署與政治整合，維持曹氏勢力的優勢。</p>
+<p>此後，曹操的戰略逐漸轉向鞏固既有領土，同時尋找再次向南方與西方擴張的機會。</p>
+<h2 id="210年｜發布求賢令">210年｜發布求賢令</h2>
+<p>曹操發布求賢令，強調選拔人才時，不應只看重傳統道德名聲，而應重視實際能力。</p>
+<p>這項政策與漢代察舉制度及當時士族社會的用人觀念形成一定對比。</p>
+<p>曹操希望吸引具有軍事、行政、經濟與謀略才能的人物，協助自己建立更有效率的政權。</p>
+<h3 id="求賢政策的意義">求賢政策的意義</h3>
+<ol>
+<li><strong>擴大人才來源：</strong> 不將用人範圍完全限制於傳統高門士族。</li>
+<li><strong>提高行政效率：</strong> 強調人才是否能夠完成實際任務。</li>
+<li><strong>鞏固政治權力：</strong> 透過人才網絡建立更有效的中央政府。</li>
+<li><strong>形成曹魏政治文化的重要特色：</strong> 實務能力與政治忠誠成為用人時的重要考量。</li>
+</ol>
+<p>不過，曹操的求賢政策並不意味著他完全不重視道德、家世或政治關係，而是顯示他願意在特定情勢下，將實際才能置於較優先的位置。</p>
+<h2 id="211年｜潼關之戰，擊敗關中聯軍">211年｜潼關之戰，擊敗關中聯軍</h2>
+<p>曹操向西方擴張，引起馬超、韓遂等關中勢力的抵抗。</p>
+<p>雙方在潼關一帶交戰，曹操運用軍事部署與政治分化，逐步削弱聯軍力量。</p>
+<p>這場戰爭使曹操進一步擴大對關中地區的影響力，也改善了北方政權西部的戰略安全。</p>
+<h2 id="212年｜鞏固中央權力">212年｜鞏固中央權力</h2>
+<p>曹操繼續強化中央政府的運作，並擴大自身在漢朝朝廷中的權力。</p>
+<p>隨著軍事勝利與行政整合不斷累積，他已經成為漢獻帝之下最有實權的政治人物。</p>
+<p>不過，曹操與漢朝皇室的關係也愈來愈複雜：他仍然以漢朝臣子的名義行使權力，但其政治地位已逐漸超越一般臣僚。</p>
+<h2 id="213年｜受封魏公">213年｜受封魏公</h2>
+<p>漢獻帝封曹操為魏公，並賜予九錫等高規格禮遇。</p>
+<p>這是曹操政治地位進一步提升的重要標誌。</p>
+<p>「魏」逐漸成為曹氏政權的政治名號，而曹操的封國與權力基礎，也為日後曹丕建立魏朝奠定條件。</p>
+<h2 id="214年｜持續整合北方政權">214年｜持續整合北方政權</h2>
+<p>曹操繼續處理內政、軍事與人才任用等事務。</p>
+<p>在長期戰爭後，北方地區亟須恢復農業生產、人口流動與地方行政。</p>
+<p>曹操政權透過屯田、軍事組織與行政措施，逐步恢復部分地區的生產秩序。</p>
+<h2 id="215年｜攻取漢中，張魯投降">215年｜攻取漢中，張魯投降</h2>
+<p><strong>重大事件：</strong> 曹操進攻漢中，張魯投降。</p>
+<p>漢中具有重要的戰略地位，連接關中與益州，是控制西南地區的重要門戶。</p>
+<p>曹操取得漢中後，進一步擴大其西部影響力。</p>
+<p>然而，劉備隨後也積極爭奪漢中，雙方的衝突並未就此結束。</p>
+<h2 id="216年｜進封魏王">216年｜進封魏王</h2>
+<p>曹操被進封為魏王，政治地位進一步接近皇帝。</p>
+<p>他雖然仍未正式稱帝，但已經建立具有高度自主性的政治體系。</p>
+<p>魏王的封號、曹氏宗族的權力，以及曹操對中央朝廷的控制，都顯示漢朝皇權與曹氏政權之間的關係發生重大變化。</p>
+<h3 id="216年的歷史意義">216年的歷史意義</h3>
+<p>曹操此時已不只是掌握軍政大權的漢朝丞相，而是逐步建立一個具有獨立政治性質的政權。</p>
+<p>不過，曹魏王國與220年曹丕正式建立的魏朝仍有區別，兩者不應混為一談。</p>
+<h2 id="217年｜進一步強化曹氏政權">217年｜進一步強化曹氏政權</h2>
+<p>曹操持續鞏固魏國的制度與權力結構。</p>
+<p>在此期間，曹氏家族與相關政治、軍事集團的地位不斷提升。</p>
+<p>曹操仍以漢朝臣子的身分掌握實權，但魏國的政治架構已為日後正式取代漢朝準備了條件。</p>
+<h2 id="218年｜漢中與荊州方向的戰略壓力增加">218年｜漢中與荊州方向的戰略壓力增加</h2>
+<p>曹操政權面臨來自西方與南方的競爭。</p>
+<p>劉備持續爭奪漢中，孫權則維持對江東及長江下游的控制。</p>
+<p>曹操雖然擁有北方的資源優勢，但要將這種優勢轉化為全國統一，仍然面臨地理、軍事與政治上的困難。</p>
+<h2 id="219年｜漢中之戰失利，關羽威脅襄樊">219年｜漢中之戰失利，關羽威脅襄樊</h2>
+<p><strong>重大事件：</strong> 漢中之戰。</p>
+<p>劉備與曹操爭奪漢中，經過長期戰事後，曹操未能守住該地，劉備取得漢中。</p>
+<p>漢中失守削弱了曹操在西部的戰略地位，也使劉備的勢力進一步壯大。</p>
+<p>同年，關羽從荊州北上，進攻襄陽、樊城一帶的曹軍。</p>
+<p>關羽的軍事行動一度對曹操政權構成重大威脅。</p>
+<p>不過，孫權隨後採取軍事行動，攻取關羽控制的荊州地區，關羽最終敗亡。</p>
+<p>這一連串事件顯示，曹操雖然仍然是北方最強大的政治軍事領袖，但已無法輕易消滅劉備與孫權。</p>
+<h2 id="220年｜曹操去世，曹丕繼承其權力">220年｜曹操去世，曹丕繼承其權力</h2>
+<p><strong>重大事件：</strong> 曹操於220年去世，享年約65歲。</p>
+<p>曹操在洛陽去世，結束了他長達數十年的政治與軍事生涯。</p>
+<p>他去世時，尚未完成統一全國的目標，但已經建立了強大的北方政權。</p>
+<p>其子曹丕繼承魏王與丞相等政治地位，繼續掌握漢朝中央政權。</p>
+<p>同年，曹丕接受漢獻帝禪讓，正式稱帝，建立魏朝。</p>
+<p>曹操則被追尊為魏武帝。</p>
+<h3 id="曹操去世的歷史意義">曹操去世的歷史意義</h3>
+<ol>
+<li><strong>東漢王朝正式結束：</strong> 曹丕代漢稱帝，象徵漢朝皇權的終結。</li>
+<li><strong>曹魏政權正式建立：</strong> 曹操生前奠定的政治與軍事基礎，轉化為正式的帝國政權。</li>
+<li><strong>三國時代進入新階段：</strong> 魏、蜀、吳之間的政治與軍事競爭逐步發展為較明確的三國格局。</li>
+<li><strong>曹操的歷史角色獲得重新定位：</strong> 他不僅是東漢末年的權臣與軍閥，也是曹魏政權的實際奠基者。</li>
+</ol>
+<p>曹操未能親自完成稱帝與統一全國的目標，但他所建立的制度、軍事力量與政治架構，深刻影響了三國時代的發展。</p>
+<hr>
+<h1 id="四、曹操生平大事記總表">四、曹操生平大事記總表</h1>
+<p>以下將重要事件濃縮為一張時間表，方便複習與查閱。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>155年</td>
+<td>曹操出生於沛國譙縣</td>
+<td>曹操生涯的起點</td>
+</tr>
+<tr>
+<td>174年左右</td>
+<td>進入仕途</td>
+<td>開始累積官僚經驗</td>
+</tr>
+<tr>
+<td>177年左右</td>
+<td>曾任洛陽北部尉</td>
+<td>展現強硬的行政作風</td>
+</tr>
+<tr>
+<td>184年</td>
+<td>黃巾之亂爆發</td>
+<td>東漢中央權威開始進一步衰退</td>
+</tr>
+<tr>
+<td>184年</td>
+<td>參與鎮壓潁川黃巾軍</td>
+<td>開始累積軍事聲望</td>
+</tr>
+<tr>
+<td>188年</td>
+<td>參與中央軍事體系</td>
+<td>接近東漢中央權力核心</td>
+</tr>
+<tr>
+<td>189年</td>
+<td>董卓控制朝廷</td>
+<td>東漢政治秩序急遽惡化</td>
+</tr>
+<tr>
+<td>190年</td>
+<td>參與關東諸侯討董</td>
+<td>進入軍閥競爭時代</td>
+</tr>
+<tr>
+<td>190年</td>
+<td>滎陽一帶戰事受挫</td>
+<td>顯示早期軍事力量仍有限</td>
+</tr>
+<tr>
+<td>192年</td>
+<td>收編青州黃巾軍</td>
+<td>壯大自身軍事力量</td>
+</tr>
+<tr>
+<td>192年</td>
+<td>逐步控制兗州</td>
+<td>建立重要根據地</td>
+</tr>
+<tr>
+<td>193年</td>
+<td>與陶謙發生徐州之戰</td>
+<td>擴張勢力，也造成地方破壞</td>
+</tr>
+<tr>
+<td>194年</td>
+<td>呂布進入兗州</td>
+<td>根據地一度陷入危機</td>
+</tr>
+<tr>
+<td>195年</td>
+<td>逐步收復兗州</td>
+<td>恢復主要根據地</td>
+</tr>
+<tr>
+<td>196年</td>
+<td>迎奉漢獻帝至許縣</td>
+<td>取得中央政權的政治合法性</td>
+</tr>
+<tr>
+<td>197年</td>
+<td>宛城之戰受挫</td>
+<td>曹昂、典韋等人死亡</td>
+</tr>
+<tr>
+<td>198年</td>
+<td>擊敗呂布</td>
+<td>鞏固中原地區的控制權</td>
+</tr>
+<tr>
+<td>199年</td>
+<td>與袁紹的競爭加劇</td>
+<td>北方霸權之爭進入關鍵階段</td>
+</tr>
+<tr>
+<td>200年</td>
+<td>官渡之戰擊敗袁紹</td>
+<td>奠定統一北方的基礎</td>
+</tr>
+<tr>
+<td>201年</td>
+<td>倉亭之戰，袁軍再次受挫</td>
+<td>進一步削弱袁氏勢力</td>
+</tr>
+<tr>
+<td>202年</td>
+<td>袁紹去世</td>
+<td>袁氏集團開始分裂</td>
+</tr>
+<tr>
+<td>204年</td>
+<td>攻下鄴城</td>
+<td>大幅擴張河北的控制權</td>
+</tr>
+<tr>
+<td>205年</td>
+<td>袁譚敗亡</td>
+<td>袁氏勢力進一步瓦解</td>
+</tr>
+<tr>
+<td>207年</td>
+<td>白狼山之戰擊敗烏桓</td>
+<td>鞏固北方邊境</td>
+</tr>
+<tr>
+<td>208年</td>
+<td>赤壁之戰失利</td>
+<td>南下統一計畫受阻</td>
+</tr>
+<tr>
+<td>210年</td>
+<td>發布求賢令</td>
+<td>強調實際能力與人才選拔</td>
+</tr>
+<tr>
+<td>211年</td>
+<td>潼關之戰</td>
+<td>擴大對關中地區的影響</td>
+</tr>
+<tr>
+<td>213年</td>
+<td>受封魏公</td>
+<td>曹氏政權的政治地位提升</td>
+</tr>
+<tr>
+<td>215年</td>
+<td>張魯投降，曹操取得漢中</td>
+<td>擴張西部影響力</td>
+</tr>
+<tr>
+<td>216年</td>
+<td>進封魏王</td>
+<td>進一步確立獨立政治地位</td>
+</tr>
+<tr>
+<td>217年</td>
+<td>持續強化魏國政治架構</td>
+<td>為日後曹魏建立準備條件</td>
+</tr>
+<tr>
+<td>219年</td>
+<td>劉備取得漢中</td>
+<td>曹操西部戰略受到挫折</td>
+</tr>
+<tr>
+<td>219年</td>
+<td>關羽進攻襄樊</td>
+<td>曹操南方防線面臨威脅</td>
+</tr>
+<tr>
+<td>220年</td>
+<td>曹操去世</td>
+<td>曹丕繼承其政治與軍事基礎</td>
+</tr>
+<tr>
+<td>220年</td>
+<td>曹丕代漢稱帝，建立魏朝</td>
+<td>東漢結束，曹魏正式建立</td>
+</tr>
+</tbody></table>
+<p>年代與事件主要參考曹操生平的歷史研究及相關歷史百科資料。部分早年任官年份在不同整理資料中略有出入，表中以概略年份呈現。<a href="https://mainuat.chiculture.org.hk/en/china-five-thousand-years/1908?utm_source=chatgpt.com">Chiculture</a></p>
+<hr>
+<h1 id="五、曹操的政治、軍事與文化成就">五、曹操的政治、軍事與文化成就</h1>
+<h2 id="1-政治成就：以漢朝名義重建中央權力">1. 政治成就：以漢朝名義重建中央權力</h2>
+<p>曹操最大的政治成就，是迎奉漢獻帝，並以漢朝中央政府的名義發布命令。</p>
+<p>在東漢末年，皇帝雖然仍具有名義上的最高地位，但各地軍閥已逐漸脫離中央控制。</p>
+<p>曹操透過控制朝廷，取得政治合法性，並將原本分散的行政與軍事資源集中到自己的政權之下。</p>
+<p>然而，這也造成一個重要的歷史矛盾：曹操一方面利用漢朝名義恢復中央政府的運作，另一方面又不斷提升自身與曹氏家族的權力，最終為漢朝被魏朝取代創造條件。</p>
+<h2 id="2-軍事成就：以官渡之戰奠定北方霸權">2. 軍事成就：以官渡之戰奠定北方霸權</h2>
+<p>曹操的軍事成就並不只是善於作戰，也包括對戰略、補給、情報與政治聯盟的綜合運用。</p>
+<p>官渡之戰是最具代表性的例子。</p>
+<p>曹操在面對兵力與資源可能處於劣勢的情況下，利用敵軍補給弱點與內部問題，取得決定性勝利。</p>
+<p>不過，赤壁之戰也顯示，曹操的軍事能力並非毫無限制。當戰場環境、軍隊組成與敵方聯盟對自己不利時，他同樣可能遭遇重大失敗。</p>
+<h2 id="3-經濟成就：屯田與農業恢復">3. 經濟成就：屯田與農業恢復</h2>
+<p>東漢末年長期戰亂造成大量農地荒廢，人口流離失所，農業生產與財政收入均受到嚴重衝擊。</p>
+<p>曹操推動屯田，利用軍隊、流民及其他勞動人口恢復農業生產。</p>
+<p>屯田制度的重要作用包括：</p>
+<ul>
+<li>增加糧食供應，維持軍隊運作。</li>
+<li>促進部分荒廢土地重新開墾。</li>
+<li>協助政權取得較穩定的經濟資源。</li>
+<li>強化中央政府對土地與人口的管理。</li>
+</ul>
+<p>屯田並非曹操憑空創造的制度，但他將其運用於軍事與國家治理，成為曹操政權得以長期發展的重要條件。</p>
+<h2 id="4-人才政策：重視實際能力">4. 人才政策：重視實際能力</h2>
+<p>曹操善於吸收不同背景的人才，包括軍事將領、行政官員、謀士與文學人物。</p>
+<p>其求賢政策強調實際能力，不完全受傳統名聲與門第限制。</p>
+<p>這種用人方式有助於擴大曹操的政治支持基礎，也使其政權能夠在長期戰爭中維持行政與軍事效率。</p>
+<p>但這並不表示曹操完全擺脫了漢代的士人政治文化。他仍須與地方豪族、士人及各類政治集團協商，才能維持統治。</p>
+<h2 id="5-文學成就：建安文學的重要代表">5. 文學成就：建安文學的重要代表</h2>
+<p>曹操不僅是政治家與軍事家，也是建安文學的重要代表人物。</p>
+<p>他與曹丕、曹植合稱「三曹」。</p>
+<p>曹操的詩歌常呈現雄健、慷慨的風格，內容涉及戰爭、人生短暫、政治理想與統一天下的抱負。</p>
+<p>較著名的作品包括：</p>
+<ul>
+<li>《短歌行》</li>
+<li>《觀滄海》</li>
+<li>《龜雖壽》</li>
+<li>《蒿里行》</li>
+</ul>
+<p>其中，《短歌行》反映其求賢與政治抱負；《觀滄海》展現開闊的自然景象；《龜雖壽》則表達人在年老時仍不放棄理想的精神。</p>
+<p>曹操的文學作品，既是個人情感的表達，也與東漢末年的政治動盪、戰爭經驗及建安時代的文學風格密切相關。</p>
+<hr>
+<h1 id="六、歷史上的曹操與《三國演義》中的曹操">六、歷史上的曹操與《三國演義》中的曹操</h1>
+<p>理解曹操時，必須區分正史記載、後世評價與文學形象。</p>
+<table>
+<thead>
+<tr>
+<th>比較面向</th>
+<th>歷史上的曹操</th>
+<th>《三國演義》中的曹操</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>政治形象</td>
+<td>掌握漢朝中央政權的實際領袖</td>
+<td>經常被塑造成權謀深沉的政治人物</td>
+</tr>
+<tr>
+<td>軍事形象</td>
+<td>擅長戰略、補給與政治整合</td>
+<td>著重描寫其與劉備、諸葛亮等人的鬥智</td>
+</tr>
+<tr>
+<td>人才政策</td>
+<td>重視實際能力，廣泛吸收人才</td>
+<td>常透過人物對話與事件展現其用人手腕</td>
+</tr>
+<tr>
+<td>對漢朝的態度</td>
+<td>利用漢朝名義維持政權合法性，同時擴張自身權力</td>
+<td>經常以「挾天子以令諸侯」凸顯其權臣形象</td>
+</tr>
+<tr>
+<td>性格描寫</td>
+<td>具有政治才能，也曾採取嚴酷手段</td>
+<td>更強調多疑、奸詐與權謀的一面</td>
+</tr>
+<tr>
+<td>赤壁之戰</td>
+<td>南征受挫，未能統一南方</td>
+<td>被塑造成與諸葛亮、周瑜鬥智的主要對手</td>
+</tr>
+<tr>
+<td>歷史地位</td>
+<td>曹魏政權的實際奠基者</td>
+<td>三國故事中最具代表性的反派人物之一</td>
+</tr>
+</tbody></table>
+<p>《三國演義》是重要的歷史小說，但並非完全按照史實寫成。</p>
+<p>小說為了增強戲劇性，對人物性格、事件細節與部分戰爭情節作了藝術加工。</p>
+<p>因此，不能只根據小說中的奸雄形象，便否定曹操在政治、軍事、經濟與文學方面的成就；同樣，也不能因為他具有卓越才能，就忽略其戰爭與統治手段中的強硬及殘酷面向。</p>
+<hr>
+<h1 id="七、曹操一生的歷史定位">七、曹操一生的歷史定位</h1>
+<p>綜合來看，曹操的歷史地位可以從四個方面理解。</p>
+<h3 id="第一，他是東漢末年最重要的政治整合者之一">第一，他是東漢末年最重要的政治整合者之一</h3>
+<p>曹操在中央權威衰退、各地軍閥割據的環境中，逐步建立一個具有高度組織能力的北方政權。</p>
+<h3 id="第二，他是曹魏政權的實際奠基者">第二，他是曹魏政權的實際奠基者</h3>
+<p>曹操生前沒有正式稱帝，但其軍事力量、行政體系與政治地位，為曹丕建立魏朝提供了條件。</p>
+<h3 id="第三，他是具有制度建設能力的軍事領袖">第三，他是具有制度建設能力的軍事領袖</h3>
+<p>屯田、人才選拔、軍事組織與行政整合，都是曹操政權能夠長期維持的重要因素。</p>
+<h3 id="第四，他是一位具有複雜性的歷史人物">第四，他是一位具有複雜性的歷史人物</h3>
+<p>曹操既有卓越的政治判斷與軍事才能，也曾在戰爭中採取嚴酷手段。他的歷史形象不能簡化為純粹的英雄或奸臣。</p>
+<p><strong>總結而言，曹操最重要的歷史成就，不是完成了中國統一，而是在東漢末年最混亂的時代，建立起足以支撐新王朝的北方政權。</strong> 他未能親自完成統一大業，但其政治、軍事與制度建設，決定了三國時代相當重要的發展方向。</p>
+<h3 id="參考資料">參考資料</h3>
+<ul>
+<li><a href="https://mainuat.chiculture.org.hk/en/china-five-thousand-years/1908?utm_source=chatgpt.com">中國文化研究院：曹操</a></li>
+<li><a href="https://www.worldhistory.org/Cao_Cao/?utm_source=chatgpt.com">《世界歷史百科全書》：曹操</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/9781444338232.wbeow095?utm_source=chatgpt.com">Rafe de Crespigny：《中國戰爭百科全書》中的曹操傳記</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

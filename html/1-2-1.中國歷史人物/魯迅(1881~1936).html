@@ -1,0 +1,932 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="魯迅生平大事記（18811936年）">魯迅生平大事記（1881—1936年）</h1>
+<p>魯迅（1881年9月25日—1936年10月19日），原名周樟壽，後改名周樹人，字豫才，浙江紹興人，是中國現代文學的重要奠基者，也是思想家、小說家、散文家、翻譯家與文藝評論家。</p>
+<p>魯迅生活於清末民初至民國時期，親身經歷清朝衰亡、辛亥革命、新文化運動、五四運動及國民革命等重大歷史變遷。他最初赴日本學醫，後來改以文學作為改造社會、批判舊思想與喚醒民眾的工具。</p>
+<p>1918年，他以「魯迅」為筆名，在《新青年》發表白話小說〈狂人日記〉，以創新的文學形式揭露傳統禮教與社會制度的問題。此後，他陸續創作〈孔乙己〉、〈藥〉、〈故鄉〉、〈阿Q正傳〉等作品，並透過雜文批判社會弊病、思想僵化與政治壓迫。</p>
+<p><strong>魯迅的核心歷史定位：</strong></p>
+<ul>
+<li><strong>文學方面：</strong> 中國現代小說與白話文學的重要開拓者。</li>
+<li><strong>思想方面：</strong> 深刻批判傳統社會的弊病，關注人的精神狀態與社會改革。</li>
+<li><strong>社會方面：</strong> 以小說、雜文與評論介入公共議題，關心弱勢者及知識分子的處境。</li>
+<li><strong>文化方面：</strong> 推動外國文學翻譯與新興木刻版畫，拓展現代文藝的表現形式。</li>
+</ul>
+<p>以下按照年代，整理魯迅的生平、思想轉變、重要作品與歷史影響。年代主要參考中國作家網的生平著譯年表、香港中國文化研究院及臺灣國語文學科中心的相關資料。<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">China Writer</a></p>
+<hr>
+<h1 id="一、童年與家道中落（18811898年）">一、童年與家道中落（1881—1898年）</h1>
+<p>魯迅出生於浙江紹興的一個具有科舉背景的家庭。童年時期，他接受傳統私塾教育，也經常接觸鄉村生活。後來家道中落，使他開始認識到社會階級、家庭地位與人情冷暖之間的關係。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1881年</td>
+<td align="right">0歲</td>
+<td>9月25日出生於浙江紹興府會稽縣東昌坊口新臺門周家，原名周樟壽。</td>
+<td>出身於具有傳統士大夫背景的家庭。</td>
+</tr>
+<tr>
+<td>1887年</td>
+<td align="right">6歲</td>
+<td>開始接受家塾教育，學習傳統經典。</td>
+<td>奠定古典文學與傳統文化的基礎。</td>
+</tr>
+<tr>
+<td>1892年</td>
+<td align="right">11歲</td>
+<td>進入三味書屋，跟隨塾師壽鏡吾讀書。</td>
+<td>接受傳統私塾教育，也培養對歷史、文學及民間故事的興趣。</td>
+</tr>
+<tr>
+<td>1893年</td>
+<td align="right">12歲</td>
+<td>祖父周福清因科場案入獄，周家為此奔走並變賣家產。</td>
+<td>家庭經濟與社會地位開始受到重大衝擊。</td>
+</tr>
+<tr>
+<td>1894年</td>
+<td align="right">13歲</td>
+<td>父親周伯宜受到家庭事件影響，後來長期患病。</td>
+<td>家庭困境加深，魯迅逐漸承擔更多生活壓力。</td>
+</tr>
+<tr>
+<td>1896年</td>
+<td align="right">15歲</td>
+<td>父親去世。魯迅曾為父親求醫、買藥，接觸當時的醫療環境。</td>
+<td>這段經歷影響他日後對庸醫、迷信與社會冷漠的思考。</td>
+</tr>
+<tr>
+<td>1898年</td>
+<td align="right">17歲</td>
+<td>離開家鄉，進入南京的新式學堂求學，改名周樹人。</td>
+<td>從傳統私塾轉向現代教育，是人生的重要轉折。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://chiculture.org.hk/en/node/1677?utm_source=chatgpt.com">中國文化研究院：魯迅的人生地圖</a>、<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網：魯迅先生生平著譯簡表</a>。</p>
+<h3 id="童年經歷對魯迅的影響">童年經歷對魯迅的影響</h3>
+<p>魯迅的早年經歷，與他後來的文學主題有密切關係。</p>
+<p><strong>第一，家道中落使他看見社會的現實。</strong></p>
+<p>他從具有一定社會地位的家庭，逐漸經歷經濟困難與人情冷暖，對傳統社會中的階級差異及人際關係有了深刻體會。</p>
+<p><strong>第二，傳統教育使他熟悉自己所批判的文化。</strong></p>
+<p>魯迅並不是完全不了解中國傳統文化的外部批評者。他接受過傳統經典教育，也研究古籍，因此能夠從歷史與文化內部提出批判。</p>
+<p><strong>第三，父親患病與去世使他注意到醫療問題。</strong></p>
+<p>後來他赴日本學醫，部分原因便與少年時期的家庭經驗有關。</p>
+<hr>
+<h1 id="二、南京求學與赴日留學（18981909年）">二、南京求學與赴日留學（1898—1909年）</h1>
+<p>這是魯迅思想形成的重要階段。</p>
+<p>他先在南京接觸新式教育，隨後赴日本留學，原本希望透過醫學救治中國人的身體，最後卻認為思想與精神的改造更加迫切，因而決定棄醫從文。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1898年</td>
+<td align="right">17歲</td>
+<td>進入南京江南水師學堂，接觸新式教育。</td>
+<td>開始接觸傳統經學以外的現代知識。</td>
+</tr>
+<tr>
+<td>1899年</td>
+<td align="right">18歲</td>
+<td>轉入江南陸師學堂附設的礦務鐵路學堂，學習礦務與鐵路相關知識。</td>
+<td>接觸近代科學與實業救國的思想。</td>
+</tr>
+<tr>
+<td>1901年</td>
+<td align="right">20歲</td>
+<td>完成礦路學堂的學業。</td>
+<td>具備進一步赴海外求學的條件。</td>
+</tr>
+<tr>
+<td>1902年</td>
+<td align="right">21歲</td>
+<td>赴日本留學，進入東京弘文學院學習日語及相關課程。</td>
+<td>開始深入接觸日本與西方的現代思想。</td>
+</tr>
+<tr>
+<td>1903年</td>
+<td align="right">22歲</td>
+<td>閱讀、翻譯並介紹外國文學與思想，也接觸進化論及民族主義論述。</td>
+<td>開始思考中國社會與民族前途的問題。</td>
+</tr>
+<tr>
+<td>1904年</td>
+<td align="right">23歲</td>
+<td>進入仙台醫學專門學校學醫，認識醫學教師藤野嚴九郎。</td>
+<td>希望透過醫學改善中國人的健康與社會處境。</td>
+</tr>
+<tr>
+<td>1906年</td>
+<td align="right">25歲</td>
+<td>離開仙台，轉往東京，逐漸放棄醫學，開始思考以文學改造社會。</td>
+<td><strong>棄醫從文的關鍵轉折。</strong></td>
+</tr>
+<tr>
+<td>1907年</td>
+<td align="right">26歲</td>
+<td>從事文學論述與外國文學研究，發表〈人之歷史〉等文章。</td>
+<td>逐漸形成重視個人精神、民族命運與思想啟蒙的觀點。</td>
+</tr>
+<tr>
+<td>1908年</td>
+<td align="right">27歲</td>
+<td>師從章太炎學習，並與周作人等人從事翻譯活動。</td>
+<td>深入接觸中國傳統學術、革命思想與外國文學。</td>
+</tr>
+<tr>
+<td>1909年</td>
+<td align="right">28歲</td>
+<td>與周作人合譯《域外小說集》，同年夏天回國。</td>
+<td>將外國文學介紹與翻譯工作帶回中國。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網：魯迅先生生平著譯簡表</a>、<a href="https://cerclearning.tp.edu.tw/modern/datapage/77/author/173?utm_source=chatgpt.com">臺灣國語文學科中心：魯迅作品與生平介紹</a>。</p>
+<h2 id="1906年：棄醫從文的重大轉折">1906年：棄醫從文的重大轉折</h2>
+<p>魯迅在日本仙台學醫期間，曾經歷一件對他思想影響深遠的事件。</p>
+<p>據他後來在散文〈藤野先生〉及相關文字中的回憶，他在課堂上看到與日俄戰爭有關的幻燈片，其中一名被認為是中國人的人即將遭到處決，周圍則有其他中國人觀看。這使他開始思考：即使改善了身體健康，如果人的精神與思想仍然麻木，社會是否就能真正改變？</p>
+<p>他逐漸形成一個重要判斷：</p>
+<p><strong>中國當時迫切需要的，不只是身體的治療，也包括思想與精神的改造。</strong></p>
+<p>因此，他決定放棄醫學，轉而從事文學、翻譯與思想批判，希望透過文字喚醒社會。</p>
+<p>這段經歷後來成為理解魯迅創作的重要線索。</p>
+<hr>
+<h1 id="三、回國任教與思想探索（19091917年）">三、回國任教與思想探索（1909—1917年）</h1>
+<p>回國後，魯迅先後在杭州、紹興等地任教，後來進入教育部工作，並隨政府機構遷往北京。</p>
+<p>這段時期，他的生活主要圍繞教育、古籍整理、文學研究與思想探索。雖然尚未成為廣為人知的小說家，但已經累積了深厚的學術基礎。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1909年</td>
+<td align="right">28歲</td>
+<td>從日本回國，先後在杭州、紹興等地任教。</td>
+<td>開始將海外學習經驗應用於教育工作。</td>
+</tr>
+<tr>
+<td>1910年</td>
+<td align="right">29歲</td>
+<td>在紹興任教，從事教育與相關學術工作。</td>
+<td>深入了解中國地方社會與教育環境。</td>
+</tr>
+<tr>
+<td>1911年</td>
+<td align="right">30歲</td>
+<td>辛亥革命爆發，紹興政局發生變化，魯迅參與地方教育事務。</td>
+<td>親身經歷清朝覆亡與共和革命的時代變動。</td>
+</tr>
+<tr>
+<td>1912年</td>
+<td align="right">31歲</td>
+<td>應蔡元培邀請，進入南京臨時政府教育部任職；其後隨教育部遷往北京。</td>
+<td>從地方教育工作進入國家教育行政體系。</td>
+</tr>
+<tr>
+<td>1913年</td>
+<td align="right">32歲</td>
+<td>在教育部任職，參與社會教育與文化相關工作。</td>
+<td>接觸近代國家制度與文化行政。</td>
+</tr>
+<tr>
+<td>1914年</td>
+<td align="right">33歲</td>
+<td>持續研究古籍、碑刻及中國傳統文化。</td>
+<td>逐漸形成深厚的古典文獻研究能力。</td>
+</tr>
+<tr>
+<td>1915年</td>
+<td align="right">34歲</td>
+<td>持續從事古籍整理、學術研究與文學思考。</td>
+<td>為日後的小說創作及歷史研究累積素材。</td>
+</tr>
+<tr>
+<td>1916年</td>
+<td align="right">35歲</td>
+<td>在北京工作，持續閱讀與思考中國社會問題。</td>
+<td>為加入新文化運動及開始小說創作作準備。</td>
+</tr>
+<tr>
+<td>1917年</td>
+<td align="right">36歲</td>
+<td>張勳復辟事件發生，魯迅對政治局勢與社會現實深感失望。</td>
+<td>加深他對政治復辟、社會停滯及思想改革的關注。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://chiculture.org.hk/tc/china-five-thousand-years/2442?utm_source=chatgpt.com">中國文化研究院：魯迅</a>、<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網：魯迅先生生平著譯簡表</a>。</p>
+<h3 id="這段時期的重要特點">這段時期的重要特點</h3>
+<p>魯迅並非在1918年發表〈狂人日記〉後才突然開始思考中國社會問題。</p>
+<p>在此之前，他已經歷：</p>
+<ul>
+<li>傳統家庭的衰落。</li>
+<li>新式教育與西方思想的衝擊。</li>
+<li>日本留學期間對民族處境的反思。</li>
+<li>對醫學救國與文學救國的重新判斷。</li>
+<li>辛亥革命後政治現實與理想之間的落差。</li>
+</ul>
+<p>這些經驗逐漸匯集，成為他日後小說與雜文的思想背景。</p>
+<hr>
+<h1 id="四、新文化運動與小說創作的崛起（19181925年）">四、新文化運動與小說創作的崛起（1918—1925年）</h1>
+<p>1918年是魯迅文學生涯最重要的轉折點。</p>
+<p>他在《新青年》發表〈狂人日記〉，開始以小說形式直接批判傳統禮教與社會制度。此後，他陸續創作一系列現代文學史上的重要作品，逐漸確立其在中國新文學中的地位。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>重要作品或意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1918年</td>
+<td align="right">37歲</td>
+<td>以「魯迅」為筆名，在《新青年》發表白話小說〈狂人日記〉。</td>
+<td>中國現代白話小說發展的重要里程碑。</td>
+</tr>
+<tr>
+<td>1918年</td>
+<td align="right">37歲</td>
+<td>發表〈孔乙己〉。</td>
+<td>透過落魄讀書人的遭遇，批判科舉文化與社會冷漠。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td align="right">38歲</td>
+<td>發表〈藥〉等小說，持續探索社會問題。</td>
+<td>將革命、迷信、群眾心理與生命悲劇納入文學表現。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td align="right">38歲</td>
+<td>五四運動爆發，新文化運動影響擴大。</td>
+<td>魯迅的文學批判與當時的思想改革形成呼應。</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td align="right">39歲</td>
+<td>持續創作小說與評論，參與新文學討論。</td>
+<td>現代小說逐漸成為批判社會的重要媒介。</td>
+</tr>
+<tr>
+<td>1921年</td>
+<td align="right">40歲</td>
+<td>開始連載〈阿Q正傳〉，作品刊於《晨報副刊》。</td>
+<td>塑造中國現代文學中極具代表性的文學人物。</td>
+</tr>
+<tr>
+<td>1922年</td>
+<td align="right">41歲</td>
+<td>《吶喊》小說集出版。</td>
+<td>集中呈現早期小說創作，奠定其現代小說家的地位。</td>
+</tr>
+<tr>
+<td>1923年</td>
+<td align="right">42歲</td>
+<td>《中國小說史略》相關版本出版，並陸續整理早期小說作品。</td>
+<td>兼具文學創作與中國小說史研究的成就。</td>
+</tr>
+<tr>
+<td>1924年</td>
+<td align="right">43歲</td>
+<td>創作〈祝福〉等作品，持續探討女性、禮教與社會命運。</td>
+<td>對傳統社會中女性的處境提出深刻批判。</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td align="right">44歲</td>
+<td>參與女師大風潮，支持學生及教育界人士對校方措施的抗議。</td>
+<td>文學批判進一步與現實政治、教育及學生運動結合。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/pshe/references-and-resources/chinese-history/exploring_chinese_historical_figures_in_short_stories/Article_S5.pdf?utm_source=chatgpt.com">香港教育局：魯迅（1881—1936）</a>、<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網：魯迅先生生平著譯簡表</a>。</p>
+<h2 id="1918年：〈狂人日記〉為什麼重要？">1918年：〈狂人日記〉為什麼重要？</h2>
+<p>〈狂人日記〉以一名被視為患有精神疾病的敘述者為主角，透過他充滿恐懼與懷疑的視角，揭露傳統禮教及社會制度可能蘊含的壓迫。</p>
+<p>小說中「吃人」的意象，不只是字面上的暴力，更象徵某些傳統道德規範如何吞噬個人的生命、自由與尊嚴。</p>
+<p>這篇小說的重要性主要有三點：</p>
+<ol>
+<li><strong>形式創新：</strong> 採用現代白話小說的形式與敘事方式。</li>
+<li><strong>文化批判：</strong> 將傳統禮教作為可以重新檢驗與批判的對象。</li>
+<li><strong>精神啟蒙：</strong> 提出人是否能從既有的社會觀念中醒悟的問題。</li>
+</ol>
+<p>〈狂人日記〉通常被視為中國現代文學史上第一篇具有里程碑意義的現代白話小說。</p>
+<h2 id="1921年：〈阿q正傳〉與國民性批判">1921年：〈阿Q正傳〉與國民性批判</h2>
+<p>〈阿Q正傳〉是魯迅最具代表性的作品之一。</p>
+<p>主角阿Q生活在社會底層，經常受到欺凌，卻又透過自我安慰與精神勝利來維持心理上的優越感。</p>
+<p>魯迅藉由阿Q的遭遇，呈現社會壓迫、愚昧、自欺、旁觀者心理及權力關係等問題。</p>
+<table>
+<thead>
+<tr>
+<th>分析面向</th>
+<th>作品所呈現的問題</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>個人心理</td>
+<td>以自我安慰逃避現實失敗。</td>
+</tr>
+<tr>
+<td>社會階級</td>
+<td>弱者受到欺凌，卻也可能欺壓比自己更弱的人。</td>
+</tr>
+<tr>
+<td>革命觀念</td>
+<td>對革命的理解可能停留於權力更替，而未必涉及社會與思想的真正改變。</td>
+</tr>
+<tr>
+<td>群眾心理</td>
+<td>人們可能隨從環境、迷信權威，缺乏獨立判斷。</td>
+</tr>
+<tr>
+<td>國民性批判</td>
+<td>透過人物塑造，反思社會普遍存在的精神弱點。</td>
+</tr>
+</tbody></table>
+<p>不過，阿Q並不能簡單等同於所有中國人。魯迅所創造的是一個具有象徵性的文學人物，藉此探討特定社會環境中的心理與制度問題。</p>
+<hr>
+<h1 id="五、北京時期：教育、思想衝突與南下（19251927年）">五、北京時期：教育、思想衝突與南下（1925—1927年）</h1>
+<p>1920年代中期，魯迅與北京的教育界、學生運動及文化團體保持密切聯繫。</p>
+<p>他曾在北京大學、北京女子師範大學等校授課，也因支持學生運動而與教育行政當局發生衝突。1926年「三一八慘案」後，他進一步以文章批判政治暴力。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1925年</td>
+<td align="right">44歲</td>
+<td>支持北京女子師範大學學生的抗爭，反對校方對學生的壓制。</td>
+<td>顯示其對教育自主與學生權益的重視。</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td align="right">44歲</td>
+<td>持續發表雜文，評論教育、文化與政治問題。</td>
+<td>雜文逐漸成為他直接介入現實社會的重要形式。</td>
+</tr>
+<tr>
+<td>1926年3月</td>
+<td align="right">44歲</td>
+<td>北京發生「三一八慘案」，軍警鎮壓請願民眾，造成死傷。</td>
+<td>事件促使魯迅寫下多篇批判政治暴力的文章。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td align="right">44歲</td>
+<td>離開北京，前往廈門大學任教。</td>
+<td>開始新的教學生涯，也逐漸調整與當時政治環境的關係。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td align="right">45歲</td>
+<td>出版《彷徨》《朝花夕拾》等作品集。</td>
+<td>小說與回憶散文的創作成果進一步累積。</td>
+</tr>
+<tr>
+<td>1927年初</td>
+<td align="right">45歲</td>
+<td>前往廣州，進入中山大學任教，擔任文科主任等職務。</td>
+<td>接近當時革命運動與政治衝突的中心。</td>
+</tr>
+<tr>
+<td>1927年4月</td>
+<td align="right">45歲</td>
+<td>上海發生四一二事件，國共合作破裂，大量共產黨人及革命人士遭到逮捕、殺害。</td>
+<td>魯迅對政治暴力及革命現實產生更強烈的批判。</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td align="right">45歲</td>
+<td>因與中山大學校方及相關政治問題發生衝突，辭去職務。</td>
+<td>結束在廣州的教學生涯。</td>
+</tr>
+<tr>
+<td>1927年10月</td>
+<td align="right">46歲</td>
+<td>抵達上海，開始長期居住於上海。</td>
+<td>進入以文學創作、翻譯、評論及文化活動為主的晚年階段。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://chiculture.org.hk/tc/china-five-thousand-years/2442?utm_source=chatgpt.com">中國文化研究院：魯迅</a>、<a href="https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/pshe/references-and-resources/chinese-history/exploring_chinese_historical_figures_in_short_stories/Article_S5.pdf?utm_source=chatgpt.com">香港教育局：魯迅（1881—1936）</a>。</p>
+<h3 id="「三一八慘案」對魯迅的影響">「三一八慘案」對魯迅的影響</h3>
+<p>1926年3月18日，北京發生大規模請願與武力鎮壓事件，造成學生及民眾死傷。</p>
+<p>魯迅對事件中的政治暴力及事後的輿論反應極為憤慨，寫下〈紀念劉和珍君〉等文章。</p>
+<p>這些作品不只是在記錄死難者，也是在追問：</p>
+<ul>
+<li>為什麼追求改革的青年會遭到暴力鎮壓？</li>
+<li>當權者如何利用言論替暴力辯護？</li>
+<li>社會大眾應如何面對犧牲者與政治責任？</li>
+</ul>
+<p>從這一時期開始，魯迅的雜文愈加直接地針對現實政治與社會權力展開批判。</p>
+<hr>
+<h1 id="六、上海時期：雜文、左翼文化與木刻運動（19271936年）">六、上海時期：雜文、左翼文化與木刻運動（1927—1936年）</h1>
+<p>上海是魯迅生命最後九年的主要生活地點。</p>
+<p>這一時期，他的創作重心逐漸從早期小說轉向雜文、文學評論、翻譯及文化運動。他也與青年作家、左翼文化人士及新興版畫工作者保持密切聯繫。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1927年</td>
+<td align="right">46歲</td>
+<td>定居上海，繼續從事寫作、翻譯與文藝活動。</td>
+<td>進入創作與文化評論密集發展的階段。</td>
+</tr>
+<tr>
+<td>1928年</td>
+<td align="right">47歲</td>
+<td>出版《而已集》等作品，持續評論政治與文化問題。</td>
+<td>雜文成為其重要的思想表達形式。</td>
+</tr>
+<tr>
+<td>1929年</td>
+<td align="right">48歲</td>
+<td>持續翻譯外國文學，關注青年作家的創作。</td>
+<td>推動外國文學與現代文藝觀念的傳播。</td>
+</tr>
+<tr>
+<td>1930年</td>
+<td align="right">49歲</td>
+<td>參與中國左翼作家聯盟的成立，並在相關文化活動中發揮影響。</td>
+<td>與左翼文藝運動建立更密切的關係。</td>
+</tr>
+<tr>
+<td>1931年</td>
+<td align="right">50歲</td>
+<td>國民黨政府加強對左翼文化人士的鎮壓，部分作家遭逮捕或殺害。</td>
+<td>魯迅更加重視文化工作者的處境與文藝自由。</td>
+</tr>
+<tr>
+<td>1932年</td>
+<td align="right">51歲</td>
+<td>出版《三閒集》等雜文集，持續從事翻譯與文學評論。</td>
+<td>對文化論戰、社會問題與文藝創作提出更直接的批判。</td>
+</tr>
+<tr>
+<td>1933年</td>
+<td align="right">52歲</td>
+<td>出版《偽自由書》等作品，持續評論政治與文化現象。</td>
+<td>以諷刺、論辯及批判文字介入公共討論。</td>
+</tr>
+<tr>
+<td>1934年</td>
+<td align="right">53歲</td>
+<td>持續創作雜文，並積極推動新興木刻版畫。</td>
+<td>將文學與視覺藝術結合，拓展現代文化的表現方式。</td>
+</tr>
+<tr>
+<td>1935年</td>
+<td align="right">54歲</td>
+<td>完成並整理《故事新編》相關作品，持續支持青年創作者。</td>
+<td>重新詮釋中國古代神話與歷史人物。</td>
+</tr>
+<tr>
+<td>1936年</td>
+<td align="right">54—55歲</td>
+<td>病情惡化，仍持續寫作、翻譯及參與文藝活動。</td>
+<td>晚年創作依然與社會批判及文化運動密切相關。</td>
+</tr>
+<tr>
+<td><strong>1936年10月19日</strong></td>
+<td align="right"><strong>55歲</strong></td>
+<td><strong>因肺病在上海逝世。</strong></td>
+<td>結束其短暫但影響深遠的文學與思想生涯。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網：魯迅先生生平著譯簡表</a>、<a href="https://chiculture.org.hk/tc/china-five-thousand-years/2442?utm_source=chatgpt.com">中國文化研究院：魯迅</a>。</p>
+<h2 id="1930年：中國左翼作家聯盟成立">1930年：中國左翼作家聯盟成立</h2>
+<p>中國左翼作家聯盟於1930年在上海成立，是當時左翼文化運動的重要組織。</p>
+<p>魯迅參與其成立活動，並在相關文化論戰與文藝討論中發揮影響。他關注文學與社會現實的關係，也認為作家不應忽視階級壓迫、政治暴力及人民生活。</p>
+<p>然而，魯迅並非完全服從任何單一組織的思想。他與不同政治立場的人士曾有合作，也曾發生激烈論爭。他的文章仍然保留對教條主義、權力壓迫與思想僵化的批判。</p>
+<h2 id="魯迅與新興木刻版畫">魯迅與新興木刻版畫</h2>
+<p>魯迅晚年特別重視木刻版畫，積極介紹外國版畫作品、舉辦展覽，並支持青年版畫家。</p>
+<p>他認為版畫具有成本較低、便於複製與傳播的特點，能夠讓藝術走出少數人的收藏空間，進入更廣泛的社會生活。</p>
+<p>其影響包括：</p>
+<ul>
+<li>介紹歐洲及蘇聯等地的版畫藝術。</li>
+<li>支持青年藝術家學習與創作。</li>
+<li>推動木刻版畫與社會現實、人民生活結合。</li>
+<li>促進現代中國版畫藝術的發展。</li>
+</ul>
+<p>這顯示魯迅並非只關心文字，也十分重視藝術如何進入公共領域。</p>
+<hr>
+<h1 id="七、魯迅的重要作品年表">七、魯迅的重要作品年表</h1>
+<p>魯迅的作品涵蓋小說、散文、雜文、詩歌、古籍研究與翻譯等領域。</p>
+<p>以下按照作品的代表性與主要出版年代整理。</p>
+<h2 id="1-小說">1. 小說</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>作品</th>
+<th>主要內容</th>
+<th>文學意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1918年</td>
+<td>〈狂人日記〉</td>
+<td>以「吃人」意象批判傳統禮教。</td>
+<td>現代白話小說的重要里程碑。</td>
+</tr>
+<tr>
+<td>1918年</td>
+<td>〈孔乙己〉</td>
+<td>描寫落魄讀書人的悲劇。</td>
+<td>批判科舉文化與社會冷漠。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td>〈藥〉</td>
+<td>描寫革命者犧牲及群眾的迷信與麻木。</td>
+<td>探討革命、愚昧與社會悲劇。</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td>〈一件小事〉</td>
+<td>透過日常事件反思自我與他人。</td>
+<td>展現對普通人的道德力量的重新認識。</td>
+</tr>
+<tr>
+<td>1921年</td>
+<td>〈故鄉〉</td>
+<td>描寫返鄉後的人際隔閡與社會變遷。</td>
+<td>探討記憶、階級與人情變化。</td>
+</tr>
+<tr>
+<td>1921—1922年</td>
+<td>〈阿Q正傳〉</td>
+<td>描寫阿Q的精神勝利與悲劇命運。</td>
+<td>深入分析自欺、權力與群眾心理。</td>
+</tr>
+<tr>
+<td>1924年</td>
+<td>〈祝福〉</td>
+<td>描寫祥林嫂在傳統禮教與社會偏見下的悲劇。</td>
+<td>批判女性壓迫、迷信與社會冷漠。</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td>〈傷逝〉</td>
+<td>描寫青年知識分子的愛情、理想與現實困境。</td>
+<td>探討個人解放與社會環境之間的矛盾。</td>
+</tr>
+<tr>
+<td>1936年</td>
+<td>《故事新編》</td>
+<td>重新詮釋古代神話與歷史故事。</td>
+<td>將古代題材與現代思想結合。</td>
+</tr>
+</tbody></table>
+<h2 id="2-散文與散文詩">2. 散文與散文詩</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>作品</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1924—1926年</td>
+<td>《朝花夕拾》</td>
+<td>回憶童年、求學經歷、家庭生活及人物往事。</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td>《野草》</td>
+<td>以象徵、夢境與哲理性的文字表現內心衝突。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td>〈藤野先生〉</td>
+<td>回憶留日時期的老師藤野嚴九郎。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td>〈從百草園到三味書屋〉</td>
+<td>回憶童年生活及傳統私塾教育。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td>〈紀念劉和珍君〉</td>
+<td>追悼三一八慘案死難者，批判政治暴力。</td>
+</tr>
+</tbody></table>
+<h2 id="3-雜文集">3. 雜文集</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>作品</th>
+<th>主要特色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1925年</td>
+<td>《熱風》</td>
+<td>評論社會、思想與文化問題。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td>《墳》</td>
+<td>收錄多篇具有文化批判與思想分析特色的文章。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td>《華蓋集》</td>
+<td>記錄文化論爭與現實社會批判。</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td>《華蓋集續編》</td>
+<td>延續對政治、教育及文化現象的評論。</td>
+</tr>
+<tr>
+<td>1928年</td>
+<td>《而已集》</td>
+<td>呈現對社會現實及文學問題的反思。</td>
+</tr>
+<tr>
+<td>1932年</td>
+<td>《三閒集》</td>
+<td>記錄文化論戰與文藝評論。</td>
+</tr>
+<tr>
+<td>1932年</td>
+<td>《二心集》</td>
+<td>反映左翼文化活動及政治思想。</td>
+</tr>
+<tr>
+<td>1933年</td>
+<td>《偽自由書》</td>
+<td>以諷刺方式批判政治與文化現象。</td>
+</tr>
+<tr>
+<td>1934年</td>
+<td>《南腔北調集》</td>
+<td>收錄多篇文化評論及社會觀察。</td>
+</tr>
+<tr>
+<td>1936年</td>
+<td>《且介亭雜文》等</td>
+<td>呈現晚年對政治、社會及文化的批判。</td>
+</tr>
+</tbody></table>
+<p>以上作品的初刊、結集與出版年份可能不同，表中以常見的主要出版年代或創作時期為主。可參考<a href="https://zh.wikisource.org/zh-hant/Author%3A%E9%AD%AF%E8%BF%85?utm_source=chatgpt.com">維基文庫：魯迅作品目錄</a>及<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網：魯迅先生生平著譯簡表</a>。</p>
+<hr>
+<h1 id="八、魯迅的思想發展脈絡">八、魯迅的思想發展脈絡</h1>
+<p>若從思想史角度理解魯迅，可以將他的思想發展分為四個階段。</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>時期</th>
+<th>思想核心</th>
+<th>代表性事件或作品</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一階段：傳統教育與新思想接觸</td>
+<td>1881—1905年</td>
+<td>從傳統文化走向現代知識，思考中國的出路。</td>
+<td>南京求學、日本留學、學醫。</td>
+</tr>
+<tr>
+<td>第二階段：精神啟蒙與文學探索</td>
+<td>1906—1917年</td>
+<td>從醫學轉向文學，重視思想與精神的改造。</td>
+<td>棄醫從文、翻譯外國文學、古籍研究。</td>
+</tr>
+<tr>
+<td>第三階段：新文化運動與社會批判</td>
+<td>1918—1926年</td>
+<td>透過小說、散文及雜文批判禮教與社會弊病。</td>
+<td>〈狂人日記〉、〈阿Q正傳〉、《吶喊》、《彷徨》。</td>
+</tr>
+<tr>
+<td>第四階段：左翼文化與現實批判</td>
+<td>1927—1936年</td>
+<td>關注政治壓迫、階級問題、文藝自由與社會變革。</td>
+<td>上海時期雜文、左翼文化活動、新興木刻運動。</td>
+</tr>
+</tbody></table>
+<p>這種分期是為了方便理解，並不表示魯迅的思想在各階段完全固定。事實上，他持續反思自身立場，也經常對不同政治與文化陣營提出批評。</p>
+<hr>
+<h1 id="九、魯迅與胡適的比較">九、魯迅與胡適的比較</h1>
+<p>胡適與魯迅是中國現代思想史上兩位極具代表性的人物。他們都參與新文化運動，反對思想僵化，也支持以白話文進行現代文學創作，但兩人的主要方法與關注重點有所不同。</p>
+<table>
+<thead>
+<tr>
+<th>比較面向</th>
+<th>胡適</th>
+<th>魯迅</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要身分</td>
+<td>哲學家、思想家、文學家、教育家</td>
+<td>小說家、思想家、散文家、文學評論家</td>
+</tr>
+<tr>
+<td>核心關懷</td>
+<td>學術方法、教育改革、自由主義、文化重建</td>
+<td>社會批判、精神啟蒙、國民心理、政治與文化壓迫</td>
+</tr>
+<tr>
+<td>文學改革</td>
+<td>倡導白話文及文學革新，提出明確的改革主張</td>
+<td>透過小說與雜文實踐新文學，揭露社會深層問題</td>
+</tr>
+<tr>
+<td>主要方法</td>
+<td>實驗、考證、理性分析、漸進改革</td>
+<td>諷刺、象徵、人物塑造、文化批判</td>
+</tr>
+<tr>
+<td>代表作品</td>
+<td>《中國哲學史大綱》、《嘗試集》等</td>
+<td>《吶喊》、《彷徨》、《朝花夕拾》、《野草》等</td>
+</tr>
+<tr>
+<td>對傳統文化的態度</td>
+<td>強調重新整理、研究與檢驗傳統</td>
+<td>更著重揭露傳統社會及禮教中的壓迫與弊病</td>
+</tr>
+<tr>
+<td>公共思想</td>
+<td>強調思想自由、言論自由及理性討論</td>
+<td>強調揭露現實、批判權力及喚醒社會</td>
+</tr>
+<tr>
+<td>主要影響</td>
+<td>現代學術、白話文、自由主義與教育</td>
+<td>現代小說、社會批判、文化評論與左翼文藝</td>
+</tr>
+</tbody></table>
+<p><strong>兩人的共同點：</strong> 都認為中國社會需要思想與文化上的改革，也都對現代中國的文學與公共討論產生重大影響。</p>
+<p><strong>兩人的差異：</strong> 胡適更著重學術方法、制度改革與理性討論；魯迅則更常透過文學揭露社會的痛苦、矛盾及精神困境。</p>
+<p>這種比較是理解兩人思想特色的概括，不代表他們的思想完全對立。兩人的研究與關懷其實有不少重疊之處。</p>
+<hr>
+<h1 id="十、魯迅生平大事記：重要年份速查表">十、魯迅生平大事記：重要年份速查表</h1>
+<p>以下整理最值得記憶的年份，可用於教學、歷史時間軸或製作 HTML 互動年表。</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+<th>關鍵字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1881年</strong></td>
+<td>出生於浙江紹興</td>
+<td>周樹人</td>
+</tr>
+<tr>
+<td>1893年</td>
+<td>祖父因科場案入獄，家庭受到重大衝擊</td>
+<td>家道中落</td>
+</tr>
+<tr>
+<td>1896年</td>
+<td>父親去世</td>
+<td>少年經歷</td>
+</tr>
+<tr>
+<td>1898年</td>
+<td>前往南京新式學堂求學</td>
+<td>新式教育</td>
+</tr>
+<tr>
+<td>1902年</td>
+<td>赴日本留學</td>
+<td>接觸西方思想</td>
+</tr>
+<tr>
+<td>1904年</td>
+<td>進入仙台醫學專門學校</td>
+<td>學醫救國</td>
+</tr>
+<tr>
+<td><strong>1906年</strong></td>
+<td><strong>離開醫學領域，決定棄醫從文</strong></td>
+<td><strong>思想轉折</strong></td>
+</tr>
+<tr>
+<td>1909年</td>
+<td>返回中國</td>
+<td>任教與學術研究</td>
+</tr>
+<tr>
+<td>1912年</td>
+<td>進入教育部任職</td>
+<td>教育行政</td>
+</tr>
+<tr>
+<td><strong>1918年</strong></td>
+<td><strong>發表〈狂人日記〉</strong></td>
+<td><strong>現代白話小說</strong></td>
+</tr>
+<tr>
+<td>1919年</td>
+<td>發表〈藥〉等作品，五四運動爆發</td>
+<td>新文化運動</td>
+</tr>
+<tr>
+<td><strong>1921年</strong></td>
+<td><strong>〈阿Q正傳〉開始連載</strong></td>
+<td><strong>國民性批判</strong></td>
+</tr>
+<tr>
+<td>1922年</td>
+<td>《吶喊》出版</td>
+<td>小說創作</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td>支持女師大學生運動</td>
+<td>教育與社會改革</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td>三一八慘案後離開北京，前往廈門大學</td>
+<td>政治批判</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td>在廣州任教，後定居上海</td>
+<td>上海時期</td>
+</tr>
+<tr>
+<td><strong>1930年</strong></td>
+<td><strong>參與中國左翼作家聯盟相關活動</strong></td>
+<td><strong>左翼文化</strong></td>
+</tr>
+<tr>
+<td>1932年</td>
+<td>出版《三閒集》等雜文集</td>
+<td>雜文創作</td>
+</tr>
+<tr>
+<td>1934年</td>
+<td>持續推動新興木刻版畫</td>
+<td>版畫運動</td>
+</tr>
+<tr>
+<td><strong>1936年10月19日</strong></td>
+<td><strong>在上海逝世</strong></td>
+<td><strong>現代文學巨擘</strong></td>
+</tr>
+</tbody></table>
+<p>主要參考資料：<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html?utm_source=chatgpt.com">中國作家網</a>、<a href="https://www.edb.gov.hk/attachment/tc/curriculum-development/kla/pshe/references-and-resources/chinese-history/exploring_chinese_historical_figures_in_short_stories/Article_S5.pdf?utm_source=chatgpt.com">香港教育局</a>、<a href="https://cerclearning.tp.edu.tw/modern/datapage/77/author/173?utm_source=chatgpt.com">臺灣國語文學科中心</a>。</p>
+<hr>
+<h1 id="十一、魯迅的歷史地位與評價">十一、魯迅的歷史地位與評價</h1>
+<p>魯迅的影響不只來自他的文學技巧，更來自他對中國社會、文化與人性的深刻觀察。</p>
+<h2 id="1-現代文學的開拓者">1. 現代文學的開拓者</h2>
+<p>魯迅透過白話小說、散文及雜文，擴展了現代中文文學的題材與表現方式。他讓普通人的生活、社會底層的處境及精神困境，成為文學的重要主題。</p>
+<h2 id="2-傳統社會的批判者">2. 傳統社會的批判者</h2>
+<p>他透過〈狂人日記〉、〈阿Q正傳〉及〈祝福〉等作品，探討傳統禮教、迷信、階級關係及群眾心理。</p>
+<p>他的批判並不只是反對古代文化，而是試圖追問：當某些傳統規範持續傷害個人尊嚴時，社會是否應該重新檢驗它們？</p>
+<h2 id="3-思想啟蒙的重要人物">3. 思想啟蒙的重要人物</h2>
+<p>魯迅相信，社會改革不應只停留在政治權力的更替，也需要人們重新思考自身的觀念、行為與生活方式。</p>
+<p>因此，他經常將注意力放在個人如何面對權威、群眾如何看待弱者，以及人們如何在壓迫環境中自我欺騙等問題上。</p>
+<h2 id="4-文學與公共生活的連結者">4. 文學與公共生活的連結者</h2>
+<p>魯迅的作品常常直接回應當時的政治、教育與文化事件。他認為文學並非與社會無關的純粹裝飾，而可以成為揭露問題、記錄苦難及促進反思的工具。</p>
+<h2 id="5-歷史評價中的複雜性">5. 歷史評價中的複雜性</h2>
+<p>魯迅的思想及政治立場，在不同時期受到不同群體的詮釋。他的作品也可能因政治環境與閱讀觀點的不同，而產生不同的評價。</p>
+<p>因此，理解魯迅時，既要重視他對傳統社會與權力的批判，也應將他的作品放回當時的歷史環境，避免把複雜的文學思想簡化成單一政治口號。</p>
+<hr>
+<h2 id="總結">總結</h2>
+<p>魯迅的一生，可以用三個關鍵詞概括：</p>
+<p><strong>棄醫從文、批判現實、喚醒精神。</strong></p>
+<p>從紹興的傳統家庭，到南京的新式學堂，再到日本留學與上海的文學活動，他不斷重新思考中國社會面臨的問題。</p>
+<p>他最重要的貢獻，不只是寫出〈狂人日記〉與〈阿Q正傳〉等經典作品，更是透過文學提出持續至今的問題：</p>
+<ul>
+<li>一個人如何擺脫既有觀念的束縛？</li>
+<li>傳統文化應該如何被繼承與重新檢驗？</li>
+<li>為什麼弱者有時也會參與對更弱者的壓迫？</li>
+<li>文學與知識分子應該如何面對社會的不公？</li>
+</ul>
+<p>這些問題使魯迅不僅是中國現代文學的重要人物，也成為理解近代中國思想轉型、社會批判與文化改革的重要起點。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

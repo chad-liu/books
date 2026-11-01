@@ -1,0 +1,606 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="張居正生平大事記（15251582）">張居正生平大事記（1525—1582）</h1>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p><strong>張居正</strong>（1525年—1582年），字叔大，號太岳，湖廣江陵人（今湖北省荊州市一帶），是明朝中後期最具影響力的政治家之一，也是明神宗萬曆初年的內閣首輔。</p>
+<p>張居正歷經嘉靖、隆慶、萬曆三朝，早年透過科舉進入仕途，後來逐步成為朝廷重臣。1572年，明穆宗去世，年幼的萬曆皇帝即位，張居正依靠太后、宦官馮保及朝廷官僚體系的支持，掌握重要政務，推動一系列改革。</p>
+<p>他主持的改革通常稱為**「萬曆新政」或「張居正改革」**，主要內容包括整頓官僚體系、推行考成法、清查田地、改善財政，以及推廣「一條鞭法」等措施。這些改革一度增加國家財政收入、改善行政效率，並使明朝政府在萬曆初年呈現相對穩定的局面。</p>
+<p>然而，張居正高度集中的權力，也引起部分官員的反感。他在世時受到萬曆皇帝倚重，死後卻遭到清算，改革成果也受到一定程度的破壞。</p>
+<p>張居正一生最值得研究的問題是：<strong>他如何在皇帝年幼、官僚體系積弊深重的情況下推動改革？又為什麼一位曾經權傾朝野的改革家，死後會遭遇如此劇烈的政治反轉？</strong></p>
+<hr>
+<h1 id="二、少年時期與科舉入仕（15251547）">二、少年時期與科舉入仕（1525—1547）</h1>
+<h2 id="1-1525年：出生於湖廣江陵">1. 1525年：出生於湖廣江陵</h2>
+<p><strong>1525年，張居正出生於湖廣江陵。</strong></p>
+<ul>
+<li>字叔大，號太岳。</li>
+<li>出身於具有讀書傳統的家庭。</li>
+<li>自幼接受儒家經典教育，展現出良好的學習能力。</li>
+<li>成長於明朝嘉靖年間，當時朝廷政治逐漸出現權力鬥爭、財政壓力與行政效率下降等問題。</li>
+</ul>
+<p>張居正後來成為重視行政效率、財政管理及官僚考核的政治家，與他對明朝政治積弊的觀察，以及長期在官僚體系中累積的經驗密切相關。</p>
+<h2 id="2-1530年代：少年時期展現才學">2. 1530年代：少年時期展現才學</h2>
+<p>張居正年少時即接受傳統儒學訓練，後來逐步取得科舉功名。</p>
+<p>傳統史料與後世傳記常以他的早慧作為生平的重要開端。不過，理解張居正的政治成就，不能只著眼於少年才學，更應注意他後來如何將經學教育、行政經驗與政治判斷結合起來。</p>
+<h2 id="3-1540年：考中秀才">3. 1540年：考中秀才</h2>
+<p>張居正少年時期取得生員資格，進入地方士人階層，正式踏上傳統士人的仕進道路。</p>
+<p>科舉制度是明代官僚選拔的重要管道。對張居正而言，科舉不只是個人晉身仕途的途徑，也使他得以進入以儒家經典、官僚倫理與皇權政治為核心的制度環境。</p>
+<h2 id="4-1547年：考中進士，進入翰林院">4. 1547年：考中進士，進入翰林院</h2>
+<p><strong>1547年，張居正考中進士，進入翰林院任職。</strong></p>
+<p>這是他政治生涯的重要起點。</p>
+<p>翰林院是明代培養高級文官的重要機構，許多官員在此累積學術與政治資歷，日後進入朝廷中樞。</p>
+<p>張居正透過翰林院的經歷，逐漸熟悉中央政府的運作方式，也為日後進入內閣、參與國家決策奠定基礎。</p>
+<p>**這一階段的核心意義：**張居正從地方士人進入中央官僚體系，開始累積政治資歷，並逐步接近明朝權力中樞。</p>
+<hr>
+<h1 id="三、初入政壇與隆慶年間的政治歷練（15471571）">三、初入政壇與隆慶年間的政治歷練（1547—1571）</h1>
+<h2 id="5-1547年：考中進士，正式進入中央官僚體系">5. 1547年：考中進士，正式進入中央官僚體系</h2>
+<p>張居正考中進士後，被選入翰林院，初任庶吉士，後授翰林院編修。</p>
+<p>這一時期，他開始深入了解明朝中央政治的實際運作。明代內閣雖然不是傳統意義上擁有法定丞相職權的機構，卻因為協助皇帝處理奏章、草擬詔令及協調政務，逐漸成為國家決策的核心。</p>
+<p>張居正日後成為內閣首輔，能夠有效控制政令傳達、官員考核與財政政策，與他早年在翰林院累積的政治經驗有關。</p>
+<h2 id="6-1550年代：觀察嘉靖朝政治，逐漸形成改革意識">6. 1550年代：觀察嘉靖朝政治，逐漸形成改革意識</h2>
+<p>張居正任職期間，明朝處於嘉靖皇帝統治後期。</p>
+<p>嘉靖朝政治的一項突出現象，是皇帝長期居於深宮，朝廷大臣之間卻存在激烈的權力競爭。嚴嵩等權臣長期影響朝政，官僚體系也出現因循、推諉及行政效率下降等問題。</p>
+<p>張居正透過實際任官，逐漸認識到：</p>
+<ul>
+<li>政策即使制定得再完善，若官員不執行，仍然難以產生效果。</li>
+<li>國家財政與地方賦稅必須有可靠的統計和管理制度。</li>
+<li>朝廷必須建立有效的官員考核與獎懲機制。</li>
+<li>軍事防務、河道治理及地方行政都需要有能力的官員負責。</li>
+</ul>
+<p>這些經驗，後來成為他推行考成法、整頓吏治與改革財政的重要思想基礎。</p>
+<h2 id="7-約1550年代：經歷官場磨練，與徐階等政治人物建立關係">7. 約1550年代：經歷官場磨練，與徐階等政治人物建立關係</h2>
+<p>張居正在官場中逐漸累積聲望，也與部分重要政治人物建立聯繫。</p>
+<p>其中，徐階是他政治生涯中值得注意的人物。徐階後來取代嚴嵩，成為嘉靖朝後期的重要內閣大臣，並在隆慶初年繼續影響朝政。</p>
+<p>張居正逐步學習如何在複雜的官僚關係中推動政務。他不僅重視政策本身，也十分重視人事安排、政治聯盟及皇帝對改革的支持。</p>
+<p>這種政治手腕，使他日後有能力在內閣中建立強勢的領導地位；但也因為他習慣集中權力、強力督促官員，逐漸引起部分朝臣的不滿。</p>
+<h2 id="8-1560年代：從翰林官員逐步升任高級官員">8. 1560年代：從翰林官員逐步升任高級官員</h2>
+<p>張居正歷任翰林院及其他中央官職，逐步進入高層政治圈。</p>
+<p>他並不是一開始就擁有決定國家政策的權力，而是經過多年任官，才逐漸掌握中央政府的運作方式。</p>
+<p>這段期間，他的政治能力主要表現在三方面：</p>
+<ol>
+<li><strong>熟悉制度</strong>：了解內閣、六部及其他中央機構的權責關係。</li>
+<li><strong>重視行政執行</strong>：認為政治改革必須配合官員考核及明確的責任制度。</li>
+<li><strong>善於人事運用</strong>：逐步建立與重要官員的合作關係，為未來主持朝政做準備。</li>
+</ol>
+<h2 id="9-1567年：隆慶帝即位，張居正進入內閣">9. 1567年：隆慶帝即位，張居正進入內閣</h2>
+<p>1567年，明穆宗朱載坖即位，年號隆慶。</p>
+<p>張居正升任吏部左侍郎兼東閣大學士，開始參與內閣政務，成為中央決策圈的重要成員。</p>
+<p>隆慶年間，朝廷面臨北方邊防、財政及官僚治理等問題。張居正逐漸展現出務實的政治風格，傾向透過調整行政制度、改善邊防及提高政府執行力，解決長期累積的問題。</p>
+<h2 id="10-15671568年：參與北方邊防與對蒙古政策的調整">10. 1567—1568年：參與北方邊防與對蒙古政策的調整</h2>
+<p>明朝與蒙古各部長期存在軍事衝突，北方邊防是明朝政府的重要負擔。</p>
+<p>隆慶年間，朝廷逐步調整對蒙古俺答汗的政策，尋求在軍事防禦之外，透過互市與外交方式降低衝突。</p>
+<p>這項政策後來促成隆慶和議及相關邊境貿易安排。張居正是隆慶朝重要政務參與者之一，但這項政策並非他個人單獨完成，而是朝廷多名官員共同推動的結果。</p>
+<p>其歷史意義在於：明朝開始以較務實的方式處理部分北方邊境關係，減輕長期軍事衝突對國家財政與邊防的壓力。</p>
+<h2 id="11-1571年：隆慶和議與北方邊境局勢改善">11. 1571年：隆慶和議與北方邊境局勢改善</h2>
+<p>1571年，明朝與俺答汗之間的關係進一步緩和，俺答汗獲得明朝封號，雙方建立較為穩定的貿易往來。</p>
+<p>隆慶和議有助於減少部分邊境衝突，也使明朝得以在軍事與外交方面進行更有彈性的安排。</p>
+<p>張居正後來重用戚繼光、李成梁等將領整頓北方防務，與這一時期逐漸形成的邊防政策及人事布局有一定關係。</p>
+<p>**這一階段的核心意義：**張居正從一般中央官員成長為重要的內閣政治人物，逐漸累積主持朝政所需要的制度知識、政治人脈及行政經驗。故宮博物院的張居正人物資料，也將他在隆慶年間的升遷視為其成為萬曆初年改革核心人物的重要前奏。<a href="https://www.dpm.org.cn/court/figure/104014.html?utm_source=chatgpt.com">DPM</a></p>
+<hr>
+<h1 id="四、萬曆初年掌握朝政（15721575）">四、萬曆初年掌握朝政（1572—1575）</h1>
+<h2 id="12-1572年：隆慶帝去世，萬曆皇帝即位">12. 1572年：隆慶帝去世，萬曆皇帝即位</h2>
+<p><strong>1572年，明穆宗去世，年幼的朱翊鈞即位，是為明神宗，年號萬曆。</strong></p>
+<p>當時萬曆皇帝年紀尚小，無法獨立處理繁重的國家政務，朝廷需要依靠太后、內閣及其他重要官員共同維持運作。</p>
+<p>張居正曾擔任裕王朱載坖的講官，因此與皇室具有長期的師生關係。萬曆帝即位後，張居正進一步取得李太后的信任，成為主持朝政的關鍵人物。</p>
+<p>這是他政治生涯最大的轉折。</p>
+<h2 id="13-1572年：張居正取代高拱，成為內閣首輔">13. 1572年：張居正取代高拱，成為內閣首輔</h2>
+<p>隆慶帝去世後，內閣內部的權力競爭迅速加劇。</p>
+<p>張居正與司禮監太監馮保建立合作關係，最終促使首輔高拱離開權力中樞，由張居正接任首輔。</p>
+<p>這場政治變動具有幾個重要特點：</p>
+<ul>
+<li>李太后需要能夠維持朝廷秩序、協助幼年皇帝處理政務的大臣。</li>
+<li>張居正具有帝師身分，與皇帝及太后之間的關係有利於他取得信任。</li>
+<li>馮保掌握司禮監及宮廷內部的重要資源，能夠影響皇帝旨意的傳達。</li>
+<li>張居正透過與宮廷及內閣不同力量的合作，逐步取得主持政務的地位。</li>
+</ul>
+<p>不過，張居正與馮保的合作，以及高拱被逐的具體過程，涉及晚明政治鬥爭，史料記載與後世評價並不完全一致。</p>
+<h2 id="14-1572年：以帝師身分輔導萬曆皇帝">14. 1572年：以帝師身分輔導萬曆皇帝</h2>
+<p>張居正不只是內閣首輔，也肩負教育年幼皇帝的責任。</p>
+<p>他為萬曆帝講授儒家經典、歷史與帝王治國之道，希望透過經史教育，培養皇帝的政治判斷力與責任感。</p>
+<p>張居正編纂的《帝鑑圖說》，以歷代帝王的事例配合圖像及文字，說明治國得失，目的在於讓年幼皇帝從歷史中理解政治治理的原則。</p>
+<p>在張居正主持朝政的早期，萬曆帝對他相當尊重，朝廷政令也多由張居正協調推動。</p>
+<p>然而，這種師生關係也存在潛在矛盾：張居正希望以嚴格方式約束皇帝，而皇帝成年後則勢必希望重新掌握完整的統治權。</p>
+<h2 id="15-1573年：推行考成法，整頓官僚體系">15. 1573年：推行考成法，整頓官僚體系</h2>
+<p><strong>1573年，張居正推行考成法，這是萬曆新政最重要的行政改革之一。</strong></p>
+<p>考成法的核心，是要求官員對政務執行進度負責，並建立可以追蹤、核查及獎懲的行政制度。</p>
+<p>其主要做法包括：</p>
+<ol>
+<li><strong>建立政務紀錄</strong>：將各級官署收到及發出的公文、待辦事項與執行情況登記在冊。</li>
+<li><strong>設定辦理期限</strong>：要求官員按照規定時間完成政務。</li>
+<li><strong>逐級核查</strong>：對尚未完成的事項進行追蹤，必要時查明原因。</li>
+<li><strong>連結官員考核</strong>：將政務執行情況與官員的考績、升遷及懲處相結合。</li>
+<li><strong>強化中央監督</strong>：內閣可以透過相關紀錄掌握政令是否真正落實。</li>
+</ol>
+<p>考成法的改革精神，可以概括為：<strong>不只看官員說了什麼，更要查明他實際完成了什麼。</strong></p>
+<p>它提高了行政執行的可追蹤性，也使張居正能夠督促地方官員完成賦稅徵收、河道治理與軍事防務等工作。</p>
+<p>但考成法也加強了中央對官僚的控制。當行政考核與升降黜陟緊密結合時，官員的自主空間相對縮小，政治壓力也隨之增加。<a href="https://www.dgpa.gov.tw/Uploads/public/Attachment/531217383828.pdf?utm_source=chatgpt.com">DGPA</a></p>
+<h2 id="16-15731575年：整頓吏治，強化政令執行">16. 1573—1575年：整頓吏治，強化政令執行</h2>
+<p>考成法只是張居正整頓官僚體系的一部分。他還透過裁減冗員、考察官員能力、追究行政責任等方式，提高政府的執行效率。</p>
+<p>他認為，明朝政治積弊的一個重要原因，是部分官員只求保全自身，不願承擔責任，甚至以文書往返代替實際工作。</p>
+<p>因此，他強調政令必須有明確的責任人、執行期限與檢查機制。</p>
+<p>這種治理方式使中央政府的命令較容易向地方推行，也讓國家更有效地掌握地方財政與行政狀況。</p>
+<p>然而，張居正的強勢作風也引發反彈。部分官員認為，他對政務與人事的控制過於嚴厲，並且削弱了言官及其他官僚的制衡能力。</p>
+<h2 id="17-15741575年：整頓財政、漕運與行政支出">17. 1574—1575年：整頓財政、漕運與行政支出</h2>
+<p>張居正掌權時，明朝財政面臨長期壓力。</p>
+<p>國家需要支付軍費、官僚俸祿、宮廷支出及各項行政成本，但田賦徵收、地方帳目與財政管理並不總是有效。</p>
+<p>張居正推動財政整頓，要求政府更準確掌握收入與支出，並督促各地補繳拖欠的賦稅。</p>
+<p>此外，他也重視漕運與糧食供應，因為京師及北方軍政機構需要穩定的糧食運輸。漕運若發生延誤，不僅影響民生，也會增加政府的財政負擔。</p>
+<p>這些措施未必能立即解決明朝所有財政問題，但為後續清丈土地及改革賦役制度創造了條件。</p>
+<hr>
+<hr>
+<h1 id="五、萬曆新政的核心改革（15761581）">五、萬曆新政的核心改革（1576—1581）</h1>
+<p>這一階段是張居正政治生涯的巔峰，也是他在明朝歷史上留下最深刻影響的時期。</p>
+<p>他的改革不是單一法令，而是涵蓋行政管理、土地調查、賦役制度、軍事防務與河道治理等領域的一系列措施。</p>
+<h2 id="18-15761577年：整頓官僚，強化行政紀律">18. 1576—1577年：整頓官僚，強化行政紀律</h2>
+<p>張居正持續透過考成法監督各級官員，並要求地方政府切實執行中央政令。</p>
+<p>當時明朝官僚體系的問題之一，是部分地方官員與大地主、地方勢力存在密切關係，可能透過隱匿土地、拖延徵稅或利用行政漏洞，減少應繳納的稅賦。</p>
+<p>張居正希望透過更嚴格的行政監督，改善中央政府對地方的控制。</p>
+<p>這些措施使政府的行政執行力有所提高，但也使官員承受更大的考核壓力。張居正推行改革的方式，具有鮮明的集權與強制性。</p>
+<h2 id="19-1577年：父親去世，引發「奪情」爭議">19. 1577年：父親去世，引發「奪情」爭議</h2>
+<p>1577年，張居正的父親去世。</p>
+<p>按照傳統儒家禮制，官員遇到父母去世，通常應離職回鄉服喪，稱為「丁憂」，一般以三年為期。</p>
+<p>然而，張居正當時身居首輔，掌握朝廷重要政務。若他離職，可能使改革中斷，也可能引發新的政治權力競爭。</p>
+<p>在皇帝及朝廷方面的安排下，張居正沒有依通常方式離職服喪，而是留在朝中繼續處理政務。這種情形稱為**「奪情」**，意即因國家政務需要，要求官員在服喪期間繼續任職。</p>
+<p>這件事引發很大的爭議。</p>
+<h3 id="為什麼「奪情」會引發反彈？">為什麼「奪情」會引發反彈？</h3>
+<p>第一，儒家政治倫理高度重視孝道與喪禮。高級官員若不依禮制服喪，容易被批評違背傳統倫理。</p>
+<p>第二，張居正掌握的權力已經相當大。他繼續留任，使反對者有機會質疑他是否過度重視自己的政治地位。</p>
+<p>第三，張居正的改革已經觸動部分官員與地方勢力的利益，服喪爭議因此與既有的政治衝突相互交織。</p>
+<p>張居正認為，國家政務不能因個人家庭事件而停頓；反對者則認為，即使身居高位，也應遵守儒家禮制。</p>
+<p><strong>這場爭議顯示，張居正的改革不僅涉及制度，也牽涉傳統倫理、政治權力與官僚利益之間的衝突。</strong></p>
+<h2 id="20-1578年：下令清丈全國土地">20. 1578年：下令清丈全國土地</h2>
+<p><strong>1578年，張居正下令清丈全國田地，這是萬曆新政最重要的財政改革之一。</strong></p>
+<p>「清丈」是指重新測量、登記及核查土地，藉此確認土地面積、所有權與應繳納的稅額。</p>
+<p>明朝原有土地登記制度長期存在各種問題。一些大地主可能隱瞞田地，部分地方的土地帳冊也與實際情況不符。</p>
+<p>結果便是：真正擁有大量土地的人，未必按照土地規模繳納相應稅賦；部分稅收負擔則可能轉嫁給其他納稅者。</p>
+<p>張居正推動清丈土地，主要有三個目的：</p>
+<ol>
+<li><strong>增加政府稅收</strong>：找出未被登記或遭到隱匿的土地。</li>
+<li><strong>改善財政資料</strong>：使中央與地方政府掌握較可靠的土地帳冊。</li>
+<li><strong>調整稅負分配</strong>：減少部分富戶透過隱匿土地逃避稅賦的情況。</li>
+</ol>
+<p>這項改革也面臨不少阻力。清丈涉及地方利益，地主與地方官員可能不願配合；不同地區的土地測量、帳冊品質及執行能力也存在差異。</p>
+<p>因此，清丈土地雖然有助於增加國家掌握的課稅田畝，但不能理解為所有地區的土地問題都因此獲得徹底解決。(<a href="https://www.dpm.org.cn/court/figure/104014.html">故宮博物院</a>)</p>
+<h2 id="21-15781580年：整頓河道，重視黃河與淮河治理">21. 1578—1580年：整頓河道，重視黃河與淮河治理</h2>
+<p>張居正也重視水利與河道治理。</p>
+<p>明朝的農業經濟高度依賴水利，黃河與淮河流域的水患，不僅會破壞農田、造成災荒，也會影響漕運及政府財政。</p>
+<p>張居正重用治河官員潘季馴，推動河道整治。</p>
+<p>潘季馴主張利用堤防與河道工程約束水流、促使泥沙下移，並透過黃河與淮河水系的整體治理，改善洪水及河道淤積問題。</p>
+<p>治河工作需要長期投入，也必須配合地方行政與工程管理。相關工程的成效並非單靠張居正一人完成，而是仰賴專業官員、地方組織及大量人力共同推動。</p>
+<p>這項政策的意義在於：張居正並未只關注朝廷的政治權力，也試圖透過水利與農業基礎建設，維持國家經濟與財政的穩定。</p>
+<h2 id="22-15791580年：整頓邊防，重用戚繼光等將領">22. 1579—1580年：整頓邊防，重用戚繼光等將領</h2>
+<p>張居正深知，明朝的財政改革若沒有穩定的邊防環境，便難以長期推行。</p>
+<p>他重視北方軍事防務，支持有經驗的將領整訓軍隊、修築防禦設施及改善邊鎮管理。</p>
+<p>其中，<strong>戚繼光</strong>是最具代表性的人物之一。</p>
+<p>戚繼光早年在東南沿海抗擊倭寇，後來轉赴北方防區，參與薊鎮等地的防務整頓。</p>
+<p>張居正支持戚繼光的軍事工作，與他重視人才任用、強化軍紀及改善邊防的政策一致。</p>
+<p>此外，李成梁等將領也在北方邊防扮演重要角色。</p>
+<p>張居正的軍事政策並非單純追求對外戰爭，而是希望透過軍隊整訓、將領任用及邊境關係調整，降低國防壓力，讓政府能夠集中資源處理內政。</p>
+<h2 id="23-1580年：裁減冗員，壓縮行政成本">23. 1580年：裁減冗員，壓縮行政成本</h2>
+<p>張居正持續檢查中央與地方的官僚配置，裁減部分冗餘職位，並整頓官員任用與考核制度。</p>
+<p>他認為，官僚機構若過度膨脹，不僅增加國家財政支出，也可能造成行政權責重疊，降低辦事效率。</p>
+<p>因此，他試圖讓官員數量、職務分配與實際政務需要相互配合。</p>
+<p>這項政策有助於減少部分行政成本，但也容易使被裁撤職位或受到考核的官員產生不滿。</p>
+<p>張居正的治理方式，往往以國家整體利益及政策執行效率為優先，而較少花費時間爭取所有官員的支持。這種做法使改革得以迅速推動，也埋下了他死後缺乏穩固政治支持的隱憂。</p>
+<h2 id="24-1581年：在全國推廣「一條鞭法」">24. 1581年：在全國推廣「一條鞭法」</h2>
+<p><strong>1581年，是張居正財政改革的重要年份。</strong></p>
+<p>張居正進一步推廣「一條鞭法」，將多種田賦與徭役負擔加以整合，並提高以白銀折納的比重。</p>
+<p>需要特別說明的是：**一條鞭法並非張居正一人從零創造的制度。**它在張居正主持朝政之前，已經在部分地區出現與推行；張居正的重要貢獻，是在萬曆初年積極擴大其推行範圍，並將它納入整體財政改革。</p>
+<h3 id="一條鞭法的主要內容">一條鞭法的主要內容</h3>
+<p>明代原有賦役制度相當複雜，除了田賦之外，還有不同種類的徭役及地方性負擔。</p>
+<p>一條鞭法的重要方向，是把原先分散的部分賦稅與徭役加以合併，並將其中不少負擔折算為白銀徵收。</p>
+<p>其主要特點包括：</p>
+<ul>
+<li><strong>簡化賦役項目</strong>：將部分原本分別徵收的賦稅與徭役合併處理。</li>
+<li><strong>提高折銀徵收的比重</strong>：使政府能以白銀作為重要的稅收形式。</li>
+<li><strong>改善徵收管理</strong>：減少部分繁複的徵收環節。</li>
+<li><strong>調整負擔方式</strong>：部分徭役負擔與土地、丁口等因素的計算方式有所改變，具體做法依地區而異。</li>
+</ul>
+<h3 id="一條鞭法的歷史影響">一條鞭法的歷史影響</h3>
+<p>第一，**有助於改善政府財政。**稅收項目與徵收方式較為整合，有利於政府掌握收入。</p>
+<p>第二，**提高賦役制度的行政效率。**部分徭役改以銀兩繳納後，政府可以透過雇役等方式安排勞動力。</p>
+<p>第三，**反映商品經濟與白銀流通的重要性。**隨著明代經濟發展，白銀在稅收及市場交易中的作用逐漸增加。</p>
+<p>第四，**可能減少部分徵收弊端。**制度簡化後，某些層層徵收及中間盤剝的空間可能受到限制。</p>
+<p>不過，一條鞭法並不代表所有農民的稅負都必然下降。不同地區的土地制度、地方執行方式及納稅能力各不相同；以白銀納稅，也可能使缺乏白銀或依賴實物收入的農戶承受新的壓力。</p>
+<p>因此，評價一條鞭法時，既要看到它在財政管理與制度整合上的意義，也要注意它在不同地區的實際效果並不完全相同。(<a href="https://www.dpm.org.cn/court/figure/104014.html">故宮博物院</a>)</p>
+<h2 id="25-1581年：萬曆新政達到重要成果">25. 1581年：萬曆新政達到重要成果</h2>
+<p>經過多年改革，張居正主持下的明朝政府，在財政管理、官員考核與邊防整頓方面取得一定成果。</p>
+<p>當時的朝廷比改革前更能追蹤地方政務，部分拖欠稅賦得到清理，政府財政狀況也有所改善。</p>
+<p>張居正的政策具有一個共同特徵：不只制定新的制度，也要求官員按時完成任務，並將結果納入考核。</p>
+<p>然而，這些成果在很大程度上依賴張居正個人的權威與政治能力。改革尚未完全轉化為能夠獨立運作、獲得各方穩定支持的制度。</p>
+<p>這個問題，後來成為萬曆新政無法持續的重要原因之一。</p>
+<hr>
+<h1 id="六、權力巔峰與政治危機（15811582）">六、權力巔峰與政治危機（1581—1582）</h1>
+<h2 id="26-1581年：張居正權勢達到頂峰">26. 1581年：張居正權勢達到頂峰</h2>
+<p>到萬曆九年前後，張居正已經成為明朝朝政的核心人物。</p>
+<p>他在皇帝、太后與內閣之間具有特殊地位，能夠影響人事任免、財政改革、軍事部署及重要行政決策。</p>
+<p>他的權力使改革得以迅速推動，但也引起朝臣對權力過度集中的疑慮。</p>
+<p>部分官員認為，張居正雖然以國家利益為名推動改革，卻逐漸形成個人權威過強、皇帝難以獨立決策的局面。</p>
+<p>張居正的政治困境由此逐漸浮現：</p>
+<ul>
+<li>改革需要強大的中央權威。</li>
+<li>強勢執政容易得罪既有利益群體。</li>
+<li>皇帝年幼時能夠接受首輔約束，成年後則可能希望收回權力。</li>
+<li>改革如果過度依賴個人，便難以確保繼任者願意繼續推行。</li>
+</ul>
+<h2 id="27-1582年初：健康狀況惡化，改革前景出現不確定性">27. 1582年初：健康狀況惡化，改革前景出現不確定性</h2>
+<p>長期處理繁重政務，使張居正承受相當大的工作壓力。</p>
+<p>1582年，他的健康狀況逐漸惡化，但朝廷仍然需要他主持大量政務。</p>
+<p>此時萬曆皇帝已逐漸成長，皇帝與首輔之間的權力關係也開始出現變化。</p>
+<p>張居正雖然仍然掌握重要權力，但其政治地位已不再像萬曆初年那樣穩固。</p>
+<h2 id="28-1582年7月9日：張居正去世">28. 1582年7月9日：張居正去世</h2>
+<p><strong>1582年7月9日，張居正在北京去世，享年約57歲。</strong></p>
+<p>他的去世，是萬曆新政的重要轉折點。</p>
+<p>張居正在世時，皇帝、太后與內閣之間的政務多由他協調；他去世後，朝廷內部的權力平衡迅速改變。</p>
+<p>部分過去受到張居正壓制的官員，開始重新爭取政治影響力；萬曆皇帝也逐漸擺脫對這位老師與首輔的依賴。</p>
+<p>張居正曾經以強勢手段整頓官僚體系，但他沒有完全解決如何讓改革在自己離任後繼續運作的問題。</p>
+<p><strong>他生前是改革的主要推動者，死後卻成為政治清算的對象。</strong></p>
+<hr>
+<h1 id="七、張居正死後的政治清算（15821622）">七、張居正死後的政治清算（1582—1622）</h1>
+<h2 id="29-1582年：萬曆皇帝逐漸收回權力">29. 1582年：萬曆皇帝逐漸收回權力</h2>
+<p>張居正去世後，萬曆皇帝開始逐步擺脫首輔生前建立的政治安排。</p>
+<p>張居正生前對皇帝要求嚴格，經常以師長的身分督促萬曆帝讀書、遵守禮儀並履行君主職責。年幼時，萬曆帝對張居正相當尊重；隨著年齡增長，這種嚴格管束逐漸成為君臣關係中的矛盾來源。</p>
+<p>張居正去世後，萬曆帝有了重新評價這位前首輔的機會。</p>
+<p>此外，張居正生前得罪的部分官員，也開始重新取得發言與政治活動的空間。對張居正的批評逐漸從個人品行，擴展到他的用人方式、政治權力及改革政策。</p>
+<h2 id="30-15821583年：反對張居正的政治勢力重新抬頭">30. 1582—1583年：反對張居正的政治勢力重新抬頭</h2>
+<p>張居正生前以強勢手段督促官員執行政策，部分官員因此受到懲處或失去職位。</p>
+<p>他去世後，這些政治對手及對其改革不滿的人士，開始批評他的專權作風。</p>
+<p>反對者提出的問題包括：</p>
+<ul>
+<li>張居正是否過度集中朝廷權力？</li>
+<li>他是否利用皇帝年幼的機會擴大個人影響力？</li>
+<li>他在處理父親喪事時是否違背儒家倫理？</li>
+<li>他在任用官員及處理政務時，是否過於強硬？</li>
+<li>他所推行的改革，是否對部分官僚及地方利益造成過大衝擊？</li>
+</ul>
+<p>這些批評並非全無根據，但也與晚明政治鬥爭密切相關。理解張居正死後的遭遇，必須同時考慮他的個人行事方式、改革造成的利益衝突，以及萬曆皇帝重新掌握權力的需要。</p>
+<h2 id="31-1584年：萬曆皇帝下令清算張居正">31. 1584年：萬曆皇帝下令清算張居正</h2>
+<p><strong>1584年，張居正死後兩年，萬曆皇帝下令追究他的罪責，並對其家產進行查抄。</strong></p>
+<p>這是張居正生平最具戲劇性的轉折。</p>
+<p>張居正生前權傾朝野，曾受到皇帝與太后的高度信任；死後卻遭到嚴厲批判，部分榮譽與官爵被剝奪，家族也受到牽連。</p>
+<p>這場清算包含政治與道德兩個層面。</p>
+<h3 id="政治層面">政治層面</h3>
+<p>張居正生前掌握極大的權力，萬曆皇帝親政後，需要重新確立皇帝對朝廷的直接控制。</p>
+<p>清算張居正，不僅是對個人及其家族的處分，也具有宣示皇權重新居於最高地位的意義。</p>
+<h3 id="道德層面">道德層面</h3>
+<p>反對者利用張居正奪情、專權及其他爭議，批評他違反傳統儒家倫理。</p>
+<p>這些指控使政治清算不只是權力鬥爭，也被包裝成對官員品行與政治倫理的追究。</p>
+<h3 id="對改革的影響">對改革的影響</h3>
+<p>張居正死後遭到清算，使他的政治聲望受到嚴重打擊，也削弱了部分改革措施的政治支持。</p>
+<p>然而，並非所有改革都在短時間內完全消失。一條鞭法及其他財政措施具有較長期的制度背景，不宜將後來的明朝衰退完全歸因於張居正死後的政策變化。</p>
+<h2 id="32-1580年代：張居正家族受到牽連">32. 1580年代：張居正家族受到牽連</h2>
+<p>在政治清算中，張居正的家族也受到處分。</p>
+<p>部分家產遭到查抄，家族成員的仕途與生活受到嚴重影響。後世記載對家族遭遇的具體細節有所不同，但張家因張居正失勢而遭到重創，是其身後政治清算的重要部分。</p>
+<p>這場事件也反映出明代政治的一個結構性問題：高級官員的權力與皇帝的個人信任密切相關。當皇帝改變態度，官員生前建立的政治地位未必能轉化為長期保障。</p>
+<h2 id="33-1580年代末至1590年代：萬曆朝政治逐漸發生變化">33. 1580年代末至1590年代：萬曆朝政治逐漸發生變化</h2>
+<p>張居正去世後，萬曆皇帝逐步親自掌握更多政治決策。</p>
+<p>隨著時間推移，朝廷的政策方向、官員任用及政治運作方式逐漸改變。萬曆朝後期出現長期的政治僵局，皇帝與官僚之間的關係也愈發複雜。</p>
+<p>不過，明朝後來面臨的財政壓力、邊防危機及政治問題，具有更長期的歷史根源。張居正改革未能持續推進固然重要，但明朝後來的衰退並不是由單一人物或單一事件所造成。</p>
+<h2 id="34-1622年：張居正獲得平反">34. 1622年：張居正獲得平反</h2>
+<p><strong>1622年，明熹宗天啟年間，張居正獲得一定程度的平反。</strong></p>
+<p>張居正的名譽與官爵問題經過重新處理，朝廷對他的評價有所恢復。</p>
+<p>這一轉變顯示，張居正死後的政治評價並非固定不變，而是受到不同時期的政治環境與朝廷立場影響。</p>
+<p>後世史家對他的評價，也逐漸從單純的忠奸判斷，轉向討論他在行政、財政、軍事及國家治理方面的實際成就與限制。</p>
+<hr>
+<h1 id="八、張居正生平大事記總表">八、張居正生平大事記總表</h1>
+<p>以下將張居正一生的重要事件依年代排列，方便複習、查閱及製作歷史時間軸。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>年號</th>
+<th>主要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1525年</strong></td>
+<td>嘉靖四年</td>
+<td>出生於湖廣江陵</td>
+<td>明朝中後期重要改革家的生平起點</td>
+</tr>
+<tr>
+<td>1536年</td>
+<td>嘉靖十五年</td>
+<td>參加童試，取得生員資格的早期經歷見於相關傳記</td>
+<td>展現少年才學，開始進入科舉教育體系</td>
+</tr>
+<tr>
+<td>1540年</td>
+<td>嘉靖十九年</td>
+<td>考中舉人</td>
+<td>取得進一步進入仕途的資格</td>
+</tr>
+<tr>
+<td><strong>1547年</strong></td>
+<td>嘉靖二十六年</td>
+<td>考中進士，選入翰林院</td>
+<td>正式進入中央官僚體系</td>
+</tr>
+<tr>
+<td>1550年代</td>
+<td>嘉靖年間</td>
+<td>歷任翰林官職，觀察朝廷政治</td>
+<td>累積行政經驗，逐步形成改革意識</td>
+</tr>
+<tr>
+<td>1562年</td>
+<td>嘉靖四十一年</td>
+<td>嚴嵩失勢，徐階成為重要政治人物</td>
+<td>朝廷政治格局發生變化</td>
+</tr>
+<tr>
+<td><strong>1567年</strong></td>
+<td>隆慶元年</td>
+<td>升任吏部左侍郎兼東閣大學士</td>
+<td>進入內閣核心決策圈</td>
+</tr>
+<tr>
+<td>1567—1571年</td>
+<td>隆慶年間</td>
+<td>參與朝廷政務與北方邊防政策</td>
+<td>累積處理國家重大事務的經驗</td>
+</tr>
+<tr>
+<td><strong>1572年</strong></td>
+<td>隆慶六年／萬曆元年</td>
+<td>隆慶帝去世，萬曆帝即位</td>
+<td>朝廷進入幼年皇帝主政的新階段</td>
+</tr>
+<tr>
+<td><strong>1572年</strong></td>
+<td>萬曆元年</td>
+<td>張居正取代高拱，成為內閣首輔</td>
+<td>開始掌握朝政核心權力</td>
+</tr>
+<tr>
+<td>1572年</td>
+<td>萬曆元年</td>
+<td>輔導萬曆帝，參與帝王教育</td>
+<td>兼具首輔與帝師身分</td>
+</tr>
+<tr>
+<td><strong>1573年</strong></td>
+<td>萬曆元年</td>
+<td>推行考成法</td>
+<td>強化官員考核與政令執行</td>
+</tr>
+<tr>
+<td>1573—1575年</td>
+<td>萬曆初年</td>
+<td>整頓吏治、財政與行政管理</td>
+<td>改善政府執行能力</td>
+</tr>
+<tr>
+<td>1576—1577年</td>
+<td>萬曆年間</td>
+<td>持續整頓官僚體系</td>
+<td>強化中央對地方行政的監督</td>
+</tr>
+<tr>
+<td><strong>1577年</strong></td>
+<td>萬曆五年</td>
+<td>父親去世，張居正奪情留任</td>
+<td>引發政治與儒家倫理爭議</td>
+</tr>
+<tr>
+<td><strong>1578年</strong></td>
+<td>萬曆六年</td>
+<td>下令清丈全國土地</td>
+<td>清查隱匿田地，改善財政資料</td>
+</tr>
+<tr>
+<td>1578—1580年</td>
+<td>萬曆年間</td>
+<td>支持河道治理與邊防整頓</td>
+<td>改善農業、水利與國防條件</td>
+</tr>
+<tr>
+<td>1579—1580年</td>
+<td>萬曆年間</td>
+<td>重用戚繼光、李成梁等將領</td>
+<td>強化北方邊防與軍事管理</td>
+</tr>
+<tr>
+<td>1580年</td>
+<td>萬曆八年</td>
+<td>裁減部分冗員，整頓行政編制</td>
+<td>壓縮行政成本，提高行政效率</td>
+</tr>
+<tr>
+<td><strong>1581年</strong></td>
+<td>萬曆九年</td>
+<td>進一步推廣一條鞭法</td>
+<td>改革賦役制度，改善稅收管理</td>
+</tr>
+<tr>
+<td>1581年</td>
+<td>萬曆九年</td>
+<td>萬曆新政取得階段性成果</td>
+<td>財政、行政與邊防有所改善</td>
+</tr>
+<tr>
+<td><strong>1582年7月9日</strong></td>
+<td>萬曆十年</td>
+<td>張居正在北京去世</td>
+<td>萬曆新政失去主要推動者</td>
+</tr>
+<tr>
+<td>1582—1583年</td>
+<td>萬曆年間</td>
+<td>朝廷內部對張居正的批評增加</td>
+<td>反對派重新取得政治空間</td>
+</tr>
+<tr>
+<td><strong>1584年</strong></td>
+<td>萬曆十二年</td>
+<td>張居正遭到死後清算，家產被查抄</td>
+<td>政治評價急劇逆轉</td>
+</tr>
+<tr>
+<td>1580年代以後</td>
+<td>萬曆年間</td>
+<td>張居正家族受到牽連</td>
+<td>顯示明代高級官員的政治風險</td>
+</tr>
+<tr>
+<td><strong>1622年</strong></td>
+<td>天啟二年</td>
+<td>張居正獲得平反</td>
+<td>朝廷對其歷史評價有所恢復</td>
+</tr>
+</tbody></table>
+<p>**年代說明：**張居正生於1525年，卒於1582年；其出生、死亡的具體月日，部分史料與現代資料存在差異。表中以通行的公曆年份及明朝年號為主。相關生平與改革內容可參考故宮博物院及何創時書法藝術基金會的歷史人物資料。<a href="https://www.dpm.org.cn/court/figure/104014.html?utm_source=chatgpt.com">DPM</a></p>
+<hr>
+<h1 id="九、張居正的主要改革及其歷史影響">九、張居正的主要改革及其歷史影響</h1>
+<p>理解張居正，不能只記住他何時當上首輔、何時去世，更應掌握他究竟改變了明朝哪些制度。</p>
+<h2 id="1-考成法：從官員考核著手整頓政治">1. 考成法：從官員考核著手整頓政治</h2>
+<p>考成法的主要精神，是將政務執行情況加以紀錄、追蹤與考核，並將結果與官員的升遷、任免及懲處相結合。</p>
+<p>它試圖解決的核心問題是：如何讓中央政府的命令不只是停留在公文中，而能真正落實到地方。</p>
+<p><strong>主要成就：</strong></p>
+<ul>
+<li>提高行政工作的可追蹤性。</li>
+<li>強化中央對地方政務的監督。</li>
+<li>促使官員更重視期限與執行結果。</li>
+</ul>
+<p><strong>主要限制：</strong></p>
+<ul>
+<li>行政監督過度集中於中央與首輔。</li>
+<li>官員承受較大的政治壓力。</li>
+<li>改革成效與張居正個人的權威密切相關。</li>
+</ul>
+<h2 id="2-清丈土地：重新掌握國家的財政基礎">2. 清丈土地：重新掌握國家的財政基礎</h2>
+<p>土地是明朝農業經濟與田賦制度的核心。</p>
+<p>張居正下令清丈土地，希望確認實際田畝，查出隱匿土地，改善國家稅收資料。</p>
+<p><strong>主要成就：</strong></p>
+<ul>
+<li>提高政府掌握土地及課稅資料的能力。</li>
+<li>有助於追查部分逃漏稅賦的情況。</li>
+<li>為賦役制度改革提供資料基礎。</li>
+</ul>
+<p><strong>主要限制：</strong></p>
+<ul>
+<li>地方執行程度不一。</li>
+<li>清丈涉及地主及地方官員的利益。</li>
+<li>土地登記問題無法單靠一次調查永久解決。</li>
+</ul>
+<h2 id="3-一條鞭法：整合賦役制度">3. 一條鞭法：整合賦役制度</h2>
+<p>一條鞭法將部分原本分散的賦稅與徭役加以合併，並提高以白銀折納的比重。</p>
+<p>它並非張居正個人首創，而是他在萬曆初年積極推廣的重要制度。</p>
+<p><strong>主要成就：</strong></p>
+<ul>
+<li>簡化部分賦役徵收程序。</li>
+<li>改善政府對稅收的掌握。</li>
+<li>反映明代白銀經濟的發展。</li>
+</ul>
+<p><strong>主要限制：</strong></p>
+<ul>
+<li>不同地區的實施方式並不一致。</li>
+<li>以白銀繳納可能增加部分農戶的負擔。</li>
+<li>無法完全消除土地集中及地方徵收弊端。</li>
+</ul>
+<h2 id="4-邊防整頓：降低軍事壓力">4. 邊防整頓：降低軍事壓力</h2>
+<p>張居正支持重用有經驗的將領，並重視軍隊訓練、邊鎮管理與對蒙古關係的調整。</p>
+<p><strong>主要成就：</strong></p>
+<ul>
+<li>改善部分北方邊防的管理。</li>
+<li>重用戚繼光等將領。</li>
+<li>透過外交與貿易安排，降低部分邊境衝突。</li>
+</ul>
+<p><strong>主要限制：</strong></p>
+<ul>
+<li>軍事安全仍依賴將領的能力及朝廷的持續投入。</li>
+<li>邊防改善不能消除明朝所有的國防與財政問題。</li>
+</ul>
+<h2 id="5-水利治理：支持潘季馴整治黃淮河道">5. 水利治理：支持潘季馴整治黃淮河道</h2>
+<p>張居正重視河道治理，支持潘季馴等專業官員處理黃河、淮河水患。</p>
+<p>這類工程對農業、漕運與地方經濟具有重要影響，但需要長期維護及大量資源，不能視為短期內即可永久解決的問題。</p>
+<hr>
+<h1 id="十、如何評價張居正？">十、如何評價張居正？</h1>
+<p>張居正是明朝歷史上極具爭議的改革家。評價他時，可以從以下四個面向切入。</p>
+<h2 id="1-他是明朝中後期最重要的改革推動者之一">1. 他是明朝中後期最重要的改革推動者之一</h2>
+<p>張居正面對的明朝，存在財政困難、官僚積弊、邊防壓力與地方行政問題。</p>
+<p>他透過考成法、清丈土地、推廣一條鞭法及整頓邊防，試圖讓政府重新取得治理能力。</p>
+<p>這些改革在萬曆初年取得一定成果，使明朝的行政與財政狀況有所改善。</p>
+<h2 id="2-他具有強烈的行政效率觀念">2. 他具有強烈的行政效率觀念</h2>
+<p>張居正認為，政策不能只停留在理念或文書層面，必須透過明確的責任制度、執行期限與考核機制加以落實。</p>
+<p>這是他推行考成法的重要原因。</p>
+<p>從現代行政管理的角度來看，他的做法具有強烈的績效導向；但若從權力制衡的角度來看，過度依賴中央與首輔的監督，也存在權力集中的風險。</p>
+<h2 id="3-他擅長推動改革，卻未能建立足夠穩固的政治支持">3. 他擅長推動改革，卻未能建立足夠穩固的政治支持</h2>
+<p>張居正的改革成效與其個人權威密切相關。</p>
+<p>他能夠依靠皇帝、太后及內閣的支持迅速推動政策，但強勢的執政方式也得罪不少官員與利益群體。</p>
+<p>他去世後，改革缺乏足夠穩定的政治聯盟與持續推動機制，部分措施因此受到影響。</p>
+<p>這是研究張居正時最重要的問題之一：</p>
+<p><strong>改革能否成功，不只取決於改革者有沒有能力，也取決於制度能否在改革者離開後繼續運作。</strong></p>
+<h2 id="4-他既不是毫無缺點的改革英雄，也不能只用專權者來概括">4. 他既不是毫無缺點的改革英雄，也不能只用專權者來概括</h2>
+<p>張居正重視國家財政、行政效率與軍事防務，對明朝政治留下深刻影響。</p>
+<p>但他也採取高度集中的治理方式，與官員的衝突、奪情爭議及皇帝成年後的權力矛盾，都是理解其政治命運不可忽略的部分。</p>
+<p>較為全面的評價，應同時考察改革成果、政策限制、政治手段及制度環境，而不是只根據他生前受寵或死後遭清算來判定其歷史地位。</p>
+<hr>
+<h1 id="十一、張居正與其他明朝重要人物的關係">十一、張居正與其他明朝重要人物的關係</h1>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>身分</th>
+<th>與張居正的關係</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>明神宗</td>
+<td>萬曆皇帝</td>
+<td>君臣、師生</td>
+<td>幼年時倚重張居正，成年後逐步收回權力，死後又清算張居正</td>
+</tr>
+<tr>
+<td>李太后</td>
+<td>皇太后</td>
+<td>張居正的重要政治支持者</td>
+<td>萬曆帝年幼時，支持張居正主持政務</td>
+</tr>
+<tr>
+<td>馮保</td>
+<td>宦官、司禮監掌權者</td>
+<td>政治合作夥伴</td>
+<td>在萬曆初年與張居正合作，參與宮廷與內閣權力運作</td>
+</tr>
+<tr>
+<td>高拱</td>
+<td>內閣首輔</td>
+<td>政治競爭者</td>
+<td>1572年離開權力中樞後，由張居正接任首輔</td>
+</tr>
+<tr>
+<td>徐階</td>
+<td>高級文官</td>
+<td>張居正仕途的重要前輩</td>
+<td>在嘉靖、隆慶年間的政治格局中具有重要影響</td>
+</tr>
+<tr>
+<td>戚繼光</td>
+<td>明朝將領</td>
+<td>張居正支持的軍事人才</td>
+<td>參與北方邊防整頓</td>
+</tr>
+<tr>
+<td>潘季馴</td>
+<td>治河官員</td>
+<td>張居正支持的水利人才</td>
+<td>推動黃河、淮河治理</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="十二、總結：張居正一生的五個階段">十二、總結：張居正一生的五個階段</h1>
+<p>若要快速掌握張居正的一生，可以將他分為五個階段：</p>
+<h3 id="第一階段：少年求學與科舉入仕（15251547）">第一階段：少年求學與科舉入仕（1525—1547）</h3>
+<p>出生於江陵，接受儒學教育，1547年考中進士，進入翰林院，正式踏入中央官僚體系。</p>
+<h3 id="第二階段：累積政治經驗（15471571）">第二階段：累積政治經驗（1547—1571）</h3>
+<p>歷經嘉靖、隆慶兩朝，逐漸了解明朝官僚體系的積弊，並進入內閣決策圈，為日後主持改革累積經驗。</p>
+<h3 id="第三階段：掌握朝政與推動改革（15721577）">第三階段：掌握朝政與推動改革（1572—1577）</h3>
+<p>萬曆帝即位後，張居正成為內閣首輔，依靠皇太后的信任及與馮保的合作，主持國家政務，推行考成法、整頓吏治。</p>
+<h3 id="第四階段：萬曆新政的高峰（15781581）">第四階段：萬曆新政的高峰（1578—1581）</h3>
+<p>下令清丈土地、推廣一條鞭法，並支持邊防整頓與水利治理，使明朝政府的財政與行政能力有所改善。</p>
+<h3 id="第五階段：去世與身後清算（15821622）">第五階段：去世與身後清算（1582—1622）</h3>
+<p>張居正於1582年去世，1584年遭到死後清算，家族受到牽連；直到1622年，才獲得一定程度的平反。</p>
+<p><strong>張居正最重要的歷史意義，在於他試圖以行政考核、財政改革、軍事整頓與水利治理，挽救明朝中後期的國家治理危機。</strong></p>
+<p>但他的經驗也揭示了一個深刻的歷史問題：改革者即使能在短時間內集中權力、提高政策執行效率，如果改革缺乏穩固的制度基礎與持續的政治支持，其成果仍可能在改革者離開後受到衝擊。</p>
+<p>張居正的一生，因此不僅是明朝改革史的重要篇章，也是研究<strong>改革、權力、制度與政治遺產</strong>之間關係的重要案例。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

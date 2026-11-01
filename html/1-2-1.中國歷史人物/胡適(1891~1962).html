@@ -1,0 +1,819 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="胡適生平大事記（18911962）">胡適生平大事記（1891—1962）</h1>
+<p>胡適（1891年12月17日—1962年2月24日），字適之，安徽績溪人，出生於上海，是中國現代思想史、哲學史與文學史上的重要人物，也是五四新文化運動及白話文學改革的重要倡導者。</p>
+<p>胡適留學美國，師從哲學家 約翰·杜威，深受實用主義影響。他主張以實驗、證據與理性分析檢驗觀念，提倡白話文、文學革新、學術研究及思想自由。一生歷任北京大學教授、校長、中華民國駐美大使及中央研究院院長等職務。</p>
+<p>他的思想不僅影響中國現代文學與哲學，也與近代中國的教育改革、歷史研究、政治自由及民主討論密切相關。以下依照年代，整理其生平、學術成就、政治活動及重要著作。主要年代依據中央研究院胡適紀念館的傳略與大事紀整理。<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">hushih.mh.sinica.edu.tw</a></p>
+<hr>
+<h1 id="一、童年與求學時期（18911916年）">一、童年與求學時期（1891—1916年）</h1>
+<p>這一階段，胡適從傳統私塾教育走向現代學校教育，最後赴美留學，接觸西方哲學與現代學術方法，為日後推動新文化運動奠定基礎。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1891年</td>
+<td align="right">0歲</td>
+<td>12月17日出生於上海，祖籍安徽省績溪縣，原名嗣穈，後改名適，字適之。</td>
+<td>出生於清朝末年，正值中國面臨內憂外患與制度變革的時代。</td>
+</tr>
+<tr>
+<td>1893年</td>
+<td align="right">2歲</td>
+<td>隨母親馮順弟前往臺灣，當時父親胡傳在臺灣任職。</td>
+<td>幼年曾在臺灣生活，與臺灣近代史有所關聯。</td>
+</tr>
+<tr>
+<td>1895年</td>
+<td align="right">3歲</td>
+<td>隨母親離開臺灣，返回安徽績溪；同年父親胡傳病逝。</td>
+<td>母親對他的教育與成長產生深遠影響。</td>
+</tr>
+<tr>
+<td>約1895—1904年</td>
+<td align="right">4—12歲</td>
+<td>在家鄉接受傳統私塾教育，研讀經書、古文及詩詞。</td>
+<td>奠定古典文學與傳統學術的基礎。</td>
+</tr>
+<tr>
+<td>1904年</td>
+<td align="right">12歲</td>
+<td>前往上海求學，開始接觸新式教育。</td>
+<td>從傳統教育轉向近代學校教育。</td>
+</tr>
+<tr>
+<td>1905年</td>
+<td align="right">13歲</td>
+<td>在上海先後進入新式學校就讀。</td>
+<td>接觸新的知識體系與教育觀念。</td>
+</tr>
+<tr>
+<td>1908年</td>
+<td align="right">16歲</td>
+<td>畢業後曾任教，並參與教育與社會活動。</td>
+<td>開始累積教育與公共事務方面的經驗。</td>
+</tr>
+<tr>
+<td>1910年</td>
+<td align="right">18歲</td>
+<td>考取清華學堂庚子賠款留美官費，赴美國康乃爾大學就讀。</td>
+<td>人生的重要轉折，正式進入西方高等教育體系。</td>
+</tr>
+<tr>
+<td>1912年</td>
+<td align="right">20歲</td>
+<td>從康乃爾大學農學院轉入文學院。</td>
+<td>學術興趣由農業轉向文學、哲學與思想研究。</td>
+</tr>
+<tr>
+<td>1914年</td>
+<td align="right">22歲</td>
+<td>取得康乃爾大學文學士學位。</td>
+<td>完成大學階段的專業訓練。</td>
+</tr>
+<tr>
+<td>1915年</td>
+<td align="right">23歲</td>
+<td>進入哥倫比亞大學哲學系，師從約翰·杜威。</td>
+<td>系統接觸實用主義哲學與實驗性思考方法。</td>
+</tr>
+<tr>
+<td>1916年</td>
+<td align="right">24歲</td>
+<td>開始與友人討論文學革命，思考中國文學改革的方向。</td>
+<td>白話文改革與新文學運動逐漸形成。</td>
+</tr>
+</tbody></table>
+<p>資料來源：中央研究院胡適紀念館傳略。<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">hushih.mh.sinica.edu.tw</a></p>
+<h3 id="這一階段的思想轉變">這一階段的思想轉變</h3>
+<p>胡適的成長經歷具有三個重要特點：</p>
+<ol>
+<li><strong>傳統教育的根基：</strong> 熟悉中國古典經典與文學，能夠從傳統文化內部提出改革問題。</li>
+<li><strong>現代教育的洗禮：</strong> 在上海接觸新式教育，赴美後進一步認識西方學術與社會思想。</li>
+<li><strong>杜威哲學的影響：</strong> 重視經驗、實驗、證據及問題解決，逐漸形成以實際檢驗觀念的學術態度。</li>
+</ol>
+<p>胡適後來倡導的思想並不是單純否定傳統，而是主張重新檢驗傳統、整理文化遺產，並以新的研究方法建立學術成果。</p>
+<hr>
+<h1 id="二、新文化運動與文學革命（19171922年）">二、新文化運動與文學革命（1917—1922年）</h1>
+<p>這是胡適思想史上最重要的階段之一。他從美國返回中國後，在北京大學任教，積極倡導白話文與文學改革，成為中國現代文學的重要開拓者。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1917年1月</td>
+<td align="right">25歲</td>
+<td>在《新青年》發表〈文學改良芻議〉。</td>
+<td>提出文學改革主張，成為白話文運動的重要標誌。</td>
+</tr>
+<tr>
+<td>1917年5月</td>
+<td align="right">25歲</td>
+<td>通過哥倫比亞大學博士學位的最後考試。</td>
+<td>完成哲學方面的高等教育訓練。</td>
+</tr>
+<tr>
+<td>1917年7月</td>
+<td align="right">25歲</td>
+<td>返回中國。</td>
+<td>開始將留學期間形成的思想與方法運用於中國學術界。</td>
+</tr>
+<tr>
+<td>1917年9月</td>
+<td align="right">25歲</td>
+<td>出任北京大學教授，講授中國哲學史等課程。</td>
+<td>進入中國現代高等教育與思想改革的核心舞台。</td>
+</tr>
+<tr>
+<td>1917年12月</td>
+<td align="right">25歲</td>
+<td>與江冬秀結婚。</td>
+<td>建立家庭生活。</td>
+</tr>
+<tr>
+<td>1918年</td>
+<td align="right">26歲</td>
+<td>發表〈建設的文學革命論〉，強調「國語的文學，文學的國語」。</td>
+<td>將文學革命從批判舊文學推向建立新文學。</td>
+</tr>
+<tr>
+<td>1918年</td>
+<td align="right">26歲</td>
+<td>積極參與《新青年》等刊物的思想與文學討論。</td>
+<td>推動白話文寫作及新文化傳播。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td align="right">27歲</td>
+<td>出版《中國哲學史大綱》上卷。</td>
+<td>以現代學術方法重新整理中國哲學史，影響後來的哲學史研究。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td align="right">27歲</td>
+<td>五四運動爆發，學生運動與新文化思潮迅速發展。</td>
+<td>胡適的白話文與思想改革主張成為當時公共討論的一部分。</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td align="right">28歲</td>
+<td>出版白話詩集《嘗試集》。</td>
+<td>成為中國現代白話新詩發展的重要早期作品之一。</td>
+</tr>
+<tr>
+<td>1921年</td>
+<td align="right">29歲</td>
+<td>持續參與文學改革、教育及公共思想討論。</td>
+<td>新文學逐漸由倡議轉化為實際創作與教育活動。</td>
+</tr>
+<tr>
+<td>1922年</td>
+<td align="right">30歲</td>
+<td>參與教育改革與政治社會議題的討論，倡議理性、漸進的社會改革。</td>
+<td>顯示其關懷從文學領域擴展至政治與社會制度。</td>
+</tr>
+</tbody></table>
+<p>資料來源：中央研究院胡適紀念館、教育部《重編國語辭典修訂本》。<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">hushih.mh.sinica.edu.tw</a></p>
+<h2 id="1917年：〈文學改良芻議〉的歷史意義">1917年：〈文學改良芻議〉的歷史意義</h2>
+<p>胡適在〈文學改良芻議〉中提出文學改革的主張，反對一味模仿古人、堆砌典故及過度追求形式，強調文學應具有實際內容，並能真實表達思想與情感。</p>
+<p>其核心主張可以整理如下：</p>
+<table>
+<thead>
+<tr>
+<th>改革方向</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>言之有物</td>
+<td>文學應具有思想、情感與實際內容。</td>
+</tr>
+<tr>
+<td>不摹仿古人</td>
+<td>不應把模仿古代作家當成文學創作的唯一標準。</td>
+</tr>
+<tr>
+<td>講求文法</td>
+<td>重視語言的清楚、自然與表達效果。</td>
+</tr>
+<tr>
+<td>不避俗字俗語</td>
+<td>反對一味排斥日常語言。</td>
+</tr>
+<tr>
+<td>重視實際表達</td>
+<td>文學應能表達真實生活與現代人的思想。</td>
+</tr>
+</tbody></table>
+<p>胡適並不是唯一推動白話文的人物。陳獨秀、蔡元培、魯迅及其他新文化運動參與者，也從不同方向促進了現代文學與思想的發展。</p>
+<p><strong>歷史定位：</strong> 胡適的重要貢獻，在於將白話文改革轉化為一套具有明確論述的文學主張，並透過大學、期刊與著作推動其實踐。</p>
+<hr>
+<h1 id="三、學術研究與政治思想的發展（19231937年）">三、學術研究與政治思想的發展（1923—1937年）</h1>
+<p>這一階段，胡適持續從事哲學、文學、歷史及思想研究，也積極參與教育改革與政治討論。</p>
+<p>他不再只被視為白話文運動的倡導者，而逐漸成為中國現代知識界具有廣泛影響力的學者與公共知識分子。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1923年</td>
+<td align="right">31歲</td>
+<td>持續研究中國哲學、文學與思想史，參與公共議題討論。</td>
+<td>擴大現代學術方法在中國研究中的影響。</td>
+</tr>
+<tr>
+<td>1924年</td>
+<td align="right">32歲</td>
+<td>持續倡導學術研究、文化改革與理性討論。</td>
+<td>強化其作為公共知識分子的角色。</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td align="right">33歲</td>
+<td>參與學界及文化界活動，討論教育、思想與社會改革。</td>
+<td>學術與公共事務的聯繫更加密切。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td align="right">34歲</td>
+<td>持續推動中國思想史與文學史研究。</td>
+<td>以整理文獻與歷史考證為基礎，發展現代人文學術。</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td align="right">35歲</td>
+<td>持續從事著述、教育與文化活動。</td>
+<td>在中國思想界維持重要影響力。</td>
+</tr>
+<tr>
+<td>1928年</td>
+<td align="right">36歲</td>
+<td>參與《新月》月刊相關文化活動，並與友人推動思想、文學及政治議題的討論。</td>
+<td>新月派成為當時重要的文學與思想群體之一。</td>
+</tr>
+<tr>
+<td>1929年</td>
+<td align="right">37歲</td>
+<td>持續發表文章，討論自由、教育、文化與政治問題。</td>
+<td>自由主義思想成為其公共論述的重要部分。</td>
+</tr>
+<tr>
+<td>1930年</td>
+<td align="right">38歲</td>
+<td>持續研究中國哲學、文學及歷史問題。</td>
+<td>逐漸形成兼具文獻考證與思想分析的研究特色。</td>
+</tr>
+<tr>
+<td>1931年</td>
+<td align="right">39歲</td>
+<td>持續參與學術與公共事務。</td>
+<td>在文化界與學術界具有重要地位。</td>
+</tr>
+<tr>
+<td>1932年</td>
+<td align="right">40歲</td>
+<td>在北京大學擔任中國文學相關教職及文學院院長等職務。</td>
+<td>參與現代大學的學術與教育建設。</td>
+</tr>
+<tr>
+<td>1933年</td>
+<td align="right">41歲</td>
+<td>繼續從事文學史、哲學史與思想史研究。</td>
+<td>擴大現代學術方法在中國人文研究中的應用。</td>
+</tr>
+<tr>
+<td>1934年</td>
+<td align="right">42歲</td>
+<td>持續參與文化及教育活動。</td>
+<td>在文學研究與社會思想方面保持影響力。</td>
+</tr>
+<tr>
+<td>1935年</td>
+<td align="right">43歲</td>
+<td>參與中國知識界對政治局勢、文化與社會改革的討論。</td>
+<td>學者角色與國家公共事務進一步交織。</td>
+</tr>
+<tr>
+<td>1936年</td>
+<td align="right">44歲</td>
+<td>持續研究與發表文章，關注中國的政治與社會發展。</td>
+<td>其自由主義立場與漸進改革思想受到更多關注。</td>
+</tr>
+<tr>
+<td>1937年</td>
+<td align="right">45歲</td>
+<td>抗日戰爭全面爆發。</td>
+<td>胡適的學術與公共活動逐漸受到戰爭局勢影響。</td>
+</tr>
+</tbody></table>
+<p>本階段的具體職務與著述年代，可參照中央研究院胡適紀念館的著述年表及相關學術檔案。<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">hushih.mh.sinica.edu.tw</a></p>
+<h2 id="胡適的學術方法：大膽假設，小心求證">胡適的學術方法：大膽假設，小心求證</h2>
+<p>胡適的重要學術特色，是重視問題的提出、資料的蒐集與論證的檢驗。</p>
+<p>這種方法與他所接受的實用主義訓練有密切關係，也影響了他研究中國哲學、文學與歷史的方式。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>說明</th>
+<th>主要應用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>提出假設</td>
+<td>對既有說法提出問題，形成可供檢驗的假設。</td>
+<td>哲學史、文學史、歷史研究。</td>
+</tr>
+<tr>
+<td>蒐集證據</td>
+<td>透過文獻、史料與實際材料檢驗假設。</td>
+<td>古典文獻整理、歷史考證。</td>
+</tr>
+<tr>
+<td>理性分析</td>
+<td>不因傳統權威或個人信念而直接接受某種結論。</td>
+<td>思想史與文化研究。</td>
+</tr>
+<tr>
+<td>持續修正</td>
+<td>當新證據出現時，重新檢視原有判斷。</td>
+<td>學術研究與公共議題討論。</td>
+</tr>
+</tbody></table>
+<p>這種方法不代表胡適的所有結論都正確，而是強調研究應接受證據與批判的檢驗。</p>
+<hr>
+<h1 id="四、抗日戰爭與駐美大使時期（19371945年）">四、抗日戰爭與駐美大使時期（1937—1945年）</h1>
+<p>抗日戰爭爆發後，胡適的角色從學者與公共知識分子，逐漸轉向外交工作。他希望透過國際輿論與外交關係，爭取國際社會對中國抗戰的支持。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1937年</td>
+<td align="right">45歲</td>
+<td>抗日戰爭全面爆發。</td>
+<td>中國的學術、文化與政治環境受到戰爭深刻影響。</td>
+</tr>
+<tr>
+<td>1938年</td>
+<td align="right">46歲</td>
+<td>出任中華民國駐美大使。</td>
+<td>開始以外交官身分參與抗戰時期的國際政治。</td>
+</tr>
+<tr>
+<td>1939年</td>
+<td align="right">47歲</td>
+<td>在美國從事外交活動，爭取美國政府與社會對中國抗戰的理解與支持。</td>
+<td>促進中美關係與抗戰外交。</td>
+</tr>
+<tr>
+<td>1940年</td>
+<td align="right">48歲</td>
+<td>持續擔任駐美大使，參與戰時外交。</td>
+<td>中國爭取國際援助的工作持續進行。</td>
+</tr>
+<tr>
+<td>1941年</td>
+<td align="right">49歲</td>
+<td>太平洋戰爭爆發，中美關係進入新的戰略階段。</td>
+<td>中國抗戰與國際反法西斯戰爭的關係更加緊密。</td>
+</tr>
+<tr>
+<td>1942年</td>
+<td align="right">50歲</td>
+<td>離開駐美大使職務。</td>
+<td>結束一段重要的外交生涯。</td>
+</tr>
+<tr>
+<td>1943年</td>
+<td align="right">51歲</td>
+<td>繼續參與學術與文化活動，並與美國學術機構保持聯繫。</td>
+<td>在學術與國際文化交流領域持續發揮影響力。</td>
+</tr>
+<tr>
+<td>1944年</td>
+<td align="right">52歲</td>
+<td>持續關注中國戰後發展與國際局勢。</td>
+<td>思考中國的政治制度、文化與現代化問題。</td>
+</tr>
+<tr>
+<td>1945年</td>
+<td align="right">53歲</td>
+<td>第二次世界大戰結束。</td>
+<td>中國進入戰後重建與政治秩序重組的新階段。</td>
+</tr>
+</tbody></table>
+<p>胡適的駐美大使任期及戰後職務，可參考中央研究院相關檔案及胡適紀念館傳略。<a href="https://archives.sinica.edu.tw/collectionDetail/1/73?utm_source=chatgpt.com">Sinica Archives</a></p>
+<hr>
+<h1 id="五、北京大學校長與戰後中國（19461949年）">五、北京大學校長與戰後中國（1946—1949年）</h1>
+<p>抗戰結束後，胡適回到中國，重新參與大學教育與學術建設，並於1946年出任北京大學校長。</p>
+<p>然而，國共內戰持續擴大，中國的政治局勢迅速惡化，學術機構也面臨重大變動。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1946年</td>
+<td align="right">54歲</td>
+<td>出任北京大學校長。</td>
+<td>回到教育界，參與戰後大學的重建。</td>
+</tr>
+<tr>
+<td>1947年</td>
+<td align="right">55歲</td>
+<td>持續推動北京大學的教學與學術工作。</td>
+<td>試圖維持大學的學術發展與教育功能。</td>
+</tr>
+<tr>
+<td>1948年</td>
+<td align="right">56歲</td>
+<td>中國內戰局勢急遽變化，北平面臨新的政治局勢。</td>
+<td>大學與知識界受到戰爭及政治變動的影響。</td>
+</tr>
+<tr>
+<td>1948年底</td>
+<td align="right">56歲</td>
+<td>離開北平前往南京，之後前往美國。</td>
+<td>開始長期旅居海外的階段。</td>
+</tr>
+<tr>
+<td>1949年</td>
+<td align="right">57歲</td>
+<td>中華人民共和國成立，中華民國政府遷往臺灣。胡適此時主要在美國活動。</td>
+<td>其學術與公共活動進入新的歷史階段。</td>
+</tr>
+<tr>
+<td>1949年11月</td>
+<td align="right">57歲</td>
+<td>《自由中國》半月刊創刊，胡適擔任發行人。</td>
+<td>為臺灣戰後自由主義思想與政治討論留下重要的歷史線索。</td>
+</tr>
+</tbody></table>
+<p>資料來源：中央研究院胡適紀念館及中央研究院臺灣史研究相關年表。<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">hushih.mh.sinica.edu.tw</a></p>
+<hr>
+<h1 id="六、旅居美國與晚年返臺（19501962年）">六、旅居美國與晚年返臺（1950—1962年）</h1>
+<p>這一階段，胡適大部分時間在美國從事學術活動，但也多次來臺，參與學術演講與文化事務。</p>
+<p>1958年，他正式出任中央研究院院長，將晚年的重要精力投入臺灣的學術研究與研究機構建設。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1950年</td>
+<td align="right">58歲</td>
+<td>在美國從事學術研究，並於普林斯頓大學圖書館等機構工作。</td>
+<td>延續其學術生涯，持續進行中國思想與文獻研究。</td>
+</tr>
+<tr>
+<td>1951年</td>
+<td align="right">59歲</td>
+<td>因《自由中國》相關政治爭議，辭去發行人職務。</td>
+<td>顯示他對刊物獨立性與政治干預問題的關切。</td>
+</tr>
+<tr>
+<td>1952年</td>
+<td align="right">60歲</td>
+<td>返臺，在臺灣大學、臺灣師範學院等機構演講。</td>
+<td>與臺灣學術界建立更密切的聯繫。</td>
+</tr>
+<tr>
+<td>1953年</td>
+<td align="right">61歲</td>
+<td>持續往返美國與臺灣，從事學術及文化活動。</td>
+<td>促進兩地學術交流。</td>
+</tr>
+<tr>
+<td>1954年</td>
+<td align="right">62歲</td>
+<td>參與臺灣的公共與文化事務。</td>
+<td>在學術之外，仍持續關注政治與社會問題。</td>
+</tr>
+<tr>
+<td>1955年</td>
+<td align="right">63歲</td>
+<td>持續進行學術研究與公共演講。</td>
+<td>維持其在中國現代思想史與自由主義討論中的影響力。</td>
+</tr>
+<tr>
+<td>1956年</td>
+<td align="right">64歲</td>
+<td>繼續研究中國哲學、文學與歷史。</td>
+<td>晚年學術活動持續發展。</td>
+</tr>
+<tr>
+<td>1957年</td>
+<td align="right">65歲</td>
+<td>獲任命為中央研究院院長。</td>
+<td>開始籌備並承擔臺灣最高學術研究機構的領導工作。</td>
+</tr>
+<tr>
+<td><strong>1958年</strong></td>
+<td align="right"><strong>66歲</strong></td>
+<td><strong>正式就任中央研究院院長。</strong></td>
+<td><strong>成為臺灣戰後學術發展的重要領導人物之一。</strong></td>
+</tr>
+<tr>
+<td>1959年</td>
+<td align="right">67歲</td>
+<td>發表與「容忍與自由」相關的重要演說與文章。</td>
+<td>再次強調思想自由、理性討論與對不同意見的包容。</td>
+</tr>
+<tr>
+<td>1960年</td>
+<td align="right">68歲</td>
+<td>返臺，持續關注《自由中國》及雷震案等政治事件。</td>
+<td>顯示其對言論自由與政治自由的重視。</td>
+</tr>
+<tr>
+<td>1961年</td>
+<td align="right">69歲</td>
+<td>持續主持中央研究院事務及學術活動。</td>
+<td>致力於學術機構的發展與研究工作。</td>
+</tr>
+<tr>
+<td><strong>1962年2月24日</strong></td>
+<td align="right"><strong>70歲</strong></td>
+<td><strong>在臺北主持中央研究院院士會議期間，因心臟病發作逝世。</strong></td>
+<td>結束其長達七十年的學術與公共生涯。</td>
+</tr>
+</tbody></table>
+<p>資料來源：中央研究院胡適紀念館大事紀、中央研究院臺灣史研究相關年表。<a href="https://imhb.mh.sinica.edu.tw/Hushih_Events?mid=81&utm_source=chatgpt.com">imhb.mh.sinica.edu.tw</a></p>
+<h2 id="1959年：〈容忍與自由〉的思想意義">1959年：〈容忍與自由〉的思想意義</h2>
+<p>胡適晚年反覆討論自由與容忍的關係。</p>
+<p>他認為，思想自由不只是讓自己發表意見，也包括容許別人持有不同觀點。當一個人認為自己掌握絕對真理，並因此剝奪異議者表達意見的權利時，自由便容易遭到破壞。</p>
+<p>這一思想可以從三個層面理解：</p>
+<ol>
+<li><strong>思想層面：</strong> 人的知識與判斷可能有錯，因此應保留修正意見的空間。</li>
+<li><strong>社會層面：</strong> 不同意見的交流與辯論，有助於社會理解複雜問題。</li>
+<li><strong>政治層面：</strong> 言論自由與對異議的容忍，是自由社會的重要條件。</li>
+</ol>
+<p>胡適對自由的重視，與他早年接受的實用主義及理性批判方法一脈相承。</p>
+<hr>
+<h1 id="七、胡適的重要著作與學術貢獻">七、胡適的重要著作與學術貢獻</h1>
+<p>胡適的研究領域相當廣泛，涵蓋中國哲學史、文學史、白話文學、歷史考證及思想評論等。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>著作</th>
+<th>領域</th>
+<th>主要意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1917年</td>
+<td>〈文學改良芻議〉</td>
+<td>文學理論</td>
+<td>提出文學改革主張，成為白話文運動的重要文獻。</td>
+</tr>
+<tr>
+<td>1918年</td>
+<td>〈建設的文學革命論〉</td>
+<td>文學理論</td>
+<td>進一步闡述新文學的建設方向。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td>《中國哲學史大綱》上卷</td>
+<td>哲學史</td>
+<td>以現代研究方法整理中國古代哲學的發展。</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td>《嘗試集》</td>
+<td>新詩</td>
+<td>中國現代白話新詩發展的重要早期作品。</td>
+</tr>
+<tr>
+<td>1921年</td>
+<td>《中國白話文學史》相關研究逐漸發展</td>
+<td>文學史</td>
+<td>系統研究白話文學的歷史來源與發展。</td>
+</tr>
+<tr>
+<td>1920年代</td>
+<td>《胡適文存》各集陸續出版</td>
+<td>思想、文學、哲學</td>
+<td>集中呈現其早期文章、思想與學術論述。</td>
+</tr>
+<tr>
+<td>1920年代至1930年代</td>
+<td>中國思想史與文學史相關論著</td>
+<td>思想史、文學史</td>
+<td>推動以文獻、考證與理性分析研究中國文化。</td>
+</tr>
+<tr>
+<td>1930年代</td>
+<td>《白話文學史》等相關研究持續發展</td>
+<td>文學史</td>
+<td>重新評估白話文學在中國文學史上的地位。</td>
+</tr>
+<tr>
+<td>1930年代以後</td>
+<td>《戴東原的哲學》等哲學研究</td>
+<td>哲學史</td>
+<td>深入研究清代思想家戴震及其哲學。</td>
+</tr>
+<tr>
+<td>1950年代至1960年代</td>
+<td>中國思想史與歷史考證相關研究</td>
+<td>學術研究</td>
+<td>晚年仍持續從事中國學術史與思想史研究。</td>
+</tr>
+</tbody></table>
+<p>著作年代與版本可能因初版、修訂版及文集收錄時間而有所不同。胡適的著述資料可參考中央研究院胡適紀念館及相關學術檔案。<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">hushih.mh.sinica.edu.tw</a></p>
+<h3 id="胡適的四大學術貢獻">胡適的四大學術貢獻</h3>
+<p><strong>1. 白話文與新文學</strong></p>
+<p>胡適倡導以白話文進行文學創作與思想表達，對現代中文寫作與教育產生深遠影響。</p>
+<p><strong>2. 中國哲學史的現代研究</strong></p>
+<p>他嘗試以現代學術方法重新整理中國古代哲學，將思想家的學說放在歷史脈絡中分析。</p>
+<p><strong>3. 歷史考證與學術方法</strong></p>
+<p>他重視史料、證據及論證，鼓勵學者重新檢驗既有觀念，而不是只接受傳統權威。</p>
+<p><strong>4. 自由主義與公共思想</strong></p>
+<p>他長期關注言論自由、思想自由、教育及政治改革，對現代中國自由主義思想的發展具有重要影響。</p>
+<hr>
+<h1 id="八、胡適的思想發展脈絡">八、胡適的思想發展脈絡</h1>
+<p>若要從思想史的角度理解胡適，可以將其一生分成四個階段。</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>時期</th>
+<th>思想重點</th>
+<th>代表性成果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一階段：思想啟蒙</td>
+<td>1891—1916年</td>
+<td>傳統教育與西方現代思想的接觸</td>
+<td>留美求學、接受杜威實用主義</td>
+</tr>
+<tr>
+<td>第二階段：文學革命</td>
+<td>1917—1922年</td>
+<td>白話文、文學改革、新文化運動</td>
+<td>〈文學改良芻議〉、《中國哲學史大綱》上卷、《嘗試集》</td>
+</tr>
+<tr>
+<td>第三階段：學術與公共參與</td>
+<td>1923—1949年</td>
+<td>哲學史、文學史、歷史考證、自由主義與外交</td>
+<td>《白話文學史》相關研究、駐美大使、北京大學校長</td>
+</tr>
+<tr>
+<td>第四階段：學術建設與自由思想</td>
+<td>1950—1962年</td>
+<td>學術研究、言論自由、學術機構建設</td>
+<td>中央研究院院長、〈容忍與自由〉相關論述</td>
+</tr>
+</tbody></table>
+<p>這個分期是為了方便理解而作的概括，並不代表胡適在不同階段只關注單一議題。他的文學、哲學、歷史與政治思想其實長期交錯發展。</p>
+<hr>
+<h1 id="九、胡適生平大事記：重要年份速查表">九、胡適生平大事記：重要年份速查表</h1>
+<p>以下整理最值得記憶的年份，方便教學、複習或製作歷史時間軸。</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+<th>關鍵字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1891年</td>
+<td>出生於上海</td>
+<td>胡適誕生</td>
+</tr>
+<tr>
+<td>1893年</td>
+<td>隨母親前往臺灣</td>
+<td>臺灣生活</td>
+</tr>
+<tr>
+<td>1904年</td>
+<td>前往上海求學</td>
+<td>新式教育</td>
+</tr>
+<tr>
+<td>1910年</td>
+<td>赴美留學</td>
+<td>康乃爾大學</td>
+</tr>
+<tr>
+<td>1915年</td>
+<td>進入哥倫比亞大學，師從杜威</td>
+<td>實用主義</td>
+</tr>
+<tr>
+<td><strong>1917年</strong></td>
+<td><strong>發表〈文學改良芻議〉，回國任教北京大學</strong></td>
+<td><strong>文學革命</strong></td>
+</tr>
+<tr>
+<td>1918年</td>
+<td>發表〈建設的文學革命論〉</td>
+<td>白話文學</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td>出版《中國哲學史大綱》上卷</td>
+<td>中國哲學史</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td>出版《嘗試集》</td>
+<td>白話新詩</td>
+</tr>
+<tr>
+<td>1928年</td>
+<td>參與《新月》月刊相關文化活動</td>
+<td>新月派</td>
+</tr>
+<tr>
+<td>1932年</td>
+<td>在北京大學擔任文學相關教職及行政職務</td>
+<td>大學教育</td>
+</tr>
+<tr>
+<td><strong>1938年</strong></td>
+<td><strong>出任中華民國駐美大使</strong></td>
+<td><strong>抗戰外交</strong></td>
+</tr>
+<tr>
+<td><strong>1946年</strong></td>
+<td><strong>出任北京大學校長</strong></td>
+<td><strong>戰後教育</strong></td>
+</tr>
+<tr>
+<td>1949年</td>
+<td>《自由中國》創刊，胡適擔任發行人</td>
+<td>自由主義</td>
+</tr>
+<tr>
+<td>1952年</td>
+<td>赴臺灣大學等機構演講</td>
+<td>臺灣學術交流</td>
+</tr>
+<tr>
+<td><strong>1958年</strong></td>
+<td><strong>正式就任中央研究院院長</strong></td>
+<td><strong>學術建設</strong></td>
+</tr>
+<tr>
+<td>1959年</td>
+<td>發表與〈容忍與自由〉相關的重要論述</td>
+<td>思想自由</td>
+</tr>
+<tr>
+<td><strong>1962年</strong></td>
+<td><strong>2月24日因心臟病逝世於臺北</strong></td>
+<td><strong>一代學者逝世</strong></td>
+</tr>
+</tbody></table>
+<p>主要參考資料：<a href="https://hushih.mh.sinica.edu.tw/Hushih_Content?mid=116&utm_source=chatgpt.com">中央研究院胡適紀念館</a>、<a href="https://imhb.mh.sinica.edu.tw/Hushih_Events?mid=81&utm_source=chatgpt.com">中央研究院胡適紀念館大事紀</a>。</p>
+<hr>
+<h1 id="十、胡適的歷史地位與評價">十、胡適的歷史地位與評價</h1>
+<p>胡適的影響力主要體現在文學、學術與政治思想三個層面。</p>
+<h3 id="文學方面">文學方面</h3>
+<p>他是中國現代白話文運動的重要倡導者之一，促進白話文成為現代文學與公共知識傳播的重要媒介。</p>
+<h3 id="學術方面">學術方面</h3>
+<p>他強調歷史考證、理性分析與證據檢驗，推動中國哲學史與文學史研究的現代化。</p>
+<h3 id="政治思想方面">政治思想方面</h3>
+<p>他重視思想自由、言論自由與理性討論，主張透過教育、學術與制度改革改善社會。</p>
+<p>不過，胡適的主張也曾受到不同政治立場與思想流派的批評。他對傳統文化的解釋、漸進改革的政治路線，以及自由主義在中國的實踐條件，都存在值得繼續討論的問題。</p>
+<p><strong>總結來說，胡適是理解中國從傳統社會走向現代社會的重要人物。</strong> 他一方面推動白話文與新文學，另一方面以現代學術方法重新研究中國哲學與歷史；同時，他對自由與容忍的堅持，也使他成為近代中國思想史上具有持續影響力的人物。</p>
+<p>如果將胡適與同時代的思想家比較，最值得深入探討的三個方向是：</p>
+<ol>
+<li><strong>胡適與陳獨秀：</strong> 文學革命與新文化運動的共同點及差異。</li>
+<li><strong>胡適與魯迅：</strong> 對傳統文化、社會改革及現代文學的不同看法。</li>
+<li><strong>胡適與梁啟超：</strong> 中國現代思想、教育改革與文化轉型的不同路徑。</li>
+</ol>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

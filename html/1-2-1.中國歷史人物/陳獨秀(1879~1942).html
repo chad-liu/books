@@ -1,0 +1,799 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="陳獨秀生平大事記（18791942年）">陳獨秀生平大事記（1879—1942年）</h1>
+<p><strong>陳獨秀</strong>（1879年10月9日—1942年5月27日），字仲甫，安徽懷寧人，是中國近代重要的思想家、政治活動家、文字學研究者，也是新文化運動的重要領導者及中國共產黨的主要創建者之一。</p>
+<p>陳獨秀一生經歷晚清、辛亥革命、五四運動、北洋政府時期、國民革命及抗日戰爭初期。他早年參與反清革命，後來創辦《青年雜誌》（後改名《新青年》），提倡民主與科學，批判傳統禮教。五四運動後，他逐漸轉向馬克思主義，參與中國共產黨的創建，並曾擔任中共中央主要領導職務。1927年離開中共領導崗位，1929年遭開除黨籍，晚年因政治立場與健康等因素，生活相對困頓，最後於四川江津逝世。<a href="https://pedia.cloud.edu.tw/Entry/Detail/?search=%E9%99%B3%E7%8D%A8%E7%A7%80&title=%E9%99%B3%E7%8D%A8%E7%A7%80&utm_source=chatgpt.com">教育百科</a></p>
+<p><strong>理解陳獨秀一生的四個關鍵詞：</strong></p>
+<ul>
+<li><strong>反清革命：</strong> 反對清朝專制，參與早期革命活動。</li>
+<li><strong>新文化運動：</strong> 倡導民主、科學與白話文，批判傳統思想。</li>
+<li><strong>創建中國共產黨：</strong> 從激進民主主義者轉向馬克思主義。</li>
+<li><strong>政治失勢與晚年反思：</strong> 離開中共領導層後，繼續思考革命、民主與政治制度。</li>
+</ul>
+<p>以下依年代整理他的生平、重要著作、思想轉變與歷史影響。</p>
+<hr>
+<h1 id="一、童年與科舉教育（18791898年）">一、童年與科舉教育（1879—1898年）</h1>
+<p>陳獨秀出生於安徽懷寧的傳統士紳家庭，自幼接受經典教育。少年時期，他曾考取秀才，但對科舉制度及傳統政治秩序逐漸產生懷疑，開始尋求新的知識與救國道路。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1879年</td>
+<td align="right">0歲</td>
+<td>10月9日出生於安徽省懷寧縣（今安徽安慶一帶）。</td>
+<td>成長於清朝末年的傳統社會。</td>
+</tr>
+<tr>
+<td>約1884年</td>
+<td align="right">5歲</td>
+<td>開始接受家庭教育，學習儒家經典。</td>
+<td>奠定傳統文化基礎。</td>
+</tr>
+<tr>
+<td>1896年</td>
+<td align="right">17歲</td>
+<td>參加科舉考試，考中秀才。</td>
+<td>取得傳統士人身分。</td>
+</tr>
+<tr>
+<td>1897年</td>
+<td align="right">18歲</td>
+<td>參加鄉試未中，逐漸對科舉制度失去信心。</td>
+<td>開始反思傳統教育與政治制度。</td>
+</tr>
+<tr>
+<td>1897—1898年</td>
+<td align="right">18—19歲</td>
+<td>前往杭州求是書院學習，接觸新式教育。</td>
+<td>從傳統經學走向近代知識。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://pedia.cloud.edu.tw/Entry/Detail/?search=%E9%99%B3%E7%8D%A8%E7%A7%80&title=%E9%99%B3%E7%8D%A8%E7%A7%80">教育部國家教育研究院《教育大辭書》：陳獨秀</a>、<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院：陳獨秀</a>。</p>
+<h3 id="這個階段的轉變">這個階段的轉變</h3>
+<p>陳獨秀的早年經歷，呈現了晚清知識分子的一種典型轉型：從接受傳統教育，轉向尋求新的思想與政治出路。</p>
+<p>甲午戰爭、戊戌變法及清朝內部的政治危機，使他逐漸認識到，單靠傳統科舉與經學教育，難以解決中國面臨的危機。</p>
+<hr>
+<h1 id="二、反清革命與日本留學（18981914年）">二、反清革命與日本留學（1898—1914年）</h1>
+<p>這一階段，陳獨秀逐漸成為激進的反清革命者。他透過報刊、演講及秘密組織傳播革命思想，主張推翻清朝統治，建立新的政治制度。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1899年</td>
+<td align="right">20歲</td>
+<td>開始參與新式政治思想及革命相關活動。</td>
+<td>逐漸遠離傳統士人道路。</td>
+</tr>
+<tr>
+<td>1901年</td>
+<td align="right">22歲</td>
+<td>因反清活動受到清政府追捕，前往日本。</td>
+<td>進入海外革命知識分子的活動網絡。</td>
+</tr>
+<tr>
+<td>1902年</td>
+<td align="right">23歲</td>
+<td>在日本接觸革命思想，參與留學生的愛國與政治活動。</td>
+<td>加深對民族危機與政治改革的認識。</td>
+</tr>
+<tr>
+<td>1903年</td>
+<td align="right">24歲</td>
+<td>因革命活動被日本當局遣送回國；其後參與上海的革命宣傳工作。</td>
+<td>透過報刊推動反清思想。</td>
+</tr>
+<tr>
+<td>1904年</td>
+<td align="right">25歲</td>
+<td>在安徽創辦《安徽俗話報》。</td>
+<td>利用通俗文字傳播新思想，推動白話文宣傳。</td>
+</tr>
+<tr>
+<td>1905年</td>
+<td align="right">26歲</td>
+<td>組織反清秘密團體岳王會。</td>
+<td>從思想宣傳進一步投入革命組織工作。</td>
+</tr>
+<tr>
+<td>1907年</td>
+<td align="right">28歲</td>
+<td>再度赴日本，曾在早稻田大學學習。</td>
+<td>持續接觸日本及西方政治思想。</td>
+</tr>
+<tr>
+<td>1909年</td>
+<td align="right">30歲</td>
+<td>回國後在浙江陸軍學堂任教。</td>
+<td>暫時回到教育工作。</td>
+</tr>
+<tr>
+<td>1911年</td>
+<td align="right">32歲</td>
+<td>辛亥革命爆發，清朝統治瓦解；陳獨秀參與安徽地方政治，曾任安徽都督府秘書長。</td>
+<td>從反清革命者進入共和政權的政治實務。</td>
+</tr>
+<tr>
+<td>1913年</td>
+<td align="right">34歲</td>
+<td>參與反對袁世凱的二次革命，失敗後受到追捕。</td>
+<td>對民初共和政治的挫折有切身體驗。</td>
+</tr>
+<tr>
+<td>1914年</td>
+<td align="right">35歲</td>
+<td>前往日本，協助章士釗等人從事《甲寅》雜誌相關工作。</td>
+<td>繼續透過報刊參與政治與思想論爭。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>、<a href="https://www.chinawriter.com.cn/n1/2021/0904/c440984-32217462.html">中國作家網相關人物資料</a>。</p>
+<h3 id="這一階段的思想特色">這一階段的思想特色</h3>
+<p>陳獨秀早期的核心目標是反清、救國與政治革命。他逐漸認為，中國的問題不只是某個皇帝或政府的問題，更涉及政治制度、社會風俗與思想觀念。</p>
+<p>因此，他開始把報刊當成政治改革的工具，嘗試讓更多普通民眾接觸新的知識與觀念。</p>
+<hr>
+<h1 id="三、創辦《新青年》與新文化運動（19151918年）">三、創辦《新青年》與新文化運動（1915—1918年）</h1>
+<p><strong>1915年是陳獨秀人生中另一個關鍵轉折點。</strong></p>
+<p>他開始把工作的重心從直接的政治革命轉向思想與文化改革，認為必須改變人們的思想觀念，才能為新的社會制度奠定基礎。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1915年</strong></td>
+<td align="right">36歲</td>
+<td>9月在上海創辦《青年雜誌》，後來改名《新青年》。</td>
+<td><strong>新文化運動的重要起點。</strong></td>
+</tr>
+<tr>
+<td>1915年</td>
+<td align="right">36歲</td>
+<td>發表〈敬告青年〉，提出青年應自主、進步、進取、世界、實利與科學等主張。</td>
+<td>呼籲青年擺脫思想束縛，迎接現代社會。</td>
+</tr>
+<tr>
+<td>1916年</td>
+<td align="right">37歲</td>
+<td>《青年雜誌》改名《新青年》；持續發表批判傳統思想的文章。</td>
+<td>逐漸形成新文化運動的重要思想陣地。</td>
+</tr>
+<tr>
+<td><strong>1917年</strong></td>
+<td align="right">38歲</td>
+<td>應蔡元培之邀，出任北京大學文科學長。</td>
+<td>將新文化運動與大學教育、學術研究結合。</td>
+</tr>
+<tr>
+<td>1917年</td>
+<td align="right">38歲</td>
+<td>發表〈文學革命論〉等文章，主張改革傳統文學。</td>
+<td>推動現代文學及白話文運動。</td>
+</tr>
+<tr>
+<td><strong>1918年</strong></td>
+<td align="right">39歲</td>
+<td>與李大釗等人創辦《每週評論》。</td>
+<td>將思想改革進一步延伸到現實政治與社會議題。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>、<a href="https://dangshi.people.com.cn/BIG5/n1/2019/1205/c85037-31492172.html">人民網：紀念陳獨秀誕辰140周年</a>。</p>
+<h2 id="1-《新青年》的歷史意義">1. 《新青年》的歷史意義</h2>
+<p>《新青年》不只是一本文學雜誌，更是20世紀初中國思想轉型的重要平台。</p>
+<p>它聚集了陳獨秀、李大釗、胡適、魯迅、錢玄同等不同背景的知識分子，討論政治、教育、文學、倫理與社會改革。</p>
+<p>主要主張包括：</p>
+<ul>
+<li><strong>民主：</strong> 反對專制，重視個人權利與政治參與。</li>
+<li><strong>科學：</strong> 倡導理性思考與科學知識。</li>
+<li><strong>白話文：</strong> 推動以白話文取代傳統文言文作為新文學的重要形式。</li>
+<li><strong>思想解放：</strong> 重新檢驗傳統倫理與社會規範。</li>
+<li><strong>青年自主：</strong> 鼓勵青年獨立思考，不盲從權威。</li>
+</ul>
+<p>陳獨秀是新文化運動的重要領導者，但這場運動並非由他一人完成，而是許多知識分子共同參與的思想改革。</p>
+<h2 id="2-「德先生」與「賽先生」">2. 「德先生」與「賽先生」</h2>
+<p>陳獨秀積極倡導民主與科學，並以英文 Democracy 和 Science 的音譯，分別稱為「德先生」與「賽先生」。</p>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>英文</th>
+<th>核心意義</th>
+<th>主要反對的問題</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>德先生</td>
+<td>Democracy</td>
+<td>民主、自由、平等及公民權利</td>
+<td>專制政治與個人權利受壓制</td>
+</tr>
+<tr>
+<td>賽先生</td>
+<td>Science</td>
+<td>科學、理性、實證與求真精神</td>
+<td>迷信、盲從及非理性思維</td>
+</tr>
+</tbody></table>
+<p>這兩個口號反映陳獨秀對中國現代化的基本理解：中國需要的不只是政治制度的改變，也需要思想方式的改變。</p>
+<hr>
+<h1 id="四、五四運動與思想轉向（19191920年）">四、五四運動與思想轉向（1919—1920年）</h1>
+<p>1919年的五四運動，是陳獨秀思想發展的重要分水嶺。</p>
+<p>第一次世界大戰結束後，中國原本期待在巴黎和會上收回德國在山東的權益，但相關安排引發中國民眾強烈不滿。5月4日，北京學生發起示威，隨後擴大為涉及學生、工人及商人的群眾運動。</p>
+<p>陳獨秀積極支持學生運動，也因政治活動遭到逮捕。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1919年5月</td>
+<td align="right">39歲</td>
+<td>五四運動爆發，陳獨秀透過文章支持反帝國主義及思想改革。</td>
+<td>新文化運動與群眾政治運動產生密切聯繫。</td>
+</tr>
+<tr>
+<td>1919年6月</td>
+<td align="right">39歲</td>
+<td>因參與政治宣傳及散發《北京市民宣言》等活動，被北洋政府逮捕。</td>
+<td>成為政府打壓新文化與政治活動的代表性事件之一。</td>
+</tr>
+<tr>
+<td>1919年9月</td>
+<td align="right">39歲</td>
+<td>獲釋。</td>
+<td>出獄後繼續投入思想與政治活動。</td>
+</tr>
+<tr>
+<td>1919—1920年</td>
+<td align="right">40歲左右</td>
+<td>逐漸從自由民主與文化改革的立場，轉向研究和宣傳馬克思主義。</td>
+<td>思想發展由激進民主主義走向共產主義。</td>
+</tr>
+<tr>
+<td><strong>1920年</strong></td>
+<td align="right">40歲</td>
+<td>在上海組織共產主義早期團體，推動中國共產黨的籌建。</td>
+<td>從新文化運動領袖轉變為共產主義政治組織的重要創建者。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>、<a href="https://dangshi.people.com.cn/BIG5/n1/2019/1205/c85037-31492172.html">人民網黨史頻道</a>。</p>
+<h3 id="為什麼陳獨秀轉向馬克思主義？">為什麼陳獨秀轉向馬克思主義？</h3>
+<p>陳獨秀早年相信民主、科學與思想啟蒙能夠推動中國進步，但五四運動前後的政治局勢，使他對單靠知識分子推動改革逐漸感到失望。</p>
+<p>他開始更加重視：</p>
+<ol>
+<li>工人與勞動群眾的政治力量。</li>
+<li>社會階級與經濟結構對政治的影響。</li>
+<li>俄國革命所呈現的革命道路。</li>
+<li>透過政黨組織推動社會變革的可能性。</li>
+</ol>
+<p>這種轉向並非一夕之間完成，而是在國際局勢、中國政治危機與自身思想探索的共同影響下逐步形成。</p>
+<hr>
+<h1 id="五、中國共產黨的創建與早期領導（19201927年）">五、中國共產黨的創建與早期領導（1920—1927年）</h1>
+<p>陳獨秀是中國共產黨的重要創建者之一，也是其早期主要領導人。</p>
+<p>1920年，他在上海組織共產主義早期團體，推動各地建立相關組織。1921年中國共產黨第一次全國代表大會召開，陳獨秀雖未親自出席，但被選為中央局書記，負責黨的早期領導工作。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1920年</td>
+<td align="right">40歲</td>
+<td>在上海成立共產主義早期組織，並推動各地相關團體的建立。</td>
+<td>為中國共產黨正式成立奠定組織基礎。</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td align="right">40歲</td>
+<td>《新青年》的內容逐漸轉向宣傳馬克思主義與社會主義。</td>
+<td>原本的思想改革刊物，逐漸成為共產主義宣傳的重要平台。</td>
+</tr>
+<tr>
+<td><strong>1921年7月</strong></td>
+<td align="right">41歲</td>
+<td>中國共產黨第一次全國代表大會在上海等地舉行，陳獨秀被選為中央局書記。</td>
+<td>中國共產黨正式成立，陳獨秀成為早期最高領導人之一。</td>
+</tr>
+<tr>
+<td>1922年</td>
+<td align="right">42歲</td>
+<td>在中共第二次全國代表大會上繼續擔任重要領導職務。</td>
+<td>參與制定黨的綱領與反帝反封建主張。</td>
+</tr>
+<tr>
+<td>1923年</td>
+<td align="right">43歲</td>
+<td>在中共第三次全國代表大會中參與國共合作政策的討論。</td>
+<td>中共開始推動與孫中山領導的國民黨合作。</td>
+</tr>
+<tr>
+<td>1924年</td>
+<td align="right">44歲</td>
+<td>持續領導黨務，參與國民革命相關政治工作。</td>
+<td>共產黨與國民黨合作逐漸深入。</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td align="right">45歲</td>
+<td>五卅運動爆發，工人、學生及民眾反帝運動擴大。</td>
+<td>群眾運動成為中國政治的重要力量。</td>
+</tr>
+<tr>
+<td>1926年</td>
+<td align="right">46歲</td>
+<td>國民革命軍北伐，國共合作進入新的階段。</td>
+<td>中國政治與軍事局勢快速變化。</td>
+</tr>
+<tr>
+<td><strong>1927年</strong></td>
+<td align="right">47歲</td>
+<td>國共合作破裂，國民黨展開大規模清共行動；陳獨秀的領導受到黨內及共產國際批評。</td>
+<td>中共早期領導路線面臨重大危機。</td>
+</tr>
+<tr>
+<td>1927年7月</td>
+<td align="right">47歲</td>
+<td>離開中共中央主要領導崗位。</td>
+<td>結束其作為中共最高領導人的階段。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>、<a href="https://dangshi.people.com.cn/BIG5/n1/2021/0325/c436975-32060205.html">人民網：中國共產黨早期組織與一大</a>。</p>
+<h3 id="陳獨秀在中國共產黨早期的地位">陳獨秀在中國共產黨早期的地位</h3>
+<p>陳獨秀的重要性主要體現在三個方面：</p>
+<ul>
+<li><strong>思想方面：</strong> 透過《新青年》等刊物宣傳馬克思主義。</li>
+<li><strong>組織方面：</strong> 推動上海及各地共產主義早期組織的建立。</li>
+<li><strong>領導方面：</strong> 在中國共產黨成立初期擔任中央局書記，後來長期擔任主要領導職務。</li>
+</ul>
+<p>不過，1927年革命失敗後，他的政治路線受到嚴厲批評。他對國共合作及革命策略的判斷，成為中共早期歷史中持續受到討論的議題。</p>
+<hr>
+<h1 id="六、失勢、被開除黨籍與托洛斯基主義（19271932年）">六、失勢、被開除黨籍與托洛斯基主義（1927—1932年）</h1>
+<p>1927年國共合作破裂後，中國共產黨面臨嚴重挫敗。陳獨秀被認為需要為革命失敗承擔重要政治責任，逐漸退出黨的領導核心。</p>
+<p>此後，他與中共領導層的關係持續惡化，並逐步接受托洛斯基主義的部分主張。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1927年</td>
+<td align="right">47歲</td>
+<td>離開中共中央領導崗位。</td>
+<td>政治地位急遽下降。</td>
+</tr>
+<tr>
+<td>1928年</td>
+<td align="right">48歲</td>
+<td>繼續反思中國革命失敗的原因，與黨內領導層的分歧加深。</td>
+<td>開始與中共主流路線產生更深刻的政治衝突。</td>
+</tr>
+<tr>
+<td><strong>1929年</strong></td>
+<td align="right">49歲</td>
+<td>因政治路線與組織問題，被中國共產黨開除黨籍。</td>
+<td>正式與原本參與創建的政黨決裂。</td>
+</tr>
+<tr>
+<td>1929年12月</td>
+<td align="right">50歲</td>
+<td>與彭述之等人發表政治主張，進一步公開表達與中共領導層不同的立場。</td>
+<td>逐漸成為中國托洛斯基主義運動的重要人物。</td>
+</tr>
+<tr>
+<td>1931年</td>
+<td align="right">51歲</td>
+<td>參與中國托洛斯基主義團體的組織活動。</td>
+<td>試圖以不同於史達林主義的革命理論解釋中國問題。</td>
+</tr>
+<tr>
+<td><strong>1932年10月</strong></td>
+<td align="right">53歲</td>
+<td>在上海被國民黨政府逮捕。</td>
+<td>再度因政治活動遭到監禁。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>。</p>
+<h3 id="什麼是托洛斯基主義？">什麼是托洛斯基主義？</h3>
+<p>托洛斯基主義源於俄國革命家列夫·托洛斯基的思想，與史達林所代表的政治路線存在重大分歧。</p>
+<p>陳獨秀晚年接受托洛斯基主義的部分觀點，並藉此重新思考中國革命、工人階級、民主制度及共產黨內部的政治問題。</p>
+<p>這使他的思想發展出現另一個重要轉折：他不但與國民黨政府對立，也與自己曾經領導的中國共產黨決裂。</p>
+<hr>
+<h1 id="七、入獄、晚年反思與逝世（19321942年）">七、入獄、晚年反思與逝世（1932—1942年）</h1>
+<p>陳獨秀在上海被捕後，經歷長期監禁。1937年抗日戰爭全面爆發後，他獲釋，晚年主要居住於四川，逐漸遠離政治組織活動，並持續從事思想研究與文字工作。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡</th>
+<th>生平大事</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1932年10月</td>
+<td align="right">53歲</td>
+<td>被國民黨政府逮捕。</td>
+<td>政治生涯再次受到重大打擊。</td>
+</tr>
+<tr>
+<td>1933年</td>
+<td align="right">54歲</td>
+<td>因政治案件受到審判，被判刑入獄。</td>
+<td>進入長期監禁階段。</td>
+</tr>
+<tr>
+<td>1934—1936年</td>
+<td align="right">55—57歲</td>
+<td>在獄中繼續思考政治、歷史與思想問題。</td>
+<td>晚年思想逐漸轉向反思革命與政治制度。</td>
+</tr>
+<tr>
+<td><strong>1937年</strong></td>
+<td align="right">57歲</td>
+<td>抗日戰爭全面爆發後獲釋。</td>
+<td>結束長期監禁。</td>
+</tr>
+<tr>
+<td>1938—1941年</td>
+<td align="right">59—62歲</td>
+<td>主要在四川生活，繼續從事文字與學術工作。</td>
+<td>逐漸遠離實際政治權力中心。</td>
+</tr>
+<tr>
+<td><strong>1942年5月27日</strong></td>
+<td align="right"><strong>62歲</strong></td>
+<td><strong>在四川江津逝世。</strong></td>
+<td>結束充滿政治轉折與思想變化的一生。</td>
+</tr>
+</tbody></table>
+<p>資料參考：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>、<a href="https://pedia.cloud.edu.tw/Entry/Detail/?search=%E9%99%B3%E7%8D%A8%E7%A7%80&title=%E9%99%B3%E7%8D%A8%E7%A7%80">教育部國家教育研究院《教育大辭書》</a>。</p>
+<hr>
+<h1 id="八、陳獨秀的重要著作與文章">八、陳獨秀的重要著作與文章</h1>
+<p>陳獨秀並非只是一位政治人物，也是一位具有重要影響力的思想論述者。他透過報刊文章參與中國近代思想史上的重大爭論。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>著作或文章</th>
+<th>核心主題</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1915年</td>
+<td>〈敬告青年〉</td>
+<td>青年自主、進步、科學與新思想</td>
+<td>新文化運動的重要宣言。</td>
+</tr>
+<tr>
+<td>1916年</td>
+<td>〈憲法與孔教〉</td>
+<td>儒家倫理、宗教與共和制度的關係</td>
+<td>反思傳統倫理與現代政治制度。</td>
+</tr>
+<tr>
+<td>1917年</td>
+<td>〈文學革命論〉</td>
+<td>文學改革、白話文與新文學</td>
+<td>推動中國現代文學的發展。</td>
+</tr>
+<tr>
+<td>1918年</td>
+<td>〈今日中國之政治問題〉等文章</td>
+<td>政治改革與社會問題</td>
+<td>將思想啟蒙與現實政治結合。</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td>五四運動期間的政論文章</td>
+<td>民主、反帝國主義與群眾運動</td>
+<td>反映其政治思想的轉折。</td>
+</tr>
+<tr>
+<td>1920年</td>
+<td>有關社會主義與馬克思主義的文章</td>
+<td>階級、勞動與革命</td>
+<td>推動馬克思主義在中國的傳播。</td>
+</tr>
+<tr>
+<td>1920—1921年</td>
+<td>有關共產黨建設的文章與文件</td>
+<td>政黨組織、革命策略與政治綱領</td>
+<td>為中國共產黨早期發展提供思想與組織基礎。</td>
+</tr>
+<tr>
+<td>1920年代後期</td>
+<td>有關中國革命與政治路線的文章</td>
+<td>革命失敗、黨內路線與社會主義</td>
+<td>呈現他與原有政治陣營的分歧。</td>
+</tr>
+<tr>
+<td>1930年代</td>
+<td>晚年政論與書信</td>
+<td>民主、政治制度、革命經驗與歷史反思</td>
+<td>反映其晚年思想的變化。</td>
+</tr>
+</tbody></table>
+<p>陳獨秀的文章分散於不同刊物、文集與書信中，若要研究其完整思想演變，應同時參考不同時期的原始文本，而不能只以早期或晚期的單一立場概括其一生。</p>
+<hr>
+<h1 id="九、陳獨秀的思想發展：四個階段">九、陳獨秀的思想發展：四個階段</h1>
+<p>陳獨秀一生多次改變政治與思想立場，因此很適合從思想史角度進行分期。</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>年代</th>
+<th>思想主軸</th>
+<th>代表性活動</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一階段：反清革命</td>
+<td>1898—1914年</td>
+<td>民族救亡、推翻清朝、政治革命</td>
+<td>日本留學、創辦《安徽俗話報》、組織岳王會</td>
+</tr>
+<tr>
+<td>第二階段：激進民主與文化改革</td>
+<td>1915—1919年</td>
+<td>民主、科學、白話文、反傳統禮教</td>
+<td>創辦《新青年》、推動新文化運動、支持五四運動</td>
+</tr>
+<tr>
+<td>第三階段：馬克思主義與共產主義</td>
+<td>1919—1927年</td>
+<td>階級革命、工人運動、共產黨組織</td>
+<td>參與創建中國共產黨、擔任主要領導人</td>
+</tr>
+<tr>
+<td>第四階段：政治反思與托洛斯基主義</td>
+<td>1927—1942年</td>
+<td>反思革命失敗、政治路線與民主制度</td>
+<td>被開除黨籍、參與托派活動、入獄及晚年寫作</td>
+</tr>
+</tbody></table>
+<p>需要注意的是，這四個階段是為了方便理解而作的概括，實際上各階段之間存在思想延續，也有不少矛盾與反覆。</p>
+<hr>
+<h1 id="十、陳獨秀、胡適、李大釗與魯迅的比較">十、陳獨秀、胡適、李大釗與魯迅的比較</h1>
+<p>這四位人物都對中國現代思想與文化發展產生重大影響，但他們的主要關懷並不相同。</p>
+<table>
+<thead>
+<tr>
+<th>比較面向</th>
+<th>陳獨秀</th>
+<th>胡適</th>
+<th>李大釗</th>
+<th>魯迅</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要身分</td>
+<td>思想家、政治活動家</td>
+<td>哲學家、教育家、思想家</td>
+<td>思想家、政治活動家</td>
+<td>小說家、思想家、文學評論家</td>
+</tr>
+<tr>
+<td>新文化運動中的角色</td>
+<td>重要領導者及《新青年》創辦人</td>
+<td>白話文改革與自由主義的重要倡導者</td>
+<td>推動新文化運動，後來積極宣傳馬克思主義</td>
+<td>透過小說與雜文批判社會弊病</td>
+</tr>
+<tr>
+<td>主要思想</td>
+<td>早期激進民主，後轉向馬克思主義</td>
+<td>實驗主義、自由主義與學術改革</td>
+<td>馬克思主義與社會革命</td>
+<td>精神啟蒙、文化批判與社會觀察</td>
+</tr>
+<tr>
+<td>主要方法</td>
+<td>報刊、政論、政治組織</td>
+<td>學術研究、考證、教育改革</td>
+<td>政治論述、理論宣傳、組織工作</td>
+<td>小說、散文、雜文與文學評論</td>
+</tr>
+<tr>
+<td>與中國共產黨的關係</td>
+<td>主要創建者之一，後被開除黨籍</td>
+<td>未加入中共，與共產主義政治路線有重要分歧</td>
+<td>主要創建者之一</td>
+<td>未加入中共，但與左翼文化運動關係密切</td>
+</tr>
+<tr>
+<td>主要歷史影響</td>
+<td>新文化運動、中共創建與政治思想轉型</td>
+<td>現代學術、白話文與自由主義</td>
+<td>馬克思主義在中國的傳播</td>
+<td>中國現代小說、文學批判與文化反思</td>
+</tr>
+</tbody></table>
+<h3 id="四人的主要差異">四人的主要差異</h3>
+<ul>
+<li><strong>陳獨秀：</strong> 從文化改革走向革命組織，重視政治制度與社會變革。</li>
+<li><strong>胡適：</strong> 更重視學術方法、教育改革、個人自由及漸進式改良。</li>
+<li><strong>李大釗：</strong> 將馬克思主義與中國的民族危機、社會革命相結合。</li>
+<li><strong>魯迅：</strong> 透過文學揭露社會問題，特別關注人的精神困境與傳統文化的壓迫性。</li>
+</ul>
+<p>他們並非始終站在相互對立的位置。尤其在新文化運動期間，四人所參與的思想改革有不少共同目標，但在政治道路、文化策略與社會改革方法上，逐漸形成不同立場。</p>
+<hr>
+<h1 id="十一、陳獨秀生平大事記：重要年份速查表">十一、陳獨秀生平大事記：重要年份速查表</h1>
+<p>以下是適合用於歷史教學、人物比較或製作互動式 HTML 時間軸的精簡版本。</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+<th>關鍵字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1879年</strong></td>
+<td>出生於安徽懷寧</td>
+<td>傳統士人家庭</td>
+</tr>
+<tr>
+<td>1896年</td>
+<td>考中秀才</td>
+<td>科舉教育</td>
+</tr>
+<tr>
+<td>1898年</td>
+<td>前往杭州求是書院學習</td>
+<td>新式教育</td>
+</tr>
+<tr>
+<td>1901年</td>
+<td>因反清活動前往日本</td>
+<td>革命思想</td>
+</tr>
+<tr>
+<td>1904年</td>
+<td>創辦《安徽俗話報》</td>
+<td>白話文宣傳</td>
+</tr>
+<tr>
+<td>1905年</td>
+<td>組織岳王會</td>
+<td>反清革命</td>
+</tr>
+<tr>
+<td>1911年</td>
+<td>辛亥革命後參與安徽地方政治</td>
+<td>共和革命</td>
+</tr>
+<tr>
+<td>1913年</td>
+<td>參與二次革命</td>
+<td>反袁世凱</td>
+</tr>
+<tr>
+<td><strong>1915年</strong></td>
+<td><strong>創辦《青年雜誌》</strong></td>
+<td><strong>新文化運動</strong></td>
+</tr>
+<tr>
+<td>1916年</td>
+<td>《青年雜誌》改名《新青年》</td>
+<td>民主與科學</td>
+</tr>
+<tr>
+<td><strong>1917年</strong></td>
+<td><strong>出任北京大學文科學長</strong></td>
+<td><strong>現代學術與思想改革</strong></td>
+</tr>
+<tr>
+<td>1918年</td>
+<td>與李大釗等人創辦《每週評論》</td>
+<td>政治評論</td>
+</tr>
+<tr>
+<td><strong>1919年</strong></td>
+<td><strong>支持五四運動，後被捕</strong></td>
+<td><strong>思想啟蒙與群眾運動</strong></td>
+</tr>
+<tr>
+<td><strong>1920年</strong></td>
+<td><strong>在上海組織共產主義早期團體</strong></td>
+<td><strong>中國共產黨創建準備</strong></td>
+</tr>
+<tr>
+<td><strong>1921年</strong></td>
+<td><strong>中共一大後被選為中央局書記</strong></td>
+<td><strong>中共早期領導</strong></td>
+</tr>
+<tr>
+<td>1923年</td>
+<td>參與國共合作政策的討論</td>
+<td>國民革命</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td>五卅運動爆發</td>
+<td>群眾政治</td>
+</tr>
+<tr>
+<td><strong>1927年</strong></td>
+<td><strong>離開中共中央主要領導崗位</strong></td>
+<td><strong>革命失敗與政治路線爭議</strong></td>
+</tr>
+<tr>
+<td><strong>1929年</strong></td>
+<td><strong>被開除中國共產黨黨籍</strong></td>
+<td><strong>政治決裂</strong></td>
+</tr>
+<tr>
+<td>1931年</td>
+<td>參與中國托洛斯基主義團體活動</td>
+<td>托派運動</td>
+</tr>
+<tr>
+<td>1932年</td>
+<td>在上海被捕入獄</td>
+<td>政治監禁</td>
+</tr>
+<tr>
+<td>1937年</td>
+<td>獲釋</td>
+<td>晚年生活</td>
+</tr>
+<tr>
+<td><strong>1942年5月27日</strong></td>
+<td><strong>在四川江津逝世</strong></td>
+<td><strong>思想反思與歷史評價</strong></td>
+</tr>
+</tbody></table>
+<p>主要參考資料：<a href="https://www.dswxyjy.org.cn/BIG5/n/2013/0129/c244520-20360051.html">中共中央黨史和文獻研究院</a>、<a href="https://pedia.cloud.edu.tw/Entry/Detail/?search=%E9%99%B3%E7%8D%A8%E7%A7%80&title=%E9%99%B3%E7%8D%A8%E7%A7%80">教育部國家教育研究院</a>、<a href="https://dangshi.people.com.cn/BIG5/n1/2019/1205/c85037-31492172.html">人民網黨史頻道</a>。</p>
+<hr>
+<h1 id="十二、陳獨秀的歷史地位與評價">十二、陳獨秀的歷史地位與評價</h1>
+<p>陳獨秀的歷史地位，不能只用「新文化運動領袖」或「中國共產黨創建者」其中一個標籤來概括。</p>
+<p>他的生涯經歷了多次重大的思想轉變，也留下了政治成敗、理論探索與歷史爭議。</p>
+<h2 id="1-新文化運動的重要領導者">1. 新文化運動的重要領導者</h2>
+<p>陳獨秀創辦《新青年》，推動民主、科學與白話文運動，對中國現代思想、文學及教育產生深遠影響。</p>
+<p>他主張青年應獨立思考，並反對傳統權威對個人思想的限制。</p>
+<h2 id="2-中國共產黨的重要創建者">2. 中國共產黨的重要創建者</h2>
+<p>陳獨秀在1920年前後推動共產主義早期組織的建立，並在中共成立初期擔任主要領導職務。</p>
+<p>他對中國共產黨早期的思想傳播、組織建立與政治方向具有重要影響。</p>
+<h2 id="3-中國革命道路的探索者">3. 中國革命道路的探索者</h2>
+<p>陳獨秀從早期反清革命、民主與科學的倡導者，轉向馬克思主義與共產主義，最後又與中共領導層決裂。</p>
+<p>這段歷程反映了20世紀初中國知識分子在民族危機、政治改革與革命道路之間的艱難探索。</p>
+<h2 id="4-政治失敗與歷史爭議">4. 政治失敗與歷史爭議</h2>
+<p>1927年國共合作破裂後，陳獨秀受到嚴厲批評，其政治路線與革命策略至今仍是研究中國共產黨早期歷史的重要議題。</p>
+<p>評價他時，既需要分析他在革命失敗中的責任，也應將當時的國際局勢、國共關係與共產國際的影響納入考量。</p>
+<h2 id="5-晚年的民主反思">5. 晚年的民主反思</h2>
+<p>陳獨秀晚年持續思考政治制度、民主與革命問題。他的晚年觀點與早期的政治主張有所不同，顯示其思想並未在失去政治權力後完全停止發展。</p>
+<p>因此，研究陳獨秀不能只停留在他創辦《新青年》或參與創建中國共產黨的階段，也應重視他後來的政治分歧與思想反思。</p>
+<hr>
+<h2 id="總結：如何理解陳獨秀的一生？">總結：如何理解陳獨秀的一生？</h2>
+<p>陳獨秀的一生，可以概括為四次重要轉變：</p>
+<p><strong>反清革命 → 新文化運動 → 創建中國共產黨 → 晚年政治反思。</strong></p>
+<p>他最重要的歷史意義，在於將中國近代的思想改革、文學革命與政治革命連結起來。</p>
+<p>從《新青年》倡導民主與科學，到參與中國共產黨的創建，再到晚年與原有政治陣營決裂，陳獨秀始終試圖回答一個核心問題：</p>
+<p><strong>中國應該如何擺脫舊有秩序的束縛，建立一個新的社會與政治制度？</strong></p>
+<p>他的一生既有思想創新的成就，也有政治判斷的失誤與歷史爭議。正因如此，陳獨秀不僅是研究新文化運動與中國共產黨早期歷史的重要人物，也是理解近代中國知識分子如何在理想、革命與現實之間不斷調整立場的關鍵案例。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>
