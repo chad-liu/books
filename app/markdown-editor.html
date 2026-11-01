@@ -7,6 +7,7 @@
 
 <!-- Preview -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" disabled>
 <link id="hljs-dark"  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -16,10 +17,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/display/placeholder.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/mode/simple.min.js"></script>
+<!-- find / replace -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/searchcursor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/search.min.js"></script>
 <!-- language modes for fenced code blocks -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/shell/shell.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/yaml/yaml.min.js"></script>
@@ -229,7 +237,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
 #btn-save:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: #fff; }
 #btn-save:disabled { opacity: 0.4; cursor: default; }
 
-#btn-saveas {
+#btn-saveas, #btn-find {
   background: #3a3d41;
   color: var(--text);
   border: 1px solid #555;
@@ -241,7 +249,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
   flex-shrink: 0;
   line-height: 1.5;
 }
-#btn-saveas:hover { background: #4a4d51; }
+#btn-saveas:hover, #btn-find:hover { background: #4a4d51; }
 
 #btn-wrap {
   background: var(--accent);
@@ -284,8 +292,31 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
 }
 /* heading colors */
 #cm-wrap .cm-header { color: #ff9500 !important; font-weight: bold; }
+/* line highlighted briefly after clicking its counterpart in the preview */
+#cm-wrap .cm-sync-flash { background: rgba(77, 166, 255, .28); }
 /* placeholder text */
 #cm-wrap .CodeMirror pre.CodeMirror-placeholder { color: #555; }
+
+/* ── Find / replace dialog ── */
+#cm-wrap .CodeMirror-dialog {
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  padding: 4px 12px;
+}
+#cm-wrap .CodeMirror-dialog input {
+  color: var(--text);
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+}
+#cm-wrap .CodeMirror-dialog button {
+  background: #3a3d41;
+  color: var(--text);
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 1px 7px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+#cm-wrap .CodeMirror-dialog button:hover { background: #4a4d51; }
 
 /* ── Right panel ── */
 #panel-right {
@@ -312,7 +343,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
   gap: 8px;
 }
 .preview-bar .spacer { flex: 1; }
-#btn-preview-theme, #btn-copy {
+#btn-preview-theme, #btn-props-mode, #btn-copy {
   background: #e8e8e8;
   color: #444;
   border: 1px solid #ccc;
@@ -326,7 +357,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
   white-space: nowrap;
   flex-shrink: 0;
 }
-#btn-preview-theme:hover, #btn-copy:hover { background: #d0d0d0; }
+#btn-preview-theme:hover, #btn-props-mode:hover, #btn-copy:hover { background: #d0d0d0; }
 #btn-copy.copied { background: #d4edda; border-color: #a8d5b5; color: #1a7a3a; }
 #preview {
   flex: 1;
@@ -340,6 +371,76 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
 #preview::-webkit-scrollbar { width: 8px; }
 #preview::-webkit-scrollbar-track { background: #fafafa; }
 #preview::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+#preview.no-pad { padding: 0; overflow: hidden; }
+#preview .html-preview-frame { width: 100%; height: 100%; border: none; display: block; background: #fff; }
+#preview .text-preview {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Cascadia Code','Fira Code',Consolas,monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  color: inherit;
+}
+
+/* ── Zoomable image / SVG preview ── */
+.img-preview-wrap { display: flex; flex-direction: column; height: 100%; }
+.img-preview-toolbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  color: #666;
+}
+.img-preview-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.img-preview-spacer { flex: 1; }
+.img-preview-toolbar button {
+  background: #e8e8e8;
+  color: #444;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 24px;
+  height: 22px;
+  line-height: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+.img-preview-toolbar button:hover { background: #d0d0d0; }
+.img-preview-pct { min-width: 42px; text-align: center; }
+.img-preview-canvas {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+/* zoomed past 100% can overflow; centering (via transform, which flexbox's
+   own overflow check can't see) would push part of the image before
+   scrollTop:0 and make it permanently unreachable, so switch to a plain
+   top-left anchor — always safely scrollable from position 0. */
+/* SVG preview: the iframe fills the canvas and scrolls/zooms internally */
+.img-preview-canvas.has-frame { display: block; padding: 0; overflow: hidden; }
+.img-preview-frame { display: block; width: 100%; height: 100%; border: none; }
+.img-preview-canvas.zoomed-in {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.img-preview-canvas img {
+  max-width: 100%;
+  max-height: 100%;
+  transform-origin: top left;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.1);
+}
+#panel-right.dark .img-preview-toolbar { background: #2d2d30; border-bottom-color: #3e3e42; color: #999; }
+#panel-right.dark .img-preview-toolbar button { background: #3a3d41; color: #bbb; border-color: #555; }
+#panel-right.dark .img-preview-toolbar button:hover { background: #4a4d51; }
 
 /* preview typography */
 #preview h1,#preview h2,#preview h3,#preview h4,#preview h5,#preview h6 {
@@ -392,6 +493,77 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
 .yt-link { display: inline-block; margin-top: 6px; font-size: 12px; color: #888; text-decoration: none; }
 .yt-link:hover { color: #c00; }
 #preview strong { font-weight: 600; }
+
+/* ── Frontmatter properties (Obsidian-style) ── */
+#preview .fm-props {
+  margin: 0 0 1.5em;
+  padding: 4px 0 12px;
+  border-bottom: 1px solid #d0d7de;
+  font-size: 14px;
+}
+#preview .fm-props-title { font-size: 12px; color: #888; margin-bottom: 6px; letter-spacing: .5px; }
+#preview .fm-row { display: flex; align-items: center; gap: 12px; padding: 1px 0; }
+#preview .fm-key { flex: 0 0 140px; color: #57606a; }
+#preview .fm-val { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; word-break: break-word; }
+#preview .fm-chip { background: #eef1f5; border-radius: 10px; padding: 0 4px 0 9px; font-size: 13px; line-height: 1.7; }
+#preview .fm-error { color: #cf222e; font-size: 12px; margin-bottom: 6px; }
+#preview .fm-input {
+  width: 100%;
+  min-width: 0;
+  padding: 2px 5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+#preview .fm-input:hover { border-color: #d0d7de; }
+#preview .fm-input:focus { outline: none; border-color: #0969da; background: #fff; }
+#preview .fm-input.fm-add { flex: 1; min-width: 70px; width: auto; }
+#preview .fm-del {
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+  border-radius: 3px;
+  color: #999;
+  cursor: pointer;
+  user-select: none;
+}
+#preview .fm-del:hover { background: rgba(201,48,44,.15); color: #e05252; }
+#preview .fm-row-del { visibility: hidden; flex-shrink: 0; }
+#preview .fm-row:hover .fm-row-del { visibility: visible; }
+#preview .fm-add-prop {
+  margin-top: 6px;
+  padding: 2px 6px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #888;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+#preview .fm-add-prop:hover { background: rgba(127,127,127,.15); color: inherit; }
+
+/* ── Editable body blocks (double-click) ── */
+#preview .md-block { border-radius: 3px; }
+#preview .md-block:not(.editing):hover { outline: 1px dashed rgba(127,127,127,.35); outline-offset: 4px; }
+#preview .md-block-editor {
+  display: block;
+  width: 100%;
+  margin: .5em 0;
+  padding: 8px 10px;
+  border: 1px solid #0969da;
+  border-radius: 6px;
+  background: #fff;
+  color: #24292f;
+  font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+}
 #preview del { text-decoration: line-through; color: #57606a; }
 
 .preview-empty {
@@ -409,8 +581,15 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
 /* ── Preview dark mode ── */
 #panel-right.dark { background: #1e1e1e; }
 #panel-right.dark .preview-bar { background: #2d2d30; border-bottom-color: #3e3e42; color: #777; }
-#panel-right.dark #btn-preview-theme { background: #3a3d41; color: #bbb; border-color: #555; }
-#panel-right.dark #btn-preview-theme:hover { background: #4a4d51; }
+#panel-right.dark #btn-preview-theme, #panel-right.dark #btn-props-mode { background: #3a3d41; color: #bbb; border-color: #555; }
+#panel-right.dark #btn-preview-theme:hover, #panel-right.dark #btn-props-mode:hover { background: #4a4d51; }
+#panel-right.dark #preview .fm-props { border-bottom-color: #3e3e42; }
+#panel-right.dark #preview .fm-key { color: #999; }
+#panel-right.dark #preview .fm-chip { background: #2d2d30; }
+#panel-right.dark #preview .fm-error { color: #f48771; }
+#panel-right.dark #preview .fm-input:hover { border-color: #3e3e42; }
+#panel-right.dark #preview .fm-input:focus { border-color: #4da6ff; background: #252526; }
+#panel-right.dark #preview .md-block-editor { background: #252526; color: #ccc; border-color: #4da6ff; }
 #panel-right.dark #btn-copy { background: #3a3d41; color: #bbb; border-color: #555; }
 #panel-right.dark #btn-copy:hover { background: #4a4d51; }
 #panel-right.dark #btn-copy.copied { background: #1a3a28; border-color: #2a5c40; color: #6abf8a; }
@@ -451,14 +630,16 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
 #st-warn { margin-left: auto; color: #ffdd57; }
 
 .no-select { user-select: none !important; -webkit-user-select: none !important; }
+.resize-overlay { position: fixed; inset: 0; z-index: 9999; cursor: col-resize; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>📝 Markdown 編輯器</h1>
+  <button class="btn-icon" id="btn-toggle-tree" onclick="toggleFileTree()" title="切換檔案欄 (Ctrl+B)">隱藏檔案欄</button>
   <button class="btn-icon" id="btn-toggle-editor" onclick="toggleEditor()" title="切換編輯欄 (Ctrl+E)">隱藏編輯欄</button>
-  <span class="header-hint">Ctrl+O 開啟資料夾 &nbsp;|&nbsp; Ctrl+S 儲存 &nbsp;|&nbsp; Ctrl+E 切換編輯欄</span>
+  <span class="header-hint">Ctrl+O 開啟資料夾 &nbsp;|&nbsp; Ctrl+S 儲存 &nbsp;|&nbsp; Ctrl+F 尋找 &nbsp;|&nbsp; Ctrl+B 切換檔案欄 &nbsp;|&nbsp; Ctrl+E 切換編輯欄</span>
 </header>
 
 <div class="main">
@@ -474,7 +655,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
       </div>
     </div>
     <div id="file-tree">
-      <div class="tree-empty">點選「開啟資料夾」<br>瀏覽 .md 檔案</div>
+      <div class="tree-empty">點選「開啟資料夾」<br>瀏覽 .md / .html / .txt / .svg / .css / .json / .js / .yaml 檔案</div>
     </div>
   </div>
 
@@ -487,6 +668,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
         <span id="fname" title="">未開啟檔案</span>
         <span id="unsaved-dot" title="有未儲存的變更"></span>
       </div>
+      <button id="btn-find" onclick="openFind()" title="尋找 / 取代 (Ctrl+F)">🔍 尋找</button>
       <button id="btn-wrap" onclick="toggleWrap()" title="切換自動換行">換行</button>
       <button id="btn-save" disabled onclick="saveFile()">儲存 (Ctrl+S)</button>
       <button id="btn-saveas" onclick="saveAsFile()">另存新檔</button>
@@ -501,6 +683,7 @@ header .header-hint { font-size: 11px; color: var(--text-dim); margin-left: auto
     <div class="preview-bar">
       <span>預覽</span>
       <span class="spacer"></span>
+      <button id="btn-props-mode" onclick="togglePropsMode()"></button>
       <button id="btn-preview-theme" onclick="togglePreviewTheme()" title="切換預覽主題">☀️ 淺色</button>
       <button id="btn-copy" onclick="copyPreview()">複製全部</button>
     </div>
@@ -534,8 +717,14 @@ let fileHandle    = null;
 let isModified    = false;
 let activeRow     = null;
 let previewTimer  = null;
-let currentDir    = null;   // parent directory of the currently open .md file
+let currentDir    = null;   // parent directory of the currently open file
+let currentFileType = 'markdown';  // 'markdown' | 'html' | 'text' — drives CM mode + preview
 let blobUrls      = [];     // object URLs to revoke on next render
+let previewZoom   = 1;      // zoom level for the image/SVG preview (1 = fit view)
+let propsMode     = 'props'; // frontmatter display: 'props' (table) | 'source' (raw YAML)
+let htmlPreviewFrame = null; // iframe currently showing the HTML preview
+let htmlEditMap   = null;   // { src, map } source ranges of editable text in that preview
+let htmlScroll    = { x: 0, y: 0 }; // HTML preview scroll, kept across re-renders
 let dragState     = null;   // { handle, name, parentDir } while dragging a file
 
 /* ── Elements ── */
@@ -565,6 +754,17 @@ const cm = CodeMirror(document.getElementById('cm-wrap'), {
     'Ctrl-S': () => saveFile(),
     'Cmd-S':  () => saveFile(),
     'Tab':    cm  => cm.replaceSelection('  '),
+    'Ctrl-F': 'findPersistent',
+    'Cmd-F':  'findPersistent',
+    'Ctrl-G': 'findPersistentNext',
+    'Cmd-G':  'findPersistentNext',
+    'Shift-Ctrl-G': 'findPersistentPrev',
+    'Shift-Cmd-G':  'findPersistentPrev',
+    'Shift-Ctrl-F': 'replace',
+    'Shift-Cmd-Alt-F': 'replace',
+    'Shift-Ctrl-R': 'replaceAll',
+    'Shift-Cmd-Alt-R': 'replaceAll',
+    'Esc': 'clearSearch',
   },
 });
 
@@ -641,11 +841,15 @@ async function openDirectory() {
 
 async function refreshTree() {
   if (!rootHandle) return;
+  let expandPath = null;
+  if (fileHandle) {
+    try { expandPath = await rootHandle.resolve(fileHandle); } catch {}
+  }
   $tree.innerHTML = '';
-  await buildTree(rootHandle, $tree, 0);
+  await buildTree(rootHandle, $tree, 0, expandPath);
 }
 
-async function buildTree(dirHandle, container, depth) {
+async function buildTree(dirHandle, container, depth, expandPath) {
   const items = [];
   for await (const [name, handle] of dirHandle.entries()) {
     if (name.startsWith('.')) continue;
@@ -661,13 +865,23 @@ async function buildTree(dirHandle, container, depth) {
   for (const { name, handle } of items) {
     if (handle.kind === 'directory') {
       found = true;
-      const { row, children } = makeDirRow(name, handle, depth);
+      const { row, children, expand } = makeDirRow(name, handle, depth);
       container.appendChild(row);
       container.appendChild(children);
-    } else if (handle.kind === 'file' && /\.md$/i.test(name)) {
+      if (expandPath && depth < expandPath.length - 1 && expandPath[depth] === name) {
+        await expand(expandPath);
+      }
+    } else if (handle.kind === 'file' && /\.(md|html?|txt|svg|css|json|js|ya?ml)$/i.test(name)) {
       found = true;
-      container.appendChild(makeFileRow(name, handle, dirHandle, depth));
-    } else if (handle.kind === 'file' && /\.(jpe?g|png|gif|webp|svg|bmp|avif)$/i.test(name)) {
+      const fileRow = makeFileRow(name, handle, dirHandle, depth);
+      container.appendChild(fileRow);
+      if (expandPath && depth === expandPath.length - 1 && expandPath[depth] === name) {
+        if (activeRow) activeRow.classList.remove('active');
+        activeRow = fileRow;
+        fileRow.classList.add('active');
+        requestAnimationFrame(() => fileRow.scrollIntoView({ block: 'nearest' }));
+      }
+    } else if (handle.kind === 'file' && /\.(jpe?g|png|gif|webp|bmp|avif)$/i.test(name)) {
       found = true;
       container.appendChild(makeImageRow(name, handle, dirHandle, depth));
     }
@@ -676,7 +890,7 @@ async function buildTree(dirHandle, container, depth) {
   if (!found && depth === 0) {
     const msg = document.createElement('div');
     msg.className = 'tree-empty';
-    msg.textContent = '此資料夾內沒有 .md 或圖片檔案';
+    msg.textContent = '此資料夾內沒有 .md / .html / .txt / .svg / .css / .json / .js / .yaml 或圖片檔案';
     container.appendChild(msg);
   }
 }
@@ -724,18 +938,66 @@ function makeDirRow(name, handle, depth) {
   });
 
   let expanded = false, loaded = false;
-  row.addEventListener('click', async () => {
-    expanded = !expanded;
-    arrow.textContent = expanded ? '▼' : '▶';
-    icon.textContent  = expanded ? '📂' : '📁';
-    children.style.display = expanded ? 'block' : 'none';
-    if (expanded && !loaded) {
+
+  async function expand(childExpandPath) {
+    if (!expanded) {
+      expanded = true;
+      arrow.textContent = '▼';
+      icon.textContent  = '📂';
+      children.style.display = 'block';
+    }
+    if (!loaded) {
       loaded = true;
-      await buildTree(handle, children, depth + 1);
+      await buildTree(handle, children, depth + 1, childExpandPath || null);
+    }
+  }
+
+  row.addEventListener('click', async () => {
+    if (expanded) {
+      expanded = false;
+      arrow.textContent = '▶';
+      icon.textContent  = '📁';
+      children.style.display = 'none';
+    } else {
+      await expand(null);
     }
   });
 
-  return { row, children };
+  return { row, children, expand };
+}
+
+function iconFor(name) {
+  if (/\.md$/i.test(name)) return '📝';
+  if (/\.html?$/i.test(name)) return '🌐';
+  if (/\.svg$/i.test(name)) return '🎨';
+  if (/\.css$/i.test(name)) return '🖌️';
+  if (/\.json$/i.test(name)) return '{}';
+  if (/\.js$/i.test(name)) return '🟨';
+  if (/\.ya?ml$/i.test(name)) return '⚙️';
+  return '📄';
+}
+
+function fileTypeOf(name) {
+  if (/\.md$/i.test(name)) return 'markdown';
+  if (/\.html?$/i.test(name)) return 'html';
+  if (/\.svg$/i.test(name)) return 'svg';
+  if (/\.css$/i.test(name)) return 'css';
+  if (/\.json$/i.test(name)) return 'json';
+  if (/\.js$/i.test(name)) return 'javascript';
+  if (/\.ya?ml$/i.test(name)) return 'yaml';
+  return 'text';
+}
+
+// CodeMirror mode to use for each currentFileType
+function modeFor(type) {
+  if (type === 'markdown') return 'markdown';
+  if (type === 'html') return 'htmlmixed';
+  if (type === 'svg') return 'xml';
+  if (type === 'css') return 'css';
+  if (type === 'json') return { name: 'javascript', json: true };
+  if (type === 'javascript') return 'javascript';
+  if (type === 'yaml') return 'yaml';
+  return null;
 }
 
 function makeFileRow(name, handle, parentDir, depth) {
@@ -745,7 +1007,7 @@ function makeFileRow(name, handle, parentDir, depth) {
 
   const icon = document.createElement('span');
   icon.className = 'ti-icon';
-  icon.textContent = '📄';
+  icon.textContent = iconFor(name);
 
   const label = document.createElement('span');
   label.className = 'ti-name';
@@ -778,16 +1040,13 @@ function makeFileRow(name, handle, parentDir, depth) {
 }
 
 function makeImageRow(name, handle, parentDir, depth) {
-  const ext = name.split('.').pop().toLowerCase();
-  const icon = { svg: '🎨' }[ext] || '🖼️';
-
   const row = document.createElement('div');
   row.className = 'ti';
   row.style.paddingLeft = (8 + 12 + depth * 16) + 'px';
 
   const ic = document.createElement('span');
   ic.className = 'ti-icon';
-  ic.textContent = icon;
+  ic.textContent = '🖼️';
 
   const label = document.createElement('span');
   label.className = 'ti-name';
@@ -827,13 +1086,8 @@ async function previewImage(handle, name, row) {
     const url = URL.createObjectURL(file);
     blobUrls.push(url);
 
-    $preview.innerHTML = `
-      <div style="padding:20px;text-align:center;">
-        <img src="${url}" alt="${name}"
-             style="max-width:100%;max-height:calc(100vh - 120px);
-                    border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.1);">
-        <p style="margin-top:10px;color:#888;font-size:12px;">${name}</p>
-      </div>`;
+    previewZoom = 1;
+    showZoomableImage(url, name, name);
 
     if (activeRow) activeRow.classList.remove('active');
     activeRow = row;
@@ -850,6 +1104,10 @@ async function loadFile(handle, name, row, parentDir) {
   try {
     const file = await handle.getFile();
     const text = await file.text();
+    currentFileType = fileTypeOf(name);
+    previewZoom = 1;
+    htmlScroll = { x: 0, y: 0 };
+    cm.setOption('mode', modeFor(currentFileType));
     cm.setValue(text);
     cm.clearHistory();
     fileHandle   = handle;
@@ -921,10 +1179,101 @@ function setModified(val) {
   $dot.style.display = val ? 'inline-block' : 'none';
 }
 
+const ZOOM_MIN = 0.1, ZOOM_MAX = 8, ZOOM_STEP = 0.1;
+
+// renders an <img> with a zoom toolbar + mouse-wheel zoom into #preview.
+// previewZoom is a module-level variable so it survives repeated calls
+// (e.g. re-rendering the same SVG file on every keystroke) — callers
+// that switch to a *different* file should reset previewZoom to 1 first.
+//
+// Zoom uses transform:scale(), which only affects paint, not layout — so
+// flexbox's own overflow detection (align-items/justify-content:center)
+// never sees a zoomed image as overflowing and can't safely fall back to
+// start-alignment; the top of a zoomed image becomes unreachable by
+// scroll. Rather than trying to get flexbox to detect a transform-only
+// size change (unreliable — needs a layout/decode-dependent measurement),
+// we sidestep it: once zoomed past 100% the container switches to plain
+// top-left alignment via the "zoomed-in" class, which is always safe to
+// scroll from 0. At 100% or below the image never overflows its box
+// (max-width/max-height:100%), so centering there is always safe.
+function zoomToolbarHtml(caption) {
+  return `
+      <div class="img-preview-toolbar">
+        <span class="img-preview-name">${caption || ''}</span>
+        <span class="img-preview-spacer"></span>
+        <button onclick="zoomImage(-ZOOM_STEP)" title="縮小 (Ctrl+滾輪)">－</button>
+        <span class="img-preview-pct" id="img-preview-pct"></span>
+        <button onclick="zoomImage(ZOOM_STEP)" title="放大 (Ctrl+滾輪)">＋</button>
+        <button onclick="resetImageZoom()" title="重設為 100%">重設</button>
+      </div>`;
+}
+
+function showZoomableImage(url, altText, caption) {
+  $preview.classList.add('no-pad');
+  $preview.innerHTML = `
+    <div class="img-preview-wrap">${zoomToolbarHtml(caption)}
+      <div class="img-preview-canvas" id="img-preview-canvas">
+        <img id="img-preview-img" src="${url}" alt="${altText}">
+      </div>
+    </div>`;
+  document.getElementById('img-preview-canvas').addEventListener('wheel', onImageWheel, { passive: false });
+  applyImageZoom();
+}
+
+// SVG goes in a sandboxed iframe rather than an <img> so its text can be
+// edited (an <img> has no DOM to interact with). Zoom/scroll then happen
+// inside the iframe — see the svg branch of htmlPreviewAgent.
+function showZoomableSvg(src) {
+  $preview.classList.add('no-pad');
+  $preview.innerHTML = `
+    <div class="img-preview-wrap">${zoomToolbarHtml('')}
+      <div class="img-preview-canvas has-frame" id="img-preview-canvas"></div>
+    </div>`;
+  const frame = document.createElement('iframe');
+  frame.id = 'img-preview-frame';
+  frame.className = 'img-preview-frame';
+  frame.sandbox = 'allow-scripts allow-modals allow-forms allow-popups';
+  const { html, map } = buildSvgPreview(src);
+  htmlEditMap = map ? { src, map } : null;
+  htmlPreviewFrame = frame;
+  frame.srcdoc = html;
+  document.getElementById('img-preview-canvas').appendChild(frame);
+  applyImageZoom();
+}
+
+function applyImageZoom() {
+  const img = document.getElementById('img-preview-img');
+  const frame = document.getElementById('img-preview-frame');
+  const canvas = document.getElementById('img-preview-canvas');
+  const pct = document.getElementById('img-preview-pct');
+  if (img) img.style.transform = `scale(${previewZoom})`;
+  if (frame && frame.contentWindow) frame.contentWindow.postMessage({ type: 'svg-zoom', zoom: previewZoom }, '*');
+  if (canvas) canvas.classList.toggle('zoomed-in', previewZoom > 1);
+  if (pct) pct.textContent = Math.round(previewZoom * 100) + '%';
+}
+
+function zoomImage(delta) {
+  previewZoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, +(previewZoom + delta).toFixed(2)));
+  applyImageZoom();
+}
+
+function resetImageZoom() {
+  previewZoom = 1;
+  applyImageZoom();
+}
+
+function onImageWheel(e) {
+  if (!(e.ctrlKey || e.metaKey)) return; // plain wheel scrolls/pans the image normally
+  e.preventDefault();
+  zoomImage(e.deltaY < 0 ? ZOOM_STEP : -ZOOM_STEP);
+}
+
 function renderPreview() {
   clearTimeout(previewTimer);
   previewTimer = setTimeout(() => {
     const txt = cm.getValue();
+    $preview.classList.remove('no-pad');
+    document.getElementById('btn-props-mode').style.display = currentFileType === 'markdown' ? '' : 'none';
     if (!txt.trim()) {
       $preview.innerHTML = `
         <div class="preview-empty">
@@ -937,16 +1286,786 @@ function renderPreview() {
         </div>`;
       return;
     }
+
+    blobUrls.forEach(u => URL.revokeObjectURL(u));
+    blobUrls = [];
+
+    if (currentFileType === 'html') {
+      $preview.classList.add('no-pad');
+      $preview.innerHTML = '';
+      const frame = document.createElement('iframe');
+      frame.className = 'html-preview-frame';
+      frame.sandbox = 'allow-scripts allow-modals allow-forms allow-popups';
+      const { html, map } = buildHtmlPreview(txt);
+      htmlEditMap = map ? { src: txt, map } : null;
+      htmlPreviewFrame = frame;
+      frame.srcdoc = html;
+      $preview.appendChild(frame);
+      return;
+    }
+
+    if (currentFileType === 'svg') {
+      showZoomableSvg(txt);
+      return;
+    }
+
+    if (currentFileType === 'text' || currentFileType === 'css' || currentFileType === 'json' || currentFileType === 'javascript' || currentFileType === 'yaml') {
+      const pre = document.createElement('pre');
+      pre.className = 'text-preview';
+      pre.textContent = txt;
+      $preview.innerHTML = '';
+      $preview.appendChild(pre);
+      return;
+    }
+
     try {
-      blobUrls.forEach(u => URL.revokeObjectURL(u));
-      blobUrls = [];
-      $preview.innerHTML = marked.parse(normalizeMarkdown(txt));
+      // remember which property field had focus — re-rendering replaces
+      // the whole preview, which would otherwise drop it after every edit
+      const active = document.activeElement;
+      const focusId = $preview.contains(active) ? active.dataset.fmFocus : undefined;
+
+      const { fm, body } = splitFrontmatter(txt);
+      $preview.innerHTML = renderMarkdownBlocks(body, txt.length - body.length);
+      if (fm !== null) {
+        const fmNode = renderFrontmatter(fm);
+        if (fmNode) {
+          $preview.prepend(fmNode);
+          const again = focusId && [...fmNode.querySelectorAll('[data-fm-focus]')].find(el => el.dataset.fmFocus === focusId);
+          if (again) again.focus();
+        }
+      }
       $preview.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
       resolveImages();
     } catch (e) {
       $preview.textContent = '預覽錯誤：' + e.message;
     }
   }, 120);
+}
+
+/* ── Frontmatter / properties ──
+   Like Obsidian, YAML between "---" lines at the very top of a note is
+   treated as properties. It's stripped before marked sees it (otherwise
+   "---" renders as <hr> and "key: value\n---" as a setext <h2>), then
+   shown either as a key/value table or as the raw YAML source. */
+const FRONTMATTER_RE = /^---[ \t]*\r?\n([\s\S]*?\r?\n)?---[ \t]*(?:\r?\n|$)/;
+
+function splitFrontmatter(txt) {
+  const m = txt.match(FRONTMATTER_RE);
+  if (!m) return { fm: null, body: txt };
+  return { fm: m[1] || '', body: txt.slice(m[0].length) };
+}
+
+function fmSourceBlock(fm) {
+  const pre = document.createElement('pre');
+  const code = document.createElement('code');
+  code.className = 'language-yaml';
+  code.textContent = '---\n' + fm + '---';
+  pre.appendChild(code);
+  return pre;
+}
+
+// CORE schema (not js-yaml's default) so "created: 2023-12-22" stays a plain
+// string — the default schema turns it into a Date, which would be written
+// back as "2023-12-22T00:00:00.000Z" after any edit.
+const FM_LOAD_OPTS = { schema: jsyaml.CORE_SCHEMA };
+const FM_DUMP_OPTS = { schema: jsyaml.CORE_SCHEMA, lineWidth: -1, styles: { '!!null': 'empty' } };
+
+// rewrites only the frontmatter block in the editor (undoable via Ctrl+Z);
+// the note body is left untouched. An empty object removes the block.
+function writeFrontmatter(data) {
+  const m = cm.getValue().match(FRONTMATTER_RE);
+  if (!m) return;
+  const trail = m[0].endsWith('\n') ? '\n' : '';
+  // empty values dump as "key: " — strip that trailing space (js-yaml quotes
+  // any string that really ends in spaces, so this can't eat real content)
+  const block = Object.keys(data).length
+    ? '---\n' + jsyaml.dump(data, FM_DUMP_OPTS).replace(/ +$/gm, '') + '---' + trail
+    : '';
+  cm.replaceRange(block, cm.posFromIndex(0), cm.posFromIndex(m[0].length));
+}
+
+// text typed into a property field → YAML value, keeping numbers numeric
+function fmParseInput(text, original) {
+  const t = text.trim();
+  if (t === '') return null;
+  if (typeof original === 'number' && !isNaN(Number(t))) return Number(t);
+  return t;
+}
+
+function fmTextOf(v) {
+  if (v == null) return '';
+  if (typeof v === 'object') return JSON.stringify(v);
+  return String(v);
+}
+
+// <input> styled as plain text until focused. data-fm-focus lets
+// renderPreview put focus back on the same field after a re-render.
+function fmInput(value, focusId, onCommit) {
+  const inp = document.createElement('input');
+  inp.className = 'fm-input';
+  inp.value = value;
+  inp.dataset.fmFocus = focusId;
+  inp.addEventListener('change', () => onCommit(inp.value));
+  return inp;
+}
+
+function fmDelButton(title, onClick) {
+  const x = document.createElement('span');
+  x.className = 'fm-del';
+  x.textContent = '×';
+  x.title = title;
+  x.addEventListener('click', onClick);
+  return x;
+}
+
+function fmValueEditor(key, val, data) {
+  const setVal = v => writeFrontmatter({ ...data, [key]: v });
+
+  if (typeof val === 'boolean') {
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = val;
+    cb.dataset.fmFocus = 'val:' + key;
+    cb.addEventListener('change', () => setVal(cb.checked));
+    return [cb];
+  }
+
+  if (Array.isArray(val)) {
+    const nodes = val.map((item, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'fm-chip';
+      chip.textContent = fmTextOf(item);
+      chip.appendChild(fmDelButton('移除', () => setVal(val.filter((_, j) => j !== i))));
+      return chip;
+    });
+    const add = fmInput('', 'add:' + key, text => {
+      const t = text.trim();
+      if (t) setVal([...val, t]);
+    });
+    add.classList.add('fm-add');
+    add.placeholder = '新增…';
+    nodes.push(add);
+    return nodes;
+  }
+
+  // nested objects aren't editable here — too many shapes to handle well
+  if (val !== null && typeof val === 'object') {
+    const span = document.createElement('span');
+    span.textContent = fmTextOf(val);
+    span.title = '巢狀屬性請在編輯欄修改';
+    return [span];
+  }
+
+  return [fmInput(fmTextOf(val), 'val:' + key, text => setVal(fmParseInput(text, val)))];
+}
+
+// returns a DOM node for the frontmatter, or null if there's nothing to show
+function renderFrontmatter(fm) {
+  if (propsMode === 'source') return fmSourceBlock(fm);
+
+  let data, error = null;
+  try {
+    data = jsyaml.load(fm, FM_LOAD_OPTS);
+  } catch (e) {
+    error = e.message.split('\n')[0];
+  }
+  if (!error && data != null && (typeof data !== 'object' || Array.isArray(data))) {
+    error = '屬性必須是「key: value」形式';
+  }
+
+  const box = document.createElement('div');
+  box.className = 'fm-props';
+
+  if (error) {
+    const err = document.createElement('div');
+    err.className = 'fm-error';
+    err.textContent = '屬性格式錯誤，改以原始碼顯示：' + error;
+    box.append(err, fmSourceBlock(fm));
+    return box;
+  }
+
+  data = data || {};
+
+  const title = document.createElement('div');
+  title.className = 'fm-props-title';
+  title.textContent = '屬性';
+  box.appendChild(title);
+
+  for (const [key, val] of Object.entries(data)) {
+    const row = document.createElement('div');
+    row.className = 'fm-row';
+
+    const k = document.createElement('div');
+    k.className = 'fm-key';
+    k.appendChild(fmInput(key, 'key:' + key, text => {
+      const newKey = text.trim();
+      if (!newKey || newKey === key || newKey in data) { renderPreview(); return; }
+      writeFrontmatter(Object.fromEntries(
+        Object.entries(data).map(([k2, v2]) => [k2 === key ? newKey : k2, v2])
+      ));
+    }));
+
+    const v = document.createElement('div');
+    v.className = 'fm-val';
+    v.append(...fmValueEditor(key, val, data));
+
+    const del = fmDelButton('刪除屬性', () => {
+      const rest = { ...data };
+      delete rest[key];
+      writeFrontmatter(rest);
+    });
+    del.classList.add('fm-row-del');
+
+    row.append(k, v, del);
+    box.appendChild(row);
+  }
+
+  const addProp = document.createElement('button');
+  addProp.className = 'fm-add-prop';
+  addProp.textContent = '+ 新增屬性';
+  addProp.addEventListener('click', () => {
+    const name = (prompt('屬性名稱：') || '').trim();
+    if (!name) return;
+    if (name in data) { alert(`屬性「${name}」已存在`); return; }
+    writeFrontmatter({ ...data, [name]: null });
+  });
+  box.appendChild(addProp);
+
+  return box;
+}
+
+/* ── Editable body blocks ──
+   The body is rendered block by block (heading, paragraph, list, code…),
+   each wrapped in a .md-block that remembers its exact source range in the
+   editor. Double-clicking one swaps it for a textarea holding that block's
+   raw Markdown; committing replaces only that range. Editing the rendered
+   HTML directly and converting it back to Markdown would be lossy — it
+   would rewrite Obsidian syntax ([[links]], ![[embeds]]) and reformat the
+   whole note, not just the edited sentence. */
+const LINK_DEF_GAP_RE = /^(?:[ \t]*\[[^\]\n]+\]:[^\n]*\n?|[ \t]*\n)*[ \t]*$/;
+
+// returns preview HTML for the body; offset = index of body within the editor text
+function renderMarkdownBlocks(body, offset) {
+  const tokens = marked.lexer(body);
+  const ranges = [];
+  let defs = '';
+  let pos = 0;
+  for (const tok of tokens) {
+    const at = body.indexOf(tok.raw, pos);
+    // marked emits no token for link reference definitions ("[x]: url"),
+    // so those are the only text allowed to be skipped between blocks.
+    // Anything else means the source mapping can't be trusted — fall back
+    // to plain read-only rendering rather than risk editing the wrong range.
+    const gap = at < 0 ? '' : body.slice(pos, at);
+    if (at < 0 || !LINK_DEF_GAP_RE.test(gap)) {
+      return marked.parse(normalizeMarkdown(body));
+    }
+    defs += gap;
+    pos = at + tok.raw.length;
+    if (tok.type !== 'space') ranges.push({ tok, start: at, end: pos });
+  }
+
+  // each block is lexed on its own, and marked resolves [text][ref] links
+  // at lex time — so append the document's definitions (they render nothing)
+  const defsSuffix = defs.trim() ? '\n\n' + defs : '';
+  return ranges.map(({ tok, start, end }) =>
+    `<div class="md-block" data-start="${offset + start}" data-end="${offset + end}" title="雙擊以編輯此段">` +
+    marked.parse(normalizeMarkdown(tok.raw) + defsSuffix) + '</div>'
+  ).join('');
+}
+
+function editBlock(div) {
+  if (div.classList.contains('editing')) return;
+  const start = +div.dataset.start, end = +div.dataset.end;
+  const raw = cm.getValue().slice(start, end);
+  const trailing = raw.match(/\n*$/)[0]; // keep the block's own line breaks so neighbours stay separated
+  const original = raw.slice(0, raw.length - trailing.length);
+
+  const ta = document.createElement('textarea');
+  ta.className = 'md-block-editor';
+  ta.value = original;
+  ta.spellcheck = false;
+  const autosize = () => { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; };
+
+  div.classList.add('editing');
+  div.removeAttribute('title');
+  div.replaceChildren(ta);
+  autosize();
+  ta.focus();
+
+  let done = false;
+  const finish = save => {
+    if (done) return;
+    done = true;
+    // the editor may have changed underneath (e.g. typed in the editor pane);
+    // only write back if this block's source is still exactly what we loaded
+    if (save && ta.value !== original && cm.getValue().slice(start, end) === raw) {
+      cm.replaceRange(ta.value + trailing, cm.posFromIndex(start), cm.posFromIndex(end));
+    } else {
+      renderPreview();
+    }
+  };
+  ta.addEventListener('input', autosize);
+  ta.addEventListener('blur', () => finish(true));
+  ta.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); finish(false); }
+    else if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); finish(true); }
+  });
+}
+
+$preview.addEventListener('dblclick', e => {
+  const block = e.target.closest('.md-block');
+  if (block && currentFileType === 'markdown') editBlock(block);
+});
+
+/* ── Editor ↔ preview position sync ──
+   Moving the editor cursor scrolls the preview to the matching content (only
+   if it's off screen); a single click in the preview moves the editor cursor
+   there and briefly highlights the line — without focusing the editor, so
+   double-click editing and selecting text to copy in the preview still work.
+   HTML/SVG live in an iframe, so for those the agent reports clicks and
+   performs the scrolling (see htmlPreviewAgent). */
+let lastSyncFromPreview = 0;
+
+function caretFromPoint(x, y) {
+  const pos = document.caretPositionFromPoint ? document.caretPositionFromPoint(x, y) : document.caretRangeFromPoint(x, y);
+  if (!pos) return null;
+  return { node: pos.offsetNode || pos.startContainer, offset: pos.offset !== undefined ? pos.offset : pos.startOffset };
+}
+
+function moveEditorTo(index) {
+  lastSyncFromPreview = Date.now(); // the resulting cursorActivity must not bounce back
+  const pos = cm.posFromIndex(index);
+  cm.setCursor(pos);
+  cm.scrollIntoView(pos, Math.round(cm.getScrollInfo().clientHeight / 3));
+  const line = cm.addLineClass(pos.line, 'background', 'cm-sync-flash');
+  setTimeout(() => cm.removeLineClass(line, 'background', 'cm-sync-flash'), 1200);
+}
+
+// scroll #preview so rect is on screen — unless any part of it already is
+function revealInPreview(rect) {
+  const box = $preview.getBoundingClientRect();
+  if (rect.bottom > box.top + 10 && rect.top < box.bottom - 10) return;
+  $preview.scrollTop += rect.top - box.top - box.height / 3;
+}
+
+// the annotated HTML/SVG text node that best matches a source index:
+// the one containing it, else the closest one before it, else the first
+function htmlIdForIndex(index) {
+  if (!htmlEditMap || htmlEditMap.src !== cm.getValue()) return null;
+  let before = null, first = null;
+  for (const id in htmlEditMap.map) {
+    for (const [s, e] of Object.values(htmlEditMap.map[id])) {
+      if (s <= index && index <= e) return id;
+      if (s <= index && (!before || s > before.s)) before = { id, s };
+      if (!first || s < first.s) first = { id, s };
+    }
+  }
+  return (before || first || {}).id;
+}
+
+function syncPreviewToEditor() {
+  if (Date.now() - lastSyncFromPreview < 400) return;
+  const index = cm.indexFromPos(cm.getCursor());
+
+  if (currentFileType === 'markdown') {
+    let target = null;
+    for (const b of $preview.querySelectorAll('.md-block')) {
+      if (+b.dataset.start <= index) target = b;
+      else break;
+    }
+    target = target || $preview.querySelector('.fm-props') || $preview.querySelector('.md-block');
+    if (target) revealInPreview(target.getBoundingClientRect());
+  } else if (currentFileType === 'html' || currentFileType === 'svg') {
+    const id = htmlIdForIndex(index);
+    if (id != null && htmlPreviewFrame && htmlPreviewFrame.contentWindow) {
+      htmlPreviewFrame.contentWindow.postMessage({ type: 'sync-scroll', id }, '*');
+    }
+  } else {
+    // text-like types: the <pre> holds the editor text verbatim, so indexes match 1:1
+    const text = $preview.querySelector('.text-preview');
+    const node = text && text.firstChild;
+    if (!node) return;
+    const r = document.createRange();
+    const at = Math.min(index, node.length);
+    r.setStart(node, at);
+    r.setEnd(node, Math.min(at + 1, node.length));
+    revealInPreview(r.getBoundingClientRect());
+  }
+}
+
+// a click inside a Markdown block → its source index. Block start, refined
+// by searching the source for the few characters left of the click (plain
+// text usually appears verbatim in the Markdown; if not, block start it is)
+function mdIndexFromClick(block, e) {
+  const start = +block.dataset.start;
+  const raw = cm.getValue().slice(start, +block.dataset.end);
+  const hit = caretFromPoint(e.clientX, e.clientY);
+  if (hit && hit.node.nodeType === Node.TEXT_NODE && block.contains(hit.node)) {
+    const before = hit.node.data.slice(Math.max(0, hit.offset - 8), hit.offset);
+    const after = hit.node.data.slice(hit.offset, hit.offset + 8);
+    let at;
+    if (before.trim().length >= 2 && (at = raw.indexOf(before)) >= 0) return start + at + before.length;
+    if (after.trim().length >= 2 && (at = raw.indexOf(after)) >= 0) return start + at;
+  }
+  return start;
+}
+
+let syncTimer = null;
+cm.on('cursorActivity', () => {
+  clearTimeout(syncTimer);
+  // longer than renderPreview's 120ms debounce, so typing syncs against the fresh render
+  syncTimer = setTimeout(syncPreviewToEditor, 150);
+});
+
+$preview.addEventListener('click', e => {
+  if (e.detail > 1 || !getSelection().isCollapsed) return;
+  if (currentFileType === 'markdown') {
+    const block = e.target.closest('.md-block');
+    if (block && !block.classList.contains('editing')) moveEditorTo(mdIndexFromClick(block, e));
+  } else {
+    const text = e.target.closest('.text-preview');
+    const hit = text && caretFromPoint(e.clientX, e.clientY);
+    if (hit && hit.node.parentNode === text) moveEditorTo(hit.offset);
+  }
+});
+
+/* ── Editable HTML preview ──
+   The HTML preview runs in a sandboxed iframe (no allow-same-origin), so the
+   parent can't touch its DOM. Instead parse5 — unlike the browser's own
+   parser it reports source offsets — finds every text node's exact range in
+   the source; the *preview copy* (never the saved file) gets a data-src-id on
+   each element holding text, plus a small agent script. Double-clicking text
+   in the preview makes that one text node editable and the agent posts the
+   change back; the parent replaces only that text node's source range.
+   Serializing the edited DOM back to HTML instead would be lossy: it would
+   rewrite indentation, quoting and comments, and bake in anything the page's
+   own scripts generated at runtime. */
+let parse5 = null;
+import('https://cdn.jsdelivr.net/npm/parse5@7.1.2/+esm')
+  .then(m => { parse5 = m; if (currentFileType === 'html') renderPreview(); })
+  .catch(() => {}); // without it the HTML preview just stays read-only
+
+// elements whose text isn't regular page text (or is edited natively)
+const HTML_RAW_TEXT = new Set(['script', 'style', 'textarea', 'title', 'template', 'noscript', 'xmp', 'iframe', 'noembed', 'noframes']);
+
+// returns { html, map }: html is the source with data-src-id attributes
+// added; map[id][childIndex] = [start, end] source range of that text node
+function annotateHtml(src) {
+  const doc = parse5.parse(src, { sourceCodeLocationInfo: true });
+  const map = {};
+  const inserts = [];
+  let nextId = 0;
+  const walk = node => {
+    for (const el of node.childNodes || []) {
+      if (!el.tagName || HTML_RAW_TEXT.has(el.tagName)) continue;
+      const texts = {};
+      el.childNodes.forEach((n, i) => {
+        if (n.nodeName === '#text' && n.value.trim() && n.sourceCodeLocation) {
+          texts[i] = [n.sourceCodeLocation.startOffset, n.sourceCodeLocation.endOffset];
+        }
+      });
+      // implicit elements (e.g. an omitted <body>) have no start tag to annotate
+      const startTag = el.sourceCodeLocation && el.sourceCodeLocation.startTag;
+      if (Object.keys(texts).length && startTag) {
+        let at = startTag.endOffset - 1;
+        if (src[at] === '>') {
+          if (src[at - 1] === '/') at--;
+          map[nextId] = texts;
+          inserts.push([at, ` data-src-id="${nextId}"`]);
+          nextId++;
+        }
+      }
+      walk(el);
+    }
+  };
+  walk(doc);
+  let html = src;
+  for (const [at, text] of inserts.sort((a, b) => b[0] - a[0])) {
+    html = html.slice(0, at) + text + html.slice(at);
+  }
+  return { html, map };
+}
+
+function annotateIfPossible(src) {
+  if (!parse5) return { html: src, map: null };
+  try {
+    return annotateHtml(src);
+  } catch {
+    return { html: src, map: null };
+  }
+}
+
+// the agent is appended even without parse5 — it also keeps the preview's
+// scroll position (and SVG zoom) across re-renders; every keystroke rebuilds the iframe
+function agentScriptTag(opts) {
+  return `<script>(${htmlPreviewAgent})(${JSON.stringify(opts)});<\/script>`;
+}
+
+function buildHtmlPreview(src) {
+  const { html, map } = annotateIfPossible(src);
+  return { html: html + agentScriptTag({ x: htmlScroll.x, y: htmlScroll.y }), map };
+}
+
+// an .svg file is XML, but parsing it as the body of an HTML document gives
+// the same SVG tree (HTML's "foreign content" rules), and the text node
+// offsets parse5 reports against the bare SVG source stay valid — the
+// prefix below only adds nodes outside the <svg> subtree.
+const SVG_PREVIEW_HEAD = '<!DOCTYPE html><html><head><meta charset="utf-8"><style>' +
+  'html,body{height:100%;margin:0}' +
+  'body{box-sizing:border-box;padding:20px;display:flex;align-items:center;justify-content:center}' +
+  'body.zoomed-in{align-items:flex-start;justify-content:flex-start}' +
+  'svg{max-width:100%;max-height:100%;flex-shrink:0;transform-origin:center;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.1)}' +
+  'body.zoomed-in svg{transform-origin:top left}' +
+  '</style></head><body>';
+
+function buildSvgPreview(src) {
+  const { html, map } = annotateIfPossible(src);
+  return { html: SVG_PREVIEW_HEAD + html + agentScriptTag({ x: htmlScroll.x, y: htmlScroll.y, zoom: previewZoom }), map };
+}
+
+// runs INSIDE the preview iframe (stringified into its srcdoc) — it can only
+// talk to the editor through postMessage. opts.zoom is set for SVG previews.
+function htmlPreviewAgent(opts) {
+  addEventListener('load', () => scrollTo(opts.x, opts.y));
+  let scrollPending = false;
+  addEventListener('scroll', () => {
+    if (scrollPending) return;
+    scrollPending = true;
+    setTimeout(() => {
+      scrollPending = false;
+      parent.postMessage({ type: 'html-scroll', x: scrollX, y: scrollY }, '*');
+    }, 100);
+  });
+
+  const style = document.createElement('style');
+  style.textContent = '[data-src-id]:hover{outline:1px dashed rgba(127,127,127,.5);outline-offset:2px}';
+  document.head.appendChild(style);
+
+  if (opts.zoom !== undefined) {
+    const svg = document.querySelector('svg');
+    // an <img> renders an SVG that has width/height but no viewBox scaled to
+    // fit; inline it would be cropped instead — give it the viewBox the
+    // browser would have synthesized (preview copy only, not the file)
+    if (svg && !svg.hasAttribute('viewBox')) {
+      const w = svg.getAttribute('width'), h = svg.getAttribute('height');
+      if (/^\d+(\.\d+)?(px)?$/.test(w) && /^\d+(\.\d+)?(px)?$/.test(h)) {
+        svg.setAttribute('viewBox', `0 0 ${parseFloat(w)} ${parseFloat(h)}`);
+      }
+    }
+    // size the <svg> box to the drawing's own aspect ratio, fitted to the
+    // view without upscaling (what max-width/max-height did for the <img>).
+    // Inline, width/height attributes + max-width:100% would leave a box far
+    // wider than a tall drawing, and zooming would scale that empty margin
+    // too, pushing the drawing off to the side.
+    const intrinsic = () => {
+      const num = a => /^\d+(\.\d+)?(px)?$/.test(svg.getAttribute(a) || '') ? parseFloat(svg.getAttribute(a)) : 0;
+      const vb = svg.viewBox && svg.viewBox.baseVal;
+      const w = num('width') || (vb && vb.width), h = num('height') || (vb && vb.height);
+      return w && h ? { w, h } : null;
+    };
+    const fit = () => {
+      const size = svg && intrinsic();
+      if (!size) return;
+      const s = Math.min(1, (innerWidth - 40) / size.w, (innerHeight - 40) / size.h);
+      svg.style.width = Math.max(1, size.w * s) + 'px';
+      svg.style.height = Math.max(1, size.h * s) + 'px';
+    };
+    fit();
+    addEventListener('resize', fit);
+
+    const applyZoom = z => {
+      if (!svg) return;
+      svg.style.transform = `scale(${z})`;
+      document.body.classList.toggle('zoomed-in', z > 1);
+    };
+    applyZoom(opts.zoom);
+    addEventListener('message', e => {
+      if (e.source === parent && e.data && e.data.type === 'svg-zoom') applyZoom(e.data.zoom);
+    });
+    // wheel events over the iframe never reach the editor's own handler, so
+    // Ctrl+wheel is caught here and the editor does the actual zooming
+    addEventListener('wheel', e => {
+      if (!(e.ctrlKey || e.metaKey)) return;
+      e.preventDefault();
+      parent.postMessage({ type: 'svg-zoom-wheel', dir: e.deltaY < 0 ? 1 : -1 }, '*');
+    }, { passive: false });
+  }
+
+  // the annotated text node under the mouse: { node, host, index, offset } or null
+  const hitText = e => {
+    const pos = document.caretPositionFromPoint
+      ? document.caretPositionFromPoint(e.clientX, e.clientY)
+      : document.caretRangeFromPoint(e.clientX, e.clientY);
+    let node = pos && (pos.offsetNode || pos.startContainer);
+    let offset = pos ? (pos.offset !== undefined ? pos.offset : pos.startOffset) : 0;
+    // caret hit-testing doesn't always land on a text node (notably on SVG
+    // text) — fall back to the clicked element's own text
+    if (!node || node.nodeType !== Node.TEXT_NODE) {
+      const el = e.target.closest && e.target.closest('[data-src-id]');
+      node = el && Array.prototype.find.call(el.childNodes, n => n.nodeType === Node.TEXT_NODE && n.data.trim());
+      offset = 0;
+    }
+    if (!node) return null;
+    const host = node.parentElement;
+    if (!host || !host.hasAttribute('data-src-id')) return null;
+    return { node, host, index: Array.prototype.indexOf.call(host.childNodes, node), offset };
+  };
+
+  // editor ↔ preview position sync. A single click reports where it landed;
+  // detail > 1 is part of a double-click (editing), and a non-empty
+  // selection means the user is selecting text to copy — leave both alone.
+  document.addEventListener('click', e => {
+    if (e.detail > 1 || !getSelection().isCollapsed) return;
+    const hit = hitText(e);
+    if (hit) parent.postMessage({ type: 'sync-click', id: hit.host.getAttribute('data-src-id'), index: hit.index, offset: hit.offset }, '*');
+  });
+  addEventListener('message', e => {
+    if (e.source !== parent || !e.data || e.data.type !== 'sync-scroll') return;
+    const el = document.querySelector(`[data-src-id="${e.data.id}"]`);
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    // already on screen → don't move, otherwise every cursor step would jump
+    if (r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth) return;
+    // scrollTo, not scrollIntoView: the latter may also try to scroll the
+    // editor's own overflow:hidden containers around this iframe
+    scrollTo(scrollX + r.left + r.width / 2 - innerWidth / 2, scrollY + r.top + r.height / 2 - innerHeight / 2);
+  });
+
+  document.addEventListener('dblclick', e => {
+    const hit = hitText(e);
+    if (!hit) return;
+    const { node, host, index } = hit;
+    e.preventDefault();
+
+    const oldText = node.data;
+    const send = newText => {
+      if (newText !== oldText) {
+        parent.postMessage({ type: 'html-edit', id: host.getAttribute('data-src-id'), index, oldText, newText }, '*');
+      }
+    };
+
+    // SVG elements don't support contentEditable, so SVG text gets an
+    // <input> overlaid on top of it instead
+    if (host instanceof SVGElement) {
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      const r = range.getBoundingClientRect();
+      const input = document.createElement('input');
+      input.value = oldText;
+      input.style.cssText =
+        `position:absolute;left:${r.left + scrollX - 4}px;top:${r.top + scrollY - 4}px;` +
+        `width:${Math.max(r.width + 48, 120)}px;font-size:${Math.min(Math.max(r.height * 0.75, 12), 32)}px;` +
+        'padding:2px 4px;border:2px solid #4da6ff;border-radius:4px;background:#fff;color:#000;' +
+        'box-sizing:border-box;z-index:2147483647;font-family:inherit';
+      document.body.appendChild(input);
+      getSelection().removeAllRanges();
+      input.focus();
+      input.setSelectionRange(oldText.length, oldText.length);
+
+      let done = false;
+      const finish = save => {
+        if (done) return;
+        done = true;
+        input.remove();
+        if (save) {
+          node.data = input.value;
+          send(input.value);
+        }
+      };
+      input.addEventListener('blur', () => finish(true));
+      input.addEventListener('keydown', ev => {
+        if (ev.key === 'Escape') { ev.preventDefault(); finish(false); }
+        else if (ev.key === 'Enter') { ev.preventDefault(); input.blur(); }
+      });
+      return;
+    }
+
+    // contentEditable only works on elements, so wrap the text node in a
+    // temporary span and unwrap it again when done
+    const span = document.createElement('span');
+    span.textContent = oldText;
+    span.contentEditable = 'plaintext-only';
+    span.style.outline = '2px solid #4da6ff';
+    span.style.outlineOffset = '2px';
+    host.replaceChild(span, node);
+    getSelection().removeAllRanges();
+    span.focus();
+
+    let done = false;
+    const finish = save => {
+      if (done) return;
+      done = true;
+      const newText = save ? span.textContent : oldText;
+      host.replaceChild(document.createTextNode(newText), span);
+      send(newText);
+    };
+    span.addEventListener('blur', () => finish(true));
+    span.addEventListener('keydown', ev => {
+      if (ev.key === 'Escape') { ev.preventDefault(); finish(false); }
+      else if (ev.key === 'Enter') { ev.preventDefault(); span.blur(); }
+    });
+  });
+}
+
+function decodeHtmlText(s) {
+  const t = document.createElement('textarea');
+  t.innerHTML = s;
+  return t.value;
+}
+
+function escapeHtmlText(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/ /g, '&nbsp;');
+}
+
+window.addEventListener('message', e => {
+  // only accept messages from the preview iframe that's currently shown
+  if (!htmlPreviewFrame || e.source !== htmlPreviewFrame.contentWindow) return;
+  const msg = e.data || {};
+  if (msg.type === 'html-scroll') {
+    htmlScroll = { x: msg.x, y: msg.y };
+    return;
+  }
+  if (msg.type === 'svg-zoom-wheel') {
+    zoomImage(msg.dir * ZOOM_STEP);
+    return;
+  }
+  if (msg.type === 'sync-click') {
+    const range = htmlEditMap && htmlEditMap.src === cm.getValue() &&
+                  htmlEditMap.map[msg.id] && htmlEditMap.map[msg.id][msg.index];
+    // offset counts decoded characters, the source may hold entities — close enough, clamped to the node
+    if (range) moveEditorTo(Math.min(range[0] + msg.offset, range[1]));
+    return;
+  }
+  if (msg.type !== 'html-edit' || !htmlEditMap) return;
+
+  const range = htmlEditMap.map[msg.id] && htmlEditMap.map[msg.id][msg.index];
+  const src = cm.getValue();
+  // write back only if the editor hasn't changed since this preview was built
+  // and the source really holds the text that was shown — a page script may
+  // have rewritten it at runtime, and then there's nothing to map it back to
+  if (!range || src !== htmlEditMap.src || decodeHtmlText(src.slice(range[0], range[1])) !== msg.oldText) {
+    alert('這段文字無法對應回原始碼（可能是網頁程式動態產生的），修改沒有寫入。');
+    renderPreview();
+    return;
+  }
+  let out = escapeHtmlText(msg.newText);
+  // SVG is XML, which has no &nbsp; entity — a numeric reference keeps it valid
+  if (currentFileType === 'svg') out = out.replace(/&nbsp;/g, '&#160;');
+  cm.replaceRange(out, cm.posFromIndex(range[0]), cm.posFromIndex(range[1]));
+});
+
+function updatePropsButton() {
+  const btn = document.getElementById('btn-props-mode');
+  btn.textContent = propsMode === 'props' ? '</> 原始碼' : '📋 屬性';
+  btn.title = propsMode === 'props' ? '屬性改以 YAML 原始碼顯示' : '屬性改以表格顯示';
+}
+
+function togglePropsMode() {
+  propsMode = propsMode === 'props' ? 'source' : 'props';
+  localStorage.setItem('propsMode', propsMode);
+  updatePropsButton();
+  renderPreview();
 }
 
 async function resolveImages() {
@@ -991,7 +2110,16 @@ async function saveAsFile() {
   try {
     newHandle = await window.showSaveFilePicker({
       suggestedName: $fname.textContent !== '未開啟檔案' ? $fname.textContent : 'untitled.md',
-      types: [{ description: 'Markdown 檔案', accept: { 'text/markdown': ['.md'] } }],
+      types: [
+        { description: 'Markdown 檔案', accept: { 'text/markdown': ['.md'] } },
+        { description: 'HTML 檔案', accept: { 'text/html': ['.html', '.htm'] } },
+        { description: '純文字檔案', accept: { 'text/plain': ['.txt'] } },
+        { description: 'SVG 檔案', accept: { 'image/svg+xml': ['.svg'] } },
+        { description: 'CSS 檔案', accept: { 'text/css': ['.css'] } },
+        { description: 'JSON 檔案', accept: { 'application/json': ['.json'] } },
+        { description: 'JavaScript 檔案', accept: { 'text/javascript': ['.js'] } },
+        { description: 'YAML 檔案', accept: { 'text/yaml': ['.yml', '.yaml'] } },
+      ],
     });
   } catch (e) {
     if (e.name !== 'AbortError') alert('另存失敗：' + e.message);
@@ -1003,10 +2131,13 @@ async function saveAsFile() {
     await writable.close();
     fileHandle = newHandle;
     const name = newHandle.name;
+    currentFileType = fileTypeOf(name);
+    cm.setOption('mode', modeFor(currentFileType));
     $fname.textContent = name;
     $fname.title = name;
     $btnSave.disabled = false;
     setModified(false);
+    renderPreview();
   } catch (e) {
     alert('寫入失敗：' + e.message);
   }
@@ -1048,6 +2179,8 @@ async function deleteFile(handle, name, parentDir) {
     if (isCurrent) {
       fileHandle = null;
       currentDir = null;
+      currentFileType = 'markdown';
+      cm.setOption('mode', 'markdown');
       cm.setValue('');
       cm.clearHistory();
       $fname.textContent = '未開啟檔案';
@@ -1068,11 +2201,11 @@ async function newFile() {
   const base = currentDir || rootHandle;
   if (!base) { alert('請先開啟資料夾'); return; }
 
-  let name = prompt('新檔案名稱：', 'untitled.md');
+  let name = prompt('新檔案名稱（支援 .md / .html / .txt / .svg / .css / .json / .js / .yaml）：', 'untitled.md');
   if (name === null) return;
   name = name.trim();
   if (!name) return;
-  if (!/\.md$/i.test(name)) name += '.md';
+  if (!/\.(md|html?|txt|svg|css|json|js|ya?ml)$/i.test(name)) name += '.md';
 
   try {
     let exists = false;
@@ -1091,6 +2224,10 @@ async function newFile() {
     if (activeRow) { activeRow.classList.remove('active'); activeRow = null; }
     fileHandle  = fh;
     currentDir  = base;
+    currentFileType = fileTypeOf(name);
+    previewZoom = 1;
+    htmlScroll = { x: 0, y: 0 };
+    cm.setOption('mode', modeFor(currentFileType));
     cm.setValue('');
     cm.clearHistory();
     $fname.textContent = name;
@@ -1116,19 +2253,42 @@ function togglePreviewTheme() {
   renderPreview();
 }
 
+// keeps the two resizers (and the preview's flex) consistent with
+// whichever combination of file-tree / editor panels is currently shown
+function updateResizers() {
+  const treeVisible   = panelL.style.display !== 'none';
+  const midPanel      = document.getElementById('panel-middle');
+  const editorVisible = midPanel.style.display !== 'none';
+
+  document.getElementById('res-l').style.display = (treeVisible && editorVisible) ? '' : 'none';
+  document.getElementById('res-r').style.display = editorVisible ? '' : 'none';
+  panelR.style.flex = editorVisible ? '' : '1';
+}
+
+function toggleFileTree() {
+  const btn = document.getElementById('btn-toggle-tree');
+  const hiding = panelL.style.display !== 'none';
+
+  panelL.style.display = hiding ? 'none' : '';
+  btn.textContent = hiding ? '顯示檔案欄' : '隱藏檔案欄';
+  btn.title       = hiding ? '顯示檔案欄 (Ctrl+B)' : '隱藏檔案欄 (Ctrl+B)';
+  updateResizers();
+}
+
 function toggleEditor() {
   const mid  = document.getElementById('panel-middle');
-  const resL = document.getElementById('res-l');
-  const resR = document.getElementById('res-r');
   const btn  = document.getElementById('btn-toggle-editor');
   const hiding = mid.style.display !== 'none';
 
-  mid.style.display  = hiding ? 'none' : '';
-  resL.style.display = hiding ? 'none' : '';
-  resR.style.display = hiding ? 'none' : '';
-  panelR.style.flex  = hiding ? '1'    : '';
+  mid.style.display = hiding ? 'none' : '';
   btn.textContent    = hiding ? '顯示編輯欄' : '隱藏編輯欄';
   btn.title          = hiding ? '顯示編輯欄 (Ctrl+E)' : '隱藏編輯欄 (Ctrl+E)';
+  updateResizers();
+}
+
+function openFind() {
+  cm.focus();
+  cm.execCommand('findPersistent');
 }
 
 function toggleWrap() {
@@ -1180,6 +2340,18 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     toggleEditor();
   }
+  if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+    e.preventDefault();
+    toggleFileTree();
+  }
+  // CodeMirror handles Ctrl+S itself while it has focus; this covers the
+  // rest (e.g. a property field). Blurring first commits that field's
+  // pending edit into the editor before saving.
+  if ((e.ctrlKey || e.metaKey) && e.key === 's' && !cm.hasFocus()) {
+    e.preventDefault();
+    if (document.activeElement) document.activeElement.blur();
+    saveFile();
+  }
 });
 
 window.addEventListener('beforeunload', e => {
@@ -1198,10 +2370,18 @@ function makeResizer(id, getW, applyW) {
     el.classList.add('dragging');
     document.body.classList.add('no-select');
 
+    // covers any iframes (e.g. the HTML preview) so dragging over them
+    // doesn't lose mousemove tracking — iframes are a separate browsing
+    // context and don't bubble their mouse events up to this document.
+    const overlay = document.createElement('div');
+    overlay.className = 'resize-overlay';
+    document.body.appendChild(overlay);
+
     const onMove = e => applyW(startW, e.clientX - startX);
     const onUp   = () => {
       el.classList.remove('dragging');
       document.body.classList.remove('no-select');
+      overlay.remove();
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseup',   onUp);
     };
@@ -1228,6 +2408,8 @@ if (localStorage.getItem('previewTheme') === 'light') {
   document.getElementById('hljs-dark').disabled  = true;
   document.getElementById('btn-preview-theme').textContent = '🌙 深色';
 }
+if (localStorage.getItem('propsMode') === 'source') propsMode = 'source';
+updatePropsButton();
 renderPreview();
 </script>
 </body>
