@@ -1,0 +1,735 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="威尼斯歷史大事記">威尼斯歷史大事記</h1>
+<p>威尼斯（威尼斯）位於義大利東北部，是一座由潟湖、島嶼、運河與橋梁構成的城市。它在中世紀崛起為地中海的重要海上貿易強權，建立了延續約千年的威尼斯共和國，並在文藝復興時期成為商業、藝術、建築與音樂的重要中心。</p>
+<p>威尼斯的歷史可以分成六個階段：</p>
+<ol>
+<li>**5～8世紀：**潟湖聚落形成，逐步走向自治。</li>
+<li>**9～11世紀：**威尼斯共和國崛起，建立海上貿易基礎。</li>
+<li>**12～15世紀：**海上強權的巔峰，並深度參與十字軍與東西方貿易。</li>
+<li>**15～17世紀：**文藝復興與文化繁榮，同時面臨鄂圖曼帝國的競爭。</li>
+<li>**18～19世紀：**海權衰退、共和國覆亡，先後受到法國與奧地利統治。</li>
+<li>**20世紀至今：**成為義大利的重要文化城市，並面對洪水、地層與潟湖生態保護等挑戰。</li>
+</ol>
+<p>需要先說明：威尼斯傳統上將建城日期定為西元421年3月25日，但這是後世形成的建城傳說，不能視為已有充分史料證實的確切建城日。較可靠的歷史證據顯示，潟湖聚落在5～6世紀逐漸發展，威尼斯城市核心則在後續數百年間逐步形成。<a href="https://visit.venice.it/plan-your-trip/who-founded-venice?utm_source=chatgpt.com">Visit Venice</a></p>
+<hr>
+<h2 id="一、威尼斯的起源：潟湖聚落的形成（5～8世紀）">一、威尼斯的起源：潟湖聚落的形成（5～8世紀）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5世紀</td>
+<td>義大利東北部潟湖中的聚落逐漸發展</td>
+<td>威尼斯的早期歷史與潟湖地理環境密切相關。</td>
+</tr>
+<tr>
+<td>452年</td>
+<td>匈人首領阿提拉入侵義大利，阿奎萊亞等地遭受戰亂</td>
+<td>後世常將難民逃往潟湖與威尼斯起源相連，但不能將威尼斯的形成簡化成單一事件。</td>
+</tr>
+<tr>
+<td>5～6世紀</td>
+<td>潟湖中的托爾切洛（Torcello）、馬拉莫科（Malamocco）等地逐漸形成較穩定的聚落</td>
+<td>居民利用島嶼、淺灘與水道從事漁業、貿易及其他活動。</td>
+</tr>
+<tr>
+<td>553年以後</td>
+<td>義大利部分地區重新納入東羅馬帝國的統治體系</td>
+<td>潟湖地區逐漸成為拜占庭在亞得里亞海北部的重要據點。</td>
+</tr>
+<tr>
+<td>568年以後</td>
+<td>倫巴底人進入義大利，拜占庭在義大利的控制範圍縮小</td>
+<td>潟湖聚落的戰略地位逐漸提高。</td>
+</tr>
+<tr>
+<td>7世紀</td>
+<td>潟湖內多個聚落成為地方政治、宗教與商業中心</td>
+<td>威尼斯並非一開始就是單一城市，而是在多個聚落競爭與合作中逐漸形成。</td>
+</tr>
+<tr>
+<td>約697年</td>
+<td>傳統記載中的第一任總督（Doge）保羅奇奧・阿納費斯托（Paoluccio Anafesto）出現</td>
+<td>象徵威尼斯地方自治傳統的起點，但早期總督制度的細節仍有史料問題。</td>
+</tr>
+<tr>
+<td>8世紀</td>
+<td>潟湖地區的政治中心逐漸轉移，地方統治者的自主性增加</td>
+<td>為威尼斯逐漸脫離拜占庭直接控制奠定基礎。</td>
+</tr>
+</tbody></table>
+<p>威尼斯最初並不是一座從陸地向外擴張的城市，而是由潟湖中的多個聚落逐步整合而成。潟湖既提供防禦優勢，也讓居民得以透過水路發展貿易。<a href="https://whc.unesco.org/en/list/394?utm_source=chatgpt.com">UNESCO World Heritage Centre</a></p>
+<hr>
+<h2 id="二、威尼斯共和國的形成與崛起（9～11世紀）">二、威尼斯共和國的形成與崛起（9～11世紀）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>810年前後</td>
+<td>威尼斯的政治中心逐漸轉向里亞托（Rialto）一帶</td>
+<td>里亞托逐漸成為後來威尼斯城市核心。</td>
+</tr>
+<tr>
+<td>812年</td>
+<td>法蘭克帝國與拜占庭帝國達成亞琛和約，威尼斯仍處於拜占庭勢力範圍內</td>
+<td>威尼斯在兩大政治勢力之間維持特殊地位。</td>
+</tr>
+<tr>
+<td>9世紀</td>
+<td>里亞托群島開始形成較完整的城市聚落</td>
+<td>威尼斯逐漸從潟湖聚落發展成為真正的城市。</td>
+</tr>
+<tr>
+<td>828年</td>
+<td>威尼斯商人將傳說中聖馬可的遺骸從埃及亞歷山卓帶回威尼斯</td>
+<td>聖馬可逐漸成為威尼斯的守護聖人，飛獅也成為城市的重要象徵。</td>
+</tr>
+<tr>
+<td>9世紀後期</td>
+<td>威尼斯持續發展亞得里亞海的貿易與航運</td>
+<td>商業活動逐漸成為城市財富的主要來源。</td>
+</tr>
+<tr>
+<td>10世紀</td>
+<td>威尼斯成為重要的海上強權</td>
+<td>逐步擴大對亞得里亞海貿易航線的影響力。</td>
+</tr>
+<tr>
+<td>10～11世紀</td>
+<td>威尼斯與拜占庭帝國及其他地中海政權維持貿易、外交與軍事關係</td>
+<td>威尼斯逐漸建立東西方商業中介的地位。</td>
+</tr>
+<tr>
+<td>1000年前後</td>
+<td>威尼斯的海上活動與對亞得里亞海航路的控制進一步加強</td>
+<td>為日後發展地中海貿易網絡奠定基礎。</td>
+</tr>
+<tr>
+<td>1063年</td>
+<td>聖馬可大教堂現存主要建築的重建工程開始</td>
+<td>展現威尼斯日益強盛的財富與拜占庭藝術影響。</td>
+</tr>
+<tr>
+<td>1094年</td>
+<td>重建後的聖馬可大教堂舉行祝聖儀式</td>
+<td>聖馬可大教堂成為威尼斯宗教與政治認同的重要象徵。</td>
+</tr>
+</tbody></table>
+<h3 id="威尼斯為什麼能崛起？">威尼斯為什麼能崛起？</h3>
+<p>威尼斯的成功主要來自四項條件：</p>
+<ol>
+<li>**地理位置：**位於亞得里亞海北端，便於連結義大利、拜占庭及東地中海。</li>
+<li>**航海與造船：**發展船隊、港口及航運能力。</li>
+<li>**商業網絡：**透過商館、商業據點與外交關係拓展貿易。</li>
+<li>**政治制度：**逐步形成由總督、議會與商人貴族共同參與的共和政體。</li>
+</ol>
+<p>威尼斯的海上力量不是單純來自軍事征服，而是由航運、貿易、金融、外交與國家治理共同支撐。<a href="https://whc.unesco.org/en/list/394?utm_source=chatgpt.com">UNESCO World Heritage Centre</a></p>
+<hr>
+<h2 id="三、海上帝國的巔峰（12～15世紀）">三、海上帝國的巔峰（12～15世紀）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1100年代</td>
+<td>威尼斯持續擴大在亞得里亞海及東地中海的商業影響力</td>
+<td>形成由海港、商館與航線連結的貿易網絡。</td>
+</tr>
+<tr>
+<td>1172年</td>
+<td>威尼斯政治制度進一步調整，大議會的角色逐漸加強</td>
+<td>共和政體逐步制度化。</td>
+</tr>
+<tr>
+<td>1177年</td>
+<td>神聖羅馬皇帝腓特烈一世與教宗亞歷山大三世在威尼斯達成和解</td>
+<td>威尼斯成為歐洲外交的重要舞台。</td>
+</tr>
+<tr>
+<td>12世紀末</td>
+<td>威尼斯的造船、海上運輸及金融活動日益發達</td>
+<td>為大規模海上遠征提供物質與組織基礎。</td>
+</tr>
+<tr>
+<td>1202年</td>
+<td>第四次十字軍從威尼斯出發</td>
+<td>威尼斯的船隊、商業利益與十字軍運動密切結合。</td>
+</tr>
+<tr>
+<td>1204年</td>
+<td>十字軍攻陷君士坦丁堡，威尼斯在戰利品與商業利益分配中取得重要成果</td>
+<td>威尼斯擴大對東地中海部分航線、港口與貿易的影響力；同時造成拜占庭帝國的重大損失。</td>
+</tr>
+<tr>
+<td>13世紀</td>
+<td>威尼斯建立並擴張地中海商業據點</td>
+<td>逐漸形成跨區域的海上貿易網絡。</td>
+</tr>
+<tr>
+<td>1254年</td>
+<td>馬可・波羅出生於威尼斯</td>
+<td>他後來的旅行經歷成為歐亞交流史的重要一環。</td>
+</tr>
+<tr>
+<td>1271年</td>
+<td>馬可・波羅與父親、叔叔開始東行旅程</td>
+<td>展現威尼斯商人與亞洲貿易網絡的連結。</td>
+</tr>
+<tr>
+<td>1298年前後</td>
+<td>馬可・波羅在熱那亞被俘期間，口述旅行經歷，由魯斯蒂謙諾整理成書</td>
+<td>《馬可・波羅遊記》在後世成為歐洲了解亞洲的重要文獻之一。</td>
+</tr>
+<tr>
+<td>1290年代</td>
+<td>威尼斯進一步限制部分政治權力的參與範圍，大議會逐漸由特定貴族家族主導</td>
+<td>共和政體逐步轉向貴族寡頭政治。</td>
+</tr>
+<tr>
+<td>14世紀</td>
+<td>威尼斯與熱那亞等海上競爭者發生多次戰爭</td>
+<td>爭奪貿易航線、港口與地中海商業利益。</td>
+</tr>
+<tr>
+<td>1348年</td>
+<td>黑死病重創威尼斯及歐洲其他地區</td>
+<td>人口、勞動力與商業活動受到嚴重衝擊。</td>
+</tr>
+<tr>
+<td>14世紀後期</td>
+<td>威尼斯持續發展造船、金融、玻璃製造與貿易</td>
+<td>形成結合海權、製造業與商業金融的城市經濟。</td>
+</tr>
+<tr>
+<td>1400年代</td>
+<td>威尼斯逐漸擴張在義大利北部的陸上領土</td>
+<td>除海上帝國外，也發展出義大利本土的領地。</td>
+</tr>
+<tr>
+<td>1453年</td>
+<td>鄂圖曼帝國攻陷君士坦丁堡</td>
+<td>東地中海的政治與商業環境出現重大變化，威尼斯面臨新的外交與貿易挑戰。</td>
+</tr>
+<tr>
+<td>15世紀後半</td>
+<td>威尼斯仍是歐洲重要的印刷、出版、商業與藝術中心</td>
+<td>其繁榮不只建立在海上貿易，也建立在文化與知識產業之上。</td>
+</tr>
+</tbody></table>
+<h3 id="1204年：威尼斯歷史的重要轉折">1204年：威尼斯歷史的重要轉折</h3>
+<p>第四次十字軍原本以進攻穆斯林控制區域為目標，但遠征軍最終攻陷基督教世界的重要城市君士坦丁堡。</p>
+<p>威尼斯在其中扮演關鍵角色，並獲得相當大的政治與商業利益。然而，這次事件也加深了拉丁基督教世界與東正教拜占庭世界之間的裂痕。</p>
+<p><strong>1204年的意義，不只是威尼斯獲得財富，而是它進一步介入東地中海的權力結構。</strong><a href="https://palazzoducale.visitmuve.it/en/exhibition/exhibition-venetia-1600/?utm_source=chatgpt.com">Palazzo Ducale</a></p>
+<hr>
+<h2 id="四、文藝復興與文化黃金時代（15～17世紀）">四、文藝復興與文化黃金時代（15～17世紀）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>15世紀</td>
+<td>威尼斯成為義大利重要的文藝復興城市之一</td>
+<td>繪畫、建築、音樂、出版與工藝蓬勃發展。</td>
+</tr>
+<tr>
+<td>1469年</td>
+<td>威尼斯取得重要的印刷特許權，印刷產業逐步成長</td>
+<td>書籍生產、學術出版與商業印刷快速發展。</td>
+</tr>
+<tr>
+<td>1470年代</td>
+<td>威尼斯的印刷出版業迅速擴張</td>
+<td>城市成為歐洲重要的印刷中心之一。</td>
+</tr>
+<tr>
+<td>1480～1500年前後</td>
+<td>威尼斯印刷業者大量出版古典著作、宗教文本與人文主義作品</td>
+<td>推動文藝復興思想及知識傳播。</td>
+</tr>
+<tr>
+<td>1494年</td>
+<td>法國國王查理八世入侵義大利，義大利戰爭展開</td>
+<td>義大利半島的政治與軍事環境發生長期變化。</td>
+</tr>
+<tr>
+<td>1499年</td>
+<td>威尼斯出版家阿爾杜斯・馬努提烏斯（Aldus Manutius）在威尼斯出版事業逐步發展</td>
+<td>其出版社以古典作品、便攜式書籍與印刷革新聞名。</td>
+</tr>
+<tr>
+<td>1500年前後</td>
+<td>威尼斯畫派逐漸展現鮮明特色</td>
+<td>色彩、光線、油畫技法與大型宗教、神話作品受到重視。</td>
+</tr>
+<tr>
+<td>16世紀</td>
+<td>提香、丁托列托、韋羅內塞等畫家活躍</td>
+<td>威尼斯繪畫對歐洲藝術產生深遠影響。</td>
+</tr>
+<tr>
+<td>1508～1516年</td>
+<td>威尼斯與教宗、法國、神聖羅馬帝國等勢力之間的康布雷同盟戰爭</td>
+<td>威尼斯面臨義大利本土領地與海上利益的重大挑戰。</td>
+</tr>
+<tr>
+<td>1516年</td>
+<td>威尼斯設立猶太隔離居住區，即威尼斯猶太區（Ghetto）</td>
+<td>反映當時城市商業、宗教與社會治理的複雜關係。</td>
+</tr>
+<tr>
+<td>1540～1560年代</td>
+<td>威尼斯音樂、出版與藝術活動持續繁榮</td>
+<td>城市文化影響力與商業財富相互支撐。</td>
+</tr>
+<tr>
+<td>1560～1590年代</td>
+<td>聖馬可大教堂、總督宮及其他公共建築持續裝飾與改建</td>
+<td>城市公共空間成為威尼斯共和國權力與文化的象徵。</td>
+</tr>
+<tr>
+<td>1571年</td>
+<td>威尼斯參與神聖同盟，在勒班陀海戰中擊敗鄂圖曼艦隊</td>
+<td>威尼斯取得重要海戰勝利，但無法因此恢復對東地中海的全面優勢。</td>
+</tr>
+<tr>
+<td>1575～1577年</td>
+<td>瘟疫重創威尼斯</td>
+<td>人口與經濟遭受重大損失。</td>
+</tr>
+<tr>
+<td>16世紀末</td>
+<td>威尼斯的藝術與建築傳統持續影響歐洲</td>
+<td>形成延續至巴洛克時期的文化遺產。</td>
+</tr>
+<tr>
+<td>1600年前後</td>
+<td>威尼斯在歐洲音樂、出版與藝術領域仍具重要地位</td>
+<td>城市文化與商業傳統持續發揮影響。</td>
+</tr>
+</tbody></table>
+<h3 id="威尼斯的文化成就">威尼斯的文化成就</h3>
+<p><strong>1. 繪畫</strong></p>
+<p>威尼斯畫派以色彩、光線、油畫質感及富有戲劇性的構圖著稱。代表人物包括：</p>
+<ul>
+<li>喬爾喬內</li>
+<li>提香</li>
+<li>丁托列托</li>
+<li>韋羅內塞</li>
+</ul>
+<p><strong>2. 印刷與出版</strong></p>
+<p>威尼斯的商業網絡、識字需求與印刷產業相互促進。出版業者大量印製古典著作、宗教文本與人文主義作品，使威尼斯成為文藝復興知識傳播的重要中心。</p>
+<p><strong>3. 建築與城市規劃</strong></p>
+<p>威尼斯的總督宮、聖馬可廣場及沿大運河分布的宮殿，呈現拜占庭、哥德、文藝復興與巴洛克等多種風格。這些建築也反映了共和國的政治制度、財富及文化認同。<a href="https://whc.unesco.org/en/list/394?utm_source=chatgpt.com">UNESCO World Heritage Centre</a></p>
+<hr>
+<h2 id="五、海權衰退與共和國覆亡（17～18世紀）">五、海權衰退與共和國覆亡（17～18世紀）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>16世紀末～17世紀</td>
+<td>大西洋貿易與歐洲全球航運網絡逐漸擴大</td>
+<td>威尼斯在歐洲與亞洲貿易中的相對優勢受到挑戰。</td>
+</tr>
+<tr>
+<td>1600年代</td>
+<td>威尼斯與鄂圖曼帝國之間的軍事及外交競爭持續</td>
+<td>海上貿易與東地中海領地面臨長期壓力。</td>
+</tr>
+<tr>
+<td>1606～1607年</td>
+<td>威尼斯與教宗保祿五世發生重大政治衝突，教宗對威尼斯發布禁令</td>
+<td>展現共和國維護自身政治自主性的決心。</td>
+</tr>
+<tr>
+<td>1618年</td>
+<td>威尼斯面臨所謂「西班牙陰謀」事件的指控與政治恐慌</td>
+<td>反映威尼斯對外部勢力干預的戒心。</td>
+</tr>
+<tr>
+<td>1629～1631年</td>
+<td>瘟疫再次重創威尼斯</td>
+<td>人口與經濟受到嚴重打擊。</td>
+</tr>
+<tr>
+<td>1630年代</td>
+<td>威尼斯持續調整海軍、商業與外交策略</td>
+<td>面對新的歐洲權力格局與海上競爭。</td>
+</tr>
+<tr>
+<td>1645～1669年</td>
+<td>威尼斯與鄂圖曼帝國進行克里特戰爭</td>
+<td>長期戰爭耗費大量財政與軍事資源，威尼斯最終失去克里特島。</td>
+</tr>
+<tr>
+<td>1684～1699年</td>
+<td>威尼斯參與對鄂圖曼帝國的摩里亞戰爭</td>
+<td>一度取得希臘部分地區，但長期難以扭轉海權相對衰退。</td>
+</tr>
+<tr>
+<td>18世紀</td>
+<td>威尼斯仍維持藝術、戲劇、音樂與觀光文化的繁榮</td>
+<td>雖然政治與軍事影響力下降，文化魅力依然強大。</td>
+</tr>
+<tr>
+<td>1720年</td>
+<td>聖馬可廣場的弗洛里安咖啡館（Caffè Florian）開業</td>
+<td>成為威尼斯著名的歷史咖啡館之一。</td>
+</tr>
+<tr>
+<td>18世紀</td>
+<td>卡納萊托等畫家描繪威尼斯城市景觀</td>
+<td>威尼斯城市風貌透過繪畫廣泛傳播至歐洲。</td>
+</tr>
+<tr>
+<td>1797年</td>
+<td>拿破崙軍隊進入威尼斯，威尼斯共和國結束</td>
+<td>延續約千年的共和國政體正式覆亡。</td>
+</tr>
+</tbody></table>
+<h3 id="為什麼威尼斯會衰退？">為什麼威尼斯會衰退？</h3>
+<p>威尼斯的衰退不是單一戰爭造成，而是多種因素長期累積的結果：</p>
+<ul>
+<li>**全球貿易路線改變：**大西洋航路的重要性上升，威尼斯原有的地中海中介地位受到挑戰。</li>
+<li>**鄂圖曼帝國的崛起：**威尼斯必須長期投入軍事資源維持海上利益。</li>
+<li>**戰爭與瘟疫：**多次長期戰爭及人口危機削弱財政與經濟。</li>
+<li>**歐洲權力結構變化：**法國、哈布斯堡王朝等大型國家在義大利及歐洲政治中具有更大的影響力。</li>
+</ul>
+<p>威尼斯在18世紀依然是重要的藝術與文化城市，但已不再擁有中世紀時期那種足以主導東地中海貿易的海權。1797年，共和國在拿破崙的軍事壓力下走向終結。<a href="https://www.italia.it/en/veneto/venice/things-to-do/venice-and-its-lagoon?utm_source=chatgpt.com">Italia.it</a></p>
+<hr>
+<h2 id="六、法國、奧地利與義大利統一（1797～1866年）">六、法國、奧地利與義大利統一（1797～1866年）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1797年</td>
+<td>坎波福爾米奧條約（Treaty of Campo Formio）簽訂，威尼斯被交由奧地利統治</td>
+<td>威尼斯共和國正式終結，歐洲勢力重新劃分義大利北部。</td>
+</tr>
+<tr>
+<td>1805年</td>
+<td>拿破崙建立義大利王國，威尼斯納入其統治體系</td>
+<td>威尼斯再度由法國主導的政權控制。</td>
+</tr>
+<tr>
+<td>1815年</td>
+<td>維也納會議後，威尼斯納入奧地利統治的倫巴底－威尼西亞王國</td>
+<td>哈布斯堡王朝恢復對威尼斯的控制。</td>
+</tr>
+<tr>
+<td>1848年</td>
+<td>歐洲革命浪潮中，威尼斯爆發反奧地利起義</td>
+<td>威尼斯民族主義與共和主義運動再度興起。</td>
+</tr>
+<tr>
+<td>1848年</td>
+<td>丹尼爾・馬寧（Daniele Manin）等人宣布建立聖馬可共和國</td>
+<td>威尼斯短暫恢復共和政體。</td>
+</tr>
+<tr>
+<td>1848～1849年</td>
+<td>奧地利軍隊圍困威尼斯</td>
+<td>城市遭受戰爭、疾病與糧食危機的嚴重衝擊。</td>
+</tr>
+<tr>
+<td>1849年</td>
+<td>威尼斯重新被奧地利控制</td>
+<td>短暫的革命共和國結束。</td>
+</tr>
+<tr>
+<td>1859年</td>
+<td>第二次義大利獨立戰爭改變義大利北部的政治局勢</td>
+<td>義大利統一運動進一步推進。</td>
+</tr>
+<tr>
+<td>1866年</td>
+<td>第三次義大利獨立戰爭後，威尼斯地區併入義大利王國</td>
+<td>威尼斯結束奧地利統治，成為統一中的義大利的一部分。</td>
+</tr>
+</tbody></table>
+<p>威尼斯在1797年失去獨立後，經歷法國與奧地利的統治，直到1866年才正式併入義大利王國。這段歷史反映了拿破崙戰爭、歐洲民族主義與義大利統一運動的交互影響。<a href="https://www.italia.it/en/veneto/venice/things-to-do/venice-and-its-lagoon?utm_source=chatgpt.com">Italia.it</a></p>
+<hr>
+<h2 id="七、現代威尼斯：文化遺產與環境挑戰（1866年至今）">七、現代威尼斯：文化遺產與環境挑戰（1866年至今）</h2>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1866年</td>
+<td>威尼斯併入義大利王國</td>
+<td>威尼斯的政治地位正式納入現代義大利國家體系。</td>
+</tr>
+<tr>
+<td>19世紀末</td>
+<td>鐵路與現代交通逐步改善威尼斯與義大利本土的連結</td>
+<td>城市的交通、商業與人口流動出現新變化。</td>
+</tr>
+<tr>
+<td>1895年</td>
+<td>第一屆威尼斯國際藝術雙年展舉辦</td>
+<td>威尼斯成為現代國際藝術展覽的重要城市。</td>
+</tr>
+<tr>
+<td>20世紀初</td>
+<td>威尼斯周邊的港口、工業與交通設施逐步發展</td>
+<td>城市經濟不再只依靠歷史貿易與傳統工藝。</td>
+</tr>
+<tr>
+<td>1915～1918年</td>
+<td>第一次世界大戰期間，威尼斯及義大利東北部受到戰爭影響</td>
+<td>城市及周邊地區面臨軍事與經濟壓力。</td>
+</tr>
+<tr>
+<td>1930年代</td>
+<td>威尼斯與本土之間的公路、鐵路及交通聯繫持續改善</td>
+<td>潟湖城市與大陸地區的整合進一步加深。</td>
+</tr>
+<tr>
+<td>1940～1945年</td>
+<td>第二次世界大戰期間，義大利及威尼斯地區受到戰爭衝擊</td>
+<td>城市經濟與社會受到重大影響。</td>
+</tr>
+<tr>
+<td>1966年</td>
+<td>威尼斯發生歷史性嚴重洪水，水位一度達到約194公分</td>
+<td>城市保存與潟湖防洪問題受到國際高度關注。</td>
+</tr>
+<tr>
+<td>1973年</td>
+<td>義大利制定特別法律，將威尼斯保護列為重要國家事務</td>
+<td>潟湖環境、城市保存及防洪治理逐步制度化。</td>
+</tr>
+<tr>
+<td>1987年</td>
+<td>威尼斯及其潟湖列入聯合國教科文組織世界遺產名錄</td>
+<td>肯定其歷史城市景觀、建築藝術與潟湖文化的世界價值。</td>
+</tr>
+<tr>
+<td>2003年</td>
+<td>MOSE 潟湖防洪閘門系統工程動工</td>
+<td>透過可升降閘門降低部分高潮位與風暴潮對城市的威脅。</td>
+</tr>
+<tr>
+<td>2019年</td>
+<td>威尼斯再次遭遇嚴重高潮位與洪水</td>
+<td>氣候變遷、海平面上升及城市防洪問題再度受到關注。</td>
+</tr>
+<tr>
+<td>2020年</td>
+<td>MOSE 系統首次正式啟動以阻擋高潮位</td>
+<td>威尼斯開始以大型工程系統應對部分洪水風險。</td>
+</tr>
+<tr>
+<td>2021年</td>
+<td>威尼斯歷史中心開始對大型郵輪實施重要航行限制</td>
+<td>城市試圖平衡觀光經濟、潟湖生態與歷史景觀保護。</td>
+</tr>
+<tr>
+<td>2020年代</td>
+<td>威尼斯持續面對觀光壓力、人口流失、高潮位及潟湖生態變化</td>
+<td>如何保存活的歷史城市，成為長期治理的重要課題。</td>
+</tr>
+</tbody></table>
+<p>威尼斯不只是歷史建築的集合，而是城市、潟湖、水道、島嶼與人類活動共同形成的文化景觀。它的保存必須同時考慮建築、居民生活、觀光、交通、防洪與生態。<a href="https://whc.unesco.org/en/list/394?utm_source=chatgpt.com">UNESCO World Heritage Centre</a></p>
+<hr>
+<h2 id="八、威尼斯歷史上的重要人物">八、威尼斯歷史上的重要人物</h2>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>時代</th>
+<th>主要事蹟</th>
+<th>歷史地位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保羅奇奧・阿納費斯托（Paoluccio Anafesto）</td>
+<td>傳統上為8世紀初</td>
+<td>被傳統記載視為第一任威尼斯總督</td>
+<td>象徵早期自治傳統，但相關史料仍有爭議。</td>
+</tr>
+<tr>
+<td>恩里科・丹多洛（Enrico Dandolo）</td>
+<td>約1107～1205年</td>
+<td>威尼斯總督，主導威尼斯參與第四次十字軍</td>
+<td>威尼斯海上帝國擴張的重要人物。</td>
+</tr>
+<tr>
+<td>馬可・波羅（Marco Polo）</td>
+<td>1254～1324年</td>
+<td>商人與旅行者，其東方旅行經歷由《馬可・波羅遊記》傳世</td>
+<td>代表中世紀威尼斯與亞洲的交流。</td>
+</tr>
+<tr>
+<td>弗朗切斯科・福斯卡里（Francesco Foscari）</td>
+<td>1373～1457年</td>
+<td>威尼斯總督，任內威尼斯擴大義大利本土領地</td>
+<td>反映共和國陸上擴張的重要階段。</td>
+</tr>
+<tr>
+<td>阿爾杜斯・馬努提烏斯（Aldus Manutius）</td>
+<td>約1450～1515年</td>
+<td>印刷出版家，推動古典著作出版與書籍形式革新</td>
+<td>威尼斯印刷與人文主義出版的代表人物。</td>
+</tr>
+<tr>
+<td>喬爾喬內（Giorgione）</td>
+<td>約1477～1510年</td>
+<td>威尼斯畫派的重要畫家</td>
+<td>影響文藝復興繪畫的色彩與詩意表現。</td>
+</tr>
+<tr>
+<td>提香（Titian）</td>
+<td>約1488／1490～1576年</td>
+<td>威尼斯畫派代表畫家</td>
+<td>以色彩、人物肖像與大型宗教、神話畫作聞名。</td>
+</tr>
+<tr>
+<td>丁托列托（Tintoretto）</td>
+<td>1518～1594年</td>
+<td>威尼斯重要畫家</td>
+<td>以動態構圖、戲劇性光線及大型宗教畫作聞名。</td>
+</tr>
+<tr>
+<td>安東尼奧・維瓦第（Antonio Vivaldi）</td>
+<td>1678～1741年</td>
+<td>作曲家、小提琴家，曾在威尼斯從事音樂活動</td>
+<td>巴洛克音樂的重要代表。</td>
+</tr>
+<tr>
+<td>丹尼爾・馬寧（Daniele Manin）</td>
+<td>1804～1857年</td>
+<td>1848年威尼斯革命的領導者之一</td>
+<td>代表威尼斯近代共和主義與民族解放運動。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="九、威尼斯歷史上的重要地點">九、威尼斯歷史上的重要地點</h2>
+<table>
+<thead>
+<tr>
+<th>地點</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>聖馬可大教堂</td>
+<td>威尼斯守護聖人與共和國政治認同的重要象徵，呈現濃厚的拜占庭藝術影響。</td>
+</tr>
+<tr>
+<td>總督宮</td>
+<td>威尼斯共和國的政治與行政中心，展現其獨特的共和政體。</td>
+</tr>
+<tr>
+<td>里亞托橋</td>
+<td>位於大運河的重要交通與商業地帶，反映威尼斯商業城市的發展。</td>
+</tr>
+<tr>
+<td>聖馬可廣場</td>
+<td>威尼斯的公共、宗教與政治核心，也是城市形象的代表。</td>
+</tr>
+<tr>
+<td>穆拉諾島</td>
+<td>以玻璃製造工藝聞名，代表威尼斯傳統工藝與專業製造業。</td>
+</tr>
+<tr>
+<td>托爾切洛島</td>
+<td>保存潟湖早期聚落及宗教歷史的重要遺跡。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十、威尼斯歷史的總結時間軸">十、威尼斯歷史的總結時間軸</h2>
+<pre><code class="language-text">5～6世紀
+│
+├─ 潟湖聚落逐漸形成
+│
+7～8世紀
+│
+├─ 地方自治逐步發展
+├─ 多個潟湖聚落競爭與整合
+│
+9～11世紀
+│
+├─ 里亞托成為城市核心
+├─ 828年：聖馬可遺骸傳入威尼斯
+├─ 10世紀：成為重要海上強權
+└─ 1063年：聖馬可大教堂重建工程開始
+│
+12～15世紀
+│
+├─ 地中海貿易網絡擴張
+├─ 1204年：第四次十字軍攻陷君士坦丁堡
+├─ 馬可・波羅與歐亞交流
+└─ 威尼斯共和國海權達到高峰
+│
+15～17世紀
+│
+├─ 文藝復興藝術繁榮
+├─ 印刷出版業發展
+├─ 提香、丁托列托等畫家活躍
+└─ 與鄂圖曼帝國持續競爭
+│
+17～18世紀
+│
+├─ 海上貿易優勢逐漸下降
+├─ 長期戰爭與瘟疫削弱國力
+└─ 1797年：威尼斯共和國覆亡
+│
+1797～1866年
+│
+├─ 法國與奧地利先後統治
+├─ 1848～1849年：短暫恢復共和
+└─ 1866年：併入義大利王國
+│
+1866年至今
+│
+├─ 1895年：威尼斯國際藝術雙年展創辦
+├─ 1966年：嚴重洪水
+├─ 1987年：列入世界遺產
+├─ 2020年：MOSE防洪系統正式啟動
+└─ 當代：文化保存、觀光治理與潟湖保護
+</code></pre>
+<h2 id="十一、理解威尼斯歷史的五個關鍵">十一、理解威尼斯歷史的五個關鍵</h2>
+<p><strong>1. 地理環境塑造城市。</strong><br>潟湖提供防禦條件，水路則成為城市交通、貿易與生活的核心。</p>
+<p><strong>2. 商業與海權支撐共和國。</strong><br>威尼斯透過航運、造船、金融、外交與海外商業據點建立影響力。</p>
+<p><strong>3. 東西方交流是威尼斯繁榮的重要來源。</strong><br>它連結拜占庭、伊斯蘭世界、義大利及其他地中海地區，在商品、知識與藝術交流中扮演重要角色。</p>
+<p><strong>4. 海權衰退不等於文化衰退。</strong><br>即使威尼斯逐漸失去海上霸權，繪畫、音樂、出版、建築與城市景觀仍持續影響歐洲文化。</p>
+<p><strong>5. 威尼斯的保存是一項持續進行的工程。</strong><br>今日的挑戰不僅是修復古蹟，也包括防洪、海平面上升、潟湖生態、觀光壓力與居民生活。</p>
+<h3 id="參考資料">參考資料</h3>
+<ul>
+<li><a href="https://whc.unesco.org/en/list/394?utm_source=chatgpt.com">聯合國教科文組織：威尼斯及其潟湖世界遺產</a></li>
+<li><a href="https://visit.venice.it/plan-your-trip/who-founded-venice?utm_source=chatgpt.com">威尼斯官方旅遊網站：威尼斯的起源與歷史證據</a></li>
+<li><a href="https://www.italia.it/en/veneto/venice/things-to-do/venice-and-its-lagoon?utm_source=chatgpt.com">義大利官方旅遊網站：威尼斯及其潟湖</a></li>
+<li><a href="https://palazzoducale.visitmuve.it/en/exhibition/exhibition-venetia-1600/?utm_source=chatgpt.com">威尼斯總督宮：威尼斯1600年歷史展覽</a></li>
+</ul>
+<p>**總結：**威尼斯的歷史是一部由地理環境、海上貿易、共和政治與文化創造共同寫成的歷史。它從潟湖聚落逐步成為地中海海上強權，再從獨立共和國轉型為現代義大利的文化名城。威尼斯的獨特性，不只在於運河與建築，更在於人類如何在特殊的潟湖環境中建立城市、發展商業，並留下跨越東西方的文化遺產。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>
