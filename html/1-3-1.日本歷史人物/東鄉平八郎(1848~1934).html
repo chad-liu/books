@@ -1,0 +1,689 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="東鄉平八郎生平大事記（1848－1934）">東鄉平八郎生平大事記（1848－1934）</h1>
+<p><a href="https://images.openai.com/static-rsc-4/0qzCk_GLx00caeLSIQUguKsY2H-2X9vFEmnDrf8KVs9c66acoUiJhG0MLHFBrcVpERtISbq8QtOalQfX8GivFfD4smQ7EMByi6IQ7Z5FrjslzY5U6iZ0W8BtXf8pDwVNpUy5RqnG6gJLtiwW3kVrreRPaBQfpy_3aY7NS0Jm6nY?purpose=inline">The Great Pacific War – Hector Charles Bywater – War Crows</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/2AMcbnhuyjrEQCqQSCvlKUPnljzWdlAXSOif6XpKK73VeCOMMbWgA6AOtrulP2wxzdNumYhDPx8Eij1iStBIB7ciNRJYl80UKPqyMIMVivk9k4UUK_wHkcJINAkSQV6eKeYJyCRI51lG9BVJa4-7K_Nd02XhyZilTmfAvULW7rc?purpose=inline">Drifting Toward Tsushima | Naval History Magazine - February 2022 Volume 36, Number 1</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/fbQf-JiQPPGn82Qjvey2kVaqlk88JmPSAr9KVd85HhVPHgQStv08amuy71HdOF-DVHEkbhWxxUDWDYHGHlqIHr0Emu5nz11u4gr5b5QrhyewkztlhPtUPx08fJxDe_iYLFjq5dpctdx6xtG3987khHZIyPVXnzRGU_oS_26qjRs?purpose=inline">Từ Minh Trị đến hải chiến Tsushima – Hành trình lột xác của Nhật Bản</a></p>
+<p>東鄉平八郎（とうごう へいはちろう，Tōgō Heihachirō，1848年1月27日－1934年5月30日），日本明治時代至昭和初期著名海軍將領，曾任日本聯合艦隊司令長官，因在1905年日俄戰爭的對馬海峽海戰中擊敗俄羅斯波羅的海艦隊而聞名世界。</p>
+<p>他出身於薩摩藩武士家庭，青年時期經歷薩英戰爭與戊辰戰爭，明治維新後赴英國學習海軍技術。返日後加入日本帝國海軍，歷經甲午戰爭與日俄戰爭，逐步成為日本海軍最具代表性的人物之一。</p>
+<p>東鄉平八郎的生涯，反映日本從幕末封建藩國海軍，轉型為近代化國家海軍的過程；同時，他也與日本近代對外軍事擴張及帝國主義發展密切相關。</p>
+<h2 id="一、出生、家世與幕末動盪（1848－1868）">一、出生、家世與幕末動盪（1848－1868）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/ZuBhqGesnmTT94zuv--uIrY6l80gxdYzrhUIx5ADp9o5RHBdHN22355oSXvsy-5_A_bVS7BK6xTmAnLjcA8MWS5Mujk_EBixWJMTFbyem6FMQS_8He0tPawm9EcSNmnu1WxVnUfBPNSNCMga5sVRRgJ90re0vLbK3TI7qjG71P0?purpose=inline">薩摩藩使節の肖像 | アートプリント</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/etKo-bzdxp3uWDMRpDZ5cnifaJdsMXStr8zcbmmpA3XQw4qYq-0VSeFvTC-vCcxA7ZdqoBtCBw1CnmGy3HIRXOB_iS9-5zvspDm65DhKsLkSIrJhe_nqUZKV1smrt_mwvogvoIQyNHt8O0wK2oXGmTAMXRtqye-kpxmeeG8nLwY?purpose=inline">歴史ロード“維新ふるさとの道” | 観光スポット | 【公式】鹿児島県観光サイト かごしまの旅</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/32RBh6l5FkfHsDvMMLGiYXBtRP8MZJ7EMW_gplF6DWIkkL4bNf0g8Hw-lUOeIOIQSvtNvsiZ6lujJ_LsPIQ4za_SMO-c5LQuWZQvmL7I0Mbbm1eNsJ1iMADwlAxCxmkJONM7ttaUaeWnlLeF6zgRAg27sZFgtOQcwZfi9ltu5s4?purpose=inline">写真ギャラリー1枚め｜薩英戦争が日本の近代化にもたらしたもの、良好な関係性と明治維新への原動力 幕末維新史探訪2023（29）薩英戦争160年―日本の近代化に与えた影響とは③ | JBpress (ジェイビープレス)</a></p>
+<p>5</p>
+<h3 id="1848年：出生於薩摩藩">1848年：出生於薩摩藩</h3>
+<ul>
+<li>1月27日，東鄉平八郎出生於日本薩摩國鹿兒島（今鹿兒島縣鹿兒島市）。</li>
+<li>父親東鄉實友是薩摩藩士，家族屬於薩摩藩武士階層。</li>
+<li>東鄉家世代服務於島津氏。</li>
+<li>當時日本仍處於江戶幕府統治之下，西方列強逐漸要求日本開放港口，幕府體制開始面臨危機。</li>
+</ul>
+<h3 id="1853年：美國佩里艦隊來航">1853年：美國佩里艦隊來航</h3>
+<ul>
+<li>美國海軍准將馬修・佩里率領艦隊抵達日本浦賀。</li>
+<li>美國要求日本開放港口，促使日本面臨前所未有的外交與軍事壓力。</li>
+<li>東鄉當時年僅5歲。</li>
+<li>西方軍事力量的出現，成為幕末日本推動軍事改革的重要背景。</li>
+</ul>
+<h3 id="1863年：薩英戰爭">1863年：薩英戰爭</h3>
+<ul>
+<li>薩摩藩與英國因生麥事件及賠償問題發生衝突。</li>
+<li>8月，英國艦隊砲擊鹿兒島，史稱薩英戰爭。</li>
+<li>年輕的東鄉平八郎參與薩摩藩的海岸防衛及軍事活動。</li>
+<li>薩摩藩親身體認到英國海軍的技術優勢。</li>
+<li>這次經驗使薩摩藩更加重視西方軍事技術與近代海軍建設。</li>
+</ul>
+<h3 id="1866年：加入薩摩藩海軍">1866年：加入薩摩藩海軍</h3>
+<ul>
+<li>東鄉進入薩摩藩海軍服役。</li>
+<li>開始接受近代艦船操作、砲術及海軍作戰訓練。</li>
+<li>當時薩摩藩積極引進西方船艦與軍事技術，逐漸建立自己的海軍力量。</li>
+</ul>
+<h3 id="1868年：戊辰戰爭">1868年：戊辰戰爭</h3>
+<ul>
+<li>1月，戊辰戰爭爆發。</li>
+<li>明治新政府與支持幕府的勢力展開戰爭。</li>
+<li>東鄉在薩摩藩海軍服役，搭乘春日號等軍艦參與海上作戰。</li>
+<li>參與阿波沖海戰等戰事。</li>
+<li>戊辰戰爭最終以幕府勢力失敗、明治新政府建立而告終。</li>
+</ul>
+<h3 id="1869年：箱館戰爭結束">1869年：箱館戰爭結束</h3>
+<ul>
+<li>明治政府軍持續攻打北海道箱館的舊幕府軍。</li>
+<li>東鄉參與新政府方面的海軍行動。</li>
+<li>6月，舊幕府軍投降，戊辰戰爭正式結束。</li>
+<li>日本新政府開始推動中央集權與軍事制度現代化。</li>
+</ul>
+<h2 id="二、赴英留學與近代海軍教育（1871－1878）">二、赴英留學與近代海軍教育（1871－1878）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/3XSNL_D7FbfBKgY8y1jWIPUS0RyefeRGcMsVNDZ65zacC9p98u4fEnTWykW8qLLP16XighFTrPxszlZo4qZAYfdfPuoa5j_nM9p-T1hGQcZPQjgaCMZQhOsPtgEC1Ik6bIrznK4FyfzgYhWio4zjhgX6HDGMDG11M7oOfmymKDM?purpose=inline">Cadets Man Yards of HMS Worcester posters &amp; prints by Anonymous</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/_KQWBeX3MDmfB3oxhhDltiP1sUFsGhXHlCpDNja6JhMZdtiQ7nCh4GPx4wO1ql1y6-ojXvm7RFB5SYjHyP6oCB4VWJUGOfucUuq5M-viHeWuhe5GdPvzH12S3F6uq4gI4ZKdnNuspzW8RR7lGuzM6tZxPw4nMrfDdbI_MERKP0gGKgAoT5ODgnreulqUxTTl?purpose=inline">Royal Naval College</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/CHbzw4CeXl4d1oj7AIw5V8AXxD_yTfefamb8u3H3oduAMypddNK480gFI19syVk6WRctpyDTosP5-YbX0ZLTJ0it6CjsZ7t5m975UIiUJom1LAScmLw8vYEV4IYzEPkTBr_es2mti2Xq7EyS9oxfEcVYmdFzgE0U6UBYCx1oc_Y?purpose=inline">Sultan (1870) - Historia wojen</a></p>
+<p>9</p>
+<h3 id="1871年：奉派赴英國留學">1871年：奉派赴英國留學</h3>
+<ul>
+<li>明治政府為建立近代化海軍，選派年輕海軍軍官及學生赴歐洲學習。</li>
+<li>東鄉平八郎被派往英國，學習海軍技術、航海、數學及相關軍事知識。</li>
+<li>他在英國接受訓練，主要搭乘英國海軍訓練船伍斯特號（HMS Worcester）。</li>
+<li>英國當時是世界海軍強國，其海軍制度與技術對日本海軍現代化具有深遠影響。</li>
+</ul>
+<h3 id="1872－1874年：接受英國海軍訓練">1872－1874年：接受英國海軍訓練</h3>
+<ul>
+<li>在英國接受海軍專業訓練。</li>
+<li>學習航海、海軍砲術、數學、機械製圖及海軍相關知識。</li>
+<li>透過英國海軍訓練制度，了解近代海軍的組織、紀律及戰術。</li>
+<li>這段經歷對他日後指揮日本聯合艦隊具有重要影響。</li>
+</ul>
+<h3 id="1875年：搭乘訓練船環球航行">1875年：搭乘訓練船環球航行</h3>
+<ul>
+<li>東鄉搭乘英國訓練船 Hampshire 號進行遠洋航行。</li>
+<li>透過實際航行熟悉海洋環境、航海技術及遠洋船艦運作。</li>
+<li>這次經驗使他對全球海上交通與海軍活動有更廣泛的認識。</li>
+</ul>
+<h3 id="1876－1878年：繼續研習海軍技術">1876－1878年：繼續研習海軍技術</h3>
+<ul>
+<li>在英國繼續學習海軍相關知識。</li>
+<li>曾接觸英國軍艦建造及近代造船技術。</li>
+<li>1878年，搭乘日本向英國訂購的軍艦比叡號返國。</li>
+<li>長達約七年的英國留學，使東鄉成為日本海軍中具有西方教育背景的軍官。</li>
+</ul>
+<h3 id="1878年：返回日本">1878年：返回日本</h3>
+<ul>
+<li>返回日本帝國海軍服役。</li>
+<li>逐步擔任海軍軍官及艦艇職務。</li>
+<li>日本明治政府正積極建立近代化海軍，東鄉的海外經歷使他獲得進一步發展的機會。</li>
+</ul>
+<h2 id="三、日本帝國海軍的成長與甲午戰爭（1879－1895）">三、日本帝國海軍的成長與甲午戰爭（1879－1895）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/WPA_ZmpZMxEaZtkapnavhItAOfz9E3NLPWOjHukxDpyTKhu5OVV12bP3VKAnNW4cvXAQFv0zq9XVcp48JpTlRGgC9T5yqkHOfF_XUZukklgBwI3LnmUAwATkm6YDtkHc7FFDdBodvqF3TxpQ41y6ujq-a_owYwROjgCVmhUOvbs?purpose=inline">Naniwa 1885</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/bXr2jnN9bcC5oQSJy52aHq_FTE1sp4N3WAWcQyaezNvRsBYbVsjTDHJAlCQ8aPwlO36mB_mN5CrQF_5IUe77aQZ2m7IhSn7FotaYw41O_vWP90vNbCa_bjB0LQ8A-dndwRfUutIb5lo3c3Aip8DlUk4UyRUO0AD8HH7zTu9i3h4?purpose=inline">Great Naval Battle Yalu River | Free Photo Illustration - rawpixel</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/9Gtj3QaZVDVV1QgauQO_i65T95XzyL-Tw3bbLK7sFisSOJDIaRteXoaGPK1hPNIsBxtnnfxc9z6NpM0VDasd0Z2F6UxHuJc_EJTFVPJ1L63UPzHGPlgsEs8Y6FD3f_1XumR8aulCvJ3Yewnj8Id4kQfPTjpE3xb_gZPhH-jo7qg?purpose=inline">(2)The Outbreak of the First Sino-Japanese War | Academy of Chinese Studies - The Splendid Chinese Culture</a></p>
+<p>8</p>
+<h3 id="1880年代：逐步累積海軍實務經驗">1880年代：逐步累積海軍實務經驗</h3>
+<ul>
+<li>東鄉返國後歷任海軍艦艇及岸上相關職務。</li>
+<li>曾擔任軍艦艦長，累積艦艇管理、航海及作戰指揮經驗。</li>
+<li>日本海軍持續購買西方軍艦，並建立海軍軍官教育與艦隊編制制度。</li>
+<li>東鄉逐漸成為具有實務經驗的海軍軍官。</li>
+</ul>
+<h3 id="1890年：擔任浪速號艦長">1890年：擔任浪速號艦長</h3>
+<ul>
+<li>東鄉出任巡洋艦浪速號艦長。</li>
+<li>浪速號是日本海軍重要的巡洋艦之一。</li>
+<li>此後他與浪速號的關係，成為其軍事生涯的重要一環。</li>
+</ul>
+<h3 id="1894年：甲午戰爭爆發">1894年：甲午戰爭爆發</h3>
+<ul>
+<li>7月，中日兩國因朝鮮問題爆發戰爭。</li>
+<li>東鄉以浪速號艦長身分參與日本海軍作戰。</li>
+<li>日本海軍開始在黃海及朝鮮半島周邊展開軍事行動。</li>
+</ul>
+<h3 id="1894年8月25日：高陞號事件">1894年8月25日：高陞號事件</h3>
+<ul>
+<li>英國商船高陞號（Kowshing）受清朝方面租用，載運清軍前往朝鮮。</li>
+<li>東鄉指揮浪速號在豐島海戰相關行動中，命令擊沉高陞號。</li>
+<li>船上有大量清軍士兵及英國船員，事件造成重大傷亡。</li>
+<li>由於高陞號懸掛英國旗，事件引發國際外交爭議。</li>
+<li>英國方面後續進行法律及外交調查，事件並未演變為英日戰爭。</li>
+</ul>
+<p>歷史意義： 高陞號事件使東鄉平八郎受到國際關注，也顯示甲午戰爭期間日本海軍行動所涉及的國際法與外交問題。</p>
+<h3 id="1894年9月17日：黃海海戰">1894年9月17日：黃海海戰</h3>
+<ul>
+<li>日本聯合艦隊與清朝北洋艦隊在黃海交戰。</li>
+<li>東鄉指揮浪速號參戰。</li>
+<li>日本海軍在戰鬥中展現較強的機動能力與火力運用。</li>
+<li>北洋艦隊遭受重大損失，但並未在此戰後立即完全消失。</li>
+</ul>
+<h3 id="1895年：甲午戰爭結束">1895年：甲午戰爭結束</h3>
+<ul>
+<li>清朝戰敗，與日本簽訂《馬關條約》。</li>
+<li>日本取得台灣、澎湖及遼東半島等利益；但遼東半島後因三國干涉還遼而歸還清朝。</li>
+<li>東鄉升任海軍少將。</li>
+<li>此後陸續擔任海軍教育及艦隊相關職務。</li>
+</ul>
+<h2 id="四、海軍高層歷練與日俄戰爭前夕（1895－1903）">四、海軍高層歷練與日俄戰爭前夕（1895－1903）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/jExOqoFbNNcIkgqj58aL3cfERFO_Iu1B6u_EGhBzTcCDR9lelhxO1JuMRgaLff4DZIQPMWRT3K5oWcJQDSxzpKlfd99FZRGxrHik-fDKPRn-u0pof_9CFbS8GSCj_ntkIgA8lkpUVvgYoSpCSpFWCRvmAu616pSWVTmU62IF8qY?purpose=inline">Heihachiro Togo, Japanese Naval Commander, Russo-Japanese War</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/dBn48gr1raJz2JX0e-Pzer-Wr1Mjfc7BA7oV_Sr-biaohGN3Hwzcm4x5Oy-chDHxD_SVuazhjQwn8j30ycwbnuJChwEOLqJfwiH0O72VNA3AQU0_OtHLcVcdSGGYxMz42C-QdSuhK6RBswurjzV7U18Sr2Px8Dez0wHpP4e1Lnzu8ego8_ONmV_mKX9tRINm?purpose=inline">Mikasa</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/XnP_4A1JYVrcPRAiaEkS9B2IzfP1wIWHAvcm6pWyB7JcOyxqsUcO4pYEh5pDH0_b_2YCAjo4syfzJl-BKe8r4HTBdnRWe2vIZMXsUyHNv66-3BhxnoeyoOFQkdyQAnl2ZQhsAUrbM-ODoRphqp0j2QmrccOidcBoARPXYciy1DA?purpose=inline">[Photo story] Russo-Japanese War: A war fought on Chinese soil and its hard lessons</a></p>
+<p>6</p>
+<h3 id="1895年：升任海軍少將">1895年：升任海軍少將</h3>
+<ul>
+<li>甲午戰爭結束後，東鄉升任海軍少將。</li>
+<li>開始從艦艇指揮官轉向海軍高層管理職務。</li>
+<li>日本海軍在甲午戰爭勝利後，進一步擴大軍艦建造與海軍組織。</li>
+</ul>
+<h3 id="1896年：擔任海軍大學校校長">1896年：擔任海軍大學校校長</h3>
+<ul>
+<li>出任海軍大學校校長。</li>
+<li>負責海軍高級軍官的教育與訓練。</li>
+<li>海軍大學校是日本培養高級海軍指揮官及參謀人員的重要機構。</li>
+<li>東鄉在此期間參與海軍人才培養與軍事教育。</li>
+</ul>
+<h3 id="1898年：升任海軍中將">1898年：升任海軍中將</h3>
+<ul>
+<li>東鄉升任海軍中將。</li>
+<li>此後陸續擔任常備艦隊司令長官、舞鶴鎮守府司令長官等重要職務。</li>
+<li>日本海軍逐步擴大艦隊規模，並將俄羅斯視為東亞地區的重要戰略競爭對手。</li>
+</ul>
+<h3 id="1900年：參與日本海軍戰略整備">1900年：參與日本海軍戰略整備</h3>
+<ul>
+<li>日本海軍持續引進英國及其他歐洲國家的軍艦與技術。</li>
+<li>東鄉在海軍高層任職，參與艦隊管理與戰備相關工作。</li>
+<li>此時俄羅斯勢力向中國東北及朝鮮半島周邊擴張，日本與俄羅斯的矛盾日益加深。</li>
+</ul>
+<h3 id="1902年：英日同盟成立">1902年：英日同盟成立</h3>
+<ul>
+<li>1月30日，英國與日本簽訂《英日同盟協約》。</li>
+<li>日本藉由與英國結盟，改善其國際戰略地位。</li>
+<li>英國是當時世界主要海軍強國，對日本海軍的發展具有重要影響。</li>
+</ul>
+<h3 id="1903年：出任聯合艦隊司令長官">1903年：出任聯合艦隊司令長官</h3>
+<ul>
+<li>日本與俄羅斯在滿洲、朝鮮問題上的談判陷入僵局。</li>
+<li>12月，東鄉平八郎出任日本聯合艦隊司令長官。</li>
+<li>升任海軍大將。</li>
+<li>接掌日本海軍主要作戰艦隊。</li>
+<li>開始制定對俄羅斯海軍作戰的準備與部署。</li>
+</ul>
+<p>歷史意義： 東鄉在日俄戰爭前夕被任命為聯合艦隊司令長官，成為日本海軍對俄作戰的最高指揮者之一。這項任命使他在日本近代軍事史上的地位大幅提升。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+1</p>
+<h2 id="五、日俄戰爭與對馬海峽海戰（1904－1905）">五、日俄戰爭與對馬海峽海戰（1904－1905）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/dJfxXeRxGYgiwSbN4gccPB_5xKy7KrGeiakU0d9KEDIhsmKSztCYSuwqgTfZs9b2WXOnuPQrJ9KZhvPFMz6VoWkR0u0pJ4dI6A0UuPCh-N4JRMsB1GTNcomA0LgV-9Cbt3pu6IXfdvvPpPdoQ4XcOaFKCAqhyLEVNXUa9yzmjVM?purpose=inline">World roundup: February 8-9 2025 - by Derek Davison</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/dBn48gr1raJz2JX0e-Pzer-Wr1Mjfc7BA7oV_Sr-biaohGN3Hwzcm4x5Oy-chDHxD_SVuazhjQwn8j30ycwbnuJChwEOLqJfwiH0O72VNA3AQU0_OtHLcVcdSGGYxMz42C-QdSuhK6RBswurjzV7U18Sr2Px8Dez0wHpP4e1Lnzu8ego8_ONmV_mKX9tRINm?purpose=inline">Mikasa</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/63PfODPbK1uKXMbM5MQEvA1VroK1VeKnUQQWZha7TzRPMPGpPqGWVmAN8f7pD2DYVbYjeaW__zvXf965EJROE9XHic0c8kziTCO_820S5MP0Q_cq91p9UvMU2ZypGXOq0oM_j-IjJA3mqHMSGsrQSzYODPcY8dvnaJXH5dSF6Dk?purpose=inline">Russo-Japanese War, 1905. /Nbattle Of Tsushima, 27-28 May 1905, The Last And Most Decisive Naval Action In The Conflict, In Which The Japanese Navy Destroyed A Larger Russian Fleet. Painting, C1905, By Tojo Shotaro. Poster Print by Granger Collection - Posterazzi</a></p>
+<p>5</p>
+<h3 id="1904年2月：日俄戰爭爆發">1904年2月：日俄戰爭爆發</h3>
+<ul>
+<li>日本與俄羅斯因滿洲及朝鮮半島的勢力範圍問題爆發戰爭。</li>
+<li>2月8日至9日，日本海軍對旅順港的俄羅斯太平洋艦隊發動攻擊。</li>
+<li>東鄉平八郎指揮日本聯合艦隊參與作戰。</li>
+<li>日本試圖削弱俄羅斯在遠東的海軍力量，確保日本軍隊能夠在朝鮮半島及中國東北沿海地區運輸與作戰。</li>
+</ul>
+<h3 id="1904年2月：旅順口外海戰">1904年2月：旅順口外海戰</h3>
+<ul>
+<li>日本海軍對旅順港外的俄羅斯艦隊發動魚雷攻擊。</li>
+<li>俄羅斯艦隊部分軍艦受損。</li>
+<li>日本未能一次摧毀俄羅斯太平洋艦隊。</li>
+<li>隨後日本海軍對旅順港實施封鎖，試圖限制俄軍艦艇出港。</li>
+</ul>
+<h3 id="1904年8月10日：黃海海戰">1904年8月10日：黃海海戰</h3>
+<ul>
+<li>俄羅斯旅順艦隊企圖突破日本海軍封鎖。</li>
+<li>日本聯合艦隊與俄羅斯艦隊在黃海交戰。</li>
+<li>東鄉指揮日本艦隊攔截俄軍。</li>
+<li>俄羅斯艦隊未能成功突破封鎖，部分艦艇返回旅順港。</li>
+<li>日本海軍繼續控制旅順外海的重要海域。</li>
+</ul>
+<h3 id="1904年末：旅順陷落">1904年末：旅順陷落</h3>
+<ul>
+<li>日本陸軍持續圍攻旅順。</li>
+<li>203高地攻防戰造成雙方重大傷亡。</li>
+<li>1905年1月，俄軍旅順守備部隊投降。</li>
+<li>旅順俄羅斯艦隊的主要作戰能力受到嚴重打擊。</li>
+<li>日本海軍因而能夠將更多注意力集中於俄羅斯波羅的海艦隊的到來。</li>
+</ul>
+<h3 id="1905年5月：俄羅斯波羅的海艦隊抵達遠東">1905年5月：俄羅斯波羅的海艦隊抵達遠東</h3>
+<ul>
+<li>俄羅斯為扭轉遠東戰局，派遣波羅的海艦隊遠航至亞洲。</li>
+<li>這支艦隊自歐洲出發，經過非洲及印度洋，航行距離極為遙遠。</li>
+<li>日本海軍密切監視其航線，準備在朝鮮半島與日本之間的海域迎戰。</li>
+</ul>
+<h3 id="1905年5月27日至28日：對馬海峽海戰">1905年5月27日至28日：對馬海峽海戰</h3>
+<p><a href="https://images.openai.com/static-rsc-4/2AMcbnhuyjrEQCqQSCvlKUPnljzWdlAXSOif6XpKK73VeCOMMbWgA6AOtrulP2wxzdNumYhDPx8Eij1iStBIB7ciNRJYl80UKPqyMIMVivk9k4UUK_wHkcJINAkSQV6eKeYJyCRI51lG9BVJa4-7K_Nd02XhyZilTmfAvULW7rc?purpose=inline">Drifting Toward Tsushima | Naval History Magazine - February 2022 Volume 36, Number 1</a></p>
+<p><a href="https://www.usni.org/magazines/naval-history-magazine/2022/february/drifting-toward-tsushima?utm_source=chatgpt.com">usni.org</a></p>
+<p>這是東鄉平八郎軍事生涯中最重要的一場戰役，也是近代海戰史上具有重大影響的事件。</p>
+<p>戰役背景</p>
+<ul>
+<li>俄羅斯波羅的海艦隊經長途航行抵達東亞。</li>
+<li>俄軍希望突破日本海軍封鎖，前往海參崴。</li>
+<li>日本聯合艦隊在東鄉指揮下，於對馬海峽附近迎擊俄軍。</li>
+</ul>
+<p>戰役經過</p>
+<p>1. 5月27日：日本艦隊發現俄軍</p>
+<ul>
+<li>日本艦隊掌握俄羅斯艦隊行蹤。</li>
+<li>東鄉命令聯合艦隊出動迎戰。</li>
+<li>日本旗艦為戰艦三笠號（Mikasa）。</li>
+</ul>
+<p>2. 日本艦隊實施「丁字戰法」</p>
+<ul>
+<li>東鄉指揮艦隊轉向，利用艦隊隊形與火力集中攻擊俄軍。</li>
+<li>日本艦隊逐步取得戰術優勢。</li>
+<li>俄羅斯艦隊受到密集炮火攻擊。</li>
+</ul>
+<p>3. 俄羅斯艦隊遭受重大損失</p>
+<ul>
+<li>俄軍多艘戰艦被擊沉或遭到俘虜。</li>
+<li>俄軍艦隊的組織與作戰能力迅速瓦解。</li>
+<li>部分俄羅斯軍艦成功逃離，但未能完成原定任務。</li>
+</ul>
+<p>4. 5月28日：戰役結束</p>
+<ul>
+<li>日本海軍取得決定性勝利。</li>
+<li>俄羅斯波羅的海艦隊主力幾乎被摧毀。</li>
+<li>日本取得對日本海及朝鮮半島周邊海域的制海權。</li>
+</ul>
+<p>歷史意義</p>
+<ul>
+<li>日本成為近代亞洲第一個在大型海戰中擊敗歐洲列強海軍的國家。</li>
+<li>俄羅斯遠東海軍力量遭受重大打擊。</li>
+<li>日俄戰爭的戰略形勢因此明顯向日本傾斜。</li>
+<li>東鄉平八郎的國際聲望大幅提升，西方媒體常將他比作英國海軍名將納爾遜。</li>
+</ul>
+<h3 id="1905年9月：日俄戰爭結束">1905年9月：日俄戰爭結束</h3>
+<ul>
+<li>日本與俄羅斯在美國調停下簽訂《朴茨茅斯條約》。</li>
+<li>日俄戰爭正式結束。</li>
+<li>日本取得朝鮮半島的優勢地位，並獲得俄羅斯在中國東北部分租借權益及南樺太等利益。</li>
+<li>東鄉因對馬海戰的勝利，成為日本最受尊崇的海軍將領之一。</li>
+</ul>
+<h2 id="六、戰後海軍領導與政治地位（1905－1914）">六、戰後海軍領導與政治地位（1905－1914）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/jExOqoFbNNcIkgqj58aL3cfERFO_Iu1B6u_EGhBzTcCDR9lelhxO1JuMRgaLff4DZIQPMWRT3K5oWcJQDSxzpKlfd99FZRGxrHik-fDKPRn-u0pof_9CFbS8GSCj_ntkIgA8lkpUVvgYoSpCSpFWCRvmAu616pSWVTmU62IF8qY?purpose=inline">Heihachiro Togo, Japanese Naval Commander, Russo-Japanese War</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/cSIiI_boXhJA2QGji7RWA-rBS1C-g2g-PywA0TL9zjxapUdS_HqXCVQj-NmmVrW9eGtfW1D-96x4Lk_SA01gzP2oWNpDGHbGHVDjbBMPnj9S3PytWbMKdFxCLcBaT2-5lw1SPBviZtZnob6NPBd6aZj6w6xMewm7h-yL0R8tUrU?purpose=inline">NH 121030 Group of Japanese Officers in 1904</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/_9fjeQACqJ-YI2lnasHKaHaPjYEkpaK2cu-Ti_t2JqC9c0xYH0LrAiX0b7b6kWrgkb02SavwCYBgq25OWCpzNkutJ76nwicBgJJJ5Drb4Hk0poSS3hhcpu8QlTfN9VOTBhDPg7HOgzcJuJkkccYlCp-fKGXZBiaGUesFzb3cXPs?purpose=inline">日露戦争はやわかり ｜ 日露戦争特別展2</a></p>
+<p>5</p>
+<h3 id="1905年：出任海軍軍令部長">1905年：出任海軍軍令部長</h3>
+<ul>
+<li>日俄戰爭結束後，東鄉出任海軍軍令部長。</li>
+<li>參與日本海軍戰略規劃與組織整備。</li>
+<li>日本海軍開始檢討日俄戰爭的經驗，進一步發展戰艦、砲術與艦隊作戰理論。</li>
+</ul>
+<h3 id="1906年：獲英國功績勳章">1906年：獲英國功績勳章</h3>
+<ul>
+<li>東鄉獲英國授予功績勳章（Order of Merit）。</li>
+<li>這項榮譽反映他在國際海軍界的聲望。</li>
+<li>同年，日本國內持續以對馬海戰勝利作為國家軍事成就的重要象徵。</li>
+</ul>
+<h3 id="1907年：受封伯爵">1907年：受封伯爵</h3>
+<ul>
+<li>日本政府因其日俄戰爭的軍事貢獻，授予東鄉伯爵爵位。</li>
+<li>他正式進入日本華族制度中的高級貴族階層。</li>
+<li>在日本社會中，他被視為國家英雄。</li>
+</ul>
+<h3 id="1909年：卸下海軍軍令部長職務">1909年：卸下海軍軍令部長職務</h3>
+<ul>
+<li>東鄉逐步退出海軍日常作戰及行政決策。</li>
+<li>仍然在日本海軍中具有極高威望。</li>
+<li>日本海軍開始由下一代將領接掌主要職務。</li>
+</ul>
+<h3 id="1913年：獲授元帥稱號">1913年：獲授元帥稱號</h3>
+<ul>
+<li>東鄉獲授日本海軍元帥稱號。</li>
+<li>元帥是日本軍界極高的榮譽性地位。</li>
+<li>此後他主要以海軍元老身分參與國家軍事與教育相關事務。</li>
+</ul>
+<h2 id="七、晚年、皇室教育與海軍元老時期（1914－1934）">七、晚年、皇室教育與海軍元老時期（1914－1934）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/QsJ3fw5QcSl91UNzIOW21NlkktfXtNT02TpIijjxAm_4yV7jqZGVf24aBCfGMJKTYUO2uxGGSvaPwg4DDl9z8qFZ3mlFPx6sSGkybH0MnM_BYZPz7gP0_bBdDOaLT-00OYCXWPuBLmgyqmCL9rBMVIXda_ij8cg-_a-a3RDgXMo?purpose=inline">令人瞠目结舌的日本近现代暗杀潮_百科TA说</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/s6ECJSDmR7d1ZHRHDR3cWAOUUyfl0fGS2hvqK7gF3xUou73T54rpCL54TqE7UUokxWAS2h8Vjvfk5GMikvJVzXG70O8GFCjnpBxHFL-Dsq2oMLLsfoRqm6ZQ6l_sjtKcc22n6viqGovkH7Kmo-YRi69buAaNPqKVTTTHFpa0rPuWGhR_BMtNUGCradz2yL5H?purpose=inline">Crown Prince Hirohito And Togo Heihachiro</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/qhLLfVhBoGP-C2Lx8-kS2FS3AvzptdUMJTvr6LfOKlZSPKLFhiByABR-Ia9NDk9oWHYPZuJGFPt4xCNuEwWsYSWylA2nVWjWCaBMBrLVppsHywG1CyWbaP8HNu1aQZSeCg99qLSqAEL6n7rtbz5ZnXJ-zyRgfoNQzdo4mg3bBK8?purpose=inline">葬列（東郷平八郎の国葬） | 昭和館デジタルアーカイブ</a></p>
+<p>6</p>
+<h3 id="1914年：出任東宮御學問所總裁">1914年：出任東宮御學問所總裁</h3>
+<ul>
+<li>日本進入大正時代。</li>
+<li>東鄉出任東宮御學問所總裁，負責皇太子裕仁（後來的昭和天皇）的教育事務。</li>
+<li>他在這個職位上服務多年，對皇太子的教育及軍事思想形成具有一定影響。</li>
+<li>此時東鄉已不再直接指揮艦隊，而是以海軍元老身分參與皇室教育及國家事務。</li>
+</ul>
+<h3 id="1918年：第一次世界大戰結束前後">1918年：第一次世界大戰結束前後</h3>
+<ul>
+<li>第一次世界大戰進入尾聲。</li>
+<li>日本作為協約國成員參戰，並在戰後國際秩序中取得更大的國際影響力。</li>
+<li>東鄉持續以海軍元老身分受到日本政府及海軍界尊重。</li>
+</ul>
+<h3 id="1921年：卸下東宮御學問所職務">1921年：卸下東宮御學問所職務</h3>
+<ul>
+<li>東鄉結束長期擔任的東宮御學問所總裁職務。</li>
+<li>此後主要以海軍元老及國家重要人物身分活動。</li>
+<li>日本海軍內部仍高度重視他在日俄戰爭中的指揮經驗。</li>
+</ul>
+<h3 id="1920年代：成為日本海軍象徵性人物">1920年代：成為日本海軍象徵性人物</h3>
+<ul>
+<li>東鄉逐漸成為日本海軍精神與傳統的象徵。</li>
+<li>日本海軍官兵經常以他在對馬海峽海戰中的表現作為學習典範。</li>
+<li>他也受到日本國內民族主義與軍事紀念文化的推崇。</li>
+<li>另一方面，日本海軍逐步擴大軍備，與美國、英國等國之間的海軍競爭也日益受到關注。</li>
+</ul>
+<h3 id="1930年代初期：晚年生活">1930年代初期：晚年生活</h3>
+<ul>
+<li>東鄉已退出實際軍事指揮職務。</li>
+<li>仍受到日本政府、皇室及海軍界高度尊崇。</li>
+<li>他的對馬海戰勝利經驗，持續被日本海軍作為戰術及軍事教育的重要教材。</li>
+</ul>
+<h3 id="1934年5月30日：逝世">1934年5月30日：逝世</h3>
+<ul>
+<li>東鄉平八郎於1934年5月30日在東京逝世。</li>
+<li>享年86歲。</li>
+<li>日本政府為他舉行國葬。</li>
+<li>他去世後，日本社會仍長期以對馬海戰作為紀念其軍事生涯的重要象徵。</li>
+</ul>
+<h2 id="八、東鄉平八郎的重要戰役與軍事貢獻">八、東鄉平八郎的重要戰役與軍事貢獻</h2>
+<p><a href="https://images.openai.com/static-rsc-4/W6GMxBsUWVbD-XAnfW3WJgNYAHniE3WNTRbOLJrpYhWmq6RYEhsRVdMm__MQMzbq2Jv06L302rqBNEZcHhPNZm9RurEHVw7BtMAAOIJYiyfOlFBPl3IbedERbPoiqOTsGsVpZ0jGRWaqfv7inZZGAEY_sc_23qbZEov9SLv0JZ0?purpose=inline">事件・出来事｜幕末.jp | 幕末の歴史・人物・出来事をわかりやすく深く伝える</a></p>
+<p>1. 薩英戰爭（1863年）</p>
+<p>青年時期參與薩摩藩海岸防衛，親身經歷英國海軍的軍事優勢，對近代海軍技術的重要性留下深刻印象。</p>
+<p><a href="https://images.openai.com/static-rsc-4/gn8RYpfthv8uAmEH4bYJSfD1LRnhSzFD9eg3NvbSbOd6qgzHPES_cD_0-zOnXzAvSHt18nePva_rLo66Vs_jT2yxuvoUSjW4rx2ENKAEtqaaM0YSbFbMsYqgYjFyMHLwEy1zFynz9eMPHQNTpPhU6LuF5qdpOxnU75YRooJ91dM?purpose=inline">The Enduring Legacy of the War of Jiawu | Naval History Magazine - April 2021 Volume 35, Number 2</a></p>
+<p>2. 黃海海戰（1894年）</p>
+<p>以浪速號艦長身分參與甲午戰爭，累積大型艦隊作戰經驗。</p>
+<p><a href="https://images.openai.com/static-rsc-4/_BL3Ka7IiknhEKs1tvLmI1hPpFfyDqBB2a50bAC0kROLcmKwLGLMhVV9jshMkRFiiN_go-RVJaOWrQZCVxusRSdHFf7o7kjMWpgugdgo_6f3u7CQf52n3cUl6P2cAKJsRrwnygjqMVmvgbK7Ox_Lr-u9DbRm6IuLjZwidZxPdig?purpose=inline">A Footnote to the History of China | Proceedings - January 1955 Vol. 81/1/623</a></p>
+<p>3. 旅順口外海戰（1904年）</p>
+<p>指揮日本聯合艦隊攻擊俄羅斯太平洋艦隊，並對旅順港實施封鎖。</p>
+<p><a href="https://images.openai.com/static-rsc-4/63PfODPbK1uKXMbM5MQEvA1VroK1VeKnUQQWZha7TzRPMPGpPqGWVmAN8f7pD2DYVbYjeaW__zvXf965EJROE9XHic0c8kziTCO_820S5MP0Q_cq91p9UvMU2ZypGXOq0oM_j-IjJA3mqHMSGsrQSzYODPcY8dvnaJXH5dSF6Dk?purpose=inline">Russo-Japanese War, 1905. /Nbattle Of Tsushima, 27-28 May 1905, The Last And Most Decisive Naval Action In The Conflict, In Which The Japanese Navy Destroyed A Larger Russian Fleet. Painting, C1905, By Tojo Shotaro. Poster Print by Granger Collection - Posterazzi</a></p>
+<p>4. 對馬海峽海戰（1905年）</p>
+<p>指揮日本聯合艦隊擊敗俄羅斯波羅的海艦隊，是東鄉軍事生涯最具代表性的戰役。</p>
+<h3 id="對馬海戰的戰術特色">對馬海戰的戰術特色</h3>
+<p>東鄉平八郎在對馬海戰中所採取的戰術，常被視為近代海戰的重要案例。</p>
+<ol>
+<li>集中艦隊火力：利用艦隊隊形，使日本主力艦艇能夠集中攻擊俄羅斯艦隊。</li>
+<li>掌握敵軍航線：透過情報及海上監視，掌握俄羅斯艦隊通過對馬海峽的行動。</li>
+<li>機動轉向：利用艦隊轉向與航速，調整攻擊位置。</li>
+<li>形成火力優勢：日本艦隊在戰鬥中取得較有利的交戰位置，使俄軍艦艇遭受集中打擊。</li>
+</ol>
+<p>其中著名的「丁字戰法」（Crossing the T），是指一方艦隊以橫向隊形迎向敵方縱列，使己方多艘軍艦能夠集中火力攻擊敵方前導艦艇，而敵方能夠有效還擊的火炮數量相對受限。</p>
+<p>不過，對馬海戰的勝利並非單靠這一種戰術，也與日本艦隊的訓練、情報、通信、砲術、艦艇性能，以及俄羅斯艦隊長途航行後的疲憊等因素有關。</p>
+<h2 id="九、東鄉平八郎的重要人物關係">九、東鄉平八郎的重要人物關係</h2>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>身分</th>
+<th>與東鄉的關係及歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>島津忠義</td>
+<td>薩摩藩主</td>
+<td>東鄉青年時期所屬藩主</td>
+</tr>
+<tr>
+<td>西鄉隆盛</td>
+<td>薩摩藩出身政治、軍事人物</td>
+<td>同屬薩摩藩幕末維新歷史背景</td>
+</tr>
+<tr>
+<td>山本權兵衛</td>
+<td>日本海軍將領、政治人物</td>
+<td>日俄戰爭前任海軍大臣，參與海軍人事及戰備</td>
+</tr>
+<tr>
+<td>明治天皇</td>
+<td>日本天皇</td>
+<td>日俄戰爭期間的國家元首</td>
+</tr>
+<tr>
+<td>乃木希典</td>
+<td>日本陸軍將領</td>
+<td>日俄戰爭中負責旅順攻城作戰</td>
+</tr>
+<tr>
+<td>羅傑斯特文斯基</td>
+<td>俄羅斯海軍將領</td>
+<td>俄羅斯波羅的海艦隊司令官，對馬海戰中的主要對手</td>
+</tr>
+<tr>
+<td>東鄉實</td>
+<td>日本海軍將領</td>
+<td>東鄉平八郎之子，後來亦在海軍任職</td>
+</tr>
+<tr>
+<td>昭和天皇（裕仁）</td>
+<td>日本天皇</td>
+<td>東鄉曾任其皇太子時期的教育機構總裁</td>
+</tr>
+</tbody></table>
+<h2 id="十、東鄉平八郎與日本近代史重大事件對照">十、東鄉平八郎與日本近代史重大事件對照</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>日本及世界重大事件</th>
+<th>東鄉平八郎的經歷</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1848</td>
+<td>幕末前期</td>
+<td>出生於薩摩藩</td>
+</tr>
+<tr>
+<td>1853</td>
+<td>美國佩里艦隊來航</td>
+<td>5歲</td>
+</tr>
+<tr>
+<td>1863</td>
+<td>薩英戰爭</td>
+<td>參與薩摩藩海岸防衛</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>明治維新、戊辰戰爭</td>
+<td>參與新政府方面海軍作戰</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>箱館戰爭結束</td>
+<td>參與海軍行動</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>廢藩置縣</td>
+<td>赴英國留學</td>
+</tr>
+<tr>
+<td>1877</td>
+<td>西南戰爭</td>
+<td>在英國研習海軍知識</td>
+</tr>
+<tr>
+<td>1878</td>
+<td>明治政府海軍現代化</td>
+<td>返回日本</td>
+</tr>
+<tr>
+<td>1894</td>
+<td>甲午戰爭</td>
+<td>指揮浪速號參戰</td>
+</tr>
+<tr>
+<td>1895</td>
+<td>《馬關條約》簽訂</td>
+<td>升任海軍少將</td>
+</tr>
+<tr>
+<td>1902</td>
+<td>英日同盟</td>
+<td>日本海軍持續擴張</td>
+</tr>
+<tr>
+<td>1903</td>
+<td>日俄關係緊張</td>
+<td>出任聯合艦隊司令長官</td>
+</tr>
+<tr>
+<td>1904</td>
+<td>日俄戰爭爆發</td>
+<td>指揮日本聯合艦隊</td>
+</tr>
+<tr>
+<td>1905</td>
+<td>對馬海峽海戰、日俄戰爭結束</td>
+<td>取得決定性海戰勝利</td>
+</tr>
+<tr>
+<td>1906</td>
+<td>日本獲得國際聲望</td>
+<td>獲英國功績勳章</td>
+</tr>
+<tr>
+<td>1907</td>
+<td>日本帝國主義擴張</td>
+<td>受封伯爵</td>
+</tr>
+<tr>
+<td>1910</td>
+<td>韓國被日本併吞</td>
+<td>已逐漸退出第一線海軍指揮</td>
+</tr>
+<tr>
+<td>1913</td>
+<td>大正時代</td>
+<td>獲授海軍元帥稱號</td>
+</tr>
+<tr>
+<td>1914</td>
+<td>第一次世界大戰爆發</td>
+<td>出任東宮御學問所總裁</td>
+</tr>
+<tr>
+<td>1921</td>
+<td>華盛頓會議</td>
+<td>卸下東宮御學問所職務</td>
+</tr>
+<tr>
+<td>1931</td>
+<td>九一八事變</td>
+<td>以海軍元老身分生活</td>
+</tr>
+<tr>
+<td>1934</td>
+<td>日本軍部影響力擴大</td>
+<td>5月30日逝世</td>
+</tr>
+</tbody></table>
+<h2 id="十一、東鄉平八郎生平簡明年表">十一、東鄉平八郎生平簡明年表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>年齡</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1848</td>
+<td>1</td>
+<td>出生於薩摩藩鹿兒島</td>
+</tr>
+<tr>
+<td>1863</td>
+<td>16</td>
+<td>參與薩英戰爭</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>19</td>
+<td>加入薩摩藩海軍</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>21</td>
+<td>參與戊辰戰爭</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>22</td>
+<td>參與箱館方面海軍行動</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>24</td>
+<td>赴英國留學</td>
+</tr>
+<tr>
+<td>1875</td>
+<td>28</td>
+<td>搭乘訓練船進行環球航行</td>
+</tr>
+<tr>
+<td>1878</td>
+<td>31</td>
+<td>返回日本海軍服役</td>
+</tr>
+<tr>
+<td>1890</td>
+<td>43</td>
+<td>擔任浪速號艦長</td>
+</tr>
+<tr>
+<td>1894</td>
+<td>47</td>
+<td>參與甲午戰爭、高陞號事件及黃海海戰</td>
+</tr>
+<tr>
+<td>1895</td>
+<td>48</td>
+<td>升任海軍少將</td>
+</tr>
+<tr>
+<td>1896</td>
+<td>49</td>
+<td>出任海軍大學校校長</td>
+</tr>
+<tr>
+<td>1898</td>
+<td>51</td>
+<td>升任海軍中將</td>
+</tr>
+<tr>
+<td>1903</td>
+<td>56</td>
+<td>出任聯合艦隊司令長官</td>
+</tr>
+<tr>
+<td>1904</td>
+<td>57</td>
+<td>日俄戰爭爆發</td>
+</tr>
+<tr>
+<td>1905</td>
+<td>58</td>
+<td>對馬海戰獲勝</td>
+</tr>
+<tr>
+<td>1906</td>
+<td>59</td>
+<td>獲英國功績勳章</td>
+</tr>
+<tr>
+<td>1907</td>
+<td>60</td>
+<td>受封伯爵</td>
+</tr>
+<tr>
+<td>1913</td>
+<td>66</td>
+<td>獲授海軍元帥稱號</td>
+</tr>
+<tr>
+<td>1914</td>
+<td>67</td>
+<td>出任東宮御學問所總裁</td>
+</tr>
+<tr>
+<td>1921</td>
+<td>74</td>
+<td>卸下東宮御學問所職務</td>
+</tr>
+<tr>
+<td>1934</td>
+<td>87</td>
+<td>5月30日逝世（按出生日期計算為86歲）</td>
+</tr>
+</tbody></table>
+<h2 id="十二、歷史評價與歷史定位">十二、歷史評價與歷史定位</h2>
+<p>東鄉平八郎在日本近代史上的地位，主要可從以下四個方面理解：</p>
+<h3 id="1-日本近代海軍建設的重要代表人物">1. 日本近代海軍建設的重要代表人物</h3>
+<p>他青年時期經歷幕末戰亂，明治維新後赴英國學習海軍技術，回國後投入日本帝國海軍建設。他的生涯呈現日本海軍從藩國艦隊走向現代化國家海軍的過程。</p>
+<h3 id="2-對馬海戰的主要指揮者">2. 對馬海戰的主要指揮者</h3>
+<p>1905年對馬海戰的勝利，使日本在日俄戰爭中取得重要戰略優勢，也使東鄉平八郎成為國際知名的海軍將領。</p>
+<h3 id="3-日本軍事民族主義的重要象徵">3. 日本軍事民族主義的重要象徵</h3>
+<p>日俄戰爭勝利後，東鄉被日本政府與社會塑造成國家英雄。他的形象逐漸與日本海軍榮譽、國家威望及軍事民族主義結合。</p>
+<h3 id="4-需要放在帝國主義歷史脈絡中理解">4. 需要放在帝國主義歷史脈絡中理解</h3>
+<p>東鄉的軍事成就與日本近代國家擴張密切相關。甲午戰爭與日俄戰爭不只是海軍技術競爭，也涉及朝鮮半島、中國東北及東亞國際秩序的重組。對台灣及東亞歷史而言，這些戰爭也與日本取得台灣、擴大殖民統治及區域勢力有直接關係。</p>
+<p>總結： 東鄉平八郎是日本近代海軍史上最具代表性的將領之一。他的生涯可分為幕末薩摩藩海軍時期、英國留學時期、甲午戰爭時期、日俄戰爭指揮時期，以及晚年海軍元老時期。其中，1905年的對馬海戰是其一生最重要的歷史事件。</p>
+<h2 id="十三、參考史料與延伸閱讀">十三、參考史料與延伸閱讀</h2>
+<ol>
+<li>日本國立國會圖書館：<a href="https://www.ndl.go.jp/portrait/e/datas/141/?c=8&utm_source=chatgpt.com">東鄉平八郎人物傳記</a>。包括出生、赴英留學、甲午戰爭、日俄戰爭及晚年經歷。</li>
+<li>日本亞洲歷史資料中心（JACAR）：<a href="https://www.jacar.go.jp/english/exhibition/nichiro/cloud_togo.htm?utm_source=chatgpt.com">東鄉平八郎生平年表及相關史料</a>。包含高陞號事件、聯合艦隊任命、對馬海戰及元帥任命相關資料。</li>
+<li>澳洲海軍歷史學會：<a href="https://navyhistory.au/occasional-paper-135-was-heihachiro-togo-japans-horatio-nelson/?utm_source=chatgpt.com">東鄉平八郎與納爾遜的比較研究</a>。從海軍歷史角度分析東鄉的指揮經驗。</li>
+<li>美國海軍學會：<a href="https://www.usni.org/magazines/proceedings/1935/february/passing-togo?utm_source=chatgpt.com">The Passing of Togo</a>。1935年刊載的東鄉逝世紀念文章。</li>
+</ol>
+<p>日期說明：本文以日本國立國會圖書館所載1848年1月27日為出生日期。部分早期外國文獻曾記載1847年，可能與曆法及出生日期換算差異有關。年齡以實歲為主，簡明年表亦標示實歲。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

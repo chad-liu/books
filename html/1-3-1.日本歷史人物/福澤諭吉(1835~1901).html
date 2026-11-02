@@ -1,0 +1,908 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="福澤諭吉生平大事記（18351901）">福澤諭吉生平大事記（1835—1901）</h1>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p><a href="https://images.openai.com/static-rsc-4/hglf1Sj2jQlQkEgrbIBKXBlqdc2uQGpzc-AaeghrJ0VapptAzR_MdmpIoU7DIULsegYmL9R72RyY6kR0kLSqUjiPWo1BMSl_dcxNRrO5Q1FNLBSh9gEC284h1QT89dHLZ1PbvQXrwnT2EALwTWPAfuycMbs2ksnQydeAXxqd9XI?purpose=inline">Japanese Banknotes: Fukuzawa&#39;s Legacy and the Three New Faces of Japan&#39;s Currency: Keio University</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/g9glckwEqB3iQaRqteNjhWU3BnsAHxqLaz3ktGqNOX5SnO2SuNESMUjRybQmYjyEJdXkQxErJzThr4rtFFatlHlLA6F_cLEJf5230p4KBpshJUEP6LanJcbSm_JejGeVBzH1YxO4tFKBBLTZupXJ3ABgeHtSZXbUuWYQCV7OPBA?purpose=inline">福澤諭吉、万博へ行く：[慶應義塾]</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/Yc183qE4MF27QDjDSytHFD2xaeZfJUMYWgcGssWIJ37yjwC4iKfSQHDAzktEWetGyRVn8DJy3U-zpKzJrvWRzhtJUDKAXWOJJw1Wfu0nyaEREvL2lqh1qleNZt80g2PB2_7d__ecfEI1re_fNoaojppH5boSutvuoDuGrf0PB3o?purpose=inline">適塾 | 大阪中之島エリア|すてきな街を、見に行こう。</a></p>
+<p>福澤諭吉（ふくざわ ゆきち，1835年1月10日—1901年2月3日），日本江戶幕府末期至明治時代的重要思想家、教育家、翻譯家與啟蒙學者，也是日本近代教育制度及近代思想發展的重要代表人物。</p>
+<p>他出生於豐前國中津藩（今大分縣中津市）的一個下級武士家庭。青年時期前往長崎學習蘭學，後來進入大阪的緒方洪庵適塾深造，逐漸成為精通西方知識的學者。</p>
+<p>幕末時期，福澤諭吉三度隨日本官方使節團前往海外，親眼觀察美國與歐洲的政治制度、教育、法律、軍事、經濟及社會生活。這些經歷深刻影響了他的思想，使他主張日本必須學習西方文明，建立現代教育制度，並培養具有獨立思考能力的國民。</p>
+<p>1868年，他將原有的蘭學塾發展為慶應義塾，後來成為日本重要的私立高等教育機構。1872年至1876年，他陸續出版《學問之勸》，鼓吹人人應透過學習取得知識與獨立能力。1882年創辦《時事新報》，積極參與明治時代的公共議論。</p>
+<p>福澤諭吉於1901年去世。他的思想對日本近代教育、社會觀念與文明論產生深遠影響，也因其對西方文明的介紹與對亞洲國際關係的主張，而成為近代日本思想史上具有重要爭議與研究價值的人物。</p>
+<h3 id="基本資料">基本資料</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>姓名</td>
+<td>福澤諭吉</td>
+</tr>
+<tr>
+<td>日文</td>
+<td>福沢諭吉（ふくざわ ゆきち）</td>
+</tr>
+<tr>
+<td>出生日期</td>
+<td>1835年1月10日</td>
+</tr>
+<tr>
+<td>逝世日期</td>
+<td>1901年2月3日</td>
+</tr>
+<tr>
+<td>出生地</td>
+<td>豐前國中津藩大阪藏屋敷（今大阪市一帶）</td>
+</tr>
+<tr>
+<td>出身</td>
+<td>中津藩下級武士家庭</td>
+</tr>
+<tr>
+<td>父親</td>
+<td>福澤百助</td>
+</tr>
+<tr>
+<td>母親</td>
+<td>阿順</td>
+</tr>
+<tr>
+<td>主要身分</td>
+<td>思想家、教育家、翻譯家、啟蒙學者</td>
+</tr>
+<tr>
+<td>重要教育機構</td>
+<td>慶應義塾</td>
+</tr>
+<tr>
+<td>主要著作</td>
+<td>《西洋事情》、《學問之勸》、《文明論之概略》、《福翁自傳》</td>
+</tr>
+<tr>
+<td>重要刊物</td>
+<td>《時事新報》</td>
+</tr>
+<tr>
+<td>核心思想</td>
+<td>獨立自尊、實學、文明開化、教育普及</td>
+</tr>
+<tr>
+<td>逝世地</td>
+<td>東京</td>
+</tr>
+<tr>
+<td>逝世年齡</td>
+<td>66歲（周歲）</td>
+</tr>
+</tbody></table>
+<p>**歷史定位：**福澤諭吉並非明治政府的高級官員，也不是以軍事或政治革命著稱的人物。他主要透過著述、教育、翻譯與公共論述，推動日本社會理解並吸收西方近代文明。</p>
+<h1 id="二、福澤諭吉生平詳細時間軸">二、福澤諭吉生平詳細時間軸</h1>
+<h2 id="第一階段：出生與少年時期（18351853年）">第一階段：出生與少年時期（1835—1853年）</h2>
+<h3 id="出身下級武士家庭，早年體會封建身分制度的限制">出身下級武士家庭，早年體會封建身分制度的限制</h3>
+<h3 id="1835年：出生於大阪">1835年：出生於大阪</h3>
+<ul>
+<li>福澤諭吉出生於1835年1月10日，當時日本仍處於德川幕府統治之下。</li>
+<li>他的父親福澤百助是中津藩的下級武士，負責藩內財政與文書相關工作。</li>
+<li>福澤家經濟條件並不富裕，在武士階層中地位也不高。</li>
+<li>他出生時，父親正在大阪處理藩務，因此福澤諭吉並非出生於中津藩本地，而是在中津藩設於大阪的藏屋敷出生。</li>
+</ul>
+<h3 id="1836年：父親去世">1836年：父親去世</h3>
+<ul>
+<li>福澤諭吉出生後不久，父親福澤百助便去世。</li>
+<li>當時他年紀尚幼，對父親沒有太多直接記憶。</li>
+<li>父親去世後，家庭經濟與生活處境受到影響。</li>
+<li>母親阿順帶著孩子返回中津藩生活。</li>
+</ul>
+<p>福澤諭吉後來在《福翁自傳》中，曾回憶自己家庭的生活情況，也談到父親早逝對家庭造成的影響。</p>
+<h3 id="18361849年：在中津藩成長">1836—1849年：在中津藩成長</h3>
+<ul>
+<li>福澤諭吉在中津藩度過少年時期。</li>
+<li>他接受當時武士家庭常見的漢學教育，學習漢文、經典及傳統知識。</li>
+<li>由於出身下級武士家庭，他對封建社會的身分階級有切身體會。</li>
+<li>當時日本社會依照身分制度安排政治與社會地位，武士、農民、工匠、商人之間存在明顯的階層差異。</li>
+</ul>
+<p>這些少年經歷，後來成為他批判封建身分制度、提倡個人獨立與平等觀念的重要背景。</p>
+<h3 id="18491853年：接觸更多漢學與傳統學問">1849—1853年：接觸更多漢學與傳統學問</h3>
+<ul>
+<li>福澤諭吉持續接受漢學教育。</li>
+<li>他逐漸展現對知識及學習的興趣。</li>
+<li>不過，他並未滿足於傳統經學，而是開始尋找能夠解釋外部世界的新知識。</li>
+</ul>
+<p>**本階段的歷史意義：**福澤諭吉的思想並非一開始就形成於西方文明，而是從傳統武士社會的教育與生活經驗出發。對身分制度的觀察，後來使他特別重視教育、個人能力與社會流動。</p>
+<h2 id="第二階段：長崎學習蘭學與大阪適塾時期（18531858年）">第二階段：長崎學習蘭學與大阪適塾時期（1853—1858年）</h2>
+<h3 id="從傳統漢學轉向西方科學知識">從傳統漢學轉向西方科學知識</h3>
+<h3 id="1853年：前往長崎學習蘭學">1853年：前往長崎學習蘭學</h3>
+<ul>
+<li>1853年，美國海軍准將佩里率領艦隊抵達日本，要求日本開放港口。</li>
+<li>日本長期實施的海禁政策受到重大衝擊，西方軍事、科技與外交知識逐漸成為日本各藩關注的焦點。</li>
+<li>福澤諭吉前往長崎，開始學習蘭學，也就是透過荷蘭語研究西方科學與技術。</li>
+<li>他希望藉由學習西方知識，掌握當時日本所欠缺的軍事、醫學及自然科學技術。</li>
+</ul>
+<p>**歷史意義：**佩里來航不只是日本對外關係的轉折，也成為福澤諭吉人生方向改變的重要契機。</p>
+<h3 id="1854年：繼續探索西方知識">1854年：繼續探索西方知識</h3>
+<ul>
+<li>福澤在長崎學習荷蘭語及西方技術知識。</li>
+<li>當時荷蘭語是日本了解歐洲知識的重要媒介。</li>
+<li>他逐漸認識到，西方文明並非只有武器與船舶，也包含醫學、數學、物理、法律及社會制度。</li>
+</ul>
+<h3 id="1855年：前往大阪，進入緒方洪庵的適塾">1855年：前往大阪，進入緒方洪庵的適塾</h3>
+<p><a href="https://images.openai.com/static-rsc-4/AM3-AKmX5xEts8vkJPyX3hkdMgmyXhA4Ys1fP7EYA3d4JrxFkwDI85P4zW2TZ4BnhV-P9SUO_H170phZjqjQMelpGBIHn04IXqdm6divOrVjXrGxDkdSJ7t9ohs4KPxY_bZu4NNyv5DnfMRUv7FrdMD3dsR0QUVe96C5tjbni2Q?purpose=inline">＜偉人の愛した一室＞緒方洪庵が開き、福沢諭吉や大村益次郎が刻苦勉励した大阪の学び舎「適塾」 大阪府大阪市中央区　Wedge ONLINE(ウェッジ・オンライン)</a></p>
+<p>緒方洪庵與適塾</p>
+<p>適塾是江戶時代後期重要的蘭學教育機構，創辦人緒方洪庵是日本著名的醫學家與蘭學者。適塾培養了不少幕末及明治初期的重要人才。</p>
+<ul>
+<li>福澤離開長崎，前往大阪，進入緒方洪庵創辦的適塾。</li>
+<li>他在適塾深入學習荷蘭語、西方醫學及自然科學。</li>
+<li>適塾的學習方式重視原文閱讀、翻譯與討論，並非單純背誦傳統經典。</li>
+<li>福澤在學習方面表現突出，逐漸成為適塾中的重要學生。</li>
+</ul>
+<h3 id="18561857年：成為適塾的重要學生">1856—1857年：成為適塾的重要學生</h3>
+<ul>
+<li>福澤持續研究西方科學書籍，尤其重視語言能力與實際知識。</li>
+<li>他透過荷蘭文原典了解西方醫學、數學及自然科學。</li>
+<li>逐漸累積教學與翻譯經驗。</li>
+</ul>
+<h3 id="1857年：擔任適塾塾長">1857年：擔任適塾塾長</h3>
+<ul>
+<li>福澤在適塾的學習與教學表現受到肯定。</li>
+<li>他逐漸承擔教學與管理工作，並擔任塾長。</li>
+<li>這段經歷使他開始具備教育者的身分與經驗。</li>
+</ul>
+<h3 id="1858年：奉藩命前往江戶">1858年：奉藩命前往江戶</h3>
+<ul>
+<li>中津藩命令福澤前往江戶，開設蘭學私塾。</li>
+<li>他帶著部分適塾同學前往江戶，在築地鐵砲洲的中津藩邸內開設蘭學塾。</li>
+<li>這所私塾後來成為慶應義塾的起源。</li>
+</ul>
+<p>**歷史意義：**福澤諭吉從適塾的學生與塾長，轉變為自己的教育機構創辦者。這是他日後建立慶應義塾的重要起點。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+2</p>
+<h2 id="第三階段：由蘭學轉向英學，三度出訪歐美（18591867年）">第三階段：由蘭學轉向英學，三度出訪歐美（1859—1867年）</h2>
+<h3 id="親身觀察西方文明，建立近代思想基礎">親身觀察西方文明，建立近代思想基礎</h3>
+<h3 id="1859年：橫濱開港，開始學習英語">1859年：橫濱開港，開始學習英語</h3>
+<ul>
+<li>日本開放橫濱等港口與西方國家通商。</li>
+<li>福澤前往橫濱觀察外國人的生活與交易活動。</li>
+<li>他發現自己過去苦讀的荷蘭語，在當時國際交流中已不如英語實用。</li>
+<li>因此決定轉而學習英語。</li>
+<li>由於當時缺乏合適的英語教師，他主要依靠字典與英文書籍自學。</li>
+</ul>
+<p>**歷史意義：**這是福澤諭吉學術方向的一次重大轉變。他不再只以荷蘭語作為了解西方的工具，而是轉向當時國際上影響力日益增加的英語。</p>
+<h3 id="1860年：第一次赴美國">1860年：第一次赴美國</h3>
+<p><a href="https://images.openai.com/static-rsc-4/lJum9JW19AWQiFv0yUZZ3VA7V4iNtH91cSIsdXelNQ7UrxZS_Q2hCD-0AHIXwcO4o3_og46DiLcWTGeuQA2zsuKl6aDiQhPX1ygCvS_hHpzLFs69AKHYoVkMgvrbsPcYYbNhZXqJ9tKgsW2KkP1JdpVA8IYaHQ7tQhslMg7f73M?purpose=inline">File:Kanrin-Maru-Artwork-by-Suzufuji-Yujiro-c1860.jpg - Wikimedia Commons</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/DtP_3PYEgn-JU5K45PvbUNfN2CkrQoo3NAWj2-XFy0YN1bR9XLrA68HMxdoE1-yLPioO6JxkJc40if9_tzHMbO-PCRZ9pfwpPBAFKkS52GVGXqooNUnJBsk0dwXNk8Qe8bkjAiaFbiMgPOsjgRDtJih2CYQzkDV68QhQ4mriMp8?purpose=inline">Fukuzawa Yukichi – Pitt Rivers Museum Prints</a></p>
+<p>5</p>
+<ul>
+<li>1860年，日本幕府派遣使節團前往美國，與美方進行外交及條約相關事務。</li>
+<li>福澤隨同咸臨丸赴美，前往舊金山。</li>
+<li>他親身觀察美國的城市、交通、商業、教育及社會生活。</li>
+<li>他也接觸到西方的字典、書籍與各類知識資料。</li>
+<li>此行返日後，他帶回韋氏英文字典等資料，進一步研究英語。</li>
+</ul>
+<p>**重要意義：**福澤第一次親眼見到西方社會的實際運作，開始理解西方國家的強盛並非單純來自軍事武器，而是與教育、科學、產業及制度密切相關。</p>
+<h3 id="1861年：結婚，並準備第二次海外考察">1861年：結婚，並準備第二次海外考察</h3>
+<ul>
+<li>福澤與中津藩士土岐太郎八之女錦結婚。</li>
+<li>他持續從事英語研究、翻譯及教育工作。</li>
+<li>同年冬季，獲選隨幕府使節團前往歐洲。</li>
+</ul>
+<h3 id="1862年：第二次出訪歐洲">1862年：第二次出訪歐洲</h3>
+<p><a href="https://images.openai.com/static-rsc-4/3DFqcMF92RZzX3cFH8nZiMd9ftX4yuK_NG5KA3FsmfhL3-iMnd_kQV9r5CTO0VGL1O26OIGgsZW7TIzqiuPquIc5lFBWVkGixINhLleL6uTnQ2v01avzeY3HfwYUU1Lzlj57NBgKONAl6jbl36r1wqrhCXfBLABA6m3iC0ByLaPZAhWjdD0f4YjYPQpAuMRq?purpose=inline">Japanese Delegation</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/2ZZ4Ao8AbxnvtUshffPLGq5Sn6_CDOov7qjgx_wD3yllfCOIBPLFabQZgGmQm_cXWO3Fuor-gsC1DpXc-qvrH4oKDkHO3_d4Cl3UNe4iEYMjZ1VuJkocb6m6KOoLO-boC0EdEvopfipXML4pyqgooh1F0Mmu08HxTG25EVwON3A?purpose=inline">File:Japanese ambassadors in London.jpg - Wikimedia Commons</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/fBfTeyUTRjBRGLpaGVll2UfeuOuJlEfENuM5uKYBBcAQxUSo87BwAGQyrdHqghlkpu1HO7QL1EKneqof8Lg5yWyyxucw6wQKnHn_ZpMY_hpKOBEdZ2R1ej3Cpto_o5OZ1JjLoAnl-ziaguWqKeKbKTIkydJ5aKG6pGnd86CD3-w?purpose=inline">April in Paris (at the Met) - The Metropolitan Museum of Art</a></p>
+<p>4</p>
+<ul>
+<li>福澤隨幕府遣歐使節團前往歐洲。</li>
+<li>此行經過法國、英國、荷蘭、普魯士、俄羅斯、葡萄牙等地。</li>
+<li>他觀察歐洲各國的政治制度、軍事組織、教育、醫療、金融及社會設施。</li>
+<li>他也特別注意各國政府如何組織行政機關，以及人民如何透過法律與制度參與社會生活。</li>
+<li>12月返回日本。</li>
+</ul>
+<p>這次旅行讓福澤更加確信，日本必須系統性地理解西方制度，而不能只學習個別的技術。</p>
+<h3 id="1863年：整理歐洲考察所得">1863年：整理歐洲考察所得</h3>
+<ul>
+<li>福澤開始將海外見聞整理成書籍與教材。</li>
+<li>他持續研究西方的政治、經濟及社會制度。</li>
+<li>這些資料後來成為《西洋事情》的重要基礎。</li>
+<li>由於當時日本國內攘夷思想盛行，研究西方學問的人有時會受到排斥，他在公共活動上也必須注意安全。</li>
+</ul>
+<h3 id="1864年：進入幕府外國奉行翻譯體系">1864年：進入幕府外國奉行翻譯體系</h3>
+<ul>
+<li>福澤返回中津探親，並帶領部分青年學生前往江戶。</li>
+<li>他持續從事翻譯與西方知識介紹。</li>
+<li>10月，進入幕府外國奉行相關機構，擔任翻譯工作。</li>
+<li>透過幕府官方職務，他接觸更多外交文件及國際事務。</li>
+</ul>
+<h3 id="1865年：持續翻譯西方報刊與軍事資料">1865年：持續翻譯西方報刊與軍事資料</h3>
+<ul>
+<li>福澤一方面從事幕府翻譯工作，一方面繼續經營私塾。</li>
+<li>他翻譯西方報紙、雜誌與軍事資料。</li>
+<li>透過翻譯，他逐漸掌握西方國家對外交、軍事及政治問題的討論方式。</li>
+</ul>
+<h3 id="1866年：出版《西洋事情》初編">1866年：出版《西洋事情》初編</h3>
+<p><a href="https://images.openai.com/static-rsc-4/wxEcIxaL37aqcYP65rhatGJ--Cd-CY0_aUx6BRRi-IM4FoDJVBdmrAYRMpPRA_X2-gY7QKXnNG5zAlRarlY0tRi4yfeRwXTm0wKXsr3yNqpcqAnjBePNL5hv5ggPxYt60jZM9QrVHXUEuakooMkMD11ptc2MJqoFf-cu3WHdCZs?purpose=inline">ベストセラーになった翻訳書 | 知識を世界に求めて | 電子展示会</a></p>
+<p>《西洋事情》</p>
+<p>這是福澤諭吉介紹西方政治、經濟、教育、交通、軍事及社會制度的重要著作。它讓當時許多沒有機會出國的日本讀者，也能透過文字認識歐美世界。</p>
+<ul>
+<li>《西洋事情》初編出版。</li>
+<li>書中介紹西方國家的政治制度、議會、法律、學校、醫院、銀行及公共設施。</li>
+<li>作品受到廣泛關注，成為幕末日本了解西方文明的重要讀物。</li>
+<li>福澤也因此逐漸成為日本知識界的重要人物。</li>
+</ul>
+<h3 id="1867年：第三次赴美國">1867年：第三次赴美國</h3>
+<ul>
+<li>福澤隨幕府軍艦購買相關使節團再次赴美。</li>
+<li>此行主要前往美國東部城市，包括華盛頓、費城及紐約等地。</li>
+<li>他觀察美國的教育、商業與政治制度。</li>
+<li>他也大量購買英文原書及教材，帶回日本作為教學與研究之用。</li>
+<li>同年回國後，繼續擴充私塾及翻譯工作。</li>
+</ul>
+<p>**本階段的歷史意義：**福澤三次出訪歐美，使他從單純學習西方語言與技術的蘭學者，轉變為能夠比較不同國家制度、並向日本社會介紹近代文明的思想家。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+2</p>
+<h2 id="第四階段：創立慶應義塾與明治維新（18681871年）">第四階段：創立慶應義塾與明治維新（1868—1871年）</h2>
+<h3 id="拒絕成為新政府官員，選擇以教育改變日本">拒絕成為新政府官員，選擇以教育改變日本</h3>
+<p><a href="https://images.openai.com/static-rsc-4/_l1gzX_HQJmfH8HHFZ40BgPhp-LdJPi-P7jRbiAl-P9Qrs9MPWeMSHYbJVxZRrnG_3y38F_FCMYG5yDSg9tslMGWiP5IivP6vuvEnXzD51i2as3n9mmcFDFJcCCPrDfAK9lsvuV5496LJZXDbvYNq0YsEsrEUBufcHPzp_RFNH0?purpose=inline">三田演説館～慶応義塾その５ - 文学のお散歩</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/eEXc4_WWqXrVcJtQlYmZJu6M5w5Y9HhDcBwdVUz2EZ-fw4wjL8esUFjjrrUyFGwAGeTdi0d6mB6vly2p2qIxwyFF1lc1nDkSUGGc-PVGZNvdTTdwo4j40SStiU8IIFvHT8VH87EM1X7F9XHV6lwezzhOLL1Drz2pgwJg6jQgA-U?purpose=inline">The History of a Keio Symbol: The Old Library | Keio Times | Keio University</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/gCxGJUkhCCMZZsQEsW659DhDtXCJ1N2cbGzBjzm0QmQnk6FpqbwEHvyJlMpT9GlmyV1NqS_udsx4NC4PO4Y_fNLvQRfPmj7fM3ELkNWvNmAgyCkNuC1t6swZaP3iDXGCLlDbEmJBJIOfA-K38PqP2nwFibiSvNV6TGnvanQbt18?purpose=inline">三田演説館150年｜新 慶應義塾豆百科｜三田評論ONLINE</a></p>
+<p>8</p>
+<h3 id="1868年：私塾正式命名為慶應義塾">1868年：私塾正式命名為慶應義塾</h3>
+<ul>
+<li>1868年，日本進入明治維新的政治轉型期。</li>
+<li>福澤將原有的蘭學塾遷至新銭座，並以當時年號「慶應」命名為「慶應義塾」。</li>
+<li>教學內容逐漸由蘭學轉向英學及西方近代知識。</li>
+<li>他重視經濟學、政治學、數學、自然科學及外語教育。</li>
+<li>同年日本爆發戊辰戰爭，江戶及周邊地區局勢緊張，但福澤仍持續授課。</li>
+</ul>
+<p>一個廣為流傳的故事是：上野彰義隊之戰期間，戰場砲聲傳入江戶，福澤仍繼續講授經濟學。這個故事常被用來象徵他對教育工作的堅持。</p>
+<h3 id="18681869年：拒絕明治新政府的任官邀請">1868—1869年：拒絕明治新政府的任官邀請</h3>
+<ul>
+<li>明治政府成立後，希望吸收具有西方知識與翻譯能力的人才。</li>
+<li>福澤多次收到政府邀請，希望他進入新政府任職。</li>
+<li>他選擇拒絕，繼續從事教育與著述。</li>
+<li>他認為，民間教育與知識傳播同樣是國家近代化不可缺少的工作。</li>
+</ul>
+<p>**歷史意義：**福澤與不少明治維新人物不同，他沒有選擇進入政府權力核心，而是以私人教育機構與出版活動作為主要事業。</p>
+<h3 id="1869年：發展慶應義塾的教育制度">1869年：發展慶應義塾的教育制度</h3>
+<ul>
+<li>慶應義塾逐漸形成較穩定的學校組織。</li>
+<li>福澤重視學生的學習自主與實際能力。</li>
+<li>學校開始建立較具制度化的教學與收費方式。</li>
+<li>他也逐步培養一批能夠從事翻譯、教學及近代行政工作的學生。</li>
+</ul>
+<h3 id="1870年：提倡地方教育與軍事改革">1870年：提倡地方教育與軍事改革</h3>
+<ul>
+<li>福澤返回故鄉中津，與地方人士討論藩政改革。</li>
+<li>他主張減少傳統軍事開支，並重視洋學教育。</li>
+<li>他認為地方社會應建立新式學校，培養能夠理解近代知識的人才。</li>
+<li>同年，他也受東京府方面委託，調查西方警察制度。</li>
+</ul>
+<h3 id="1871年：慶應義塾遷往三田">1871年：慶應義塾遷往三田</h3>
+<ul>
+<li>慶應義塾由新銭座遷往東京三田。</li>
+<li>三田逐漸成為慶應義塾長期發展的重要基地。</li>
+<li>福澤也在此持續進行教學、研究及出版工作。</li>
+</ul>
+<p>**本階段的歷史意義：**慶應義塾逐漸由私人蘭學塾，轉變為具有現代教育理念的學校。福澤選擇以民間教育推動國家近代化，形成他一生事業的核心方向。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.keio.ac.jp&sz=32">image</a></p>
+<p>慶應義塾+1</p>
+<h2 id="第五階段：啟蒙思想的成熟與《學問之勸》（18721876年）">第五階段：啟蒙思想的成熟與《學問之勸》（1872—1876年）</h2>
+<h3 id="從西方文明介紹者，成為日本近代思想的重要倡導者">從西方文明介紹者，成為日本近代思想的重要倡導者</h3>
+<p><a href="https://images.openai.com/static-rsc-4/nhjItCd1RSSZMYJq4Gz_ZTQdpCsduTX9FxMxi4PGEVDL9U_iMpzxu38SsFcFrTXR6klSRIY1d1l0QzFmYYs4mUqF-e4BdI6i607PefJgPqX8cWiKwEKhW2v2-qR6_KDYwXa3LLvPFzvPCC8EMGgIXbRE4CcS8fEAnq6KxTjU85I?purpose=inline">学問のすすめ　自第一篇 至十七篇(福澤諭吉) / 古本、中古本、古書籍の通販は「日本の古本屋」</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/3sL0tL6fAYCBNzk-s1_M1XFE9b_LAJUV9Qe4jZ5211cX_s877BjtlosDeEEMSgTtEsb9F0f2o4Si_Pn3ST6B2QfPiQ7SJAuzoMSh7keUNQTrvOERpyAzB1egg_dTXYQohVchg96_CFQIfUSiY4abhi7b9Re2mxm48q1RrYv_EGI?purpose=inline">文明論之概略　 / フォルモサ書院 / 古本、中古本、古書籍の通販は「日本の古本屋」</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/kQxi0-9aHOeKMr-rwat9voIKkcKw7apFkrTs3Si9Uxws_nHCe3jdouDmV-cfTB1McTno3pqodNJzS0TEUaythID9K1FfakZvf9MEnfZEJIPV-69f6GD7Vglj_jltWkDYfT8Xj7FI0mYVJYlHfCjqsnzhqBMWImrYaxDJGaWp_Kk?purpose=inline">卒業式の今昔 | [塾]ステンドグラス（2010年以前） | 慶應義塾</a></p>
+<p>8</p>
+<h3 id="1872年：出版《學問之勸》初編">1872年：出版《學問之勸》初編</h3>
+<ul>
+<li>福澤開始陸續出版《學問之勸》（學問のすゝめ）。</li>
+<li>這部作品以通俗易懂的語言，向一般民眾說明學習的重要性。</li>
+<li>他主張人不應只依靠出身、身分或家世決定社會地位，而應透過知識與能力改善自身處境。</li>
+<li>他特別強調實用知識，認為學問應該能夠改善個人生活、促進社會發展。</li>
+</ul>
+<p>其中最著名的開篇思想是：</p>
+<blockquote>
+<p>天は人の上に人を造らず、人の下に人を造らず。</p>
+</blockquote>
+<p>這句話通常譯為「天不在人之上造人，也不在人之下造人」。</p>
+<p>它表達的是人具有平等的基本地位，而人們在社會生活中的差異，與教育、知識及後天努力有密切關係。</p>
+<p>**重要說明：**這句話並非單純宣稱當時日本已經實現社會平等，而是福澤用來批判身分階級觀念、鼓勵普及教育的思想表述。</p>
+<h3 id="18721876年：持續出版《學問之勸》">1872—1876年：持續出版《學問之勸》</h3>
+<ul>
+<li>《學問之勸》分編陸續出版，至1876年完成全書主要各編。</li>
+<li>內容涵蓋個人獨立、家庭教育、男女教育、國家與人民的關係，以及社會責任。</li>
+<li>福澤鼓勵民眾學習外語、數學、地理、經濟與自然科學。</li>
+<li>他反對只重視經典背誦、卻缺乏實際應用能力的教育方式。</li>
+</ul>
+<p>這部著作在明治初期廣受歡迎，成為日本近代教育思想傳播的重要作品。</p>
+<h3 id="1873年：參與明六社">1873年：參與明六社</h3>
+<ul>
+<li>福澤參與明六社的活動。</li>
+<li>明六社是明治初期由一批知識分子組成的思想與學術團體。</li>
+<li>成員包括森有禮、西周、中村正直等重要人物。</li>
+<li>團體透過演講、出版及討論，介紹西方思想與近代社會制度。</li>
+<li>福澤也藉此與其他啟蒙思想家交流教育、政治與文明問題。</li>
+</ul>
+<h3 id="1874年：推動演說與公共討論">1874年：推動演說與公共討論</h3>
+<ul>
+<li>福澤在慶應義塾內鼓勵學生進行演說與辯論。</li>
+<li>三田演說會逐漸形成。</li>
+<li>他認為近代社會不能只有少數官員決定公共事務，人民也應培養表達、討論與判斷的能力。</li>
+<li>同年，《學問之勸》繼續出版新編。</li>
+</ul>
+<h3 id="1875年：出版《文明論之概略》">1875年：出版《文明論之概略》</h3>
+<p><a href="https://images.openai.com/static-rsc-4/vRfC7zA0GVMEZCAzHLDohErffC0ETilhrN0ajwsJtaIIqAHZET4jIr35z4Lrky-Igty42BOsaa7whcs9OnE5DvlkuaZOJYPGzIBAOO9QPgfVmmlDK7uVcdQfQOTmmrY9HEcesFir2QFsuCJNecrxJEnpKsAyPiJGTzTG6-FRCSU?purpose=inline">福澤諭吉の文明論と統計（スタチスチク）論／宮川　公男｜特集｜三田評論ONLINE</a></p>
+<p>《文明論之概略》</p>
+<p>這是福澤諭吉最重要的思想著作之一。它不只是介紹西方制度，而是進一步探討文明的形成、國家發展、社會思想與人民精神。</p>
+<ul>
+<li>福澤出版《文明論之概略》。</li>
+<li>他從歷史與社會角度分析文明發展的條件。</li>
+<li>他認為，國家的近代化不能只靠購買西方機器、建立工廠或引進軍事技術。</li>
+<li>更重要的是人民知識、思想、社會制度及公共精神的改變。</li>
+<li>他特別強調思想獨立與社會自主的重要性。</li>
+</ul>
+<p>這部作品代表福澤思想從介紹西方制度，進一步發展為對文明、國家與社會變遷的系統性思考。</p>
+<h3 id="1876年：持續推廣實學教育">1876年：持續推廣實學教育</h3>
+<ul>
+<li>福澤繼續發展慶應義塾的教學制度。</li>
+<li>他重視經濟、法律、政治、自然科學及外語等學科。</li>
+<li>他希望學生能夠運用所學解決現實問題，而不是只取得傳統身分所帶來的地位。</li>
+</ul>
+<p>**本階段的歷史意義：**福澤諭吉完成了由西方知識介紹者到近代啟蒙思想家的轉變。《學問之勸》強調個人教育與獨立，《文明論之概略》則將這些觀念擴展到整個國家的文明發展。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+2</p>
+<h2 id="第六階段：民間政治參與與創辦《時事新報》（18771888年）">第六階段：民間政治參與與創辦《時事新報》（1877—1888年）</h2>
+<h3 id="透過報刊與社會組織影響公共輿論">透過報刊與社會組織影響公共輿論</h3>
+<h3 id="1877年：西南戰爭與明治國家發展">1877年：西南戰爭與明治國家發展</h3>
+<ul>
+<li>日本爆發西南戰爭，西鄉隆盛率領薩摩士族反抗明治政府。</li>
+<li>戰爭反映明治政府改革與傳統士族利益之間的重大衝突。</li>
+<li>福澤持續關注日本政治、教育與社會制度的變化。</li>
+<li>他認為，國家發展不能只依賴軍事力量，也需要健全的教育、經濟與社會制度。</li>
+</ul>
+<h3 id="1879年：持續關注教育與公共事務">1879年：持續關注教育與公共事務</h3>
+<ul>
+<li>福澤持續經營慶應義塾。</li>
+<li>他與其他知識分子保持交流，討論日本政治制度與社會發展。</li>
+<li>他也逐漸將注意力擴展到報刊、演說及民間組織。</li>
+</ul>
+<h3 id="1880年：創立交詢社">1880年：創立交詢社</h3>
+<ul>
+<li>福澤參與創立交詢社。</li>
+<li>交詢社是一個以知識交流、社會討論與公共事務為主要活動的民間組織。</li>
+<li>其成員包括政治人物、企業人士及知識分子。</li>
+<li>福澤希望透過民間社會的組織與交流，促進日本公共生活的發展。</li>
+</ul>
+<h3 id="1881年：明治十四年政變">1881年：明治十四年政變</h3>
+<ul>
+<li>明治政府內部發生政治權力變動，史稱「明治十四年政變」。</li>
+<li>大隈重信等人離開政府，伊藤博文等人逐漸掌握政府主導權。</li>
+<li>當時政治焦點之一，是日本未來是否以及如何設立國會。</li>
+<li>福澤與大隈重信等人有政治與思想上的接觸，但並非明治政府的正式決策官員。</li>
+</ul>
+<h3 id="1882年：創辦《時事新報》">1882年：創辦《時事新報》</h3>
+<p><a href="https://images.openai.com/static-rsc-4/p_Ib85w7vbswV74VN92HBQ6YtLAURp53wVfh4McYuYDH8mKFgAJlCIYQOK6leiYbEGTszcP_mt8VzB2CbkRkmNIlfnHafXA2e43uaxPo3Tk99wiJyoXJW6WOi3No24Bv08Wwu3eMTZPMs02mHDvzWPKKt0SSQGnH9-iNAC7tRwU?purpose=inline">座談会：時事新報から考えるメディアのあるべき姿｜特集｜三田評論ONLINE</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/6DpEZyiOQ3gdEimj5Oq7VzBlVlws21uIA6XX9AybNYsFNZvgnWb8NO-NXhbkl5oD4RtfHfcSJeiCFAzEtJrJNPdpVJGOT0FditefFiKa8IOWtuC7aBITkHe60_c9r-ew9EsU7L7F7xjRidqvXcbwOQLBaaz69ZaebDI9RG8Dyis?purpose=inline">File:Jiji Shinpō 1889.jpg - Wikimedia Commons</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/wCuSJgsW6IYD35GhmZ_9xLzHUNCKb_hYTvDY6BEEE6nzIWUQmEiKQs6mwI83uEKRrFAyT7-FG3HKztiSDHUJalpTRfVJXgMY-u7_esSr__STtqkGkhXe-pbQBuhghP1-dUsh6cOJlzA-PaADjWy0QaNWxn_ft75Oi5F4pBPwXj0?purpose=inline">“Yukichi Fukuzawa in His Later Years” by Rakuten Kitazawa | From Keio Museums | Keio University</a></p>
+<p>4</p>
+<ul>
+<li>1882年3月1日，福澤創辦《時事新報》。</li>
+<li>報紙以政治、經濟、外交、社會與教育議題為主要內容。</li>
+<li>福澤希望藉由報刊傳播近代知識，並對政府政策及公共問題提出評論。</li>
+<li>《時事新報》逐漸成為明治時代具有影響力的報刊之一。</li>
+</ul>
+<p>**歷史意義：**福澤的影響力不再只限於學校與書籍，也透過新聞媒體進入更廣泛的社會公共領域。</p>
+<h3 id="18831884年：發表政治與社會評論">1883—1884年：發表政治與社會評論</h3>
+<ul>
+<li>福澤透過《時事新報》及其他著作討論日本的政治制度與國際環境。</li>
+<li>他關注國會制度、外交、國防、經濟及國民教育。</li>
+<li>他也逐漸強調日本必須建立足以維持國家獨立的政治與經濟能力。</li>
+</ul>
+<h3 id="1885年：提出「脫亞論」相關主張">1885年：提出「脫亞論」相關主張</h3>
+<ul>
+<li>1885年，《時事新報》刊出後世稱為「脫亞論」的社論。</li>
+<li>文章主張日本不應因亞洲鄰國的政治與制度狀況而延誤自身近代化，並強調日本應採取與歐美文明國家相近的發展方向。</li>
+<li>這篇文章後來成為研究福澤諭吉思想與日本近代外交觀念時的重要材料。</li>
+</ul>
+<p>史學上的重要爭議：</p>
+<p>「脫亞論」長期被視為福澤諭吉思想的重要代表，但該文原本並未署名，作者歸屬及其與福澤本人思想的關係，後來出現不同研究解釋。因此，討論福澤思想時，宜將「脫亞論」視為《時事新報》的重要社論，並注意其作者歸屬問題，而不宜將所有文字毫無保留地當成福澤親筆著作。</p>
+<p>此外，福澤對亞洲鄰國的看法，以及其文明論與日本對外擴張思想之間的關係，也是現代研究中持續討論的議題。</p>
+<h3 id="18861888年：持續從事教育、新聞與著述">1886—1888年：持續從事教育、新聞與著述</h3>
+<ul>
+<li>福澤繼續經營慶應義塾及《時事新報》。</li>
+<li>他關注日本社會的教育普及、男女關係、家庭制度及公共道德。</li>
+<li>他也出版《男女交際論》等作品，討論男女社會關係與近代生活觀念。</li>
+<li>他的思想逐漸從單純介紹西方文明，擴展至近代日本社會應如何建立公共倫理與生活方式。</li>
+</ul>
+<p>**本階段的歷史意義：**福澤逐漸成為日本民間知識界的重要代表。他透過教育機構、報刊及社會組織參與公共議論，而非依靠政府官職推動改革。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.keio.ac.jp&sz=32">image</a></p>
+<p>慶應義塾+1</p>
+<h2 id="第七階段：慶應義塾大學部成立與晚年思想（18891898年）">第七階段：慶應義塾大學部成立與晚年思想（1889—1898年）</h2>
+<h3 id="從啟蒙教育家到近代日本知識界的重要象徵">從啟蒙教育家到近代日本知識界的重要象徵</h3>
+<h3 id="1890年：慶應義塾大學部成立">1890年：慶應義塾大學部成立</h3>
+<p><a href="https://images.openai.com/static-rsc-4/kQxi0-9aHOeKMr-rwat9voIKkcKw7apFkrTs3Si9Uxws_nHCe3jdouDmV-cfTB1McTno3pqodNJzS0TEUaythID9K1FfakZvf9MEnfZEJIPV-69f6GD7Vglj_jltWkDYfT8Xj7FI0mYVJYlHfCjqsnzhqBMWImrYaxDJGaWp_Kk?purpose=inline">卒業式の今昔 | [塾]ステンドグラス（2010年以前） | 慶應義塾</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/nRJx2Fh_zJtpoCeiJTG55EpiIxKyszfzKZ9uaRRLSBAVqa_vLBffX3K1hiXQ0c2tgTcZ2_gfoiNNkpKvdLe7U63PTQKkGq9mrTTib5_hEsWurq3qp0BDYdxvMkHYNEV7jSI0804w2J5c9hZMmeOIqV2tc8uGK7YBH4js0nkcghc?purpose=inline">慶應義塾草創時代の熱き弁舌がよみがえる ｢演説｣発祥の場所、｢三田演説館｣：[慶應義塾]</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/gCxGJUkhCCMZZsQEsW659DhDtXCJ1N2cbGzBjzm0QmQnk6FpqbwEHvyJlMpT9GlmyV1NqS_udsx4NC4PO4Y_fNLvQRfPmj7fM3ELkNWvNmAgyCkNuC1t6swZaP3iDXGCLlDbEmJBJIOfA-K38PqP2nwFibiSvNV6TGnvanQbt18?purpose=inline">三田演説館150年｜新 慶應義塾豆百科｜三田評論ONLINE</a></p>
+<p>6</p>
+<ul>
+<li>慶應義塾大學部正式設立。</li>
+<li>設置文學、法律、理財三個學科。</li>
+<li>這代表慶應義塾由以西方語言與知識為主的教育機構，逐漸發展成具有高等教育體系的學校。</li>
+<li>福澤長期倡導的近代教育理念，開始透過更完整的學科組織實現。</li>
+</ul>
+<h3 id="1891年：完成《瘠我慢之說》">1891年：完成《瘠我慢之說》</h3>
+<ul>
+<li>福澤撰寫《瘠我慢之說》。</li>
+<li>文章討論幕末人物在政治變局中的氣節、忠誠與道義。</li>
+<li>他藉由歷史人物的選擇，探討政治人物如何面對權力變化與個人信念。</li>
+<li>此文當時並未立即公開，後來才正式刊行。</li>
+</ul>
+<p>這篇文章顯示，福澤晚年的思想並不只關注西方制度，也持續反思日本傳統政治文化中的道義與人格問題。</p>
+<h3 id="1892年：協助北里柴三郎推動傳染病研究">1892年：協助北里柴三郎推動傳染病研究</h3>
+<ul>
+<li>福澤支持醫學家北里柴三郎的研究與相關機構發展。</li>
+<li>他協助推動傳染病研究所的建立。</li>
+<li>這項行動反映他對近代醫學、科學研究與公共衛生的重視。</li>
+</ul>
+<h3 id="18941895年：甲午戰爭時期">1894—1895年：甲午戰爭時期</h3>
+<ul>
+<li>日本與清朝因朝鮮問題爆發甲午戰爭。</li>
+<li>戰爭期間，日本社會對國家地位、外交及亞洲秩序的討論更加激烈。</li>
+<li>福澤透過著述與報刊持續關注國際局勢。</li>
+<li>他的文明論與對外政策觀點，也成為後世討論日本近代思想及帝國擴張時的重要研究對象。</li>
+</ul>
+<h3 id="1897年：持續參與慶應義塾發展">1897年：持續參與慶應義塾發展</h3>
+<ul>
+<li>福澤逐漸減少部分日常工作，但仍關心慶應義塾的發展。</li>
+<li>他持續支持教育、科學與知識傳播。</li>
+<li>慶應義塾已經成為日本近代教育體系中具有影響力的民間教育機構。</li>
+</ul>
+<h3 id="1898年：整理個人回憶與生平">1898年：整理個人回憶與生平</h3>
+<ul>
+<li>福澤開始整理自己的生活經歷與思想發展。</li>
+<li>他回顧少年時期的家庭生活、長崎與大阪求學經驗，以及三次海外旅行。</li>
+<li>這些回憶後來成為《福翁自傳》的重要內容。</li>
+</ul>
+<h2 id="第八階段：逝世與歷史影響（18991901年）">第八階段：逝世與歷史影響（1899—1901年）</h2>
+<h3 id="近代日本啟蒙思想的重要代表人物離世">近代日本啟蒙思想的重要代表人物離世</h3>
+<h3 id="18991900年：晚年生活">1899—1900年：晚年生活</h3>
+<ul>
+<li>福澤持續關心慶應義塾及日本教育發展。</li>
+<li>他的著作與思想已在日本知識界具有廣泛影響。</li>
+<li>他雖然曾多次受到政府邀請，但終其一生沒有在明治政府擔任正式官職。</li>
+</ul>
+<h3 id="1901年2月3日：福澤諭吉逝世">1901年2月3日：福澤諭吉逝世</h3>
+<ul>
+<li>福澤諭吉於1901年2月3日在東京逝世。</li>
+<li>享年66歲（周歲）。</li>
+<li>他的逝世受到日本社會與知識界關注。</li>
+<li>他留下的教育機構、著作及新聞事業，持續影響日本近代社會。</li>
+</ul>
+<h3 id="1901年以後：思想與教育遺產延續">1901年以後：思想與教育遺產延續</h3>
+<ul>
+<li>慶應義塾持續發展，成為日本重要的私立大學。</li>
+<li>《學問之勸》與《文明論之概略》持續被閱讀與研究。</li>
+<li>福澤所提倡的獨立、自主、實學與教育普及，成為理解日本近代思想的重要概念。</li>
+<li>另一方面，他對亞洲鄰國的論述及近代日本國家主義的關係，也成為後世學界批判與重新評估的課題。</li>
+</ul>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+2</p>
+<h1 id="三、福澤諭吉主要著作與出版年表">三、福澤諭吉主要著作與出版年表</h1>
+<p>福澤諭吉的著作大致可以分為三個方向：介紹西方文明、提倡個人教育與獨立，以及探討國家文明與社會制度。</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作</th>
+<th>主要內容與思想</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1866</td>
+<td>《西洋事情》初編</td>
+<td>介紹西方政治、法律、教育、經濟及社會制度</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>《西洋事情》外編</td>
+<td>進一步介紹西方社會與制度</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>《世界國盡》</td>
+<td>以通俗方式介紹世界地理與各國知識</td>
+</tr>
+<tr>
+<td>1872</td>
+<td>《學問之勸》初編</td>
+<td>提倡教育普及、個人獨立與實用知識</td>
+</tr>
+<tr>
+<td>1873—1876</td>
+<td>《學問之勸》各編</td>
+<td>深入討論教育、社會、家庭及國家責任</td>
+</tr>
+<tr>
+<td>1875</td>
+<td>《文明論之概略》</td>
+<td>探討文明發展、國民思想及國家近代化</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>《民間經濟錄》</td>
+<td>介紹經濟知識與民間經濟活動</td>
+</tr>
+<tr>
+<td>1878</td>
+<td>《通俗民權論》</td>
+<td>討論民權、政治制度與社會問題</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>《民情一新》等相關論述</td>
+<td>探討日本社會及政治制度的變化</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>《時事大勢論》</td>
+<td>分析當時日本與國際政治局勢</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>《帝室論》</td>
+<td>討論天皇制度及其在日本政治中的地位</td>
+</tr>
+<tr>
+<td>1883</td>
+<td>《學問之獨立》</td>
+<td>強調學術與教育不應完全依附政府</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>《日本婦人論》</td>
+<td>討論女性教育與近代家庭關係</td>
+</tr>
+<tr>
+<td>1886</td>
+<td>《男女交際論》</td>
+<td>探討男女社會交往與近代生活</td>
+</tr>
+<tr>
+<td>1891</td>
+<td>《瘠我慢之說》</td>
+<td>討論政治人物的氣節、忠誠與道義</td>
+</tr>
+<tr>
+<td>1897—1898前後</td>
+<td>《福翁自傳》整理</td>
+<td>回顧個人生命歷程與明治維新前後的經歷</td>
+</tr>
+</tbody></table>
+<p>部分著作曾分編出版，出版年份可能因初版、續編或重新刊行而有所不同。</p>
+<h1 id="四、福澤諭吉的核心思想">四、福澤諭吉的核心思想</h1>
+<h2 id="1-獨立自尊：個人必須具有自主能力">1. 獨立自尊：個人必須具有自主能力</h2>
+<p><a href="https://images.openai.com/static-rsc-4/Nf4ScWXO1mRqNBvaKjoxaAqhmQ9nvy4rtV6833QgUOkEjkw5xyETo-kZ7dNJh68Lzd91sx0tg1TzfeKwSCh1d1jUrAbpdi2KmkuTpZGkUyrhW_DgO-6iv1aAg2kjw67p4d_UlreLy9He09wk1O7A2DXbnxWdYz8rpKHKpT4EHyc?purpose=inline">理念 | 慶應義塾高等学校</a></p>
+<p><a href="https://www.hs.keio.ac.jp/profile/index.html?utm_source=chatgpt.com">hs.keio.ac.jp</a></p>
+<p>「獨立自尊」是後世經常用來概括福澤思想的重要概念。</p>
+<p>其基本精神包括：</p>
+<ul>
+<li>個人不應盲目依附權貴或他人。</li>
+<li>人應具有獨立判斷與思考的能力。</li>
+<li>經濟與知識上的自主，是人格獨立的重要條件。</li>
+<li>個人獨立與國家獨立彼此相關。</li>
+</ul>
+<p>福澤認為，如果一個國家的人民缺乏獨立精神，國家即使建立了新的政治制度，也不一定能真正獲得自主。</p>
+<h2 id="2-實學：學問必須能夠應用於生活">2. 實學：學問必須能夠應用於生活</h2>
+<p>福澤反對只重視傳統經典背誦，而忽略現實問題的學習方式。</p>
+<p>他所重視的學問包括：</p>
+<ul>
+<li>數學：培養計算與邏輯能力。</li>
+<li>地理：理解世界與國際關係。</li>
+<li>自然科學：認識自然規律與技術發展。</li>
+<li>經濟學：理解生產、交易與財富。</li>
+<li>法律與政治：理解社會制度及公共事務。</li>
+<li>外語：直接閱讀外國知識與資料。</li>
+</ul>
+<p>他希望學習能夠幫助個人改善生活，也能促進整個社會的進步。</p>
+<h2 id="3-教育平等：反對以出身決定人生">3. 教育平等：反對以出身決定人生</h2>
+<p>福澤出生於下級武士家庭，親身經歷江戶時代的身分階級制度。</p>
+<p>因此，他特別重視教育所帶來的社會流動機會。</p>
+<p>他主張：</p>
+<ul>
+<li>不應以家世決定一個人的能力。</li>
+<li>人應有接受教育與發展才能的機會。</li>
+<li>社會地位應逐漸與知識、能力及實際貢獻建立關係。</li>
+<li>教育應向更廣泛的民眾普及。</li>
+</ul>
+<p>這些主張對明治時代的教育觀念產生了重要影響。</p>
+<h2 id="4-文明開化：國家現代化不只是引進西方技術">4. 文明開化：國家現代化不只是引進西方技術</h2>
+<p>福澤認為，文明進步並不只是購買西方武器、機器或建築。</p>
+<p>真正的近代化還需要：</p>
+<ul>
+<li>科學知識的普及。</li>
+<li>現代教育制度的建立。</li>
+<li>法律與政治制度的改革。</li>
+<li>經濟活動的發展。</li>
+<li>國民思想與公共精神的轉變。</li>
+</ul>
+<p>這是《文明論之概略》的重要思想基礎。</p>
+<h2 id="5-民間自主：教育與公共事務不應完全依賴政府">5. 民間自主：教育與公共事務不應完全依賴政府</h2>
+<p>福澤終身沒有進入明治政府擔任正式官職。</p>
+<p>他認為民間社會應具有自己的教育機構、新聞媒體及公共討論空間。</p>
+<p>慶應義塾與《時事新報》，正是他實踐這種理念的重要成果。</p>
+<p>不過，福澤並非現代意義上所有自由主義思想的代表。他在國家權力、民權及對外關係等議題上，也有與其他啟蒙思想家不同、甚至具有爭議的立場。</p>
+<h1 id="五、福澤諭吉與日本近代史重要人物的關係">五、福澤諭吉與日本近代史重要人物的關係</h1>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>主要關係</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>緒方洪庵</td>
+<td>老師</td>
+<td>引導福澤深入學習蘭學與西方科學</td>
+</tr>
+<tr>
+<td>森有禮</td>
+<td>明六社成員</td>
+<td>共同推動明治初期的思想交流</td>
+</tr>
+<tr>
+<td>西周</td>
+<td>思想界同時代人物</td>
+<td>參與介紹西方哲學與近代學術</td>
+</tr>
+<tr>
+<td>中村正直</td>
+<td>啟蒙思想家</td>
+<td>推動西方思想與教育觀念傳播</td>
+</tr>
+<tr>
+<td>大隈重信</td>
+<td>政治與教育界往來</td>
+<td>代表明治時代民間教育與政治改革的重要人物</td>
+</tr>
+<tr>
+<td>北里柴三郎</td>
+<td>支持其研究</td>
+<td>福澤支持近代醫學與傳染病研究</td>
+</tr>
+<tr>
+<td>伊藤博文</td>
+<td>政治立場與發展路線不同</td>
+<td>代表明治政府中央改革的主要政治力量</td>
+</tr>
+</tbody></table>
+<h1 id="六、福澤諭吉對日本近代化的歷史貢獻">六、福澤諭吉對日本近代化的歷史貢獻</h1>
+<h2 id="（一）教育方面：建立民間近代教育的重要典範">（一）教育方面：建立民間近代教育的重要典範</h2>
+<p>福澤創立的慶應義塾，從1858年的蘭學塾逐漸發展為近代高等教育機構。</p>
+<p>其教育特色包括：</p>
+<ol>
+<li>重視外語與西方原典閱讀。</li>
+<li>引進經濟、法律、政治與自然科學。</li>
+<li>鼓勵學生獨立思考。</li>
+<li>培養具有實際能力的人才。</li>
+<li>建立不完全依賴政府的民間教育機構。</li>
+</ol>
+<h2 id="（二）思想方面：促進日本人的世界觀轉變">（二）思想方面：促進日本人的世界觀轉變</h2>
+<p>福澤透過《西洋事情》等著作，使當時日本讀者能夠認識西方國家的政治、經濟及社會制度。</p>
+<p>他所介紹的知識，幫助日本社會逐漸從以中國傳統文化為主要知識來源的世界觀，轉向更加重視歐美近代文明。</p>
+<h2 id="（三）出版方面：建立公共知識傳播的管道">（三）出版方面：建立公共知識傳播的管道</h2>
+<p>福澤不只出版書籍，也創辦《時事新報》。</p>
+<p>透過報紙，他將政治、經濟、外交與社會議題帶入公共討論，擴大知識分子與一般民眾接觸公共事務的機會。</p>
+<h2 id="（四）近代思想方面：影響日本社會對個人與國家的理解">（四）近代思想方面：影響日本社會對個人與國家的理解</h2>
+<p>福澤所提出的獨立、實學、教育普及與文明發展等觀念，對日本近代思想史具有重要影響。</p>
+<p>然而，他對亞洲鄰國的觀點，以及部分論述與日本近代對外擴張之間的關係，也需要放在當時的國際環境及歷史背景中批判性理解。</p>
+<h1 id="七、福澤諭吉生平重要年份總表">七、福澤諭吉生平重要年份總表</h1>
+<p>以西曆年份排列；年齡採周歲約數。</p>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>年齡</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1835</td>
+<td>0</td>
+<td>出生於大阪中津藩藏屋敷</td>
+</tr>
+<tr>
+<td>1836</td>
+<td>1</td>
+<td>父親福澤百助去世，隨母親返回中津</td>
+</tr>
+<tr>
+<td>1853</td>
+<td>18</td>
+<td>前往長崎學習蘭學</td>
+</tr>
+<tr>
+<td>1854</td>
+<td>19</td>
+<td>繼續研究西方知識</td>
+</tr>
+<tr>
+<td>1855</td>
+<td>20</td>
+<td>進入大阪緒方洪庵適塾</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>22</td>
+<td>擔任適塾塾長</td>
+</tr>
+<tr>
+<td>1858</td>
+<td>23</td>
+<td>奉藩命前往江戶，開設蘭學塾</td>
+</tr>
+<tr>
+<td>1859</td>
+<td>24</td>
+<td>橫濱開港後轉向學習英語</td>
+</tr>
+<tr>
+<td>1860</td>
+<td>25</td>
+<td>第一次赴美，隨咸臨丸前往舊金山</td>
+</tr>
+<tr>
+<td>1861</td>
+<td>26</td>
+<td>與錦結婚，準備赴歐</td>
+</tr>
+<tr>
+<td>1862</td>
+<td>27</td>
+<td>第二次出國，隨幕府使節團訪問歐洲</td>
+</tr>
+<tr>
+<td>1863</td>
+<td>28</td>
+<td>整理歐洲見聞，從事翻譯</td>
+</tr>
+<tr>
+<td>1864</td>
+<td>29</td>
+<td>進入幕府外國奉行翻譯體系</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>31</td>
+<td>出版《西洋事情》初編</td>
+</tr>
+<tr>
+<td>1867</td>
+<td>32</td>
+<td>第三次出國，前往美國</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>33</td>
+<td>將私塾命名為慶應義塾</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>34</td>
+<td>持續發展慶應義塾，拒絕政府任官</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>36</td>
+<td>慶應義塾遷至三田</td>
+</tr>
+<tr>
+<td>1872</td>
+<td>37</td>
+<td>出版《學問之勸》初編</td>
+</tr>
+<tr>
+<td>1873</td>
+<td>38</td>
+<td>參與明六社</td>
+</tr>
+<tr>
+<td>1874</td>
+<td>39</td>
+<td>推動三田演說會</td>
+</tr>
+<tr>
+<td>1875</td>
+<td>40</td>
+<td>出版《文明論之概略》</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>41</td>
+<td>《學問之勸》主要各編陸續完成</td>
+</tr>
+<tr>
+<td>1880</td>
+<td>45</td>
+<td>參與創立交詢社</td>
+</tr>
+<tr>
+<td>1881</td>
+<td>46</td>
+<td>明治十四年政變</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>47</td>
+<td>創辦《時事新報》</td>
+</tr>
+<tr>
+<td>1883</td>
+<td>48</td>
+<td>發表《學問之獨立》</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>50</td>
+<td>《時事新報》刊出後世稱為「脫亞論」的社論</td>
+</tr>
+<tr>
+<td>1890</td>
+<td>55</td>
+<td>慶應義塾大學部成立</td>
+</tr>
+<tr>
+<td>1891</td>
+<td>56</td>
+<td>撰寫《瘠我慢之說》</td>
+</tr>
+<tr>
+<td>1892</td>
+<td>57</td>
+<td>支持北里柴三郎的傳染病研究</td>
+</tr>
+<tr>
+<td>1894—1895</td>
+<td>59—60</td>
+<td>甲午戰爭期間持續關注日本與亞洲局勢</td>
+</tr>
+<tr>
+<td>1898</td>
+<td>63</td>
+<td>整理個人回憶與生平資料</td>
+</tr>
+<tr>
+<td>1901</td>
+<td>66</td>
+<td>2月3日於東京逝世</td>
+</tr>
+</tbody></table>
+<h1 id="八、總結：福澤諭吉在日本近代史上的地位">八、總結：福澤諭吉在日本近代史上的地位</h1>
+<p>福澤諭吉的一生，可以概括為三個重要階段：</p>
+<p>第一階段：從蘭學者成為西方文明的觀察者。</p>
+<p>他從長崎、適塾的學習開始，透過三次海外旅行，親身觀察美國與歐洲的政治、教育、經濟及社會制度，建立對近代文明的理解。</p>
+<p>第二階段：從西方知識介紹者成為教育改革者。</p>
+<p>他創辦慶應義塾，出版《西洋事情》、《學問之勸》等著作，提倡實學、教育普及與個人獨立，協助日本社會理解近代教育的意義。</p>
+<p>第三階段：從教育家成為公共思想的參與者。</p>
+<p>他創辦《時事新報》，參與明治時代的公共議論，持續思考國家獨立、文明發展、社會制度與亞洲國際關係。</p>
+<p>福澤諭吉最重要的歷史意義，不只是把西方知識介紹給日本，而是提出一個更深層的問題：</p>
+<p>一個國家要真正實現近代化，究竟應該只改變政治制度與科技設備，還是必須從人民的知識、思想與人格獨立開始改變？</p>
+<p>這個問題貫穿他的教育事業與思想著作，也是理解明治日本近代化的重要切入點。</p>
+<h2 id="九、推薦延伸閱讀與史料">九、推薦延伸閱讀與史料</h2>
+<p><a href="https://images.openai.com/static-rsc-4/u0U9C15DNhjlZxBu55NTjdC7ob1OVJ9rEdM1DywxpAiZ2IXIZQukd1FRQCi-4aRGx6yG0iIp24TWFfbU6dhvx3dh3ctSCa4SpuUsUX-1Qq0i3iEpZRV5aH4RCVXa34Pja-N0DJ_DxNkP2dwHWncnlIeLbWpjpdxlDpJf5muX3Sw?purpose=inline">博客來-福澤諭吉自傳</a></p>
+<p>《福翁自傳》</p>
+<p>福澤親自回憶自己的成長、求學、海外旅行及明治維新經歷，是了解其個人經歷的重要第一手材料。</p>
+<p><a href="https://images.openai.com/static-rsc-4/k1r_0IMyEJtsWpEtUGYStMmeOLN5vCe1HKVp4GNtLfPdExXtoDQbcopoDPoC6rtI0yFgPEFdWkR9sDOppVcYVqY06PritmVcB31igjOgJoHBxaExUIZPoonxA4FCAyzWqqOZHqHWQkcY8fz7B1KkRLTmzMYdJ2vV6TIYJjbox2E?purpose=inline">福澤諭吉學問</a></p>
+<p>《學問之勸》</p>
+<p>理解福澤的教育思想、個人獨立與實學理念。</p>
+<p><a href="https://images.openai.com/static-rsc-4/Vl2WcCTQWtkg038uMLps-bVCv7H_fTANi_MGO2OqAcYYvyJYq16dHdCo97aUULPZAT1kEqgyXyWGlunIyTwzwdQkBrFEZWVmjeIybTWPBesp6MC5uxND8h0ySWNEHPD3Q3ULhKE2oI_rlklXi8DntT1EXfhHWGJVBoR5x30yNLA?purpose=inline">文明論之概略 / 福澤 諭吉【著】/戸沢 行夫【編】 - 紀伊國屋書店ウェブストア｜オンライン書店｜本、雑誌の通販、電子書籍ストア</a></p>
+<p>《文明論之概略》</p>
+<p>理解福澤如何分析文明、國家發展與社會思想。</p>
+<p>官方與學術資料：</p>
+<ol>
+<li><a href="https://www.ndl.go.jp/portrait/e/datas/185?utm_source=chatgpt.com">日本國立國會圖書館：福澤諭吉人物介紹</a>——生卒年、海外旅行、著作與生平概述。</li>
+<li><a href="https://www.keio.ac.jp/ja/about/philosophy/fukuzawa/?utm_source=chatgpt.com">慶應義塾：創立者福澤諭吉年譜</a>——最完整的官方生平年表。</li>
+<li><a href="https://www.keio.ac.jp/en/about/philosophy/fukuzawa-en/?utm_source=chatgpt.com">慶應義塾：Yukichi Fukuzawa</a>——海外旅行與思想發展的英文介紹。</li>
+<li><a href="https://ceschi.bun.kyoto-u.ac.jp/archive/bun_archive/japanese_philosophy/jp-fukuzawa_guidance/index.htm?utm_source=chatgpt.com">京都大學：福澤諭吉思想家介紹</a>——思想背景與近代日本思想史定位。</li>
+</ol>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

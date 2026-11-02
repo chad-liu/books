@@ -1,0 +1,574 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="東條英機生平大事記（1884－1948）">東條英機生平大事記（1884－1948）</h1>
+<p><a href="https://images.openai.com/static-rsc-4/7mGI4RODarxb5Y15N7d-Cih74_lkZrQn2yioYUrKsYGjEe5pQqKQYKqG48sauXvAVl-9qc3vpfWJXTfUVh_vK9jxJ-s1zrUvCmXIhOHvEtOyDZbqpmJKO6R-66L1WrVJV-0z9FjVH35BRo4afgMd6ERcOxMP87WcYLuYT1xbkg8?purpose=inline">Japans General Tojo Giving Speech Our beautiful Wall Art and Photo Gifts include Framed Prints, Photo Prints, Poster Prints, Canvas Prints, Jigsaw Puzzles, Metal Prints and so much more</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/_gePpXw4Vr8KHK6ASRn4Ky4aPuYeiLYBSyqM31qqcXpGOMdPIltomIgR_yjr9nIu8RS7HpuaBEhGggxv29nkEnPRPrcBfmXQG8f3SZjTAGdWu7CqiMBC8AhrZ2oClCDQFNa25mlMmQMScZ0H16vvFZerAbToo0BChBIOjWbenuw?purpose=inline">Leaders Facing Justice | Council on Foreign Relations</a></p>
+<p>東條英機（とうじょう ひでき，Hideki Tōjō，1884年12月30日－1948年12月23日），日本陸軍軍人、政治人物，曾任日本第40任內閣總理大臣（1941年10月18日－1944年7月22日）。他是日本軍國主義體制下的重要領導人物之一，在太平洋戰爭期間擔任首相兼陸軍大臣，對日本發動及持續戰爭負有重要政治與軍事責任。</p>
+<p>東條英機的政治生涯，與日本明治以來的軍事擴張、滿洲事變、中日戰爭及太平洋戰爭密切相關。戰後，他被遠東國際軍事法庭判定犯有甲級戰爭罪，於1948年被判處絞刑，並於同年12月23日執行。</p>
+<h2 id="一、出身與早年軍旅生涯（1884－1918）">一、出身與早年軍旅生涯（1884－1918）</h2>
+<h3 id="1884年：出生於東京">1884年：出生於東京</h3>
+<ul>
+<li>12月30日，東條英機出生於日本東京。</li>
+<li>父親東條英教是日本陸軍中將，曾參與明治時期日本陸軍的建設。</li>
+<li>出身於職業軍人家庭，從小受到軍事紀律與武士道觀念的影響。</li>
+</ul>
+<h3 id="1890年代：接受軍人教育">1890年代：接受軍人教育</h3>
+<ul>
+<li>進入陸軍相關學校接受教育。</li>
+<li>在成長過程中，逐漸形成重視紀律、服從與軍人職責的思想。</li>
+</ul>
+<h3 id="1902年：進入陸軍士官學校">1902年：進入陸軍士官學校</h3>
+<ul>
+<li>進入日本陸軍士官學校學習。</li>
+<li>接受步兵戰術、軍事訓練及軍事倫理教育。</li>
+</ul>
+<h3 id="1905年：日俄戰爭結束前後">1905年：日俄戰爭結束前後</h3>
+<ul>
+<li>自陸軍士官學校畢業，授予步兵少尉軍階。</li>
+<li>日俄戰爭於同年結束，東條英機並未因參戰而建立顯著戰功。</li>
+<li>此後逐步在日本陸軍體系內發展。</li>
+</ul>
+<h3 id="1909年：結婚">1909年：結婚</h3>
+<ul>
+<li>與伊東勝子結婚。</li>
+<li>婚後育有子女。</li>
+</ul>
+<h3 id="1915年：進入陸軍大學校">1915年：進入陸軍大學校</h3>
+<ul>
+<li>考入陸軍大學校，接受高階參謀與軍事指揮教育。</li>
+<li>陸軍大學校是日本陸軍培養高級軍官的重要機構。</li>
+</ul>
+<h3 id="1918年：自陸軍大學校畢業">1918年：自陸軍大學校畢業</h3>
+<ul>
+<li>完成高級軍事教育。</li>
+<li>開始逐漸進入日本陸軍的參謀與行政決策體系。</li>
+</ul>
+<h2 id="二、參謀生涯與軍事思想形成（1919－1931）">二、參謀生涯與軍事思想形成（1919－1931）</h2>
+<h3 id="1919年：派駐歐洲">1919年：派駐歐洲</h3>
+<ul>
+<li>被派往歐洲考察與工作。</li>
+<li>接觸第一次世界大戰後的歐洲政治、軍事及社會局勢。</li>
+<li>此時期的海外經歷，擴大了他對歐洲軍事制度與國際政治的認識。</li>
+</ul>
+<h3 id="1920年代：在陸軍中逐步升遷">1920年代：在陸軍中逐步升遷</h3>
+<ul>
+<li>歷任陸軍參謀、軍事行政及教育相關職務。</li>
+<li>逐漸以重視紀律、執行力及組織管理著稱。</li>
+<li>在陸軍內部建立人脈，逐步進入軍部核心圈。</li>
+</ul>
+<h3 id="1928年：升任陸軍大佐">1928年：升任陸軍大佐</h3>
+<ul>
+<li>軍階逐步提升。</li>
+<li>在陸軍內部的影響力增加。</li>
+</ul>
+<h3 id="1929－1931年：參與陸軍政策與人事運作">1929－1931年：參與陸軍政策與人事運作</h3>
+<ul>
+<li>活躍於陸軍中央機構。</li>
+<li>日本國內軍部勢力日益擴張，軍方對政府外交與國防政策的影響力逐漸增強。</li>
+<li>東條英機逐漸成為支持強化陸軍權力與日本大陸政策的軍官之一。</li>
+</ul>
+<h2 id="三、滿洲事變與關東軍時期（1931－1938）">三、滿洲事變與關東軍時期（1931－1938）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/KbS3PR43nlh7IFigo33tJOInyFtfVvWP_fH_2A4k2mtDoWxo3F8tCy6lIljoiOfcQ1gq8deb7gGNFl17qRFy166kdHuY6EugtW36dGHwmRgTMvPeJehgt7tDzj6OaBUE4DIbvcVGZQ5Ny1yAREChJ_D-yp3w5c3BizcDu7lRKrU?purpose=inline">（一）“九一八事变”及日占东北 | 中国文化研究院 - 灿烂的中国文明</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/E2M8ZJRw3edm9C0UuYTlw1WkZuGsUT9cwUcdesUEQ3TNQd-hdage8oYeTIr55uzWHRy4xyj7Wj8ho1VzSDTlPiD87tmcAcadqT-ubzVRCkMVYAPZJpJHuYY9nWFc23uYqLXs7Dvbj4n6sOdxTbdJcpFgFLWFJbBWLSc0_yaULro?purpose=inline">1932 Changchun - signing the Japan-Manchukuo Protocol  - RARE L193C | eBay</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/OyhF3Wkteg60ps_DL-0DMD6OcFjbJnDVoC4oztCcu1IEXLW9a2Pih7eK4dGsBeIW7dBNUanDtY1EphVHqc3nuY41isZOvVGlsiP0mZxMYB76AHS6tg-9EGois4DW5k8OnGfhGMN5VA1hS6aRTe8GqKXwd-r2ObX3BQjPM93kxBo?purpose=inline">Император Китая Пу И | Жизнь императора | Маньчжоу-Го</a></p>
+<p>7</p>
+<h3 id="1931年：九一八事變">1931年：九一八事變</h3>
+<ul>
+<li>9月18日，日本關東軍在中國東北發動九一八事變。</li>
+<li>日本軍隊迅速擴大軍事行動，逐步控制中國東北地區。</li>
+<li>東條英機當時主要在陸軍中央任職，並非九一八事變的現場策劃者。</li>
+</ul>
+<h3 id="1932年：日本建立滿洲國">1932年：日本建立滿洲國</h3>
+<ul>
+<li>3月，日本扶植建立滿洲國。</li>
+<li>日本對中國東北的軍事與政治控制逐漸制度化。</li>
+<li>日本陸軍內部的擴張派勢力進一步增強。</li>
+</ul>
+<h3 id="1933年：升任陸軍少將">1933年：升任陸軍少將</h3>
+<ul>
+<li>東條英機升任陸軍少將。</li>
+<li>開始擔任更重要的軍事行政職務。</li>
+</ul>
+<h3 id="1934年：擔任陸軍兵器行政相關職務">1934年：擔任陸軍兵器行政相關職務</h3>
+<ul>
+<li>進入陸軍中央行政體系的重要位置。</li>
+<li>參與軍事裝備及軍需制度的管理。</li>
+</ul>
+<h3 id="1935年：任職於關東軍憲兵系統">1935年：任職於關東軍憲兵系統</h3>
+<ul>
+<li>出任關東軍憲兵司令官。</li>
+<li>赴中國東北任職。</li>
+<li>負責軍事警察、治安與情報監控等工作。</li>
+<li>在關東軍任職期間，對當地政治與軍事控制體系有更直接的參與。</li>
+</ul>
+<h3 id="1936年：二二六事件">1936年：二二六事件</h3>
+<ul>
+<li>2月26日，日本部分青年軍官發動政變，史稱二二六事件。</li>
+<li>政變遭到鎮壓，軍部內部的派系鬥爭受到重大影響。</li>
+<li>東條英機支持維持陸軍組織紀律與服從中央指揮的立場。</li>
+<li>同年升任陸軍中將。</li>
+</ul>
+<h3 id="1937年：盧溝橋事變與全面中日戰爭">1937年：盧溝橋事變與全面中日戰爭</h3>
+<ul>
+<li>7月7日，盧溝橋事變爆發。</li>
+<li>中日衝突迅速擴大，演變為全面戰爭。</li>
+<li>東條英機仍在關東軍任職，參與日本在中國東北及華北方向的軍事部署。</li>
+</ul>
+<h3 id="1938年：出任陸軍次官">1938年：出任陸軍次官</h3>
+<ul>
+<li>返回日本中央，出任陸軍次官。</li>
+<li>成為陸軍中央決策的重要人物。</li>
+<li>在軍事政策、人事及戰爭動員等方面具有更大的影響力。</li>
+</ul>
+<h2 id="四、進入日本政府核心（1938－1941）">四、進入日本政府核心（1938－1941）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/3bg1C12T5l9YdOKP0Y5yvQWC6TBDBEkUJDG3RLe65zWLsPzF_SwuU9xWQamHGVWRPRdwX6fNr1bfHEQ22J_nLM4id7SnVAAjqmS7qs7rQRmGauBD1SqiMNKCoBNV3ODVrwiVoSb_6Mep_DTVH0qx9WlPdyt_BQ976ZqY31RVAV0?purpose=inline">【歴史さんぽ】荻外荘｜荻窪会談の部屋と復元が伝える昭和史（第2回）｜nana</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/F8LcRJN5_ilzUtXuFLSQVsRfG4vB9dR9_q_6Cy9Yj9OaWoXCwHnBEE_prYMTTLSnMJSk4Zv-9zlHFAo4-Wf93lKJScXSPttOsgPlW6ljBfy6mYDYjWZWYb2_rQUePaXToTzpUNdmtB8UwQxQMPJjJkHh1W9Jf7repgO9TlnVCew?purpose=inline">Hitler Archive | Adolf Hitler, Saburo Kurusu and Galeazzo Ciano at the signing of the Tripartita Act</a></p>
+<p>7</p>
+<h3 id="1938－1939年：參與戰時軍事政策">1938－1939年：參與戰時軍事政策</h3>
+<ul>
+<li>日本持續對中國進行大規模軍事行動。</li>
+<li>東條英機在陸軍中央擔任重要職務，支持擴大軍事動員。</li>
+<li>日本軍部對內閣及外交決策的影響力持續上升。</li>
+</ul>
+<h3 id="1939年：升任陸軍大將">1939年：升任陸軍大將</h3>
+<ul>
+<li>東條英機升任陸軍大將。</li>
+<li>成為日本陸軍高層將領之一。</li>
+</ul>
+<h3 id="1940年：第二次近衛內閣成立">1940年：第二次近衛內閣成立</h3>
+<ul>
+<li>7月，第二次近衛文麿內閣成立。</li>
+<li>東條英機出任陸軍大臣。</li>
+<li>9月，日本與德國、義大利簽署《三國同盟條約》。</li>
+<li>日本與納粹德國、法西斯義大利建立軍事政治同盟。</li>
+<li>同年，日本進一步推動南進政策，與美國、英國等國的關係日益緊張。</li>
+</ul>
+<h3 id="1941年：日本與美國關係惡化">1941年：日本與美國關係惡化</h3>
+<ul>
+<li>日本繼續推動對中國及東南亞的軍事擴張。</li>
+<li>美國因日本在中國及法屬印度支那的軍事行動，逐步加強對日經濟制裁。</li>
+<li>日本與美國進行外交談判，但雙方在中國問題、撤軍問題及東南亞政策上存在重大分歧。</li>
+</ul>
+<h3 id="1941年10月：東條英機出任首相">1941年10月：東條英機出任首相</h3>
+<ul>
+<li>10月16日，近衛文麿內閣總辭職。</li>
+<li>10月18日，東條英機組成內閣，出任日本第40任內閣總理大臣。</li>
+<li>同時兼任陸軍大臣。</li>
+<li>他上任後仍一度繼續外交談判，但日本政府已在軍事方面加緊對美、英、荷開戰準備。</li>
+</ul>
+<h2 id="五、太平洋戰爭爆發與戰爭擴大（1941－1942）">五、太平洋戰爭爆發與戰爭擴大（1941－1942）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/jgiOWl4fr9WU5zfPrTTO87q4tzuiy-N8T0PoFoXTT_dBIjyZgr50fi4FcbdMCmoY7setfpzNuw4ufjJn9sgF7bvwplwsyqbbVHzEkNmLbxknWr8wSsNWR5r6JtV4Zc2Y2o571xW5Fo4IVexj3gyR7FutQr65heCebytoWAslMUM?purpose=inline">สหรัฐฯ รู้ หรือไม่ว่า ญี่ปุ่นจะโจมตีฐานทัพเรือเพิร์ลฮาร์เบอร์ ?</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/fr2NP-r_9Yd-ojXGdU7tiQZwtHmKzeuaOk8FekQNpWkenW1HWjt2yhwlLXVhLENTjP18RJE7yhX5KK_jquAtoRjMLYLsROVPtIzd1QL1bH_6ntb1501bAo7OTQeFQtKqDdTSuLdnhTJAUZLEsiaOy3tne2ulQ7z2BeaAk1iHODs?purpose=inline">Ulasan | Betul ke Jepun jajah Tanah Melayu dengan basikal? - Malaysia Bangkit</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/Agw6SyZPAHuv-0Aqw1oWuk61zxWoDWdJrroA47At358nT2Nh3pVzEYQBjumcXjfvZTQMHz6q10cLWQcVXt9743Vb3oenbd2gNflo2R9f5t1ucqV6GgALUUnutYRWMmj7QwS1Cqda5htCf160MafFZCqegKyYUVsfKE8yJF9u-Cg?purpose=inline">Kejatuhan Singapura, Pukulan Telak Inggris di Sejarah Perang Dunia II - Semua Halaman - National Geographic</a></p>
+<p>6</p>
+<h3 id="1941年12月：珍珠港事件與太平洋戰爭爆發">1941年12月：珍珠港事件與太平洋戰爭爆發</h3>
+<ul>
+<li>12月7日（夏威夷時間）：日本海軍偷襲美國夏威夷珍珠港。</li>
+<li>12月8日（日本時間）：日本對美國、英國等國宣戰，太平洋戰爭全面爆發。</li>
+<li>日本軍隊同時向馬來亞、香港、菲律賓等地發動攻擊。</li>
+<li>東條英機以首相兼陸軍大臣身分，成為日本戰時最高政治領導人之一。</li>
+</ul>
+<h3 id="1942年1月：日本擴大南方作戰">1942年1月：日本擴大南方作戰</h3>
+<ul>
+<li>日本軍隊迅速向東南亞及太平洋地區推進。</li>
+<li>日本在初期戰役中取得一系列軍事勝利。</li>
+<li>日本政府開始規劃對新占領地區的軍事、行政與資源管理。</li>
+</ul>
+<h3 id="1942年2月：新加坡陷落">1942年2月：新加坡陷落</h3>
+<ul>
+<li>2月15日，英軍在新加坡向日軍投降。</li>
+<li>英國在東南亞的重要軍事據點遭到重大打擊。</li>
+<li>日本在東南亞的軍事勢力達到高峰之一。</li>
+</ul>
+<h3 id="1942年4月：杜立德空襲">1942年4月：杜立德空襲</h3>
+<ul>
+<li>4月18日，美軍轟炸東京及日本本土部分地區。</li>
+<li>雖然造成的直接物質損失有限，但對日本政府與民眾造成心理衝擊。</li>
+<li>日本軍方開始更加重視本土防空與太平洋防禦。</li>
+</ul>
+<h3 id="1942年6月：中途島海戰">1942年6月：中途島海戰</h3>
+<ul>
+<li>6月4日至7日，美日海軍在中途島附近交戰。</li>
+<li>日本海軍損失四艘航空母艦。</li>
+<li>日本海軍在太平洋戰爭中的戰略優勢受到重大打擊。</li>
+<li>戰爭逐漸由日本初期攻勢轉向美軍反攻。</li>
+</ul>
+<h2 id="六、戰局逆轉與東條內閣危機（1942－1944）">六、戰局逆轉與東條內閣危機（1942－1944）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/QRG0l8swE0I92d8M6dleY487hOn-HCn7uZg8-nI7hTngXHgZvSf3bOFUl1RTXfF-67vUVnClp97Ca5oG9S9yOgQQNJeDvgSkEMLWuttpLGY9e8FpC1Jw336-CmT4loC0FW6ysL3SPOtbZJfo46AvGaMB8s8uPDzOZMLcK9o6wkM?purpose=inline">WWII Pictures (@WWIIpix) on X</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/L2N_01PctjrOgUgqdKBdnZ-jSk0VNPLh9Dszdz5P3_cprTd5e4FWS_nWrH1euSpceGwJhxxfBYV27UwPm4FF7VoJBLMUTlS-Cuf1vzcF22tTidR_6JAM-bZefvDpm3ctBNI4Bv59ySWS_cZQ1XW-AfWDi8BScLyyfo5HRGfI71Q?purpose=inline">Battle of Saipan, 1944: Photographs Capture a Grueling Fight</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/_M0mHkR6s9uxjKa4Sq03eboP2r6rOSpsM4_qSVw_PJxPd9hcTueLgcMjdaIvvK9AvFNvb5eifKHGOFsxadXKpk4UUc3bsrF_6-NYyRfkcywPTQcWy3_FarEn4El_imiDY7kAiyvwC5GJtSuBPhzdgobBT3EXKqbUcb_Ovgz72UdZXe6kxXhlJWtHzBtVVMuo?purpose=inline">Firebombed Tokyo</a></p>
+<h3 id="1942年8月：瓜達康納爾島戰役">1942年8月：瓜達康納爾島戰役</h3>
+<ul>
+<li>8月，美軍在所羅門群島瓜達康納爾島登陸。</li>
+<li>美日雙方展開長期激烈的陸海空作戰。</li>
+<li>日本逐漸陷入兵力、物資與海上運輸能力不足的困境。</li>
+</ul>
+<h3 id="1943年：日本戰略形勢惡化">1943年：日本戰略形勢惡化</h3>
+<ul>
+<li>美軍逐步推進太平洋反攻。</li>
+<li>日本在南太平洋的控制範圍持續受到壓縮。</li>
+<li>日本本土開始受到更嚴重的戰爭資源與運輸壓力。</li>
+<li>東條內閣仍堅持持續作戰，並加強國內戰時動員。</li>
+</ul>
+<h3 id="1944年2月：東條兼任參謀總長">1944年2月：東條兼任參謀總長</h3>
+<ul>
+<li>東條英機兼任日本陸軍參謀總長。</li>
+<li>集中首相、陸軍大臣與陸軍參謀總長等重要職權。</li>
+<li>這種權力集中反映出日本戰時決策體制的高度軍事化。</li>
+</ul>
+<h3 id="1944年6月：塞班島失守">1944年6月：塞班島失守</h3>
+<ul>
+<li>6月，美軍在馬里亞納群島發動攻勢。</li>
+<li>6月15日，美軍登陸塞班島。</li>
+<li>7月9日，美軍宣布控制塞班島。</li>
+<li>塞班島失守，使美軍取得可用於遠程轟炸日本本土的重要基地。</li>
+<li>日本政府內部對戰爭指導責任及東條內閣的批評日益增加。</li>
+</ul>
+<h3 id="1944年7月：東條內閣總辭職">1944年7月：東條內閣總辭職</h3>
+<ul>
+<li>7月18日，東條英機內閣總辭職。</li>
+<li>7月22日，小磯國昭接任首相。</li>
+<li>東條英機失去首相職位，戰時政治影響力明顯下降。</li>
+</ul>
+<h2 id="七、日本戰敗與被捕（1944－1945）">七、日本戰敗與被捕（1944－1945）</h2>
+<h3 id="1944年下半年：戰爭持續惡化">1944年下半年：戰爭持續惡化</h3>
+<ul>
+<li>日本在太平洋各戰場節節失利。</li>
+<li>美軍逐步逼近日本本土。</li>
+<li>日本本土遭受空襲的風險日益提高。</li>
+</ul>
+<h3 id="1945年3月：東京大空襲">1945年3月：東京大空襲</h3>
+<ul>
+<li>3月9日至10日，美軍對東京發動大規模燃燒彈轟炸。</li>
+<li>東京市區遭受嚴重破壞，大量平民傷亡。</li>
+<li>日本城市與工業設施持續遭到空襲。</li>
+</ul>
+<h3 id="1945年8月：日本宣布投降">1945年8月：日本宣布投降</h3>
+<ul>
+<li>8月6日，美國在廣島投下原子彈。</li>
+<li>8月9日，美國在長崎投下原子彈；同日，蘇聯對日宣戰並進攻滿洲。</li>
+<li>8月15日，日本昭和天皇透過《終戰詔書》宣布接受《波茨坦公告》。</li>
+<li>9月2日，日本代表在美國戰艦密蘇里號上簽署降伏文書，第二次世界大戰正式結束。</li>
+</ul>
+<h3 id="1945年9月：東條英機企圖自殺">1945年9月：東條英機企圖自殺</h3>
+<ul>
+<li>9月11日，盟軍占領當局下令逮捕東條英機等日本戰爭領導人物。</li>
+<li>東條英機在美軍前往逮捕時，朝胸部開槍企圖自殺。</li>
+<li>他受傷後被送醫治療，最終獲救。</li>
+<li>此後被盟軍拘押，等待戰爭罪責調查與審判。</li>
+</ul>
+<h2 id="八、遠東國際軍事法庭審判與處決（1946－1948）">八、遠東國際軍事法庭審判與處決（1946－1948）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/zCS_vsfgvHYTUDJA06WWWg7dFLJVF9gLreFKYtWx-90FXA09rYPro6kBFryLgQeK2nW5CxyrjSlgMki308tGfbqlHz0-dywekjOao5WtZej65uHm4oNjl6-Sv5Ky523yx-y6nPfBDGti8jDByHhgAxCdGV44CUc4JH1yyZ8SrR8?purpose=inline">Hideki Tojo - 29 abril 1946 | Eventos Importantes del 29 abril en la Historia - CalendarZ</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/_gePpXw4Vr8KHK6ASRn4Ky4aPuYeiLYBSyqM31qqcXpGOMdPIltomIgR_yjr9nIu8RS7HpuaBEhGggxv29nkEnPRPrcBfmXQG8f3SZjTAGdWu7CqiMBC8AhrZ2oClCDQFNa25mlMmQMScZ0H16vvFZerAbToo0BChBIOjWbenuw?purpose=inline">Leaders Facing Justice | Council on Foreign Relations</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/f7vDm1ZclKBkArj_mX99toSQOIzjQBM0g5wKSKThX6t_PbKYti4mTJhbAyaR9K7GygZUuA_CK-bCP-tNThFv5tFaA71HA3NEiTwQY4VCBu64Ek1RK--HP4yzdS4sqqOzqzswmGwsJWVmXIepXU26XlWnOb_ckj7x2JqB3BTV5PA?purpose=inline">东京审判罕见影像，日本战犯被绞死全过程 - 综合资料 - 抗日战争纪念网</a></p>
+<p>6</p>
+<h3 id="1946年4月：正式起訴">1946年4月：正式起訴</h3>
+<ul>
+<li>遠東國際軍事法庭在東京成立並進行審判。</li>
+<li>東條英機被列為甲級戰犯被告之一。</li>
+<li>被控涉及策劃、準備、發動及進行侵略戰爭，以及其他相關戰爭罪行。</li>
+</ul>
+<h3 id="1946年5月：東京審判開庭">1946年5月：東京審判開庭</h3>
+<ul>
+<li>5月3日，遠東國際軍事法庭正式開庭。</li>
+<li>東條英機成為主要被告之一。</li>
+<li>審判內容涉及日本自1930年代以來的對外侵略與戰爭決策。</li>
+</ul>
+<h3 id="1947年：出庭作證">1947年：出庭作證</h3>
+<ul>
+<li>東條英機在法庭上為日本政府的戰爭決策辯護。</li>
+<li>他主張日本的行動與國家安全、國際局勢及當時的外交環境有關。</li>
+<li>其證詞與辯護成為東京審判的重要部分。</li>
+</ul>
+<h3 id="1948年11月：判決確定">1948年11月：判決確定</h3>
+<ul>
+<li>11月12日，遠東國際軍事法庭宣判。</li>
+<li>東條英機被判犯有多項甲級戰爭罪，判處死刑。</li>
+<li>法庭認定其在日本侵略戰爭的決策與執行中負有重要責任。</li>
+</ul>
+<h3 id="1948年12月：執行死刑">1948年12月：執行死刑</h3>
+<ul>
+<li>12月23日，東條英機在東京巢鴨監獄被處以絞刑。</li>
+<li>終年63歲。</li>
+<li>其死刑執行，象徵東京審判對日本主要戰爭領導人物追究責任的重要階段告一段落。</li>
+</ul>
+<h2 id="九、重要職務與政治權力變化">九、重要職務與政治權力變化</h2>
+<p>東條英機的政治影響力並非一開始就來自戰場指揮，而是逐步透過陸軍行政、參謀及人事體系累積。他的主要職務如下：</p>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>主要職務</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1905年</td>
+<td>陸軍士官學校畢業，任步兵少尉</td>
+</tr>
+<tr>
+<td>1915年</td>
+<td>陸軍大學校畢業</td>
+</tr>
+<tr>
+<td>1919－1922年</td>
+<td>赴瑞士、德國駐在</td>
+</tr>
+<tr>
+<td>1933年</td>
+<td>升任陸軍少將</td>
+</tr>
+<tr>
+<td>1935年</td>
+<td>關東憲兵隊司令官</td>
+</tr>
+<tr>
+<td>1936年12月</td>
+<td>升任陸軍中將</td>
+</tr>
+<tr>
+<td>1937年3月</td>
+<td>關東軍參謀長</td>
+</tr>
+<tr>
+<td>1938年5月</td>
+<td>陸軍次官</td>
+</tr>
+<tr>
+<td>1940年7月</td>
+<td>第二次近衛內閣陸軍大臣</td>
+</tr>
+<tr>
+<td>1941年10月</td>
+<td>升任陸軍大將、出任首相</td>
+</tr>
+<tr>
+<td>1941－1944年</td>
+<td>首相兼陸軍大臣</td>
+</tr>
+<tr>
+<td>1943年11月</td>
+<td>兼任軍需大臣</td>
+</tr>
+<tr>
+<td>1944年2月</td>
+<td>兼任陸軍參謀總長</td>
+</tr>
+<tr>
+<td>1944年7月</td>
+<td>內閣總辭職，轉入預備役</td>
+</tr>
+</tbody></table>
+<p>以上職務沿革可參照日本國立國會圖書館及防衛省防衛研究所的史料。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://ndlsearch.ndl.go.jp&sz=32">image</a></p>
+<p>国立国会図書館+1</p>
+<h2 id="十、東條英機與日本軍國主義的關係">十、東條英機與日本軍國主義的關係</h2>
+<h3 id="1-日本陸軍勢力的擴張">1. 日本陸軍勢力的擴張</h3>
+<p>東條英機的崛起，反映了日本陸軍在1930年代逐漸取得更大政治影響力的歷史過程。</p>
+<ul>
+<li>日本陸軍逐步突破文官政府對軍事政策的制約。</li>
+<li>軍方透過陸軍大臣任免及軍部內部人事制度，對內閣組成產生重要影響。</li>
+<li>中日戰爭爆發後，日本政府進一步轉向戰時體制。</li>
+<li>東條英機從陸軍行政官僚逐漸成為政府最高領導人。</li>
+</ul>
+<h3 id="2-權力集中與戰時統制">2. 權力集中與戰時統制</h3>
+<p>東條出任首相後，陸續兼任多項重要職務：</p>
+<ul>
+<li>首相：負責政府整體政策。</li>
+<li>陸軍大臣：掌握陸軍行政及軍事政策。</li>
+<li>內務大臣：一度掌握國內治安、警察及地方行政相關事務。</li>
+<li>軍需大臣：負責戰時軍需生產與資源動員。</li>
+<li>陸軍參謀總長：掌握陸軍最高作戰指揮參謀機構。</li>
+</ul>
+<p>1944年2月，他兼任陸軍參謀總長，權力進一步集中。日本國立國會圖書館的傳記資料指出，這種集中化的戰時政治體制，也使國會逐漸失去實質制衡能力。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+1</p>
+<h3 id="3-太平洋戰爭的責任">3. 太平洋戰爭的責任</h3>
+<p>東條英機於1941年10月才出任首相，但日本對美戰爭的規劃早於他上任之前已經展開。</p>
+<p>因此，分析他的戰爭責任時，需要區分：</p>
+<ul>
+<li>戰前決策：日本軍部及政府在近衛內閣時期已經進行對美開戰準備。</li>
+<li>開戰決策：東條上任後參與並領導日本政府作出戰爭決策。</li>
+<li>戰爭執行：他在太平洋戰爭初期至1944年期間，持續擔任日本政府最高領導人之一。</li>
+<li>戰爭持續：戰局逆轉後，他仍支持持續作戰，並強化國內戰時動員。</li>
+</ul>
+<p>這些不同階段有助於理解他在日本戰爭決策體系中的實際角色。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.ndl.go.jp&sz=32">image</a></p>
+<p>National Diet Library, Japan+2</p>
+<h2 id="十一、重要歷史事件對照表">十一、重要歷史事件對照表</h2>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>日本及國際重大事件</th>
+<th>東條英機的角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1931</td>
+<td>九一八事變</td>
+<td>任陸軍中央職務，並非現場策劃者</td>
+</tr>
+<tr>
+<td>1932</td>
+<td>滿洲國成立</td>
+<td>在陸軍體系中逐步升遷</td>
+</tr>
+<tr>
+<td>1935</td>
+<td>日本擴大對中國東北控制</td>
+<td>任關東憲兵隊司令官</td>
+</tr>
+<tr>
+<td>1937</td>
+<td>七七事變、中日全面戰爭</td>
+<td>任關東軍參謀長</td>
+</tr>
+<tr>
+<td>1938</td>
+<td>日本侵華戰爭擴大</td>
+<td>任陸軍次官</td>
+</tr>
+<tr>
+<td>1940</td>
+<td>《三國同盟條約》簽訂</td>
+<td>任陸軍大臣</td>
+</tr>
+<tr>
+<td>1941</td>
+<td>珍珠港事件、太平洋戰爭爆發</td>
+<td>出任首相，領導日本戰時政府</td>
+</tr>
+<tr>
+<td>1942</td>
+<td>中途島海戰、新加坡陷落</td>
+<td>日本初期戰爭勝利與戰略逆轉並存</td>
+</tr>
+<tr>
+<td>1943</td>
+<td>瓜達康納爾島戰役結束、日本防線收縮</td>
+<td>持續推動戰爭動員</td>
+</tr>
+<tr>
+<td>1944</td>
+<td>塞班島失守</td>
+<td>內閣總辭職</td>
+</tr>
+<tr>
+<td>1945</td>
+<td>日本戰敗、盟軍占領日本</td>
+<td>被捕</td>
+</tr>
+<tr>
+<td>1946－1948</td>
+<td>遠東國際軍事法庭審判</td>
+<td>甲級戰犯被告</td>
+</tr>
+<tr>
+<td>1948</td>
+<td>東京審判宣判與執行死刑</td>
+<td>被判絞刑</td>
+</tr>
+</tbody></table>
+<h2 id="十二、歷史評價與爭議">十二、歷史評價與爭議</h2>
+<p>東條英機是研究日本近代軍國主義及第二次世界大戰的重要人物。對他的歷史研究，通常涉及以下幾個面向：</p>
+<ol>
+<li>軍事官僚與政治領導者：他並非單純的戰場將領，而是長期參與陸軍行政、軍事政策及政府決策的高級軍官。</li>
+<li>日本對外戰爭的領導人物：他在中日戰爭後期及太平洋戰爭期間，對日本的戰爭政策負有重要責任。</li>
+<li>戰時權力集中：他兼任多項軍政職務，使日本戰時決策更加集中，但也進一步削弱了政府內部的制衡。</li>
+<li>戰爭責任與東京審判：他在遠東國際軍事法庭被判犯有甲級戰爭罪，並於1948年被處決。</li>
+<li>戰後歷史記憶：日本侵略戰爭、戰爭責任、天皇責任及戰後歷史認識，至今仍是東亞歷史研究與公共討論的重要議題。</li>
+</ol>
+<h2 id="十三、東條英機生平簡明年表">十三、東條英機生平簡明年表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>大事</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1884</td>
+<td>出生於東京</td>
+</tr>
+<tr>
+<td>1905</td>
+<td>陸軍士官學校畢業</td>
+</tr>
+<tr>
+<td>1915</td>
+<td>陸軍大學校畢業</td>
+</tr>
+<tr>
+<td>1919</td>
+<td>赴瑞士駐在</td>
+</tr>
+<tr>
+<td>1921</td>
+<td>赴德國駐在</td>
+</tr>
+<tr>
+<td>1933</td>
+<td>升任陸軍少將</td>
+</tr>
+<tr>
+<td>1935</td>
+<td>出任關東憲兵隊司令官</td>
+</tr>
+<tr>
+<td>1936</td>
+<td>升任陸軍中將</td>
+</tr>
+<tr>
+<td>1937</td>
+<td>出任關東軍參謀長</td>
+</tr>
+<tr>
+<td>1938</td>
+<td>出任陸軍次官</td>
+</tr>
+<tr>
+<td>1939</td>
+<td>升任陸軍大將之前的高級將領階段，繼續任陸軍要職</td>
+</tr>
+<tr>
+<td>1940</td>
+<td>出任陸軍大臣</td>
+</tr>
+<tr>
+<td>1941</td>
+<td>出任日本首相；珍珠港事件；太平洋戰爭爆發</td>
+</tr>
+<tr>
+<td>1942</td>
+<td>新加坡陷落；中途島海戰</td>
+</tr>
+<tr>
+<td>1943</td>
+<td>日本戰局逐漸惡化；兼任軍需大臣</td>
+</tr>
+<tr>
+<td>1944</td>
+<td>兼任陸軍參謀總長；7月內閣總辭職</td>
+</tr>
+<tr>
+<td>1945</td>
+<td>日本投降；企圖自殺未遂；被捕</td>
+</tr>
+<tr>
+<td>1946</td>
+<td>東京審判開庭</td>
+</tr>
+<tr>
+<td>1948</td>
+<td>被判死刑；12月23日執行絞刑</td>
+</tr>
+</tbody></table>
+<h2 id="十四、建議參考資料">十四、建議參考資料</h2>
+<p>以下資料可用於進一步研究東條英機的生平、職務沿革及日本戰時決策：</p>
+<ul>
+<li>日本國立國會圖書館：<a href="https://www.ndl.go.jp/portrait/datas/142/index.html?utm_source=chatgpt.com">東條英機人物傳記</a>。</li>
+<li>日本國立國會圖書館：<a href="https://ndlsearch.ndl.go.jp/rnavi/kensei/toujouhideki?utm_source=chatgpt.com">東條英機關係文書</a>，包含其生平履歷與相關歷史檔案。</li>
+<li>日本防衛省防衛研究所：<a href="https://www.nids.mod.go.jp/military_archives/siryo/siryo_36.html?utm_source=chatgpt.com">陸軍大將東條英機史料</a>。</li>
+<li>俄亥俄州立大學：<a href="https://ehistory.osu.edu/biographies/hideki-tojo?utm_source=chatgpt.com">Hideki Tojo 生平介紹</a>。</li>
+</ul>
+<p>總結： 東條英機的一生，從職業軍官、陸軍行政官僚，到日本戰時首相，與日本軍國主義的發展及第二次世界大戰的歷史進程緊密相連。研究他的生平，不能只看1941年的珍珠港事件或1948年的東京審判，更應將他放在1930年代日本軍部擴張、侵華戰爭及太平洋戰爭的整體脈絡中理解。</p>
+<p>史實校正提醒：東條英機於1937年3月出任關東軍參謀長，1938年5月出任陸軍次官；他並非1937年九一八事變的現場策劃者。另有部分資料將他列為日本第27任首相（按歷代首相任次），而非第40任；正確任次是第40任。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

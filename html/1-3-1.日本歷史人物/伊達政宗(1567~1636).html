@@ -1,0 +1,688 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="伊達政宗生平大事記（1567－1636）">伊達政宗生平大事記（1567－1636）</h1>
+<p><a href="https://images.openai.com/static-rsc-4/3rZzz4WyGvoFI3dbZMxwYw_VOiQtpHvVIXZQpo264B7EUh8rju1-ha3T-TaC8GQzhZOjqBjzShgp2kw15M4rUOGCKVtMaMQyr2KqsBan0p2xXcSP6TKawtrGWgow1NgBb6Dw3K9AGbrYnepgB3KrEeF8lb0QloiEJgWAXPx-ugk?purpose=inline">画像 | 伊達政宗が女子供まで1000人を処刑したという小手森城落城の意外な真相…｢撫で斬り｣ではなく自刃だったか 19歳の伊達政宗が大内定綱の小手森城を陥落したときに何が起こったのか | PRESIDENT Online（プレジデントオンライン）</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/kkHct9g3lA8IcFsDSGK1uQG8UvawgUOy0WrbBTRhh2AreYd2UHBHEnL0b9enpu6wQsUz-jmb3HOEp-e_OA57YV_GZvSAQVlmrEy0YreeT7lEuS3qVoDcZVADN2iD61L5m6-xY-9Hlb0arpDZULWC39SjiT81o_zqXdRV9h0Na9Y?purpose=inline">【Y-030】Date Masamune [Premium]  – JAPAN ICHIBAN E-SHOP</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/zK2rwAleZ9C66-5JlghI1gHr3l-ILa9QLBD6oHMW-u0G-g1jLtdojeRzj3uTpcejJ3nj_XJZORjpBLLZbWfZMSrb26wm4CzQq2npbexYgEb2zduG0Rqd59efTFvP-_RNa3DTG_diNMpEDJWPUHW2XblrW7TBmsgVuyZJO3u0f3Y?purpose=inline">仙台城迹 | Discover SENDAI</a></p>
+<p>伊達政宗（だて まさむね，1567年8月3日－1636年6月27日），日本戰國時代末期至江戶時代初期著名的大名，仙台藩初代藩主，伊達氏第17代家督。幼名梵天丸，通稱藤次郎，因右眼失明，後世常以「獨眼龍」稱之。</p>
+<p>政宗少年時繼承家業，透過一系列戰爭迅速擴張勢力，曾控制南奧羽廣大地區。然而，豐臣秀吉完成天下統一後，他被納入豐臣政權的支配體系，領地亦經歷調整。進入江戶時代後，政宗轉而效忠德川家康，於1601年開始建設仙台城與城下町，奠定仙台藩的基礎。</p>
+<p>他的生涯橫跨日本由戰國亂世轉向江戶幕府統治的關鍵時期，既是具有軍事才能的戰國大名，也是推動地方建設、文化發展與海外外交的藩主。</p>
+<h2 id="一、出生、家世與少年時期（1567－1584）">一、出生、家世與少年時期（1567－1584）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/d5kJDhlbXqlrTomT0krG08JDhOcJzw-DBGDzZYyJZB18iWvHoBYDnxQfz9H_sfdr2qzw4_yf6oRwMuioc6L_U2_zU14OlSlepsIlOJubZ9MgNvFCo2ZrkIMxvDlYzfgromF1-eXLBXHGkLzPYWkx9N8Mxw0ofsYiY0FE4rDtymY?purpose=inline">米沢城（続日本１００名城）　１　歴史 | みどりの木のブログ</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/ZdexijY_8efMPof7MawXYgbEDamSq4Zt50f-GSIIE7SexVP8g5BowfNNqFe9__TFqSJ7gk4XA7GIDw_SoxYT9kTc-JV94fRTqMcei52IgBOJjA795K4s4tEfN4tMiG_g08_haNd3P4c5EUPr34xQvhou_bqJTqY9DphEfa--ODc?purpose=inline">ブログ | 休暇村乳頭温泉郷【公式】</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/4vKiM_yXL5GoBE0508W6706_ub91MlBQ6rlyecJeXTNtOTZ4aH9ICeYA78xMGlBScc1VzijaF6htFnuXn4TEYYrWiZLRyPucFMMpv0ht3W15UrQ8UbmBy05moE8SIqMLu5cHofllhe5_p_yQ2VWfZZVSLViAqkJ_d4P78vy0YQg?purpose=inline">「義姫」伊達政宗の母は定説通りの鬼女ではなかった！？ | 戦国ヒストリー</a></p>
+<p>5</p>
+<h3 id="1567年：出生於米澤城">1567年：出生於米澤城</h3>
+<ul>
+<li>8月3日，伊達政宗出生於日本出羽國米澤城（今山形縣米澤市）。</li>
+<li>父親為伊達輝宗，母親為義姬，亦稱最上義姬，是最上義守之女、最上義光之妹。</li>
+<li>政宗是伊達輝宗的嫡長子，出生時取幼名「梵天丸」。</li>
+<li>當時日本仍處於戰國時代，各地大名爭奪領土與政治主導權。</li>
+</ul>
+<h3 id="1571年前後：感染天花，右眼失明">1571年前後：感染天花，右眼失明</h3>
+<ul>
+<li>政宗幼年感染天花，右眼因此失明。</li>
+<li>後世常以「獨眼龍」稱呼他。</li>
+<li>關於右眼失明的具體經過，以及他是否曾自行處理眼球，後世傳說與史料記載並不完全一致，不宜將戲劇化故事直接視為確定史實。</li>
+</ul>
+<h3 id="1572年前後：接受虎哉宗乙教育">1572年前後：接受虎哉宗乙教育</h3>
+<ul>
+<li>政宗接受禪僧虎哉宗乙的教育。</li>
+<li>虎哉宗乙是臨濟宗僧人，對政宗的思想、文化素養及人格形成具有影響。</li>
+<li>政宗除了接受武士教育，也接觸佛教、漢學與文學。</li>
+</ul>
+<h3 id="1577年：元服，正式取名政宗">1577年：元服，正式取名政宗</h3>
+<ul>
+<li>11歲時舉行元服儀式。</li>
+<li>取名藤次郎政宗。</li>
+<li>「政宗」之名承襲伊達氏先祖的名諱，象徵正式進入武士及家族繼承人的身分。</li>
+</ul>
+<h3 id="1579年：與愛姬結婚">1579年：與愛姬結婚</h3>
+<ul>
+<li>13歲時，與三春城主田村清顯之女愛姬（田村愛）結婚。</li>
+<li>此次婚姻具有政治聯盟的意義，有助於鞏固伊達氏與田村氏的關係。</li>
+</ul>
+<h3 id="1581年：初陣">1581年：初陣</h3>
+<ul>
+<li>15歲時，隨父親伊達輝宗出征，參與對相馬氏的軍事行動。</li>
+<li>這是政宗首次參與實際戰爭。</li>
+<li>自此開始累積戰場經驗，逐漸展現軍事才能。</li>
+</ul>
+<h3 id="1584年：繼承伊達家家督">1584年：繼承伊達家家督</h3>
+<ul>
+<li>18歲時，父親伊達輝宗隱居。</li>
+<li>政宗正式繼承伊達家家督，成為伊達氏第17代當主。</li>
+<li>他開始親自處理家族領地、外交關係及周邊大名間的衝突。</li>
+<li>當時東北地方仍有多個勢力並立，包括蘆名氏、最上氏、相馬氏、佐竹氏及大崎氏等。</li>
+</ul>
+<h2 id="二、擴張勢力與奧羽統一戰爭（1585－1589）">二、擴張勢力與奧羽統一戰爭（1585－1589）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/iQqYWKC7vlqdKiRMpGF2gl1VMhttUW8eK1Ub2G2KSE34tvdQY3tLl9giRXE4S2dNbWWT9pzPlwM91B8RvP-E6nkNeYIwaKhiIFIWER_g2E63jnf0TpUHiCOqDgnA8d3QenojCtraC9GWxmAoxCKGDcxas2Bh6DSwbMFkYUXoTvw?purpose=inline">東北・仙台にある伊達政宗の「甲冑」が美しい！その他の甲冑も一挙紹介 - LIVE JAPAN (日本の旅行・観光・体験ガイド)</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/42I6uj64uAqL6gOWc8EAhndumuwjgx2aIOlJcSjk6N7q9fOZP8k2hf12PUdUrnmPiMAQHKK9aXO43LE2tfBNnP5D8qlrmm-KstGqCWbbezmQajfPjJszV2Nws_eqVfWwsIOs1rMiVpWKJxV1GXLsh5Di0j4KKjA7UgtY6F5LoPI?purpose=inline">人取橋の戦い（1585年・戦国・合戦） - 歴史イベント | TOUKENZA</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/jc7AEDqik0IuPEqYjgvwhxYL2ze9jLPpN9G9cJMCbdUEs4rCAqGchDB5_8xNMhkqQdHOkz5Rtp0W514paW9Rl1VLx7q9jOB1msbibRZsgKcrkq6hNjVz-Zn9GYSVA87C-RYMZyXDWEiSdh0Feye__JDj0QoZHASGo0bm_X9CPEU?purpose=inline">歴史新聞：7月17日は何が起こった日！？『伊達政宗、奥州制覇へ前進！摺上原の戦いにて蘆名氏を撃破！』｜長町ゼミナール</a></p>
+<p>7</p>
+<h3 id="1585年：父親遭殺害與人取橋之戰">1585年：父親遭殺害與人取橋之戰</h3>
+<p>1. 伊達輝宗遭殺害</p>
+<ul>
+<li>10月，二本松城主畠山義継向伊達家求和。</li>
+<li>畠山義継在與伊達輝宗會面後，挾持輝宗並企圖逃走。</li>
+<li>政宗得知後，下令追擊。</li>
+<li>追擊過程中，伊達軍向被挾持的父親及畠山義継所在方向開火，伊達輝宗與畠山義継均死亡。</li>
+<li>此事成為政宗生涯的重要轉折，也使他與周邊大名的衝突進一步激化。</li>
+</ul>
+<p>2. 人取橋之戰</p>
+<ul>
+<li>11月，佐竹義重聯合蘆名氏、岩城氏、二階堂氏等勢力，組成聯軍對抗伊達政宗。</li>
+<li>雙方在人取橋附近交戰。</li>
+<li>伊達軍兵力處於劣勢，面臨被包圍的危機。</li>
+<li>政宗最終成功撤退，保住伊達家主要軍事力量。</li>
+<li>此戰使政宗認識到，單憑軍事擴張難以迅速消滅周邊所有敵對勢力。</li>
+</ul>
+<h3 id="1586年：攻陷二本松城">1586年：攻陷二本松城</h3>
+<ul>
+<li>政宗繼續對二本松畠山氏施加軍事壓力。</li>
+<li>二本松城最終被伊達軍攻陷。</li>
+<li>伊達氏在陸奧國的勢力進一步擴大。</li>
+</ul>
+<h3 id="1587年：周邊勢力關係持續緊張">1587年：周邊勢力關係持續緊張</h3>
+<ul>
+<li>伊達政宗持續整頓領地與軍隊。</li>
+<li>其勢力與大崎氏、最上氏、蘆名氏等周邊勢力的關係複雜。</li>
+<li>豐臣秀吉逐漸完成日本中央政權的統一，開始要求東北大名接受其支配。</li>
+</ul>
+<h3 id="1588年：大崎合戰與外交挫折">1588年：大崎合戰與外交挫折</h3>
+<ul>
+<li>政宗對大崎氏發動軍事行動，但遭遇挫敗。</li>
+<li>其後又與相馬氏及其他東北勢力發生衝突。</li>
+<li>在佐竹氏、蘆名氏等勢力聯合壓力下，政宗一度面臨嚴峻局勢。</li>
+<li>最後透過外交協商與停戰，暫時緩和部分衝突。</li>
+</ul>
+<h3 id="1589年：摺上原之戰，勢力達到高峰">1589年：摺上原之戰，勢力達到高峰</h3>
+<p><a href="https://images.openai.com/static-rsc-4/nSXoawLsg30sZ7D43rgsqaWP99a6mXHDGTlSH2w_CA15MfSbEi-mpzpp-Jb4Z9N7mTrgpbNEOC_dZNnYwrhN8zQSZHdx_a7AfL6l5H1LLiIYMy-NXwbeTNmD_3b-KBRgoLH17QGx5zFTmWVEra2OT57_ctRzHDyUEIR6SJ2uRW8?purpose=inline">Pertempuran Sekigahara: Darah Pengkhianatan Mengubah Sejarah Jepang - National Geographic</a></p>
+<p><a href="https://nationalgeographic.grid.id/read/133867011/pertempuran-sekigahara-darah-pengkhianatan-mengubah-sejarah-jepang?utm_source=chatgpt.com">nationalgeographic.grid.id</a></p>
+<ul>
+<li>6月，伊達政宗與蘆名氏在摺上原一帶交戰。</li>
+<li>政宗擊敗蘆名義廣所率領的軍隊。</li>
+<li>隨後進入會津黑川城（今福島縣會津若松市）。</li>
+<li>這場勝利使政宗控制會津地區，勢力擴展至南奧羽的重要區域。</li>
+<li>他也陸續壓制白河、二階堂、石川及岩城等勢力。</li>
+<li>此時的政宗已成為東北地區最具影響力的大名之一。</li>
+</ul>
+<p>歷史意義： 摺上原之戰是政宗戰國生涯的高峰，但其領土擴張正好遇上豐臣秀吉完成天下統一的進程。政宗必須在繼續擴張與接受中央政權之間作出選擇。</p>
+<h3 id="1590年：小田原之戰，臣服豐臣秀吉">1590年：小田原之戰，臣服豐臣秀吉</h3>
+<ul>
+<li>豐臣秀吉出兵討伐關東的北條氏。</li>
+<li>秀吉要求東北大名前往小田原參陣，表示服從中央政權。</li>
+<li>政宗一度猶豫，因為前往小田原意味著承認秀吉的天下統治權。</li>
+<li>最終政宗決定前往小田原。</li>
+<li>他抵達時，北條氏已處於敗亡邊緣。</li>
+<li>秀吉接受政宗臣服，但對其先前未及時參陣及擅自擴張領土有所處置。</li>
+<li>政宗失去會津等部分新占領地，伊達家原有領地則得以保留。</li>
+</ul>
+<h2 id="三、臣服豐臣政權與岩出山時期（1591－1600）">三、臣服豐臣政權與岩出山時期（1591－1600）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/VTytq2Sn3He0U-jpKT1Hp9xCwDpAZYQyv2O01iI4mqrT8Fi3HOhLb08x9neanEvSs4DYjcPHXXLZQ_YIU-5hUgINGBLkLLQfJIdgLxFACHFIZBUlVqMJfMgHI59yXpCuKGhujSJoWSqmwbTw4FWeIhQge-pnQoV3nTsP3VBxudo?purpose=inline">岩出山城の見所と写真・300人城主の評価(宮城県大崎市) - 攻城団</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/hIa7uCvHVtAKFJGCjrBs0qBESfKWnxv2TT5xTDjKIlOVZqlU2zycrlT4ENGq7TyNAQoSfbO97H2Ge8RiSjcK6LVTyUPFveH9mpQ9wB9ZROCx9J_WkE1bf5ZbDReHYA7SFxyIi9ocwNIgcLgqKxeL8wZJd47LGztokV6bnirZN4k?purpose=inline">日本宣教20-朝鮮侵攻の開始 | キリスト教で読む西洋史ー聖女・悪女・聖人・皇帝・市民</a></p>
+<p>6</p>
+<h3 id="1591年：移封岩出山">1591年：移封岩出山</h3>
+<ul>
+<li>豐臣秀吉完成對日本的統一後，重新調整東北各大名的領地。</li>
+<li>政宗被迫放棄米澤及會津等地，轉封至陸奧國玉造郡岩出山（今宮城縣大崎市）。</li>
+<li>政宗將居城設於岩出山，開始經營新的領地。</li>
+<li>此次移封使伊達家失去部分原有領土，但也使政宗正式成為豐臣政權下的大名。</li>
+</ul>
+<h3 id="1592年：參與文祿之役">1592年：參與文祿之役</h3>
+<ul>
+<li>豐臣秀吉發動侵略朝鮮的戰爭，史稱文祿之役。</li>
+<li>政宗奉命動員軍隊，準備參與海外軍事行動。</li>
+<li>伊達家必須承擔豐臣政權規定的軍役及兵員供應。</li>
+</ul>
+<h3 id="1593年：渡海前往朝鮮">1593年：渡海前往朝鮮</h3>
+<ul>
+<li>政宗率領部隊渡海至朝鮮半島，參與日本侵朝戰爭。</li>
+<li>其部隊曾在朝鮮戰場活動，但並未因此取得能夠改變整體戰局的重大成果。</li>
+<li>此次海外出兵也加重了伊達領地的人力與經濟負擔。</li>
+</ul>
+<h3 id="1595年：豐臣秀次事件與政治風波">1595年：豐臣秀次事件與政治風波</h3>
+<ul>
+<li>豐臣秀吉的養子、關白豐臣秀次遭到秀吉廢黜，最後被命令切腹。</li>
+<li>秀吉對部分與秀次有關聯的大名展開調查。</li>
+<li>政宗也受到懷疑，面臨政治風險。</li>
+<li>經過解釋與處置後，政宗得以保全伊達家地位。</li>
+</ul>
+<h3 id="1598年：豐臣秀吉去世">1598年：豐臣秀吉去世</h3>
+<ul>
+<li>8月18日，豐臣秀吉去世。</li>
+<li>豐臣政權失去最具權威的領導者，五大老、五奉行之間的政治矛盾逐漸浮現。</li>
+<li>政宗開始觀察德川家康與石田三成等政治勢力的消長，為新的政治局勢作準備。</li>
+</ul>
+<h3 id="1599年：與德川家康建立關係">1599年：與德川家康建立關係</h3>
+<ul>
+<li>政宗逐漸與德川家康建立更密切的政治聯繫。</li>
+<li>伊達家透過婚姻與政治交涉，強化與德川勢力的關係。</li>
+<li>此時日本已逐漸形成德川家康與反德川勢力對立的局面。</li>
+</ul>
+<h3 id="1600年：關原之戰與東北戰事">1600年：關原之戰與東北戰事</h3>
+<p><a href="https://images.openai.com/static-rsc-4/61h77wqZgA5H6Yi1GaxPbKQYz1gMfWyrWGYZoSlK-YZdwQOc9s37ln_jQyO-SeSccNX34HoKSgLtNwBN5VdMqFK1d0P2_VAouy0kg7iitsC5aDh-b-VaPUuEhIPf5A4eK-DkUwxwcavqRv-_igj24kemtaHniukwcu5cCHW_C0M?purpose=inline">Religion und Reichseinigung – Religion-in-Japan</a></p>
+<p><a href="https://religion-in-japan.univie.ac.at/an/Geschichte/Reichseinigung?utm_source=chatgpt.com">religion-in-japan.univie.ac.at</a></p>
+<ul>
+<li>9月15日，德川家康與石田三成率領的東西軍在關原交戰。</li>
+<li>政宗站在德川家康一方，參與東北地區的軍事行動。</li>
+<li>他與上杉景勝勢力對抗，並在白石城等地展開攻防。</li>
+<li>最上義光受到上杉軍攻擊時，政宗也派兵支援。</li>
+<li>關原之戰以德川東軍獲勝告終，德川家康逐漸取得日本最高政治權力。</li>
+<li>政宗雖然支持家康，但並未因此恢復先前失去的會津等大片領土。</li>
+</ul>
+<p>歷史意義： 政宗在關原之戰中選擇支持德川家康，確保了伊達家在新政權下的地位，也為日後仙台藩的建立奠定政治基礎。</p>
+<h2 id="四、仙台藩建立與地方建設（1601－1612）">四、仙台藩建立與地方建設（1601－1612）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/bFuWsOKkYvR0-X0h7M5EUVxD5DhRwpCYK7xdXYddP06mPJksB2Uji2Wvr-cqXJfpzPTkAD0XnXdNopOOmkLBipHJ9tp7X3CeDW5McgcZXUE2YPcytffs5416FIvGYSE4I2Q4m88m6UOsf6HjFjwsmLZ1M38rxHRHz5A36w-nl0E?purpose=inline">Sendai Castle Ruins | 仙台の観光スポット | AVA Travel（アバトラベル）</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/tcjfeENbSowTZla1KrtMIZa0PD9mZ_QL-q4h3CvN_m-ad9w-pen54bC50tnhtFh2yKhMHdsPIVbGMlHzQUlt8xLIAMJ5kEhBEcA3yDljftmoxMOsj-TP7TNhrvINU_Oas7aJvZD7mbvC2jfQuQE-sUnDOeuE3X7EC5ZzODsWt2o?purpose=inline">Modern Miyagi Topography #30: Osaki Hachimangu Shrine｜みやせん(宮城仙台の豆知識)</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/7Djfl9xwOW5q8cwfnnSjebVvqVhhh4RQMhsPBjQXGdAaEtaaqpkuVcyXI9eBz2PuUZEEN1I6-3GNTttjuqYglhRLZHxX8LwPito--iUJWTFmFi8YGwZfozwGI3VFovmYa5oocVCgtzbPO69o1OawU3vtQHgedkc-xQhTf_QHynk?purpose=inline">瑞巌寺 | スポット一覧 | せんだい旅日和</a></p>
+<p>10</p>
+<h3 id="1601年：建立仙台城，遷往仙台">1601年：建立仙台城，遷往仙台</h3>
+<ul>
+<li>德川家康建立江戶幕府的政治基礎後，政宗開始將領地經營重心轉向仙台。</li>
+<li>1601年，政宗開始興建仙台城，並將本據地由岩出山遷往仙台。</li>
+<li>仙台城建於青葉山一帶，利用地勢建立防禦設施。</li>
+<li>政宗也開始規劃城下町，安排武士住宅、商業區、寺社及道路。</li>
+<li>仙台逐漸成為東北地區的重要政治、經濟中心。</li>
+</ul>
+<h3 id="1602年：仙台城建設持續進行">1602年：仙台城建設持續進行</h3>
+<ul>
+<li>仙台城主要建設逐步完成。</li>
+<li>政宗繼續整頓城下町的道路與行政區域。</li>
+<li>他將家臣及相關人口遷入仙台，促進新城鎮發展。</li>
+</ul>
+<h3 id="1603年：江戶幕府成立">1603年：江戶幕府成立</h3>
+<ul>
+<li>德川家康就任征夷大將軍，建立江戶幕府。</li>
+<li>政宗正式成為德川幕府體制下的重要外樣大名。</li>
+<li>仙台藩的政治地位逐漸穩定。</li>
+</ul>
+<h3 id="1604年：松島五大堂建設">1604年：松島五大堂建設</h3>
+<ul>
+<li>政宗推動松島五大堂的重建。</li>
+<li>松島是日本著名的景勝地，政宗對當地寺院及宗教建築的整備，反映出他對文化與宗教事業的重視。</li>
+</ul>
+<h3 id="1607年：大崎八幡宮等建築完成">1607年：大崎八幡宮等建築完成</h3>
+<ul>
+<li>大崎八幡宮於1607年完成。</li>
+<li>政宗也推動鹽竈神社及陸奧國分寺藥師堂等宗教建築的營建或整修。</li>
+<li>大崎八幡宮的桃山風格建築，成為政宗時代文化的重要遺產，現列為日本國寶。</li>
+</ul>
+<h3 id="1609年：瑞巖寺整建完成">1609年：瑞巖寺整建完成</h3>
+<ul>
+<li>政宗推動松島瑞巖寺的重建工程。</li>
+<li>瑞巖寺成為仙台藩重要的寺院與文化象徵。</li>
+<li>寺院建築融合桃山時代的裝飾風格，展現當時的工藝與藝術水準。</li>
+</ul>
+<h3 id="1610年：仙台城大廣間完成">1610年：仙台城大廣間完成</h3>
+<ul>
+<li>仙台城內的重要建築陸續完成。</li>
+<li>大廣間作為藩主接見家臣及處理重要事務的場所，具有政治象徵意義。</li>
+</ul>
+<h3 id="1611年：與西班牙傳教士接觸">1611年：與西班牙傳教士接觸</h3>
+<ul>
+<li>政宗與來自西班牙的方濟各會傳教士路易斯・索特洛（Luis Sotelo）接觸。</li>
+<li>政宗對海外貿易及西方技術抱持興趣。</li>
+<li>仙台藩開始探索與西班牙及新西班牙（今墨西哥一帶）建立貿易關係的可能性。</li>
+</ul>
+<h3 id="1612年：幕府加強基督教禁令">1612年：幕府加強基督教禁令</h3>
+<ul>
+<li>德川幕府逐漸加強對基督教的限制。</li>
+<li>政宗的海外外交與傳教活動因此面臨政治環境上的障礙。</li>
+<li>他仍希望藉由海外聯繫，為仙台藩尋找新的商業及外交機會。</li>
+</ul>
+<h2 id="五、慶長遣歐使節與大坂之役（1613－1615）">五、慶長遣歐使節與大坂之役（1613－1615）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/jgM_MbUMsR3fAV_g3Nf6y53RPNWPa1c2KAXRE8cYrUpof19Nwr0iO6OYfYPkyXGGX99WQpcaBlb0yaC5Lzrl-Ab3nF_3jAADU9Nef3-6tEddWrcbsQm14xrwEjYFbwn_lIxKKgRjpSYhkc439zw21YjUkW4kwt3LKZsAMffFs70?purpose=inline">Real Academia de la Historia | Historia Hispánica</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/ApUrgmC-YbWpiM_PsRrmbtEGoUk1HG-_b2DQARQZD4W2xcAaSBrB4A5raK-N2xZrKKDqNWFHEooxKXKM8xZ-QeC9gzQn97K92D_uMnN_C8l0AnbKUoh2bVLhQDmHVOwDuk_H9Hx10tZ5_84KWyXlYzBEG9KfdEmPdKCV9dN3mQo?purpose=inline">Kisah Samurai Kekaisaran Jepang yang Bertemu Paus di Vatikan - Semua Halaman - National Geographic</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/2mqNlqrLtLZlD9Yvz_aaisuWUEyo7O1El27r8BZjtsX_vQfo9FjZxWkF-zq-rW7OdtwzuVjJA1w7aKTPEV-phbFC7Y47gPraIMlnylbrl66wcEOISXKUwx7b2YvlxkO391UmYz7yU08gx1tdlTh7yMhWcipSoqLueJ_ouOwQ5r8?purpose=inline">歴史の航路を辿る　サン・ファン館で出会う時を超えた物語 | 「タビスキみやぎ」レポート｜観光・旅行情報サイト 宮城まるごと探訪</a></p>
+<p>8</p>
+<h3 id="1613年：派遣支倉常長出使歐洲">1613年：派遣支倉常長出使歐洲</h3>
+<ul>
+<li>政宗派遣家臣支倉常長率領使節團前往歐洲。</li>
+<li>使節團史稱「慶長遣歐使節」。</li>
+<li>使節團於1613年由仙台藩領內的月浦出航。</li>
+<li>船隻為聖胡安・包蒂斯塔號（San Juan Bautista）。</li>
+<li>使節團先前往新西班牙，再經海路前往歐洲。</li>
+<li>此次外交任務的重要目標包括：<ul>
+<li>與西班牙建立外交關係。</li>
+<li>爭取與新西班牙的貿易機會。</li>
+<li>引進西方航海及商業技術。</li>
+<li>透過外交活動提高仙台藩的國際地位。</li>
+</ul>
+</li>
+</ul>
+<h3 id="1614年：使節團抵達西班牙">1614年：使節團抵達西班牙</h3>
+<ul>
+<li>支倉常長一行抵達西班牙。</li>
+<li>使節團與西班牙王室及相關官員接觸。</li>
+<li>支倉常長接受洗禮，成為基督徒。</li>
+<li>使節團試圖爭取日本與西班牙之間的正式外交及貿易合作。</li>
+</ul>
+<h3 id="1614年：大坂冬之陣">1614年：大坂冬之陣</h3>
+<p><a href="https://images.openai.com/static-rsc-4/vOuhBRkg4dzF6XeSk2kJq-6s_t4VH9mPHCmXl72LeL9RiFXFovY7Qt7BXn5_pZvOWyWmvdyKRUXrmxfMZ4VQHXFn4NnxYW9hn7NTUm0CXEABcbig73hkU8VfDzC15WmFGDPh1HAS_wkGyBcJzfcARhiEC48NbFVOadv3V0zVpYY?purpose=inline">第16回オンライン研究会（京都市立芸術大学芸術資料館調査の振り返り）: 戦国軍記・合戦図の史料学的研究</a></p>
+<p><a href="https://sengokugunkibyoubu.seesaa.net/article/485336284.html?utm_source=chatgpt.com">sengokugunkibyoubu.seesaa.net</a></p>
+<ul>
+<li>豐臣秀賴與德川家康之間的政治衝突日益激化。</li>
+<li>德川幕府出兵包圍大坂城，爆發大坂冬之陣。</li>
+<li>政宗站在德川方，率領仙台軍參戰。</li>
+<li>雙方最後達成和議，大坂城部分防禦設施遭到拆除。</li>
+</ul>
+<h3 id="1615年：大坂夏之陣，豐臣氏滅亡">1615年：大坂夏之陣，豐臣氏滅亡</h3>
+<ul>
+<li>德川幕府再次對大坂城發動攻勢，爆發大坂夏之陣。</li>
+<li>政宗繼續支持德川軍，參與大坂方面的作戰。</li>
+<li>5月，德川軍攻陷大坂城。</li>
+<li>豐臣秀賴與其母淀殿自殺，豐臣氏的政治勢力正式滅亡。</li>
+<li>德川幕府的統治地位因此進一步鞏固。</li>
+</ul>
+<p>歷史意義： 政宗參與大坂冬、夏之陣，表明他已從戰國時代爭奪天下的地方大名，轉變為江戶幕府秩序下的重要藩主。</p>
+<h2 id="六、仙台藩治理與晚年生活（1616－1636）">六、仙台藩治理與晚年生活（1616－1636）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/JmNCMCObPUouSMKSzekoJUfl9K49upiJC3Euv2K0nox5lfgkjQJtC3Exe0iZRB06u1p8n5oC5EHAv3aaR2KSlhi0dawvbgwZVwD907pPItPFBwto91ex8n9gAb2JW5yWLEX659B8Os0BNMtD-wBUqu4LjU9QCk42-f4dmNIvM8Q?purpose=inline">仙台「伊達政宗」景點一日遊！博物館、仙台城跡等 - LIVE JAPAN (日本旅遊 ‧文化體驗導覽)</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/palZu0OY2FyQeVo5VOJkL8TZ0WHA73y8fygi0k18-oK2glzy9MmFXcF3VvN9JA1ZSAycvnNDg5Re-CjCgsL4705HIM2MwvhJKUl57qxZhzsZRoVQq89Xmsfk6xoruMY0UGljH3trDhRnNwdlYGPzXcHrcwrPdz6i6MHCUxMLzog?purpose=inline">若林城の写真：土塁と堀跡［ゆずあんこさん］ - 攻城団</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/psXmXUew7kCAWkND_3Wi8VUz0CH-_sT-DF5jjOzas5grMoBhCOgn8D-Ftg1Q5GDlgfCWcjb3BeW-MlrH3TH2JMk2aikqfpJor4A3wj_G2isXUmxXG3QXX6SM-QE0aLUmQa0aPKp9Inxa08FmpiU-6LphiA20WNko_4IFgnRlmLY?purpose=inline">現代宮城風土記#46：経ヶ峯｜みやせん(宮城仙台の豆知識)</a></p>
+<p>4</p>
+<h3 id="1616年：德川家康去世">1616年：德川家康去世</h3>
+<ul>
+<li>4月17日，德川家康去世。</li>
+<li>德川秀忠繼續掌握幕府政權。</li>
+<li>政宗與德川家康共同經歷戰國末期政治鬥爭，家康去世後，他仍維持與德川幕府的政治關係。</li>
+</ul>
+<h3 id="1620年：支倉常長返國">1620年：支倉常長返國</h3>
+<ul>
+<li>支倉常長結束漫長的海外旅程，返回日本。</li>
+<li>慶長遣歐使節未能實現原先期待的正式貿易協定。</li>
+<li>此時日本幕府已逐步加強基督教禁令及海外貿易管制。</li>
+<li>政宗的海外外交構想受到國際及日本國內政治環境的限制。</li>
+</ul>
+<h3 id="1623年：母親義姬去世">1623年：母親義姬去世</h3>
+<ul>
+<li>政宗的母親義姬去世。</li>
+<li>義姬出身最上氏，與最上義光有兄妹關係。</li>
+<li>伊達氏與最上氏長期存在政治矛盾，政宗與母親之間的關係也因此成為後世研究與文學作品經常討論的題材。</li>
+</ul>
+<h3 id="1626年：整治北上川水系">1626年：整治北上川水系</h3>
+<ul>
+<li>政宗推動仙台藩境內河川及水利工程。</li>
+<li>其中包括北上川、迫川及江合川等水系的整治。</li>
+<li>工程使北上川改道流向石卷，改善水運及農業灌溉條件。</li>
+<li>河川整治有助於仙台藩的農業生產、物資運輸與商業發展。</li>
+</ul>
+<h3 id="1628年：遷居若林城">1628年：遷居若林城</h3>
+<ul>
+<li>政宗遷居若林城，作為晚年居所。</li>
+<li>若林城位於今日仙台市若林區一帶。</li>
+<li>此時日本已進入相對穩定的江戶時代，政宗的主要任務由戰場征伐轉為藩政經營。</li>
+</ul>
+<h3 id="1630年代：仙台藩治理逐漸成熟">1630年代：仙台藩治理逐漸成熟</h3>
+<ul>
+<li>政宗持續整頓仙台藩行政制度。</li>
+<li>推動農業開發、交通建設及城下町經營。</li>
+<li>透過家臣配置與地方行政管理，鞏固伊達家對領地的控制。</li>
+<li>政宗也重視茶道、和歌、書法及文化活動，展現其作為江戶時代大名的多元興趣。</li>
+</ul>
+<h3 id="1634年：隨德川家光上洛">1634年：隨德川家光上洛</h3>
+<ul>
+<li>政宗隨第三代將軍德川家光前往京都。</li>
+<li>此舉展現仙台藩與幕府之間的政治關係。</li>
+<li>政宗已是經歷戰國時代的資深大名，在幕府政治秩序中具有相當地位。</li>
+</ul>
+<h3 id="1636年：病逝於江戶">1636年：病逝於江戶</h3>
+<ul>
+<li>政宗晚年健康狀況逐漸惡化。</li>
+<li>5月24日（日本舊曆），在江戶櫻田屋敷去世；換算公曆為6月27日。</li>
+<li>享年70歲（按日本傳統虛歲計算）。</li>
+<li>仙台藩由其嫡子伊達忠宗繼承。</li>
+<li>政宗的葬禮於同年舉行，部分家臣依當時武士殉死習俗自盡。</li>
+<li>其墓所後來建為瑞鳳殿，成為仙台的重要歷史文化景點。</li>
+</ul>
+<h2 id="七、伊達政宗的重要歷史功績">七、伊達政宗的重要歷史功績</h2>
+<h3 id="1-軍事方面：戰國時代的東北霸主">1. 軍事方面：戰國時代的東北霸主</h3>
+<ul>
+<li>透過人取橋之戰、二本松城攻防及摺上原之戰等軍事行動，逐步擴張伊達氏勢力。</li>
+<li>1589年擊敗蘆名氏，控制會津地區，使勢力達到高峰。</li>
+<li>面對豐臣秀吉統一天下，最終選擇臣服，避免伊達家遭到徹底消滅。</li>
+<li>在關原之戰及大坂之役中支持德川家康，確保伊達家在江戶幕府體制下的地位。</li>
+</ul>
+<h3 id="2-政治方面：建立仙台藩">2. 政治方面：建立仙台藩</h3>
+<ul>
+<li>1601年開始興建仙台城，將政治中心由岩出山遷至仙台。</li>
+<li>規劃城下町，建立行政、商業及交通設施。</li>
+<li>透過家臣配置、地方行政及領地開發，奠定仙台藩的治理基礎。</li>
+<li>仙台藩後來成為日本東北地區重要的藩之一。</li>
+</ul>
+<h3 id="3-經濟方面：農業、水利與交通建設">3. 經濟方面：農業、水利與交通建設</h3>
+<ul>
+<li>推動北上川等河川整治工程。</li>
+<li>改善水運條件，使內陸農產品能夠運往石卷等港口。</li>
+<li>推動農田開發及地方產業發展。</li>
+<li>透過仙台城下町的建設，促進商業及人口集中。</li>
+</ul>
+<h3 id="4-文化方面：建築、宗教與藝術">4. 文化方面：建築、宗教與藝術</h3>
+<p><a href="https://images.openai.com/static-rsc-4/rg_OHV6fbWbxe4HiwxnYIdLYn9qm9QubK4zyCkVy1hRfGmvkE0i7WBT2W7xFgwR3CzHttZwW7S9MJm2Vj8Nv-tA1poCNH81uqCZPF8ckhW_5ZzwDOopBx-CkDQVlwYAdwrBNOt445GHLfCnHF0bgBMz472ovqQy6Q53Y7zH-I14?purpose=inline">Osaki Hachimangu Guide: National Treasure Shrine in Sendai | JeePe - Japan Travel Guide</a></p>
+<p>大崎八幡宮</p>
+<p>1607年完成，現為日本國寶。</p>
+<p><a href="https://images.openai.com/static-rsc-4/rG3CwvQAac7FMA0nKDWlQw6VE-OnG-xqpYkPlE-PDrm8jLyrgm2l94reA6c3dGhlUSPWhArJ4G7eypz1Scn-v9NSBOjmeSxxpV3Q6KRv-lQsHSbKp9E9Vvbxe0L2uRr8qMYmHqWGh9uJ-Hzeot2mfZ1ksHS-IaXF_qwYy0OGJ3I?purpose=inline">瑞巌寺 観光・アクセス・営業時間・基本情報ガイド - 宮城県 / 松島【トラベルコ】</a></p>
+<p>松島瑞巖寺</p>
+<p>政宗推動重建的重要寺院。</p>
+<p><a href="https://images.openai.com/static-rsc-4/-LpPNXWs8BCwBF_IWD0fQmjWJjL3rthnwQJzCcgAaKXliG2stwMAp-pyWpXcJQHFIxZ_B4f5Ei9TzPPAmpAd_fsbKAcZXMkikAtJBr8Yax_7CG6AHsx9i98tB9F1hDuUtSSdzdPFYEJj8yhppMknJACyBmDnDPOXdyC2bXRLBIg?purpose=inline">仙台城遺址（青葉城） | 宮城縣的觀光景點 | Sparkle Travel</a></p>
+<p>仙台城</p>
+<p>仙台藩的政治中心。</p>
+<p><a href="https://images.openai.com/static-rsc-4/OtmbQzusKZfI90sn6cifUBsxjtMVnX4iffcoMzeZveRJgyntYlJw4zMHgUcURZBlVmSSlUHvbwS_IcUG65Czkxnl72CFnkr5Hm6gBn_gB-qcQ-pPXe55aC_RqLVusHXh2WLdWVu5Sn1GWEqdzWwEYLFhDwOnj3wZoSsjxma8-98?purpose=inline">瑞鳳殿 - MCM Premium 示範 | 無需程式碼即可建立多語言網站</a></p>
+<p>瑞鳳殿</p>
+<p>政宗的墓所，展現桃山風格裝飾藝術。</p>
+<p>政宗不僅重視軍事與政治，也積極推動寺院、神社及城郭建設，使仙台逐漸形成具有鮮明特色的地方文化。</p>
+<h3 id="5-外交方面：慶長遣歐使節">5. 外交方面：慶長遣歐使節</h3>
+<ul>
+<li>1613年派遣支倉常長出使歐洲。</li>
+<li>試圖與西班牙及新西班牙建立外交和貿易關係。</li>
+<li>使節團經過墨西哥，前往西班牙及羅馬。</li>
+<li>這次出使是日本早期與歐洲建立直接外交聯繫的重要事件之一。</li>
+<li>雖然未能達成預期的貿易成果，卻留下珍貴的日本與歐洲交流史料。</li>
+</ul>
+<h2 id="八、伊達政宗生平重要人物關係">八、伊達政宗生平重要人物關係</h2>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>身分及關係</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>伊達輝宗</td>
+<td>父親</td>
+<td>伊達氏第16代當主，1585年遭殺害</td>
+</tr>
+<tr>
+<td>義姬</td>
+<td>母親</td>
+<td>最上氏出身，最上義光之妹</td>
+</tr>
+<tr>
+<td>最上義光</td>
+<td>舅舅</td>
+<td>最上氏大名，與政宗既有親屬關係，也有政治衝突</td>
+</tr>
+<tr>
+<td>愛姬</td>
+<td>正室</td>
+<td>田村清顯之女，與政宗的婚姻具有政治聯盟意義</td>
+</tr>
+<tr>
+<td>伊達忠宗</td>
+<td>嫡子</td>
+<td>仙台藩第二代藩主</td>
+</tr>
+<tr>
+<td>豐臣秀吉</td>
+<td>天下人</td>
+<td>迫使政宗臣服，並重新分配其領地</td>
+</tr>
+<tr>
+<td>德川家康</td>
+<td>江戶幕府創建者</td>
+<td>政宗後期重要政治盟友</td>
+</tr>
+<tr>
+<td>上杉景勝</td>
+<td>戰國大名</td>
+<td>關原之戰期間的東北主要對手</td>
+</tr>
+<tr>
+<td>支倉常長</td>
+<td>家臣、外交使節</td>
+<td>1613年率領慶長遣歐使節團出使歐洲</td>
+</tr>
+<tr>
+<td>虎哉宗乙</td>
+<td>教育老師</td>
+<td>對政宗的教育及思想形成有影響</td>
+</tr>
+</tbody></table>
+<h2 id="九、伊達政宗與日本戰國時代的關鍵事件">九、伊達政宗與日本戰國時代的關鍵事件</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>日本歷史大事</th>
+<th>政宗當時的處境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1560</td>
+<td>桶狹間之戰</td>
+<td>尚未出生</td>
+</tr>
+<tr>
+<td>1567</td>
+<td>政宗出生</td>
+<td>出生於米澤城</td>
+</tr>
+<tr>
+<td>1573</td>
+<td>室町幕府滅亡</td>
+<td>少年時期</td>
+</tr>
+<tr>
+<td>1582</td>
+<td>本能寺之變</td>
+<td>15歲左右，尚未繼承家督</td>
+</tr>
+<tr>
+<td>1584</td>
+<td>豐臣秀吉逐漸掌握中央政權</td>
+<td>繼承伊達家</td>
+</tr>
+<tr>
+<td>1585</td>
+<td>秀吉與德川家康和睦（小牧、長久手之戰後）</td>
+<td>父親遇害、人取橋之戰</td>
+</tr>
+<tr>
+<td>1589</td>
+<td>豐臣秀吉統一前夕</td>
+<td>擊敗蘆名氏，勢力擴張</td>
+</tr>
+<tr>
+<td>1590</td>
+<td>小田原之戰、北條氏滅亡</td>
+<td>臣服秀吉</td>
+</tr>
+<tr>
+<td>1598</td>
+<td>豐臣秀吉去世</td>
+<td>重新調整政治立場</td>
+</tr>
+<tr>
+<td>1600</td>
+<td>關原之戰</td>
+<td>支持德川家康</td>
+</tr>
+<tr>
+<td>1603</td>
+<td>江戶幕府成立</td>
+<td>建設仙台藩</td>
+</tr>
+<tr>
+<td>1614－1615</td>
+<td>大坂冬、夏之陣</td>
+<td>支持德川方，參與作戰</td>
+</tr>
+<tr>
+<td>1636</td>
+<td>政宗去世</td>
+<td>仙台藩由忠宗繼承</td>
+</tr>
+</tbody></table>
+<h2 id="十、伊達政宗生平簡明年表">十、伊達政宗生平簡明年表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>年齡（虛歲）</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1567</td>
+<td>1</td>
+<td>出生於米澤城，幼名梵天丸</td>
+</tr>
+<tr>
+<td>1571前後</td>
+<td>5</td>
+<td>幼年感染天花，右眼失明</td>
+</tr>
+<tr>
+<td>1572前後</td>
+<td>6</td>
+<td>接受虎哉宗乙教育</td>
+</tr>
+<tr>
+<td>1577</td>
+<td>11</td>
+<td>元服，取名藤次郎政宗</td>
+</tr>
+<tr>
+<td>1579</td>
+<td>13</td>
+<td>與愛姬結婚</td>
+</tr>
+<tr>
+<td>1581</td>
+<td>15</td>
+<td>初陣，參與對相馬氏作戰</td>
+</tr>
+<tr>
+<td>1584</td>
+<td>18</td>
+<td>繼承伊達家家督</td>
+</tr>
+<tr>
+<td>1585</td>
+<td>19</td>
+<td>父親輝宗遭殺害；人取橋之戰</td>
+</tr>
+<tr>
+<td>1586</td>
+<td>20</td>
+<td>攻陷二本松城</td>
+</tr>
+<tr>
+<td>1588</td>
+<td>22</td>
+<td>大崎合戰失利</td>
+</tr>
+<tr>
+<td>1589</td>
+<td>23</td>
+<td>摺上原之戰擊敗蘆名氏</td>
+</tr>
+<tr>
+<td>1590</td>
+<td>24</td>
+<td>小田原參陣，臣服豐臣秀吉</td>
+</tr>
+<tr>
+<td>1591</td>
+<td>25</td>
+<td>移封岩出山</td>
+</tr>
+<tr>
+<td>1593</td>
+<td>27</td>
+<td>渡海參與文祿之役</td>
+</tr>
+<tr>
+<td>1598</td>
+<td>32</td>
+<td>豐臣秀吉去世</td>
+</tr>
+<tr>
+<td>1600</td>
+<td>34</td>
+<td>關原之戰，支持德川家康</td>
+</tr>
+<tr>
+<td>1601</td>
+<td>35</td>
+<td>興建仙台城，遷往仙台</td>
+</tr>
+<tr>
+<td>1607</td>
+<td>41</td>
+<td>大崎八幡宮完成</td>
+</tr>
+<tr>
+<td>1609</td>
+<td>43</td>
+<td>瑞巖寺重建完成</td>
+</tr>
+<tr>
+<td>1613</td>
+<td>47</td>
+<td>派遣支倉常長出使歐洲</td>
+</tr>
+<tr>
+<td>1614</td>
+<td>48</td>
+<td>參與大坂冬之陣</td>
+</tr>
+<tr>
+<td>1615</td>
+<td>49</td>
+<td>參與大坂夏之陣，豐臣氏滅亡</td>
+</tr>
+<tr>
+<td>1620</td>
+<td>54</td>
+<td>支倉常長返回日本</td>
+</tr>
+<tr>
+<td>1626</td>
+<td>60</td>
+<td>推動北上川水系整治</td>
+</tr>
+<tr>
+<td>1628</td>
+<td>62</td>
+<td>遷居若林城</td>
+</tr>
+<tr>
+<td>1634</td>
+<td>68</td>
+<td>隨德川家光上洛</td>
+</tr>
+<tr>
+<td>1636</td>
+<td>70</td>
+<td>6月27日，病逝於江戶</td>
+</tr>
+</tbody></table>
+<p>年表主要依據仙台市博物館所公布的伊達政宗年表整理。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.city.sendai.jp&sz=32">image</a></p>
+<p>仙台市+2</p>
+<h2 id="十一、伊達政宗的歷史定位">十一、伊達政宗的歷史定位</h2>
+<p>伊達政宗最值得注意的，是他一生經歷了兩種截然不同的政治環境：</p>
+<p>第一階段：戰國大名時期（1567－1590）</p>
+<ul>
+<li>在東北群雄並立的環境中崛起。</li>
+<li>透過戰爭擴張伊達家勢力。</li>
+<li>1589年摺上原之戰達到軍事生涯高峰。</li>
+<li>1590年面對豐臣秀吉的統一政權，選擇臣服。</li>
+</ul>
+<p>第二階段：江戶藩主時期（1591－1636）</p>
+<ul>
+<li>從地方征戰型大名轉型為幕府體制下的藩主。</li>
+<li>與德川家康建立政治合作關係。</li>
+<li>建設仙台城及城下町，奠定仙台城市發展的基礎。</li>
+<li>推動農業、水利、宗教建築及海外外交。</li>
+</ul>
+<p>總結而言，伊達政宗不只是以「獨眼龍」聞名的戰國武將，也是仙台城市與仙台藩的奠基者。他的歷史意義，在於成功從戰國亂世的軍事競爭者，轉型為江戶時代具有政治、經濟及文化影響力的藩主。</p>
+<h2 id="十二、延伸閱讀與史料">十二、延伸閱讀與史料</h2>
+<ol>
+<li><a href="https://www.city.sendai.jp/museum/shuzohin/shuzohin/shuzohin-21.html?utm_source=chatgpt.com">仙台市博物館：伊達政宗生平年表</a>——涵蓋出生、繼承家督、戰爭、建設仙台及晚年。</li>
+<li><a href="https://www.city.sendai.jp/museum/shuzohin/shuzohin/shuzohin-18.html?utm_source=chatgpt.com">仙台市博物館：政宗誕生與戰國時代</a>——介紹政宗的家世、少年教育及早期軍事活動。</li>
+<li><a href="https://www.city.sendai.jp/museum/shuzohin/shuzohin/shuzohin-20.html?utm_source=chatgpt.com">仙台市博物館：仙台藩建設與政宗晚年</a>——介紹仙台城、文化建設及晚年生活。</li>
+<li><a href="https://www.city.sendai.jp.id200928.cas.iijcdn.jp/museum/sendaishishi/kikanshokai/tsushihen-15.html?utm_source=chatgpt.com">仙台市史：伊達政宗文書（二）</a>——收錄政宗1592年至1615年的大量書信與公文。</li>
+<li><a href="https://www.city.sendai.jp/museum/sendaishishi/kikanshokai/tsushihen-17.html?utm_source=chatgpt.com">仙台市史：伊達政宗文書（四）</a>——收錄政宗晚年文書及相關年譜。</li>
+</ol>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

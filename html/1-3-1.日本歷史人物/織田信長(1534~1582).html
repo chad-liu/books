@@ -1,0 +1,790 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="織田信長生平大事記">織田信長生平大事記</h1>
+<h2 id="從尾張地方大名到天下統一的先驅（15341582）">——從尾張地方大名到天下統一的先驅（1534—1582）</h2>
+<p><strong>織田信長</strong>（1534年—1582年6月21日）是日本戰國時代最具影響力的軍事與政治領袖之一。他以尾張國（今日本愛知縣西部）為起點，逐步統一日本中部，擊敗今川氏、淺井氏與朝倉氏等勢力，並在1573年將足利義昭逐出京都，終結室町幕府的實際統治。</p>
+<p>信長雖然未能完成日本全國統一，卻為後來的豐臣秀吉與德川家康奠定重要基礎。他的軍事改革、商業政策、城郭建設及對傳統權力結構的挑戰，深刻影響日本歷史的發展。</p>
+<p>信長的一生只有約49年（按傳統虛歲計），卻經歷了從地方大名繼承人到日本最強勢力之一的劇烈變化。1582年，他在京都本能寺遭家臣明智光秀突襲，自盡身亡，留下著名的「本能寺之變」。</p>
+<p><strong>織田信長生平可分為六個階段：</strong></p>
+<ol>
+<li><strong>1534—1551年：出生與繼承家業</strong>——在尾張國出生，父親去世後繼承家族領導權。</li>
+<li><strong>1551—1560年：統一尾張、逐步崛起</strong>——擊敗家族內部與地方競爭者，奠定領地基礎。</li>
+<li><strong>1560—1567年：桶狹間之戰與美濃攻略</strong>——擊敗今川義元，取得關鍵軍事勝利。</li>
+<li><strong>1568—1573年：進入京都、控制中央政局</strong>——擁立足利義昭為將軍，後來與其決裂。</li>
+<li><strong>1573—1580年：擴張霸權、推進改革</strong>——擊敗主要敵對勢力，興建安土城，推進商業與政治改革。</li>
+<li><strong>1581—1582年：接近統一日本，卻死於本能寺之變</strong>——在軍事優勢逐漸擴大之際，遭明智光秀叛變。</li>
+</ol>
+<p>以下依照年代，詳細整理信長的生平、主要戰役、政治改革、重要人物關係與歷史影響。</p>
+<hr>
+<h1 id="一、15341551年：出生、成長與繼承家業">一、1534—1551年：出生、成長與繼承家業</h1>
+<h2 id="1534年（天文3年）：織田信長出生">1534年（天文3年）：織田信長出生</h2>
+<ul>
+<li>**出生日期：**一般記為1534年5月28日（日本舊曆），換算為西曆約為6月23日；不同資料對出生地的記載略有差異。</li>
+<li>**出生地：**日本尾張國，通常認為與勝幡城或那古野城有關。</li>
+<li>**父親：**織田信秀。</li>
+<li>**母親：**土田御前。</li>
+<li>**幼名：**吉法師。</li>
+<li>**家族背景：**織田氏是尾張國的重要武士家族，但家族內部存在不同支系，各支系之間也有權力競爭。</li>
+</ul>
+<p>當時日本正處於戰國時代，各地大名透過戰爭、聯姻與政治結盟擴張領土。尾張國位於日本中部，是通往京都的重要區域，鄰近美濃、三河等具有戰略價值的地區。</p>
+<p>信長的父親織田信秀已經具有相當的軍事與經濟實力，但織田氏尚未完全統一尾張。</p>
+<p>**歷史意義：**信長的崛起，首先必須從織田家族內部的繼承問題，以及尾張國各勢力之間的競爭開始理解。</p>
+<h2 id="1546年：元服，進入武士成年階段">1546年：元服，進入武士成年階段</h2>
+<ul>
+<li>信長舉行元服儀式，開始使用成人名號。</li>
+<li>當時他被稱為織田三郎信長。</li>
+<li>元服代表他逐漸承擔家族政治與軍事事務。</li>
+</ul>
+<h2 id="1549年：迎娶濃姬">1549年：迎娶濃姬</h2>
+<ul>
+<li>信長與美濃國大名齋藤道三之女濃姬結婚。</li>
+<li>這場婚姻有助於改善織田氏與齋藤氏之間的關係。</li>
+<li>戰國大名經常透過婚姻建立同盟，以降低兩國直接衝突的風險。</li>
+</ul>
+<p>不過，濃姬婚後的生活與兩人是否育有子女，史料並不完整，後世小說與影視作品的描寫不能全部當作史實。</p>
+<h2 id="1551年：父親織田信秀去世，信長繼承家業">1551年：父親織田信秀去世，信長繼承家業</h2>
+<ul>
+<li>織田信秀去世後，信長繼承家族領導權。</li>
+<li>當時織田氏內部仍有其他有力人物，信長的繼承地位並非毫無爭議。</li>
+<li>部分家臣對信長的行事風格不滿，家族內部逐漸出現對立。</li>
+</ul>
+<h3 id="「尾張的大傻瓜」稱號">「尾張的大傻瓜」稱號</h3>
+<p>信長年輕時，因穿著、舉止與行事風格不符合當時武士階層的傳統期待，曾被稱為「尾張的大傻瓜」。</p>
+<p>然而，這個形象也可能包含後世傳記對其早年性格的戲劇化描述。</p>
+<p>**歷史意義：**信長接掌家族後，面對的第一個挑戰並不是統一日本，而是如何在內部競爭激烈的織田家族中鞏固領導權。</p>
+<hr>
+<h1 id="二、15521560年：平定尾張，桶狹間之戰一戰成名">二、1552—1560年：平定尾張，桶狹間之戰一戰成名</h1>
+<h2 id="15521555年：逐步擴大對尾張的控制">1552—1555年：逐步擴大對尾張的控制</h2>
+<ul>
+<li>信長逐漸與反對自己的織田家族支系及地方勢力交戰。</li>
+<li>他以清洲城一帶為重要政治與軍事據點。</li>
+<li>透過戰爭與政治安排，信長逐步擴大自己的影響力。</li>
+</ul>
+<h2 id="1556年：稻生之戰，擊敗弟弟信勝的勢力">1556年：稻生之戰，擊敗弟弟信勝的勢力</h2>
+<ul>
+<li>信長的弟弟織田信勝（又名信行）在部分家臣支持下，對信長的領導權構成挑戰。</li>
+<li>雙方爆發稻生之戰。</li>
+<li>信長擊敗信勝一方，暫時穩固了自己在織田家族中的地位。</li>
+</ul>
+<h2 id="1557年：織田信勝被殺">1557年：織田信勝被殺</h2>
+<ul>
+<li>信勝後來再次涉及反叛與繼承權問題。</li>
+<li>信長最終下令將其殺害。</li>
+<li>這場家族悲劇反映戰國時代大名繼承制度的殘酷性。</li>
+</ul>
+<p>**歷史意義：**信長在尚未對外大規模擴張之前，就已經透過一連串內部鬥爭，排除重要競爭者。</p>
+<h2 id="1559年：基本確立對尾張的控制">1559年：基本確立對尾張的控制</h2>
+<ul>
+<li>信長逐步擊敗尾張國內的主要競爭勢力。</li>
+<li>他進一步整合織田家臣團，為向外擴張建立基礎。</li>
+</ul>
+<p>不過，尾張各地的權力整合並非在單一年份突然完成，而是經過多年戰爭與政治調整的結果。</p>
+<h2 id="1560年：桶狹間之戰改變日本戰國格局的勝利">1560年：桶狹間之戰——改變日本戰國格局的勝利</h2>
+<p><strong>時間：1560年6月前後，對應日本舊曆永祿3年5月19日。</strong></p>
+<p><strong>主要人物：</strong></p>
+<ul>
+<li>織田信長</li>
+<li>今川義元</li>
+</ul>
+<h3 id="戰爭背景">戰爭背景</h3>
+<p>今川義元控制駿河、遠江及三河一帶，勢力遠大於當時的織田氏。</p>
+<p>今川軍向尾張方向進軍，信長則必須設法抵抗這支強大的軍隊。</p>
+<h3 id="戰爭經過">戰爭經過</h3>
+<ol>
+<li>今川軍進入尾張國境內，攻取部分據點。</li>
+<li>信長掌握敵軍部署後，選擇有利時機發動攻擊。</li>
+<li>織田軍襲擊今川義元所在的本陣附近。</li>
+<li>今川義元在戰鬥中被殺。</li>
+<li>今川軍因主帥陣亡而陷入混亂，戰局迅速逆轉。</li>
+</ol>
+<p>關於信長究竟如何掌握今川軍位置、突襲時的天候與地形條件，以及雙方實際兵力，後世存在不同說法，不宜將戲劇化版本全部視為確定史實。</p>
+<h3 id="戰爭結果">戰爭結果</h3>
+<ul>
+<li>今川義元戰死。</li>
+<li>今川氏的軍事威望受到重大打擊。</li>
+<li>信長的聲望大幅提高。</li>
+<li>東海道的勢力平衡發生變化。</li>
+<li>德川家康後來也因此獲得擺脫今川氏控制的機會。</li>
+</ul>
+<p><strong>歷史意義：</strong></p>
+<p>桶狹間之戰是信長從地方大名躍升為全國性政治競爭者的重要轉折。</p>
+<p>然而，這場勝利並不代表他立即統一了日本。此後，他仍然必須花費二十多年時間，與其他大名、宗教勢力及政治聯盟持續鬥爭。</p>
+<hr>
+<h1 id="三、15601567年：鞏固尾張、征服美濃">三、1560—1567年：鞏固尾張、征服美濃</h1>
+<h2 id="15601562年：與德川家康建立同盟">1560—1562年：與德川家康建立同盟</h2>
+<ul>
+<li>桶狹間之戰後，德川家康逐漸脫離今川氏控制。</li>
+<li>信長與家康建立政治與軍事合作關係。</li>
+<li>兩人的同盟後來成為日本戰國時代最重要的聯盟之一。</li>
+</ul>
+<p>這段關係讓信長得以將更多資源投入美濃、近江與京都方向，而不必持續擔心三河方面的威脅。</p>
+<h2 id="1563年：將主要據點遷至小牧山城">1563年：將主要據點遷至小牧山城</h2>
+<ul>
+<li>信長將主要據點遷至小牧山城。</li>
+<li>小牧山的位置有利於向美濃國發動軍事行動。</li>
+<li>信長開始更積極地向尾張以北擴張。</li>
+</ul>
+<h2 id="15641566年：持續進攻美濃">1564—1566年：持續進攻美濃</h2>
+<ul>
+<li>信長與美濃國齋藤氏之間持續發生衝突。</li>
+<li>齋藤道三去世後，美濃的政治局勢更加複雜。</li>
+<li>信長逐步爭取當地豪族支持，削弱齋藤氏的控制力。</li>
+</ul>
+<h2 id="1567年：攻取稻葉山城，改名岐阜城">1567年：攻取稻葉山城，改名岐阜城</h2>
+<ul>
+<li>信長攻取美濃國的重要據點稻葉山城。</li>
+<li>他將城名改為岐阜，並以岐阜城為新的政治與軍事中心。</li>
+<li>這項勝利使信長的勢力範圍進一步擴大。</li>
+</ul>
+<h3 id="「天下布武」的意義">「天下布武」的意義</h3>
+<p>信長在這一時期開始使用「天下布武」印文。</p>
+<p>「天下布武」通常被理解為透過武力建立全國性的政治秩序，但對這個口號的具體含義，歷史研究仍有不同解釋。</p>
+<p>它至少反映了信長不再滿足於單純統一尾張，而是開始介入更廣泛的日本政治。</p>
+<p>**歷史意義：**美濃的取得，讓信長獲得進入京都與影響中央政局的重要地理條件。</p>
+<hr>
+<h1 id="四、15681573年：進入京都，與足利義昭決裂">四、1568—1573年：進入京都，與足利義昭決裂</h1>
+<h2 id="1568年：擁立足利義昭，進軍京都">1568年：擁立足利義昭，進軍京都</h2>
+<ul>
+<li>足利義昭是室町幕府第十五代將軍足利義輝的弟弟。</li>
+<li>義輝遇害後，義昭尋求有實力的大名協助自己重返京都。</li>
+<li>信長支持義昭，率軍進入京都。</li>
+<li>義昭隨後成為室町幕府第十五代將軍。</li>
+</ul>
+<h3 id="信長與義昭的關係">信長與義昭的關係</h3>
+<p>兩人最初具有合作關係，但彼此的政治目標並不完全一致。</p>
+<p>義昭希望恢復將軍的實際權威；信長則希望建立由自己主導的政治秩序。</p>
+<p>隨著信長的權力不斷擴大，雙方的矛盾逐漸加深。</p>
+<h2 id="1569年：鞏固京都周邊的政治地位">1569年：鞏固京都周邊的政治地位</h2>
+<ul>
+<li>信長持續整頓京都及畿內地區的政治秩序。</li>
+<li>他介入地方大名之間的衝突，並擴大對中央政治的影響力。</li>
+<li>信長也與商人、寺院及其他政治勢力建立或重整關係。</li>
+</ul>
+<h2 id="1570年：金崎撤退與姊川之戰">1570年：金崎撤退與姊川之戰</h2>
+<h3 id="金崎撤退">金崎撤退</h3>
+<ul>
+<li>信長出兵攻打越前國的朝倉氏。</li>
+<li>然而，信長的妹夫、北近江大名淺井長政轉而與朝倉氏合作。</li>
+<li>信長面臨被包圍的風險，被迫撤退。</li>
+<li>木下秀吉、德川家康等人與信長軍事行動相關，撤退過程也成為後世傳記的重要題材。</li>
+</ul>
+<h3 id="姊川之戰">姊川之戰</h3>
+<ul>
+<li>信長與德川家康聯軍對抗淺井長政、朝倉義景的聯軍。</li>
+<li>戰役發生於近江國姊川一帶。</li>
+<li>織田、德川聯軍最終取得優勢，但淺井氏與朝倉氏並未因此立即滅亡。</li>
+</ul>
+<p>**歷史意義：**信長開始同時面對多個敵對勢力，逐漸陷入複雜的多線戰爭。</p>
+<h2 id="1571年：比叡山延曆寺遭到攻擊">1571年：比叡山延曆寺遭到攻擊</h2>
+<ul>
+<li>信長與比叡山延曆寺及其相關勢力的衝突加劇。</li>
+<li>延曆寺位於京都東北方的比叡山，具有重要的宗教、經濟與政治影響力。</li>
+<li>信長下令軍隊攻擊寺院及周邊聚落，造成大量人員傷亡與建築破壞。</li>
+</ul>
+<h3 id="歷史評價">歷史評價</h3>
+<p>這場事件是信長生平最具爭議的行動之一。</p>
+<p>從信長的角度來看，他希望削弱可能威脅其統治的宗教武裝勢力；但從宗教史與社會史的角度來看，這場攻擊造成嚴重的人道災難。</p>
+<p>因此，評價信長時，既不能忽略他推動政治整合的作用，也不能淡化其軍事行動造成的破壞。</p>
+<h2 id="1572年：武田信玄向西進軍">1572年：武田信玄向西進軍</h2>
+<ul>
+<li>武田信玄率軍向西擴張，威脅德川家康的領地。</li>
+<li>信長必須協助盟友家康，同時應付其他敵對勢力。</li>
+<li>武田軍在三方原之戰中擊敗德川軍，顯示信長的盟友仍面臨強大的軍事壓力。</li>
+</ul>
+<h2 id="1573年：淺井氏、朝倉氏滅亡">1573年：淺井氏、朝倉氏滅亡</h2>
+<ul>
+<li>信長持續進攻越前國的朝倉氏。</li>
+<li>朝倉義景敗亡，朝倉氏的主要勢力遭到摧毀。</li>
+<li>信長接著進攻淺井氏的領地。</li>
+<li>淺井長政兵敗自盡，淺井氏的政治勢力也隨之崩潰。</li>
+</ul>
+<h2 id="1573年：足利義昭遭到逐出京都">1573年：足利義昭遭到逐出京都</h2>
+<ul>
+<li>足利義昭與信長的矛盾逐漸無法調和。</li>
+<li>義昭組織反信長勢力，試圖抵抗信長的控制。</li>
+<li>信長最終將義昭逐出京都。</li>
+</ul>
+<p><strong>歷史意義：</strong></p>
+<p>足利義昭離開京都，代表室町幕府失去原有的政治中心與實際統治能力。一般將1573年視為室町幕府滅亡的標誌。</p>
+<p>信長至此已經不只是支持將軍的軍事領袖，而是成為能夠決定中央政局走向的主要政治人物。</p>
+<hr>
+<h1 id="五、15731576年：突破反信長聯盟，長篠之戰大敗武田軍">五、1573—1576年：突破反信長聯盟，長篠之戰大敗武田軍</h1>
+<h2 id="1574年：鎮壓伊勢長島一向一揆">1574年：鎮壓伊勢長島一向一揆</h2>
+<ul>
+<li>信長持續與伊勢長島一帶的一向宗信徒及地方武裝勢力交戰。</li>
+<li>一向一揆不只是宗教運動，也涉及地方社會、武士勢力與政治控制權。</li>
+<li>信長曾多次出兵，試圖消滅這股反抗力量。</li>
+<li>1574年，信長再次發動大規模攻勢，最終鎮壓長島一向一揆。</li>
+</ul>
+<p>**歷史意義：**信長面對的敵人並不限於傳統大名，也包括擁有經濟資源、地方組織與軍事能力的宗教勢力。</p>
+<h2 id="1575年：長篠之戰">1575年：長篠之戰</h2>
+<p><strong>主要人物：</strong></p>
+<ul>
+<li>織田信長</li>
+<li>德川家康</li>
+<li>武田勝賴</li>
+</ul>
+<h3 id="戰爭背景-1">戰爭背景</h3>
+<p>武田氏以騎兵與野戰能力聞名。武田信玄去世後，其子武田勝賴繼續擴張勢力，並與德川氏爭奪遠江、三河等地的控制權。</p>
+<p>1575年，武田軍進攻德川氏控制的長篠城，信長與家康聯合出兵救援。</p>
+<h3 id="戰爭經過-1">戰爭經過</h3>
+<ol>
+<li>武田軍包圍長篠城。</li>
+<li>織田、德川聯軍前往救援。</li>
+<li>雙方在長篠城附近的設樂原一帶展開決戰。</li>
+<li>織田、德川聯軍利用地形、防禦工事、火繩槍及步兵協同作戰。</li>
+<li>武田軍遭到重大打擊，許多重要將領戰死。</li>
+</ol>
+<h3 id="長篠之戰的歷史意義">長篠之戰的歷史意義</h3>
+<p><strong>第一，武田氏的軍事實力受到重大削弱。</strong></p>
+<p>這場戰役使武田氏難以維持過去的軍事優勢，但武田氏並未在1575年立即滅亡，而是直到1582年才被織田、德川等勢力聯合消滅。</p>
+<p><strong>第二，展現信長的軍事組織能力。</strong></p>
+<p>信長的重要優勢不僅在於火繩槍，也包括兵力動員、後勤供應、軍隊編制及不同兵種的協同作戰。</p>
+<p><strong>第三，改變後世對戰國戰爭的認識。</strong></p>
+<p>長篠之戰常被視為日本火器戰術發展的重要事件。不過，傳統敘事中關於「三段擊」的具體戰術是否完全如後世描述，仍有史料與研究上的爭論。</p>
+<h2 id="1575年：將織田家家督傳給長子信忠">1575年：將織田家家督傳給長子信忠</h2>
+<ul>
+<li>信長逐步將織田家族的部分權力交給長子織田信忠。</li>
+<li>信忠開始承擔更多軍事與領地管理責任。</li>
+<li>信長本人則繼續掌握重要戰略與政治決策。</li>
+</ul>
+<p>這項安排顯示，信長已經開始考慮家族權力的延續。</p>
+<p>不過，信忠後來也在1582年的本能寺之變相關事件中死亡，使織田家失去重要的繼承人。</p>
+<h2 id="1576年：開始興建安土城">1576年：開始興建安土城</h2>
+<ul>
+<li>信長開始在近江國興建安土城。</li>
+<li>安土城位於琵琶湖東岸附近，地理位置有利於聯繫京都、岐阜及日本中部各地。</li>
+<li>城堡不只是軍事設施，也是信長展示權力、接待重要人物與管理政治事務的中心。</li>
+</ul>
+<h3 id="安土城的特色">安土城的特色</h3>
+<ol>
+<li>**突出統治者的權威：**城郭規模與建築設計展現信長的政治地位。</li>
+<li>**具有軍事功能：**石垣、地勢及城郭配置有助於防禦。</li>
+<li>**帶動城下町發展：**商人、工匠與其他人口聚集，促進地方經濟。</li>
+<li>**成為政治象徵：**安土城代表信長試圖建立超越傳統地方大名格局的新政治秩序。</li>
+</ol>
+<p>安土城後來在1582年信長死後遭到焚毀，確切的起火經過與責任歸屬仍有不同說法。</p>
+<hr>
+<h1 id="六、15761580年：對抗石山本願寺，擴大政治與經濟改革">六、1576—1580年：對抗石山本願寺，擴大政治與經濟改革</h1>
+<h2 id="1576年：石山合戰持續">1576年：石山合戰持續</h2>
+<ul>
+<li>信長與位於攝津國石山的本願寺勢力持續交戰。</li>
+<li>石山本願寺是當時重要的宗教與軍事中心，具有廣泛的地方支持網絡。</li>
+<li>本願寺方面與部分反信長大名合作，使信長難以迅速取得勝利。</li>
+<li>戰爭長期化，牽制信長大量軍事資源。</li>
+</ul>
+<h2 id="1577年：手取川之戰">1577年：手取川之戰</h2>
+<ul>
+<li>信長勢力與越後國大名上杉謙信之間的軍事對抗加劇。</li>
+<li>上杉軍在手取川一帶擊敗織田方面的軍隊。</li>
+<li>此戰反映信長雖然持續擴張，仍然面臨具有相當戰鬥能力的地方強權。</li>
+</ul>
+<p>**歷史意義：**信長並非戰無不勝。他的崛起來自長期的軍事動員、政治結盟與領地整合，而非每一場戰役都取得勝利。</p>
+<h2 id="15771578年：羽柴秀吉向中國地方進軍">1577—1578年：羽柴秀吉向中國地方進軍</h2>
+<ul>
+<li>信長派遣羽柴秀吉前往播磨、但馬及中國地方一帶作戰。</li>
+<li>秀吉逐步建立自己的軍事與行政能力。</li>
+<li>他成為織田政權最重要的將領之一。</li>
+</ul>
+<p>羽柴秀吉後來改名豐臣秀吉，並在信長死後迅速崛起，最終完成日本大部分地區的統一。</p>
+<h2 id="1578年：第二次木津川口之戰">1578年：第二次木津川口之戰</h2>
+<ul>
+<li>織田氏與毛利氏之間的戰爭持續。</li>
+<li>毛利氏利用海上運輸支援石山本願寺。</li>
+<li>織田方面則發展海軍力量，並由九鬼嘉隆等人參與相關軍事行動。</li>
+<li>織田方在第二次木津川口之戰中擊敗毛利水軍，改善了對石山本願寺的海上封鎖態勢。</li>
+</ul>
+<p>這場戰役顯示，戰國時代的軍事競爭不僅發生在陸地，也涉及海上運輸、糧食補給與港口控制。</p>
+<h2 id="1579年：安土城的建設與信長的權力擴張">1579年：安土城的建設與信長的權力擴張</h2>
+<ul>
+<li>安土城逐漸成為信長的重要政治中心。</li>
+<li>信長透過軍事指揮、領地安排與城下町建設，強化自己的統治。</li>
+<li>他也持續處理織田家臣團內部的權力分配問題。</li>
+</ul>
+<h2 id="1580年：石山本願寺退出石山">1580年：石山本願寺退出石山</h2>
+<ul>
+<li>經過長期戰爭，本願寺方面與織田政權達成和議。</li>
+<li>石山本願寺退出其原有據點。</li>
+<li>信長終於結束這場長期牽制其軍事資源的重要戰爭。</li>
+</ul>
+<p>**歷史意義：**石山合戰的結束，使信長得以將更多軍事力量投入其他地區，為最後階段的領土擴張創造條件。</p>
+<hr>
+<h1 id="七、15801582年：接近統一日本，卻在本能寺之變中身亡">七、1580—1582年：接近統一日本，卻在本能寺之變中身亡</h1>
+<h2 id="1581年：展示織田政權的軍事實力">1581年：展示織田政權的軍事實力</h2>
+<ul>
+<li>信長在京都舉行大規模的軍事閱兵活動，通常稱為「京都御馬揃」。</li>
+<li>參與者包括織田家臣團及相關軍事力量。</li>
+<li>這場活動不僅具有軍事展示的作用，也帶有政治宣示的意義。</li>
+</ul>
+<p>當時的信長已經控制日本中部的重要地區，並透過多名大將向各方向擴張。</p>
+<h2 id="1582年：甲州征伐，武田氏滅亡">1582年：甲州征伐，武田氏滅亡</h2>
+<p><strong>主要人物：</strong></p>
+<ul>
+<li>織田信長</li>
+<li>德川家康</li>
+<li>武田勝賴</li>
+</ul>
+<h3 id="戰爭背景-2">戰爭背景</h3>
+<p>武田氏在長篠之戰後持續衰弱，內部也出現政治與軍事問題。</p>
+<p>1582年，織田、德川等勢力聯合進攻武田氏的領地。</p>
+<h3 id="戰爭經過與結果">戰爭經過與結果</h3>
+<ul>
+<li>織田軍從多個方向進攻武田領地。</li>
+<li>武田氏部分家臣與地方勢力倒向織田方面。</li>
+<li>武田勝賴逐漸失去抵抗能力。</li>
+<li>勝賴最終兵敗自盡，武田氏的主要政治勢力覆亡。</li>
+</ul>
+<p>**歷史意義：**武田氏滅亡後，信長在日本中部的主要軍事對手之一被消滅，其統一日本的前景看似更加明朗。</p>
+<p>然而，信長仍未完全征服毛利氏、上杉氏及其他地方勢力，日本的統一事業尚未完成。</p>
+<h2 id="1582年6月2日：本能寺之變">1582年6月2日：本能寺之變</h2>
+<p><strong>這是織田信長一生最重要、也最具戲劇性的轉折。</strong></p>
+<h3 id="事件背景">事件背景</h3>
+<p>1582年，信長在京都本能寺停留，準備繼續推進軍事行動。</p>
+<p>當時，他的主要將領分別在日本各地作戰：</p>
+<ul>
+<li>羽柴秀吉在中國地方與毛利氏交戰。</li>
+<li>柴田勝家在北陸方向活動。</li>
+<li>德川家康與信長維持同盟關係。</li>
+<li>明智光秀則是信長的重要家臣之一。</li>
+</ul>
+<h3 id="明智光秀發動叛變">明智光秀發動叛變</h3>
+<ul>
+<li>明智光秀率領軍隊突然轉向京都。</li>
+<li>光秀軍包圍本能寺。</li>
+<li>信長身邊兵力有限，難以抵抗大軍攻擊。</li>
+<li>信長在寺院遭到襲擊後自盡，享年約49歲（按傳統虛歲計）。</li>
+</ul>
+<p>信長的長子織田信忠當時也在京都附近，後來在明智軍攻擊下死亡。</p>
+<h3 id="為什麼明智光秀要背叛信長？">為什麼明智光秀要背叛信長？</h3>
+<p>這是日本戰國史上最著名的歷史謎題之一。</p>
+<p>常見解釋包括：</p>
+<ol>
+<li>**怨恨說：**光秀可能因受到信長羞辱、責罰或待遇不公而產生怨恨。</li>
+<li>**權力野心說：**光秀可能希望趁信長身處京都、兵力有限時奪取權力。</li>
+<li>**政治陰謀說：**有人推測光秀可能得到其他政治勢力支持。</li>
+<li>**多重因素說：**光秀的決策可能受到個人關係、政治環境、軍事機會與權力競爭共同影響。</li>
+</ol>
+<p>目前沒有足夠確切的史料能夠完全證實其中任何一種解釋。</p>
+<p>因此，最審慎的結論是：<strong>明智光秀為何發動本能寺之變，至今仍沒有獲得學界一致接受的定論。</strong></p>
+<h2 id="1582年6月：羽柴秀吉擊敗明智光秀">1582年6月：羽柴秀吉擊敗明智光秀</h2>
+<ul>
+<li>秀吉得知信長死訊後，迅速與毛利氏議和。</li>
+<li>他率軍急速返回京都方向，這段行軍被稱為「中國大返還」。</li>
+<li>秀吉在山崎之戰中擊敗明智光秀。</li>
+<li>光秀敗逃途中死亡。</li>
+</ul>
+<p>這使秀吉迅速成為織田政權繼承競爭中的重要人物。</p>
+<h3 id="本能寺之變的歷史意義">本能寺之變的歷史意義</h3>
+<ol>
+<li>**織田政權失去核心領袖：**信長與信忠相繼死亡，使織田家面臨嚴重的繼承危機。</li>
+<li>**秀吉迅速崛起：**秀吉擊敗光秀，取得重要政治聲望。</li>
+<li>**日本統一事業改變方向：**信長未完成的統一工作，後來由秀吉繼續推進。</li>
+<li>**德川家康獲得新的發展空間：**信長死後，日本權力結構再次改變，家康也逐步擴大自己的影響力。</li>
+</ol>
+<hr>
+<h1 id="八、織田信長的政治與經濟改革">八、織田信長的政治與經濟改革</h1>
+<p>織田信長的重要性，不僅在於戰爭勝利，也在於他嘗試改變日本傳統政治與經濟秩序。</p>
+<h2 id="1-樂市樂座">1. 樂市樂座</h2>
+<p><strong>樂市樂座</strong>是信長時代著名的商業政策之一。</p>
+<ul>
+<li>「樂市」通常指減少市場交易限制、促進商業活動。</li>
+<li>「樂座」涉及對傳統商業組織與特許制度的調整。</li>
+<li>信長透過相關措施吸引商人、工匠及人口進入城下町。</li>
+</ul>
+<p>這些政策有助於增加商品流通、擴大城下町的經濟活動，並為統治者提供更穩定的財政與物資來源。</p>
+<p>但樂市樂座並不是信長在所有地區一次性推行的完全相同制度；各地實施方式與效果有所差異。</p>
+<h2 id="2-減少交通障礙">2. 減少交通障礙</h2>
+<ul>
+<li>信長在部分地區推動關所整頓或廢除措施。</li>
+<li>這有助於降低人員與商品通行的阻礙。</li>
+<li>商業與交通活動因此更容易發展。</li>
+</ul>
+<p>不過，不能將此解釋為信長完全廢除了日本所有地區的關卡制度。</p>
+<h2 id="3-強化城郭建設">3. 強化城郭建設</h2>
+<ul>
+<li>信長重視城郭作為軍事、行政與政治中心的功能。</li>
+<li>他利用岐阜城、安土城等據點管理領地、指揮軍隊。</li>
+<li>城下町與城郭相互配合，形成新的政治經濟中心。</li>
+</ul>
+<h2 id="4-改變傳統權力結構">4. 改變傳統權力結構</h2>
+<ul>
+<li>信長削弱部分地方大名與宗教武裝勢力。</li>
+<li>他挑戰室町幕府將軍的實際政治權威。</li>
+<li>他試圖建立由自身主導、能夠跨越傳統地方分界的政治秩序。</li>
+</ul>
+<h2 id="5-重視火器與軍隊組織">5. 重視火器與軍隊組織</h2>
+<ul>
+<li>信長積極使用火繩槍。</li>
+<li>他透過軍隊編制、後勤供應及兵種協同，提高軍事動員能力。</li>
+<li>長篠之戰是其軍事組織能力的重要例證。</li>
+</ul>
+<p><strong>總體而言，信長的改革並非現代意義上的全面制度革命，而是在戰國時代的條件下，重新調整軍事、經濟與政治權力的分配。</strong></p>
+<hr>
+<h1 id="九、織田信長的重要人物關係">九、織田信長的重要人物關係</h1>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>與信長的關係</th>
+<th>歷史上的重要性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>織田信秀</td>
+<td>父親</td>
+<td>建立信長繼承的家族基礎</td>
+</tr>
+<tr>
+<td>織田信勝（信行）</td>
+<td>弟弟、政治競爭者</td>
+<td>家族內部繼承鬥爭的代表</td>
+</tr>
+<tr>
+<td>濃姬</td>
+<td>妻子</td>
+<td>與美濃齋藤氏建立婚姻關係</td>
+</tr>
+<tr>
+<td>齋藤道三</td>
+<td>岳父</td>
+<td>美濃國的重要大名</td>
+</tr>
+<tr>
+<td>德川家康</td>
+<td>盟友</td>
+<td>長期與信長合作，後來建立江戶幕府</td>
+</tr>
+<tr>
+<td>豐臣秀吉</td>
+<td>重要家臣、軍事將領</td>
+<td>信長死後擊敗明智光秀，後來統一日本</td>
+</tr>
+<tr>
+<td>明智光秀</td>
+<td>重要家臣、叛變者</td>
+<td>發動本能寺之變</td>
+</tr>
+<tr>
+<td>柴田勝家</td>
+<td>重要家臣</td>
+<td>織田政權的重要軍事將領</td>
+</tr>
+<tr>
+<td>織田信忠</td>
+<td>長子、繼承人</td>
+<td>信長死後也在京都遇害</td>
+</tr>
+<tr>
+<td>足利義昭</td>
+<td>最初的政治合作對象</td>
+<td>被信長擁立為將軍，後來遭逐出京都</td>
+</tr>
+<tr>
+<td>今川義元</td>
+<td>早期主要敵人</td>
+<td>在桶狹間之戰中戰死</td>
+</tr>
+<tr>
+<td>淺井長政</td>
+<td>曾為姻親，後成為敵人</td>
+<td>與朝倉氏合作反抗信長</td>
+</tr>
+<tr>
+<td>朝倉義景</td>
+<td>主要敵人</td>
+<td>1573年敗亡</td>
+</tr>
+<tr>
+<td>武田勝賴</td>
+<td>主要敵人</td>
+<td>1575年長篠之戰失利，1582年武田氏滅亡</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="十、織田信長生平完整時間表">十、織田信長生平完整時間表</h1>
+<p>以下將主要事件集中整理，方便查閱、複習或製作歷史筆記。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡約</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1534年</td>
+<td align="right">0歲</td>
+<td>出生於尾張國，幼名吉法師</td>
+<td>成為織田信秀之子</td>
+</tr>
+<tr>
+<td>1546年</td>
+<td align="right">13歲</td>
+<td>元服，開始使用成人名號</td>
+<td>進入武士成年階段</td>
+</tr>
+<tr>
+<td>1549年</td>
+<td align="right">16歲</td>
+<td>與濃姬結婚</td>
+<td>建立與齋藤氏的婚姻關係</td>
+</tr>
+<tr>
+<td>1551年</td>
+<td align="right">18歲</td>
+<td>父親織田信秀去世，繼承家業</td>
+<td>開始掌握織田家領導權</td>
+</tr>
+<tr>
+<td>1552—1555年</td>
+<td align="right">19—22歲</td>
+<td>擴大對尾張的控制</td>
+<td>鞏固地方大名地位</td>
+</tr>
+<tr>
+<td>1556年</td>
+<td align="right">23歲</td>
+<td>稻生之戰，擊敗弟弟信勝一方</td>
+<td>穩固家族領導權</td>
+</tr>
+<tr>
+<td>1557年</td>
+<td align="right">24歲</td>
+<td>信勝被殺</td>
+<td>排除重要繼承競爭者</td>
+</tr>
+<tr>
+<td>1559年</td>
+<td align="right">26歲</td>
+<td>基本確立對尾張的控制</td>
+<td>建立向外擴張的基礎</td>
+</tr>
+<tr>
+<td>1560年</td>
+<td align="right">27歲</td>
+<td>桶狹間之戰，擊敗今川義元</td>
+<td>聲望大增，勢力崛起</td>
+</tr>
+<tr>
+<td>1560—1562年</td>
+<td align="right">27—29歲</td>
+<td>與德川家康建立同盟</td>
+<td>鞏固東方戰略關係</td>
+</tr>
+<tr>
+<td>1563年</td>
+<td align="right">30歲</td>
+<td>將據點遷至小牧山城</td>
+<td>為攻略美濃作準備</td>
+</tr>
+<tr>
+<td>1564—1566年</td>
+<td align="right">31—33歲</td>
+<td>持續進攻美濃</td>
+<td>削弱齋藤氏勢力</td>
+</tr>
+<tr>
+<td>1567年</td>
+<td align="right">34歲</td>
+<td>攻取稻葉山城，改名岐阜城</td>
+<td>擴大政治與軍事影響力</td>
+</tr>
+<tr>
+<td>1567年前後</td>
+<td align="right">34歲</td>
+<td>開始使用「天下布武」印文</td>
+<td>展現更廣泛的政治目標</td>
+</tr>
+<tr>
+<td>1568年</td>
+<td align="right">35歲</td>
+<td>擁立足利義昭，進軍京都</td>
+<td>介入中央政治</td>
+</tr>
+<tr>
+<td>1570年</td>
+<td align="right">37歲</td>
+<td>金崎撤退、姊川之戰</td>
+<td>與淺井、朝倉氏全面衝突</td>
+</tr>
+<tr>
+<td>1571年</td>
+<td align="right">38歲</td>
+<td>攻擊比叡山延曆寺</td>
+<td>削弱重要宗教勢力，但造成嚴重破壞</td>
+</tr>
+<tr>
+<td>1573年</td>
+<td align="right">40歲</td>
+<td>朝倉氏與淺井氏滅亡</td>
+<td>削弱主要敵對聯盟</td>
+</tr>
+<tr>
+<td>1573年</td>
+<td align="right">40歲</td>
+<td>足利義昭遭逐出京都</td>
+<td>室町幕府實際統治終結</td>
+</tr>
+<tr>
+<td>1574年</td>
+<td align="right">41歲</td>
+<td>鎮壓長島一向一揆</td>
+<td>擴大對地方的控制</td>
+</tr>
+<tr>
+<td>1575年</td>
+<td align="right">42歲</td>
+<td>長篠之戰，擊敗武田軍</td>
+<td>武田氏軍事實力遭受重大打擊</td>
+</tr>
+<tr>
+<td>1575年</td>
+<td align="right">42歲</td>
+<td>將家督傳給長子信忠</td>
+<td>開始安排家族權力延續</td>
+</tr>
+<tr>
+<td>1576年</td>
+<td align="right">43歲</td>
+<td>開始興建安土城</td>
+<td>建立新的政治與軍事中心</td>
+</tr>
+<tr>
+<td>1576—1580年</td>
+<td align="right">43—47歲</td>
+<td>持續進行石山合戰</td>
+<td>與本願寺勢力長期對抗</td>
+</tr>
+<tr>
+<td>1577年</td>
+<td align="right">44歲</td>
+<td>手取川之戰，織田方面失利</td>
+<td>顯示信長仍面臨強敵</td>
+</tr>
+<tr>
+<td>1578年</td>
+<td align="right">45歲</td>
+<td>第二次木津川口之戰</td>
+<td>改善對石山本願寺的海上封鎖態勢</td>
+</tr>
+<tr>
+<td>1580年</td>
+<td align="right">47歲</td>
+<td>石山本願寺退出石山</td>
+<td>長期戰爭告一段落</td>
+</tr>
+<tr>
+<td>1581年</td>
+<td align="right">48歲</td>
+<td>舉行京都御馬揃</td>
+<td>展示織田政權的軍事實力</td>
+</tr>
+<tr>
+<td>1582年</td>
+<td align="right">49歲</td>
+<td>甲州征伐，武田氏滅亡</td>
+<td>消滅重要競爭勢力</td>
+</tr>
+<tr>
+<td>1582年6月2日</td>
+<td align="right">49歲</td>
+<td>本能寺之變，信長自盡</td>
+<td>統一事業中斷，織田政權陷入危機</td>
+</tr>
+<tr>
+<td>1582年6月</td>
+<td align="right">49歲</td>
+<td>羽柴秀吉在山崎之戰擊敗明智光秀</td>
+<td>秀吉開始取得織田政權繼承的優勢</td>
+</tr>
+</tbody></table>
+<p>**年齡說明：**表中年齡大致依傳統日本虛歲計算。信長的出生日期通常換算為西曆1534年6月23日，死亡日期為1582年6月21日，實際享年約47歲零12個月，即傳統上所稱的49歲。日本舊曆日期與西曆換算可能造成不同資料之間的細微差異。</p>
+<p>主要年代可參考日本國土交通省的歷史介紹、岐阜地區的歷史資料，以及專門整理信長生平的年表。<a href="https://www.mlit.go.jp/tagengo-db/en/H30-00690.html?utm_source=chatgpt.com">MLIT</a></p>
+<hr>
+<h1 id="十一、織田信長、豐臣秀吉、德川家康：戰國三英傑的歷史比較">十一、織田信長、豐臣秀吉、德川家康：戰國三英傑的歷史比較</h1>
+<p>日本歷史經常將織田信長、豐臣秀吉與德川家康合稱為「戰國三英傑」。三人共同推動日本由長期分裂走向統一，但各自扮演的角色有所不同。</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>織田信長</th>
+<th>豐臣秀吉</th>
+<th>德川家康</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>生卒年</td>
+<td>1534—1582年</td>
+<td>約1537—1598年</td>
+<td>1543—1616年</td>
+</tr>
+<tr>
+<td>主要出身</td>
+<td>尾張織田氏</td>
+<td>出身較低的武士家庭</td>
+<td>三河松平氏</td>
+</tr>
+<tr>
+<td>主要歷史成就</td>
+<td>打破舊有權力格局，開創統一事業</td>
+<td>完成日本大部分地區的軍事統一</td>
+<td>建立江戶幕府</td>
+</tr>
+<tr>
+<td>代表事件</td>
+<td>桶狹間之戰、長篠之戰、本能寺之變</td>
+<td>山崎之戰、賤岳之戰、小田原征伐</td>
+<td>關原之戰、大阪之役</td>
+</tr>
+<tr>
+<td>政治風格</td>
+<td>強勢擴張、挑戰傳統權威</td>
+<td>擅長政治整合與軍事動員</td>
+<td>重視長期布局與制度建設</td>
+</tr>
+<tr>
+<td>主要政治中心</td>
+<td>岐阜、安土</td>
+<td>大阪、京都等地</td>
+<td>江戶、駿府</td>
+</tr>
+<tr>
+<td>歷史結果</td>
+<td>統一事業未完成便身亡</td>
+<td>統一日本，但其家族未能長期掌權</td>
+<td>建立延續兩百多年的幕府</td>
+</tr>
+</tbody></table>
+<h2 id="三人的歷史分工">三人的歷史分工</h2>
+<p>可以用以下三句話理解：</p>
+<ul>
+<li><strong>織田信長：打破舊秩序，開啟統一日本的進程。</strong></li>
+<li><strong>豐臣秀吉：延續信長的事業，完成大部分地區的軍事統一。</strong></li>
+<li><strong>德川家康：消滅主要政治競爭者，將統一成果轉化為長期的幕府制度。</strong></li>
+</ul>
+<p>這種概括有助於掌握日本戰國末期的歷史脈絡，但三人的政治與軍事活動實際上彼此交錯，並非完全獨立的三個階段。</p>
+<hr>
+<h1 id="十二、織田信長的歷史評價">十二、織田信長的歷史評價</h1>
+<p>織田信長是日本歷史上評價相當複雜的人物。他既是推動政治整合與商業發展的重要領袖，也是以強大軍事力量鎮壓反抗勢力的戰國大名。</p>
+<h2 id="1-政治方面：削弱傳統權力結構">1. 政治方面：削弱傳統權力結構</h2>
+<p>信長挑戰室町幕府將軍的實際權威，並削弱部分地方大名與宗教武裝勢力。</p>
+<p>這些行動為後來建立全國性政治秩序創造了條件。</p>
+<h2 id="2-經濟方面：促進商業活動">2. 經濟方面：促進商業活動</h2>
+<p>樂市樂座、交通政策與城下町建設，有助於促進商品流通、吸引商人及發展城市經濟。</p>
+<p>但這些政策的實施方式與影響範圍，必須依不同地區分別考察。</p>
+<h2 id="3-軍事方面：強化軍隊組織與資源動員">3. 軍事方面：強化軍隊組織與資源動員</h2>
+<p>信長善於整合大規模兵力、利用火器、建設軍事據點，以及將戰爭與財政、交通及地方治理結合。</p>
+<p>他的優勢不只是個人的戰場指揮，也來自整體軍事體系的組織能力。</p>
+<h2 id="4-宗教方面：挑戰具有軍事力量的宗教組織">4. 宗教方面：挑戰具有軍事力量的宗教組織</h2>
+<p>信長與比叡山延曆寺、本願寺及其他宗教勢力發生激烈衝突。</p>
+<p>這些行動有助於他削弱可能威脅其政權的組織，但也造成大量傷亡與文化財產破壞。</p>
+<h2 id="5-歷史局限：未能完成統一事業">5. 歷史局限：未能完成統一事業</h2>
+<p>信長於1582年去世時，仍未完全征服日本。</p>
+<p>他死後，織田家內部出現繼承競爭，秀吉最終取得優勢，並繼續完成統一事業。</p>
+<p>因此，信長最適合被理解為<strong>日本統一事業的關鍵開創者，而不是最終完成統一的人物</strong>。</p>
+<hr>
+<h2 id="結語">結語</h2>
+<p>織田信長的一生，展現了日本戰國時代從地方割據走向全國性政治整合的關鍵過程。</p>
+<p>他從尾張國的一名地方大名繼承人出發，透過戰爭、政治聯盟、經濟政策與軍事組織改革，逐步成為日本最具影響力的領袖之一。</p>
+<p>然而，1582年的本能寺之變使他的政治生涯突然中斷，也改變了日本統一事業的發展方向。</p>
+<p><strong>理解織田信長，最重要的不是只記住桶狹間之戰或本能寺之變，而是理解他如何改變戰國時代的權力結構，以及為什麼他的事業最終由豐臣秀吉與德川家康接續完成。</strong></p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="西鄉隆盛生平大事記（18281877）">西鄉隆盛生平大事記（1828—1877）</h1>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p>西鄉隆盛（さいごう たかもり，1828年1月23日—1877年9月24日），是日本幕末至明治初期的重要政治家、軍事領袖，也是<strong>明治維新的核心人物之一</strong>。他出身於薩摩藩（今鹿兒島縣）的下級武士家庭，早年受到藩主島津齊彬賞識，逐漸成為薩摩藩政界的重要人物。</p>
+<p>西鄉隆盛一生最重要的歷史功績，包括參與推動薩長同盟、協助推翻德川幕府、參與戊辰戰爭，以及促成江戶城無血開城。明治維新後，他又參與新政府的政治改革，尤其是廢藩置縣。</p>
+<p>然而，1873年，他因朝鮮問題上的政策分歧而辭官返鄉；1877年，又因鹿兒島士族與明治政府之間的矛盾，捲入西南戰爭，最終戰敗身亡。</p>
+<p>他的生涯呈現出一個重要的歷史轉折：<strong>他曾經是推翻幕府、建立明治新政府的功臣，最後卻成為反抗自己曾經參與建立的政府的領袖。</strong> <a href="https://www.ndl.go.jp/portrait/datas/85?utm_source=chatgpt.com">国立国会図書館</a></p>
+<h3 id="基本資料">基本資料</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>姓名</td>
+<td>西鄉隆盛</td>
+</tr>
+<tr>
+<td>出生日期</td>
+<td>1828年1月23日（文政十年）</td>
+</tr>
+<tr>
+<td>逝世日期</td>
+<td>1877年9月24日（明治十年）</td>
+</tr>
+<tr>
+<td>出生地</td>
+<td>日本薩摩藩鹿兒島城下</td>
+</tr>
+<tr>
+<td>出身</td>
+<td>薩摩藩下級武士家庭</td>
+</tr>
+<tr>
+<td>主要身分</td>
+<td>政治家、軍事領袖、明治維新重要人物</td>
+</tr>
+<tr>
+<td>主要稱號</td>
+<td>西鄉南洲（南洲為其號）</td>
+</tr>
+<tr>
+<td>重要盟友</td>
+<td>大久保利通、木戶孝允、小松帶刀等</td>
+</tr>
+<tr>
+<td>主要政治對手</td>
+<td>幕末時期的幕府勢力；明治初期則與大久保利通等人的政府路線產生衝突</td>
+</tr>
+<tr>
+<td>主要歷史事件</td>
+<td>薩長同盟、王政復古、戊辰戰爭、江戶城無血開城、廢藩置縣、征韓論政變、西南戰爭</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>**年代說明：**西鄉隆盛的出生年份在部分史料與著作中有1827年、1828年兩種記載。本文採用日本國立國會圖書館所列的1828年1月23日。幕末事件的日期也可能因採用日本舊曆或西曆而有所不同。<a href="https://www.ndl.go.jp/portrait/datas/85?utm_source=chatgpt.com">国立国会図書館</a></p>
+</blockquote>
+<hr>
+<h1 id="二、西鄉隆盛生平詳細時間軸">二、西鄉隆盛生平詳細時間軸</h1>
+<h2 id="第一階段：出身與青年時期（18281853年）">第一階段：出身與青年時期（1828—1853年）</h2>
+<h3 id="從下級武士到薩摩藩的青年人才">從下級武士到薩摩藩的青年人才</h3>
+<h3 id="1828年：出生於薩摩藩鹿兒島">1828年：出生於薩摩藩鹿兒島</h3>
+<ul>
+<li>西鄉隆盛出生於薩摩藩鹿兒島城下的下加治屋町。</li>
+<li>父親西鄉吉兵衛出身於薩摩藩武士階層，但西鄉家並非藩內最有權勢的高級武士家庭。</li>
+<li>西鄉自幼生活於薩摩藩嚴格的武士社會之中，接受當地的武士教育與倫理規範。</li>
+</ul>
+<p>**歷史意義：**西鄉隆盛並非憑藉顯赫家世而取得政治地位。他後來的崛起，主要依靠個人能力、政治判斷、軍事才能，以及他與其他改革派人士建立的關係。</p>
+<h3 id="18301840年代：接受武士教育">1830—1840年代：接受武士教育</h3>
+<ul>
+<li>西鄉在鹿兒島成長，接受讀書、武藝及武士道德等方面的教育。</li>
+<li>傳記記載，他少年時曾因介入衝突而受傷，右臂活動能力受到影響，這也影響了他從事傳統武術訓練的方式。</li>
+<li>他逐漸培養出重視義理、責任與公共事務的性格。</li>
+</ul>
+<p>這些早年經歷有助於理解他後來的政治形象：他不只是以軍事能力著稱，也常被視為重視道義、願意承擔責任的人物。</p>
+<h3 id="1844年：進入薩摩藩行政體系">1844年：進入薩摩藩行政體系</h3>
+<ul>
+<li>西鄉開始擔任藩政基層職務，從事與地方行政、農村事務相關的工作。</li>
+<li>這使他有機會接觸地方民生、財政與藩政運作。</li>
+<li>他的仕途起點並不高，必須在既有的藩內階級制度中逐步累積經驗。</li>
+</ul>
+<h3 id="18491850年：薩摩藩內部的繼承與政治鬥爭">1849—1850年：薩摩藩內部的繼承與政治鬥爭</h3>
+<ul>
+<li>薩摩藩內部圍繞藩主繼承與藩政方向產生激烈衝突，相關事件通常稱為「由羅騷動」。</li>
+<li>當時，島津齊彬與其父島津齊興之間的政治角力，反映出藩內對改革方向及領導權的不同看法。</li>
+<li>西鄉逐漸接近支持島津齊彬的青年武士群體，並與大久保利通等人形成政治上的聯繫。</li>
+</ul>
+<p>**歷史意義：**西鄉的政治生涯並非突然開始於明治維新，而是早在幕府末期，就已經受到薩摩藩內部改革派政治的影響。<a href="https://history-japanese.com/jinbutsu/%E8%A5%BF%E9%83%B7%E9%9A%86%E7%9B%9B/timeline/?utm_source=chatgpt.com">History Japanese</a></p>
+<hr>
+<h2 id="第二階段：受到島津齊彬賞識與第一次流放（18511861年）">第二階段：受到島津齊彬賞識與第一次流放（1851—1861年）</h2>
+<h3 id="從藩內人才走向全國政治舞臺">從藩內人才走向全國政治舞臺</h3>
+<h3 id="1851年：島津齊彬成為薩摩藩主">1851年：島津齊彬成為薩摩藩主</h3>
+<ul>
+<li>島津齊彬正式掌握薩摩藩的領導權。</li>
+<li>齊彬重視西方科技、軍事改革、產業發展及日本整體國力的提升。</li>
+<li>他推動集成館事業，發展近代工業、軍備及相關技術。</li>
+</ul>
+<p>西鄉逐漸受到齊彬賞識，成為其身邊可以協助處理重要事務的人才。</p>
+<h3 id="1854年：隨島津齊彬前往江戶">1854年：隨島津齊彬前往江戶</h3>
+<ul>
+<li>西鄉隨藩主前往江戶，進一步接觸幕府政治。</li>
+<li>他在江戶期間負責部分機密事務與政治聯絡，逐漸了解幕府中央政治的運作。</li>
+<li>透過這些工作，他開始與其他藩的政治人物建立聯繫。</li>
+</ul>
+<p>當時日本面臨西方列強壓力，1853年美國海軍將領佩里率艦隊抵達日本，要求日本開放港口。幕府對外政策與國家改革問題，因而成為各藩政治人物關注的焦點。</p>
+<h3 id="18571858年：參與將軍繼承問題">1857—1858年：參與將軍繼承問題</h3>
+<ul>
+<li>德川幕府第十三代將軍德川家定的健康與繼承問題，引發政治鬥爭。</li>
+<li>西鄉支持島津齊彬所傾向的改革派路線，參與圍繞一橋慶喜的政治活動。</li>
+<li>他與越前藩士橋本左內等人有所聯繫，試圖透過政治協調影響幕府的未來方向。</li>
+</ul>
+<p>這場政治鬥爭的背景，是日本究竟應當如何面對西方壓力，以及幕府是否有能力主導全國改革。</p>
+<h3 id="1858年：島津齊彬去世">1858年：島津齊彬去世</h3>
+<ul>
+<li>島津齊彬突然去世，對西鄉的政治生涯造成重大打擊。</li>
+<li>西鄉失去了最重要的政治支持者。</li>
+<li>此時，幕府大老井伊直弼推動強硬政治路線，並鎮壓反對派。</li>
+</ul>
+<h3 id="18581859年：安政大獄與投水事件">1858—1859年：安政大獄與投水事件</h3>
+<ul>
+<li>井伊直弼推動「安政大獄」，打擊反對幕府政策及相關政治活動的人士。</li>
+<li>西鄉協助保護與尊王派人士往來密切的僧侶月照，兩人後來一同投水，企圖殉死。</li>
+<li>月照身亡，西鄉則意外獲救。</li>
+</ul>
+<p>這場事件是西鄉人生中的重大轉折。他失去了原有的政治依靠，也經歷了接近死亡的危機。</p>
+<h3 id="18591861年：流放奄美大島">1859—1861年：流放奄美大島</h3>
+<ul>
+<li>西鄉被送往奄美大島，遠離薩摩藩政治中心。</li>
+<li>他在島上生活期間，重新思考自己的政治立場與人生方向。</li>
+<li>這段時間也使他與中央政治舞臺保持距離。</li>
+</ul>
+<p>**歷史意義：**第一次流放並未終結西鄉的政治生涯，反而成為他政治思想轉變的重要階段。此後，他仍將重新參與政治，並逐漸由支持藩內改革轉向推動全國性的政治變革。<a href="https://www.ndl.go.jp/portrait/datas/85?utm_source=chatgpt.com">国立国会図書館</a></p>
+<hr>
+<h2 id="第三階段：再度流放與政治復出（18611864年）">第三階段：再度流放與政治復出（1861—1864年）</h2>
+<h3 id="從藩內政治人物轉變為幕末政局的重要角色">從藩內政治人物轉變為幕末政局的重要角色</h3>
+<h3 id="1861年：薩摩藩政局變動">1861年：薩摩藩政局變動</h3>
+<ul>
+<li>島津久光逐漸掌握薩摩藩的實際政治影響力，準備以藩的力量介入京都與幕府政治。</li>
+<li>久光希望透過朝廷與幕府之間的協調，推動政治改革，並維護薩摩藩的利益。</li>
+<li>西鄉對久光的政治能力及行事方式有所保留，兩人之間的矛盾逐漸加深。</li>
+</ul>
+<h3 id="1862年：奉召返鄉，隨後再度遭到流放">1862年：奉召返鄉，隨後再度遭到流放</h3>
+<ul>
+<li>島津久光準備率領薩摩藩兵前往京都，介入當時的政治局勢。</li>
+<li>西鄉被召回薩摩，但他與久光對政治策略及行動方式存在分歧。</li>
+<li>西鄉未能與久光建立穩定的合作關係，結果再度遭到處分。</li>
+</ul>
+<p>他先後被送往德之島及沖永良部島。第二次流放的生活條件比第一次更為艱苦，也使他與薩摩藩政治中心的距離進一步拉大。</p>
+<h3 id="1863年：薩英戰爭">1863年：薩英戰爭</h3>
+<ul>
+<li>英國因薩摩藩相關人士涉及生麥事件而與薩摩發生衝突，英國艦隊砲擊鹿兒島，史稱薩英戰爭。</li>
+<li>這場戰爭使薩摩藩更直接地認識到西方軍事力量的威脅。</li>
+<li>薩摩與英國此後逐漸從敵對轉向接觸與合作。</li>
+</ul>
+<p>西鄉當時仍處於流放狀態，並非薩英戰爭的主要指揮者。不過，戰爭所反映的國際局勢，對薩摩藩此後的政策方向具有重要影響。</p>
+<h3 id="1864年：獲赦復出">1864年：獲赦復出</h3>
+<ul>
+<li>西鄉獲准返回政治舞臺，重新為薩摩藩效力。</li>
+<li>他開始負責軍事及諸藩交涉事務，政治地位明顯提升。</li>
+<li>在京都政局中，他逐漸成為薩摩藩的重要代表人物。</li>
+</ul>
+<p>同年，京都發生禁門之變，長州藩勢力與朝廷方面的軍事力量發生衝突。西鄉在幕末政治與軍事活動中的重要性隨之提高。</p>
+<p>**歷史意義：**經過兩次流放，西鄉並未被排除於政治之外。他重新獲得信任，並逐漸成為能夠協調軍事、外交與藩際關係的核心人物。<a href="https://www.jacar.go.jp/dictionary/02_item.html?id=00001803&utm_source=chatgpt.com">Japan Center for Asian History</a></p>
+<hr>
+<h2 id="第四階段：薩長同盟與倒幕運動（18651867年）">第四階段：薩長同盟與倒幕運動（1865—1867年）</h2>
+<h3 id="從政治協調走向推翻德川幕府">從政治協調走向推翻德川幕府</h3>
+<h3 id="1865年：薩摩藩軍事改革與政治活動">1865年：薩摩藩軍事改革與政治活動</h3>
+<ul>
+<li>西鄉參與薩摩藩的軍事與政治事務。</li>
+<li>薩摩逐漸認識到，若要在全國政局中取得主導地位，就必須建立更強的軍事能力，並與其他改革派藩建立合作。</li>
+<li>長州藩在經歷禁門之變及幕府討伐後，也逐漸調整其政治策略。</li>
+</ul>
+<p>當時的日本並非單純分為「支持幕府」與「反對幕府」兩個陣營。各藩的立場會隨軍事形勢、朝廷態度及自身利益而改變。</p>
+<h3 id="1866年：薩長同盟成立">1866年：薩長同盟成立</h3>
+<ul>
+<li>西鄉隆盛與長州藩的重要政治人物木戶孝允等人推動合作。</li>
+<li>坂本龍馬等人也在協調過程中發揮作用。</li>
+<li>薩摩與長州原本曾在京都政局中敵對，最終建立共同的政治與軍事合作關係，史稱「薩長同盟」。</li>
+</ul>
+<p>薩長同盟的核心意義，在於兩個軍事實力雄厚的藩不再互相牽制，而是能夠共同對抗幕府的政治與軍事壓力。</p>
+<p>不過，薩長同盟並不代表雙方對日本未來的所有問題都具有完全一致的看法，而是以當時的政治目標為基礎建立合作。</p>
+<h3 id="1866年：第二次長州征討失敗">1866年：第二次長州征討失敗</h3>
+<ul>
+<li>德川幕府再次對長州藩採取軍事行動。</li>
+<li>長州藩在軍事改革及新式武器的支援下，成功抵抗幕府軍。</li>
+<li>幕府未能達成預期目標，權威進一步受到削弱。</li>
+</ul>
+<p>這場戰爭顯示，幕府已經難以像過去一樣，單靠政治威望與傳統軍事力量控制各藩。</p>
+<h3 id="1867年：德川慶喜大政奉還">1867年：德川慶喜大政奉還</h3>
+<ul>
+<li>德川慶喜於1867年宣布將政權交還朝廷，史稱「大政奉還」。</li>
+<li>這一決定並不代表德川家立即失去所有政治實力。慶喜仍希望透過新的政治體制，保留德川家在國家政治中的重要地位。</li>
+<li>西鄉及其他倒幕派人士則認為，僅有大政奉還不足以徹底改變幕府主導政治的局面。</li>
+</ul>
+<h3 id="1867年12月：王政復古">1867年12月：王政復古</h3>
+<ul>
+<li>倒幕派人士推動王政復古，試圖恢復以天皇為中心的政治體制。</li>
+<li>西鄉是薩摩藩方面的重要參與者。</li>
+<li>新政府宣布成立後，德川慶喜與新政府之間的權力衝突仍未解決。</li>
+</ul>
+<p>**歷史意義：**薩長同盟、第二次長州征討失敗、大政奉還與王政復古，是德川幕府走向終結的幾個關鍵環節。西鄉在其中的角色，是將薩摩藩的軍事實力轉化為全國政治變革的重要力量。<a href="https://www.ndl.go.jp/portrait/datas/85?utm_source=chatgpt.com">国立国会図書館</a></p>
+<hr>
+<h2 id="第五階段：戊辰戰爭與江戶城無血開城（18681869年）">第五階段：戊辰戰爭與江戶城無血開城（1868—1869年）</h2>
+<h3 id="推翻幕府的功臣">推翻幕府的功臣</h3>
+<h3 id="1868年1月：鳥羽伏見之戰">1868年1月：鳥羽伏見之戰</h3>
+<ul>
+<li>德川慶喜方面的軍隊與新政府軍在京都附近交戰。</li>
+<li>新政府軍取得優勢，戰事逐漸擴大為戊辰戰爭。</li>
+<li>西鄉在新政府軍的軍事行動中扮演重要角色。</li>
+</ul>
+<p>鳥羽伏見之戰的結果，使德川幕府的軍事失敗更加明顯，也促使各地藩勢力重新評估應該支持哪一方。</p>
+<h3 id="1868年：西鄉參與東征">1868年：西鄉參與東征</h3>
+<ul>
+<li>西鄉擔任東征軍的重要參謀，參與新政府軍向江戶推進的軍事行動。</li>
+<li>新政府軍以武力與政治壓力迫使德川慶喜及其支持者接受新的政治安排。</li>
+<li>江戶作為人口眾多的政治與經濟中心，若遭到大規模攻城戰，可能造成嚴重傷亡與破壞。</li>
+</ul>
+<h3 id="1868年3月：西鄉與勝海舟交涉">1868年3月：西鄉與勝海舟交涉</h3>
+<ul>
+<li>西鄉與幕府方面的重要人物勝海舟進行交涉。</li>
+<li>勝海舟希望避免江戶遭受戰火，並尋求和平交接城池的方式。</li>
+<li>西鄉則必須在新政府的軍事要求、政治立場與避免大規模流血衝突之間作出判斷。</li>
+</ul>
+<h3 id="1868年4月：江戶城無血開城">1868年4月：江戶城無血開城</h3>
+<ul>
+<li>江戶城以和平方式交由新政府軍接收。</li>
+<li>德川慶喜已經離開江戶，江戶城的交接使新政府得以掌握這座重要城市。</li>
+<li>江戶城無血開城避免了原本可能發生的大規模攻城戰，成為西鄉隆盛一生中最著名的政治成就之一。</li>
+</ul>
+<p>**必須注意：**江戶城無血開城並非西鄉一人的功勞。勝海舟的談判、德川慶喜的選擇、新政府內部的政治考量，以及當時雙方的軍事形勢，都共同促成了和平交接。</p>
+<h3 id="1868年：戊辰戰爭持續">1868年：戊辰戰爭持續</h3>
+<ul>
+<li>江戶城交接後，部分支持德川家的勢力仍拒絕接受新政府。</li>
+<li>戰事向東北地區及北海道延伸。</li>
+<li>新政府軍與舊幕府勢力之間的衝突，最終延續至1869年的箱館戰爭。</li>
+</ul>
+<p>西鄉並不是戊辰戰爭每一場戰役的直接指揮者，但他在新政府軍的整體政治與軍事架構中具有重要地位。</p>
+<h3 id="1869年：戊辰戰爭結束">1869年：戊辰戰爭結束</h3>
+<ul>
+<li>新政府軍擊敗箱館的舊幕府殘餘勢力。</li>
+<li>戊辰戰爭至此基本結束，德川幕府時代的政治秩序不再具有恢復的可能。</li>
+<li>西鄉完成了從幕末倒幕運動領袖到新政府重要功臣的角色轉變。</li>
+</ul>
+<p>**歷史意義：**西鄉隆盛在戊辰戰爭中不僅參與軍事行動，也在江戶城和平交接上展現政治協調能力。他因此被視為明治維新建立新政權的重要人物。<a href="https://www.ndl.go.jp/portrait/datas/85?utm_source=chatgpt.com">国立国会図書館</a></p>
+<hr>
+<h2 id="第六階段：明治維新與新政府改革（18701873年）">第六階段：明治維新與新政府改革（1870—1873年）</h2>
+<h3 id="從推翻幕府的革命者，轉變為新國家的建設者">從推翻幕府的革命者，轉變為新國家的建設者</h3>
+<h3 id="1870年：西鄉返回中央政治舞臺的準備">1870年：西鄉返回中央政治舞臺的準備</h3>
+<ul>
+<li>戊辰戰爭結束後，西鄉一度回到鹿兒島，對於是否長期留在新政府任職有所猶豫。</li>
+<li>明治新政府需要整合各藩的軍事力量、財政資源與行政制度，建立全國性的中央政府。</li>
+<li>西鄉與大久保利通等薩摩出身的政治人物，雖然有共同的維新經歷，但對新政府應如何改革，並非始終具有相同看法。</li>
+</ul>
+<h3 id="1871年：出任參議，參與廢藩置縣">1871年：出任參議，參與廢藩置縣</h3>
+<ul>
+<li>西鄉受邀返回中央政府，出任參議，成為新政府的重要決策者。</li>
+<li>明治政府推動廢藩置縣，廢除原有的藩，改設府縣，將地方行政權收歸中央。</li>
+<li>這項改革大幅削弱傳統藩主的政治權力，使日本逐漸形成統一的中央集權國家。</li>
+</ul>
+<p><strong>廢藩置縣的歷史意義：</strong></p>
+<p>江戶時代，日本名義上處於幕府統治之下，但各藩仍擁有自己的領主、財政與行政體系。廢藩置縣打破了這種地方分立的制度，是明治國家建設的重要一步。</p>
+<p>西鄉參與這項改革，顯示他已從推翻舊政權的軍事領袖，轉變為建立新政治秩序的核心人物。</p>
+<h3 id="1872年：協助建立近代國家體制">1872年：協助建立近代國家體制</h3>
+<ul>
+<li>明治政府持續推動軍制、教育、財政及行政改革。</li>
+<li>西鄉在軍事與政府事務中扮演重要角色。</li>
+<li>新政府一方面要建立現代化的國家制度，另一方面也必須處理大量失去原有政治地位與經濟保障的武士。</li>
+</ul>
+<p>這些改革雖然有助於日本建立近代國家，卻也改變了傳統武士階層的生活方式與社會地位。</p>
+<h3 id="1873年：西鄉與大久保利通的政策分歧加深">1873年：西鄉與大久保利通的政策分歧加深</h3>
+<ul>
+<li>西鄉、大久保利通、木戶孝允等人，逐漸在國家發展的優先次序上產生分歧。</li>
+<li>一方重視對外政策與武士問題，另一方則強調國內改革、財政穩定及國家現代化。</li>
+<li>朝鮮問題成為這些矛盾集中爆發的關鍵議題。</li>
+</ul>
+<p>這場衝突最終導致西鄉離開新政府，也為他與明治政府之間的決裂埋下伏筆。<a href="https://www.jacar.go.jp/dictionary/02_item.html?id=00001803&utm_source=chatgpt.com">Japan Center for Asian History</a></p>
+<hr>
+<h2 id="第七階段：征韓論政變與返鄉（18731876年）">第七階段：征韓論政變與返鄉（1873—1876年）</h2>
+<h3 id="從明治政府重臣到政治上的失意者">從明治政府重臣到政治上的失意者</h3>
+<h3 id="1873年：征韓論爭議爆發">1873年：征韓論爭議爆發</h3>
+<p>「征韓論」是明治初期日本政府內部的一場重大政策爭論，核心問題在於如何處理日本與朝鮮之間的外交關係，以及是否應採取軍事行動。</p>
+<p>當時，日本希望與朝鮮建立新的外交關係，但朝鮮方面並未接受日本所提出的外交安排。日本政府內部因此出現不同主張。</p>
+<p>西鄉主張派遣使節前往朝鮮，試圖打開外交僵局。他認為自己可以親自前往，以外交交涉處理問題。</p>
+<p>不過，西鄉的具體立場及其計畫是否包含在交涉失敗後採取武力，歷來存在不同解釋。因此，不能簡單地將他的主張概括為毫無保留地要求立即侵略朝鮮。</p>
+<h3 id="1873年：西鄉與大久保利通等人發生衝突">1873年：西鄉與大久保利通等人發生衝突</h3>
+<ul>
+<li>西鄉主張應派遣使節赴朝鮮。</li>
+<li>大久保利通、岩倉具視、木戶孝允等人則認為，日本當時應優先完成國內改革，避免捲入可能造成財政與軍事負擔的對外衝突。</li>
+<li>反對派成功阻止西鄉的方案。</li>
+</ul>
+<p>這場爭論不只是外交政策之爭，也涉及新政府究竟應優先解決國內制度建設，還是以對外行動展現國家力量。</p>
+<h3 id="1873年10月：西鄉辭職返鄉">1873年10月：西鄉辭職返鄉</h3>
+<ul>
+<li>征韓論爭論以西鄉一方失敗告終。</li>
+<li>西鄉辭去參議等政府職務，返回鹿兒島。</li>
+<li>與他立場接近的部分薩摩出身官員與軍人也離開中央政府。</li>
+</ul>
+<p>這一事件通常稱為「征韓論政變」，是明治初期政治史上的重要轉折。</p>
+<p>**歷史意義：**西鄉的離開，代表明治維新核心人物之間的政治聯盟已經破裂。大久保利通逐漸成為推動中央集權與近代化改革的重要領袖，而西鄉則轉向鹿兒島，成為失意士族與舊部的精神領袖。</p>
+<h3 id="1874年：設立私學校">1874年：設立私學校</h3>
+<ul>
+<li>西鄉返鄉後，受到許多追隨者敬重。</li>
+<li>鹿兒島聚集了不少離開中央政府的薩摩出身軍人與士族。</li>
+<li>西鄉及其支持者設立私學校，培養青年，並進行軍事訓練與學習。</li>
+</ul>
+<p>私學校最初具有教育與培養人才的性質，但隨著中央政府與地方士族的矛盾加深，其學生與相關組織逐漸形成重要的政治力量。</p>
+<h3 id="18751876年：士族問題日益嚴重">1875—1876年：士族問題日益嚴重</h3>
+<ul>
+<li>明治政府持續改革武士階層的身分與經濟制度。</li>
+<li>廢除傳統武士的俸祿、限制佩刀等政策，使部分士族失去原有的生活保障與社會地位。</li>
+<li>部分士族以武裝叛亂表達不滿。</li>
+</ul>
+<p>1876年，神風連之亂、秋月之亂及萩之亂等事件接連發生，反映新政府改革所引發的社會矛盾。</p>
+<p>西鄉雖然是這些士族敬仰的領袖，但他在西南戰爭爆發前，是否有明確計畫推翻明治政府，不能僅憑其聲望或私學校的存在就下定論。<a href="https://www.pref.kagoshima.jp/reimeikan/josetsu/theme/gendai/seinan/?utm_source=chatgpt.com">鹿児島県</a></p>
+<hr>
+<h2 id="第八階段：西南戰爭與西鄉之死（1877年）">第八階段：西南戰爭與西鄉之死（1877年）</h2>
+<h3 id="明治維新功臣與新政府的最後決裂">明治維新功臣與新政府的最後決裂</h3>
+<h3 id="1877年1月：鹿兒島局勢急速惡化">1877年1月：鹿兒島局勢急速惡化</h3>
+<ul>
+<li>明治政府對鹿兒島私學校勢力日益警惕。</li>
+<li>政府方面採取措施，試圖掌握鹿兒島的軍火及相關設施。</li>
+<li>私學校學生對政府的行動極為不滿，雙方緊張關係迅速升高。</li>
+</ul>
+<h3 id="1877年1月底：私學校學生襲擊政府火藥庫">1877年1月底：私學校學生襲擊政府火藥庫</h3>
+<ul>
+<li>鹿兒島的私學校學生襲擊政府火藥庫，局勢演變為武裝衝突。</li>
+<li>事件使中央政府與鹿兒島士族之間原有的政治矛盾，正式轉變為大規模軍事對抗。</li>
+<li>西鄉在部眾與追隨者的推動下，最終成為反政府軍的領袖。</li>
+</ul>
+<h3 id="1877年2月：西南戰爭爆發">1877年2月：西南戰爭爆發</h3>
+<ul>
+<li>西鄉率領薩摩士族組成的軍隊離開鹿兒島，向熊本方向進軍。</li>
+<li>反政府軍希望透過軍事行動改變中央政府的政策，或迫使政府回應士族的訴求。</li>
+<li>明治政府則調動近代化軍隊予以鎮壓。</li>
+</ul>
+<p>西南戰爭是明治初期規模最大的內戰之一，也集中反映了新國家建設過程中，傳統武士階層與中央政府之間的衝突。</p>
+<h3 id="1877年23月：熊本城攻防戰">1877年2—3月：熊本城攻防戰</h3>
+<ul>
+<li>西鄉軍進攻熊本城，但未能迅速攻下城池。</li>
+<li>政府軍逐步增援，雙方在熊本及周邊地區展開激烈戰鬥。</li>
+<li>西鄉軍雖然擁有不少作戰經驗豐富的武士，卻在兵員補充、軍事裝備與持續作戰能力方面，逐漸處於不利地位。</li>
+</ul>
+<p>熊本城未能被攻下，是西鄉軍戰略上的重大挫折。</p>
+<h3 id="1877年春夏：西鄉軍逐漸陷入劣勢">1877年春夏：西鄉軍逐漸陷入劣勢</h3>
+<ul>
+<li>政府軍依靠較完整的軍事組織、兵員補充及後勤體系，逐步取得優勢。</li>
+<li>西鄉軍在熊本及宮崎等地持續作戰，卻難以逆轉整體局勢。</li>
+<li>隨著戰事延長，反政府軍的兵力與作戰資源逐漸消耗。</li>
+</ul>
+<p>這場戰爭不僅是新政府與舊武士之間的對抗，也是日本由傳統藩制軍事體系轉向近代國家軍隊的一次重要考驗。</p>
+<h3 id="1877年9月：退守鹿兒島城山">1877年9月：退守鹿兒島城山</h3>
+<ul>
+<li>西鄉及其部眾在政府軍持續進攻下，退至鹿兒島的城山一帶。</li>
+<li>反政府軍已經無力恢復大規模軍事行動。</li>
+<li>政府軍完成包圍，戰爭進入最後階段。</li>
+</ul>
+<h3 id="1877年9月24日：西鄉隆盛身亡">1877年9月24日：西鄉隆盛身亡</h3>
+<ul>
+<li>政府軍向城山發動最後攻擊。</li>
+<li>西鄉隆盛在戰鬥中身受重創，最終身亡。</li>
+<li>他的死亡標誌著西南戰爭接近結束，明治政府也基本消除了以傳統士族武裝挑戰中央政權的主要威脅。</li>
+</ul>
+<p>有關西鄉最後時刻的具體經過，後世傳記與民間敘述存在細節差異；較為穩妥的歷史結論是，他於1877年9月24日在城山戰役的最後階段死亡。</p>
+<p>**歷史意義：**西鄉的死亡具有強烈象徵性。他曾協助推翻德川幕府、建立明治政府，最後卻在反抗明治政府的戰爭中結束生命。西南戰爭的失敗，也代表以傳統武士身分與地方武裝為基礎的政治反抗，已難以阻止近代中央國家的形成。<a href="https://www.pref.kagoshima.jp/reimeikan/josetsu/theme/gendai/seinan/?utm_source=chatgpt.com">鹿児島県</a></p>
+<hr>
+<h1 id="三、西鄉隆盛生平重要年份總表">三、西鄉隆盛生平重要年份總表</h1>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th align="right">年齡約</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1828</td>
+<td align="right">0</td>
+<td>出生於薩摩藩鹿兒島</td>
+<td>開始其一生的歷史旅程</td>
+</tr>
+<tr>
+<td>1844</td>
+<td align="right">16</td>
+<td>進入薩摩藩行政體系</td>
+<td>開始累積地方行政經驗</td>
+</tr>
+<tr>
+<td>1851</td>
+<td align="right">23</td>
+<td>島津齊彬成為薩摩藩主</td>
+<td>西鄉逐漸受到重用</td>
+</tr>
+<tr>
+<td>1854</td>
+<td align="right">26</td>
+<td>隨島津齊彬前往江戶</td>
+<td>開始接觸全國政治</td>
+</tr>
+<tr>
+<td>1858</td>
+<td align="right">30</td>
+<td>島津齊彬去世</td>
+<td>失去重要政治靠山</td>
+</tr>
+<tr>
+<td>1858—1859</td>
+<td align="right">30—31</td>
+<td>安政大獄及投水事件</td>
+<td>經歷人生重大危機</td>
+</tr>
+<tr>
+<td>1859—1861</td>
+<td align="right">31—33</td>
+<td>流放奄美大島</td>
+<td>遠離政治中心</td>
+</tr>
+<tr>
+<td>1862</td>
+<td align="right">34</td>
+<td>遭第二次流放</td>
+<td>與薩摩藩政治中心決裂</td>
+</tr>
+<tr>
+<td>1864</td>
+<td align="right">36</td>
+<td>獲赦復出</td>
+<td>重返幕末政治舞臺</td>
+</tr>
+<tr>
+<td>1866</td>
+<td align="right">38</td>
+<td>薩長同盟成立</td>
+<td>推動倒幕派合作</td>
+</tr>
+<tr>
+<td>1867</td>
+<td align="right">39</td>
+<td>大政奉還、王政復古</td>
+<td>德川幕府走向終結</td>
+</tr>
+<tr>
+<td>1868</td>
+<td align="right">40</td>
+<td>參與戊辰戰爭及江戶城無血開城</td>
+<td>成為明治維新的重要功臣</td>
+</tr>
+<tr>
+<td>1869</td>
+<td align="right">41</td>
+<td>戊辰戰爭基本結束</td>
+<td>舊幕府勢力的軍事抵抗終結</td>
+</tr>
+<tr>
+<td>1871</td>
+<td align="right">43</td>
+<td>出任參議，參與廢藩置縣</td>
+<td>參與中央集權國家的建立</td>
+</tr>
+<tr>
+<td>1873</td>
+<td align="right">45</td>
+<td>征韓論爭議後辭官返鄉</td>
+<td>與明治政府決裂</td>
+</tr>
+<tr>
+<td>1874</td>
+<td align="right">46</td>
+<td>私學校發展</td>
+<td>成為鹿兒島士族的重要領袖</td>
+</tr>
+<tr>
+<td>1877年2月</td>
+<td align="right">49</td>
+<td>西南戰爭爆發</td>
+<td>與明治政府進行最後決戰</td>
+</tr>
+<tr>
+<td>1877年9月24日</td>
+<td align="right">49</td>
+<td>城山戰役中身亡</td>
+<td>西南戰爭走向結束</td>
+</tr>
+</tbody></table>
+<p><em>年齡以西曆年份簡單計算，未逐日扣除生日差異。</em></p>
+<hr>
+<h1 id="四、西鄉隆盛與三位重要人物的關係">四、西鄉隆盛與三位重要人物的關係</h1>
+<h2 id="1-島津齊彬：提拔他的藩主">1. 島津齊彬：提拔他的藩主</h2>
+<p>島津齊彬是西鄉早期政治生涯中最重要的支持者。齊彬重視軍事、科技與產業改革，西鄉則在其麾下逐步累積政治經驗。</p>
+<p>齊彬去世後，西鄉失去主要政治依靠，也因此陷入流放與政治低潮。</p>
+<h2 id="2-大久保利通：從政治夥伴到政敵">2. 大久保利通：從政治夥伴到政敵</h2>
+<p>大久保利通與西鄉同出薩摩，早年都參與藩內改革及倒幕運動。兩人共同協助建立明治新政府，也參與推動日本中央集權化。</p>
+<p>然而，兩人對新政府的政策優先順序逐漸產生分歧。1873年征韓論爭議後，西鄉返鄉，大久保則繼續留在中央政府推動改革。</p>
+<p>西鄉死於1877年，大久保則於1878年遭到刺殺。兩人的結局，反映明治維新領導階層內部的政治衝突及當時社會的不穩定。</p>
+<h2 id="3-勝海舟：江戶城和平交接的談判對手">3. 勝海舟：江戶城和平交接的談判對手</h2>
+<p>勝海舟是德川幕府方面的重要人物。1868年，他與西鄉進行交涉，促成江戶城無血開城。</p>
+<p>兩人雖然分屬政治對立陣營，卻都認識到江戶若爆發大規模攻城戰，將造成嚴重的人員傷亡與城市破壞。</p>
+<p>因此，江戶城無血開城是雙方共同協商的結果，而非單方面的軍事勝利。</p>
+<h2 id="4-木戶孝允：薩長同盟的重要夥伴">4. 木戶孝允：薩長同盟的重要夥伴</h2>
+<p>木戶孝允是長州藩的重要政治人物。薩摩與長州曾經敵對，後來在共同的政治目標下建立合作關係。</p>
+<p>西鄉與木戶分別代表兩藩的重要政治力量，兩藩的合作改變了幕末的權力平衡，成為推動倒幕運動的重要因素。</p>
+<hr>
+<h1 id="五、西鄉隆盛的歷史功績與局限">五、西鄉隆盛的歷史功績與局限</h1>
+<h2 id="（一）主要功績">（一）主要功績</h2>
+<h3 id="1-推動倒幕與明治維新">1. 推動倒幕與明治維新</h3>
+<p>西鄉在薩長同盟、王政復古及戊辰戰爭中扮演重要角色，協助終結德川幕府的政治統治。</p>
+<h3 id="2-促成江戶城無血開城">2. 促成江戶城無血開城</h3>
+<p>西鄉與勝海舟交涉，使江戶城得以和平交接，避免了可能發生的大規模城市戰爭。</p>
+<h3 id="3-參與建立中央集權國家">3. 參與建立中央集權國家</h3>
+<p>明治維新後，西鄉參與廢藩置縣等重大改革，協助新政府削弱地方藩的政治權力。</p>
+<h3 id="4-成為日本近代史的重要象徵">4. 成為日本近代史的重要象徵</h3>
+<p>西鄉的政治生涯與明治維新的建立密切相關。他的生平也反映出，日本在建立近代國家時，如何面對傳統武士階層的利益與身分變化。</p>
+<h2 id="（二）歷史局限與爭議">（二）歷史局限與爭議</h2>
+<h3 id="1-對新政府改革的態度發生轉變">1. 對新政府改革的態度發生轉變</h3>
+<p>西鄉曾經是新政府的重要決策者，但隨著政策分歧加深，他逐漸離開中央政治體系。</p>
+<h3 id="2-士族問題未能獲得和平解決">2. 士族問題未能獲得和平解決</h3>
+<p>明治政府的改革削弱了武士階層的傳統地位與經濟保障。西鄉返鄉後成為許多士族的精神領袖，卻未能阻止矛盾升高至武裝衝突。</p>
+<h3 id="3-西南戰爭造成重大傷亡">3. 西南戰爭造成重大傷亡</h3>
+<p>西鄉最後參與的戰爭，並未恢復士族原有的政治地位，反而造成大量傷亡，也進一步鞏固明治政府的中央集權。</p>
+<hr>
+<h1 id="六、如何理解西鄉隆盛的一生？">六、如何理解西鄉隆盛的一生？</h1>
+<p>西鄉隆盛的生平可以從三個層次理解。</p>
+<p>**第一，他是推翻舊政治秩序的革命者。**他在幕末時期從薩摩藩的基層武士逐漸崛起，參與薩長同盟與倒幕運動，並在戊辰戰爭中成為新政府的重要軍事領袖。</p>
+<p>**第二，他也是新國家建設的參與者。**明治維新後，他並未立即退出政治，而是參與廢藩置縣等改革，協助建立中央集權的國家體制。</p>
+<p>**第三，他最終成為自己參與建立的新政府的反抗者。**當明治政府推動改革、削弱士族的傳統地位時，西鄉與中央政府逐漸分道揚鑣，最後在西南戰爭中走向悲劇性結局。</p>
+<p>西鄉的經歷提醒我們：**革命成功，不代表革命領袖必然能夠適應革命之後的新秩序。**推翻舊制度與建立新制度，需要不同的政治能力，也可能產生不同的利益衝突。</p>
+<p>西鄉隆盛因此不只是明治維新的功臣，也是一個理解日本近代化代價的重要歷史人物。</p>
+<h3 id="延伸閱讀">延伸閱讀</h3>
+<ul>
+<li><a href="https://www.ndl.go.jp/portrait/datas/85?utm_source=chatgpt.com">日本國立國會圖書館：西鄉隆盛人物資料</a></li>
+<li><a href="https://www.pref.kagoshima.jp/reimeikan/josetsu/theme/gendai/seinan/?utm_source=chatgpt.com">日本鹿兒島縣：西南戰爭介紹</a></li>
+<li><a href="https://www.jacar.go.jp/dictionary/02_item.html?id=00001803&utm_source=chatgpt.com">日本亞洲歷史資料中心：西鄉隆盛生平與官職年表</a></li>
+<li><a href="https://seinansensou.jp/theseinansensou/chronology-2/?utm_source=chatgpt.com">西南戰爭遺跡官方網站：西南戰爭年表</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

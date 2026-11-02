@@ -1,0 +1,708 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="德川家康生平大事記">德川家康生平大事記</h1>
+<h2 id="從人質少年、戰國大名到江戶幕府的創建者（15431616）">——從人質少年、戰國大名到江戶幕府的創建者（1543—1616）</h2>
+<p><strong>德川家康</strong>（1543年1月31日—1616年6月1日）是日本戰國時代末期至江戶時代初期的重要政治與軍事領袖，也是日本江戶幕府的創建者。他於1603年受封征夷大將軍，建立德川幕府，並透過政治聯姻、軍事征服、制度建設及大名統制，奠定了日本長達約260餘年的江戶幕府統治基礎。</p>
+<p>德川家康的一生，可以概括為五個階段：</p>
+<ol>
+<li><strong>1543—1560年：人質少年時期</strong>——出生於三河國松平氏，幼年在織田氏與今川氏之間輾轉，經歷長期的人質生活。</li>
+<li><strong>1560—1573年：獨立與崛起時期</strong>——桶狹間之戰後脫離今川氏控制，逐步統一三河，並與織田信長建立重要同盟。</li>
+<li><strong>1573—1582年：戰國強權形成時期</strong>——歷經武田信玄入侵、三方原之戰等重大挫折，逐步鞏固東海道的勢力。</li>
+<li><strong>1582—1600年：統一日本的權力競逐</strong>——本能寺之變後擴張勢力，臣服於豐臣秀吉，並在秀吉死後成為日本最具實力的政治人物之一。</li>
+<li><strong>1600—1616年：建立幕府與確立德川統治</strong>——贏得關原之戰、建立江戶幕府，最終透過大阪之役消滅豐臣氏的政治軍事威脅。</li>
+</ol>
+<p>以下依照年代，整理德川家康的生平、重要戰役、政治決策、人物關係及歷史影響。</p>
+<hr>
+<h1 id="一、15431560年：出生、成長與人質生涯">一、1543—1560年：出生、成長與人質生涯</h1>
+<h2 id="1543年（天文11年）：出生於三河國">1543年（天文11年）：出生於三河國</h2>
+<ul>
+<li><strong>1月31日</strong>：德川家康出生於日本三河國岡崎城，幼名「竹千代」。</li>
+<li>父親是松平廣忠，母親是於大之方。</li>
+<li>當時日本處於戰國時代，各地大名爭奪領地與政治霸權。</li>
+<li>松平氏勢力有限，夾在西方的織田氏與東方的今川氏之間，必須在兩大勢力間尋求生存。</li>
+</ul>
+<p>**歷史意義：**家康出身於地方武士領主家族，並非一開始就擁有統治日本的實力。他日後的崛起，與其家族的地理位置、政治聯盟及個人決策密切相關。</p>
+<h2 id="15471549年：被送往織田氏與今川氏之間作為人質">1547—1549年：被送往織田氏與今川氏之間作為人質</h2>
+<ul>
+<li>1547年前後，松平氏與織田氏、今川氏的關係發生變化。</li>
+<li>家康幼年時曾被送往織田氏控制的地區，後來又成為今川氏的人質。</li>
+<li>1549年，松平廣忠去世，家康仍處於今川氏的勢力範圍內。</li>
+<li>今川氏由今川義元領導，是當時東海道的重要強權。</li>
+</ul>
+<p>**歷史意義：**家康幼年的經歷，使他很早便接觸到戰國大名之間的權力運作。人質經歷的具體細節，在後世傳說中有所增飾，因此不宜將所有戲劇化故事都視為確切史實。</p>
+<h2 id="1555年：元服，開始使用成人名號">1555年：元服，開始使用成人名號</h2>
+<ul>
+<li>家康舉行元服儀式，進入武士的成年階段。</li>
+<li>當時他使用的名字是松平元信，後來又改名為松平元康。</li>
+<li>「元」字與今川義元有關，反映他當時仍與今川氏保持從屬關係。</li>
+</ul>
+<h2 id="1556年：與築山殿結婚">1556年：與築山殿結婚</h2>
+<ul>
+<li>家康迎娶築山殿，建立與今川氏相關家族的婚姻關係。</li>
+<li>這場婚姻具有政治意義，也反映戰國時代大名家族透過婚姻維繫同盟的普遍做法。</li>
+</ul>
+<h2 id="1560年：桶狹間之戰，人生的重要轉折">1560年：桶狹間之戰，人生的重要轉折</h2>
+<p><strong>事件：桶狹間之戰。</strong></p>
+<ul>
+<li>今川義元率軍進攻尾張國，目標之一是擴大對日本中部地區的控制。</li>
+<li>織田信長採取突襲戰術，擊敗今川軍，今川義元戰死。</li>
+<li>家康原本隸屬今川氏，當時負責執行相關軍事任務。</li>
+<li>今川義元戰死後，今川氏的控制力受到重大打擊。</li>
+<li>家康返回岡崎，逐漸擺脫今川氏的支配。</li>
+</ul>
+<p><strong>歷史意義：</strong></p>
+<p>桶狹間之戰改變了日本中部的勢力平衡，也為家康提供了擺脫今川氏、建立獨立勢力的機會。</p>
+<hr>
+<h1 id="二、15601573年：脫離今川氏，建立三河霸權">二、1560—1573年：脫離今川氏，建立三河霸權</h1>
+<h2 id="1560年：返回岡崎，逐步建立自主勢力">1560年：返回岡崎，逐步建立自主勢力</h2>
+<ul>
+<li>桶狹間之戰後，家康返回岡崎城。</li>
+<li>他開始重新整頓松平氏的領地與家臣團。</li>
+<li>家康逐漸從今川氏的從屬者，轉變為獨立的地方大名。</li>
+</ul>
+<h2 id="15611562年：與織田信長建立同盟">1561—1562年：與織田信長建立同盟</h2>
+<ul>
+<li>家康逐漸與織田信長接近。</li>
+<li>1562年前後，雙方建立重要的政治與軍事同盟。</li>
+<li>家康可以集中力量向東發展，信長則減少了來自三河方向的威脅。</li>
+</ul>
+<p>這段同盟關係後來維持了約二十年，是家康崛起的重要基礎。<a href="https://jref.com/articles/tokugawa-ieyasu-1543-1616.790/page/early-years.74/?utm_source=chatgpt.com">Japan Reference</a></p>
+<h2 id="15631564年：三河一向一揆">1563—1564年：三河一向一揆</h2>
+<ul>
+<li>家康在統一三河的過程中，遭遇佛教勢力與地方武士的反抗。</li>
+<li>反抗力量包括部分一向宗信徒及與地方寺院關係密切的武士。</li>
+<li>家康經過軍事鎮壓，逐步恢復對三河的控制。</li>
+</ul>
+<p>**歷史意義：**家康不僅必須對抗外部大名，也必須處理領地內部的宗教、地方勢力與家臣矛盾。統一三河是他成為獨立戰國大名的重要一步。</p>
+<h2 id="1566年：改姓德川">1566年：改姓德川</h2>
+<ul>
+<li>家康取得朝廷相關許可，將姓氏由松平改為德川。</li>
+<li>從此通常稱為德川家康。</li>
+<li>這項改姓也有提升家族政治地位、塑造獨立家門形象的意義。</li>
+</ul>
+<h2 id="1568年：向遠江國擴張">1568年：向遠江國擴張</h2>
+<ul>
+<li>家康向東進軍，逐步擴大對遠江國的控制。</li>
+<li>今川氏在桶狹間之戰後持續衰弱，難以恢復原有的勢力。</li>
+<li>家康開始以濱松一帶為重要軍事據點。</li>
+</ul>
+<h2 id="1570年：遷往濱松城">1570年：遷往濱松城</h2>
+<ul>
+<li>家康將主要據點由岡崎轉移至濱松城。</li>
+<li>濱松位於東海道的重要戰略位置，有利於向東防禦武田氏、向西與織田信長協同行動。</li>
+<li>他開始更直接地面對武田信玄等強大對手。</li>
+</ul>
+<h2 id="1572年：三方原之戰，遭遇重大敗績">1572年：三方原之戰，遭遇重大敗績</h2>
+<p><strong>事件：三方原之戰。</strong></p>
+<ul>
+<li>武田信玄率軍向西進軍，威脅家康的領地。</li>
+<li>家康出兵迎戰，卻遭到武田軍擊敗。</li>
+<li>德川軍損失慘重，家康本人也面臨生命危險。</li>
+<li>此戰顯示，當時的德川軍仍難以單獨對抗武田信玄的強大軍隊。</li>
+</ul>
+<h3 id="三方原之戰的歷史意義">三方原之戰的歷史意義</h3>
+<ol>
+<li>**軍事方面：**家康親身體會到與強敵正面交戰的風險。</li>
+<li>**政治方面：**德川氏更加需要與織田信長維持合作。</li>
+<li>**個人方面：**家康在此後的歷史形象中，常被塑造成能夠忍受挫敗、從失敗中學習的統治者。</li>
+</ol>
+<p>值得注意的是，關於家康在敗戰後的某些著名故事，例如命人畫下自己狼狽模樣以警惕自己，部分細節可能來自後世傳說，不宜全部當成確定史實。</p>
+<h2 id="1573年：武田信玄去世">1573年：武田信玄去世</h2>
+<ul>
+<li>武田信玄在西進途中病逝。</li>
+<li>武田氏失去重要領袖，對德川領地的軍事壓力有所變化。</li>
+<li>家康因此獲得重新整頓軍隊、鞏固領地的機會。</li>
+</ul>
+<hr>
+<h1 id="三、15731582年：鞏固勢力，與織田信長共同作戰">三、1573—1582年：鞏固勢力，與織田信長共同作戰</h1>
+<h2 id="1575年：長篠之戰">1575年：長篠之戰</h2>
+<p><strong>事件：織田、德川聯軍擊敗武田軍。</strong></p>
+<ul>
+<li>武田勝賴繼承武田氏的領導權。</li>
+<li>武田軍進攻德川氏控制的長篠城。</li>
+<li>織田信長與德川家康聯合出兵。</li>
+<li>聯軍在長篠一帶擊敗武田軍。</li>
+</ul>
+<h3 id="歷史意義">歷史意義</h3>
+<p>長篠之戰是織田、德川聯盟的重要勝利，也削弱了武田氏的軍事力量。</p>
+<p>此戰常被描述為火繩槍戰術的重要轉折，但對於火器使用方式、戰術細節及其影響程度，歷史研究仍有進一步討論的空間。</p>
+<h2 id="1579年：築山殿與松平信康事件">1579年：築山殿與松平信康事件</h2>
+<ul>
+<li>家康的長子松平信康與妻子德姬之間出現嚴重矛盾。</li>
+<li>德姬與織田信長家族有親屬關係。</li>
+<li>家康面臨家族內部問題與政治同盟之間的壓力。</li>
+<li>最終，築山殿被殺，松平信康被迫切腹。</li>
+</ul>
+<p><strong>歷史意義：</strong></p>
+<p>這是家康人生中最具爭議的家族事件之一。</p>
+<p>事件背後究竟涉及多少政治考量、家族衝突與織田信長的壓力，史料並不足以支持所有流行說法。因此，不宜將松平信康之死簡化為某一個單一原因。</p>
+<h2 id="1582年：本能寺之變，織田信長身亡">1582年：本能寺之變，織田信長身亡</h2>
+<ul>
+<li>明智光秀突然反叛織田信長。</li>
+<li>信長在京都本能寺遭到襲擊，最終自盡。</li>
+<li>信長之死造成日本權力結構的巨大變動。</li>
+<li>家康當時正在日本近畿地區活動，面臨返回領地的危險。</li>
+</ul>
+<h3 id="家康的伊賀越">家康的伊賀越</h3>
+<ul>
+<li>信長死後，家康必須設法返回三河。</li>
+<li>他在地方人士協助下，經由伊賀等地返回自己的勢力範圍。</li>
+<li>這段經歷後來被稱為「伊賀越」。</li>
+</ul>
+<p>**歷史意義：**信長之死為家康提供了重新分配勢力的機會，也使他與羽柴秀吉等新興政治領袖之間的競爭逐漸浮上檯面。</p>
+<hr>
+<h1 id="四、15821590年：與豐臣秀吉爭奪天下">四、1582—1590年：與豐臣秀吉爭奪天下</h1>
+<h2 id="1582年：武田氏滅亡與領地擴張">1582年：武田氏滅亡與領地擴張</h2>
+<ul>
+<li>武田勝賴在織田、德川等勢力的進攻下敗亡。</li>
+<li>武田氏的領地被勝利者瓜分。</li>
+<li>家康趁機擴張勢力，取得甲斐、信濃等地的部分控制權。</li>
+<li>德川氏的領地規模與軍事實力進一步增強。</li>
+</ul>
+<h2 id="1582年：清洲會議與新的權力競逐">1582年：清洲會議與新的權力競逐</h2>
+<ul>
+<li>織田信長死後，織田家臣團必須重新安排繼承問題。</li>
+<li>羽柴秀吉透過軍事勝利與政治手腕，逐漸成為織田氏勢力中最有影響力的人物之一。</li>
+<li>家康則利用這段權力真空，擴張自己的領地與政治影響力。</li>
+</ul>
+<h2 id="1584年：小牧、長久手之戰">1584年：小牧、長久手之戰</h2>
+<p><strong>事件：德川家康與羽柴秀吉交戰。</strong></p>
+<ul>
+<li>秀吉逐漸成為日本最有實力的政治人物之一。</li>
+<li>家康與織田信雄結盟，反對秀吉進一步擴張權力。</li>
+<li>雙方在小牧、長久手一帶展開戰事。</li>
+<li>家康在長久手的戰鬥中取得局部勝利，但整體局勢並未使他有能力徹底擊敗秀吉。</li>
+</ul>
+<h3 id="戰爭結果">戰爭結果</h3>
+<p>雙方最後透過政治協商逐步結束對抗。</p>
+<p>**歷史意義：**這場戰爭顯示家康具備獨立對抗強權的軍事能力，但秀吉掌握的政治資源與全國性動員能力更為強大。</p>
+<h2 id="1586年：與豐臣秀吉建立政治關係">1586年：與豐臣秀吉建立政治關係</h2>
+<ul>
+<li>家康逐漸接受秀吉所建立的政治秩序。</li>
+<li>雙方透過交涉與婚姻關係，降低直接衝突的可能性。</li>
+<li>家康仍保有相當程度的自主權，並持續鞏固自己的領地與家臣團。</li>
+</ul>
+<h2 id="1590年：小田原征伐與移封關東">1590年：小田原征伐與移封關東</h2>
+<p><strong>事件：豐臣秀吉征服後北條氏。</strong></p>
+<ul>
+<li>秀吉率領大軍包圍小田原城。</li>
+<li>後北條氏最終投降。</li>
+<li>秀吉至此基本完成對日本主要大名勢力的軍事征服。</li>
+<li>家康依照秀吉的安排，將原本位於東海道的領地移往關東地區。</li>
+<li>家康以江戶為新的政治與軍事中心。</li>
+</ul>
+<h3 id="為什麼移封江戶如此重要？">為什麼移封江戶如此重要？</h3>
+<p>江戶當時並不是日本最繁華的城市，但它具有幾項重要優勢：</p>
+<ol>
+<li>**地理空間廣大：**關東平原適合農業發展、人口聚集及城市擴張。</li>
+<li>**領地集中：**家康得以將關東地區整合為穩定的統治基地。</li>
+<li>**戰略位置：**江戶位於日本東部，遠離京都、大阪等豐臣政權的傳統政治核心。</li>
+<li>**長期發展潛力：**江戶後來逐漸發展為日本的政治中心，並成為現代東京的前身。</li>
+</ol>
+<p>這次移封表面上是秀吉重新安排大名領地，實際上卻意外提供了家康建立長期政治基地的機會。<a href="https://born-in-japan.com/en/culture/tokugawa-ieyasu/?utm_source=chatgpt.com">日本に生まれる ／ Born in Japan</a></p>
+<hr>
+<h1 id="五、15901600年：豐臣秀吉死後的權力鬥爭">五、1590—1600年：豐臣秀吉死後的權力鬥爭</h1>
+<h2 id="15901598年：在豐臣政權下擴張實力">1590—1598年：在豐臣政權下擴張實力</h2>
+<ul>
+<li>家康在關東建立統治中心，持續整頓行政、軍事與財政。</li>
+<li>他逐步建立以德川家臣團為核心的統治體系。</li>
+<li>豐臣秀吉雖然掌握全國性政治權威，但家康仍是日本實力最強的大名之一。</li>
+</ul>
+<h2 id="1592年：豐臣秀吉發動文祿之役">1592年：豐臣秀吉發動文祿之役</h2>
+<ul>
+<li>秀吉發動侵略朝鮮的戰爭，企圖進一步擴張其政治與軍事影響力。</li>
+<li>日本軍隊進入朝鮮半島，與朝鮮軍隊及後來介入的明朝軍隊作戰。</li>
+<li>這場戰爭造成朝鮮半島嚴重破壞，也消耗了日本方面大量軍事與財政資源。</li>
+</ul>
+<h2 id="1597年：慶長之役">1597年：慶長之役</h2>
+<ul>
+<li>秀吉再次發動侵朝戰爭。</li>
+<li>日本軍隊與朝鮮、明朝聯軍持續交戰。</li>
+<li>戰爭長期化，增加豐臣政權的軍事與財政負擔。</li>
+</ul>
+<h2 id="1598年：豐臣秀吉去世">1598年：豐臣秀吉去世</h2>
+<ul>
+<li>豐臣秀吉於1598年去世。</li>
+<li>其子豐臣秀賴年幼，尚不足以獨立掌握全國政局。</li>
+<li>豐臣政權依賴多位大名與重臣共同維持。</li>
+<li>德川家康作為五大老之一，逐漸取得主導地位。</li>
+</ul>
+<h3 id="五大老與五奉行">五大老與五奉行</h3>
+<p>豐臣秀吉為了在自己去世後維持政權，安排大名與行政重臣分別承擔重要職責。</p>
+<ul>
+<li>**五大老：**主要負責高層政治協調，德川家康是其中最有實力的人物。</li>
+<li>**五奉行：**負責行政事務，石田三成是重要成員之一。</li>
+</ul>
+<p>隨著秀吉去世，家康與石田三成等人之間的矛盾逐漸加深。</p>
+<h2 id="1599年：政治衝突加劇">1599年：政治衝突加劇</h2>
+<ul>
+<li>家康逐步擴大自己的政治影響力。</li>
+<li>石田三成等人對家康的權力擴張感到不滿。</li>
+<li>各大名開始依照自身利益、婚姻關係及政治判斷選擇陣營。</li>
+<li>日本逐漸形成以家康為核心的東軍，以及反對家康的西軍。</li>
+</ul>
+<h2 id="1600年：關原之戰">1600年：關原之戰</h2>
+<p><strong>事件：德川家康擊敗西軍，取得日本最高權力的實質控制權。</strong></p>
+<h3 id="戰爭背景">戰爭背景</h3>
+<p>豐臣秀吉死後，日本缺乏一位能夠獨立支配全國的大領袖。</p>
+<p>家康逐漸擴張權力，引起石田三成等人的反對。雙方的政治衝突最終演變為大規模軍事對抗。</p>
+<h3 id="戰爭經過">戰爭經過</h3>
+<ul>
+<li>家康率領東軍與反對他的西軍展開決戰。</li>
+<li>1600年9月15日，雙方在美濃國關原一帶交戰。</li>
+<li>西軍內部存在不同的政治利益與軍事考量。</li>
+<li>小早川秀秋等人的倒戈，成為影響戰局的重要因素。</li>
+<li>東軍最終獲勝，西軍主要領袖遭到處置。</li>
+</ul>
+<h3 id="戰爭結果-1">戰爭結果</h3>
+<ol>
+<li>德川家康成為日本最有實力的政治領袖。</li>
+<li>石田三成被捕並處死。</li>
+<li>多名西軍大名遭到改易、減封或其他處分。</li>
+<li>家康重新分配大量領地，建立以德川氏為中心的政治秩序。</li>
+<li>豐臣秀賴雖然仍然存在，但其政治地位逐漸受到削弱。</li>
+</ol>
+<p><strong>歷史意義：</strong></p>
+<p>關原之戰是德川家康從全國性政治競爭者，轉變為日本實際最高統治者的關鍵事件。</p>
+<p>不過，這場勝利並不代表所有反對勢力立即消失。豐臣氏仍然保有大阪城與相當程度的象徵地位，家康還必須透過制度建設、政治協商及後續戰爭，才能真正確立德川政權。</p>
+<hr>
+<h1 id="六、16001605年：建立江戶幕府">六、1600—1605年：建立江戶幕府</h1>
+<h2 id="1600年：取得全國政治主導權">1600年：取得全國政治主導權</h2>
+<ul>
+<li>關原之戰後，家康掌握日本最主要的軍事與政治資源。</li>
+<li>他開始重新分配大名領地，削弱反對者，並獎勵支持自己的勢力。</li>
+<li>江戶成為德川氏政治權力的中心。</li>
+</ul>
+<h2 id="1601年：整頓交通與領地管理">1601年：整頓交通與領地管理</h2>
+<ul>
+<li>家康著手發展以江戶為中心的交通網絡。</li>
+<li>五街道制度的形成與後續發展，逐漸將江戶與日本各地連接起來。</li>
+<li>交通建設有助於人員往來、商業發展、軍事調動及中央政權對地方的控制。</li>
+</ul>
+<h2 id="1603年：受封征夷大將軍，建立江戶幕府">1603年：受封征夷大將軍，建立江戶幕府</h2>
+<p><strong>1603年，是德川家康一生最重要的年份之一。</strong></p>
+<ul>
+<li>家康獲後陽成天皇任命為征夷大將軍。</li>
+<li>他以江戶為中心，建立德川幕府。</li>
+<li>日本的最高軍事政治權力正式轉移至德川家康及其政權。</li>
+</ul>
+<h3 id="江戶幕府的意義">江戶幕府的意義</h3>
+<p>日本歷史上，幕府是以將軍為核心的武家政權。</p>
+<p>江戶幕府建立後，德川家康開始建立一套能夠維持長期統治的制度，包括：</p>
+<ul>
+<li>控制大名的領地與軍事力量。</li>
+<li>透過法令規範武士階層。</li>
+<li>維持朝廷與幕府之間的政治關係。</li>
+<li>整頓行政與財政。</li>
+<li>建立以江戶為中心的政治秩序。</li>
+</ul>
+<p>德川幕府自1603年建立後，一直延續至1867—1868年前後的幕末政權交替，對日本歷史產生深遠影響。<a href="https://www.mlit.go.jp/tagengo-db/common/001564887.pdf?utm_source=chatgpt.com">MLIT</a></p>
+<h2 id="1605年：將將軍職位傳給德川秀忠">1605年：將將軍職位傳給德川秀忠</h2>
+<ul>
+<li>家康在1605年將征夷大將軍之位讓給第三子德川秀忠。</li>
+<li>家康退居幕後，繼續掌握重要的政治與軍事決策。</li>
+<li>秀忠成為第二代將軍。</li>
+</ul>
+<h3 id="為什麼家康要提早交出將軍之位？">為什麼家康要提早交出將軍之位？</h3>
+<p>這是家康鞏固德川家族統治的重要政治安排。</p>
+<ol>
+<li>**確立世襲原則：**讓其他大名明白，將軍之位將由德川家族繼承。</li>
+<li>**避免權力真空：**在家康仍然健在時完成交接，降低繼承危機。</li>
+<li>**削弱豐臣氏的政治希望：**避免外界期待豐臣秀賴將來重新掌握日本最高權力。</li>
+<li>**維持實際控制：**家康雖然退位，仍透過幕府內部人事與重大政策影響政局。</li>
+</ol>
+<p>這種安排使德川政權逐漸從家康個人的權威，轉變為可以世代延續的政治制度。</p>
+<hr>
+<h1 id="七、16051614年：鞏固政權，準備解決豐臣氏問題">七、1605—1614年：鞏固政權，準備解決豐臣氏問題</h1>
+<h2 id="1607年：家康以駿府為主要居所">1607年：家康以駿府為主要居所</h2>
+<ul>
+<li>家康在駿府城建立重要的政治活動中心。</li>
+<li>他雖然不再擔任將軍，仍持續參與重大政策與外交事務。</li>
+<li>德川秀忠負責幕府的日常統治，但家康仍具有極高的政治權威。</li>
+</ul>
+<h2 id="16091611年：鞏固國內政治秩序">1609—1611年：鞏固國內政治秩序</h2>
+<ul>
+<li>家康持續安排大名的領地與政治關係。</li>
+<li>他透過婚姻、封賞與制度管理，降低各地大名聯合反抗的可能性。</li>
+<li>德川氏逐漸掌握日本主要政治資源。</li>
+</ul>
+<h2 id="1611年：與豐臣秀賴會面">1611年：與豐臣秀賴會面</h2>
+<ul>
+<li>豐臣秀賴是豐臣秀吉之子，仍然具有重要的政治象徵地位。</li>
+<li>家康與秀賴在京都附近會面。</li>
+<li>雙方的關係表面上仍保有一定程度的政治禮節，但彼此之間的權力差距已經十分明顯。</li>
+</ul>
+<h2 id="1614年：方廣寺鐘銘事件">1614年：方廣寺鐘銘事件</h2>
+<ul>
+<li>豐臣氏參與京都方廣寺的重建。</li>
+<li>方廣寺鐘銘中出現「國家安康」等文字。</li>
+<li>德川方面認為鐘銘可能帶有不利於家康的政治意涵，因而提出異議。</li>
+<li>此事成為德川氏與豐臣氏關係進一步惡化的重要導火線。</li>
+</ul>
+<p>需要注意的是，鐘銘是否原本就具有針對德川家康的政治意圖，歷史上仍存在討論。比較確定的是，這起事件被德川方面用來加大對豐臣氏的政治壓力。</p>
+<h2 id="1614年：大阪冬之陣">1614年：大阪冬之陣</h2>
+<p><strong>事件：德川軍包圍大阪城。</strong></p>
+<ul>
+<li>家康認為豐臣氏仍可能成為反德川勢力的中心。</li>
+<li>德川幕府集結大軍，向大阪城發動攻勢。</li>
+<li>豐臣軍依靠大阪城的堅固防禦，抵抗德川軍。</li>
+<li>雙方最後達成暫時停戰協議。</li>
+</ul>
+<h3 id="冬之陣的結果">冬之陣的結果</h3>
+<p>停戰期間，大阪城部分外圍防禦設施遭到破壞或填平。</p>
+<p>這使豐臣氏在下一次戰爭中的防禦能力受到削弱。</p>
+<hr>
+<h1 id="八、1615年：大阪夏之陣，消滅豐臣氏">八、1615年：大阪夏之陣，消滅豐臣氏</h1>
+<h2 id="1615年：大阪夏之陣">1615年：大阪夏之陣</h2>
+<p><strong>事件：德川幕府再次進攻大阪城。</strong></p>
+<ul>
+<li>德川家康與德川秀忠率領軍隊進攻豐臣氏。</li>
+<li>豐臣秀賴與其支持者再次組織抵抗。</li>
+<li>豐臣軍雖然有部分將領展現出色的戰鬥能力，但整體兵力與資源仍處於劣勢。</li>
+<li>德川軍逐步突破豐臣氏的防禦。</li>
+<li>大阪城最終陷落。</li>
+</ul>
+<h2 id="豐臣秀賴之死">豐臣秀賴之死</h2>
+<ul>
+<li>豐臣秀賴與其母親淀殿在大阪城陷落後死亡。</li>
+<li>豐臣氏作為足以挑戰德川幕府的主要政治勢力，至此遭到徹底摧毀。</li>
+</ul>
+<h3 id="大阪之役的歷史意義">大阪之役的歷史意義</h3>
+<ol>
+<li>**消除主要政治競爭者：**德川氏不再需要面對豐臣氏可能重新崛起的威脅。</li>
+<li>**確立幕府統治：**德川政權對日本主要軍事勢力的控制更加穩固。</li>
+<li>**推進制度化統治：**家康得以將重心轉向法令、行政與大名管理。</li>
+<li>**結束統一戰爭的最後階段：**日本逐漸進入以德川幕府為中心的長期和平時代。</li>
+</ol>
+<h2 id="1615年：制定武家諸法度與禁中並公家諸法度">1615年：制定武家諸法度與禁中並公家諸法度</h2>
+<p>大阪之役前後，德川政權推動重要的政治制度建設。</p>
+<h3 id="1-武家諸法度">1. 武家諸法度</h3>
+<p>主要針對大名與武士階層，規範武家行為、城郭管理及政治秩序。</p>
+<p>其重要作用包括：</p>
+<ul>
+<li>限制大名自行擴張軍事力量。</li>
+<li>規範城郭的修築與修繕。</li>
+<li>加強幕府對地方大名的控制。</li>
+<li>建立武士階層共同遵守的政治規範。</li>
+</ul>
+<h3 id="2-禁中並公家諸法度">2. 禁中並公家諸法度</h3>
+<p>主要規範天皇、朝廷與公家階層的政治及行為秩序。</p>
+<p>其作用在於明確界定朝廷與幕府的政治關係，降低朝廷成為反幕府政治中心的可能性。</p>
+<p><strong>歷史意義：</strong></p>
+<p>家康不只是透過戰爭取得權力，也試圖透過制度來維持權力。</p>
+<p>這是德川幕府能夠延續兩百多年、並逐步建立相對穩定政治秩序的重要原因之一。<a href="https://jref.com/articles/tokugawa-ieyasu-1543-1616.790/page/rise-to-sh%C5%8Dgun.76/?utm_source=chatgpt.com">Japan Reference</a></p>
+<hr>
+<h1 id="九、1616年：德川家康去世與歷史地位的形成">九、1616年：德川家康去世與歷史地位的形成</h1>
+<h2 id="1616年：家康去世">1616年：家康去世</h2>
+<ul>
+<li>1616年初，家康健康狀況轉差。</li>
+<li><strong>6月1日</strong>，家康在駿府去世，享年約73歲（按傳統虛歲計為75歲）。</li>
+<li>其遺體最初安葬於久能山一帶。</li>
+<li>後來，家康被神格化，尊奉為東照大權現。</li>
+<li>日光東照宮成為後世紀念與祭祀德川家康的重要場所。</li>
+</ul>
+<p>家康去世時，德川幕府已經建立，豐臣氏也已被消滅。他留下的政治制度由第二代將軍德川秀忠及後繼者繼續發展。<a href="https://jref.com/articles/tokugawa-ieyasu-1543-1616.790/page/rise-to-sh%C5%8Dgun.76/?utm_source=chatgpt.com">Japan Reference</a></p>
+<h2 id="德川家康的歷史遺產">德川家康的歷史遺產</h2>
+<p>家康最重要的成就，不只是擊敗其他戰國大名，而是把軍事勝利轉化為能夠長期運作的政治制度。</p>
+<h3 id="1-建立江戶幕府">1. 建立江戶幕府</h3>
+<p>德川幕府自1603年建立後，成為日本近世政治體制的核心。</p>
+<h3 id="2-奠定江戶的政治中心地位">2. 奠定江戶的政治中心地位</h3>
+<p>江戶逐漸發展成為日本最重要的政治、經濟與人口中心之一，後來成為現代東京。</p>
+<h3 id="3-建立大名統制制度">3. 建立大名統制制度</h3>
+<p>透過法令、領地分配、政治聯姻及軍事管理，幕府限制各地大名自行發動大規模戰爭的能力。</p>
+<h3 id="4-開啟相對長期的和平時代">4. 開啟相對長期的和平時代</h3>
+<p>江戶幕府延續至19世紀中葉，期間日本社會在政治、經濟、城市發展與文化方面發生深刻變化。</p>
+<p>不過，江戶時代並非完全沒有衝突或社會問題。地方叛亂、農民抗爭、財政困難及階級限制仍然存在。因此，將這段歷史理解為「相對穩定的幕府統治」，比直接描述為毫無戰亂的和平時代更為準確。</p>
+<hr>
+<h1 id="十、德川家康生平完整時間表">十、德川家康生平完整時間表</h1>
+<p>以下將主要事件集中整理，方便快速複習。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th align="right">年齡約</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1543年</td>
+<td align="right">0歲</td>
+<td>出生於三河國岡崎城，幼名竹千代</td>
+<td>松平氏的繼承人</td>
+</tr>
+<tr>
+<td>1547—1549年</td>
+<td align="right">4—6歲</td>
+<td>幼年被送往織田氏、今川氏相關勢力範圍</td>
+<td>開始接觸戰國政治</td>
+</tr>
+<tr>
+<td>1555年</td>
+<td align="right">12歲</td>
+<td>元服，使用松平元信之名</td>
+<td>進入武士成年階段</td>
+</tr>
+<tr>
+<td>1556年</td>
+<td align="right">13歲</td>
+<td>與築山殿結婚</td>
+<td>建立政治婚姻關係</td>
+</tr>
+<tr>
+<td>1560年</td>
+<td align="right">17歲</td>
+<td>桶狹間之戰後逐步脫離今川氏</td>
+<td>獲得獨立發展的機會</td>
+</tr>
+<tr>
+<td>1561—1562年</td>
+<td align="right">18—19歲</td>
+<td>與織田信長建立同盟</td>
+<td>奠定西方戰略安全</td>
+</tr>
+<tr>
+<td>1563—1564年</td>
+<td align="right">20—21歲</td>
+<td>三河一向一揆</td>
+<td>鞏固領地內部控制</td>
+</tr>
+<tr>
+<td>1566年</td>
+<td align="right">23歲</td>
+<td>改姓德川</td>
+<td>提升家族政治地位</td>
+</tr>
+<tr>
+<td>1568年</td>
+<td align="right">25歲</td>
+<td>向遠江國擴張</td>
+<td>擴大東海道勢力</td>
+</tr>
+<tr>
+<td>1570年</td>
+<td align="right">27歲</td>
+<td>遷往濱松城</td>
+<td>建立重要軍事據點</td>
+</tr>
+<tr>
+<td>1572年</td>
+<td align="right">29歲</td>
+<td>三方原之戰敗於武田信玄</td>
+<td>遭遇重大軍事挫折</td>
+</tr>
+<tr>
+<td>1573年</td>
+<td align="right">30歲</td>
+<td>武田信玄去世</td>
+<td>武田氏的戰略局勢改變</td>
+</tr>
+<tr>
+<td>1575年</td>
+<td align="right">32歲</td>
+<td>長篠之戰，與織田信長擊敗武田軍</td>
+<td>削弱武田氏勢力</td>
+</tr>
+<tr>
+<td>1579年</td>
+<td align="right">36歲</td>
+<td>築山殿與松平信康事件</td>
+<td>家族與政治危機</td>
+</tr>
+<tr>
+<td>1582年</td>
+<td align="right">39歲</td>
+<td>武田氏滅亡、本能寺之變、伊賀越</td>
+<td>日本權力格局改變</td>
+</tr>
+<tr>
+<td>1584年</td>
+<td align="right">41歲</td>
+<td>小牧、長久手之戰</td>
+<td>與豐臣秀吉爭奪霸權</td>
+</tr>
+<tr>
+<td>1586年</td>
+<td align="right">43歲</td>
+<td>與秀吉改善政治關係</td>
+<td>轉向政治協商</td>
+</tr>
+<tr>
+<td>1590年</td>
+<td align="right">47歲</td>
+<td>小田原征伐後移封關東，以江戶為中心</td>
+<td>建立長期統治基地</td>
+</tr>
+<tr>
+<td>1592年</td>
+<td align="right">49歲</td>
+<td>豐臣秀吉發動文祿之役</td>
+<td>參與豐臣政權時代的政治局勢</td>
+</tr>
+<tr>
+<td>1597年</td>
+<td align="right">54歲</td>
+<td>豐臣秀吉發動慶長之役</td>
+<td>日本侵朝戰爭持續</td>
+</tr>
+<tr>
+<td>1598年</td>
+<td align="right">55歲</td>
+<td>豐臣秀吉去世</td>
+<td>權力繼承危機開始</td>
+</tr>
+<tr>
+<td>1599年</td>
+<td align="right">56歲</td>
+<td>家康與其他重臣的政治衝突加深</td>
+<td>東西陣營逐漸形成</td>
+</tr>
+<tr>
+<td>1600年</td>
+<td align="right">57歲</td>
+<td>關原之戰獲勝</td>
+<td>取得日本最高政治權力的實質控制權</td>
+</tr>
+<tr>
+<td>1601年</td>
+<td align="right">58歲</td>
+<td>推進交通建設與領地管理</td>
+<td>加強中央政治與經濟聯繫</td>
+</tr>
+<tr>
+<td>1603年</td>
+<td align="right">60歲</td>
+<td>受封征夷大將軍，建立江戶幕府</td>
+<td>德川政權正式成立</td>
+</tr>
+<tr>
+<td>1605年</td>
+<td align="right">62歲</td>
+<td>將軍職位傳給德川秀忠</td>
+<td>確立德川家族世襲統治</td>
+</tr>
+<tr>
+<td>1607年</td>
+<td align="right">64歲</td>
+<td>以駿府為重要居所</td>
+<td>退居幕後但仍掌握實權</td>
+</tr>
+<tr>
+<td>1611年</td>
+<td align="right">68歲</td>
+<td>與豐臣秀賴會面</td>
+<td>德川、豐臣兩家的權力關係持續緊張</td>
+</tr>
+<tr>
+<td>1614年</td>
+<td align="right">71歲</td>
+<td>方廣寺鐘銘事件、大阪冬之陣</td>
+<td>對豐臣氏施加軍事與政治壓力</td>
+</tr>
+<tr>
+<td>1615年</td>
+<td align="right">72歲</td>
+<td>大阪夏之陣，豐臣氏覆亡</td>
+<td>消除主要政治競爭者</td>
+</tr>
+<tr>
+<td>1615年</td>
+<td align="right">72歲</td>
+<td>推動武家諸法度、禁中並公家諸法度</td>
+<td>加強幕府制度化統治</td>
+</tr>
+<tr>
+<td>1616年</td>
+<td align="right">73歲</td>
+<td>6月1日於駿府去世</td>
+<td>留下延續兩百多年的幕府政權</td>
+</tr>
+</tbody></table>
+<p><em>註：年齡以西曆年份減去1543年估算；家康出生時的傳統日本曆法與西曆換算存在差異，因此不同資料的出生日期與年齡記載可能略有不同。</em></p>
+<hr>
+<h1 id="十一、德川家康與日本戰國三英傑的比較">十一、德川家康與日本戰國三英傑的比較</h1>
+<p>日本歷史常將織田信長、豐臣秀吉、德川家康合稱為「戰國三英傑」。三人共同推動日本從長期分裂走向統一，但各自的角色不同。</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>織田信長</th>
+<th>豐臣秀吉</th>
+<th>德川家康</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出身背景</td>
+<td>尾張國大名家族</td>
+<td>出身較低的武士家庭</td>
+<td>三河國松平氏繼承人</td>
+</tr>
+<tr>
+<td>主要成就</td>
+<td>打破舊有政治勢力，開啟統一進程</td>
+<td>大致完成日本軍事統一</td>
+<td>建立可長期延續的幕府制度</td>
+</tr>
+<tr>
+<td>主要政治據點</td>
+<td>安土等地</td>
+<td>大阪、京都等地</td>
+<td>江戶、駿府</td>
+</tr>
+<tr>
+<td>重要戰役</td>
+<td>桶狹間之戰、長篠之戰</td>
+<td>山崎之戰、賤岳之戰、小田原征伐</td>
+<td>三方原之戰、關原之戰、大阪之役</td>
+</tr>
+<tr>
+<td>政治風格</td>
+<td>積極改革、強勢擴張</td>
+<td>擅長軍事動員與政治整合</td>
+<td>重視長期布局、聯盟與制度建設</td>
+</tr>
+<tr>
+<td>統治成果</td>
+<td>統一事業的重要開創者</td>
+<td>大致統一日本</td>
+<td>建立江戶幕府</td>
+</tr>
+<tr>
+<td>歷史結局</td>
+<td>1582年死於本能寺之變</td>
+<td>1598年去世，政權未能穩定世襲</td>
+<td>1616年去世，德川政權得以延續</td>
+</tr>
+</tbody></table>
+<h2 id="三人的歷史分工">三人的歷史分工</h2>
+<p>可以用一句話概括：</p>
+<ul>
+<li>**織田信長：**打破舊秩序，開創統一日本的局面。</li>
+<li>**豐臣秀吉：**完成大規模軍事統一，建立全國性政權。</li>
+<li>**德川家康：**將統一成果制度化，建立延續兩百多年的幕府。</li>
+</ul>
+<p>這種概括有助於理解三人的歷史角色，但實際上三人的政策、戰爭與制度建設彼此交錯，並非完全獨立的三個階段。</p>
+<hr>
+<h1 id="十二、德川家康為什麼能夠取得最後勝利？">十二、德川家康為什麼能夠取得最後勝利？</h1>
+<p>德川家康的成功，不能單純歸因於「忍耐」或「長壽」。更重要的是，他能在不同政治局勢下調整策略，並將個人權威轉化為制度。</p>
+<h2 id="1-善於選擇政治盟友">1. 善於選擇政治盟友</h2>
+<p>家康與織田信長建立長期同盟，在信長強勢崛起的時期，避免自己同時面對多個強敵。</p>
+<h2 id="2-能夠從失敗中恢復">2. 能夠從失敗中恢復</h2>
+<p>三方原之戰是他遭遇的重大挫敗，但德川氏沒有因此崩潰。家康逐步重整軍隊、擴張領地，最後仍成為日本最強大的政治人物之一。</p>
+<h2 id="3-建立穩固的領地基礎">3. 建立穩固的領地基礎</h2>
+<p>移封關東後，家康以江戶為中心整合廣大領地，建立財政、軍事與行政基礎。</p>
+<h2 id="4-掌握豐臣秀吉死後的權力真空">4. 掌握豐臣秀吉死後的權力真空</h2>
+<p>秀吉去世時，其繼承人豐臣秀賴尚年幼。家康利用自己在大名之間的地位與軍事實力，逐步取得政治主導權。</p>
+<h2 id="5-以關原之戰確立霸權">5. 以關原之戰確立霸權</h2>
+<p>關原之戰使家康成為日本最具實力的政治領袖，但他沒有停留在戰場上的勝利，而是進一步建立幕府。</p>
+<h2 id="6-將軍事勝利轉化為制度">6. 將軍事勝利轉化為制度</h2>
+<p>家康透過將軍世襲、武家法令、大名管理及朝廷關係，建立能夠延續的政治體系。</p>
+<p><strong>最重要的結論是：德川家康的最大成就，不只是贏得關原之戰，而是使勝利轉化為長期政治秩序。</strong></p>
+<hr>
+<h2 id="延伸閱讀">延伸閱讀</h2>
+<p>若要進一步研究德川家康的生平與江戶幕府的建立，可以參考以下資料：</p>
+<ul>
+<li><a href="https://www.mlit.go.jp/tagengo-db/common/001564887.pdf?utm_source=chatgpt.com">日本國土交通省：德川家康歷史介紹</a></li>
+<li><a href="https://jref.com/articles/tokugawa-ieyasu-1543-1616.790/page/early-years.74/?utm_source=chatgpt.com">Japan Reference：德川家康生平與早年經歷</a></li>
+<li><a href="https://jref.com/articles/tokugawa-ieyasu-1543-1616.790/page/rise-to-sh%C5%8Dgun.76/?utm_source=chatgpt.com">Japan Reference：德川家康崛起、建立幕府與大阪之役</a></li>
+</ul>
+<p>這些資料可作為進一步查閱德川家康早年經歷、關原之戰、江戶幕府建立及大阪之役的參考。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

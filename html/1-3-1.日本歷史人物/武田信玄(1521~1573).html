@@ -1,0 +1,628 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="武田信玄生平大事記（15211573）">武田信玄生平大事記（1521—1573）</h1>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p><strong>武田信玄</strong>（たけだ しんげん，1521年—1573年），日本戰國時代著名的大名與軍事統帥，原名<strong>武田晴信</strong>，出身於甲斐國武田氏，主要根據地位於今日日本山梨縣一帶。</p>
+<p>他透過軍事征服、外交聯盟、法律建設、治水工程與經濟開發，將原本地理條件不利的甲斐國發展成戰國時代的重要勢力，並逐步擴張至信濃、駿河及其他周邊地區。</p>
+<p>武田信玄最著名的對手，是越後國大名<strong>上杉謙信</strong>。兩人為爭奪信濃北部的控制權，多次在川中島一帶交戰。1572年，信玄又在三方原之戰中擊敗<strong>德川家康</strong>，展現強大的軍事實力。</p>
+<p>然而，信玄在1573年西上途中病逝，未能實現進軍京都、左右日本中央政局的目標。他死後，武田家由其子武田勝賴繼承，但此後逐漸走向衰敗，最終於1582年遭織田信長與德川家康等勢力擊滅。</p>
+<p>武田信玄的歷史地位，不僅建立在戰場上的勝利，也來自其領國治理能力。日本歷史上，他常被稱為「甲斐之虎」，而「風林火山」則成為最具代表性的武田軍象徵。</p>
+<h3 id="基本資料">基本資料</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>姓名</td>
+<td>武田信玄</td>
+</tr>
+<tr>
+<td>原名</td>
+<td>武田晴信</td>
+</tr>
+<tr>
+<td>出生年份</td>
+<td>1521年</td>
+</tr>
+<tr>
+<td>逝世年份</td>
+<td>1573年</td>
+</tr>
+<tr>
+<td>出生地</td>
+<td>甲斐國，約當今日日本山梨縣</td>
+</tr>
+<tr>
+<td>父親</td>
+<td>武田信虎</td>
+</tr>
+<tr>
+<td>母親</td>
+<td>大井夫人</td>
+</tr>
+<tr>
+<td>主要身分</td>
+<td>戰國大名、軍事統帥、領國治理者</td>
+</tr>
+<tr>
+<td>主要根據地</td>
+<td>甲斐國</td>
+</tr>
+<tr>
+<td>重要擴張地區</td>
+<td>信濃、駿河、西上野及其他周邊地區</td>
+</tr>
+<tr>
+<td>主要對手</td>
+<td>上杉謙信、北條氏康、德川家康、織田信長等</td>
+</tr>
+<tr>
+<td>重要戰役</td>
+<td>上田原之戰、川中島之戰、三增峠之戰、三方原之戰</td>
+</tr>
+<tr>
+<td>代表性軍旗</td>
+<td>風林火山</td>
+</tr>
+<tr>
+<td>主要治理措施</td>
+<td>《甲州法度之次第》、治水工程、金山開發、交通建設</td>
+</tr>
+<tr>
+<td>繼承人</td>
+<td>武田勝賴</td>
+</tr>
+<tr>
+<td>逝世年齡</td>
+<td>約51歲，若按傳統虛歲計為53歲</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>**年代與年齡說明：**武田信玄出生於1521年，逝世於1573年。日本傳統史料常採虛歲計算，因此有些資料記載他享年53歲；按現代周歲計算，他逝世時約51歲。部分事件的月份與日期則因舊曆換算而存在差異。<a href="https://japanknowledge.com/introduction/keyword.html?i=1171&utm_source=chatgpt.com">JapanKnowledge</a></p>
+</blockquote>
+<hr>
+<h1 id="二、武田信玄生平詳細時間軸">二、武田信玄生平詳細時間軸</h1>
+<h2 id="第一階段：出生、成長與繼承人時期（15211540年）">第一階段：出生、成長與繼承人時期（1521—1540年）</h2>
+<h3 id="從武田家嫡子到具有政治野心的青年武將">從武田家嫡子到具有政治野心的青年武將</h3>
+<h3 id="1521年：出生於甲斐國">1521年：出生於甲斐國</h3>
+<ul>
+<li>武田信玄出生於1521年，當時日本正處於戰國時代。</li>
+<li>他的父親是<strong>武田信虎</strong>，當時的武田家當主。</li>
+<li>母親是大井夫人，出身於甲斐國的地方武士家族。</li>
+<li>信玄幼名常見記載為「太郎」或「勝千代」。</li>
+</ul>
+<p>武田氏是源氏系統的重要武家，長期在甲斐國擁有政治地位。信玄出生時，父親信虎已逐步整合甲斐國內的勢力，建立武田家在當地的主導地位。</p>
+<p>不過，甲斐國位於山區，平原有限，農業與交通條件不如部分日本沿海地區。如何利用有限資源維持軍隊、控制交通要道，成為武田家日後發展的重要課題。</p>
+<h3 id="15201530年代：接受武士與儒佛思想教育">1520—1530年代：接受武士與儒佛思想教育</h3>
+<ul>
+<li>信玄在武田家成長，接受武士階層的教育。</li>
+<li>傳統傳記記載，他曾接觸禪學、兵法及中國古典軍事思想。</li>
+<li>《孫子》等兵書所強調的情報、機動、速度與戰略判斷，後來常被用來解釋他的軍事思想。</li>
+</ul>
+<p>需要注意的是，後世關於信玄少年時期的許多故事帶有傳奇色彩，未必都能由同時代史料證實。因此，較可靠的理解是：他在武家環境中成長，後來確實展現了出色的軍事與政治能力，但不宜把所有少年軼事都當成確定史實。</p>
+<h3 id="1530年代：與父親武田信虎的關係逐漸緊張">1530年代：與父親武田信虎的關係逐漸緊張</h3>
+<ul>
+<li>武田信虎積極擴張勢力，透過戰爭及政治手段鞏固武田家的地位。</li>
+<li>傳統敘事常將信虎描述為性格強硬、施政嚴厲的領主。</li>
+<li>信玄與父親之間的關係逐漸成為武田家政治變動的重要背景。</li>
+</ul>
+<p>後世常有「信虎偏愛次子武田信繁，打算讓信繁繼承家督」的說法，但相關細節並非全都能確證。信玄後來成功取得家督，則是明確的歷史事實。</p>
+<h3 id="1536年：元服，改名武田晴信">1536年：元服，改名武田晴信</h3>
+<ul>
+<li>信玄舉行元服儀式，正式進入成年武士的政治與軍事生活。</li>
+<li>他改名為「晴信」，這是他日後以武田晴信之名活動的重要起點。</li>
+<li>元服之後，他逐步承擔武田家軍事與政治事務。</li>
+</ul>
+<h3 id="1537年：與今川家建立婚姻聯盟">1537年：與今川家建立婚姻聯盟</h3>
+<ul>
+<li>武田家與駿河國的今川家透過婚姻與外交建立關係。</li>
+<li>這種聯姻是戰國大名常用的外交方式，可以降低邊境衝突風險，讓各家族集中力量處理其他方向的競爭。</li>
+<li>對武田家而言，與今川家維持關係，有助於避免同時面對多個方向的威脅。</li>
+</ul>
+<h3 id="1537年前後：初陣傳說">1537年前後：初陣傳說</h3>
+<p>部分傳記將信玄首次參與戰鬥的時間定於1537年前後，並記載他在信濃方面的軍事行動中展現才幹。不過，少年時期具體戰役與戰功的細節，部分帶有後世傳說成分，應與可確證的成年軍事活動區分。</p>
+<p>**本階段的歷史意義：**信玄在正式掌握武田家之前，已經處於戰國大名家族的權力核心。元服、婚姻外交及父子關係的變化，為他日後奪取家督、擴張領土奠定背景。<a href="https://www.meihaku.jp/armor-basic/gogatsudoll-and-takeda/?utm_source=chatgpt.com">名古屋刀剣ワールド</a></p>
+<hr>
+<h2 id="第二階段：驅逐父親、掌握武田家（15411547年）">第二階段：驅逐父親、掌握武田家（1541—1547年）</h2>
+<h3 id="建立自己的統治權威">建立自己的統治權威</h3>
+<h3 id="1541年：武田信玄驅逐父親武田信虎">1541年：武田信玄驅逐父親武田信虎</h3>
+<p>這是信玄一生最重要的政治轉折之一。</p>
+<ul>
+<li>信玄與部分武田家重臣合作，促使父親武田信虎離開甲斐國。</li>
+<li>信虎被送往駿河，並受到今川家方面的接納。</li>
+<li>信玄隨後正式掌握武田家的家督與領國統治權。</li>
+</ul>
+<p>這一事件並非單純的父子衝突，而是戰國大名家族內部權力重新分配的結果。武田家重臣支持信玄，顯示當時的家督繼承不只取決於血緣，也受到家臣團利益與政治判斷的影響。</p>
+<p>**歷史意義：**信玄從武田家的繼承人轉變為實際統治者，開始建立自己的政治體制與軍事戰略。</p>
+<h3 id="1542年：進攻諏訪地區">1542年：進攻諏訪地區</h3>
+<ul>
+<li>信玄將擴張方向指向信濃國南部的諏訪地區。</li>
+<li>諏訪地區具有重要的地理與軍事價值，可作為武田家進入信濃的重要門戶。</li>
+<li>信玄擊敗諏訪方面的勢力，逐步擴大武田家在信濃的影響力。</li>
+</ul>
+<p>不過，信濃並不是可以一次征服的完整政治單位。當地存在許多彼此競爭的武士家族，武田家必須透過戰爭、聯姻、臣服與地方勢力合作，逐步擴大控制範圍。</p>
+<h3 id="15421543年：諏訪勢力重組">1542—1543年：諏訪勢力重組</h3>
+<ul>
+<li>信玄與諏訪地方勢力的關係持續變化。</li>
+<li>諏訪賴重遭到擊敗後，武田家逐漸介入當地政治。</li>
+<li>信玄其後透過與諏訪氏的婚姻關係及政治安排，鞏固對當地的控制。</li>
+</ul>
+<p>這一過程顯示，信玄並非只依賴武力，也會利用婚姻、家族關係與地方政治安排鞏固征服成果。</p>
+<h3 id="1547年：制定《甲州法度之次第》">1547年：制定《甲州法度之次第》</h3>
+<ul>
+<li>信玄推動領國規範的建立，逐步形成以《甲州法度之次第》為代表的法律與治理體系。</li>
+<li>法度涉及家臣行為、領國秩序與司法規範等事項。</li>
+<li>這類制度有助於減少領國內部的任意行為，維持大名對家臣與地方社會的控制。</li>
+</ul>
+<p>《甲州法度之次第》並不是現代意義上的憲法，也不是完全不受領主約束的法律體系；它是在戰國大名統治環境中，規範家臣及領國秩序的重要制度。</p>
+<p>**歷史意義：**信玄的崛起不只依靠軍事征服，也依靠領國制度的建立。他試圖使武田家成為能夠持續動員人力、財政與軍事資源的政治組織。</p>
+<hr>
+<h2 id="第三階段：信濃攻略與早期挫折（15481552年）">第三階段：信濃攻略與早期挫折（1548—1552年）</h2>
+<h3 id="從擴張者到成熟的戰略指揮官">從擴張者到成熟的戰略指揮官</h3>
+<h3 id="1548年：上田原之戰">1548年：上田原之戰</h3>
+<ul>
+<li>武田軍進一步向信濃北部擴張，與村上義清等地方勢力發生衝突。</li>
+<li>雙方在上田原一帶交戰。</li>
+<li>武田軍遭遇重大挫折，信玄的重要家臣板垣信方、甘利虎泰等人戰死。</li>
+</ul>
+<p>上田原之戰是信玄早期軍事生涯中的重要失敗。它顯示，即使武田軍已具有相當實力，在地形陌生、地方勢力團結及戰場情勢不利的情況下，仍可能遭到重創。</p>
+<p>這場敗仗也使信玄必須重新評估信濃攻略的方式。</p>
+<h3 id="1550年：攻取林城，擴大在信濃的勢力">1550年：攻取林城，擴大在信濃的勢力</h3>
+<ul>
+<li>信玄繼續向信濃中部推進。</li>
+<li>他攻擊小笠原長時的勢力，並取得重要據點。</li>
+<li>武田家在信濃的影響力進一步擴大。</li>
+</ul>
+<p>然而，信濃的地形複雜，各地武士家族擁有相當程度的自主性，武田家必須不斷調整軍事部署與地方政策。</p>
+<h3 id="1550年：戶石城之戰與「戶石崩」">1550年：戶石城之戰與「戶石崩」</h3>
+<ul>
+<li>武田軍進攻村上義清控制的戶石城。</li>
+<li>戶石城防守堅固，武田軍未能如預期攻克。</li>
+<li>武田軍在撤退過程中遭到反擊，蒙受損失。</li>
+</ul>
+<p>這場挫敗常被稱為「戶石崩」。它與上田原之戰一起，反映信玄在信濃擴張初期所遭遇的阻力。</p>
+<h3 id="1551年：真田幸隆等人的作用逐漸顯現">1551年：真田幸隆等人的作用逐漸顯現</h3>
+<ul>
+<li>武田家持續運用地方豪族、情報與外交關係，尋找突破信濃局勢的機會。</li>
+<li>真田幸隆等地方武士在武田家對信濃的軍事活動中發揮重要作用。</li>
+<li>信玄逐漸建立起更廣泛的地方合作網絡。</li>
+</ul>
+<p>真田幸隆後來成為武田家重要的軍事人物，其家族也因武田家的擴張而逐漸提升地位。</p>
+<h3 id="1552年前後：武田家勢力持續向信濃擴張">1552年前後：武田家勢力持續向信濃擴張</h3>
+<ul>
+<li>武田家在信濃的軍事活動持續進行。</li>
+<li>信玄一方面運用軍隊施加壓力，另一方面利用地方勢力之間的矛盾，逐步擴大影響範圍。</li>
+<li>這些行動為日後與上杉謙信的長期對抗奠定基礎。</li>
+</ul>
+<p>**本階段的歷史意義：**上田原與戶石城的挫敗，使信玄更加清楚地認識到，信濃攻略不能只靠直接攻城與正面決戰，還必須依靠情報、地形、地方政治及長期軍事部署。</p>
+<hr>
+<h2 id="第四階段：川中島之戰與上杉謙信的對抗（15531564年）">第四階段：川中島之戰與上杉謙信的對抗（1553—1564年）</h2>
+<h3 id="戰國史上最著名的宿敵之一">戰國史上最著名的宿敵之一</h3>
+<p>川中島之戰，是武田信玄與上杉謙信之間一系列軍事衝突的總稱。兩方主要爭奪信濃北部，尤其是千曲川與犀川交會一帶的戰略要地。</p>
+<p>這一系列戰爭通常概括為五次主要對峙，但各次戰役的規模、交戰方式及歷史意義並不相同。尤其第四次川中島之戰，因戰況激烈、雙方傷亡較大，而成為後世最著名的一次。</p>
+<h3 id="1553年：第一次川中島之戰">1553年：第一次川中島之戰</h3>
+<ul>
+<li>武田軍與上杉方面的軍隊在川中島一帶展開對峙。</li>
+<li>雙方圍繞信濃北部的城砦、交通線及地方勢力進行競爭。</li>
+<li>這次交戰未能徹底解決雙方對信濃的控制權爭議。</li>
+</ul>
+<p>川中島並非一座城池，而是具有重要戰略價值的區域。控制此地，有助於武田家向北擴張，也關係到上杉方面對越後南部邊境的防衛。</p>
+<h3 id="1555年：第二次川中島之戰">1555年：第二次川中島之戰</h3>
+<ul>
+<li>武田軍與上杉軍再度在川中島一帶對峙。</li>
+<li>雙方長時間維持對峙，並未取得足以終結衝突的決定性勝利。</li>
+<li>戰事反映雙方都具有相當的軍事動員能力，且難以迫使對方完全退出該區域。</li>
+</ul>
+<h3 id="1557年：第三次川中島之戰">1557年：第三次川中島之戰</h3>
+<ul>
+<li>武田家繼續向信濃北部施加壓力。</li>
+<li>上杉謙信則試圖阻止武田勢力進一步擴張。</li>
+<li>雙方持續爭奪城砦、道路與地方勢力的支持。</li>
+</ul>
+<p>這幾次戰事雖然沒有完全改變雙方的基本格局，卻使川中島逐漸成為戰國時代最重要的軍事競爭地區之一。</p>
+<h3 id="1559年：信玄出家，確立「信玄」之名">1559年：信玄出家，確立「信玄」之名</h3>
+<ul>
+<li>武田晴信出家，改以「信玄」為號。</li>
+<li>此後，後世通常以「武田信玄」稱呼他。</li>
+<li>出家並不表示他退出政治或軍事生活；他仍然是武田家的實際統治者。</li>
+</ul>
+<p>信玄在戰國時代的身分具有多重性：他既是武家領主，也是領國的行政管理者，並利用宗教與傳統政治文化建立統治正當性。</p>
+<h3 id="1561年：第四次川中島之戰">1561年：第四次川中島之戰</h3>
+<p>這是武田信玄與上杉謙信對抗中最著名的一次戰役。</p>
+<ul>
+<li>上杉謙信率軍進入川中島地區，試圖扭轉當地局勢。</li>
+<li>武田軍與上杉軍在八幡原一帶發生激烈戰鬥。</li>
+<li>雙方均遭受重大損失，武田家重要將領武田信繁、山本勘助等人也在傳統記載中與此役的死傷密切相關。</li>
+</ul>
+<p>後世流傳著上杉謙信親自突入武田本陣、與信玄交鋒的著名故事。不過，這類細節的史料可靠性存在爭議，應視為具有傳奇色彩的戰役敘事，而不宜將所有細節都當成確定事實。</p>
+<p>**戰役結果：**雙方均未能完全消滅對方的軍事力量。雖然上杉軍成功對武田軍造成重大打擊，武田家仍保有其主要領地與軍事實力。</p>
+<h3 id="1564年：第五次川中島之戰">1564年：第五次川中島之戰</h3>
+<ul>
+<li>武田與上杉兩方再度在川中島一帶對峙。</li>
+<li>這次交戰未演變成如第四次戰役那樣的激烈決戰。</li>
+<li>此後，雙方在川中島的主要軍事對抗逐漸減少，戰略重心開始轉向其他方向。</li>
+</ul>
+<h3 id="川中島之戰的歷史意義">川中島之戰的歷史意義</h3>
+<p>第一，這些戰役使武田信玄與上杉謙信成為日本戰國史上最著名的軍事對手。</p>
+<p>第二，川中島的長期對抗顯示，戰國大名的擴張不只是領土爭奪，也包括交通線、地方豪族與區域政治秩序的控制。</p>
+<p>第三，雖然信玄在軍事上未能徹底擊敗謙信，但武田家仍成功向信濃其他地區擴張。這說明戰國大名的成就不能只以某一場著名戰役的勝負判斷。</p>
+<hr>
+<h2 id="第五階段：擴大勢力，與北條、今川等家族角力（15651570年）">第五階段：擴大勢力，與北條、今川等家族角力（1565—1570年）</h2>
+<h3 id="從信濃擴張轉向關東與駿河的戰略競爭">從信濃擴張轉向關東與駿河的戰略競爭</h3>
+<h3 id="1560年：桶狹間之戰帶來的政治變化">1560年：桶狹間之戰帶來的政治變化</h3>
+<ul>
+<li>1560年，織田信長在桶狹間之戰中擊敗今川義元。</li>
+<li>今川家原有的政治與軍事威望受到重大打擊。</li>
+<li>日本東海道地區的權力平衡開始改變。</li>
+</ul>
+<p>這場戰役並非由信玄指揮，但對他的戰略布局產生長期影響。今川家勢力衰退，為武田家後來向駿河擴張創造了機會。</p>
+<h3 id="1560年代中期：與北條家反覆調整關係">1560年代中期：與北條家反覆調整關係</h3>
+<ul>
+<li>武田家與相模國的北條家，既可能合作，也可能因領土利益而發生衝突。</li>
+<li>北條家控制關東的重要區域，對武田家在東日本的戰略布局具有影響。</li>
+<li>信玄必須根據與今川、北條及上杉等勢力的關係，調整作戰方向。</li>
+</ul>
+<p>戰國大名之間的聯盟往往不是永久性的。家族聯姻可以建立合作，但當領土與戰略利益發生衝突時，原有同盟也可能破裂。</p>
+<h3 id="1568年：武田信玄進攻駿河">1568年：武田信玄進攻駿河</h3>
+<ul>
+<li>信玄開始向駿河國擴張，對今川家構成直接威脅。</li>
+<li>駿河具有重要的交通與經濟價值，也能為武田家提供通往太平洋沿岸的戰略空間。</li>
+<li>武田家與今川家的關係因此發生重大變化。</li>
+</ul>
+<p>這場擴張也影響了武田家與北條家的關係，因為北條家與今川家之間存在政治聯繫。</p>
+<h3 id="1569年：三增峠之戰">1569年：三增峠之戰</h3>
+<ul>
+<li>武田軍與北條軍在相模方向的三增峠一帶交戰。</li>
+<li>信玄在撤離小田原一帶後，於行軍過程中與北條軍發生戰鬥。</li>
+<li>武田軍成功突破北條方面的阻擊，顯示信玄具有在不利地形中組織撤退與反擊的能力。</li>
+</ul>
+<p>不過，武田軍雖然取得戰術上的成功，並未因此立即消滅北條家或全面控制關東。</p>
+<h3 id="1570年：武田家勢力進一步擴大">1570年：武田家勢力進一步擴大</h3>
+<ul>
+<li>武田家在駿河及周邊地區持續進行軍事活動。</li>
+<li>信玄逐步建立起橫跨甲斐、信濃及部分駿河地區的勢力範圍。</li>
+<li>他開始具備從東日本內陸向西進軍、介入中央政治的條件。</li>
+</ul>
+<p>**本階段的歷史意義：**信玄不再只將注意力放在信濃，而是將戰略目標擴展到駿河、相模與東海道周邊。這一轉變為他晚年向京都方向進軍奠定了基礎。</p>
+<hr>
+<h2 id="第六階段：武田家全盛期與領國治理（15671571年）">第六階段：武田家全盛期與領國治理（1567—1571年）</h2>
+<h3 id="軍事擴張與內政建設並進">軍事擴張與內政建設並進</h3>
+<h3 id="1567年：嫡子武田義信事件">1567年：嫡子武田義信事件</h3>
+<ul>
+<li>武田信玄的長子武田義信與今川義元之女結婚，這段婚姻原本具有鞏固武田、今川兩家同盟的作用。</li>
+<li>然而，隨著信玄對外戰略改變，武田家與今川家的關係逐漸惡化。</li>
+<li>義信事件發生後，義信失去繼承人地位，後來在幽禁期間死亡。</li>
+<li>此事對武田家內部及與今川家的關係造成重大影響。</li>
+</ul>
+<p>關於義信事件的具體原因，歷史上存在不同解釋。一般認為，武田家內部的繼承問題，以及對今川家政策的分歧，是理解此事的重要背景，但不宜將所有細節視為已完全確定。</p>
+<h3 id="1568年：正式進攻駿河">1568年：正式進攻駿河</h3>
+<ul>
+<li>信玄決定進軍駿河，打破與今川家長期維持的同盟關係。</li>
+<li>駿河位於甲斐國南方，具有沿海交通與經濟上的戰略價值。</li>
+<li>武田家向駿河擴張，反映信玄已不滿足於控制甲斐與信濃，而是希望進一步改變東海道的權力平衡。</li>
+</ul>
+<h3 id="1569年：攻取駿河的重要據點">1569年：攻取駿河的重要據點</h3>
+<ul>
+<li>武田軍持續進攻今川家領地，今川氏的控制力逐漸崩潰。</li>
+<li>德川家康也從另一方向向遠江、駿河地區擴張。</li>
+<li>今川家原有的勢力範圍逐漸被武田與德川兩方瓜分。</li>
+</ul>
+<p>今川家的衰敗，使日本東海道地區的權力結構發生重大變化，也使武田家與北條家的關係更加緊張。</p>
+<h3 id="1569年：小田原城之戰與三增峠之戰">1569年：小田原城之戰與三增峠之戰</h3>
+<ul>
+<li>武田信玄率軍進入相模國，並包圍北條家的重要據點小田原城。</li>
+<li>小田原城防禦堅固，武田軍未能迅速攻下。</li>
+<li>武田軍撤退途中，在三增峠一帶與北條軍交戰，成功突破阻擊。</li>
+</ul>
+<p>這場戰事顯示，信玄具有深入敵境作戰、組織撤退與突破包圍的能力。不過，武田軍並未因此消滅北條家，雙方仍然是東日本的重要競爭者。</p>
+<h3 id="1571年：與北條家恢復和平">1571年：與北條家恢復和平</h3>
+<ul>
+<li>北條氏康去世後，北條家重新評估對外政策。</li>
+<li>武田與北條之間達成和議，兩家的關係再次調整。</li>
+<li>信玄因此可以將更多注意力放在西方，為日後進軍遠江、三河與京都方向作準備。</li>
+</ul>
+<p>**歷史意義：**信玄在這一階段將武田家勢力推向新的高峰。他不僅擴張領土，也透過外交調整避免同時與所有鄰國作戰，展現戰國大名的戰略思維。<a href="https://kotobank.jp/word/%E6%AD%A6%E7%94%B0%E4%BF%A1%E7%8E%84-18666?utm_source=chatgpt.com">コトバンク</a></p>
+<hr>
+<h2 id="第七階段：西上作戰與三方原之戰（1572年）">第七階段：西上作戰與三方原之戰（1572年）</h2>
+<h3 id="武田信玄與織田信長、德川家康正面交鋒">武田信玄與織田信長、德川家康正面交鋒</h3>
+<h3 id="1572年：武田信玄決定向西進軍">1572年：武田信玄決定向西進軍</h3>
+<ul>
+<li>信玄在鞏固東方戰略環境後，開始向遠江、三河方向大規模進軍。</li>
+<li>這場軍事行動通常稱為「西上作戰」。</li>
+<li>信玄的軍事行動不只針對德川家康，也與當時日本中央政治的權力鬥爭有關。</li>
+</ul>
+<p>當時，將軍足利義昭與織田信長之間的關係日益惡化。足利義昭試圖聯合反對信長的勢力，削弱信長在京都及周邊地區的影響力。</p>
+<p>武田信玄與其他反信長勢力之間存在政治聯繫，因此西上作戰也被視為當時反信長包圍網的重要一環。</p>
+<h3 id="1572年10月：武田軍正式出兵">1572年10月：武田軍正式出兵</h3>
+<ul>
+<li>信玄親自率領大軍離開甲斐，向西推進。</li>
+<li>武田軍分別向遠江、三河等地展開軍事行動。</li>
+<li>德川家康面對強大的武田軍，必須依靠城池防禦與有限的兵力抵抗。</li>
+</ul>
+<p>這次行動展現出武田家經過多年擴張後，已具有跨越多個地區、發動大型軍事行動的能力。</p>
+<h3 id="1572年12月：三方原之戰">1572年12月：三方原之戰</h3>
+<p>三方原之戰是武田信玄一生中最著名的軍事勝利之一。</p>
+<ul>
+<li>武田軍進入遠江國，接近德川家康的主要據點濱松。</li>
+<li>德川家康與織田信長方面的軍隊試圖阻止武田軍。</li>
+<li>雙方在三方原一帶交戰。</li>
+<li>武田軍取得明顯勝利，德川軍遭受重大損失。</li>
+</ul>
+<p>德川家康在這場戰役中遭遇嚴重挫敗，後世也流傳他撤退時驚慌失措的故事。這些故事部分帶有傳奇色彩，但武田軍在戰役中取得優勢，則是歷史上較為明確的結論。</p>
+<h3 id="三方原之戰的歷史意義">三方原之戰的歷史意義</h3>
+<p><strong>第一，證明武田軍仍具有強大的野戰能力。</strong></p>
+<p>信玄已經歷多年的戰爭與領國經營，能夠有效組織大軍，並在戰場上擊敗德川方面的軍隊。</p>
+<p><strong>第二，德川家康的勢力受到嚴重打擊。</strong></p>
+<p>德川家康雖然未因此滅亡，但三方原之戰使他深刻體會到面對強敵時的危險，也成為其軍事生涯的重要經驗。</p>
+<p><strong>第三，武田信玄的西上作戰一度威脅織田信長的政治布局。</strong></p>
+<p>假如信玄能夠持續向西推進，日本中央政局可能出現新的變化。然而，戰爭的持續需要穩定的後勤、健康的統帥與可靠的盟友，而這些條件並未全部具備。</p>
+<hr>
+<h2 id="第八階段：武田信玄病逝（1573年）">第八階段：武田信玄病逝（1573年）</h2>
+<h3 id="西上作戰尚未完成，戰國局勢便發生轉折">西上作戰尚未完成，戰國局勢便發生轉折</h3>
+<h3 id="1573年初：武田軍繼續向三河推進">1573年初：武田軍繼續向三河推進</h3>
+<ul>
+<li>三方原之戰後，武田軍繼續進入三河地區。</li>
+<li>武田軍攻擊德川方面的據點，試圖擴大戰果。</li>
+<li>西上作戰仍在進行，但軍隊需要面對長途行軍、後勤補給及持續作戰的壓力。</li>
+</ul>
+<h3 id="1573年春：野田城之戰">1573年春：野田城之戰</h3>
+<ul>
+<li>武田軍進攻三河國的野田城。</li>
+<li>野田城是德川家康方面的重要防禦據點。</li>
+<li>武田軍圍攻城池，但戰事並未迅速完成。</li>
+</ul>
+<p>信玄在這段時間健康惡化，武田軍的軍事行動也受到影響。</p>
+<h3 id="1573年4月12日：武田信玄逝世">1573年4月12日：武田信玄逝世</h3>
+<ul>
+<li>信玄在西上作戰期間病重。</li>
+<li>他在返回甲斐的途中，於信濃國伊那一帶的駒場去世。</li>
+<li>傳統記載其享年53歲，按現代周歲計算則約51歲。</li>
+</ul>
+<p>信玄的確切死因並未得到完全確證。後世有關肺結核、胃病或其他疾病的說法，不能全部視為已被史料證實的結論。</p>
+<h3 id="信玄死後：武田家隱瞞死訊">信玄死後：武田家隱瞞死訊</h3>
+<ul>
+<li>武田家面臨重要的繼承問題。</li>
+<li>為避免敵對勢力趁機進攻，信玄死後的消息一度被隱瞞。</li>
+<li>其子武田勝賴繼承武田家的統治地位。</li>
+</ul>
+<p>信玄生前建立的軍事力量與領國體制仍然強大，但他的去世使武田家失去一位兼具軍事、政治與外交能力的統帥。</p>
+<h3 id="1573年以後：中央政治格局改變">1573年以後：中央政治格局改變</h3>
+<ul>
+<li>信玄去世後，武田家未能繼續以同樣的方式推動西上作戰。</li>
+<li>織田信長逐步擴大勢力，並在1573年將足利義昭逐出京都，室町幕府的政治秩序至此走向終結。</li>
+<li>武田家雖然仍保有強大軍事力量，但面對織田、德川等勢力的壓力，日後逐漸陷入困境。</li>
+</ul>
+<p>**歷史意義：**信玄之死不只是武田家失去一位領袖，也改變了戰國時代的權力平衡。假如信玄沒有病逝，日本戰國史的發展是否會不同，是一個值得思考的歷史假設，但不能據此斷言他一定能夠擊敗織田信長或統一日本。<a href="https://kotobank.jp/word/%E6%AD%A6%E7%94%B0%E4%BF%A1%E7%8E%84-18666?utm_source=chatgpt.com">コトバンク</a></p>
+<hr>
+<h1 id="三、武田信玄生平重要年份總表">三、武田信玄生平重要年份總表</h1>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1521年</td>
+<td>出生於甲斐國</td>
+<td>武田家嫡子誕生</td>
+</tr>
+<tr>
+<td>1536年</td>
+<td>元服，改名晴信</td>
+<td>正式進入成年武士的政治生活</td>
+</tr>
+<tr>
+<td>1537年</td>
+<td>與今川家建立婚姻聯盟</td>
+<td>穩定周邊外交關係</td>
+</tr>
+<tr>
+<td>1541年</td>
+<td>驅逐父親武田信虎，繼承家督</td>
+<td>掌握武田家的實際統治權</td>
+</tr>
+<tr>
+<td>1542年</td>
+<td>進攻諏訪地區</td>
+<td>開始擴張至信濃</td>
+</tr>
+<tr>
+<td>1547年</td>
+<td>制定《甲州法度之次第》</td>
+<td>強化領國制度</td>
+</tr>
+<tr>
+<td>1548年</td>
+<td>上田原之戰失利</td>
+<td>遭遇早期重大軍事挫折</td>
+</tr>
+<tr>
+<td>1550年</td>
+<td>戶石城之戰失利</td>
+<td>信濃攻略面臨阻力</td>
+</tr>
+<tr>
+<td>1553年</td>
+<td>第一次川中島之戰</td>
+<td>與上杉謙信展開長期對抗</td>
+</tr>
+<tr>
+<td>1555年</td>
+<td>第二次川中島之戰</td>
+<td>雙方持續爭奪信濃北部</td>
+</tr>
+<tr>
+<td>1557年</td>
+<td>第三次川中島之戰</td>
+<td>川中島對抗延續</td>
+</tr>
+<tr>
+<td>1559年</td>
+<td>出家，以信玄為號</td>
+<td>武田晴信轉為後世熟知的武田信玄</td>
+</tr>
+<tr>
+<td>1561年</td>
+<td>第四次川中島之戰</td>
+<td>雙方發生最著名的激烈戰役</td>
+</tr>
+<tr>
+<td>1564年</td>
+<td>第五次川中島之戰</td>
+<td>長期對抗逐漸轉向其他戰略方向</td>
+</tr>
+<tr>
+<td>1568年</td>
+<td>進攻駿河</td>
+<td>武田家擴大東海道勢力</td>
+</tr>
+<tr>
+<td>1569年</td>
+<td>小田原城之戰、三增峠之戰</td>
+<td>與北條家展開激烈競爭</td>
+</tr>
+<tr>
+<td>1571年</td>
+<td>與北條家恢復和平</td>
+<td>得以集中力量向西擴張</td>
+</tr>
+<tr>
+<td>1572年</td>
+<td>發動西上作戰</td>
+<td>介入日本中央政治</td>
+</tr>
+<tr>
+<td>1572年12月</td>
+<td>三方原之戰擊敗德川家康</td>
+<td>武田軍取得重要勝利</td>
+</tr>
+<tr>
+<td>1573年初</td>
+<td>攻擊野田城</td>
+<td>西上作戰持續</td>
+</tr>
+<tr>
+<td>1573年4月12日</td>
+<td>病逝於信濃駒場一帶</td>
+<td>西上作戰中止，武田家進入新階段</td>
+</tr>
+<tr>
+<td>1576年</td>
+<td>傳統記載舉行正式本葬</td>
+<td>信玄身後的祭祀與紀念逐步確立</td>
+</tr>
+<tr>
+<td>1582年</td>
+<td>武田家滅亡</td>
+<td>信玄建立的政權未能長期延續</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="四、武田信玄的主要功績">四、武田信玄的主要功績</h1>
+<h2 id="1-軍事方面：建立強大的武田軍團">1. 軍事方面：建立強大的武田軍團</h2>
+<p>信玄以長期作戰、機動部署與地形運用聞名。他不只在川中島與上杉謙信對抗，也在三增峠之戰、三方原之戰中展現指揮能力。</p>
+<p>不過，「戰國最強軍團」是後世常見的評價性稱呼，不是可以直接量化的歷史結論。武田軍的戰力固然強大，但其優勢仍受到兵員、財政、後勤及地理條件限制。</p>
+<h2 id="2-政治方面：制定《甲州法度之次第》">2. 政治方面：制定《甲州法度之次第》</h2>
+<p>《甲州法度之次第》是武田信玄領國治理的重要制度。</p>
+<p>它的意義在於：</p>
+<ul>
+<li>規範家臣及領國內部的行為。</li>
+<li>維持領主對家臣團的管理。</li>
+<li>強化司法與行政秩序。</li>
+<li>使軍事擴張能夠建立在相對穩定的領國體制之上。</li>
+</ul>
+<p>這類法度有助於將戰國大名的統治從單純依靠個人威望，逐步轉向制度化管理。</p>
+<h2 id="3-經濟方面：開發金山與地方資源">3. 經濟方面：開發金山與地方資源</h2>
+<p>甲斐國山地較多，農業生產受到地形限制。信玄重視金山及其他礦產資源，也利用地方產業與交通體系支撐軍事活動。</p>
+<p>礦產開發、土地管理及城下町發展，都是武田家維持長期戰爭能力的重要基礎。</p>
+<h2 id="4-水利方面：信玄堤與治水工程">4. 水利方面：信玄堤與治水工程</h2>
+<p>甲斐國部分地區容易受到河川氾濫影響，因此治水對農業、聚落與領國穩定具有重要意義。</p>
+<p>傳統上，武田信玄與信玄堤等治水工程密切相關。相關工程反映出武田家對河川治理的重視，也使信玄不只是軍事領袖，更被後世視為重視民生與領國建設的統治者。</p>
+<p>不過，現存治水設施往往經歷後世多次修築、改良與維護，不能把今日所有設施都直接認定為信玄本人一次完成的工程。日本國土交通省的相關資料，也將信玄與甲州流治水技術的發展傳統聯繫起來。<a href="https://www.ktr.mlit.go.jp/koufu/koufu00143.html?utm_source=chatgpt.com">国土交通省　関東地方整備局</a></p>
+<h2 id="5-外交方面：靈活調整同盟關係">5. 外交方面：靈活調整同盟關係</h2>
+<p>信玄與今川、北條等家族之間，曾透過婚姻與外交建立合作關係；當戰略利益發生變化時，也會重新調整同盟。</p>
+<p>這種靈活性是戰國大名維持生存與擴張的重要能力，但也可能帶來反效果，例如武田家與今川家的同盟破裂後，周邊政治環境變得更加複雜。</p>
+<hr>
+<h1 id="五、武田信玄與日本戰國三位重要人物的關係">五、武田信玄與日本戰國三位重要人物的關係</h1>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>主要關係</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上杉謙信</td>
+<td>長期軍事對手</td>
+<td>川中島之戰的另一方領袖</td>
+</tr>
+<tr>
+<td>德川家康</td>
+<td>西上作戰中的主要對手</td>
+<td>三方原之戰敗於信玄，但日後逐漸壯大</td>
+</tr>
+<tr>
+<td>織田信長</td>
+<td>戰略上的重要對手</td>
+<td>信玄的西上作戰曾威脅信長的政治布局</td>
+</tr>
+<tr>
+<td>今川義元</td>
+<td>曾經的盟友及姻親關係網絡中的重要人物</td>
+<td>今川家衰退後，武田家轉而進攻駿河</td>
+</tr>
+<tr>
+<td>北條氏康</td>
+<td>競爭者與階段性盟友</td>
+<td>雙方因領土利益反覆交戰與和議</td>
+</tr>
+<tr>
+<td>真田幸隆</td>
+<td>武田家重要地方武士</td>
+<td>協助武田家擴張信濃勢力</td>
+</tr>
+<tr>
+<td>武田信繁</td>
+<td>信玄之弟、重要家臣</td>
+<td>在第四次川中島之戰中戰死</td>
+</tr>
+<tr>
+<td>武田勝賴</td>
+<td>信玄之子與繼承人</td>
+<td>繼承武田家，但未能維持其長期優勢</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="六、武田信玄為何未能統一日本？">六、武田信玄為何未能統一日本？</h1>
+<p>武田信玄在1572年發動西上作戰，並在三方原之戰中擊敗德川家康，顯示他已具備影響日本中央政局的能力。然而，他始終未能抵達足以左右全國政治的決定性階段。</p>
+<p>主要原因包括：</p>
+<h3 id="1-過早病逝">1. 過早病逝</h3>
+<p>信玄在西上作戰期間病逝，使武田家失去最有經驗的軍事統帥。繼承者武田勝賴雖然具備軍事能力，但必須面對更加複雜的政治與軍事環境。</p>
+<h3 id="2-武田家的地理與後勤限制">2. 武田家的地理與後勤限制</h3>
+<p>甲斐位於內陸山區，向西進軍必須跨越複雜地形。距離越遠，軍隊補給、兵員調度及持續作戰的成本就越高。</p>
+<h3 id="3-日本中央政局不斷變化">3. 日本中央政局不斷變化</h3>
+<p>織田信長持續擴張勢力，德川家康也在三方原之戰後逐步恢復實力。武田家若要長期向西擴張，必須同時考慮軍事、外交與後勤問題。</p>
+<h3 id="4-個人能力與制度傳承的差距">4. 個人能力與制度傳承的差距</h3>
+<p>信玄能夠透過個人威望、軍事經驗及外交手腕整合武田家，但這些能力不一定能完整傳承給下一代。</p>
+<p>這也是許多戰國大名面臨的共同問題：<strong>創業者能夠建立強大的政權，不代表繼承者必然能維持同樣的優勢。</strong></p>
+<hr>
+<h1 id="七、總結：武田信玄的歷史定位">七、總結：武田信玄的歷史定位</h1>
+<p>武田信玄是日本戰國時代最具代表性的軍事與政治人物之一。他透過戰爭、外交、法律、經濟開發與治水工程，將甲斐國發展為具有廣泛影響力的戰國大名領國。</p>
+<p>他的歷史地位可以從三個方面理解：</p>
+<ol>
+<li>**軍事領袖：**以川中島之戰、三增峠之戰及三方原之戰聞名，展現出優秀的戰略與指揮能力。</li>
+<li>**領國治理者：**透過《甲州法度之次第》、交通建設、資源開發與治水工程，維持武田家的軍事與經濟基礎。</li>
+<li>**戰國政治的重要參與者：**西上作戰一度威脅織田信長與德川家康的政治布局，但因病逝而未能完成其戰略目標。</li>
+</ol>
+<p>**武田信玄的一生，是從地方大名崛起、建立強大領國，到試圖進入日本中央政治核心的歷程。**他的成功顯示戰國大名可以透過軍事與內政建設擴大權力；他的早逝與武田家後來的滅亡，則說明在戰國時代，個人能力、地理條件、制度傳承與政治時機，往往共同決定一個政權的興衰。</p>
+<h3 id="參考資料">參考資料</h3>
+<ul>
+<li><a href="https://kawanakajima.nagano.jp/character/takeda-shingen/?utm_source=chatgpt.com">長野市「川中島之戰」官方歷史資料</a></li>
+<li><a href="https://www.ktr.mlit.go.jp/koufu/koufu00143.html?utm_source=chatgpt.com">日本國土交通省：武田信玄與傳統治水工程</a></li>
+<li><a href="https://kotobank.jp/word/%E6%AD%A6%E7%94%B0%E4%BF%A1%E7%8E%84-18666?utm_source=chatgpt.com">日本大百科全書：武田信玄</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>
