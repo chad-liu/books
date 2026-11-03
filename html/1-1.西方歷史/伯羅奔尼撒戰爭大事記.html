@@ -1,0 +1,699 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="伯羅奔尼撒戰爭大事記">伯羅奔尼撒戰爭大事記</h1>
+<h2 id="古希臘世界的霸權之爭（西元前431年前404年）">——古希臘世界的霸權之爭（西元前431年—前404年）</h2>
+<p>伯羅奔尼撒戰爭（Peloponnesian War）是古希臘歷史上最重要的戰爭之一，主要交戰雙方為以雅典為首的提洛同盟，以及以斯巴達為首的伯羅奔尼撒同盟。戰爭從西元前431年持續至前404年，前後約27年，最後以雅典戰敗、斯巴達取得優勢告終。</p>
+<p>這場戰爭不僅改變了雅典與斯巴達的權力消長，也嚴重削弱了整個希臘世界，為後來馬其頓的崛起及腓力二世、亞歷山大大帝統一希臘諸邦創造了歷史條件。</p>
+<hr>
+<h1 id="一、戰爭背景與主要勢力">一、戰爭背景與主要勢力</h1>
+<h2 id="（一）兩大陣營的形成">（一）兩大陣營的形成</h2>
+<h3 id="1-雅典：海上霸權與民主政治">1. 雅典：海上霸權與民主政治</h3>
+<p>西元前480年，希臘聯軍在薩拉米斯海戰中擊敗波斯艦隊後，雅典憑藉強大的海軍逐漸成為愛琴海世界的主要強權。</p>
+<p>西元前478／477年左右，雅典主導成立提洛同盟，最初的主要目的是防範波斯帝國再次入侵。然而，隨著雅典實力增長，同盟逐漸演變成以雅典為核心的海上帝國。</p>
+<p>雅典的主要優勢包括：</p>
+<ul>
+<li><strong>強大的海軍：</strong> 控制愛琴海重要航線，維持海外貿易。</li>
+<li><strong>經濟與財政實力：</strong> 憑藉商業、港口及同盟貢金支撐軍事力量。</li>
+<li><strong>民主政治：</strong> 公民大會在政治決策中扮演重要角色。</li>
+<li><strong>長城與港口：</strong> 雅典與比雷埃夫斯港之間的長城系統，使雅典即使遭陸軍包圍，仍能依靠海運維持聯繫。</li>
+</ul>
+<p>然而，雅典對盟邦的控制愈來愈強硬，也引起部分希臘城邦的不滿。</p>
+<h3 id="2-斯巴達：陸軍霸權與伯羅奔尼撒同盟">2. 斯巴達：陸軍霸權與伯羅奔尼撒同盟</h3>
+<p>斯巴達位於伯羅奔尼撒半島南部，以嚴格的軍事教育、紀律森嚴的社會制度及強大的重裝步兵聞名。</p>
+<p>斯巴達主導的伯羅奔尼撒同盟，包含科林斯、麥加拉等城邦及其他盟友。其力量主要建立在陸軍與伯羅奔尼撒半島的政治聯盟之上。</p>
+<p>斯巴達的主要優勢包括：</p>
+<ul>
+<li><strong>強大的陸軍：</strong> 重裝步兵作戰能力突出。</li>
+<li><strong>伯羅奔尼撒同盟：</strong> 能夠動員多個城邦共同對抗雅典。</li>
+<li><strong>反對雅典擴張：</strong> 雅典的海上霸權威脅斯巴達的地位。</li>
+<li><strong>政治制度差異：</strong> 斯巴達的寡頭政治傳統，與雅典的民主政治形成鮮明對比。</li>
+</ul>
+<p>不過，斯巴達缺乏雅典那樣強大的海軍，若要擊敗雅典，便必須設法突破雅典的海上優勢。</p>
+<h2 id="（二）戰爭爆發的根本原因">（二）戰爭爆發的根本原因</h2>
+<p>伯羅奔尼撒戰爭並非單純由某一次外交衝突引起，而是長期權力競爭累積的結果。</p>
+<h3 id="1-雅典勢力擴張">1. 雅典勢力擴張</h3>
+<p>雅典將原本以防禦波斯為目標的提洛同盟，逐漸轉變為控制盟邦的海上帝國。斯巴達及其盟友擔心，雅典的勢力將進一步擴張，威脅整個希臘世界的權力平衡。</p>
+<h3 id="2-科林斯與雅典的衝突">2. 科林斯與雅典的衝突</h3>
+<p>科林斯是斯巴達的重要盟友，也是具有海上貿易傳統的城邦。雅典在西北希臘及愛琴海周邊的擴張，與科林斯的利益發生衝突，使斯巴達面臨盟友施壓。</p>
+<h3 id="3-科西拉與波提狄亞事件">3. 科西拉與波提狄亞事件</h3>
+<p>西元前433—432年左右，雅典與科林斯在科西拉（今克基拉島）及波提狄亞等問題上發生衝突，進一步加深雙方敵意。</p>
+<h3 id="4-麥加拉法令">4. 麥加拉法令</h3>
+<p>雅典對斯巴達盟友麥加拉採取經濟制裁，限制其進入雅典及雅典控制的市場。這項措施加劇了外交危機。</p>
+<h3 id="5-斯巴達的戰爭決策">5. 斯巴達的戰爭決策</h3>
+<p>西元前432年，斯巴達及其盟友經過討論後，認定雅典違反相關協議，戰爭風險迅速升高。</p>
+<p><strong>核心問題：</strong> 雅典崛起所造成的權力變化，使斯巴達及其盟友愈來愈難以接受既有秩序。這是理解整場戰爭最重要的背景。</p>
+<hr>
+<h1 id="二、伯羅奔尼撒戰爭第一階段：阿基達穆斯戰爭（前431前421年）">二、伯羅奔尼撒戰爭第一階段：阿基達穆斯戰爭（前431—前421年）</h1>
+<p>這一階段又稱「十年戰爭」，是伯羅奔尼撒戰爭的第一個主要階段。斯巴達依靠陸軍入侵雅典周邊的阿提卡地區，雅典則利用海軍優勢襲擊伯羅奔尼撒半島沿岸。</p>
+<p>雙方都無法迅速取得決定性勝利，雅典更因瘟疫而遭受嚴重損失。最後，兩國於前421年簽訂尼西阿斯和約。<a href="https://academic.oup.com/edited-volume/61673/chapter-abstract/549687938?utm_source=chatgpt.com">OUP Academic</a></p>
+<h2 id="（一）前431年：戰爭正式爆發">（一）前431年：戰爭正式爆發</h2>
+<h3 id="1-底比斯突襲普拉提亞">1. 底比斯突襲普拉提亞</h3>
+<p>前431年春季，斯巴達的盟友底比斯企圖控制普拉提亞。</p>
+<p>普拉提亞與雅典關係密切，底比斯則希望將其納入波奧提亞地區的政治聯盟。底比斯軍隊及其支持者試圖突襲普拉提亞，但行動失敗，部分底比斯士兵遭到俘虜。</p>
+<p>這場事件成為戰爭正式爆發的重要導火線。</p>
+<p><strong>歷史意義：</strong> 原本存在於外交與區域政治中的矛盾，開始轉化為公開的軍事衝突。</p>
+<h3 id="2-斯巴達入侵阿提卡">2. 斯巴達入侵阿提卡</h3>
+<p>前431年夏季，斯巴達國王阿基達穆斯二世率領伯羅奔尼撒同盟軍隊入侵阿提卡。</p>
+<p>斯巴達軍隊破壞農田、果園及周邊村莊，希望迫使雅典人出城迎戰。</p>
+<p>然而，雅典領袖伯里克里斯採取不同策略：他要求居民撤入雅典城牆及長城保護範圍內，避免與斯巴達陸軍進行不利於己方的決戰。</p>
+<p>雅典的作戰策略是：</p>
+<ul>
+<li>依靠城牆防禦斯巴達陸軍。</li>
+<li>透過比雷埃夫斯港維持糧食及物資供應。</li>
+<li>利用海軍襲擊伯羅奔尼撒沿岸。</li>
+<li>避免在陸地上與斯巴達主力正面交戰。</li>
+</ul>
+<p>這種策略充分利用了雅典的海上優勢，但也使大量居民聚集在城市內，增加公共衛生與糧食供應的壓力。</p>
+<h3 id="3-雅典海軍展開反擊">3. 雅典海軍展開反擊</h3>
+<p>雅典派出艦隊襲擊伯羅奔尼撒半島沿岸，試圖以海上行動抵銷斯巴達在陸地上的優勢。</p>
+<p>戰爭由此形成一種相持局面：斯巴達能夠破壞雅典周邊農業，卻難以攻破雅典的防禦體系；雅典則能夠從海上發動攻擊，卻無法輕易摧毀斯巴達的陸軍力量。</p>
+<hr>
+<h2 id="（二）前430年：雅典大瘟疫爆發">（二）前430年：雅典大瘟疫爆發</h2>
+<h3 id="1-瘟疫重創雅典">1. 瘟疫重創雅典</h3>
+<p>前430年，嚴重的瘟疫在雅典爆發。</p>
+<p>由於斯巴達入侵，許多雅典居民已經撤入城內，人口高度集中，加上衛生條件惡化，疾病迅速蔓延。</p>
+<p>瘟疫持續數年，造成大量居民死亡，也嚴重影響雅典的軍事、政治及經濟運作。</p>
+<p>這場災難是雅典在戰爭初期遭受的重大打擊。</p>
+<h3 id="2-伯里克里斯受到政治壓力">2. 伯里克里斯受到政治壓力</h3>
+<p>瘟疫與戰爭帶來的痛苦，使雅典公民對伯里克里斯的政策產生不滿。</p>
+<p>部分雅典人認為，他堅持避免陸戰、將居民集中於城內的策略，未能有效保護城市。</p>
+<p>伯里克里斯一度失去部分政治支持，但他仍然是雅典最重要的領導人物之一。</p>
+<p><strong>歷史意義：</strong> 瘟疫顯示，即使是擁有強大海軍、財富與城防的城邦，也可能受到非軍事因素的嚴重打擊。</p>
+<hr>
+<h2 id="（三）前429年：伯里克里斯去世">（三）前429年：伯里克里斯去世</h2>
+<p>前429年，伯里克里斯死於瘟疫。</p>
+<p>伯里克里斯是雅典民主政治與海上霸權發展的重要領袖。他支持雅典維持海軍優勢、依靠城牆防禦，並避免與斯巴達陸軍進行高風險的正面決戰。</p>
+<p>他的去世對雅典造成重大影響。</p>
+<h3 id="伯里克里斯去世的影響">伯里克里斯去世的影響</h3>
+<ol>
+<li><strong>領導核心改變：</strong> 雅典失去一位長期掌握政治方向的重要人物。</li>
+<li><strong>政治競爭加劇：</strong> 不同政治人物對戰爭策略的分歧逐漸擴大。</li>
+<li><strong>戰爭決策更容易受到民意影響：</strong> 公民大會的政治辯論與群眾情緒，在軍事決策中扮演重要角色。</li>
+<li><strong>戰略延續性受到挑戰：</strong> 雅典雖然仍然強大，但領導階層的變化使其政策更容易出現波動。</li>
+</ol>
+<p>需要注意的是，伯里克里斯去世並不代表雅典立即失去軍事優勢；雅典此後仍然取得過重要勝利。</p>
+<hr>
+<h2 id="（四）前428前427年：米提利尼起義與普拉提亞陷落">（四）前428—前427年：米提利尼起義與普拉提亞陷落</h2>
+<h3 id="1-前428年：米提利尼起義">1. 前428年：米提利尼起義</h3>
+<p>前428年，位於萊斯博斯島的米提利尼起兵反抗雅典。</p>
+<p>米提利尼原本是雅典同盟體系中的重要城邦，但它不滿雅典日益強硬的控制，希望擺脫雅典的支配。</p>
+<p>雅典隨即派兵鎮壓，米提利尼被包圍，並向斯巴達尋求援助。</p>
+<p>這場起義顯示，雅典的問題不僅來自斯巴達，也來自其海上帝國內部。</p>
+<h3 id="2-前427年：米提利尼投降">2. 前427年：米提利尼投降</h3>
+<p>前427年，米提利尼向雅典投降。</p>
+<p>雅典公民大會最初決定嚴厲懲罰起義者，包括處死米提利尼的成年男子，並奴役其婦女與兒童。</p>
+<p>然而，隔日的政治辯論改變了處置方式。</p>
+<p>政治人物克里昂主張嚴懲，以防其他盟邦起義；狄奧多托斯則認為，過度殘酷的處罰未必有利於雅典的長期統治。</p>
+<p>最終，雅典撤回大規模處決的命令，但仍處死部分被認定為主要責任者的人，並重新安排米提利尼的政治與土地制度。</p>
+<p><strong>歷史意義：</strong> 米提利尼事件反映了雅典民主政治的兩面性：公民大會能夠重新討論政策，但戰時群眾情緒也可能促使政府作出極端決定。</p>
+<h3 id="3-前427年：普拉提亞陷落">3. 前427年：普拉提亞陷落</h3>
+<p>普拉提亞長期受到斯巴達及底比斯方面的軍事壓力。</p>
+<p>經過長期圍困後，普拉提亞於前427年陷落。斯巴達方面隨後處決部分守軍，並處理該城的政治地位。</p>
+<p>普拉提亞的陷落，顯示雅典在陸地盟友的保護方面面臨困難，也讓斯巴達及底比斯取得重要的區域優勢。</p>
+<hr>
+<h2 id="（五）前426前425年：雅典逐漸扭轉局勢">（五）前426—前425年：雅典逐漸扭轉局勢</h2>
+<h3 id="1-前426年：雅典在西北希臘取得優勢">1. 前426年：雅典在西北希臘取得優勢</h3>
+<p>雅典將軍德摩斯梯尼等人在西北希臘展開軍事行動，試圖擴大雅典的陸上影響力。</p>
+<p>同一時期，雅典海軍也持續在沿岸作戰，利用艦隊機動性攻擊敵方據點。</p>
+<p>雖然雅典仍然面臨瘟疫與財政壓力，但斯巴達並未能迅速達成迫使雅典投降的目標。</p>
+<h3 id="2-前425年：派洛斯戰役與斯法克特里亞戰役">2. 前425年：派洛斯戰役與斯法克特里亞戰役</h3>
+<p>前425年，雅典軍隊在派洛斯建立據點。</p>
+<p>派洛斯位於伯羅奔尼撒半島西南岸，具有重要的戰略位置。雅典在此建立據點，使斯巴達不得不派兵應對。</p>
+<p>斯巴達軍隊隨後進入附近的斯法克特里亞島，試圖控制當地局勢。</p>
+<p>然而，雅典軍隊成功封鎖島上的斯巴達部隊，最終迫使一批斯巴達重裝步兵投降。</p>
+<p>這次勝利具有特殊意義，因為斯巴達重裝步兵的戰鬥聲望極高，投降事件對斯巴達的軍事威信造成重大打擊。</p>
+<p><strong>歷史意義：</strong> 雅典證明，斯巴達並非不可戰勝。雅典不僅能依靠海軍作戰，也能透過適當的陸上部署取得重要成果。</p>
+<hr>
+<h2 id="（六）前424前422年：安菲波利斯戰役與雙方領袖之死">（六）前424—前422年：安菲波利斯戰役與雙方領袖之死</h2>
+<h3 id="1-前424年：斯巴達將軍布拉西達斯進軍色雷斯">1. 前424年：斯巴達將軍布拉西達斯進軍色雷斯</h3>
+<p>前424年，斯巴達將軍布拉西達斯率軍北上，進入色雷斯及雅典在當地具有重要利益的地區。</p>
+<p>他採取靈活的軍事與外交策略，爭取部分雅典盟邦及據點脫離雅典控制。</p>
+<p>其中，安菲波利斯是重要的戰略目標。該城位於色雷斯地區，對雅典取得木材、金屬等資源，以及維持北方貿易聯繫，都具有重要價值。</p>
+<p>布拉西達斯成功取得安菲波利斯，使雅典遭受重大損失。</p>
+<h3 id="2-前424年：德利昂戰役">2. 前424年：德利昂戰役</h3>
+<p>同年，雅典在波奧提亞地區的德利昂戰役中敗於底比斯及其盟軍。</p>
+<p>這場戰役再次顯示，雅典雖然擁有強大的海軍，但在陸地上與擅長重裝步兵作戰的城邦交戰時，仍然可能遭遇嚴重挫敗。</p>
+<h3 id="3-前422年：安菲波利斯戰役">3. 前422年：安菲波利斯戰役</h3>
+<p>前422年，雅典將軍克里昂率軍試圖奪回安菲波利斯。</p>
+<p>然而，布拉西達斯利用雅典軍隊部署上的弱點發動反擊，雅典軍隊遭到擊敗。</p>
+<p>克里昂與布拉西達斯兩人都在這場戰役中陣亡。</p>
+<p>這兩人的死亡，意外地為和平談判創造了條件。</p>
+<p>克里昂是雅典較強硬的戰爭派人物之一；布拉西達斯則是斯巴達重要的進攻型將領。兩人相繼去世，使雅典與斯巴達更有理由尋求暫時停戰。</p>
+<hr>
+<h2 id="（七）前421年：尼西阿斯和約">（七）前421年：尼西阿斯和約</h2>
+<p>前421年，雅典與斯巴達簽訂尼西阿斯和約。</p>
+<p>這份和約原本希望建立長期和平，但由於盟邦利益不同、部分條款難以落實，以及雙方仍然存在根本性的權力競爭，和平並未真正穩固。</p>
+<h3 id="和約的主要內容與問題">和約的主要內容與問題</h3>
+<ol>
+<li><strong>停止主要敵對行動：</strong> 雅典與斯巴達同意結束第一階段的公開戰爭。</li>
+<li><strong>安排部分據點的歸還：</strong> 雙方原則上同意調整戰爭期間取得的部分領土與據點，但實際執行存在困難。</li>
+<li><strong>處理戰俘問題：</strong> 和約包含交換戰俘等安排。</li>
+<li><strong>盟邦反對與不滿：</strong> 科林斯、底比斯等斯巴達盟友，對和約及其利益分配並不完全滿意。</li>
+<li><strong>雅典與斯巴達的互信不足：</strong> 雙方仍然擔心對方會利用和平時期擴張實力。</li>
+</ol>
+<h3 id="第一階段的結果">第一階段的結果</h3>
+<p>尼西阿斯和約並未真正解決雅典與斯巴達的權力競爭。</p>
+<p>它比較接近一種暫時性的戰略停頓，而不是能夠穩定維持雙方關係的全面和平。</p>
+<p>因此，前421年之後，希臘世界仍然處於緊張狀態。</p>
+<hr>
+<h1 id="三、第二階段：尼西阿斯和約後的權力競爭（前421前415年）">三、第二階段：尼西阿斯和約後的權力競爭（前421—前415年）</h1>
+<p>這一時期，雅典與斯巴達雖然名義上處於和平狀態，但雙方的盟邦競爭、區域衝突與政治角力仍然持續。</p>
+<p>雅典內部也出現新的戰略構想，其中最具影響力的，就是阿爾西比亞德提出的積極擴張政策。</p>
+<h2 id="（一）前420年：阿爾西比亞德崛起">（一）前420年：阿爾西比亞德崛起</h2>
+<p>阿爾西比亞德是雅典的重要政治人物，出身名門，具有政治魅力，也擅長外交與軍事策略。</p>
+<p>他不滿足於尼西阿斯和約所建立的有限和平，希望雅典進一步擴大影響力。</p>
+<p>阿爾西比亞德支持雅典與阿爾戈斯、曼提尼亞及伊利斯等城邦建立合作關係，藉此牽制斯巴達。</p>
+<p>這項政策顯示，雅典並未真正放棄爭奪希臘世界霸權的目標。</p>
+<h2 id="（二）前418年：曼提尼亞戰役">（二）前418年：曼提尼亞戰役</h2>
+<p>前418年，斯巴達與阿爾戈斯及其盟友在曼提尼亞附近爆發重要戰役。</p>
+<p>斯巴達軍隊取得勝利，重新鞏固了其在伯羅奔尼撒半島的政治與軍事地位。</p>
+<h3 id="曼提尼亞戰役的影響">曼提尼亞戰役的影響</h3>
+<ul>
+<li>斯巴達證明其陸軍仍然具有高度戰鬥力。</li>
+<li>阿爾戈斯及其盟友未能成功建立足以牽制斯巴達的聯盟。</li>
+<li>雅典透過盟邦牽制斯巴達的戰略受到打擊。</li>
+<li>尼西阿斯和約所帶來的和平進一步失去實質意義。</li>
+</ul>
+<p>曼提尼亞戰役說明，即使雅典與斯巴達沒有全面交戰，雙方仍然持續透過盟邦與區域戰爭爭奪影響力。</p>
+<h2 id="（三）前416年：雅典征服米洛斯">（三）前416年：雅典征服米洛斯</h2>
+<p>米洛斯是愛琴海上的一個小島城邦，原本希望保持中立，不願完全服從雅典。</p>
+<p>前416年，雅典派軍圍攻米洛斯。</p>
+<p>米洛斯試圖透過外交談判避免戰爭，但雅典拒絕接受其長期保持獨立的立場。經過圍城後，米洛斯遭到征服。</p>
+<p>雅典處決部分成年男性，並將婦女與兒童賣為奴隸，之後安排雅典人移居當地。</p>
+<h3 id="米洛斯事件的歷史意義">米洛斯事件的歷史意義</h3>
+<p>米洛斯事件是雅典帝國統治方式的典型例子。</p>
+<p>它反映出雅典為維持海上霸權，可能採取極為強硬的手段對待不願服從的城邦。</p>
+<p>這場事件也成為政治哲學與國際關係研究中經常討論的案例：當強權與弱小國家發生衝突時，正義、利益與力量之間究竟存在什麼關係？</p>
+<hr>
+<h1 id="四、第三階段：西西里遠征與雅典的重大失敗（前415前413年）">四、第三階段：西西里遠征與雅典的重大失敗（前415—前413年）</h1>
+<p>西西里遠征是伯羅奔尼撒戰爭的重大轉折點。</p>
+<p>雅典原本希望透過征服西西里島的重要城邦敘拉古，擴大自身在西地中海的影響力。然而，這場遠征最終演變成雅典歷史上最慘重的軍事災難之一。</p>
+<h2 id="（一）前415年：雅典決定遠征西西里">（一）前415年：雅典決定遠征西西里</h2>
+<h3 id="1-遠征的背景">1. 遠征的背景</h3>
+<p>西西里島位於地中海中部，擁有重要的農業資源、港口及貿易網絡。</p>
+<p>其中，敘拉古是西西里最強大的城邦之一，具有相當的經濟與軍事實力。</p>
+<p>雅典部分政治人物認為，如果能夠征服敘拉古，便有機會：</p>
+<ul>
+<li>擴大雅典在地中海西部的勢力。</li>
+<li>取得更多資源與財富。</li>
+<li>削弱斯巴達及其盟友可能獲得的支援。</li>
+<li>建立新的戰略據點。</li>
+</ul>
+<p>然而，遠征西西里也意味著雅典必須將大量軍隊與艦隊派往遠離本土的地區，增加後勤與指揮上的風險。</p>
+<h3 id="2-尼西阿斯與阿爾西比亞德的分歧">2. 尼西阿斯與阿爾西比亞德的分歧</h3>
+<p>尼西阿斯對遠征抱持疑慮，認為這項行動規模過大，可能危及雅典本土的安全。</p>
+<p>阿爾西比亞德則積極支持遠征，希望透過大規模軍事行動取得新的戰略優勢。</p>
+<p>最終，雅典公民大會決定出兵，尼西阿斯、阿爾西比亞德與拉馬科斯擔任主要指揮官。</p>
+<h3 id="3-赫爾墨斯神像遭破壞事件">3. 赫爾墨斯神像遭破壞事件</h3>
+<p>遠征出發前夕，雅典城內發生赫爾墨斯神像遭到破壞的事件。</p>
+<p>這起事件被視為宗教與政治危機，阿爾西比亞德受到牽連。</p>
+<p>遠征開始後，雅典方面要求他返回接受審判，但他在途中逃離，最後投奔斯巴達。</p>
+<p>這個事件對雅典遠征產生重大影響，因為阿爾西比亞德不僅是遠征的主要倡議者之一，也掌握重要的軍事與政治資訊。</p>
+<hr>
+<h2 id="（二）前414年：雅典圍攻敘拉古">（二）前414年：雅典圍攻敘拉古</h2>
+<p>雅典軍隊抵達西西里後，開始圍攻敘拉古。</p>
+<p>然而，敘拉古的防禦比雅典預期的更加堅強。</p>
+<p>斯巴達隨後派遣將軍吉利波斯前往西西里，協助敘拉古組織防禦。吉利波斯成功整合當地力量，使敘拉古逐漸扭轉戰局。</p>
+<h3 id="雅典面臨的困難">雅典面臨的困難</h3>
+<ol>
+<li><strong>補給線過長：</strong> 雅典軍隊距離本土遙遠，補充人員與物資並不容易。</li>
+<li><strong>敵軍抵抗強烈：</strong> 敘拉古具有自己的軍隊、艦隊與城防。</li>
+<li><strong>指揮出現困難：</strong> 雅典指揮官對作戰方式與戰略方向存在問題。</li>
+<li><strong>斯巴達介入：</strong> 吉利波斯的到來，使敘拉古獲得重要的軍事支援。</li>
+<li><strong>戰爭成本不斷增加：</strong> 雅典必須持續投入船隻、士兵及財政資源。</li>
+</ol>
+<p>原本預期能夠迅速取勝的遠征，逐漸變成消耗巨大、勝負難料的長期圍城戰。</p>
+<h2 id="（三）前413年：西西里遠征徹底失敗">（三）前413年：西西里遠征徹底失敗</h2>
+<h3 id="1-雅典決定撤退">1. 雅典決定撤退</h3>
+<p>前413年，雅典遠征軍的處境日益惡化。</p>
+<p>雅典原本希望撤離西西里，但軍事行動及海上封鎖使撤退更加困難。</p>
+<p>尼西阿斯與德摩斯梯尼等指揮官試圖挽救軍隊，然而敘拉古及其盟軍已逐漸掌握優勢。</p>
+<h3 id="2-敘拉古海戰">2. 敘拉古海戰</h3>
+<p>敘拉古方面加強海軍作戰，利用港口及海上戰鬥的條件限制雅典艦隊。</p>
+<p>雅典艦隊在狹窄港灣內難以充分發揮原有的機動優勢，最終遭到決定性打擊。</p>
+<h3 id="3-雅典遠征軍覆滅">3. 雅典遠征軍覆滅</h3>
+<p>雅典艦隊遭到重創後，陸軍也無法順利撤離。</p>
+<p>部分雅典士兵在撤退途中被俘，尼西阿斯與德摩斯梯尼遭到處決，大批士兵被俘虜或死於戰鬥及撤退過程。</p>
+<p>這場失敗使雅典損失大量船隻、士兵及軍事資源。</p>
+<h3 id="西西里遠征失敗的四大後果">西西里遠征失敗的四大後果</h3>
+<p><strong>第一，軍事力量遭到重創。</strong> 雅典損失大量艦艇與經驗豐富的士兵，必須重新建立軍事力量。</p>
+<p><strong>第二，財政壓力加劇。</strong> 遠征耗費大量資源，卻未能取得預期的土地、財富與戰略利益。</p>
+<p><strong>第三，盟邦信心下降。</strong> 雅典的敵人看見其力量並非不可戰勝，部分盟邦開始重新評估與雅典的關係。</p>
+<p><strong>第四，斯巴達取得戰略主動權。</strong> 斯巴達不再只是防禦雅典的陸軍強權，而有機會在更廣泛的戰場上主動進攻。</p>
+<p><strong>前413年是伯羅奔尼撒戰爭最重要的轉折點之一。</strong> 雅典雖然尚未立即戰敗，但其長期維持海上帝國的能力已受到嚴重威脅。<a href="https://academic.oup.com/edited-volume/61673/chapter-abstract/549687938?utm_source=chatgpt.com">OUP Academic</a></p>
+<hr>
+<h1 id="五、第四階段：德凱利亞戰爭與斯巴達反攻（前413前404年）">五、第四階段：德凱利亞戰爭與斯巴達反攻（前413—前404年）</h1>
+<p>西西里遠征失敗後，雅典面臨的戰爭形勢發生根本性變化。</p>
+<p>斯巴達開始採取更積極的戰略，不僅持續在陸地上壓迫雅典，也設法削弱其海上帝國與盟邦體系。</p>
+<p>這一階段又稱「德凱利亞戰爭」或「愛奧尼亞戰爭」。前者強調斯巴達在雅典附近建立長期軍事據點，後者則反映戰事逐漸轉向愛奧尼亞及愛琴海沿岸。<a href="https://academic.oup.com/edited-volume/61673/chapter-abstract/549687938?utm_source=chatgpt.com">OUP Academic</a></p>
+<h2 id="（一）前413年：斯巴達占領德凱利亞">（一）前413年：斯巴達占領德凱利亞</h2>
+<p>斯巴達在阿爾西比亞德的建議下，占領阿提卡北部的德凱利亞，並建立長期軍事據點。</p>
+<p>與早期季節性的入侵不同，這次占領使斯巴達能夠持續威脅雅典周邊地區。</p>
+<h3 id="德凱利亞據點的影響">德凱利亞據點的影響</h3>
+<ol>
+<li><strong>持續破壞雅典周邊農業：</strong> 雅典難以正常利用周圍土地。</li>
+<li><strong>增加物資運輸成本：</strong> 雅典必須更加依賴海上運輸。</li>
+<li><strong>削弱雅典經濟：</strong> 戰爭對勞動力、財政與生產造成長期壓力。</li>
+<li><strong>提高斯巴達的軍事效率：</strong> 斯巴達能夠持續監視並威脅雅典，而不必每次都從伯羅奔尼撒半島出發。</li>
+</ol>
+<p>斯巴達由此建立起對雅典的長期壓力，使戰爭不再只是間歇性的軍事衝突。</p>
+<h2 id="（二）前412前411年：雅典盟邦動搖與政變">（二）前412—前411年：雅典盟邦動搖與政變</h2>
+<h3 id="1-雅典盟邦開始反抗">1. 雅典盟邦開始反抗</h3>
+<p>西西里遠征失敗後，雅典的軍事威信下降。</p>
+<p>部分愛琴海及愛奧尼亞地區的城邦開始反抗雅典，並尋求斯巴達支援。</p>
+<p>雅典必須同時面對盟邦起義、海軍戰鬥及財政危機，軍事負擔進一步增加。</p>
+<h3 id="2-波斯帝國介入戰爭">2. 波斯帝國介入戰爭</h3>
+<p>波斯帝國長期關注愛琴海及小亞細亞沿岸的局勢。</p>
+<p>隨著雅典勢力衰退，波斯開始與斯巴達方面展開外交合作，並透過小亞細亞的總督提供財政及政治支援。</p>
+<p>波斯的介入具有重要意義：斯巴達原本擅長陸戰，卻缺乏足以長期挑戰雅典的海軍財力；波斯的資源則有助於斯巴達建立與維持艦隊。</p>
+<h3 id="3-前411年：雅典四百人寡頭政變">3. 前411年：雅典四百人寡頭政變</h3>
+<p>前411年，雅典發生政治政變，部分寡頭派人士推翻原有民主政治制度，建立由「四百人」主導的寡頭政權。</p>
+<p>這場政變與雅典在西西里遠征失敗後的軍事及財政危機密切相關。</p>
+<p>政變後，雅典內部的政治分裂加深。</p>
+<p>不過，雅典海軍中的部分人員仍支持民主政治，並在薩摩斯等地維持反對寡頭政權的政治力量。</p>
+<p>最後，四百人政權垮台，雅典逐步恢復民主制度。</p>
+<p><strong>歷史意義：</strong> 伯羅奔尼撒戰爭不只是雅典與斯巴達的軍事衝突，也是一場深刻影響城邦政治制度的危機。</p>
+<hr>
+<h2 id="（三）前411前410年：雅典海軍重新取得優勢">（三）前411—前410年：雅典海軍重新取得優勢</h2>
+<p>雖然雅典遭受西西里遠征失敗與政治政變的雙重打擊，但它仍然保有部分海軍力量。</p>
+<p>雅典的海軍將領與士兵逐漸重新組織艦隊，並在愛琴海戰場展開反攻。</p>
+<h3 id="前410年：基齊庫斯海戰">前410年：基齊庫斯海戰</h3>
+<p>前410年，雅典艦隊在基齊庫斯附近擊敗斯巴達艦隊。</p>
+<p>阿爾西比亞德、色拉敘布洛斯等雅典將領參與相關軍事行動。</p>
+<p>這場勝利對雅典具有重大意義，因為它證明雅典仍有能力重建海軍戰力，並威脅斯巴達在愛琴海的軍事部署。</p>
+<h3 id="基齊庫斯海戰的影響">基齊庫斯海戰的影響</h3>
+<ul>
+<li>雅典重新獲得重要的海上勝利。</li>
+<li>斯巴達艦隊受到打擊。</li>
+<li>雅典士氣有所恢復。</li>
+<li>雅典一度重新掌握部分戰略主動權。</li>
+</ul>
+<p>然而，這場勝利並未徹底解決雅典的財政問題，也沒有消除斯巴達與波斯合作所帶來的長期威脅。</p>
+<hr>
+<h2 id="（四）前409前407年：雅典嘗試恢復海上霸權">（四）前409—前407年：雅典嘗試恢復海上霸權</h2>
+<p>前409年至前407年間，雅典持續在愛琴海及海峽地區展開軍事行動，試圖恢復對重要航線與戰略據點的控制。</p>
+<p>其中，赫勒斯滂海峽具有特別重要的地位。</p>
+<p>這條海峽連接愛琴海與黑海，是穀物運輸的重要通道。雅典若要維持人口供應與商業活動，就必須確保相關航線不被敵人切斷。</p>
+<h3 id="前407年：阿爾西比亞德返回雅典">前407年：阿爾西比亞德返回雅典</h3>
+<p>阿爾西比亞德在經歷流亡與政治波折後，重新獲得雅典部分政治支持，並返回雅典。</p>
+<p>他曾經投奔斯巴達，也曾與波斯方面有所接觸，因此其政治經歷相當複雜。</p>
+<p>他的回歸象徵雅典希望重新凝聚政治與軍事力量。</p>
+<p>然而，雅典的軍事資源已經歷多年消耗，海上優勢也受到斯巴達及波斯合作的持續挑戰。</p>
+<hr>
+<h2 id="（五）前406年：阿吉紐西群島海戰">（五）前406年：阿吉紐西群島海戰</h2>
+<p>前406年，雅典與斯巴達在阿吉紐西群島附近爆發重要海戰。</p>
+<p>雅典艦隊取得勝利，擊敗斯巴達艦隊。</p>
+<p>這場勝利原本有助於雅典重新掌握愛琴海的主動權，但戰後卻引發嚴重的政治危機。</p>
+<h3 id="雅典將領遭到審判">雅典將領遭到審判</h3>
+<p>戰役結束後，雅典方面未能及時救援部分落水的士兵與船員，相關將領因而遭到指控。</p>
+<p>雅典公民大會最終以集體方式審判多名將領，並處決其中六人。</p>
+<p>這一事件反映出雅典民主政治在戰爭壓力下的複雜性：公民大會具有監督軍事將領的權力，但在群眾情緒強烈時，也可能作出不利於長期軍事利益的決定。</p>
+<p><strong>歷史意義：</strong> 阿吉紐西群島海戰本身是雅典的勝利，但戰後的政治處理卻削弱了雅典的指揮人才與政治穩定。</p>
+<hr>
+<h2 id="（六）前405年：羊河口海戰">（六）前405年：羊河口海戰</h2>
+<p>羊河口海戰是伯羅奔尼撒戰爭最後階段最關鍵的戰役之一。</p>
+<h3 id="1-斯巴達將領呂山德崛起">1. 斯巴達將領呂山德崛起</h3>
+<p>呂山德是斯巴達的重要海軍將領。</p>
+<p>在波斯方面提供財政支援的背景下，斯巴達得以持續建立與維持海軍力量。呂山德利用這項優勢，在愛琴海及海峽地區對雅典展開積極行動。</p>
+<h3 id="2-雅典艦隊的部署問題">2. 雅典艦隊的部署問題</h3>
+<p>前405年，雅典艦隊在赫勒斯滂海峽附近活動，並在羊河口一帶停泊。</p>
+<p>雅典需要維持對海峽航線的控制，以確保糧食及其他重要物資能夠運往本土。</p>
+<p>然而，雅典艦隊的部署存在弱點，呂山德抓住機會發動突襲。</p>
+<h3 id="3-雅典艦隊遭到毀滅性打擊">3. 雅典艦隊遭到毀滅性打擊</h3>
+<p>斯巴達軍隊突襲雅典艦隊，擊潰其主要力量。</p>
+<p>大量雅典船隻遭到俘獲或摧毀，許多士兵也遭到俘虜。</p>
+<p>這場戰役使雅典喪失了維持海上帝國最重要的軍事工具。</p>
+<h3 id="4-羊河口海戰的歷史意義">4. 羊河口海戰的歷史意義</h3>
+<p><strong>第一，雅典海軍遭到決定性打擊。</strong> 雅典失去保護海上交通與維持糧食運輸的主要力量。</p>
+<p><strong>第二，雅典的盟邦體系迅速瓦解。</strong> 其他城邦更加不願繼續依附已經失去海上優勢的雅典。</p>
+<p><strong>第三，斯巴達取得戰略主動權。</strong> 呂山德能夠進一步控制海峽與重要航線，並對雅典實施封鎖。</p>
+<p><strong>第四，雅典已難以避免戰敗。</strong> 即使城市本身仍有防禦能力，海上交通遭到切斷後，雅典的糧食供應與財政狀況也難以長期維持。</p>
+<p>羊河口海戰通常被視為雅典敗局已定的關鍵轉折。<a href="https://stuff.mit.edu/afs/athena.mit.edu/course/21/21h.401/www/local/talbert_ach.Gr.2.pdf?utm_source=chatgpt.com">MIT Stuff</a></p>
+<hr>
+<h1 id="六、前404年：雅典投降與伯羅奔尼撒戰爭結束">六、前404年：雅典投降與伯羅奔尼撒戰爭結束</h1>
+<h2 id="（一）雅典遭到海陸封鎖">（一）雅典遭到海陸封鎖</h2>
+<p>羊河口海戰後，斯巴達及其盟友進一步封鎖雅典。</p>
+<p>雅典原本依靠海上貿易與外部糧食供應維持城市運作，但海軍遭到摧毀後，城市難以繼續確保重要物資的輸入。</p>
+<p>斯巴達軍隊從陸地與海上施加壓力，使雅典逐漸陷入困境。</p>
+<h2 id="（二）前404年：雅典正式投降">（二）前404年：雅典正式投降</h2>
+<p>前404年，雅典向斯巴達及其盟友投降。</p>
+<p>這場投降結束了長達約27年的伯羅奔尼撒戰爭，也宣告雅典海上帝國的終結。</p>
+<h3 id="雅典投降的主要條件">雅典投降的主要條件</h3>
+<p>雅典接受了一系列限制性條件，主要包括：</p>
+<ol>
+<li><strong>拆除長城：</strong> 雅典必須拆除連接城市與比雷埃夫斯港的部分長城防禦設施。</li>
+<li><strong>交出大部分艦隊：</strong> 雅典的海軍力量受到嚴格限制。</li>
+<li><strong>解散或退出原有同盟體系：</strong> 雅典不再能維持先前的海上帝國。</li>
+<li><strong>接受斯巴達主導的政治秩序：</strong> 雅典的外交與軍事自主權受到限制。</li>
+</ol>
+<p>這些條件使雅典從一個擁有強大海軍與廣泛盟邦的霸權城邦，轉變為受斯巴達支配的弱勢城邦。</p>
+<h2 id="（三）前404年：三十僭主政權建立">（三）前404年：三十僭主政權建立</h2>
+<p>雅典投降後，在斯巴達支持下，雅典建立由寡頭派掌握權力的「三十僭主」政權。</p>
+<p>這個政權限制民主政治，並對政治反對者採取嚴厲措施。</p>
+<p>其統治期間，雅典發生大量政治迫害、財產剝奪及處決事件。</p>
+<p>不過，三十僭主政權並未長久維持。前403年，雅典民主派在色拉敘布洛斯等人的領導下恢復民主政治。</p>
+<p>因此，伯羅奔尼撒戰爭的結束，不僅代表雅典失去海上霸權，也帶來城市內部的政治制度危機。</p>
+<hr>
+<h1 id="七、伯羅奔尼撒戰爭完整時間軸總表">七、伯羅奔尼撒戰爭完整時間軸總表</h1>
+<p>以下依照時間順序，將戰爭的重要事件整合為一份便於查閱的年表。</p>
+<table>
+<thead>
+<tr>
+<th>年份（西元前）</th>
+<th>重要事件</th>
+<th>歷史意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>433</td>
+<td>雅典與科林斯在科西拉等問題上發生衝突</td>
+<td>加深雅典與斯巴達陣營的對立</td>
+</tr>
+<tr>
+<td>432</td>
+<td>麥加拉法令與斯巴達盟邦的外交爭端</td>
+<td>戰爭危機迅速升高</td>
+</tr>
+<tr>
+<td>431</td>
+<td>底比斯突襲普拉提亞；斯巴達入侵阿提卡</td>
+<td>伯羅奔尼撒戰爭正式爆發</td>
+</tr>
+<tr>
+<td>430</td>
+<td>雅典大瘟疫爆發</td>
+<td>雅典人口、軍事與經濟遭受重創</td>
+</tr>
+<tr>
+<td>429</td>
+<td>伯里克里斯去世</td>
+<td>雅典失去重要政治領袖</td>
+</tr>
+<tr>
+<td>428</td>
+<td>米提利尼起義</td>
+<td>雅典帝國內部矛盾加劇</td>
+</tr>
+<tr>
+<td>427</td>
+<td>米提利尼投降；普拉提亞陷落</td>
+<td>雙方持續爭奪盟邦與區域控制權</td>
+</tr>
+<tr>
+<td>426</td>
+<td>雅典在西北希臘等地展開軍事行動</td>
+<td>戰事擴及多個區域</td>
+</tr>
+<tr>
+<td>425</td>
+<td>派洛斯與斯法克特里亞戰役</td>
+<td>雅典取得重要勝利，俘虜斯巴達重裝步兵</td>
+</tr>
+<tr>
+<td>424</td>
+<td>德利昂戰役；布拉西達斯進軍色雷斯</td>
+<td>雅典在陸戰受挫，北方利益遭到威脅</td>
+</tr>
+<tr>
+<td>422</td>
+<td>安菲波利斯戰役；克里昂與布拉西達斯陣亡</td>
+<td>為和平談判創造條件</td>
+</tr>
+<tr>
+<td>421</td>
+<td>尼西阿斯和約</td>
+<td>第一階段戰爭暫時結束</td>
+</tr>
+<tr>
+<td>420</td>
+<td>阿爾西比亞德推動反斯巴達聯盟</td>
+<td>雙方爭奪影響力的競爭持續</td>
+</tr>
+<tr>
+<td>418</td>
+<td>曼提尼亞戰役</td>
+<td>斯巴達重新鞏固伯羅奔尼撒半島的優勢</td>
+</tr>
+<tr>
+<td>416</td>
+<td>雅典征服米洛斯</td>
+<td>顯示雅典帝國統治的強硬性</td>
+</tr>
+<tr>
+<td>415</td>
+<td>雅典發動西西里遠征；阿爾西比亞德逃往斯巴達</td>
+<td>雅典開啟高風險的海外軍事行動</td>
+</tr>
+<tr>
+<td>414</td>
+<td>雅典圍攻敘拉古；斯巴達派吉利波斯支援</td>
+<td>遠征遭遇強烈抵抗</td>
+</tr>
+<tr>
+<td>413</td>
+<td>西西里遠征徹底失敗；斯巴達占領德凱利亞</td>
+<td>雅典軍事與財政力量遭受重大打擊</td>
+</tr>
+<tr>
+<td>411</td>
+<td>雅典四百人寡頭政變</td>
+<td>戰爭引發嚴重的內部政治危機</td>
+</tr>
+<tr>
+<td>410</td>
+<td>基齊庫斯海戰，雅典獲勝</td>
+<td>雅典短暫恢復海上優勢</td>
+</tr>
+<tr>
+<td>409—408</td>
+<td>雅典持續爭奪海峽及愛琴海的重要據點</td>
+<td>雅典試圖重建海上霸權</td>
+</tr>
+<tr>
+<td>407</td>
+<td>阿爾西比亞德返回雅典；斯巴達海軍獲得波斯財政支援</td>
+<td>雙方海上力量競爭進一步加劇</td>
+</tr>
+<tr>
+<td>406</td>
+<td>阿吉紐西群島海戰，雅典獲勝；戰後發生將領審判</td>
+<td>雅典雖獲勝，卻陷入政治危機</td>
+</tr>
+<tr>
+<td>405</td>
+<td>羊河口海戰，斯巴達擊潰雅典艦隊</td>
+<td>雅典海上霸權遭到決定性打擊</td>
+</tr>
+<tr>
+<td>404</td>
+<td>雅典投降；三十僭主政權建立</td>
+<td>伯羅奔尼撒戰爭結束，斯巴達取得優勢</td>
+</tr>
+<tr>
+<td>403</td>
+<td>雅典民主政治恢復</td>
+<td>雅典開始重建政治制度</td>
+</tr>
+</tbody></table>
+<p>年表綜合參考牛津古典學辭典、耶魯大學古典史課程資料及俄亥俄州立大學的伯羅奔尼撒戰爭互動史料。部分戰役的確切日期及事件先後，在不同史料中可能略有差異。<a href="https://academic.oup.com/edited-volume/61673/chapter-abstract/549687938?utm_source=chatgpt.com">OUP Academic</a></p>
+<hr>
+<h1 id="八、伯羅奔尼撒戰爭的主要人物">八、伯羅奔尼撒戰爭的主要人物</h1>
+<p>了解重要人物，有助於掌握戰爭中軍事策略與政治決策的變化。</p>
+<h2 id="（一）雅典方面">（一）雅典方面</h2>
+<h3 id="1-伯里克里斯（pericles）">1. 伯里克里斯（Pericles）</h3>
+<p><strong>身分：</strong> 雅典政治領袖。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>推動雅典民主政治與公共建設。</li>
+<li>支持雅典發展海軍及維持海上霸權。</li>
+<li>在戰爭初期主張避免與斯巴達陸軍正面決戰。</li>
+<li>前429年死於瘟疫。</li>
+</ul>
+<p><strong>歷史地位：</strong> 伯里克里斯代表雅典戰爭初期以海軍、城防與財政優勢維持長期抗戰的戰略。</p>
+<h3 id="2-尼西阿斯（nicias）">2. 尼西阿斯（Nicias）</h3>
+<p><strong>身分：</strong> 雅典政治人物與將軍。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>參與促成前421年的尼西阿斯和約。</li>
+<li>對西西里遠征抱持疑慮，但仍奉命擔任指揮官。</li>
+<li>前413年西西里遠征失敗後遭到處決。</li>
+</ul>
+<p><strong>歷史地位：</strong> 尼西阿斯反映出雅典在戰爭中試圖透過談判尋求和平，卻又被政治與軍事決策推向高風險行動的矛盾。</p>
+<h3 id="3-阿爾西比亞德（alcibiades）">3. 阿爾西比亞德（Alcibiades）</h3>
+<p><strong>身分：</strong> 雅典政治人物與將軍。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>支持雅典遠征西西里。</li>
+<li>因政治與宗教爭議遭到追究，逃往斯巴達。</li>
+<li>向斯巴達提供對雅典的戰略建議。</li>
+<li>後來與波斯方面有所接觸，並重新回到雅典。</li>
+<li>參與雅典在戰爭後期的軍事活動。</li>
+</ul>
+<p><strong>歷史地位：</strong> 阿爾西比亞德是戰爭中最具爭議的人物之一。他的政治立場反覆變化，反映出雅典政治競爭與個人野心如何影響戰爭方向。</p>
+<h3 id="4-克里昂（cleon）">4. 克里昂（Cleon）</h3>
+<p><strong>身分：</strong> 雅典政治人物。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>支持對反抗雅典的盟邦採取強硬措施。</li>
+<li>在米提利尼事件中主張嚴懲起義者。</li>
+<li>前422年在安菲波利斯戰役中陣亡。</li>
+</ul>
+<p><strong>歷史地位：</strong> 克里昂代表雅典政治中較強硬的戰爭路線。</p>
+<h3 id="5-色拉敘布洛斯（thrasybulus）">5. 色拉敘布洛斯（Thrasybulus）</h3>
+<p><strong>身分：</strong> 雅典將軍與民主派政治人物。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>在戰爭後期參與雅典海軍作戰。</li>
+<li>反對四百人寡頭政變所代表的政治方向。</li>
+<li>前403年前後參與推翻三十僭主政權、恢復雅典民主政治。</li>
+</ul>
+<p><strong>歷史地位：</strong> 色拉敘布洛斯是雅典民主政治恢復的重要人物。</p>
+<h2 id="（二）斯巴達方面">（二）斯巴達方面</h2>
+<h3 id="1-阿基達穆斯二世（archidamus-ii）">1. 阿基達穆斯二世（Archidamus II）</h3>
+<p><strong>身分：</strong> 斯巴達國王。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>前431年率軍入侵阿提卡。</li>
+<li>在戰爭初期代表斯巴達以陸軍壓迫雅典的戰略。</li>
+</ul>
+<p><strong>歷史地位：</strong> 阿基達穆斯二世是戰爭初期斯巴達軍事行動的主要領導者。</p>
+<h3 id="2-布拉西達斯（brasidas）">2. 布拉西達斯（Brasidas）</h3>
+<p><strong>身分：</strong> 斯巴達將軍。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>前424年率軍進入色雷斯地區。</li>
+<li>取得安菲波利斯等重要據點。</li>
+<li>前422年在安菲波利斯戰役中陣亡。</li>
+</ul>
+<p><strong>歷史地位：</strong> 布拉西達斯擅長靈活運用軍事與外交手段，是斯巴達在戰爭中最重要的將領之一。</p>
+<h3 id="3-呂山德（lysander）">3. 呂山德（Lysander）</h3>
+<p><strong>身分：</strong> 斯巴達海軍將領。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>在戰爭後期負責重要海軍行動。</li>
+<li>善用波斯方面的財政支援，維持斯巴達艦隊的作戰能力。</li>
+<li>前405年在羊河口海戰中擊潰雅典艦隊。</li>
+<li>參與戰後斯巴達對希臘城邦的政治安排。</li>
+</ul>
+<p><strong>歷史地位：</strong> 呂山德是斯巴達最終擊敗雅典的關鍵軍事人物。</p>
+<h3 id="4-阿吉斯二世（agis-ii）">4. 阿吉斯二世（Agis II）</h3>
+<p><strong>身分：</strong> 斯巴達國王。</p>
+<p><strong>主要事蹟：</strong></p>
+<ul>
+<li>在戰爭中參與斯巴達對雅典的軍事壓迫。</li>
+<li>與斯巴達在阿提卡及伯羅奔尼撒地區的軍事活動有關。</li>
+</ul>
+<p><strong>歷史地位：</strong> 阿吉斯二世代表斯巴達王權在長期戰爭中的作用。</p>
+<h2 id="（三）其他重要人物">（三）其他重要人物</h2>
+<h3 id="1-吉利波斯（gylippus）">1. 吉利波斯（Gylippus）</h3>
+<p>斯巴達將軍，前414—前413年左右前往西西里，協助敘拉古抵抗雅典遠征軍。他的介入是雅典遠征失敗的重要因素之一。</p>
+<h3 id="2-大流士二世（darius-ii）">2. 大流士二世（Darius II）</h3>
+<p>波斯帝國國王。在其統治期間，波斯與斯巴達的合作逐漸加深，波斯的財政資源對戰爭後期的海軍競爭具有重要影響。</p>
+<h3 id="3-居魯士（cyrus-the-younger）">3. 居魯士（Cyrus the Younger）</h3>
+<p>波斯王子，前407年後在小亞細亞地區與斯巴達方面建立密切合作。他對斯巴達的財政支援，有助於呂山德維持海軍力量。</p>
+<hr>
+<h1 id="九、伯羅奔尼撒戰爭的三大階段比較">九、伯羅奔尼撒戰爭的三大階段比較</h1>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>第一階段：十年戰爭</th>
+<th>第二階段：和約後的競爭</th>
+<th>第三階段：德凱利亞／愛奧尼亞戰爭</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>時間</td>
+<td>前431—前421年</td>
+<td>前421—前415年</td>
+<td>前415—前404年</td>
+</tr>
+<tr>
+<td>主要特徵</td>
+<td>斯巴達入侵阿提卡，雅典依靠海軍反擊</td>
+<td>雙方透過盟邦與區域衝突爭奪優勢</td>
+<td>西西里遠征失敗後，斯巴達逐漸取得主動權</td>
+</tr>
+<tr>
+<td>雅典戰略</td>
+<td>城防、海軍、沿岸襲擊</td>
+<td>結盟、擴張與維持影響力</td>
+<td>重建海軍、保護航線、抵抗封鎖</td>
+</tr>
+<tr>
+<td>斯巴達戰略</td>
+<td>陸軍入侵阿提卡</td>
+<td>透過盟邦牽制雅典</td>
+<td>占領德凱利亞、發展海軍、尋求波斯支援</td>
+</tr>
+<tr>
+<td>關鍵事件</td>
+<td>瘟疫、派洛斯戰役、安菲波利斯戰役</td>
+<td>尼西阿斯和約、曼提尼亞戰役、米洛斯事件</td>
+<td>西西里遠征、基齊庫斯海戰、羊河口海戰</td>
+</tr>
+<tr>
+<td>階段結果</td>
+<td>前421年簽訂和約</td>
+<td>和平名存實亡，衝突持續</td>
+<td>前404年雅典投降</td>
+</tr>
+</tbody></table>
+<p>需要補充的是，第二階段並非完全沒有戰爭，而是以尼西阿斯和約為界，雙方在一段時間內減少了全面戰爭，但局部軍事衝突與盟邦競爭仍然持續。<a href="https://academic.oup.com/edited-volume/61673/chapter-abstract/549687938?utm_source=chatgpt.com">OUP Academic</a></p>
+<hr>
+<h1 id="十、伯羅奔尼撒戰爭的歷史影響">十、伯羅奔尼撒戰爭的歷史影響</h1>
+<h2 id="（一）雅典海上帝國瓦解">（一）雅典海上帝國瓦解</h2>
+<p>雅典在戰爭中失去大量艦艇、士兵、財政資源與盟邦。</p>
+<p>尤其是西西里遠征失敗與羊河口海戰，使雅典難以維持原有的海上霸權。</p>
+<p>前404年投降後，雅典被迫拆除部分城防、交出大部分艦隊，並放棄原有帝國體系。</p>
+<p>不過，雅典並未因此從希臘歷史中消失。它仍然是重要的文化、哲學與教育中心，後來也逐漸恢復部分政治與經濟力量。</p>
+<h2 id="（二）斯巴達取得霸權，但無法長期統一希臘">（二）斯巴達取得霸權，但無法長期統一希臘</h2>
+<p>雅典戰敗後，斯巴達成為希臘世界最具優勢的城邦。</p>
+<p>然而，斯巴達並未建立能夠長期穩定控制全希臘的政治秩序。</p>
+<p>它對其他城邦的干預，以及對部分寡頭政權的支持，引起新的反抗。</p>
+<p>前395年，斯巴達與包括雅典、底比斯、科林斯等勢力在內的聯盟爆發科林斯戰爭，顯示希臘世界的權力競爭並未隨雅典投降而結束。</p>
+<h2 id="（三）希臘城邦體系持續衰弱">（三）希臘城邦體系持續衰弱</h2>
+<p>伯羅奔尼撒戰爭持續近三十年，造成希臘世界大量人力與財富消耗。</p>
+<p>各城邦不斷進行軍事動員，破壞農業生產與貿易，並在政治制度上出現激烈衝突。</p>
+<p>戰爭也使城邦之間更難建立穩定的合作關係。</p>
+<p>雅典、斯巴達與底比斯先後取得或挑戰霸權，但沒有任何一個城邦能夠長期統一希臘世界。</p>
+<h2 id="（四）為馬其頓崛起創造條件">（四）為馬其頓崛起創造條件</h2>
+<p>前4世紀中葉，馬其頓國王腓力二世開始推動軍事與政治改革，逐步擴張對希臘城邦的影響力。</p>
+<p>前338年，馬其頓在喀羅尼亞戰役中擊敗雅典與底比斯等城邦組成的聯軍，進一步確立其在希臘的優勢。</p>
+<p>後來，亞歷山大大帝繼承腓力二世的事業，率軍東征波斯帝國，建立橫跨歐亞非部分地區的龐大帝國。</p>
+<p><strong>伯羅奔尼撒戰爭不是馬其頓崛起的唯一原因，但它所造成的長期消耗、政治分裂與城邦間互不信任，確實是理解希臘城邦體系衰弱的重要背景。</strong></p>
+<hr>
+<h1 id="十一、伯羅奔尼撒戰爭的歷史評價">十一、伯羅奔尼撒戰爭的歷史評價</h1>
+<h2 id="（一）軍事史角度：海權與陸權的長期競爭">（一）軍事史角度：海權與陸權的長期競爭</h2>
+<p>伯羅奔尼撒戰爭最鮮明的特徵，是雅典的海軍優勢與斯巴達的陸軍優勢相互對抗。</p>
+<p>戰爭初期，雅典利用城牆、港口及艦隊維持抵抗；斯巴達則透過陸軍入侵與破壞農業，試圖迫使雅典屈服。</p>
+<p>然而，戰爭後期的形勢發生變化。斯巴達在波斯財政支援下逐步發展海軍，最終在羊河口海戰中摧毀雅典艦隊的主要力量。</p>
+<p>這說明，軍事優勢不一定是固定的。當一方能夠調整戰略、取得外部資源並改變作戰方式時，原本的力量平衡便可能被打破。</p>
+<h2 id="（二）政治史角度：民主政治與寡頭政治的衝突">（二）政治史角度：民主政治與寡頭政治的衝突</h2>
+<p>雅典與斯巴達的制度差異，經常被視為戰爭的重要背景。</p>
+<p>雅典以民主政治聞名，斯巴達則由少數公民掌握主要政治權力，並保有強烈的軍事與寡頭政治傳統。</p>
+<p>不過，這場戰爭不能簡化為單純的「民主對抗專制」。</p>
+<p>兩個城邦都受到自身利益、盟邦關係、軍事安全與政治菁英競爭的影響；雅典在戰爭期間也曾出現寡頭政變，而斯巴達的政治體制亦有其自身的限制。</p>
+<p>因此，伯羅奔尼撒戰爭更適合被理解為一場同時涉及制度差異、權力競爭與國家利益的複雜衝突。</p>
+<h2 id="（三）政治哲學角度：權力與正義的關係">（三）政治哲學角度：權力與正義的關係</h2>
+<p>伯羅奔尼撒戰爭留下的重要思想遺產之一，是歷史學家修昔底德對權力政治的深刻分析。</p>
+<p>在《伯羅奔尼撒戰爭史》中，他不僅記錄軍事行動，也探討恐懼、利益、榮譽、政治野心與群眾心理如何影響決策。</p>
+<p>其中最著名的討論之一，是米洛斯對話。</p>
+<p>在這段敘事中，雅典代表與米洛斯人就中立、正義與生存展開辯論。雅典方面強調強弱之間的現實力量關係，米洛斯人則試圖以正義、希望與外部援助爭取生存空間。</p>
+<p>這段對話常被用來討論國際關係中的現實主義，以及道德原則在強權政治中的地位。</p>
+<p>不過，應當注意，《伯羅奔尼撒戰爭史》中的演說並不一定是逐字記錄的歷史發言，而是修昔底德依據事件情境所呈現的歷史敘事與政治分析。</p>
+<h2 id="（四）歷史學角度：修昔底德的史學方法">（四）歷史學角度：修昔底德的史學方法</h2>
+<p>修昔底德是研究伯羅奔尼撒戰爭最重要的古代史家之一。</p>
+<p>他曾參與雅典政治與軍事活動，並親身經歷戰爭。他的《伯羅奔尼撒戰爭史》主要記述前431年至前411年前後的事件，為後世研究這場戰爭提供了最重要的史料之一。</p>
+<p>修昔底德重視事件的因果關係、政治決策、軍事條件與人類行為，而不是只將戰爭解釋為神意或命運的安排。</p>
+<p>這種寫作方式對後世的歷史學、政治學及國際關係研究產生了深遠影響。</p>
+<hr>
+<h1 id="十二、總結：伯羅奔尼撒戰爭為什麼重要？">十二、總結：伯羅奔尼撒戰爭為什麼重要？</h1>
+<p>伯羅奔尼撒戰爭可以從五個層面理解。</p>
+<p><strong>第一，權力競爭。</strong> 雅典的崛起改變了希臘世界的權力平衡，斯巴達及其盟友因而試圖遏止雅典的擴張。</p>
+<p><strong>第二，戰略選擇。</strong> 雅典初期依靠海軍與城防維持優勢，但西西里遠征使其承受難以挽回的軍事損失。</p>
+<p><strong>第三，政治危機。</strong> 長期戰爭引發瘟疫、盟邦起義、寡頭政變與民主政治內部的激烈爭論。</p>
+<p><strong>第四，外部勢力介入。</strong> 波斯帝國的財政支援幫助斯巴達發展海軍，改變了原本對雅典有利的軍事條件。</p>
+<p><strong>第五，希臘世界的長期衰弱。</strong> 雅典戰敗後，斯巴達雖然取得霸權，卻無法建立穩定而持久的全希臘秩序。城邦間的競爭持續削弱希臘世界，為馬其頓後來的崛起提供了重要背景。</p>
+<p>從前431年的戰爭爆發，到前404年雅典投降，伯羅奔尼撒戰爭不只是雅典與斯巴達之間的勝負之爭，更是古希臘城邦政治、軍事與文明發展的重要轉折點。</p>
+<p><strong>最值得記住的一條歷史主線是：</strong></p>
+<p>雅典海上霸權崛起 → 斯巴達及其盟友感到威脅 → 長期戰爭爆發 → 尼西阿斯和約未能維持和平 → 西西里遠征失敗 → 斯巴達獲得波斯支援並發展海軍 → 羊河口海戰擊潰雅典艦隊 → 前404年雅典投降 → 斯巴達取得霸權，但希臘城邦體系持續衰弱。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>
