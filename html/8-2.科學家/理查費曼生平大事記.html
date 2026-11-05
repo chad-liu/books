@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理查・費曼（Richard Feynman）生平大事記</title>
+<meta name="description" content="理查・費曼（1918－1988）生平大事記：量子電動力學、費曼圖、路徑積分、物理教育與挑戰者號事故調查。">
+<style>
+:root{
+  --bg:#f5f6f3; --surface:#ffffff; --text:#242628; --muted:#667074;
+  --line:#dfe3df; --accent:#0f6b6b; --accent-soft:#e3f1f0; --accent2:#c2571a;
+  --note-bg:#fbf3e4; --note-line:#d9a441; --shadow:0 1px 3px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.05);
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",Georgia,serif;
+}
+[data-theme="dark"]{
+  --bg:#121615; --surface:#1b2120; --text:#e5e8e7; --muted:#97a19f;
+  --line:#2d3533; --accent:#5cc6c0; --accent-soft:#17302f; --accent2:#f0955c;
+  --note-bg:#2a2418; --note-line:#a9802f; --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent2);z-index:50}
+
+.hero{background:linear-gradient(135deg,#0d2630 0%,#0f6b6b 65%,#2a8c82 100%);color:#fff;padding:72px 24px 56px;text-align:center}
+.hero .en{letter-spacing:.35em;font-size:.8rem;text-transform:uppercase;opacity:.75;margin-bottom:12px}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);margin:0 0 10px;font-weight:700;letter-spacing:.05em}
+.hero .life{font-size:1.15rem;opacity:.9}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+.hero .tags span{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 14px;font-size:.85rem;background:rgba(255,255,255,.08)}
+
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;font-size:.9rem;padding-right:6px}
+nav.toc h2{font-size:.8rem;letter-spacing:.15em;color:var(--muted);margin:0 0 10px;font-weight:600}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+nav.toc a{display:block;padding:5px 12px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.5}
+nav.toc a:hover{color:var(--text)}
+nav.toc a.active{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+.toc-mobile{display:none}
+main{min-width:0}
+section{margin-bottom:56px}
+h2.sec{font-family:var(--serif);font-size:1.7rem;margin:0 0 24px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:baseline;gap:12px}
+h2.sec .no{color:var(--accent2);font-size:1rem;font-family:var(--sans);font-weight:600;border:1px solid var(--accent2);border-radius:6px;padding:0 8px;line-height:1.7;white-space:nowrap}
+p{margin:0 0 1em}
+.lead{font-size:1.08rem}
+.intro{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 30px;box-shadow:var(--shadow);margin-bottom:56px}
+.intro p:last-child{margin:0}
+.intro .sub{color:var(--accent2);font-weight:600;letter-spacing:.05em}
+
+.timeline{position:relative;margin-left:8px}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ev{position:relative;padding-left:34px;margin-bottom:22px}
+.ev::before{content:"";position:absolute;left:0;top:10px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);box-sizing:border-box}
+.ev.key::before{border-color:var(--accent2);background:var(--accent2)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 22px;box-shadow:var(--shadow)}
+.ev .yr{display:inline-block;font-weight:700;font-size:.85rem;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:0 10px;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.ev.key .yr{color:var(--accent2);background:color-mix(in srgb,var(--accent2) 14%,transparent)}
+.ev h3{margin:0 0 6px;font-size:1.12rem;line-height:1.5}
+.card ul{margin:0;padding-left:1.2em}
+.card li{margin:3px 0}
+.card li::marker{color:var(--accent)}
+.paper{font-family:var(--serif);font-style:italic;background:var(--accent-soft);border-radius:8px;padding:8px 14px;margin:6px 0 10px;display:block}
+.sig{margin-top:12px;padding:10px 14px;border-left:4px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,transparent);border-radius:0 8px 8px 0;font-size:.97rem}
+.sig b{color:var(--accent2)}
+.sad .card{border-left:4px solid var(--accent2)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.card.big{padding:22px 26px}
+.card.big h3{margin:0 0 10px;font-size:1.15rem;font-family:var(--serif)}
+.card.big h3 .n{display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;background:var(--accent);color:var(--surface);font-size:.85rem;margin-right:8px;font-family:var(--sans)}
+.card.wide{grid-column:1/-1}
+.formula{margin:14px 0;padding:16px 20px;background:var(--accent-soft);border-radius:10px;text-align:center;font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.3rem;overflow-x:auto;white-space:nowrap}
+.formula i{font-style:italic}
+.formula .big-int{font-size:1.6em;vertical-align:-.12em}
+.def{list-style:none;padding:0!important}
+.def li{margin:4px 0}
+.def code{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-style:italic;background:var(--accent-soft);color:var(--accent);padding:1px 8px;border-radius:5px}
+
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:.96rem}
+th,td{padding:11px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--accent-soft);color:var(--accent);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+td:first-child{font-weight:600;font-variant-numeric:tabular-nums}
+.en-t{font-family:var(--serif);font-style:italic}
+.remark{margin-top:14px;font-size:.92rem;color:var(--muted)}
+
+.impact{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:12px}
+.impact li{display:grid;grid-template-columns:11em 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 18px;box-shadow:var(--shadow)}
+.impact b{color:var(--accent)}
+.quote{margin:24px 0;padding:26px 30px;border-radius:14px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent2);box-shadow:var(--shadow)}
+.quote .label{font-size:.8rem;letter-spacing:.15em;color:var(--muted);margin-bottom:6px}
+.quote .zh{font-family:var(--serif);font-size:1.5rem;line-height:1.6}
+.quote .en{font-family:var(--serif);font-style:italic;color:var(--accent);margin-top:6px}
+.quote .cap{font-size:.92rem;color:var(--muted);margin:10px 0 0}
+.summary{background:linear-gradient(135deg,#0d2630,#0f6b6b);color:#fff;border-radius:14px;padding:24px 28px;font-size:1.03rem}
+.summary b{color:#ffd9a8}
+.refs{padding-left:1.4em}
+.refs li{margin:8px 0}
+.refs span{color:var(--muted)}
+
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 20px 60px;border-top:1px solid var(--line)}
+.fab{position:fixed;right:18px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:var(--shadow);cursor:pointer;font-size:1.1rem}
+#theme{bottom:74px}#top{bottom:18px;opacity:0;pointer-events:none;transition:opacity .2s}#top.show{opacity:1;pointer-events:auto}
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav.toc{display:none}
+  .toc-mobile{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin-bottom:24px}
+  .toc-mobile summary{cursor:pointer;font-weight:600}
+  .toc-mobile ol{margin:8px 0 0;padding-left:1.3em}
+  .toc-mobile a{text-decoration:none}
+  .impact li{grid-template-columns:1fr;gap:2px}
+  body{font-size:16px}
+}
+@media print{
+  :root{--bg:#fff;--surface:#fff;--shadow:none}
+  .hero,.summary{background:#0d2630!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  nav.toc,.toc-mobile,.fab,#progress{display:none!important}
+  .wrap{display:block;padding:0}
+  .ev,.card,tr,.impact li,.quote{break-inside:avoid}
+  h2.sec{break-after:avoid}
+  a{color:inherit}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="en">Richard Phillips Feynman · 1918 – 1988</div>
+  <h1>理查・費曼生平大事記</h1>
+  <div class="life">1918年5月11日 － 1988年2月15日</div>
+  <div class="tags"><span>美國理論物理學家</span><span>量子電動力學奠基者</span><span>諾貝爾物理學獎得主</span></div>
+</header>
+
+<div class="wrap">
+<nav class="toc" aria-label="目錄"><h2>目錄</h2><ol id="toc"></ol></nav>
+
+<main>
+<details class="toc-mobile"><summary>目錄</summary><ol id="toc-m"></ol></details>
+
+<div class="intro lead">
+  <p class="sub">美國理論物理學家｜量子電動力學奠基者｜諾貝爾物理學獎得主</p>
+  <p>理查・菲利普斯・費曼（Richard Phillips Feynman，1918年5月11日－1988年2月15日），是二十世紀最具影響力的理論物理學家之一。他以量子電動力學（QED）的發展、費曼圖、路徑積分方法，以及對物理學教育的貢獻聞名。他也是一位極具個人特色的科學家，擅長以直觀、簡潔的方式解釋複雜問題，並強調親自理解、動手驗證與質疑權威。</p>
+</div>
+
+<!-- 一 -->
+<section id="s1">
+<h2 class="sec" data-toc="出生與家庭背景（1918－1930）"><span class="no">一</span>出生與家庭背景（1918－1930）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1918</span><h3>5月11日：出生於紐約法洛克威</h3><ul>
+    <li>出生於美國紐約市皇后區（Queens）的法洛克威（Far Rockaway）。</li>
+    <li>父親梅爾維爾・費曼（Melville Feynman）從事制服銷售工作，對自然科學具有濃厚興趣，從小鼓勵費曼以提問、觀察和實驗理解世界。</li>
+    <li>母親露西爾・菲利普斯（Lucille Phillips）重視家庭教育，對費曼的幽默感與性格發展有重要影響。</li>
+    <li>費曼自幼喜歡拆解收音機、修理電器，並嘗試理解機械和自然現象背後的原理。</li>
+    <li>少年時期便展現數學天賦，能夠自行學習代數、微積分等數學知識。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1930s 初期</span><h3>對物理學產生濃厚興趣</h3><ul>
+    <li>開始對物理學產生濃厚興趣，逐漸形成以數學推理與實際問題解決為核心的學習方式。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 二 -->
+<section id="s2">
+<h2 class="sec" data-toc="求學時期與數學才能（1931－1939）"><span class="no">二</span>求學時期與數學才能（1931－1939）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1935</span><h3>進入麻省理工學院（MIT）</h3><ul>
+    <li>主修物理學。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1936－1938</span><h3>接受數學與理論物理訓練</h3><ul>
+    <li>接受數學、電磁學、量子力學及理論物理訓練，展現出色的數學能力。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1939</span><h3>取得MIT物理學學士學位</h3>
+    <ul><li>取得麻省理工學院物理學學士學位。</li></ul>
+    <div class="sig"><b>研究習慣：</b>大學期間，他逐漸形成一種重要的研究習慣：不滿足於記憶公式，而要重新推導公式，確認自己真正理解其物理意義。</div>
+    <div class="sig"><b>奠定根基：</b>費曼在MIT的學習經驗，使他具備紮實的數學與物理基礎，為日後研究量子力學及量子電動力學奠定根基。</div></div></article>
+</div>
+</section>
+
+<!-- 三 -->
+<section id="s3">
+<h2 class="sec" data-toc="普林斯頓大學與博士研究（1939－1942）"><span class="no">三</span>普林斯頓大學與博士研究（1939－1942）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1939</span><h3>進入普林斯頓大學研究所</h3><ul>
+    <li>師從理論物理學家約翰・惠勒（John Archibald Wheeler）。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1940</span><h3>研究量子力學與電磁作用</h3><ul>
+    <li>開始研究量子力學與電磁作用的數學描述，與惠勒合作探索新的理論方法。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1941</span><h3>研究作用量原理</h3><ul>
+    <li>持續研究量子力學中的作用量原理（principle of least action），嘗試將經典力學的變分思想運用於量子理論。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1942</span><h3>完成博士論文，取得博士學位</h3>
+    <span class="paper">The Principle of Least Action in Quantum Mechanics</span>
+    <ul><li>完成博士論文《量子力學中的最小原理》，取得普林斯頓大學博士學位。</li></ul>
+    <div class="sig">其博士研究發展出後來著名的<b>路徑積分表述（Path Integral Formulation）</b>的早期形式：量子系統的演化可以透過對所有可能路徑的振幅求和來描述。</div></div></article>
+</div>
+</section>
+
+<!-- 四 -->
+<section id="s4">
+<h2 class="sec" data-toc="二戰與曼哈頓計畫（1943－1945）"><span class="no">四</span>第二次世界大戰與曼哈頓計畫（1943－1945）</h2>
+<div class="timeline">
+  <article class="ev key"><div class="card"><span class="yr">1943</span><h3>加入曼哈頓計畫</h3><ul>
+    <li>前往新墨西哥州洛斯阿拉莫斯（Los Alamos），參與原子彈研發。</li>
+    <li>費曼加入漢斯・貝特（Hans Bethe）領導的理論部門，負責與核反應及原子彈設計相關的理論計算。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1943－1945</span><h3>核反應計算與數值分析</h3><ul>
+    <li>參與核反應計算、數值分析及相關物理問題研究。</li>
+    <li>他以快速計算、尋找計算錯誤及改進工作流程的能力受到同事注意。</li>
+    <li>費曼也研究洛斯阿拉莫斯的計算機設備，並與其他研究人員合作處理複雜的數值計算。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1945.07.16</span><h3>三位一體試驗（Trinity Test）</h3><ul>
+    <li>參與原子彈「三位一體試驗」相關工作，見證人類第一次核爆炸。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1945.08</span><h3>廣島、長崎</h3><ul>
+    <li>美國對日本廣島、長崎投下原子彈。戰爭結束後，費曼對核武器及科學家應承擔的社會責任有更深刻的思考。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 五 -->
+<section id="s5">
+<h2 class="sec" data-toc="康乃爾時期與QED突破（1945－1951）"><span class="no">五</span>康乃爾大學時期與量子電動力學突破（1945－1951）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1945</span><h3>受聘於康乃爾大學</h3><ul>
+    <li>受聘於康乃爾大學（Cornell University），擔任理論物理學相關教職。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1946</span><h3>展開戰後研究</h3><ul>
+    <li>在康乃爾大學展開戰後研究，重新思考量子力學與電磁場理論之間的矛盾。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1947</span><h3>謝爾特島會議</h3><ul>
+    <li>參與著名的謝爾特島會議（Shelter Island Conference），會議聚焦量子電動力學的理論困難。</li>
+    <li>同年，蘭姆位移（Lamb shift）及電子反常磁矩等實驗結果，顯示當時量子電動力學理論需要進一步修正。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1948</span><h3>波科諾會議</h3><ul>
+    <li>在波科諾會議（Pocono Conference）上介紹新的量子電動力學計算方法，但當時其他物理學家尚難以完全理解他的表述。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1949</span><h3>費曼圖問世</h3><ul>
+    <li>發展並推廣以圖形表示粒子相互作用的工具，後來稱為費曼圖（Feynman Diagrams）。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1949－1950</span><h3>建立系統化的計算方法</h3><ul>
+    <li>逐步建立一套處理電子與光子相互作用的計算方法，使量子電動力學的計算更加系統化。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1950</span><h3>推進重整化方法</h3><ul>
+    <li>發表重要研究成果，推進量子電動力學的重整化（Renormalization）方法。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 六 -->
+<section id="s6">
+<h2 class="sec" data-toc="加州理工時期與諾貝爾獎（1951－1965）"><span class="no">六</span>加州理工學院時期與諾貝爾獎（1951－1965）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1951</span><h3>加入加州理工學院</h3><ul>
+    <li>離開康乃爾大學，加入加州理工學院（California Institute of Technology，Caltech），擔任理論物理學教授。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1952－1954</span><h3>持續研究QED與粒子物理</h3><ul>
+    <li>持續研究量子電動力學、粒子物理及量子理論的數學方法。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1953</span><h3>拓展研究領域</h3><ul>
+    <li>與其他物理學家持續討論量子理論與基本粒子問題，拓展研究領域。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1955</span><h3>投入物理學教育</h3><ul>
+    <li>開始更深入地投入物理學教育與研究人才培養。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1956</span><h3>結婚</h3><ul>
+    <li>與物理學家瑪麗・貝爾（Mary Bell）結婚。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1957</span><h3>研究弱交互作用</h3><ul>
+    <li>與穆雷・蓋爾曼（Murray Gell-Mann）等人研究弱交互作用，推進基本粒子理論。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1960</span><h3>離婚</h3><ul>
+    <li>與第二任妻子離婚。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1961－1963</span><h3>開設本科物理學課程</h3><ul>
+    <li>在加州理工學院開設本科物理學課程，講授力學、電磁學與量子力學。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1963</span><h3>出版《費曼物理學講義》</h3><ul>
+    <li>出版《費曼物理學講義》（The Feynman Lectures on Physics）第一卷；第二卷與第三卷分別於1964年及1965年出版。這套講義後來成為世界各地物理教育的重要經典。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1965</span><h3>獲諾貝爾物理學獎</h3><ul>
+    <li>與朱利安・施溫格（Julian Schwinger）及朝永振一郎（Sin-Itiro Tomonaga）共同獲得諾貝爾物理學獎，表彰他們在量子電動力學方面的基礎工作，尤其是對基本粒子物理學深遠影響的貢獻。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 七 -->
+<section id="s7">
+<h2 class="sec" data-toc="物理教育與科學思考（1965－1979）"><span class="no">七</span>物理學教育、科學思考與跨領域研究（1965－1979）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1965 以後</span><h3>持續任教與推廣教育</h3><ul>
+    <li>持續在加州理工學院任教，並積極推廣以直觀理解、問題分析及實際推導為核心的物理教育。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1966</span><h3>影響力持續擴大</h3><ul>
+    <li>在學術界及大眾科學教育領域的影響力持續擴大。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1968</span><h3>參與粒子理論討論</h3><ul>
+    <li>參與物理學及基本粒子理論的研究討論，持續關注粒子物理的發展。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1970s</span><h3>量子場論與教學方法</h3><ul>
+    <li>研究量子場論、粒子物理及物理學的基礎問題，並持續發展教學方法。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1974</span><h3>「貨物崇拜科學」演講</h3><ul>
+    <li>在加州理工學院畢業典禮演講中，提出著名的「Cargo Cult Science」（貨物崇拜科學）概念，提醒研究者不要只模仿科學形式，而忽略誠實面對證據、誤差與不確定性。</li>
+    <li>費曼強調科學研究必須具備「絕對誠實」：研究者應主動揭露可能推翻自己結論的證據，而不是只挑選支持自己觀點的資料。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1979</span><h3>演講風格廣受歡迎</h3><ul>
+    <li>持續參與物理學教育與研究，並以生動的演講風格受到學生及大眾歡迎。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 八 -->
+<section id="s8">
+<h2 class="sec" data-toc="晚年與挑戰者號調查（1980－1988）"><span class="no">八</span>晚年研究、挑戰者號事故調查與最後歲月（1980－1988）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1980s 初期</span><h3>任教、演講與科普</h3><ul>
+    <li>費曼持續在加州理工學院任教與研究，並透過演講、訪談及科普著作，向大眾介紹物理學的思考方式。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1981</span><h3>量子模擬的構想</h3><ul>
+    <li>在麻省理工學院（MIT）舉行的會議上，提出以量子系統模擬其他量子系統的構想，這項思想後來成為量子計算研究的重要先驅之一。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1985</span><h3>出版《別鬧了，費曼先生！》</h3><ul>
+    <li>出版自傳式作品《別鬧了，費曼先生！》（Surely You're Joking, Mr. Feynman!），由拉爾夫・萊頓整理，記錄他的求學、研究、生活及各種趣事，使他成為廣受大眾認識的科學家。</li></ul></div></article>
+  <article class="ev sad"><div class="card"><span class="yr">1986.01.28</span><h3>挑戰者號爆炸</h3><ul>
+    <li>美國太空梭「挑戰者號」（Challenger）升空後爆炸，七名太空人罹難。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1986</span><h3>加入挑戰者號事故調查委員會</h3><ul>
+    <li>受邀加入美國總統挑戰者號事故調查委員會（Rogers Commission），調查太空梭失事原因。</li>
+    <li>在公開聽證會中，費曼將太空梭固體火箭助推器的橡膠O形環密封圈放入冰水中，展示低溫可能使橡膠失去彈性，無法及時密封接合處。</li>
+    <li>他的實驗說明低溫環境可能影響O形環性能，成為調查過程中極具代表性的公開示範。費曼也批評NASA管理階層與工程人員之間存在資訊落差，並指出安全判斷不應受到行政壓力左右。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1988</span><h3>接受癌症治療</h3><ul>
+    <li>持續接受癌症治療，並仍然參與學術活動與科學討論。</li></ul></div></article>
+  <article class="ev sad"><div class="card"><span class="yr">1988.02.15</span><h3>逝世</h3><ul>
+    <li>因腹膜後脂肪肉瘤相關併發症，於加州洛杉磯逝世，享年69歲。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 九 -->
+<section id="s9">
+<h2 class="sec" data-toc="費曼的主要科學貢獻"><span class="no">九</span>費曼的主要科學貢獻</h2>
+<div class="grid">
+  <div class="card big wide"><h3><span class="n">1</span>量子電動力學（Quantum Electrodynamics, QED）</h3>
+    <p>量子電動力學是描述帶電粒子（例如電子）與電磁場（例如光子）如何相互作用的量子場論。</p>
+    <p style="margin:0">費曼與朱利安・施溫格、朝永振一郎分別發展出彼此不同、但在物理內容上等價的量子電動力學理論表述。這些工作解決了早期理論計算中出現的無限大問題，建立可與高精度實驗比較的計算方法。</p></div>
+
+  <div class="card big"><h3><span class="n">2</span>費曼圖（Feynman Diagrams）</h3>
+    <p>費曼圖是將粒子相互作用以圖形表示的工具，能協助物理學家整理量子場論中的複雜計算。</p>
+    <ul>
+      <li><b>外部線：</b>代表進入或離開交互作用過程的粒子。</li>
+      <li><b>內部線：</b>代表計算中使用的內部傳播子。</li>
+      <li><b>頂點：</b>代表粒子發生交互作用的位置。</li>
+      <li><b>圖形與數學項的對應：</b>每一張圖都對應特定的數學表達式；依照微擾階數加總不同圖形，便可計算物理過程的機率振幅。</li></ul>
+    <p style="margin:12px 0 0">費曼圖不只是示意畫，而是一套具有嚴格數學規則的計算工具，廣泛應用於粒子物理、量子場論及凝態物理等領域。</p></div>
+
+  <div class="card big"><h3><span class="n">3</span>路徑積分（Path Integral Formulation）</h3>
+    <p>費曼將量子力學以另一種方式表述：一個量子系統從初始狀態演化到終止狀態時，可以將所有可能路徑的振幅加總。其概念可用下式表示：</p>
+    <div class="formula" role="math" aria-label="K(b,a) 等於對所有路徑 x(t) 積分 e 的 iS[x(t)]/ħ 次方">
+      <i>K</i>(<i>b</i>,<i>a</i>) = <span class="big-int">∫</span> 𝒟[<i>x</i>(<i>t</i>)] <i>e</i><sup><i>i</i><i>S</i>[<i>x</i>(<i>t</i>)]/ħ</sup></div>
+    <p style="margin:0 0 4px">其中：</p>
+    <ul class="def">
+      <li><code>K(b,a)</code>：由初始狀態 <i>a</i> 到終止狀態 <i>b</i> 的傳播振幅。</li>
+      <li><code>∫𝒟[x(t)]</code>：對所有可能路徑進行積分。</li>
+      <li><code>S[x(t)]</code>：該路徑的作用量。</li>
+      <li><code>ħ</code>：約化普朗克常數。</li></ul>
+    <p style="margin:12px 0 0">此方法與薛丁格波動力學、海森堡矩陣力學在適當條件下具有等價的物理內容，並成為量子場論的重要工具。</p></div>
+
+  <div class="card big"><h3><span class="n">4</span>弱交互作用與基本粒子物理</h3>
+    <p style="margin:0">費曼與穆雷・蓋爾曼等物理學家研究弱交互作用，發展相關理論描述。弱交互作用是自然界四種基本交互作用之一，涉及β衰變及中微子相關過程。</p></div>
+
+  <div class="card big"><h3><span class="n">5</span>量子計算的早期思想</h3>
+    <p style="margin:0">費曼在1981年提出，若要有效模擬量子世界，量子系統本身可能比傳統經典計算機更合適。這項思想啟發後來的量子計算研究，但他並未建立今日完整的量子計算機工程體系。</p></div>
+
+  <div class="card big wide"><h3><span class="n">6</span>科學方法與科學誠信</h3>
+    <p style="margin:0">費曼非常重視實驗、證據、誤差分析與研究者的誠實。他提醒科學家不能只尋找支持自己理論的證據，更應主動檢驗可能使理論失敗的情況。</p></div>
+</div>
+</section>
+
+<!-- 十 -->
+<section id="s10">
+<h2 class="sec" data-toc="費曼的重要著作與論文"><span class="no">十</span>費曼的重要著作與論文</h2>
+<div class="tbl"><table>
+<thead><tr><th>年份</th><th>著作或論文</th><th>主要內容</th></tr></thead>
+<tbody>
+<tr><td>1942</td><td class="en-t">The Principle of Least Action in Quantum Mechanics</td><td>博士論文，發展量子力學的路徑積分思想</td></tr>
+<tr><td>1948</td><td class="en-t">Space-Time Approach to Non-Relativistic Quantum Mechanics</td><td>以時空觀點重新表述量子力學</td></tr>
+<tr><td>1949</td><td class="en-t">The Theory of Positrons</td><td>研究正電子及相關量子理論</td></tr>
+<tr><td>1949</td><td class="en-t">Space-Time Approach to Quantum Electrodynamics</td><td>建立量子電動力學的重要時空表述</td></tr>
+<tr><td>1951</td><td><span class="en-t">Quantum Mechanics and Path Integrals</span>（相關研究後來整理出版）</td><td>系統呈現路徑積分方法</td></tr>
+<tr><td>1963</td><td class="en-t">The Feynman Lectures on Physics, Vol. I</td><td>力學、熱學等物理基礎</td></tr>
+<tr><td>1964</td><td class="en-t">The Feynman Lectures on Physics, Vol. II</td><td>電磁學與物質</td></tr>
+<tr><td>1965</td><td class="en-t">The Feynman Lectures on Physics, Vol. III</td><td>量子力學</td></tr>
+<tr><td>1965</td><td class="en-t">The Character of Physical Law</td><td>討論物理定律的本質與科學方法</td></tr>
+<tr><td>1972</td><td class="en-t">Statistical Mechanics</td><td>統計力學</td></tr>
+<tr><td>1985</td><td class="en-t">QED: The Strange Theory of Light and Matter</td><td>以通俗方式介紹量子電動力學</td></tr>
+<tr><td>1985</td><td class="en-t">Surely You're Joking, Mr. Feynman!</td><td>費曼的生活回憶與科學趣事</td></tr>
+<tr><td>1988</td><td class="en-t">What Do You Care What Other People Think?</td><td>回憶錄及挑戰者號事故調查經歷</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 十一 -->
+<section id="s11">
+<h2 class="sec" data-toc="費曼的重要人物關係"><span class="no">十一</span>費曼的重要人物關係</h2>
+<div class="tbl"><table>
+<thead><tr><th>人物</th><th>身分</th><th>與費曼的關係及貢獻</th></tr></thead>
+<tbody>
+<tr><td>約翰・惠勒（John Archibald Wheeler）</td><td>理論物理學家</td><td>費曼在普林斯頓的博士導師，兩人合作研究量子力學與作用量原理</td></tr>
+<tr><td>漢斯・貝特（Hans Bethe）</td><td>理論物理學家</td><td>曼哈頓計畫期間的主管，後來也是重要學術前輩</td></tr>
+<tr><td>朱利安・施溫格（Julian Schwinger）</td><td>理論物理學家</td><td>與費曼、朝永振一郎共同獲得1965年諾貝爾物理學獎</td></tr>
+<tr><td>朝永振一郎（Sin-Itiro Tomonaga）</td><td>理論物理學家</td><td>獨立發展量子電動力學的重要人物，與費曼共同獲諾貝爾獎</td></tr>
+<tr><td>穆雷・蓋爾曼（Murray Gell-Mann）</td><td>理論物理學家</td><td>與費曼共同研究弱交互作用及基本粒子理論</td></tr>
+<tr><td>拉爾夫・萊頓（Ralph Leighton）</td><td>物理學家、作家</td><td>費曼的朋友，協助整理《別鬧了，費曼先生！》等回憶錄</td></tr>
+<tr><td>羅傑斯（William P. Rogers）</td><td>政治人物</td><td>挑戰者號事故調查委員會主席，與費曼共同參與事故調查</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 十二 -->
+<section id="s12">
+<h2 class="sec" data-toc="費曼生平完整年份總表"><span class="no">十二</span>費曼生平完整年份總表</h2>
+<div class="tbl"><table>
+<thead><tr><th>年份</th><th>重要事件</th></tr></thead>
+<tbody>
+<tr><td>1918</td><td>5月11日出生於美國紐約皇后區</td></tr>
+<tr><td>1935</td><td>進入麻省理工學院</td></tr>
+<tr><td>1939</td><td>取得MIT物理學學士學位，進入普林斯頓大學研究所</td></tr>
+<tr><td>1942</td><td>完成博士論文，取得普林斯頓大學博士學位</td></tr>
+<tr><td>1943</td><td>加入曼哈頓計畫，前往洛斯阿拉莫斯</td></tr>
+<tr><td>1945</td><td>參與原子彈研發；戰後任教於康乃爾大學</td></tr>
+<tr><td>1947</td><td>參與謝爾特島會議，研究量子電動力學問題</td></tr>
+<tr><td>1948</td><td>發展新的量子力學表述，提出重要的時空方法</td></tr>
+<tr><td>1949</td><td>發表量子電動力學相關研究，推進費曼圖方法</td></tr>
+<tr><td>1950</td><td>量子電動力學計算方法逐漸成熟</td></tr>
+<tr><td>1951</td><td>加入加州理工學院</td></tr>
+<tr><td>1952</td><td>與瑪麗・路易絲・貝爾結婚</td></tr>
+<tr><td>1957</td><td>與蓋爾曼等人研究弱交互作用</td></tr>
+<tr><td>1960</td><td>與第三任妻子格溫妮絲・豪沃斯（Gweneth Howarth）結婚</td></tr>
+<tr><td>1963</td><td>出版《費曼物理學講義》第一卷</td></tr>
+<tr><td>1964</td><td>出版《費曼物理學講義》第二卷</td></tr>
+<tr><td>1965</td><td>出版第三卷；獲諾貝爾物理學獎</td></tr>
+<tr><td>1972</td><td>出版《統計力學》</td></tr>
+<tr><td>1974</td><td>發表著名的「貨物崇拜科學」演講</td></tr>
+<tr><td>1981</td><td>提出以量子系統模擬量子世界的構想</td></tr>
+<tr><td>1985</td><td>出版《別鬧了，費曼先生！》及《QED》</td></tr>
+<tr><td>1986</td><td>參與挑戰者號太空梭事故調查</td></tr>
+<tr><td>1988</td><td>2月15日逝世於美國加州，享年69歲</td></tr>
+</tbody></table></div>
+<p class="remark"><b>婚姻資料補充：</b>費曼第一任妻子阿琳・格林鮑姆（Arline Greenbaum）於1945年因結核病逝世；第二任妻子為瑪麗・路易絲・貝爾，兩人於1952年結婚、1956年離婚；1960年與第三任妻子格溫妮絲・豪沃斯結婚。</p>
+</section>
+
+<!-- 十三 -->
+<section id="s13">
+<h2 class="sec" data-toc="費曼的歷史地位與影響"><span class="no">十三</span>費曼的歷史地位與影響</h2>
+<p class="lead">費曼的歷史地位可從以下五個方面理解：</p>
+<ul class="impact">
+  <li><b>量子電動力學的奠基者之一</b><span>與施溫格、朝永振一郎共同建立現代量子電動力學的重要理論架構，使理論預測能與精密實驗高度吻合。</span></li>
+  <li><b>計算物理學的重要革新者</b><span>費曼圖將複雜的量子交互作用轉化為可操作的圖形與計算規則，深刻影響粒子物理學。</span></li>
+  <li><b>量子力學的重要詮釋者</b><span>路徑積分方法提供不同於薛丁格波動方程與海森堡矩陣力學的量子力學表述。</span></li>
+  <li><b>物理教育的傑出推廣者</b><span>《費曼物理學講義》以概念理解、數學推導及物理直覺為核心，影響全球數代物理學學生。</span></li>
+  <li><b>科學精神的代表人物</b><span>他強調懷疑、求證、誠實及獨立思考，反對只追求表面形式而忽略實際證據的研究態度。</span></li>
+</ul>
+<div class="quote">
+  <div class="label">費曼的核心思想</div>
+  <div class="zh">「我不能創造的東西，我就不理解。」</div>
+  <div class="en">What I cannot create, I do not understand.</div>
+  <p class="cap">常見英文版本。這句話常用來概括費曼對深入理解科學原理的重視。</p>
+</div>
+<div class="summary"><b>總結：</b>費曼不只是量子電動力學的主要奠基者之一,也是現代物理學中少數同時在理論研究、計算方法、科學教育及大眾科普方面都產生巨大影響的人物。他的科學精神尤其重視:真正理解一個問題,必須能夠從基本原理重新推導,而不是只會背誦結論。</div>
+</section>
+
+<!-- 十四 -->
+<section id="s14">
+<h2 class="sec" data-toc="參考資料與延伸閱讀"><span class="no">十四</span>參考資料與延伸閱讀</h2>
+<ul class="refs">
+  <li><a href="https://www.nobelprize.org/prizes/physics/1965/feynman/facts/" target="_blank" rel="noopener">Nobel Prize：Richard Feynman（1965年諾貝爾物理學獎）</a></li>
+  <li><a href="https://www.feynmanlectures.caltech.edu/" target="_blank" rel="noopener">The Feynman Lectures on Physics｜Caltech</a></li>
+  <li><a href="https://www.caltech.edu/" target="_blank" rel="noopener">California Institute of Technology｜加州理工學院</a></li>
+  <li><a href="https://www.osti.gov/" target="_blank" rel="noopener">美國能源部科技資訊辦公室｜曼哈頓計畫相關資料</a></li>
+  <li><a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA｜挑戰者號事故相關歷史資料</a></li>
+</ul>
+</section>
+</main>
+</div>
+
+<footer>理查・費曼（1918－1988）生平大事記</footer>
+
+<button class="fab" id="theme" aria-label="切換深色模式" title="切換深色／淺色">◐</button>
+<button class="fab" id="top" aria-label="回到頂端" title="回到頂端">↑</button>
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('h2.sec'));
+  var toc=document.getElementById('toc'), tocm=document.getElementById('toc-m');
+  secs.forEach(function(h){
+    var id=h.parentElement.id, t=h.getAttribute('data-toc');
+    [toc,tocm].forEach(function(ol){
+      var li=document.createElement('li'),a=document.createElement('a');
+      a.href='#'+id;a.textContent=t;li.appendChild(a);ol.appendChild(li);
+    });
+  });
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  var bar=document.getElementById('progress'), topBtn=document.getElementById('top');
+  function onScroll(){
+    var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?st/h*100:0)+'%';
+    topBtn.classList.toggle('show',st>600);
+    var cur=0;
+    secs.forEach(function(s,i){ if(s.getBoundingClientRect().top<140) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active',i===cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+  tocm.addEventListener('click',function(e){ if(e.target.tagName==='A') document.querySelector('.toc-mobile').open=false; });
+
+  var root=document.documentElement, key='feynman-theme', saved=null;
+  try{saved=localStorage.getItem(key)}catch(e){}
+  var dark=saved?saved==='dark':window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light')}
+  apply();
+  document.getElementById('theme').onclick=function(){
+    dark=!dark;apply();try{localStorage.setItem(key,dark?'dark':'light')}catch(e){}
+  };
+})();
+</script>
+</body>
+</html>

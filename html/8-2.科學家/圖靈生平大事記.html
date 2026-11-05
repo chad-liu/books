@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>艾倫・圖靈（Alan Turing）生平大事記</title>
+<meta name="description" content="艾倫・圖靈（1912－1954）生平大事記：圖靈機、破解恩尼格瑪、圖靈測試、形態發生學，以及身後平反。">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --text:#25262b; --muted:#6b6f78;
+  --line:#e4e0d6; --accent:#1f5f8b; --accent-soft:#e6f0f7; --accent2:#a8452f;
+  --note-bg:#fbf3e4; --note-line:#d9a441; --shadow:0 1px 3px rgba(0,0,0,.06),0 6px 18px rgba(0,0,0,.05);
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Heiti TC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",Georgia,serif;
+}
+[data-theme="dark"]{
+  --bg:#14161a; --surface:#1d2026; --text:#e6e6e8; --muted:#9a9ea8;
+  --line:#2f333b; --accent:#6fb1de; --accent-soft:#1c2c38; --accent2:#e58b73;
+  --note-bg:#2a2418; --note-line:#a9802f; --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.85;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent2);z-index:50}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#17324a 0%,#1f5f8b 60%,#2c7aa8 100%);color:#fff;padding:72px 24px 56px;text-align:center}
+.hero .en{letter-spacing:.35em;font-size:.8rem;text-transform:uppercase;opacity:.75;margin-bottom:12px}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);margin:0 0 10px;font-weight:700;letter-spacing:.05em}
+.hero .life{font-size:1.15rem;opacity:.9}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+.hero .tags span{border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 14px;font-size:.85rem;background:rgba(255,255,255,.08)}
+
+/* Layout */
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;max-height:calc(100vh - 40px);overflow:auto;font-size:.9rem;padding-right:6px}
+nav.toc h2{font-size:.8rem;letter-spacing:.15em;color:var(--muted);margin:0 0 10px;font-weight:600}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+nav.toc a{display:block;padding:5px 12px;margin-left:-2px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.5}
+nav.toc a:hover{color:var(--text)}
+nav.toc a.active{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+.toc-mobile{display:none}
+main{min-width:0}
+section{margin-bottom:56px}
+h2.sec{font-family:var(--serif);font-size:1.7rem;margin:0 0 24px;padding-bottom:10px;border-bottom:2px solid var(--line);display:flex;align-items:baseline;gap:12px}
+h2.sec .no{color:var(--accent2);font-size:1rem;font-family:var(--sans);font-weight:600;border:1px solid var(--accent2);border-radius:6px;padding:0 8px;line-height:1.7}
+p{margin:0 0 1em}
+.lead{font-size:1.08rem}
+.lead strong{color:var(--accent2)}
+.intro{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 30px;box-shadow:var(--shadow);margin-bottom:56px}
+.intro p:last-child{margin:0}
+
+/* Timeline */
+.timeline{position:relative;margin-left:8px}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ev{position:relative;padding-left:34px;margin-bottom:22px}
+.ev::before{content:"";position:absolute;left:0;top:10px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);box-sizing:border-box}
+.ev.key::before{border-color:var(--accent2);background:var(--accent2)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 22px;box-shadow:var(--shadow)}
+.ev .yr{display:inline-block;font-weight:700;font-size:.85rem;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:0 10px;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.ev.key .yr{color:var(--accent2);background:color-mix(in srgb,var(--accent2) 14%,transparent)}
+.ev h3{margin:0 0 6px;font-size:1.12rem;line-height:1.5}
+.ev ul,.card ul{margin:0;padding-left:1.2em}
+.ev li,.card li{margin:3px 0}
+.ev li::marker,.card li::marker{color:var(--accent)}
+.ev ul ul{margin-top:2px}
+.paper{font-family:var(--serif);font-style:italic;background:var(--accent-soft);border-radius:8px;padding:8px 14px;margin:6px 0 10px;display:block}
+.sig{margin-top:12px;padding:10px 14px;border-left:4px solid var(--accent2);background:color-mix(in srgb,var(--accent2) 8%,transparent);border-radius:0 8px 8px 0;font-size:.97rem}
+.sig b{color:var(--accent2)}
+.sad .card{border-left:4px solid var(--accent2)}
+
+/* Contributions */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.card.big{padding:22px 26px}
+.card.big h3{margin:0 0 10px;font-size:1.15rem;font-family:var(--serif)}
+.card.big h3 .n{display:inline-grid;place-items:center;width:1.7em;height:1.7em;border-radius:50%;background:var(--accent);color:var(--surface);font-size:.85rem;margin-right:8px;font-family:var(--sans)}
+.card.wide{grid-column:1/-1}
+blockquote{margin:12px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-family:var(--serif)}
+.note{background:var(--note-bg);border:1px solid var(--note-line);border-radius:10px;padding:10px 16px;font-size:.95rem;margin-top:12px}
+.parts{counter-reset:p;list-style:none;padding:0!important}
+.parts li{counter-increment:p;padding-left:2.2em;position:relative;margin:6px 0}
+.parts li::before{content:counter(p);position:absolute;left:0;top:.15em;width:1.5em;height:1.5em;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:.8rem;text-align:center;line-height:1.5em;font-weight:700}
+
+/* Tables */
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:.96rem}
+th,td{padding:11px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--accent-soft);color:var(--accent);font-weight:700;white-space:nowrap;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+td:first-child{font-weight:600;font-variant-numeric:tabular-nums}
+.en-t{font-family:var(--serif);font-style:italic}
+.remark{margin-top:14px;font-size:.92rem;color:var(--muted)}
+
+/* Impact */
+.impact{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:12px}
+.impact li{display:grid;grid-template-columns:7.5em 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 18px;box-shadow:var(--shadow)}
+.impact b{color:var(--accent)}
+.summary{background:linear-gradient(135deg,#17324a,#1f5f8b);color:#fff;border-radius:14px;padding:24px 28px;font-size:1.03rem}
+.summary b{color:#ffd9a8}
+.refs{padding-left:1.4em}
+.refs li{margin:8px 0}
+.refs span{color:var(--muted)}
+
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 20px 60px;border-top:1px solid var(--line)}
+.fab{position:fixed;right:18px;z-index:40;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:var(--shadow);cursor:pointer;font-size:1.1rem}
+#theme{bottom:74px}#top{bottom:18px;opacity:0;pointer-events:none;transition:opacity .2s}#top.show{opacity:1;pointer-events:auto}
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav.toc{display:none}
+  .toc-mobile{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin-bottom:24px}
+  .toc-mobile summary{cursor:pointer;font-weight:600}
+  .toc-mobile ol{margin:8px 0 0;padding-left:1.3em}
+  .toc-mobile a{text-decoration:none}
+  .impact li{grid-template-columns:1fr;gap:2px}
+  body{font-size:16px}
+}
+@media print{
+  :root{--bg:#fff;--surface:#fff;--shadow:none}
+  .hero{background:#17324a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  nav.toc,.toc-mobile,.fab,#progress{display:none!important}
+  .wrap{display:block;padding:0}
+  .ev,.card,tr,.impact li{break-inside:avoid}
+  h2.sec{break-after:avoid}
+  a{color:inherit}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="hero">
+  <div class="en">Alan Mathison Turing · 1912 – 1954</div>
+  <h1>艾倫・圖靈生平大事記</h1>
+  <div class="life">1912年6月23日 － 1954年6月7日</div>
+  <div class="tags"><span>數學家</span><span>邏輯學家</span><span>密碼分析學家</span><span>計算機科學先驅</span><span>人工智慧奠基者</span></div>
+</header>
+
+<div class="wrap">
+<nav class="toc" aria-label="目錄"><h2>目錄</h2><ol id="toc"></ol></nav>
+
+<main>
+<details class="toc-mobile"><summary>目錄</summary><ol id="toc-m"></ol></details>
+
+<div class="intro lead">
+  <p>艾倫・麥席森・圖靈（Alan Mathison Turing，1912年6月23日－1954年6月7日），英國數學家、邏輯學家、密碼分析學家、計算機科學先驅，也是人工智慧理論的重要奠基者。</p>
+  <p>圖靈最重要的歷史貢獻，是以數學方式說明「什麼是可計算的問題」，提出後來被稱為<strong>圖靈機（Turing Machine）</strong>的抽象計算模型；第二次世界大戰期間，他參與破解德國「恩尼格瑪密碼」（Enigma），對盟軍情報工作及戰爭進程產生重大影響。戰後，他投入早期電子計算機設計，並提出以「模仿遊戲」探討機器能否展現類似人類的智能。</p>
+  <p>圖靈的一生同時展現了二十世紀科學的巨大突破，以及當時英國社會對同性戀者的歧視與迫害。</p>
+</div>
+
+<!-- 一 -->
+<section id="s1">
+<h2 class="sec" data-toc="出生與家庭背景（1912－1926）"><span class="no">一</span>出生與家庭背景（1912－1926）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1912</span><h3>出生於英國倫敦</h3><ul>
+    <li>6月23日，圖靈出生於英國倫敦帕丁頓（Paddington）。</li>
+    <li>父親朱利葉斯・馬西森・圖靈（Julius Mathison Turing）曾任職於英屬印度行政體系。</li>
+    <li>母親艾塞爾・莎拉・圖靈（Ethel Sara Turing），原姓斯托尼（Stoney）。</li>
+    <li>圖靈有一位哥哥約翰（John）。</li>
+    <li>由於父母工作與生活安排，圖靈童年有一段時間由英國寄宿家庭照顧。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1922－1926</span><h3>展現數學與自然科學興趣</h3><ul>
+    <li>就讀英國黑斯廷斯附近的寄宿學校。</li>
+    <li>對數學、化學及自然科學展現濃厚興趣。</li>
+    <li>喜歡自行研究科學問題，對傳統學校教育中偏重古典學科的安排並不完全適應。</li>
+    <li>逐漸展現獨立思考與自行探索問題的能力。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 二 -->
+<section id="s2">
+<h2 class="sec" data-toc="求學時期與數學才能的發展（1926－1936）"><span class="no">二</span>求學時期與數學才能的發展（1926－1936）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1926</span><h3>進入謝伯恩公學</h3><ul>
+    <li>進入英國著名寄宿學校謝伯恩公學（Sherborne School）。</li>
+    <li>在校期間，對數學與科學尤其感興趣。</li>
+    <li>1926年英國大罷工期間，圖靈曾獨自騎自行車長途前往學校，顯示其獨立性與毅力。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1928</span><h3>與克里斯多福・莫科姆相識</h3><ul>
+    <li>認識同學克里斯多福・莫科姆（Christopher Morcom）。</li>
+    <li>莫科姆同樣熱愛數學與科學，兩人建立深厚友誼。</li>
+    <li>莫科姆鼓勵圖靈投入科學研究，對他的思想發展具有重要影響。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1930</span><h3>莫科姆逝世</h3><ul>
+    <li>莫科姆因結核病相關疾病逝世，年僅18歲。</li>
+    <li>圖靈深受打擊，開始思考心智、生命、物質與意識之間的關係。</li>
+    <li>此後，他對人工智慧、機器思考及心智本質的研究興趣逐漸形成。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1931</span><h3>進入劍橋大學</h3><ul>
+    <li>考入英國劍橋大學國王學院（King's College, Cambridge）。</li>
+    <li>主修數學。</li>
+    <li>受到數理邏輯、數學基礎與機率論等領域的啟發。</li>
+    <li>逐漸形成以嚴謹數學方法處理抽象問題的研究風格。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1934</span><h3>取得數學學位</h3><ul>
+    <li>以優異成績取得數學學士學位。</li>
+    <li>研究方向包括機率論、數學分析與邏輯學。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1935</span><h3>獲選為國王學院研究員</h3><ul>
+    <li>因研究成果優異，獲選為劍橋大學國王學院研究員（Fellow）。</li>
+    <li>研究機率論，特別是中心極限定理相關問題。</li>
+    <li>開始深入研究數學邏輯與數學基礎問題。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1936</span><h3>發表《論可計算數及其在判定問題上的應用》</h3>
+    <p style="margin:0 0 6px">發表劃時代論文：</p>
+    <span class="paper">On Computable Numbers, with an Application to the Entscheidungsproblem</span>
+    <ul>
+    <li>論文探討德國數學家希爾伯特（David Hilbert）提出的判定問題（Entscheidungsproblem）。</li>
+    <li>圖靈提出一種抽象的計算裝置，後來被稱為圖靈機。</li>
+    <li>以數學方式定義機械化計算程序，並證明存在某些問題，無法由任何通用算法解決。</li>
+    <li>論文也提出通用圖靈機（Universal Turing Machine）的概念，說明一部通用機器可以依照輸入的指令模擬其他計算機器。</li></ul>
+    <div class="sig"><b>歷史意義：</b>這篇論文為理論計算機科學奠定重要基礎，也為日後電子計算機的理論發展提供關鍵概念。</div></div></article>
+</div>
+</section>
+
+<!-- 三 -->
+<section id="s3">
+<h2 class="sec" data-toc="普林斯頓研究與數理邏輯（1936－1938）"><span class="no">三</span>普林斯頓研究與數理邏輯（1936－1938）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1936</span><h3>赴美國普林斯頓大學</h3><ul>
+    <li>前往美國普林斯頓大學進修。</li>
+    <li>師從數學家阿隆佐・邱奇（Alonzo Church）。</li>
+    <li>邱奇提出的「λ演算」（Lambda Calculus）與圖靈機，成為描述可計算性的兩種重要理論模型。</li>
+    <li>兩者後來被證明在計算能力上等價。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1937</span><h3>完成博士論文研究</h3><ul>
+    <li>持續研究數理邏輯、可計算性與數學基礎。</li>
+    <li>與邱奇的研究思想相互交流。</li>
+    <li>圖靈機逐漸成為現代計算理論的重要基礎。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1938</span><h3>取得普林斯頓大學博士學位</h3><ul>
+    <li>完成博士論文《基於序數的邏輯系統》（Systems of Logic Based on Ordinals）。</li>
+    <li>研究邏輯系統、序數及數學命題的可證明性。</li>
+    <li>獲得博士學位後返回英國。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1938－1939</span><h3>研究密碼學</h3><ul>
+    <li>開始接觸英國政府密碼分析機構的工作。</li>
+    <li>研究密碼系統及密碼分析方法。</li>
+    <li>逐步進入英國戰時密碼分析體系。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 四 -->
+<section id="s4">
+<h2 class="sec" data-toc="二戰與破解恩尼格瑪密碼（1939－1945）"><span class="no">四</span>第二次世界大戰與破解恩尼格瑪密碼（1939－1945）</h2>
+<div class="timeline">
+  <article class="ev key"><div class="card"><span class="yr">1939</span><h3>加入布萊切利園密碼分析中心</h3><ul>
+    <li>1939年9月，德國入侵波蘭，第二次世界大戰全面爆發。</li>
+    <li>圖靈加入英國政府密碼與密碼分析機構，前往布萊切利園（Bletchley Park）工作。</li>
+    <li>主要任務是破解德國軍方使用的恩尼格瑪密碼機。</li>
+    <li>恩尼格瑪利用轉子、插線板及每日變更的設定，產生大量可能的加密組合。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1939－1940</span><h3>研究德國恩尼格瑪密碼</h3><ul>
+    <li>圖靈研究德國海軍密碼系統。</li>
+    <li>利用數學邏輯、機率分析及密碼機的結構弱點，尋找破解方法。</li>
+    <li>他的研究建立在波蘭密碼學家早期成果之上，特別是馬里安・雷耶夫斯基（Marian Rejewski）、耶日・羅佐基（Jerzy Różycki）與亨里克・佐加爾斯基（Henryk Zygalski）的貢獻。</li>
+    <li>英國與波蘭密碼分析人員的合作，是後續破解工作的重要基礎。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1940</span><h3>協助設計「炸彈機」（Bombe）</h3><ul>
+    <li>圖靈設計英國版炸彈機（Bombe）的重要架構。</li>
+    <li>這是一種專門用來搜尋恩尼格瑪設定的機電裝置。</li>
+    <li>透過高速測試大量可能的轉子設定，縮小密碼分析人員需要人工檢查的範圍。</li>
+    <li>1940年，戈登・韋爾奇曼（Gordon Welchman）提出重要改良，進一步提高炸彈機的效率。</li>
+    <li>炸彈機並不是直接讀取所有密文的萬能解碼器，而是利用已知線索排除不可能的設定。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1941</span><h3>破解德國海軍密碼的工作持續推進</h3><ul>
+    <li>圖靈參與破解德國海軍恩尼格瑪密碼。</li>
+    <li>海軍密碼尤其困難，因為德國潛艇部隊使用較嚴密的密碼程序。</li>
+    <li>圖靈與同事利用數學推理、已知明文線索及機械化搜尋，持續改善解密方法。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1942</span><h3>研究海軍密碼系統</h3><ul>
+    <li>圖靈赴美國與盟軍密碼分析人員交流。</li>
+    <li>協助推進英美密碼分析合作。</li>
+    <li>研究德國海軍密碼系統，尤其是潛艇通信所使用的加密方法。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1943</span><h3>投入密碼分析技術的改進</h3><ul>
+    <li>布萊切利園的密碼分析工作逐漸擴大。</li>
+    <li>圖靈參與相關設備與方法的改良。</li>
+    <li>英國透過破解德國軍事通信，取得大量重要情報。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1944</span><h3>海軍密碼分析取得進展</h3><ul>
+    <li>盟軍持續破解德國海軍通信。</li>
+    <li>密碼分析成果協助盟軍掌握德國潛艇部署及海上行動。</li>
+    <li>相關情報對大西洋護航戰具有重要價值。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1945</span><h3>獲頒大英帝國官佐勳章</h3><ul>
+    <li>因戰時服務及密碼分析貢獻，獲頒大英帝國官佐勳章（OBE）。</li>
+    <li>戰時工作仍屬高度機密，當時社會大眾並不知道他在布萊切利園的具體貢獻。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 五 -->
+<section id="s5">
+<h2 class="sec" data-toc="戰後計算機研究與人工智慧思想（1945－1950）"><span class="no">五</span>戰後計算機研究與人工智慧思想（1945－1950）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1945</span><h3>加入英國國家物理實驗室</h3><ul>
+    <li>第二次世界大戰結束後，圖靈進入英國國家物理實驗室（National Physical Laboratory，NPL）。</li>
+    <li>開始設計電子數位計算機。</li>
+    <li>他提出自動計算引擎（Automatic Computing Engine，ACE）的設計構想。</li>
+    <li>ACE的設計以儲存程式計算機為核心，強調指令與資料可以存放在記憶體中。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1946</span><h3>提出ACE計算機設計報告</h3>
+    <p style="margin:0 0 4px">提交ACE計算機設計報告。設計內容包括：</p>
+    <ul><li>電子計算機的中央控制。</li><li>記憶體配置。</li><li>指令系統。</li><li>數值運算。</li><li>程式執行方式。</li></ul>
+    <ul style="margin-top:8px"><li>其設計思想對早期計算機架構具有重要影響。</li>
+    <li>但ACE完整機器的建造進度受到工程與組織因素影響，未能立即完成。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1947</span><h3>研究計算機程式與神經網絡</h3><ul>
+    <li>持續研究機器計算與程式設計。</li>
+    <li>開始探索如何利用計算機模擬人類神經系統。</li>
+    <li>對機器學習及人工智慧的可能性產生興趣。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1948</span><h3>加入曼徹斯特大學</h3><ul>
+    <li>前往曼徹斯特大學，參與早期電子計算機研究。</li>
+    <li>研究曼徹斯特計算機的程式設計與應用。</li>
+    <li>曼徹斯特大學的「小型實驗機」（Manchester Baby）於1948年成功運行，成為世界上最早成功執行儲存程式的電子計算機之一。</li>
+    <li>圖靈參與其後續計算機研究與程式設計工作。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1948</span><h3>發表《智慧機械》</h3><ul>
+    <li>撰寫《智慧機械》（Intelligent Machinery）報告。</li>
+    <li>探討機器是否可能具有學習、思考與智能。</li>
+    <li>提出「無組織機器」（unorganised machines）的概念，研究如何透過訓練使簡單機器形成複雜行為。</li>
+    <li>這些構想可視為早期人工神經網絡與機器學習研究的先驅之一。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1949</span><h3>擔任曼徹斯特大學計算實驗室副主任</h3><ul>
+    <li>在曼徹斯特大學計算實驗室擔任副主任。</li>
+    <li>參與早期電子計算機的軟體與數學研究。</li>
+    <li>持續探索機器智能的理論問題。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1950</span><h3>發表《計算機器與智能》</h3>
+    <p style="margin:0 0 6px">在哲學期刊《Mind》發表著名論文：</p>
+    <span class="paper">Computing Machinery and Intelligence</span>
+    <p style="margin:0 0 6px">論文開頭提出著名問題：「機器能思考嗎？」（Can machines think?）</p>
+    <ul>
+    <li>圖靈認為，直接定義「思考」可能陷入哲學爭論，因此提出一種可操作的測試方法。</li>
+    <li>這種方法後來稱為圖靈測試（Turing Test），原文稱為「模仿遊戲」（Imitation Game）。</li>
+    <li>在測試中，人類評判者透過文字與對象交談，嘗試判斷對方是人還是機器；若機器能在一定條件下使評判者難以區分，便可視為展現出某種人類式智能表現。</li></ul>
+    <div class="sig"><b>歷史意義：</b>這篇論文是人工智慧哲學與研究史上的重要里程碑，對後世自然語言處理、機器學習及智能研究產生深遠影響。</div></div></article>
+</div>
+</section>
+
+<!-- 六 -->
+<section id="s6">
+<h2 class="sec" data-toc="形態發生學與生命科學研究（1951－1954）"><span class="no">六</span>形態發生學與生命科學研究（1951－1954）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1951</span><h3>當選英國皇家學會院士</h3><ul>
+    <li>圖靈因數學與計算機科學方面的貢獻，當選英國皇家學會院士（Fellow of the Royal Society）。</li>
+    <li>研究興趣逐漸轉向生物學與數學之間的關係。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">1952</span><h3>發表《形態發生的化學基礎》</h3>
+    <span class="paper">The Chemical Basis of Morphogenesis</span>
+    <ul>
+    <li>研究生物體形態如何從簡單的化學與物理作用中形成。</li>
+    <li>提出反應擴散模型（Reaction-Diffusion Model）。</li>
+    <li>認為兩種或多種化學物質在反應與擴散過程中，可以形成穩定的空間分布與圖樣。</li>
+    <li>這種機制可能解釋斑紋、條紋及其他生物形態的形成。</li></ul></div></article>
+  <article class="ev sad"><div class="card"><span class="yr">1952</span><h3>因同性戀身分遭到刑事起訴</h3><ul>
+    <li>圖靈與一名男性發生關係後，遭遇警方調查。</li>
+    <li>當時英國法律將男性同性性行為視為刑事犯罪。</li>
+    <li>圖靈被控「重大猥褻罪」（gross indecency）。</li>
+    <li>他沒有否認相關事實，最終被判有罪。</li>
+    <li>法院讓他在監禁與接受荷爾蒙治療之間選擇。</li>
+    <li>圖靈接受雌激素治療（當時俗稱化學閹割），以避免入獄。</li>
+    <li>這項判決使他承受嚴重的身心壓力，也使他失去部分工作與安全許可。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1953－1954</span><h3>持續進行生物數學研究</h3><ul>
+    <li>繼續研究形態發生學。</li>
+    <li>探討自然界中的斑紋、條紋與生物結構如何形成。</li>
+    <li>將數學、化學與生物學結合，開創跨領域研究方向。</li></ul></div></article>
+  <article class="ev sad"><div class="card"><span class="yr">1954</span><h3>逝世</h3><ul>
+    <li>6月7日，圖靈被發現於英國威姆斯洛（Wilmslow）的住處死亡。</li>
+    <li>死因為氰化物中毒。</li>
+    <li>官方裁定為自殺。</li>
+    <li>他去世時年僅41歲。</li>
+    <li>他的逝世被視為二十世紀科學史上令人惋惜的事件之一。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 七 -->
+<section id="s7">
+<h2 class="sec" data-toc="身後平反與歷史紀念（1960年代至今）"><span class="no">七</span>身後平反與歷史紀念（1960年代至今）</h2>
+<div class="timeline">
+  <article class="ev"><div class="card"><span class="yr">1966</span><h3>設立圖靈獎</h3><ul>
+    <li>美國計算機協會（ACM）設立圖靈獎（A.M. Turing Award）。</li>
+    <li>用以表彰對計算機領域具有重大技術貢獻的人士。</li>
+    <li>圖靈獎後來被譽為「計算機科學界的諾貝爾獎」。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">1990s－2000s</span><h3>圖靈的科學貢獻逐漸受到廣泛重視</h3><ul>
+    <li>圖靈的理論計算機科學、密碼分析與人工智慧研究受到更多歷史研究與公共紀念。</li>
+    <li>布萊切利園逐漸成為英國重要的密碼學與二戰歷史紀念地。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">2009</span><h3>英國政府正式道歉</h3><ul>
+    <li>英國首相戈登・布朗（Gordon Brown）代表政府，公開為圖靈遭受的迫害道歉。</li>
+    <li>承認當時法律與社會制度對他的待遇極不公正。</li></ul></div></article>
+  <article class="ev key"><div class="card"><span class="yr">2013</span><h3>獲英國女王特赦</h3><ul>
+    <li>英國女王伊莉莎白二世正式對圖靈予以王室赦免。</li>
+    <li>這項特赦是對其遭受不公正對待的正式平反。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">2017</span><h3>英國通過「艾倫・圖靈法」</h3><ul>
+    <li>英國《警務與犯罪法》（Policing and Crime Act 2017）中的相關條文，為過去因同性戀相關法律而遭定罪的人士提供赦免機制。</li>
+    <li>這項政策被稱為「艾倫・圖靈法」（Alan Turing Law）。</li></ul></div></article>
+  <article class="ev"><div class="card"><span class="yr">2021</span><h3>圖靈肖像出現在英國50英鎊紙鈔</h3><ul>
+    <li>英格蘭銀行推出印有圖靈肖像的50英鎊塑膠鈔。</li>
+    <li>紙鈔上的圖靈象徵其對科學、數學與計算機發展的重大貢獻。</li>
+    <li>圖靈成為英國科學史的重要代表人物之一。</li></ul></div></article>
+</div>
+</section>
+
+<!-- 八 -->
+<section id="s8">
+<h2 class="sec" data-toc="圖靈的主要科學貢獻"><span class="no">八</span>圖靈的主要科學貢獻</h2>
+<div class="grid">
+  <div class="card big"><h3><span class="n">1</span>圖靈機：現代計算理論的基礎</h3>
+    <p>圖靈機是一種抽象數學模型，由以下部分組成：</p>
+    <ol class="parts">
+      <li><b>無限長紙帶：</b>用來儲存符號與資料。</li>
+      <li><b>讀寫頭：</b>讀取目前位置的符號，並可寫入新符號。</li>
+      <li><b>狀態控制器：</b>決定機器目前處於哪一種狀態。</li>
+      <li><b>轉移規則：</b>根據目前狀態與讀取符號，決定下一步動作。</li>
+      <li><b>移動機制：</b>讀寫頭依照規則向左或向右移動。</li></ol>
+    <p style="margin:12px 0 0">圖靈機的重要性在於：它把「計算」轉化為一套明確、可機械執行的規則，為現代計算機理論奠定基礎。</p></div>
+
+  <div class="card big"><h3><span class="n">2</span>通用圖靈機（Universal Turing Machine）</h3>
+    <p>通用圖靈機是圖靈理論中最重要的概念之一。其基本思想是：</p>
+    <ul><li>一般圖靈機依照固定規則執行特定計算。</li>
+    <li>通用圖靈機可以讀取另一部圖靈機的描述與輸入資料。</li>
+    <li>再依照該描述模擬原機器的運作。</li></ul>
+    <p style="margin:12px 0 0">這種「程式與資料皆可被儲存、讀取及處理」的思想，是現代通用計算機的重要理論基礎。</p></div>
+
+  <div class="card big wide"><h3><span class="n">3</span>可計算性與不可判定問題</h3>
+    <p>圖靈證明了，並非所有數學問題都能透過一套固定算法解決。最著名的例子是停機問題（Halting Problem）：</p>
+    <blockquote>是否存在一個通用算法，能夠判斷任意程式在給定輸入下，究竟會停止執行，還是永遠運行下去？</blockquote>
+    <p style="margin:0">圖靈證明：不存在能對所有可能程式與輸入都正確判斷的通用算法。這項成果確立了計算能力的理論界限。</p></div>
+
+  <div class="card big"><h3><span class="n">4</span>密碼分析與恩尼格瑪密碼破解</h3>
+    <ul><li>參與破解德國軍方恩尼格瑪密碼。</li><li>設計英國炸彈機的重要架構。</li><li>將數學推理與機械化搜尋結合。</li><li>促進密碼分析技術的發展。</li><li>對盟軍情報工作與大西洋戰役產生重要影響。</li></ul>
+    <div class="note"><b>須注意：</b>破解恩尼格瑪並非圖靈一人的成果，而是波蘭、英國及其他盟軍密碼分析人員長期合作的結果。</div></div>
+
+  <div class="card big"><h3><span class="n">5</span>圖靈測試與人工智慧</h3>
+    <p>圖靈測試主要討論機器能否在對話中展現足以與人類相似的智能表現。其歷史價值包括：</p>
+    <ul><li>將「機器是否能思考」轉化為可討論的操作性問題。</li><li>推動人工智慧研究。</li><li>影響自然語言處理與人機互動。</li><li>引發哲學界對意識、智能與理解能力的討論。</li></ul></div>
+
+  <div class="card big wide"><h3><span class="n">6</span>反應擴散模型與形態發生學</h3>
+    <p>圖靈將數學模型應用於生物形態研究，提出化學物質反應與擴散可能產生自然圖樣的理論。這一模型後來被廣泛用於研究：</p>
+    <ul><li>動物皮膚斑紋。</li><li>條紋與斑點形成。</li><li>植物形態。</li><li>生物組織的空間結構。</li><li>發育生物學中的圖樣形成。</li></ul></div>
+</div>
+</section>
+
+<!-- 九 -->
+<section id="s9">
+<h2 class="sec" data-toc="圖靈的重要著作與論文"><span class="no">九</span>圖靈的重要著作與論文</h2>
+<div class="tbl"><table>
+<thead><tr><th>年份</th><th>著作／論文</th><th>主要內容</th></tr></thead>
+<tbody>
+<tr><td>1936－1937</td><td class="en-t">On Computable Numbers</td><td>提出圖靈機與可計算性理論</td></tr>
+<tr><td>1938</td><td class="en-t">Systems of Logic Based on Ordinals</td><td>研究數理邏輯與序數</td></tr>
+<tr><td>1945－1946</td><td>ACE設計報告</td><td>提出自動計算引擎的設計</td></tr>
+<tr><td>1948</td><td class="en-t">Intelligent Machinery</td><td>探討機器學習與人工智慧</td></tr>
+<tr><td>1950</td><td class="en-t">Computing Machinery and Intelligence</td><td>提出模仿遊戲與圖靈測試</td></tr>
+<tr><td>1952</td><td class="en-t">The Chemical Basis of Morphogenesis</td><td>提出反應擴散模型，研究生物形態形成</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 十 -->
+<section id="s10">
+<h2 class="sec" data-toc="圖靈重要關係人物"><span class="no">十</span>圖靈重要關係人物</h2>
+<div class="tbl"><table>
+<thead><tr><th>人物</th><th>身分</th><th>與圖靈的關係及影響</th></tr></thead>
+<tbody>
+<tr><td>阿隆佐・邱奇（Alonzo Church）</td><td>數學家、邏輯學家</td><td>圖靈在普林斯頓的博士導師；兩人分別建立可計算性理論的重要模型</td></tr>
+<tr><td>大衛・希爾伯特（David Hilbert）</td><td>數學家</td><td>其判定問題促使圖靈研究可計算性</td></tr>
+<tr><td>克里斯多福・莫科姆（Christopher Morcom）</td><td>同學、好友</td><td>早年好友，其逝世深刻影響圖靈</td></tr>
+<tr><td>戈登・韋爾奇曼（Gordon Welchman）</td><td>密碼分析學家</td><td>改良英國炸彈機的重要合作者</td></tr>
+<tr><td>瓊・克拉克（Joan Clarke）</td><td>密碼分析學家</td><td>在布萊切利園與圖靈共同參與恩尼格瑪密碼分析</td></tr>
+<tr><td>馬里安・雷耶夫斯基（Marian Rejewski）</td><td>密碼分析學家</td><td>波蘭早期破解恩尼格瑪密碼的核心人物，其成果成為英國後續工作的基礎</td></tr>
+<tr><td>馬克斯・紐曼（Max Newman）</td><td>數學家</td><td>曼徹斯特計算機研究的重要同事</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- 十一 -->
+<section id="s11">
+<h2 class="sec" data-toc="圖靈生平完整年份總表"><span class="no">十一</span>圖靈生平完整年份總表</h2>
+<div class="tbl"><table>
+<thead><tr><th>年份</th><th>重要事件</th></tr></thead>
+<tbody>
+<tr><td>1912</td><td>6月23日出生於英國倫敦</td></tr>
+<tr><td>1926</td><td>進入謝伯恩公學</td></tr>
+<tr><td>1928</td><td>認識好友克里斯多福・莫科姆</td></tr>
+<tr><td>1930</td><td>莫科姆逝世，對圖靈思想產生深遠影響</td></tr>
+<tr><td>1931</td><td>進入劍橋大學國王學院</td></tr>
+<tr><td>1934</td><td>取得數學學士學位</td></tr>
+<tr><td>1935</td><td>獲選為劍橋國王學院研究員</td></tr>
+<tr><td>1936</td><td>發表可計算數論文，提出圖靈機</td></tr>
+<tr><td>1936</td><td>前往美國普林斯頓大學</td></tr>
+<tr><td>1938</td><td>取得普林斯頓大學博士學位，返回英國</td></tr>
+<tr><td>1939</td><td>加入布萊切利園，投入恩尼格瑪密碼破解</td></tr>
+<tr><td>1940</td><td>英國炸彈機開始投入密碼分析工作</td></tr>
+<tr><td>1942</td><td>前往美國交流密碼分析技術</td></tr>
+<tr><td>1945</td><td>獲頒大英帝國官佐勳章；加入英國國家物理實驗室</td></tr>
+<tr><td>1946</td><td>提出ACE計算機設計報告</td></tr>
+<tr><td>1948</td><td>加入曼徹斯特大學；撰寫《智慧機械》</td></tr>
+<tr><td>1949</td><td>擔任曼徹斯特大學計算實驗室副主任</td></tr>
+<tr><td>1950</td><td>發表《計算機器與智能》，提出圖靈測試</td></tr>
+<tr><td>1951</td><td>當選英國皇家學會院士</td></tr>
+<tr><td>1952</td><td>發表形態發生學論文；因同性戀遭刑事定罪</td></tr>
+<tr><td>1953</td><td>持續研究數學、生物學與形態發生學</td></tr>
+<tr><td>1954</td><td>6月7日逝世，享年41歲</td></tr>
+<tr><td>1966</td><td>美國計算機協會設立圖靈獎</td></tr>
+<tr><td>2009</td><td>英國政府正式為圖靈遭受的迫害公開道歉</td></tr>
+<tr><td>2013</td><td>英國女王授予圖靈王室赦免</td></tr>
+<tr><td>2017</td><td>英國通過「艾倫・圖靈法」相關赦免措施</td></tr>
+<tr><td>2021</td><td>圖靈肖像出現在英國50英鎊紙鈔</td></tr>
+</tbody></table></div>
+<p class="remark"><b>日期補充：</b>劍橋大學圖靈數位檔案記載圖靈於1954年6月8日逝世；多數傳記與其他權威資料則採6月7日。本表採用較常見的6月7日。（參考：MacTutor History of Mathematics）</p>
+</section>
+
+<!-- 十二 -->
+<section id="s12">
+<h2 class="sec" data-toc="圖靈的歷史地位與影響"><span class="no">十二</span>圖靈的歷史地位與影響</h2>
+<p class="lead">圖靈的歷史地位，不能只以「破解德國密碼的人」來理解。他的重要性在於，他從數學、邏輯、工程與生物學等不同角度，探索了自然界與人類思想中的共同問題：複雜的行為與結構，能否由簡單而明確的規則產生？</p>
+<p>其主要影響可歸納為五個方面：</p>
+<ul class="impact">
+  <li><b>理論計算機科學</b><span>圖靈機與可計算性理論，奠定現代計算理論的重要基礎。</span></li>
+  <li><b>計算機工程</b><span>ACE設計與曼徹斯特計算機研究，推動儲存程式計算機的發展。</span></li>
+  <li><b>密碼學</b><span>二戰期間參與破解恩尼格瑪密碼，對盟軍情報工作具有重要貢獻。</span></li>
+  <li><b>人工智慧</b><span>圖靈測試將機器智能問題帶入可操作的研究與哲學討論。</span></li>
+  <li><b>數學生物學</b><span>反應擴散模型為形態發生學與生物圖樣形成研究開創新的方向。</span></li>
+</ul>
+<div class="summary"><b>總結：</b>圖靈不僅是現代計算機科學的重要奠基者，也是人工智慧與數學生物學的先驅。他的研究使人類第一次能夠以嚴謹的數學語言，討論機器計算的能力、限制，以及智能與生命形態形成的可能機制。</div>
+</section>
+
+<!-- 十三 -->
+<section id="s13">
+<h2 class="sec" data-toc="重要參考資料"><span class="no">十三</span>重要參考資料</h2>
+<ol class="refs">
+  <li><a href="https://turingarchive.kings.cam.ac.uk/about-alan-turing" target="_blank" rel="noopener">劍橋大學國王學院：The Turing Digital Archive</a> <span>——圖靈生平、學術文件與手稿。</span></li>
+  <li><a href="https://www.gchq.gov.uk/information/alan-turing" target="_blank" rel="noopener">英國政府通訊總部 GCHQ：Alan Turing</a> <span>——戰時密碼分析與政府工作。</span></li>
+  <li><a href="https://www.theiet.org/membership/library-and-archives/the-iet-archives/biographies/alan-turing" target="_blank" rel="noopener">英國工程技術學會 IET：Alan Turing</a> <span>——計算機研究與科學貢獻。</span></li>
+  <li><a href="https://www.npl.co.uk/about-us/history/famous/alan-turing" target="_blank" rel="noopener">英國國家物理實驗室 NPL：Alan Turing</a> <span>——ACE計算機設計。</span></li>
+  <li><a href="https://www.kings.cam.ac.uk/alan-mathison-turing-1912-54" target="_blank" rel="noopener">劍橋大學國王學院：Alan Mathison Turing</a> <span>——形態發生學研究。</span></li>
+  <li><a href="https://mathshistory.st-andrews.ac.uk/Biographies/Turing/" target="_blank" rel="noopener">聖安德魯斯大學數學史：Alan Turing</a> <span>——完整生平與數學史背景。</span></li>
+</ol>
+</section>
+</main>
+</div>
+
+<footer>艾倫・圖靈（1912－1954）生平大事記</footer>
+
+<button class="fab" id="theme" aria-label="切換深色模式" title="切換深色／淺色">◐</button>
+<button class="fab" id="top" aria-label="回到頂端" title="回到頂端">↑</button>
+
+<script>
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('h2.sec'));
+  var toc=document.getElementById('toc'), tocm=document.getElementById('toc-m');
+  secs.forEach(function(h){
+    var id=h.parentElement.id, t=h.getAttribute('data-toc');
+    [toc,tocm].forEach(function(ol){
+      var li=document.createElement('li'),a=document.createElement('a');
+      a.href='#'+id;a.textContent=t;li.appendChild(a);ol.appendChild(li);
+    });
+  });
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  var bar=document.getElementById('progress'), topBtn=document.getElementById('top');
+  function onScroll(){
+    var st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?st/h*100:0)+'%';
+    topBtn.classList.toggle('show',st>600);
+    var cur=0;
+    secs.forEach(function(s,i){ if(s.getBoundingClientRect().top<140) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active',i===cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+  tocm.addEventListener('click',function(e){ if(e.target.tagName==='A') document.querySelector('.toc-mobile').open=false; });
+
+  var root=document.documentElement, key='turing-theme', saved=null;
+  try{saved=localStorage.getItem(key)}catch(e){}
+  var dark=saved?saved==='dark':window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches;
+  function apply(){root.setAttribute('data-theme',dark?'dark':'light')}
+  apply();
+  document.getElementById('theme').onclick=function(){
+    dark=!dark;apply();try{localStorage.setItem(key,dark?'dark':'light')}catch(e){}
+  };
+})();
+</script>
+</body>
+</html>
