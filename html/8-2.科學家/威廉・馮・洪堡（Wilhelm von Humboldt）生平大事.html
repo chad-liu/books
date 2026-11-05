@@ -1,0 +1,822 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="威廉・馮・洪堡（wilhelm-von-humboldt）生平大事記">威廉・馮・洪堡（Wilhelm von Humboldt）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/43a07CHo-1S9fm4L09ozRBNcXxZe92OabNH3baZsaHp5hORG4XVrwSuBvYwJ-geSEWKQqsgdUq6rmxIVEjK1-6l9ICzpRooQHSPJtF9_UYpIvqq_FBk3YrfyiXakmJfyR2h6xlMDDg20-bMbIQDuSjm-AmB3U9H3vEK55s1E1q4?purpose=inline">Deutsches Historisches Museum Berlin</a></p>
+<p>威廉・馮・洪堡（Wilhelm von Humboldt，1767年6月22日－1835年4月8日）</p>
+<p>德國哲學家、語言學家、教育改革家、外交官及政治思想家。現代比較語言學、語言哲學與德國人文主義教育思想的重要奠基者，也是柏林大學（今洪堡大學）的創辦者之一。</p>
+<h2 id="一、生平概述與歷史地位">一、生平概述與歷史地位</h2>
+<p>威廉・馮・洪堡是十九世紀德國思想史的重要人物。他的弟弟是著名自然科學家、地理學家亞歷山大・馮・洪堡（Alexander von Humboldt，1769－1859）。</p>
+<p>兩兄弟都對人類知識有廣泛興趣，但研究方向有所不同：</p>
+<ul>
+<li>威廉・馮・洪堡：研究語言、哲學、教育、政治制度與人類文化。</li>
+<li>亞歷山大・馮・洪堡：研究地理、地質、植物、氣候及自然科學。</li>
+</ul>
+<p>威廉最重要的歷史貢獻，是將語言視為人類思想形成的重要力量，並將教育理解為人的全面發展，而不只是傳授知識或訓練職業技能。</p>
+<p>他的主要貢獻可歸納為六項：</p>
+<ol>
+<li>提出語言與思想密切相關的語言哲學。</li>
+<li>推動比較語言學及人類語言結構研究。</li>
+<li>提倡教育應以人的全面發展（Bildung）為核心。</li>
+<li>推動普魯士教育改革。</li>
+<li>參與1810年柏林大學的創立。</li>
+<li>提倡限制國家權力、保障個人自由的政治思想。</li>
+</ol>
+<p><a href="https://www.google.com/s2/favicons?domain=https://plato.stanford.edu&sz=32">image</a></p>
+<p>斯坦福哲學百科全書+2</p>
+<h2 id="二、出生與家庭背景（1767－1787）">二、出生與家庭背景（1767－1787）</h2>
+<h3 id="1767年：出生於普魯士王國">1767年：出生於普魯士王國</h3>
+<ul>
+<li>1767年6月22日：出生於普魯士王國波茨坦（Potsdam）。</li>
+<li>父親為亞歷山大・格奧爾格・馮・洪堡（Alexander Georg von Humboldt），曾在普魯士宮廷任職。</li>
+<li>母親為瑪麗・伊莉莎白・馮・洪堡（Marie Elisabeth von Humboldt），出身於富裕家庭。</li>
+<li>家庭具有貴族背景，擁有良好的教育資源。</li>
+</ul>
+<h3 id="1769年：弟弟亞歷山大出生">1769年：弟弟亞歷山大出生</h3>
+<ul>
+<li>1769年9月14日：弟弟亞歷山大・馮・洪堡出生。</li>
+<li>兄弟兩人年齡相差約兩歲。</li>
+<li>兩人從小接受廣泛的人文與自然科學教育。</li>
+<li>威廉後來成為語言學與教育思想家，亞歷山大則成為自然科學探險家。</li>
+</ul>
+<h3 id="1771年：移居特格爾">1771年：移居特格爾</h3>
+<ul>
+<li>洪堡家族在柏林附近的特格爾（Tegel）擁有家族莊園。</li>
+<li>威廉與亞歷山大在莊園接受家庭教育。</li>
+<li>家庭教師包括教育家約阿希姆・坎佩（Joachim Heinrich Campe）及哲學、政治思想領域的學者。</li>
+<li>教育內容涵蓋古典文學、歷史、哲學、數學、拉丁文、希臘文及法文。</li>
+</ul>
+<h3 id="1779年：父親逝世">1779年：父親逝世</h3>
+<ul>
+<li>威廉年僅十二歲時，父親逝世。</li>
+<li>母親負責安排兄弟兩人的教育。</li>
+<li>家庭聘請柏林啟蒙運動圈中的知識分子擔任家庭教師。</li>
+<li>威廉逐漸接觸啟蒙思想、古希臘哲學及近代歐洲政治思想。</li>
+</ul>
+<h3 id="1780年代：接受人文主義教育">1780年代：接受人文主義教育</h3>
+<ul>
+<li>深入研究柏拉圖、亞里斯多德及古典希臘文化。</li>
+<li>閱讀萊布尼茲、洛克、休謨、盧梭及赫爾德等思想家的著作。</li>
+<li>對語言、哲學、政治制度及人的自由產生濃厚興趣。</li>
+<li>這段時期奠定其後來的人文主義思想基礎。</li>
+</ul>
+<h2 id="三、大學求學與早期思想形成（1787－1790）">三、大學求學與早期思想形成（1787－1790）</h2>
+<h3 id="1787年：進入法蘭克福大學">1787年：進入法蘭克福大學</h3>
+<ul>
+<li>1787年：與弟弟亞歷山大一同進入法蘭克福大學（University of Frankfurt an der Oder）。</li>
+<li>主要學習法律。</li>
+<li>同時對哲學、歷史、古典文學及政治思想保持興趣。</li>
+<li>開始思考國家制度與個人自由之間的關係。</li>
+</ul>
+<h3 id="1788年：轉往哥廷根大學">1788年：轉往哥廷根大學</h3>
+<ul>
+<li>轉入德國著名的哥廷根大學（University of Göttingen）。</li>
+<li>繼續學習法律及古典語文。</li>
+<li>接觸當時德國重要的歷史學、哲學與自然科學研究。</li>
+<li>閱讀古希臘文學及哲學作品，逐漸確立人文主義的學術方向。</li>
+</ul>
+<h3 id="1789年：法國大革命與巴黎之旅">1789年：法國大革命與巴黎之旅</h3>
+<ul>
+<li>前往法國、比利時等地旅行。</li>
+<li>親眼觀察法國大革命時期的政治與社會變化。</li>
+<li>對革命所提出的自由、平等及公民權利問題產生興趣。</li>
+<li>但他並非單純支持革命，而是關心政治變革如何保障個人自由與社會秩序。</li>
+</ul>
+<h3 id="1789年12月16日：與卡羅琳訂婚">1789年12月16日：與卡羅琳訂婚</h3>
+<ul>
+<li>與卡羅琳・馮・達赫羅登（Caroline von Dacheröden）訂婚。</li>
+<li>卡羅琳後來成為他的重要生活伴侶及學術交流夥伴。</li>
+<li>兩人的婚姻生活與文化交往，對洪堡的思想發展具有重要影響。</li>
+</ul>
+<h2 id="四、進入普魯士政府與政治思想形成（1790－1794）">四、進入普魯士政府與政治思想形成（1790－1794）</h2>
+<h3 id="1790年：進入普魯士政府">1790年：進入普魯士政府</h3>
+<ul>
+<li>1790年：進入普魯士政府外交部門服務。</li>
+<li>擔任外交部門相關職務，並在法院體系接受實務訓練。</li>
+<li>開始接觸國家行政、法律及政治制度。</li>
+</ul>
+<h3 id="1791年：離開政府，投入哲學與寫作">1791年：離開政府，投入哲學與寫作</h3>
+<ul>
+<li>1791年：離開法院及行政職務。</li>
+<li>將主要精力轉向哲學、政治理論及古典文化研究。</li>
+<li>同年6月29日，與卡羅琳結婚。</li>
+<li>婚後育有多名子女。</li>
+</ul>
+<h3 id="1792年：發表政治思想重要著作">1792年：發表政治思想重要著作</h3>
+<ul>
+<li>發表《試論國家活動範圍的界限》（Ideen zu einem Versuch, die Grenzen der Wirksamkeit des Staats zu bestimmen）。</li>
+<li>這是洪堡政治哲學最具代表性的早期著作。</li>
+<li>他認為國家的權力應受到限制，不應過度干涉個人的生活。</li>
+<li>國家應保障安全、法律秩序及個人自由，而不應把所有人的生活方式統一化。</li>
+</ul>
+<p>核心思想：</p>
+<p>洪堡認為，人的發展需要自由。每個人應有機會依照自己的能力、興趣及判斷，發展獨特的人格。</p>
+<p>這種思想後來對自由主義政治哲學及教育思想產生重要影響。</p>
+<h2 id="五、耶拿時期：與歌德、席勒等人的思想交流（1794－1797）">五、耶拿時期：與歌德、席勒等人的思想交流（1794－1797）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/RyUacEHzhRsti1b7XByXibOF42Ttk3pN-U3D4ArKAjiGsup13829OB7sK0F3I_08nMB3c_zi63ird7b1MzQCTqTERUKFtqYX5vhe7GrkvpmoAtOnF6SRpmWa7xsz-q3T7QYH-ftJx_RyZnBR1X0XEoVpIbXwaQ8ApvQEr_9Wels?purpose=inline">De academische vrijheid stond steeds onder druk - Historisch Nieuwsblad</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/1suOY6_5XpNlM7qVua9oUFWcqdDzfekswDUs95dmgFLhp5ut-faE34dTk2NX7QzSy4eC2QPAtuV5FCra22h3SqdzkZTgwY3gFKOvSJfkIMlixBnCpA0PB9lDcAO2pBMZX7yBHWKKkhqCuitvAanyiAwV6jAV4b0S_otl3K4REKg?purpose=inline">Porträt von Friedrich Schiller</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/NvOgg7CPO-h_1UP-U76Y3Fkihf4loDRgUH0xnAnIU4_9_NEV7vJfsoLaWmBG4hVfvA_Ddiye3JYHAeKKT_AM9fGEciGKoIZ-YeOsmySrTnNvVNo751BZy4tEWrSemXOrmFS02KyDeaEprC-vDElzxNKAyRt-yKQ6Ti4pq_XF6fs?purpose=inline">Sammlung Schack</a></p>
+<h3 id="1794年：移居耶拿">1794年：移居耶拿</h3>
+<ul>
+<li>1794年：洪堡與妻子移居耶拿（Jena）。</li>
+<li>當時耶拿是德國古典主義、浪漫主義及德國觀念論的重要學術中心。</li>
+<li>與詩人及劇作家席勒（Friedrich Schiller）建立密切友誼。</li>
+<li>也與歌德（Johann Wolfgang von Goethe）保持密切學術交流。</li>
+<li>接觸費希特（Johann Gottlieb Fichte）等哲學家的思想。</li>
+</ul>
+<h3 id="1795年：參與《時代女神》期刊">1795年：參與《時代女神》期刊</h3>
+<ul>
+<li>協助席勒的文學期刊《時代女神》（Die Horen）。</li>
+<li>參與文學、哲學及美學方面的討論。</li>
+<li>發表有關男女差異及藝術形式的文章。</li>
+<li>深入研究美學、人格發展及人的精神能力。</li>
+</ul>
+<h3 id="1796年：持續研究美學與人類發展">1796年：持續研究美學與人類發展</h3>
+<ul>
+<li>與席勒、歌德等人討論文學、藝術及哲學。</li>
+<li>研究人的感性、理性與審美能力如何形成。</li>
+<li>逐漸發展出以人的全面發展為核心的人文主義思想。</li>
+</ul>
+<h3 id="1797年：移居巴黎">1797年：移居巴黎</h3>
+<ul>
+<li>洪堡一家移居巴黎。</li>
+<li>巴黎當時是歐洲重要的政治、文化與學術中心。</li>
+<li>洪堡深入研究法國歷史、語言、文學及藝術。</li>
+<li>逐漸將語言研究視為理解民族文化與人類思想的重要途徑。</li>
+</ul>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.dhm.de&sz=32">image</a></p>
+<p>Deutsches Historisches Museum (DHM)+1</p>
+<h2 id="六、西班牙考察與語言學研究（1799－1801）">六、西班牙考察與語言學研究（1799－1801）</h2>
+<h3 id="1799年：研究巴斯克語">1799年：研究巴斯克語</h3>
+<ul>
+<li>洪堡開始對西班牙語言與文化進行深入研究。</li>
+<li>特別關注巴斯克語（Basque）。</li>
+<li>巴斯克語與周圍的印歐語系語言具有明顯差異。</li>
+<li>他認為研究一種語言，不能只依賴詞彙比較，還必須深入理解其語法結構及使用者的文化。</li>
+</ul>
+<h3 id="1800年：前往西班牙">1800年：前往西班牙</h3>
+<ul>
+<li>與妻子前往西班牙旅行。</li>
+<li>調查巴斯克地區的語言、文化與社會生活。</li>
+<li>研究巴斯克語的語法、詞彙及語言結構。</li>
+<li>透過與當地居民交流，蒐集第一手語言資料。</li>
+</ul>
+<h3 id="1801年：返回柏林">1801年：返回柏林</h3>
+<ul>
+<li>1801年8月：返回柏林。</li>
+<li>已經有四名子女。</li>
+<li>開始尋求新的外交職位，希望能在羅馬工作。</li>
+<li>對語言研究的興趣日益加深，逐漸形成比較語言學的研究方向。</li>
+</ul>
+<h2 id="七、羅馬外交官時期與古典文化研究（1802－1808）">七、羅馬外交官時期與古典文化研究（1802－1808）</h2>
+<p><a href="https://en.wikipedia.org/wiki/List_of_intellectuals_of_the_Enlightenment?utm_source=chatgpt.com">en.wikipedia.org</a></p>
+<h3 id="1802年：出任普魯士駐教廷代表">1802年：出任普魯士駐教廷代表</h3>
+<ul>
+<li>1802年：出任普魯士駐教廷代表，前往羅馬。</li>
+<li>羅馬擁有豐富的古希臘、古羅馬藝術與文化遺產。</li>
+<li>洪堡深入研究古典藝術、雕塑、建築、歷史及文學。</li>
+<li>他的住所成為歐洲藝術家、學者及外交人士交流的場所。</li>
+</ul>
+<h3 id="1803－1805年：研究古希臘與古羅馬文化">1803－1805年：研究古希臘與古羅馬文化</h3>
+<ul>
+<li>深入研究古希臘藝術及羅馬文明。</li>
+<li>思考古典文化如何體現人的精神能力與自由。</li>
+<li>對希臘文化的重視，成為其教育理念的重要基礎。</li>
+<li>認為古典教育不應只是學習古代知識，更應藉由古典文化培養人的判斷力、想像力及人格。</li>
+</ul>
+<h3 id="1806－1807年：撰寫《拉丁姆與希臘》">1806－1807年：撰寫《拉丁姆與希臘》</h3>
+<ul>
+<li>進行古羅馬拉丁姆地區與古希臘文化的比較研究。</li>
+<li>透過古典文化探討人類精神發展與藝術形式。</li>
+<li>持續發展人文主義及古典教育思想。</li>
+</ul>
+<h3 id="1806年：普魯士遭拿破崙擊敗">1806年：普魯士遭拿破崙擊敗</h3>
+<ul>
+<li>普魯士在耶拿－奧爾施泰特戰役中遭拿破崙軍隊擊敗。</li>
+<li>普魯士國家制度面臨重大危機。</li>
+<li>這場戰爭成為普魯士政治、軍事及教育改革的重要轉折點。</li>
+<li>洪堡後來受邀參與教育改革工作。</li>
+</ul>
+<h3 id="1808年：返回普魯士">1808年：返回普魯士</h3>
+<ul>
+<li>返回普魯士。</li>
+<li>在政治家施泰因（Karl vom Stein）的改革政府中擔任教育與宗教事務部門主管。</li>
+<li>開始推動普魯士教育制度改革。</li>
+<li>將自己的人文主義思想轉化為實際的國家教育政策。</li>
+</ul>
+<h2 id="八、普魯士教育改革與柏林大學創立（1808－1810）">八、普魯士教育改革與柏林大學創立（1808－1810）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/t5TRdDjzM-wT4AvNhs_QoDloA8-g5bzLrIe4JZpIiOg0wG6gYGVRpe7ADs2e5zCtl-Q6WjDXnvruq_b--lyKZ54699t6vSc2-zyXJPkkmcxLosGSll8tYNrfm9YcGvn3qlCxQBqhK9XtAu7VkDaIX5a4PULIjCSjlT-qji_XTtI?purpose=inline">Biografia de Wilhelm von Humboldt</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/1TACKNWT6pKInfA-wG8899uXa-vEPa53p-eTOz6qRSJ66UeUxQGw1a4NNS501aHSFdELUXKYfOjCZQh1HHgcIhD68MMbysD3F2V2dBmMyT16PISF4yJ_RizB6Bpk8o67gUVr52aZBkJIXZrLLf9Z3aZ8imV6iu123WNFQ2cu52k?purpose=inline">Humboldt-Universität zu Berlin: Wie die Menschheit zu bilden sei</a></p>
+<p>6</p>
+<p>這是威廉・馮・洪堡政治生涯中最重要的階段。他將人文主義教育理念落實為制度改革，對德國乃至世界現代大學制度產生深遠影響。</p>
+<h3 id="1808年：出任普魯士教育主管">1808年：出任普魯士教育主管</h3>
+<ul>
+<li>1808年：洪堡返回普魯士，受邀加入施泰因改革政府。</li>
+<li>擔任內政部宗教與教育事務部門主管。</li>
+<li>負責普魯士教育制度改革。</li>
+<li>當時普魯士剛經歷拿破崙戰爭的重大挫敗，國家亟需透過教育改革培養人才。</li>
+<li>洪堡認為，教育不應只為國家培養行政官員或軍事人才，而應促進每個人的完整發展。</li>
+</ul>
+<h3 id="1809年：推動普魯士教育改革">1809年：推動普魯士教育改革</h3>
+<ul>
+<li>1809年：開始系統性改革普魯士的基礎教育、中等教育及高等教育。</li>
+<li>強調教育應具有普遍性，不應只服務貴族或特定階層。</li>
+<li>主張學校應培養學生的獨立思考能力，而不是單純要求背誦知識。</li>
+<li>推動中學教育與大學教育之間建立較有系統的銜接。</li>
+<li>重視古典語文、歷史、數學及自然科學的均衡教育。</li>
+</ul>
+<p>洪堡教育改革的核心，是讓學生透過學習形成獨立人格，而非只為了通過考試或取得職業資格。</p>
+<h3 id="1809－1810年：建立現代大學理念">1809－1810年：建立現代大學理念</h3>
+<p>洪堡提出的大學理念包含幾項重要原則：</p>
+<ol>
+<li>教學與研究結合：大學不只是傳授已經確定的知識，也應持續創造新知識。</li>
+<li>學術自由：教師與研究者應有相當程度的研究自主權。</li>
+<li>學生自主學習：學生應主動參與知識探索，而不是被動接受教師灌輸。</li>
+<li>學科相互聯繫：大學應提供多元學科，使學生能夠形成廣泛的知識視野。</li>
+<li>人格完整發展：教育目標應包括理性、道德、審美及獨立判斷能力。</li>
+</ol>
+<p>這些理念後來常被概括為德國大學模式的重要基礎。</p>
+<h3 id="1810年：創立柏林大學">1810年：創立柏林大學</h3>
+<p><a href="https://images.openai.com/static-rsc-4/u9JeAyassPabxDaQQJNtBOOhZsctfeurOgsHMn4Dxh8dwAPhgXofpKYilvJlELvB6jx20_1AIWQpMgWqOhr20QeLHe2dZ7x9K1cfCSffxUora_rOTxeV6Ocq63yCv5y38OEEX5UK7W2VXEXkAUPIF1dH1MZEsVz3WltUNvZ0X28?purpose=inline">Humboldt Master of Laws (LL.M.)</a></p>
+<p><a href="https://humboldt-llm.hu-berlin.de/?utm_source=chatgpt.com">humboldt-llm.hu-berlin.de</a></p>
+<ul>
+<li>1810年：柏林大學正式成立。</li>
+<li>洪堡是創校過程中的核心推動者之一。</li>
+<li>大學強調研究與教學相互結合。</li>
+<li>邀請多位重要學者任教，包括哲學家費希特、神學家施萊爾馬赫及其他知名學者。</li>
+<li>柏林大學後來成為德國高等教育的重要中心。</li>
+<li>1949年，學校為紀念威廉與亞歷山大兩兄弟，改名為洪堡大學（Humboldt-Universität zu Berlin）。</li>
+</ul>
+<p>歷史意義：</p>
+<p>洪堡所推動的大學理念，影響後來歐洲及美國大學制度。今日大學重視研究、教學與學術自由的制度傳統，與這段改革歷史有密切關係。</p>
+<h3 id="1810年：離開教育行政職務">1810年：離開教育行政職務</h3>
+<ul>
+<li>洪堡推動教育改革時，與政府內部部分官僚及保守勢力產生意見分歧。</li>
+<li>他希望教育制度具有較高的自主性。</li>
+<li>由於行政改革與政治環境的限制，洪堡逐漸退出教育行政工作。</li>
+<li>隨後轉任外交職務。</li>
+</ul>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.dhm.de&sz=32">image</a></p>
+<p>Deutsches Historisches Museum (DHM)+2</p>
+<h2 id="九、維也納外交官與維也納會議（1810－1819）">九、維也納外交官與維也納會議（1810－1819）</h2>
+<h3 id="1810年：出任普魯士駐維也納大使">1810年：出任普魯士駐維也納大使</h3>
+<ul>
+<li>1810年：出任普魯士駐奧地利維也納大使。</li>
+<li>主要負責普魯士與奧地利之間的外交關係。</li>
+<li>在維也納繼續參與歐洲政治與文化活動。</li>
+<li>透過外交工作，深入了解拿破崙戰爭後的歐洲政治局勢。</li>
+</ul>
+<h3 id="1813年：參與反法戰爭後的外交事務">1813年：參與反法戰爭後的外交事務</h3>
+<ul>
+<li>拿破崙在俄羅斯遠征失敗後，歐洲反法聯盟逐漸壯大。</li>
+<li>洪堡參與普魯士與其他歐洲國家的外交協商。</li>
+<li>支持重建歐洲政治秩序，但也重視德意志各邦的政治安排。</li>
+</ul>
+<h3 id="1814年：參與拿破崙戰敗後的歐洲重整">1814年：參與拿破崙戰敗後的歐洲重整</h3>
+<ul>
+<li>拿破崙第一次退位。</li>
+<li>洪堡參與普魯士的外交談判及歐洲政治重整。</li>
+<li>這些外交工作為1814－1815年的維也納會議作準備。</li>
+</ul>
+<h3 id="1814－1815年：參與維也納會議">1814－1815年：參與維也納會議</h3>
+<p><a href="https://images.openai.com/static-rsc-4/3R5UOQP6Uw6Sy6sFuSAYa7-J1IgBB9lyBrRY-zcYYV4MSldQ74tGi_D2tS0m3OTH6qR-66Tsjfp2sg5OB7jv4jarT1jaXjGU9yysy4j4Ac13E8l9LhHUWqw5uWVqCQAgaiHOKbeJmP_nf5C45MhT7oA_x5hOPrZ2gN9bgret49g?purpose=inline">How wars end: In 1815, Napoleon lost and diplomacy triumphed</a></p>
+<p><a href="https://www.lemonde.fr/en/summer-reads/article/2023/07/31/how-wars-end-in-1815-napoleon-lost-and-diplomacy-triumphed_6074350_183.html?utm_source=chatgpt.com">lemonde.fr</a></p>
+<ul>
+<li>1814年9月－1815年6月：歐洲各國召開維也納會議（Congress of Vienna）。</li>
+<li>主要任務是重新安排拿破崙戰爭後的歐洲疆界及政治秩序。</li>
+<li>洪堡代表普魯士參與談判，是普魯士外交大臣哈登堡（Karl August von Hardenberg）的重要助手。</li>
+<li>參與討論德意志邦聯、普魯士領土及歐洲國際秩序。</li>
+<li>他支持建立由多個邦國組成的德意志聯邦架構。</li>
+</ul>
+<h3 id="1815年：拿破崙再次戰敗">1815年：拿破崙再次戰敗</h3>
+<ul>
+<li>拿破崙於百日王朝期間短暫復辟。</li>
+<li>1815年滑鐵盧戰役後，拿破崙最終失敗。</li>
+<li>洪堡繼續參與歐洲各國之間的和平談判。</li>
+<li>因外交貢獻獲得普魯士國王授予的榮譽。</li>
+</ul>
+<h3 id="1816年：出任普魯士駐倫敦大使">1816年：出任普魯士駐倫敦大使</h3>
+<ul>
+<li>洪堡前往倫敦擔任普魯士外交代表。</li>
+<li>參與英國與普魯士之間的外交事務。</li>
+<li>繼續關注歐洲政治秩序及自由主義思想。</li>
+</ul>
+<h3 id="1817－1818年：參與歐洲會議">1817－1818年：參與歐洲會議</h3>
+<ul>
+<li>代表普魯士參與法蘭克福、亞琛及其他外交會議。</li>
+<li>關注德意志邦聯的政治架構。</li>
+<li>對歐洲保守勢力日益加強的政治控制感到憂慮。</li>
+<li>與普魯士政府內部保守派逐漸產生分歧。</li>
+</ul>
+<h3 id="1819年：退出政府">1819年：退出政府</h3>
+<ul>
+<li>1819年：洪堡重新進入普魯士政府，擔任與地方等級制度相關的部長職務。</li>
+<li>同年，德意志各邦在卡爾斯巴德會議後推動一系列限制自由派與民族主義活動的措施。</li>
+<li>洪堡反對政府過度限制言論、出版及學術自由。</li>
+<li>他與保守派官員發生嚴重衝突。</li>
+<li>最終於1819年被解除職務，正式退出普魯士政府。</li>
+</ul>
+<p>歷史意義：</p>
+<p>洪堡退出政府，反映十九世紀初德國政治改革與保守復辟之間的衝突。他支持法律保障、個人自由及教育自主，與當時日益嚴格的政治控制政策並不相容。</p>
+<h2 id="十、晚年語言哲學與比較語言學研究（1820－1835）">十、晚年語言哲學與比較語言學研究（1820－1835）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/mrBkoyhP-X8zDyUTjkRRQgxAMkwJAxfnPAVlR-n-gDvgmMKS_1QT4hwpZVG4YocCFZyE_RN8m4fyoONdjlrqaNVwSR336LgppPdYEieBMTPguqzc1F35RZjGIFB0MXBQTVEXAhTKrxTvf4pC2IIl7kJX_WqX6j0VnoT5m5Ah8bU?purpose=inline">Вильгельм фон Гумбольдт - Немецкий Ученый - Биография</a></p>
+<p><a href="https://rus.team/people/vilgelm-fon-gumboldt?utm_source=chatgpt.com">rus.team</a></p>
+<p>退出政府後，洪堡將大部分時間投入語言研究。這一階段是他學術生涯中最具原創性的時期之一。</p>
+<h3 id="1820年：提出比較語言研究計畫">1820年：提出比較語言研究計畫</h3>
+<ul>
+<li>1820年：向柏林科學院提交比較語言學研究論文。</li>
+<li>論文題為《論語言比較研究及其與語言發展不同時期的關係》。</li>
+<li>主張透過比較不同語言的語法、結構與歷史，理解人類思想及文化的多樣性。</li>
+<li>將語言研究提升至哲學與人類學層次。</li>
+</ul>
+<h3 id="1821年：研究語言與歷史書寫">1821年：研究語言與歷史書寫</h3>
+<ul>
+<li>發表《論歷史學家的任務》（Über die Aufgabe des Geschichtsschreibers）。</li>
+<li>探討歷史學家如何理解歷史事件及人類活動。</li>
+<li>認為歷史研究不能只羅列事件，而應理解事件背後的思想、文化及人類精神活動。</li>
+</ul>
+<h3 id="1822年：研究語法形式與思想發展">1822年：研究語法形式與思想發展</h3>
+<ul>
+<li>發表《論語法形式的起源及其對觀念發展的影響》。</li>
+<li>研究語法結構如何影響人類表達及組織思想的方式。</li>
+<li>強調語言不是單純的詞彙集合，語法結構本身也具有重要的思想意義。</li>
+</ul>
+<h3 id="1826年：研究《薄伽梵歌》">1826年：研究《薄伽梵歌》</h3>
+<ul>
+<li>研究印度古典文學及梵文。</li>
+<li>翻譯及分析印度哲學文本《薄伽梵歌》（Bhagavad Gita）。</li>
+<li>將印度語言、宗教思想與歐洲哲學進行比較。</li>
+<li>進一步拓展跨文化語言研究。</li>
+</ul>
+<h3 id="1827年：研究語言中的雙數形式">1827年：研究語言中的雙數形式</h3>
+<ul>
+<li>研究語言中的雙數（Dual）語法形式。</li>
+<li>雙數是某些語言用來表示兩個人或兩個事物的特殊語法形式。</li>
+<li>比較不同語言如何透過語法表達數量及概念。</li>
+</ul>
+<h3 id="1828年：研究南太平洋島嶼語言">1828年：研究南太平洋島嶼語言</h3>
+<ul>
+<li>發表有關南太平洋島嶼語言的研究。</li>
+<li>比較不同島嶼語言的詞彙、語法及結構。</li>
+<li>持續探索語言差異與文化差異之間的關係。</li>
+</ul>
+<h3 id="1829年：妻子卡羅琳逝世">1829年：妻子卡羅琳逝世</h3>
+<ul>
+<li>1829年3月26日：妻子卡羅琳逝世。</li>
+<li>這對洪堡造成沉重打擊。</li>
+<li>他逐漸減少社交活動，將更多精力投入語言學研究。</li>
+<li>晚年生活主要在特格爾家族莊園度過。</li>
+</ul>
+<h3 id="1830－1835年：研究爪哇卡維語">1830－1835年：研究爪哇卡維語</h3>
+<ul>
+<li>洪堡投入大量時間研究印度尼西亞爪哇島的卡維語（Kawi）。</li>
+<li>卡維語是爪哇歷史上的古典文學語言，受到梵語深刻影響。</li>
+<li>他利用語言比較研究，分析語言結構與人類精神發展的關係。</li>
+<li>研究成果後來整理成大型著作，於他逝世後出版。</li>
+</ul>
+<h3 id="1835年：逝世">1835年：逝世</h3>
+<ul>
+<li>1835年4月8日：洪堡於德國特格爾（Tegel）逝世，享年67歲。</li>
+<li>他留下大量哲學、政治、教育及語言學著作。</li>
+<li>其語言學研究對十九世紀比較語言學及二十世紀語言哲學產生深遠影響。</li>
+</ul>
+<p><a href="https://www.google.com/s2/favicons?domain=https://plato.stanford.edu&sz=32">image</a></p>
+<p>斯坦福哲學百科全書+3</p>
+<h2 id="十一、威廉・馮・洪堡的重要思想與學術貢獻">十一、威廉・馮・洪堡的重要思想與學術貢獻</h2>
+<h3 id="1-語言是思想的形成力量">1. 語言是思想的形成力量</h3>
+<p>洪堡最重要的語言哲學觀點之一，是語言不只是用來傳達已經存在的思想，也參與人類思想的形成。</p>
+<p>他認為：</p>
+<ul>
+<li>人類不是先形成完整思想，再把思想翻譯成語言。</li>
+<li>語言本身會影響人們如何理解、分類及表達世界。</li>
+<li>不同語言具有不同的語法結構與表達方式。</li>
+<li>研究不同語言，有助於理解人類思想與文化的多樣性。</li>
+</ul>
+<p>他曾以「語言是思想的形成器官」（formative organ of thought）來表達這種觀點。</p>
+<p>這個思想後來影響語言哲學、語言人類學及語言相對論等研究方向。</p>
+<h3 id="2-語言是動態活動：energeia">2. 語言是動態活動：Energeia</h3>
+<p>洪堡將語言區分為兩個重要概念：</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ergon</td>
+<td>已經形成的語言成果，例如詞彙、語法及文本</td>
+</tr>
+<tr>
+<td>Energeia</td>
+<td>語言持續運作、創造與形成的活動</td>
+</tr>
+</tbody></table>
+<p>他認為語言並不是一套靜止不變的規則，而是人類精神不斷運作的結果。</p>
+<p>換句話說，語言不只是一本字典或一套文法，而是一種持續創造意義的活動。</p>
+<p>這個思想對後來語言學家理解語言的生成性及動態性具有重要影響。</p>
+<h3 id="3-語言結構與世界觀">3. 語言結構與世界觀</h3>
+<p>洪堡認為，不同語言的結構會影響人們理解世界的方式。</p>
+<p>例如：</p>
+<ul>
+<li>不同語言對時間、空間及數量的表達方式可能不同。</li>
+<li>語法結構會影響人們組織語句及表達觀念的方式。</li>
+<li>語言與文化歷史密切相關。</li>
+<li>比較語言可以幫助理解不同民族的思維及文化特徵。</li>
+</ul>
+<p>這種思想後來被視為語言相對論的重要思想先驅。</p>
+<p>不過，洪堡的觀點不宜簡化成「語言完全決定思想」。他重視的是語言、思想與文化之間的相互關係。</p>
+<h3 id="4-比較語言學">4. 比較語言學</h3>
+<p>洪堡主張透過比較不同語言的結構，了解人類語言的共通性與差異。</p>
+<p>他的研究涉及：</p>
+<ul>
+<li>印歐語系語言。</li>
+<li>巴斯克語。</li>
+<li>梵語。</li>
+<li>爪哇卡維語。</li>
+<li>南太平洋島嶼語言。</li>
+<li>美洲原住民語言。</li>
+</ul>
+<p>他不只比較詞彙，也研究語法、構詞、句法及語言結構。</p>
+<p>這種研究方法為後來比較語言學、語言類型學及一般語言學的發展提供重要思想基礎。</p>
+<h3 id="5-人文主義教育思想：bildung">5. 人文主義教育思想：Bildung</h3>
+<p><a href="https://images.openai.com/static-rsc-4/LamXvRSUxPNhTYR5dA-FhLiHlYD9bXY8UeUiF_xSDzmV0JEMf4WgeRUgFw5S_2gu0ZKXd6yEqjFZyzJ1G4Q8TyglTKtF_el03p2AJOftwqzkWY3D35oQRrDCKI1PrI8nrHlSV2vMgYo3Alt7zZKsIiIdjqAJAV0iBOYaNLAMyps?purpose=inline">Lothar Gall über Wilhelm von Humboldt: Auf der Flucht vor der Geschichte</a></p>
+<p><a href="https://www.tagesspiegel.de/wissen/auf-der-flucht-vor-der-geschichte-6709705.html?utm_source=chatgpt.com">tagesspiegel.de</a></p>
+<p>洪堡教育思想的核心概念是德文 Bildung，通常翻譯為「陶冶」、「教化」或「人格形成」。</p>
+<p>它與單純的知識傳授不同，強調透過教育使人形成完整人格。</p>
+<p>洪堡認為教育應重視：</p>
+<ol>
+<li>理性能力的發展。</li>
+<li>獨立思考與判斷能力。</li>
+<li>道德與人格的培養。</li>
+<li>審美能力及文化素養。</li>
+<li>與世界進行自主、廣泛的互動。</li>
+</ol>
+<p>他認為教育的目的不應只是讓學生適應既有社會，而應使每個人具有獨立發展的能力。</p>
+<h3 id="6-教學與研究結合的大學理念">6. 教學與研究結合的大學理念</h3>
+<p>洪堡的大學理念對現代高等教育具有重要影響。</p>
+<table>
+<thead>
+<tr>
+<th>原則</th>
+<th>核心內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>學術自由</td>
+<td>教師及學生應有探索知識的自由</td>
+</tr>
+<tr>
+<td>教研合一</td>
+<td>教學與研究應互相結合</td>
+</tr>
+<tr>
+<td>學生自主</td>
+<td>學生應主動參與知識探索</td>
+</tr>
+<tr>
+<td>學科完整</td>
+<td>大學應涵蓋不同學術領域</td>
+</tr>
+<tr>
+<td>人格發展</td>
+<td>大學教育不只是職業訓練</td>
+</tr>
+</tbody></table>
+<p>今日所說的「洪堡大學模式」，通常就是指這種以學術自由、研究與教學結合為核心的高等教育理念。</p>
+<h3 id="7-國家權力與個人自由">7. 國家權力與個人自由</h3>
+<p>洪堡在政治哲學方面的重要觀點是限制國家權力。</p>
+<p>他認為：</p>
+<ul>
+<li>國家不應過度干涉個人生活。</li>
+<li>個人自由是人格發展的重要條件。</li>
+<li>國家應維護法律秩序與公民安全。</li>
+<li>不應要求所有人按照單一模式生活。</li>
+<li>社會應容許個人發展不同的能力與生活方式。</li>
+</ul>
+<p>這種思想與十九世紀自由主義政治哲學有密切關係。</p>
+<h2 id="十二、威廉・馮・洪堡的重要著作">十二、威廉・馮・洪堡的重要著作</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1787－1790</td>
+<td>《蘇格拉底與柏拉圖論神性》</td>
+<td>早期哲學思想與古典研究</td>
+</tr>
+<tr>
+<td>1792</td>
+<td>《試論國家活動範圍的界限》</td>
+<td>國家權力、個人自由及政治哲學</td>
+</tr>
+<tr>
+<td>1795</td>
+<td>《論男性與女性形式》</td>
+<td>人類差異、美學及文化思想</td>
+</tr>
+<tr>
+<td>1797</td>
+<td>《比較人類學計畫》</td>
+<td>人類學及比較研究</td>
+</tr>
+<tr>
+<td>1799</td>
+<td>《美學論文：論歌德的〈赫爾曼與竇綠苔〉》</td>
+<td>美學、文學與藝術哲學</td>
+</tr>
+<tr>
+<td>1806－1807</td>
+<td>《拉丁姆與希臘》</td>
+<td>古羅馬與古希臘文化研究</td>
+</tr>
+<tr>
+<td>1813</td>
+<td>《論德國未來的狀態》</td>
+<td>德國政治與國家制度</td>
+</tr>
+<tr>
+<td>1820</td>
+<td>《論語言比較研究及其與語言發展不同時期的關係》</td>
+<td>比較語言學理論</td>
+</tr>
+<tr>
+<td>1821</td>
+<td>《論歷史學家的任務》</td>
+<td>歷史哲學</td>
+</tr>
+<tr>
+<td>1822</td>
+<td>《論語法形式的起源及其對觀念發展的影響》</td>
+<td>語法與思想發展</td>
+</tr>
+<tr>
+<td>1826</td>
+<td>《薄伽梵歌》相關翻譯與研究</td>
+<td>印度哲學及梵文研究</td>
+</tr>
+<tr>
+<td>1827</td>
+<td>《論雙數》</td>
+<td>語言中的數量與語法形式</td>
+</tr>
+<tr>
+<td>1828</td>
+<td>《論南太平洋島嶼的語言》</td>
+<td>南太平洋語言比較</td>
+</tr>
+<tr>
+<td>1830</td>
+<td>《論席勒及其精神發展歷程》</td>
+<td>文學、哲學與思想史</td>
+</tr>
+<tr>
+<td>1836</td>
+<td>《論人類語言結構的差異及其對人類精神發展的影響》（身後出版）</td>
+<td>語言哲學與比較語言學</td>
+</tr>
+<tr>
+<td>1836－1839</td>
+<td>《論爪哇島卡維語》</td>
+<td>卡維語及比較語言學研究</td>
+</tr>
+</tbody></table>
+<p><a href="https://www.google.com/s2/favicons?domain=https://plato.stanford.edu&sz=32">image</a></p>
+<p>斯坦福哲學百科全書+2</p>
+<h2 id="十三、威廉・馮・洪堡與其他重要思想家的關係">十三、威廉・馮・洪堡與其他重要思想家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/yGiHZ8bxoJ0H65KDuOsQxZZK9OPMry0hhmlmOjEGjG0Q-MGIqt_A4fpQwj9nRv-2z1N-qBMZCreUK5eJdutlbOGnVl2cCg3heEGvw7-ScoI3o5OQpNdnk_3apuM9QfVmmT5rKV4tJNihlRb2X_PLJIdyH1blj4xiBhWxP7cy4-w?purpose=inline">La historia de Alexander Humboldt, el pionero del ambientalismo - Infobae</a></p>
+<p>1. 亞歷山大・馮・洪堡（Alexander von Humboldt，1769－1859）</p>
+<p>威廉的弟弟，著名自然科學家與探險家。威廉研究語言、教育及政治思想，亞歷山大研究地理、氣候、植物及自然環境。兩兄弟代表十九世紀德國人文科學與自然科學的重要成就。</p>
+<p><a href="https://images.openai.com/static-rsc-4/v4UuSxhdCVtjJZCpBUk0pdM4wXneS9PMxYDYGSkmsD1_aJQCwOK9jBWbF66L5uXSIv6gXufeuzajt8J8a048fi3jHh-DaOcVUQ8J_7wzxElc_zTHa99mISXUsOwgh_KohvteP19JR16qtRRMdDyZArohh9-4rn0SnZ9eKEsb0Qk?purpose=inline">Johann Wolfgang von Goethe | BnF Essentiels</a></p>
+<p>2. 歌德（Johann Wolfgang von Goethe，1749－1832）</p>
+<p>洪堡在耶拿及魏瑪時期的重要思想交流對象。兩人共同關注古典文化、自然哲學、美學及人的精神發展。</p>
+<p><a href="https://images.openai.com/static-rsc-4/lFgW9GtM4m5Lc1sW5mR20jBjly-nZDY_48fpnCuzdrt5YDpue2agM8lEBAQQdC8EqTdDPbhxVv8Gb8zXQB-2JJxgEfT1GeROhhOknMDMJmy4L8Cn7S6N67X7_O-WaczqLJAVPDPKuqa22gAU7RxzuL8d6vPJZ_fxvz1bezCEKgk?purpose=inline">Porträt von Friedrich Schiller (1759-1805)</a></p>
+<p>3. 席勒（Friedrich Schiller，1759－1805）</p>
+<p>洪堡在耶拿時期最親密的知識界朋友之一。兩人討論美學、藝術及人格發展，洪堡也參與席勒的《時代女神》期刊。</p>
+<p><a href="https://images.openai.com/static-rsc-4/25x8oOvnz4y7yv8EsFWKwnaP1Mzw_-LMdpXYUfNOjR3rGvg1tieFrba9TV4IJPPVChQ98_wrh59ddkwEG1Wj1uTnpq9OEQUyzPbWI0hffs2If6EFnqM4XN8opcZmD-qcpvNd8HNVkGe95M4eU6cpIrlyBdGMALCSvfB0Yo-JBTI?purpose=inline">Biografia de Johann Gottlieb Fichte</a></p>
+<p>4. 費希特（Johann Gottlieb Fichte，1762－1814）</p>
+<p>德國觀念論的重要代表人物。其哲學強調自我意識與主體活動，與洪堡對人格自主及精神發展的重視具有思想上的交集。</p>
+<p><a href="https://images.openai.com/static-rsc-4/aotAAM_o3D0Qm8yQpbcbZKas8fKcJtkYtDBCUrLHd3UyTUmXMjV3lzF18usa25n3F6-3nQ7VZrlshsFYDWKEKNvC8plvlGJQCnDuq9gl5EUf7PZ65SkeGfNhh1D5Y0LLCrinKiWoma81E3REJGeWcHCQj7WMJfTOTsWiuZCSlNY?purpose=inline">Friedrich Schleiermacher - Geniuses</a></p>
+<p>5. 施萊爾馬赫（Friedrich Schleiermacher，1768－1834）</p>
+<p>德國神學家、哲學家及教育思想家，參與柏林大學創立。與洪堡共同推動新型大學的學術制度。</p>
+<p><a href="https://images.openai.com/static-rsc-4/b6fA-CSM-rMcrfwd8XgvOhpgYS2jmR_j4jhEBXz507bRtrja0ybv5SSGKFUp6pR5cRNxnN3stJsMAsF2Jro91ZcyevsuRWb14F9aQ2vZB0kb6YSTxwnN5FhvtC46th4GJ25KiGchv_qN-kSxISSGds_7yS14kNz7DGU7TIrNmSQ?purpose=inline">Johann Gottfried Herder – Yogawiki</a></p>
+<p>6. 赫爾德（Johann Gottfried Herder，1744－1803）</p>
+<p>重視語言、歷史及民族文化之間的關係。其思想對洪堡的語言哲學與文化研究具有重要影響。</p>
+<p><a href="https://images.openai.com/static-rsc-4/JEY_y_YLaTDxPkYIBSUm92rktyDgLUel1kNmD5xi_bCR5XKtoiEmB7_mK_GdzijrM7NFV3T_Z7K7VyVfmunWVq0jYmn57GvlRGZZN9CsEnccjLVPhgXDc3acYEt1FTi9QAyuk0l6yslBi-czhhhlu5Gxk8SsGBuzRP1yRk66qH8?purpose=inline">Mảnh Ghép Minh Triết | Pieces of Wisdom</a></p>
+<p>7. 康德（Immanuel Kant，1724－1804）</p>
+<p>洪堡受到康德哲學的重要影響，尤其是人的自主性、理性能力及自由等思想。洪堡後來將這些思想融入政治哲學與教育理念。</p>
+<h2 id="十四、威廉・馮・洪堡生平重要年份總表">十四、威廉・馮・洪堡生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1767</td>
+<td>6月22日出生於普魯士波茨坦</td>
+</tr>
+<tr>
+<td>1769</td>
+<td>弟弟亞歷山大出生</td>
+</tr>
+<tr>
+<td>1779</td>
+<td>父親逝世，接受家庭教師教育</td>
+</tr>
+<tr>
+<td>1787</td>
+<td>進入法蘭克福大學學習法律</td>
+</tr>
+<tr>
+<td>1788</td>
+<td>轉入哥廷根大學</td>
+</tr>
+<tr>
+<td>1789</td>
+<td>前往巴黎，觀察法國大革命</td>
+</tr>
+<tr>
+<td>1789</td>
+<td>12月16日與卡羅琳訂婚</td>
+</tr>
+<tr>
+<td>1790</td>
+<td>進入普魯士政府</td>
+</tr>
+<tr>
+<td>1791</td>
+<td>離開政府，6月29日結婚</td>
+</tr>
+<tr>
+<td>1792</td>
+<td>發表《試論國家活動範圍的界限》</td>
+</tr>
+<tr>
+<td>1794</td>
+<td>移居耶拿，與席勒、歌德密切交流</td>
+</tr>
+<tr>
+<td>1795</td>
+<td>參與《時代女神》期刊</td>
+</tr>
+<tr>
+<td>1797</td>
+<td>移居巴黎</td>
+</tr>
+<tr>
+<td>1799－1801</td>
+<td>研究西班牙及巴斯克語</td>
+</tr>
+<tr>
+<td>1801</td>
+<td>返回柏林</td>
+</tr>
+<tr>
+<td>1802</td>
+<td>出任普魯士駐教廷代表，前往羅馬</td>
+</tr>
+<tr>
+<td>1806</td>
+<td>普魯士在耶拿戰役中戰敗</td>
+</tr>
+<tr>
+<td>1808</td>
+<td>返回普魯士，擔任教育與宗教事務主管</td>
+</tr>
+<tr>
+<td>1809</td>
+<td>推動普魯士教育改革</td>
+</tr>
+<tr>
+<td>1810</td>
+<td>推動創立柏林大學，出任駐維也納大使</td>
+</tr>
+<tr>
+<td>1814－1815</td>
+<td>參與維也納會議</td>
+</tr>
+<tr>
+<td>1816</td>
+<td>出任普魯士駐倫敦大使</td>
+</tr>
+<tr>
+<td>1817－1818</td>
+<td>參與歐洲外交會議</td>
+</tr>
+<tr>
+<td>1819</td>
+<td>因政治理念分歧退出政府</td>
+</tr>
+<tr>
+<td>1820</td>
+<td>提出比較語言學研究計畫</td>
+</tr>
+<tr>
+<td>1821</td>
+<td>發表歷史哲學研究</td>
+</tr>
+<tr>
+<td>1822</td>
+<td>發表語法形式與思想發展研究</td>
+</tr>
+<tr>
+<td>1826</td>
+<td>研究《薄伽梵歌》</td>
+</tr>
+<tr>
+<td>1827</td>
+<td>研究雙數語法形式</td>
+</tr>
+<tr>
+<td>1828</td>
+<td>研究南太平洋島嶼語言</td>
+</tr>
+<tr>
+<td>1829</td>
+<td>妻子卡羅琳逝世</td>
+</tr>
+<tr>
+<td>1830</td>
+<td>深入研究爪哇卡維語</td>
+</tr>
+<tr>
+<td>1835</td>
+<td>4月8日於特格爾逝世</td>
+</tr>
+<tr>
+<td>1836</td>
+<td>語言哲學重要著作身後出版</td>
+</tr>
+<tr>
+<td>1836－1839</td>
+<td>《論爪哇島卡維語》陸續出版</td>
+</tr>
+</tbody></table>
+<p><a href="https://www.google.com/s2/favicons?domain=https://plato.stanford.edu&sz=32">image</a></p>
+<p>斯坦福哲學百科全書+2</p>
+<h2 id="十五、威廉・馮・洪堡的歷史地位與影響">十五、威廉・馮・洪堡的歷史地位與影響</h2>
+<p>洪堡的歷史地位主要體現在三個領域：</p>
+<p>第一，現代語言學與語言哲學。</p>
+<p>他將語言研究從詞彙、文法及文字的比較，提升到人類思想、文化及精神發展的層次。語言不只是溝通工具，也是人類理解世界及形成思想的重要媒介。</p>
+<p>第二，現代教育制度與大學理念。</p>
+<p>他推動普魯士教育改革及柏林大學創立，將學術自由、研究與教學結合、學生自主學習等理念納入現代大學制度。這些理念對世界各國大學發展產生深遠影響。</p>
+<p>第三，自由主義與人文主義政治思想。</p>
+<p>他主張限制國家權力，保障個人自由，並將人的自主發展視為政治制度與教育制度的重要目標。</p>
+<h3 id="威廉與亞歷山大・馮・洪堡的比較">威廉與亞歷山大・馮・洪堡的比較</h3>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>威廉・馮・洪堡</th>
+<th>亞歷山大・馮・洪堡</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>生卒年</td>
+<td>1767－1835</td>
+<td>1769－1859</td>
+</tr>
+<tr>
+<td>主要領域</td>
+<td>語言學、哲學、教育、政治</td>
+<td>地理學、地質學、植物學、氣候學</td>
+</tr>
+<tr>
+<td>重要研究</td>
+<td>語言與思想、比較語言學</td>
+<td>自然環境與地理分布</td>
+</tr>
+<tr>
+<td>代表理念</td>
+<td>Bildung、人文主義教育、學術自由</td>
+<td>自然界整體觀、自然地理與生態關係</td>
+</tr>
+<tr>
+<td>重要著作</td>
+<td>《試論國家活動範圍的界限》、《論人類語言結構的差異》</td>
+<td>《自然景觀》、《宇宙》</td>
+</tr>
+<tr>
+<td>重要成就</td>
+<td>推動柏林大學創立</td>
+<td>南美洲探險與現代自然地理學</td>
+</tr>
+<tr>
+<td>歷史影響</td>
+<td>現代語言學與大學制度</td>
+<td>現代地理學與生態學</td>
+</tr>
+</tbody></table>
+<p>總結： 威廉・馮・洪堡不僅是語言學家，也是現代教育制度的重要設計者。他將「人的自由發展」作為哲學、教育與政治制度的共同核心；而他所推動的柏林大學模式，更成為現代研究型大學的重要歷史典範。</p>
+<h2 id="十六、主要參考資料">十六、主要參考資料</h2>
+<ol>
+<li><a href="https://plato.stanford.edu/archives/sum2010/entries/wilhelm-humboldt/?utm_source=chatgpt.com">Stanford Encyclopedia of Philosophy：Wilhelm von Humboldt</a>：語言哲學、政治思想及生平。</li>
+<li><a href="https://www.dhm.de/lemo/biografie/wilhelm-von-humboldt?utm_source=chatgpt.com">德國歷史博物館：Wilhelm von Humboldt 1767–1835</a>：詳細生平及重要年份。</li>
+<li><a href="https://plato.sydney.edu.au/entries////////wilhelm-humboldt/?utm_source=chatgpt.com">Stanford Encyclopedia of Philosophy：洪堡與普魯士教育改革</a>：柏林大學及現代大學理念。</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/10.1002/9781118786093.iela0157?utm_source=chatgpt.com">Wiley：Wilhelm von Humboldt 語言學思想</a>：語言相對論、語言哲學與比較語言學。</li>
+<li><a href="https://www.lautarchiv.hu-berlin.de/en/objekte/-/171/?utm_source=chatgpt.com">柏林洪堡大學語言檔案館：威廉・馮・洪堡傳記</a>：學術生涯與主要著作。</li>
+</ol>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

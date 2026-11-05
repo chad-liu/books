@@ -1,0 +1,834 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="路德維希・波茲曼（ludwig-boltzmann）生平大事記">路德維希・波茲曼（Ludwig Boltzmann）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/ucdsBBFWvpmbqzJeqxZyQt8OJnL0UfDaXsJA82IYRYLK9gAbNTr9Rqyp_5balgpNUcGsYaC3b-rJx5FenzldMSvG7IcQv6hPylQn9SfszlCCVhjV9L4pY_s7stiLTLYQs6VdIUeL_5oU5BVS3ZyFp1aNNqq1CAsryCXSRvjKrN8?purpose=inline">An anxious descent – Physics World</a></p>
+<p>路德維希・愛德華・波茲曼</p>
+<p>Ludwig Eduard Boltzmann</p>
+<ul>
+<li>生卒： 1844年2月20日－1906年9月5日</li>
+<li>國籍： 奧地利</li>
+<li>領域： 理論物理學、統計力學、熱力學</li>
+<li>重要地位： 統計力學奠基者之一</li>
+<li>代表成果： 波茲曼方程式、波茲曼熵公式、統計力學、氣體分子運動理論</li>
+</ul>
+<h2 id="一、人物概述：將微觀粒子與宏觀熱力學連結起來的物理學家">一、人物概述：將微觀粒子與宏觀熱力學連結起來的物理學家</h2>
+<p>波茲曼是19世紀最重要的理論物理學家之一。他最大的貢獻，是將氣體中的大量原子、分子運動，與我們日常觀察到的溫度、壓力、熱量及熵等宏觀物理現象聯繫起來，建立統計力學的重要理論基礎。</p>
+<p>在波茲曼之前，熱力學已經發展出一套描述宏觀物質變化的定律，例如熱力學第一定律與第二定律。然而，這些定律主要描述整體系統的行為，並沒有充分解釋微觀粒子如何透過運動與碰撞，形成宏觀的熱現象。</p>
+<p>波茲曼的重要突破，就是提出：</p>
+<p>物質的溫度、壓力與熵等宏觀性質，可以從大量微觀粒子的統計行為加以理解。</p>
+<p>他的研究帶來五項重大影響：</p>
+<ol>
+<li>建立統計力學： 以機率及統計方法描述大量粒子的物理行為。</li>
+<li>解釋熱力學第二定律： 從微觀粒子的統計角度理解熵增加。</li>
+<li>提出波茲曼熵公式： 建立熵與微觀狀態數量之間的關係。</li>
+<li>發展氣體動力論： 以分子運動及碰撞解釋氣體的宏觀性質。</li>
+<li>影響現代物理學： 成為量子統計、凝態物理、熱力學及資訊理論的重要思想來源。</li>
+</ol>
+<h2 id="二、1844－1862年：出生、家庭與早年教育">二、1844－1862年：出生、家庭與早年教育</h2>
+<h3 id="1844年：出生於維也納附近">1844年：出生於維也納附近</h3>
+<ul>
+<li>1844年2月20日，波茲曼出生於奧地利帝國維也納附近的埃德貝格（Erdberg，當時為維也納近郊，現屬維也納）。</li>
+<li>父親路德維希・格奧爾格・波茲曼（Ludwig Georg Boltzmann）從事公務工作，家庭經濟條件尚可。</li>
+<li>母親凱薩琳娜・鮑恩費因德（Katharina Pauernfeind）來自較富裕的家庭。</li>
+<li>波茲曼在重視教育與文化的家庭環境中成長。</li>
+<li>他自幼對數學、自然科學及音樂具有興趣。</li>
+</ul>
+<h3 id="1850年代：接受家庭教育">1850年代：接受家庭教育</h3>
+<ul>
+<li>波茲曼早年接受家庭教師指導。</li>
+<li>他逐漸展現數學及邏輯思考方面的能力。</li>
+<li>音樂也是他長期喜愛的活動，尤其對鋼琴有濃厚興趣。</li>
+<li>這種科學與藝術並重的興趣，伴隨他一生。</li>
+</ul>
+<h3 id="1859年：父親逝世">1859年：父親逝世</h3>
+<ul>
+<li>波茲曼的父親於1859年逝世。</li>
+<li>家庭生活受到影響。</li>
+<li>此後，他在母親支持下繼續接受教育。</li>
+</ul>
+<h3 id="1860－1862年：中學教育">1860－1862年：中學教育</h3>
+<ul>
+<li>波茲曼在奧地利林茲（Linz）接受中學教育。</li>
+<li>他逐漸確立對數學及物理學的興趣。</li>
+<li>當時物理學正處於快速發展階段，熱力學、電磁學及氣體分子運動理論都是重要研究領域。</li>
+</ul>
+<h2 id="三、1863－1869年：進入維也納大學與物理學研究起步">三、1863－1869年：進入維也納大學與物理學研究起步</h2>
+<p><a href="https://images.openai.com/static-rsc-4/kIju2QYYmaw-1u3lao5pI4moXkCWBmJ5L1XJ-9YqVp6YoH_zKfR_ba4VDzO0lLLKobBt6agFQgtIAM1MqYOrxLmGzGt5j1HqFlEbHXyK8sk87m2PnRK4qDRCUhF2EQKrVUyXB4kOrQxzjz4Umz5VJhV1iPfSMgrQTiu4rC3AC6o?purpose=inline">Die neue Universität in Wien. Kolorierter Holzstich v. Paar nach A. Kronstein aus &quot;Neue illustrierte Zeitung&quot; 1884, 32 x 48 cm von Hauptgebäude der Universität: Kunst&nbsp;/&nbsp;Grafik&nbsp;/&nbsp;Poster | Johannes Müller</a></p>
+<p><a href="https://www.zvab.com/kunst-grafik-poster/neue-Universit%C3%A4t-Wien-Kolorierter-Holzstich-Paar/32311660836/bd?utm_source=chatgpt.com">zvab.com</a></p>
+<h3 id="1863年：進入維也納大學">1863年：進入維也納大學</h3>
+<ul>
+<li>波茲曼進入維也納大學（University of Vienna），開始接受正式的高等物理學教育。</li>
+<li>他主修數學及物理學。</li>
+<li>當時維也納大學的物理研究環境相當活躍，學生可以接觸理論研究與實驗物理。</li>
+<li>他開始接觸牛頓力學、熱力學、電磁學及數學物理。</li>
+</ul>
+<h3 id="1865年：開始從事研究工作">1865年：開始從事研究工作</h3>
+<ul>
+<li>波茲曼在物理學教授約瑟夫・史蒂芬（Josef Stefan）指導下展開研究。</li>
+<li>史蒂芬是當時奧地利重要物理學家，研究領域包括熱輻射及熱傳導。</li>
+<li>波茲曼逐漸將研究興趣集中在理論物理學。</li>
+</ul>
+<h3 id="1866年：取得博士學位">1866年：取得博士學位</h3>
+<ul>
+<li>波茲曼完成博士研究，取得維也納大學博士學位。</li>
+<li>他開始擔任史蒂芬的助理。</li>
+<li>這段經歷讓他有機會深入參與物理學研究及大學實驗室工作。</li>
+</ul>
+<h3 id="1867年：擔任維也納大學助理">1867年：擔任維也納大學助理</h3>
+<ul>
+<li>波茲曼繼續在史蒂芬的研究團隊中工作。</li>
+<li>他研究氣體分子運動、熱力學及物質微觀結構。</li>
+<li>逐漸建立以數學及力學方法研究熱現象的研究方向。</li>
+</ul>
+<h3 id="1868年：發表早期物理研究">1868年：發表早期物理研究</h3>
+<ul>
+<li>波茲曼開始發表理論物理學相關論文。</li>
+<li>他深入研究氣體動力論（Kinetic Theory of Gases）。</li>
+<li>這套理論試圖將氣體的宏觀性質，解釋為大量分子運動及碰撞的結果。</li>
+</ul>
+<h3 id="1869年：任教於格拉茨大學">1869年：任教於格拉茨大學</h3>
+<ul>
+<li>波茲曼獲聘為奧地利格拉茨大學（University of Graz）數理物理學教授。</li>
+<li>年僅25歲便取得教授職位。</li>
+<li>他開始建立自己的研究團隊及學術聲望。</li>
+<li>格拉茨大學成為他早期發展統計物理學的重要場所。</li>
+</ul>
+<h2 id="四、1870－1876年：氣體動力論與統計力學的早期發展">四、1870－1876年：氣體動力論與統計力學的早期發展</h2>
+<p><a href="https://images.openai.com/static-rsc-4/elGNhGsJOo6bB7isVIGf8A2sOxz-ssVNAPPVgLcE8uyNDwiGFRaW_r-itAPoZtAm49uyYIoCRn4pPbJJZYjPKJj2bxiKDMwkxlYjTG2KQ9LncQJGQ4CJNQ_QupBICKQpj-nhirf8FmLa2byvnDAip1qCOCGZlcVXJYIePKJToDc?purpose=inline">Ludwig Boltzmann: Viennese Inventor of a new Theoretical Physics</a></p>
+<p><a href="https://www.iqoqi-vienna.at/blogs/blog/ludwig-boltzmann-viennese-inventor-of-a-new-theoretical-physics?utm_source=chatgpt.com">iqoqi-vienna.at</a></p>
+<h3 id="1870年：研究氣體分子運動">1870年：研究氣體分子運動</h3>
+<ul>
+<li>波茲曼持續研究氣體分子運動理論。</li>
+<li>他希望從分子速度、碰撞及能量分布，解釋氣體的壓力與溫度。</li>
+<li>當時英國物理學家詹姆斯・克拉克・馬克士威（James Clerk Maxwell）已經提出重要的氣體分子速度分布理論。</li>
+<li>波茲曼進一步發展這些研究，將統計方法與力學結合。</li>
+</ul>
+<h3 id="1871年：發展分子速度分布研究">1871年：發展分子速度分布研究</h3>
+<ul>
+<li>波茲曼研究大量分子在氣體中的速度分布。</li>
+<li>他嘗試以機率方式描述分子在不同速度區間的數量。</li>
+<li>這些研究使統計方法逐漸成為理論物理學的重要工具。</li>
+</ul>
+<h3 id="1872年：提出波茲曼方程式">1872年：提出波茲曼方程式</h3>
+<p>統計力學的重要里程碑</p>
+<ul>
+<li>1872年，波茲曼發表重要論文，建立後來稱為波茲曼方程式的理論。</li>
+<li>這個方程式描述氣體分子速度分布如何隨時間改變。</li>
+<li>它將分子運動、碰撞及統計分布聯繫起來。</li>
+</ul>
+<p>波茲曼方程式的一種現代簡化表達形式為：</p>
+<p>\[ \frac{\partial f}{\partial t} +\mathbf{v}\cdot\nabla_{\mathbf{x}}f +\frac{\mathbf{F}}{m}\cdot\nabla_{\mathbf{v}}f = \left(\frac{\partial f}{\partial t}\right)_{\mathrm{coll}} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(f\)：分子在位置與速度空間中的分布函數。</li>
+<li>\(t\)：時間。</li>
+<li>\(\mathbf{x}\)：位置。</li>
+<li>\(\mathbf{v}\)：速度。</li>
+<li>\(\mathbf{F}\)：外力。</li>
+<li>\(m\)：分子質量。</li>
+<li>右側碰撞項：描述分子碰撞對速度分布的影響。</li>
+</ul>
+<p>這項成果的重要性：</p>
+<ol>
+<li>以數學方式描述大量氣體分子的集體行為。</li>
+<li>將微觀粒子力學與宏觀氣體性質連結起來。</li>
+<li>為非平衡統計力學奠定基礎。</li>
+<li>成為現代氣體動力學及稀薄氣體理論的重要工具。</li>
+</ol>
+<h3 id="1872年：提出h定理">1872年：提出H定理</h3>
+<ul>
+<li>波茲曼在研究氣體分子碰撞時，提出著名的H定理。</li>
+<li>他定義一個與分子速度分布有關的函數 \(H\)。</li>
+<li>在其理論假設下，氣體經過分子碰撞後，H函數會趨向減少。</li>
+<li>這一結果可與熱力學第二定律及熵增加的方向相聯繫。</li>
+</ul>
+<p>其重要思想可以概括為：</p>
+<p>\[ \frac{dH}{dt}\leq 0 \]</p>
+<p>在適當的條件下，系統會趨向熱平衡。</p>
+<p>H定理的歷史意義：</p>
+<ul>
+<li>嘗試從微觀力學推導宏觀不可逆性。</li>
+<li>將分子碰撞與熵增加的問題聯繫起來。</li>
+<li>成為統計力學的重要理論基礎。</li>
+</ul>
+<p>但這項理論也引發重要爭論：微觀力學定律具有時間反演對稱性，為什麼宏觀熱力學卻呈現時間方向性？這個問題後來成為統計物理學的重要議題。</p>
+<h3 id="1873年：持續發展統計力學">1873年：持續發展統計力學</h3>
+<ul>
+<li>波茲曼繼續研究氣體分子分布及熱平衡問題。</li>
+<li>他逐漸認為，熱力學第二定律不能只從單一粒子的運動理解，而必須考慮大量粒子的統計性質。</li>
+<li>他開始將機率觀念引入熱力學的基本解釋。</li>
+</ul>
+<h3 id="1874年：發展能量均分觀念">1874年：發展能量均分觀念</h3>
+<ul>
+<li>波茲曼研究大量分子在不同自由度之間的能量分配。</li>
+<li>這些研究與能量均分定理（Equipartition Theorem）的發展密切相關。</li>
+<li>在古典統計力學適用的條件下，系統能量會依自由度在不同形式間分配。</li>
+<li>這一觀念對理解氣體比熱及熱平衡具有重要意義。</li>
+</ul>
+<h3 id="1875年：學術研究持續深化">1875年：學術研究持續深化</h3>
+<ul>
+<li>波茲曼持續研究氣體分子動力論及熱力學。</li>
+<li>他開始成為歐洲統計物理學的重要代表人物。</li>
+<li>其研究方法與馬克士威的理論相互呼應。</li>
+</ul>
+<h3 id="1876年：返回維也納大學">1876年：返回維也納大學</h3>
+<ul>
+<li>波茲曼離開格拉茨大學，前往維也納大學任教。</li>
+<li>他接任數學物理學教授職務。</li>
+<li>同年與亨麗埃特・馮・艾根特勒（Henriette von Aigentler）結婚。</li>
+<li>這段時期是他學術生涯及家庭生活的重要轉折。</li>
+</ul>
+<h2 id="五、1877－1884年：波茲曼熵公式與統計力學的建立">五、1877－1884年：波茲曼熵公式與統計力學的建立</h2>
+<p><a href="https://images.openai.com/static-rsc-4/clgfZla-IN9oYZl3NekRJzSs3A07TjHf1twd_r3j94TZl2V4O358TVlvLPF1KJeUs52IVBPsThcnxQba4PpttJV3acFoHeDxZH93wxtXISdq0PMv8io-RfhUSh2TPLRxvWPah6H87YlJ9PzikFj1JMMw33qb-A28lvCbxA00Wnc?purpose=inline">Boltzmann constant k links temperature and energy</a></p>
+<p><a href="https://www.boltzmann.com/ludwig-boltzmann/physics/boltzmann-constant-k/?utm_source=chatgpt.com">boltzmann.com</a></p>
+<h3 id="1877年：提出熵的統計解釋">1877年：提出熵的統計解釋</h3>
+<p>統計物理學最重要的成果之一</p>
+<ul>
+<li>波茲曼於1877年發表關於熱平衡與機率分布的重要研究。</li>
+<li>他進一步建立熵與微觀狀態數量之間的關係。</li>
+<li>他提出著名的統計熵公式：</li>
+</ul>
+<p>\[ S=k_B\ln W \]</p>
+<p>其中：</p>
+<ul>
+<li>\(S\)：熵。</li>
+<li>\(k_B\)：波茲曼常數。</li>
+<li>\(W\)：與宏觀狀態相容的微觀狀態數量。</li>
+<li>\(\ln\)：自然對數。</li>
+</ul>
+<p>這條公式後來被稱為波茲曼熵公式。</p>
+<p>這個公式的核心思想：</p>
+<p>一個宏觀系統可能對應許多不同的微觀排列方式。當某種宏觀狀態可以由更多微觀狀態實現時，它具有較大的統計權重，也對應較高的熵。</p>
+<p>例如：</p>
+<ul>
+<li>氣體集中在容器一角，能實現這種狀態的微觀排列較少。</li>
+<li>氣體均勻分布於整個容器，能實現這種狀態的微觀排列極多。</li>
+<li>因此，氣體自發擴散到整個容器，是統計上極為可能的結果。</li>
+</ul>
+<p>這解釋了為什麼宏觀世界常呈現熵增加的方向。</p>
+<h3 id="1877年：提出統計性熱力學觀念">1877年：提出統計性熱力學觀念</h3>
+<ul>
+<li>波茲曼指出，熱力學第二定律具有統計性質。</li>
+<li>它不是說微觀粒子的每一次運動都必須朝向熵增加，而是說對大量粒子組成的系統而言，熵增加的宏觀狀態具有壓倒性的統計優勢。</li>
+<li>這種觀點是理解熱力學不可逆性的重要突破。</li>
+</ul>
+<h3 id="1878年：持續研究熵與機率">1878年：持續研究熵與機率</h3>
+<ul>
+<li>波茲曼繼續發展統計熱力學的理論。</li>
+<li>他研究不同微觀狀態的機率及其對宏觀平衡的影響。</li>
+<li>他逐漸建立起以機率理解熱力學第二定律的研究框架。</li>
+</ul>
+<h3 id="1879年：與馬克士威的理論相互呼應">1879年：與馬克士威的理論相互呼應</h3>
+<ul>
+<li>波茲曼持續吸收馬克士威的分子運動理論。</li>
+<li>兩人的研究共同推動氣體動力論及統計物理學。</li>
+<li>馬克士威提出的分子速度分布，成為後來統計力學的重要基礎。</li>
+</ul>
+<h3 id="1880年：研究統計平衡與分子運動">1880年：研究統計平衡與分子運動</h3>
+<ul>
+<li>波茲曼繼續研究氣體分子的統計分布。</li>
+<li>他試圖說明，微觀粒子雖然持續運動，宏觀系統卻能呈現穩定的溫度與壓力。</li>
+<li>這項研究深化了平衡統計力學的基礎。</li>
+</ul>
+<h3 id="1881年：研究熱力學與統計方法">1881年：研究熱力學與統計方法</h3>
+<ul>
+<li>波茲曼持續發展機率方法在熱力學中的應用。</li>
+<li>他逐漸形成一套以微觀狀態數量解釋熵的理論。</li>
+<li>其成果也影響後來物理學家對熱平衡及不可逆過程的理解。</li>
+</ul>
+<h3 id="1884年：與史蒂芬定律相關的研究">1884年：與史蒂芬定律相關的研究</h3>
+<ul>
+<li>波茲曼從熱力學及電磁輻射理論出發，推導出黑體總輻射能量與絕對溫度四次方成正比的關係。</li>
+<li>這個定律稱為史蒂芬－波茲曼定律（Stefan–Boltzmann Law）。</li>
+<li>其中史蒂芬早在1879年已從實驗提出相關關係；波茲曼則在1884年以理論方式推導。</li>
+</ul>
+<p>公式如下：</p>
+<p>\[ j^\star=\sigma T^4 \]</p>
+<p>其中：</p>
+<ul>
+<li>\(j^\star\)：黑體單位面積的總輻射功率。</li>
+<li>\(\sigma\)：史蒂芬－波茲曼常數。</li>
+<li>\(T\)：絕對溫度。</li>
+</ul>
+<p>重要意義：</p>
+<ol>
+<li>建立熱輻射與溫度之間的重要數學關係。</li>
+<li>推動熱輻射理論發展。</li>
+<li>成為天文物理學及熱輻射研究的重要工具。</li>
+<li>後來也成為研究恆星表面輻射及溫度的重要基礎。</li>
+</ol>
+<h2 id="六、1885－1894年：學術生涯、哲學爭論與統計力學的深化">六、1885－1894年：學術生涯、哲學爭論與統計力學的深化</h2>
+<h3 id="1885年：獲得重要學術肯定">1885年：獲得重要學術肯定</h3>
+<ul>
+<li>波茲曼在歐洲物理學界的地位逐漸提升。</li>
+<li>他持續研究熱力學、分子動力論及統計方法。</li>
+<li>他也積極參與物理學界的理論討論。</li>
+</ul>
+<h3 id="1887年：擔任格拉茨大學教授">1887年：擔任格拉茨大學教授</h3>
+<ul>
+<li>波茲曼再次前往格拉茨大學任教。</li>
+<li>他繼續發展統計力學及氣體分子理論。</li>
+<li>這段期間，他的研究與哲學思考逐漸結合。</li>
+</ul>
+<h3 id="1888年：研究物質原子論">1888年：研究物質原子論</h3>
+<ul>
+<li>波茲曼積極捍衛原子論。</li>
+<li>當時部分物理學家對原子是否真實存在仍持懷疑態度。</li>
+<li>有些科學家認為原子只是數學模型，不一定是客觀存在的物理實體。</li>
+<li>波茲曼則認為，原子與分子理論能夠有效解釋大量物理現象，因此具有重要的科學價值。</li>
+</ul>
+<h3 id="1890年：研究統計力學與原子論">1890年：研究統計力學與原子論</h3>
+<ul>
+<li>波茲曼繼續發展統計力學的數學架構。</li>
+<li>他強調物理學不應只停留在描述宏觀現象，也應該嘗試理解其微觀機制。</li>
+<li>這種研究立場使他與部分偏向現象論的物理學家產生學術爭論。</li>
+</ul>
+<h3 id="1894年：返回維也納大學">1894年：返回維也納大學</h3>
+<ul>
+<li>波茲曼返回維也納大學，接任理論物理學教授。</li>
+<li>他繼續從事統計力學、熱力學及分子運動理論研究。</li>
+<li>維也納成為他晚年重要的學術活動中心。</li>
+</ul>
+<h2 id="七、1895－1902年：德國任教、學術爭論與重返維也納">七、1895－1902年：德國任教、學術爭論與重返維也納</h2>
+<h3 id="1895年：前往萊比錫大學任教">1895年：前往萊比錫大學任教</h3>
+<ul>
+<li>波茲曼離開維也納，前往德國萊比錫大學（University of Leipzig）擔任理論物理學教授。</li>
+<li>當時德國是歐洲理論物理學的重要中心，萊比錫也聚集了多位知名學者。</li>
+<li>波茲曼在此繼續推動原子論、氣體動力論及統計力學。</li>
+<li>他與部分反對原子論的物理學家進行激烈的學術辯論，尤其是對物質是否應以不可見的原子與分子來解釋，存在不同立場。</li>
+</ul>
+<h3 id="1896年：與馬赫學派的思想分歧">1896年：與馬赫學派的思想分歧</h3>
+<p><a href="https://images.openai.com/static-rsc-4/YlgJ4_4HPZVXSsmhKBwc1JV9aFenipeF2zc69C6c-aXDQEvGCCGqmBVF5lrEROty45RPj_-ObOyWhQCAyJJ-Rr9ItCL22zYdqGt1mdYzVZWOnbdhizEGdBCExMTGHzr55LvRM9KV4XQdTq1Xrgoro_0cApoxbzOr73ePPbaovUU?purpose=inline">Ernst Mach&#39;s Biography &amp; Accomplishments | Study.com</a></p>
+<p>恩斯特・馬赫（Ernst Mach，1838－1916）</p>
+<p>馬赫對原子論持懷疑態度，較重視能直接觀察及測量的物理現象。</p>
+<ul>
+<li>波茲曼與馬赫在物理學方法論上存在明顯差異。</li>
+<li>波茲曼認為，原子與分子雖然無法直接以肉眼觀察，仍可作為解釋物質性質的有效科學模型。</li>
+<li>馬赫則對不可直接觀察的原子實體抱持較為保留的態度。</li>
+<li>這場爭論反映19世紀末物理學的一項重要問題：科學理論究竟應該只描述可觀察現象，還是可以藉由微觀模型解釋現象背後的機制？</li>
+</ul>
+<h3 id="1897年：持續捍衛原子論">1897年：持續捍衛原子論</h3>
+<ul>
+<li>波茲曼持續發表統計力學及熱力學相關論文。</li>
+<li>他認為原子論具有強大的解釋能力，可以統一說明氣體壓力、溫度、熱平衡及熵等現象。</li>
+<li>他也不斷修正與深化統計力學的數學表述。</li>
+<li>這一時期的原子論爭論，對後來物理學的發展具有重要意義。</li>
+</ul>
+<h3 id="1898年：研究與學術活動持續進行">1898年：研究與學術活動持續進行</h3>
+<ul>
+<li>波茲曼繼續參與歐洲物理學界的學術活動。</li>
+<li>他也投入物理學教育，重視理論推導與實驗證據之間的聯繫。</li>
+<li>其研究已涵蓋熱力學、統計力學、電磁學及熱輻射等領域。</li>
+</ul>
+<h3 id="1900年：離開萊比錫，返回維也納">1900年：離開萊比錫，返回維也納</h3>
+<ul>
+<li>波茲曼結束在萊比錫的任教，返回維也納大學。</li>
+<li>他重新擔任理論物理學教授。</li>
+<li>返回維也納後，他繼續研究統計物理學，並參與學術教育與公共演講。</li>
+<li>此時，量子論的發展也即將改變物理學的面貌。</li>
+</ul>
+<h3 id="1901年：統計力學與原子論逐漸獲得更多支持">1901年：統計力學與原子論逐漸獲得更多支持</h3>
+<ul>
+<li>隨著物理及化學實驗技術進步，原子與分子理論逐漸獲得更多實驗支持。</li>
+<li>波茲曼長期捍衛的微觀粒子觀點，開始在科學界得到更廣泛的重視。</li>
+<li>不過，原子論爭議並未立即結束。</li>
+</ul>
+<h3 id="1902年：吉布斯統計力學著作問世">1902年：吉布斯統計力學著作問世</h3>
+<p><a href="https://images.openai.com/static-rsc-4/ixEEF4xDEEAvvSNIlbdbjSZ99vk6-p4TxQELZXk8Dfj4_MqRwoLqX2QFfqvwlBrM5kuqlJzI34bjV2uQfueSogEsQTW5cr7Sf5ZNZwx4GqtsC75q6ibhZ77K0box-6tuTQSCjXSYmDx0TQgU957lu4d56R_YdVoB2_0DwbZOIW4?purpose=inline">Nienke de Boer</a></p>
+<p>約西亞・威拉德・吉布斯（J. Willard Gibbs，1839－1903）</p>
+<p>吉布斯出版《統計力學基本原理》，以另一套嚴謹的數學架構發展統計力學。</p>
+<ul>
+<li>吉布斯的研究與波茲曼的統計力學相互補充。</li>
+<li>波茲曼的工作主要從氣體分子運動及碰撞出發；吉布斯則建立更一般化的統計系綜方法。</li>
+<li>兩者共同構成現代統計力學的重要基礎。</li>
+</ul>
+<h2 id="八、1903－1906年：晚年、學術榮譽與逝世">八、1903－1906年：晚年、學術榮譽與逝世</h2>
+<p><a href="https://images.openai.com/static-rsc-4/zFgSTZ76Sd0rXUITn-JMg12b7H6nVFMn1ZB7-P2yznwBCse0yW9x8Lh2L669w_B2kjvCPYdTCsznfzk5sR3_7YH1cFgt3BL5x6j0xKofPG6onjBCsDxg7X9E_XS0Q8yGFVDrIL3MO7UESKlMTT-CTEBEPlYlyk8IbNfbOEiFHzc?purpose=inline">Людвиг Больцман - Австрийский Ученый - Биография</a></p>
+<p><a href="https://rus.team/people/lyudvig-boltsman?utm_source=chatgpt.com">rus.team</a></p>
+<h3 id="1903年：持續研究與學術活動">1903年：持續研究與學術活動</h3>
+<ul>
+<li>波茲曼繼續在維也納大學任教。</li>
+<li>他對理論物理學及統計力學仍保持高度投入。</li>
+<li>他也參與科學普及及哲學方面的演講，討論科學理論、知識及自然界的基本規律。</li>
+</ul>
+<h3 id="1904年：參加美國聖路易斯世界博覽會相關學術活動">1904年：參加美國聖路易斯世界博覽會相關學術活動</h3>
+<ul>
+<li>波茲曼前往美國，參與聖路易斯世界博覽會期間舉行的國際學術活動。</li>
+<li>他在美國與其他科學家交流，並介紹歐洲理論物理學的發展。</li>
+<li>這次旅程也是他晚年重要的國際學術活動之一。</li>
+</ul>
+<h3 id="1905年：學術工作與健康狀況">1905年：學術工作與健康狀況</h3>
+<ul>
+<li>波茲曼繼續從事理論物理學研究及教學。</li>
+<li>他長期面對學術爭論及繁重的研究工作。</li>
+<li>晚年曾有健康方面的困擾，但不宜將其逝世簡化為某一場學術爭論或單一原因所造成。</li>
+</ul>
+<h3 id="1906年：前往亞得里亞海度假">1906年：前往亞得里亞海度假</h3>
+<ul>
+<li>1906年夏季，波茲曼與家人前往義大利亞得里亞海沿岸的杜伊諾（Duino）度假。</li>
+<li>1906年9月5日，他在杜伊諾逝世，享年62歲。</li>
+<li>其死亡被記載為自殺。</li>
+<li>他的逝世震動歐洲物理學界，也使統計力學失去一位重要的創始人物。</li>
+</ul>
+<h3 id="1906年以後：理論逐漸成為現代物理學核心">1906年以後：理論逐漸成為現代物理學核心</h3>
+<ul>
+<li>波茲曼逝世時，統計力學仍在發展之中。</li>
+<li>隨著原子論獲得更多實驗支持，以及量子物理學逐漸建立，他的研究成果受到越來越廣泛的肯定。</li>
+<li>其熵公式後來成為物理學中最具代表性的公式之一。</li>
+</ul>
+<h2 id="九、波茲曼的主要科學貢獻">九、波茲曼的主要科學貢獻</h2>
+<h3 id="1-統計力學：以微觀粒子解釋宏觀現象">1. 統計力學：以微觀粒子解釋宏觀現象</h3>
+<p>波茲曼最重要的貢獻，是將統計方法引入熱力學，建立微觀粒子與宏觀物理現象之間的橋梁。</p>
+<p>傳統熱力學主要研究整體物質的溫度、壓力、熱量及熵；統計力學則進一步追問：</p>
+<ul>
+<li>為什麼氣體會產生壓力？</li>
+<li>為什麼溫度能夠反映分子的平均運動能量？</li>
+<li>為什麼熱量會由高溫物體傳向低溫物體？</li>
+<li>為什麼氣體會自發擴散？</li>
+<li>為什麼自然界的宏觀過程通常具有特定的時間方向？</li>
+</ul>
+<p>波茲曼的答案是：這些宏觀現象可以從大量微觀粒子的運動及其統計分布理解。</p>
+<p>例如，氣體壓力可以理解為大量分子不斷撞擊容器壁所產生的平均作用力；溫度則與分子的平均動能有關。</p>
+<p>對理想氣體而言：</p>
+<p>\[ \overline{E_k}=\frac{3}{2}k_BT \]</p>
+<p>其中：</p>
+<ul>
+<li>\(\overline{E_k}\)：單一分子的平均平動動能。</li>
+<li>\(k_B\)：波茲曼常數。</li>
+<li>\(T\)：絕對溫度。</li>
+</ul>
+<p>這個關係式顯示，溫度與微觀粒子的平均運動能量具有直接關係。</p>
+<h3 id="2-波茲曼熵公式：建立熵與機率的關係">2. 波茲曼熵公式：建立熵與機率的關係</h3>
+<p>最具代表性的科學公式</p>
+<p>波茲曼最著名的公式是：</p>
+<p>\[ \boxed{S=k_B\ln W} \]</p>
+<p>這條公式將熱力學中的熵與統計學中的微觀狀態數量連結起來。</p>
+<p>其核心概念如下：</p>
+<ul>
+<li>熵（Entropy）： 描述系統宏觀狀態所對應的統計性質。</li>
+<li>微觀狀態（Microstate）： 系統中所有粒子的位置、速度及其他微觀變數的一種具體排列。</li>
+<li>宏觀狀態（Macrostate）： 從整體角度觀察到的溫度、壓力、體積等狀態。</li>
+<li>\(W\)： 與指定宏觀狀態相容的微觀狀態數量。</li>
+</ul>
+<p>以氣體擴散為例：</p>
+<ol>
+<li>假設氣體最初集中在容器左側。</li>
+<li>打開隔板後，氣體分子開始向整個容器擴散。</li>
+<li>氣體均勻分布的微觀排列方式遠多於集中在左側的排列方式。</li>
+<li>因此，氣體自發形成均勻分布的機率極高。</li>
+<li>從統計力學角度看，這就是熵增加的典型例子。</li>
+</ol>
+<p>這項理論最重要的突破，是將熱力學第二定律由單純的宏觀經驗規律，進一步解釋為大量微觀粒子所呈現的統計規律。</p>
+<h3 id="3-波茲曼常數">3. 波茲曼常數</h3>
+<p>波茲曼常數是現代物理學最重要的基本常數之一。</p>
+<p>\[ k_B=1.380649\times10^{-23}\ \mathrm{J/K} \]</p>
+<p>它將微觀能量尺度與宏觀溫度尺度聯繫起來。</p>
+<p>主要應用包括：</p>
+<ul>
+<li>統計力學。</li>
+<li>熱力學。</li>
+<li>氣體動力論。</li>
+<li>量子統計。</li>
+<li>凝態物理學。</li>
+<li>半導體物理學。</li>
+<li>資訊理論與熱力學。</li>
+</ul>
+<p>波茲曼常數如今在國際單位制中具有精確定義值。</p>
+<h3 id="4-波茲曼方程式：描述非平衡氣體系統">4. 波茲曼方程式：描述非平衡氣體系統</h3>
+<p>波茲曼方程式是氣體動力論及非平衡統計力學的核心方程式之一。</p>
+<p>它描述氣體分子在外力、空間移動及分子碰撞作用下，速度分布如何隨時間改變。</p>
+<p>其重要應用包括：</p>
+<ul>
+<li>氣體分子運動。</li>
+<li>高空稀薄氣體。</li>
+<li>航太飛行器周圍的氣體流動。</li>
+<li>電子在半導體中的輸運。</li>
+<li>電漿物理。</li>
+<li>微尺度流體與熱傳導。</li>
+</ul>
+<p>它使科學家能夠從微觀粒子的運動，研究宏觀氣體系統如何演變。</p>
+<h3 id="5-h定理：解釋熱力學不可逆性">5. H定理：解釋熱力學不可逆性</h3>
+<p>波茲曼在1872年提出H定理，嘗試從分子碰撞及統計分布解釋熱力學第二定律。</p>
+<p>這項研究的重要性在於：</p>
+<ul>
+<li>微觀粒子的運動遵循力學定律。</li>
+<li>但宏觀世界中的熱傳導、氣體擴散等過程通常具有方向性。</li>
+<li>波茲曼透過統計方法，說明這種方向性如何從大量粒子的集體行為中產生。</li>
+</ul>
+<p>不過，H定理也引發了著名的時間反演問題：如果微觀力學定律原則上可以反向運行，為何宏觀熵卻呈現增加的趨勢？</p>
+<p>這項問題促使後來的物理學家更加深入研究統計力學的機率基礎。</p>
+<h3 id="6-史蒂芬－波茲曼定律">6. 史蒂芬－波茲曼定律</h3>
+<p>波茲曼在1884年從理論上推導出黑體輻射總能量與絕對溫度四次方成正比的關係。</p>
+<p>\[ j^\star=\sigma T^4 \]</p>
+<p>其中：</p>
+<ul>
+<li>\(j^\star\)：黑體單位面積的輻射功率。</li>
+<li>\(\sigma\)：史蒂芬－波茲曼常數。</li>
+<li>\(T\)：絕對溫度。</li>
+</ul>
+<p>這項定律對現代天文物理學尤其重要。例如，天文學家可以利用恆星表面的輻射能量與溫度之間的關係，研究恆星的物理性質。</p>
+<h2 id="十、波茲曼與其他重要科學家的關係">十、波茲曼與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/SrBBylebbyGOZZc9Hze55a0BfV7pak8wQ07R3hcWRErzcYG4fETkBOk8SjmTtCU3P0SUaypsHnMM_90EWvFQgnyyqxYHQNFfHOD85kpVq7kkdQQcfoE_u2ddG31zwlm9zr1-YPazqW1HTiULkCEU9TmJJDvUMedOPbfgLvufFJ8?purpose=inline">Porträt von JAMES CLERK MAXWELL, schottischer Physiker</a></p>
+<p>詹姆斯・克拉克・馬克士威（1831－1879）</p>
+<p>提出馬克士威速度分布律，將統計方法引入氣體分子運動研究。波茲曼進一步發展其理論，兩人共同奠定氣體動力論及統計力學的重要基礎。</p>
+<p>約瑟夫・史蒂芬（1835－1893）</p>
+<p>波茲曼在維也納大學的重要老師。史蒂芬以實驗提出黑體輻射與絕對溫度四次方成正比的關係，波茲曼後來從理論上推導，形成史蒂芬－波茲曼定律。</p>
+<p><a href="https://images.openai.com/static-rsc-4/Sd5VFj91PxnWETul3al69k70EJvdtSlRBInwg5BYxd_1Rn07SMn_9OHq0vLmDUNHvwKozJWcD_oXP-yAv5yKiep7ozmU6i2YRZ2V7i7dD0BZe2b5Vp7z2G-l5Iu5LKcHw0C-ykaSEEMSJGAaKP4SZn_Q4GxzctHKXjdLpkHgtjU?purpose=inline">Rudolf Clausius. Fundador  de la termodinámica actual | Ecency</a></p>
+<p>魯道夫・克勞修斯（1822－1888）</p>
+<p>熱力學第二定律及熵概念的重要建立者。波茲曼進一步從微觀粒子與統計角度解釋熵的物理意義。</p>
+<p><a href="https://images.openai.com/static-rsc-4/4quSKXssvtjJMqfy4M6A7WMXtRMCJjtJMWFCqzIbmFvk3Q8FA5qWB0lOrJNWM9cOrDaJhOS9uaiQDRCfZB78X_FyQy2ZvQbrydjz9Ty_3EI4WxwOrLE0jzj5L_CJoPMkbCQap1lFbevlFOw2kZx07ILj-_EHsOvEpA_hrH5Fh94?purpose=inline">吉布斯——热力学大师与统计物理奠基人 | 集智俱乐部</a></p>
+<p>約西亞・威拉德・吉布斯（1839－1903）</p>
+<p>建立統計系綜方法，使統計力學能夠適用於更廣泛的物理系統。其研究與波茲曼的理論相互補充。</p>
+<p><a href="https://images.openai.com/static-rsc-4/YLh4JwBcvJDrIQPHqnbZnc-8T5hOewVRD-Qn5hn-DebgkXAudQyWJtY5QDJpLKVNKjMVlyp6Z0kdbcv5-sohwcMU3RcFt72oihtOPQ4gmKukHrK83V3xInxgtth6F2pnL1xbSgp6fHiqvAME4bwIaN0p0oJmnyAQ3juyucbU3YM?purpose=inline">Scientific Developments and Intellectual Trends | European History – 1890 to 1945 Class Notes</a></p>
+<p>馬克斯・普朗克（1858－1947）</p>
+<p>普朗克在研究黑體輻射及量子論時，受到波茲曼統計思想的深刻影響。波茲曼的熵與機率觀念，是普朗克推導黑體輻射定律的重要理論資源。</p>
+<p><a href="https://images.openai.com/static-rsc-4/iexYdZ7QxaoLv-RCqbNDQxWWwYLj2bQqzJJSzsH_9DoYPylD_j-9SxjI238KznFV9D0WiyJ4LSdDqZIG45eeR_PZWh6EH5paqa2I5zWcGpsrZblKwqDwgTUiLEuqNa34P7RIRb2xztrSNvici6tKzS7Ps4Tp2Ej5MlrhQD8-T5s?purpose=inline">File:Albert Einstein Head (cropped).jpg - Wikimedia Commons</a></p>
+<p>阿爾伯特・愛因斯坦（1879－1955）</p>
+<p>愛因斯坦運用統計物理學研究布朗運動，提供原子與分子真實存在的重要理論及實驗驗證。</p>
+<h3 id="科學思想的傳承關係">科學思想的傳承關係</h3>
+<table>
+<thead>
+<tr>
+<th>科學家</th>
+<th>主要貢獻</th>
+<th>與波茲曼的關係</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>馬克士威</td>
+<td>分子速度分布</td>
+<td>波茲曼的重要理論先驅</td>
+</tr>
+<tr>
+<td>克勞修斯</td>
+<td>熵、熱力學第二定律</td>
+<td>提供熱力學基礎</td>
+</tr>
+<tr>
+<td>史蒂芬</td>
+<td>熱輻射實驗定律</td>
+<td>波茲曼的老師</td>
+</tr>
+<tr>
+<td>波茲曼</td>
+<td>統計力學、熵公式</td>
+<td>建立微觀統計解釋</td>
+</tr>
+<tr>
+<td>吉布斯</td>
+<td>統計系綜理論</td>
+<td>擴展統計力學架構</td>
+</tr>
+<tr>
+<td>普朗克</td>
+<td>量子論、黑體輻射</td>
+<td>吸收波茲曼的統計思想</td>
+</tr>
+<tr>
+<td>愛因斯坦</td>
+<td>布朗運動、相對論</td>
+<td>以實驗與理論支持原子論</td>
+</tr>
+</tbody></table>
+<h2 id="十一、波茲曼的重要著作">十一、波茲曼的重要著作</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作或研究</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1868</td>
+<td>氣體分子動力論相關論文</td>
+<td>氣體分子運動及統計研究</td>
+</tr>
+<tr>
+<td>1872</td>
+<td>氣體分子動力論研究</td>
+<td>波茲曼方程式、H定理</td>
+</tr>
+<tr>
+<td>1877</td>
+<td>熱平衡與機率分布研究</td>
+<td>波茲曼熵公式</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>熱輻射理論研究</td>
+<td>推導史蒂芬－波茲曼定律</td>
+</tr>
+<tr>
+<td>1896</td>
+<td>《氣體理論講義》第一卷</td>
+<td>氣體動力論的系統整理</td>
+</tr>
+<tr>
+<td>1898</td>
+<td>《氣體理論講義》第二卷</td>
+<td>分子運動與統計理論的進一步發展</td>
+</tr>
+<tr>
+<td>1905</td>
+<td>《物理學講演集》相關內容</td>
+<td>物理學、統計方法及理論研究</td>
+</tr>
+</tbody></table>
+<p>其中，《氣體理論講義》（Vorlesungen über Gastheorie）是波茲曼最重要的著作之一。它系統整理氣體動力論的理論、數學方法及統計觀念，對後來統計物理學的發展影響深遠。</p>
+<h2 id="十二、波茲曼生平重要年份總表">十二、波茲曼生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>年齡</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1844</td>
+<td>0</td>
+<td>出生於奧地利埃德貝格</td>
+</tr>
+<tr>
+<td>1859</td>
+<td>15</td>
+<td>父親逝世</td>
+</tr>
+<tr>
+<td>1863</td>
+<td>19</td>
+<td>進入維也納大學</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>21</td>
+<td>在史蒂芬指導下從事研究</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>22</td>
+<td>取得博士學位</td>
+</tr>
+<tr>
+<td>1867</td>
+<td>23</td>
+<td>擔任維也納大學助理</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>25</td>
+<td>任教於格拉茨大學</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>27</td>
+<td>持續研究氣體分子速度分布</td>
+</tr>
+<tr>
+<td>1872</td>
+<td>28</td>
+<td>提出波茲曼方程式及H定理</td>
+</tr>
+<tr>
+<td>1873</td>
+<td>29</td>
+<td>深化統計力學研究</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>32</td>
+<td>返回維也納大學，與亨麗埃特結婚</td>
+</tr>
+<tr>
+<td>1877</td>
+<td>33</td>
+<td>提出波茲曼熵公式</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>35</td>
+<td>持續發展統計力學</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>40</td>
+<td>理論推導史蒂芬－波茲曼定律</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>41</td>
+<td>繼續研究氣體動力論</td>
+</tr>
+<tr>
+<td>1887</td>
+<td>43</td>
+<td>再度任教於格拉茨大學</td>
+</tr>
+<tr>
+<td>1888</td>
+<td>44</td>
+<td>捍衛原子論，參與科學哲學爭論</td>
+</tr>
+<tr>
+<td>1890</td>
+<td>46</td>
+<td>任教於慕尼黑大學</td>
+</tr>
+<tr>
+<td>1894</td>
+<td>50</td>
+<td>返回維也納大學</td>
+</tr>
+<tr>
+<td>1895</td>
+<td>51</td>
+<td>前往萊比錫大學任教</td>
+</tr>
+<tr>
+<td>1896</td>
+<td>52</td>
+<td>出版《氣體理論講義》第一卷</td>
+</tr>
+<tr>
+<td>1898</td>
+<td>54</td>
+<td>出版《氣體理論講義》第二卷</td>
+</tr>
+<tr>
+<td>1900</td>
+<td>56</td>
+<td>返回維也納大學</td>
+</tr>
+<tr>
+<td>1902</td>
+<td>58</td>
+<td>吉布斯出版《統計力學基本原理》</td>
+</tr>
+<tr>
+<td>1904</td>
+<td>60</td>
+<td>前往美國參與國際學術活動</td>
+</tr>
+<tr>
+<td>1906</td>
+<td>62</td>
+<td>9月5日於杜伊諾逝世</td>
+</tr>
+</tbody></table>
+<h2 id="十三、波茲曼在科學史上的歷史地位">十三、波茲曼在科學史上的歷史地位</h2>
+<p>波茲曼的貢獻，可以放在從古典熱力學走向現代統計物理學的歷史脈絡中理解。</p>
+<p>第一階段：古典力學與熱力學</p>
+<p>牛頓建立古典力學；焦耳、克勞修斯等人發展熱力學與能量觀念。</p>
+<p>第二階段：氣體分子動力論</p>
+<p>克勞修斯、馬克士威等人研究氣體分子運動及速度分布。</p>
+<p>第三階段：波茲曼（1872－1877）</p>
+<p>建立波茲曼方程式、H定理及熵的統計解釋。</p>
+<p>第四階段：吉布斯與普朗克</p>
+<p>吉布斯發展統計系綜理論；普朗克運用統計觀念建立量子論。</p>
+<p>第五階段：現代物理學</p>
+<p>愛因斯坦、玻爾、海森堡、薛丁格等人推動原子物理及量子力學發展。</p>
+<h3 id="1-對熱力學的影響">1. 對熱力學的影響</h3>
+<p>波茲曼讓人類理解，熱力學第二定律背後具有深刻的統計意義。</p>
+<p>熵增加並非單純的數學規則，而是大量微觀粒子在統計上趨向高機率宏觀狀態的結果。</p>
+<h3 id="2-對原子論的影響">2. 對原子論的影響</h3>
+<p>波茲曼堅持以原子與分子解釋物質現象。</p>
+<p>當時原子是否真實存在仍受到質疑，但後來布朗運動研究及其他實驗證據，使原子論逐漸獲得廣泛支持。</p>
+<h3 id="3-對量子物理學的影響">3. 對量子物理學的影響</h3>
+<p>普朗克研究黑體輻射時，運用了統計力學與熵的概念。</p>
+<p>因此，波茲曼的統計思想成為量子論誕生的重要理論背景之一。</p>
+<h3 id="4-對現代科技的影響">4. 對現代科技的影響</h3>
+<p>波茲曼的理論今天仍廣泛應用於：</p>
+<ul>
+<li>半導體及電子元件。</li>
+<li>電腦晶片熱管理。</li>
+<li>材料科學。</li>
+<li>氣體動力學。</li>
+<li>天文物理。</li>
+<li>生物物理。</li>
+<li>資訊理論。</li>
+<li>量子統計與凝態物理。</li>
+</ul>
+<h2 id="十四、波茲曼與普朗克：兩位物理學家的比較">十四、波茲曼與普朗克：兩位物理學家的比較</h2>
+<p>由於波茲曼與普朗克都是現代熱力學及統計物理學的重要人物，兩人的學術思想有密切關係。</p>
+<p><a href="https://images.openai.com/static-rsc-4/c4z9k8vlFTQ5eL89MdUcc5cWkoLhK1qqM8szVEZp73FwBh7j3Mua0NV_8UMyG_yy_wO2MijEEOBrFYn7KqLp6uECXAOaxmJXj2V-dNHCC5u53NwsQbx0FQPceJEitz8zKdeg0rhy5r0OLixZ_NLXm2SI1LqJUQ4zQw6L1Z4KsRQ?purpose=inline">Part 1</a></p>
+<p>波茲曼</p>
+<p>1844－1906</p>
+<ul>
+<li>統計力學</li>
+<li>熵的統計解釋</li>
+<li>氣體分子運動</li>
+<li>波茲曼方程式</li>
+</ul>
+<p><a href="https://images.openai.com/static-rsc-4/XAz-J-paF9NDvENm9cxVTB7fCbacrPetZ-DNImuJr4c7i9u301SS09I0OOWTH2j0R8SXvgUaqkBzywCF9SGrx4ynaG5d5KWIl8puKLrYlfOQuuVuCn6WvKmwfNy_3KfLm0TdjeH9ClsGBparZRb22dSuCYdFekgm48WCWPUtaic?purpose=inline">History of Information</a></p>
+<p>普朗克</p>
+<p>1858－1947</p>
+<ul>
+<li>量子論</li>
+<li>黑體輻射定律</li>
+<li>普朗克常數</li>
+<li>能量量子化</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>波茲曼</th>
+<th>普朗克</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出生</td>
+<td>1844年</td>
+<td>1858年</td>
+</tr>
+<tr>
+<td>逝世</td>
+<td>1906年</td>
+<td>1947年</td>
+</tr>
+<tr>
+<td>主要領域</td>
+<td>統計力學、熱力學</td>
+<td>量子物理、熱輻射</td>
+</tr>
+<tr>
+<td>代表公式</td>
+<td>\(S=k_B\ln W\)</td>
+<td>\(E=h\nu\)</td>
+</tr>
+<tr>
+<td>主要問題</td>
+<td>熵與不可逆性</td>
+<td>黑體輻射與能量量子化</td>
+</tr>
+<tr>
+<td>重要年份</td>
+<td>1872、1877、1884</td>
+<td>1900、1901</td>
+</tr>
+<tr>
+<td>歷史地位</td>
+<td>統計力學奠基者</td>
+<td>量子論創始人</td>
+</tr>
+</tbody></table>
+<p>兩人思想的承接關係：</p>
+<p>波茲曼以統計方法解釋熵及熱力學，普朗克則在研究黑體輻射時運用統計物理學的觀念，最後提出能量量子化。</p>
+<p>因此，可以將波茲曼視為現代統計物理學的重要奠基者，而普朗克則是在這一理論背景上，開啟量子物理學革命的關鍵人物。</p>
+<h2 id="十五、總結：波茲曼為什麼如此重要？">十五、總結：波茲曼為什麼如此重要？</h2>
+<p>波茲曼最大的成就，是讓物理學家能夠從大量微觀粒子的運動，理解宏觀世界的自然規律。</p>
+<p>他所提出的熵公式：</p>
+<p>\[ \boxed{S=k_B\ln W} \]</p>
+<p>不僅是統計力學的核心公式，也深刻影響了熱力學、資訊理論、量子物理及現代科學哲學。</p>
+<p>如果將19世紀物理學的重要發展作一個簡單歸納：</p>
+<ul>
+<li>牛頓： 建立古典力學，解釋物體運動。</li>
+<li>法拉第與馬克士威： 建立電磁學理論。</li>
+<li>焦耳與克勞修斯： 推動能量守恆與熱力學發展。</li>
+<li>馬克士威與波茲曼： 將統計方法引入氣體分子運動及熱力學。</li>
+<li>波茲曼： 建立熵的統計解釋及統計力學的重要架構。</li>
+<li>普朗克： 提出能量量子化，開啟量子論。</li>
+<li>愛因斯坦： 推動相對論與量子理論發展。</li>
+</ul>
+<p>波茲曼的歷史地位，並不只在於提出一條公式，而在於他改變了物理學理解自然現象的方式：宏觀世界看似具有確定的規律，其背後卻可能是大量微觀粒子遵循統計法則所形成的結果。</p>
+<p>這個思想至今仍是現代物理學的重要基礎。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

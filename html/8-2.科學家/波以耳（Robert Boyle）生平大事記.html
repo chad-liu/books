@@ -1,0 +1,573 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="波以耳（robert-boyle）生平大事記">波以耳（Robert Boyle）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/liWyQc-fcJVo7Hthj6WMaDG7XnS38KFYvWrDEKnMF6L1g2wTa4mID11bYjckrGLLYS_0o6tHLt-0t20PeSuWNnDgJQ86pC0qCGvnNkC0XJZmakL8dfQw6NpFEGL--3QnUwX_ZvJ5QSCfas8sT6SXWCrb7Br1dNfUtg1eDGNprvs?purpose=inline">Roberto Boyle</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/AkNRZ4zBzXBJd6x9HqoylBkBrusW-I_Hnfgd7wkzG97i-F6BKB3K7qZ-N525fkeI8bmLzHOxT03r_VHYZHj9MNw9TRuz2ORdY3RgsMDoQcuH3IyMPaQhO0gNk_e76KilZIpB_j2lf1rXZGrk6N9yNpqQtewFeGt0NF4MbRdVM94?purpose=inline">Hooke &amp; Boyle Air Pump Experiment - World History Encyclopedia</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/PwEVJ6z2whotUo6ahLK4RafcnzPzJNSFU0FVyiFsxyNpMVS5CxBeEMGcCoSM04HVZAK3Fzqgr9eMOt7KVHISotgncfnzEGi6fClMQnW_Zp1fWKKnEIp98WYeVv4iMnX1oTx53nKGGIaoluUjtXdzQ1G8n4_9d5jLJyUATP7ZnVM?purpose=inline">A Continuation of New Experiments Physico-Mechanical, Touching the Spring and Weight of the air, and their Effects. The I. Part. Written by way of letter to the Right Honourable the Lord Clifford and Dungarvan. Whereto is</a></p>
+<p>7</p>
+<p>愛爾蘭裔英國自然哲學家、化學家｜1627年1月25日－1691年12月31日</p>
+<p>羅伯特・波以耳（Robert Boyle）是十七世紀最重要的自然哲學家與化學家之一，被譽為「現代化學之父」的重要先驅。他以實驗方法研究氣體、物質與化學反應，提出著名的波以耳定律（Boyle&#39;s Law），確立氣體壓力與體積之間的反比關係。</p>
+<p>波以耳的重要性不僅在於發現一條物理定律，更在於他推動了科學研究方法的轉變：從依賴古代權威與哲學推論，轉向以可重複的實驗、精確測量及理性論證來研究自然現象。</p>
+<h2 id="一、出生與早年生活（1627－1641）">一、出生與早年生活（1627－1641）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/TyTxSDbA9gCrafLzya7BuThAMJ-XZWvn9VlnkLKlMEVjtgpYX_rhmmEPuzs6WTjC_TVCpC_Z17hQsaZQ-Ozz9nfI23RWrTuOPVDpaBGPQmpS0IMCkvqga_kbcvCs8X3voehkayVDvKJLaG-iSbdYVnD7PG-e-6DOfzM_QXE7_I0?purpose=inline">The Countess of Burlington&#39;s ultra-romantic gardens at Lismore Castle in Ireland | House &amp; Garden</a></p>
+<p><a href="https://www.houseandgarden.co.uk/gallery/lismore-castle-garden?utm_source=chatgpt.com">houseandgarden.co.uk</a></p>
+<h3 id="1627年：出生於愛爾蘭">1627年：出生於愛爾蘭</h3>
+<ul>
+<li>1月25日：波以耳出生於愛爾蘭芒斯特省沃特福德郡的利斯莫爾城堡（Lismore Castle）。</li>
+<li>父親理查・波以耳（Richard Boyle）是英國貴族，後來獲封科克伯爵（Earl of Cork）。</li>
+<li>母親凱瑟琳・芬頓（Catherine Fenton）出身愛爾蘭貴族家庭。</li>
+<li>波以耳是家中眾多子女之一，成長於富裕且具有文化教育資源的家庭。</li>
+</ul>
+<h3 id="1630年代：接受家庭教育">1630年代：接受家庭教育</h3>
+<ul>
+<li>波以耳從小接受良好的家庭教育。</li>
+<li>學習拉丁文、法文、希臘文及數學。</li>
+<li>當時歐洲仍深受亞里斯多德哲學與經院思想影響。</li>
+<li>他逐漸對自然現象、物質組成及科學問題產生興趣。</li>
+</ul>
+<h3 id="1635年：前往英格蘭求學">1635年：前往英格蘭求學</h3>
+<ul>
+<li>波以耳年幼時被送往英格蘭接受教育。</li>
+<li>曾在伊頓公學（Eton College）接受教育。</li>
+<li>伊頓公學是英國重要的傳統學校，提供古典文學、語言及哲學訓練。</li>
+</ul>
+<h3 id="1639年：前往歐洲大陸">1639年：前往歐洲大陸</h3>
+<ul>
+<li>波以耳與兄長前往歐洲大陸旅行及接受教育。</li>
+<li>此時歐洲正處於科學革命的重要階段。</li>
+<li>哥白尼的日心說、伽利略的力學研究，以及笛卡兒的自然哲學，都對當時知識界產生重大影響。</li>
+</ul>
+<h2 id="二、歐洲旅行與科學思想形成（1641－1649）">二、歐洲旅行與科學思想形成（1641－1649）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/O2I2CYbtIj7mFL-LAh-TRL-Qe9gAyC5ixVjNpAk6a9ycJvnBqbXlldumNI9sawi5AXGtBDzhyQeXT0AH6Zj9R41W4eRqo7bgOC4McVGxTd5RWj4-UZPwBMB6BzXIJs-kS2hXAT4AiOkXxkQQSTB6Mv_WeBwhpHbaMiS92OK6i0M?purpose=inline">Nicolaus Steno und die Anfänge der Geologie - Und sie verändert sich doch!</a></p>
+<p><a href="https://www.deutschlandfunk.de/nikolaus-stenonis-niels-stensen-geologie-galilei-100.html?utm_source=chatgpt.com">deutschlandfunk.de</a></p>
+<h3 id="1641－1642年：旅居歐洲">1641－1642年：旅居歐洲</h3>
+<ul>
+<li>波以耳持續在歐洲大陸旅行與學習。</li>
+<li>接觸歐洲文藝復興以來的科學、哲學及文學思想。</li>
+<li>對自然哲學產生更深入的興趣。</li>
+</ul>
+<h3 id="1642年：伽利略逝世">1642年：伽利略逝世</h3>
+<ul>
+<li>義大利科學家伽利略（Galileo Galilei）於1642年逝世。</li>
+<li>伽利略以實驗與數學研究自然現象，對近代科學方法的建立具有重大影響。</li>
+<li>波以耳後來發展的實驗研究精神，與伽利略所代表的新科學傳統具有重要的思想連結。</li>
+</ul>
+<h3 id="1644－1645年：接觸新科學思想">1644－1645年：接觸新科學思想</h3>
+<ul>
+<li>波以耳在歐洲旅行期間接觸新的自然哲學思想。</li>
+<li>他逐漸不滿足於僅靠古典哲學解釋自然現象。</li>
+<li>開始重視觀察、實驗及理性推論。</li>
+</ul>
+<h3 id="1646年：返回英格蘭">1646年：返回英格蘭</h3>
+<ul>
+<li>波以耳返回英格蘭。</li>
+<li>此後逐漸將興趣轉向科學研究及哲學思考。</li>
+<li>他開始建立自己的研究環境，並與其他學者交流。</li>
+</ul>
+<h3 id="1647－1649年：投入自然哲學研究">1647－1649年：投入自然哲學研究</h3>
+<ul>
+<li>波以耳開始閱讀當時的重要自然哲學著作。</li>
+<li>特別關注物質的組成、空氣的性質及自然現象的機械性解釋。</li>
+<li>逐漸形成以實驗證據檢驗理論的研究方法。</li>
+</ul>
+<h2 id="三、建立實驗研究方法（1650－1660）">三、建立實驗研究方法（1650－1660）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/9f9ulABEV9Dv2TCxSlM_WedEatvA-PR3kM0H9KIpMzCs67LCrXM0xldCXm50iLynARPFDc58ufDZsTh_zk_cVCJbK9Is9VABb1aa7977lOSHXQbThbPFRH6XbAN0VXdHBvA9d_5PxcjHBTOjsKXoIAf5_BRpJgzN_gDaFeutSeU?purpose=inline">A continuation of New Experiments Physico-Mechanical, Touching the Spring and Weight of the air, and their Effects. The I. Part / ... The Second Part | Robert BOYLE | 1st Edition</a></p>
+<p><a href="https://www.milestone-books.de/pages/books/002499/robert-boyle/a-continuation-of-new-experiments-physico-mechanical-touching-the-spring-and-weight-of-the-air-and?utm_source=chatgpt.com">milestone-books.de</a></p>
+<h3 id="1650－1653年：研究自然哲學與物質性質">1650－1653年：研究自然哲學與物質性質</h3>
+<ul>
+<li>波以耳持續研究物質、空氣、燃燒與化學現象。</li>
+<li>他認為自然現象應透過觀察和實驗來理解。</li>
+<li>逐漸形成反對盲目接受古代權威的科學態度。</li>
+</ul>
+<h3 id="1654年：與科學家交流">1654年：與科學家交流</h3>
+<ul>
+<li>波以耳與英國及歐洲的自然哲學家建立學術聯繫。</li>
+<li>對當時正在發展的實驗哲學產生濃厚興趣。</li>
+<li>研究重點逐漸集中於空氣的物理性質。</li>
+</ul>
+<h3 id="1655年：前往牛津">1655年：前往牛津</h3>
+<ul>
+<li>波以耳前往牛津，開始進行更有系統的實驗研究。</li>
+<li>牛津當時逐漸形成重要的實驗科學研究圈。</li>
+<li>他與物理學家羅伯特・胡克（Robert Hooke）合作，後者協助設計及改良實驗設備。</li>
+</ul>
+<h3 id="1657－1659年：研究真空與空氣">1657－1659年：研究真空與空氣</h3>
+<p><a href="https://images.openai.com/static-rsc-4/jLTLZ8RFa2bOH88kaDBS6pcWIfF_EaBawEeXLr2iep6CJhtmBNHcsiZ_l2e72L7mrC2nBP6AMv5jJVnG6Bdalkhnn2O2Xvowa9htXReR9gPlkPZczDonxr-tmYkzvTX9M1egDydlVqKQ-3-NG_l6ox4z3bwUHQNofAYk1JkLJqI?purpose=inline">Otto von Guericke  | Eduportál Techmania</a></p>
+<p><a href="https://edu.techmania.cz/cs/encyklopedie/vedec/1166/guericke?utm_source=chatgpt.com">edu.techmania.cz</a></p>
+<ul>
+<li>波以耳受到德國科學家格里克（Otto von Guericke）真空實驗的啟發。</li>
+<li>格里克曾利用抽氣裝置展示空氣壓力的作用。</li>
+<li>波以耳開始研究如何利用更精密的設備抽除容器內的空氣。</li>
+<li>他與胡克合作改良氣泵，建立可用於研究空氣性質的實驗裝置。</li>
+</ul>
+<h3 id="1659年：改良空氣泵">1659年：改良空氣泵</h3>
+<ul>
+<li>波以耳與胡克共同改良空氣泵（Air Pump）。</li>
+<li>新設備能夠更有效地抽取密閉容器內的空氣。</li>
+<li>透過這項裝置，他們得以研究空氣壓力、燃燒、聲音傳播及生命活動等現象。</li>
+</ul>
+<p>歷史意義：</p>
+<p>空氣泵成為十七世紀重要的實驗設備，使科學家可以在受控制的環境中研究空氣與真空，推動實驗物理學的發展。</p>
+<h3 id="1660年：出版《關於新型物理－機械實驗的研究》">1660年：出版《關於新型物理－機械實驗的研究》</h3>
+<p><a href="https://images.openai.com/static-rsc-4/PRzVqY2RctzAWRQ_ru1qSb92hHbl9y2UsD_iNWKS1cJzjFHbV8Q6E4bxeD9ZQmjijSFpsvXTr8o7BbLeoj7cifxLGCQ1v0nq0fCx6SHiDxO2SiBxLnfQm3OV2COp05YMHUeQE-5FcOyJIk8qDqrEx4SRsogME9z9itkOBNOI518?purpose=inline">Scientist of the Day - Robert Boyle, Irish Natural Philosopher - Linda Hall Library</a></p>
+<p><a href="https://www.lindahall.org/about/news/scientist-of-the-day/robert-boyle/?utm_source=chatgpt.com">lindahall.org</a></p>
+<ul>
+<li>波以耳出版《關於空氣彈性及其效應的新物理－機械實驗》（New Experiments Physico-Mechanicall, Touching the Spring of the Air, and Its Effects）。</li>
+<li>書中詳細記錄利用空氣泵進行的實驗。</li>
+<li>他研究空氣的彈性、壓力與體積變化。</li>
+<li>這本書是波以耳科學生涯的重要代表作。</li>
+</ul>
+<h2 id="四、提出波以耳定律與推動現代化學（1661－1668）">四、提出波以耳定律與推動現代化學（1661－1668）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/wZ5r2EuTVUnsxsJ5iZs6-uhGnLT48oODN2usIcf6G5aK2DPPwPH2EHIGXYrbsRCIY_JwF4bN0AQR0ytvt1nC4E8HLnbYA1mwjeRKfbq7kjp-ozPpWCazhe7v2nF7CGSSPh6Kdjpy9-GCCwFXEa7Y4K3VtpiSmuxF-V-Cw77IA-8?purpose=inline">A continuation of New Experiments Physico-Mechanical, Touching the Spring and Weight of the air, and their Effects. The I. Part / ... The Second Part | Robert BOYLE | 1st Edition</a></p>
+<p><a href="https://www.milestone-books.de/pages/books/002499/robert-boyle/a-continuation-of-new-experiments-physico-mechanical-touching-the-spring-and-weight-of-the-air-and?utm_source=chatgpt.com">milestone-books.de</a></p>
+<h3 id="1661年：出版《懷疑的化學家》">1661年：出版《懷疑的化學家》</h3>
+<p>現代化學發展的重要里程碑</p>
+<ul>
+<li>波以耳出版《懷疑的化學家》（The Sceptical Chymist）。</li>
+<li>這本著作是化學史上的重要經典。</li>
+<li>他批判當時化學界過度依賴古代元素理論與煉金術傳統。</li>
+<li>對古希臘四元素說提出質疑。</li>
+</ul>
+<p>當時主要的物質組成觀念包括：</p>
+<ol>
+<li>**亞里斯多德四元素說：**土、水、氣、火。</li>
+<li>**煉金術傳統：**硫、汞、鹽等物質原理。</li>
+<li>**波以耳的觀點：**應透過實驗判斷物質是否能被分解為更基本的成分，而不是直接接受古代理論。</li>
+</ol>
+<p>波以耳對「元素」提出更具實驗精神的定義，認為元素應是不能再由其他物質分解而成的基本物質。</p>
+<p>歷史意義：</p>
+<p>《懷疑的化學家》標誌著化學逐漸從煉金術及傳統自然哲學，走向以實驗為基礎的現代科學。</p>
+<h3 id="1662年：波以耳定律正式發表">1662年：波以耳定律正式發表</h3>
+<p><a href="https://images.openai.com/static-rsc-4/GwGRvhjYOzJanu4glaNSYxrBEnk8fUS8cnxVJugmEmchQu5NvZzU8jpzmMG7zy10oorX3nNinPEURHTNK18wdd4siokEyoFaCKx8FyGWnIRZthlq_VevH-PyLGuRNBQAPraArKxEyqPzWe1yOP--RtsiUqXhqK69fxCW_nMj11I?purpose=inline">PPT - Chapter 11 PowerPoint Presentation, free download - ID:6940731</a></p>
+<p><a href="https://www.slideserve.com/plato-larsen/chapter-11?utm_source=chatgpt.com">slideserve.com</a></p>
+<ul>
+<li>波以耳在1660年著作的修訂版中，加入更多有關空氣壓力與體積的實驗結果。</li>
+<li>他發現一定量的氣體在溫度不變時，壓力與體積成反比。</li>
+<li>這項關係後來被稱為波以耳定律（Boyle&#39;s Law）。</li>
+</ul>
+<p>數學表示：</p>
+<p>\[ PV=k \]</p>
+<p>或：</p>
+<p>\[ P_1V_1=P_2V_2 \]</p>
+<p>其中：</p>
+<ul>
+<li>\(P\)：氣體壓力</li>
+<li>\(V\)：氣體體積</li>
+<li>\(k\)：在固定溫度及氣體量下的常數</li>
+</ul>
+<p>簡單理解：</p>
+<ul>
+<li>當氣體體積縮小，壓力會增加。</li>
+<li>當氣體體積增加，壓力會降低。</li>
+</ul>
+<p>例如，在溫度不變的條件下，若氣體體積縮小為原來的一半，壓力理想上會增加為原來的兩倍。</p>
+<p>歷史意義：</p>
+<p>波以耳定律是氣體定律的重要基礎，也是後來氣體狀態方程式發展的重要一環。</p>
+<h3 id="1663年：成為英國皇家學會重要成員">1663年：成為英國皇家學會重要成員</h3>
+<p><a href="https://images.openai.com/static-rsc-4/BKxn3O89JTP9Q5BXkKVJfzizrNgqfyZyg4jIbSXEj3_s_rVKvwC_p_7Pn_Ky9fojL4k9d3WWlJ-qLdGNDHLz1POOfFlmI86ZpOo5hH_jbhIqKlPhjtBtoDChH5bM__k9n0YE7MgtYOs4jKVZpWwR0yUeReu77LX8-c0zP8LsmqE?purpose=inline">Sir Robert Moray - Soldier, scientist, spy, freemason and founder of The Royal Society</a></p>
+<p><a href="https://www.gresham.ac.uk/watch-now/sir-robert-moray-soldier-scientist-spy-freemason-and-founder-royal?utm_source=chatgpt.com">gresham.ac.uk</a></p>
+<ul>
+<li>英國皇家學會（Royal Society）於1660年成立，1662年獲得皇家特許狀。</li>
+<li>波以耳是早期重要會員之一。</li>
+<li>1663年，他獲選為英國皇家學會理事會成員。</li>
+<li>他積極參與實驗研究與學術交流。</li>
+</ul>
+<h3 id="1664年：研究顏色與物質性質">1664年：研究顏色與物質性質</h3>
+<ul>
+<li>波以耳持續研究顏色、光線與化學反應。</li>
+<li>他對不同物質在化學處理後產生的顏色變化特別感興趣。</li>
+<li>研究範圍逐漸從氣體擴展至化學分析與物質性質。</li>
+</ul>
+<h3 id="1665年：出版《關於顏色的實驗與考察》">1665年：出版《關於顏色的實驗與考察》</h3>
+<ul>
+<li>波以耳出版《關於顏色的實驗與考察》（Experiments and Considerations Touching Colours）。</li>
+<li>書中討論顏色形成、光線及物質的關係。</li>
+<li>他透過實驗研究不同物質所呈現的顏色變化。</li>
+</ul>
+<h3 id="1666年：研究燃燒與物質變化">1666年：研究燃燒與物質變化</h3>
+<ul>
+<li>波以耳持續研究燃燒、化學反應及空氣的作用。</li>
+<li>透過實驗，他注意到空氣在燃燒過程中的重要性。</li>
+<li>這些研究為後來燃燒理論的發展提供重要資料。</li>
+</ul>
+<h3 id="1667－1668年：持續研究化學與自然哲學">1667－1668年：持續研究化學與自然哲學</h3>
+<ul>
+<li>波以耳繼續研究氣體、物質組成、化學反應與物理現象。</li>
+<li>他的實驗研究逐漸受到英國及歐洲學術界肯定。</li>
+<li>他成為十七世紀實驗科學的重要代表人物。</li>
+</ul>
+<h2 id="五、科學研究成熟與學術影響擴大（1669－1680）">五、科學研究成熟與學術影響擴大（1669－1680）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/lNvkBO3NoBqgAF1vI20ps12PhaXIbpQvBrzutv07o5xOAZB2MJeKKioQAwCokdCItX-KVvQ3XeLurwDGhmqwRfFBmT9NrsjbXE-Re-AgyEMv-GlFItFPrKDpWhepctDTpAsn7kxIJSKaWtf1EpQajHhHOvDbekdg0k2e-jWKoWw?purpose=inline">Robert Boyle: Dünyanın İlk Modern Kimyageri</a></p>
+<p><a href="https://www.teknoloji.org/robert-boyle-dunyanin-ilk-modern-kimyageri/?utm_source=chatgpt.com">teknoloji.org</a></p>
+<h3 id="1669年：研究化學分析與物質性質">1669年：研究化學分析與物質性質</h3>
+<ul>
+<li>波以耳持續改進化學實驗方法。</li>
+<li>研究物質在不同化學處理下的變化。</li>
+<li>他逐漸重視化學分析的可靠性與可重複性。</li>
+</ul>
+<h3 id="1670年：持續推動實驗哲學">1670年：持續推動實驗哲學</h3>
+<ul>
+<li>波以耳與英國皇家學會的科學家保持密切交流。</li>
+<li>他強調科學知識必須建立在觀察與實驗證據上。</li>
+<li>這種研究方法成為現代實驗科學的重要基礎。</li>
+</ul>
+<h3 id="1671－1672年：研究化學與物理現象">1671－1672年：研究化學與物理現象</h3>
+<ul>
+<li>波以耳持續研究氣體、熱、燃燒及物質性質。</li>
+<li>他對空氣是否具有生命活動所需的特殊性質進行探討。</li>
+<li>其研究對後來化學與生理學發展產生影響。</li>
+</ul>
+<h3 id="1673年：研究空氣與生命活動">1673年：研究空氣與生命活動</h3>
+<ul>
+<li>波以耳繼續利用氣泵研究動植物與空氣的關係。</li>
+<li>這些實驗使科學家開始更深入了解空氣對生命活動的重要性。</li>
+<li>不過，當時對氧氣及呼吸作用的理解仍不完整。</li>
+</ul>
+<h3 id="1674－1675年：持續發表科學研究">1674－1675年：持續發表科學研究</h3>
+<ul>
+<li>波以耳發表多項有關化學及自然哲學的研究。</li>
+<li>研究涵蓋氣體、物質變化及實驗方法。</li>
+<li>他的著作逐漸在歐洲學術界廣泛流傳。</li>
+</ul>
+<h3 id="1676年：研究化學物質的特性">1676年：研究化學物質的特性</h3>
+<ul>
+<li>波以耳持續研究物質的溶解、反應及化學性質。</li>
+<li>他強調應透過具體實驗來判斷物質的特性，而非依賴抽象推論。</li>
+</ul>
+<h3 id="1677－1680年：學術聲望確立">1677－1680年：學術聲望確立</h3>
+<ul>
+<li>波以耳逐漸成為英國最具影響力的自然哲學家之一。</li>
+<li>他持續參與皇家學會活動，並與歐洲學者保持交流。</li>
+<li>他的研究方法對後來的牛頓、胡克及其他科學家所處的學術環境具有重要影響。</li>
+</ul>
+<h2 id="六、晚年研究與科學著作（1681－1691）">六、晚年研究與科學著作（1681－1691）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/V0kKTfhvzRPazKjRHIxqNTCQkrEJjIUkbthByH6rI-QAUr84P-9BUGp5AXkvxTfmrhzvMH0S17W8AV_uKmHMKF--9IleljKTUCySzVF8SAh0tOXU77bAQAEwZMyHDUcOEF47TEklcp6NtdOCiXnp4whx9VzdK8xQQ-I9f_P_el0?purpose=inline">Богослов-экспериментатор: как Роберт Бойль развивал науку без ущерба для собственной веры | Вокруг Света</a></p>
+<p><a href="https://www.vokrugsveta.ru/articles/bogoslov-eksperimentator-kak-robert-boil-razvival-nauku-bez-usherba-dlya-sobstvennoi-very-id922660/?utm_source=chatgpt.com">vokrugsveta.ru</a></p>
+<h3 id="1680年：拒絕擔任皇家學會會長">1680年：拒絕擔任皇家學會會長</h3>
+<ul>
+<li>波以耳曾被推舉為英國皇家學會會長。</li>
+<li>但他拒絕接受此職務。</li>
+<li>他更希望保有研究與寫作的自由。</li>
+</ul>
+<h3 id="1681－1684年：持續研究化學">1681－1684年：持續研究化學</h3>
+<ul>
+<li>波以耳繼續研究物質的組成、化學反應及實驗方法。</li>
+<li>他也關注化學知識與宗教、哲學之間的關係。</li>
+<li>逐漸將研究成果整理成更系統化的著作。</li>
+</ul>
+<h3 id="1685年：出版宗教與哲學著作">1685年：出版宗教與哲學著作</h3>
+<ul>
+<li>波以耳持續撰寫科學及宗教相關著作。</li>
+<li>他認為自然科學研究與對自然秩序的理解，可以相互補充。</li>
+<li>這反映十七世紀許多自然哲學家將科學研究與宗教信仰結合的思想背景。</li>
+</ul>
+<h3 id="1686年：出版《論物質形式與性質》">1686年：出版《論物質形式與性質》</h3>
+<ul>
+<li>波以耳出版有關物質性質與自然哲學的著作。</li>
+<li>他持續反對未經實驗驗證的物質理論。</li>
+<li>強調科學家應透過觀察與實驗研究物質。</li>
+</ul>
+<h3 id="1687－1689年：整理科學思想">1687－1689年：整理科學思想</h3>
+<ul>
+<li>波以耳持續撰寫科學與哲學著作。</li>
+<li>他對化學實驗方法的重視，已成為當時實驗科學的重要典範。</li>
+<li>他的研究與牛頓力學所代表的科學革命相互呼應。</li>
+</ul>
+<h3 id="1690年：出版《醫學實驗史》">1690年：出版《醫學實驗史》</h3>
+<ul>
+<li>波以耳持續整理與醫學、化學相關的實驗研究。</li>
+<li>研究涉及藥物、物質性質及實驗觀察。</li>
+</ul>
+<h3 id="1691年：逝世">1691年：逝世</h3>
+<ul>
+<li>12月31日：波以耳在英國倫敦逝世，享年64歲。</li>
+<li>他終身未婚，晚年與姊姊凱瑟琳・瓊斯（Katherine Jones）共同生活。</li>
+<li>波以耳留下大量科學著作與實驗研究成果。</li>
+<li>他的研究成為現代化學與實驗科學的重要基礎。</li>
+</ul>
+<h2 id="七、波以耳的主要科學貢獻">七、波以耳的主要科學貢獻</h2>
+<h3 id="1-波以耳定律：氣體壓力與體積的關係">1. 波以耳定律：氣體壓力與體積的關係</h3>
+<p><a href="https://images.openai.com/static-rsc-4/qw1UZXa3q0cM-Vmu_kuAVhbIGHZT8AM7i-5sGwDF0FJVE9Ph0WKPOPhokgF2VKA3rgxgJoLianVOe6r50LYRwJGlad0H56wPmGVFqbDKMcWPzsYEkZqPIvlwha3C_gaQfe8UxUdE9tQw_uPtv4gcqprzLweKFjdb-0qFQ74v5ao?purpose=inline">5.3: The Simple Gas Laws- Boyle’s Law, Charles’s Law and Avogadro’s Law - Chemistry LibreTexts</a></p>
+<p><a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_A_Molecular_Approach_%28Tro%29/05%3A_Gases/5.03%3A_The_Simple_Gas_Laws-_Boyles_Law_Charless_Law_and_Avogadros_Law?utm_source=chatgpt.com">chem.libretexts.org</a></p>
+<p>波以耳透過實驗證明，在溫度及氣體量固定的情況下，氣體壓力與體積成反比。</p>
+<p>\[ PV=k \]</p>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>氣體體積</th>
+<th>氣體壓力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1公升</td>
+<td>1大氣壓</td>
+</tr>
+<tr>
+<td>0.5公升</td>
+<td>2大氣壓</td>
+</tr>
+<tr>
+<td>0.25公升</td>
+<td>4大氣壓</td>
+</tr>
+<tr>
+<td>2公升</td>
+<td>0.5大氣壓</td>
+</tr>
+</tbody></table>
+<p>以上是理想化示例，用來說明壓力與體積的反比關係。</p>
+<p>主要應用：</p>
+<ul>
+<li>潛水與水下呼吸設備</li>
+<li>注射器</li>
+<li>活塞與氣缸</li>
+<li>氣體壓縮設備</li>
+<li>呼吸生理學</li>
+<li>氣體工程</li>
+</ul>
+<h3 id="2-推動現代化學的建立">2. 推動現代化學的建立</h3>
+<p>波以耳在《懷疑的化學家》中，對古代物質理論提出批判。</p>
+<p>他認為：</p>
+<ul>
+<li>化學理論必須接受實驗檢驗。</li>
+<li>物質的組成應由實驗證據判斷。</li>
+<li>不能單純依靠古代哲學家的權威。</li>
+<li>化學應逐漸成為獨立的實驗科學。</li>
+</ul>
+<p>他對元素的理解仍與現代化學不同，但已經明確展現出現代元素概念的重要方向。</p>
+<h3 id="3-推動實驗科學方法">3. 推動實驗科學方法</h3>
+<p>波以耳的重要貢獻之一，是強調科學研究必須具備：</p>
+<ol>
+<li>明確的研究問題。</li>
+<li>可控制的實驗條件。</li>
+<li>精確的觀察與測量。</li>
+<li>可重複的實驗結果。</li>
+<li>以證據檢驗理論。</li>
+</ol>
+<p>這種方法對後來物理學、化學與生物學的發展具有深遠影響。</p>
+<h3 id="4-研究真空與空氣的性質">4. 研究真空與空氣的性質</h3>
+<p><a href="https://images.openai.com/static-rsc-4/gmX1NGXfd-XaJ9-w73YQ_j9LndQrt3Mykl2dWcesotKI7fNwNvM02iOxF-FfJTgLDg1rarEz3dWETbV9dyexX_U0YIdrKhk-8EtbqWoz9Cx8gxTdDW6hqUNAfbjNeqhsJPgwGA2nYYR_U9puf2IT-IabGl1uV1g1IRiITLOlUqc?purpose=inline">Luftpumpe, Experiment von Robert Boyle (1627-1691), Gravur</a></p>
+<p><a href="https://www.meisterdrucke.com/kunstdrucke/Unbekannt-Unbekannt/1088272/Luftpumpe%2C-Experiment-von-Robert-Boyle-%281627-1691%29%2C-Gravur.html?utm_source=chatgpt.com">meisterdrucke.com</a></p>
+<p>波以耳利用空氣泵研究：</p>
+<ul>
+<li>空氣的彈性。</li>
+<li>空氣壓力。</li>
+<li>聲音傳播。</li>
+<li>燃燒與空氣的關係。</li>
+<li>空氣對生命活動的影響。</li>
+</ul>
+<p>這些研究使空氣不再只是日常生活中理所當然的環境，而成為可以定量研究的物理對象。</p>
+<h3 id="5-對元素概念的重新思考">5. 對元素概念的重新思考</h3>
+<p>波以耳在《懷疑的化學家》中批判古希臘四元素說，並提出以實驗界定元素的方向。</p>
+<p>他認為真正的元素應該是不能再分解為其他物質的基本成分。</p>
+<p>這個觀念雖然與現代原子理論尚有差距，但對拉瓦節及後來現代化學的建立具有重要思想影響。</p>
+<h2 id="八、波以耳與其他重要科學家的關係">八、波以耳與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/Z_cJARccoWEkRyASsuRUUAqgwPyL-g_YvDEZHzOO1cdlRRPi4zBakH5ZfiBrmqUSMfR_ao21XT331cIUiWXLkS52cxTrvp9ErKM3IjTx4Wy1KhLs93RqE5V9GFG6-jYmvFcrms2XpI6Po-MuGQwbDuPcOZnohLYr5ey2bM6o9PU?purpose=inline">रॉबर्ट हुक | Ask A Biologist</a></p>
+<p>羅伯特・胡克（Robert Hooke，1635－1703）</p>
+<p>波以耳的重要合作夥伴。胡克協助改良空氣泵，兩人共同進行空氣壓力、真空及氣體性質的實驗。胡克後來也提出著名的胡克定律。</p>
+<p><a href="https://images.openai.com/static-rsc-4/WtriUjONN_tuzqk7GlrUOCimu7yq1nw-k3ZTndtwmwSyGGQ9VTnGlNQ1LhLsgucJ6Mp0fn4i0JSjhT8p2UedgY890Wh-Pez5gt_CQK3G9zyPSQJMkUrugOMTAsrgY7Bh5XlLrOoRbnCxHYKuWXvYqhLyZzWdfjLzihqugGpFc6Q?purpose=inline">Porträt von Isaac Newton (1642-1727) 1702</a></p>
+<p>艾薩克・牛頓（Isaac Newton，1643－1727）</p>
+<p>與波以耳同處於英國科學革命時期。牛頓建立經典力學體系，波以耳則推動實驗化學與氣體研究。兩人的研究共同促進近代科學發展。</p>
+<p><a href="https://images.openai.com/static-rsc-4/qgv3C1ELJSIBAj1cMms4dqotMUqcT3UQuItpKWUvlqev-VD5vhAhKQvoitNCvsm9lbIdDYCtzUOmqemTHha4sAJ5KmJPSB_hxtZjU2GuoalpiDNGXoo5G3DndutI00UmqlIu2zZFRwM6vFrN16QPJJo7zL3r5WrShQcnS_s9WUw?purpose=inline">Antoine Lavoisier | Jacques Louis (after) David</a></p>
+<p>安東尼・拉瓦節（Antoine Lavoisier，1743－1794）</p>
+<p>波以耳之後的重要化學家。拉瓦節以精確定量實驗推翻燃素說，提出氧化理論並推動現代化學命名制度。波以耳對元素概念的思考，為後來化學發展提供重要思想背景。</p>
+<p><a href="https://images.openai.com/static-rsc-4/WkzPkw5FgrWzkVe75ziftlN8hbhyQUFYFamQBN7O2mOCnjxTYZz0JrYw3FRSP8UMT5yrGs3K3yvcDuJ2Xc5Fnz-vnW8fo9AzLWHZJ1ZdNvSs3aoHsd6OVfCbWOD8nRXzn-fFnDdUzs0GjV1tF_kDzjHEuho3dgRBGtRjManD9wc?purpose=inline">otto von guericke Facts For Kids | DIY.org</a></p>
+<p>奧托・馮・格里克（Otto von Guericke，1602－1686）</p>
+<p>以馬德堡半球實驗展示大氣壓力與真空的效果。其抽氣實驗啟發波以耳進一步改良空氣泵。</p>
+<p><a href="https://images.openai.com/static-rsc-4/qNbcnfe0Ppyh7ZmLsPPTBR8NU36MrvuWUnQbbcXsBj47uPO0O8xXxo32gnaFxlD8oP-TivN1-Li9fnB_VijGXtbCTCy3Y6CjEEAJP3fSAt8Q9U2423DCtKwnrXHWooqnQRNO6pJ1CttrR-DYRay_1yzRHRTskB85JJgjhjoP2_I?purpose=inline">Happy Birthday Galileo — Talmudology</a></p>
+<p>伽利略（Galileo Galilei，1564－1642）</p>
+<p>近代實驗科學的重要先驅。強調透過實驗與數學研究自然現象，與波以耳重視實驗證據的研究精神相呼應。</p>
+<h3 id="化學發展的歷史脈絡">化學發展的歷史脈絡</h3>
+<table>
+<thead>
+<tr>
+<th>科學家</th>
+<th>年代</th>
+<th>主要貢獻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>伽利略</td>
+<td>1564－1642</td>
+<td>推動實驗與數學化自然研究</td>
+</tr>
+<tr>
+<td>格里克</td>
+<td>1602－1686</td>
+<td>真空實驗與抽氣裝置</td>
+</tr>
+<tr>
+<td>波以耳</td>
+<td>1627－1691</td>
+<td>實驗化學、氣體定律、元素概念</td>
+</tr>
+<tr>
+<td>胡克</td>
+<td>1635－1703</td>
+<td>空氣泵改良、彈性定律</td>
+</tr>
+<tr>
+<td>牛頓</td>
+<td>1643－1727</td>
+<td>經典力學與萬有引力</td>
+</tr>
+<tr>
+<td>拉瓦節</td>
+<td>1743－1794</td>
+<td>質量守恆、現代化學體系</td>
+</tr>
+<tr>
+<td>道爾頓</td>
+<td>1766－1844</td>
+<td>近代原子論</td>
+</tr>
+<tr>
+<td>門得列夫</td>
+<td>1834－1907</td>
+<td>元素週期律與週期表</td>
+</tr>
+</tbody></table>
+<h2 id="九、波以耳主要著作">九、波以耳主要著作</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1660</td>
+<td>《關於空氣彈性及其效應的新物理－機械實驗》</td>
+<td>空氣壓力、體積及空氣泵實驗</td>
+</tr>
+<tr>
+<td>1661</td>
+<td>《懷疑的化學家》</td>
+<td>批判古代元素理論，探討物質組成</td>
+</tr>
+<tr>
+<td>1663</td>
+<td>《關於冷的實驗與考察》</td>
+<td>研究低溫及物質變化</td>
+</tr>
+<tr>
+<td>1664</td>
+<td>《關於顏色的實驗與考察》</td>
+<td>光線、顏色與物質性質</td>
+</tr>
+<tr>
+<td>1666</td>
+<td>《關於水力學悖論的新實驗》</td>
+<td>流體及壓力相關研究</td>
+</tr>
+<tr>
+<td>1674</td>
+<td>《關於海水鹽度的實驗與考察》</td>
+<td>海水及物質性質</td>
+</tr>
+<tr>
+<td>1680年代</td>
+<td>多種化學與自然哲學著作</td>
+<td>物質、化學反應及實驗方法</td>
+</tr>
+<tr>
+<td>1690</td>
+<td>《醫學實驗史》</td>
+<td>化學與醫學實驗研究</td>
+</tr>
+</tbody></table>
+<h2 id="十、波以耳生平重要年份總表">十、波以耳生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1627</td>
+<td>出生於愛爾蘭利斯莫爾城堡</td>
+</tr>
+<tr>
+<td>1635</td>
+<td>前往英格蘭接受教育</td>
+</tr>
+<tr>
+<td>1639</td>
+<td>前往歐洲大陸旅行</td>
+</tr>
+<tr>
+<td>1642</td>
+<td>伽利略逝世，近代科學思想持續發展</td>
+</tr>
+<tr>
+<td>1646</td>
+<td>返回英格蘭</td>
+</tr>
+<tr>
+<td>1655</td>
+<td>前往牛津從事科學研究</td>
+</tr>
+<tr>
+<td>1657－1659</td>
+<td>與胡克合作改良空氣泵</td>
+</tr>
+<tr>
+<td>1660</td>
+<td>出版空氣彈性實驗著作</td>
+</tr>
+<tr>
+<td>1661</td>
+<td>出版《懷疑的化學家》</td>
+</tr>
+<tr>
+<td>1662</td>
+<td>波以耳定律正式發表</td>
+</tr>
+<tr>
+<td>1663</td>
+<td>成為英國皇家學會理事會成員</td>
+</tr>
+<tr>
+<td>1665</td>
+<td>出版《關於顏色的實驗與考察》</td>
+</tr>
+<tr>
+<td>1670年代</td>
+<td>持續研究化學、氣體及自然哲學</td>
+</tr>
+<tr>
+<td>1680</td>
+<td>拒絕擔任英國皇家學會會長</td>
+</tr>
+<tr>
+<td>1686</td>
+<td>出版物質形式與性質相關著作</td>
+</tr>
+<tr>
+<td>1690</td>
+<td>出版《醫學實驗史》</td>
+</tr>
+<tr>
+<td>1691</td>
+<td>12月31日逝世，享年64歲</td>
+</tr>
+</tbody></table>
+<h2 id="十一、波以耳的歷史地位與影響">十一、波以耳的歷史地位與影響</h2>
+<p><a href="https://images.openai.com/static-rsc-4/ZLt3xJSBdetnpssyvKqqpj5nxyENYxuDbI9yyzRGUwjm3T3dDxO3u3FvYqTY2pCwHTh0xI-r0IOgLUi0J-X7aHEcrwgm4jCqIgv_wrFee82XkB-nWbCEM2WcGcpJ6T8aoDMMHXECN9rUJGtMc5gN62JMcUYad88w1T9lOmJZi7g?purpose=inline">Robert Boyle - World History Encyclopedia</a></p>
+<p><a href="https://www.worldhistory.org/Robert_Boyle/?utm_source=chatgpt.com">worldhistory.org</a></p>
+<p>波以耳是從傳統煉金術走向現代實驗化學的重要橋樑。他的科學貢獻主要表現在三個方面：</p>
+<p>第一，建立現代化學的實驗精神。</p>
+<p>他反對單純依賴古代哲學與權威，強調所有化學理論都必須接受實驗檢驗。他的《懷疑的化學家》是化學思想史的重要著作。</p>
+<p>第二，建立氣體研究的重要定量定律。</p>
+<p>波以耳定律使氣體壓力與體積之間的關係能夠以數學方式表達，成為氣體物理學及熱力學的重要基礎。</p>
+<p>第三，推動近代科學研究方法。</p>
+<p>他重視精密儀器、控制實驗條件、公開研究結果與重複驗證，對後來實驗物理學及化學的發展產生深遠影響。</p>
+<h2 id="波以耳最重要的科學遺產">波以耳最重要的科學遺產</h2>
+<h1 id="pv--k">PV = k</h1>
+<p>波以耳定律（Boyle&#39;s Law）</p>
+<p>在溫度及氣體量固定的條件下，氣體壓力與體積成反比。</p>
+<p>代表著作：《懷疑的化學家》（1661）</p>
+<p>**歷史地位：**現代化學的奠基先驅、實驗科學的重要推動者。</p>
+<p>**總結：**波以耳最重要的歷史意義，在於他改變了人類研究物質的方式。他不再滿足於以哲學概念解釋自然，而是要求透過實驗證據來確認理論。從《懷疑的化學家》到波以耳定律，他為現代化學、氣體物理學及實驗科學建立了重要基礎。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

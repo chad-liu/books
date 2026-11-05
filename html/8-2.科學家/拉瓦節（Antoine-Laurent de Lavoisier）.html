@@ -1,0 +1,705 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="拉瓦節（antoine-laurent-de-lavoisier）生平大事記">拉瓦節（Antoine-Laurent de Lavoisier）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/MYmk4PiKzHE86OqWUroSKDWbzetKJn2LXQUO3qohbmtn16DE0eLOs2NspkeOEmEE8NCeahYftyEuc4hK0US5um_u-ps31hMOBLF40w9tYWvls8gZG9FhTtJ-gyStZbMamWIf6RzuKRmb5HSFk14q3BXPu4zqcMoPRDjEx8aZ8ag?purpose=inline">Biografia di Antoine Lavoisier, vita e storia</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/6Q6-mV1xFYM2cBxDW1-H34mHz-0Ipm6f_djI49984yH74BB630SJUmzSdpxbRapi9z3YMH3l_g4_dfKzSxJ9GITytH6uNJcS-yMO9eogIexSTZ0CfLeq4C-5M-gnyqKhhImVJTuuvCwzFQpUu9nh3DhoCE_Dc39bq98YMtBlWk8?purpose=inline">Antoine Laurent Lavoisier, químico francés, demostrando su descubrimiento del oxígeno, 1776 1874</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/gbJIfo9cGl6SXcnxcwSkCHkXynpbvDc1Wlrzbv4d5RJ8L5NH3XML6wjnFBpzVlFdDk8rRngTogJw2nNuV-K_ioiZCn66xeDPFk8hARiLtAkvT9W5vt58fe9xorTP6EqA_FfhqF3ngrUL6Vl9DbOnF0slf3HwGqRXkzQ9_wZaOgA?purpose=inline">Antoine Laurent de Lavoisier (1743-1794), French chemist conducting an experiment on the breathing of man at rest. Drawing by Mrs Lavoisier. Paris 18th century. Leemage collection</a></p>
+<p>4</p>
+<p>法國化學家｜1743年8月26日－1794年5月8日</p>
+<p>**安托萬－洛朗・德・拉瓦節（Antoine-Laurent de Lavoisier）**是十八世紀最重要的化學家之一，被譽為「現代化學之父」。</p>
+<p>他最重要的科學成就，是透過精密的定量實驗，推翻傳統燃素說，建立燃燒與氧化理論，並提出著名的質量守恆定律。此外，他改革化學命名制度，建立現代化學元素分類與化學語言的基礎，使化學從傳統煉金術及定性觀察，轉變為以測量、實驗和數學分析為基礎的現代科學。</p>
+<p>拉瓦節的科學生涯與法國大革命密切相關。他曾擔任法國政府財政及行政職務，卻因大革命期間的政治清算而被處死，成為科學史上極具悲劇色彩的人物。</p>
+<h2 id="一、出生與早年教育（1743－1763）">一、出生與早年教育（1743－1763）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/COaXiTzl0qArtl_cB8StTW-0yqH-80Fm-ifRyWWMaBLjFS43wZBzvlyiCzdAzwKhp8wvl2L9km1JjkdeN-nmt9Rb-frdPzkPBifA_RYqYrBUa3ef71GyjPA0HYDd3L5zLicY5Q84xix33IeOtWZRXBiG5qvkVsl9FjfgksaeSg0?purpose=inline">Visite de Berthollet à Lavoisier – À la française …</a></p>
+<p><a href="https://geudensherman.wordpress.com/2021/08/16/visite-de-berthollet-a-lavoisier/?utm_source=chatgpt.com">geudensherman.wordpress.com</a></p>
+<h3 id="1743年：出生於巴黎">1743年：出生於巴黎</h3>
+<ul>
+<li>8月26日：拉瓦節出生於法國巴黎。</li>
+<li>父親是巴黎的律師，家庭具有良好的經濟條件與社會地位。</li>
+<li>拉瓦節從小接受良好的教育，展現出對自然科學、數學及哲學的興趣。</li>
+<li>他生活的時代正值歐洲啟蒙運動蓬勃發展，理性、實驗與科學方法逐漸成為知識界的重要思想。</li>
+</ul>
+<h3 id="1754年：進入馬扎然學院">1754年：進入馬扎然學院</h3>
+<ul>
+<li>拉瓦節進入巴黎的馬扎然學院（Collège des Quatre-Nations，又稱 Collège Mazarin）。</li>
+<li>學習數學、天文學、化學、植物學及哲學。</li>
+<li>受到啟蒙思想影響，逐漸重視理性分析與科學觀察。</li>
+</ul>
+<h3 id="1760－1761年：接觸自然科學">1760－1761年：接觸自然科學</h3>
+<ul>
+<li>拉瓦節對化學及礦物學產生濃厚興趣。</li>
+<li>開始接觸當時歐洲科學家的研究成果。</li>
+<li>他逐漸認識到，化學研究不能只依靠物質外觀及經驗描述，還需要精確測量。</li>
+</ul>
+<h3 id="1762－1763年：接受法律與科學訓練">1762－1763年：接受法律與科學訓練</h3>
+<ul>
+<li>拉瓦節除了研究自然科學，也接受法律教育。</li>
+<li>他逐漸建立跨領域的知識基礎。</li>
+<li>這種結合數學、法律與自然科學的訓練，後來使他能夠以嚴謹的制度化方法推動化學改革。</li>
+</ul>
+<h2 id="二、早期科學研究與學術成就（1764－1769）">二、早期科學研究與學術成就（1764－1769）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/CUGhDrj81-o4Qnu81cGfCuBAXGZLP0f3mHhLdOGcqbES30lEZgYUjBgMfBtFPQO2FeUeGukPEE-nQxKr_u3ez5Ytn_ZsZkyvA1Rf3XhG6z4oR1xVgA0dXyZ0CNNx68S3thL3HdCvi_Xdma-vfb3PzbRnxNEOiB41n-NO3AblHpLiYRkvnqANsqPratZYrI0_?purpose=inline">The French Academy of Sciences was established in 1666</a></p>
+<h3 id="1764年：完成法律學業">1764年：完成法律學業</h3>
+<ul>
+<li>拉瓦節完成法律方面的學業，取得法律資格。</li>
+<li>然而，他真正的興趣逐漸轉向自然科學。</li>
+<li>開始投入礦物學、地質學與化學研究。</li>
+</ul>
+<h3 id="1765年：研究巴黎城市照明問題">1765年：研究巴黎城市照明問題</h3>
+<ul>
+<li>拉瓦節參與巴黎城市照明改善的研究。</li>
+<li>他研究不同照明方式的效率與成本。</li>
+<li>這項工作顯示他不僅關心理論科學，也重視科學技術在社會生活中的實際應用。</li>
+</ul>
+<h3 id="1766年：獲得皇家科學院獎項">1766年：獲得皇家科學院獎項</h3>
+<ul>
+<li>拉瓦節因研究巴黎城市照明問題，獲得法國皇家科學院（Académie royale des sciences）的獎勵。</li>
+<li>這是他早期科學成就的重要肯定。</li>
+<li>他開始受到法國學術界注意。</li>
+</ul>
+<h3 id="1767年：參與地質與礦物調查">1767年：參與地質與礦物調查</h3>
+<ul>
+<li>拉瓦節參與法國地質及礦物資源調查。</li>
+<li>研究土壤、礦物與地下資源的性質。</li>
+<li>逐漸熟悉實驗測量與定量分析方法。</li>
+</ul>
+<h3 id="1768年：當選法國皇家科學院院士">1768年：當選法國皇家科學院院士</h3>
+<p>重要學術里程碑</p>
+<ul>
+<li>拉瓦節獲選為法國皇家科學院（Académie royale des sciences）成員。</li>
+<li>當時年僅25歲。</li>
+<li>皇家科學院是十八世紀歐洲最重要的科學研究機構之一。</li>
+<li>他開始正式參與法國科學界的重要研究與學術活動。</li>
+</ul>
+<p>同年，他加入法國包稅制度相關機構（Ferme générale），成為包稅人之一。這項職務後來成為他在法國大革命期間遭到政治清算的重要原因。</p>
+<h3 id="1769年：投入化學與公共行政工作">1769年：投入化學與公共行政工作</h3>
+<ul>
+<li>拉瓦節持續進行化學及地質研究。</li>
+<li>開始運用精密天平測量物質重量。</li>
+<li>逐漸形成以重量變化分析化學反應的研究方法。</li>
+<li>同時參與稅收、公共建設及行政管理工作。</li>
+</ul>
+<h2 id="三、燃燒理論的研究與突破（1770－1777）">三、燃燒理論的研究與突破（1770－1777）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/hVqESu_feYU7pvEwUv_YRIfCFX1xhFxbVruN1qq7FL8AqoDtZZKa8-YQzZTT2vZPpc9uI3OM0FzKHPJCxk077ssEvSNfeJH7TwrXJrjPFLVog1jzffYN1epmDGuqvuOa3qY_JNd0tdg-_-yrPGOOqEZegcxUnJNf9C9Qxz3KGfM?purpose=inline">Lavoisier — Beautiful Chemistry</a></p>
+<p><a href="https://www.beautifulchemistry.net/lavoisier?utm_source=chatgpt.com">beautifulchemistry.net</a></p>
+<p>這是拉瓦節科學生涯最關鍵的階段。他透過精密實驗研究燃燒過程，逐步推翻當時流行的燃素說，建立氧化理論。</p>
+<h3 id="1770年：研究物質燃燒與重量變化">1770年：研究物質燃燒與重量變化</h3>
+<ul>
+<li>拉瓦節開始深入研究燃燒、煅燒與物質重量變化。</li>
+<li>他注意到金屬在加熱後形成金屬灰（即金屬氧化物），重量反而增加。</li>
+<li>這個現象與傳統燃素說存在矛盾。</li>
+</ul>
+<p>當時的燃素說（Phlogiston Theory）：</p>
+<ul>
+<li>認為可燃物質內含有一種稱為「燃素」的物質。</li>
+<li>燃燒時，燃素從物質中釋放出去。</li>
+<li>物質燃燒後形成灰燼或其他殘留物。</li>
+</ul>
+<p>然而，金屬煅燒後重量增加，並不容易用燃素逸出的理論解釋。</p>
+<h3 id="1771年：持續研究金屬煅燒">1771年：持續研究金屬煅燒</h3>
+<ul>
+<li>拉瓦節研究金屬在空氣中加熱後的重量變化。</li>
+<li>他懷疑金屬煅燒時不是失去某種物質，而是與空氣中的某種成分結合。</li>
+<li>開始以更精密的天平測量反應前後的重量。</li>
+</ul>
+<h3 id="1772年：發現燃燒與空氣有關">1772年：發現燃燒與空氣有關</h3>
+<p>燃燒理論的重要轉折</p>
+<ul>
+<li>拉瓦節進行磷與硫燃燒實驗。</li>
+<li>發現這些物質燃燒後重量增加。</li>
+<li>他推測物質燃燒時會吸收空氣中的某種成分。</li>
+<li>同年，他向法國皇家科學院提交有關燃燒與煅燒的研究報告。</li>
+</ul>
+<p>重要意義：</p>
+<p>這項研究開始動搖燃素說的基礎，為後來的氧化理論建立重要證據。</p>
+<h3 id="1773年：進行密閉容器實驗">1773年：進行密閉容器實驗</h3>
+<ul>
+<li>拉瓦節以密閉容器研究金屬煅燒。</li>
+<li>他仔細測量容器、空氣及金屬反應前後的重量。</li>
+<li>發現金屬加熱後吸收了空氣中的一部分成分。</li>
+<li>容器內剩餘空氣的體積及性質也發生變化。</li>
+</ul>
+<p>這些研究逐漸使他確認，燃燒不是燃素逸出，而是物質與空氣中特定成分發生化學反應。</p>
+<h3 id="1774年：普利斯特里發現去燃素空氣">1774年：普利斯特里發現去燃素空氣</h3>
+<p><a href="https://images.openai.com/static-rsc-4/lCsyC72LYZg34Y8bqWnk-Er223q17yjj8t5mK9LGm4ysWkW-f1WXYlPsFRgbvcwbUt5oDICyi4vbToT9XZb7sdEhsuG7Dg3CIhz0W9SSqKJuLNrmGBLIaNqMn0MrM3FFcS9KgAYYrhDSKBqO14eYXY490-qHc23nDdC27iTUEC0?purpose=inline">[Biografi Tokoh Dunia] Joseph Priestley, Pendeta yang Jadi Ilmuwan Penemu Oksigen</a></p>
+<p>約瑟夫・普利斯特里（Joseph Priestley，1733－1804）</p>
+<p>英國化學家，1774年透過加熱氧化汞製得一種能強烈支持燃燒的氣體，當時稱為「去燃素空氣」。</p>
+<ul>
+<li>普利斯特里在1774年取得能強烈支持燃燒的氣體。</li>
+<li>他於同年訪問巴黎，向拉瓦節介紹相關實驗。</li>
+<li>拉瓦節開始重新檢驗這種氣體在燃燒與呼吸中的作用。</li>
+<li>他逐漸將這種氣體與燃燒過程中的重量增加聯繫起來。</li>
+</ul>
+<h3 id="1775年：提出氧氣在燃燒中的作用">1775年：提出氧氣在燃燒中的作用</h3>
+<p><a href="https://images.openai.com/static-rsc-4/-29o92Y4jPXbhfZS9nMsaEslvXD9VPSqq63tVTwhQbhbFvjtgK-KqySuN3mOyPIluGrKANry6gFsPbv3wL1A-1Qdl8LDK3f-yEKFFDEHoV8rBGxxjvCT4frBfO71OL8R9d9XkcY15EouG6TjBUQKb37W3NTqjUXlpiLkbjwf2e4?purpose=inline">Lavoisier&#39;s investigation of the existence of oxygen in the air, late 18th century, (1894) posters &amp; prints by Unknown</a></p>
+<p><a href="https://www.magnoliabox.com/products/lavoisiers-investigation-of-the-existence-of-oxygen-in-the-air-late-18th-century-1894-1158908?utm_source=chatgpt.com">magnoliabox.com</a></p>
+<ul>
+<li>拉瓦節進一步研究普利斯特里所製得的氣體。</li>
+<li>他確認這種氣體是空氣中支持燃燒的重要成分。</li>
+<li>他稱之為「高度可呼吸空氣」（air eminently respirable），後來逐漸確立其氧氣概念。</li>
+<li>同年，他開始更系統地研究空氣的組成。</li>
+</ul>
+<h3 id="1776年：研究空氣的組成">1776年：研究空氣的組成</h3>
+<ul>
+<li>拉瓦節進一步確認空氣並非單一物質，而是由不同氣體混合而成。</li>
+<li>他將支持燃燒的部分與不支持燃燒的部分區分。</li>
+<li>他逐漸建立以氧氣解釋燃燒與金屬煅燒的理論。</li>
+</ul>
+<h3 id="1777年：正式提出燃燒氧化理論">1777年：正式提出燃燒氧化理論</h3>
+<ul>
+<li>拉瓦節發表燃燒與煅燒的研究成果。</li>
+<li>他主張燃燒是物質與氧氣結合的化學反應。</li>
+<li>金屬煅燒後重量增加，是因為金屬吸收氧氣形成氧化物。</li>
+<li>他以氧化理論取代燃素說，逐步改變化學界對燃燒本質的理解。</li>
+</ul>
+<p>歷史意義：</p>
+<p>1777年前後，拉瓦節已建立燃燒氧化理論的核心架構。這是化學史上最重要的理論革命之一。</p>
+<h2 id="四、氧氣理論與現代化學的建立（1778－1785）">四、氧氣理論與現代化學的建立（1778－1785）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/aDqmzSqQ4xFjueSnpBe1PmGpxVVOYRSn6dYWBViMZ3MQCHDf6dS6vmI-fdJ53T4B9e2hwuvAFUEHDNncvQFepa4CiDZFz5SipayjuwCZ6oQpGwj_1-o3Ow0sV2WGfb2IlJmrpvH-pfshggpWFfo5zTuPRLnZCLkJs53j7XEuczk?purpose=inline">▷ Descubre la Teoría de Lavoisier: La Ley de la Conservación de la Masa ★ Teoría Online</a></p>
+<p><a href="https://teoriaonline.com/teoria-lavoisier/?utm_source=chatgpt.com">teoriaonline.com</a></p>
+<h3 id="1778年：確認氧氣在燃燒與酸形成中的作用">1778年：確認氧氣在燃燒與酸形成中的作用</h3>
+<ul>
+<li>拉瓦節持續研究氧氣與不同物質的化學反應。</li>
+<li>他認為氧氣不僅參與燃燒，也可能是形成酸的重要成分。</li>
+<li>他曾提出氧氣是酸形成的基本原理，並以此解釋多種酸性物質的形成。</li>
+<li>這個觀點後來被證明並不完全正確，例如鹽酸並不含氧，但在當時對化學理論產生重大影響。</li>
+</ul>
+<h3 id="1779年：提出氧氣名稱">1779年：提出氧氣名稱</h3>
+<ul>
+<li>拉瓦節逐漸以「氧」（oxygène，oxygen）稱呼支持燃燒的氣體。</li>
+<li>這個名稱源自希臘文，含有「形成酸」的意思。</li>
+<li>他將燃燒、煅燒及部分酸形成現象，統一納入氧氣參與的化學反應框架。</li>
+</ul>
+<h3 id="1780年：推動化學定量研究">1780年：推動化學定量研究</h3>
+<ul>
+<li>拉瓦節持續利用精密天平測量化學反應前後的重量。</li>
+<li>他認為化學反應不能只觀察顏色、氣味或沉澱等現象，還應測量物質的重量變化。</li>
+<li>這種定量研究方法逐漸成為現代化學的重要特色。</li>
+</ul>
+<h3 id="1781年：研究水的組成">1781年：研究水的組成</h3>
+<ul>
+<li>拉瓦節與其他研究者持續探討水的化學性質。</li>
+<li>當時水仍常被視為古典四元素中的基本元素。</li>
+<li>相關實驗逐漸顯示，水可能不是不可分解的基本物質，而是由不同氣體組成的化合物。</li>
+</ul>
+<h3 id="1782年：持續研究燃燒與氣體反應">1782年：持續研究燃燒與氣體反應</h3>
+<ul>
+<li>拉瓦節研究氧氣與可燃氣體之間的反應。</li>
+<li>他逐漸建立燃燒、氧化及氣體化學之間的關聯。</li>
+<li>研究也涉及呼吸作用與動物體內的熱量產生。</li>
+</ul>
+<h3 id="1783年：確認水是氫與氧的化合物">1783年：確認水是氫與氧的化合物</h3>
+<p><a href="https://images.openai.com/static-rsc-4/kTcgMmBXgTsGcaqmhINJsm_5XlhoQIUBMfqXv_OYovievXdsugRbTRVxx6ZiO3pJvbHr893E0Ws2nBR4XwfPvXjpHOyE-DhBZU3Mx4y6X4MiA9vAG-6rN5hRxfvORUhBZxzA2VXHxtiCp9SiTuLJDerzUIUGKDlF-sfCnz37_T0?purpose=inline">Meisterdrucke - Kunstdrucke, Gemälde &amp; Reproduktionen</a></p>
+<p><a href="https://www.meisterdrucke.fr/fine-art-prints/Unknown-artist/1025360/Appareil-de-Lavoisier-et-Laplace-pour-la-formation-de-l%27eau-par-combustion-des-gaz-oxyg%C3%A8ne-et-hydrog%C3%A8ne-dans-une-bouteille-en-verre.-Gravure-du-19%C3%A8me-si%C3%A8cle.html?utm_source=chatgpt.com">meisterdrucke.fr</a></p>
+<ul>
+<li>拉瓦節與法國科學家拉普拉斯（Pierre-Simon Laplace）等人進行燃燒與熱量研究。</li>
+<li>他透過氫氣與氧氣反應生成水的實驗，證明水並非不可分解的基本元素。</li>
+<li>水是由氫與氧組成的化合物。</li>
+<li>他也進一步研究呼吸與燃燒的相似性。</li>
+</ul>
+<p>重要意義：</p>
+<p>這項發現推翻了水是古典四元素之一的傳統觀念，促使化學家重新理解物質的基本組成。</p>
+<h3 id="1784年：研究呼吸與熱量產生">1784年：研究呼吸與熱量產生</h3>
+<ul>
+<li>拉瓦節與拉普拉斯利用冰量熱器（ice calorimeter）研究動物呼吸及熱量產生。</li>
+<li>他們將呼吸過程與燃燒現象進行比較。</li>
+<li>研究顯示，呼吸涉及氧氣消耗、二氧化碳產生及熱量釋放。</li>
+<li>拉瓦節逐漸將呼吸理解為一種緩慢的氧化過程。</li>
+</ul>
+<p>歷史意義：</p>
+<p>這些研究為後來生物化學及生理學的發展奠定重要基礎。</p>
+<h3 id="1785年：持續建立質量守恆的實驗基礎">1785年：持續建立質量守恆的實驗基礎</h3>
+<ul>
+<li>拉瓦節以密閉容器進行各種化學反應實驗。</li>
+<li>他比較反應前後所有物質的總重量。</li>
+<li>逐漸確立化學反應中物質總質量不會憑空增加或消失的觀念。</li>
+<li>這項原則後來被稱為質量守恆定律（Law of Conservation of Mass）。</li>
+</ul>
+<h2 id="五、質量守恆定律與化學革命（1786－1789）">五、質量守恆定律與化學革命（1786－1789）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/apXlTt-EX1PklUxj6y3UUkY_u2tuzLsf9mNtjzu_BsjVIahjHXCx-z4ILkrAlCPpYNeQOJqQn0-3yDF72ejTdm_LgqjIpCzm2ZZRb6QxiudNKOnM0mCRaeqx3Xi2DRs0BV-bWfotwUYJvj_MxIXz2CK3y03K5xZHp_SmX8iDufo?purpose=inline">Poids et étalons - Se connaître</a></p>
+<p><a href="https://mieux-se-connaitre.com/?p=5220&utm_source=chatgpt.com">mieux-se-connaitre.com</a></p>
+<h3 id="1786年：反對燃素說的化學論戰">1786年：反對燃素說的化學論戰</h3>
+<ul>
+<li>拉瓦節持續以實驗證據反駁燃素說。</li>
+<li>他指出，金屬煅燒後重量增加，應解釋為吸收氧氣，而不是燃素逸出。</li>
+<li>他的理論逐漸獲得更多法國及歐洲化學家的支持。</li>
+<li>傳統燃素說的影響力開始衰退。</li>
+</ul>
+<h3 id="1787年：改革化學命名制度">1787年：改革化學命名制度</h3>
+<p><a href="https://images.openai.com/static-rsc-4/ol1Yw28POMAOG5e-B1RNs1OvkG5KELximK2QLKVmnh_23Ui8E09VnlWXBIC2lm-5Yfw9DIg2CMR2nGCkhZdvWN7PMZKkKAayS5wbym7SvRSu9rXXBLn0Xv-NI8mOmx5i9flk8uBRaZjf5GfCQlyYi9cz6Vjcxb-xWBEcAHBc8zY?purpose=inline">Louis-Bernard Guyton de Morveau - Linda Hall Library</a></p>
+<p><a href="https://www.lindahall.org/about/news/scientist-of-the-day/louis-bernard-guyton-de-morveau/?utm_source=chatgpt.com">lindahall.org</a></p>
+<p>現代化學語言的重要里程碑</p>
+<ul>
+<li>拉瓦節與路易・貝托萊（Claude Louis Berthollet）、路易・貝爾納・居東・德・莫爾沃（Louis-Bernard Guyton de Morveau）、安托萬・弗朗索瓦・德・富克魯瓦（Antoine François de Fourcroy）等化學家合作。</li>
+<li>共同出版《化學命名法》（Méthode de nomenclature chimique）。</li>
+<li>建立更有系統的化學物質命名方式。</li>
+<li>化學名稱開始反映物質的組成及化學性質。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>將不同氧化物依其組成與性質加以區分。</li>
+<li>改善酸、鹽及化合物的命名方式。</li>
+<li>逐漸形成現代化學式與化學命名的基礎。</li>
+</ul>
+<p>**歷史意義：**化學家開始使用共同的命名語言，減少不同國家、學派及研究者之間的溝通障礙。</p>
+<h3 id="1788年：化學理論逐漸獲得認可">1788年：化學理論逐漸獲得認可</h3>
+<ul>
+<li>拉瓦節的氧化理論逐漸成為法國化學界的重要主流。</li>
+<li>他與其他化學家持續推動化學實驗的標準化。</li>
+<li>透過重量測量、氣體分析與化學命名改革，現代化學的基本架構逐漸成形。</li>
+</ul>
+<h3 id="1789年：出版《化學基礎論》">1789年：出版《化學基礎論》</h3>
+<p><a href="https://images.openai.com/static-rsc-4/XzDOUpVehKxspsRkEyVx3ySRMao-w9mDNJo4aT-IeeEXtzEsb2o-HS-Jz5hpAGrOl6YsViiAdQJXRgrWc7kNso12C24WOw4vy6uYi9cN560SOogxxw0m1fE6lp_XkA4Kk35Gy90sYMfiMtBTq6NYz2Sr5NeqNFinVOdh3VAwQGU?purpose=inline">Traité élémentaire de Chimie, présenté dans un ordre nouveau et d&#39;après les découvertes modernes | Antoine Laurent LAVOISIER | 1st Edition</a></p>
+<p><a href="https://www.milestone-books.de/pages/books/003237/antoine-laurent-lavoisier/traite-elementaire-de-chimie-presente-dans-un-ordre-nouveau-et-dapres-les-decouvertes-modernes?utm_source=chatgpt.com">milestone-books.de</a></p>
+<p>現代化學的奠基著作</p>
+<ul>
+<li>拉瓦節出版《化學基礎論》（Traité Élémentaire de Chimie）。</li>
+<li>這本著作被視為現代化學發展史上的經典。</li>
+<li>書中系統介紹：<ul>
+<li>氧化理論。</li>
+<li>質量守恆觀念。</li>
+<li>化學元素與化合物。</li>
+<li>氣體研究。</li>
+<li>化學實驗方法。</li>
+<li>新式化學命名制度。</li>
+</ul>
+</li>
+<li>他列出當時認為尚不能分解的簡單物質，作為元素分類的基礎。</li>
+</ul>
+<p>重要意義：</p>
+<p>《化學基礎論》使新的化學觀念形成完整的教學與研究體系，對十九世紀化學教育產生深遠影響。</p>
+<h2 id="六、法國大革命與政治命運（1789－1794）">六、法國大革命與政治命運（1789－1794）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/ikT88fq9PkfpaZ_K9feluMPALK9TUC-9xpsHXoYuRj9vvp9I-tDP-ZyfgtVV_NSnLjQ5Yhd018i8vJkeLSzrKBUKkFqbJIRhW39BTBMOeg4fCnIAxifny7dDcVesLSMycJ-21kkE2xnaAqTPgNyYN9RYqT_7mYyPPgJ_HYt0l-k?purpose=inline">Historical Firearms - Storming of the Bastille: 14th July, 1789    One...</a></p>
+<p><a href="https://www.historicalfirearms.info/post/91785856742/storming-of-the-bastille-14th-july-1789-one?utm_source=chatgpt.com">historicalfirearms.info</a></p>
+<p>拉瓦節的晚年正值法國大革命。他不只是科學家，也曾經參與財政、稅收、農業及公共行政工作。然而，他過去擔任包稅人的身分，使他在革命期間遭到強烈政治攻擊。</p>
+<h3 id="1789年：法國大革命爆發">1789年：法國大革命爆發</h3>
+<ul>
+<li>法國大革命於1789年爆發。</li>
+<li>法國社會開始全面改革，舊制度中的貴族特權、財政制度及政治體制受到衝擊。</li>
+<li>拉瓦節持續從事科學研究，同時參與公共行政與改革工作。</li>
+<li>他曾參與法國度量衡制度改革的相關工作。</li>
+</ul>
+<h3 id="1790年：參與度量衡改革">1790年：參與度量衡改革</h3>
+<ul>
+<li>拉瓦節參與法國新的度量衡制度研究。</li>
+<li>當時法國各地使用不同的重量與長度標準，造成商業及科學測量上的困難。</li>
+<li>他支持建立統一、標準化的測量制度。</li>
+<li>公制制度的建立後來成為世界科學與國際貿易的重要基礎。</li>
+</ul>
+<h3 id="1791年：持續公共行政與科學工作">1791年：持續公共行政與科學工作</h3>
+<ul>
+<li>拉瓦節參與法國財政及公共事務改革。</li>
+<li>持續關注農業、工業與國家經濟發展。</li>
+<li>他的科學研究逐漸受到政治局勢影響。</li>
+</ul>
+<h3 id="1792年：革命政治局勢惡化">1792年：革命政治局勢惡化</h3>
+<ul>
+<li>法國革命進一步激化。</li>
+<li>舊制度的政府機構及相關人員受到清算。</li>
+<li>拉瓦節過去擔任包稅人的經歷，逐漸成為政治攻擊的焦點。</li>
+<li>他仍試圖維持科學研究與公共服務。</li>
+</ul>
+<h3 id="1793年：遭到逮捕">1793年：遭到逮捕</h3>
+<ul>
+<li>法國大革命進入激烈的恐怖統治時期。</li>
+<li>革命政府開始大規模逮捕被視為舊制度支持者的人士。</li>
+<li>拉瓦節因過去參與包稅人制度而遭到調查。</li>
+<li>他的科學工作並未能使他免於政治清算。</li>
+</ul>
+<h3 id="1794年：被處死">1794年：被處死</h3>
+<p><a href="https://images.openai.com/static-rsc-4/JoxJ84-KoyD71qZgTwWaHAqxiknlv6mV7osPkNY-xWXXckRgTyyIF5-mehX8y0-yuUbxJSbyOU66LHhL71pXz3R0TBIVxJl3frW8viyJNuAEPBf3io02S9-uPzN2ytHVFK-jr_FVzceUeBV11EF66evljoGiyzoPuoHW-AH9bz8?purpose=inline">Popinga: Marat, l’ottica e la Rivoluzione</a></p>
+<p><a href="https://keespopinga.blogspot.com/2012/06/marat-lottica-e-la-rivoluzione.html?utm_source=chatgpt.com">keespopinga.blogspot.com</a></p>
+<p>1794年5月8日：逝世</p>
+<ul>
+<li>拉瓦節遭到革命法庭審判。</li>
+<li>5月8日：他在巴黎協和廣場附近的革命刑場遭斷頭台處死，享年50歲。</li>
+<li>他的岳父雅克・保羅茲（Jacques Paulze）也在同一政治清算中被處死。</li>
+<li>拉瓦節的死成為法國大革命期間科學家遭政治迫害的著名案例。</li>
+</ul>
+<p>法國數學家拉格朗日（Joseph-Louis Lagrange）後來留下著名感嘆：</p>
+<blockquote>
+<p>砍下他的頭只需要一瞬間，但要再造出這樣的頭腦，恐怕一百年也不夠。</p>
+</blockquote>
+<p>這段話常用來象徵拉瓦節在科學史上的重要地位。</p>
+<h2 id="七、拉瓦節的主要科學貢獻">七、拉瓦節的主要科學貢獻</h2>
+<h3 id="1-質量守恆定律（law-of-conservation-of-mass）">1. 質量守恆定律（Law of Conservation of Mass）</h3>
+<p><a href="https://images.openai.com/static-rsc-4/Z51Tm63vWMkMt6lAnUi6oS1Au5UU4hszUKAi1iONcTp29Aw8fX9soQnyfP-sWyvp_ZhQ1-G8AhS0N7pCqb8hgOTM_fZ753wrFDOsjnoFFe3ypcKbAtrUVmx4XNYOVdqvCPS6nV5nkr8rF5ItP_t0VzvmzA8n2P1oRV-fG5S6OQY?purpose=inline">Conservation of Mass in Reactions - Middle School Science Reading Passage - Reading Passage with Quiz for Teachers, Parents &amp; Homeschoolers | Interactive + Printable</a></p>
+<p><a href="https://www.workybooks.com/reader/conservation-of-mass-in-reactions?utm_source=chatgpt.com">workybooks.com</a></p>
+<p>這是拉瓦節最重要的科學貢獻之一。</p>
+<p>他透過密閉容器及精密天平，測量化學反應前後物質的總重量，確認在化學反應過程中，物質的總質量保持不變。</p>
+<p>基本原理：</p>
+<p>\[ \text{反應物總質量}=\text{生成物總質量} \]</p>
+<p>例如：</p>
+<p>\[ 12\text{ g碳}+32\text{ g氧氣} =44\text{ g二氧化碳} \]</p>
+<p>主要意義：</p>
+<ul>
+<li>推翻物質在化學反應中可以憑空消失或產生的錯誤觀念。</li>
+<li>建立化學反應定量分析的基本原則。</li>
+<li>成為現代化學計算的重要基礎。</li>
+<li>對道爾頓原子論及後來的化學計量學產生重要影響。</li>
+</ul>
+<h3 id="2-推翻燃素說，建立氧化理論">2. 推翻燃素說，建立氧化理論</h3>
+<p><a href="https://images.openai.com/static-rsc-4/ysvfUx8z-YBLY55s8YK3rDS9mtabLNXF2JbEne5ddxGQcDUORtjOdWuJ3idM4Wbt1oRTKdK-e0jz_EIlEKVwJrvR8eAOVkLCKcqkbrtS8d_P6oSY1D59kov5wRlRTULzGI0n0fA1BPe1JRogR4a-Rg9zStAg85n2zLJ5m4oPg40?purpose=inline">Antoine Laurent Lavoisier (1743-1894) ejecuta la descomposición del aire en 1776 - Antoine Laurent Lavoisier, químico inglés, mostrando a sus colegas su experimento que reveló la composición del aire en 1776 - Grabado de Louis Figuier</a></p>
+<p><a href="https://www.meisterdrucke.es/impresion-art%C3%ADstica/Unknown-artist/1005756/Antoine-Laurent-Lavoisier-%281743-1894%29-ejecuta-la-descomposici%C3%B3n-del-aire-en-1776---Antoine-Laurent-Lavoisier%2C-qu%C3%ADmico-ingl%C3%A9s%2C-mostrando-a-sus-colegas-su-experimento-que-revel%C3%B3-la-composici%C3%B3n-del-aire-en-1776---Grabado-de-Louis-Figuier.html?utm_source=chatgpt.com">meisterdrucke.es</a></p>
+<p>在拉瓦節之前，燃素說是解釋燃燒現象的主流理論。</p>
+<p>燃素說認為：</p>
+<ul>
+<li>可燃物質內含有燃素。</li>
+<li>燃燒時燃素從物質中釋放。</li>
+<li>燃燒後剩下灰燼或其他物質。</li>
+</ul>
+<p>拉瓦節則透過實驗發現：</p>
+<ul>
+<li>燃燒通常是物質與氧氣發生反應。</li>
+<li>金屬煅燒後重量增加，是因為金屬吸收氧氣。</li>
+<li>燃燒不需要假設有一種看不見的燃素逸出。</li>
+</ul>
+<p>**歷史意義：**這場理論革命改變了化學家對燃燒、氧化及物質變化的理解，是現代化學建立的重要轉折。</p>
+<h3 id="3-氧氣研究與氧化理論">3. 氧氣研究與氧化理論</h3>
+<p><a href="https://images.openai.com/static-rsc-4/1kTVBDau83tc8HbPoSU5WF0ERemwXZA-95cqfCq9zx647s9O0XnNnUdD9gjt0dyn3d8u1rr9at-hHm40EyJfvfXdVNegaDsTA6FTSJ5ckYMbuMM7ffHXvcbclmHMihY6HZj5V-hxpYQKtU159H6TB2xWXkdkMsPRkbXBlewmHaU?purpose=inline">Chem21 Demo</a></p>
+<p><a href="https://www4.chem21labs.com/demo/demoLabs.cfm?utm_source=chatgpt.com">www4.chem21labs.com</a></p>
+<ul>
+<li>拉瓦節並不是第一位製得氧氣的人；普利斯特里於1774年製得氧氣，舍勒（Carl Wilhelm Scheele）也曾獨立製得氧氣。</li>
+<li>拉瓦節的關鍵貢獻，是正確解釋氧氣在燃燒與煅燒中的作用。</li>
+<li>他將這些實驗結果整合成一套新的化學理論。</li>
+<li>他也推動「氧」（oxygen）這個名稱的使用。</li>
+</ul>
+<p>重要區別：</p>
+<table>
+<thead>
+<tr>
+<th>科學家</th>
+<th>主要貢獻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>舍勒</td>
+<td>獨立製得氧氣，研究氧氣性質</td>
+</tr>
+<tr>
+<td>普利斯特里</td>
+<td>1774年製得氧氣，稱為去燃素空氣</td>
+</tr>
+<tr>
+<td>拉瓦節</td>
+<td>正確解釋氧氣與燃燒、氧化的關係</td>
+</tr>
+</tbody></table>
+<h3 id="4-證明水不是基本元素">4. 證明水不是基本元素</h3>
+<p><a href="https://images.openai.com/static-rsc-4/wwaWRybhAn7XgAKei2yQkCVpfoaXFiOevOWUv67OUc4XBBQXXCcmf6lhRrLEDepxb_MKIMLDlmgbobf9IKIvhNMuxz0ZcEAjQmWg4Nt8lbQRKndZfaw1ba2Ts3bC7p0uI2aoUwbSsqgnw1miEkDcN_TTwS-yFeaWfQPaYWtdO4M?purpose=inline">Antoine Lavoisier&#39;s apparatus for synthesizing water from hydrogen and oxygen, 1881</a></p>
+<p><a href="https://www.meisterdrucke.uk/fine-art-prints/Unbekannt/724012/Antoine-Lavoisier%27s-apparatus-for-synthesizing-water-from-hydrogen-and-oxygen%2C-1881.html?utm_source=chatgpt.com">meisterdrucke.uk</a></p>
+<p>拉瓦節透過氫氣與氧氣的反應研究，證明水不是不可分解的基本元素，而是由氫與氧組成的化合物。</p>
+<p>\[ 2H_2+O_2\rightarrow 2H_2O \]</p>
+<p>這項發現推翻了古希臘四元素說中「水是基本元素」的傳統觀念。</p>
+<h3 id="5-建立現代化學命名制度">5. 建立現代化學命名制度</h3>
+<p>拉瓦節與其他法國化學家合作，於1787年出版《化學命名法》。</p>
+<p>主要貢獻：</p>
+<ul>
+<li>統一化學物質的命名原則。</li>
+<li>使化學名稱能反映物質的組成。</li>
+<li>改善不同國家化學家之間的學術交流。</li>
+<li>為現代化學式及化學命名制度奠定基礎。</li>
+</ul>
+<h3 id="6-推動現代元素概念">6. 推動現代元素概念</h3>
+<p>拉瓦節在1789年的《化學基礎論》中，列出當時認為不能再分解的簡單物質。</p>
+<p>其中包括：</p>
+<ul>
+<li>氧</li>
+<li>氫</li>
+<li>氮</li>
+<li>硫</li>
+<li>磷</li>
+<li>碳</li>
+<li>金</li>
+<li>銀</li>
+<li>鐵</li>
+<li>銅</li>
+<li>汞</li>
+</ul>
+<p>不過，他的元素清單仍包含一些後來證明並非元素的物質，例如光和熱質；因此不能直接等同於現代元素週期表。</p>
+<p>他的主要貢獻，是將元素概念建立在實驗可檢驗的基礎上。</p>
+<h3 id="7-研究呼吸與生物能量">7. 研究呼吸與生物能量</h3>
+<p><a href="https://images.openai.com/static-rsc-4/OBKyLoWVH0cNbbJW8hl8DrNQNO75ap7aGk4MYTdBjEGiKrodgarBIzrKHZegXnU3hmNLIoCb7EDhqepVAUji8yPfPGqFGxIkmS81Z0W0-OtpLI3QORgGD9KiBDAXGYUg4w3Bvl0DXCXok_s__YKGRp3JTKlWoI84xB-maOmau-Q?purpose=inline">Biocalorimetry</a></p>
+<p><a href="https://symcel.com/biocalorimetry?utm_source=chatgpt.com">symcel.com</a></p>
+<p>拉瓦節與拉普拉斯利用量熱器研究動物呼吸及熱量產生。</p>
+<p>他們發現：</p>
+<ul>
+<li>呼吸過程會消耗氧氣。</li>
+<li>會產生二氧化碳。</li>
+<li>呼吸過程伴隨熱量釋放。</li>
+<li>呼吸與燃燒在某些基本化學原理上具有相似性。</li>
+</ul>
+<p>這些研究為後來的生理學、呼吸生物化學及能量代謝研究奠定基礎。</p>
+<h2 id="八、拉瓦節與其他重要科學家的關係">八、拉瓦節與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/LJsxHV2Idn1uy9KqITjbwdojMk13xBArIAYLfINE1m5MHhTMApC69p-YyjgvEBOJ0sbftR26JBBuYixkeESSNdNqnTuu4aA9sUSkhaRuAcLGtEU0ett3jOl11mRXhdzjI6DwU7WHIE6Hj9FO6EsHO6sOIgXUGF2qacUsRXGixzo?purpose=inline">Monticello | Joseph Priestley</a></p>
+<p>約瑟夫・普利斯特里（Joseph Priestley，1733－1804）</p>
+<p>1774年製得氧氣，並將其稱為「去燃素空氣」。他提供的實驗線索促使拉瓦節深入研究氧氣與燃燒的關係。</p>
+<p><a href="https://images.openai.com/static-rsc-4/us_hc-9T3xKlyN6eu_HdPCbVcgeJkrlvJ3JqqIgvnvBi0Rlin-CdgIFhED_7wqt-odrgdlbVGsrdw6GMmxQV3DT3VYCEseoopnLpKqaOjDh_lhE56L0JOhWd9EzRCngtq2BpYGDonFYmYp8LaSIAtdf_CNIjn3hg81IRe2OmjJ4?purpose=inline">Карл Вильгельм Шееле: история забытого шведского химика-фармацевта, который открыл кислород | homsk</a></p>
+<p>卡爾・威廉・舍勒（Carl Wilhelm Scheele，1742－1786）</p>
+<p>瑞典化學家，曾獨立製得氧氣，並研究多種氣體與化學物質。他的研究也是氧氣發現史的重要部分。</p>
+<p><a href="https://images.openai.com/static-rsc-4/hcDEVcI9EzcZgnN0kEEy1cHyayQZ0-IzeN01Y_4gXBepHfK5aEU-0iq1W5kanU1UtZwsWl3YGhwuMuBMNBP6thgk8NA5xH69xr-6itU3wzxYOIZLZUqItxAbE5y1_WBdmKnOQSqhifZWjkdH9aBqpMh6awgZMEwMVFmF_CDzgNs?purpose=inline">Porträt von Pierre Simon, Marquis de Laplace (1745-1827)</a></p>
+<p>皮埃爾－西蒙・拉普拉斯（Pierre-Simon Laplace，1749－1827）</p>
+<p>法國數學家與物理學家，與拉瓦節合作研究呼吸、燃燒與熱量，並利用冰量熱器進行實驗。</p>
+<p><a href="https://images.openai.com/static-rsc-4/L_O5ITqEPgpAioDKlTqXyalbqM5ZS1jvaFVMnCBH8NlLU8zwPfH7caZ7BKoM5Oz7lFStW9he6ayhzI7ZUWlFH4gwBRnlXSMA1iH-nYrDUBI5BzC0r4_fm6yrKJzYvaTwEhrjAkgbX7_WU9dM5tI47UmPnA4QzQywEoPgwPSzcYY?purpose=inline">File:Portrait of Comte Claude Louis Berthollet (1749-1822) Wellcome M0004639.jpg - Wikimedia Commons</a></p>
+<p>克洛德・貝托萊（Claude Louis Berthollet，1748－1822）</p>
+<p>拉瓦節的重要學術夥伴，參與1787年化學命名制度改革，並研究化學反應及物質性質。</p>
+<p><a href="https://images.openai.com/static-rsc-4/IUs-UZcrN23UkVEWJRqGgYEV6BLR2muVSMaqeQnTV241xOa4ia9k01xrGOfNvb3j6dFh0WRgMJ0RO_NqV7cUy5C2LD0PUVK8_4dTo7JGRgZkfBhv_xZ0O-Gd19VME-fRseCt1L7CMg0i5xV7EvoP6FiIZa6IMQzZ2euoIeM4zAI?purpose=inline">Portrait of John Dalton. Engraving by James Lonsdale (1777-1839) (after)</a></p>
+<p>約翰・道爾頓（John Dalton，1766－1844）</p>
+<p>在拉瓦節之後發展近代原子論，提出元素由原子構成的理論，並以原子量解釋化合物組成。其研究承接了拉瓦節所推動的定量化學傳統。</p>
+<p><a href="https://images.openai.com/static-rsc-4/dcWjZDcJEZP3OyfzuDN61P5XJFKQHG0xGA15UBikWzmS-IT5JmZWbP1a8UQQLc_JVUPf4QJlYVfq5nAYmUT0cpvD1ck6T_Qu0QL7u7UDv6CQGrECUYGOI21sz9bWhNIdnUylDLmR-lNTu0VG820eIBAYdXd2HUy-xU81Oge22K4?purpose=inline">Dmitri Mendeleyev - Periodic Table, Facts &amp; Death</a></p>
+<p>門得列夫（Dmitri Mendeleev，1834－1907）</p>
+<p>在十九世紀建立元素週期律，將拉瓦節以來逐漸發展的元素概念與原子量研究，進一步整理成具有週期性規律的元素系統。</p>
+<h3 id="現代化學建立的歷史脈絡">現代化學建立的歷史脈絡</h3>
+<table>
+<thead>
+<tr>
+<th>時期</th>
+<th>科學家</th>
+<th>主要貢獻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1661</td>
+<td>波以耳</td>
+<td>批判古典元素說，推動實驗化學</td>
+</tr>
+<tr>
+<td>1770年代</td>
+<td>舍勒、普利斯特里</td>
+<td>製得並研究氧氣</td>
+</tr>
+<tr>
+<td>1770－1789</td>
+<td>拉瓦節</td>
+<td>氧化理論、質量守恆、化學命名改革</td>
+</tr>
+<tr>
+<td>1803－1808</td>
+<td>道爾頓</td>
+<td>建立近代原子論</td>
+</tr>
+<tr>
+<td>1811</td>
+<td>阿伏加德羅</td>
+<td>提出分子假說</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>門得列夫</td>
+<td>建立元素週期律</td>
+</tr>
+</tbody></table>
+<p>這段歷史顯示，現代化學並非由某一位科學家獨立創造，而是經過數代科學家的實驗、理論與制度改革逐步形成。</p>
+<h2 id="九、拉瓦節的重要著作">九、拉瓦節的重要著作</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作或研究</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1766</td>
+<td>巴黎城市照明研究</td>
+<td>照明技術與公共應用</td>
+</tr>
+<tr>
+<td>1772</td>
+<td>磷、硫燃燒研究報告</td>
+<td>研究燃燒後物質重量增加</td>
+</tr>
+<tr>
+<td>1777</td>
+<td>燃燒與煅燒相關論文</td>
+<td>建立氧氣參與燃燒的理論</td>
+</tr>
+<tr>
+<td>1783</td>
+<td>水的組成及燃燒研究</td>
+<td>證明水是氫與氧的化合物</td>
+</tr>
+<tr>
+<td>1787</td>
+<td>《化學命名法》</td>
+<td>改革化學命名制度</td>
+</tr>
+<tr>
+<td>1789</td>
+<td>《化學基礎論》</td>
+<td>系統整理現代化學理論</td>
+</tr>
+<tr>
+<td>1790年代</td>
+<td>農業與公共行政研究</td>
+<td>農業、財政及度量衡改革</td>
+</tr>
+</tbody></table>
+<h2 id="十、拉瓦節生平重要年份總表">十、拉瓦節生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1743</td>
+<td>出生於法國巴黎</td>
+</tr>
+<tr>
+<td>1754</td>
+<td>進入馬扎然學院</td>
+</tr>
+<tr>
+<td>1764</td>
+<td>完成法律學業</td>
+</tr>
+<tr>
+<td>1765</td>
+<td>研究巴黎城市照明</td>
+</tr>
+<tr>
+<td>1766</td>
+<td>獲得皇家科學院獎項</td>
+</tr>
+<tr>
+<td>1768</td>
+<td>當選法國皇家科學院院士</td>
+</tr>
+<tr>
+<td>1770</td>
+<td>開始深入研究燃燒與重量變化</td>
+</tr>
+<tr>
+<td>1771</td>
+<td>研究金屬煅燒</td>
+</tr>
+<tr>
+<td>1772</td>
+<td>發表磷、硫燃燒研究</td>
+</tr>
+<tr>
+<td>1774</td>
+<td>普利斯特里製得氧氣，並與拉瓦節交流</td>
+</tr>
+<tr>
+<td>1775</td>
+<td>拉瓦節進一步研究氧氣及燃燒</td>
+</tr>
+<tr>
+<td>1777</td>
+<td>建立燃燒氧化理論</td>
+</tr>
+<tr>
+<td>1778－1779</td>
+<td>發展氧氣概念及命名</td>
+</tr>
+<tr>
+<td>1783</td>
+<td>證明水由氫與氧組成</td>
+</tr>
+<tr>
+<td>1784</td>
+<td>與拉普拉斯研究呼吸與熱量</td>
+</tr>
+<tr>
+<td>1785</td>
+<td>深化質量守恆的實驗基礎</td>
+</tr>
+<tr>
+<td>1787</td>
+<td>出版《化學命名法》</td>
+</tr>
+<tr>
+<td>1789</td>
+<td>出版《化學基礎論》；法國大革命爆發</td>
+</tr>
+<tr>
+<td>1790</td>
+<td>參與度量衡改革</td>
+</tr>
+<tr>
+<td>1791</td>
+<td>持續財政及公共行政工作</td>
+</tr>
+<tr>
+<td>1793</td>
+<td>因包稅人身分遭逮捕</td>
+</tr>
+<tr>
+<td>1794</td>
+<td>5月8日遭革命法庭判決處死，享年50歲</td>
+</tr>
+</tbody></table>
+<h2 id="十一、拉瓦節的歷史地位與影響">十一、拉瓦節的歷史地位與影響</h2>
+<p><a href="https://images.openai.com/static-rsc-4/m5lznQaJ2ZEpAcxs_kdRb9OyR0mHH1M9FcOeLUiq14DnjbE3VB-lBZS5j5fKJADBWMM543VTeDHe-L08UZTAXQHjcfvVbbCbM-txO2fHLbMPUpL4pufoFNGN1-vEJzJ45IFOEkj-tqTGwA8mXV0TQQbQ4M8E1oW10BU5VA9SCxQ?purpose=inline">Jacques Louis David - Antoine Laurent Lavoisier (1743–1794) and Marie Anne Lavoisier (Marie Anne Pierrette Paulze, 1758–1836) - The Metropolitan Museum of Art</a></p>
+<p><a href="https://www.metmuseum.org/fr/art/collection/search/436106?utm_source=chatgpt.com">metmuseum.org</a></p>
+<p>拉瓦節最重要的歷史地位，在於他徹底改變了化學研究的基本方法與理論架構。</p>
+<p>他的貢獻可以歸納為五個方面：</p>
+<ol>
+<li>**推翻燃素說：**以氧氣參與燃燒的理論取代傳統燃素說，建立現代氧化理論。</li>
+<li>**建立質量守恆觀念：**透過精密天平與定量實驗，確立化學反應前後總質量不變的原則。</li>
+<li>**改革化學命名：**與其他化學家建立系統化的命名制度，使化學語言更精確。</li>
+<li>建立現代化學教材：《化學基礎論》將新理論與實驗方法整合成完整的教學體系。</li>
+<li>**推動科學標準化：**參與度量衡改革，使科學測量逐漸走向統一與精確。</li>
+</ol>
+<h3 id="拉瓦節與波以耳：兩位現代化學先驅的比較">拉瓦節與波以耳：兩位現代化學先驅的比較</h3>
+<p><a href="https://images.openai.com/static-rsc-4/GcAlYGGezD3enV7fpDJaiyaQnE4bM1tcwvU-3Ojqoy-p6DuH7x_TE3TRfeb1AfNYIUm5Ha4QEwQXbeoCHTxv4WbQCgg3Ihvo-GgAlov1rSP42VVyBny94vK5WkyiPFByGg-kknQZqaAd-WOrbXeq4Sc6A3oG2ryM1wCr-1DllIw?purpose=inline">File:Robert Boyle by Johann Kerseboom.jpg - Wikimedia Commons</a></p>
+<p>波以耳</p>
+<p>1627－1691</p>
+<ul>
+<li>批判古典元素說</li>
+<li>推動實驗化學</li>
+<li>提出波以耳定律</li>
+<li>強調實驗證據</li>
+</ul>
+<p><a href="https://images.openai.com/static-rsc-4/mzTFoJVzeWnC59Gc_s-hqFpUZwnN0uZshmrtl1EWV21ujKit6cpLzpQuAWt713G8HgIQrcfWXAzbhPYuR7-o5s70Z7qjBnfWjXPrODuh18Cd30Vtcpza3Q9Q3D6GUQ_BO5nX6rdpPgegfO2csREHeBMLPxIYZRTel4aRsmh7Duo?purpose=inline">パリ ウォーキング ツアー — アントワーヌ ラヴォアジエ、マレ地区の爆発的な状況から逃れる</a></p>
+<p>拉瓦節</p>
+<p>1743－1794</p>
+<ul>
+<li>推翻燃素說</li>
+<li>建立氧化理論</li>
+<li>提出質量守恆</li>
+<li>改革化學命名</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>波以耳</th>
+<th>拉瓦節</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要時代</td>
+<td>十七世紀</td>
+<td>十八世紀</td>
+</tr>
+<tr>
+<td>核心貢獻</td>
+<td>實驗化學與氣體研究</td>
+<td>現代化學體系</td>
+</tr>
+<tr>
+<td>重要著作</td>
+<td>《懷疑的化學家》</td>
+<td>《化學基礎論》</td>
+</tr>
+<tr>
+<td>代表定律／理論</td>
+<td>波以耳定律</td>
+<td>質量守恆、氧化理論</td>
+</tr>
+<tr>
+<td>歷史角色</td>
+<td>現代化學的重要先驅</td>
+<td>現代化學的重要奠基者</td>
+</tr>
+</tbody></table>
+<h2 id="拉瓦節最重要的科學遺產">拉瓦節最重要的科學遺產</h2>
+<h1 id="質量守恆">質量守恆</h1>
+<p>化學反應前後，物質總質量保持不變。</p>
+<p>\[ m_{\text{反應物}}=m_{\text{生成物}} \]</p>
+<p>代表著作：《化學基礎論》（1789）</p>
+<p>**歷史地位：**現代化學的重要奠基者，將化學帶入定量實驗與系統化理論的新時代。</p>
+<p>**總結：**拉瓦節最大的貢獻，不只是發現氧氣參與燃燒，也不只是提出質量守恆，而是將實驗、測量、數學分析與化學理論整合起來。他推翻燃素說，重新界定燃燒、元素及化合物的概念，並建立現代化學的命名與教學體系。從波以耳的實驗化學，到拉瓦節的化學革命，再到道爾頓的原子論與門得列夫的元素週期表，構成了現代化學發展的重要歷史主線。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

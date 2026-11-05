@@ -1,0 +1,880 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="威廉・湯姆森（william-thomson，開爾文勳爵）生平大事記">威廉・湯姆森（William Thomson，開爾文勳爵）生平大事記</h1>
+<p>1824年6月26日－1907年12月17日｜英國物理學家、數學家、工程師｜熱力學、絕對溫標與電報工程的重要奠基者</p>
+<p><a href="https://images.openai.com/static-rsc-4/uaPXYuG54QlkCIzR74bRlL8aaigtBlgVS8AUW2of9MQ6TCAs8CRkbhJ-Qm4SuLdcsr0wUuwcwLEpTDCkBOteURmRtZD85uELFKJANeFdAHQL4PPAxA3-HNJxPG_7tmNAqVfqMJXMJCZIJbRqXsrTnurCn4UzCAipx31TWjFkGA8?purpose=inline">Sir William Thomson, Lord Kelvin (1824 – 1907) – Maleny Weather History</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/CdaUW2-heRxPrgEDBNr72wQvRr8Y_OXzqi-tXrteo7Ws7KrM8am8HFcP-e16LnEcCH4hLlxb8kL2d4oqfKRFBMwYrWBclb3hNrzZ4LjKvmBcpxj3FxJVXDFfpI7Rk22R3OpSqcTmtbQb3Ni_oxDdkSt16Cn_iKVhv9dfraS_zOU?purpose=inline">File:Lord Kelvin.jpg - Wikimedia Commons</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/JrEZwK7piVOrzaZc3ZckpE1MPBSB5X3Nw0cS9YNQZSdz6d3uQpoG-nL8T84CofvG8riWGeuBZN65vuE-pMM8ytGxJirZO64ptcDnai1qFtGLTIYuDJ8ke1RJligWqRCRcVt3s_aLCZMSagFOrS49Ep32tcXETt1hxSzBFt0_TLQ?purpose=inline">Lord Kelvin (1824-1907). /Nwilliam Thomson, 1St Baron Kelvin. British Mathematician And Pysicist. Kelvin At Age 16. Drawing, 1840, By Elizabeth King (His Sister). Poster Print by Granger Collection - Item # VARGRC0069285 - Posterazzi</a></p>
+<p>7</p>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p>威廉・湯姆森（William Thomson），1892年受封為開爾文男爵（Baron Kelvin of Largs），因此世人通常稱他為開爾文勳爵（Lord Kelvin）。</p>
+<p>他是十九世紀最重要的物理學家之一，研究領域極為廣泛，包括熱力學、電磁學、數學物理、流體力學、地球物理學及工程技術。</p>
+<p>他最為人熟知的貢獻，是建立以絕對零度為起點的熱力學溫標，也就是今日國際單位制中的「開爾文」（K）。此外，他與焦耳共同研究氣體膨脹時的溫度變化，發現後來稱為焦耳－湯姆森效應的重要現象，並在第一條成功的跨大西洋海底電報電纜工程中扮演關鍵角色。</p>
+<h3 id="主要科學貢獻">主要科學貢獻</h3>
+<ol>
+<li>**絕對溫標：**建立熱力學絕對溫度尺度，現代溫度單位開爾文以他的名字命名。</li>
+<li>**熱力學第二定律：**提出第二定律的重要表述，與克勞修斯共同奠定古典熱力學。</li>
+<li>**焦耳－湯姆森效應：**與焦耳合作研究氣體節流膨脹時的溫度變化。</li>
+<li>**電磁學：**發展電磁理論的數學形式，研究電場、磁場與電磁能量。</li>
+<li>**跨大西洋電報：**改良海底電纜訊號接收設備，促成跨大西洋電報的成功。</li>
+<li>**地球物理學：**利用熱傳導理論估算地球年齡。</li>
+<li>**工程儀器：**發明或改良鏡式檢流計、電報接收器、潮汐預測機及航海羅盤等設備。</li>
+</ol>
+<h2 id="二、出生與家庭背景（1824－1834）">二、出生與家庭背景（1824－1834）</h2>
+<h3 id="1824年：出生於愛爾蘭貝爾法斯特">1824年：出生於愛爾蘭貝爾法斯特</h3>
+<ul>
+<li>6月26日：出生於英國統治下的愛爾蘭貝爾法斯特（Belfast）。</li>
+<li>父親詹姆士・湯姆森（James Thomson，1786－1849）是數學家及教育家。</li>
+<li>父親曾在貝爾法斯特皇家學院任教，後來前往格拉斯哥大學擔任數學教授。</li>
+<li>母親為瑪格麗特・加德納（Margaret Gardner）。</li>
+<li>威廉是家中子女之一，自幼展現數學天賦。</li>
+</ul>
+<h3 id="1830年：全家遷往格拉斯哥">1830年：全家遷往格拉斯哥</h3>
+<ul>
+<li>父親受聘為格拉斯哥大學數學教授。</li>
+<li>全家從貝爾法斯特搬遷至蘇格蘭格拉斯哥（Glasgow）。</li>
+<li>威廉在父親的指導下接受數學教育。</li>
+<li>父親十分重視數學訓練，並鼓勵子女閱讀科學著作。</li>
+</ul>
+<h3 id="1834年：年僅10歲進入格拉斯哥大學">1834年：年僅10歲進入格拉斯哥大學</h3>
+<ul>
+<li>以年僅10歲的年紀進入格拉斯哥大學（University of Glasgow）。</li>
+<li>開始接受大學程度的數學與自然哲學教育。</li>
+<li>學習數學、天文學、物理學及古典學科。</li>
+<li>接觸法國數學家傅立葉（Joseph Fourier）的熱傳導理論。</li>
+</ul>
+<p>這段早期教育對他日後的研究具有重大影響。傅立葉的數學方法使他認識到，同一套數學工具可以應用於熱傳導、電流及其他物理現象。</p>
+<h2 id="三、格拉斯哥大學與劍橋求學時期（1834－1845）">三、格拉斯哥大學與劍橋求學時期（1834－1845）</h2>
+<h3 id="1836－1840年：研究數學與傅立葉理論">1836－1840年：研究數學與傅立葉理論</h3>
+<ul>
+<li>深入研讀傅立葉的《熱的解析理論》（Théorie analytique de la chaleur）。</li>
+<li>研究傅立葉級數及熱傳導方程式。</li>
+<li>開始思考數學分析如何應用於電學與熱學。</li>
+<li>逐漸形成以數學統一解釋不同物理現象的研究方向。</li>
+</ul>
+<h3 id="1840年：前往劍橋大學">1840年：前往劍橋大學</h3>
+<ul>
+<li>通過格拉斯哥大學的學業考試。</li>
+<li>前往英格蘭，準備進入劍橋大學深造。</li>
+<li>此後在劍橋接受更完整的數學與物理訓練。</li>
+</ul>
+<h3 id="1841年：進入劍橋大學彼得學院">1841年：進入劍橋大學彼得學院</h3>
+<ul>
+<li>進入劍橋大學彼得學院（Peterhouse）。</li>
+<li>當時年僅17歲。</li>
+<li>主要研習數學、理論物理及自然哲學。</li>
+<li>同年開始在《劍橋數學期刊》發表與傅立葉理論有關的研究。</li>
+</ul>
+<h3 id="1842年：發表傅立葉理論相關論文">1842年：發表傅立葉理論相關論文</h3>
+<ul>
+<li>發表《論熱的均勻運動及其與電學數學理論的關係》（On the uniform motion of heat and its connection with the mathematical theory of electricity）。</li>
+<li>研究熱傳導方程式與電位理論之間的數學相似性。</li>
+<li>顯示熱傳導與電學問題可以運用相近的數學方法處理。</li>
+<li>這項研究是他日後發展電磁理論的重要基礎。</li>
+</ul>
+<h3 id="1845年：取得劍橋學位">1845年：取得劍橋學位</h3>
+<ul>
+<li>以優異成績取得劍橋大學數學學士學位（BA）。</li>
+<li>當選彼得學院院士（Fellow）。</li>
+<li>隨後前往法國巴黎，進入物理學家亨利・維克多・雷諾（Henri Victor Regnault）的實驗室。</li>
+<li>透過實驗訓練補足原本偏重數學理論的教育背景。</li>
+</ul>
+<h3 id="1845年：接觸法國物理學研究傳統">1845年：接觸法國物理學研究傳統</h3>
+<ul>
+<li>在巴黎接觸當時重要的物理學家及數學家。</li>
+<li>觀察實驗物理學的研究方法。</li>
+<li>深入理解實驗數據對物理理論的重要性。</li>
+</ul>
+<h2 id="四、格拉斯哥大學教授與熱力學研究（1846－1854）">四、格拉斯哥大學教授與熱力學研究（1846－1854）</h2>
+<h3 id="1846年：22歲成為格拉斯哥大學自然哲學教授">1846年：22歲成為格拉斯哥大學自然哲學教授</h3>
+<p>重要學術里程碑</p>
+<ul>
+<li>受聘為格拉斯哥大學自然哲學教授（Professor of Natural Philosophy）。</li>
+<li>當時年僅22歲。</li>
+<li>開始長達53年的教授生涯，直到1899年退休。</li>
+<li>致力於改善大學物理教學，建立實驗室，強調理論與實驗並重。</li>
+<li>研究傅立葉熱傳導理論、電磁學及熱力學。</li>
+</ul>
+<p>這項任命使湯姆森很早便成為英國學術界的重要人物。</p>
+<h3 id="1847年：研究卡諾熱機理論">1847年：研究卡諾熱機理論</h3>
+<ul>
+<li>進一步研究法國物理學家薩迪・卡諾（Sadi Carnot）1824年出版的《論火的動力》。</li>
+<li>思考熱機如何將熱轉換成機械功。</li>
+<li>研究熱機效率是否存在理論上的最高限度。</li>
+<li>開始將卡諾的熱機思想與焦耳的熱功當量研究相互比較。</li>
+</ul>
+<p>這是他後來發展熱力學第二定律及絕對溫標的重要起點。</p>
+<h3 id="1848年：提出絕對溫標的思想">1848年：提出絕對溫標的思想</h3>
+<p>最重要的科學貢獻之一</p>
+<ul>
+<li>發表《論卡諾熱動力理論所依據的尺度》（On an Absolute Thermometric Scale Founded on Carnot&#39;s Theory of the Motive Power of Heat）。</li>
+<li>根據卡諾熱機理論，提出一種不依賴特定溫度計物質性質的溫度尺度。</li>
+<li>這個尺度以熱力學原理為基礎，後來發展成為絕對溫標。</li>
+<li>提出溫度尺度的起點應與熱機理論所揭示的物理極限相關。</li>
+</ul>
+<p>他所提出的早期溫標與今日的開爾文溫標並非完全相同，但已經建立了絕對溫度的核心思想。</p>
+<h3 id="1849年：父親逝世">1849年：父親逝世</h3>
+<ul>
+<li>父親詹姆士・湯姆森於1849年逝世。</li>
+<li>威廉繼續在格拉斯哥大學從事教學與研究。</li>
+<li>逐漸成為英國物理學界的重要學術領袖。</li>
+</ul>
+<h3 id="1850年：研究熱力學第二定律">1850年：研究熱力學第二定律</h3>
+<ul>
+<li>克勞修斯於1850年發表熱力學重要論文，建立第二定律的早期表述。</li>
+<li>湯姆森持續研究熱機效率與能量轉換。</li>
+<li>開始建立自己的熱力學第二定律表述。</li>
+<li>進一步將卡諾的理想熱機理論與焦耳的熱功等價觀念結合。</li>
+</ul>
+<h3 id="1851年：提出熱力學第二定律的重要表述">1851年：提出熱力學第二定律的重要表述</h3>
+<ul>
+<li>發表《熱的動力理論》（On the Dynamical Theory of Heat）。</li>
+<li>提出熱不能在沒有其他變化的情況下，完全由單一熱源吸收並全部轉化為機械功。</li>
+<li>這項表述與克勞修斯的「熱不會自行由低溫物體傳向高溫物體」在物理意義上等價。</li>
+<li>同年當選英國皇家學會會員（Fellow of the Royal Society）。</li>
+</ul>
+<h3 id="1852年：與焦耳研究氣體膨脹">1852年：與焦耳研究氣體膨脹</h3>
+<ul>
+<li>與英國物理學家詹姆士・焦耳（James Prescott Joule）展開合作。</li>
+<li>研究氣體經過多孔塞或狹窄通道時的膨脹現象。</li>
+<li>發現某些氣體在節流膨脹後會產生溫度變化。</li>
+<li>這項研究後來稱為焦耳－湯姆森效應（Joule–Thomson Effect）。</li>
+<li>此效應後來成為氣體冷卻、低溫工程及氣體液化技術的重要理論基礎。</li>
+</ul>
+<h3 id="1852年9月15日：結婚">1852年9月15日：結婚</h3>
+<ul>
+<li>與瑪格麗特・克魯姆（Margaret Crum）結婚。</li>
+<li>婚後持續在格拉斯哥大學從事學術研究。</li>
+</ul>
+<h3 id="1854年：研究熱力學與太陽系">1854年：研究熱力學與太陽系</h3>
+<ul>
+<li>研究熱力學與太陽系演化的關係。</li>
+<li>關注太陽如何釋放能量，以及地球如何接受太陽輻射。</li>
+<li>開始思考物理定律在天文學及地球科學中的應用。</li>
+<li>同年參與電報電纜相關專利研究，逐漸進入工程應用領域。</li>
+</ul>
+<p>以上早年履歷與熱力學研究脈絡，主要依據格拉斯哥大學及聖安德魯斯大學的歷史資料。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.gla.ac.uk&sz=32">image</a></p>
+<p>About William Thomson, Lord Kelvin+2</p>
+<h2 id="五、跨大西洋電報與工程事業（1855－1866）">五、跨大西洋電報與工程事業（1855－1866）</h2>
+<p>開爾文不只是理論物理學家，也是一位非常重視實際工程應用的科學家。他在海底電報電纜工程中的貢獻，使他從學術界走向國際工程與工業界。</p>
+<h3 id="1855年：開始研究海底電報">1855年：開始研究海底電報</h3>
+<ul>
+<li>發表與電報傳輸有關的研究。</li>
+<li>開始探討電訊號在長距離電纜中傳播時的衰減與延遲。</li>
+<li>注意到海底電纜與一般陸上電線不同，具有較大的電容與電阻。</li>
+<li>電訊號經過長距離海底電纜時，波形會受到影響，導致接收端難以辨識訊號。</li>
+</ul>
+<h3 id="1856年：與焦耳進行電學實驗">1856年：與焦耳進行電學實驗</h3>
+<ul>
+<li>繼續與焦耳合作研究金屬及電流的熱效應。</li>
+<li>研究強電流與金屬接觸時的熱現象。</li>
+<li>相關研究促成對電阻焊接等技術的理解。</li>
+</ul>
+<h3 id="1857年：加入大西洋電報公司">1857年：加入大西洋電報公司</h3>
+<ul>
+<li>成為大西洋電報公司（Atlantic Telegraph Company）的董事。</li>
+<li>參與規劃歐洲與北美之間的海底電報電纜。</li>
+<li>研究電纜材料、訊號傳輸、電氣測量及接收設備。</li>
+<li>逐漸成為跨大西洋電報工程的重要技術顧問。</li>
+</ul>
+<h3 id="1858年：發明鏡式檢流計與電報接收設備">1858年：發明鏡式檢流計與電報接收設備</h3>
+<p><a href="https://images.openai.com/static-rsc-4/WTlg4vPRke1Ak0ktNKKouhNSk7QhM148avtwKlM117qCUetWAU8iJv1u7H0fZ6H8Nvu4HE9mZkQYNmpsxBzn_Z7try6zShlbnjdqueOWa8cUrh6JElzopUlTiOuGZCzR28Q0U-QKALBEm68C3BSicL6de-k_cpNJN28f5a4Trs0?purpose=inline">Thomson&#39;s mirror galvanometer, 1858 | Science Museum Group Collection</a></p>
+<p><a href="https://collection.sciencemuseumgroup.org.uk/objects/co32961/thomsons-mirror-galvanometer-1858-galvanometer?utm_source=chatgpt.com">collection.sciencemuseumgroup.org.uk</a></p>
+<ul>
+<li>改良高靈敏度的電流測量設備。</li>
+<li>發展鏡式檢流計（Mirror Galvanometer），能夠測量海底電纜中非常微弱的電流訊號。</li>
+<li>參與第一條跨大西洋電報電纜的鋪設工程。</li>
+<li>1858年8月，歐洲與北美之間的電報電纜開始短暫運作。</li>
+<li>但電纜不久便發生故障，最終停止使用。</li>
+</ul>
+<p>這次工程雖然失敗，卻使湯姆森更加確信：必須從數學理論、電氣測量及電纜設計三方面同時解決問題。</p>
+<h3 id="1859－1860年：研究電纜訊號傳播">1859－1860年：研究電纜訊號傳播</h3>
+<ul>
+<li>發表關於電流與訊號傳播的研究。</li>
+<li>研究電纜的電阻、電容及訊號衰減。</li>
+<li>分析訊號傳播速度與電纜長度的關係。</li>
+<li>改良接收設備，使微弱的電報訊號更容易被辨識。</li>
+</ul>
+<h3 id="1861－1863年：研究太陽熱量與地球年齡">1861－1863年：研究太陽熱量與地球年齡</h3>
+<p><a href="https://images.openai.com/static-rsc-4/uaPXYuG54QlkCIzR74bRlL8aaigtBlgVS8AUW2of9MQ6TCAs8CRkbhJ-Qm4SuLdcsr0wUuwcwLEpTDCkBOteURmRtZD85uELFKJANeFdAHQL4PPAxA3-HNJxPG_7tmNAqVfqMJXMJCZIJbRqXsrTnurCn4UzCAipx31TWjFkGA8?purpose=inline">Sir William Thomson, Lord Kelvin (1824 – 1907) – Maleny Weather History</a></p>
+<p><a href="https://www.malenywx.com/weatherhistory/articles/sir-william-thomson-lord-kelvin-1824-1907/?utm_source=chatgpt.com">malenywx.com</a></p>
+<ul>
+<li>研究太陽的熱能來源及其可能的持續時間。</li>
+<li>以物理學方法估算太陽釋放熱量的時間尺度。</li>
+<li>利用地球冷卻及熱傳導模型，估算地球從熔融狀態冷卻至現今狀態所需的時間。</li>
+<li>提出地球年齡可能遠低於當時部分地質學家所主張的數十億年。</li>
+<li>他的估算後來被放射性定年法推翻。</li>
+</ul>
+<p>**科學史意義：**這場爭論顯示，地質學、物理學與天文學在十九世紀對地球歷史的理解尚未整合。湯姆森的計算使用當時已知的熱傳導物理，但未考慮地球內部放射性衰變所產生的熱，也未充分掌握地球內部複雜的熱傳輸機制。</p>
+<h3 id="1864－1865年：重新參與跨大西洋電纜工程">1864－1865年：重新參與跨大西洋電纜工程</h3>
+<ul>
+<li>持續改善海底電纜的設計及訊號接收方法。</li>
+<li>提出使用更敏感的電報接收裝置。</li>
+<li>參與新一輪跨大西洋電纜鋪設計畫。</li>
+<li>其電纜訊號理論與儀器改良逐漸受到工程界重視。</li>
+</ul>
+<h3 id="1866年：跨大西洋電報成功，獲封爵士">1866年：跨大西洋電報成功，獲封爵士</h3>
+<p>重要工程成就</p>
+<ul>
+<li>1866年，第二條跨大西洋電報電纜成功鋪設並投入運作。</li>
+<li>同年，先前鋪設的1865年電纜也被成功打撈修復。</li>
+<li>歐洲與北美終於建立較可靠的海底電報通信。</li>
+<li>湯姆森在電纜設計、訊號測量及接收設備方面的貢獻受到肯定。</li>
+<li>英國維多利亞女王授予他爵士頭銜（Knight Bachelor）。</li>
+<li>從此正式稱為 Sir William Thomson。</li>
+</ul>
+<h2 id="六、電磁學、儀器發明與潮汐研究（1867－1879）">六、電磁學、儀器發明與潮汐研究（1867－1879）</h2>
+<h3 id="1867年：發明虹吸式電報記錄器">1867年：發明虹吸式電報記錄器</h3>
+<p><a href="https://images.openai.com/static-rsc-4/j0LsHhcl7NU5uqeQm76sBY-M2Wc6uZ-4OJpteScxom_0Qn6Kq3JpbCDAo2nNJHpdGMLh6CprzD4pya7V0RYW-d-nXp03BKnWT5PFNRcZut5SOBDf4eZ52w8BftZ220IbBnVXsGbI491aWi14frk9iOQe8Rte6fNcBPLSufuWBLo?purpose=inline">Telegraph Instruments of Europe</a></p>
+<p><a href="https://www.telegraphsofeurope.net/page390.html?utm_source=chatgpt.com">telegraphsofeurope.net</a></p>
+<ul>
+<li>發展虹吸式記錄器（Siphon Recorder）。</li>
+<li>利用電磁裝置控制墨水筆，將接收到的電報訊號記錄在移動紙帶上。</li>
+<li>能夠記錄長距離海底電纜傳來的微弱電訊號。</li>
+<li>成為海底電報通信的重要設備之一。</li>
+</ul>
+<h3 id="1868年：研究潮汐預測">1868年：研究潮汐預測</h3>
+<ul>
+<li>開始研究海洋潮汐的週期性變化。</li>
+<li>利用傅立葉分析，將潮汐分解為不同週期的組成成分。</li>
+<li>研究月球、太陽引力及地球自轉對潮汐的影響。</li>
+<li>嘗試將潮汐的數學模型轉化為實用的預測工具。</li>
+</ul>
+<h3 id="1869年：改良電報與測量儀器">1869年：改良電報與測量儀器</h3>
+<ul>
+<li>持續研究電磁測量設備。</li>
+<li>發展電學儀器與精密測量技術。</li>
+<li>進一步推動物理學理論與工程技術結合。</li>
+</ul>
+<h3 id="1870年：妻子逝世，遷居新校址">1870年：妻子逝世，遷居新校址</h3>
+<ul>
+<li>格拉斯哥大學遷往吉爾莫希爾（Gilmorehill）新校區。</li>
+<li>湯姆森也遷入校內教授住宅。</li>
+<li>他的第一任妻子瑪格麗特於同年6月逝世。</li>
+<li>同年購買帆船「拉拉・魯克」（Lalla Rookh），將船隻作為海洋研究與實驗平台之一。</li>
+</ul>
+<h3 id="1871年：開始長期擴散實驗">1871年：開始長期擴散實驗</h3>
+<ul>
+<li>進行液體擴散相關實驗。</li>
+<li>研究不同液體在長時間內如何逐漸混合。</li>
+<li>他設計的實驗被認為可能需要數千年，甚至約一萬年才能完全呈現其長期變化。</li>
+<li>這個實驗反映他對熱力學、分子運動及不可逆過程的持續興趣。</li>
+</ul>
+<h3 id="1872－1873年：潮汐計算機研究">1872－1873年：潮汐計算機研究</h3>
+<p><a href="https://images.openai.com/static-rsc-4/XI_lQmOTLMtiKp9EA0i3tLKTT5VKToI15S6QtqA_QXCA-M9rQow0E9sH3zUKy2nnKxb0VT_F66KDmgTloJs1lxMbQibiAsSu7ZST-HboXrdw-07kBsyd0HWCvjfl4xaq3de45Cp-_vTGFfyTWyzNs-NQ-fyltUXe9KOSZPNGxs0?purpose=inline">Lord Kelvin’s Tide-Predicting Machine - IEEE Spectrum</a></p>
+<p><a href="https://spectrum.ieee.org/tide-predictions?utm_source=chatgpt.com">spectrum.ieee.org</a></p>
+<ul>
+<li>持續研究海洋潮汐預測。</li>
+<li>利用多組機械裝置模擬不同週期的潮汐成分。</li>
+<li>逐漸發展出可實際運作的潮汐預測機。</li>
+<li>使潮汐預測不必每次都重新進行大量人工計算。</li>
+</ul>
+<h3 id="1874年：第二次結婚">1874年：第二次結婚</h3>
+<ul>
+<li>與法蘭西絲・安娜・布蘭迪（Frances Anna Blandy）結婚。</li>
+<li>婚後繼續在格拉斯哥大學從事研究。</li>
+<li>同年因親近的姪子在海上溺水，開始更加關注航海安全。</li>
+</ul>
+<h3 id="1875年：潮汐預測機公開展示">1875年：潮汐預測機公開展示</h3>
+<ul>
+<li>展示潮汐計算機及潮位測量設備。</li>
+<li>這些機械設備能夠將潮汐週期分解成多個週期成分，再加以合成。</li>
+<li>在港口工程、航運及海洋研究方面具有實用價值。</li>
+<li>同年，他在蘇格蘭拉格斯（Largs）建造的私人住宅 Netherhall 完成。</li>
+</ul>
+<h3 id="1876－1878年：改良航海羅盤">1876－1878年：改良航海羅盤</h3>
+<ul>
+<li>研究船舶磁性對羅盤讀數的干擾。</li>
+<li>改良航海羅盤的結構及校正方法。</li>
+<li>減少船舶搖晃時羅盤指針的震盪。</li>
+<li>使羅盤更適合在大型船舶及海上環境中使用。</li>
+</ul>
+<h3 id="1879年：研究旋轉流體與地球物理">1879年：研究旋轉流體與地球物理</h3>
+<ul>
+<li>發表旋轉流體及地球物理相關研究。</li>
+<li>研究地球自轉與海洋流動的關係。</li>
+<li>相關思想後來被用於理解地球流體運動及地球物理現象。</li>
+<li>持續關注地球、海洋及大氣系統之間的物理關係。</li>
+</ul>
+<h2 id="七、熱力學、電學與科學榮譽（1880－1891）">七、熱力學、電學與科學榮譽（1880－1891）</h2>
+<h3 id="1880－1881年：研究電燈與電力工程">1880－1881年：研究電燈與電力工程</h3>
+<ul>
+<li>參與英國電燈技術及電力系統的研究。</li>
+<li>評估電燈、電力設備及導電材料的性能。</li>
+<li>研究如何改善電力供應與電氣測量。</li>
+<li>其私人住宅也開始採用電力照明。</li>
+</ul>
+<h3 id="1882－1883年：研究低溫技術及陀螺羅盤">1882－1883年：研究低溫技術及陀螺羅盤</h3>
+<ul>
+<li>研究氣體冷卻與低溫技術。</li>
+<li>持續推進焦耳－湯姆森效應的應用。</li>
+<li>關注陀螺羅盤（Gyrocompass）的導航用途。</li>
+<li>研究分子結構及旋光性等問題。</li>
+</ul>
+<h3 id="1884年：赴美國進行巴爾的摩講座">1884年：赴美國進行巴爾的摩講座</h3>
+<ul>
+<li>前往美國約翰霍普金斯大學。</li>
+<li>發表著名的巴爾的摩講座（Baltimore Lectures）。</li>
+<li>主要討論光的理論、以太及物理學的數學基礎。</li>
+<li>講座內容反映十九世紀後期物理學界對光、電磁學及物質結構的探索。</li>
+</ul>
+<h3 id="1885－1887年：持續發展物理理論">1885－1887年：持續發展物理理論</h3>
+<ul>
+<li>研究電磁學、電容器及介電物質。</li>
+<li>關注英國數學家羅素（John Scott Russell）提出的孤立波（Soliton）相關問題。</li>
+<li>研究重力測量與地球物理。</li>
+<li>持續進行多領域的理論及實驗研究。</li>
+</ul>
+<h3 id="1888年：研究南極冰層與氣候">1888年：研究南極冰層與氣候</h3>
+<ul>
+<li>估算南極冰層的相關物理特性。</li>
+<li>討論冰層、海洋與地球氣候變化的關係。</li>
+<li>顯示他不只關注熱力學及電磁學，也關心全球地球系統。</li>
+</ul>
+<h3 id="1890年：當選英國皇家學會會長">1890年：當選英國皇家學會會長</h3>
+<ul>
+<li>出任英國皇家學會（Royal Society）會長。</li>
+<li>任期為1890年至1895年。</li>
+<li>這是英國科學界極具代表性的學術領導職務。</li>
+<li>反映他在物理學及工程學界的國際地位。</li>
+</ul>
+<h2 id="八、獲封開爾文勳爵與晚年研究（1892－1907）">八、獲封開爾文勳爵與晚年研究（1892－1907）</h2>
+<h3 id="1892年：受封開爾文男爵">1892年：受封開爾文男爵</h3>
+<p>重要歷史里程碑</p>
+<ul>
+<li>英國政府授予湯姆森貴族爵位。</li>
+<li>成為英國上議院議員。</li>
+<li>正式爵位為 Baron Kelvin of Largs（拉格斯的開爾文男爵）。</li>
+<li>他選擇「Kelvin」作為爵位名稱，源自流經格拉斯哥大學附近的開爾文河（River Kelvin）。</li>
+<li>從此普遍被稱為開爾文勳爵（Lord Kelvin）。</li>
+<li>他是英國第一批以科學成就獲得世襲貴族爵位的科學家之一。</li>
+</ul>
+<h3 id="1894年：參與航空器研究">1894年：參與航空器研究</h3>
+<ul>
+<li>持續關注飛行與機械工程的發展。</li>
+<li>曾搭乘海勒姆・馬克沁（Hiram Maxim）設計的實驗飛行器。</li>
+<li>對航空工程及機械動力技術保持興趣。</li>
+</ul>
+<h3 id="1896年：格拉斯哥大學紀念任教五十週年">1896年：格拉斯哥大學紀念任教五十週年</h3>
+<ul>
+<li>格拉斯哥大學舉辦盛大的學術紀念活動。</li>
+<li>慶祝他在該校任教五十週年。</li>
+<li>國際科學界人士及各國學者前往祝賀。</li>
+<li>這項活動充分顯示他在十九世紀物理學界的崇高地位。</li>
+</ul>
+<h3 id="1898年：研究無線電通信">1898年：研究無線電通信</h3>
+<ul>
+<li>持續關注無線電技術的發展。</li>
+<li>對無線電訊號傳輸及電磁波的應用抱持興趣。</li>
+<li>參與早期無線通信相關實驗與學術交流。</li>
+</ul>
+<h3 id="1899年：從格拉斯哥大學退休">1899年：從格拉斯哥大學退休</h3>
+<ul>
+<li>結束長達53年的自然哲學教授職務。</li>
+<li>離開長期任教的格拉斯哥大學教授住宅。</li>
+<li>雖然退休，仍持續從事物理學研究與論文寫作。</li>
+</ul>
+<h3 id="1900－1902年：晚年物理研究">1900－1902年：晚年物理研究</h3>
+<ul>
+<li>持續研究物質結構、電磁學及光的本質。</li>
+<li>關注電子與原子模型的發展。</li>
+<li>嘗試尋找能夠統一解釋物理現象的理論。</li>
+<li>但十九世紀末及二十世紀初的實驗發現，逐漸顯示古典物理學尚不足以解釋所有微觀現象。</li>
+</ul>
+<h3 id="1904年：出任格拉斯哥大學校監">1904年：出任格拉斯哥大學校監</h3>
+<ul>
+<li>當選格拉斯哥大學校監（Chancellor）。</li>
+<li>繼續與大學保持密切聯繫。</li>
+<li>受到英國學術界及工程界高度尊敬。</li>
+</ul>
+<h3 id="1907年12月17日：逝世">1907年12月17日：逝世</h3>
+<ul>
+<li>12月17日：在蘇格蘭拉格斯附近的私人住宅 Netherhall 逝世，享年83歲。</li>
+<li>逝世前仍持續進行科學工作。</li>
+<li>12月23日安葬於倫敦西敏寺（Westminster Abbey），與牛頓等英國重要人物同葬於此。</li>
+</ul>
+<p>開爾文逝世時，十九世紀的古典物理學正面臨重大轉變。電子、放射性、X射線及量子現象等新發現，逐漸開啟二十世紀物理學的新時代。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.gla.ac.uk&sz=32">image</a></p>
+<p>About William Thomson, Lord Kelvin+3</p>
+<h2 id="九、開爾文的主要科學理論與公式">九、開爾文的主要科學理論與公式</h2>
+<p>開爾文的研究領域非常廣泛，以下整理最具代表性的六項成果。</p>
+<h3 id="1-絕對溫標（absolute-temperature-scale）">1. 絕對溫標（Absolute Temperature Scale）</h3>
+<p>最廣為人知的貢獻</p>
+<p>1848年，開爾文根據卡諾熱機理論，提出以熱力學原理為基礎的絕對溫度尺度。</p>
+<p>今日使用的開爾文溫標，以絕對零度作為起點：</p>
+<p>\[ 0\ \mathrm K=-273.15^\circ\mathrm C \]</p>
+<p>攝氏溫度與開爾文溫度的換算關係為：</p>
+<p>\[ T(\mathrm K)=t(^\circ\mathrm C)+273.15 \]</p>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>攝氏溫度</th>
+<th>開爾文溫度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>−273.15°C</td>
+<td>0 K</td>
+</tr>
+<tr>
+<td>−100°C</td>
+<td>173.15 K</td>
+</tr>
+<tr>
+<td>0°C</td>
+<td>273.15 K</td>
+</tr>
+<tr>
+<td>25°C</td>
+<td>298.15 K</td>
+</tr>
+<tr>
+<td>100°C</td>
+<td>373.15 K</td>
+</tr>
+</tbody></table>
+<p>絕對零度的意義：</p>
+<ul>
+<li>是熱力學溫度的最低極限。</li>
+<li>理想情況下，系統的熱力學溫度趨近零。</li>
+<li>依據量子力學，不能簡單地說絕對零度時所有粒子運動完全停止。</li>
+<li>根據熱力學第三定律，有限步驟的物理過程不能使系統真正達到絕對零度。</li>
+</ul>
+<p>**現代單位補充：**2019年國際單位制重新定義開爾文，透過固定波茲曼常數的數值來定義溫度單位。開爾文的名稱及單位符號K仍然沿用。</p>
+<h3 id="2-熱力學第二定律的開爾文表述">2. 熱力學第二定律的開爾文表述</h3>
+<p>開爾文在1851年提出熱力學第二定律的重要表述：</p>
+<p>不可能設計一個循環運作的熱機，使它從單一熱源吸收熱量，並將吸收的熱量全部轉換成機械功，而不產生其他變化。</p>
+<p>這個原理稱為開爾文－普朗克表述（Kelvin–Planck Statement）。</p>
+<p>它說明：</p>
+<ul>
+<li>熱機不能將吸收的熱量百分之百轉換為功。</li>
+<li>必須有部分熱量排放至低溫熱源。</li>
+<li>熱機效率存在理論上限。</li>
+</ul>
+<p>其效率可表示為：</p>
+<p>\[ \eta=\frac{W}{Q_H} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(\eta\)：熱機效率。</li>
+<li>\(W\)：熱機輸出的淨功。</li>
+<li>\(Q_H\)：從高溫熱源吸收的熱量。</li>
+</ul>
+<p>對理想可逆熱機而言：</p>
+<p>\[ \eta_{\max}=1-\frac{T_C}{T_H} \]</p>
+<p>這就是卡諾效率公式。開爾文的重要貢獻，是將卡諾的理想熱機思想與熱力學第二定律建立更完整的聯繫。</p>
+<h3 id="3-焦耳－湯姆森效應（joulethomson-effect）">3. 焦耳－湯姆森效應（Joule–Thomson Effect）</h3>
+<p><a href="https://images.openai.com/static-rsc-4/mIShvQLuOHUI2zweooUJgs34j6WSAERVNjjvZeLW99EYb_TUBCJPaMtIRf-ok_ojYAjDJNzw-VGTUij9J_vJFaNIkdy-1-QSmyY8WRdO9aHnsdQzog9OZLteKjcBk31Fs8CxiVt6q1EVP9DQ6m5YprFdRYz1rDEnlsMGij0bzd4?purpose=inline">Video: Joule-Thomson Effect</a></p>
+<p><a href="https://www.jove.com/science-education/v/14174/joule-thomson-effect?utm_source=chatgpt.com">jove.com</a></p>
+<p>1852年，開爾文與焦耳合作研究氣體通過多孔塞時的溫度變化。</p>
+<p>實驗發現，在適當條件下，氣體從高壓區經過節流裝置流向低壓區時，溫度會發生變化。</p>
+<p>這種現象稱為焦耳－湯姆森效應。</p>
+<p>其重要應用包括：</p>
+<ul>
+<li>工業氣體冷卻。</li>
+<li>天然氣處理。</li>
+<li>低溫工程。</li>
+<li>氣體液化技術。</li>
+<li>製冷系統。</li>
+</ul>
+<p>焦耳－湯姆森係數定義為：</p>
+<p>\[ \mu_{JT}= \left(\frac{\partial T}{\partial P}\right)_H \]</p>
+<p>其中：</p>
+<ul>
+<li>\(\mu_{JT}\)：焦耳－湯姆森係數。</li>
+<li>\(T\)：溫度。</li>
+<li>\(P\)：壓力。</li>
+<li>\(H\)：焓。</li>
+</ul>
+<p>當 \(\mu_{JT}&gt;0\) 時，在節流降壓過程中，氣體通常會降溫；當 \(\mu_{JT}&lt;0\) 時，則可能升溫。</p>
+<p>這項效應也是後來林德（Carl von Linde）等人發展氣體液化與低溫製冷技術的重要基礎。</p>
+<h3 id="4-電磁場與電磁學理論">4. 電磁場與電磁學理論</h3>
+<p>開爾文早年深受傅立葉數學方法影響，並將數學分析應用於電磁學。</p>
+<p>重要研究包括：</p>
+<ul>
+<li>電位理論。</li>
+<li>電場與磁場的數學描述。</li>
+<li>電磁能量與物質的關係。</li>
+<li>電氣測量及電容器。</li>
+<li>電磁波與光的理論問題。</li>
+</ul>
+<p>他發展了多種電磁學數學模型，並研究電磁現象與力學系統之間的相似性。</p>
+<p>開爾文的研究與法拉第、馬克士威的工作形成互補：</p>
+<ul>
+<li>法拉第以實驗揭示電磁感應與力線思想。</li>
+<li>開爾文發展相關數學及物理模型。</li>
+<li>馬克士威進一步建立完整的古典電磁場方程式。</li>
+</ul>
+<h3 id="5-熱傳導方程式與傅立葉理論">5. 熱傳導方程式與傅立葉理論</h3>
+<p>開爾文早年研究傅立葉的熱傳導理論，將其數學方法延伸至其他物理問題。</p>
+<p>典型的熱傳導方程式為：</p>
+<p>\[ \frac{\partial T}{\partial t} =\alpha\nabla^2T \]</p>
+<p>其中：</p>
+<ul>
+<li>\(T\)：溫度。</li>
+<li>\(t\)：時間。</li>
+<li>\(\alpha\)：熱擴散率。</li>
+<li>\(\nabla^2\)：拉普拉斯算子。</li>
+</ul>
+<p>這個方程式描述熱量如何在物體內部隨時間擴散。</p>
+<p>開爾文的相關研究也使他能夠運用熱傳導模型研究地球冷卻及地球年齡。</p>
+<h3 id="6-地球年齡估算">6. 地球年齡估算</h3>
+<p>十九世紀時，地質學家已經知道地球具有極為漫長的歷史，但尚未有放射性定年技術。</p>
+<p>開爾文利用物理學方法估算地球年齡，主要考慮：</p>
+<ol>
+<li>地球早期處於高溫狀態。</li>
+<li>地球逐漸向外界散熱。</li>
+<li>地球內部溫度會隨時間變化。</li>
+<li>可透過地表溫度梯度及熱傳導模型推算冷卻時間。</li>
+</ol>
+<p>他在不同研究中提出過不同的估算值，十九世紀後期常見的估計約為數千萬年。</p>
+<p>這項估算後來被證明不完整。</p>
+<p>主要原因是他不知道地球內部存在放射性元素衰變所產生的熱，也未掌握地球內部的複雜熱傳輸過程。</p>
+<p>二十世紀放射性定年法發展後，科學家才逐漸確立地球約有45.4億年的歷史。</p>
+<h2 id="十、開爾文的重要工程發明與實用技術">十、開爾文的重要工程發明與實用技術</h2>
+<p>開爾文不僅是理論物理學家，也是一位具有高度工程創造力的發明家。</p>
+<p><a href="https://images.openai.com/static-rsc-4/FUfRhucrKjWqhQLbB-fMnSXnr-KQod6JqVcgWH49KQn1W30f_ZJlc2qbcR_026WdV758YJ0-RBXW6AzFdmzTdNB7EVlRZR7cONTGjjLBDCxuKpcaUPkGwjkqRmW0vy7JW7iGZeliD0-QIFPNEsJ7O0be9UiNh9O-vsyAPYCn4lM?purpose=inline">Thomson&#39;s mirror galvanometer, 1858 | Science Museum Group Collection</a></p>
+<p>1. 鏡式檢流計（Mirror Galvanometer）</p>
+<p>用於測量極微弱的電流，是早期海底電報訊號接收的重要儀器。</p>
+<p><a href="https://images.openai.com/static-rsc-4/rg9L5Zr1rXal4mVCXDpMH33O_WaqwV72p40r5j71jYrdm_wzPzArRBlFa2CaEAVTy7wDMwsmSMFG88Q-TtlzTojjty5WmktTxR-JPOc_r9H1_KKXu8xWbc9-CObshpOUxIIJ5rTh0NcrtxBYEd9Sb5MIc5n5GoPg4_7oa4PCAlY?purpose=inline">Lot 192 - A Telegraph Siphon Recorder By Muirhead &amp; Co.</a></p>
+<p>2. 虹吸式記錄器（Siphon Recorder）</p>
+<p>將微弱電報訊號轉換成紙帶上的記錄，改善長距離電報通信。</p>
+<p><a href="https://images.openai.com/static-rsc-4/jHejdqxGDZvm5512856ZCUqL-dsQ3X3wz6KEY5D4XAUUrOU_vlKEgtlhM8t7DEku6Brn2U-kNng37cyoq_2vk-KuZ5SMxEMd-oAdJJwEW3r_lJXEelR5xc41ejlFh32WmnGgs4Vz3PbCkyTatRezu-eqrZhpKG9GST_oVc1eNeM?purpose=inline">William Thomson&#39;s Tide Predicting Machine, 1872 | Science Museum Group Collection</a></p>
+<p>3. 潮汐預測機（Tide Predicting Machine）</p>
+<p>以機械方式合成多個潮汐週期，預測未來潮汐變化。</p>
+<p><a href="https://images.openai.com/static-rsc-4/wp5Ulb0ygU26pgJAP8tPOVoGZJkMf7MlQk7BxlVoDjW2Phn70fN0N04Wh0q1cO9ifNt6j9wRLfxp94ivDe6CzDz6ecKGClFC43loQFh-t0gfrEssk-0xQk3jcX39U-XxHmJaPc_4zGb_JNXYBJNTFa2kMNPTjHx2NDXQ-nb1kYY?purpose=inline">Archives - CFB Esquimalt Naval and Military Museum</a></p>
+<p>4. 改良航海羅盤</p>
+<p>改善船舶磁性干擾及指針震盪問題，提高海上導航的可靠性。</p>
+<p><a href="https://images.openai.com/static-rsc-4/gxJ5ZtuyMDVpoYqeMoxUJ3iJrwz2GWFwxO-4vHyyxj95SoelkXrZC-h-PSbbTMojR3-foBp05n1U-yiG4ufzmuPSYMGGfaoO4jqlu_UAJkpBieQmzZkC3c-BqmIxoBid8wrKl0OF9_ya7fFdxZVGa2WtEfCoLIdRLIJFwPqkY70?purpose=inline">Sir William Thomson&#39;s quadrant electrometer – Works – Waywiser Home</a></p>
+<p>5. 象限靜電計（Quadrant Electrometer）</p>
+<p>用於測量電位差及微弱電氣變化，是精密電學測量的重要設備。</p>
+<h2 id="十一、開爾文與其他重要科學家的關係">十一、開爾文與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/AqVB5daEol4kGYjRnod1DcvMFj_mC367OJzuoh8QjTUF_5SKT2AMWCn8zWf3FqfwTDrl4AaZFBEGanlJN1oiSd1eiuvFOMXxbSalE9NZDBgYsGlKlr54rpjD_TVktElakYN5HrA-jhYK2UqQPadWCR6fdmL6LHh2vqBl0HzI1jk?purpose=inline">Sadi Carnot et la naissance de la thermodynamique - CultureSciences de l&#39;Ingénieur - éduscol STI</a></p>
+<p>1. 薩迪・卡諾（1796－1832）</p>
+<p>卡諾於1824年提出理想熱機理論。開爾文受到卡諾思想啟發，於1848年發展絕對溫標，並將卡諾熱機理論與第二定律結合。</p>
+<p><a href="https://images.openai.com/static-rsc-4/bZlUsQlM2DWXzyUu9y-F7zwTsiKdkCZcTu1RRsjX80O1wcqfgUiNamfSDCvoevEPjL-21R7qzXonQcZaWbJywMDcvOphG-0DMqW638ZZjVide2w6ZQWyAYoRSZGb5I1dwCJBIIbSc5d-0D9LzJ3OY0Z9Ojn-_y-zvE4YyHOqqn4?purpose=inline">La historia de la electricidad: Ley De Joule</a></p>
+<p>2. 詹姆士・焦耳（1818－1889）</p>
+<p>兩人於1847年相識，後來合作研究氣體膨脹及溫度變化，發現焦耳－湯姆森效應。這項研究對低溫物理及氣體液化技術影響深遠。</p>
+<p><a href="https://images.openai.com/static-rsc-4/FHc4E6hp3JdCRSkUzrnrIcN-vOYLpd04aKHc2AmxfHNb5v3KNFIzDSda2LpSilMtaA04Fj_dDsIC1Ov6HbKqIgY6TRNZlF5ijBl0iEZ0LVnlJ9jVD95S7zJXKAejFyeiGLm74BFjoSXHW-nZJe6R53BO4ki-ympwC5rQcmTWQSM?purpose=inline">Biografia de Rudolf Clausius</a></p>
+<p>3. 魯道夫・克勞修斯（1822－1888）</p>
+<p>與開爾文幾乎同時發展熱力學第二定律。克勞修斯從熱量傳遞方向表述第二定律，開爾文則從熱機不可能完全將熱轉化為功的角度表述。</p>
+<p><a href="https://images.openai.com/static-rsc-4/SrBBylebbyGOZZc9Hze55a0BfV7pak8wQ07R3hcWRErzcYG4fETkBOk8SjmTtCU3P0SUaypsHnMM_90EWvFQgnyyqxYHQNFfHOD85kpVq7kkdQQcfoE_u2ddG31zwlm9zr1-YPazqW1HTiULkCEU9TmJJDvUMedOPbfgLvufFJ8?purpose=inline">Porträt von JAMES CLERK MAXWELL, schottischer Physiker</a></p>
+<p>4. 詹姆士・馬克士威（1831－1879）</p>
+<p>馬克士威發展完整的電磁場理論，開爾文則在電磁學數學方法及工程應用方面做出重要貢獻。兩人共同推進十九世紀物理學的發展。</p>
+<p><a href="https://images.openai.com/static-rsc-4/ucdsBBFWvpmbqzJeqxZyQt8OJnL0UfDaXsJA82IYRYLK9gAbNTr9Rqyp_5balgpNUcGsYaC3b-rJx5FenzldMSvG7IcQv6hPylQn9SfszlCCVhjV9L4pY_s7stiLTLYQs6VdIUeL_5oU5BVS3ZyFp1aNNqq1CAsryCXSRvjKrN8?purpose=inline">An anxious descent – Physics World</a></p>
+<p>5. 路德維希・波茲曼（1844－1906）</p>
+<p>波茲曼發展統計力學，從分子運動與機率解釋熱力學第二定律。開爾文則代表古典熱力學及連續介質物理學的重要傳統。兩人在統計物理及熱力學詮釋上有不同的研究側重。</p>
+<p><a href="https://images.openai.com/static-rsc-4/szB41pQlQJqxXlR-zFxsTIe9Lkd4DmDwcMKzDsT31vWerSAAdNxTmXIIgRFQSUNsO6IESvuG432YXaKEQuQr7erZZ7GL7RkE7srost2Rzg8wsCDT4jy-UF4ntfledZzSG7lj0IGpLzIYu9hpgnoL8Z2LzMlWQOjM7M_fUjQU22U?purpose=inline">The Faraday cage: from Victorian experiment to Snowden-era paranoia | Physics | The Guardian</a></p>
+<p>6. 麥可・法拉第（1791－1867）</p>
+<p>法拉第以實驗研究電磁感應及電磁力線，開爾文則發展電磁學的數學描述與工程應用。兩人的研究共同構成古典電磁學的重要基礎。</p>
+<h2 id="十二、開爾文主要著作與論文">十二、開爾文主要著作與論文</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作或論文</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1841</td>
+<td>傅立葉級數相關論文</td>
+<td>數學分析與熱傳導</td>
+</tr>
+<tr>
+<td>1842</td>
+<td>《論熱的均勻運動及其與電學數學理論的關係》</td>
+<td>熱學與電學的數學聯繫</td>
+</tr>
+<tr>
+<td>1848</td>
+<td>《論建立於卡諾熱動力理論的絕對溫標》</td>
+<td>絕對溫標</td>
+</tr>
+<tr>
+<td>1851</td>
+<td>《熱的動力理論》</td>
+<td>熱力學第二定律</td>
+</tr>
+<tr>
+<td>1852</td>
+<td>焦耳－湯姆森效應相關研究</td>
+<td>氣體節流膨脹與溫度變化</td>
+</tr>
+<tr>
+<td>1860年代</td>
+<td>電報與電磁測量論文</td>
+<td>海底電纜、訊號接收與電氣測量</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>《巴爾的摩講座》</td>
+<td>光的理論與物理學基礎</td>
+</tr>
+</tbody></table>
+<p>開爾文一生發表超過600篇科學論文，並取得數十項專利，研究範圍涵蓋理論物理與實際工程。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://collection.sciencemuseumgroup.org.uk&sz=32">image</a></p>
+<p>Science Museum Group Collection+2</p>
+<h2 id="十三、開爾文生平重要年份總表">十三、開爾文生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1824</td>
+<td>6月26日出生於愛爾蘭貝爾法斯特</td>
+</tr>
+<tr>
+<td>1830</td>
+<td>全家遷往格拉斯哥</td>
+</tr>
+<tr>
+<td>1834</td>
+<td>10歲進入格拉斯哥大學</td>
+</tr>
+<tr>
+<td>1840</td>
+<td>前往劍橋準備深造</td>
+</tr>
+<tr>
+<td>1841</td>
+<td>進入劍橋大學彼得學院</td>
+</tr>
+<tr>
+<td>1842</td>
+<td>發表熱傳導與電學數學理論相關論文</td>
+</tr>
+<tr>
+<td>1845</td>
+<td>取得劍橋學士學位，赴巴黎研究</td>
+</tr>
+<tr>
+<td>1846</td>
+<td>22歲成為格拉斯哥大學自然哲學教授</td>
+</tr>
+<tr>
+<td>1847</td>
+<td>研究卡諾熱機理論，並與焦耳相識</td>
+</tr>
+<tr>
+<td>1848</td>
+<td>提出絕對溫標的思想</td>
+</tr>
+<tr>
+<td>1849</td>
+<td>父親逝世</td>
+</tr>
+<tr>
+<td>1850</td>
+<td>深入研究熱力學第二定律</td>
+</tr>
+<tr>
+<td>1851</td>
+<td>發表熱的動力理論，提出第二定律的重要表述</td>
+</tr>
+<tr>
+<td>1852</td>
+<td>與焦耳合作研究焦耳－湯姆森效應；結婚</td>
+</tr>
+<tr>
+<td>1854</td>
+<td>研究太陽系熱力學，參與電報電纜相關專利</td>
+</tr>
+<tr>
+<td>1855</td>
+<td>開始研究海底電報</td>
+</tr>
+<tr>
+<td>1856</td>
+<td>與焦耳研究金屬及電流熱效應</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>加入大西洋電報公司</td>
+</tr>
+<tr>
+<td>1858</td>
+<td>參與第一條跨大西洋電纜工程，發展鏡式檢流計</td>
+</tr>
+<tr>
+<td>1859</td>
+<td>研究電纜訊號傳播</td>
+</tr>
+<tr>
+<td>1861－1863</td>
+<td>估算太陽熱能及地球年齡</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>參與新一輪跨大西洋電纜工程</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>跨大西洋電報成功，獲封爵士</td>
+</tr>
+<tr>
+<td>1867</td>
+<td>發展虹吸式電報記錄器</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>研究潮汐預測</td>
+</tr>
+<tr>
+<td>1870</td>
+<td>第一任妻子逝世，遷入格拉斯哥大學新校區住宅</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>開始長期液體擴散實驗</td>
+</tr>
+<tr>
+<td>1872－1873</td>
+<td>發展潮汐預測機</td>
+</tr>
+<tr>
+<td>1874</td>
+<td>再婚</td>
+</tr>
+<tr>
+<td>1875</td>
+<td>展示潮汐預測機及潮位測量設備</td>
+</tr>
+<tr>
+<td>1876－1878</td>
+<td>改良航海羅盤</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>研究旋轉流體及地球物理</td>
+</tr>
+<tr>
+<td>1880－1881</td>
+<td>研究電燈與電力工程</td>
+</tr>
+<tr>
+<td>1882－1883</td>
+<td>研究低溫技術與陀螺羅盤</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>赴美發表巴爾的摩講座</td>
+</tr>
+<tr>
+<td>1885－1887</td>
+<td>研究電磁學、孤立波及重力測量</td>
+</tr>
+<tr>
+<td>1888</td>
+<td>研究南極冰層及氣候</td>
+</tr>
+<tr>
+<td>1890</td>
+<td>當選英國皇家學會會長</td>
+</tr>
+<tr>
+<td>1892</td>
+<td>受封開爾文男爵</td>
+</tr>
+<tr>
+<td>1894</td>
+<td>參與馬克沁實驗飛行器研究</td>
+</tr>
+<tr>
+<td>1896</td>
+<td>格拉斯哥大學慶祝其任教五十週年</td>
+</tr>
+<tr>
+<td>1898</td>
+<td>研究無線電通信</td>
+</tr>
+<tr>
+<td>1899</td>
+<td>從格拉斯哥大學退休</td>
+</tr>
+<tr>
+<td>1904</td>
+<td>當選格拉斯哥大學校監</td>
+</tr>
+<tr>
+<td>1907</td>
+<td>12月17日逝世，享年83歲</td>
+</tr>
+</tbody></table>
+<h2 id="十四、開爾文的歷史地位與科學影響">十四、開爾文的歷史地位與科學影響</h2>
+<p><a href="https://images.openai.com/static-rsc-4/fWnHnhM5BChvUANyKqKOyHyPbGalMnN_B0Bnbaw4PL-wBwAxJ8zPmVLGDx5nxuXpi-sDe9N6_9aMcsYgaaxTJfvR-N-dHeW1m4P6-hhivkrfBVkzqpwL-AsB0zmJyDUreFnVCMKEZh0_jslnvqb5x8_uEKNEZjbMuTgMA8uAD_bAJSpFwu2E-N1g8XRyerJf?purpose=inline">Statue of Lord Kelvin in Kelvingrove Park - Glasgow, Scotland</a></p>
+<p>開爾文是十九世紀物理學的重要代表人物。他的研究橫跨理論物理、數學、工程技術及地球科學，對現代科學發展具有多方面的影響。</p>
+<h3 id="1-熱力學方面">1. 熱力學方面</h3>
+<p>開爾文與卡諾、焦耳、克勞修斯共同建立熱力學的基本架構。</p>
+<ul>
+<li>卡諾提出理想熱機及效率上限。</li>
+<li>焦耳證明熱與功之間的等價關係。</li>
+<li>克勞修斯建立熱力學第二定律及熵的概念。</li>
+<li>開爾文發展絕對溫標及第二定律的重要表述。</li>
+</ul>
+<h3 id="2-電磁學與通信方面">2. 電磁學與通信方面</h3>
+<p>開爾文將物理理論轉化為實際工程技術，尤其在跨大西洋海底電報工程中發揮關鍵作用。</p>
+<p>他的電報儀器及電纜訊號研究，對十九世紀全球通信網絡的建立具有重大影響。</p>
+<h3 id="3-地球物理學方面">3. 地球物理學方面</h3>
+<p>他嘗試以熱傳導定律估算地球年齡，雖然結果受到後來放射性研究的修正，但他的工作代表了將基礎物理定律應用於地球科學的重要嘗試。</p>
+<h3 id="4-科學教育方面">4. 科學教育方面</h3>
+<p>他在格拉斯哥大學任教長達53年，重視實驗室教育及理論與實驗的結合，對現代大學物理教育制度的發展有所貢獻。</p>
+<p>總結而言，開爾文最重要的歷史意義，是將熱力學、數學物理與工程技術緊密結合。他不僅幫助建立現代熱力學，也將物理學的研究成果轉化為海底電報、精密儀器及航海技術等實際應用。</p>
+<h2 id="十五、延伸閱讀：十九世紀熱力學發展人物時間軸">十五、延伸閱讀：十九世紀熱力學發展人物時間軸</h2>
+<h2 id="從卡諾到波茲曼：熱力學發展脈絡">從卡諾到波茲曼：熱力學發展脈絡</h2>
+<ol>
+<li><p>1824｜薩迪・卡諾</p>
+<p>《論火的動力》</p>
+<p>提出理想熱機與卡諾循環。</p>
+</li>
+<li><p>1848｜開爾文</p>
+<p>絕對溫標</p>
+<p>建立不依賴特定溫度計物質的溫度尺度。</p>
+</li>
+<li><p>1850｜克勞修斯</p>
+<p>熱力學第二定律</p>
+<p>建立熱量傳遞方向的基本原理。</p>
+</li>
+<li><p>1851｜開爾文</p>
+<p>熱力學第二定律的另一種表述</p>
+<p>說明熱機不可能將單一熱源吸收的熱量完全轉化為功。</p>
+</li>
+<li><p>1852｜焦耳與開爾文</p>
+<p>焦耳－湯姆森效應</p>
+<p>研究氣體節流膨脹與溫度變化。</p>
+</li>
+<li><p>1865｜克勞修斯</p>
+<p>熵（Entropy）</p>
+<p>正式提出熵的概念與名稱。</p>
+</li>
+<li><p>1870年代｜波茲曼</p>
+<p>統計力學</p>
+<p>從微觀分子運動解釋熵與熱力學第二定律。</p>
+</li>
+<li><p>1900｜普朗克</p>
+<p>量子論</p>
+<p>將能量量子化思想引入黑體輻射研究。</p>
+</li>
+</ol>
+<h2 id="十六、建議閱讀順序">十六、建議閱讀順序</h2>
+<p>若要完整理解開爾文的科學思想，建議依照以下順序閱讀：</p>
+<ol>
+<li>**卡諾：**理解理想熱機與熱機效率。</li>
+<li>**焦耳：**理解熱與功的等價關係。</li>
+<li>**克勞修斯：**理解熱力學第二定律及熵。</li>
+<li>**開爾文：**理解絕對溫標、第二定律及焦耳－湯姆森效應。</li>
+<li>**馬克士威：**理解電磁學與氣體動力論。</li>
+<li>**波茲曼：**理解統計力學與熵的微觀意義。</li>
+<li>**普朗克：**理解熱力學與量子論的歷史連結。</li>
+</ol>
+<p>主要參考資料：</p>
+<ul>
+<li><a href="https://www.gla.ac.uk/explore/lordkelvin200/about/?utm_source=chatgpt.com">格拉斯哥大學：Lord Kelvin 200－完整生平與時間軸</a></li>
+<li><a href="https://mathshistory.st-andrews.ac.uk/Biographies/Thomson/?utm_source=chatgpt.com">MacTutor：William Thomson（Lord Kelvin）生平</a></li>
+<li><a href="https://collection.sciencemuseumgroup.org.uk/people/ap24540/thomson-william-baron-kelvin?utm_source=chatgpt.com">英國科學博物館：William Thomson 1824－1907</a></li>
+<li><a href="https://catalogues.royalsociety.org/CalmView/Record.aspx/Record.aspx?id=NA8289&src=CalmView.Persons&utm_source=chatgpt.com">英國皇家學會：William Thomson 檔案</a></li>
+<li><a href="https://www.theiet.org/membership/library-and-archives/the-iet-archives/biographies/lord-kelvin-1824-1907?utm_source=chatgpt.com">英國工程技術學會：Lord Kelvin 生平與工程貢獻</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

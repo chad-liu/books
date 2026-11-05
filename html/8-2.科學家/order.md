@@ -6,6 +6,7 @@
 克卜勒(1571~1630)
 哈維(1578~1657)
 波以耳(1627~1691)
+波以耳（Robert Boyle）生平大事記
 列文虎克(1632~1723)
 牛頓(1642~1727)
 牛頓時間軸
@@ -14,20 +15,35 @@
 庫侖(1736~1806)
 赫歇爾(1738~1822)
 拉瓦節(1743~1794)
+拉瓦節（Antoine-Laurent de Lavoisier）
 伏打(1745~1827)
 拉普拉斯(1749~1827)
 道爾頓(1766~1844)
+威廉・馮・洪堡（Wilhelm von Humboldt）生平大事
 法拉第(1791~1867)
+法拉第（Michael Faraday）生平大事記
+卡諾（Sadi Carnot）生平大事記
 維勒(1800~1882)
 焦耳(1818~1889)
+焦耳（James Prescott Joule）生平大事記
 克勞修斯(1822~1888)
+克勞修斯（Rudolf Clausius）生平大事記
 孟德爾(1822~1884)
+孟德爾（Gregor Johann Mendel）
 巴斯德(1822~1895)
+巴斯德（Louis Pasteur）生平大事記
+開爾文（William Thomson）生平大事
 馬克士威(1831~1879)
+馬克士威（James Clerk Maxwell）生平大事記
 門得列夫(1834~1907)
+門得列夫（Dmitri Mendeleev）生平大事記
 柯霍(1843~1910)
+柯霍（Robert Koch）生平大事記
 波茲曼(1844~1906)
+波茲曼（Ludwig Boltzmann）生平大事記
+赫茲（Heinrich Rudolf Hertz）生平大事記
 普朗克(1858~1947)
+普朗克（Max Planck）生平大事記
 摩根(1866~1945)
 哈伯(1868~1934)
 愛因斯坦(1879~1955)

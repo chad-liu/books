@@ -1,0 +1,539 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="門得列夫（dmitri-mendeleev）生平大事記">門得列夫（Dmitri Mendeleev）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/KkeFqBWo6oqrZ24LhLiaBkv3z1OuTzlj4zJFgZCv7phM49wID5mY6VsHkRee16s76pK8CwI8CCZTRjcSerjiBX8o2c_usxor_reEPiCH6G5rEQVGHyTRVKv1K043J8w598NLsKsWirNpjXw0DZy_7Eg7A0ySRyBWWlZcfmkKQWA?purpose=inline">Portrait of the chemist Dimitri Ivanovich Mendeleiev</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/ADsPLVQco6tSKkkwrwyexpMqZZKdTt7fn1wyuLqSexUfZp0UyQ134OUfukFOtmFD5lCy6WgX99nS50st6vO0uLW6Xf4qWdx8CyfAvvmttgKF3yDPyx8FczPfmW1ZaiI5UvUW1TI8TWpuefJe1jPwfMXs3YlPVLOXApOam6qi4b0?purpose=inline">Таблица Менделеева приснилась учёному? - Azbuka media</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/O_kBxW-Xi3R0J-cbzMz6XPqP4DbNb6kKcIgwY57-5GjJjSTSDrGATLn5lp3-G55-8wOcCgEljfNFs88lWOmm3KseD2INj3cAfZBWPeDi9Ea_mGq5LOtcDzcRur0ohs6c5gEg3t7v5TTBo_auqIgG3GSB3ndRFInWVMzule1rMh0?purpose=inline">Who Invented the Periodic Table? | Math Tutor DVD - Online Math Help, Math Homework Help, Math Problems, Math Practice!</a></p>
+<p>6</p>
+<p>俄羅斯化學家｜1834年2月8日－1907年2月2日</p>
+<p>**德米特里・伊凡諾維奇・門得列夫（Dmitri Ivanovich Mendeleev）**是十九世紀最重要的化學家之一，也是現代元素週期表的主要建立者。</p>
+<p>他最偉大的科學成就，是在1869年提出元素週期律，依據元素的原子量及化學性質之間的規律，建立元素週期表。他不僅整理了當時已知的化學元素，更大膽地留下空格，預測尚未發現元素的性質。後來，鎵、鈧、鍺等元素相繼被發現，證實了他的預測。</p>
+<p>門得列夫的工作使化學從零散的元素知識，逐漸發展成具有系統性與預測能力的現代科學。</p>
+<h2 id="一、出生與早年生活（1834－1850）">一、出生與早年生活（1834－1850）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/rVYWNMoGQ1N9blvn0vbiqaxO99d_UhzHrAb6fyjw_XmpsGwF9r7J-ATkyZQ9nyTu-YuHy-rXgx52hL2_e6eGGwdS6xDXj_zw4jItDuBHHbqEKMcZEdGU06L1wve5feNiVo4NjcI3yEkbaJAd7Pza4XiMLQAIfjvR7NNK-m_YEmQ?purpose=inline">Книга &quot;Мир ученого Менделеева. Как рождаются научные открытия&quot; Ульяненко М - купить книгу в интернет-магазине «Москва» ISBN: 978-5-9614-9428-0, 1201370</a></p>
+<p><a href="https://www.moscowbooks.ru/book/1201370/?utm_source=chatgpt.com">moscowbooks.ru</a></p>
+<h3 id="1834年：出生於西伯利亞">1834年：出生於西伯利亞</h3>
+<ul>
+<li>2月8日：門得列夫出生於俄羅斯帝國西伯利亞托博爾斯克（Tobolsk）。</li>
+<li>父親伊凡・帕夫洛維奇・門得列夫（Ivan Pavlovich Mendeleev）是一名中學校長。</li>
+<li>母親瑪麗亞・德米特里耶芙娜（Maria Dmitrievna）出身於商業家庭，具有經營與管理能力。</li>
+<li>門得列夫是家中眾多子女之一，家庭人口相當多。</li>
+<li>他出生時正值俄羅斯帝國時期，當時俄羅斯的科學教育與工業發展正逐步擴張。</li>
+</ul>
+<h3 id="1840年代：家庭遭遇困境">1840年代：家庭遭遇困境</h3>
+<ul>
+<li>門得列夫的父親因視力問題逐漸失去工作能力。</li>
+<li>家庭經濟狀況轉差。</li>
+<li>母親努力維持家庭生計，並重視孩子的教育。</li>
+<li>門得列夫在母親的支持下，逐漸展現對自然科學與數學的興趣。</li>
+</ul>
+<h3 id="1847年：父親逝世">1847年：父親逝世</h3>
+<ul>
+<li>門得列夫的父親去世，家庭經濟更加困難。</li>
+<li>母親決定帶領門得列夫前往俄羅斯首都聖彼得堡，希望讓他接受更好的教育。</li>
+</ul>
+<h3 id="1849－1850年：前往聖彼得堡">1849－1850年：前往聖彼得堡</h3>
+<ul>
+<li>母親帶著門得列夫長途旅行，從西伯利亞前往聖彼得堡。</li>
+<li>這段旅程對年輕的門得列夫影響深遠。</li>
+<li>母親希望他能進入高等教育機構，接受專業科學訓練。</li>
+</ul>
+<h2 id="二、求學與早期學術生涯（1850－1859）">二、求學與早期學術生涯（1850－1859）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/2iPTeTYMqyDxf-Xk_Pxc37ec_0s_rZ3pe2IXoI_ti2VnNYgYETXXvGo7fvIxCp0URrdHeV7jXkjSWKfZ1RChiGS9SkHg65u242ETtwK9QJPFxN91DdEE8CG1J6P457hVEufWfr_yGTKy63d7SU5EWIr2cIRmM8cfBzZXFAvIWso?purpose=inline">Дмитрий Иванович Менделеев. Жизнь и научный подвиг - online presentation</a></p>
+<p><a href="https://en.ppt-online.org/519506?utm_source=chatgpt.com">en.ppt-online.org</a></p>
+<h3 id="1850年：進入聖彼得堡師範學院">1850年：進入聖彼得堡師範學院</h3>
+<ul>
+<li>門得列夫進入聖彼得堡主要師範學院（Main Pedagogical Institute）。</li>
+<li>主修自然科學，特別是化學、物理與數學。</li>
+<li>這所學校培養中學教師，也提供相當扎實的科學教育。</li>
+<li>母親在他求學期間去世，對他造成重大打擊。</li>
+</ul>
+<h3 id="1851－1854年：接受化學與自然科學訓練">1851－1854年：接受化學與自然科學訓練</h3>
+<ul>
+<li>門得列夫深入研究化學、礦物學、物理學及數學。</li>
+<li>他開始熟悉當時歐洲化學界的重要研究成果。</li>
+<li>逐漸形成重視實驗觀察、定量分析及理論整理的研究風格。</li>
+</ul>
+<h3 id="1855年：完成學業並開始教學">1855年：完成學業並開始教學</h3>
+<ul>
+<li>門得列夫完成師範學院學業。</li>
+<li>曾在克里米亞及敖德薩等地從事教學工作。</li>
+<li>由於健康因素，他一度需要調養身體。</li>
+<li>這段時期使他開始思考如何將複雜的化學知識整理成系統化教材。</li>
+</ul>
+<h3 id="1856年：取得碩士學位">1856年：取得碩士學位</h3>
+<ul>
+<li>門得列夫回到聖彼得堡。</li>
+<li>完成有關矽化合物的研究，取得化學碩士學位。</li>
+<li>開始在聖彼得堡大學從事教學與研究工作。</li>
+</ul>
+<h3 id="1857－1859年：成為大學教師">1857－1859年：成為大學教師</h3>
+<ul>
+<li>門得列夫在聖彼得堡大學擔任化學講師。</li>
+<li>研究方向包括化學結構、溶液、物質性質及化學理論。</li>
+<li>逐漸建立自己的學術聲望。</li>
+</ul>
+<h2 id="三、赴歐洲進修與化學研究（1859－1863）">三、赴歐洲進修與化學研究（1859－1863）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/h6B9SM8WuVvcuFlV4HZ1HKNeh9yBlPltejefQLBhydFp_bwjPnobTWWYJ3FxOva55GGMR8pGxMa7Ao3HY44vnMY1BddSAK8kOHni2qotA5wOVzqBkWDwnTcq9bGmjTSi9RxukNEDb8bKdQfRMNWBA_Rxvbii_KGgPCupRD7rtNY?purpose=inline">Historische Stadtansichten | Heidelberg</a></p>
+<p><a href="https://www.heidelberg.de/HD/Presse/historische%2Bstadtansichten.html?utm_source=chatgpt.com">heidelberg.de</a></p>
+<h3 id="1859年：前往德國海德堡進修">1859年：前往德國海德堡進修</h3>
+<ul>
+<li>門得列夫獲得資助，前往德國海德堡大學及當地科學研究環境進修。</li>
+<li>當時海德堡是歐洲重要的化學研究中心之一。</li>
+<li>他接觸到當時最新的物理化學研究方法。</li>
+</ul>
+<h3 id="1860年：參加卡爾斯魯厄化學大會">1860年：參加卡爾斯魯厄化學大會</h3>
+<p><a href="https://images.openai.com/static-rsc-4/55Ff6mfKwZNT0LlxjEwJtbBvsAEoDEssXYYkBlf5Br5KMyXaPdsRcwkmMIU0SgxWfialnlsA3L5hs8djrIVvopfgSIKNpmr6_G1QUkmd8e9-u9M1JHVxZlgdrWTcAi0MWblDimhd0RGUp4fTWG7oANuN0kvo5aYgSLctLQRe0hw?purpose=inline">History of Chemistry (@HistoryChem) on X</a></p>
+<p><a href="https://x.com/HistoryChem/status/1559762052515856384?utm_source=chatgpt.com">x.com</a></p>
+<ul>
+<li>門得列夫參加1860年在德國卡爾斯魯厄舉行的國際化學家會議。</li>
+<li>這是十九世紀化學發展史上的重要會議。</li>
+<li>會議討論原子、分子、原子量及化學式等基本概念。</li>
+<li>義大利化學家康尼查羅（Stanislao Cannizzaro）提出的觀點，對門得列夫後來整理元素原子量具有重要影響。</li>
+</ul>
+<p>歷史意義：</p>
+<p>當時各國化學家對原子量與分子量的定義仍有歧異，造成化學研究缺乏統一標準。卡爾斯魯厄會議有助於推動化學基本概念的統一，為門得列夫建立週期表創造了重要條件。</p>
+<h3 id="1861年：返回俄羅斯">1861年：返回俄羅斯</h3>
+<ul>
+<li>門得列夫結束歐洲進修，返回聖彼得堡。</li>
+<li>他開始撰寫俄文化學教材。</li>
+<li>逐漸把研究重心轉向化學元素之間的規律性。</li>
+</ul>
+<h3 id="1862年：結婚">1862年：結婚</h3>
+<ul>
+<li>門得列夫與費奧茲娃・列謝娃（Feozva Leshcheva）結婚。</li>
+<li>同時持續從事教學與化學研究。</li>
+</ul>
+<h3 id="1863年：化學教材與學術地位">1863年：化學教材與學術地位</h3>
+<ul>
+<li>門得列夫持續整理化學教學內容。</li>
+<li>他發現當時的化學教材多半依照元素或化合物的個別特性排列，缺乏完整的統一架構。</li>
+<li>這個問題逐漸促使他思考元素之間是否存在更深層的自然規律。</li>
+</ul>
+<h2 id="四、建立元素週期表的關鍵時期（1864－1869）">四、建立元素週期表的關鍵時期（1864－1869）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/M09pRzuWZf5kEIOeYlpT-fAB4u3mK1RKxoypmGnEU8ab3p-fmMilGdD-4NJtHZivWPDnX_smI33NjgpmmLZ2mwH4mCO3AKcoFgjNIqDv8aNduK4YzCLcao0oYG1hE_D7zesINnVjWN27-8LU80G2qKb1JZFCR1kRzFQySaj2_r8?purpose=inline">Mendeleev&#39;s Periodic Table Draft Is Virtually Unrecognizable — But It Changed Science Forever | Live Science</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/I05zFfuFScmRFtHvfMkm9OCHP0MY8PacUgzMv9sRJJG0uasBD6L3u3GOiZWPcyltDGNgwfu4e01pfoI0p7V_xGz_6CY_O56nfVXUytUZC7wLC9f10Pwg9Mr-T7y0SLry9XqSdwGVQbhGOsNnPee75zbYMyABt8Fs8jF_LuYry2Y?purpose=inline">Perkembangan sistem periodik unsur ~ CHEMISTRY 35</a></p>
+<p>這是門得列夫一生中最重要的階段。他從整理化學教材出發，逐漸發現元素的原子量與化學性質之間存在週期性的規律，最後建立元素週期表。</p>
+<h3 id="1864年：開始系統整理化學元素">1864年：開始系統整理化學元素</h3>
+<ul>
+<li>門得列夫出版《有機化學》相關著作。</li>
+<li>他開始思考如何將當時已知的元素依照共同性質加以分類。</li>
+<li>逐漸注意到元素原子量與化學性質之間具有某種規律。</li>
+</ul>
+<h3 id="1865年：研究溶液與化學性質">1865年：研究溶液與化學性質</h3>
+<ul>
+<li>門得列夫取得聖彼得堡大學博士學位。</li>
+<li>研究主題涉及溶液及其化學性質。</li>
+<li>他持續從事化學教學，並開始編寫更完整的無機化學教材。</li>
+</ul>
+<h3 id="1866年：擔任聖彼得堡大學教授">1866年：擔任聖彼得堡大學教授</h3>
+<ul>
+<li>門得列夫獲聘為聖彼得堡大學教授。</li>
+<li>他開始編寫《化學原理》（Principles of Chemistry）。</li>
+<li>在整理教材的過程中，他需要尋找一套可以解釋元素之間關係的分類原則。</li>
+</ul>
+<h3 id="1867年：深入研究元素分類">1867年：深入研究元素分類</h3>
+<ul>
+<li>門得列夫擔任聖彼得堡大學無機化學教授。</li>
+<li>他持續研究元素的原子量與化學性質。</li>
+<li>逐漸發現某些元素雖然原子量不同，但具有相似的化學特性。</li>
+<li>他開始嘗試將元素排列成具有規律性的表格。</li>
+</ul>
+<h3 id="1868年：撰寫《化學原理》">1868年：撰寫《化學原理》</h3>
+<ul>
+<li>門得列夫開始撰寫《化學原理》（Основы химии）。</li>
+<li>他希望以元素的共同性質為基礎，建立完整的化學知識架構。</li>
+<li>在整理教材時，他發現元素排列若依照原子量遞增，可以觀察到化學性質反覆出現的現象。</li>
+</ul>
+<h3 id="1869年：提出元素週期律">1869年：提出元素週期律</h3>
+<p>最重要的科學成就</p>
+<ul>
+<li>門得列夫於1869年提出元素週期律。</li>
+<li>他將已知元素依照原子量排列，並比較其化學性質。</li>
+<li>發現元素性質會隨原子量增加而呈現週期性變化。</li>
+<li>他將具有相似化學性質的元素安排在同一族。</li>
+<li>在尚未發現元素應出現的位置留下空格。</li>
+</ul>
+<p>1869年2月：</p>
+<ul>
+<li>門得列夫完成早期週期表的整理。</li>
+<li>他製作元素排列表，並將研究成果提交俄羅斯化學學會。</li>
+</ul>
+<p>1869年3月：</p>
+<ul>
+<li>他的元素週期律研究在俄羅斯化學學會宣讀。</li>
+<li>研究成果以〈元素原子量與化學性質之間的關係〉為題發表。</li>
+<li>這項成果成為現代元素週期表的歷史起點之一。</li>
+</ul>
+<p>門得列夫的核心思想：</p>
+<blockquote>
+<p>元素的性質會隨原子量的變化呈現週期性規律。</p>
+</blockquote>
+<p>這就是早期元素週期律的基本觀念。</p>
+<h2 id="五、預測未知元素與週期表的完善（1870－1889）">五、預測未知元素與週期表的完善（1870－1889）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/yw0veI-lqGctcPwuywq1mKz09OIeTwI2VQi2H8k1yTjBnGKL32TqI2cJUcebHKM-8Ylhq5wMl1eoTfIj4w2eLjh5fibI26ULg-Y6GP1eytWGiIAlQnA67FcXeCD9KWJpZ2KflGozWNA3RP9dXCx9wr2evrrszg9fRkY6bYvG5r0?purpose=inline">The Periodic Table In the 1800s methods were</a></p>
+<p><a href="https://slidetodoc.com/the-periodic-table-in-the-1800s-methods-were/?utm_source=chatgpt.com">slidetodoc.com</a></p>
+<p>門得列夫最令人敬佩的地方，不只是整理已知元素，而是敢於依照週期律預測尚未發現元素的性質。</p>
+<h3 id="1870年：預測未知元素">1870年：預測未知元素</h3>
+<ul>
+<li>門得列夫進一步修正週期表。</li>
+<li>他發現若完全按照原子量排列，某些元素會與其化學性質不符。</li>
+<li>因此，他認為元素排列不能只看原子量，還必須考慮化學性質。</li>
+<li>他預測尚未發現的元素可能存在，並推算其原子量與物理、化學性質。</li>
+</ul>
+<p>他提出幾個重要的預測名稱：</p>
+<table>
+<thead>
+<tr>
+<th>門得列夫使用的名稱</th>
+<th>後來發現的元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Eka-boron（類硼）</td>
+<td>鈧（Sc）</td>
+</tr>
+<tr>
+<td>Eka-aluminium（類鋁）</td>
+<td>鎵（Ga）</td>
+</tr>
+<tr>
+<td>Eka-silicon（類矽）</td>
+<td>鍺（Ge）</td>
+</tr>
+</tbody></table>
+<p>其中「Eka」來自梵語，意為「一」，表示該元素位於已知元素的下一個週期位置。</p>
+<h3 id="1871年：提出較完整的週期表">1871年：提出較完整的週期表</h3>
+<ul>
+<li>門得列夫發表更完整的元素週期律論述。</li>
+<li>他修正元素排列方式，留下更多未知元素的位置。</li>
+<li>對尚未發現的元素提出更具體的預測，包括原子量、密度及化合物性質。</li>
+<li>這使元素週期表不再只是分類工具，而成為能夠預測未知物質的科學理論。</li>
+</ul>
+<h3 id="1875年：鎵（gallium）被發現">1875年：鎵（Gallium）被發現</h3>
+<p><a href="https://images.openai.com/static-rsc-4/v7dS8l591CquGJC_zDDLnnM-pbdGMciukAfqJn9m2dzLenPj58Ux0Mxu3IxXAGcOdW4UIJmDAyaz-uZ1zDknJnD5M4PmaMEcJa1TiyO_aLAi5dKPCNk5l6ewiKHKTUFvXBE4JWynTo1lV8PT70M2izJZ4flBTObSGsY5_KBkr0E?purpose=inline">Research Communities by Springer Nature</a></p>
+<p>鎵（Gallium，Ga）</p>
+<ul>
+<li>法國化學家勒科克・德布瓦博德朗（Paul-Émile Lecoq de Boisbaudran）發現鎵。</li>
+<li>鎵的性質與門得列夫預測的「類鋁」相當接近。</li>
+<li>門得列夫預測的密度與鎵的實際測量值也十分接近。</li>
+</ul>
+<p>歷史意義：</p>
+<p>鎵的發現是週期律獲得重要實驗支持的第一個重大事件。門得列夫的預測能力因此受到科學界高度重視。</p>
+<h3 id="1879年：鈧（scandium）被發現">1879年：鈧（Scandium）被發現</h3>
+<p><a href="https://images.openai.com/static-rsc-4/rGYZ0Dr1cOOJ8HJ8AhX_kHTKymVlvxIHWxDVXwpUIa66boL1wI6nDOkRV9Fex-6QulPPciyvkg9_ZM5mI1bKtwBnheCXuz0yaWxXm4KD-vedbmay1JA3Yw_h4TI8io6_ZE7DyaHoF8t6LMauDLlL9wbMD18qtlKq6es-B1GWR_4?purpose=inline">Facts, pictures, stories about the element Scandium in the Periodic Table</a></p>
+<p>鈧（Scandium，Sc）</p>
+<ul>
+<li>瑞典化學家拉爾斯・尼爾松（Lars Fredrik Nilson）發現鈧。</li>
+<li>鈧的性質與門得列夫預測的「類硼」相當吻合。</li>
+<li>進一步支持了週期律的正確性。</li>
+</ul>
+<h3 id="1882年：獲頒戴維獎章">1882年：獲頒戴維獎章</h3>
+<ul>
+<li>門得列夫與德國化學家洛塔・邁耶（Lothar Meyer）共同獲得英國皇家學會頒發的戴維獎章（Davy Medal）。</li>
+<li>這項榮譽肯定兩人在元素週期性研究上的重要貢獻。</li>
+</ul>
+<h3 id="1886年：鍺（germanium）被發現">1886年：鍺（Germanium）被發現</h3>
+<p><a href="https://images.openai.com/static-rsc-4/XllFd20sGzCdriXvuCXs3RV3DiJ4pnYKobfc_2QfT7AqbF-N7g3spGvULeAvCUsbBN5lcZox95EgnjbTGqfCTy-PuwYy8VI263xgH1-XWtP4Fx7e8JUuyqEO1B23lZp6okIiGXZq2Gns32X7wFQP--Jq8mBfLjwq96VdEbCv7Dk?purpose=inline">جرمانيوم - المعرفة</a></p>
+<p>鍺（Germanium，Ge）</p>
+<ul>
+<li>德國化學家克萊門斯・溫克勒（Clemens Winkler）發現鍺。</li>
+<li>鍺的性質與門得列夫預測的「類矽」非常接近。</li>
+<li>這項發現進一步證實週期律的預測能力。</li>
+</ul>
+<p>三項預測的驗證，使門得列夫的週期表逐漸獲得國際科學界的認可。</p>
+<h3 id="1889年：在英國發表重要演講">1889年：在英國發表重要演講</h3>
+<ul>
+<li>門得列夫受邀前往英國皇家研究院發表演講。</li>
+<li>他以元素週期律為主題，說明元素性質的週期性規律。</li>
+<li>這次演講使他在國際科學界的地位更加穩固。</li>
+</ul>
+<h2 id="六、晚年與其他科學研究（1890－1907）">六、晚年與其他科學研究（1890－1907）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/Zll10tIIr3OGDqTWPy-No5pdz6cl9EqMXIOXXpOnhBf_xOhPnjteWNEDFXxFTEjzz2nbFtihO8lwUtfSiLIFgERiVZRXKr1vSn1rDW8t2OsapzsSW17fqGpJP68rf8bERZctdDm-_fqqM2hCw46qAxbsXzU_Oyul-E6cEbLxFwA?purpose=inline">Дмитрий Менделеев. Не только химик</a></p>
+<p><a href="https://21mm.ru/news/lichnost/dmitriy-mendeleev-ne-tolko-khimik-/?utm_source=chatgpt.com">21mm.ru</a></p>
+<h3 id="1890年：離開聖彼得堡大學">1890年：離開聖彼得堡大學</h3>
+<ul>
+<li>門得列夫因與俄羅斯政府教育政策及學生運動相關的爭議，辭去聖彼得堡大學教授職務。</li>
+<li>此後他仍持續從事科學研究與公共事務。</li>
+</ul>
+<h3 id="1891－1892年：投入工業與技術研究">1891－1892年：投入工業與技術研究</h3>
+<ul>
+<li>門得列夫研究石油、燃燒及工業化學。</li>
+<li>他認為科學研究應與國家工業發展相結合。</li>
+<li>持續關注俄羅斯的能源、工業及經濟問題。</li>
+</ul>
+<h3 id="1893年：擔任度量衡局局長">1893年：擔任度量衡局局長</h3>
+<ul>
+<li>門得列夫擔任俄羅斯度量衡局（Chamber of Weights and Measures）局長。</li>
+<li>他致力於推動測量標準化與科學計量制度。</li>
+<li>這項工作對俄羅斯工業、商業與科學研究具有重要意義。</li>
+</ul>
+<h3 id="1894－1899年：持續研究與科學活動">1894－1899年：持續研究與科學活動</h3>
+<ul>
+<li>門得列夫繼續研究化學、物理、石油及工業技術。</li>
+<li>他也關注俄羅斯經濟、工業與國家發展。</li>
+<li>元素週期律已逐漸成為國際化學界的重要理論。</li>
+</ul>
+<h3 id="1900－1906年：晚年學術地位">1900－1906年：晚年學術地位</h3>
+<ul>
+<li>門得列夫持續參與科學與公共事務。</li>
+<li>他的元素週期律已成為化學教育與研究的基礎。</li>
+<li>二十世紀初，原子結構研究逐漸發展，科學家開始從原子內部結構理解元素週期性的根本原因。</li>
+</ul>
+<h3 id="1907年：逝世">1907年：逝世</h3>
+<ul>
+<li>2月2日：門得列夫在俄羅斯聖彼得堡逝世，享年72歲。</li>
+<li>他的逝世引起俄羅斯及國際科學界的關注。</li>
+<li>他留下的元素週期表成為現代化學最重要的知識架構之一。</li>
+</ul>
+<h2 id="七、門得列夫的主要科學貢獻">七、門得列夫的主要科學貢獻</h2>
+<h3 id="1-建立元素週期表">1. 建立元素週期表</h3>
+<p><a href="https://images.openai.com/static-rsc-4/35wZTqZQoyZWOf-lfEtg1blq5_0-R4yY8xJ0y7uJJ-K-_J48dMiEArI60mlgQHJMOB5nTMsAt_3MPCjhr3BUrSHAyBDIhd8_pJBakLbCEZP-zLrPnWsgPCc2LHX1h_DsRZ5BEjvY-tz2bA4xCHjqIbQX8TlfvQYf2OcB_ZqBcEU?purpose=inline">Download modern_periodic_table.png image from www.periodni.com</a></p>
+<p><a href="https://www.periodni.com/gallery/download_image.php?name=modern_periodic_table.png&utm_source=chatgpt.com">periodni.com</a></p>
+<p>門得列夫將當時已知的元素依照原子量及化學性質排列，建立具有週期性規律的元素表。</p>
+<p>其主要原則包括：</p>
+<ul>
+<li>依照元素原子量大致遞增排列。</li>
+<li>將化學性質相似的元素放在同一族。</li>
+<li>注意元素性質隨排列順序呈現的週期性變化。</li>
+<li>為尚未發現的元素預留位置。</li>
+</ul>
+<p>**重要意義：**元素週期表使化學元素不再只是個別物質的集合，而是具有內在規律的完整系統。</p>
+<h3 id="2-提出元素週期律">2. 提出元素週期律</h3>
+<p>門得列夫認為：</p>
+<p>元素的性質與其原子量之間存在週期性關係。</p>
+<p>這是1869年提出的早期週期律。</p>
+<p>不過，現代週期律已經進一步修正：</p>
+<ul>
+<li>1913年，英國物理學家莫塞萊（Henry Moseley）透過X射線研究，確立原子序與元素排列的關係。</li>
+<li>現代元素週期表以原子序遞增排列，而不是單純依照原子量排列。</li>
+<li>元素的化學性質具有週期性，根本原因與原子核電荷及電子組態有關。</li>
+</ul>
+<h3 id="3-預測尚未發現的元素">3. 預測尚未發現的元素</h3>
+<p>門得列夫的偉大之處，在於他能利用週期律預測未知元素的存在及性質。</p>
+<table>
+<thead>
+<tr>
+<th>預測名稱</th>
+<th>實際元素</th>
+<th>發現年份</th>
+<th>發現者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>類硼</td>
+<td>鈧（Sc）</td>
+<td>1879</td>
+<td>尼爾松</td>
+</tr>
+<tr>
+<td>類鋁</td>
+<td>鎵（Ga）</td>
+<td>1875</td>
+<td>勒科克・德布瓦博德朗</td>
+</tr>
+<tr>
+<td>類矽</td>
+<td>鍺（Ge）</td>
+<td>1886</td>
+<td>溫克勒</td>
+</tr>
+</tbody></table>
+<p>這些發現使元素週期律從分類理論提升為具有預測能力的科學理論。</p>
+<h3 id="4-研究化學教材與教育">4. 研究化學教材與教育</h3>
+<ul>
+<li>代表作：《化學原理》（Principles of Chemistry）。</li>
+<li>門得列夫重視化學知識的系統化。</li>
+<li>他希望學生不只是記憶元素名稱與反應，而是理解元素之間的規律。</li>
+<li>這種教學思想對現代化學教育產生深遠影響。</li>
+</ul>
+<h3 id="5-石油、工業與度量衡研究">5. 石油、工業與度量衡研究</h3>
+<p>除了週期表之外，門得列夫也研究：</p>
+<ul>
+<li>石油組成與煉製。</li>
+<li>氣體與液體的物理性質。</li>
+<li>工業化學。</li>
+<li>俄羅斯工業發展。</li>
+<li>度量衡標準化。</li>
+</ul>
+<p>因此，他不僅是理論化學家，也是一位關心工業技術與國家發展的科學家。</p>
+<h2 id="八、門得列夫與其他重要化學家的關係">八、門得列夫與其他重要化學家的關係</h2>
+<p>康尼查羅（Stanislao Cannizzaro，1826－1910）</p>
+<p>1860年卡爾斯魯厄化學大會的重要人物。他對原子量與分子量概念的整理，幫助門得列夫建立較可靠的元素排列基礎。</p>
+<p><a href="https://images.openai.com/static-rsc-4/37DPK-1opoXjursUDYmVHnp0wV5ry9rY0D5ngy9CJl04w6dyQZs0KOMkMEg2uvUxjyIU8HXkGe0DMQYH_LhFNWKcO1u1trULQUA9IxdNE0I6AqY_n_te3K2CWXZ8RmiLiFRgWg0yz7_5aUjC7dsMIqHsQwwLvKQnqvaBS4oyoPc?purpose=inline">Timeline: Historia de la tabla periódica de los elementos químicos con aportes de algunos científicos | Timetoast</a></p>
+<p>洛塔・邁耶（Julius Lothar Meyer，1830－1895）</p>
+<p>與門得列夫幾乎同時研究元素週期性。邁耶以原子體積與原子量的關係展示元素性質的週期變化，兩人共同推動週期表的建立。</p>
+<p><a href="https://images.openai.com/static-rsc-4/PVwoytBL5fQAsgFil_pcDnUNHhD070bXi4mbnFQgBOpT_5x5fL8Gvx49ZaHEByHObVI2oFifG0fBrFWj9USW2Vp2Amp7ovzlRXLk3wYR-zovsisJ290ntUW6uscawb0za-9mQXT-50ejNduohZSPYSRbod81r9tg62UxmfwUdZE?purpose=inline">Scientist of the Day - Henry Moseley, English Physicist - The Linda Hall</a></p>
+<p>亨利・莫塞萊（Henry Moseley，1887－1915）</p>
+<p>1913年利用X射線光譜研究元素，確立原子序是元素排列的根本依據，使現代週期表的排列原則更加完善。</p>
+<p><a href="https://images.openai.com/static-rsc-4/qgv3C1ELJSIBAj1cMms4dqotMUqcT3UQuItpKWUvlqev-VD5vhAhKQvoitNCvsm9lbIdDYCtzUOmqemTHha4sAJ5KmJPSB_hxtZjU2GuoalpiDNGXoo5G3DndutI00UmqlIu2zZFRwM6vFrN16QPJJo7zL3r5WrShQcnS_s9WUw?purpose=inline">Antoine Lavoisier | Jacques Louis (after) David</a></p>
+<p>拉瓦節（Antoine Lavoisier，1743－1794）</p>
+<p>建立早期元素分類與現代化學命名體系的重要人物。他的元素分類工作為後來的元素整理提供歷史基礎。</p>
+<p><a href="https://images.openai.com/static-rsc-4/Ky-BYoumjvbAlrxHk82OpZDyoGF6pIIG7qiwOsAjmR-xnYwEL3CqKxb-9W2pZpbDQs2M9Z5kRHD8KLW8F9Ia399_5ljlPJ0y3ho3dJUKzxgsyU837cSUBp50At088VgJnO2NU5juDX8AdezxNbA8WaqLlbtJ0LEYxTQaQpIp7N4?purpose=inline">John A.R. Newlands - The Linda Hall</a></p>
+<p>約翰・紐蘭茲（John Newlands，1837－1898）</p>
+<p>提出「八音律」（Law of Octaves），指出元素依原子量排列時，每隔七個元素會出現相似性質。這是週期表發展的重要先驅。</p>
+<h3 id="元素週期表發展的歷史脈絡">元素週期表發展的歷史脈絡</h3>
+<table>
+<thead>
+<tr>
+<th>時期</th>
+<th>科學家</th>
+<th>主要貢獻</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1789</td>
+<td>拉瓦節</td>
+<td>整理早期化學元素分類</td>
+</tr>
+<tr>
+<td>1860</td>
+<td>康尼查羅</td>
+<td>推動原子量概念標準化</td>
+</tr>
+<tr>
+<td>1864</td>
+<td>紐蘭茲</td>
+<td>提出八音律</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>門得列夫</td>
+<td>建立元素週期律與週期表</td>
+</tr>
+<tr>
+<td>1870年代</td>
+<td>洛塔・邁耶</td>
+<td>以原子體積等資料展示週期性</td>
+</tr>
+<tr>
+<td>1875－1886</td>
+<td>多位化學家</td>
+<td>發現鎵、鈧、鍺，驗證門得列夫預測</td>
+</tr>
+<tr>
+<td>1913</td>
+<td>莫塞萊</td>
+<td>確立以原子序排列元素</td>
+</tr>
+</tbody></table>
+<h2 id="九、門得列夫生平重要年份總表">九、門得列夫生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1834</td>
+<td>出生於俄羅斯西伯利亞托博爾斯克</td>
+</tr>
+<tr>
+<td>1847</td>
+<td>父親逝世，母親帶他前往聖彼得堡</td>
+</tr>
+<tr>
+<td>1850</td>
+<td>進入聖彼得堡主要師範學院</td>
+</tr>
+<tr>
+<td>1855</td>
+<td>完成學業，開始教學</td>
+</tr>
+<tr>
+<td>1856</td>
+<td>取得化學碩士學位</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>在聖彼得堡大學任教</td>
+</tr>
+<tr>
+<td>1859</td>
+<td>前往德國海德堡進修</td>
+</tr>
+<tr>
+<td>1860</td>
+<td>參加卡爾斯魯厄化學大會</td>
+</tr>
+<tr>
+<td>1861</td>
+<td>返回俄羅斯，繼續化學研究</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>取得博士學位</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>擔任聖彼得堡大學教授</td>
+</tr>
+<tr>
+<td>1867</td>
+<td>開始深入研究元素分類</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>撰寫《化學原理》</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>提出元素週期律，建立早期週期表</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>發表較完整的週期表及未知元素預測</td>
+</tr>
+<tr>
+<td>1875</td>
+<td>鎵被發現，驗證類鋁預測</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>鈧被發現，驗證類硼預測</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>與洛塔・邁耶共同獲頒戴維獎章</td>
+</tr>
+<tr>
+<td>1886</td>
+<td>鍺被發現，驗證類矽預測</td>
+</tr>
+<tr>
+<td>1889</td>
+<td>在英國皇家研究院發表重要演講</td>
+</tr>
+<tr>
+<td>1890</td>
+<td>離開聖彼得堡大學</td>
+</tr>
+<tr>
+<td>1893</td>
+<td>擔任俄羅斯度量衡局局長</td>
+</tr>
+<tr>
+<td>1907</td>
+<td>在聖彼得堡逝世，享年72歲</td>
+</tr>
+<tr>
+<td>1913</td>
+<td>莫塞萊確立以原子序排列元素的原則</td>
+</tr>
+</tbody></table>
+<h2 id="十、門得列夫的歷史地位與影響">十、門得列夫的歷史地位與影響</h2>
+<p><a href="https://images.openai.com/static-rsc-4/nFVkp7I0wHuX-wJwNj-a2-LI857jSGI-7tbPSTPGzNmUSQdOyX7IiscIkXz7w0Sr9W40Zt2Q569m_JUSr_UHtuYu3PGCNrCACu8CJZcnhSm1V8jRWrTv9gQZ4YI_zahInVCxCdx3JExioA4Fe_ErgIDq-nFXPc1loOvVXYkQFRY?purpose=inline">37.THE PERIODIC TABLE- History (2)-Dimitri Mendeleev. – Madoverchemistry</a></p>
+<p><a href="https://madoverchemistry.com/2017/01/15/37-the-periodic-table-history-2-dimitri-mendeleev/?utm_source=chatgpt.com">madoverchemistry.com</a></p>
+<p>門得列夫最重要的貢獻，是發現元素並非彼此孤立，而是存在可以被整理、解釋與預測的週期性規律。</p>
+<p>他的週期表具有三個重大歷史意義：</p>
+<ol>
+<li>**建立化學知識的統一架構：**將不同元素依照共同規律排列，使化學成為具有系統性的科學。</li>
+<li>**展現科學理論的預測能力：**預測未知元素的存在與性質，並由後來的實驗證實。</li>
+<li>**奠定現代化學基礎：**現代元素週期表雖然已改用原子序排列，但仍保留門得列夫建立的週期性分類思想。</li>
+</ol>
+<h3 id="門得列夫最重要的歷史成就">門得列夫最重要的歷史成就</h3>
+<h1 id="1869">1869</h1>
+<h2 id="元素週期律正式提出">元素週期律正式提出</h2>
+<p>門得列夫透過元素原子量與化學性質的比較，建立元素週期表，並為未知元素留下位置。</p>
+<p>從整理已知元素，到預測未知元素，是他最具革命性的科學成就。</p>
+<p>**總結：**門得列夫不只是元素週期表的建立者，更是一位善於從大量實驗資料中發現自然規律的科學家。他的研究證明，科學不只是整理已知事實，也能依據規律預測尚未被人類發現的自然現象。現代化學、材料科學、藥物研究與半導體科技，都持續以元素週期表作為重要基礎。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

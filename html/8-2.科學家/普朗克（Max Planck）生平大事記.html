@@ -1,0 +1,633 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="馬克斯・普朗克（max-planck）生平大事記">馬克斯・普朗克（Max Planck）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/lgybRqRSUUzAEH7nUi-mD9LeJEWJGaWf37VeeKaPbrad_rB4WShjmzv1ojBoP-HwaaaxLtKCnoWcca9cN8hFRaGnwsUyqvgMUhJQgF9LD4LexyLXUnQ1CjAG0GDd6PxJluJzHempK2xkw_yh4XcbhbD-RGABTK47SL5Ki-68EyY?purpose=inline">Max Karl Ernst Ludwig Planck</a></p>
+<p>馬克斯・卡爾・恩斯特・路德維希・普朗克</p>
+<p>Max Karl Ernst Ludwig Planck</p>
+<ul>
+<li>生卒： 1858年4月23日－1947年10月4日</li>
+<li>國籍： 德國</li>
+<li>領域： 理論物理學、熱力學、量子物理學</li>
+<li>重要地位： 量子論創始人，被譽為「量子物理學之父」</li>
+<li>重要榮譽： 1918年諾貝爾物理學獎</li>
+</ul>
+<h2 id="一、人物概述：從古典物理學走向量子時代">一、人物概述：從古典物理學走向量子時代</h2>
+<p>普朗克是20世紀物理學最重要的奠基人物之一。他在研究黑體輻射問題時，於1900年提出能量並非連續地任意變化，而是以特定的離散單位（能量量子）吸收或放出的假設，建立了量子論的起點。</p>
+<p>這項發現後來成為現代物理學的重要基礎，並深刻影響愛因斯坦、波耳、海森堡、薛丁格、德布羅意等科學家的研究。</p>
+<p>普朗克的歷史意義主要有三個方面：</p>
+<ol>
+<li>創立量子論： 提出能量量子化的概念，突破古典物理學的連續性假設。</li>
+<li>建立普朗克常數： 引入物理學基本常數 \(h\)，成為量子力學的重要核心。</li>
+<li>開啟現代物理學： 他的理論促成量子力學發展，與愛因斯坦的相對論共同改變了20世紀物理學。</li>
+</ol>
+<h2 id="二、1858－1874年：出生、家庭與早年教育">二、1858－1874年：出生、家庭與早年教育</h2>
+<h3 id="1858年：出生於德國基爾">1858年：出生於德國基爾</h3>
+<ul>
+<li>1858年4月23日，普朗克出生於德國石勒蘇益格－荷爾斯泰因地區的基爾（Kiel）。</li>
+<li>父親威廉・普朗克（Wilhelm Planck）是法學教授，家族具有深厚的學術與教育背景。</li>
+<li>普朗克成長於重視教育、紀律與文化的家庭環境。</li>
+<li>家庭氛圍使他從小便受到嚴謹思考、理性分析及學術追求的影響。</li>
+</ul>
+<h3 id="1867年：全家遷往慕尼黑">1867年：全家遷往慕尼黑</h3>
+<ul>
+<li>普朗克一家遷居德國慕尼黑。</li>
+<li>他進入慕尼黑的馬克西米利安文理中學（Maximiliansgymnasium）就讀。</li>
+<li>在校期間，他展現出數學、物理與音樂方面的天賦。</li>
+<li>除了自然科學，他也對古典文學、歷史及哲學有濃厚興趣。</li>
+</ul>
+<h3 id="1874年：中學畢業">1874年：中學畢業</h3>
+<ul>
+<li>普朗克完成中學教育。</li>
+<li>當時他對數學、物理學及音樂均有高度興趣。</li>
+<li>據傳，他曾向物理學教授詢問物理學是否已經沒有值得研究的新問題，得到的回答大意是：物理學的重要基本原理已經建立，剩下的多是細節。</li>
+<li>這段故事常被用來說明當時古典物理學的自信，但其具體對話細節不宜視為完全確定的歷史紀錄。</li>
+</ul>
+<h2 id="三、1874－1879年：大學求學與熱力學研究">三、1874－1879年：大學求學與熱力學研究</h2>
+<h3 id="1874年：進入慕尼黑大學">1874年：進入慕尼黑大學</h3>
+<ul>
+<li>普朗克進入慕尼黑大學（University of Munich），開始接受正式的物理學訓練。</li>
+<li>他學習數學、物理學及實驗科學。</li>
+<li>當時物理學的主要研究方向包括：<ul>
+<li>力學與電磁學。</li>
+<li>熱力學。</li>
+<li>光學。</li>
+<li>氣體分子運動理論。</li>
+</ul>
+</li>
+<li>普朗克逐漸將研究興趣集中於理論物理學，尤其是熱力學。</li>
+</ul>
+<h3 id="1877年：前往柏林大學進修">1877年：前往柏林大學進修</h3>
+<ul>
+<li>普朗克前往柏林大學（University of Berlin）繼續深造。</li>
+<li>曾接受兩位著名物理學家的指導：<ul>
+<li>赫爾曼・馮・亥姆霍茲（Hermann von Helmholtz）：能量守恆、熱力學及物理學的重要人物。</li>
+<li>古斯塔夫・基爾霍夫（Gustav Kirchhoff）：電路理論、光譜學及熱輻射研究的重要學者。</li>
+</ul>
+</li>
+<li>他也深入研讀魯道夫・克勞修斯（Rudolf Clausius）的熱力學著作。</li>
+<li>克勞修斯對熵及熱力學第二定律的研究，對普朗克產生深遠影響。</li>
+</ul>
+<h3 id="1879年：取得博士學位">1879年：取得博士學位</h3>
+<ul>
+<li>普朗克完成博士論文，主題為熱力學第二定律。</li>
+<li>他獲得慕尼黑大學博士學位。</li>
+<li>研究重點包括：<ul>
+<li>熱力學第二定律。</li>
+<li>熵的概念。</li>
+<li>熱力學過程的不可逆性。</li>
+<li>熱與功之間的轉換關係。</li>
+</ul>
+</li>
+<li>這些研究為他日後處理黑體輻射問題奠定理論基礎。</li>
+</ul>
+<h2 id="四、1880－1894年：學術生涯與熱力學研究">四、1880－1894年：學術生涯與熱力學研究</h2>
+<h3 id="1880年：取得大學任教資格">1880年：取得大學任教資格</h3>
+<ul>
+<li>普朗克完成大學任教資格所需的學術工作。</li>
+<li>開始在慕尼黑大學擔任私人講師（Privatdozent）。</li>
+<li>研究方向仍以理論物理學及熱力學為主。</li>
+</ul>
+<h3 id="1885年：任教於基爾大學">1885年：任教於基爾大學</h3>
+<ul>
+<li>普朗克獲聘為基爾大學副教授。</li>
+<li>研究熱力學的基本原理，特別關注熵與能量轉換。</li>
+<li>他逐漸成為德國新一代理論物理學者中的重要人物。</li>
+</ul>
+<h3 id="1887年：結婚">1887年：結婚</h3>
+<ul>
+<li>普朗克與瑪麗・梅爾克（Marie Merck）結婚。</li>
+<li>兩人育有四名子女。</li>
+<li>家庭生活與學術工作成為他此後人生的重要部分。</li>
+</ul>
+<h3 id="1889年：接替柏林大學重要學術職位">1889年：接替柏林大學重要學術職位</h3>
+<ul>
+<li>普朗克受聘至柏林大學，接替基爾霍夫相關的理論物理學職務。</li>
+<li>他開始在德國物理學界建立更重要的學術地位。</li>
+<li>柏林大學也是當時歐洲重要的物理學研究中心。</li>
+</ul>
+<h3 id="1892年：升任正教授">1892年：升任正教授</h3>
+<ul>
+<li>普朗克成為柏林大學理論物理學正教授。</li>
+<li>研究重點包括熱力學、電磁理論及輻射問題。</li>
+<li>他持續發展以熱力學為基礎的物理學研究方法。</li>
+</ul>
+<h3 id="1894年：開始關注黑體輻射問題">1894年：開始關注黑體輻射問題</h3>
+<ul>
+<li>普朗克逐漸將注意力轉向熱輻射的理論問題。</li>
+<li>當時物理學家已經知道，物體受熱後會發出電磁輻射，但如何從基本物理原理推導出完整的輻射能量分布，仍是未解問題。</li>
+<li>黑體輻射成為19世紀末物理學的重要難題。</li>
+</ul>
+<h2 id="五、1894－1900年：黑體輻射研究與量子論的誕生">五、1894－1900年：黑體輻射研究與量子論的誕生</h2>
+<p><a href="https://images.openai.com/static-rsc-4/XSTKNv2AR5SMB3oRNYy7UyWkjzFRe-1XgndNReoZ1lE8lKCEN8kdkPyhQvjT78kBjVRXCHqVYmRQQsmrwbU8THXWNM4SUakE8hbbMK3LW3asMR1AhpXC7BeOeEwIih6bsN8Euk2qUTv0lYVL-4oZvRL4PV_NC6nTqgwGsO7ww90?purpose=inline">PPT - Chapter 03 Experimental Basis for Quantum Theory PowerPoint Presentation - ID:814839</a></p>
+<p><a href="https://www.slideserve.com/ryder/chapter-03-experimental-basis-for-quantum-theory?utm_source=chatgpt.com">slideserve.com</a></p>
+<h3 id="1894－1896年：研究黑體輻射">1894－1896年：研究黑體輻射</h3>
+<ul>
+<li>普朗克開始深入研究黑體輻射（Blackbody Radiation）。</li>
+<li>黑體是理想化的物理模型，能夠完全吸收照射到它表面的電磁輻射。</li>
+<li>黑體在不同溫度下會放出具有特定頻率分布的熱輻射。</li>
+<li>研究者希望找出一條能夠描述輻射強度與頻率、溫度之間關係的普遍公式。</li>
+<li>當時實驗物理學家如威廉・維恩（Wilhelm Wien）及奧托・盧默（Otto Lummer）等人，也正在研究黑體輻射。</li>
+</ul>
+<h3 id="1896年：維恩輻射定律">1896年：維恩輻射定律</h3>
+<ul>
+<li>維恩提出描述黑體輻射分布的公式。</li>
+<li>該公式在短波長範圍具有良好效果。</li>
+<li>然而，後續實驗發現它無法正確描述長波長範圍的輻射。</li>
+<li>這表示古典物理學尚未找到完整的黑體輻射定律。</li>
+</ul>
+<h3 id="1899年：普朗克常數的前身與研究準備">1899年：普朗克常數的前身與研究準備</h3>
+<ul>
+<li>普朗克持續研究電磁輻射與物質之間的能量交換。</li>
+<li>他試圖建立一套符合熱力學及電磁學基本原理的輻射理論。</li>
+<li>研究逐漸集中於如何從微觀物質的振動與能量分布，推導出宏觀輻射現象。</li>
+</ul>
+<h3 id="1900年10月：提出新的黑體輻射公式">1900年10月：提出新的黑體輻射公式</h3>
+<ul>
+<li>普朗克提出一個能夠更準確符合實驗數據的黑體輻射公式。</li>
+<li>這個公式同時適用於短波長與長波長區域。</li>
+<li>它解決了維恩公式無法完整解釋實驗結果的問題。</li>
+<li>然而，當時普朗克仍需要找到這個公式背後的理論基礎。</li>
+</ul>
+<h3 id="1900年12月14日：量子論正式誕生">1900年12月14日：量子論正式誕生</h3>
+<p>物理學史上的重大轉折</p>
+<ul>
+<li>普朗克在德國物理學會（German Physical Society）發表研究成果。</li>
+<li>他提出一項革命性假設：物質中的振盪子與電磁場交換能量時，能量不是任意連續變化，而是以離散的能量單位進行。</li>
+<li>其核心關係式為：</li>
+</ul>
+<p>\[ E=nh\nu \]</p>
+<p>其中：</p>
+<ul>
+<li>\(E\)：振盪子的能量。</li>
+<li>\(n\)：非負整數。</li>
+<li>\(h\)：普朗克常數。</li>
+<li>\(\nu\)：振動頻率。</li>
+</ul>
+<p>普朗克常數的數值為：</p>
+<p>\[ h\approx6.62607015\times10^{-34}\ \mathrm{J\cdot s} \]</p>
+<p>這個數值如今已被國際單位制（SI）定義為精確值。</p>
+<p>這項發現的重要性：</p>
+<ol>
+<li>能量不再被視為只能連續變化。</li>
+<li>能量交換具有離散化特徵。</li>
+<li>傳統古典物理學的連續性假設受到根本挑戰。</li>
+<li>為後來的量子力學建立重要起點。</li>
+</ol>
+<p>必須注意：普朗克最初是為了解決黑體輻射問題而引入能量量子化，並非一開始就建立了後來完整的量子力學。他對量子假設的物理意義，也是在後續研究中逐步發展。</p>
+<h2 id="六、1901－1913年：量子論的發展與物理學界的影響">六、1901－1913年：量子論的發展與物理學界的影響</h2>
+<h3 id="1901年：普朗克黑體輻射定律獲得確認">1901年：普朗克黑體輻射定律獲得確認</h3>
+<ul>
+<li>普朗克進一步發表黑體輻射理論。</li>
+<li>他的公式能夠準確符合當時的實驗數據。</li>
+<li>這個公式後來被稱為普朗克黑體輻射定律。</li>
+</ul>
+<p>其頻譜能量密度常見表達式為：</p>
+<p>\[ u(\nu,T)= \frac{8\pi h\nu^3}{c^3} \frac{1}{e^{h\nu/(k_BT)}-1} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(u(\nu,T)\)：頻率為 \(\nu\)、溫度為 \(T\) 時的頻譜能量密度。</li>
+<li>\(h\)：普朗克常數。</li>
+<li>\(k_B\)：波茲曼常數。</li>
+<li>\(c\)：真空光速。</li>
+</ul>
+<h3 id="1905年：愛因斯坦提出光量子假說">1905年：愛因斯坦提出光量子假說</h3>
+<p>重要人物： 阿爾伯特・愛因斯坦</p>
+<p>愛因斯坦將量子概念進一步應用於光本身，提出光量子假說。</p>
+<ul>
+<li>愛因斯坦研究光電效應，提出光能量以一份一份的量子形式存在。</li>
+<li>他認為光的能量與頻率具有以下關係：</li>
+</ul>
+<p>\[ E=h\nu \]</p>
+<ul>
+<li>這是量子論發展的重要突破。</li>
+<li>普朗克最初主要將能量量子化視為物質振盪子與輻射交換能量的性質；愛因斯坦則進一步提出光本身具有量子性。</li>
+<li>兩人的研究共同推動量子物理學的形成。</li>
+</ul>
+<h3 id="1906年：出版《熱輻射理論》">1906年：出版《熱輻射理論》</h3>
+<ul>
+<li>普朗克出版《熱輻射理論》（The Theory of Heat Radiation）。</li>
+<li>書中完整整理他的黑體輻射理論。</li>
+<li>這本著作成為早期量子論的重要文獻。</li>
+</ul>
+<h3 id="1909年：量子論逐漸受到重視">1909年：量子論逐漸受到重視</h3>
+<ul>
+<li>普朗克繼續研究熱輻射及物理學基本原理。</li>
+<li>愛因斯坦等人開始進一步探索量子概念。</li>
+<li>量子論逐漸從解決黑體輻射問題的數學方法，發展成為新的物理學研究方向。</li>
+</ul>
+<h3 id="1911年：參與第一屆索爾維會議">1911年：參與第一屆索爾維會議</h3>
+<p><a href="https://images.openai.com/static-rsc-4/5CjhPKl6xHZqKogZrrlQNK6cootNy8OSbUtP7GI5b31O_KnSq-JrgsxgwmrjHS50WhBGyd_0btg9bPFsUsAY0zy-adPQffXXYnO3cpgtSX_lnpsUiLU4hzaJvYZYEkPl31_DVr-yWNw1athd-BvtDJ3psqzLFmoRFHkZHK1lmCM?purpose=inline">Book review of The Soul of Genius: Marie Curie, Albert Einstein, and the Meeting that Changed the Course of Science by Jeffrey Orens - The Washington Post</a></p>
+<p><a href="https://www.washingtonpost.com/outlook/the-conference-that-brought-together-marie-curie-and-albert-einstein/2021/08/05/7aacab5a-ea19-11eb-97a0-a09d10181e36_story.html?utm_source=chatgpt.com">washingtonpost.com</a></p>
+<ul>
+<li>普朗克參與1911年第一屆索爾維會議（Solvay Conference）。</li>
+<li>會議聚集當時世界重要物理學家。</li>
+<li>重要參與者包括：<ul>
+<li>普朗克。</li>
+<li>愛因斯坦。</li>
+<li>瑪麗・居禮。</li>
+<li>亨德里克・洛倫茲。</li>
+<li>歐內斯特・盧瑟福。</li>
+</ul>
+</li>
+<li>會議討論輻射理論、量子問題及物理學的基本概念。</li>
+<li>量子論開始成為國際物理學界的重要研究議題。</li>
+</ul>
+<h3 id="1913年：玻爾原子模型">1913年：玻爾原子模型</h3>
+<p><a href="https://images.openai.com/static-rsc-4/SfS0y2u8rbqBLVEtONncqceGdbLbCDbbHrThj6jLS4FVVvXpTyW1o-QihWHT1Z7wqgm9q8bxuYdMXuCBWjFJg5HMO203m-C6l-KULMkqBhwZVfoaCxCU0NolcaoSPYFQuTUQNws9FxD_pBM32_8tsbT68P0FIlkLLqBY8qevZPk?purpose=inline">File:Niels Bohr - LOC - ggbain - 35303.png - Wikimedia Commons</a></p>
+<p>重要人物： 尼爾斯・玻爾</p>
+<ul>
+<li>玻爾提出氫原子的量子化模型。</li>
+<li>電子只能處於特定的穩定能階。</li>
+<li>電子在不同能階之間躍遷時，會吸收或放出特定能量的光。</li>
+<li>玻爾模型將量子概念應用於原子結構，進一步擴大量子論的影響。</li>
+</ul>
+<h2 id="七、1914－1920年：戰爭、學術領導與諾貝爾獎">七、1914－1920年：戰爭、學術領導與諾貝爾獎</h2>
+<h3 id="1914年：第一次世界大戰爆發">1914年：第一次世界大戰爆發</h3>
+<ul>
+<li>第一次世界大戰爆發，德國學術界受到戰爭影響。</li>
+<li>普朗克繼續從事物理研究與學術工作。</li>
+<li>他並非以政治活動著稱，而是以學術研究及大學教育為主要工作。</li>
+</ul>
+<h3 id="1918年：獲得諾貝爾物理學獎">1918年：獲得諾貝爾物理學獎</h3>
+<p>1918年諾貝爾物理學獎</p>
+<ul>
+<li>普朗克獲得1918年諾貝爾物理學獎。</li>
+<li>獲獎理由是：表彰他發現能量量子，推動物理學發展。</li>
+<li>由於第一次世界大戰及戰後因素，頒獎典禮延至1919年舉行。</li>
+<li>這項榮譽確認了他在量子論創立方面的重大貢獻。</li>
+</ul>
+<h3 id="1919年：接受諾貝爾獎">1919年：接受諾貝爾獎</h3>
+<ul>
+<li>普朗克正式接受1918年諾貝爾物理學獎。</li>
+<li>量子論逐漸成為現代物理學的重要基礎。</li>
+<li>他的研究成果也開始被更多物理學家採用與發展。</li>
+</ul>
+<h3 id="1920年：第一任妻子逝世">1920年：第一任妻子逝世</h3>
+<ul>
+<li>普朗克的第一任妻子瑪麗・梅爾克於1919年逝世。</li>
+<li>1920年，普朗克與瑪格麗特・馮・霍斯林（Marga von Hoesslin）再婚。</li>
+<li>此後仍持續參與柏林的學術活動。</li>
+</ul>
+<h2 id="八、1920－1933年：量子力學建立與學術領導">八、1920－1933年：量子力學建立與學術領導</h2>
+<p><a href="https://images.openai.com/static-rsc-4/g6rlgXci2yl2qZjQzwhq_qef1HhL6VlYOVTpcBJJFpatZ4kjec08SAuCqikF4tK1ao9Ya610YkyuPqHccoqb0hStfzwnJ9wcEsIGOU_TsDoHpi2sE8V_Z3sNQ-Z4dNguXXf5gqx0GMvrhsXWy5gY25ZPYL0huWRlRrh-ua2ZP7Q?purpose=inline">Quantum Information Technology Guide | Keysight</a></p>
+<p><a href="https://www.keysight.com/us/en/cmp/topics/quantum-information-technology.html?utm_source=chatgpt.com">keysight.com</a></p>
+<h3 id="1920年代：量子力學快速發展">1920年代：量子力學快速發展</h3>
+<p>普朗克提出的量子假設，逐漸成為新一代物理學家的重要研究基礎。</p>
+<p>這一時期的重要發展包括：</p>
+<ul>
+<li>1923年：康普頓效應進一步支持光具有粒子性。</li>
+<li>1924年：德布羅意提出物質波假說。</li>
+<li>1925年：海森堡建立矩陣力學。</li>
+<li>1926年：薛丁格建立波動力學。</li>
+<li>1927年：海森堡提出不確定性原理。</li>
+</ul>
+<p>這些成果使量子論從早期假設逐漸發展成為完整的量子力學理論。</p>
+<h3 id="1920－1930年代：擔任德國科學界重要領導人物">1920－1930年代：擔任德國科學界重要領導人物</h3>
+<ul>
+<li>普朗克在德國科學界具有崇高地位。</li>
+<li>他曾擔任威廉皇帝科學促進協會（Kaiser Wilhelm Society）的重要領導職務。</li>
+<li>該協會是後來馬克斯・普朗克學會（Max Planck Society）的前身。</li>
+<li>他積極支持基礎科學研究，並協助維持德國理論物理學的學術傳統。</li>
+</ul>
+<h3 id="1928年：正式退休">1928年：正式退休</h3>
+<ul>
+<li>普朗克從柏林大學教授職位退休。</li>
+<li>雖然退休，他仍持續參與研究、學術討論及科學界活動。</li>
+<li>其學術聲望已成為德國物理學界的重要象徵。</li>
+</ul>
+<h3 id="1930年：擔任威廉皇帝科學促進協會會長">1930年：擔任威廉皇帝科學促進協會會長</h3>
+<ul>
+<li>普朗克出任威廉皇帝科學促進協會會長。</li>
+<li>他致力於維護德國科學研究機構的獨立性與學術品質。</li>
+<li>這項職務使他在德國科學政策與研究制度方面具有重要影響力。</li>
+</ul>
+<h2 id="九、1933－1945年：納粹統治、科學界危機與人生悲劇">九、1933－1945年：納粹統治、科學界危機與人生悲劇</h2>
+<h3 id="1933年：希特勒上台">1933年：希特勒上台</h3>
+<ul>
+<li>納粹黨在德國掌權。</li>
+<li>德國大學與研究機構開始受到政治干預。</li>
+<li>具有猶太背景的科學家受到迫害，許多優秀學者被迫離開德國。</li>
+<li>普朗克對政治環境的改變感到憂慮。</li>
+</ul>
+<h3 id="1933－1938年：維護德國科學界">1933－1938年：維護德國科學界</h3>
+<ul>
+<li>普朗克嘗試在納粹政權下維持科學研究機構的運作。</li>
+<li>他曾與希特勒會面，試圖為遭受迫害的猶太科學家爭取空間。</li>
+<li>然而，他的努力並未能阻止納粹對學術界的清洗。</li>
+<li>許多重要科學家，包括愛因斯坦，最終離開德國。</li>
+</ul>
+<h3 id="1937年：科學與政治的衝突日益加深">1937年：科學與政治的衝突日益加深</h3>
+<ul>
+<li>納粹政權持續控制學術機構。</li>
+<li>普朗克在維護學術自主與政治現實之間面臨艱難處境。</li>
+<li>他仍試圖保護德國科學研究的制度基礎。</li>
+</ul>
+<h3 id="1938年：卸下學術機構領導職務">1938年：卸下學術機構領導職務</h3>
+<ul>
+<li>普朗克逐漸退出威廉皇帝科學促進協會的領導工作。</li>
+<li>納粹政治壓力使德國科學界的獨立性大幅下降。</li>
+</ul>
+<h3 id="1944年：兒子遭處決">1944年：兒子遭處決</h3>
+<p>人生重大悲劇</p>
+<ul>
+<li>普朗克的兒子埃爾溫・普朗克（Erwin Planck）因參與反對希特勒的政治活動而遭逮捕。</li>
+<li>他與1944年7月20日刺殺希特勒未遂事件相關的反抗圈有聯繫。</li>
+<li>1945年1月23日，埃爾溫・普朗克遭納粹政權處決。</li>
+<li>這對已經高齡的普朗克造成極大打擊。</li>
+</ul>
+<h3 id="1945年：第二次世界大戰結束">1945年：第二次世界大戰結束</h3>
+<ul>
+<li>德國戰敗，納粹政權瓦解。</li>
+<li>普朗克經歷戰爭、政治迫害及家庭悲劇。</li>
+<li>他的研究與學術貢獻仍受到國際科學界高度尊重。</li>
+</ul>
+<h2 id="十、1945－1947年：晚年與逝世">十、1945－1947年：晚年與逝世</h2>
+<h3 id="1945－1946年：晚年生活">1945－1946年：晚年生活</h3>
+<ul>
+<li>普朗克在戰後德國度過最後幾年。</li>
+<li>德國科學研究機構逐步重建。</li>
+<li>他的學術聲望成為戰後德國科學界重建的重要象徵。</li>
+</ul>
+<h3 id="1946年：出席英國皇家學會活動">1946年：出席英國皇家學會活動</h3>
+<ul>
+<li>普朗克獲邀參與英國皇家學會成立三百週年相關活動。</li>
+<li>這也象徵國際科學界對他的敬重。</li>
+</ul>
+<h3 id="1947年10月4日：逝世">1947年10月4日：逝世</h3>
+<ul>
+<li>普朗克於1947年10月4日在德國哥廷根（Göttingen）逝世。</li>
+<li>享年89歲。</li>
+<li>他留下的量子論成為現代物理學最重要的理論基礎之一。</li>
+</ul>
+<h2 id="十一、普朗克的主要科學貢獻">十一、普朗克的主要科學貢獻</h2>
+<h3 id="1-創立量子論">1. 創立量子論</h3>
+<p>普朗克最重要的貢獻，是在1900年提出能量量子化的概念。</p>
+<p>在古典物理學中，能量通常被認為可以連續變化；普朗克則指出，在特定的微觀物理過程中，能量交換具有離散性。</p>
+<p>這個觀念為後來量子力學的建立提供了重要起點。</p>
+<h3 id="2-普朗克常數">2. 普朗克常數</h3>
+<p>普朗克常數 \(h\) 是量子物理學最重要的基本常數之一。</p>
+<p>\[ E=h\nu \]</p>
+<p>這個關係式表示光量子的能量與其頻率成正比。</p>
+<p>普朗克常數的數值為：</p>
+<p>\[ h=6.62607015\times10^{-34}\ \mathrm{J\cdot s} \]</p>
+<p>它在現代物理學中具有廣泛應用，包括：</p>
+<ul>
+<li>量子力學。</li>
+<li>原子物理學。</li>
+<li>量子光學。</li>
+<li>固態物理學。</li>
+<li>粒子物理學。</li>
+<li>量子資訊科學。</li>
+</ul>
+<h3 id="3-普朗克黑體輻射定律">3. 普朗克黑體輻射定律</h3>
+<p>普朗克成功建立描述黑體輻射能量分布的公式，解決古典物理學無法完整解釋的問題。</p>
+<p>這項成果不僅符合實驗結果，更揭示了古典物理學理論架構的局限。</p>
+<h3 id="4-推動統計物理學發展">4. 推動統計物理學發展</h3>
+<p>普朗克在研究熱力學時，也吸收了波茲曼的統計觀點。</p>
+<p>他逐漸認識到，熱力學第二定律與熵的概念，可以透過微觀粒子的統計行為加以理解。</p>
+<h3 id="5-開啟現代物理學革命">5. 開啟現代物理學革命</h3>
+<p>普朗克的研究影響了後來一系列重要發展：</p>
+<ul>
+<li>愛因斯坦的光量子理論。</li>
+<li>玻爾的原子模型。</li>
+<li>德布羅意的物質波。</li>
+<li>海森堡的矩陣力學。</li>
+<li>薛丁格的波動力學。</li>
+<li>海森堡的不確定性原理。</li>
+</ul>
+<p>因此，普朗克不只是提出一條新的物理公式，而是為整個物理學帶來新的思考方式。</p>
+<h2 id="十二、普朗克與其他重要科學家的關係">十二、普朗克與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/XAz-J-paF9NDvENm9cxVTB7fCbacrPetZ-DNImuJr4c7i9u301SS09I0OOWTH2j0R8SXvgUaqkBzywCF9SGrx4ynaG5d5KWIl8puKLrYlfOQuuVuCn6WvKmwfNy_3KfLm0TdjeH9ClsGBparZRb22dSuCYdFekgm48WCWPUtaic?purpose=inline">History of Information</a></p>
+<p>馬克斯・普朗克（1858－1947）</p>
+<p>量子論的開創者，提出能量量子化概念。</p>
+<p><a href="https://images.openai.com/static-rsc-4/ol8p_Xyk3f9-Lg1AlinLYqLODV592vWuLThNM3a0By1drkbgp356XwVPcoTpFR5rqBuXifH4hBcb2XxSWbqjEOXGMR7hNLz1qghppEGwZySqLkynSTDP_e90ZCM5nxlOo6wiWUgnnU9keY18qeoOE8Qv6xFkI0VG74CpntGir2I?purpose=inline">Happy Birthday, Albert Einstein! | Space</a></p>
+<p>阿爾伯特・愛因斯坦（1879－1955）</p>
+<p>將量子概念應用於光電效應，提出光量子假說，並發展狹義及廣義相對論。普朗克積極支持愛因斯坦的學術研究。</p>
+<p><a href="https://images.openai.com/static-rsc-4/sWlQ0pRQ2Qxgtjf1jmY-UB97vJNkwWgnOAnfsO4XQilvlfNP_MpPUvRYsz2KFi_hYntuD5k4S_SF83RIssJNMZHu5V_fl4yrY4SSv31eL8Lema2A1vtrvQoXhIn6W-eoDpiietAkraPe1duxzXdAcMHGEHNr9W_Kij01_vhrwjM?purpose=inline">Niels Bohr, Danish Physicist Poster Print by Science Source - Item # VARSCIBV8526 - Posterazzi</a></p>
+<p>尼爾斯・玻爾（1885－1962）</p>
+<p>將量子概念應用於原子結構，建立玻爾原子模型。</p>
+<p><a href="https://images.openai.com/static-rsc-4/xUPUO4TZOkcVvNYx5Zkz6HpoaBve7MRe9_VU1w3YujmePXxOOZ2QJRWIOQbUcHWiLlWkl_tWUKIrqhyp-uKqGW8xgU5bFCClSyiZfeUfFnGOFAfqNsolEJpKFEKSBXxgiTYAQOfsV9SDVKPUwEoeekDqevhByIcuU1vXZ8LXCk8?purpose=inline">Werner Heisenberg, German Theoretical Photograph by Science Source - Pixels</a></p>
+<p>維爾納・海森堡（1901－1976）</p>
+<p>建立矩陣力學，提出不確定性原理，是量子力學的重要建立者。</p>
+<p><a href="https://images.openai.com/static-rsc-4/lkMHeMr3XQBTLtmYDoiO-ABHdS1sCxiP93-QmyoqjLrAfNuyIJ9UGfdmA8ORt2lO0TZJ3OJuBGD-C84Q7DVlnsxFRmkSDYCkxcy1uzCX8YBw5N_w7P3s9LpgOdfwnCV_Bujf-wk7PP_lwtmMBaeHyD-zq1S2FDqHbKpz3mA4n_Y?purpose=inline">Erwin Schrödinger: trzeci początek mechaniki kwantowej (1926) | Nie od razu naukę zbudowano</a></p>
+<p>埃爾溫・薛丁格（1887－1961）</p>
+<p>建立波動力學，提出薛丁格方程式，使量子力學形成完整的數學架構。</p>
+<p><a href="https://images.openai.com/static-rsc-4/q9sAf3kXncdpbiO3JGLCgQGM_UmN1x1XZp8VK7I6jG510_zAZGzJl35a8djRyBHkZsGlSHqjWsimi7JdF3sGE0T_yuXBnnhsoKUgQrVWAk2b04CPZosavi3PY50t91tr6yzecAB1MAILdivb7tHQmLJsuz2mUZjI8_cNs0o-_Lw?purpose=inline">Ludwig Boltzmann | Optica</a></p>
+<p>路德維希・波茲曼（1844－1906）</p>
+<p>建立統計力學的重要基礎，對普朗克理解熵及熱力學第二定律有深刻影響。</p>
+<p><a href="https://images.openai.com/static-rsc-4/aC3_1NjMaDQx0HsiJGNkyVkH1ylfjEwVW0jCzpE3GsrLr7iJTEeZwPVLlcC4wdxsZjvLo1KitE7oIYzNSDK0AtDU1JXG3iPSn5AEqyc2sJNRzhVKBQfQypKse9DoRC3oKWQ24qxaRFqiUfzRPcGih9jPZiFXRKkFCDDM1nF-6CA?purpose=inline">File:Gustav Robert Kirchhoff.jpg - Wikimedia Commons</a></p>
+<p>古斯塔夫・基爾霍夫（1824－1887）</p>
+<p>普朗克在柏林求學時的重要老師，其熱輻射研究也與普朗克日後的研究領域密切相關。</p>
+<h2 id="十三、普朗克的重要著作">十三、普朗克的重要著作</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作或研究</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1879</td>
+<td>熱力學第二定律博士論文</td>
+<td>熵與熱力學第二定律</td>
+</tr>
+<tr>
+<td>1887</td>
+<td>能量守恆原理相關研究</td>
+<td>能量守恆與熱力學</td>
+</tr>
+<tr>
+<td>1897</td>
+<td>《熱力學論》</td>
+<td>系統討論熱力學基本原理</td>
+</tr>
+<tr>
+<td>1900</td>
+<td>黑體輻射定律研究</td>
+<td>建立普朗克輻射公式</td>
+</tr>
+<tr>
+<td>1906</td>
+<td>《熱輻射理論》</td>
+<td>系統說明熱輻射與量子假設</td>
+</tr>
+<tr>
+<td>1922</td>
+<td>《理論物理學導論》相關講義</td>
+<td>理論物理學基本概念</td>
+</tr>
+<tr>
+<td>1949（身後出版）</td>
+<td>《科學自傳及其他論文》</td>
+<td>回顧其科學思想與研究歷程</td>
+</tr>
+</tbody></table>
+<h2 id="十四、普朗克生平重要年份總表">十四、普朗克生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>年齡</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1858</td>
+<td>0</td>
+<td>出生於德國基爾</td>
+</tr>
+<tr>
+<td>1867</td>
+<td>9</td>
+<td>全家遷往慕尼黑</td>
+</tr>
+<tr>
+<td>1874</td>
+<td>16</td>
+<td>中學畢業，進入慕尼黑大學</td>
+</tr>
+<tr>
+<td>1877</td>
+<td>19</td>
+<td>前往柏林大學進修</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>21</td>
+<td>取得博士學位</td>
+</tr>
+<tr>
+<td>1880</td>
+<td>22</td>
+<td>取得大學任教資格，開始任教</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>27</td>
+<td>任教於基爾大學</td>
+</tr>
+<tr>
+<td>1887</td>
+<td>29</td>
+<td>與瑪麗・梅爾克結婚</td>
+</tr>
+<tr>
+<td>1889</td>
+<td>31</td>
+<td>前往柏林大學任教</td>
+</tr>
+<tr>
+<td>1892</td>
+<td>34</td>
+<td>升任正教授</td>
+</tr>
+<tr>
+<td>1894</td>
+<td>36</td>
+<td>當選普魯士科學院院士</td>
+</tr>
+<tr>
+<td>1899</td>
+<td>41</td>
+<td>發現普朗克作用量子常數</td>
+</tr>
+<tr>
+<td>1900</td>
+<td>42</td>
+<td>發表黑體輻射公式，提出量子假設</td>
+</tr>
+<tr>
+<td>1906</td>
+<td>48</td>
+<td>出版《熱輻射理論》</td>
+</tr>
+<tr>
+<td>1911</td>
+<td>53</td>
+<td>再婚，參與第一屆索爾維會議</td>
+</tr>
+<tr>
+<td>1913</td>
+<td>55</td>
+<td>擔任柏林大學校長</td>
+</tr>
+<tr>
+<td>1918</td>
+<td>60</td>
+<td>獲得諾貝爾物理學獎</td>
+</tr>
+<tr>
+<td>1920</td>
+<td>62</td>
+<td>參與戰後德國科學研究重建</td>
+</tr>
+<tr>
+<td>1926</td>
+<td>68</td>
+<td>從柏林大學退休</td>
+</tr>
+<tr>
+<td>1929</td>
+<td>71</td>
+<td>與愛因斯坦成為首屆馬克斯・普朗克獎章得主</td>
+</tr>
+<tr>
+<td>1930</td>
+<td>72</td>
+<td>出任威廉皇帝科學促進協會會長</td>
+</tr>
+<tr>
+<td>1933</td>
+<td>75</td>
+<td>納粹掌權，德國科學界受到政治干預</td>
+</tr>
+<tr>
+<td>1937</td>
+<td>79</td>
+<td>卸下協會會長職務</td>
+</tr>
+<tr>
+<td>1945</td>
+<td>87</td>
+<td>兒子埃爾溫遭納粹處決；戰後參與科學機構重建</td>
+</tr>
+<tr>
+<td>1946</td>
+<td>88</td>
+<td>獲任威廉皇帝科學促進協會名譽會長</td>
+</tr>
+<tr>
+<td>1947</td>
+<td>89</td>
+<td>10月4日於哥廷根逝世</td>
+</tr>
+</tbody></table>
+<p>年代校訂補充： 普朗克第一任妻子瑪麗於1909年逝世，1911年與第二任妻子瑪格麗特結婚；先前時間軸中將這兩件事誤置於1920年，應以此處為準。其諾貝爾獎為1918年度獎項，頒獎時間與獲獎年度不同。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.mpg.de&sz=32">image</a></p>
+<p>Max-Planck-Gesellschaft+2</p>
+<h2 id="十五、普朗克在科學史上的歷史地位">十五、普朗克在科學史上的歷史地位</h2>
+<p>普朗克的貢獻可以放在物理學發展的長期脈絡中理解：</p>
+<p>古典物理學時代</p>
+<p>牛頓、法拉第、馬克士威等人建立力學與電磁學體系。</p>
+<p>普朗克（1900）</p>
+<p>提出能量量子化，開啟量子論。</p>
+<p>愛因斯坦（1905）</p>
+<p>提出光量子假說，解釋光電效應。</p>
+<p>玻爾（1913）</p>
+<p>將量子概念應用於原子結構。</p>
+<p>海森堡、薛丁格（1925－1926）</p>
+<p>建立矩陣力學與波動力學。</p>
+<p>現代量子物理學</p>
+<p>發展出原子物理、核物理、半導體、雷射及量子資訊等領域。</p>
+<h3 id="歷史評價">歷史評價</h3>
+<p>普朗克最值得注意之處，在於他原本並不是為了推翻古典物理學而研究黑體輻射。他希望以既有物理原理解決一個具體的實驗問題，卻在研究過程中提出了改變物理學根本觀念的假設。</p>
+<p>他的發現顯示：當實驗證據與既有理論發生衝突時，科學家必須重新檢視原本認為理所當然的自然規律。</p>
+<p>因此，1900年12月14日通常被視為量子論誕生的重要日期，而普朗克則被公認為量子物理學的開創者。</p>
+<h2 id="十六、參考資料">十六、參考資料</h2>
+<p>以下是適合進一步閱讀的權威資料：</p>
+<ol>
+<li><a href="https://www.mpg.de/19252700/max-planck-biographical-overview?utm_source=chatgpt.com">馬克斯・普朗克學會：普朗克生平年表</a>。</li>
+<li><a href="https://www.nobelprize.org/prizes/physics/1918/planck/facts/?trk=public_post-text&utm_source=chatgpt.com">諾貝爾獎官方網站：1918年普朗克物理學獎</a>。</li>
+<li><a href="https://www.mpg.de/8241451/max-planck?utm_source=chatgpt.com">馬克斯・普朗克學會：普朗克生平與科學成就</a>。</li>
+<li><a href="https://www.dhm.de/lemo/biografie/max-planck?utm_source=chatgpt.com">德國歷史博物館：普朗克生平</a>。</li>
+</ol>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

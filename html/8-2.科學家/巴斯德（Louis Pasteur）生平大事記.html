@@ -1,0 +1,799 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="路易・巴斯德（louis-pasteur）生平大事記">路易・巴斯德（Louis Pasteur）生平大事記</h1>
+<p><a href="https://images.openai.com/static-rsc-4/AsgKg1r8qq5cJphxE3vMVDOrTQTQs9rvvpRscWvEatLOkV8JLcGVSsH7XWWFpmni2XM06zulBLvDe6li_mowdGSKbaIG9wvXAko3agg5OLTo0XFNDwl9Aesx1vSD98c1ENWKZ7LK5zMbvCayzXnIK6C_CJf1ovwTYkLp09GM70Y?purpose=inline">File:Louis Pasteur.jpg - Wikimedia Commons</a></p>
+<p>路易・巴斯德（Louis Pasteur）</p>
+<ul>
+<li>生卒： 1822年12月27日－1895年9月28日</li>
+<li>國籍： 法國</li>
+<li>領域： 化學、微生物學、免疫學</li>
+<li>重要地位： 微生物學奠基者、現代疫苗學先驅</li>
+<li>主要成就： 巴斯德消毒法、發酵研究、病菌致病理論、炭疽疫苗、狂犬病疫苗</li>
+</ul>
+<h2 id="一、人物概述：改變醫學與生命科學的科學家">一、人物概述：改變醫學與生命科學的科學家</h2>
+<p>巴斯德是19世紀最重要的法國科學家之一。他的研究橫跨化學、生物學、醫學及公共衛生，對人類疾病防治、食品保存、疫苗研發及現代微生物學產生深遠影響。</p>
+<p>在巴斯德以前，許多人仍相信微生物可能自然產生，或者疾病與腐敗現象未必有共同的微生物原因。巴斯德透過一系列精密實驗，證明微生物能夠參與發酵、造成食品腐敗，並在某些情況下引發疾病。</p>
+<p>他的研究逐漸建立起一套新的科學觀念：</p>
+<ol>
+<li>微生物與發酵： 不同微生物能造成不同類型的發酵。</li>
+<li>微生物與疾病： 某些疾病是由特定病原微生物引起。</li>
+<li>消毒與滅菌： 透過控制微生物，可以減少食品腐敗及感染。</li>
+<li>疫苗與免疫： 經過特殊處理的病原體，可以誘發人體或動物產生保護力。</li>
+<li>公共衛生： 科學研究能夠直接改善食品安全、畜牧業及人類健康。</li>
+</ol>
+<h2 id="二、1822－1846年：出生、家庭與求學時期">二、1822－1846年：出生、家庭與求學時期</h2>
+<h3 id="1822年：出生於法國多勒">1822年：出生於法國多勒</h3>
+<ul>
+<li>1822年12月27日，巴斯德出生於法國東部汝拉省的多勒（Dole）。</li>
+<li>父親讓・約瑟夫・巴斯德（Jean-Joseph Pasteur）曾在拿破崙戰爭期間服役，退伍後經營皮革加工業。</li>
+<li>巴斯德成長於普通工匠家庭，父親十分重視教育，希望兒子透過讀書取得更好的發展。</li>
+<li>巴斯德從小並非特別突出的天才學生，反而以勤奮、細心及持續努力著稱。</li>
+</ul>
+<h3 id="1826年：全家遷居阿爾布瓦">1826年：全家遷居阿爾布瓦</h3>
+<ul>
+<li>巴斯德一家遷往法國汝拉地區的阿爾布瓦（Arbois）。</li>
+<li>他在當地度過童年及少年時期。</li>
+<li>阿爾布瓦的自然環境，使他有機會觀察河流、農業、動植物及地方生活。</li>
+</ul>
+<h3 id="1831－1839年：接受基礎教育">1831－1839年：接受基礎教育</h3>
+<ul>
+<li>巴斯德在當地接受初等教育。</li>
+<li>他對繪畫及人物肖像畫頗有興趣，少年時期曾創作不少肖像作品。</li>
+<li>他也逐漸展現出對自然現象及科學問題的興趣。</li>
+<li>早期學習經驗培養了他細緻觀察及耐心工作的能力。</li>
+</ul>
+<h3 id="1839年：進入貝桑松學院">1839年：進入貝桑松學院</h3>
+<ul>
+<li>巴斯德進入法國貝桑松（Besançon）的學校繼續學業。</li>
+<li>他開始接受更完整的數學、物理及化學教育。</li>
+<li>當時法國的高等教育體系重視數學、物理及古典學科，為他日後進入巴黎高等師範學院奠定基礎。</li>
+</ul>
+<h3 id="1842年：取得文學學士資格">1842年：取得文學學士資格</h3>
+<ul>
+<li>巴斯德取得文學學士資格。</li>
+<li>隨後繼續準備進入巴黎的高等教育機構。</li>
+<li>他逐漸將學習重心轉向數學、物理與化學。</li>
+</ul>
+<h3 id="1843年：進入巴黎高等師範學院">1843年：進入巴黎高等師範學院</h3>
+<ul>
+<li>巴斯德考入巴黎高等師範學院（École Normale Supérieure）。</li>
+<li>這是法國最重要的高等教育及師資培育機構之一。</li>
+<li>他開始接受嚴謹的物理與化學訓練。</li>
+<li>在此期間，他接觸到當時重要的化學研究方法，尤其是晶體結構及光學性質。</li>
+</ul>
+<h3 id="1845年：取得物理學學位">1845年：取得物理學學位</h3>
+<ul>
+<li>巴斯德完成部分高等教育課程，取得物理學相關學位。</li>
+<li>他開始深入研究晶體及偏振光現象。</li>
+<li>這些研究使他逐漸在化學界嶄露頭角。</li>
+</ul>
+<h3 id="1846年：取得自然科學學位">1846年：取得自然科學學位</h3>
+<ul>
+<li>巴斯德取得數學、物理及化學方面的進一步學術資格。</li>
+<li>開始進行更深入的研究工作。</li>
+<li>他的早期研究重點集中在酒石酸鹽及晶體的光學性質。</li>
+</ul>
+<h2 id="三、1847－1854年：立體化學研究與科學成名">三、1847－1854年：立體化學研究與科學成名</h2>
+<p><a href="https://images.openai.com/static-rsc-4/KhBRNqy2vcMX-1vv_-NTCbkYECClBGk6HBe9g9c-XS48cQRl5XSrJlyP7QghQIHudfH_HpmmNBNQ0E1GkU7KjJX74lavN0oLsGBQi9TcxDMxQtP7tolK-cN5Dlzz3hIl370rPrsyIsh74mg1B983wEH411grNuLWOApiKuqoBPo?purpose=inline">In 1848, Louis Pasteur discovered that crystals left from over-boiled wine barrels shared mirror-image molecules, as if one were a left-handed version and the other was right-handed. The phenomenon… | Quanta Magazine</a></p>
+<p><a href="https://www.linkedin.com/posts/quanta-magazine_in-1848-louis-pasteur-discovered-that-crystals-activity-7133154193216823297-id3X?utm_source=chatgpt.com">linkedin.com</a></p>
+<h3 id="1847年：取得博士學位">1847年：取得博士學位</h3>
+<ul>
+<li>巴斯德完成博士研究，取得巴黎高等師範學院的博士學位。</li>
+<li>他的研究涉及化學及物理學。</li>
+<li>他開始專注於晶體的不對稱結構及其與偏振光的關係。</li>
+</ul>
+<h3 id="1848年：發現酒石酸鹽晶體的光學不對稱性">1848年：發現酒石酸鹽晶體的光學不對稱性</h3>
+<p>早期重大科學發現</p>
+<ul>
+<li>巴斯德研究酒石酸鹽及外消旋酒石酸鹽（racemic acid）的晶體。</li>
+<li>他注意到某些晶體具有彼此不同的微小形態。</li>
+<li>他透過顯微鏡及偏振光實驗，將晶體分成兩種具有鏡像關係的類型。</li>
+<li>兩種晶體在光學上的旋光方向不同。</li>
+</ul>
+<p>這項發現的重要性：</p>
+<ol>
+<li>顯示化學物質的分子結構可能具有不對稱性。</li>
+<li>建立了分子立體化學的重要實驗基礎。</li>
+<li>說明分子結構與物質的光學性質具有密切關係。</li>
+<li>成為後來研究手性（chirality）的重要先驅。</li>
+</ol>
+<p>巴斯德透過手工分離晶體，證明了分子結構具有左右手性特徵的可能性。這是他最重要的早期科學貢獻之一。</p>
+<h3 id="1849年：任教於第戎與斯特拉斯堡">1849年：任教於第戎與斯特拉斯堡</h3>
+<ul>
+<li>巴斯德曾在法國第戎任教，隨後前往斯特拉斯堡大學（University of Strasbourg）。</li>
+<li>他擔任化學教授。</li>
+<li>在斯特拉斯堡期間，他與校長之女瑪麗・洛朗（Marie Laurent）結識。</li>
+</ul>
+<h3 id="1849年：結婚">1849年：結婚</h3>
+<ul>
+<li>巴斯德與瑪麗・洛朗結婚。</li>
+<li>瑪麗後來成為他重要的家庭及研究支持者。</li>
+<li>兩人育有五名子女，其中三名在童年時期因疾病去世。</li>
+<li>子女早逝的經歷，使巴斯德對傳染病及疾病防治問題更加關注。</li>
+</ul>
+<h3 id="1852年：持續研究晶體化學">1852年：持續研究晶體化學</h3>
+<ul>
+<li>巴斯德持續研究酒石酸及相關化合物的晶體結構。</li>
+<li>他逐步建立起分子不對稱性與旋光性之間的關聯。</li>
+<li>這些成果使他在法國化學界獲得重要聲譽。</li>
+</ul>
+<h3 id="1853年：獲得法國榮譽勳章">1853年：獲得法國榮譽勳章</h3>
+<ul>
+<li>巴斯德因研究成果獲得法國政府肯定。</li>
+<li>他在晶體化學及光學研究方面的聲望持續提升。</li>
+</ul>
+<h3 id="1854年：任教於里爾大學">1854年：任教於里爾大學</h3>
+<ul>
+<li>巴斯德前往法國里爾（Lille），擔任科學院院長及化學教授。</li>
+<li>里爾是法國重要的工業與釀造中心。</li>
+<li>當地的酒精發酵、釀酒及食品工業問題，使他開始接觸實際的工業微生物問題。</li>
+</ul>
+<h2 id="四、1855－1862年：發酵研究與自然發生說的挑戰">四、1855－1862年：發酵研究與自然發生說的挑戰</h2>
+<p><a href="https://images.openai.com/static-rsc-4/eVhuRQxhvy9RHzi8FkgG1GVMncBTZzgjKGGyfZrgDNjMx5mO47DYnD-As5uV7ypFyU2tJdFSrGiJJSAvTRNGB63zHiaR76JPtFC640UdK9bv-OBka0xx0Fl8jq8C08iL8NFPRsZHzj_-Vq14AjmTq8HLkay4D35JTRlXntpbOO8?purpose=inline">PPT - Biogénèse et Génération Spontanée (abiogénèse) PowerPoint Presentation - ID:4216458</a></p>
+<p><a href="https://www.slideserve.com/kimberly/biog-n-se-et-g-n-ration-spontan-e-abiog-n-se-powerpoint-ppt-presentation?utm_source=chatgpt.com">slideserve.com</a></p>
+<h3 id="1855年：開始深入研究發酵">1855年：開始深入研究發酵</h3>
+<ul>
+<li>巴斯德開始研究酒精發酵及乳酸發酵。</li>
+<li>當時工業界常遇到酒液變酸、發酵失敗及產品品質不穩定等問題。</li>
+<li>他希望透過化學與顯微鏡觀察，找出發酵失敗的真正原因。</li>
+</ul>
+<h3 id="1857年：提出發酵與微生物有關">1857年：提出發酵與微生物有關</h3>
+<p>微生物學的重要起點</p>
+<ul>
+<li>巴斯德發表有關乳酸發酵的研究。</li>
+<li>他觀察到乳酸發酵與特定微生物的活動有關。</li>
+<li>他進一步研究酒精發酵，發現酵母菌在發酵過程中扮演重要角色。</li>
+<li>他指出發酵並非單純的化學分解，而是與微生物的生命活動密切相關。</li>
+</ul>
+<p>重要意義：</p>
+<p>過去許多科學家主要從化學反應解釋發酵。巴斯德則透過實驗證明，不同微生物會造成不同發酵結果。</p>
+<p>這項研究逐漸建立了微生物學與工業發酵科學的基礎。</p>
+<h3 id="1857年：發表乳酸發酵研究">1857年：發表乳酸發酵研究</h3>
+<ul>
+<li>巴斯德發表《關於乳酸發酵的研究》（Mémoire sur la fermentation appelée lactique）。</li>
+<li>他透過顯微鏡觀察乳酸發酵液中的微生物。</li>
+<li>他指出乳酸發酵與特定微生物的生長有關。</li>
+<li>這篇研究成為微生物學發展史上的重要文獻。</li>
+</ul>
+<h3 id="1858年：進一步研究酒精發酵">1858年：進一步研究酒精發酵</h3>
+<ul>
+<li>巴斯德持續研究酵母菌及酒精發酵。</li>
+<li>他發現酵母菌能夠將糖轉化為酒精與二氧化碳。</li>
+<li>他逐漸將不同發酵現象與不同微生物種類聯繫起來。</li>
+</ul>
+<h3 id="1860年：挑戰自然發生說">1860年：挑戰自然發生說</h3>
+<ul>
+<li>當時仍有不少科學家相信，某些低等生物可能由非生命物質自然產生。</li>
+<li>這種觀點稱為自然發生說（Spontaneous Generation）。</li>
+<li>巴斯德透過實驗，逐步反駁微生物會在適當條件下無中生有的說法。</li>
+<li>他認為微生物主要來自環境中原本存在的微生物或其繁殖體。</li>
+</ul>
+<h3 id="1861年：天鵝頸瓶實驗">1861年：天鵝頸瓶實驗</h3>
+<p>科學史上的經典實驗</p>
+<ul>
+<li>巴斯德設計著名的天鵝頸瓶實驗（Swan-neck Flask Experiment）。</li>
+<li>他將肉湯放入長頸燒瓶中加熱，使其中原有的微生物被殺死。</li>
+<li>燒瓶頸部被拉成彎曲的天鵝頸形狀。</li>
+<li>空氣可以進入燒瓶，但空氣中的灰塵及微生物容易被彎曲處截留。</li>
+<li>肉湯因此能長時間保持澄清，不會輕易出現微生物生長。</li>
+<li>當燒瓶被傾斜，使肉湯接觸到彎曲處截留的灰塵，或直接破壞瓶頸時，肉湯便可能出現微生物生長。</li>
+</ul>
+<p>實驗結論：</p>
+<ol>
+<li>空氣本身並不會使肉湯必然產生微生物。</li>
+<li>空氣中的微生物或微生物繁殖體能進入培養液並繁殖。</li>
+<li>微生物的出現有其來源，不是由無生命物質自然產生。</li>
+</ol>
+<p>這項實驗成為反駁自然發生說的經典證據，也推動了生物起源與微生物研究的科學化。</p>
+<h3 id="1862年：獲得法國科學院獎勵">1862年：獲得法國科學院獎勵</h3>
+<ul>
+<li>巴斯德因自然發生說相關研究獲得學術肯定。</li>
+<li>他進一步建立微生物研究的實驗方法。</li>
+<li>其研究開始受到法國及歐洲科學界的廣泛關注。</li>
+</ul>
+<h2 id="五、1863－1870年：巴斯德消毒法與蠶病研究">五、1863－1870年：巴斯德消毒法與蠶病研究</h2>
+<p><a href="https://images.openai.com/static-rsc-4/t3o2xI9vcNEFjJQTjonCqxL4g1mucM8bdRTQx78QDu8zsdh7BTWNr-xTFtM8StpZpa457kzdXUeLhTfYG-RqZAACN5L0o3S0K7ItERd2x9b5SAy8WiaI0m214ou3Ko9ZO9fsaSurqR5AiGYAZpFaji2vQNIjGrXLsE3Z_-8-gj0?purpose=inline">Pasteurization -  Louis Pasteur- The Most  Significant Scientist of his  time: 1800&#39;s</a></p>
+<p><a href="https://louis-pasteur-in-the-1800s.weebly.com/pasteurization.html?utm_source=chatgpt.com">louis-pasteur-in-the-1800s.weebly.com</a></p>
+<h3 id="1863年：受命研究法國葡萄酒問題">1863年：受命研究法國葡萄酒問題</h3>
+<ul>
+<li>法國葡萄酒產業經常遇到變酸、腐敗及品質不穩定的問題。</li>
+<li>拿破崙三世政府請巴斯德協助研究。</li>
+<li>巴斯德發現，酒液變質與某些微生物的活動有關。</li>
+<li>他提出透過適度加熱控制有害微生物的構想。</li>
+</ul>
+<h3 id="1864年：巴斯德消毒法的建立">1864年：巴斯德消毒法的建立</h3>
+<p>食品科學的重要發明</p>
+<ul>
+<li>巴斯德提出透過控制溫度與加熱時間，減少液體中造成腐敗的微生物。</li>
+<li>這種方法後來被稱為巴斯德消毒法（Pasteurization）。</li>
+<li>其原理並非將所有微生物完全殺死，而是降低特定病原菌及腐敗微生物的數量，使食品較安全、保存時間較長。</li>
+</ul>
+<p>巴斯德消毒法的主要應用：</p>
+<ul>
+<li>牛奶。</li>
+<li>葡萄酒。</li>
+<li>啤酒。</li>
+<li>果汁。</li>
+<li>其他液態食品。</li>
+</ul>
+<p>後來的食品工業依照不同食品特性，發展出不同溫度與時間組合的巴斯德消毒程序。</p>
+<h3 id="1865年：研究蠶病">1865年：研究蠶病</h3>
+<ul>
+<li>法國養蠶業受到嚴重疾病侵襲，造成經濟損失。</li>
+<li>巴斯德受命研究蠶病。</li>
+<li>當時主要涉及兩種疾病：<ul>
+<li>微粒子病（pébrine）。</li>
+<li>軟化病（flacherie）。</li>
+</ul>
+</li>
+<li>他發現微粒子病與一種稱為微孢子蟲的寄生性微生物有關。</li>
+<li>他透過顯微鏡檢查蠶卵及蠶蛾，協助建立篩選健康蠶種的方法。</li>
+</ul>
+<h3 id="1866年：出版蠶病研究成果">1866年：出版蠶病研究成果</h3>
+<ul>
+<li>巴斯德發表《蠶病研究》（Études sur la maladie des vers à soie）。</li>
+<li>書中整理多年研究及防治經驗。</li>
+<li>他提出透過選擇健康蠶卵及淘汰受感染種源，減少疾病傳播。</li>
+<li>這些研究使法國養蠶業逐漸恢復。</li>
+</ul>
+<h3 id="1867年：獲得法國學術界肯定">1867年：獲得法國學術界肯定</h3>
+<ul>
+<li>巴斯德因發酵、消毒及蠶病研究獲得更高聲譽。</li>
+<li>他獲選為法國科學院院士。</li>
+<li>其研究逐漸從化學延伸到生物學及醫學領域。</li>
+</ul>
+<h3 id="1868年：中風及健康危機">1868年：中風及健康危機</h3>
+<ul>
+<li>巴斯德在研究工作期間遭遇嚴重健康問題，曾發生中風。</li>
+<li>他的部分身體功能受到影響。</li>
+<li>儘管如此，他仍繼續進行科學研究。</li>
+<li>其後多年仍持續投入微生物學及疾病研究。</li>
+</ul>
+<h3 id="1870年：法國普法戰爭">1870年：法國普法戰爭</h3>
+<ul>
+<li>普法戰爭爆發，法國戰敗，第二帝國瓦解。</li>
+<li>巴斯德的學術工作也受到政治與社會環境影響。</li>
+<li>他繼續研究微生物、發酵與食品保存問題。</li>
+</ul>
+<h2 id="六、1871－1881年：病原菌研究與疫苗學的突破">六、1871－1881年：病原菌研究與疫苗學的突破</h2>
+<p><a href="https://images.openai.com/static-rsc-4/r4GjuXpWYo1su0SQmlfOs-lwhn8cYACIhbjfGOXeb7ISYSxr9XNJR51GX5rzCXlJz04wr_-bh4hIuIrEnlbGPvR_QEn0TDMM1wI-Vt25ruZHidJ8n7oK51lVhYIsd64UqC6b8yVwDHJAWKK6doxga1Z3g29KN1D1-SJyz8h_620?purpose=inline">Louis Pasteur (1822-1895), französischer Biologe, experimentierte erfolgreich in Pouilly-le-Fort auf Anfrage der Landwirtschaftsgesellschaft von Melun mit seinem Milzbrandvirus an einer Herde von Schafen, Kühen und Ziegen. Zeichnung von Damblans.</a></p>
+<p><a href="https://www.meisterdrucke.com/kunstdrucke/Eugene-Damblans/919931/Louis-Pasteur-%281822-1895%29%2C-franz%C3%B6sischer-Biologe%2C-experimentierte-erfolgreich-in-Pouilly-le-Fort-auf-Anfrage-der-Landwirtschaftsgesellschaft-von-Melun-mit-seinem-Milzbrandvirus-an-einer-Herde-von-Schafen%2C-K%C3%BChen-und-Ziegen.-Zeichnung-von-Damblans..html?utm_source=chatgpt.com">meisterdrucke.com</a></p>
+<h3 id="1871年：研究啤酒發酵與品質控制">1871年：研究啤酒發酵與品質控制</h3>
+<ul>
+<li>巴斯德開始深入研究啤酒發酵。</li>
+<li>他發現啤酒變質與特定微生物污染有關。</li>
+<li>他提出改善原料、器具及生產環境衛生的方法。</li>
+<li>這些研究對食品工業及微生物控制具有重要價值。</li>
+</ul>
+<h3 id="1876年：出版《啤酒研究》">1876年：出版《啤酒研究》</h3>
+<ul>
+<li>巴斯德出版《啤酒研究》（Études sur la bière）。</li>
+<li>書中探討啤酒發酵、微生物污染及保存技術。</li>
+<li>他進一步說明發酵並非單一的化學現象，而是與微生物種類及生長環境密切相關。</li>
+</ul>
+<h3 id="1877年：研究炭疽病">1877年：研究炭疽病</h3>
+<ul>
+<li>巴斯德開始研究炭疽病（Anthrax）。</li>
+<li>炭疽病是一種可感染牛、羊等動物，也可能感染人類的傳染病。</li>
+<li>當時炭疽病對法國畜牧業造成重大威脅。</li>
+<li>巴斯德與其研究團隊深入研究炭疽桿菌及疾病傳播。</li>
+<li>他逐漸建立病原微生物與特定疾病之間的因果關係。</li>
+</ul>
+<h3 id="1878年：研究病原微生物與疾病傳播">1878年：研究病原微生物與疾病傳播</h3>
+<ul>
+<li>巴斯德進一步研究細菌在疾病中的作用。</li>
+<li>他強調必須將特定微生物與特定疾病聯繫起來。</li>
+<li>他的研究促使醫學界逐漸接受病原微生物致病的觀念。</li>
+<li>同一時期，德國醫學家羅伯特・科霍（Robert Koch）也在發展細菌分離、培養及疾病因果關係的研究方法。</li>
+</ul>
+<h3 id="1879年：雞霍亂疫苗研究">1879年：雞霍亂疫苗研究</h3>
+<p>疫苗學重大突破</p>
+<ul>
+<li>巴斯德研究雞霍亂（Chicken Cholera）。</li>
+<li>他觀察到，經過一段時間放置的細菌培養物，其致病能力可能減弱。</li>
+<li>當雞接種這種毒力減弱的培養物後，可能不再容易感染致命的雞霍亂。</li>
+<li>他進一步發現，接種過弱毒菌的雞，後續受到強毒菌感染時，具有較高的存活機會。</li>
+</ul>
+<p>這項研究的重要性：</p>
+<ol>
+<li>證明病原微生物的毒力可以在特定條件下減弱。</li>
+<li>證明經過處理的病原微生物可能誘發保護作用。</li>
+<li>建立減毒疫苗的實驗基礎。</li>
+<li>推動疫苗研究從經驗性方法走向可控制的實驗科學。</li>
+</ol>
+<p>巴斯德將這種方法稱為減毒（attenuation）。</p>
+<h3 id="1880年：減毒疫苗研究逐漸成熟">1880年：減毒疫苗研究逐漸成熟</h3>
+<ul>
+<li>巴斯德持續研究雞霍亂及炭疽病。</li>
+<li>他與研究團隊開始探索不同病原體的減毒方法。</li>
+<li>其疫苗研究逐漸形成一套基本原則：降低病原體的致病能力，但保留刺激免疫反應的能力。</li>
+</ul>
+<h3 id="1881年：炭疽疫苗公開實驗">1881年：炭疽疫苗公開實驗</h3>
+<p>疫苗史的重要里程碑</p>
+<p><a href="https://images.openai.com/static-rsc-4/3K2t9jnfMRfdJeGkbJxMJc-WTQazAHyDbK7ZJYF-3anknefGBzxIP_IRDFRgtGvvVs77GXtxz4GUvooPDLJh0vJO4bilP27BX3dYZrcOWJkvRsvB988mS3MFdV5ad7RGXwWAilGxUhrwpDui4I7FOsF-e5O_nT2v5tLWidx8loc?purpose=inline">Louis Pasteur (1822-1895). /Nfrench Chemist And Microbiologist. Pasteur (Center, In Skullcap And Apron) Testing His Anthrax Vaccine On Sheep At Pouilly-Le-Fort, France, In 1881, By Injecting Them With Anthrax After He Had Previously Vaccinated Them A - Posterazzi</a></p>
+<p><a href="https://www.posterazzi.com/louis-pasteur-1822-1895-nfrench-chemist-and-microbiologist-pasteur-center-in-skullcap-and-apron-testing-his-anthrax-vaccine-on-sheep-at-pouilly-le-fort-france-in-1881-by-injecting-them-with-anthrax-after-he-had-previously-vaccinated-them-a/?utm_source=chatgpt.com">posterazzi.com</a></p>
+<ul>
+<li>1881年5月，巴斯德團隊在法國普伊勒福爾（Pouilly-le-Fort）進行著名的炭疽疫苗公開實驗。</li>
+<li>實驗對象包括羊、牛等動物。</li>
+<li>一組動物先接受疫苗接種，另一組作為未接種對照。</li>
+<li>之後讓兩組動物接受炭疽病原體的挑戰。</li>
+<li>接種疫苗的動物大多存活，而未接種的對照組大多死亡。</li>
+</ul>
+<p>歷史意義：</p>
+<ul>
+<li>這項實驗向農業界及科學界展示疫苗可以有效預防炭疽病。</li>
+<li>使巴斯德的疫苗研究獲得廣泛認可。</li>
+<li>推動現代獸醫疫苗學及傳染病防治發展。</li>
+</ul>
+<p>需要補充的是，這次公開實驗所使用的疫苗製備方法，涉及巴斯德團隊的技術改良與實際操作，並非單純將所有製備細節完全依照巴斯德最初公開的理論執行。</p>
+<h2 id="七、1882－1885年：狂犬病研究與疫苗突破">七、1882－1885年：狂犬病研究與疫苗突破</h2>
+<p><a href="https://images.openai.com/static-rsc-4/mEb4y1KGmjV-tn9JjtHzELW8MaesMGiLISl6U8iDMV3_TE7zaPCTAKZKZSyji1P2V5-NO2D8W2GWsKEONMoqkvhsypI_nnU3s85_WNCitEFsQI06w6N4HLW5J-bI3U-j_YEtzuw7UfI1REWQoFCBIOMq-zME5O-RgaLK0j8pY-A?purpose=inline">Louis Pasteur ed il vaccino della rabbia - Storia della Medicina. SITO &amp; BLOG</a></p>
+<p><a href="https://www.storiadellamedicina.net/louis-pasteur-ed-il-vaccino-della-rabbia/?utm_source=chatgpt.com">storiadellamedicina.net</a></p>
+<h3 id="1882年：進入法蘭西學術院">1882年：進入法蘭西學術院</h3>
+<ul>
+<li>巴斯德當選法蘭西學術院（Académie française）院士。</li>
+<li>這項榮譽顯示他的影響力已超越自然科學領域。</li>
+<li>他也持續研究炭疽病及其他感染性疾病。</li>
+</ul>
+<h3 id="1884年：狂犬病疫苗研究取得重要進展">1884年：狂犬病疫苗研究取得重要進展</h3>
+<ul>
+<li>巴斯德研究狂犬病（Rabies）。</li>
+<li>狂犬病是一種嚴重的病毒性疾病，感染後可能造成神經系統損傷，發病後死亡率極高。</li>
+<li>當時人們對狂犬病病原體尚未能以一般顯微鏡觀察或分離培養。</li>
+<li>巴斯德透過動物實驗，逐步研究狂犬病的傳播及減毒方法。</li>
+<li>他利用感染動物的神經組織，經過乾燥等處理，逐步降低感染材料的致病能力。</li>
+<li>他與助手埃米爾・魯（Émile Roux）等人共同投入疫苗研究。</li>
+</ul>
+<h3 id="1885年7月6日：治療約瑟夫・邁斯特">1885年7月6日：治療約瑟夫・邁斯特</h3>
+<p>巴斯德最著名的醫學事件</p>
+<p><a href="https://images.openai.com/static-rsc-4/0_9qKgQ3JhCwfGhPGCdQKMddvBmUD5jZZrQLalHXkbXU3L2vgBswMn7vJeViLOgK1K6RWixAFsMdAm4lGr47CQkGO5Slyb-BdRrzz7JpcJR84oixRr5s-XDfUKckuh1dCS1uT4khbOQ33edrR6FrBry3Op_v-plyrk7Ji56R3S0?purpose=inline">Pasteur’s Legacy :: &quot;El Pasteuriano&quot; - 200 Aniversario de Louis Pasteur</a></p>
+<p><a href="https://pasteuruy200.webnode.com.uy/en/the-pasteurian/pasteur-legacy/?utm_source=chatgpt.com">pasteuruy200.webnode.com.uy</a></p>
+<ul>
+<li>1885年7月，九歲男孩約瑟夫・邁斯特（Joseph Meister）被患有狂犬病的狗嚴重咬傷。</li>
+<li>由於狂犬病發病後幾乎必然致命，家人帶他前往巴黎尋求巴斯德協助。</li>
+<li>巴斯德當時尚未取得正式的人體疫苗臨床試驗經驗，但已在動物實驗中獲得重要成果。</li>
+<li>經過醫師評估及協助，巴斯德決定為男孩進行疫苗接種。</li>
+<li>1885年7月6日至7月16日，男孩接受一系列逐步調整的疫苗注射。</li>
+<li>約瑟夫・邁斯特最終沒有發展成狂犬病。</li>
+</ul>
+<p>這項事件的重要意義：</p>
+<ol>
+<li>展示狂犬病疫苗可能在人類身上產生保護效果。</li>
+<li>開啟狂犬病暴露後預防的重要發展。</li>
+<li>使巴斯德成為世界知名的醫學與微生物學先驅。</li>
+<li>推動疫苗研究進入新的階段。</li>
+</ol>
+<h3 id="1885年10月：狂犬病疫苗研究獲得更多支持">1885年10月：狂犬病疫苗研究獲得更多支持</h3>
+<ul>
+<li>巴斯德團隊持續為遭受狂犬病動物咬傷的人提供預防接種。</li>
+<li>來自不同國家的人前往巴黎尋求治療。</li>
+<li>狂犬病疫苗的成功，使巴斯德的研究受到國際社會高度重視。</li>
+</ul>
+<h2 id="八、1886－1895年：巴斯德研究所與晚年">八、1886－1895年：巴斯德研究所與晚年</h2>
+<p><a href="https://images.openai.com/static-rsc-4/xvmFj7L0krB-Qo0ovgh61zIxxN-c2pZ5RlyWg4cPTea861h0EtLnOn8mFC1mLEZOTweMaI9Ty6HZH7VZ8j98DF6qX7KX_qCIYRtrZNgRyJCUJS1JZV2pGz05zerqYuk_u3xluTHp6Vxkt6gD3wLBVOtPUW6ymBncOK1S_hKyiRU?purpose=inline">File:Institut Pasteur, Paris 28 November 2016.jpg - Wikimedia Commons</a></p>
+<p><a href="https://commons.wikimedia.org/wiki/File%3AInstitut_Pasteur%2C_Paris_28_November_2016.jpg?utm_source=chatgpt.com">commons.wikimedia.org</a></p>
+<h3 id="1886年：狂犬病疫苗推廣">1886年：狂犬病疫苗推廣</h3>
+<ul>
+<li>巴斯德的狂犬病疫苗逐漸獲得國際認可。</li>
+<li>越來越多國家開始重視狂犬病預防。</li>
+<li>巴斯德也積極推動成立專門研究及治療傳染病的機構。</li>
+</ul>
+<h3 id="1887年：巴斯德研究所籌建">1887年：巴斯德研究所籌建</h3>
+<ul>
+<li>巴斯德及支持者開始推動研究所的建立。</li>
+<li>研究所的主要任務包括：<ul>
+<li>微生物研究。</li>
+<li>疫苗研發。</li>
+<li>傳染病防治。</li>
+<li>醫學教育。</li>
+<li>臨床治療。</li>
+</ul>
+</li>
+</ul>
+<h3 id="1888年：巴斯德研究所正式成立">1888年：巴斯德研究所正式成立</h3>
+<p>現代微生物研究的重要機構</p>
+<ul>
+<li>1888年11月14日，巴斯德研究所（Institut Pasteur）在巴黎正式成立。</li>
+<li>巴斯德擔任研究所首任所長。</li>
+<li>研究所成為研究微生物、傳染病及疫苗的重要中心。</li>
+<li>後來許多重要科學家在此工作，包括埃米爾・魯、亞歷山大・耶爾森等人。</li>
+</ul>
+<h3 id="1889年：持續推動疫苗及微生物研究">1889年：持續推動疫苗及微生物研究</h3>
+<ul>
+<li>巴斯德持續領導研究所的學術工作。</li>
+<li>他鼓勵年輕研究人員投入病原微生物、免疫及疫苗研究。</li>
+<li>研究所逐漸成為國際微生物學的重要中心。</li>
+</ul>
+<h3 id="1890年：研究所國際影響力擴大">1890年：研究所國際影響力擴大</h3>
+<ul>
+<li>巴斯德研究所的研究活動逐漸擴大。</li>
+<li>各國開始參考其微生物研究及疫苗製造方法。</li>
+<li>巴斯德的研究理念也逐漸融入醫學教育及公共衛生制度。</li>
+</ul>
+<h3 id="1892年：七十歲生日與國際表揚">1892年：七十歲生日與國際表揚</h3>
+<ul>
+<li>巴斯德迎來七十歲生日。</li>
+<li>法國及國際科學界舉行慶祝活動。</li>
+<li>他的科學貢獻已獲得廣泛肯定。</li>
+</ul>
+<h3 id="1894年：健康逐漸惡化">1894年：健康逐漸惡化</h3>
+<ul>
+<li>巴斯德晚年健康狀況逐漸衰退。</li>
+<li>他仍關注研究所發展及疫苗研究。</li>
+<li>他的學術思想已深刻影響微生物學與醫學。</li>
+</ul>
+<h3 id="1895年9月28日：逝世">1895年9月28日：逝世</h3>
+<ul>
+<li>巴斯德於1895年9月28日在法國馬恩河畔聖克盧（Marnes-la-Coquette）逝世。</li>
+<li>享年72歲。</li>
+<li>法國政府及科學界為他舉行隆重紀念活動。</li>
+<li>他的遺體後來安葬於巴黎巴斯德研究所內的墓室。</li>
+</ul>
+<h2 id="九、巴斯德的主要科學貢獻">九、巴斯德的主要科學貢獻</h2>
+<h3 id="1-發酵理論：證明微生物參與發酵">1. 發酵理論：證明微生物參與發酵</h3>
+<p>巴斯德的重要發現之一，是證明發酵與微生物的生命活動有密切關係。</p>
+<p>他發現：</p>
+<ul>
+<li>酵母菌參與酒精發酵。</li>
+<li>乳酸菌參與乳酸發酵。</li>
+<li>不同微生物能造成不同的發酵結果。</li>
+<li>發酵過程中的微生物污染可能造成食品變質。</li>
+</ul>
+<p>這些研究奠定現代工業微生物學的基礎，並影響釀酒、乳製品、食品加工及生物技術產業。</p>
+<h3 id="2-天鵝頸瓶實驗：反駁自然發生說">2. 天鵝頸瓶實驗：反駁自然發生說</h3>
+<p>巴斯德透過天鵝頸瓶實驗，證明肉湯中的微生物來自環境中既存的微生物，而不是由無生命物質自然產生。</p>
+<p>這項實驗的重要性在於：</p>
+<ul>
+<li>建立微生物污染的實驗證據。</li>
+<li>強化生物來自既有生物的觀念。</li>
+<li>推動無菌操作技術。</li>
+<li>促進現代微生物學發展。</li>
+</ul>
+<h3 id="3-巴斯德消毒法：改善食品安全">3. 巴斯德消毒法：改善食品安全</h3>
+<p>巴斯德提出利用適當加熱減少食品中的有害微生物。</p>
+<p>這項方法對現代食品工業產生深遠影響。</p>
+<p>目前常見的牛奶巴斯德消毒方法包括：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>常見條件</th>
+<th>特點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>低溫長時間法（LTLT）</td>
+<td>約63°C、30分鐘</td>
+<td>加熱時間較長</td>
+</tr>
+<tr>
+<td>高溫短時間法（HTST）</td>
+<td>約72°C、15秒</td>
+<td>常見於鮮乳加工</td>
+</tr>
+<tr>
+<td>超高溫處理（UHT）</td>
+<td>約135－150°C、數秒</td>
+<td>可配合無菌包裝達到常溫保存</td>
+</tr>
+</tbody></table>
+<p>以上是常見工業條件，實際規格須依食品種類、設備及法規而定。</p>
+<h3 id="4-病原微生物理論：建立疾病與微生物的關係">4. 病原微生物理論：建立疾病與微生物的關係</h3>
+<p>巴斯德的研究證明，某些疾病與特定微生物有關。</p>
+<p>這一觀念推動醫學界重新理解傳染病的成因，也促使醫院更加重視：</p>
+<ul>
+<li>手部衛生。</li>
+<li>器械消毒。</li>
+<li>無菌手術。</li>
+<li>病房環境清潔。</li>
+<li>傳染病隔離與預防。</li>
+</ul>
+<p>需要指出，病原微生物致病理論並非由巴斯德一人獨立建立。科霍等科學家對病原菌分離、培養及疾病因果關係的研究，同樣具有關鍵地位。</p>
+<h3 id="5-疫苗研究：發展人工減毒疫苗">5. 疫苗研究：發展人工減毒疫苗</h3>
+<p>巴斯德的重要疫苗研究包括：</p>
+<table>
+<thead>
+<tr>
+<th>疾病</th>
+<th>疫苗研究成果</th>
+<th>年份</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>雞霍亂</td>
+<td>利用毒力減弱的培養物誘發保護力</td>
+<td>1879－1880</td>
+</tr>
+<tr>
+<td>炭疽病</td>
+<td>建立動物炭疽疫苗</td>
+<td>1881</td>
+</tr>
+<tr>
+<td>狂犬病</td>
+<td>發展狂犬病暴露後預防疫苗</td>
+<td>1885</td>
+</tr>
+</tbody></table>
+<p>巴斯德的研究證明，病原體經過特定處理後，可以降低致病能力，同時保留誘發免疫保護的能力。</p>
+<p>這成為後來減毒活疫苗的重要研究基礎。</p>
+<h2 id="十、巴斯德與其他重要科學家的關係">十、巴斯德與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/qSD2jHNw5SzO5Ej2LI0n3pjSkB8pYKrIPeO4zupYl5ww5w2iiUg3qaPwTCfzr7Tsf-Tm2yKHCnEtGPB1Qho1uxvTmZp3XTFEQwpTPImWBowlmhnz46FFEb8db_ClsP_7vmh3XFM3xmygEJHjh-XOnK4s4Jje95tRssLhRnbFA2s?purpose=inline">Louis Pasteur: Kämpfer gegen Tollwut, Erfinder der Pasteurisierung - SWR Kultur</a></p>
+<p>路易・巴斯德（1822－1895）</p>
+<p>微生物學及疫苗學奠基者，研究發酵、微生物致病及減毒疫苗。</p>
+<p><a href="https://images.openai.com/static-rsc-4/wONbgvp3NOCfQR_56otXffmS4Egeawh6a2DGdRc0evyhxrKnPw4aHFxoc-VxpKtKqh8jfLdCTUEmfeyJ25q2XOEIFv43pbhpsOr6P3XrDyM7LBRkTQHD5Ex6rto_SWVDB02Y_GRVHf9ahh9QhwonfkMAxJAqBCMtsH2k_66VrI0?purpose=inline">Robert Koch - vom Landarzt zum Nobelpreisträger - [GEO]</a></p>
+<p>羅伯特・科霍（1843－1910）</p>
+<p>建立細菌分離、培養及疾病研究方法，發現炭疽桿菌、結核桿菌及霍亂弧菌的重要研究成果。與巴斯德共同推動病原微生物學發展。</p>
+<p><a href="https://images.openai.com/static-rsc-4/1Va_uAYeKvOE_tW4g708zdQutPm7rdY_M-HmLWpFbX9OClrW9-9LtkvgfizpFiwMoIFk8K5sWVJp9B89BUVfbLc1K-nXBmXekta1fZ4ctuNm7hMXw5rL7eKTO4KD4fotcaO1BtRMP6tZzgV8Ly7Jit1QXWUQaAGVn9bMrKkgXho?purpose=inline">File:Joseph Lister, 1st Baron Lister (1827 – 1912) surgeon Wellcome L0002075.jpg - Wikimedia Commons</a></p>
+<p>約瑟夫・李斯特（1827－1912）</p>
+<p>將微生物致病觀念應用於外科手術，發展抗菌及消毒手術方法。</p>
+<p><a href="https://images.openai.com/static-rsc-4/Lg7ass9PKjPEIDegebsvZRqh1ksRiiVEDJIZ_-2Yws-F-4xgzTJt0D2EDE0ISgHLQ6KToa_bl5G-oa0WdKKY_Leny1CnRF9mLMiZ0aVdB46ImD0t1uwbtMhiQWQ2RbOOaqB1amcPGF140rEcx_1iDTn5CC9xtdzWton-iy1BsVA?purpose=inline">Émile Roux, savior of children |</a></p>
+<p>埃米爾・魯（1853－1933）</p>
+<p>巴斯德的重要助手，參與狂犬病疫苗及白喉毒素研究，後來擔任巴斯德研究所重要領導職務。</p>
+<p><a href="https://images.openai.com/static-rsc-4/8HZn-PYyXHoIB8EPjsVxXxzcg-YnoIhS0ptHmzve221d1Bx948ogTRPfarIBbknWfwPXbGw3egbt0VT5XpErEVoQA68EZAzEIXYW4rgUZjOqlC6VItipGACFhL8IwEMgufUopTUFaucMdHW5wHj3X2Ars4EL8HnmHRK1ReYgKaQ?purpose=inline">File:Elie Metchnikoff. Photogravure after Henri Manuel. Wellcome V0026855.jpg - Wikimedia Commons</a></p>
+<p>伊利亞・梅契尼可夫（1845－1916）</p>
+<p>在巴斯德研究所從事免疫學研究，提出吞噬作用的重要理論，是現代免疫學奠基者之一。</p>
+<p><a href="https://images.openai.com/static-rsc-4/_lQJ8Nc0A-wjxY2FKH_q2VcPk-8x7Gwy-1_ZVDyw6mXCXHQoGs-6TKP0N82r6uY7l0e9I63cLd0QLApnLEaM6lRlkGqYkCYcRQ6eLZaWBHUoIUxMrb3AmUqfb0SUD4Qcij4E29DR4XUSsaefzbx9gFZ9QQ-1781UXnUk2SScSFY?purpose=inline">20 juin 1894 - Alexandre Yersin isole le bacille de la peste - Herodote.net</a></p>
+<p>亞歷山大・耶爾森（1863－1943）</p>
+<p>曾在巴斯德研究所工作，1894年發現鼠疫桿菌，對傳染病研究及防治有重要貢獻。</p>
+<h3 id="巴斯德與科霍的比較">巴斯德與科霍的比較</h3>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>巴斯德</th>
+<th>科霍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>國籍</td>
+<td>法國</td>
+<td>德國</td>
+</tr>
+<tr>
+<td>主要領域</td>
+<td>化學、微生物學、疫苗學</td>
+<td>醫學、細菌學</td>
+</tr>
+<tr>
+<td>重要研究</td>
+<td>發酵、自然發生說、疫苗</td>
+<td>炭疽、結核、霍亂</td>
+</tr>
+<tr>
+<td>主要方法</td>
+<td>微生物實驗、減毒與免疫研究</td>
+<td>細菌分離、培養與致病證據</td>
+</tr>
+<tr>
+<td>重要年份</td>
+<td>1861、1879、1881、1885</td>
+<td>1876、1882、1883</td>
+</tr>
+<tr>
+<td>歷史地位</td>
+<td>微生物學及疫苗學先驅</td>
+<td>現代細菌學奠基者</td>
+</tr>
+</tbody></table>
+<p>兩人研究方向互補，共同促成19世紀後期的微生物學革命。</p>
+<h2 id="十一、巴斯德的重要著作">十一、巴斯德的重要著作</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作或研究</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1848</td>
+<td>酒石酸鹽晶體研究</td>
+<td>分子不對稱性與旋光性</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>《關於乳酸發酵的研究》</td>
+<td>證明乳酸發酵與微生物有關</td>
+</tr>
+<tr>
+<td>1860－1861</td>
+<td>自然發生說相關研究</td>
+<td>天鵝頸瓶實驗</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>《蠶病研究》</td>
+<td>蠶病病原及防治方法</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>《啤酒研究》</td>
+<td>啤酒發酵及微生物污染</td>
+</tr>
+<tr>
+<td>1879－1880</td>
+<td>雞霍亂研究</td>
+<td>減毒疫苗原理</td>
+</tr>
+<tr>
+<td>1881</td>
+<td>炭疽疫苗研究</td>
+<td>動物疫苗公開實驗</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>狂犬病疫苗研究</td>
+<td>人類狂犬病暴露後預防</td>
+</tr>
+</tbody></table>
+<h2 id="十二、巴斯德生平重要年份總表">十二、巴斯德生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>年齡</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1822</td>
+<td>0</td>
+<td>出生於法國多勒</td>
+</tr>
+<tr>
+<td>1826</td>
+<td>4</td>
+<td>全家遷往阿爾布瓦</td>
+</tr>
+<tr>
+<td>1839</td>
+<td>17</td>
+<td>進入貝桑松學院</td>
+</tr>
+<tr>
+<td>1842</td>
+<td>20</td>
+<td>取得文學學士資格</td>
+</tr>
+<tr>
+<td>1843</td>
+<td>21</td>
+<td>進入巴黎高等師範學院</td>
+</tr>
+<tr>
+<td>1847</td>
+<td>24</td>
+<td>取得博士學位</td>
+</tr>
+<tr>
+<td>1848</td>
+<td>25</td>
+<td>發現酒石酸鹽晶體的光學不對稱性</td>
+</tr>
+<tr>
+<td>1849</td>
+<td>26</td>
+<td>任教於斯特拉斯堡大學，與瑪麗結婚</td>
+</tr>
+<tr>
+<td>1854</td>
+<td>31</td>
+<td>任教於里爾大學</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>34</td>
+<td>發表乳酸發酵研究</td>
+</tr>
+<tr>
+<td>1861</td>
+<td>38</td>
+<td>天鵝頸瓶實驗，反駁自然發生說</td>
+</tr>
+<tr>
+<td>1863</td>
+<td>40</td>
+<td>受命研究葡萄酒腐敗</td>
+</tr>
+<tr>
+<td>1864</td>
+<td>41</td>
+<td>推動巴斯德消毒法</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>42</td>
+<td>開始研究蠶病</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>43</td>
+<td>出版《蠶病研究》</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>45</td>
+<td>發生中風，健康受到影響</td>
+</tr>
+<tr>
+<td>1871</td>
+<td>48</td>
+<td>研究啤酒發酵</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>53</td>
+<td>出版《啤酒研究》</td>
+</tr>
+<tr>
+<td>1877</td>
+<td>54</td>
+<td>研究炭疽病</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>56</td>
+<td>雞霍亂減毒疫苗研究</td>
+</tr>
+<tr>
+<td>1881</td>
+<td>58</td>
+<td>炭疽疫苗公開實驗成功</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>59</td>
+<td>當選法蘭西學術院院士</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>61</td>
+<td>狂犬病疫苗研究取得進展</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>62</td>
+<td>為約瑟夫・邁斯特進行狂犬病疫苗接種</td>
+</tr>
+<tr>
+<td>1887</td>
+<td>64</td>
+<td>推動巴斯德研究所籌建</td>
+</tr>
+<tr>
+<td>1888</td>
+<td>65</td>
+<td>巴斯德研究所正式成立</td>
+</tr>
+<tr>
+<td>1892</td>
+<td>69</td>
+<td>七十歲生日，獲國際科學界表揚</td>
+</tr>
+<tr>
+<td>1895</td>
+<td>72</td>
+<td>9月28日逝世</td>
+</tr>
+</tbody></table>
+<h2 id="十三、巴斯德在科學史上的歷史地位">十三、巴斯德在科學史上的歷史地位</h2>
+<p>巴斯德的科學成就，可以放在19世紀至20世紀生命科學發展的脈絡中理解：</p>
+<p>19世紀早期：傳統生命觀與醫學觀</p>
+<p>自然發生說仍有影響，疾病的病因及傳播機制尚未充分理解。</p>
+<p>巴斯德（1857－1885）</p>
+<p>發酵研究、天鵝頸瓶實驗、消毒法、減毒疫苗與狂犬病疫苗。</p>
+<p>科霍（1876－1884）</p>
+<p>病原菌分離、培養及疾病因果關係研究。</p>
+<p>李斯特與現代外科</p>
+<p>將微生物致病觀念應用於手術消毒及感染控制。</p>
+<p>20世紀免疫學與疫苗學</p>
+<p>疫苗種類、抗體、細胞免疫及現代傳染病防治持續發展。</p>
+<h3 id="最重要的五項歷史貢獻">最重要的五項歷史貢獻</h3>
+<ol>
+<li>微生物學： 證明微生物在發酵與腐敗過程中的重要作用。</li>
+<li>實驗科學： 以天鵝頸瓶實驗反駁自然發生說。</li>
+<li>食品工業： 建立巴斯德消毒法，改善食品安全。</li>
+<li>醫學： 推動病原微生物致病理論及感染控制。</li>
+<li>疫苗學： 發展雞霍亂、炭疽及狂犬病疫苗，為現代免疫預防奠定基礎。</li>
+</ol>
+<p>總結： 如果說牛頓改變了人類對物理世界的理解，達爾文改變了人類對生命演化的理解，那麼巴斯德則改變了人類對微生物、疾病與生命安全的理解。他使人類逐漸從被動承受傳染病，走向能夠透過科學方法預防與控制疾病的新時代。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

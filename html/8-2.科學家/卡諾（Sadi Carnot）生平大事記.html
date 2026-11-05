@@ -1,0 +1,522 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="薩迪・卡諾（sadi-carnot）生平大事記">薩迪・卡諾（Sadi Carnot）生平大事記</h1>
+<p>1796年6月1日－1832年8月24日｜法國物理學家、工程思想家｜熱力學理論的重要先驅</p>
+<p><a href="https://images.openai.com/static-rsc-4/AqVB5daEol4kGYjRnod1DcvMFj_mC367OJzuoh8QjTUF_5SKT2AMWCn8zWf3FqfwTDrl4AaZFBEGanlJN1oiSd1eiuvFOMXxbSalE9NZDBgYsGlKlr54rpjD_TVktElakYN5HrA-jhYK2UqQPadWCR6fdmL6LHh2vqBl0HzI1jk?purpose=inline">Sadi Carnot et la naissance de la thermodynamique - CultureSciences de l&#39;Ingénieur - éduscol STI</a></p>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p>尼古拉・雷奧納爾・薩迪・卡諾（Nicolas Léonard Sadi Carnot），通常稱為薩迪・卡諾（Sadi Carnot），是十九世紀初期法國物理學家及工程師。他最重要的貢獻，是於1824年出版《論火的動力及產生這種動力的適當機器之研究》，從理論上研究熱機如何將熱轉換為機械功，並提出後來被稱為「卡諾循環」的理想熱機循環。</p>
+<p>卡諾的研究發生在蒸汽機快速發展的工業革命時代。當時蒸汽機已廣泛應用於礦業、工廠及交通運輸，但科學界對熱如何轉化為機械功、熱機效率受到什麼限制，仍缺乏完整的理論解釋。</p>
+<p>卡諾的重要性，在於他不只是研究某一部蒸汽機，而是試圖回答一個更根本的問題：</p>
+<p>一部熱機在理想條件下，究竟能達到多高的效率？這個效率是否存在自然界無法突破的上限？</p>
+<p>他的研究後來成為克勞修斯、開爾文等人建立熱力學第二定律的重要基礎。</p>
+<h3 id="主要科學貢獻">主要科學貢獻</h3>
+<ol>
+<li>提出理想熱機的卡諾循環。</li>
+<li>建立熱機效率受到高溫熱源與低溫熱源限制的觀念。</li>
+<li>提出卡諾定理：在相同高、低溫熱源之間運作的可逆熱機，其效率相同，且高於不可逆熱機。</li>
+<li>研究熱與機械功之間的轉換關係。</li>
+<li>為熱力學第二定律及後來的熱力學溫標奠定理論基礎。</li>
+</ol>
+<h2 id="二、出生與家庭背景（1796－1812）">二、出生與家庭背景（1796－1812）</h2>
+<h3 id="1796年：出生於巴黎">1796年：出生於巴黎</h3>
+<ul>
+<li>6月1日：出生於法國巴黎。</li>
+<li>父親是拉札爾・卡諾（Lazare Carnot，1753－1823），法國著名數學家、軍事工程師及政治人物。</li>
+<li>父親曾參與法國大革命時期的政治與軍事事務，也因研究軍事工程及數學而聞名。</li>
+<li>卡諾出生於一個重視數學、科學及工程技術的家庭。</li>
+</ul>
+<h3 id="家庭與思想環境">家庭與思想環境</h3>
+<p>卡諾的父親拉札爾・卡諾有「勝利的組織者」之稱，曾在法國大革命戰爭期間負責軍事組織工作。</p>
+<p>他的父親也對數學及力學有深入研究，著有幾何學與機械學相關著作。</p>
+<p>卡諾的弟弟伊波利特・卡諾（Hippolyte Carnot，1801－1888）後來成為法國政治人物。</p>
+<p>父親的數學及工程背景，對卡諾的學術興趣與思考方式具有重要影響。</p>
+<h3 id="1800－1812年：早年教育">1800－1812年：早年教育</h3>
+<ul>
+<li>在巴黎接受教育。</li>
+<li>從小接觸數學、物理及工程方面的知識。</li>
+<li>家庭教育使他有機會接觸當時法國科學界的重要思想。</li>
+</ul>
+<h2 id="三、進入巴黎綜合理工學院（1812－1817）">三、進入巴黎綜合理工學院（1812－1817）</h2>
+<h3 id="1812年：進入巴黎綜合理工學院">1812年：進入巴黎綜合理工學院</h3>
+<ul>
+<li>年僅16歲，進入法國著名的巴黎綜合理工學院（École polytechnique）。</li>
+<li>該校是拿破崙時代法國重要的高等工程與科學教育機構。</li>
+<li>主要研習數學、力學、物理及工程科學。</li>
+</ul>
+<h3 id="1812－1814年：接受數學與力學訓練">1812－1814年：接受數學與力學訓練</h3>
+<ul>
+<li>學習微積分、幾何學、力學及物理學。</li>
+<li>接觸法國數學與工程學傳統。</li>
+<li>這些訓練使他日後能夠以數學和理論分析熱機，而不只是依靠實際操作經驗。</li>
+</ul>
+<h3 id="1814年：拿破崙戰爭與學校環境變化">1814年：拿破崙戰爭與學校環境變化</h3>
+<ul>
+<li>法國面臨反法同盟軍隊入侵。</li>
+<li>巴黎綜合理工學院的學生曾參與巴黎防衛相關活動。</li>
+<li>法國政治與軍事情勢劇烈變化，也影響卡諾後來的軍事工程職涯。</li>
+</ul>
+<h3 id="1816年：進入軍事工程體系">1816年：進入軍事工程體系</h3>
+<ul>
+<li>完成巴黎綜合理工學院的學業。</li>
+<li>進入法國軍事工程體系，接受進一步的工程訓練。</li>
+<li>開始軍官及工程技術人員的職涯。</li>
+</ul>
+<h3 id="1817年：開始軍事工程工作">1817年：開始軍事工程工作</h3>
+<ul>
+<li>被派往法國不同地區執行軍事工程及相關勤務。</li>
+<li>工作內容涉及軍事設施、工程檢查及技術事務。</li>
+<li>在軍職之外，仍持續關注數學、物理及工業技術問題。</li>
+</ul>
+<h2 id="四、研究熱機與蒸汽機理論（1819－1823）">四、研究熱機與蒸汽機理論（1819－1823）</h2>
+<h3 id="1819年：轉入巴黎總參謀部">1819年：轉入巴黎總參謀部</h3>
+<ul>
+<li>通過考試，進入法國總參謀部（General Staff Corps）。</li>
+<li>取得中尉軍階。</li>
+<li>此後獲得較多時間在巴黎從事數學、物理及工程方面的學習。</li>
+<li>經常前往巴黎的學術機構聽課，包括索邦大學、法蘭西學院及工藝學院。</li>
+<li>研究領域相當廣泛，除數學與物理外，也關注化學、工業技術、經濟學及音樂。</li>
+</ul>
+<h3 id="1821年：赴德國探望父親，開始深入研究蒸汽機">1821年：赴德國探望父親，開始深入研究蒸汽機</h3>
+<ul>
+<li>前往德國馬德堡探望流亡中的父親拉札爾・卡諾。</li>
+<li>當時父親已經接觸到蒸汽機，父子經常討論蒸汽機的運作原理。</li>
+<li>卡諾注意到英國蒸汽機技術領先法國，開始思考如何從科學原理改善熱機效率。</li>
+<li>他逐漸將研究重點集中在熱、機械功及蒸汽機的效率問題上。</li>
+</ul>
+<p>這次探訪是卡諾科學生涯的重要轉折。他開始不滿足於單純改良機械結構，而希望建立一套能夠適用於所有熱機的普遍理論。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://mathshistory.st-andrews.ac.uk&sz=32">image</a></p>
+<p>MacTutor History of Mathematics+1</p>
+<h3 id="1822－1823年：研究蒸汽機的理論效率">1822－1823年：研究蒸汽機的理論效率</h3>
+<ul>
+<li>返回巴黎後，開始深入研究蒸汽機的工作原理。</li>
+<li>試圖以數學方法計算蒸汽機能夠產生多少機械功。</li>
+<li>研究熱源、冷卻、膨脹、壓縮及工作物質之間的關係。</li>
+<li>在未正式出版的手稿中，已經出現等溫過程與絕熱過程的分析。</li>
+<li>這些研究成為1824年著作的重要前身。</li>
+</ul>
+<h3 id="1823年：父親拉札爾・卡諾逝世">1823年：父親拉札爾・卡諾逝世</h3>
+<ul>
+<li>8月2日：父親拉札爾・卡諾在德國馬德堡逝世。</li>
+<li>父親的逝世對卡諾造成影響。</li>
+<li>弟弟伊波利特・卡諾協助他整理研究成果，使原本較專業的蒸汽機研究能夠以較完整的形式出版。</li>
+</ul>
+<h2 id="五、1824年：出版《論火的動力》">五、1824年：出版《論火的動力》</h2>
+<p>卡諾最重要的歷史事件</p>
+<h3 id="1824年6月12日：出版代表作">1824年6月12日：出版代表作</h3>
+<p>卡諾出版法文著作：</p>
+<p>《論火的動力及產生這種動力的適當機器之研究》</p>
+<p>原文：</p>
+<p>Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette puissance</p>
+<p>英文通常譯為：</p>
+<p>Reflections on the Motive Power of Fire</p>
+<p>中文也常譯為《論火的動力》或《火的動力論》。</p>
+<p>這本著作篇幅不長，卻提出了後來熱力學發展中極為重要的理論。</p>
+<h3 id="研究背景">研究背景</h3>
+<p>十九世紀初期，蒸汽機已經廣泛應用於：</p>
+<ul>
+<li>礦井抽水。</li>
+<li>工廠機械運轉。</li>
+<li>鐵工與冶金。</li>
+<li>紡織與製造業。</li>
+<li>船舶動力。</li>
+</ul>
+<p>但當時科學界對熱的本質仍存在爭議。當時盛行的觀念之一，是熱質說（Caloric Theory），認為熱是一種無重量、可以流動的物質。</p>
+<p>卡諾的研究是在熱質說仍具有影響力的背景下進行的。</p>
+<h3 id="卡諾提出的核心問題">卡諾提出的核心問題</h3>
+<p>他主要探討兩個問題：</p>
+<ol>
+<li>熱所能產生的機械動力是否存在最大限度？</li>
+<li>熱機的效率是否取決於使用蒸汽、空氣或其他工作物質？</li>
+</ol>
+<p>他的研究得出一個極具開創性的結論：</p>
+<p>熱機能夠產生的最大機械功，主要取決於高溫熱源與低溫熱源之間的溫度差，而不取決於使用哪一種工作物質。</p>
+<p>這是卡諾理論最重要的思想之一。</p>
+<h3 id="1824年7月26日：研究成果獲得學術界介紹">1824年7月26日：研究成果獲得學術界介紹</h3>
+<ul>
+<li><p>法國科學家皮埃爾－西蒙・吉拉爾（Pierre-Simon Girard）向法國科學院介紹卡諾的著作。</p>
+</li>
+<li><p>著作獲得正面評價，但當時並未立即引起廣泛的科學革命。</p>
+</li>
+<li><p>卡諾的理論真正受到重視，是在他逝世之後，經過克拉佩龍、克勞修斯及開爾文等人的重新整理與發展。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://mathshistory.st-andrews.ac.uk&sz=32">image</a></p>
+<p>MacTutor History of Mathematics+1</p>
+</li>
+</ul>
+<h2 id="六、卡諾循環與熱機理論">六、卡諾循環與熱機理論</h2>
+<p>卡諾最重要的科學成果，就是提出理想熱機的循環過程。</p>
+<h3 id="1-卡諾循環的基本概念">1. 卡諾循環的基本概念</h3>
+<p>卡諾設想一部理想熱機，在高溫熱源與低溫熱源之間運作，透過四個可逆過程完成一個循環。</p>
+<p><a href="https://images.openai.com/static-rsc-4/U0owKieJ33WGvMD_OUbOESJNGn3p_z6oo2OltEpKzK9Xs8KrkFE8nbDDQBxRmSvOKfuJpsXc_v8A1_Ce2wmcP9pFzS2l_EF58QFyCE-qZyq377Apomv6LpQKNwpimJjxd12BH_6mwvqNQD7MtiDfsZmHIOVwohXaDrsX-i59aLU?purpose=inline">Carnot Engine: Principles, Parts, Diagram &amp; Applications</a></p>
+<p><a href="https://allen.in/jee/physics/carnot-engine?utm_source=chatgpt.com">allen.in</a></p>
+<p>四個過程如下：</p>
+<table>
+<thead>
+<tr>
+<th>階段</th>
+<th>過程</th>
+<th>物理意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一階段</td>
+<td>等溫膨脹</td>
+<td>工作氣體從高溫熱源吸收熱量並膨脹做功</td>
+</tr>
+<tr>
+<td>第二階段</td>
+<td>絕熱膨脹</td>
+<td>氣體繼續膨脹，不與外界交換熱量，溫度下降</td>
+</tr>
+<tr>
+<td>第三階段</td>
+<td>等溫壓縮</td>
+<td>氣體向低溫熱源放出熱量</td>
+</tr>
+<tr>
+<td>第四階段</td>
+<td>絕熱壓縮</td>
+<td>氣體繼續被壓縮，不與外界交換熱量，溫度回升</td>
+</tr>
+</tbody></table>
+<p>完成四個階段後，系統回到初始狀態，形成完整循環。</p>
+<h3 id="2-卡諾熱機效率公式">2. 卡諾熱機效率公式</h3>
+<p>在現代熱力學中，理想可逆卡諾熱機的效率為：</p>
+<p>\[ \boxed{\eta=1-\frac{T_C}{T_H}} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(\eta\)：熱機效率。</li>
+<li>\(T_H\)：高溫熱源的絕對溫度。</li>
+<li>\(T_C\)：低溫熱源的絕對溫度。</li>
+</ul>
+<p>兩個溫度必須使用開爾文（K），不能直接使用攝氏溫度代入。</p>
+<p>例如：</p>
+<p>假設一部理想熱機：</p>
+<ul>
+<li>高溫熱源為600 K。</li>
+<li>低溫熱源為300 K。</li>
+</ul>
+<p>則：</p>
+<p>\[ \eta=1-\frac{300}{600} =0.5=50\% \]</p>
+<p>代表理想熱機最多只能將吸收熱量的50%轉換成淨機械功。</p>
+<p>現實中的熱機還受到摩擦、熱損失、材料限制及其他不可逆因素影響，因此效率通常低於相同溫度條件下的卡諾效率。</p>
+<h3 id="3-卡諾定理（carnots-theorem）">3. 卡諾定理（Carnot&#39;s Theorem）</h3>
+<p>卡諾理論可以歸納為兩個重要結論：</p>
+<ol>
+<li>在相同高溫與低溫熱源之間運作的所有可逆熱機，其效率相同。</li>
+<li>在相同熱源條件下，不可逆熱機的效率不可能超過可逆熱機。</li>
+</ol>
+<p>這個定理的重要性在於：熱機效率存在一個由溫度決定的理論上限。</p>
+<h3 id="4-卡諾理論的歷史限制">4. 卡諾理論的歷史限制</h3>
+<p>必須注意，1824年的卡諾仍然使用當時流行的熱質說來解釋熱機運作。</p>
+<p>他認為熱質由高溫熱源流向低溫熱源，熱機利用這種流動產生機械功。</p>
+<p>後來焦耳的研究證明熱與功具有等價關係，克勞修斯遂在1850年重新整理卡諾的理論，將其與能量守恆原理結合。</p>
+<p>因此，卡諾提出的理想熱機效率與循環思想具有重大價值，但其原始熱質理論並不是現代熱力學的正確解釋。</p>
+<h2 id="七、晚年研究與逝世（1825－1832）">七、晚年研究與逝世（1825－1832）</h2>
+<h3 id="1825－1826年：持續研究熱與功">1825－1826年：持續研究熱與功</h3>
+<ul>
+<li>卡諾沒有因1824年著作出版而停止研究。</li>
+<li>持續思考熱的本質、機械功與摩擦產熱等問題。</li>
+<li>留下若干未出版的研究筆記。</li>
+<li>這些筆記顯示，他後來已逐漸懷疑傳統熱質說。</li>
+<li>他曾計畫透過實驗研究摩擦、流體運動及熱的產生。</li>
+</ul>
+<p>值得注意的是，卡諾在晚年筆記中已經接近熱與功具有機械等價關係的思想；但他沒有留下完整、正式出版的熱功當量理論。</p>
+<h3 id="1827年：重新被召回軍職">1827年：重新被召回軍職</h3>
+<ul>
+<li>法國軍方重新調整軍官勤務。</li>
+<li>卡諾被召回現役，擔任軍事工程相關工作。</li>
+<li>先後被派往里昂及奧松（Auxonne）。</li>
+<li>這段軍職經歷限制了他繼續從事科學研究的時間。</li>
+</ul>
+<h3 id="1828年：退出軍職">1828年：退出軍職</h3>
+<ul>
+<li>對軍事職涯缺乏興趣。</li>
+<li>辭去軍職，返回巴黎。</li>
+<li>將更多時間投入私人研究與科學活動。</li>
+</ul>
+<h3 id="1830年：法國七月革命">1830年：法國七月革命</h3>
+<ul>
+<li>法國發生七月革命，波旁王朝被推翻。</li>
+<li>卡諾對共和政治及公共教育抱持關注。</li>
+<li>曾關心教育改革與社會公共事務。</li>
+<li>但他仍以科學研究為主要興趣。</li>
+</ul>
+<h3 id="1832年6月：感染疾病">1832年6月：感染疾病</h3>
+<ul>
+<li>1832年巴黎爆發霍亂疫情。</li>
+<li>卡諾於當年6月發病。</li>
+<li>由於當時醫學對霍亂的病因及治療方式尚未充分掌握，疫情造成大量死亡。</li>
+</ul>
+<h3 id="1832年8月24日：逝世">1832年8月24日：逝世</h3>
+<ul>
+<li><p>8月24日：卡諾在巴黎附近的伊夫里（Ivry）逝世，享年36歲。</p>
+</li>
+<li><p>死因為霍亂。</p>
+</li>
+<li><p>由於當時霍亂防疫措施，部分遺物及研究文件遭到處理或銷毀。</p>
+</li>
+<li><p>他生前只出版過一部主要科學著作，許多後續研究只能從保存下來的手稿中了解。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://mathshistory.st-andrews.ac.uk&sz=32">image</a></p>
+<p>MacTutor History of Mathematics+2</p>
+</li>
+</ul>
+<h2 id="八、卡諾逝世後的理論發展與影響（1834－1850）">八、卡諾逝世後的理論發展與影響（1834－1850）</h2>
+<p>卡諾雖然只活了36歲，但他的理論在逝世後逐漸成為熱力學發展的核心。</p>
+<h3 id="1834年：克拉佩龍重新整理卡諾理論">1834年：克拉佩龍重新整理卡諾理論</h3>
+<p><a href="https://images.openai.com/static-rsc-4/z7vnTrxpsE891PKVKc30KRnaVHdhc8xHn2dcRWEt0Iw0Te0pRUjb_Wsxr-tmI7Fh_gOZtNvFUM8gD43M1JrkUze5HY4pqc5bzcTQnUFXeNx1mGKcrlL1OEdss1w_VxD0w7gner1yUCNGyIQ6HkeiOnCnzgWPzmC7Vq6ZILYPTMo?purpose=inline">teorema de Clapeyron archivos - El blog de Víctor Yepes</a></p>
+<p>埃米爾・克拉佩龍（Émile Clapeyron，1799－1864）</p>
+<ul>
+<li>1834年發表卡諾熱機理論的分析性論文。</li>
+<li>將卡諾的論述轉化為更清晰的數學形式。</li>
+<li>引入壓力－體積圖（P-V Diagram）表示熱機循環。</li>
+<li>使卡諾循環更容易被其他物理學家理解與使用。</li>
+</ul>
+<h3 id="1848年：開爾文建立絕對溫標">1848年：開爾文建立絕對溫標</h3>
+<p><a href="https://images.openai.com/static-rsc-4/uaPXYuG54QlkCIzR74bRlL8aaigtBlgVS8AUW2of9MQ6TCAs8CRkbhJ-Qm4SuLdcsr0wUuwcwLEpTDCkBOteURmRtZD85uELFKJANeFdAHQL4PPAxA3-HNJxPG_7tmNAqVfqMJXMJCZIJbRqXsrTnurCn4UzCAipx31TWjFkGA8?purpose=inline">Sir William Thomson, Lord Kelvin (1824 – 1907) – Maleny Weather History</a></p>
+<p>威廉・湯姆森（開爾文勳爵）（William Thomson，1824－1907）</p>
+<ul>
+<li>研究卡諾熱機效率與溫度之間的關係。</li>
+<li>發展熱力學溫標的思想。</li>
+<li>1848年提出絕對溫度尺度的相關研究。</li>
+<li>後來建立以開爾文為單位的絕對溫標。</li>
+</ul>
+<h3 id="1850年：克勞修斯建立熱力學第二定律">1850年：克勞修斯建立熱力學第二定律</h3>
+<p><a href="https://images.openai.com/static-rsc-4/FHc4E6hp3JdCRSkUzrnrIcN-vOYLpd04aKHc2AmxfHNb5v3KNFIzDSda2LpSilMtaA04Fj_dDsIC1Ov6HbKqIgY6TRNZlF5ijBl0iEZ0LVnlJ9jVD95S7zJXKAejFyeiGLm74BFjoSXHW-nZJe6R53BO4ki-ympwC5rQcmTWQSM?purpose=inline">Biografia de Rudolf Clausius</a></p>
+<p>魯道夫・克勞修斯（Rudolf Clausius，1822－1888）</p>
+<ul>
+<li>將卡諾的熱機理論與焦耳的熱功當量研究結合。</li>
+<li>建立熱力學第二定律的經典表述。</li>
+<li>使熱量傳遞方向與熱機效率成為熱力學的基本問題。</li>
+<li>1865年進一步提出熵的概念。</li>
+</ul>
+<h3 id="1870年代：波茲曼發展統計力學">1870年代：波茲曼發展統計力學</h3>
+<p><a href="https://images.openai.com/static-rsc-4/ucdsBBFWvpmbqzJeqxZyQt8OJnL0UfDaXsJA82IYRYLK9gAbNTr9Rqyp_5balgpNUcGsYaC3b-rJx5FenzldMSvG7IcQv6hPylQn9SfszlCCVhjV9L4pY_s7stiLTLYQs6VdIUeL_5oU5BVS3ZyFp1aNNqq1CAsryCXSRvjKrN8?purpose=inline">An anxious descent – Physics World</a></p>
+<p>路德維希・波茲曼（Ludwig Boltzmann，1844－1906）</p>
+<ul>
+<li>從分子運動與統計機率解釋熱力學現象。</li>
+<li>1877年發展熵的統計詮釋。</li>
+<li>建立宏觀熱力學與微觀分子狀態之間的聯繫。</li>
+</ul>
+<h2 id="九、卡諾主要著作與研究成果">九、卡諾主要著作與研究成果</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作／研究</th>
+<th>重要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1822－1823</td>
+<td>蒸汽機理論研究手稿</td>
+<td>研究蒸汽產生的機械功，包含等溫與絕熱過程</td>
+</tr>
+<tr>
+<td>1824</td>
+<td>《論火的動力》</td>
+<td>提出理想熱機及卡諾循環</td>
+</tr>
+<tr>
+<td>1824</td>
+<td>卡諾熱機理論</td>
+<td>提出熱機效率受兩個熱源溫度限制</td>
+</tr>
+<tr>
+<td>1824－1826</td>
+<td>未出版研究筆記</td>
+<td>進一步思考熱、功、摩擦及熱的機械等價性</td>
+</tr>
+</tbody></table>
+<p>特別說明：《論火的動力》是卡諾生前唯一正式出版的主要科學著作。他逝世後，弟弟伊波利特於1878年重新出版該書，並加入卡諾部分未出版的研究筆記。</p>
+<h2 id="十、卡諾與克勞修斯的理論比較">十、卡諾與克勞修斯的理論比較</h2>
+<p>這兩位科學家是理解熱力學發展時最值得一起研究的人物。</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>薩迪・卡諾</th>
+<th>魯道夫・克勞修斯</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>生卒年</td>
+<td>1796－1832</td>
+<td>1822－1888</td>
+</tr>
+<tr>
+<td>國籍</td>
+<td>法國</td>
+<td>德國</td>
+</tr>
+<tr>
+<td>主要研究時期</td>
+<td>1820年代</td>
+<td>1850－1880年代</td>
+</tr>
+<tr>
+<td>主要問題</td>
+<td>熱如何產生機械功？</td>
+<td>熱力學有哪些普遍定律？</td>
+</tr>
+<tr>
+<td>主要貢獻</td>
+<td>卡諾循環、理想熱機效率</td>
+<td>熱力學第二定律、熵</td>
+</tr>
+<tr>
+<td>代表著作</td>
+<td>1824《論火的動力》</td>
+<td>1850年熱力學論文、1865年熵論文</td>
+</tr>
+<tr>
+<td>理論特色</td>
+<td>研究熱機效率的理論上限</td>
+<td>研究自然過程的方向性與不可逆性</td>
+</tr>
+<tr>
+<td>歷史地位</td>
+<td>熱力學的重要先驅</td>
+<td>古典熱力學的主要奠基者</td>
+</tr>
+</tbody></table>
+<p>兩人的理論關係可以簡單理解為：</p>
+<ul>
+<li>**卡諾：**研究熱機效率的理論極限。</li>
+<li>**克勞修斯：**將熱機理論發展成完整的熱力學定律，並提出熵。</li>
+<li>**波茲曼：**進一步解釋熵的微觀統計意義。</li>
+</ul>
+<h2 id="十一、卡諾生平重要年份總表">十一、卡諾生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1796</td>
+<td>6月1日出生於法國巴黎</td>
+</tr>
+<tr>
+<td>1801</td>
+<td>弟弟伊波利特出生</td>
+</tr>
+<tr>
+<td>1807</td>
+<td>父親退出政治活動，開始親自教育兩個兒子</td>
+</tr>
+<tr>
+<td>1812</td>
+<td>進入巴黎綜合理工學院</td>
+</tr>
+<tr>
+<td>1814</td>
+<td>畢業，進入梅斯軍事工程學校</td>
+</tr>
+<tr>
+<td>1815</td>
+<td>拿破崙百日王朝結束，父親被迫流亡</td>
+</tr>
+<tr>
+<td>1816－1818</td>
+<td>從事軍事工程工作</td>
+</tr>
+<tr>
+<td>1819</td>
+<td>進入巴黎總參謀部，取得中尉軍階</td>
+</tr>
+<tr>
+<td>1821</td>
+<td>赴德國探望父親，深入思考蒸汽機理論</td>
+</tr>
+<tr>
+<td>1822－1823</td>
+<td>研究熱機效率及蒸汽機理論</td>
+</tr>
+<tr>
+<td>1823</td>
+<td>8月2日，父親拉札爾・卡諾逝世</td>
+</tr>
+<tr>
+<td>1824</td>
+<td>6月12日出版《論火的動力》</td>
+</tr>
+<tr>
+<td>1824</td>
+<td>提出卡諾循環與理想熱機效率理論</td>
+</tr>
+<tr>
+<td>1825－1826</td>
+<td>持續研究熱與功，留下重要手稿</td>
+</tr>
+<tr>
+<td>1827</td>
+<td>重新被召回軍職</td>
+</tr>
+<tr>
+<td>1828</td>
+<td>辭去軍職，返回巴黎</td>
+</tr>
+<tr>
+<td>1830</td>
+<td>法國七月革命，關注公共教育與政治改革</td>
+</tr>
+<tr>
+<td>1832</td>
+<td>8月24日因霍亂逝世，享年36歲</td>
+</tr>
+<tr>
+<td>1834</td>
+<td>克拉佩龍以數學形式重新整理卡諾理論</td>
+</tr>
+<tr>
+<td>1848</td>
+<td>開爾文發展絕對溫標</td>
+</tr>
+<tr>
+<td>1850</td>
+<td>克勞修斯建立熱力學第二定律的重要表述</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>克勞修斯正式提出熵的概念</td>
+</tr>
+<tr>
+<td>1878</td>
+<td>弟弟伊波利特重新出版卡諾著作及部分研究筆記</td>
+</tr>
+</tbody></table>
+<h2 id="十二、卡諾的歷史地位與影響">十二、卡諾的歷史地位與影響</h2>
+<p><a href="https://images.openai.com/static-rsc-4/EJCeiYaTwsbCjXsBFTttrCye9ZHgQ1kafzhJElb9LT0IGdsg0_84EW7EJjkHI9EBRynA2bhTuXcnYzdv0zWxkhS14UeRQ6JKx-iW_ksQqwWy7REGxF98jHc2GcpQ6gjai6PVkuJa9aYAkKfVjAjkWpOClaR0LRk9wUoCGLr7nZLySgrIGzUiO8-gsdgZkFE6?purpose=inline">The Engine Room of a Victorian Factory with a Massive Steam Engine – A Giant Flywheel Dominates the Foreground as Workers Monitor the Machinery</a></p>
+<p>卡諾的歷史地位，不能只從蒸汽機技術改良的角度理解。他真正改變的是科學家研究熱機的方式。</p>
+<p>在他之前，蒸汽機的改良主要依靠工程經驗、機械設計與實際測試；卡諾則提出一個更普遍的理論問題：無論使用什麼工作物質，熱機效率是否存在自然界決定的上限？</p>
+<p>他透過理想熱機模型，指出效率與兩個熱源的溫度有關，而不是單純取決於蒸汽機的設計。</p>
+<p>這個思想帶來三項深遠影響：</p>
+<ol>
+<li>**工程學方面：**提供評估蒸汽機、內燃機及其他熱機效率的理論基準。</li>
+<li>**物理學方面：**開啟熱力學第二定律的理論發展。</li>
+<li>**科學思想方面：**使科學家開始認識到，自然界不僅有能量守恆的限制，也存在能量轉換方向與效率的限制。</li>
+</ol>
+<p>總結：卡諾提出了熱機效率的理論極限；克勞修斯建立熱力學第二定律與熵；波茲曼則以統計力學解釋熵。三人的研究構成理解古典熱力學發展的重要主線。</p>
+<h2 id="十三、延伸閱讀：熱力學奠基者閱讀順序">十三、延伸閱讀：熱力學奠基者閱讀順序</h2>
+<h2 id="熱力學發展人物關係">熱力學發展人物關係</h2>
+<p>卡諾（1796－1832）</p>
+<p>理想熱機、卡諾循環、效率上限</p>
+<p>1834年：數學化整理</p>
+<p>克拉佩龍（1799－1864）</p>
+<p>卡諾循環的數學表達、P-V圖</p>
+<p>1850年代：建立熱力學架構</p>
+<p>克勞修斯</p>
+<p>第二定律、熵</p>
+<p>開爾文</p>
+<p>絕對溫標、第二定律</p>
+<p>波茲曼（1844－1906）</p>
+<p>統計力學、熵的微觀解釋</p>
+<p>普朗克（1858－1947）</p>
+<p>熱力學、熵與量子論</p>
+<p>主要參考資料：</p>
+<ul>
+<li><a href="https://mathshistory.st-andrews.ac.uk/Biographies/Carnot_Sadi/?utm_source=chatgpt.com">MacTutor：Sadi Carnot 生平與數學物理貢獻</a></li>
+<li><a href="https://www.aps.org/apsnews/2009/05/sadi-carnot-heat-engines?utm_source=chatgpt.com">美國物理學會：1824年卡諾出版熱機理論</a></li>
+<li><a href="https://www.asme.org/topics-resources/content/nicolas-leonard-sadi-carnot?utm_source=chatgpt.com">美國機械工程師學會：Sadi Carnot，熱力學先驅</a></li>
+<li><a href="https://en.wikisource.org/wiki/Reflections_on_the_Motive_Power_of_Heat/Chapter_2?utm_source=chatgpt.com">《論火的動力》及卡諾生平資料</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

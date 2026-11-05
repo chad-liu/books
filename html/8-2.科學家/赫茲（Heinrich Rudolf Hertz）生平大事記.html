@@ -1,0 +1,538 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="海因里希・魯道夫・赫茲（heinrich-rudolf-hertz）生平大事記">海因里希・魯道夫・赫茲（Heinrich Rudolf Hertz）生平大事記</h1>
+<p>1857年2月22日－1894年1月1日｜德國物理學家｜電磁波實驗證實者</p>
+<p><a href="https://images.openai.com/static-rsc-4/zmHciGKNhEUoQ8906vvm7AowYsG-l4dRblpfmXx_0vMBAVMqas6vE3LzjPQH2JqpN7486ysezEMEYG5w-qK_tyquxWv-mIk1WK4f1k4EbdeDptRLGzVBiHIbCJRuAOppuvLJ_z3t0hjvR61TZHeIAC4mRVNmBlUprIaDkpJuQn4?purpose=inline">Carrots, death rays and passing ships. This is the origin story of the word radar | WGVU NEWS</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/-IAO4rO_h-F5ffeBqg4eSDETwexqgpccTz6jHSMbeh7GdhkkIo0C2AQeb-NoznzBgy0AShtlE1nbLM5PxbWfvwUeQJN93bLsa6GVbhUdApqEYKywlSbokC0G_PrXMFGmvflPh_3uNMDAO67newN0JB7HUj1ncHPgwBRDEA0WiF8?purpose=inline">La découverte des ondes électromagnétiques par Heinrich Hertz (1887-1888)</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/ZmvQA_o0ME53bGiXTu-ZBWG7BWtHXcGlK74RzKEwBzdMlmFpOzQuvyZ5sPzd4_Lp2tnis0Q-XkcjusflQKbDhOw0kdRc4_tvF7ajIpDVvV9DutrKO2qwW1s_TiWb33ks_qNfAmw8arK65mZahTaQCHTRvvI_yeL-FDAaNmNBs3Q?purpose=inline">3.11 赫兹发现电磁波实验</a></p>
+<p>6</p>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p>海因里希・魯道夫・赫茲（Heinrich Rudolf Hertz，1857－1894）是十九世紀德國著名物理學家。他最重要的成就是透過實驗證明電磁波確實存在，並驗證馬克士威電磁理論的正確性。</p>
+<p>1887年至1888年間，赫茲成功產生並接收電磁波，證明電磁波具有反射、折射、干涉、駐波及偏振等特性，與光波具有相似的物理性質。</p>
+<p>他的研究為後來的無線電、無線通訊、廣播、雷達及現代電磁波技術奠定基礎。</p>
+<p>主要科學貢獻：</p>
+<ol>
+<li>證實電磁波存在：以實驗驗證馬克士威的理論預言。</li>
+<li>電磁波的產生與接收：利用火花放電裝置產生電磁波，並以接收器偵測。</li>
+<li>驗證電磁波的波動性質：觀察反射、折射、干涉與偏振。</li>
+<li>研究電磁波傳播速度：證明其速度與光速相符。</li>
+<li>光電效應研究：觀察紫外線對火花放電的影響，為後來光電效應研究提供重要線索。</li>
+</ol>
+<h2 id="二、出生與早年教育（1857－1877）">二、出生與早年教育（1857－1877）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/RfbI5oa86HwBXs6E9NnQQ5W02gY26gol30k-l4uyUyMV4YlsLFXq2Gg3QExiqfCIXYnr51vXwPxa6Skor9hN29N523DY0d-uo7x26fEfiX7ixLXOT5DAQpVYAc2D2Qo6l4eA0w9JfijvOIRiYTCoySRo1Zjm_ioY7yMroB6ikfc?purpose=inline">Hamburg damals und heute - Eine Zeitreise durchs Welterbe</a></p>
+<p><a href="https://worldheritage.hamburg/de/portfolio-item/vor-skochi/?utm_source=chatgpt.com">worldheritage.hamburg</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1857年2月22日</td>
+<td>出生於德國漢堡，父親古斯塔夫・赫茲是法律界人士，母親安娜・伊莉莎白。</td>
+</tr>
+<tr>
+<td>1860年代</td>
+<td>在漢堡成長，家庭重視教育，從小接受良好學習訓練。</td>
+</tr>
+<tr>
+<td>1870年代初期</td>
+<td>就讀漢堡的學校，展現數學、物理與語言方面的才能。</td>
+</tr>
+<tr>
+<td>1875年</td>
+<td>完成中學階段教育，開始準備進入高等教育與工程領域。</td>
+</tr>
+<tr>
+<td>1876年</td>
+<td>前往德勒斯登學習工程學，開始接受技術與數學訓練。</td>
+</tr>
+<tr>
+<td>1877年</td>
+<td>進入慕尼黑工業學校相關課程，繼續學習工程與自然科學。</td>
+</tr>
+</tbody></table>
+<p>早年特色：</p>
+<p>赫茲最初對工程學與技術製造相當感興趣，並非一開始就以理論物理學為主要目標。他具有良好的數學能力，也擅長實際操作與實驗，這些能力後來成為電磁波實驗成功的重要條件。</p>
+<h2 id="三、進入柏林大學與師從赫爾姆霍茲（1877－1883）">三、進入柏林大學與師從赫爾姆霍茲（1877－1883）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/1TACKNWT6pKInfA-wG8899uXa-vEPa53p-eTOz6qRSJ66UeUxQGw1a4NNS501aHSFdELUXKYfOjCZQh1HHgcIhD68MMbysD3F2V2dBmMyT16PISF4yJ_RizB6Bpk8o67gUVr52aZBkJIXZrLLf9Z3aZ8imV6iu123WNFQ2cu52k?purpose=inline">Humboldt-Universität zu Berlin: Wie die Menschheit zu bilden sei</a></p>
+<p><a href="https://www.tagesspiegel.de/wissen/wie-die-menschheit-zu-bilden-sei-3764500.html?utm_source=chatgpt.com">tagesspiegel.de</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1877年</td>
+<td>開始在慕尼黑接受更深入的科學教育。</td>
+</tr>
+<tr>
+<td>1878年</td>
+<td>前往柏林大學（University of Berlin）學習，正式進入高等物理研究領域。</td>
+</tr>
+<tr>
+<td>1878－1879年</td>
+<td>師從德國著名物理學家赫爾姆霍茲（Hermann von Helmholtz），接受實驗物理學與理論物理學訓練。</td>
+</tr>
+<tr>
+<td>1880年</td>
+<td>完成博士論文研究，研究電流在導體中的分布問題。</td>
+</tr>
+<tr>
+<td>1880年</td>
+<td>取得柏林大學博士學位，並獲得優異評價。</td>
+</tr>
+<tr>
+<td>1880－1883年</td>
+<td>留在柏林大學擔任研究助理，繼續從事物理研究。</td>
+</tr>
+<tr>
+<td>1883年</td>
+<td>前往基爾大學（University of Kiel）擔任理論物理學講師，開始獨立教學與研究。</td>
+</tr>
+</tbody></table>
+<p>重要人物：赫爾姆霍茲</p>
+<p>赫爾曼・馮・赫爾姆霍茲（Hermann von Helmholtz，1821－1894）是十九世紀德國最重要的科學家之一。</p>
+<p>赫爾姆霍茲不僅指導赫茲的博士研究，也引導他關注電磁學的重要問題。</p>
+<p>當時科學界正面臨一項重要問題：英國物理學家馬克士威提出的電磁場理論，究竟是否能夠透過實驗證實？</p>
+<p>這個問題後來成為赫茲最重要的研究方向。</p>
+<h2 id="四、基爾大學與電磁學研究起步（1883－1885）">四、基爾大學與電磁學研究起步（1883－1885）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/t6nnYL_MzudLL7JDMZu8ZcrfVrVtba3Om3jLveUo9bH9QeWWfUT45HClySTUl3v3b1DQHPbbHDAHgmELEgMRUQS_x1i2jCKvanvk-miVpA3cJM4qqpEmg-mbzMa5mOyy_P8J88kaghsolfcSY4z7VjxeKTTzagC5rwlGz_nnMRk?purpose=inline">14 Kollegiengebaude schlossgarten cau kiel Images: PICRYL - Public Domain Media Search Engine Public Domain Search</a></p>
+<p><a href="https://picryl.com/topics/kollegiengebaude%2Bschlossgarten%2Bcau%2Bkiel?utm_source=chatgpt.com">picryl.com</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1883年</td>
+<td>在基爾大學擔任理論物理學講師。</td>
+</tr>
+<tr>
+<td>1883－1884年</td>
+<td>研究電磁學、電動力學與物理理論問題。</td>
+</tr>
+<tr>
+<td>1884年</td>
+<td>深入研究馬克士威電磁理論與當時其他電磁理論之間的差異。</td>
+</tr>
+<tr>
+<td>1885年</td>
+<td>接受卡爾斯魯厄工業大學（Technische Hochschule Karlsruhe）的物理學教授職位。</td>
+</tr>
+<tr>
+<td>1885年</td>
+<td>開始在卡爾斯魯厄建立自己的實驗研究環境。</td>
+</tr>
+<tr>
+<td>1885－1886年</td>
+<td>研究電磁感應、電荷分布與高頻電振盪現象。</td>
+</tr>
+</tbody></table>
+<p>歷史背景：</p>
+<p>十九世紀中期，法拉第透過實驗發現電磁感應，馬克士威則以數學方程式建立電磁場理論。</p>
+<p>馬克士威預言，電場與磁場的變化可以形成電磁波，並以光速在空間中傳播。</p>
+<p>然而，在赫茲開始研究之前，電磁波尚未被直接實驗證實。</p>
+<p>赫茲的研究，就是要將這項理論預言轉變為可觀察、可測量的實驗事實。</p>
+<h2 id="五、電磁波的發現與實驗證實（1886－1888）">五、電磁波的發現與實驗證實（1886－1888）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/JC2g2G4zsyHjXXR_qIMrv2T2mD1BnvJJSbXpXko7GBMoSncbtM_BOia4SqHBB3TDPN71Utr7Zq6fSeck_er0opXr111ZsvSN0pkZ7Imn8ewbvMmkEffvXCmz45Z2inUWGdGSn5D0Yl266qLHLRR8UBxcZjLThk98ga3npbMEbok?purpose=inline">The Pioneers of Radio: Heinrich Hertz - The Man Who Touched the Invisible</a></p>
+<p><a href="https://moonrakeronline.com/blog/the-pioneers-of-radio-heinrich-hertz---the-man-who-touched-the-invisible?utm_source=chatgpt.com">moonrakeronline.com</a></p>
+<p>這是赫茲一生最重要的科學階段，也是電磁學史上的重大轉折。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1886年</td>
+<td>在卡爾斯魯厄研究高頻電振盪，發現電火花放電能產生快速變化的電磁作用。</td>
+</tr>
+<tr>
+<td>1886年</td>
+<td>進行感應線圈與金屬導體實驗，觀察到遠處導體中的感應火花現象。</td>
+</tr>
+<tr>
+<td>1887年</td>
+<td>開始系統性研究電磁波的產生與傳播。</td>
+</tr>
+<tr>
+<td>1887年</td>
+<td>利用火花隙振盪器產生高頻電磁振盪，並以另一個金屬環形接收器偵測訊號。</td>
+</tr>
+<tr>
+<td>1887年</td>
+<td>發現紫外線照射金屬電極時，會影響火花放電現象，成為光電效應研究的重要先驅。</td>
+</tr>
+<tr>
+<td>1888年</td>
+<td>進一步完成電磁波傳播實驗，證明電磁波可以在空間中傳播。</td>
+</tr>
+<tr>
+<td>1888年</td>
+<td>觀察電磁波的反射、折射、干涉、駐波與偏振現象。</td>
+</tr>
+<tr>
+<td>1888年</td>
+<td>證實電磁波的傳播速度與光速相符，支持馬克士威電磁理論。</td>
+</tr>
+</tbody></table>
+<h3 id="1-1887年：電磁波的產生與接收">1. 1887年：電磁波的產生與接收</h3>
+<p><a href="https://images.openai.com/static-rsc-4/2VMRdq91tdMXF-01JqgIeKo5qYJzqcrU2v8A1DGpTIM3RpHSqpYrcpb6AzUbgmjlzDRnhRTL2kb19mlYcudTM5_G7lsnlaeYQLT1kzi6tPCXpzvenD3LHkZZREpNPearfcspSPqoTOwarjIL_0UzSTWglABcw2OYoS3hKjjB3ec?purpose=inline">File:Hertz transmitter and receiver - English.svg - Wikimedia Commons</a></p>
+<p><a href="https://commons.wikimedia.org/wiki/File%3AHertz_transmitter_and_receiver_-_English.svg?utm_source=chatgpt.com">commons.wikimedia.org</a></p>
+<p>赫茲使用兩套主要裝置：</p>
+<p>發射裝置：火花隙振盪器</p>
+<ul>
+<li>利用感應線圈產生高電壓。</li>
+<li>使兩個金屬電極之間產生火花放電。</li>
+<li>火花放電產生高頻電振盪。</li>
+<li>振盪電流形成向外傳播的電磁波。</li>
+</ul>
+<p>接收裝置：金屬環形接收器</p>
+<ul>
+<li>使用帶有狹小間隙的金屬環。</li>
+<li>當電磁波抵達接收器時，會誘發電振盪。</li>
+<li>接收器間隙中出現微小火花。</li>
+<li>透過觀察火花，確認電磁波已經傳播到接收器。</li>
+</ul>
+<p>這項實驗首次以直接而清楚的方式，展示電磁波能夠在空間中傳播。</p>
+<h3 id="2-1888年：證明電磁波具有波動性質">2. 1888年：證明電磁波具有波動性質</h3>
+<p><a href="https://images.openai.com/static-rsc-4/n8e97UG8UH8E0zC38I0tQEvvXU09dE-Xds_WQW0lWhvz1lP0C33IxAE-6P-eePG4EW08ZU1itSEH-iDfGGsxRUdwdn8zSPi2bd5ll_v9MuB7uq3BnCz8LnuP5djXf5qSXc3R70IdSMg_NrijdzN7w9h_uFJY8vAaPNjUjSBg3wA?purpose=inline">Draw a labelled diagram of Hertz’s experiment set up to produce electromagnetic waves. Explain the generation of elctromagnetic waves - Sarthaks eConnect | Largest Online Education Community</a></p>
+<p><a href="https://www.sarthaks.com/3663014/labelled-diagram-experiment-produce-electromagnetic-explain-generation-elctromagnetic?utm_source=chatgpt.com">sarthaks.com</a></p>
+<p>赫茲進一步設計各種實驗，證明電磁波具有與光波相似的性質。</p>
+<table>
+<thead>
+<tr>
+<th>實驗現象</th>
+<th>科學意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>反射</td>
+<td>電磁波遇到金屬表面會反射。</td>
+</tr>
+<tr>
+<td>折射</td>
+<td>電磁波通過不同介質時，傳播方向會改變。</td>
+</tr>
+<tr>
+<td>干涉</td>
+<td>不同電磁波相互疊加，產生強弱變化。</td>
+</tr>
+<tr>
+<td>駐波</td>
+<td>入射波與反射波疊加，形成固定位置的波節與波腹。</td>
+</tr>
+<tr>
+<td>偏振</td>
+<td>電磁波具有特定的振動方向。</td>
+</tr>
+</tbody></table>
+<p>赫茲的實驗顯示，電磁波與光波在波動性質上具有高度相似性。</p>
+<h3 id="3-電磁波速度與光速">3. 電磁波速度與光速</h3>
+<p>馬克士威理論預言，電磁波在真空中的速度為：</p>
+<p>\[ c=\frac{1}{\sqrt{\mu_0\varepsilon_0}} \]</p>
+<p>這個數值與光速相符。</p>
+<p>赫茲透過實驗研究電磁波的波長與頻率，驗證其傳播速度與光速相符。</p>
+<p>\[ v=f\lambda \]</p>
+<p>其中：</p>
+<ul>
+<li>\(v\)：波的傳播速度。</li>
+<li>\(f\)：頻率。</li>
+<li>\(\lambda\)：波長。</li>
+</ul>
+<p>這項成果使馬克士威的電磁理論獲得關鍵的實驗支持。</p>
+<h2 id="六、波恩大學任教與後續研究（1889－1893）">六、波恩大學任教與後續研究（1889－1893）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/f6MOzsF4hsI_NtJMJYykyRrXDCdJih_tKBdiOuISaVMPts1Hd7ykWMuosmjrH7oKB-HJ9VdQD6xDxfl5rW1F7cFBqEdaoH6MgjycFKUk3G_Rf-HP6PJl7fUk5yI2fxooITM9F2srT3ih6VDcHKE9QLNVtexOMET0eLgF7yJj_GU?purpose=inline">[University, Bonn, the Rhine, Germany] view, photochrome print postcard. - PICRYL - Public Domain Media Search Engine Public Domain Search</a></p>
+<p><a href="https://picryl.com/media/university-bonn-the-rhine-germany?utm_source=chatgpt.com">picryl.com</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1889年</td>
+<td>前往波恩大學（University of Bonn）擔任物理學教授。</td>
+</tr>
+<tr>
+<td>1889年</td>
+<td>繼續研究電磁學與電動力學，並整理過去的實驗成果。</td>
+</tr>
+<tr>
+<td>1890年</td>
+<td>發表與電磁波及電動力學有關的研究論文。</td>
+</tr>
+<tr>
+<td>1891年</td>
+<td>持續探討馬克士威理論與物理學基本概念。</td>
+</tr>
+<tr>
+<td>1892年</td>
+<td>研究電磁學理論的數學結構與物理意義。</td>
+</tr>
+<tr>
+<td>1892－1893年</td>
+<td>進一步研究電磁學與力學的關係，逐漸受到健康問題困擾。</td>
+</tr>
+<tr>
+<td>1893年</td>
+<td>出版《力學原理》（Die Prinzipien der Mechanik in neuem Zusammenhange dargestellt）的相關研究成果，探討力學基本概念與原理。</td>
+</tr>
+</tbody></table>
+<p>赫茲在波恩大學期間，除了電磁學研究，也致力於物理學基本原理的整理。</p>
+<p>他希望釐清物理學理論中概念與數學描述之間的關係，並對力學的基礎進行重新思考。</p>
+<h2 id="七、晚年與逝世（1893－1894）">七、晚年與逝世（1893－1894）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/zmHciGKNhEUoQ8906vvm7AowYsG-l4dRblpfmXx_0vMBAVMqas6vE3LzjPQH2JqpN7486ysezEMEYG5w-qK_tyquxWv-mIk1WK4f1k4EbdeDptRLGzVBiHIbCJRuAOppuvLJ_z3t0hjvR61TZHeIAC4mRVNmBlUprIaDkpJuQn4?purpose=inline">Carrots, death rays and passing ships. This is the origin story of the word radar | WGVU NEWS</a></p>
+<p><a href="https://www.wgvunews.org/2025-05-14/carrots-death-rays-and-passing-ships-this-is-the-origin-story-of-the-word-radar?utm_source=chatgpt.com">wgvunews.org</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1893年</td>
+<td>健康狀況逐漸惡化，出現嚴重疾病。</td>
+</tr>
+<tr>
+<td>1893年下半年</td>
+<td>研究與教學工作受到影響。</td>
+</tr>
+<tr>
+<td>1894年1月1日</td>
+<td>在德國波恩逝世，年僅36歲。</td>
+</tr>
+<tr>
+<td>1894年以後</td>
+<td>他的電磁波研究逐漸成為無線電與電磁學發展的重要基礎。</td>
+</tr>
+</tbody></table>
+<p>赫茲逝世時年僅36歲，未能親眼見證電磁波在無線電通訊上的廣泛應用。</p>
+<p>不過，他的實驗成果很快便引起科學界與工程界的高度重視。</p>
+<h2 id="八、赫茲的六大科學貢獻">八、赫茲的六大科學貢獻</h2>
+<h3 id="1-首次實驗證實電磁波存在">1. 首次實驗證實電磁波存在</h3>
+<p><a href="https://images.openai.com/static-rsc-4/PUHbgrrt2JgkTAanEOWg48Q36ZIfFNqnHuECSR5OByuEEAByG0-HQjbbS14tBkOplVfN_Z_yaFTIyyIJRwJBdGM8GLnjbgVinrwkIQ3AuI92HX8T-votYzrV8WRsTT_0j3dfSmmtBJDKgGZ2p1g4o1TZjwiwwo82fix51R2oxnw?purpose=inline">Hertz S Lamar at Richard Colon blog</a></p>
+<p><a href="https://storage.googleapis.com/dgdphrngayffpe/hertz-s-lamar.html?utm_source=chatgpt.com">storage.googleapis.com</a></p>
+<p>這是赫茲最重要的科學成就。</p>
+<p>馬克士威在理論上預言電磁波存在，但赫茲透過實驗證明：</p>
+<ul>
+<li>電磁波能夠由振盪電流產生。</li>
+<li>電磁波能夠在空間中傳播。</li>
+<li>電磁波能夠被其他裝置接收。</li>
+<li>電磁波具有光波相似的物理特性。</li>
+</ul>
+<p>這項成果使電磁波從理論預言成為實驗證實的自然現象。</p>
+<h3 id="2-電磁波的反射與折射">2. 電磁波的反射與折射</h3>
+<p>赫茲利用金屬反射板及不同材料的介質，研究電磁波的傳播行為。</p>
+<p>他證明電磁波可以反射，也可以在不同介質中發生折射。</p>
+<p>這些結果進一步支持電磁波與光波具有共同的物理本質。</p>
+<h3 id="3-電磁波的干涉與駐波">3. 電磁波的干涉與駐波</h3>
+<p>赫茲利用反射波與入射波的疊加，觀察電磁波的駐波現象。</p>
+<p>駐波的波節與波腹具有固定位置，可以用來測量波長，進而計算電磁波的傳播速度。</p>
+<h3 id="4-電磁波的偏振">4. 電磁波的偏振</h3>
+<p>赫茲證明電磁波具有偏振性質，這是橫波的重要特徵。</p>
+<p>這項研究對電磁波的物理結構提供了重要實驗證據。</p>
+<h3 id="5-光電效應的早期研究">5. 光電效應的早期研究</h3>
+<p><a href="https://images.openai.com/static-rsc-4/myzp8qnDzKW5RExNqmrXb1ZWbMfp51_VikWpalhuL5a7uz6Rw7BajpxSnfAAjFCqnLSjCSuJaGhS2Rky33pGXyy6xz1uTKt8puhzq4kJaz8V6P8OhBzefZBP1u_IXHJeQ5E6qioSZ3eb5233ILClaWSwV0JQ5RZN9YzzH-ZyQfw?purpose=inline">URM: Photoeffekt nach Heinrich Hertz 1887</a></p>
+<p><a href="https://www.uranmaschine.de/45310.Photoeffekt_nach_Heinrich_Hertz_1887/?utm_source=chatgpt.com">uranmaschine.de</a></p>
+<p>1887年，赫茲在研究火花放電時發現，紫外線照射金屬電極可以使火花更容易產生。</p>
+<p>這個現象後來被認為與光電效應有關。</p>
+<p>後續重要發展：</p>
+<ul>
+<li>1887年： 赫茲觀察到紫外線對火花放電的影響。</li>
+<li>1888－1889年： 威廉・霍爾瓦克斯等科學家進一步研究光對帶電物體的影響。</li>
+<li>1905年： 愛因斯坦提出光量子理論，解釋光電效應。</li>
+<li>1921年： 愛因斯坦因光電效應理論獲得諾貝爾物理學獎。</li>
+</ul>
+<p>因此，赫茲的研究也間接成為量子物理學發展史上的重要起點之一。</p>
+<h3 id="6-推動無線電通訊的發展">6. 推動無線電通訊的發展</h3>
+<p><a href="https://images.openai.com/static-rsc-4/CQraeloPh-w3cib95nbFKKRlWmObKMWj3ERZ8FfrnSCYV3fKuYr8HCx--d7oSSvPqsmv1OLdGyO_jG7dtytgOiWV5vxf5W9OT3paixtD-H06N5SHK8KFod0dS_v3LNpFz51LGNYGN6ZiPVWLq7LB5gagifNM0KoCyRdA-Cj3nLs?purpose=inline">Radio, i 100 anni in Italia da Marconi alla rivoluzione digitale | Wired Italia</a></p>
+<p><a href="https://www.wired.it/article/radio-in-italia-cento-anni-storia/?utm_source=chatgpt.com">wired.it</a></p>
+<p>赫茲本人主要致力於基礎物理實驗，並未建立商業無線電通訊系統。</p>
+<p>但他的研究成果直接啟發後來的工程發展：</p>
+<ul>
+<li>1890年代：馬可尼等人發展無線電報技術。</li>
+<li>1901年：馬可尼完成跨大西洋無線電訊號傳輸的重要實驗。</li>
+<li>20世紀：無線電廣播、電視與雷達逐漸普及。</li>
+<li>現代：Wi-Fi、行動通訊、衛星通訊等技術均以電磁波為基礎。</li>
+</ul>
+<h2 id="九、赫茲與法拉第、馬克士威的科學關係">九、赫茲與法拉第、馬克士威的科學關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/GU7DB8NEJDgPQ8lUIECLOIeg9HUG5jkbZUko07tWa56np1G-WlIVZS8hIOUVEP3EolL11o_x48fauuqOa84v-Tu7NNiUWtpF7oA1PqIP5KTBMetchpWf_U7jSlO4HHrwW3CfgWzGjHy5TsjIeNTS39R7VuhSckUKlq2PhWRHPKo?purpose=inline">Кто и когда обнаружил электромагнитные волны: биография Генриха Герца</a></p>
+<p>這三位科學家構成十九世紀電磁學發展的重要歷史脈絡。</p>
+<table>
+<thead>
+<tr>
+<th>科學家</th>
+<th>生卒年</th>
+<th>主要貢獻</th>
+<th>科學發展角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>麥可・法拉第</td>
+<td>1791－1867</td>
+<td>電磁感應、力線概念</td>
+<td>實驗發現</td>
+</tr>
+<tr>
+<td>詹姆斯・克拉克・馬克士威</td>
+<td>1831－1879</td>
+<td>馬克士威方程組、光的電磁理論</td>
+<td>數學統一</td>
+</tr>
+<tr>
+<td>海因里希・赫茲</td>
+<td>1857－1894</td>
+<td>電磁波的產生、接收與實驗驗證</td>
+<td>實驗證實</td>
+</tr>
+</tbody></table>
+<h3 id="三人的科學發展脈絡">三人的科學發展脈絡</h3>
+<p>第一階段：法拉第——發現電磁現象</p>
+<p>法拉第透過實驗發現電磁感應，並提出電場與磁場的力線概念。</p>
+<p>第二階段：馬克士威——建立電磁理論</p>
+<p>馬克士威將法拉第的物理思想轉化為數學方程式，預言電磁波存在，並指出光就是電磁波。</p>
+<p>第三階段：赫茲——證實電磁波</p>
+<p>赫茲利用實驗產生、接收並研究電磁波，證明馬克士威的理論預言正確。</p>
+<p>這三個階段構成古典電磁學發展史最重要的里程碑。</p>
+<h2 id="十、赫茲生平重要年份總表">十、赫茲生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1857</td>
+<td>出生於德國漢堡</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>前往德勒斯登學習工程學</td>
+</tr>
+<tr>
+<td>1878</td>
+<td>進入柏林大學</td>
+</tr>
+<tr>
+<td>1878－1879</td>
+<td>師從赫爾姆霍茲</td>
+</tr>
+<tr>
+<td>1880</td>
+<td>取得柏林大學博士學位</td>
+</tr>
+<tr>
+<td>1880－1883</td>
+<td>留在柏林從事研究</td>
+</tr>
+<tr>
+<td>1883</td>
+<td>任教於基爾大學</td>
+</tr>
+<tr>
+<td>1885</td>
+<td>出任卡爾斯魯厄工業大學教授</td>
+</tr>
+<tr>
+<td>1886</td>
+<td>開始研究高頻電振盪</td>
+</tr>
+<tr>
+<td>1887</td>
+<td>開始系統性電磁波實驗</td>
+</tr>
+<tr>
+<td>1887</td>
+<td>觀察紫外線對火花放電的影響</td>
+</tr>
+<tr>
+<td>1888</td>
+<td>完成電磁波傳播的關鍵實驗</td>
+</tr>
+<tr>
+<td>1888</td>
+<td>證實電磁波具有反射、折射、干涉及偏振等性質</td>
+</tr>
+<tr>
+<td>1889</td>
+<td>出任波恩大學物理學教授</td>
+</tr>
+<tr>
+<td>1893</td>
+<td>出版《力學原理》相關著作</td>
+</tr>
+<tr>
+<td>1894</td>
+<td>逝世於德國波恩，享年36歲</td>
+</tr>
+</tbody></table>
+<h2 id="十一、歷史地位與影響">十一、歷史地位與影響</h2>
+<p>赫茲最重要的歷史地位，是將馬克士威的電磁波理論從數學預言轉化為實驗事實。</p>
+<p>他的研究使人類確認，電磁波不只是理論上的抽象概念，而是真實存在、可以產生、傳播、反射、接收與測量的物理現象。</p>
+<p>其影響主要包括：</p>
+<ol>
+<li>無線電革命：為無線電報與廣播提供物理基礎。</li>
+<li>通訊技術：促進無線訊號傳輸與接收技術發展。</li>
+<li>雷達技術：電磁波反射原理成為雷達測距與探測的基礎。</li>
+<li>光學與電磁學：進一步確認光與電磁波的統一性質。</li>
+<li>量子物理學：早期光電效應觀察成為後續研究的重要起點。</li>
+</ol>
+<h3 id="十二、以赫茲命名的物理單位：赫茲（hz）">十二、以赫茲命名的物理單位：赫茲（Hz）</h3>
+<p>國際單位制 SI 單位</p>
+<p>為紀念赫茲對電磁波研究的貢獻，國際單位制以他的姓氏命名頻率單位：</p>
+<p>赫茲（Hertz，符號 Hz）</p>
+<p>\[ 1\ \mathrm{Hz}=1\ \mathrm{次／秒} \]</p>
+<p>也就是每秒完成一次週期性振動。</p>
+<table>
+<thead>
+<tr>
+<th>頻率</th>
+<th>意義</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 Hz</td>
+<td>每秒振動1次</td>
+</tr>
+<tr>
+<td>50 Hz</td>
+<td>每秒振動50次</td>
+</tr>
+<tr>
+<td>60 Hz</td>
+<td>每秒振動60次</td>
+</tr>
+<tr>
+<td>1 kHz</td>
+<td>每秒振動1,000次</td>
+</tr>
+<tr>
+<td>1 MHz</td>
+<td>每秒振動100萬次</td>
+</tr>
+<tr>
+<td>1 GHz</td>
+<td>每秒振動10億次</td>
+</tr>
+</tbody></table>
+<p>現代生活中，赫茲這個單位廣泛應用於：</p>
+<ul>
+<li>電力系統頻率。</li>
+<li>收音機與無線電頻率。</li>
+<li>電腦處理器時脈。</li>
+<li>Wi-Fi與行動通訊。</li>
+<li>聲音與音樂頻率。</li>
+</ul>
+<p>歷史總評：</p>
+<p>赫茲雖然只活了36年，卻完成了足以改變世界科技發展方向的科學實驗。他證實了馬克士威的電磁波理論，讓人類真正進入利用電磁波傳遞資訊的時代。</p>
+<p>從法拉第的實驗發現、馬克士威的數學統一，到赫茲的實驗驗證，十九世紀電磁學的發展也成為二十世紀無線通訊革命的重要起點。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

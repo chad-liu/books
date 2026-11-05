@@ -1,0 +1,506 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="魯道夫・克勞修斯（rudolf-clausius）生平大事記">魯道夫・克勞修斯（Rudolf Clausius）生平大事記</h1>
+<p>1822年1月2日－1888年8月24日｜德國物理學家｜熱力學第二定律與熵概念的重要奠基者</p>
+<p><a href="https://images.openai.com/static-rsc-4/FHc4E6hp3JdCRSkUzrnrIcN-vOYLpd04aKHc2AmxfHNb5v3KNFIzDSda2LpSilMtaA04Fj_dDsIC1Ov6HbKqIgY6TRNZlF5ijBl0iEZ0LVnlJ9jVD95S7zJXKAejFyeiGLm74BFjoSXHW-nZJe6R53BO4ki-ympwC5rQcmTWQSM?purpose=inline">Biografia de Rudolf Clausius</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/2JYrvAbc3TX8z-CpGgBxAUIr49p1V1qtI0799VIw3tbOc0MOxyCf9_kXplO0fyA_BXmRwaPJ6TYSrgnHC3iXX2_LiVFZug-FKLKPJAYBzESFJwEGYm5gRCBflWFLtMwytJC2vdqYvjWppfNTo1ZnEl_-HMBzngwarFoQv9E5e-A?purpose=inline">Rudolf Clausius (1822-1888). /Nrudolph Julius Emanuel Clausius. German Mathematical Physicist. Lithograph, German, 1861. Poster Print by Granger Collection - Item # VARGRC0059467 - Posterazzi</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/lQ4DZxnYKKjp93LbpAAwLSIZU4TvPmCl3drju5eZH2n9S83Qs9ET0zoB-r1F-GLR1lT0WukKuTviNg3qOcPToCaT_tE90JypLDMrAupsB3-Nyokj4GQ3xjLXo_P1EzCgWO9V4Zqu-MWwmW3mONZgm9MLtZ6hCh-6yjhD9Kc25GA?purpose=inline">La entropía demuestra que la vida es una excepción maravillosa - Libertad Digital</a></p>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p>**魯道夫・克勞修斯（Rudolf Julius Emanuel Clausius）**是十九世紀德國著名物理學家，也是古典熱力學的主要奠基者之一。他最重要的貢獻，是將熱力學第二定律建立為嚴謹的物理原理，並於1865年引入「熵」（Entropy）一詞，為後來統計力學與現代物理學奠定重要基礎。</p>
+<p>克勞修斯的研究主要圍繞熱、功、能量轉換、氣體分子運動及熱力學定律。他的思想與卡諾、焦耳、威廉・湯姆森（開爾文勳爵）、馬克士威及波茲曼等人的研究相互連結。</p>
+<p>主要歷史地位：</p>
+<ol>
+<li>將熱力學第二定律表述為熱量傳遞方向的基本原理。</li>
+<li>提出熱力學第二定律的數學表達形式。</li>
+<li>於1865年正式提出「熵」的概念與名稱。</li>
+<li>發展氣體動力論，研究分子運動與氣體性質。</li>
+<li>建立古典熱力學與統計物理學之間的重要理論橋梁。</li>
+</ol>
+<h2 id="二、出生與早年教育（1822－1847）">二、出生與早年教育（1822－1847）</h2>
+<h3 id="1822年：出生於普魯士">1822年：出生於普魯士</h3>
+<ul>
+<li>1月2日：出生於普魯士王國波美拉尼亞地區的科斯林（Köslin，今波蘭科沙林 Koszalin）。</li>
+<li>父親是教育工作者，家庭重視教育與學術。</li>
+<li>克勞修斯從小接受良好的教育，逐漸展現對數學與自然科學的興趣。</li>
+</ul>
+<h3 id="1840年：進入柏林大學">1840年：進入柏林大學</h3>
+<ul>
+<li>進入柏林大學（University of Berlin，今柏林洪堡大學）。</li>
+<li>主要研習數學、物理學及自然哲學。</li>
+<li>當時物理學正逐漸從傳統自然哲學轉向實驗與數學理論並重的研究方式。</li>
+</ul>
+<h3 id="1847年：取得博士學位">1847年：取得博士學位</h3>
+<ul>
+<li>在柏林大學完成博士研究。</li>
+<li>早期研究涉及光學及大氣光學現象。</li>
+<li>開始進入學術研究與教學領域。</li>
+</ul>
+<h2 id="三、建立熱力學理論（1850－1859）">三、建立熱力學理論（1850－1859）</h2>
+<h3 id="1850年：提出熱力學第二定律的重要表述">1850年：提出熱力學第二定律的重要表述</h3>
+<p>這是克勞修斯科學生涯最重要的轉折點。</p>
+<ul>
+<li>發表論文《論熱的動力及由此可導出的熱定律》（Über die bewegende Kraft der Wärme und die Gesetze, welche sich daraus für die Wärmelehre selbst ableiten lassen）。</li>
+<li>重新檢視法國物理學家卡諾（Sadi Carnot）提出的熱機理論。</li>
+<li>結合焦耳關於熱與功之間關係的研究，建立新的熱力學觀點。</li>
+<li>指出熱量不會自行由低溫物體傳至高溫物體。</li>
+</ul>
+<p>這項工作使熱力學第二定律逐漸成為獨立而完整的物理定律。</p>
+<h3 id="1851年：發展熱力學第二定律">1851年：發展熱力學第二定律</h3>
+<ul>
+<li>進一步闡述熱量傳遞的方向性。</li>
+<li>英國物理學家威廉・湯姆森（William Thomson，後來的開爾文勳爵）也在同一時期提出熱力學第二定律的另一種表述。</li>
+<li>克勞修斯與湯姆森的表述雖然措辭不同，但在物理意義上彼此等價。</li>
+</ul>
+<h3 id="1854年：提出熱力學第二定律的數學形式">1854年：提出熱力學第二定律的數學形式</h3>
+<ul>
+<li>克勞修斯進一步發展熱力學第二定律。</li>
+<li>開始建立熱量、溫度與可逆循環之間的數學關係。</li>
+<li>這些研究成為後來熵概念的重要基礎。</li>
+</ul>
+<h3 id="1857年：研究氣體分子運動">1857年：研究氣體分子運動</h3>
+<ul>
+<li>發表氣體動力論相關研究。</li>
+<li>從微觀角度探討氣體分子的運動與碰撞。</li>
+<li>將氣體的宏觀性質與分子運動聯繫起來。</li>
+<li>研究分子平均自由程（Mean Free Path），即分子在兩次碰撞之間平均行進的距離。</li>
+</ul>
+<h3 id="1858年：進一步發展氣體動力論">1858年：進一步發展氣體動力論</h3>
+<ul>
+<li>持續研究氣體分子運動及碰撞機制。</li>
+<li>改進對分子運動方向與速度分布的理解。</li>
+<li>這些研究對後來馬克士威與波茲曼的氣體動力論發展具有重要影響。</li>
+</ul>
+<h2 id="四、學術生涯與理論成熟（1855－1869）">四、學術生涯與理論成熟（1855－1869）</h2>
+<h3 id="1855年：赴蘇黎世任教">1855年：赴蘇黎世任教</h3>
+<ul>
+<li>受聘於瑞士蘇黎世聯邦理工學院（當時稱蘇黎世聯邦理工學校，ETH Zürich）。</li>
+<li>同時在蘇黎世大學任教。</li>
+<li>這段時期是他集中發展熱力學及氣體動力論的重要階段。</li>
+</ul>
+<h3 id="1857年：發表氣體動力論的重要論文">1857年：發表氣體動力論的重要論文</h3>
+<ul>
+<li>發表《論我們稱為熱的那種運動》（Über die Art der Bewegung, welche wir Wärme nennen）。</li>
+<li>主張熱可以從分子無規則運動的角度理解。</li>
+<li>將氣體壓力、溫度與分子運動聯繫起來。</li>
+<li>以分子碰撞模型解釋氣體的宏觀性質。</li>
+</ul>
+<p>這項研究的重要意義，在於將熱從傳統的「熱質」觀念轉化為微觀粒子運動的物理現象。</p>
+<h3 id="1858年：提出分子平均自由程概念">1858年：提出分子平均自由程概念</h3>
+<ul>
+<li>進一步研究氣體分子碰撞。</li>
+<li>引入分子平均自由程（mean free path）的概念。</li>
+<li>平均自由程是分子在連續兩次碰撞之間所行進距離的平均值。</li>
+<li>這個概念後來成為氣體動力論及分子輸運理論的重要基礎。</li>
+</ul>
+<h3 id="1859年：結婚">1859年：結婚</h3>
+<ul>
+<li>與阿德海德・林帕姆（Adelheid Rimpam）結婚。</li>
+<li>此後繼續在蘇黎世從事教學與研究。</li>
+</ul>
+<h3 id="1862年：推廣熱力學第二定律">1862年：推廣熱力學第二定律</h3>
+<ul>
+<li>持續發表熱力學相關論文。</li>
+<li>將第二定律的討論由可逆循環推廣至不可逆過程。</li>
+<li>逐步建立熱力學第二定律更一般化的數學表述。</li>
+</ul>
+<h3 id="1864－1867年：整理熱的機械理論">1864－1867年：整理熱的機械理論</h3>
+<ul>
+<li>出版《熱的機械理論論文集》（Abhandlungen über die mechanische Wärmetheorie）。</li>
+<li>系統整理熱、功、能量轉換及熱力學定律。</li>
+<li>使熱力學逐漸成為具有統一理論架構的物理學分支。</li>
+</ul>
+<h3 id="1865年：正式提出「熵」（entropy）">1865年：正式提出「熵」（Entropy）</h3>
+<p>最重要的科學成就</p>
+<ul>
+<li>發表《熱的機械理論的幾項主要方程式》（Über verschiedene für die Anwendung bequeme Formen der Hauptgleichungen der mechanischen Wärmetheorie）。</li>
+<li>正式引入「熵」（Entropie，英文Entropy）一詞。</li>
+<li>熵用來描述熱力學系統的狀態，以及能量轉換過程中的方向性。</li>
+<li>將熱力學第二定律轉化為更具普遍性的數學原理。</li>
+</ul>
+<p>克勞修斯以兩項著名命題概括熱力學的基本定律：</p>
+<ol>
+<li>宇宙的能量是恆定的。</li>
+<li>宇宙的熵趨向最大值。</li>
+</ol>
+<p>第一項對應熱力學第一定律，第二項則表達熱力學第二定律的核心思想。</p>
+<h3 id="1867年：轉任維爾茨堡大學">1867年：轉任維爾茨堡大學</h3>
+<ul>
+<li>離開蘇黎世，前往德國維爾茨堡大學（University of Würzburg）任教。</li>
+<li>繼續研究熱力學與氣體分子運動。</li>
+<li>其研究已成為當時理論物理學的重要基礎。</li>
+</ul>
+<h3 id="1868年：獲選為英國皇家學會外籍會員">1868年：獲選為英國皇家學會外籍會員</h3>
+<ul>
+<li>獲選為英國皇家學會（Royal Society）外籍會員。</li>
+<li>反映其熱力學研究已獲得國際科學界的高度重視。</li>
+</ul>
+<h3 id="1869年：轉任波昂大學">1869年：轉任波昂大學</h3>
+<ul>
+<li>前往波昂大學（University of Bonn）任教。</li>
+<li>此後長期在波昂工作，直到逝世。</li>
+<li>研究範圍逐漸擴及氣體理論、力學及電磁相關問題。</li>
+</ul>
+<h2 id="五、晚年研究與學術活動（1870－1888）">五、晚年研究與學術活動（1870－1888）</h2>
+<h3 id="1870年：提出維里定理（virial-theorem）">1870年：提出維里定理（Virial Theorem）</h3>
+<ul>
+<li>對多粒子系統的運動及力學關係進行研究。</li>
+<li>發展後來稱為維里定理的重要結果。</li>
+<li>維里定理將系統中粒子的動能與相互作用力聯繫起來。</li>
+<li>對統計力學、天體物理學及多粒子系統的研究具有重要影響。</li>
+</ul>
+<h3 id="1870－1871年：參與普法戰爭救護工作">1870－1871年：參與普法戰爭救護工作</h3>
+<ul>
+<li>普法戰爭期間，克勞修斯組織並參與醫療救護工作。</li>
+<li>在救護活動中受傷，留下身體上的後遺影響。</li>
+<li>這段經歷使其晚年健康與活動受到一定限制。</li>
+</ul>
+<h3 id="1872年：熱力學與統計物理學的發展">1872年：熱力學與統計物理學的發展</h3>
+<ul>
+<li>持續推進熱力學理論。</li>
+<li>其熵與不可逆性觀念，成為後來波茲曼研究的重要理論背景。</li>
+<li>波茲曼進一步從分子統計與機率角度解釋熵，使熱力學第二定律獲得微觀層次的詮釋。</li>
+</ul>
+<h3 id="1876年：整理熱的機械理論">1876年：整理熱的機械理論</h3>
+<ul>
+<li>出版修訂版《熱的機械理論》（Die mechanische Wärmetheorie）。</li>
+<li>系統整理熱力學的基本定律及其數學關係。</li>
+<li>其著作成為十九世紀熱力學的重要參考文獻。</li>
+</ul>
+<h3 id="1879年：研究介電物質的極化">1879年：研究介電物質的極化</h3>
+<ul>
+<li>研究介電物質在電場中的極化現象。</li>
+<li>相關研究後來與克勞修斯－莫索提關係式（Clausius–Mossotti relation）相連。</li>
+<li>這項關係式用於連結物質的宏觀介電性質與微觀分子極化率。</li>
+</ul>
+<h3 id="1882年：獲頒龐斯萊獎">1882年：獲頒龐斯萊獎</h3>
+<ul>
+<li>獲得法國科學界頒發的龐斯萊獎（Poncelet Prize）。</li>
+<li>這項榮譽肯定了他在數學物理及熱力學領域的貢獻。</li>
+</ul>
+<h3 id="1884－1885年：擔任波昂大學校長">1884－1885年：擔任波昂大學校長</h3>
+<ul>
+<li>擔任波昂大學校長（Rector）。</li>
+<li>除研究工作外，也承擔大學行政與學術領導職務。</li>
+</ul>
+<h3 id="1888年：逝世">1888年：逝世</h3>
+<ul>
+<li>8月24日：在德國波昂（Bonn）逝世，享年66歲。</li>
+<li>其研究成果對熱力學、氣體動力論及統計物理學產生深遠影響。</li>
+</ul>
+<p>以上學術生涯及主要年份，可參考蘇黎世大學的克勞修斯學術履歷、聖安德魯斯大學數學史檔案，以及相關科學史研究。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://mathshistory.st-andrews.ac.uk&sz=32">image</a></p>
+<p>MacTutor History of Mathematics+3</p>
+<h2 id="六、克勞修斯的主要科學理論與公式">六、克勞修斯的主要科學理論與公式</h2>
+<p>克勞修斯的學術地位，主要建立在熱力學定律、熵、氣體動力論及分子平均自由程等研究之上。以下整理其重要理論。</p>
+<h3 id="1-熱力學第一定律（first-law-of-thermodynamics）">1. 熱力學第一定律（First Law of Thermodynamics）</h3>
+<p>熱力學第一定律是能量守恆原理在熱現象中的表現。</p>
+<p>其基本意義是：</p>
+<p>熱量可以轉化為功，功也可以轉化為熱；能量不會憑空產生或消失。</p>
+<p>常見數學表達式：</p>
+<p>\[ dU=\delta Q-\delta W \]</p>
+<p>其中：</p>
+<ul>
+<li>\(dU\)：系統內能的變化。</li>
+<li>\(\delta Q\)：系統吸收的熱量。</li>
+<li>\(\delta W\)：系統對外做的功。</li>
+</ul>
+<p>對於簡單可壓縮系統，若只有體積膨脹功：</p>
+<p>\[ dU=\delta Q-p\,dV \]</p>
+<p>也可以寫成：</p>
+<p>\[ \delta Q=dU+p\,dV \]</p>
+<p>克勞修斯在1850年的研究中，將焦耳等人關於熱功當量的成果納入熱力學架構，建立了這項定律的數學基礎。</p>
+<h3 id="2-熱力學第二定律（second-law-of-thermodynamics）">2. 熱力學第二定律（Second Law of Thermodynamics）</h3>
+<p>克勞修斯最重要的貢獻之一，是提出熱力學第二定律的經典表述：</p>
+<p>熱量不會在沒有其他影響的情況下，自行由低溫物體傳向高溫物體。</p>
+<p>這個原理說明自然界的熱傳遞具有方向性。</p>
+<p>例如：</p>
+<ul>
+<li>熱咖啡放在室溫環境中，會逐漸冷卻。</li>
+<li>冰塊放入溫水中，會逐漸融化。</li>
+<li>熱量自然地由高溫區域傳向低溫區域。</li>
+<li>若要使熱量由低溫處傳向高溫處，必須消耗外部功，例如冰箱的壓縮機。</li>
+</ul>
+<p>熱力學第二定律並不是說熱量永遠不能由低溫傳向高溫，而是說這種傳遞不能在沒有其他變化的情況下自行發生。</p>
+<h3 id="3-熵（entropy）">3. 熵（Entropy）</h3>
+<p>克勞修斯最具代表性的概念</p>
+<p>1865年，克勞修斯正式提出熵的名稱與概念。</p>
+<p>熵是一種熱力學狀態函數，用來描述系統狀態及能量轉換的方向性。</p>
+<p>對於可逆過程：</p>
+<p>\[ dS=\frac{\delta Q_{\mathrm{rev}}}{T} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(dS\)：熵的微小變化。</li>
+<li>\(\delta Q_{\mathrm{rev}}\)：可逆過程中系統吸收的熱量。</li>
+<li>\(T\)：絕對溫度，單位為開爾文（K）。</li>
+</ul>
+<p>對於有限的可逆過程：</p>
+<p>\[ \Delta S=\int_1^2\frac{\delta Q_{\mathrm{rev}}}{T} \]</p>
+<p>這個公式是古典熱力學中計算熵變化的基本方法。</p>
+<p>熵增原理：</p>
+<p>對孤立系統而言：</p>
+<p>\[ \Delta S\geq 0 \]</p>
+<ul>
+<li>可逆過程：\(\Delta S=0\)。</li>
+<li>不可逆過程：\(\Delta S&gt;0\)。</li>
+</ul>
+<p>換句話說，孤立系統的熵不會自行減少。</p>
+<p>需要特別注意：熵不能簡單地等同於日常語言所說的「混亂程度」。它是有嚴格數學定義的熱力學物理量。</p>
+<h3 id="4-克勞修斯不等式（clausius-inequality）">4. 克勞修斯不等式（Clausius Inequality）</h3>
+<p>克勞修斯建立了描述熱力學循環過程的重要不等式：</p>
+<p>\[ \oint\frac{\delta Q}{T}\leq 0 \]</p>
+<p>其中：</p>
+<ul>
+<li>\(\oint\)：表示完整循環。</li>
+<li>\(\delta Q\)：系統與外界交換的熱量。</li>
+<li>\(T\)：熱量交換處的絕對溫度。</li>
+</ul>
+<p>其意義為：</p>
+<ul>
+<li>可逆循環：積分等於零。</li>
+<li>不可逆循環：積分小於零。</li>
+</ul>
+<p>這項不等式是熵概念及熱力學第二定律的重要數學基礎。</p>
+<h3 id="5-氣體動力論與平均自由程">5. 氣體動力論與平均自由程</h3>
+<p>克勞修斯將氣體視為大量持續運動、彼此碰撞的分子所構成的系統。</p>
+<p>他的重要貢獻之一，是引入分子平均自由程的概念。</p>
+<p>平均自由程可概念性地表示為：</p>
+<p>\[ \lambda=\text{分子兩次連續碰撞間距離的平均值} \]</p>
+<p>在簡化的硬球分子模型中：</p>
+<p>\[ \lambda=\frac{1}{\sqrt{2}\pi d^2 n} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(\lambda\)：平均自由程。</li>
+<li>\(d\)：分子有效直徑。</li>
+<li>\(n\)：單位體積內的分子數。</li>
+</ul>
+<p>這個公式說明，分子越大、氣體密度越高，分子平均自由程通常越短。</p>
+<h3 id="6-維里定理（virial-theorem）">6. 維里定理（Virial Theorem）</h3>
+<p>克勞修斯於1870年發展維里定理。</p>
+<p>對於在穩定條件下運動的多粒子系統，其時間平均動能與粒子所受作用力之間存在一定關係。</p>
+<p>常見形式為：</p>
+<p>\[ 2\langle K\rangle = -\left\langle\sum_i\mathbf r_i\cdot\mathbf F_i\right\rangle \]</p>
+<p>其中：</p>
+<ul>
+<li>\(K\)：系統總動能。</li>
+<li>\(\mathbf r_i\)：第 \(i\) 個粒子的位置向量。</li>
+<li>\(\mathbf F_i\)：作用在第 \(i\) 個粒子上的力。</li>
+<li>尖括號表示時間平均。</li>
+</ul>
+<p>維里定理後來廣泛應用於統計力學、天體物理學及多粒子系統的研究。</p>
+<h3 id="7-克勞修斯－克拉佩龍方程式（clausiusclapeyron-equation）">7. 克勞修斯－克拉佩龍方程式（Clausius–Clapeyron Equation）</h3>
+<p>這項方程式描述物質在兩相平衡時，壓力與溫度之間的關係。</p>
+<p>\[ \frac{dP}{dT}= \frac{L}{T\Delta v} \]</p>
+<p>其中：</p>
+<ul>
+<li>\(P\)：壓力。</li>
+<li>\(T\)：絕對溫度。</li>
+<li>\(L\)：單位質量的相變潛熱。</li>
+<li>\(\Delta v\)：兩相之間的比體積差。</li>
+</ul>
+<p>例如，水的沸點會隨外界氣壓改變：氣壓越低，水的沸點通常越低。</p>
+<p>這個關係式是克拉佩龍（Émile Clapeyron）早期研究與克勞修斯熱力學理論發展的成果，不能簡單視為克勞修斯單獨創立。</p>
+<h2 id="七、克勞修斯與其他重要科學家的關係">七、克勞修斯與其他重要科學家的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/PnXDRmRkwotjy022dPQOs2hEhvenxkxTvkGcW-zi-VfWc_OCh3bcFy9_YluitK4F07Q9qP7F4VIF-GahkOUgLJEc4fh3_ZMD94_hPDIU1AHnlVmAWqTXXhayRfJPq2RQvjmGubGF9Hnb9k_bl5UOdXUzO7a684PGfUdQCWOau40?purpose=inline">Scientist of the Day - Sadi Carnot, French Engineer - Linda Hall Library</a></p>
+<p>1. 薩迪・卡諾（Sadi Carnot，1796－1832）</p>
+<p>提出卡諾熱機循環及理想熱機效率的理論。克勞修斯以熱力學新觀點重新整理卡諾的理論，使之與熱功轉換及能量守恆原理相容。</p>
+<p><a href="https://images.openai.com/static-rsc-4/bZlUsQlM2DWXzyUu9y-F7zwTsiKdkCZcTu1RRsjX80O1wcqfgUiNamfSDCvoevEPjL-21R7qzXonQcZaWbJywMDcvOphG-0DMqW638ZZjVide2w6ZQWyAYoRSZGb5I1dwCJBIIbSc5d-0D9LzJ3OY0Z9Ojn-_y-zvE4YyHOqqn4?purpose=inline">La historia de la electricidad: Ley De Joule</a></p>
+<p>2. 詹姆士・焦耳（James Prescott Joule，1818－1889）</p>
+<p>透過實驗研究熱與功的等價關係。焦耳的成果為克勞修斯建立熱力學第一定律提供重要實驗基礎。</p>
+<p><a href="https://images.openai.com/static-rsc-4/uaPXYuG54QlkCIzR74bRlL8aaigtBlgVS8AUW2of9MQ6TCAs8CRkbhJ-Qm4SuLdcsr0wUuwcwLEpTDCkBOteURmRtZD85uELFKJANeFdAHQL4PPAxA3-HNJxPG_7tmNAqVfqMJXMJCZIJbRqXsrTnurCn4UzCAipx31TWjFkGA8?purpose=inline">Sir William Thomson, Lord Kelvin (1824 – 1907) – Maleny Weather History</a></p>
+<p>3. 威廉・湯姆森（開爾文勳爵）（William Thomson，1824－1907）</p>
+<p>與克勞修斯幾乎同時發展熱力學第二定律。湯姆森提出不可能從單一熱源吸熱並將其完全轉化為功的表述，與克勞修斯的熱傳遞表述在物理上等價。</p>
+<p><a href="https://images.openai.com/static-rsc-4/SrBBylebbyGOZZc9Hze55a0BfV7pak8wQ07R3hcWRErzcYG4fETkBOk8SjmTtCU3P0SUaypsHnMM_90EWvFQgnyyqxYHQNFfHOD85kpVq7kkdQQcfoE_u2ddG31zwlm9zr1-YPazqW1HTiULkCEU9TmJJDvUMedOPbfgLvufFJ8?purpose=inline">Porträt von JAMES CLERK MAXWELL, schottischer Physiker</a></p>
+<p>4. 詹姆士・馬克士威（James Clerk Maxwell，1831－1879）</p>
+<p>發展氣體分子速度分布理論，與克勞修斯的氣體動力論研究相互呼應，共同推進微觀分子運動理論。</p>
+<p><a href="https://images.openai.com/static-rsc-4/ucdsBBFWvpmbqzJeqxZyQt8OJnL0UfDaXsJA82IYRYLK9gAbNTr9Rqyp_5balgpNUcGsYaC3b-rJx5FenzldMSvG7IcQv6hPylQn9SfszlCCVhjV9L4pY_s7stiLTLYQs6VdIUeL_5oU5BVS3ZyFp1aNNqq1CAsryCXSRvjKrN8?purpose=inline">An anxious descent – Physics World</a></p>
+<p>5. 路德維希・波茲曼（Ludwig Boltzmann，1844－1906）</p>
+<p>進一步以統計方法解釋熵及熱力學第二定律。波茲曼後來提出著名的熵公式：</p>
+<p>\[ S=k_B\ln W \]</p>
+<p>這使克勞修斯的宏觀熱力學熵概念，能夠與微觀分子狀態及統計機率連結。</p>
+<p><a href="https://images.openai.com/static-rsc-4/XAz-J-paF9NDvENm9cxVTB7fCbacrPetZ-DNImuJr4c7i9u301SS09I0OOWTH2j0R8SXvgUaqkBzywCF9SGrx4ynaG5d5KWIl8puKLrYlfOQuuVuCn6WvKmwfNy_3KfLm0TdjeH9ClsGBparZRb22dSuCYdFekgm48WCWPUtaic?purpose=inline">History of Information</a></p>
+<p>6. 馬克斯・普朗克（Max Planck，1858－1947）</p>
+<p>普朗克研究熱力學與熵，後來又將統計思想應用於黑體輻射問題。克勞修斯建立的熵概念，是這段理論發展的重要基礎。</p>
+<h2 id="八、克勞修斯主要著作與論文">八、克勞修斯主要著作與論文</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>著作或論文</th>
+<th>主要內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1850</td>
+<td>《論熱的動力及由此可導出的熱定律》</td>
+<td>熱力學第一、第二定律的早期表述</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>《論我們稱為熱的那種運動》</td>
+<td>氣體動力論</td>
+</tr>
+<tr>
+<td>1864－1867</td>
+<td>《熱的機械理論論文集》</td>
+<td>整理熱力學理論</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>《熱的機械理論的幾項主要方程式》</td>
+<td>正式引入熵</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>《熱的機械理論》修訂版</td>
+<td>系統整理熱力學</td>
+</tr>
+</tbody></table>
+<p>克勞修斯一生發表了大量物理學論文，其中不少刊載於《物理學年鑑》（Annalen der Physik）。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://mathshistory.st-andrews.ac.uk&sz=32">image</a></p>
+<p>MacTutor History of Mathematics+2</p>
+<h2 id="九、克勞修斯生平重要年份總表">九、克勞修斯生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1822</td>
+<td>出生於普魯士科斯林</td>
+</tr>
+<tr>
+<td>1840</td>
+<td>進入柏林大學</td>
+</tr>
+<tr>
+<td>1844</td>
+<td>完成柏林大學學業</td>
+</tr>
+<tr>
+<td>1847</td>
+<td>於哈雷大學取得博士學位</td>
+</tr>
+<tr>
+<td>1850</td>
+<td>發表熱力學重要論文</td>
+</tr>
+<tr>
+<td>1851</td>
+<td>進一步發展熱力學第二定律</td>
+</tr>
+<tr>
+<td>1854</td>
+<td>提出第二定律的數學表述</td>
+</tr>
+<tr>
+<td>1855</td>
+<td>赴蘇黎世任教</td>
+</tr>
+<tr>
+<td>1857</td>
+<td>發表氣體動力論研究</td>
+</tr>
+<tr>
+<td>1858</td>
+<td>引入分子平均自由程概念</td>
+</tr>
+<tr>
+<td>1859</td>
+<td>結婚</td>
+</tr>
+<tr>
+<td>1862</td>
+<td>推廣第二定律至不可逆過程</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>正式提出熵的概念與名稱</td>
+</tr>
+<tr>
+<td>1867</td>
+<td>轉任維爾茨堡大學</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>當選英國皇家學會外籍會員</td>
+</tr>
+<tr>
+<td>1869</td>
+<td>轉任波昂大學</td>
+</tr>
+<tr>
+<td>1870</td>
+<td>發展維里定理</td>
+</tr>
+<tr>
+<td>1870－1871</td>
+<td>普法戰爭期間參與救護工作並受傷</td>
+</tr>
+<tr>
+<td>1876</td>
+<td>出版《熱的機械理論》修訂版</td>
+</tr>
+<tr>
+<td>1879</td>
+<td>發展介電物質極化相關理論</td>
+</tr>
+<tr>
+<td>1882</td>
+<td>獲頒龐斯萊獎</td>
+</tr>
+<tr>
+<td>1884－1885</td>
+<td>擔任波昂大學校長</td>
+</tr>
+<tr>
+<td>1888</td>
+<td>8月24日於波昂逝世</td>
+</tr>
+</tbody></table>
+<h2 id="十、克勞修斯的歷史地位與科學影響">十、克勞修斯的歷史地位與科學影響</h2>
+<p>克勞修斯的研究，使十九世紀物理學完成了一項重要轉變：人們不再只關注熱量與機械功之間能否轉換，也開始理解能量轉換具有方向性，並且受到自然定律的限制。</p>
+<p>他的歷史貢獻可以從三個層次理解：</p>
+<p>第一，建立熱力學的基本架構。</p>
+<p>熱力學第一定律說明能量守恆，第二定律則說明能量轉換的方向性與限制。兩者共同構成古典熱力學的基礎。</p>
+<p>第二，提出熵，揭示自然過程的不可逆性。</p>
+<p>熵概念使科學家能夠以數學方式描述熱力學過程的方向。這不僅適用於熱機、冰箱、蒸汽機，也成為研究化學反應、物質相變及宇宙演化的重要工具。</p>
+<p>第三，為統計力學開闢道路。</p>
+<p>克勞修斯從宏觀熱力學出發，研究氣體分子運動與熱現象；波茲曼則進一步從微觀統計角度解釋熵。兩人的研究共同促成了十九世紀統計物理學的發展。</p>
+<p>總結而言，克勞修斯最重要的歷史意義，是讓人類不只理解能量如何守恆，也開始理解能量轉換為何具有方向，以及自然過程為何具有不可逆性。</p>
+<h2 id="十一、延伸閱讀：熱力學發展的歷史脈絡">十一、延伸閱讀：熱力學發展的歷史脈絡</h2>
+<h2 id="熱力學理論發展時間軸">熱力學理論發展時間軸</h2>
+<ol>
+<li><p>1824年｜卡諾</p>
+<p>提出卡諾熱機循環，研究理想熱機效率。</p>
+</li>
+<li><p>1840年代｜焦耳、邁爾等人</p>
+<p>發展熱與功的等價關係及能量守恆思想。</p>
+</li>
+<li><p>1850年｜克勞修斯</p>
+<p>建立熱力學定律的數學架構，提出第二定律的早期表述。</p>
+</li>
+<li><p>1851年｜開爾文</p>
+<p>提出第二定律的另一種等價表述。</p>
+</li>
+<li><p>1857－1858年｜克勞修斯</p>
+<p>發展氣體動力論與分子平均自由程概念。</p>
+</li>
+<li><p>1865年｜克勞修斯</p>
+<p>正式提出熵的概念。</p>
+</li>
+<li><p>1870年代｜波茲曼</p>
+<p>發展氣體動力論與統計力學，推進熵的微觀解釋。</p>
+</li>
+<li><p>1900年｜普朗克</p>
+<p>在黑體輻射研究中提出能量量子化假設，開啟量子論。</p>
+</li>
+</ol>
+<p>**建議接續閱讀：**焦耳 → 卡諾 → 克勞修斯 → 開爾文 → 馬克士威 → 波茲曼 → 普朗克。這條脈絡可以連貫理解熱功當量、熱力學定律、熵、分子運動、統計力學與量子論的形成。</p>
+<p>參考資料：</p>
+<ul>
+<li><a href="https://mathshistory.st-andrews.ac.uk//Biographies/Clausius/?utm_source=chatgpt.com">MacTutor：Rudolf Clausius 生平與科學貢獻</a></li>
+<li><a href="https://ikarus.physik.uzh.ch/de/institut/emeriti/RudolfClausius.html?utm_source=chatgpt.com">蘇黎世大學：Rudolf Clausius 學術履歷</a></li>
+<li><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/andp.202200065?utm_source=chatgpt.com">Annalen der Physik：Clausius 與數理物理學</a></li>
+<li><a href="https://physicstoday.aip.org/news/rudolf-clausius?utm_source=chatgpt.com">Physics Today：Rudolf Clausius</a></li>
+</ul>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>

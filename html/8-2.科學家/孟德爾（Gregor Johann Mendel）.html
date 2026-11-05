@@ -1,0 +1,618 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="格雷戈爾・約翰・孟德爾（gregor-johann-mendel）生平大事記">格雷戈爾・約翰・孟德爾（Gregor Johann Mendel）生平大事記</h1>
+<p>1822年7月20日－1884年1月6日｜奧地利帝國生物學家、修士｜現代遺傳學奠基者</p>
+<p><a href="https://images.openai.com/static-rsc-4/Qo3nkvBSb4yzobOVkI_DrBf114-zrld33qhMBKtZ7MQXfdMiLXdqrt_NvdKwwz8PcvZZuLyf8mH4LuSHCbtBs99s_U8S3RBxfaLNsZvdwhDewP4IpHNJEb_g-0DJGLHWXQD_npSNmQTKYi05FzpHXrSQtqCb6_UJADx6ASLR6mk?purpose=inline">Celebration of Mendel´s anniversary to bring three Nobel Prize winners to Brno | Science | science.muni.cz</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/yuBJz3bKRMkftS3fk-20eiXNF-PTnnR5nPBm-9wCcD7PQ5bFYFXfLdvdNZCgpJ0eiE2C2S8KZIOKa9UYMAM9eyR8r27R8n8VN-PbZ9QkiWKzO3e10WS4GPRxkwXC-gb4667pipRgU1tJh0cEbYJNuExFIx51IRimxlZ1H5Az96I?purpose=inline">SCIplanet - From Pea Breeding to Laws of Inheritance: How did Gregor Mendel write a New Story in Biology?</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/eteAMAnKmYUYFZSlY7Mnw6X3BzV_ArrmFAXx2wsBr2kPVuKBuJyRqjrS86yezO3Wyw0FTb_KcjnwxoBEzmZndKRLBZhjIFrafY-VIl0LuYO9FVIE4MkorTCL_iZG2NfEGzRVaDLPtEerjOi8MFrh3koAUc3udRNnZ6IpXfog3U4?purpose=inline">Insight into the Evolution of Genetics</a></p>
+<p>6</p>
+<h2 id="一、人物概述">一、人物概述</h2>
+<p>格雷戈爾・約翰・孟德爾（Gregor Johann Mendel，1822－1884）是十九世紀最重要的生物學家之一，被尊稱為「遺傳學之父」。</p>
+<p>孟德爾透過長期豌豆雜交實驗，發現生物性狀的遺傳具有一定規律，提出後來被稱為孟德爾遺傳定律的基本原理。</p>
+<p>他的研究改變了人類對生物繁殖、遺傳與變異的理解，成為現代遺傳學、分子生物學、育種學及基因研究的重要基礎。</p>
+<p>主要科學貢獻：</p>
+<ol>
+<li>顯性與隱性概念：解釋不同遺傳性狀在後代中的表現。</li>
+<li>分離律：指出控制某一性狀的遺傳因子在形成配子時會分離。</li>
+<li>獨立分配律：指出不同性狀的遺傳因子在符合條件時可獨立分配。</li>
+<li>豌豆雜交實驗：利用大量統計資料發現遺傳規律。</li>
+<li>遺傳學奠基：為後來染色體學說與基因理論提供重要基礎。</li>
+</ol>
+<h2 id="二、出生與家庭背景（1822－1843）">二、出生與家庭背景（1822－1843）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/ZOX5rl5sCLju0oHpxAPXoDz2Hcrv8hXnvQFA1hBqwtVyWkuLJm-44bVpGC04UBSbUpPY0tglQVuHj829Blg5ge8YS9UmqZGFxIgMkBNgFWp8U-xtTkLDs7-mqe9pLHM3F7qO05Wweg4kB5Wij8PTB_exe03H2lOlwK1uhYG6tqs?purpose=inline">The Land of Venuses-On the Fringe-Johann Gregor Mendel</a></p>
+<p><a href="https://www.lands-of-venuses.eu/v-g-hyncice-mendel/w-g-hyncice-mendel.html?utm_source=chatgpt.com">lands-of-venuses.eu</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1822年7月20日</td>
+<td>出生於奧地利帝國西里西亞地區的海因岑多夫（Heinzendorf，今屬捷克）。</td>
+</tr>
+<tr>
+<td>1820年代</td>
+<td>出生於農業家庭，父親安東・孟德爾從事農業，母親羅西娜。</td>
+</tr>
+<tr>
+<td>1830年代</td>
+<td>在鄉村環境中成長，從小接觸植物栽培、果樹管理與農業生產。</td>
+</tr>
+<tr>
+<td>1834年</td>
+<td>進入當地學校接受初等教育。</td>
+</tr>
+<tr>
+<td>1836年</td>
+<td>前往附近城鎮就學，逐漸展現學習能力。</td>
+</tr>
+<tr>
+<td>1840年</td>
+<td>進入奧爾米茨哲學學院（Philosophical Institute of Olomouc）學習哲學及相關學科。</td>
+</tr>
+<tr>
+<td>1840－1843年</td>
+<td>接受數學、物理、哲學與自然科學訓練，為日後研究建立基礎。</td>
+</tr>
+<tr>
+<td>1843年</td>
+<td>完成哲學階段學習，面臨繼續升學與經濟壓力。</td>
+</tr>
+</tbody></table>
+<p>早年特色：</p>
+<p>孟德爾出生於農業家庭，從小熟悉植物生長、作物栽培及農業生產。他對植物的觀察與興趣，後來成為豌豆遺傳實驗的重要基礎。</p>
+<p>由於家庭經濟條件有限，他難以單靠家庭資源繼續接受高等教育，因此選擇進入修道院，藉此取得學習與研究的機會。</p>
+<h2 id="三、進入修道院與接受神學教育（1843－1849）">三、進入修道院與接受神學教育（1843－1849）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/7C6PvyLfZMOKyKEcvphqwxEpyVdfq7wMyejxhnUCcMtW9RBnqggzWQBnr_O3hi-R_fHgdyH-VoN6wxvAZh-gBCMt-JldFShFHnmCWCnZkmbBvE2n7H5j4LIrTyhoapLNZAoUBfgUzpE5VW2g1FhZd7QK8o_FMh4WeztsJpkuGT0?purpose=inline">Mendel-Museum | Südmähren</a></p>
+<p><a href="https://www.sued-maehren.de/de/erlebnisse/o70942-mendel-museum?utm_source=chatgpt.com">sued-maehren.de</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1843年</td>
+<td>進入布爾諾（Brno，今捷克）聖托馬斯奧古斯丁修道院，加入奧古斯丁修會。</td>
+</tr>
+<tr>
+<td>1843年</td>
+<td>取修士名「格雷戈爾」（Gregor），原名約翰・孟德爾。</td>
+</tr>
+<tr>
+<td>1844－1848年</td>
+<td>接受神學、哲學與自然科學相關訓練。</td>
+</tr>
+<tr>
+<td>1847年</td>
+<td>晉鐸成為天主教神父。</td>
+</tr>
+<tr>
+<td>1848年</td>
+<td>歐洲爆發革命運動，奧地利帝國及其領土受到政治與社會變動影響。</td>
+</tr>
+<tr>
+<td>1849年</td>
+<td>開始在附近學校擔任代課教師，教授自然科學等科目。</td>
+</tr>
+</tbody></table>
+<p>修道院的重要性：</p>
+<p>布爾諾的聖托馬斯修道院不只是宗教機構，也是當時重要的學術與文化中心。</p>
+<p>修道院擁有圖書館、花園及研究資源，修士之間也有自然科學研究傳統。孟德爾在此獲得穩定的生活環境，得以持續學習與從事植物研究。</p>
+<h2 id="四、維也納大學深造與科學訓練（1849－1853）">四、維也納大學深造與科學訓練（1849－1853）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/zultyJnxnaAJfyWyhI5T1Q9EUHMzJvZFtANmJBbRGlLkBH15bJYKU4kbKhWsnlVHO3PHFY5yxmTT0yAWvt0vHLl1rSn5gabKjGOeA-mElzJwRZTa8PQm_KtaBBC5IBKVWseLRY75x0JxrP41h5BLiaPTR804h4giMe4y5GtSWZ2yBALuTS-kgDM4ZjFg50He?purpose=inline">The new University in Vienna.</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1849年</td>
+<td>前往茲納伊姆（Znaim，今捷克茲諾伊莫）擔任教師。</td>
+</tr>
+<tr>
+<td>1850年</td>
+<td>參加教師資格考試，但未能通過其中的自然史部分。</td>
+</tr>
+<tr>
+<td>1851年</td>
+<td>在修道院院長支持下，前往維也納大學進修。</td>
+</tr>
+<tr>
+<td>1851－1853年</td>
+<td>學習物理學、數學、植物學、動物學與自然科學。</td>
+</tr>
+<tr>
+<td>1851－1853年</td>
+<td>接觸當時先進的實驗科學方法，特別是數學統計與自然分類研究。</td>
+</tr>
+<tr>
+<td>1853年</td>
+<td>完成維也納大學的進修，返回布爾諾修道院。</td>
+</tr>
+</tbody></table>
+<p>重要影響人物與學術環境：</p>
+<p>孟德爾在維也納大學期間，接觸多位重要學者的思想與研究方法。</p>
+<ul>
+<li>克里斯蒂安・多普勒（Christian Doppler）：物理學家，孟德爾在維也納期間接觸其物理學教學。</li>
+<li>弗朗茨・翁格（Franz Unger）：植物學家，對植物生理與植物研究有重要影響。</li>
+<li>安德烈亞斯・馮・艾廷豪森（Andreas von Ettingshausen）：數學與物理學教授，孟德爾在此期間接受數學訓練。</li>
+</ul>
+<p>這段求學經歷對孟德爾後來的研究具有決定性影響：他不只是觀察植物外形，更開始運用數學與統計方法分析遺傳結果。</p>
+<h2 id="五、豌豆雜交實驗與遺傳規律的發現（1854－1865）">五、豌豆雜交實驗與遺傳規律的發現（1854－1865）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/yuBJz3bKRMkftS3fk-20eiXNF-PTnnR5nPBm-9wCcD7PQ5bFYFXfLdvdNZCgpJ0eiE2C2S8KZIOKa9UYMAM9eyR8r27R8n8VN-PbZ9QkiWKzO3e10WS4GPRxkwXC-gb4667pipRgU1tJh0cEbYJNuExFIx51IRimxlZ1H5Az96I?purpose=inline">SCIplanet - From Pea Breeding to Laws of Inheritance: How did Gregor Mendel write a New Story in Biology?</a></p>
+<p><a href="https://www.bibalex.org/SCIplanet/en/Article/Details?id=19103&utm_source=chatgpt.com">bibalex.org</a></p>
+<p>這是孟德爾一生最重要的科學階段。他在布爾諾修道院的花園中，利用豌豆進行長期、系統性的雜交實驗，逐步發現遺傳規律。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1854年</td>
+<td>開始進行植物雜交相關研究，選擇豌豆作為主要實驗材料。</td>
+</tr>
+<tr>
+<td>1854－1855年</td>
+<td>進行豌豆品種選擇與純系培養，建立實驗基礎。</td>
+</tr>
+<tr>
+<td>1856年</td>
+<td>正式展開大規模豌豆雜交實驗。</td>
+</tr>
+<tr>
+<td>1856－1863年</td>
+<td>持續進行豌豆不同性狀的雜交與後代觀察。</td>
+</tr>
+<tr>
+<td>1857年</td>
+<td>累積大量實驗紀錄，逐漸掌握性狀在不同世代中的表現方式。</td>
+</tr>
+<tr>
+<td>1858－1862年</td>
+<td>持續研究單一性狀與多種性狀的遺傳關係。</td>
+</tr>
+<tr>
+<td>1863年</td>
+<td>豌豆實驗主要階段完成，累積大量統計資料。</td>
+</tr>
+<tr>
+<td>1865年2月8日、3月8日</td>
+<td>在布爾諾自然科學學會發表兩次演講，介紹植物雜交實驗成果。</td>
+</tr>
+<tr>
+<td>1865年</td>
+<td>向學術界公開提出遺傳性狀的基本規律。</td>
+</tr>
+</tbody></table>
+<h3 id="1-為什麼選擇豌豆？">1. 為什麼選擇豌豆？</h3>
+<p><a href="https://images.openai.com/static-rsc-4/eteAMAnKmYUYFZSlY7Mnw6X3BzV_ArrmFAXx2wsBr2kPVuKBuJyRqjrS86yezO3Wyw0FTb_KcjnwxoBEzmZndKRLBZhjIFrafY-VIl0LuYO9FVIE4MkorTCL_iZG2NfEGzRVaDLPtEerjOi8MFrh3koAUc3udRNnZ6IpXfog3U4?purpose=inline">Insight into the Evolution of Genetics</a></p>
+<p><a href="https://www.azolifesciences.com/article/The-History-of-Genetics.aspx?utm_source=chatgpt.com">azolifesciences.com</a></p>
+<p>孟德爾選擇豌豆作為研究對象，主要因為：</p>
+<ol>
+<li>容易栽培：生長週期相對較短，便於長期觀察。</li>
+<li>性狀明顯：不同品種之間有容易辨認的特徵。</li>
+<li>可以自花授粉：容易維持純系。</li>
+<li>可以人工授粉：研究者能控制不同品種的交配。</li>
+<li>後代數量多：可以累積足夠資料進行統計分析。</li>
+</ol>
+<h3 id="2-孟德爾研究的七組性狀">2. 孟德爾研究的七組性狀</h3>
+<p>孟德爾選擇七種容易辨認的豌豆特徵，進行遺傳研究。</p>
+<p><a href="https://images.openai.com/static-rsc-4/RgfbTFuhPTJpDK0n8YKJKwOcqAyThAaI7zgwmIbM9rzyMJpSsncRhbYUZyjlUrVoheco2z2JolF6UQPSkMol9YH0HoRgTZXZf6uA1UE3V_ADlblhCljR1i3o9zpFk4EXWn7dZBp-BhZgzp7RBGlbXzXGSvtJhjCZGR2fvJ9_TS4?purpose=inline">Mendel’s Laws | BioNinja</a></p>
+<p><a href="https://old-ib.bioninja.com.au/standard-level/topic-3-genetics/34-inheritance/mendels-laws.html?utm_source=chatgpt.com">old-ib.bioninja.com.au</a></p>
+<table>
+<thead>
+<tr>
+<th>性狀</th>
+<th>一種表現</th>
+<th>另一種表現</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>種子形狀</td>
+<td>圓形</td>
+<td>皺縮</td>
+</tr>
+<tr>
+<td>種子顏色</td>
+<td>黃色</td>
+<td>綠色</td>
+</tr>
+<tr>
+<td>花朵顏色</td>
+<td>紫紅色</td>
+<td>白色</td>
+</tr>
+<tr>
+<td>豆莢形狀</td>
+<td>膨脹</td>
+<td>縊縮</td>
+</tr>
+<tr>
+<td>豆莢顏色</td>
+<td>綠色</td>
+<td>黃色</td>
+</tr>
+<tr>
+<td>花朵位置</td>
+<td>腋生</td>
+<td>頂生</td>
+</tr>
+<tr>
+<td>植株高度</td>
+<td>高莖</td>
+<td>矮莖</td>
+</tr>
+</tbody></table>
+<p>這七組性狀具有清楚的差異，使孟德爾可以準確記錄後代的表現。</p>
+<h3 id="3-孟德爾的分離律">3. 孟德爾的分離律</h3>
+<p><a href="https://images.openai.com/static-rsc-4/RCXDQ0vNT5YybAzMgXc-i7FznM1tOTAvLV7ig-n7_7ercBYHrhzqHiosmLqTseGaF9z1kqT0eKcfnUKHVTRULbv0oM__6f3jzkS1-O6YmpYArpG7tM6Oxkq_esCRaxTdeVMhFzQRAqoMHYN3xsRCKEyEbd8IdHpb_8m3VrzxSVU?purpose=inline">Mendel’s experiments — Science Learning Hub</a></p>
+<p><a href="https://www.sciencelearn.org.nz/resources/1999-mendel-s-experiments?utm_source=chatgpt.com">sciencelearn.org.nz</a></p>
+<p>孟德爾將具有不同性狀的純系豌豆進行交配。</p>
+<p>例如：</p>
+<ul>
+<li>紫花純系與白花純系交配。</li>
+<li>第一代（F1）全部呈現紫花。</li>
+<li>第一代自花授粉後，第二代（F2）出現紫花與白花。</li>
+<li>紫花與白花的表現比例約為3：1。</li>
+</ul>
+<p>這說明控制性狀的遺傳因子成對存在，在形成生殖細胞時會彼此分離。</p>
+<p>後來這項原理被稱為孟德爾分離律（Law of Segregation）。</p>
+<h3 id="4-孟德爾的獨立分配律">4. 孟德爾的獨立分配律</h3>
+<p><a href="https://images.openai.com/static-rsc-4/W1POHmZ6ccufv_xaMWWkOcWr53x_JTPTGntAzv1AWyaWjlJlTI5LeCQ9e2miZKRiAVqpRBIvJnvPzzAH7zZYQGnd1ElOTCAtbjy2qDTatUZX7y3TSVtHPLplg5xKl4YJ6KHknQbfE52F_k1O2gUU3DIciLEIiO4GnlwJXbpdUJw?purpose=inline">Inheritance of multiple traits in peas</a></p>
+<p><a href="https://www.sciencelearn.org.nz/images/2481-inheritance-of-multiple-traits-in-peas?utm_source=chatgpt.com">sciencelearn.org.nz</a></p>
+<p>孟德爾進一步研究兩組性狀同時遺傳的情況。</p>
+<p>例如：</p>
+<ul>
+<li>種子形狀：圓形或皺縮。</li>
+<li>種子顏色：黃色或綠色。</li>
+</ul>
+<p>第二代出現四種性狀組合，比例約為：</p>
+<p>\[ 9:3:3:1 \]</p>
+<p>這項結果支持不同性狀的遺傳因子可以獨立分配。</p>
+<p>後來稱為孟德爾獨立分配律（Law of Independent Assortment）。</p>
+<p>需要注意：獨立分配律適用於不同基因彼此不連鎖或連鎖影響不顯著的情況；位於同一條染色體且距離較近的基因，可能呈現連鎖遺傳。</p>
+<h2 id="六、發表論文與科學界的冷淡反應（1866－1879）">六、發表論文與科學界的冷淡反應（1866－1879）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/YXxv7OZayVRaDK7vLWiyERi3erDF8mwXfpWWnnH9CLbyjUKtaHtLdGzXI7kNYOyYiR4frkQ26mix-zZD9gu7cEU8KIZ8h1w_7llcGjeIR7Kk-ZjdQ9XjsWNkb93DEdxw8GxLBqdXh3QG7NaTFmgCrl1pJ7ce83oEGTAp10hMUkw?purpose=inline">The highlights of the 2021 science, sci-fi and technology auction year</a></p>
+<p><a href="https://newatlas.com/collectibles/highlights-2021-science-sci-fi-technology-auction-year/?utm_source=chatgpt.com">newatlas.com</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1866年</td>
+<td>在布爾諾自然科學學會刊物發表論文〈植物雜交實驗〉（Versuche über Pflanzen-Hybriden）。</td>
+</tr>
+<tr>
+<td>1866年</td>
+<td>正式公開豌豆雜交實驗的數據與遺傳規律。</td>
+</tr>
+<tr>
+<td>1867年</td>
+<td>出任布爾諾修道院院長代理職務，開始承擔更多行政工作。</td>
+</tr>
+<tr>
+<td>1868年</td>
+<td>正式當選修道院院長，研究時間受到行政事務影響。</td>
+</tr>
+<tr>
+<td>1869年</td>
+<td>持續參與修道院管理與宗教事務，科學研究逐漸減少。</td>
+</tr>
+<tr>
+<td>1870年代</td>
+<td>研究興趣轉向氣象學、園藝與其他自然科學問題。</td>
+</tr>
+<tr>
+<td>1870年代</td>
+<td>曾進行蜜蜂雜交與繁殖研究，但相關資料不足以完整重建其實驗成果。</td>
+</tr>
+<tr>
+<td>1870－1879年</td>
+<td>孟德爾的遺傳研究未獲得當時生物學界廣泛重視。</td>
+</tr>
+</tbody></table>
+<h3 id="為何孟德爾的研究當時沒有受到重視？">為何孟德爾的研究當時沒有受到重視？</h3>
+<p>孟德爾的論文已經提出相當重要的遺傳規律，但當時的科學界並未充分理解其價值，主要原因包括：</p>
+<ol>
+<li>研究方法較新：將數學統計應用於遺傳研究，在當時並不普遍。</li>
+<li>研究成果不易被理解：孟德爾的遺傳因子概念與當時流行的生物學觀念存在差異。</li>
+<li>發表平台影響力有限：論文刊登於地方自然科學學會刊物，傳播範圍有限。</li>
+<li>缺乏細胞遺傳學知識：當時尚未充分理解染色體與細胞分裂在遺傳中的作用。</li>
+</ol>
+<p>孟德爾的理論並不是完全無人知曉，但沒有立即形成廣泛的學術影響。</p>
+<h2 id="七、晚年生活與逝世（1870－1884）">七、晚年生活與逝世（1870－1884）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/ec9MHP7qUKFvFKW8M-GhxGIN2ccTBR4ftKk8cRIagnM2Jte8XFylw2SmAkxKBynZSY6qJyxgGe2VmKL7rUDpvSYZayk9vP4wuKrf3uDHEt5PKi_Msy17x0K6ruW5bcbotawFpQ3DVjTKXSjCmRgIoSMyD8U64IRQJ--nEFfJyw8?purpose=inline">Jak se Gregor Johann Mendel málem nestal otcem genetiky - PŘÍRODA.cz</a></p>
+<p><a href="https://www.priroda.cz/clanek/jak-se-gregor-johann-mendel-malem-nestal-otcem-genetiky/?utm_source=chatgpt.com">priroda.cz</a></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1870年</td>
+<td>持續擔任修道院院長，行政事務繁重。</td>
+</tr>
+<tr>
+<td>1870－1875年</td>
+<td>將部分研究精力轉向氣象觀測、園藝與蜜蜂研究。</td>
+</tr>
+<tr>
+<td>1876年</td>
+<td>因修道院財務與稅務問題，與政府方面產生爭議。</td>
+</tr>
+<tr>
+<td>1877－1883年</td>
+<td>持續擔任修道院院長，健康狀況逐漸受到影響。</td>
+</tr>
+<tr>
+<td>1883年</td>
+<td>身體狀況惡化。</td>
+</tr>
+<tr>
+<td>1884年1月6日</td>
+<td>在布爾諾逝世，享年61歲。</td>
+</tr>
+</tbody></table>
+<p>孟德爾逝世時，他的遺傳學研究尚未獲得應有的學術地位。</p>
+<p>他並不知道，自己早年在修道院花園進行的豌豆實驗，將在十六年後重新受到科學界重視，並成為現代遺傳學的基礎。</p>
+<h2 id="八、孟德爾遺傳定律的重新發現（1900年）">八、孟德爾遺傳定律的重新發現（1900年）</h2>
+<p><a href="https://images.openai.com/static-rsc-4/ZojUK-oXF5dmcnPElW8rzBnyKliZE52_eb2zC0znzVJeHQGLDKF2eEmDMxcO_QzZzYwiM3aMkMi_IMROZrjwXXYzkv1gJ-7wpJkJ4aYWkVACGW64qgPFucmYLJfhjqPEsKlwBVujb2Qfn5_mEGJyPdh_l5YqEZWMvEuIj-ur9DI?purpose=inline">Timeline: evolución de la genetica | Timetoast</a></p>
+<p><a href="https://www.timetoast.com/timelines/evolucion-de-la-genetica-38a9e816-7a9d-4f79-a4ba-d698abda3a4f?utm_source=chatgpt.com">timetoast.com</a></p>
+<p>孟德爾的研究在逝世後長期未受到充分重視，直到1900年，三位歐洲植物學家幾乎同時重新發現並確認他的研究成果。</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1890年代</td>
+<td>生物學家逐漸重新關注植物雜交與遺傳規律。</td>
+</tr>
+<tr>
+<td>1900年</td>
+<td>荷蘭植物學家德弗里斯（Hugo de Vries）發表植物雜交研究，重新注意到孟德爾的研究成果。</td>
+</tr>
+<tr>
+<td>1900年</td>
+<td>德國植物學家柯倫斯（Carl Correns）獨立確認孟德爾遺傳規律，並指出孟德爾早已提出相關原理。</td>
+</tr>
+<tr>
+<td>1900年</td>
+<td>奧地利植物學家切爾馬克（Erich von Tschermak）也發表相關研究，孟德爾的成果重新受到科學界關注。</td>
+</tr>
+<tr>
+<td>1900年以後</td>
+<td>孟德爾逐漸被公認為現代遺傳學的奠基者。</td>
+</tr>
+<tr>
+<td>1902年</td>
+<td>薩頓（Walter Sutton）與波維里（Theodor Boveri）分別提出與發展染色體遺傳理論。</td>
+</tr>
+<tr>
+<td>1909年</td>
+<td>約翰生（Wilhelm Johannsen）提出「基因」（gene）一詞。</td>
+</tr>
+<tr>
+<td>1910年代</td>
+<td>摩根（Thomas Hunt Morgan）透過果蠅實驗，進一步建立染色體與基因的關係。</td>
+</tr>
+<tr>
+<td>1930年代以後</td>
+<td>群體遺傳學與現代綜合演化理論逐漸發展。</td>
+</tr>
+<tr>
+<td>1953年</td>
+<td>DNA雙螺旋結構模型提出，分子遺傳學進入新階段。</td>
+</tr>
+</tbody></table>
+<h3 id="1900年重新發現的三位科學家">1900年重新發現的三位科學家</h3>
+<ol>
+<li>雨果・德弗里斯（Hugo de Vries，1848－1935）：研究植物雜交與突變，重新注意到孟德爾的研究。</li>
+<li>卡爾・柯倫斯（Carl Correns，1864－1933）：獨立確認孟德爾遺傳規律，並明確指出其先驅地位。</li>
+<li>埃里希・切爾馬克（Erich von Tschermak，1871－1962）：進行植物育種與雜交研究，也重新發現孟德爾的成果。</li>
+</ol>
+<h2 id="九、孟德爾的五大科學貢獻">九、孟德爾的五大科學貢獻</h2>
+<h3 id="1-顯性與隱性遺傳">1. 顯性與隱性遺傳</h3>
+<p><a href="https://images.openai.com/static-rsc-4/EX2UJU08GcmnokGJ-mMc68gAb-hjzPASVotF5LVPkwHkS3gm_8dGCtc6yvJZBptjZ5yC_0VTKs7IiApsTnUcOXn2AllS3DASBpHk7PDIHRoaMzyb8h3CAepJdHhMg9Poqx6PJupNRDxhZYokmdHkq43rHo6J8-8gt_XI3a05Lks?purpose=inline">PPT - Chapter 10 Mendelian Genetics PowerPoint Presentation, free download - ID:1895891</a></p>
+<p><a href="https://www.slideserve.com/natara/chapter-10-mendelian-genetics?utm_source=chatgpt.com">slideserve.com</a></p>
+<p>孟德爾發現，兩種不同性狀的純系個體交配後，第一代通常只呈現其中一種性狀。</p>
+<p>例如紫花與白花豌豆交配，第一代全部呈現紫花。</p>
+<p>因此，他將能夠在雜交第一代表現出來的性狀稱為顯性性狀，未表現出來的稱為隱性性狀。</p>
+<p>現代遺傳學以等位基因來解釋這種現象。</p>
+<h3 id="2-分離律">2. 分離律</h3>
+<p>孟德爾指出，控制同一性狀的一對遺傳因子，在形成配子時會彼此分離。</p>
+<p>例如：</p>
+<p>\[ Aa \longrightarrow A,\ a \]</p>
+<p>每個配子只取得其中一個遺傳因子。</p>
+<p>受精時，來自雙親的遺傳因子重新組合，形成下一代的基因型。</p>
+<h3 id="3-獨立分配律">3. 獨立分配律</h3>
+<p>不同性狀的遺傳因子，在符合獨立分配條件時，可以分別進入不同配子。</p>
+<p>例如：</p>
+<p>\[ AaBb \]</p>
+<p>可以形成四種配子：</p>
+<p>\[ AB,\ Ab,\ aB,\ ab \]</p>
+<p>這項原理解釋了不同性狀如何在後代中形成多種組合。</p>
+<h3 id="4-統計方法應用於生物學">4. 統計方法應用於生物學</h3>
+<p>孟德爾的重要創新之一，是將大量實驗資料轉化為數學比例。</p>
+<p>例如：</p>
+<ul>
+<li>單因子雜交第二代約為3：1。</li>
+<li>雙因子雜交第二代約為9：3：3：1。</li>
+</ul>
+<p>他不只觀察個別植物，也透過大量後代的統計結果尋找普遍規律。</p>
+<p>這種研究方法對現代生物學具有深遠影響。</p>
+<h3 id="5-現代基因學的理論起點">5. 現代基因學的理論起點</h3>
+<p>孟德爾使用「遺傳因子」解釋性狀傳遞。</p>
+<p>雖然他當時尚不知道DNA與染色體的具體結構，但他的研究指出，遺傳並非父母性狀單純混合，而是具有可分離、可重新組合的基本單位。</p>
+<p>後來的染色體理論與分子遺傳學，逐步揭示這些遺傳因子的物質基礎。</p>
+<h2 id="十、孟德爾與達爾文的關係">十、孟德爾與達爾文的關係</h2>
+<p><a href="https://images.openai.com/static-rsc-4/00FXC7yZfIoR7CZATcNxfqO31mqbI1JxxMkmE5PdyqezS7TzNzVwjf2KfvbPygxK-Iu5KJcgzYSdN8ah_cXWPaQv4CEnFiOywXttzYqkzk1B8ESaU9KSRrnjtCOhQIAPeoBhoJRlAAmGOVuCB6kVmsJNQeKbM3Erry8a9469LEw?purpose=inline">Gregor Mendel: Die drei mendelschen Regeln – Grundlage der Genetik | Open Science</a></p>
+<p>查爾斯・達爾文（Charles Darwin，1809－1882）與孟德爾生活在同一時代，兩人都對生物演化與遺傳問題具有重大影響。</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>孟德爾</th>
+<th>達爾文</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>生卒年</td>
+<td>1822－1884</td>
+<td>1809－1882</td>
+</tr>
+<tr>
+<td>主要研究</td>
+<td>遺傳規律</td>
+<td>生物演化</td>
+</tr>
+<tr>
+<td>代表著作</td>
+<td>《植物雜交實驗》（1866）</td>
+<td>《物種起源》（1859）</td>
+</tr>
+<tr>
+<td>核心問題</td>
+<td>性狀如何由親代傳給子代？</td>
+<td>生物如何隨世代改變？</td>
+</tr>
+<tr>
+<td>主要貢獻</td>
+<td>遺傳定律</td>
+<td>自然選擇學說</td>
+</tr>
+</tbody></table>
+<h3 id="兩人研究的歷史關係">兩人研究的歷史關係</h3>
+<ol>
+<li>達爾文於1859年出版《物種起源》，提出自然選擇理論。</li>
+<li>孟德爾於1866年發表《植物雜交實驗》，提出遺傳規律。</li>
+<li>達爾文曾收到孟德爾論文相關刊物，但沒有證據顯示他真正讀過或理解這篇論文。</li>
+<li>兩人的研究在十九世紀並未真正結合。</li>
+<li>二十世紀初孟德爾遺傳定律重新受到重視後，遺傳學與演化論逐漸整合。</li>
+<li>二十世紀形成現代演化綜合理論，將孟德爾遺傳學與達爾文自然選擇理論結合。</li>
+</ol>
+<p>兩人的互補性：</p>
+<ul>
+<li>達爾文解釋生物為什麼會演化。</li>
+<li>孟德爾解釋遺傳性狀如何傳遞。</li>
+</ul>
+<p>兩者結合，成為現代演化生物學的重要基礎。</p>
+<h2 id="十一、孟德爾生平重要年份總表">十一、孟德爾生平重要年份總表</h2>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>重要事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1822</td>
+<td>出生於奧地利帝國西里西亞</td>
+</tr>
+<tr>
+<td>1840</td>
+<td>進入奧爾米茨哲學學院</td>
+</tr>
+<tr>
+<td>1843</td>
+<td>加入布爾諾聖托馬斯修道院</td>
+</tr>
+<tr>
+<td>1847</td>
+<td>晉鐸成為神父</td>
+</tr>
+<tr>
+<td>1849</td>
+<td>開始擔任教師</td>
+</tr>
+<tr>
+<td>1850</td>
+<td>教師資格考試未通過</td>
+</tr>
+<tr>
+<td>1851</td>
+<td>前往維也納大學進修</td>
+</tr>
+<tr>
+<td>1851－1853</td>
+<td>學習數學、物理、植物學與自然科學</td>
+</tr>
+<tr>
+<td>1853</td>
+<td>返回布爾諾修道院</td>
+</tr>
+<tr>
+<td>1854</td>
+<td>開始植物雜交研究準備</td>
+</tr>
+<tr>
+<td>1856</td>
+<td>正式展開豌豆雜交實驗</td>
+</tr>
+<tr>
+<td>1856－1863</td>
+<td>進行豌豆遺傳實驗</td>
+</tr>
+<tr>
+<td>1865</td>
+<td>發表兩次植物雜交研究演講</td>
+</tr>
+<tr>
+<td>1866</td>
+<td>出版《植物雜交實驗》</td>
+</tr>
+<tr>
+<td>1868</td>
+<td>當選修道院院長</td>
+</tr>
+<tr>
+<td>1870年代</td>
+<td>研究氣象、園藝與蜜蜂</td>
+</tr>
+<tr>
+<td>1884</td>
+<td>逝世，享年61歲</td>
+</tr>
+<tr>
+<td>1900</td>
+<td>遺傳定律被三位植物學家重新發現</td>
+</tr>
+<tr>
+<td>1909</td>
+<td>約翰生提出「基因」一詞</td>
+</tr>
+<tr>
+<td>1910年代</td>
+<td>染色體遺傳理論逐漸建立</td>
+</tr>
+</tbody></table>
+<h2 id="十二、歷史地位與影響">十二、歷史地位與影響</h2>
+<p>孟德爾的偉大之處，在於他第一次以系統性的實驗與數學統計方法，揭示生物遺傳的基本規律。</p>
+<p>在孟德爾以前，許多科學家認為親代的性狀會在子代中混合，難以解釋某些性狀為何能夠隔代重新出現。</p>
+<p>孟德爾的研究則指出，遺傳因子可以保持相對獨立，並在世代之間重新組合。</p>
+<p>他的研究影響了：</p>
+<ol>
+<li>遺傳學：建立古典遺傳學的基本理論。</li>
+<li>農業育種：協助科學家選擇與培育具有特定性狀的作物。</li>
+<li>醫學：成為研究單基因遺傳疾病的重要基礎。</li>
+<li>分子生物學：為DNA、基因與染色體研究奠定理論背景。</li>
+<li>演化生物學：與達爾文自然選擇理論結合，形成現代演化綜合理論。</li>
+</ol>
+<p>歷史總評：</p>
+<p>孟德爾是一位生前未獲得廣泛肯定、逝世後才被重新認識的科學家。他在修道院花園中進行的豌豆實驗，開啟了人類以數學規律理解生命遺傳的新時代。</p>
+<p>如果將十九世紀至二十世紀的生物學發展串聯起來，可以形成一條重要脈絡：</p>
+<p>達爾文（生物演化）→ 孟德爾（遺傳規律）→ 薩頓與波維里（染色體遺傳理論）→ 摩根（基因與染色體關係）→ 華生、克里克與富蘭克林等人的DNA研究（分子遺傳學）。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>
