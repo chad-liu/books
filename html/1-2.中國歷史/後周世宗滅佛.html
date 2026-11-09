@@ -1,0 +1,503 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@media (prefers-color-scheme:dark){.markdown-body{color-scheme:dark;--color-prettylights-syntax-comment:#8b949e;--color-prettylights-syntax-constant:#79c0ff;--color-prettylights-syntax-entity:#d2a8ff;--color-prettylights-syntax-storage-modifier-import:#c9d1d9;--color-prettylights-syntax-entity-tag:#7ee787;--color-prettylights-syntax-keyword:#ff7b72;--color-prettylights-syntax-string:#a5d6ff;--color-prettylights-syntax-variable:#ffa657;--color-prettylights-syntax-brackethighlighter-unmatched:#f85149;--color-prettylights-syntax-invalid-illegal-text:#f0f6fc;--color-prettylights-syntax-invalid-illegal-bg:#8e1519;--color-prettylights-syntax-carriage-return-text:#f0f6fc;--color-prettylights-syntax-carriage-return-bg:#b62324;--color-prettylights-syntax-string-regexp:#7ee787;--color-prettylights-syntax-markup-list:#f2cc60;--color-prettylights-syntax-markup-heading:#1f6feb;--color-prettylights-syntax-markup-italic:#c9d1d9;--color-prettylights-syntax-markup-bold:#c9d1d9;--color-prettylights-syntax-markup-deleted-text:#ffdcd7;--color-prettylights-syntax-markup-deleted-bg:#67060c;--color-prettylights-syntax-markup-inserted-text:#aff5b4;--color-prettylights-syntax-markup-inserted-bg:#033a16;--color-prettylights-syntax-markup-changed-text:#ffdfb6;--color-prettylights-syntax-markup-changed-bg:#5a1e02;--color-prettylights-syntax-markup-ignored-text:#c9d1d9;--color-prettylights-syntax-markup-ignored-bg:#1158c7;--color-prettylights-syntax-meta-diff-range:#d2a8ff;--color-prettylights-syntax-brackethighlighter-angle:#8b949e;--color-prettylights-syntax-sublimelinter-gutter-mark:#484f58;--color-prettylights-syntax-constant-other-reference-link:#a5d6ff;--color-fg-default:#c9d1d9;--color-fg-muted:#8b949e;--color-fg-subtle:#6e7681;--color-canvas-default:#0d1117;--color-canvas-subtle:#161b22;--color-border-default:#30363d;--color-border-muted:#21262d;--color-neutral-muted:rgba(110,118,129,0.4);--color-accent-fg:#58a6ff;--color-accent-emphasis:#1f6feb;--color-attention-subtle:rgba(187,128,9,0.15);--color-danger-fg:#f85149}}@media (prefers-color-scheme:light){.markdown-body{color-scheme:light;--color-prettylights-syntax-comment:#6e7781;--color-prettylights-syntax-constant:#0550ae;--color-prettylights-syntax-entity:#8250df;--color-prettylights-syntax-storage-modifier-import:#24292f;--color-prettylights-syntax-entity-tag:#116329;--color-prettylights-syntax-keyword:#cf222e;--color-prettylights-syntax-string:#0a3069;--color-prettylights-syntax-variable:#953800;--color-prettylights-syntax-brackethighlighter-unmatched:#82071e;--color-prettylights-syntax-invalid-illegal-text:#f6f8fa;--color-prettylights-syntax-invalid-illegal-bg:#82071e;--color-prettylights-syntax-carriage-return-text:#f6f8fa;--color-prettylights-syntax-carriage-return-bg:#cf222e;--color-prettylights-syntax-string-regexp:#116329;--color-prettylights-syntax-markup-list:#3b2300;--color-prettylights-syntax-markup-heading:#0550ae;--color-prettylights-syntax-markup-italic:#24292f;--color-prettylights-syntax-markup-bold:#24292f;--color-prettylights-syntax-markup-deleted-text:#82071e;--color-prettylights-syntax-markup-deleted-bg:#ffebe9;--color-prettylights-syntax-markup-inserted-text:#116329;--color-prettylights-syntax-markup-inserted-bg:#dafbe1;--color-prettylights-syntax-markup-changed-text:#953800;--color-prettylights-syntax-markup-changed-bg:#ffd8b5;--color-prettylights-syntax-markup-ignored-text:#eaeef2;--color-prettylights-syntax-markup-ignored-bg:#0550ae;--color-prettylights-syntax-meta-diff-range:#8250df;--color-prettylights-syntax-brackethighlighter-angle:#57606a;--color-prettylights-syntax-sublimelinter-gutter-mark:#8c959f;--color-prettylights-syntax-constant-other-reference-link:#0a3069;--color-fg-default:#24292f;--color-fg-muted:#57606a;--color-fg-subtle:#6e7781;--color-canvas-default:#ffffff;--color-canvas-subtle:#f6f8fa;--color-border-default:#d0d7de;--color-border-muted:hsla(210,18%,87%,1);--color-neutral-muted:rgba(175,184,193,0.2);--color-accent-fg:#0969da;--color-accent-emphasis:#0969da;--color-attention-subtle:#fff8c5;--color-danger-fg:#cf222e}}.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;margin:0;color:var(--color-fg-default);background-color:var(--color-canvas-default);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body .octicon{display:inline-block;fill:currentColor;vertical-align:text-bottom}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{width:16px;height:16px;content:' ';display:inline-block;background-color:currentColor;-webkit-mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");mask-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>")}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:var(--color-accent-fg);text-decoration:none}.markdown-body abbr[title]{border-bottom:none;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:var(--base-text-weight-semibold,600)}.markdown-body dfn{font-style:italic}.markdown-body h1{margin:.67em 0;font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:2em;border-bottom:1px solid var(--color-border-muted)}.markdown-body mark{background-color:var(--color-attention-subtle);color:var(--color-fg-default)}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{border-style:none;max-width:100%;box-sizing:content-box;background-color:var(--color-canvas-default)}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{box-sizing:content-box;overflow:hidden;background:0 0;border-bottom:1px solid var(--color-border-muted);height:.25em;padding:0;margin:24px 0;background-color:var(--color-border-default);border:0}.markdown-body input{font:inherit;margin:0;overflow:visible;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body ::placeholder{color:var(--color-fg-subtle);opacity:1}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body [role=button]:focus,.markdown-body a:focus,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=radio]:focus{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body [role=button]:focus:not(:focus-visible),.markdown-body a:focus:not(:focus-visible),.markdown-body input[type=checkbox]:focus:not(:focus-visible),.markdown-body input[type=radio]:focus:not(:focus-visible){outline:solid 1px transparent}.markdown-body [role=button]:focus-visible,.markdown-body a:focus-visible,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus-visible{outline:2px solid var(--color-accent-fg);outline-offset:-2px;box-shadow:none}.markdown-body a:not([class]):focus,.markdown-body a:not([class]):focus-visible,.markdown-body input[type=checkbox]:focus,.markdown-body input[type=checkbox]:focus-visible,.markdown-body input[type=radio]:focus,.markdown-body input[type=radio]:focus-visible{outline-offset:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;color:var(--color-fg-default);vertical-align:middle;background-color:var(--color-canvas-subtle);border:solid 1px var(--color-neutral-muted);border-bottom-color:var(--color-neutral-muted);border-radius:6px;box-shadow:inset 0 -1px 0 var(--color-neutral-muted)}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:var(--base-text-weight-semibold,600);line-height:1.25}.markdown-body h2{font-weight:var(--base-text-weight-semibold,600);padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid var(--color-border-muted)}.markdown-body h3{font-weight:var(--base-text-weight-semibold,600);font-size:1.25em}.markdown-body h4{font-weight:var(--base-text-weight-semibold,600);font-size:1em}.markdown-body h5{font-weight:var(--base-text-weight-semibold,600);font-size:.875em}.markdown-body h6{font-weight:var(--base-text-weight-semibold,600);font-size:.85em;color:var(--color-fg-muted)}.markdown-body p{margin-top:0;margin-bottom:10px}.markdown-body blockquote{margin:0;padding:0 1em;color:var(--color-fg-muted);border-left:.25em solid var(--color-border-default)}.markdown-body ol,.markdown-body ul{margin-top:0;margin-bottom:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body samp,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{margin-top:0;margin-bottom:0;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px;word-wrap:normal}.markdown-body .octicon{display:inline-block;overflow:visible!important;vertical-align:text-bottom;fill:currentColor}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{margin:0;-webkit-appearance:none;appearance:none}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:var(--color-danger-fg)}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:0}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:var(--color-fg-default);vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{padding:0 .2em;font-size:inherit}.markdown-body summary h1,.markdown-body summary h2,.markdown-body summary h3,.markdown-body summary h4,.markdown-body summary h5,.markdown-body summary h6{display:inline-block}.markdown-body summary h1 .anchor,.markdown-body summary h2 .anchor,.markdown-body summary h3 .anchor,.markdown-body summary h4 .anchor,.markdown-body summary h5 .anchor,.markdown-body summary h6 .anchor{margin-left:-40px}.markdown-body summary h1,.markdown-body summary h2{padding-bottom:0;border-bottom:0}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=A]{list-style-type:upper-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body ol[type=I]{list-style-type:upper-roman}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:var(--base-text-weight-semibold,600)}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table th{font-weight:var(--base-text-weight-semibold,600)}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid var(--color-border-default)}.markdown-body table tr{background-color:var(--color-canvas-default);border-top:1px solid var(--color-border-muted)}.markdown-body table tr:nth-child(2n){background-color:var(--color-canvas-subtle)}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid var(--color-border-default)}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:var(--color-fg-default)}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:var(--color-neutral-muted);border-radius:6px}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body samp{font-size:85%}.markdown-body pre code{font-size:100%}.markdown-body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{padding:10px 8px 9px;text-align:right;background:var(--color-canvas-default);border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:var(--base-text-weight-semibold,600);background:var(--color-canvas-subtle);border-top:0}.markdown-body [data-footnote-ref]::before{content:"["}.markdown-body [data-footnote-ref]::after{content:"]"}.markdown-body .footnotes{font-size:12px;color:var(--color-fg-muted);border-top:1px solid var(--color-border-default)}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes ol ul{display:inline-block;padding-left:16px;margin-top:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target::before{position:absolute;top:-8px;right:-8px;bottom:-8px;left:-24px;pointer-events:none;content:"";border:2px solid var(--color-accent-emphasis);border-radius:6px}.markdown-body .footnotes li:target{color:var(--color-fg-default)}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .pl-c{color:var(--color-prettylights-syntax-comment)}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:var(--color-prettylights-syntax-constant)}.markdown-body .pl-e,.markdown-body .pl-en{color:var(--color-prettylights-syntax-entity)}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:var(--color-prettylights-syntax-storage-modifier-import)}.markdown-body .pl-ent{color:var(--color-prettylights-syntax-entity-tag)}.markdown-body .pl-k{color:var(--color-prettylights-syntax-keyword)}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:var(--color-prettylights-syntax-string)}.markdown-body .pl-smw,.markdown-body .pl-v{color:var(--color-prettylights-syntax-variable)}.markdown-body .pl-bu{color:var(--color-prettylights-syntax-brackethighlighter-unmatched)}.markdown-body .pl-ii{color:var(--color-prettylights-syntax-invalid-illegal-text);background-color:var(--color-prettylights-syntax-invalid-illegal-bg)}.markdown-body .pl-c2{color:var(--color-prettylights-syntax-carriage-return-text);background-color:var(--color-prettylights-syntax-carriage-return-bg)}.markdown-body .pl-sr .pl-cce{font-weight:700;color:var(--color-prettylights-syntax-string-regexp)}.markdown-body .pl-ml{color:var(--color-prettylights-syntax-markup-list)}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{font-weight:700;color:var(--color-prettylights-syntax-markup-heading)}.markdown-body .pl-mi{font-style:italic;color:var(--color-prettylights-syntax-markup-italic)}.markdown-body .pl-mb{font-weight:700;color:var(--color-prettylights-syntax-markup-bold)}.markdown-body .pl-md{color:var(--color-prettylights-syntax-markup-deleted-text);background-color:var(--color-prettylights-syntax-markup-deleted-bg)}.markdown-body .pl-mi1{color:var(--color-prettylights-syntax-markup-inserted-text);background-color:var(--color-prettylights-syntax-markup-inserted-bg)}.markdown-body .pl-mc{color:var(--color-prettylights-syntax-markup-changed-text);background-color:var(--color-prettylights-syntax-markup-changed-bg)}.markdown-body .pl-mi2{color:var(--color-prettylights-syntax-markup-ignored-text);background-color:var(--color-prettylights-syntax-markup-ignored-bg)}.markdown-body .pl-mdr{font-weight:700;color:var(--color-prettylights-syntax-meta-diff-range)}.markdown-body .pl-ba{color:var(--color-prettylights-syntax-brackethighlighter-angle)}.markdown-body .pl-sg{color:var(--color-prettylights-syntax-sublimelinter-gutter-mark)}.markdown-body .pl-corl{text-decoration:underline;color:var(--color-prettylights-syntax-constant-other-reference-link)}.markdown-body g-emoji{display:inline-block;min-width:1ch;font-family:"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:1em;font-style:normal!important;font-weight:var(--base-text-weight-normal,400);line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{width:1em;height:1em}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:var(--base-text-weight-normal,400)}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:4px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.4em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body .contains-task-list{position:relative}.markdown-body .contains-task-list:focus-within .task-list-item-convert-container,.markdown-body .contains-task-list:hover .task-list-item-convert-container{display:block;width:auto;height:24px;overflow:visible;clip:auto}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}</style></head><body class="markdown-body" style="padding-left: 20px;padding-right: 20px;"><h1 id="後周世宗滅佛大事記">後周世宗滅佛大事記</h1>
+<p>中國五代十國歷史・佛教史・政治史｜955年（後周顯德二年）</p>
+<p>後周世宗滅佛，又稱「周世宗廢佛」，是中國佛教史上「三武一宗滅佛」的最後一次重大事件。</p>
+<p>這場事件發生於五代十國時期，後周世宗柴榮在位期間（954－959年）。柴榮為了整頓國家財政、增加銅錢鑄造原料、減少寺院經濟負擔，以及強化國家人口管理，於顯德二年（955年）頒布限制佛教寺院的詔令。</p>
+<p>與北魏太武帝、北周武帝及唐武宗的滅佛相比，後周世宗採取的政策相對具有選擇性及經濟整頓色彩。他並沒有全面禁止佛教信仰，而是大規模裁撤不合規定的寺院、限制私自出家、收繳銅製佛像及宗教器物，將資源轉用於國家財政及軍事建設。</p>
+<p><a href="https://images.openai.com/static-rsc-4/CtfGjrnrpkvutnYVoRkGEvpxAO5tsRxdD5CqEtrmVJNYpiLHtL3lnO2fQqNozgKTzR3_gr2ce9HZRXnAcgFo2MWY8u5r3QD4E7K_CMdr5qRts3LdwTtvawW5j4IBT8ky2Va2_kiZG0sMPWYyZLdJ17M0gPT6X1f7oIfeeLltYuM?purpose=inline">寿州之战：南唐再无实力问鼎中原|周世宗|问鼎中原|周军|水军|淮南_新浪新闻</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/HcS1UFI30bB9vX1fQ_89E9Ou-2sBTn0a7fjjM135t7MP7EwPj7auGWNA49GeD7eRca02IduWgvSUmR2fqO_v5xewuZ1VDb9CDmHem22oCIcKXzEqI2GmkT48hPWvGMSwEXninKpAYXH7C8FDRQbTLEcQ5iMx2I-cmPm85mQ2CdQ?purpose=inline">五代 銅雕釋迦牟尼｜2024秋季 - 帝圖拍賣 - 領銜全台書畫文物類第一拍賣品牌</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/KOWZiLrL8GNPCsqxHOGBelOCdFxY2uDHG_KQtOSQ6Um-dYBBUgn9K3QxtyiZrPlDoekHmQYeitBsQozbhQ7cETAn0NI9Ch5n73DTzW98XAcc31eWeAIdgjafghiAuMwvIpStnnxphMdnAQWr0PHTBMZTXLmUZtbQ69FZ6SKvSMY?purpose=inline">《太平年》完结！五代古建筑全国仅存7座，6座在山西</a></p>
+<p>4</p>
+<h2 id="一、歷史背景">一、歷史背景</h2>
+<h3 id="1-五代十國的政治局勢">1. 五代十國的政治局勢</h3>
+<p>五代十國是唐朝滅亡後，中國再次陷入分裂的重要時期。</p>
+<p>五代依序為：</p>
+<table>
+<thead>
+<tr>
+<th>朝代</th>
+<th>年代</th>
+<th>開國皇帝</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>後梁</td>
+<td>907－923</td>
+<td>朱溫</td>
+</tr>
+<tr>
+<td>後唐</td>
+<td>923－936</td>
+<td>李存勗</td>
+</tr>
+<tr>
+<td>後晉</td>
+<td>936－947</td>
+<td>石敬瑭</td>
+</tr>
+<tr>
+<td>後漢</td>
+<td>947－951</td>
+<td>劉知遠</td>
+</tr>
+<tr>
+<td>後周</td>
+<td>951－960</td>
+<td>郭威</td>
+</tr>
+</tbody></table>
+<p>後周建立於951年，由郭威創建。954年郭威去世後，養子柴榮繼位，是為後周世宗。</p>
+<p>當時中國仍然分裂，北方有契丹（遼）等外部威脅，南方則存在南唐、吳越、後蜀、南漢等政權。</p>
+<p>後周世宗的重要目標是：</p>
+<ul>
+<li>加強中央集權。</li>
+<li>整頓財政及軍事制度。</li>
+<li>恢復農業生產。</li>
+<li>擴充軍隊及軍事裝備。</li>
+<li>逐步統一中國。</li>
+</ul>
+<h3 id="2-佛教在五代時期的發展">2. 佛教在五代時期的發展</h3>
+<p><a href="https://images.openai.com/static-rsc-4/KOWZiLrL8GNPCsqxHOGBelOCdFxY2uDHG_KQtOSQ6Um-dYBBUgn9K3QxtyiZrPlDoekHmQYeitBsQozbhQ7cETAn0NI9Ch5n73DTzW98XAcc31eWeAIdgjafghiAuMwvIpStnnxphMdnAQWr0PHTBMZTXLmUZtbQ69FZ6SKvSMY?purpose=inline">《太平年》完结！五代古建筑全国仅存7座，6座在山西</a></p>
+<p><a href="https://www.sxwbs.com/detail/fa15e1e904dd480e898bec93e30ccb57?contentType=1&t=MjAyNi0wMi0xNA==&utm_source=chatgpt.com">sxwbs.com</a></p>
+<p>唐朝滅亡後，雖然中國政局混亂，但佛教並未因此衰落。</p>
+<p>五代時期，佛教仍具有相當大的社會影響力：</p>
+<ul>
+<li>各地寺院持有土地及經濟財產。</li>
+<li>佛教寺院受到地方軍閥及貴族支持。</li>
+<li>民間普遍存在佛教信仰及寺院供養活動。</li>
+<li>僧侶人數持續增加。</li>
+<li>部分民眾透過出家取得免除一般賦役的身分。</li>
+</ul>
+<p>由於五代戰亂頻繁，部分寺院的經濟資源與國家財政之間產生矛盾。</p>
+<h3 id="3-後周世宗滅佛的主要原因">3. 後周世宗滅佛的主要原因</h3>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>具體內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>財政困難</td>
+<td>國家需要大量資金進行軍事建設及行政改革。</td>
+</tr>
+<tr>
+<td>銅錢短缺</td>
+<td>銅製佛像及寺院器物可以提供鑄錢原料。</td>
+</tr>
+<tr>
+<td>人口管理</td>
+<td>限制私自出家，使更多人口納入國家戶籍。</td>
+</tr>
+<tr>
+<td>寺院經濟</td>
+<td>部分寺院擁有土地及財產，影響政府的經濟管理。</td>
+</tr>
+<tr>
+<td>軍事需求</td>
+<td>後周需要大量資源進行對遼及南方政權的軍事行動。</td>
+</tr>
+<tr>
+<td>行政整頓</td>
+<td>清查寺院及僧侶，建立較有秩序的宗教管理制度。</td>
+</tr>
+</tbody></table>
+<p>特別值得注意： 後周世宗滅佛最鮮明的特徵，是將佛教銅像及宗教器物收繳熔鑄，直接用於鑄造銅錢。這與國家貨幣及財政政策有非常密切的關係。</p>
+<h2 id="二、後周世宗滅佛詳細時間軸">二、後周世宗滅佛詳細時間軸</h2>
+<p>這次事件有一個值得注意的年代差異：限制民間銅器、收繳銅佛像的命令，始於顯德元年（954年）；大規模裁撤寺院及整頓僧籍，則集中在顯德二年（955年）及顯德三年（956年）。</p>
+<h3 id="1-廣順三年（953年）：開始整頓寺院">1. 廣順三年（953年）：開始整頓寺院</h3>
+<ul>
+<li>後周太祖郭威在位期間，已經開始整頓佛教寺院。</li>
+<li>朝廷裁撤開封城內沒有官方敕額的寺院。</li>
+<li>當時佛教寺院數量龐大，部分寺院缺乏正式管理。</li>
+<li>後周政府逐漸將宗教管理納入國家行政制度。</li>
+</ul>
+<p>這是後周世宗大規模整頓佛教之前的重要前奏。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.xianmi.co&sz=32">image</a></p>
+<p>顯密文庫+1</p>
+<h3 id="2-顯德元年（954年）：收繳民間銅器及銅佛像">2. 顯德元年（954年）：收繳民間銅器及銅佛像</h3>
+<p><a href="https://images.openai.com/static-rsc-4/HcS1UFI30bB9vX1fQ_89E9Ou-2sBTn0a7fjjM135t7MP7EwPj7auGWNA49GeD7eRca02IduWgvSUmR2fqO_v5xewuZ1VDb9CDmHem22oCIcKXzEqI2GmkT48hPWvGMSwEXninKpAYXH7C8FDRQbTLEcQ5iMx2I-cmPm85mQ2CdQ?purpose=inline">五代 銅雕釋迦牟尼｜2024秋季 - 帝圖拍賣 - 領銜全台書畫文物類第一拍賣品牌</a></p>
+<p><a href="https://auctions.artemperor.tw/2024_autumn/details/1035?utm_source=chatgpt.com">auctions.artemperor.tw</a></p>
+<ul>
+<li>954年：後周世宗即位後，面臨國內銅錢不足的問題。</li>
+<li>朝廷決定設立鑄錢機構，加強銅礦開採及鑄幣。</li>
+<li>九月，發布收繳銅器的詔令。</li>
+<li>除官府法器、軍器、銅鏡，以及寺觀內鐘、磬、鈸、相輪、火珠、鈴鐸等特定物品外，其他銅器均受到限制。</li>
+<li>各地銅佛像及銅製器物，必須在詔令發布後五十日內送交官府。</li>
+<li>官府按照銅的重量支付相應價錢。</li>
+<li>違法藏匿大量銅器者，將受到嚴厲刑罰。</li>
+</ul>
+<p>政策目的：解決國家銅錢不足的問題。</p>
+<p>當時後周政府需要鑄造大量貨幣，以維持商業交易、軍事供應及政府財政。</p>
+<p>佛像及寺院銅器因此成為重要的銅料來源。</p>
+<p>世宗曾表示，佛教真正的精神在於利益眾生，若銅佛像可以熔化鑄錢、幫助百姓，即使毀掉佛像也沒有關係。</p>
+<p>這段話反映出他的政策重點在於國家經濟，而非單純否定佛教信仰。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://zh.wikisource.org&sz=32">image</a></p>
+<p>維基文庫，自由的圖書館+2</p>
+<h3 id="3-顯德二年（955年）：大規模裁撤寺院">3. 顯德二年（955年）：大規模裁撤寺院</h3>
+<p>滅佛運動的核心階段</p>
+<p><a href="https://images.openai.com/static-rsc-4/LFlvk8aLJTaj9fb6x30IiS2Bo7uiI3nTp7Q6Wi9oM_xB-F_7Z0y3anIlu2q-yWNmHmlnYvtkLNATbUQdRvWHeX4x1bHuBTU6W8oiobUt2fbeu6yGPgRpGGFfBOM6M0i8i9V2sLJFP3wKRdeeYinL-qRlF0VEkAk4P4_fhGzMaJQ?purpose=inline">Detail of the Wutai Mountain Map, a Mural Painting Done During the Five Dynasties (907 - 960) in the Dunhuang Grottoes, Depicting a Monastery</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/ajTIVFj_cG7CgOcIUwH_I2FSgFILQDObI9dIF4_z5V3UbpbInWF0hVFX63PDofx_ekqkLM9VXp32JPE8n3jJ1bcTo5VGbAaVigGjMAvzvDB1GeZ4qcqrYRdzNVTtKHK3db9QYOnmZnRdsAgZtyfXs1FLdskxgdqVixW_NP2Glxg?purpose=inline">《太平年》完结！五代古建筑全国仅存7座，6座在山西</a></p>
+<p><a href="https://images.openai.com/static-rsc-4/HcS1UFI30bB9vX1fQ_89E9Ou-2sBTn0a7fjjM135t7MP7EwPj7auGWNA49GeD7eRca02IduWgvSUmR2fqO_v5xewuZ1VDb9CDmHem22oCIcKXzEqI2GmkT48hPWvGMSwEXninKpAYXH7C8FDRQbTLEcQ5iMx2I-cmPm85mQ2CdQ?purpose=inline">五代 銅雕釋迦牟尼｜2024秋季 - 帝圖拍賣 - 領銜全台書畫文物類第一拍賣品牌</a></p>
+<p>6</p>
+<p>955年，後周世宗頒布大規模整頓佛教寺院的詔令。</p>
+<p>主要措施如下：</p>
+<p>第一：裁撤沒有官方敕額的寺院</p>
+<ul>
+<li>全國寺院必須具有朝廷正式批准的敕額。</li>
+<li>沒有敕額的寺院一律裁撤。</li>
+<li>原有寺院財產及設施依照朝廷規定處理。</li>
+<li>地方官府負責清查及執行。</li>
+</ul>
+<p>第二：限制人民私自出家</p>
+<ul>
+<li>禁止未經官方批准自行剃度。</li>
+<li>出家必須取得父母、祖父母等親屬同意。</li>
+<li>私自剃度者及相關師僧會受到處罰。</li>
+</ul>
+<p>第三：限制出家資格</p>
+<ul>
+<li>男子須年滿15歲，並達到指定的佛經背誦或閱讀標準。</li>
+<li>女子須年滿13歲，並達到相應的佛經背誦或閱讀標準。</li>
+<li>必須通過地方官員的考試及審查，才能正式出家。</li>
+</ul>
+<p>第四：限制戒壇及受戒活動</p>
+<ul>
+<li>只允許指定城市及地區設立戒壇。</li>
+<li>未經批准自行設壇、授戒者，將受到處罰。</li>
+<li>目的在於控制僧尼的增加及管理僧籍。</li>
+</ul>
+<p>第五：建立僧尼戶籍制度</p>
+<ul>
+<li>各地每年必須造冊登記僧尼。</li>
+<li>僧尼死亡、還俗等情況，必須隨時更新。</li>
+<li>沒有正式登記的僧尼，必須還俗。</li>
+</ul>
+<p>第六：禁止極端宗教行為</p>
+<ul>
+<li>禁止燒身、燒臂、斷指、煉指等自殘行為。</li>
+<li>禁止以神怪、幻術及異常宗教儀式迷惑民眾。</li>
+<li>違反者可能被勒令還俗及流放。</li>
+</ul>
+<p>這些規定顯示，世宗並不是完全禁止所有人信佛，而是將寺院、僧侶及出家制度全面納入政府管理。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.shidianguji.com&sz=32">image</a></p>
+<p>识典古籍+2</p>
+<h3 id="4-顯德二年（955年）：寺院裁撤的統計結果">4. 顯德二年（955年）：寺院裁撤的統計結果</h3>
+<p>根據《舊五代史》等史籍所載：</p>
+<h2 id="955年寺院整頓統計">955年寺院整頓統計</h2>
+<h1 id="2694">2,694</h1>
+<p>保留寺院</p>
+<p>所</p>
+<h1 id="30336">30,336</h1>
+<p>裁撤寺院</p>
+<p>所</p>
+<h1 id="42444">42,444</h1>
+<p>登記僧侶</p>
+<p>人</p>
+<h1 id="18756">18,756</h1>
+<p>登記尼眾</p>
+<p>人</p>
+<h1 id="61200">61,200</h1>
+<p>合計登記僧尼人數</p>
+<p>以上為史籍所載的保留寺院、裁撤寺院及登記僧尼數字，不等於全國實際僧尼人口的完整統計。</p>
+<p>這組數字非常重要：</p>
+<ul>
+<li>全國保留寺院僅2,694所。</li>
+<li>裁撤寺院達30,336所。</li>
+<li>大量地方寺院失去合法存在的地位。</li>
+<li>佛教組織受到相當程度的削弱。</li>
+</ul>
+<p>按照上述數字計算，原列入整頓統計的寺院中，約有91.8%遭到裁撤。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.xianmi.co&sz=32">image</a></p>
+<p>顯密文庫+2</p>
+<h3 id="5-顯德三年（956年）：進一步加強寺院管理">5. 顯德三年（956年）：進一步加強寺院管理</h3>
+<ul>
+<li>朝廷繼續執行寺院裁撤及僧籍清查。</li>
+<li>禁止擅自興建新寺院及佛教蘭若。</li>
+<li>禁止私自設立戒壇。</li>
+<li>強化出家資格及親屬同意制度。</li>
+<li>對違反規定的僧侶及授戒者加強處罰。</li>
+<li>佛教活動必須依照政府核准的制度進行。</li>
+</ul>
+<p>這代表955年的政策不是一次性的收繳行動，而是逐步建立長期的宗教管理制度。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.xianmi.co&sz=32">image</a></p>
+<p>顯密文庫+1</p>
+<h3 id="6-顯德四年至五年（957－958年）：國家財政與軍事建設">6. 顯德四年至五年（957－958年）：國家財政與軍事建設</h3>
+<p><a href="https://images.openai.com/static-rsc-4/HN9PzInCSh8hHG3595Z9n_ElR14E4u0DnGaOKzEeYy4AQ8OZ4VjkClKQnLkL2-bCRbc9gsci5QGgj0s-KCtzC6ERKcixQ1-_AnNPPGzwzbTZFLHLjiQNaF3AkjfKi557ItWKWqX6MK183-ZlkH73_MAYPC2A6r24IozlJXxLXCQ?purpose=inline">周元通寶 - 故宮</a></p>
+<p><a href="https://digitalarchive.npm.gov.tw/Collection/Detail/9728?dep=U&utm_source=chatgpt.com">digitalarchive.npm.gov.tw</a></p>
+<ul>
+<li>後周持續整頓貨幣制度。</li>
+<li>加強鑄錢及銅料供應。</li>
+<li>推行軍事改革，建立更有戰鬥力的軍隊。</li>
+<li>透過軍事行動擴大後周的領土。</li>
+<li>958年，後周在與南唐的戰爭中取得淮南地區的重要成果。</li>
+</ul>
+<p>其中，後周鑄造的「周元通寶」是五代時期的重要貨幣之一。</p>
+<p><a href="https://images.openai.com/static-rsc-4/3NdF2HkNDxt5YxrbtTnFEynPhc_koNTak_f14rFgZg4hzohHPMxTADYdFLX9wfxh3g-yL9k90i5i6-TxlKQukSx9-e9R4IMXGYdg44RvFLcvmBTMABx73vm0do2habrJtRe8VGnwXIZmbzlt5nm7DUVgaC4bDdriNabOdW62ih4?purpose=inline">第一枚毁佛钱，是怎么来的？_通宝_周元_钱币</a></p>
+<p>周元通寶</p>
+<ul>
+<li>後周世宗時期鑄造。</li>
+<li>採用銅料鑄造。</li>
+<li>錢文為「周元通寶」。</li>
+<li>是後周貨幣制度改革的代表。</li>
+<li>後世民間曾流傳以其鑄造來源賦予特殊宗教及民俗意義。</li>
+</ul>
+<p>需要注意的是，不能將所有周元通寶都直接認定為由佛像熔鑄而成；它們的銅料來源並不只有一種。後周也曾向高麗購買銅料。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://www.shidianguji.com&sz=32">image</a></p>
+<p>识典古籍+2</p>
+<h3 id="7-顯德六年（959年）：世宗北伐契丹，病逝於途中">7. 顯德六年（959年）：世宗北伐契丹，病逝於途中</h3>
+<p><a href="https://images.openai.com/static-rsc-4/FE1RZGaIugLj0Px_S-6jd6yetV-jClq6moMZoOrfhnpe7ncgZRQQKL1-_OwiAt5Qw4tM4teycvTwJBxhXD6Ny7fUjEXvemgjl4LKCXunltJYB7kBCYiV3yNwrwIXSUySy4ETEv30jBFLjhS6Juqm7qcQg-bHmcK7mJfpukL2ce8?purpose=inline">周世宗柴荣的能力比赵匡胤如何？</a></p>
+<p><a href="https://h5.ifeng.com/c/vivo/v002--3QKjcoc7PuGt4F4K9iPFWsdcwG8nVYKd7jMz-_OaVTA__?isNews=1&showComments=0&utm_source=chatgpt.com">h5.ifeng.com</a></p>
+<ul>
+<li>959年：後周世宗發動北伐契丹的軍事行動。</li>
+<li>後周軍隊收復瀛州、莫州等地，並取得重要軍事成果。</li>
+<li>世宗原本希望進一步收復燕雲地區。</li>
+<li>但在北伐途中，世宗突然患病。</li>
+<li>同年6月，柴榮病逝，年僅39歲。</li>
+<li>其子柴宗訓繼位，是為後周恭帝。</li>
+</ul>
+<h3 id="8-顯德七年（960年）：宋朝建立，佛教政策逐步轉變">8. 顯德七年（960年）：宋朝建立，佛教政策逐步轉變</h3>
+<p><a href="https://images.openai.com/static-rsc-4/N1juybH-9mJVHpcLuPxynDIRILuSl_N_LeohVX1AXVcqSNQMbYnXMZeUCTSoHlmfSqghZRXjheE-1m9lRwZnhjbCZun6sGPPSqAUDai56qZCj8L37_u7R6i8-nPVZvgx72Ye82NDsHftK545tx8KhiLHjZyPDB--wOC_ZeXDf4o?purpose=inline">Kaisar Zhao Kuangyin, Pendiri Dinasti Song Tiongkok Mati Misterius - National Geographic</a></p>
+<p><a href="https://nationalgeographic.grid.id/read/133840600/kaisar-zhao-kuangyin-pendiri-dinasti-song-tiongkok-mati-misterius?utm_source=chatgpt.com">nationalgeographic.grid.id</a></p>
+<ul>
+<li>960年1月：趙匡胤發動陳橋兵變。</li>
+<li>趙匡胤建立北宋，後周滅亡。</li>
+<li>宋太祖開始調整後周的宗教管理政策。</li>
+<li>同年8月，朝廷允許部分原本因顯德二年政策而裁撤、但尚未實際拆毀的寺院繼續存在。</li>
+<li>允許將已拆毀寺院的佛像移往其他寺院保存。</li>
+<li>同時仍然維持寺院管理及官方度僧制度。</li>
+</ul>
+<p>這代表宋朝並沒有完全恢復後周以前的佛教制度，而是採取較寬鬆、但仍由政府控制的政策。</p>
+<p><a href="https://www.google.com/s2/favicons?domain=https://buddhism.lib.ntu.edu.tw&sz=32">image</a></p>
+<p>臺大佛學數位圖書館+1</p>
+<h2 id="三、後周世宗滅佛的重要歷史人物">三、後周世宗滅佛的重要歷史人物</h2>
+<p><a href="https://images.openai.com/static-rsc-4/cecdJCZQ5fnj9InTdYNGyMqmF2gguBgcSVLHBROlZfRPW4xeTYFRadaZGh0yLF7hKiswoGWXSd9iUpoVzvhH7RGy-BuIgqcM1AVzL-4MD3p5FTJwm3O4LlsasFv1aKAK7M-s1HHiBawiblOYmeqwZXuJF7r-aVbluy5rPwMBUYI?purpose=inline">File:Chai Rong (Zhou Shizong).jpg - Wikimedia Commons</a></p>
+<p>1. 後周世宗柴榮（921－959）</p>
+<ul>
+<li>後周第二位皇帝，在位954－959年。</li>
+<li>郭威的養子。</li>
+<li>推動財政、軍事及行政改革。</li>
+<li>955年大規模裁撤佛教寺院。</li>
+<li>收繳銅佛像及銅器，用於鑄錢。</li>
+<li>959年北伐途中病逝。</li>
+</ul>
+<p><a href="https://images.openai.com/static-rsc-4/fb2oc_IGTRqDH7NGKBJad0BrnVDgpW6_DbL1EbpPs8hUhR6vMMYgFMRPZL4OxFviI0xbUD3ST0T9vBp1aVFkkPRheKXm0YArdfU6lF-9mN0OIO5GEpi-HPL-GgPD8VCvFSwXLlu8onIIKoEjFqu173l2sARzXLj2OTzWupxQHnE?purpose=inline">后周太祖郭威的传奇姻缘，一生先后明媒正娶四个寡妇_五代</a></p>
+<p>2. 後周太祖郭威（904－954）</p>
+<ul>
+<li>後周開國皇帝。</li>
+<li>951年建立後周。</li>
+<li>早期已經開始整頓寺院。</li>
+<li>953年裁撤開封無敕額寺院。</li>
+<li>954年去世，由柴榮繼位。</li>
+</ul>
+<p><a href="https://images.openai.com/static-rsc-4/H5j8l2jQGh5fxTR13HyQGs_IaA-m7VgGe4gN9dCTdYChB49l6HddXnVJ3OBQL9OfGfAuN96N1ME_dm7zyUoKJLUN9OnyR_sk0PkCCLAHrpTTW-gKhWxOk1vJp_RvDPrmAPPeJ_wpeVW3FyyNQqnz4BfqDzxh5TgHsTj7oU9gR58?purpose=inline">国宝を再び─書画の精華_展示物の紹介</a></p>
+<p>3. 宋太祖趙匡胤（927－976）</p>
+<ul>
+<li>原為後周重要軍事將領。</li>
+<li>960年發動陳橋兵變。</li>
+<li>建立北宋，結束後周政權。</li>
+<li>逐步放寬部分寺院限制。</li>
+<li>恢復及支持佛教發展。</li>
+</ul>
+<p><a href="https://images.openai.com/static-rsc-4/AlP0W7SZRp8peG3jh0CzUKH8DVy8JvCYFKTH6VIf1xZkUyZ9rbVIJpgt7mqciLWUZCUBdovYwfqA6trTgoeUABp6djRYS4lRCK4HsveDqe7_Sm4AE-R6gWknVKK4YNQ8oP9sF-Ty05Umsu74WpsU9YBf0rAMZ_zeezfOVwYcIbQ?purpose=inline">1 Cash (Zhouyuan Tongbao) - Empire of China – Numista</a></p>
+<p>4. 王朴（906－959）</p>
+<ul>
+<li>後周重要政治家。</li>
+<li>參與後周制度及財政改革。</li>
+<li>協助規劃貨幣、軍事及行政制度。</li>
+<li>是理解後周世宗改革的重要人物。</li>
+</ul>
+<h2 id="四、後周世宗滅佛的歷史特色">四、後周世宗滅佛的歷史特色</h2>
+<h3 id="1-主要目的是經濟整頓，而非全面否定佛教">1. 主要目的是經濟整頓，而非全面否定佛教</h3>
+<p>後周世宗曾明確表示：</p>
+<blockquote>
+<p>佛以善道化人，苟志於善，斯奉佛矣。</p>
+</blockquote>
+<p>這段話的意思是：佛教以善道教化世人，只要人們願意行善，便是實踐佛教精神。</p>
+<p>他認為真正重要的是佛教的教化功能，而不是銅製佛像本身。</p>
+<p>因此，後周世宗並沒有像北魏太武帝或北周武帝那樣，全面否定佛教的思想及宗教價值。</p>
+<h3 id="2-銅錢短缺是直接經濟誘因">2. 銅錢短缺是直接經濟誘因</h3>
+<p>五代時期戰亂頻繁，貨幣供應不足，對商業及政府財政造成影響。</p>
+<p>世宗希望：</p>
+<ul>
+<li>收繳民間及寺院銅器。</li>
+<li>熔鑄銅佛像。</li>
+<li>擴大銅錢鑄造。</li>
+<li>改善貨幣流通。</li>
+<li>增加國家財政調度能力。</li>
+</ul>
+<h3 id="3-寺院管理制度更加嚴格">3. 寺院管理制度更加嚴格</h3>
+<p>後周世宗不只是裁撤寺院，也建立了較完整的僧籍管理制度。</p>
+<p>包括：</p>
+<ul>
+<li>官方核准寺院。</li>
+<li>嚴格審查出家資格。</li>
+<li>限制私自剃度。</li>
+<li>建立僧尼登記制度。</li>
+<li>禁止未經批准的戒壇。</li>
+<li>限制宗教性自殘及迷信活動。</li>
+</ul>
+<p>從制度史角度來看，這是中國古代政府以行政制度管理佛教的重要案例。</p>
+<h2 id="五、四次滅佛事件的比較">五、四次滅佛事件的比較</h2>
+<p><a href="https://images.openai.com/static-rsc-4/HcS1UFI30bB9vX1fQ_89E9Ou-2sBTn0a7fjjM135t7MP7EwPj7auGWNA49GeD7eRca02IduWgvSUmR2fqO_v5xewuZ1VDb9CDmHem22oCIcKXzEqI2GmkT48hPWvGMSwEXninKpAYXH7C8FDRQbTLEcQ5iMx2I-cmPm85mQ2CdQ?purpose=inline">五代 銅雕釋迦牟尼｜2024秋季 - 帝圖拍賣 - 領銜全台書畫文物類第一拍賣品牌</a></p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>北魏太武帝</th>
+<th>北周武帝</th>
+<th>唐武宗</th>
+<th>後周世宗</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>時間</td>
+<td>446年</td>
+<td>574－577年</td>
+<td>842－846年</td>
+<td>954－956年</td>
+</tr>
+<tr>
+<td>皇帝</td>
+<td>拓跋燾</td>
+<td>宇文邕</td>
+<td>李炎</td>
+<td>柴榮</td>
+</tr>
+<tr>
+<td>主要目的</td>
+<td>政治控制</td>
+<td>富國強兵</td>
+<td>財政整頓</td>
+<td>銅錢及財政改革</td>
+</tr>
+<tr>
+<td>主要對象</td>
+<td>佛教</td>
+<td>佛教、道教</td>
+<td>佛教</td>
+<td>佛教</td>
+</tr>
+<tr>
+<td>僧尼處置</td>
+<td>處死、還俗</td>
+<td>強制還俗</td>
+<td>強制還俗</td>
+<td>嚴格限制出家</td>
+</tr>
+<tr>
+<td>佛寺處置</td>
+<td>大規模拆毀</td>
+<td>大規模拆毀</td>
+<td>大規模拆毀</td>
+<td>裁撤無敕額寺院</td>
+</tr>
+<tr>
+<td>主要特色</td>
+<td>民族及政治衝突</td>
+<td>國家制度改革</td>
+<td>寺院經濟整頓</td>
+<td>收銅鑄錢</td>
+</tr>
+</tbody></table>
+<p>四次滅佛的歷史差異：</p>
+<ol>
+<li>北魏太武帝：佛教與政治、民族矛盾結合，導致極端鎮壓。</li>
+<li>北周武帝：為國家統一及軍事動員而進行宗教制度改革。</li>
+<li>唐武宗：削弱寺院經濟，增加政府控制的人口與財產。</li>
+<li>後周世宗：以銅錢鑄造及寺院行政整頓為核心，宗教迫害程度相對較低。</li>
+</ol>
+<h2 id="六、後周世宗滅佛的歷史影響">六、後周世宗滅佛的歷史影響</h2>
+<h3 id="1-對佛教的影響">1. 對佛教的影響</h3>
+<ul>
+<li>大量寺院失去合法地位。</li>
+<li>佛教僧團規模受到限制。</li>
+<li>出家制度受到政府嚴格控制。</li>
+<li>部分佛教銅像及宗教器物遭到熔毀。</li>
+<li>佛教的社會經濟力量受到削弱。</li>
+</ul>
+<h3 id="2-對中國貨幣史的影響">2. 對中國貨幣史的影響</h3>
+<p>後周世宗推行銅器收繳政策，反映五代時期政府面臨嚴重的貨幣及銅料供應問題。</p>
+<p>周元通寶成為五代貨幣的重要代表，也反映出後周政府試圖透過國家鑄幣改善經濟秩序。</p>
+<h3 id="3-對宋朝佛教政策的影響">3. 對宋朝佛教政策的影響</h3>
+<p>北宋建立後，宋太祖逐步恢復佛教活動，但並沒有完全放棄後周建立的宗教管理制度。</p>
+<p>宋朝仍然保留：</p>
+<ul>
+<li>官方寺院管理。</li>
+<li>僧尼登記制度。</li>
+<li>出家資格審查。</li>
+<li>官方授戒制度。</li>
+</ul>
+<p>因此，後周世宗的整頓措施，對宋代佛教管理制度具有一定影響。</p>
+<h2 id="七、重要歷史文獻">七、重要歷史文獻</h2>
+<table>
+<thead>
+<tr>
+<th>文獻</th>
+<th>作者</th>
+<th>研究價值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>《舊五代史》</td>
+<td>薛居正等</td>
+<td>後周世宗生平及財政改革</td>
+</tr>
+<tr>
+<td>《新五代史》</td>
+<td>歐陽修</td>
+<td>五代政治及世宗滅佛</td>
+</tr>
+<tr>
+<td>《資治通鑑》卷292</td>
+<td>司馬光</td>
+<td>955年裁寺、鑄錢及宗教政策</td>
+</tr>
+<tr>
+<td>《五代會要》</td>
+<td>王溥</td>
+<td>五代制度、寺院及貨幣政策</td>
+</tr>
+<tr>
+<td>《佛祖統紀》</td>
+<td>志磐</td>
+<td>中國佛教史及歷代法難</td>
+</tr>
+</tbody></table>
+<p>特別推薦閱讀：</p>
+<ul>
+<li><a href="https://lius.cc/canon/zztj-juan292?utm_source=chatgpt.com">《資治通鑑》卷二百九十二：後周世宗顯德毀佛、裁撤寺院、銷像鑄錢</a></li>
+<li><a href="https://zh.wikisource.org/zh/%E4%BB%A4%E6%AF%80%E9%8A%85%E5%99%A8%E9%91%84%E9%8C%A2%E6%95%95?utm_source=chatgpt.com">後周世宗〈令毀銅器鑄錢敕〉原文</a></li>
+<li><a href="https://buddhism.lib.ntu.edu.tw/FULLTEXT/JR-MAG/mag202808.pdf?utm_source=chatgpt.com">三武一宗之繼代者的復佛｜佛教研究論文</a></li>
+</ul>
+<p>其中，〈令毀銅器鑄錢敕〉尤其值得閱讀，可以直接了解當時政府為何要收繳銅器，以及哪些宗教器物可以保留。</p>
+<h2 id="八、後周世宗滅佛歷史總結">八、後周世宗滅佛歷史總結</h2>
+<h2 id="953－960年歷史脈絡">953－960年歷史脈絡</h2>
+<ol>
+<li><p>953年｜整頓寺院</p>
+<p>郭威時期開始裁撤開封無敕額寺院。</p>
+</li>
+<li><p>954年｜收繳銅器</p>
+<p>柴榮下令收繳民間銅器及銅佛像，供國家鑄錢。</p>
+</li>
+<li><p>955年｜大規模裁寺</p>
+<p>裁撤30,336所寺院，建立嚴格的僧尼管理制度。</p>
+</li>
+<li><p>956年｜強化管理</p>
+<p>禁止私建寺院及私自授戒，繼續整頓僧籍。</p>
+</li>
+<li><p>957－958年｜財政與軍事改革</p>
+<p>持續鑄錢、整軍，並向南方擴張。</p>
+</li>
+<li><p>959年｜世宗病逝</p>
+<p>北伐契丹途中去世，柴宗訓繼位。</p>
+</li>
+<li><p>960年｜北宋建立</p>
+<p>趙匡胤建立宋朝，逐步放寬佛教政策。</p>
+</li>
+</ol>
+<p>核心歷史意義：</p>
+<p>後周世宗滅佛與前三次滅佛最大的不同，在於其政策核心並不是建立某種宗教思想的絕對優勢，而是以國家財政、貨幣鑄造及人口管理為主要考量。</p>
+<p>柴榮的政策具有相當強烈的現實主義色彩：他認為佛教可以繼續發揮教化作用，但寺院不能凌駕於國家財政及行政管理之上。</p>
+<p>這場事件也是五代十國時期，中央政府利用宗教資源進行財政改革的代表性案例。</p>
+<p>至此，「三武一宗滅佛」四次重大事件已經完整整理。 若將四次事件連在一起研究，可以看到中國古代皇權與佛教之間反覆出現的歷史循環：佛教興盛、寺院經濟擴張、皇權限制、宗教復興。</p>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none",  extensions: ["tex2jax.js"],jax: ["input/TeX", "output/HTML-CSS"], tex2jax: { inlineMath:  [ ["$", "$"] ],  displayMath: [ ["$$","$$"] ],skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']}, "HTML-CSS": { availableFonts: ["STIX","TeX"], showMathMenu: false  }});</script></body></html>
