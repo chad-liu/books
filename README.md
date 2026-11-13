@@ -194,7 +194,7 @@ python tools/build_library.py --plan
 
 ## 五、與 Liu's Timeline 的互連
 
-[Liu's Timeline](https://chad-liu.github.io/Timeline/)（另一個 repo）有人物的生平時間軸。兩邊不整合，只互相連結：
+[Liu's Timeline](https://liu-timeline.pages.dev/)（另一個 repo）有人物的生平時間軸。兩邊不整合，只互相連結：
 
 - **對應關係只維護在 Timeline 那一側**：各人物 md 的 `related:` 欄位列出連到本站的頁面。
 - 本站執行：
@@ -204,7 +204,7 @@ python tools/build_library.py --plan
   python tools/add_timeline_links.py --check  # 只列出會變動的頁面，不寫檔
   ```
 
-  預設讀取線上的 `https://chad-liu.github.io/Timeline/people.json`；Timeline 還沒部署時，可先在 Timeline 那邊 `npm run build`，再用 `--source <本機路徑>\dist\people.json` 讀本機檔案。
+  預設讀取線上的 `https://liu-timeline.pages.dev/people.json`；Timeline 還沒部署時，可先在 Timeline 那邊 `npm run build`，再用 `--source <本機路徑>\dist\people.json` 讀本機檔案。
 
 - 要新增或拿掉某頁的連結，改 Timeline 那邊的 `related:`，push 並等部署完成後，再回來重跑腳本。
 - 某頁不再被任何人 `related` 到時，重跑會清掉它殘留的舊區塊。
