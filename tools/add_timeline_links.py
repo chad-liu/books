@@ -10,7 +10,8 @@ related:，部署後再重跑這支腳本。
 
 連結區塊以 <!--timeline-links--> … <!--/timeline-links--> 標記，重跑時會先整段移除再插入，
 可重複執行；不再被任何時間軸 related 到的頁面，舊區塊也會一併移除。
-插入位置：頁面的 <footer> 之前；沒有 <footer> 的頁面放在 </body> 之前，兩者都沒有就接在檔尾。
+插入位置：頁面最後面，也就是最後一個 </body> 之前（在 <footer> 之後）；沒有 </body> 就接在檔尾。
+左側目錄是 nav{position:fixed…} 的頁面例外，放在最後一個 </main> 之前，否則會被目錄蓋住。
 沿用原檔的換行（CRLF 或 LF），不會改動區塊以外的任何內容。
 
     python tools/add_timeline_links.py                  # 讀線上的 people.json 與 timelines.json 更新所有頁面
@@ -34,7 +35,8 @@ MARK_START, MARK_END = '<!--timeline-links-->', '<!--/timeline-links-->'
 
 # 區塊本身加上它結尾的換行：插入時是「區塊＋換行」，移除時整段拿掉，原檔就完全還原
 BLOCK_RE = re.compile(re.escape(MARK_START) + r'.*?' + re.escape(MARK_END) + r'\r?\n', re.S)
-NAV_STYLE = 'max-width:960px;margin:28px auto 0;padding:0 16px;text-align:center;font-size:14px;color:#475569'
+FIXED_NAV_RE = re.compile(r'(?<![\w.#-])nav\s*\{[^}]*position\s*:\s*fixed')
+NAV_STYLE ='max-width:960px;margin:28px auto 0;padding:0 16px;text-align:center;font-size:14px;color:#475569'
 LINK_STYLE = 'color:#1d4ed8;text-decoration:none;margin:0 6px;white-space:nowrap'
 
 
@@ -55,7 +57,9 @@ def block(links, nl):
         )
         if anchors:
             parts.append(f'{heading}：{anchors}')
-    return f'{MARK_START}<nav class="timeline-links" style="{NAV_STYLE}">{"<br>".join(parts)}</nav>{MARK_END}{nl}'
+    # 用 <div> 而不是 <nav>：不少頁面的 CSS 以 nav{position:fixed;left:0…} 排左側目錄、腳本以 querySelector('nav') 找目錄，
+    # 用 <nav> 會被套上同樣的樣式而蓋住目錄
+    return f'{MARK_START}<div class="timeline-links" style="{NAV_STYLE}">{"<br>".join(parts)}</div>{MARK_END}{nl}'
 
 
 def updated(text, links):
@@ -63,10 +67,12 @@ def updated(text, links):
     text = BLOCK_RE.sub('', text)
     if not links:
         return text
-    for marker in ('<footer', '</body>'):
-        i = text.find(marker)
-        if i >= 0:
-            return text[:i] + block(links, nl) + text[i:]
+    # 左側目錄是 position:fixed 的頁面，<main> 之外的內容會被目錄蓋住，所以放在 </main> 之前（主欄的最後面）
+    i = text.rfind('</main>') if FIXED_NAV_RE.search(text) else -1
+    if i < 0:
+        i = text.rfind('</body>')
+    if i >= 0:
+        return text[:i] + block(links, nl) + text[i:]
     if not text.endswith('\n'):
         text += nl
     return text + block(links, nl)
