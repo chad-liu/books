@@ -5,6 +5,7 @@
 莫札特(1756~1791，Wolfgang Amadeus Mozart)
 莫札特行旅
 貝多芬(1770~1827，Ludwig van Beethoven)
+貝多芬行旅
 羅西尼(1792~1868，Gioachino Antonio Rossini)
 舒伯特(1797~1828，Franz Peter Schubert)
 白遼士(1803~1869，Louis-Hector Berlioz)
@@ -19,6 +20,7 @@
 史麥塔納(1824~1884，Bedřich Smetana)
 布魯克納(1824~1896，Joseph Anton Bruckner)
 布拉姆斯(1833~1897，Johannes Brahms)
+布拉姆斯行旅
 鮑羅定(1833~1887，Alexander Borodin)
 比才(1838~1875，Georges Bizet)
 柴可夫斯基(1840~1893，Pyotr Ilyich Tchaikovsky)
