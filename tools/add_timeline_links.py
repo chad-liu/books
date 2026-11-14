@@ -1,18 +1,21 @@
-"""在知識圖譜頁面加上「生平時間軸」連結，指向 Liu's Timeline（https://liu-timeline.pages.dev/）。
+"""在知識圖譜頁面加上「生平時間軸」與「相關時間軸」連結，指向 Liu's Timeline（https://liu-timeline.pages.dev/）。
 
-對應關係不另外維護，直接讀 Timeline 公開的人物索引 people.json：每位人物的 related 連結裡，
-凡是指向本站 html\\ 頁面的，該頁就連回這位人物的時間軸。一頁可以連到多位人物（例如學派頁），
-順序照 people.json（類別、再依出生）；連結文字是「名字（生卒年）」。
-所以要讓某頁出現或拿掉某人的連結，是去改 Timeline 那條時間軸的 related:，部署後再重跑這支腳本。
+對應關係不另外維護，直接讀 Timeline 公開的兩份索引：
+- people.json（人物）：每位人物的 related 連結裡，凡是指向本站 html\\ 頁面的，該頁就連回這位人物的時間軸，
+  列在「生平時間軸：」之後，連結文字是「名字（生卒年）」，順序照 people.json（類別、再依出生）。
+- timelines.json（戰爭、時代、學派等非人物時間軸）：規則相同，列在「相關時間軸：」之後，連結文字是時間軸標題，
+  順序照 timelines.json（類別、再依最早日期）。兩種都有時分兩行。
+一頁可以連到多條時間軸（例如學派頁）。所以要讓某頁出現或拿掉某條時間軸的連結，是去改 Timeline 那條時間軸的
+related:，部署後再重跑這支腳本。
 
 連結區塊以 <!--timeline-links--> … <!--/timeline-links--> 標記，重跑時會先整段移除再插入，
-可重複執行；不再被任何人物 related 到的頁面，舊區塊也會一併移除。
+可重複執行；不再被任何時間軸 related 到的頁面，舊區塊也會一併移除。
 插入位置：頁面的 <footer> 之前；沒有 <footer> 的頁面放在 </body> 之前，兩者都沒有就接在檔尾。
 沿用原檔的換行（CRLF 或 LF），不會改動區塊以外的任何內容。
 
-    python tools/add_timeline_links.py                  # 讀線上的 people.json 更新所有頁面
+    python tools/add_timeline_links.py                  # 讀線上的 people.json 與 timelines.json 更新所有頁面
     python tools/add_timeline_links.py --check          # 只列出會變動的頁面，不寫檔
-    python tools/add_timeline_links.py --source D:/Notes-Timeline/dist/people.json   # 改讀本機檔案（Timeline 尚未部署時）
+    python tools/add_timeline_links.py --source D:/Notes-Timeline/dist   # 改讀本機的 dist（Timeline 尚未部署時）
 """
 
 import argparse
@@ -25,7 +28,7 @@ from pathlib import Path
 
 BOOKS_ROOT = Path(__file__).resolve().parent.parent
 HTML_ROOT = BOOKS_ROOT / 'html'
-PEOPLE_URL = 'https://liu-timeline.pages.dev/people.json'
+TIMELINE_SITE = 'https://liu-timeline.pages.dev'
 BOOKS_HTML_URL = 'https://chad-liu.github.io/books/html/'
 MARK_START, MARK_END = '<!--timeline-links-->', '<!--/timeline-links-->'
 
@@ -40,62 +43,74 @@ def quote_attr(url):
     return url.replace('"', '%22')
 
 
-def block(people, nl):
-    links = ''.join(
-        f'<a href="{quote_attr(p["url"])}" target="_blank" rel="noopener" style="{LINK_STYLE}">{html.escape(p["label"])} ↗</a>'
-        for p in people
-    )
-    return f'{MARK_START}<nav class="timeline-links" style="{NAV_STYLE}">生平時間軸：{links}</nav>{MARK_END}{nl}'
+SECTIONS = (('people', '生平時間軸'), ('timelines', '相關時間軸'))
 
 
-def updated(text, people):
+def block(links, nl):
+    parts = []
+    for kind, heading in SECTIONS:
+        anchors = ''.join(
+            f'<a href="{quote_attr(link["url"])}" target="_blank" rel="noopener" style="{LINK_STYLE}">{html.escape(link["label"])} ↗</a>'
+            for link in links.get(kind, [])
+        )
+        if anchors:
+            parts.append(f'{heading}：{anchors}')
+    return f'{MARK_START}<nav class="timeline-links" style="{NAV_STYLE}">{"<br>".join(parts)}</nav>{MARK_END}{nl}'
+
+
+def updated(text, links):
     nl = '\r\n' if '\r\n' in text else '\n'
     text = BLOCK_RE.sub('', text)
-    if not people:
+    if not links:
         return text
     for marker in ('<footer', '</body>'):
         i = text.find(marker)
         if i >= 0:
-            return text[:i] + block(people, nl) + text[i:]
+            return text[:i] + block(links, nl) + text[i:]
     if not text.endswith('\n'):
         text += nl
-    return text + block(people, nl)
+    return text + block(links, nl)
 
 
-def load_people(source):
+def load_index(source, kind):
+    """讀 <source>/<kind>.json 裡的 <kind> 陣列；source 是 Timeline 網站網址或本機資料夾。"""
     if source.startswith(('http://', 'https://')):
         # Cloudflare Pages 會擋 Python 預設的 "Python-urllib/x.y" User-Agent（回 403）
-        req = urllib.request.Request(source, headers={'User-Agent': 'books-timeline-links'})
+        req = urllib.request.Request(f'{source.rstrip("/")}/{kind}.json', headers={'User-Agent': 'books-timeline-links'})
         with urllib.request.urlopen(req) as res:
-            return json.load(res)['people']
-    return json.loads(Path(source).read_text(encoding='utf-8'))['people']
+            return json.load(res)[kind]
+    return json.loads((Path(source) / f'{kind}.json').read_text(encoding='utf-8'))[kind]
 
 
-def pages_from(people):
-    """html\\ 相對路徑 → 連到該頁的人物（{url, label}），依 people.json 的順序。"""
+def pages_from(people, timelines):
+    """html\\ 相對路徑 → {'people': [...], 'timelines': [...]}，每項是 {url, label}，依兩份索引各自的順序。"""
     pages = {}
-    for person in people:
-        link = {'url': person['url'], 'label': f"{person['name']}（{person['years']}）"}
-        for related in person.get('related', []):
+    entries = [('people', p, f"{p['name']}（{p['years']}）") for p in people]
+    entries += [('timelines', t, t['title']) for t in timelines]
+    for kind, entry, label in entries:
+        link = {'url': entry['url'], 'label': label}
+        for related in entry.get('related', []):
             url = related['url']
             if url.startswith(BOOKS_HTML_URL):
                 rel = urllib.parse.unquote(url[len(BOOKS_HTML_URL):].split('#')[0])
-                if link not in pages.setdefault(rel, []):
-                    pages[rel].append(link)
+                bucket = pages.setdefault(rel, {}).setdefault(kind, [])
+                if link not in bucket:
+                    bucket.append(link)
     return pages
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--check', action='store_true', help='只列出會變動的頁面')
-    ap.add_argument('--source', default=PEOPLE_URL, help='people.json 的網址或本機路徑')
+    ap.add_argument('--source', default=TIMELINE_SITE, help='Timeline 網站網址，或含 people.json 與 timelines.json 的本機資料夾')
     args = ap.parse_args()
 
-    people = load_people(args.source)
+    people = load_index(args.source, 'people')
+    timelines = load_index(args.source, 'timelines')
     # 舊版 people.json 沒有 related，照跑會把所有頁面的連結區塊清光
     if not any('related' in p for p in people):
-        raise SystemExit(f'{args.source} 沒有 related 欄位，不更新任何頁面')
-    pages = pages_from(people)
+        raise SystemExit(f'{args.source} 的 people.json 沒有 related 欄位，不更新任何頁面')
+    pages = pages_from(people, timelines)
     # 已經沒有人物 related 到、但頁面上還留著舊區塊的，也要清掉
     targets = set(pages) | {
         p.relative_to(HTML_ROOT).as_posix()
@@ -109,7 +124,7 @@ def main():
             missing.append(rel)
             continue
         text = path.read_bytes().decode('utf-8')   # 不做換行轉換
-        new = updated(text, pages.get(rel, []))
+        new = updated(text, pages.get(rel, {}))
         if new != text:
             changed.append(rel)
             if not args.check:
