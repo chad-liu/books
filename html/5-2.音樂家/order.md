@@ -1,6 +1,7 @@
 韋瓦第(1678~1741，Antonio Lucio Vivaldi)
 韓德爾(1685~1759，George Frideric Handel)
 巴赫(1685~1750，Johann Sebastian Bach)
+巴赫行旅
 海頓(1732~1809，Franz Joseph Haydn)
 莫札特(1756~1791，Wolfgang Amadeus Mozart)
 莫札特行旅
@@ -8,11 +9,13 @@
 貝多芬行旅
 羅西尼(1792~1868，Gioachino Antonio Rossini)
 舒伯特(1797~1828，Franz Peter Schubert)
+舒伯特行旅
 白遼士(1803~1869，Louis-Hector Berlioz)
 孟德爾頌(1809~1847，Jakob Ludwig Felix Mendelssohn Bartholdy)
 蕭邦(1810~1849，Frédéric François Chopin)
 舒曼(1810~1856，Robert Schumann)
 李斯特(1811~1886，Liszt Ferenc／Franz Liszt)
+李斯特行旅
 華格納(1813~1883，Wilhelm Richard Wagner)
 威爾第(1813~1901，Giuseppe Verdi)
 法朗克(1822~1890，César Franck)
