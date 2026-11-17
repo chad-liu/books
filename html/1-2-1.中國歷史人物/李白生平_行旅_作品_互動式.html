@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李白生平 × 行旅 × 作品｜互動式探索</title>
+<style>
+:root{--ink:#243044;--muted:#64748b;--paper:#f5f2eb;--card:#fffdf8;--line:#ded8cb;--red:#a94736;--gold:#b58a43;--blue:#496b83;--green:#567b68;--shadow:0 8px 26px rgba(35,43,54,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}
+header{background:linear-gradient(120deg,#26384a,#415d6d 60%,#8c7252);color:#fff;padding:48px max(22px,calc((100% - 1180px)/2)) 38px;position:relative;overflow:hidden}
+header:after{content:"詩";position:absolute;right:8%;top:-65px;font-family:serif;font-size:300px;color:#ffffff0d;pointer-events:none}
+.eyebrow{letter-spacing:.18em;font-size:.78rem;color:#e8d6b2}h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.18;margin:.4rem 0 1rem;position:relative}header p{max-width:760px;color:#e5e9e8;margin:0}
+.hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.hero-tags span{border:1px solid #ffffff55;border-radius:99px;padding:4px 12px;font-size:.82rem}
+nav{position:sticky;top:0;z-index:20;background:#fffdf2ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:9px max(14px,calc((100% - 1180px)/2))}
+nav a{white-space:nowrap;text-decoration:none;color:var(--ink);padding:7px 12px;border-radius:8px;font-size:.9rem}nav a:hover{background:#eee7d9}
+main{max-width:1180px;margin:30px auto;padding:0 20px 70px}.section{margin:38px 0;scroll-margin-top:75px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:17px}.section-head h2{font-size:1.55rem;margin:0}.section-head p{color:var(--muted);margin:0;font-size:.9rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}.stat{background:#ffffff15;border:1px solid #ffffff32;border-radius:12px;padding:12px 15px}.stat b{display:block;font-size:1.45rem}.stat small{color:#e2e6e4}
+.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.panel{padding:20px}.muted{color:var(--muted)}.small{font-size:.86rem}
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.filters input,.filters select{border:1px solid var(--line);background:#fff;border-radius:9px;padding:10px 12px;color:var(--ink);font:inherit}.filters input{min-width:220px;flex:1}
+.timeline{position:relative;padding-left:25px}.timeline:before{content:"";position:absolute;left:8px;top:7px;bottom:8px;width:2px;background:#d7c9ae}
+.event{position:relative;padding:0 0 20px 18px}.event:before{content:"";position:absolute;left:-22px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--red);border:3px solid var(--card);box-shadow:0 0 0 1px var(--red)}
+.event summary{cursor:pointer;list-style:none;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}.event summary::-webkit-details-marker{display:none}.year{font-weight:800;color:var(--red);min-width:105px}.event-title{font-weight:700}.event-body{margin:8px 0 0 117px;color:#4b5563;font-size:.93rem}.event-body span{display:inline-block;background:#f0eadf;border-radius:5px;padding:2px 7px;margin:2px 4px 2px 0;color:#66543b}
+.map-wrap{overflow:hidden}.map-svg{width:100%;height:auto;display:block;background:linear-gradient(#eaf0ed,#f5f0e6);border-radius:11px}.map-svg text{font-family:"Noto Sans TC",sans-serif;fill:#344454}.route{fill:none;stroke:#b15c45;stroke-width:3;stroke-dasharray:7 6;opacity:.85}.place{cursor:pointer}.place circle{fill:#fffaf0;stroke:#a94736;stroke-width:3}.place.active circle{fill:#a94736;stroke:#fff;stroke-width:4}.place text{font-size:13px;font-weight:650}.map-note{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.map-note button,.chip,.btn{border:1px solid var(--line);background:#fff;border-radius:99px;padding:7px 12px;cursor:pointer;color:var(--ink);font:inherit;font-size:.86rem}.map-note button.active,.chip.active,.btn.primary{background:#30495c;color:white;border-color:#30495c}
+.place-info{margin-top:14px;padding:14px;background:#f5f0e6;border-radius:10px;min-height:72px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.work{padding:16px;display:flex;flex-direction:column;gap:6px}.work h3{font-size:1.05rem;margin:0}.work .meta{font-size:.8rem;color:var(--red);font-weight:700}.work p{margin:0;color:#596579;font-size:.9rem}.work button{align-self:flex-start;margin-top:6px}
+.pill{display:inline-block;border-radius:99px;background:#efe7d8;color:#6b5635;padding:2px 8px;font-size:.75rem}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}.compare .panel h3{margin:0 0 7px}.quote{font-family:serif;font-size:1.15rem;line-height:2;color:#394a5b;border-left:3px solid var(--gold);padding-left:15px;margin:12px 0}
+details.work-detail{border-top:1px solid var(--line);padding-top:10px;margin-top:6px}details.work-detail summary{cursor:pointer;color:var(--blue);font-size:.87rem}
+footer{text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding:25px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d6a74d;outline-offset:2px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr 1fr}.event-body{margin-left:0}.year{min-width:80px}.compare{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:4px}}
+@media(max-width:480px){.cards{grid-template-columns:1fr}.panel{padding:15px}header{padding-top:35px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="eyebrow">TANG DYNASTY · POETRY & TRAVEL</div>
+ <h1>李白生平 × 行旅 × 作品</h1>
+ <p>沿著詩人的生命軌跡，從巴蜀出發，順長江東下，漫遊吳越與中原，走進長安，又在安史之亂後漂泊江南。以年代、地理與詩作交織，閱讀「詩仙」如何把人生化為詩。</p>
+ <div class="hero-tags"><span>生平時間軸</span><span>行旅路線圖</span><span>代表作品索引</span><span>主題與風格</span></div>
+ <div class="stats">
+  <div class="stat"><b>701–762</b><small>生卒年</small></div><div class="stat"><b>約 61 年</b><small>生命歷程</small></div><div class="stat"><b>巴蜀至江南</b><small>主要活動區域</small></div><div class="stat"><b>浪漫主義</b><small>文學定位</small></div>
+ </div>
+</header>
+<nav><a href="#timeline">生平年表</a><a href="#journey">行旅地圖</a><a href="#works">作品索引</a><a href="#themes">主題分類</a><a href="#reading">名作細讀</a><a href="#notes">研究提醒</a></nav>
+<main>
+<section class="section" id="timeline">
+ <div class="section-head"><h2>一、李白生平時間軸</h2><p>點選各年代展開事件與相關作品</p></div>
+ <div class="panel">
+  <div class="filters"><input id="timelineSearch" placeholder="搜尋年代、地點、事件或作品…"><select id="periodFilter"><option value="all">全部人生階段</option><option value="early">少年與蜀中</option><option value="travel">漫遊與求仕</option><option value="court">長安翰林</option><option value="late">亂世與晚年</option></select></div>
+  <div class="timeline" id="timelineList"></div>
+  <p class="small muted">年齡按虛歲約略標示；部分行旅年份、作品繫年與出生地考證仍有不同說法。</p>
+ </div>
+</section>
+<section class="section" id="journey">
+ <div class="section-head"><h2>二、主要行旅路線</h2><p>示意圖，非精確比例地圖；點選地名查看行旅與作品線索</p></div>
+ <div class="panel map-wrap">
+  <svg class="map-svg" viewBox="0 0 900 570" role="img" aria-label="李白主要行旅地點示意圖">
+   <path d="M55 390 Q130 330 210 350 T365 310 T500 350 T650 300 T840 345" fill="none" stroke="#91b5bd" stroke-width="24" opacity=".25"/>
+   <path d="M55 390 Q130 330 210 350 T365 310 T500 350 T650 300 T840 345" fill="none" stroke="#6e9eaa" stroke-width="2" stroke-dasharray="4 8"/>
+   <path class="route" d="M120 365 L205 405 L295 365 L390 310 L480 370 L600 300 L720 245 L650 300 L545 430 L690 450"/>
+   <path class="route" d="M390 310 L510 210 L610 145 L720 245"/>
+   <path class="route" d="M600 300 L760 350 L690 450"/>
+   <text x="90" y="320" font-size="16" fill="#668b94">長江流域（示意）</text>
+   <g class="place" data-place="jiangyou" transform="translate(120 365)"><circle r="9"/><text x="-22" y="-18">江油／蜀中</text></g>
+   <g class="place" data-place="chengdu" transform="translate(205 405)"><circle r="7"/><text x="-30" y="25">成都</text></g>
+   <g class="place" data-place="emei" transform="translate(165 455)"><circle r="7"/><text x="-25" y="25">峨眉山</text></g>
+   <g class="place" data-place="chongqing" transform="translate(295 365)"><circle r="7"/><text x="-25" y="-18">渝州</text></g>
+   <g class="place" data-place="jingzhou" transform="translate(390 310)"><circle r="8"/><text x="-30" y="-18">江陵／荊州</text></g>
+   <g class="place" data-place="wuhan" transform="translate(480 370)"><circle r="8"/><text x="-30" y="25">江夏／武漢</text></g>
+   <g class="place" data-place="dongting" transform="translate(430 455)"><circle r="7"/><text x="-35" y="25">洞庭湖</text></g>
+   <g class="place" data-place="nanjing" transform="translate(600 300)"><circle r="8"/><text x="-20" y="-18">金陵</text></g>
+   <g class="place" data-place="yangzhou" transform="translate(650 245)"><circle r="7"/><text x="-25" y="-18">揚州</text></g>
+   <g class="place" data-place="shaoxing" transform="translate(760 350)"><circle r="7"/><text x="-22" y="-18">越中</text></g>
+   <g class="place" data-place="anlu" transform="translate(510 210)"><circle r="7"/><text x="-22" y="-18">安陸</text></g>
+   <g class="place" data-place="luoyang" transform="translate(610 145)"><circle r="7"/><text x="-22" y="-18">洛陽</text></g>
+   <g class="place" data-place="changan" transform="translate(510 95)"><circle r="8"/><text x="-25" y="-18">長安</text></g>
+   <g class="place" data-place="jinan" transform="translate(720 160)"><circle r="7"/><text x="-22" y="-18">齊魯</text></g>
+   <g class="place" data-place="lushan" transform="translate(545 430)"><circle r="7"/><text x="-22" y="25">廬山</text></g>
+   <g class="place" data-place="xuancheng" transform="translate(690 450)"><circle r="8"/><text x="-28" y="25">宣城</text></g>
+   <g class="place" data-place="dangtu" transform="translate(650 390)"><circle r="7"/><text x="-22" y="25">當塗</text></g>
+   <text x="25" y="535" font-size="12" opacity=".7">西 ←</text><text x="835" y="535" font-size="12" opacity=".7">→ 東</text>
+  </svg>
+  <div class="map-note" id="placeButtons"></div>
+  <div class="place-info" id="placeInfo"><b>選擇地點</b><div class="small muted">點選地圖上的圓點或下方地名，查看李白在此地的活動及作品線索。</div></div>
+ </div>
+ <p class="small muted">路線僅整理主要活動區域，不代表每一段旅程均可精確復原。李白多次往返同一地區，且不同研究對部分行程的年份判定不一。</p>
+</section>
+<section class="section" id="works">
+ <div class="section-head"><h2>三、代表作品索引</h2><p>可依作品名稱、地點、主題與人生階段搜尋</p></div>
+ <div class="panel">
+  <div class="filters"><input id="workSearch" placeholder="搜尋作品、詩句、主題或地點…"><select id="themeFilter"><option value="all">全部主題</option><option>山水自然</option><option>送別友情</option><option>飲酒人生</option><option>政治抱負</option><option>懷古詠史</option><option>神遊想像</option><option>思鄉羈旅</option></select><select id="stageFilter"><option value="all">全部階段</option><option>蜀中與出蜀</option><option>漫遊時期</option><option>長安時期</option><option>晚年與亂世</option></select></div>
+  <div class="cards" id="workCards"></div>
+  <p id="workCount" class="small muted"></p>
+ </div>
+</section>
+<section class="section" id="themes">
+ <div class="section-head"><h2>四、作品主題與文學特色</h2><p>由詩作看李白的精神世界</p></div>
+ <div class="cards">
+  <article class="card work"><span class="pill">山水自然</span><h3>雄奇壯麗、物我交融</h3><p>以誇張、想像與鮮明動態描寫山川，將自然景觀轉化為精神境界。</p><p class="small"><b>代表：</b>《望廬山瀑布》、《望天門山》</p></article>
+  <article class="card work"><span class="pill">飲酒人生</span><h3>生命短暫與自我肯定</h3><p>飲酒既是歡樂，也是面對失意、時間流逝與生命困境的方式。</p><p class="small"><b>代表：</b>《將進酒》、《月下獨酌》</p></article>
+  <article class="card work"><span class="pill">政治抱負</span><h3>功業理想與不遇之感</h3><p>渴望建功立業、施展才華，卻屢受現實阻礙，形成昂揚與失落並存的張力。</p><p class="small"><b>代表：</b>《行路難》、《梁甫吟》</p></article>
+  <article class="card work"><span class="pill">送別友情</span><h3>真摯情感與空間遠景</h3><p>常以江水、孤帆、遠山呈現離別，不直說愁苦而讓景物承載情感。</p><p class="small"><b>代表：</b>《黃鶴樓送孟浩然之廣陵》、《贈汪倫》</p></article>
+  <article class="card work"><span class="pill">懷古詠史</span><h3>歷史盛衰與時間意識</h3><p>借古蹟、舊都與歷史人物，感嘆繁華消逝與世事變遷。</p><p class="small"><b>代表：</b>《越中覽古》、《登金陵鳳凰臺》</p></article>
+  <article class="card work"><span class="pill">神遊想像</span><h3>超越現實與精神自由</h3><p>融合神話、道教意象、夢境與奇想，建構超越現實秩序的世界。</p><p class="small"><b>代表：</b>《夢遊天姥吟留別》、《蜀道難》</p></article>
+ </div>
+</section>
+<section class="section" id="reading">
+ <div class="section-head"><h2>五、六首名作細讀</h2><p>行旅背景、名句與作品意義</p></div>
+ <div class="compare">
+  <article class="panel"><h3>《渡荊門送別》｜出蜀遠遊</h3><div class="quote">山隨平野盡，江入大荒流。<br>仍憐故鄉水，萬里送行舟。</div><p class="small muted">約725年前後。李白離開蜀地，沿長江東下。由山地進入平原的視野變化，與離鄉之情交織。</p></article>
+  <article class="panel"><h3>《黃鶴樓送孟浩然之廣陵》｜友情送別</h3><div class="quote">孤帆遠影碧空盡，<br>唯見長江天際流。</div><p class="small muted">李白送孟浩然東下揚州。詩以目送孤帆至消失，將惜別之情延伸到江天盡處。</p></article>
+  <article class="panel"><h3>《蜀道難》｜故鄉山川與想像</h3><div class="quote">噫籲嚱，危乎高哉！<br>蜀道之難，難於上青天！</div><p class="small muted">創作年代與具體背景有爭議。詩以蜀道險峻為核心，融合神話、歷史與誇飾，形成雄奇想像。</p></article>
+  <article class="panel"><h3>《夢遊天姥吟留別》｜精神自由</h3><div class="quote">安能摧眉折腰事權貴，<br>使我不得開心顏！</div><p class="small muted">通常與李白漫遊吳越的經驗相聯繫。夢境由瑰麗仙境轉入現實宣言，凸顯不願屈從權貴的自我意識。</p></article>
+  <article class="panel"><h3>《早發白帝城》｜遇赦東還</h3><div class="quote">朝辭白帝彩雲間，<br>千里江陵一日還。</div><p class="small muted">759年流放途中遇赦。輕舟疾行與兩岸猿聲，傳達重獲自由的輕快與欣喜。</p></article>
+  <article class="panel"><h3>《獨坐敬亭山》｜晚年孤寂</h3><div class="quote">相看兩不厭，<br>只有敬亭山。</div><p class="small muted">通常繫於晚年宣城時期。詩人將山視為相知者，在孤獨中建立與自然的精神聯繫。</p></article>
+ </div>
+</section>
+<section class="section" id="notes">
+ <div class="section-head"><h2>六、研究提醒與延伸閱讀</h2></div>
+ <div class="panel">
+  <h3>閱讀李白生平時，需留意三項考證問題</h3>
+  <ol>
+   <li><b>出生地：</b>李白出生於碎葉的說法流傳甚廣，但出生地與幼年遷居經過仍有學術討論；不宜把單一說法視為毫無爭議的定論。</li>
+   <li><b>作品繫年：</b>許多詩作無明確紀年，後人依詩中地名、人物、事件與風格推定，故不同年譜可能略有差異。</li>
+   <li><b>行旅路線：</b>李白多次往返長江中下游及中原，詩中地名不一定等於確切寫作地點，也不一定是親歷紀錄。</li>
+  </ol>
+  <h3>建議參考</h3>
+  <ul>
+   <li>《李太白全集》及不同版本的校注本。</li>
+   <li>李白年譜、唐代交通地理與唐代文學地理研究。</li>
+   <li>以詩中地名、交遊人物與歷史事件交叉考證作品年代。</li>
+  </ul>
+  <p class="small muted">本頁為教學與研究導覽，年表及作品繫年採常見整理方式；若作為學術論文或正式教材，宜再逐首核對所採校注本與年譜。</p>
+ </div>
+</section>
+</main>
+<footer>李白生平 × 行旅 × 作品｜單頁互動式學習資料 · 可離線瀏覽</footer>
+<script>
+const events=[
+{y:"701",age:"1歲",stage:"early",title:"出生",place:"出生地有碎葉、蜀中等不同說法。",works:"—"},
+{y:"約705–718",age:"幼年",stage:"early",title:"遷居蜀中、成長求學",place:"幼年隨家人遷居蜀地，成長活動與綿州昌隆（今四川江油）相關；讀書習文，接觸道教文化。",works:"《訪戴天山道士不遇》等早期作品線索"},
+{y:"718–724",age:"18–24歲",stage:"early",title:"蜀中漫遊",place:"遊歷成都、峨眉山、青城山及蜀中山川，累積山水經驗。",works:"《峨眉山月歌》、《聽蜀僧濬彈琴》"},
+{y:"724–725",age:"24–25歲",stage:"travel",title:"出蜀東遊",place:"離開四川，循長江經三峽、荊門，進入荊楚地區。",works:"《渡荊門送別》、《峨眉山月歌》"},
+{y:"726–727",age:"26–27歲",stage:"travel",title:"遊歷江南與吳越",place:"往來洞庭、金陵、揚州及越中等地，展開廣泛漫遊。",works:"《望天門山》、《越中覽古》"},
+{y:"約727–735",age:"27–35歲",stage:"travel",title:"安陸生活與往來交遊",place:"以湖北安陸一帶為生活據點，往來襄陽、江夏等地，建立文士交遊網絡。",works:"《贈孟浩然》等"},
+{y:"約736–741",age:"36–41歲",stage:"travel",title:"漫遊齊魯、梁宋與中原",place:"遊歷山東、河南等地，與友人及隱逸之士交往，尋求政治機會。",works:"《梁園吟》、《將進酒》等作品常置於此一漫遊背景討論"},
+{y:"742",age:"42歲",stage:"court",title:"奉詔入長安",place:"受召入京，供奉翰林，短暫接近唐玄宗朝廷。",works:"《清平調》三首"},
+{y:"744",age:"44歲",stage:"court",title:"離開長安；與杜甫相識",place:"離開宮廷生活，往來洛陽、梁宋等地，與杜甫、高適等交遊。",works:"《行路難》、《玉壺吟》等可與仕途失意背景參讀"},
+{y:"約745–754",age:"45–54歲",stage:"travel",title:"再度漫遊江南與中原",place:"往來齊魯、梁宋、吳越、宣城、金陵及廬山等地。",works:"《夢遊天姥吟留別》、《望廬山瀑布》、《宣州謝朓樓餞別校書叔雲》"},
+{y:"755–756",age:"55–56歲",stage:"late",title:"安史之亂與避亂",place:"安史之亂爆發後，李白避居江南一帶；其後接受永王李璘徵召。",works:"《永王東巡歌》"},
+{y:"757",age:"57歲",stage:"late",title:"永王兵敗、入獄與流放判決",place:"永王兵敗後李白受牽連入獄，後判長流夜郎。",works:"相關獄中詩及自述作品"},
+{y:"758–759",age:"58–59歲",stage:"late",title:"流放夜郎，途中遇赦",place:"西行流放，行經三峽一帶；759年遇赦，沿長江東還。",works:"《早發白帝城》"},
+{y:"760–761",age:"60–61歲",stage:"late",title:"晚年往來江夏、金陵、宣城",place:"在長江中下游一帶活動，生活與健康狀況逐漸轉差。",works:"《獨坐敬亭山》、《秋登宣城謝朓北樓》"},
+{y:"762",age:"約62歲（虛歲）",stage:"late",title:"病逝當塗",place:"晚年投靠族叔李陽冰，於安徽當塗去世。",works:"《臨終歌》（題名及真偽有討論）"}
+];
+const eventsEl=document.getElementById('timelineList');
+function renderTimeline(){
+ const q=document.getElementById('timelineSearch').value.trim().toLowerCase(), f=document.getElementById('periodFilter').value;
+ const list=events.filter(e=>(f==='all'||e.stage===f)&&(!q||[e.y,e.age,e.title,e.place,e.works].join(' ').toLowerCase().includes(q)));
+ eventsEl.innerHTML=list.map(e=>`<details class="event"><summary><span class="year">${e.y}｜${e.age}</span><span class="event-title">${e.title}</span></summary><div class="event-body">${e.place}<br><span>相關作品</span>${e.works}</div></details>`).join('')||'<p class="muted">沒有符合條件的年表項目。</p>';
+}
+document.getElementById('timelineSearch').addEventListener('input',renderTimeline);document.getElementById('periodFilter').addEventListener('change',renderTimeline);renderTimeline();
+const places={
+jiangyou:["江油／蜀中","少年成長、讀書與早期漫遊的重要區域。可連結《訪戴天山道士不遇》等作品。"],
+chengdu:["成都","蜀中重要城市，李白青年時期活動範圍之一。"],
+emei:["峨眉山","蜀地山水經驗的重要象徵，與《峨眉山月歌》的月夜意象相連。"],
+chongqing:["渝州","長江出蜀行程中的重要區域，反映由巴蜀進入長江航道的移動。"],
+jingzhou:["江陵／荊州","出蜀東遊經過的荊楚地區；《渡荊門送別》以出蜀後的地景變化為核心。"],
+wuhan:["江夏／武漢","李白多次活動、交遊的長江中游區域，與送別及登臨詩相關。"],
+dongting:["洞庭湖","李白遊歷楚地時接觸的重要湖區，常與洞庭、岳陽一帶詩作脈絡並讀。"],
+nanjing:["金陵","六朝故都，李白多次遊歷；歷史興亡意識見於《登金陵鳳凰臺》等作品。"],
+yangzhou:["揚州","唐代繁華都市；《黃鶴樓送孟浩然之廣陵》中的送別目的地。"],
+shaoxing:["越中","吳越遊歷的重要區域；《越中覽古》借越王故地思考盛衰。"],
+anlu:["安陸","李白曾在此生活並以周邊為活動中心，與其早期交遊及求仕階段相關。"],
+luoyang:["洛陽","中原重要都會，李白漫遊、交遊與往返活動所及之地。"],
+changan:["長安","742年奉詔入京、供奉翰林；宮廷經歷短暫，後離開。"],
+jinan:["齊魯","李白曾遊歷齊魯地區，與友人交遊、訪道及漫遊經驗相關。"],
+lushan:["廬山","壯麗山水成為李白重要創作題材，《望廬山瀑布》最具代表性。"],
+xuancheng:["宣城","李白晚年多次遊歷之地，《獨坐敬亭山》、《秋登宣城謝朓北樓》常與此地連結。"],
+dangtu:["當塗","李白晚年投靠族叔李陽冰，並於此地去世。"]
+};
+const placeButtons=document.getElementById('placeButtons'),placeInfo=document.getElementById('placeInfo');
+function choosePlace(id){const p=places[id];if(!p)return;document.querySelectorAll('.place').forEach(x=>x.classList.toggle('active',x.dataset.place===id));document.querySelectorAll('[data-place-btn]').forEach(x=>x.classList.toggle('active',x.dataset.placeBtn===id));placeInfo.innerHTML=`<b>${p[0]}</b><div class="small">${p[1]}</div>`;}
+placeButtons.innerHTML=Object.entries(places).map(([id,p])=>`<button data-place-btn="${id}">${p[0]}</button>`).join('');
+document.querySelectorAll('.place').forEach(el=>el.addEventListener('click',()=>choosePlace(el.dataset.place)));
+placeButtons.querySelectorAll('button').forEach(el=>el.addEventListener('click',()=>choosePlace(el.dataset.placeBtn)));
+const works=[
+{n:"渡荊門送別",theme:"思鄉羈旅",stage:"蜀中與出蜀",place:"荊門、長江",line:"山隨平野盡，江入大荒流。",desc:"出蜀東行，透過山勢漸平、江流開闊的景象，寫出空間轉換與故鄉依戀。",year:"約725年"},
+{n:"峨眉山月歌",theme:"山水自然",stage:"蜀中與出蜀",place:"峨眉山、平羌江",line:"峨眉山月半輪秋，影入平羌江水流。",desc:"以月影伴隨舟行，將蜀地山水與離鄉旅程連結。",year:"出蜀前後，繫年有異說"},
+{n:"黃鶴樓送孟浩然之廣陵",theme:"送別友情",stage:"漫遊時期",place:"黃鶴樓、揚州",line:"孤帆遠影碧空盡，唯見長江天際流。",desc:"以目送孤帆消失的遠景，表現對友人的深情惜別。",year:"約730年代"},
+{n:"贈孟浩然",theme:"送別友情",stage:"漫遊時期",place:"襄陽、交遊",line:"吾愛孟夫子，風流天下聞。",desc:"讚賞孟浩然的人格與詩名，呈現盛唐詩人間的敬慕與交往。",year:"年代有不同推定"},
+{n:"越中覽古",theme:"懷古詠史",stage:"漫遊時期",place:"越中",line:"宮女如花滿春殿，只今惟有鷓鴣飛。",desc:"由昔日繁華轉向今日荒涼，以今昔對照感嘆歷史盛衰。",year:"漫遊吳越期間，繫年未定"},
+{n:"蜀道難",theme:"神遊想像",stage:"漫遊時期",place:"蜀道（題材）",line:"蜀道之難，難於上青天！",desc:"融合地理險阻、神話傳說與歷史警示，形成雄奇奔放的樂府歌行。創作背景有多種說法。",year:"創作年代有爭議"},
+{n:"將進酒",theme:"飲酒人生",stage:"漫遊時期",place:"黃河、友人宴飲背景",line:"天生我材必有用，千金散盡還復來。",desc:"以黃河、宴飲與生命時間感，表現自信、豪情及對人生失意的回應。",year:"通常繫於天寶年間，確年有異說"},
+{n:"行路難（其一）",theme:"政治抱負",stage:"長安時期",place:"仕途失意的象徵空間",line:"長風破浪會有時，直掛雲帆濟滄海。",desc:"以行路艱難比喻政治道路受阻，仍保有乘風破浪的理想。",year:"常與離開長安前後相聯繫"},
+{n:"清平調三首",theme:"山水自然",stage:"長安時期",place:"長安宮廷",line:"雲想衣裳花想容，春風拂檻露華濃。",desc:"奉詔應制之作，以花與美人互相映襯，呈現宮廷詩歌風格。",year:"742–744年"},
+{n:"夢遊天姥吟留別",theme:"神遊想像",stage:"漫遊時期",place:"吳越、天姥山（夢境題材）",line:"安能摧眉折腰事權貴，使我不得開心顏！",desc:"由現實漫遊引入夢境仙山，最後回到不屈服權貴的精神宣言。",year:"通常繫於天寶年間"},
+{n:"望廬山瀑布",theme:"山水自然",stage:"漫遊時期",place:"廬山",line:"飛流直下三千尺，疑是銀河落九天。",desc:"以高度誇張與銀河想像描繪瀑布，展現李白山水詩的雄奇氣勢。",year:"廬山遊歷期間，確年未定"},
+{n:"登金陵鳳凰臺",theme:"懷古詠史",stage:"漫遊時期",place:"金陵",line:"總為浮雲能蔽日，長安不見使人愁。",desc:"登臨古都，借歷史遺跡與眼前景物寄託政治感慨。",year:"作年有不同考證"},
+{n:"早發白帝城",theme:"思鄉羈旅",stage:"晚年與亂世",place:"白帝城、江陵",line:"朝辭白帝彩雲間，千里江陵一日還。",desc:"流放途中遇赦東還，輕快舟行與猿聲山影表現重獲自由的喜悅。",year:"759年"},
+{n:"獨坐敬亭山",theme:"山水自然",stage:"晚年與亂世",place:"宣城、敬亭山",line:"相看兩不厭，只有敬亭山。",desc:"以山為知己，將孤獨轉化為與自然相契的精神境界。",year:"通常繫於晚年宣城時期"},
+{n:"秋登宣城謝朓北樓",theme:"山水自然",stage:"晚年與亂世",place:"宣城",line:"兩水夾明鏡，雙橋落彩虹。",desc:"登樓遠眺，以明麗景物寫秋日宣城，也寄託對前代詩人謝朓的追懷。",year:"晚年宣城活動期間"},
+{n:"贈汪倫",theme:"送別友情",stage:"晚年與亂世",place:"桃花潭",line:"桃花潭水深千尺，不及汪倫送我情。",desc:"以潭水深度比喻友情深厚，是李白送別詩中流傳最廣的作品之一。",year:"作年與具體行程有異說"},
+{n:"月下獨酌",theme:"飲酒人生",stage:"漫遊時期",place:"月夜、庭院意象",line:"舉杯邀明月，對影成三人。",desc:"以月、影與自我構成奇特的對飲場景，寫孤獨、想像與自由。",year:"通常繫於長安前後，確年未定"}
+];
+const workCards=document.getElementById('workCards');
+function renderWorks(){
+ const q=document.getElementById('workSearch').value.trim().toLowerCase(),t=document.getElementById('themeFilter').value,s=document.getElementById('stageFilter').value;
+ const list=works.filter(w=>(t==='all'||w.theme===t)&&(s==='all'||w.stage===s)&&(!q||[w.n,w.theme,w.stage,w.place,w.line,w.desc,w.year].join(' ').toLowerCase().includes(q)));
+ workCards.innerHTML=list.map((w,i)=>`<article class="card work"><div class="meta">${w.year} · ${w.stage}</div><h3>${w.n}</h3><div><span class="pill">${w.theme}</span> <span class="pill">${w.place}</span></div><p class="quote" style="font-size:1rem;margin:5px 0">${w.line}</p><p>${w.desc}</p></article>`).join('')||'<p class="muted">沒有符合條件的作品。</p>';
+ document.getElementById('workCount').textContent=`目前顯示 ${list.length} 首／共 ${works.length} 首收錄作品。作品列表為代表性選錄，並非全集。`;
+}
+['workSearch','themeFilter','stageFilter'].forEach(id=>document.getElementById(id).addEventListener(id==='workSearch'?'input':'change',renderWorks));renderWorks();
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>探究式教學與直接教學｜比較與教學設計</title>
+<style>
+:root{--ink:#243247;--muted:#64748b;--line:#dce4ed;--bg:#f4f7fb;--blue:#245b91;--bluebg:#eaf2fb;--green:#28633b;--greenbg:#eaf5ed;--purple:#70479a;--purplebg:#f3edf9;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.75}
+header{background:linear-gradient(120deg,#173e66,#3975a6);color:white;padding:52px 22px 44px}
+.hero{max-width:1120px;margin:auto}header h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.25;margin:0 0 14px}header p{font-size:1.08rem;max-width:820px;margin:0;color:#e5eff9}
+nav{position:sticky;top:0;z-index:10;background:#ffffffed;border-bottom:1px solid var(--line);backdrop-filter:blur(10px);overflow:auto}
+nav .inner{max-width:1120px;margin:auto;display:flex;gap:8px;padding:10px 18px;white-space:nowrap}
+nav a{color:#38516c;text-decoration:none;padding:7px 11px;border-radius:8px;font-size:.92rem}nav a:hover{background:var(--bluebg);color:var(--blue)}
+main{max-width:1120px;margin:28px auto;padding:0 18px 60px}
+section{scroll-margin-top:75px;margin:28px 0;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 4px 16px #23364b08}
+h2{font-size:1.55rem;margin:0 0 18px;color:#1e4165}h3{font-size:1.12rem;margin:0 0 8px}p{margin:8px 0 14px}.lead{font-size:1.05rem;color:#43566c}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel{border-radius:13px;padding:18px;border:1px solid var(--line);background:#fff}.direct{background:var(--bluebg);border-color:#c9dcef}.inquiry{background:var(--greenbg);border-color:#cde4d2}.guided{background:var(--purplebg);border-color:#dfd1ee}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 9px;border-radius:99px;background:#fff;color:#38516c;margin-bottom:8px}
+ul,ol{padding-left:1.35rem;margin:8px 0}li{margin:5px 0}
+table{width:100%;border-collapse:collapse;font-size:.94rem}th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf2f7;color:#29435f}tr:last-child td{border-bottom:0}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.callout{border-left:4px solid #4b83b6;background:#f0f6fc;padding:14px 17px;border-radius:8px;margin:16px 0}
+.flow{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;align-items:stretch;gap:8px}.step{padding:18px;border-radius:12px}.arrow{display:grid;place-items:center;color:#7b8da1;font-size:1.7rem}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}.controls button{border:1px solid #cbd5e1;background:#fff;border-radius:9px;padding:8px 13px;cursor:pointer;color:#334b65;font:inherit}.controls button.active{background:#245b91;color:white;border-color:#245b91}
+.example{display:none}.example.active{display:block}
+.quiz-q{padding:15px 0;border-bottom:1px solid var(--line)}.quiz-q:last-child{border:0}.quiz-q label{display:block;margin:7px 0;cursor:pointer}.result{font-weight:700;margin-top:12px}
+.small{color:var(--muted);font-size:.9rem}.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ref{border:1px solid var(--line);border-radius:10px;padding:13px}
+footer{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:760px){.grid,.three,.refs{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}section{padding:19px}header{padding:38px 20px}}
+@media print{nav,.controls,.quiz button{display:none}body{background:white}section{box-shadow:none;break-inside:avoid}header{background:#245b91!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<div style="font-weight:700;letter-spacing:.08em;margin-bottom:12px">教學法比較與實務應用</div>
+<h1>探究式教學與直接教學</h1>
+<p>從教學理念、優缺點、學科應用到課程設計，理解兩種教學模式的差異，並學習如何依照學生需求靈活結合。</p>
+</div></header>
+<nav><div class="inner">
+<a href="#concept">基本概念</a><a href="#compare">比較表</a><a href="#pros">優缺點</a><a href="#case">教學案例</a><a href="#guided">引導式探究</a><a href="#design">三階段設計</a><a href="#quiz">自我檢核</a><a href="#theory">相關理論</a>
+</div></nav>
+<main>
+<section id="concept">
+<h2>一、兩種教學法的基本概念</h2>
+<p class="lead">探究式教學以問題為起點，讓學生透過探索建構理解；直接教學則由教師有系統地講解、示範與安排練習，協助學生掌握知識與技能。</p>
+<div class="grid">
+<div class="panel inquiry"><span class="tag">學生主動探索</span><h3>探究式教學（Inquiry-Based Learning）</h3>
+<p>學生從問題出發，經過觀察、提問、提出假設、蒐集資料、分析證據與討論，逐步形成解釋或結論。</p><b>核心：學生是知識的探索者與建構者。</b></div>
+<div class="panel direct"><span class="tag">教師有系統指導</span><h3>直接教學（Direct Instruction）</h3>
+<p>教師明確說明學習目標與概念，示範方法，安排引導練習、回饋及獨立練習，協助學生熟練。</p><b>核心：教師是知識的組織者與學習的指導者。</b></div>
+</div>
+</section>
+<section id="compare">
+<h2>二、教學理念與方法比較</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>比較面向</th><th>探究式教學</th><th>直接教學</th></tr></thead>
+<tbody>
+<tr><td>教學中心</td><td>以學生的探索歷程為中心</td><td>以教師的教學安排為中心</td></tr>
+<tr><td>學習起點</td><td>問題、現象或情境</td><td>明確的教學目標與知識</td></tr>
+<tr><td>教師角色</td><td>引導者、促進者、資源提供者</td><td>講授者、示範者、回饋者</td></tr>
+<tr><td>學生角色</td><td>提問者、探索者、研究者</td><td>理解者、練習者、應用者</td></tr>
+<tr><td>主要方法</td><td>提問、觀察、實驗、討論、論證</td><td>講解、示範、分段練習、檢核</td></tr>
+<tr><td>學習流程</td><td>問題 → 探索 → 證據 → 解釋</td><td>講解 → 示範 → 引導練習 → 獨立練習</td></tr>
+<tr><td>評量重點</td><td>思考歷程、證據運用、作品與表達</td><td>概念理解、正確率、熟練度與遷移</td></tr>
+<tr><td>較適合的情境</td><td>開放問題、資料分析、概念應用</td><td>基礎知識、明確程序、初學技能</td></tr>
+</tbody></table></div>
+</section>
+<section id="pros">
+<h2>三、兩種教學法的優缺點</h2>
+<div class="grid">
+<div class="panel inquiry"><h3>探究式教學</h3><b style="color:#28633b">優點</b><ol><li>培養獨立思考與提問能力。</li><li>練習分析問題、蒐集證據及解決問題。</li><li>從好奇心出發，可能提升學習動機。</li><li>促進跨領域連結、合作與溝通。</li></ol><b style="color:#a04444">限制與風險</b><ol><li>探索耗時，學習效率不一定高。</li><li>缺乏背景知識時，容易形成錯誤理解。</li><li>需要教師精心設計問題與鷹架。</li><li>學生能力差異可能造成參與落差。</li></ol></div>
+<div class="panel direct"><h3>直接教學</h3><b style="color:#28633b">優點</b><ol><li>能有效率地傳授核心知識。</li><li>學習架構清楚，容易由淺入深。</li><li>適合建立基礎知識與程序技能。</li><li>便於即時檢查理解並提供回饋。</li></ol><b style="color:#a04444">限制與風險</b><ol><li>若長期單向講授，學生容易被動。</li><li>可能偏重記憶，忽略原理與應用。</li><li>學生較少練習自行提出問題。</li><li>統一進度未必符合所有學生需求。</li></ol></div>
+</div>
+<div class="callout"><b>重要提醒：</b>探究式教學不等於放任學生自行摸索；直接教學也不等於只要求學生死記。兩者的效果取決於教學目標、教師設計、學生先備知識與實施品質。</div>
+</section>
+<section id="case">
+<h2>四、實際案例：為什麼不同季節的白天長度不一樣？</h2>
+<p>選擇同一個問題，比較兩種教學方式如何安排學習歷程。</p>
+<div class="controls"><button class="active" data-target="inqcase">探究式教學</button><button data-target="dircase">直接教學</button></div>
+<div id="inqcase" class="example active panel inquiry"><h3>探究式教學流程</h3><ol><li><b>提出問題：</b>為什麼夏天白天較長、冬天白天較短？</li><li><b>提出假設：</b>是否因為地球離太陽較近？或地軸傾斜？</li><li><b>蒐集資料：</b>使用地球儀、燈光模型與季節日照資料。</li><li><b>分析證據：</b>比較南北半球不同季節的日照時間。</li><li><b>形成解釋：</b>以地球自轉軸傾斜及公轉說明日照差異。</li></ol><b>學習重點：</b>假設、證據推理、科學解釋。</div>
+<div id="dircase" class="example panel direct"><h3>直接教學流程</h3><ol><li><b>說明概念：</b>教師介紹地球自轉軸傾斜約23.5度。</li><li><b>示範模型：</b>用地球儀與燈光呈現太陽照射情況。</li><li><b>解釋原理：</b>說明太陽高度角與白晝長度如何隨季節改變。</li><li><b>整理重點：</b>學生記錄地軸傾斜、公轉、日照時間等概念。</li><li><b>練習檢核：</b>完成圖表判讀與概念題。</li></ol><b>學習重點：</b>快速掌握核心概念與基本知識。</div>
+</section>
+<section id="guided">
+<h2>五、橋接兩者：引導式探究（Guided Inquiry）</h2>
+<p class="lead">引導式探究不是完全自由探索，也不是教師提供所有答案。教師先提供必要知識、工具與問題架構，再讓學生進行有方向的探索。</p>
+<div class="panel guided"><h3>案例：為什麼工業革命首先發生在英國？</h3>
+<ol><li>教師先講解工業革命的時代背景與基本概念。</li><li>提出核心問題：「為什麼工業革命首先發生在英國？」</li><li>提供地圖、人口、煤礦、貿易與技術發展等資料。</li><li>學生分組分析地理、經濟、科技及社會條件。</li><li>學生提出解釋，並引用資料支持觀點。</li><li>教師補充、修正並統整不同因素之間的關係。</li></ol></div>
+<h3 style="margin-top:22px">三種探究程度比較</h3>
+<div class="table-wrap"><table><thead><tr><th>面向</th><th>直接教學</th><th>引導式探究</th><th>開放式探究</th></tr></thead><tbody>
+<tr><td>問題由誰提出</td><td>教師</td><td>教師或師生共同</td><td>學生</td></tr>
+<tr><td>方法由誰決定</td><td>教師</td><td>師生共同協商</td><td>學生</td></tr>
+<tr><td>教師介入</td><td>高</td><td>中等、適時支援</td><td>較低，但仍需監督</td></tr>
+<tr><td>學生自主性</td><td>較低</td><td>中高</td><td>高</td></tr>
+<tr><td>適合情境</td><td>初學與基礎建立</td><td>概念應用與深入理解</td><td>具備基礎後的專題研究</td></tr>
+</tbody></table></div>
+</section>
+<section id="subjects">
+<h2>六、不同學科如何選擇教學法？</h2>
+<div class="table-wrap"><table><thead><tr><th>學科／主題</th><th>建議方式</th><th>教學理由</th></tr></thead><tbody>
+<tr><td>國語識字</td><td>直接教學為主</td><td>需要掌握字形、字音、字義與基本規則。</td></tr>
+<tr><td>閱讀理解</td><td>混合</td><td>教師示範理解策略，再讓學生分析文本與討論。</td></tr>
+<tr><td>數學基本運算</td><td>直接教學為主</td><td>先掌握規則、步驟與基本熟練度。</td></tr>
+<tr><td>數學應用題</td><td>混合</td><td>結合解題示範、策略比較與自主解題。</td></tr>
+<tr><td>自然科學</td><td>混合</td><td>先建立必要概念，再透過實驗與證據探究。</td></tr>
+<tr><td>歷史</td><td>混合</td><td>先建立時代背景，再分析史料、因果與觀點。</td></tr>
+<tr><td>地理</td><td>探究＋直接教學</td><td>結合地理概念講解、地圖判讀與區域問題研究。</td></tr>
+<tr><td>藝術</td><td>探究式比重較高</td><td>鼓勵材料實驗、創意表達與多元詮釋。</td></tr>
+<tr><td>哲學</td><td>探究式比重較高</td><td>重視提問、概念分析、論證與觀點比較。</td></tr>
+<tr><td>程式設計</td><td>混合</td><td>語法與工具需要明確教學，問題解決需要自主實作。</td></tr>
+</tbody></table></div>
+</section>
+<section id="design">
+<h2>七、整合式課程：三階段教學設計</h2>
+<p class="lead">可採用「直接教學 → 引導式探究 → 自主應用」的漸進安排，先建立知識，再練習思考，最後獨立運用。</p>
+<div class="flow">
+<div class="step direct"><span class="tag">第一階段</span><h3>建立知識基礎</h3><b>直接教學</b><p>教師講解核心概念、必要背景與基本方法。</p><small>目標：知道是什麼（What）</small></div>
+<div class="arrow">→</div>
+<div class="step guided"><span class="tag">第二階段</span><h3>分析與探索</h3><b>引導式探究</b><p>教師提出問題，學生蒐集資料、分析、討論並提出解釋。</p><small>目標：理解為什麼（Why）</small></div>
+<div class="arrow">→</div>
+<div class="step inquiry"><span class="tag">第三階段</span><h3>自主應用與創造</h3><b>自主探究</b><p>學生自行提出問題、設計方案、發表成果。</p><small>目標：能夠應用與創造（How）</small></div>
+</div>
+<h3 style="margin-top:24px">課程示例：世界人口變化</h3>
+<div class="grid three">
+<div class="panel direct"><h3>1. 建立概念</h3><p>講解出生率、死亡率、自然增加率、人口轉型與人口金字塔。</p></div>
+<div class="panel guided"><h3>2. 比較分析</h3><p>比較日本、印度與部分非洲國家的人口結構與變化。</p></div>
+<div class="panel inquiry"><h3>3. 自主研究</h3><p>研究少子化、人口老化或人口快速成長的社會影響，提出建議。</p></div>
+</div>
+<div class="callout"><b>設計原則：</b>學生越缺乏先備知識，越需要明確教學與鷹架；學生越熟悉領域，越能逐步承擔問題設定、方法選擇與成果評估的責任。</div>
+</section>
+<section id="quiz">
+<h2>八、互動自我檢核</h2>
+<p class="small">選出較適合的教學方式，送出後查看參考答案。這是概念檢核，不代表只有一種教法才正確。</p>
+<div class="quiz-q"><b>1. 學生第一次學習分數除法的基本程序，哪種方式較適合作為起點？</b><label><input type="radio" name="q1" value="a"> A. 完全開放式探究</label><label><input type="radio" name="q1" value="b"> B. 教師示範與引導練習</label></div>
+<div class="quiz-q"><b>2. 學生已理解人口金字塔，接著研究人口老化的社會影響，哪種方式較合適？</b><label><input type="radio" name="q2" value="a"> A. 引導式或自主探究</label><label><input type="radio" name="q2" value="b"> B. 只要求抄寫定義</label></div>
+<div class="quiz-q"><b>3. 探究式教學是否代表教師完全不介入？</b><label><input type="radio" name="q3" value="a"> A. 是，教師不能提供任何提示</label><label><input type="radio" name="q3" value="b"> B. 否，教師仍需提供資源、提問與適當鷹架</label></div>
+<div class="quiz-q"><b>4. 哪一種安排最能整合兩種教學法？</b><label><input type="radio" name="q4" value="a"> A. 先建立必要知識，再引導探究，最後自主應用</label><label><input type="radio" name="q4" value="b"> B. 所有課程都只採用同一種教法</label></div>
+<button onclick="checkQuiz()" style="background:#245b91;color:white;border:0;border-radius:9px;padding:10px 18px;cursor:pointer;font:inherit">檢查答案</button>
+<div id="quizResult" class="result" aria-live="polite"></div>
+</section>
+<section id="theory">
+<h2>九、相關教育學者與理論</h2>
+<div class="refs">
+<div class="ref"><b>約翰・杜威（John Dewey）</b><p>經驗教育、做中學、反思性思考；強調從真實問題與經驗中學習。</p></div>
+<div class="ref"><b>傑羅姆・布魯納（Jerome Bruner）</b><p>發現學習；重視學生主動探索概念與知識結構。</p></div>
+<div class="ref"><b>列夫・維高斯基（Lev Vygotsky）</b><p>近側發展區；說明教師或同儕提供適當支持的重要性。</p></div>
+<div class="ref"><b>大衛・奧蘇貝爾（David Ausubel）</b><p>有意義學習、前導組織；強調先備知識與新知識的連結。</p></div>
+<div class="ref"><b>巴魯・羅森夏因（Barak Rosenshine）</b><p>教學原則；強調小步驟教學、提問、示範、引導練習與回饋。</p></div>
+<div class="ref"><b>理查・梅耶（Richard Mayer）</b><p>多媒體學習認知理論；關注工作記憶、認知負荷與教材設計。</p></div>
+</div>
+</section>
+<section>
+<h2>十、總結：不是二選一，而是適時搭配</h2>
+<p class="lead">直接教學回答「如何有效掌握已知知識」；探究式教學回答「如何運用知識探索問題」。學生需要先有足夠的知識工具，才更能進行有品質的探究；而探究又能讓知識從記憶走向理解、應用與創造。</p>
+<div class="callout"><b>核心建議：</b>不要把教學法當成二選一。依照學習目標、學生先備知識與任務難度，安排明確教學、引導探究與自主應用的比例。</div>
+</section>
+<footer>探究式教學與直接教學｜教學理念、比較與課程設計</footer>
+</main>
+<script>
+document.querySelectorAll('.controls button').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('.controls button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.example').forEach(e=>e.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(btn.dataset.target).classList.add('active');
+ });
+});
+function checkQuiz(){
+ const answers={q1:'b',q2:'a',q3:'b',q4:'a'};let score=0,missing=0;
+ Object.keys(answers).forEach(q=>{const v=document.querySelector('input[name="'+q+'"]:checked');if(!v)missing++;else if(v.value===answers[q])score++;});
+ const out=document.getElementById('quizResult');
+ out.textContent=missing?`你答對 ${score}/4 題，還有 ${missing} 題尚未作答。`:`答對 ${score}/4 題。${score===4?'全部正確！':'可回到相關段落複習，再試一次。'}`;
+}
+</script>
+</body></html>
