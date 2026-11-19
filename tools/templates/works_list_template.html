@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{畫家}}作品列表</title>
+<!--
+作品列表頁樣板（莫內版型）。複製這個檔案，把所有 {{…}} 換成實際內容，存到
+html/9-2-1.作品列表/<畫家>作品列表.html，再把「<畫家>作品列表」加進同資料夾的 order.md。
+
+縮圖的做法（兩步）：
+  1. 每件作品的圖片格寫成  <div class="thumb" data-wiki="英文維基條目標題">作品短名</div>
+     打開頁面時，底部的 thumb-loader 會即時向維基百科取縮圖，可直接在瀏覽器預覽。
+     data-wiki 填英文維基百科的條目標題（重新導向也可以）；想換某件作品的圖，換成別的
+     條目標題即可。查無縮圖的作品會停在「作品短名」文字，不會破圖。
+  2. 定稿後執行  python tools/embed_thumbs.py html/9-2-1.作品列表/<畫家>作品列表.html
+     它會把縮圖下載並以 base64 內嵌、刪掉 thumb-loader、改寫頁尾那句，之後頁面離線可看。
+     做完會留下 .bak 備份，確認沒問題就刪掉，不要提交。
+
+格式要求（腳本靠這個認圖片格，差一個字都認不得）：
+  - 必須是  <div class="thumb" data-wiki="…">…</div>，屬性順序不能換，短名內不能有 HTML 標籤。
+  - 頁尾要保留「縮圖於開啟頁面時從維基百科…即時載入」那一整句，腳本才會把它改成已內嵌。
+    找不到那句時腳本會警告。
+
+授權（請先確認再用）：
+  - 只有作者作品已進入公有領域，才適合內嵌圖片。仍在著作權保護期內的畫家（例如畢卡索）
+    請不要放圖：整欄圖片格可以拿掉，改成把標題包成維基百科連結（樣式已在下方 CSS 的
+    td.title a），頁尾寫明「作品仍在著作權保護期內，本頁不收錄圖片」。
+  - 下方頁尾那句「作品皆已進入公有領域」是一項事實聲明，不是裝飾，請逐一確認後才保留。
+
+尺寸、年份、現藏處是各畫家資料，樣板裡的兩列只是示範格式（第一列有 data-wiki，第二列是
+手動維持純文字的寫法）。時間軸連結區塊不用手寫，由 tools/add_timeline_links.py 加入。
+-->
+<style>
+  :root {
+    --bg: #faf8f4;
+    --fg: #2b2a28;
+    --muted: #77736b;
+    --accent: #3f6b7a;
+    --line: #e2ddd3;
+    --row: #f3efe7;
+    --thumb-bg: #ebe6dc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1d1f; --fg: #e6e2da; --muted: #9a958c; --accent: #8cbccb;
+      --line: #36373a; --row: #232427; --thumb-bg: #2c2d30;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1d1f; --fg: #e6e2da; --muted: #9a958c; --accent: #8cbccb;
+    --line: #36373a; --row: #232427; --thumb-bg: #2c2d30;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: "Noto Serif TC", "Source Han Serif TC", "PMingLiU", serif;
+    line-height: 1.8;
+  }
+  main { max-width: 1000px; margin: 0 auto; padding: 40px 16px 64px; }
+  .crumb { color: var(--muted); font-size: .9rem; letter-spacing: .1em; }
+  h1 { font-size: 2rem; margin: .2em 0 0; }
+  .sub { color: var(--muted); margin: 0 0 1.2em; font-style: italic; }
+  h2 { font-size: 1.35rem; border-bottom: 1px solid var(--line); padding-bottom: .3em; margin-top: 2em; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+  th { font-weight: 600; color: var(--muted); font-size: .85rem; letter-spacing: .05em; white-space: nowrap; }
+  tbody tr:nth-child(even) { background: var(--row); }
+  td.img { width: 132px; }
+  .thumb {
+    width: 120px; height: 90px; background: var(--thumb-bg); border-radius: 3px;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+    color: var(--muted); font-size: .75rem; text-align: center; padding: 4px;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  td.title em { font-style: normal; font-weight: 600; }
+  td.title .orig { display: block; color: var(--muted); font-size: .8rem; font-style: italic; }
+  td.year, td.size { white-space: nowrap; }
+  a { color: var(--accent); }
+  footer { margin-top: 2.5em; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 1em; }
+  @media (max-width: 640px) {
+    td.img { width: 84px; }
+    .thumb { width: 72px; height: 56px; }
+    th, td { padding: 8px 6px; }
+  }
+  td.title a { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  td.title a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div class="crumb">西方藝術・{{畫家}}</div>
+  <h1>{{畫家}}作品列表</h1>
+  <p class="sub">{{英文全名}}，{{生年}}–{{卒年}}</p>
+
+  <p>（{{英文全名}}，{{生年}}–{{卒年}}）{{一段簡介}}</p>
+
+  <h2>繪畫作品</h2>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>圖片</th><th>標題</th><th>年份</th><th>尺寸</th><th>現藏</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="img"><div class="thumb" data-wiki="{{英文維基條目標題}}">{{作品短名}}</div></td>
+        <td class="title"><em>{{中文標題}}</em><span class="orig">{{原文標題}}</span></td>
+        <td class="year">{{年份}}</td><td class="size">{{尺寸}}</td><td>{{現藏處}}</td></tr>
+
+      <tr><td class="img"><div class="thumb">{{作品短名（不放圖）}}</div></td>
+        <td class="title"><em>{{中文標題}}</em> （系列）<span class="orig">{{原文標題}}</span></td>
+        <td class="year">{{年份}}</td><td class="size">系列，約 {{N}} 幅</td><td>{{現藏處}}</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>相關條目</h2>
+  <ul>
+    <li><a href="{{連結}}">{{條目名稱}}</a></li>
+  </ul>
+
+  <footer>
+    尺寸為近似值，系列作品列出幅數而非單一尺寸。{{畫家}}作品皆已進入公有領域；縮圖於開啟頁面時從維基百科（Wikimedia Commons）即時載入，離線或查無對應條目時以作品名稱代替。
+  </footer>
+</main>
+<script id="thumb-loader">
+(function () {
+  var cells = Array.prototype.slice.call(document.querySelectorAll('.thumb[data-wiki]'));
+  var API = 'https://en.wikipedia.org/w/api.php';
+  for (var i = 0; i < cells.length; i += 50) load(cells.slice(i, i + 50));
+  function load(batch) {
+    var titles = batch.map(function (c) { return c.getAttribute('data-wiki'); });
+    var url = API + '?action=query&format=json&origin=*&prop=pageimages&piprop=thumbnail'
+      + '&pithumbsize=240&redirects=1&titles=' + encodeURIComponent(titles.join('|'));
+    fetch(url).then(function (r) { return r.json(); }).then(function (d) {
+      var q = d.query || {}, alias = {}, thumbs = {};
+      (q.normalized || []).concat(q.redirects || []).forEach(function (n) { alias[n.from] = n.to; });
+      Object.keys(q.pages || {}).forEach(function (k) {
+        var p = q.pages[k];
+        if (p.thumbnail) thumbs[p.title] = p.thumbnail.source;
+      });
+      batch.forEach(function (c) {
+        var t = c.getAttribute('data-wiki'), seen = {};
+        while (alias[t] && !seen[t]) { seen[t] = 1; t = alias[t]; }
+        if (thumbs[t]) {
+          var img = document.createElement('img');
+          img.src = thumbs[t];
+          img.alt = c.textContent;
+          c.textContent = '';
+          c.appendChild(img);
+        }
+      });
+    }).catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>
