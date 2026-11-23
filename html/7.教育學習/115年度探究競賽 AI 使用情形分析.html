@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>115年度探究競賽 AI 使用情形分析</title>
+<style>
+  :root {
+    --dark: #1F2430; --gray: #5B6577; --blue: #1F4E9C; --blue-bar: #4472C4; --orange: #ED7D31;
+    --card: #F3F6FC; --grid: #D9DDE5; --axis: #888888;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #0f1220; overflow: hidden;
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif; color: var(--dark); }
+  #viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  #stage { position: relative; width: 1280px; height: 720px; flex: none; transform-origin: center center; background: #fff; overflow: hidden; }
+  .slide { position: absolute; inset: 0; background: #fff; visibility: hidden; }
+  .slide.active { visibility: visible; }
+
+  /* ---- animation: everything hidden until .play, then each item runs its own delayed animation ---- */
+  .slide .an { opacity: 0; }
+  .slide.play .an { animation-duration: var(--dur, 600ms); animation-delay: var(--delay, 0ms);
+    animation-fill-mode: both; animation-timing-function: ease-out; }
+  .slide.play .an.fade  { animation-name: fadeIn; }
+  .slide.play .an.left  { animation-name: flyLeft; }
+  .slide.play .an.right { animation-name: flyRight; }
+  .slide.play .an.up    { animation-name: flyUp; }
+  .slide.play .an.wipe  { animation-name: wipe; animation-timing-function: linear; }
+  @keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes flyLeft  { from { opacity: 0; transform: translateX(-120%); } to { opacity: 1; transform: none; } }
+  @keyframes flyRight { from { opacity: 0; transform: translateX(120%); }  to { opacity: 1; transform: none; } }
+  @keyframes flyUp    { from { opacity: 0; transform: translateY(80px); }  to { opacity: 1; transform: none; } }
+  @keyframes wipe     { from { opacity: 1; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
+
+  /* ---- title ---- */
+  .title { position: absolute; left: 48px; top: 24px; width: 1180px; height: 77px; display: flex; align-items: center;
+    white-space: nowrap; }
+  .title b { font-size: 53px; font-weight: 700; color: var(--dark); }
+  .title span { font-size: 37px; color: var(--gray); margin-left: 6px; }
+
+  /* ---- cards ---- */
+  .card { position: absolute; width: 278px; background: var(--card); border-radius: 18px; padding: 10px 14px 10px 19px;
+    display: flex; flex-direction: column; justify-content: center; }
+  .card .l { font-size: 24px; font-weight: 700; line-height: 1.3; }
+  .card .l.s { font-size: 21px; }
+  .card .big { font-size: 53px; font-weight: 700; color: var(--blue); line-height: 1.15; }
+  .card .big i { font-style: normal; font-size: 24px; font-weight: 400; color: var(--gray); margin-left: 3px; }
+  .card .sub { font-size: 21px; color: var(--gray); line-height: 1.3; }
+  .card .note { font-size: 18px; font-weight: 700; color: var(--blue); line-height: 1.35; }
+  .card .txt { font-size: 18px; color: var(--gray); line-height: 1.4; }
+  .card .row { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; line-height: 1.25; }
+  .card .row u { text-decoration: none; font-size: 18px; color: var(--gray); width: 38px; }
+  .card .row b { font-size: 35px; color: var(--blue); }
+  .card .row b.o { color: var(--orange); }
+  .card .row em { font-style: normal; font-size: 18px; color: var(--gray); }
+  .card .hl { font-size: 24px; font-weight: 700; color: var(--blue); line-height: 1.4; }
+
+  /* ---- cover ---- */
+  .cover-title { position: absolute; left: 48px; top: 96px; width: 1184px; height: 192px; display: flex; align-items: center;
+    justify-content: center; font-size: 56px; font-weight: 700; white-space: nowrap; }
+  .cover-title em { font-style: normal; color: var(--blue); margin-left: 14px; }
+  .cover-sub { position: absolute; left: 48px; top: 250px; width: 1184px; text-align: center; font-size: 27px; color: var(--gray); }
+  .stat { position: absolute; top: 365px; width: 346px; height: 230px; background: var(--card); border-radius: 22px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .stat .n { font-size: 80px; font-weight: 700; line-height: 1.1; }
+  .stat .n i { font-style: normal; font-size: 32px; font-weight: 400; color: var(--gray); margin-left: 6px; }
+  .stat .t { font-size: 27px; font-weight: 700; margin-top: 4px; }
+
+  /* ---- chart ---- */
+  .chart { position: absolute; left: 346px; top: 115px; width: 588px; height: 586px; }
+  .chart h3 { position: absolute; left: 0; right: 0; top: 4px; text-align: center; font-size: 21px; font-weight: 400; color: var(--gray); }
+  .legend { position: absolute; left: 0; right: 0; bottom: 4px; display: flex; justify-content: center; gap: 22px; font-size: 19px; }
+  .legend span::before { content: ""; display: inline-block; width: 13px; height: 13px; margin-right: 7px; background: var(--c); }
+  .plot { position: absolute; left: 0; right: 0; top: 52px; bottom: 82px; }
+  .axis-title { position: absolute; left: 0; right: 0; bottom: 36px; text-align: center; font-size: 17px; color: var(--gray); }
+
+  /* horizontal bars */
+  .hplot { position: absolute; left: var(--lw); right: 34px; top: 0; bottom: 28px; border-left: 1px solid var(--axis); }
+  .hgrid { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--grid); }
+  .hgrid.first { border-left: none; }
+  .hgrid span { position: absolute; top: 100%; margin-top: 7px; transform: translateX(-50%); font-size: 16px; color: var(--gray); }
+  .hbase { position: absolute; left: var(--lw); right: 34px; bottom: 28px; border-top: 1px solid var(--axis); }
+  .hrow { position: absolute; left: 0; right: 0; }
+  .hrow .name { position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%); text-align: right;
+    font-size: var(--nf, 17px); line-height: 1.15; white-space: nowrap; width: calc(var(--lw) - 14px); }
+  .hrow .bar { position: absolute; left: 0; height: 40%; display: flex; align-items: center; }
+  .hrow .bar.a { top: 9%; background: var(--blue-bar); }
+  .hrow .bar.b { top: 51%; background: var(--orange); }
+  .hrow .bar::after { content: attr(data-v); position: absolute; left: calc(100% + 5px); font-size: var(--vf, 16px); white-space: nowrap; }
+
+  /* column chart */
+  .vplot { position: absolute; left: 56px; right: 8px; top: 0; bottom: 36px; border-bottom: 1px solid var(--axis); }
+  .vgrid { position: absolute; left: 0; right: 0; border-top: 1px solid var(--grid); }
+  .vgrid span { position: absolute; right: calc(100% + 8px); top: 0; transform: translateY(-50%); font-size: 16px; color: var(--gray); }
+  .group { position: absolute; top: 0; bottom: 0; width: 42%; display: flex; align-items: flex-end; }
+  .group .vbar { flex: 1; position: relative; }
+  .group .vbar::after { content: attr(data-v); position: absolute; left: 0; right: 0; bottom: 100%; margin-bottom: 4px; text-align: center; font-size: 21px; }
+  .group .gname { position: absolute; left: 0; right: 0; top: 100%; margin-top: 9px; text-align: center; font-size: 22px; }
+
+  /* ---- controls (outside slide content) ---- */
+  #ui { position: fixed; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 8px; align-items: center;
+    background: rgba(15,18,32,.78); border-radius: 999px; padding: 5px 10px; color: #cfd6e6; font-size: 14px; z-index: 5;
+    opacity: 0; transition: opacity .25s; user-select: none; }
+  #ui:hover, #ui.show { opacity: 1; }
+  #ui button { background: #2a3050; color: #fff; border: 0; border-radius: 999px; padding: 5px 13px; cursor: pointer; font: inherit; }
+  #ui button:hover { background: #3a4270; }
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage"></div></div>
+<div id="ui"><button id="prev">◀ 上一頁</button><span id="pg"></span><button id="next">下一頁 ▶</button><button id="replay">↻ 重播</button><button id="fs">全螢幕</button></div>
+
+<script>
+'use strict';
+
+// ---------- data ----------
+const L = 'left', R = 'right';
+
+function hchart(o) { // horizontal grouped bar chart
+  return { kind: 'h', ...o };
+}
+
+const slides = [
+  { cover: true },
+  {
+    title: ['AI 使用率', ''],
+    chart: { kind: 'v', title: 'AI 使用率（國中 vs 國小）',
+      groups: [
+        { name: '國中', bars: [{ v: 85.4, c: '#1F4E9C' }, { v: 14.6, c: '#B8C2D6' }] },
+        { name: '國小', bars: [{ v: 82.2, c: '#ED7D31' }, { v: 17.8, c: '#F8CBAD' }] },
+      ],
+      legend: [['有使用AI（比例）', '#1F4E9C'], ['沒有使用AI（比例）', '#B8C2D6']] },
+    left: [
+      `<div class="l">國中使用 AI</div><div class="big">85.4<i>%</i></div><div class="sub">213 隊中 182 隊使用</div>`,
+      `<div class="l">國小使用 AI</div><div class="big" style="color:var(--orange)">82.2<i>%</i></div><div class="sub">180 隊中 148 隊使用</div>`],
+    right: [
+      `<div class="l">未使用 AI</div><div class="row"><u>國中</u><b>14.6%</b><em>（31 隊）</em></div><div class="row"><u>國小</u><b class="o">17.8%</b><em>（32 隊）</em></div>`,
+      `<div class="l">兩組差異僅</div><div class="big">3.2<i>個百分點</i></div><div class="note">AI 已在兩學段同步普及</div>`],
+  },
+  {
+    title: ['AI 工具選擇', '（共513次，含複選）'],
+    chart: hchart({ title: 'AI 工具使用次數（國中 vs 國小）', max: 250, step: 50, lw: 130, nf: 17, vf: 13, axis: '使用次數',
+      rows: [['Gemini', 131, 233], ['ChatGPT', 126, 198], ['NotebookLM', 20, 32], ['Google AI', 4, 13], ['Claude', 6, 12], ['Perplexity', 8, 10],
+             ['Felo', 5, 7], ['Copilot', 2, 2], ['Notion', 0, 2], ['Grok', 0, 2], ['ChatEverywhere', 0, 1], ['Gitmind', 1, 1]] }),
+    left: [
+      `<div class="l">Gemini</div><div class="big">233<i>次</i></div><div class="sub">（45.4%）</div><div class="note">排名第一，兩學段均最常用</div>`,
+      `<div class="l">ChatGPT</div><div class="big">198<i>次</i></div><div class="sub">（38.6%）</div><div class="note">排名第二，國中比重較高</div>`],
+    right: [
+      `<div class="l">兩者合計占比</div><div class="big">84<i>%</i></div><div class="note">其餘工具均在 6% 以下</div>`,
+      `<div class="l">進階工具</div><div class="txt" style="font-size:21px">Perplexity、Felo、Gitmind</div><div class="note">幾乎全出現在國中</div>`],
+  },
+  {
+    title: ['AI 主要提供幫助', '（共750次）'],
+    chart: hchart({ title: 'AI 主要提供幫助類別（國中 vs 國小）', max: 150, step: 50, lw: 215, nf: 17, vf: 16, axis: '次數',
+      rows: [['搜尋與篩選相關資料', 125, 101], ['規劃探究架構與子題', 93, 66], ['修改潤飾報告文字', 84, 71], ['腦力激盪、產生探究主題', 60, 49],
+             ['輔助製作圖表或視覺化', 40, 15], ['翻譯外文參考資料', 23, 13], ['其他', 7, 3]] }),
+    left: [
+      `<div class="l">搜尋與篩選資料</div><div class="big">226<i>次</i></div><div class="sub">（30.1%）</div><div class="note">最主要應用場景</div>`,
+      `<div class="l">規劃探究架構與子題</div><div class="big">159<i>次</i></div><div class="sub">（21.2%）</div>`,
+      `<div class="l">修改潤飾報告文字</div><div class="big">155<i>次</i></div><div class="sub">（20.7%）</div>`],
+    right: [
+      `<div class="l">上述三項合計</div><div class="big">72<i>%</i></div><div class="txt">AI 扮演「資料助手＋架構顧問＋文字編輯」三重角色</div>`,
+      `<div class="l"><span style="color:var(--blue)">國中</span>在輔助製作圖表上明顯高於國小</div><div class="row" style="margin-top:6px"><b style="font-size:40px">9.3%</b><em>vs</em><b class="o" style="font-size:40px">4.7%</b></div>`],
+  },
+  {
+    title: ['AI 資訊查核方法', '（共631次）'],
+    chart: hchart({ title: 'AI 資訊查核方法（國中 vs 國小）', max: 140, step: 20, lw: 215, nf: 16, vf: 16,
+      rows: [['回溯源頭找原始資料', 130, 94], ['人力查核（請教老師/專家）', 82, 72], ['知識驗證（與課本比對）', 69, 58],
+             ['交叉比對（不同AI工具）', 55, 37], ['相信AI未查核', 18, 11], ['其他', 4, 1]] }),
+    left: [
+      `<div class="l s">回溯源頭找原始資料</div><div class="big">224<i>次</i></div><div class="sub">（35.5%）</div>`,
+      `<div class="l s">人力查核（老師／專家）</div><div class="big">154<i>次</i></div><div class="sub">（24.4%）</div>`,
+      `<div class="l s">知識驗證（與課本比對）</div><div class="big">127<i>次</i></div><div class="sub">（20.1%）</div>`],
+    right: [
+      `<div class="l s">交叉比對（跨 AI 工具）</div><div class="big">92<i>次</i></div><div class="sub">（14.6%）</div>`,
+      `<div class="l">相信 AI 未查核</div><div class="big">29<i>次</i></div><div class="sub">（僅 4.6%）</div><div class="note">批判性使用態度已初步建立</div>`],
+  },
+  {
+    title: ['AI 提問技巧', '（以各學段AI使用隊數為分母）'],
+    chart: hchart({ title: 'AI 提問技巧（國中 vs 國小）', max: 70, step: 10, pct: true, lw: 195, nf: 16, vf: 15,
+      rows: [['無特別技巧', 39.3, 59.5], ['使用關鍵字／提示詞', 16.9, 14.9], ['下清楚／詳細的指令', 17.5, 9.5], ['提供資料／脈絡給AI', 4.9, 5.4],
+             ['迭代調整／不滿意再修改', 6.6, 0.7], ['指定輸出格式（表格等）', 4.9, 2.0], ['要求附出處／連結', 1.6, 4.7], ['設定AI角色／程度', 0.5, 5.4],
+             ['說明自己的身分／目的', 3.3, 1.4], ['其他（特殊技巧）', 11.5, 6.1]] }),
+    left: [
+      `<div class="l">無特別技巧</div><div class="row"><u>國中</u><b>39.3%</b></div><div class="row"><u>國小</u><b class="o">59.5%</b></div><div class="note">國小近六成缺乏提問策略</div>`,
+      `<div class="l">清楚／詳細指令</div><div class="row"><u>國中</u><b>17.5%</b></div><div class="row"><u>國小</u><b class="o">9.5%</b></div><div class="note">國中提示詞意識較強</div>`],
+    right: [
+      `<div class="l">迭代調整／追問</div><div class="row"><u>國中</u><b>6.6%</b></div><div class="row"><u>國小</u><b class="o">0.7%</b></div><div class="note">國中幾乎獨占進階提問能力</div>`,
+      `<div class="l">國中顯著優於國小</div><div class="hl">「清楚指令」<br>「迭代調整」</div>`],
+  },
+  {
+    title: ['指導學生使用AI的挑戰', '（教師填寫）'],
+    chart: hchart({ title: '指導學生使用AI的挑戰（國中 vs 國小）', max: 160, step: 20, lw: 232, nf: 16, vf: 16,
+      rows: [['擔心依賴AI減少思考與實作', 140, 114], ['不易判斷AI生成與原創比例', 56, 53], ['缺乏具體案例或指引', 53, 50],
+             ['對AI工具操作特性不夠了解', 47, 36], ['不確定AI使用倫理規範', 52, 26], ['不知如何查核AI資訊正確性', 33, 32],
+             ['不知如何指導撰寫提問指令', 23, 24], ['目前不打算指導使用AI', 4, 8]] }),
+    left: [
+      `<div class="l s">擔心學生依賴AI</div><div class="row"><u>國中</u><b>76.9%</b></div><div class="row"><u>國小</u><b class="o">77.0%</b></div><div class="note">壓倒性第一</div>`,
+      `<div class="l s">不易判斷生成與原創</div><div class="row"><u>國中</u><b>30.8%</b></div><div class="row"><u>國小</u><b class="o">35.8%</b></div>`,
+      `<div class="l s">缺乏AI輔助探究教學指引</div><div class="row"><u>國中</u><b>29.1%</b></div><div class="row"><u>國小</u><b class="o">33.8%</b></div>`],
+    right: [
+      `<div class="l s">不確定如何規範AI倫理</div><div class="row"><u>國中</u><b>28.6%</b></div><div class="row"><u>國小</u><b class="o">17.6%</b></div>`,
+      `<div class="l">三大挑戰</div><div class="note" style="font-size:21px">「依賴AI」擔憂<br>「原創性鑑別」<br>「缺乏指引」</div>`],
+  },
+];
+
+// ---------- builders ----------
+const fmt = (v, pct) => pct ? v.toFixed(1) + '%' : String(v);
+
+function buildHChart(c) {
+  const rows = c.rows, n = rows.length;
+  let h = `<div class="chart an wipe"><h3>${c.title}</h3><div class="plot" style="--lw:${c.lw}px;--nf:${c.nf}px;--vf:${c.vf}px">`;
+  h += `<div class="hplot">`;
+  for (let v = 0; v <= c.max + 1e-9; v += c.step) {
+    const label = c.pct ? v + '%' : v;
+    h += `<div class="hgrid ${v === 0 ? 'first' : ''}" style="left:${v / c.max * 100}%"><span>${label}</span></div>`;
+  }
+  rows.forEach((r, i) => {
+    h += `<div class="hrow" style="top:${i / n * 100}%;height:${100 / n}%"><div class="name">${r[0]}</div>`
+      + `<div class="bar a" data-v="${fmt(r[1], c.pct)}" style="width:${r[1] / c.max * 100}%"></div>`
+      + `<div class="bar b" data-v="${fmt(r[2], c.pct)}" style="width:${r[2] / c.max * 100}%"></div></div>`;
+  });
+  h += `</div><div class="hbase"></div></div>`;
+  if (c.axis) h += `<div class="axis-title">${c.axis}</div>`;
+  h += `<div class="legend"><span style="--c:#4472C4">國中</span><span style="--c:#ED7D31">國小</span></div></div>`;
+  return h;
+}
+
+function buildVChart(c) {
+  let h = `<div class="chart an wipe"><h3>${c.title}</h3><div class="plot"><div class="vplot">`;
+  for (let v = 0; v <= 100; v += 10) {
+    h += `<div class="vgrid" style="bottom:${v}%"><span>${v}%</span></div>`;
+  }
+  c.groups.forEach((g, gi) => {
+    h += `<div class="group" style="left:${gi === 0 ? 5 : 53}%">`;
+    g.bars.forEach(b => { h += `<div class="vbar" data-v="${b.v.toFixed(1)}%" style="height:${b.v}%;background:${b.c}"></div>`; });
+    h += `<div class="gname">${g.name}</div></div>`;
+  });
+  h += `</div></div><div class="legend">${c.legend.map(l => `<span style="--c:${l[1]}">${l[0]}</span>`).join('')}</div></div>`;
+  return h;
+}
+
+function cardsHTML(list, side) {
+  const TOP = 115, BOT = 701, GAP = 19, n = list.length, h = (BOT - TOP - GAP * (n - 1)) / n;
+  return list.map((html, i) =>
+    `<div class="card an ${side}" style="left:${side === 'left' ? 48 : 953}px;top:${TOP + i * (h + GAP)}px;height:${h}px">${html}</div>`).join('');
+}
+
+function buildSlide(s, idx) {
+  const el = document.createElement('section');
+  el.className = 'slide';
+  let h = '';
+  if (s.cover) {
+    h += `<div class="cover-title an fade">115年度探究競賽<em>AI 使用情形分析報告</em></div>`
+      + `<div class="cover-sub an fade">資料來源：表單回覆（每小隊一生一師代表填答）</div>`;
+    [['393', ' 筆', '表單回覆總數', '#1F4E9C'], ['213', ' 隊', '統計範圍：國中', '#4472C4'], ['180', ' 隊', '統計範圍：國小', '#ED7D31']]
+      .forEach((x, i) => {
+        h += `<div class="stat an up" style="left:${(1280 - (3 * 346 + 2 * 34)) / 2 + i * (346 + 34)}px"><div class="n" style="color:${x[3]}">${x[0]}<i>${x[2] ? x[1] : ''}</i></div><div class="t">${x[2]}</div></div>`;
+      });
+  } else {
+    h += `<div class="title an fade"><b>${s.title[0]}</b><span>${s.title[1]}</span></div>`;
+    h += s.chart.kind === 'v' ? buildVChart(s.chart) : buildHChart(s.chart);
+    h += cardsHTML(s.left, 'left') + cardsHTML(s.right, 'right');
+  }
+  el.innerHTML = h;
+  return el;
+}
+
+// Same timing logic as the PowerPoint version: every effect starts after the previous one finishes.
+function schedule(el) {
+  const items = [...el.querySelectorAll('.an')];
+  let t = 0, first = true;
+  items.forEach(it => {
+    let dur = 600, delay = 900;
+    if (it.classList.contains('wipe')) { dur = 1400; delay = 200; }
+    else if (it.classList.contains('up')) { dur = 700; delay = first ? 300 : 300; }
+    else if (it.classList.contains('card') && it === el.querySelector('.card')) delay = 500;
+    else if (it.classList.contains('fade')) delay = (it.classList.contains('title') || it.classList.contains('cover-title')) ? 0 : 200;
+    if (it.classList.contains('up') && it === el.querySelector('.stat')) delay = 500;
+    it.style.setProperty('--dur', dur + 'ms');
+    it.style.setProperty('--delay', (t + delay) + 'ms');
+    t += delay + dur; first = false;
+  });
+}
+
+// ---------- app ----------
+const stage = document.getElementById('stage');
+const els = slides.map(buildSlide);
+els.forEach(e => { stage.appendChild(e); schedule(e); });
+let cur = 0;
+
+function show(i, replay = true) {
+  cur = Math.max(0, Math.min(els.length - 1, i));
+  els.forEach((e, k) => { e.classList.toggle('active', k === cur); e.classList.remove('play'); });
+  void stage.offsetWidth;
+  if (replay) els[cur].classList.add('play'); else els[cur].classList.add('play');
+  document.getElementById('pg').textContent = (cur + 1) + ' / ' + els.length;
+  try { history.replaceState(null, '', '#' + (cur + 1)); } catch (e) {}
+}
+function fit() {
+  const s = Math.min(innerWidth / 1280, innerHeight / 720);
+  stage.style.transform = `scale(${s})`;
+}
+addEventListener('resize', fit); fit();
+
+document.getElementById('prev').onclick = () => show(cur - 1);
+document.getElementById('next').onclick = () => show(cur + 1);
+document.getElementById('replay').onclick = () => show(cur);
+document.getElementById('fs').onclick = () => { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); };
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+  else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+  else if (e.key === 'r' || e.key === 'R') show(cur);
+  else if (e.key === 'f' || e.key === 'F') document.getElementById('fs').click();
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(els.length - 1);
+});
+stage.addEventListener('click', e => { if (e.clientX > innerWidth / 2) show(cur + 1); else show(cur - 1); });
+
+let hideT; addEventListener('mousemove', () => { const u = document.getElementById('ui'); u.classList.add('show'); clearTimeout(hideT); hideT = setTimeout(() => u.classList.remove('show'), 2500); });
+const start = parseInt(location.hash.slice(1), 10);
+show(start >= 1 && start <= els.length ? start - 1 : 0);
+</script>
+</body>
+</html>
