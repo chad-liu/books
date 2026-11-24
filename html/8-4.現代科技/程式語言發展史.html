@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>程式語言發展史（History of Programming Languages）</title>
+<style>
+:root{--bg:#faf8f4;--ink:#23201c;--mute:#6f675d;--line:#e3ddd2;--accent:#8a4b1f;--card:#fff;--tint:#f3ece1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.85 "Noto Serif TC","Source Han Serif TC","PMingLiU",Georgia,serif;-webkit-font-smoothing:antialiased}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:32px 0;font:14px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+nav b{display:block;margin-bottom:10px;color:var(--mute);letter-spacing:.1em;font-weight:600;font-size:12px}
+nav a{display:block;padding:4px 10px;color:var(--mute);text-decoration:none;border-left:2px solid var(--line)}
+nav a:hover{color:var(--accent);border-left-color:var(--accent)}
+nav .t2{font-weight:600;color:var(--ink);margin-top:2px}
+nav .sub{display:none;margin:2px 0 6px}
+nav .grp.on .sub{display:block}
+nav .t3{padding-left:22px;font-size:13px;line-height:1.5}
+nav a.cur{color:var(--accent);border-left-color:var(--accent);background:var(--tint)}
+nav .t2.cur{font-weight:700}
+main{padding:48px 0 96px;min-width:0}
+header.hero{margin-bottom:40px;padding-bottom:28px;border-bottom:2px solid var(--ink)}
+header.hero h1{margin:0 0 12px;font-size:clamp(28px,4.4vw,42px);line-height:1.3;border:0;padding:0}
+header.hero p{margin:0;color:var(--mute);font-size:18px}
+h1{font-size:28px;line-height:1.4;margin:72px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+h2{font-size:22px;line-height:1.45;margin:52px 0 16px;color:var(--accent);scroll-margin-top:16px}
+i{font-family:Georgia,serif}
+h3{font-size:19px;line-height:1.5;margin:36px 0 10px}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1.1em;padding-left:1.4em}
+li{margin:.2em 0}
+strong{font-weight:700}
+.badge{display:inline-block;margin:-4px 0 10px;padding:1px 10px;background:var(--tint);color:var(--accent);border-radius:99px;font:600 13px/1.8 "Noto Sans TC",sans-serif}
+blockquote{margin:1.2em 0;padding:.4em 1.2em;border-left:4px solid var(--accent);background:var(--tint);font-size:1.08em}
+blockquote p{margin:.4em 0}
+.eq{margin:1em 0;padding:.7em 1em;text-align:center;font:italic 1.35em/1.5 Georgia,"Times New Roman",serif;background:var(--card);border:1px solid var(--line);border-radius:8px}
+table{width:100%;border-collapse:collapse;margin:1.2em 0 1.6em;background:var(--card);font:15.5px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--tint);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.2em 0 1.6em}
+figure img{display:block;max-width:100%;max-height:420px;border-radius:8px;border:1px solid var(--line);background:#eee}
+figcaption{margin-top:6px;font:12.5px/1.5 "Noto Sans TC",sans-serif;color:var(--mute)}
+figcaption a{color:var(--mute)}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:1.2em 0 1.8em}
+.g img{width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#eee;cursor:zoom-in;transition:transform .15s}
+.g img:hover{transform:scale(1.03)}
+a{color:var(--accent)}
+#lb{position:fixed;inset:0;background:rgba(20,16,12,.88);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;padding:24px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;border-radius:6px}
+footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font:13px/1.7 "Noto Sans TC",sans-serif}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:0}nav{display:none}body{font-size:16.5px}th,td{padding:8px 9px}}
+@media print{nav{display:none}.layout{display:block}.g img{height:110px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav id="toc"><b>目錄</b></nav>
+<main>
+<header class="hero">
+<h1>程式語言發展史（History of Programming Languages）</h1>
+<p>程式語言的發展史，是人類從「直接控制機器」逐漸走向「以自然語言風格描述問題」，再進一步發展到「讓人工智慧協助撰寫程式」的歷史。</p>
+</header>
+<p>早期電腦必須透過繁複的機器指令操作，程式設計師需要理解電腦硬體的運作方式。後來，高階程式語言逐漸出現，使人類能以比較接近數學與日常語言的方式，指揮電腦完成工作。</p>
+<p>從 Fortran、COBOL、C、Java、Python，到今日的 Rust、Go 與 AI 輔助程式設計，程式語言不斷改變，也深刻影響科學研究、商業管理、網際網路及人工智慧的發展。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/Lh7oH8B11uqrvPYADVmRTAkaXpgfXuIgVkGJORANqUgAiwgoqcByeBrexRIMRQIfPfXim69x2IqBheBWgqJWX082k1XTnZZIqk3nYOgymb_70PZMBVSyYpQBscNxvhcvTFSOXeNSjhdC35fXmwUP3csf1VsL4FKjiSyoMDsIPhs?purpose=inline" alt="Women in Computing | Science Museum" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Women in Computing | Science Museum</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/pVeLnUEjUw-yDMoZiNIR6BmhyMAlN79OJO70trGmejJ807DbH6ooVg76REllqSrPe-26Bzw94azfjbKTEJqKxEz0jU4ejswCM8Rm3haC-LiBB4jn8hfvosHwTXO05xxS0T8rRchQ8FarUdIMV402nsLuZbRV9Ag56-MBbXCR6Ws?purpose=inline" alt="CDC 88157 Punch Card | Smithsonian Institution" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CDC 88157 Punch Card | Smithsonian Institution</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/BGHG51QJXznL__ZGpX8GPPI1vW35lEBqPCN7O5ieLe7QREmuvA9OI1bUOeRT69yqF_Voo6sAPNOCaxENTUfp4RVw2FiC6ycr7wpFBV_8thLMjK_Y86RdsqQzLSKZ0znGwk_3YnHfwgMJW7dnZf7Ku_cylZtCwM5e-q3lp31PwYk?purpose=inline" alt="De Re Atari" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>De Re Atari</figcaption></figure></div>
+<h2>一、程式語言發展大事記</h2>
+<h3>第一階段：程式設計的起源（19世紀～1940年代）</h3>
+<p>這個階段的核心，是建立讓機器按照一連串指令自動工作的概念。</p>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1801年</td><td>雅卡爾提花織布機使用穿孔卡片</td><td>以卡片控制機械動作，成為早期自動化控制的重要先例</td></tr><tr><td>1837年</td><td>巴貝奇提出分析機設計</td><td>出現可依照指令進行通用計算的構想</td></tr><tr><td>1843年</td><td>愛達・勒芙蕾絲撰寫分析機伯努利數演算法</td><td>被視為早期電腦程式設計的重要先驅</td></tr><tr><td>1936年</td><td>艾倫・圖靈提出圖靈機</td><td>建立計算理論的重要基礎</td></tr><tr><td>1940年代</td><td>機器語言與二進位指令開始應用</td><td>電腦透過 0 和 1 的指令執行運算</td></tr><tr><td>1945年</td><td>馮・紐曼提出儲存程式架構的相關報告</td><td>程式指令可以與資料一起儲存在記憶體中</td></tr></tbody></table></div>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/qFuRAt91zVK3bU11O8inNKiEuqGBGlYvJbzDgyZg-MJP-I1Q2BlIEPz-XdhydseP59AxTIJabplmhukb3hJMFDgmSu2pwsotNwUDdKN3LD52NYu1qTTv4JB733qMGaNH1HReJh65fggZh3-wFEI_60W1al7Y18l9lzely0Jba2E?purpose=inline" alt="Перфокарты: что это, когда и как появились, как использовались, зачем нужны сегодня" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Перфокарты: что это, когда и как появились, как использовались, зачем нужны сегодня</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/Lijla-spf-0awukDawWN6sV_6_lK1xX78nDz7qFylAAtGwlIZEZRyj_n0ctrpw4syN7jYGUvfrc3LUjjF7el-p_CUUyYIInFjgkbH67xXYC-gyB_PnRp6QbaPf_frD_P-7rpZRodNWQMXWfyMBjyZOFDx50ZxAopUrXTYo67wMU?purpose=inline" alt="How Ada Lovelace&#x27;s notes on the Analytical Engine created the first computer program - BBC Science Focus Magazine" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>How Ada Lovelace's notes on the Analytical Engine created the first computer program - BBC Science Focus Magazine</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/wzeuJx7nsuz_-NWcu0PU4Yq3JlcFLBAlqLYRZCT2VAtF6aAPzHn_rQTLAWUYY8n7Vy904zG62SrRdne7tWjGHPru0fJja3I7E8wzjMKPjfRJeTP0RQ25mLGUmX7p-wlgkkKnW6S_KXsspe6aKa4z4xGdFSzWh9j3PqVzfqVCd6o?purpose=inline" alt="ENIAC | Smithsonian Institution" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ENIAC | Smithsonian Institution</figcaption></figure></div>
+<p><strong>這個階段的重要觀念：</strong></p>
+<ul><li>機器語言（Machine Language）：使用二進位指令直接控制電腦。</li><li>穿孔卡片（Punched Cards）：透過卡片上的孔洞代表指令或資料。</li><li>演算法（Algorithm）：將問題拆解成有順序的運算步驟。</li></ul>
+<h3>第二階段：組合語言與第一批高階語言（1940～1950年代）</h3>
+<p>程式設計師逐漸發現，直接使用 0 和 1 撰寫程式太過困難，因此開始發展比較容易理解的語言。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/06lnPdz8WNefYYUgeSSZt_roLok6Dll164My49_TnSpxLcR8keiWAkSufp3mjdPrz5j6rD-lc7ipTGD8zh9gA0VNBz2s1vU9NSXoo-zjIAQxr894Ss-MEtSBlPaqfoOR6NCIYfcEafCuwcOphaMzfTAc4ePbf65LlPpiXYUDOrI?purpose=inline" alt="System/360 Assembly Language - Introduction · Try MTS" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>System/360 Assembly Language - Introduction · Try MTS</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>語言／事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1947年</td><td>組合語言（Assembly Language）逐漸發展</td><td>使用助記符號取代部分二進位指令</td></tr><tr><td>1949年</td><td>Short Code 出現</td><td>早期以較接近數學表達方式撰寫的高階程式語言之一</td></tr><tr><td>1952年</td><td>Grace Hopper 推動 A-0 編譯系統</td><td>推動以較高階的指令轉換成機器碼</td></tr><tr><td>1954年</td><td>FORTRAN 開始開發</td><td>IBM 開始研發適合科學與數值計算的高階語言</td></tr><tr><td>1957年</td><td>FORTRAN 正式推出</td><td>第一批廣泛使用的高階程式語言之一</td></tr><tr><td>1958年</td><td>LISP 誕生</td><td>成為人工智慧研究與符號運算的重要語言</td></tr><tr><td>1959年</td><td>COBOL 誕生</td><td>以商業資料處理為主要用途</td></tr><tr><td>1960年</td><td>ALGOL 60 發表</td><td>對後來程式語言的語法設計影響深遠</td></tr></tbody></table></div>
+<p><strong>代表性語言</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/pVeLnUEjUw-yDMoZiNIR6BmhyMAlN79OJO70trGmejJ807DbH6ooVg76REllqSrPe-26Bzw94azfjbKTEJqKxEz0jU4ejswCM8Rm3haC-LiBB4jn8hfvosHwTXO05xxS0T8rRchQ8FarUdIMV402nsLuZbRV9Ag56-MBbXCR6Ws?purpose=inline" alt="CDC 88157 Punch Card | Smithsonian Institution" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CDC 88157 Punch Card | Smithsonian Institution</figcaption></figure></div>
+<p><strong>1. FORTRAN（1957）</strong></p>
+<p>全名為 Formula Translation，主要用於數學、物理、工程及科學計算，是早期重要的高階語言。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/2GGXlV50-HMrEue-EmpQkZYRuqZrP-eS-T1r9idu-4siaGBN4YDX3KjW4GIXVWMVVzcqzSYGBqYLpqhxAEG_dsVTilKdWv9Z5eYmnxvDqWbwK0b8zi0zhjVWVIRcsWaoEWzbk5ja292OmxxIYozM0PZzbKv-Em7oLDbMjWC-EDU?purpose=inline" alt="Artificial Intelligence and Lisp 12 The Programming Language" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Artificial Intelligence and Lisp 12 The Programming Language</figcaption></figure></div>
+<p><strong>2. LISP（1958）</strong></p>
+<p>由約翰・麥卡錫提出，擅長符號處理、遞迴及人工智慧研究。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/rw3ilBJpf_XmIz2HJLnSDYe9uGtXoQn-OptBmAkb27vY_O6TsZRgd_esDRyAEW2d66b1HalA3Km1KALPmB371AEEyteF2la6wVC_l-l65bwId-tSg6d0bGzUy-nEyXRhgCvxonsmWAGsiGqBzof6Ei76Igk7_8z9MSVaVbpnzec?purpose=inline" alt="Achievements | Grace Hopper | Vassar College" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Achievements | Grace Hopper | Vassar College</figcaption></figure></div>
+<p><strong>3. COBOL（1959）</strong></p>
+<p>全名為 Common Business-Oriented Language，適合銀行、財務及企業大量資料處理。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/r2ZC4p2EV7ArNNwM4of8zfIw0MjE8WzMJuFZY7rnY8Rhj93QhVS3uoFZM7MqQiJs2A7DUOs0-Te74ERgOFJMVSqAQbtFlwatnGDLzkxRWHuRzf9k2I7DalIi5rph2-fpgoKQpHv_gpU_Jam8TGwTeSWh0ybUJpKss3RsGwnWhhM?purpose=inline" alt="Rust in Perspective — linusw" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Rust in Perspective — linusw</figcaption></figure></div>
+<p><strong>4. ALGOL（1960）</strong></p>
+<p>對區塊結構、程式語法及後來的 Pascal、C 等語言產生重要影響。</p>
+<h3>第三階段：結構化程式設計與個人電腦時代（1960～1980年代）</h3>
+<p>這個階段的重要變化，是程式語言開始強調程式結構、可讀性與模組化，並隨著個人電腦興起而逐漸普及。</p>
+<div class="tw"><table><thead><tr><th>時間</th><th>語言／事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1964年</td><td>BASIC 誕生</td><td>讓初學者更容易學習程式設計</td></tr><tr><td>1967年</td><td>Simula 67 發表</td><td>推動物件導向程式設計概念</td></tr><tr><td>1968年</td><td>ALGOL 68 發表</td><td>擴展程式語言的型別與運算能力</td></tr><tr><td>1970年</td><td>Pascal 誕生</td><td>推動結構化程式設計與教學</td></tr><tr><td>1972年</td><td>C 語言誕生</td><td>兼具效率、可攜性與系統控制能力</td></tr><tr><td>1972年</td><td>Smalltalk 開始發展</td><td>推動物件導向程式設計</td></tr><tr><td>1974年</td><td>SQL 開始發展</td><td>建立關聯式資料庫查詢語言</td></tr><tr><td>1979年</td><td>C++ 的前身開始開發</td><td>將物件導向概念引入 C 語言</td></tr><tr><td>1983年</td><td>Ada 語言正式標準化</td><td>用於大型、可靠性要求高的系統</td></tr><tr><td>1983年</td><td>C++ 正式命名</td><td>逐步發展為重要的通用程式語言</td></tr><tr><td>1987年</td><td>Perl 誕生</td><td>擅長文字處理及系統管理</td></tr></tbody></table></div>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/cLz-2Gctott_fbH36guqegf6wOjuNXD3ijHPkODqeoPzm8xVlaZkT7FS5gx2awnZLXQu8tbMQgLenuf9aAStUTKPoTclWA7t27JLBevL3N-9O1MTeFxbI7yoy1DEyFYitFDBvq-GkRZyOozicX9y0x_Y8uJXnFkXHy4kmbCHDqA?purpose=inline" alt="First contact with my new old TO8D | fplanque.com [EN]" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>First contact with my new old TO8D | fplanque.com [EN]</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/Zk8f80sCUo-PVhuBH243-PwDsR07BDAgpddpdYpqRQFz5SC8lfmumHLP5V8JSHjCg6LIXrPWpfyl_NuAsbnehjdZ71tfjGr-5zf7FYtzPxAp03d3xBJ_H6zp5sf_rHh9mqirhmdfFf1yudJ2mQttNn3COSSEAoWEXLzu4gtgCJ4?purpose=inline" alt="Conseils pour bien débuter en Pascal" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Conseils pour bien débuter en Pascal</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/hQcpVtczOXirGWw0pPz6mRAlBtTg0NMMzfGlA-mtBUOw48Ef7TythHkWQC5sjVOtgxhLEp4rhWlvUXMoVL0YKJqloC4of6Uy3TrY43cwKwYW6zqsr7Tr1RotUkc0lctYrTuhcswfnlJSQo_rK0fYUvmABgW8fhUxk2DC_iFwBvs?purpose=inline" alt="Byte Magazine" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Byte Magazine</figcaption></figure></div>
+<p><strong>代表性語言</strong></p>
+<div class="tw"><table><thead><tr><th>語言</th><th>主要特色</th><th>典型用途</th></tr></thead><tbody><tr><td>BASIC</td><td>容易學習、語法簡單</td><td>電腦教學、個人電腦</td></tr><tr><td>Pascal</td><td>重視結構與程式邏輯</td><td>教育、演算法</td></tr><tr><td>C</td><td>效率高、接近硬體</td><td>作業系統、嵌入式系統</td></tr><tr><td>C++</td><td>結合程序式與物件導向</td><td>遊戲、系統軟體</td></tr><tr><td>SQL</td><td>管理與查詢資料</td><td>資料庫、企業資訊系統</td></tr></tbody></table></div>
+<h3>第四階段：物件導向與網際網路程式語言（1980～2000年）</h3>
+<p>這個階段，程式語言的發展受到兩項重要因素影響：</p>
+<ol><li><strong>物件導向程式設計（OOP）：</strong> 將資料與操作資料的方法組合成物件，使大型軟體更容易設計與維護。</li><li><strong>網際網路興起：</strong> 網頁、瀏覽器與網路伺服器需要新的程式語言來處理互動及資料傳輸。</li></ol>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/lcnfSZ9MFx-Uq3MWPUzYOd9rounCsOkgQ9UHajQR9INU8_EdaE6eSBw1QenKmrZ9FWZSPD9_wJ6HhkJwxzTlYas25ueKQQlG2Irq5_I63BnhO-jPC3knjkWKEeD-NW41rouKMTDcRg2lQ2pflEvJjmlGKH6nnNk21P_I2JCh5-I?purpose=inline" alt="Turbo C++ keyboard shortcuts ‒ DefKey" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Turbo C++ keyboard shortcuts ‒ DefKey</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/O9Wt-fUl4kszpa6PBeLrCZ2xeE8c-4x2O9pLDtejo0vygQKEtkXLsHoN2Yi7NEm3m3lSxqLHxSDvsprFmZbbGBa8gAvf9V6o1fGOiVnYnxf0PYW0xOnS4HgdSOiv7dvgWMoHwLRSgcLWpdahcGxF05XGne-aALZ3GuqrOnwwHlU?purpose=inline" alt="The 1995 Java Release and Its Lasting Impact on Software Development | Teknalyze" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>The 1995 Java Release and Its Lasting Impact on Software Development | Teknalyze</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/Zoy0wvw3IWR0VRtoyPXlwRw2KBsmoCUuDDd6tfJB1NJKtRiPQa7TTlIqfvDeeiRX6383sutKRvCD7jQnoTks2KywjpACPUP5fvohsBXF-fSs-AcFZlaOjEjboEYGgoPIHzPhwd_w9y1Ugy-QioUKPRBW6U_TN9pMDGj14pRbwOY?purpose=inline" alt="The History of Web Developers Tied to Browser Development | HackerNoon" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>The History of Web Developers Tied to Browser Development | HackerNoon</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>語言／事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1983年</td><td>C++ 正式命名</td><td>發展物件導向與高效能程式設計</td></tr><tr><td>1984年</td><td>Objective-C 發展</td><td>後來成為早期 Apple 軟體的重要開發語言</td></tr><tr><td>1987年</td><td>Perl 誕生</td><td>擅長文字處理與系統管理</td></tr><tr><td>1990年</td><td>Haskell 誕生</td><td>推動純函數式程式設計</td></tr><tr><td>1991年</td><td>Python 首次公開發布</td><td>以簡潔、易讀的語法受到歡迎</td></tr><tr><td>1991年</td><td>Visual Basic 推出</td><td>讓視窗應用程式開發更容易</td></tr><tr><td>1993年</td><td>Ruby 開始開發</td><td>強調程式設計的簡潔與彈性</td></tr><tr><td>1995年</td><td>Java 正式推出</td><td>透過 Java 虛擬機器推動跨平台程式設計</td></tr><tr><td>1995年</td><td>JavaScript 誕生</td><td>讓網頁具備互動功能</td></tr><tr><td>1995年</td><td>PHP 開始發展</td><td>推動動態網頁與伺服器端程式設計</td></tr><tr><td>1995年</td><td>Ruby 首次公開發布</td><td>成為重要的通用程式語言</td></tr><tr><td>1998年</td><td>SQL-92 標準廣泛應用</td><td>促進資料庫查詢語言標準化</td></tr></tbody></table></div>
+<p><strong>代表性語言</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/-kPUV_p5EKg0bNYm4WyQpUMGqz5e0ZtsalBUq4-Lav75qfP4wADu7dLqeJ2MjUAJdMtR8MK0rjItYGzuPtWiNzWSBfqs_s1hpzrvaLRRx6-gpueYjdFMMysNHVUin9G6qzVPQCvbVsXnRv8OTyjbNpY8XrOhgkRquR1QuX1gAgw?purpose=inline" alt="C++ ONLINE COURSE | C++ PROGRAMMING" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>C++ ONLINE COURSE | C++ PROGRAMMING</figcaption></figure></div>
+<p><strong>C++</strong></p>
+<p>延續 C 語言的效率，加入物件導向、類別及多型等功能，廣泛用於遊戲引擎、作業系統與高效能軟體。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/urfnHK6zfHhc4B3R1e0oqA7y8Vz4MVLbH4OkbEzp4ebiLf4GTPEzcrMq0g_u9dOKD9WtiCsX1xicbi1zCOCmsU7j0U2CpN8O76md71nd7cu1RcWbDdn6SDRiXMKinT5IfvrkoqB5kmNDq66qlVhyACf4H_8owV3q1znxDE3C7JE?purpose=inline" alt="GitHub - thevkrant/morse_code: Morse code is a method of transmitting text information as a series of on-off tones lights or clicks that can be directly understood by a skilled listener or observer without special equipment. It is named for Samuel F. B. Morse. Every character in the English language is substituted by a series of dots and dashes or something just singular dot or dash. · GitHub" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>GitHub - thevkrant/morse_code: Morse code is a method of transmitting text information as a series of on-off tones lights or clicks that can be directly understood by a skilled listener or observer without special equipment. It is named for Samuel F. B. Morse. Every character in the English language is substituted by a series of dots and dashes or something just singular dot or dash. · GitHub</figcaption></figure></div>
+<p><strong>Python</strong></p>
+<p>強調語法簡潔與易讀性，後來廣泛應用於資料分析、網頁開發、科學計算及人工智慧。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/F7emjSTIxEPcaCwr1Vm7segx4ecw8h_9wEc2LlZJQ2Tb-GxSDByxjiKKs0t66UyOCjbqUH-d4dhsL8Tm4UMuAdYWni36HTiMVv-aQ-G81KjUM4i5SM-89WLh5fxiqCRlPZmX3azk6MoSZcOXRrxmyv3M11WObW8w02Tf9bi5_x0?purpose=inline" alt="MiPortfolio" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>MiPortfolio</figcaption></figure></div>
+<p><strong>Java</strong></p>
+<p>透過 Java 虛擬機器（JVM），讓程式能在不同作業系統上執行，廣泛應用於企業系統及 Android 開發。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/pv9kgv7cQ9yHSe8N34eBDE4cOQGYWhEV8l45yHbftkM03CxNxnApm3HmqyWVhb8iRi_D48VYO5D4zhSDx4Q85moAFFuRmmnwuNdUWqSpFsPKHfIl_mFnrtuUrkNcamNMLBr6VG8mOB1D20r2Ih0nsYlaATCHUHK-bWPw8KLqDbQ?purpose=inline" alt="JavaScript color icon in PNG, SVG" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>JavaScript color icon in PNG, SVG</figcaption></figure></div>
+<p><strong>JavaScript</strong></p>
+<p>讓網頁能夠回應使用者操作，後來也擴展至伺服器、桌面應用程式與行動應用程式。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/OpgKuyJwjfEOwfqNQ8RHM5QUrk-PDk3ybQ2BPXsyyx8b0E2F2JX7NzVMBAabTmBiPa283vw_tcrzd6Jg6HMzGxU-JQL94CeX-2vXDW8mR1fwX7-AmAmiIWZciyvo18dJjxDHm0ArrbengvWmCFWWaiMO2OT1zk9c_c47t_1Sjo4?purpose=inline" alt="PHP Logo PNG Vector (SVG) Free Download" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>PHP Logo PNG Vector (SVG) Free Download</figcaption></figure></div>
+<p><strong>PHP</strong></p>
+<p>主要用於動態網頁與網站後端開發，是早期網際網路網站的重要技術。</p>
+<h3>第五階段：開放原始碼、行動應用與雲端運算（2000～2015年）</h3>
+<p>這個階段，智慧型手機、社群網站、雲端服務與開放原始碼軟體快速發展，程式語言也開始朝向跨平台、快速開發與大型系統設計演進。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/D0xJPEccAvNex9Fw_kWd-WAnQtDjdc4JySzX1qm7U9irlTKnJKZHXrIn3UBYduOIKTjQ2geQsbSphjyL0gkkmyLdyDtoufOP1HN1v9xu0GF6sznK2CjxW4JQH9VRuxYXQ2ToySlShzm2eqO5S-P2T_kdch76vdTQJ3DSu4cgpZw?purpose=inline" alt="Adify Innovation - A Unit of WebWizards Solutions Pvt Ltd" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Adify Innovation - A Unit of WebWizards Solutions Pvt Ltd</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/nSTskF2VCFMtisE6aphiw76p21kRIbLiDJvjpGcd8bcfiXl4cVSVD_i2Gq9cV8yx-nXNZgPiPzKFl10kciEqX5030-zNHhcv3iYuEUaAjVZEXDdQ6uOrY6KezXrbXh93xLTDegdwiG8rtQqOcCw7u9Bqk32ZWn0K0ImigCPmrlU?purpose=inline" alt="Go 1.27 - What&#x27;s New, Support Lifecycle &amp; EOL" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Go 1.27 - What's New, Support Lifecycle &amp; EOL</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/jv3xF8cKd4ALdOucmIkDz2QMPRoAFeOlBiuTojNIKhn4XPBN9kyBYprbOikiYkNBclobW-9CDIJDw9mN2vZun4pG4WxdAt_lvrcAQzigxPpqnWqHfd0ESl8E1NQhAode7V6sphfFFZiqUU-Ci6NEpHXb45GT5qNgJvdPCaZXOSk?purpose=inline" alt="Rustacean.net: Home of Ferris the Crab" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Rustacean.net: Home of Ferris the Crab</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>語言／事件</th><th>發展意義</th></tr></thead><tbody><tr><td>2000年</td><td>C# 誕生</td><td>Microsoft 推動 .NET 開發平台</td></tr><tr><td>2001年</td><td>Visual Basic .NET 推出</td><td>將 Visual Basic 整合至 .NET 平台</td></tr><tr><td>2003年</td><td>Scala 開始發展</td><td>結合物件導向與函數式程式設計</td></tr><tr><td>2004年</td><td>Ruby on Rails 推出</td><td>推動快速網頁應用程式開發</td></tr><tr><td>2005年</td><td>PHP 5 發布</td><td>改善物件導向與資料庫應用能力</td></tr><tr><td>2006年</td><td>PowerShell 推出</td><td>加強 Windows 系統管理自動化</td></tr><tr><td>2009年</td><td>Go 語言公開發布</td><td>著重簡潔、並行處理與大型網路服務</td></tr><tr><td>2010年</td><td>Rust 首次公開發布</td><td>強調記憶體安全與高效能</td></tr><tr><td>2011年</td><td>Kotlin 誕生</td><td>提供現代化語法，後來成為 Android 重要開發語言</td></tr><tr><td>2011年</td><td>Dart 公開亮相</td><td>以網頁及跨平台應用程式開發為目標</td></tr><tr><td>2012年</td><td>TypeScript 公開發布</td><td>為 JavaScript 加入靜態型別系統</td></tr><tr><td>2012年</td><td>Julia 正式公開</td><td>針對科學計算與高效能數值運算</td></tr><tr><td>2014年</td><td>Swift 發表</td><td>Apple 推出新一代 iOS、macOS 應用程式開發語言</td></tr><tr><td>2015年</td><td>ECMAScript 2015（ES6）發布</td><td>JavaScript 語言功能大幅擴充</td></tr></tbody></table></div>
+<p><strong>代表性語言</strong></p>
+<div class="tw"><table><thead><tr><th>語言</th><th>主要特色</th><th>典型用途</th></tr></thead><tbody><tr><td>C#</td><td>物件導向、整合 .NET</td><td>企業軟體、遊戲</td></tr><tr><td>Go</td><td>簡潔、並行處理能力佳</td><td>雲端服務、網路系統</td></tr><tr><td>Rust</td><td>記憶體安全、高效能</td><td>系統軟體、基礎設施</td></tr><tr><td>Kotlin</td><td>簡潔、與 Java 互通</td><td>Android、後端</td></tr><tr><td>Swift</td><td>安全、現代化語法</td><td>iPhone、Mac 應用程式</td></tr><tr><td>TypeScript</td><td>型別檢查、適合大型專案</td><td>網頁與企業系統</td></tr><tr><td>Julia</td><td>高效能數值運算</td><td>數學、科學研究</td></tr></tbody></table></div>
+<h3>第六階段：人工智慧與現代程式語言（2016～2026年）</h3>
+<p>這個階段的程式語言發展，受到深度學習、大型語言模型、雲端運算及生成式 AI 的影響。</p>
+<p>程式設計逐漸從「人類完全手動撰寫程式」，轉變為「人類與 AI 協同開發」。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/GTiE2AE-ri3vt1m1GHU_nXSZQFJCChic75iZkF04PhO2T2RvDPqG0vB38gTTJn2cEZ4qj9RprwDpsRj9YGJNtHlbrVe3FOFnMZnZDbQnh7ziaSrN33iQdtgisSEa8W5ZZ1zPxew6WsY13WxZc4uV2f28LnKY2QNjliZ-A-UMHFA?purpose=inline" alt="Use chat in VS Code" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Use chat in VS Code</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/Uh-G5O7ijk7O3Tz5J_LLMZKQNOtsMnJjx2p49eIAVaSO_aJgeHsOIpN1SGgMynQlYwHyWFnqAPxwFPFWG7fwREGfZXXLRKh5fwntdEAfb_dI8PN4-Imuagkr_e4r_8BS8xV2FQLY4v8-2er-wRRbF2gi4LkFkogq_hDHO7TadAY?purpose=inline" alt="ChatGPT for Advanced Data Analysis in Python notebook" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ChatGPT for Advanced Data Analysis in Python notebook</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/e_BUsWm7-GNKXIRnWeYkF4RCBK8iOQ4oyJAxrTp0L4MmdEUGWUdbEMiFELndhlsXvOgXueFC7vzj47aeY9P8c6fA55djOJxOGSavkZ8ROq60ZTgZxxRtjwB3PI3RQr-BxXa5VaRy4ZGw39LSlDKKQxDwy9bD_y2zHyyWsVxxoLs?purpose=inline" alt="GitHub Copilot App for Beginners: Free Course on Agent Sessions, Worktrees and AI Code Review" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>GitHub Copilot App for Beginners: Free Course on Agent Sessions, Worktrees and AI Code Review</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>2016年</td><td>TensorFlow 正式發布</td><td>推動深度學習模型開發</td></tr><tr><td>2017年</td><td>Rust 1.20 等版本持續成熟</td><td>記憶體安全程式設計受到更多關注</td></tr><tr><td>2018年</td><td>Kotlin 成為 Android 官方支援語言</td><td>Android 應用程式開發生態系擴大</td></tr><tr><td>2019年</td><td>Python 在資料科學與 AI 領域持續普及</td><td>成為人工智慧的重要開發工具</td></tr><tr><td>2021年</td><td>GitHub Copilot 技術預覽推出</td><td>AI 開始協助程式碼自動補全與撰寫</td></tr><tr><td>2022年</td><td>ChatGPT 推出</td><td>大眾開始透過自然語言要求 AI 撰寫程式</td></tr><tr><td>2023年</td><td>GPT-4 發表</td><td>AI 程式理解、除錯與程式碼生成能力提升</td></tr><tr><td>2023年</td><td>GitHub Copilot Chat 推出</td><td>開發者可透過對話方式理解與修改程式</td></tr><tr><td>2024年</td><td>AI 編輯器與 AI 程式開發工具快速發展</td><td>AI 逐漸融入軟體開發流程</td></tr><tr><td>2025年</td><td>AI Agent 開始廣泛受到軟體開發界關注</td><td>AI 可協助規劃、修改、測試多個程式檔案</td></tr><tr><td>2026年</td><td>AI 協作開發持續演進</td><td>自然語言、程式語言與自動化開發流程更加緊密結合</td></tr></tbody></table></div>
+<p><strong>這個階段的重要特色：</strong></p>
+<ul><li>Python 成為 AI、機器學習及資料分析的重要工具。</li><li>JavaScript、TypeScript 持續主導許多網頁開發場景。</li><li>Rust 在安全性要求較高的系統開發中受到重視。</li><li>AI 可以依照自然語言描述產生程式碼。</li><li>AI Agent 開始協助執行程式修改、測試與除錯工作。</li></ul>
+<p>特別要注意：AI 並沒有讓程式語言消失。相反地，AI 仍然需要透過 Python、C++、JavaScript 等語言與電腦系統互動。</p>
+<h2>二、程式語言發展時間軸總表</h2>
+<p>以下整理具有代表性的程式語言，方便觀察不同時代的發展。</p>
+<div class="tw"><table><thead><tr><th>年代</th><th>程式語言</th><th>主要用途或特色</th></tr></thead><tbody><tr><td>1940年代</td><td>Plankalkül</td><td>早期高階程式語言構想</td></tr><tr><td>1940年代</td><td>Assembly</td><td>直接控制硬體</td></tr><tr><td>1949</td><td>Short Code</td><td>早期高階計算語言</td></tr><tr><td>1952</td><td>A-0</td><td>編譯系統先驅</td></tr><tr><td>1957</td><td>FORTRAN</td><td>科學計算</td></tr><tr><td>1958</td><td>LISP</td><td>人工智慧、符號處理</td></tr><tr><td>1958</td><td>ALGOL</td><td>演算法與語言設計</td></tr><tr><td>1959</td><td>COBOL</td><td>商業資料處理</td></tr><tr><td>1964</td><td>BASIC</td><td>初學者程式教育</td></tr><tr><td>1967</td><td>Simula</td><td>物件導向概念</td></tr><tr><td>1970</td><td>Pascal</td><td>結構化程式設計</td></tr><tr><td>1972</td><td>C</td><td>系統軟體</td></tr><tr><td>1972</td><td>Smalltalk</td><td>物件導向</td></tr><tr><td>1972</td><td>Prolog</td><td>邏輯程式設計</td></tr><tr><td>1974</td><td>SQL</td><td>資料庫查詢</td></tr><tr><td>1975</td><td>Scheme</td><td>函數式程式設計</td></tr><tr><td>1983</td><td>C++</td><td>高效能、物件導向</td></tr><tr><td>1983</td><td>Ada</td><td>安全性要求高的系統</td></tr><tr><td>1987</td><td>Perl</td><td>文字處理</td></tr><tr><td>1990</td><td>Haskell</td><td>純函數式程式設計</td></tr><tr><td>1991</td><td>Python</td><td>通用程式設計</td></tr><tr><td>1995</td><td>Java</td><td>跨平台應用</td></tr><tr><td>1995</td><td>JavaScript</td><td>網頁互動</td></tr><tr><td>1995</td><td>PHP</td><td>網頁後端</td></tr><tr><td>1995</td><td>Ruby</td><td>通用、網頁開發</td></tr><tr><td>2000</td><td>C#</td><td>.NET 平台</td></tr><tr><td>2003</td><td>Scala</td><td>函數式與物件導向</td></tr><tr><td>2009</td><td>Go</td><td>雲端與網路服務</td></tr><tr><td>2010</td><td>Rust</td><td>記憶體安全</td></tr><tr><td>2011</td><td>Kotlin</td><td>Android 開發</td></tr><tr><td>2012</td><td>TypeScript</td><td>大型網頁應用</td></tr><tr><td>2012</td><td>Julia</td><td>科學計算</td></tr><tr><td>2014</td><td>Swift</td><td>Apple 平台開發</td></tr><tr><td>2019</td><td>Mojo 開始開發</td><td>AI 與高效能運算</td></tr></tbody></table></div>
+<p>年代說明：部分語言以首次提出、開始開發或首次公開發布為準，因此不同資料來源的年份可能略有差異。</p>
+<h2>三、程式語言的五大類型</h2>
+<p>程式語言除了依照年代分類，也可以依照「程式設計思想」分類。這種分類有助於理解不同語言為什麼會出現，以及它們適合解決什麼問題。</p>
+<h3>1. 機器語言（Machine Language）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/ZRytphgH-RVFODYhrUVlzO4QCfUKqj2DwzQxw8MVKUNchxPn9gk8xbsfHlhEzjpjljyjbOIZyb0p_XNXXguSJ8eEOedxrPUy_9YFIDBtq5CjpW8n_2kt-EqA1jh3YTKWE9GvgT7-W-Da2a0ogPZxhPJ32OKannwWdgsPHL3TV4w?purpose=inline" alt="PPT - Binary basics PowerPoint Presentation, free download - ID:5811800" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>PPT - Binary basics PowerPoint Presentation, free download - ID:5811800</figcaption></figure></div>
+<ul><li>使用 0 和 1 表示指令。</li><li>電腦可以直接執行。</li><li>人類閱讀與撰寫非常困難。</li><li>與特定處理器架構密切相關。</li></ul>
+<h3>2. 組合語言（Assembly Language）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/hib4re5m1slONYQK-1zjMI-LPDPnnGt0vVqUpJd-nEG79AHPje8st3UMAJCNCjfDqg-_SE_3lJwuIij0HPhRdqHnTug4VQE7wIvxGIxcf9kDmIJm1G3YB4F8pmhYn0OuOT2YkCn8PqyMpNPKQOzYf2wYofhjd6IPWNz-FDzTgoc?purpose=inline" alt="Как работает компьютер: глубокое погружение (на примере Linux) / Хабр" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Как работает компьютер: глубокое погружение (на примере Linux) / Хабр</figcaption></figure></div>
+<ul><li>使用助記符號代表機器指令。</li><li>例如 MOV、ADD、SUB。</li><li>可以直接控制處理器及硬體。</li><li>常用於嵌入式系統與硬體底層開發。</li></ul>
+<h3>3. 程序式語言（Procedural Programming）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/Jbim1mEs3hrc_f5ZuiGt4STR1_PkqC3jBJ-05agRxIRXHfxwIVxAF3HDbhhV90zGdwAJjtzgT_hYLLiPBkW0gPsP6ri2hN7g_eOYCdFIFug-4LKgoaMdeUkTUNZf-dnPBApZ_DviPFyYDhSrKERBei7zTdwyNEp7L1H12YV-wik?purpose=inline" alt="Security-Oriented C Tutorial 0x0D - Functions Part I: Introduction :: Null Byte" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Security-Oriented C Tutorial 0x0D - Functions Part I: Introduction :: Null Byte</figcaption></figure></div>
+<ul><li>將工作拆解為一系列執行步驟。</li><li>使用函式、條件判斷及迴圈。</li><li>強調執行順序與程式流程。</li><li>代表語言：C、Pascal、Fortran。</li></ul>
+<h3>4. 物件導向語言（Object-Oriented Programming）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/OtzDPHapvigRidImS1LfMz5lVX0XFe7cCsDOJxGqnVt480REp54QAW0QMZFHf2xZqUehiuIX9SEh7o72Gf-fqvoGfCXZGZyGKzXCYAddu_qnJKwwDLMYLRaY3Nh6oETpWkRyA24UL6eb0aXGRB_R1sEua_GYiK2MKOnNgtuN-Mo?purpose=inline" alt="OOP | Easy to become SE" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>OOP | Easy to become SE</figcaption></figure></div>
+<ul><li>將資料與功能組合成物件。</li><li>使用類別、繼承、封裝及多型。</li><li>適合大型、複雜的軟體系統。</li><li>代表語言：Java、C++、C#、Python。</li></ul>
+<h3>5. 函數式與宣告式語言（Functional &amp; Declarative Programming）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/FsbyAxWyPTiy4ymDwmc7yrKX4kQdRnSlCsSx9OOltokp505OM9j8n1TYy76dZQWQFlheYB-7f76XNP4-ive_8o81pDDQYP9SzmHXJBEyASLs_xwvvDLdnIDnPP1awSwe0KIlsFpJsF5YQ48cvK7KKa6Y7RPWb0JTObV_cgYz6Ho?purpose=inline" alt="PPT - COMS W4115 Programming Languages &amp;amp; Translators Maria Ayako Taku mat2185@columbia PowerPoint Presentation - ID:2410059" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>PPT - COMS W4115 Programming Languages &amp;amp; Translators Maria Ayako Taku mat2185@columbia PowerPoint Presentation - ID:2410059</figcaption></figure></div>
+<ul><li>函數式：強調透過函數組合完成運算。</li><li>宣告式：描述想要得到什麼結果，而非逐步指定如何完成。</li><li>常用於資料處理、數學運算與邏輯推理。</li><li>代表語言：Haskell、LISP、Prolog、SQL。</li></ul>
+<h2>四、程式語言的世代演進</h2>
+<p>程式語言也可以依照與人類語言的接近程度，區分為不同世代。</p>
+<div class="tw"><table><thead><tr><th>世代</th><th>名稱</th><th>特色</th><th>代表</th></tr></thead><tbody><tr><td>第一代</td><td>機器語言</td><td>使用二進位指令</td><td>0、1</td></tr><tr><td>第二代</td><td>組合語言</td><td>使用助記符號</td><td>Assembly</td></tr><tr><td>第三代</td><td>高階語言</td><td>接近數學與人類表達方式</td><td>C、Python、Java</td></tr><tr><td>第四代</td><td>非程序式語言</td><td>強調描述需求與結果</td><td>SQL、MATLAB 等</td></tr><tr><td>第五代</td><td>邏輯與限制式語言</td><td>透過邏輯、規則與條件描述問題</td><td>Prolog 等</td></tr></tbody></table></div>
+<p>這種分類主要是歷史上的教學分類，並不代表第五代語言一定比第三代語言更先進。例如，Python 雖然是現代語言，仍屬於第三代高階語言。</p>
+<h2>五、重要程式語言的影響關係</h2>
+<p>程式語言並非各自獨立發展，而是存在許多承襲、改良及互相影響的關係。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/WGOlEYjUy5ByaAun8cSClMD_-wPTBkkkXQG1DB_ACVuvdb_NqsY-bKejTTp-enQN3oXoS__0mwBRhO8PlCvgiNQklTdGRuslxERnenKAXU5vsbyXn_6C4_XBHt6j855IWPB0zNMX-mNsQB-Qm3d19eEHF2zlb0ee1WNeH2rMrL0?purpose=inline" alt="完成！文系のための「プログラミング言語・家系図」【学習16日目】｜やぎ" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>完成！文系のための「プログラミング言語・家系図」【学習16日目】｜やぎ</figcaption></figure></div>
+<p>以下整理幾條重要的發展脈絡：</p>
+<div class="tw"><table><thead><tr><th>發展源頭</th><th>後續語言或影響</th></tr></thead><tbody><tr><td>ALGOL</td><td>Pascal、C 等語言的語法與結構設計</td></tr><tr><td>BCPL → B</td><td>C</td></tr><tr><td>C</td><td>C++、Objective-C 等</td></tr><tr><td>Simula</td><td>物件導向程式設計的重要影響來源</td></tr><tr><td>Smalltalk</td><td>物件導向設計理念的推廣</td></tr><tr><td>Java</td><td>Kotlin 等 JVM 生態系語言</td></tr><tr><td>JavaScript</td><td>TypeScript</td></tr><tr><td>ML</td><td>OCaml、F# 等函數式語言</td></tr><tr><td>Lisp</td><td>Scheme、Common Lisp 等</td></tr></tbody></table></div>
+<p>這些關係不一定都是直接繼承，有些是語法上的借鑑，有些則是設計理念的影響。</p>
+<h2>六、現代主要程式語言的用途比較</h2>
+<p>以下選出目前具有代表性的語言，觀察它們在不同領域的應用。</p>
+<p><strong>人工智慧與資料科學</strong></p>
+<p>重要領域</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/4WQnbUUJdvO4G_O54H-9RXYeiNC8ap-hadl7zQO_37z43QV44clQv_3mffdRKUsamUYFp5veqRIRVDSmAnDHlkj1JtcAh46t9rVGeEsTz7Kfg4qMWcGYIrrsCkO7nIRnHcOOcRu-Lm-tFOE47ydEtspq6XPPqxxyX0kFOlIlqkM?purpose=inline" alt="File:Python logo 01.svg - Wikimedia Commons" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>File:Python logo 01.svg - Wikimedia Commons</figcaption></figure></div>
+<p><strong>Python</strong></p>
+<p>機器學習、深度學習、資料分析、AI 模型</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/MfimGHb3g6-g7g5v5B-ebvwyZlr1885fZxzCrc1ey3e_7jfJqBtZpj1T9DFTikOnYZTqadR8A7lSDsc0ho5cSdUk03XHNmzxATToChPG3kDnvjeRO_f4vpZPN7JEfmp003YOi7hylLYi7e22NlSjTUunK6y0rZjxtwyukfXxcAQ?purpose=inline" alt="Expertise | AHEAD — IIT Roorkee" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Expertise | AHEAD — IIT Roorkee</figcaption></figure></div>
+<p><strong>R</strong></p>
+<p>統計分析、資料視覺化、學術研究</p>
+<p><strong>網站與網頁應用程式</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/tr6qZTUAn1whOfn0lXCVxhJFmyIYZXNtsFIA9qUaP24t1AZpVWRnxIhyvCLzzinoDuzy5ewSmCe_xtQgWpGRI6qCXGVf3_Qec9yjTvLG3eGny9looSH04-Iqbs7Q73TzXtYEuyNiilBOXZI6rmd7yutxo8_o1Vzgddp9dLfTXk8?purpose=inline" alt="JavaScript color icon in PNG, SVG" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>JavaScript color icon in PNG, SVG</figcaption></figure></div>
+<p><strong>JavaScript</strong></p>
+<p>網頁互動、前端與後端開發</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/D48rHXMBudK_sgS2iXGcmfbVPLauChEQX90lmHP-_fCAmvwSsKg8LVY1IkqSqiLAxsVcNK2MXaWwrB6iG1s1iOVonGGSsjeN-zBVJHshfZ3gMsS8yR7xQRXC2OA4Pi71RfOLCRdGaeg7hM9SNXS_NG2OOpq057CvIJLQ8UtGQao?purpose=inline" alt="Shaon Dasgupta" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Shaon Dasgupta</figcaption></figure></div>
+<p><strong>TypeScript</strong></p>
+<p>大型網頁應用程式、企業系統</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/x25013vM174RpEBN7E1ouiyqgv-og_yzkv3l0R_dXQaFADQ3Drv5YkQmteRs8V2diWgsxMeoDC5aRVjDP5Jb_Sn2HZqMoAGbae91OG15q3JlLWleEEdHdvAvmKuAQZTzp18lkPBDDvWKXM8ee_5fwD2FFW7wnV2A3FfMg-iAjts?purpose=inline" alt="Smark Solutions | IT Company &amp; Software Training, Nagercoil" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Smark Solutions | IT Company &amp; Software Training, Nagercoil</figcaption></figure></div>
+<p><strong>PHP</strong></p>
+<p>網站後端、內容管理系統</p>
+<p><strong>作業系統與高效能運算</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/Q5TrnnemkAbDjWz-Op-wSMdhBEsnrvdL9VVVZkTiL0kfwYp-IAShumDRpUrLANF40XWob0gXo7bDqvRHtCFwTdg22h63P3oOwC-Y8zuYIykQA_siybiMH6uaZPdywH2bpW-OyV0SsM5U_yxM_zZgeOxG37NS9EROYTKxYl_iCsw?purpose=inline" alt="ITC" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>ITC</figcaption></figure></div>
+<p><strong>C</strong></p>
+<p>作業系統、嵌入式系統、硬體控制</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/OJix8FO0_HX0Q38b_2qbg6iJH22CEpXO02rnE03r5l1Bm-0Ar2jwKhQydDs7F_MGwT5969X3d4P0EqKccfH3FqfL0KKpjp3q8cuaWg7xtTODg5ixxe0UuPWCWQ2CNDY8S3-1MLYNLwUyLuqNklohpiLlE1Rvi74gHHcexQcYMBE?purpose=inline" alt="KnoDTec" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>KnoDTec</figcaption></figure></div>
+<p><strong>C++</strong></p>
+<p>遊戲引擎、圖形運算、高效能軟體</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/AIBv059WEUbUQJJxX5ILTs3wLPBOexEPkq12X3rnJVCz1eIfqPv5RGBKMJpBeqo2114TUE1XKqSk0_7AdyS6Blj7aWXxQiWHjYypGEmZTSBw8wvpEwji9k8kUvworAhMgY_SCXFUxg3_xJb8gIqgJ7ED9Yhyu_AA2vinS71MhOE?purpose=inline" alt="Building a cross platform Rust CI/CD pipeline with GitHub Actions" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Building a cross platform Rust CI/CD pipeline with GitHub Actions</figcaption></figure></div>
+<p><strong>Rust</strong></p>
+<p>安全系統軟體、基礎設施、工具開發</p>
+<p><strong>行動裝置與跨平台應用</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/IIdVnTyQC3Er9zTu0s-oCRbeKKnK5dEYTXU7Sc9mX_QNXY2tWHGv4E3yIJMNeV-YUBIKyH83KcICfU_-4N011TzFhBDk5FQ907QehCrKZCbJnLqEtmsr46wo2FeFtI2LfaSuFNn6MNPH5sYJ2cUPwPBa1b7oWnALdUTd8QhLmmg?purpose=inline" alt="No such module &#x27;PackageDescription&#x27; sourcekitd - SourceKit-LSP - Swift Forums" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>No such module 'PackageDescription' sourcekitd - SourceKit-LSP - Swift Forums</figcaption></figure></div>
+<p><strong>Swift</strong></p>
+<p>iPhone、iPad、Mac 應用程式</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/pC2z_cRVBIL7Uzkr6IfbXhdT8JrfRBuzBCa_kkRUFwCEtm8aeO5DFmq6R1j8d_ji147iql1zGm_O3vkyaLJCHkopheDRv_1TsE8GvhKhPeCXqKishJMTUM3qyJmXQuT9DzVB0_LofpD6nbMtTKZJHhS3H6z2w4JdCU2-MpGUD1Q?purpose=inline" alt="Formation Kotlin – Développement Android et | Human Coders Formations" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Formation Kotlin – Développement Android et | Human Coders Formations</figcaption></figure></div>
+<p><strong>Kotlin</strong></p>
+<p>Android、後端及跨平台開發</p>
+<p><strong>資料庫與企業管理</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/uerqhzIN_j1lCvWSZXSjX-vKmqOZHobyb6SpEaQi1Akccw-PXUAssaLKHM67EWTjXLBnc07LPRln-0l0JHqAu4ikDeCtJIyhH8-rPOo3MY_kPSs5en9RXoKOfI4erKE7rGXqJT7OpHfAJxtZA_9XPYlkCtH36enUB61DuNGQDFA?purpose=inline" alt="My Project | Duc Nguyen HTML Hub" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>My Project | Duc Nguyen HTML Hub</figcaption></figure></div>
+<p><strong>SQL</strong></p>
+<p>資料查詢、資料庫管理、商業資訊系統</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/mKzcaCJP3O1QjLIvF2eqF3u0HEiJ3FLZVwFdd0kHduW77YIaPaAYtg6sh6MjNxcDK2QXsC6PaK7VoyAyoqdCv8zodVdt-AovKbP6jt1KJdztocJt-_gKxjK3DgiKGIIQ9qshqPbuHa1-hZkn6gbUM5gsZKcmBuQSfEpCpmx3NMg?purpose=inline" alt="Software Hosting - Run Any Application | HidenCloud" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Software Hosting - Run Any Application | HidenCloud</figcaption></figure></div>
+<p><strong>Java</strong></p>
+<p>企業系統、金融服務、伺服器應用</p>
+<h2>七、程式語言發展史的重要轉折</h2>
+<p>可以將整個發展過程歸納為六次重要變革：</p>
+<div class="tw"><table><thead><tr><th>時代</th><th>重要轉折</th><th>核心變化</th></tr></thead><tbody><tr><td>1940年代</td><td>機器語言</td><td>人類直接控制電腦</td></tr><tr><td>1950年代</td><td>高階語言</td><td>人類開始使用較容易理解的語法</td></tr><tr><td>1970年代</td><td>結構化與物件導向</td><td>程式變得容易管理與維護</td></tr><tr><td>1990年代</td><td>網際網路程式語言</td><td>程式開始連結全球使用者</td></tr><tr><td>2000年代</td><td>行動與雲端開發</td><td>程式跨越裝置與運算平台</td></tr><tr><td>2020年代</td><td>AI 輔助程式設計</td><td>人類以自然語言與 AI 協同開發</td></tr></tbody></table></div>
+<p><strong>最值得理解的歷史脈絡是：</strong></p>
+<p>程式語言的發展，不只是語法越來越簡單，而是人類逐漸提高了對電腦的抽象控制能力。</p>
+<p>從一開始必須告訴電腦每一個電子指令，到後來只需要描述計算步驟，再到今天可以透過自然語言說明需求，讓 AI 協助產生程式。</p>
+<h2>八、延伸閱讀與資料來源</h2>
+<p>以下資料適合進一步研究程式語言的歷史：</p>
+<ol><li><a href="https://www.computerhistory.org/timeline/software-languages/?pStoreID=epp" target="_blank" rel="noopener">Computer History Museum：Software &amp; Languages</a> — 電腦歷史博物館的軟體與程式語言大事記。</li><li><a href="https://www.computer.org/publications/tech-news/insider-membership-news/timeline-of-programming-languages" target="_blank" rel="noopener">IEEE Computer Society：A Timeline of Programming Languages</a> — 從早期程式設計到現代語言的歷史。</li><li><a href="https://www.cl.cam.ac.uk/teaching/2021/ConceptsPL/lectures.pdf" target="_blank" rel="noopener">University of Cambridge：Ultra-brief History</a> — 劍橋大學程式語言發展簡史。</li><li><a href="https://john.cs.olemiss.edu/~hcc/csci450/ELIFP/Ch01/PLhistory.pdf" target="_blank" rel="noopener">O'Reilly：History of Programming Languages</a> — 程式語言發展及彼此影響關係圖。</li><li><a href="https://www.hp.com/us-en/tech-takes/software/explainer/computer-history-programming-languages.html" target="_blank" rel="noopener">HP：A Timeline of Computer Programming Languages</a> — 程式語言重要人物與歷史事件。</li></ol>
+<p><strong>後續值得獨立整理的三個主題：</strong></p>
+<ul><li>程式語言發展史：從 FORTRAN、COBOL 到 Python、Rust。</li><li>作業系統發展史：從 UNIX、DOS 到 Windows、Linux、macOS。</li><li>AI 程式設計發展史：從專家系統、GitHub Copilot 到 AI Agent。</li></ul>
+<p>這三個主題合在一起，可以形成一套完整的「電腦軟體發展史」。</p>
+<footer>內容整理自 ChatGPT 對話筆記。圖片來自原筆記引用的各網站，版權屬原作者所有，頁面以外部連結方式載入，需連網才能顯示。</footer></main></div><div id="lb"><img alt=""></div><script>
+// TOC
+const toc=document.getElementById('toc');
+const heads=[];let grp=null,sub=null;
+document.querySelectorAll('main h2, main h3').forEach((h,i)=>{
+  if(h.closest('header'))return;
+  h.id='s'+i;
+  const a=document.createElement('a');a.href='#s'+i;a.textContent=h.textContent;
+  if(h.tagName==='H2'){
+    grp=document.createElement('div');grp.className='grp';
+    a.className='t2';grp.appendChild(a);
+    sub=document.createElement('div');sub.className='sub';grp.appendChild(sub);
+    toc.appendChild(grp);
+  }else{
+    if(!grp){grp=document.createElement('div');grp.className='grp';sub=document.createElement('div');sub.className='sub';grp.appendChild(sub);toc.appendChild(grp)}
+    a.className='t3';sub.appendChild(a);
+  }
+  heads.push({h,a,grp});
+});
+let curA=null;
+function spy(){
+  let c=null;
+  for(const x of heads){if(x.h.getBoundingClientRect().top<=140)c=x;else break}
+  if(!c)c=heads[0];
+  if(!c||c.a===curA)return;
+  if(curA){curA.classList.remove('cur');curA.closest('.grp').classList.remove('on')}
+  curA=c.a;c.a.classList.add('cur');c.grp.classList.add('on');
+  if(c.a.classList.contains('t3'))c.grp.querySelector('.t2').classList.add('cur');
+  document.querySelectorAll('nav .t2.cur').forEach(e=>{if(e!==c.a&&e!==c.grp.querySelector('.t2'))e.classList.remove('cur')});
+  const r=c.a.getBoundingClientRect(),n=toc.getBoundingClientRect();
+  if(r.top<n.top+40||r.bottom>n.bottom-20)toc.scrollTop+=r.top-n.top-n.height/3;
+}
+let tick=false;
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;spy()})}},{passive:true});
+spy();
+// Lightbox
+const lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+document.addEventListener('click',e=>{const t=e.target;if(t.matches('.g img,figure img')){lbi.src=t.src;lb.classList.add('on')}else if(lb.classList.contains('on')){lb.classList.remove('on')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+</script>
+</body>
+</html>

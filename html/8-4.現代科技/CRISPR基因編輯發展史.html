@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>CRISPR基因編輯發展史（CRISPR Gene Editing History）</title>
+<style>
+:root{--bg:#faf8f4;--ink:#23201c;--mute:#6f675d;--line:#e3ddd2;--accent:#8a4b1f;--card:#fff;--tint:#f3ece1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.85 "Noto Serif TC","Source Han Serif TC","PMingLiU",Georgia,serif;-webkit-font-smoothing:antialiased}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:32px 0;font:14px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+nav b{display:block;margin-bottom:10px;color:var(--mute);letter-spacing:.1em;font-weight:600;font-size:12px}
+nav a{display:block;padding:4px 10px;color:var(--mute);text-decoration:none;border-left:2px solid var(--line)}
+nav a:hover{color:var(--accent);border-left-color:var(--accent)}
+nav .t2{font-weight:600;color:var(--ink);margin-top:2px}
+nav .sub{display:none;margin:2px 0 6px}
+nav .grp.on .sub{display:block}
+nav .t3{padding-left:22px;font-size:13px;line-height:1.5}
+nav a.cur{color:var(--accent);border-left-color:var(--accent);background:var(--tint)}
+nav .t2.cur{font-weight:700}
+main{padding:48px 0 96px;min-width:0}
+header.hero{margin-bottom:40px;padding-bottom:28px;border-bottom:2px solid var(--ink)}
+header.hero h1{margin:0 0 12px;font-size:clamp(28px,4.4vw,42px);line-height:1.3;border:0;padding:0}
+header.hero p{margin:0;color:var(--mute);font-size:18px}
+h1{font-size:28px;line-height:1.4;margin:72px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+h2{font-size:22px;line-height:1.45;margin:52px 0 16px;color:var(--accent);scroll-margin-top:16px}
+i{font-family:Georgia,serif}
+h3{font-size:19px;line-height:1.5;margin:36px 0 10px}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1.1em;padding-left:1.4em}
+li{margin:.2em 0}
+strong{font-weight:700}
+.badge{display:inline-block;margin:-4px 0 10px;padding:1px 10px;background:var(--tint);color:var(--accent);border-radius:99px;font:600 13px/1.8 "Noto Sans TC",sans-serif}
+blockquote{margin:1.2em 0;padding:.4em 1.2em;border-left:4px solid var(--accent);background:var(--tint);font-size:1.08em}
+blockquote p{margin:.4em 0}
+.eq{margin:1em 0;padding:.7em 1em;text-align:center;font:italic 1.35em/1.5 Georgia,"Times New Roman",serif;background:var(--card);border:1px solid var(--line);border-radius:8px}
+table{width:100%;border-collapse:collapse;margin:1.2em 0 1.6em;background:var(--card);font:15.5px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--tint);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.2em 0 1.6em}
+figure img{display:block;max-width:100%;max-height:420px;border-radius:8px;border:1px solid var(--line);background:#eee}
+figcaption{margin-top:6px;font:12.5px/1.5 "Noto Sans TC",sans-serif;color:var(--mute)}
+figcaption a{color:var(--mute)}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:1.2em 0 1.8em}
+.g img{width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#eee;cursor:zoom-in;transition:transform .15s}
+.g img:hover{transform:scale(1.03)}
+a{color:var(--accent)}
+#lb{position:fixed;inset:0;background:rgba(20,16,12,.88);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;padding:24px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;border-radius:6px}
+footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font:13px/1.7 "Noto Sans TC",sans-serif}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:0}nav{display:none}body{font-size:16.5px}th,td{padding:8px 9px}}
+@media print{nav{display:none}.layout{display:block}.g img{height:110px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav id="toc"><b>目錄</b></nav>
+<main>
+<header class="hero">
+<h1>CRISPR基因編輯發展史（CRISPR Gene Editing History）</h1>
+
+</header>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/3sMJPGWtGYAZpN1bLPiSVLhU3-sKS72UkMPqR2kEeYtqHeiX5bp5Owv8346NfONPBsMwy_tvlx9fl86P6rR8Uiw0XHj9_nsemngKwzsqFZ8Ps5cBGgiDxtDKFzqwkNUgjQ26JAM_eGtHMwG8hHr8Va9JsknedH4f5eW0Q4QFz6c?purpose=inline" alt="How to Use Mask Mode for Precise Image Editing | ScholarViz Guide" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>How to Use Mask Mode for Precise Image Editing | ScholarViz Guide</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/qkYZmT6ANXkhI_2DUAGuu1TY3Ddw7wJ-iduZ6jYTT-VL-wKTyKcO--WsvYvKBSDOxqJRYG-hdixXCz0BMp78VFGIwzPXAp_huBzhfu-dBXooXqbbvWc6IAwFPm3Fu0fxLH1dl_boBI3ZuxLx5HzHRgzayylUbGw533Qvb3D2kUQ?purpose=inline" alt="MedicalLab Management Magazine" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>MedicalLab Management Magazine</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/aVNIEp2S_a9z-VXz3RuYSqW3AcAmevdct9wrMfBYy_d24IGriVHO3VMyMkdCVULu667krz-wFDaknpryBrtYL0qTwVlBjlBzmJ21H9CDSzvgYYJ-6gjz5J7UuZuBbxh18S13hhLUaLF-sbQEmPDIDxU7o-T8VZXqFsYwHPR0xn8?purpose=inline" alt="Super-precise CRISPR tool enters US clinical trials for the first time" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Super-precise CRISPR tool enters US clinical trials for the first time</figcaption></figure></div>
+<p>CRISPR基因編輯是21世紀生命科學最重要的技術革命之一。它讓人類首次能夠以相對簡便、快速且具有高度可設計性的方式，對生物體的DNA進行定點修改。</p>
+<p>CRISPR技術最初並不是為了基因工程而發明，而是科學家在研究細菌如何抵抗病毒時，意外發現細菌具有一套特殊的免疫防禦系統。</p>
+<p>經過數十年的研究，CRISPR從細菌的天然免疫機制，逐漸發展成為基因編輯工具，並進一步衍生出鹼基編輯、先導編輯、表觀遺傳調控及體內基因治療等技術。</p>
+<p><strong>CRISPR的歷史可以概括為：</strong></p>
+<p>細菌免疫現象發現 → CRISPR序列辨識 → Cas蛋白功能研究 → CRISPR-Cas9基因編輯 → 基因編輯工具多元化 → 臨床治療應用 → AI輔助基因設計。</p>
+<h2>一、CRISPR的基本概念與運作原理</h2>
+<h3>1. 什麼是CRISPR？</h3>
+<p>CRISPR是英文：</p>
+<p><strong>Clustered Regularly Interspaced Short Palindromic Repeats</strong></p>
+<p>中文通常翻譯為：</p>
+<p><strong>規律成簇間隔短回文重複序列。</strong></p>
+<p>它是細菌及古菌基因組中的一種特殊DNA序列，具有抵抗病毒及其他外來遺傳物質的功能。</p>
+<p>CRISPR系統通常與Cas蛋白（CRISPR-associated proteins）共同運作。</p>
+<h3>2. CRISPR-Cas9的基本構造</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/ZsfK9zxviR_1qBktSzN-iDsHImnKf1W9MkIQNUtCjpsG22GjLxfmRoin4RsvDe6DkR0XRJNaYPzZzU0i3VommTSF3PTsKjS3e22hkxxsYrc_woB7ki0L6yC9ichgnrGUAmIp6PuICWVk0Fe5tHB2rHjIYBV5re1FzYyy3kOZMBw?purpose=inline" alt="How to Make a CRISPR-Cas9 Mechanism Diagram with AI (2026 Guide) | SciDraw AI - AI Scientific Illustration &amp; Data Visualization" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>How to Make a CRISPR-Cas9 Mechanism Diagram with AI (2026 Guide) | SciDraw AI - AI Scientific Illustration &amp; Data Visualization</figcaption></figure></div>
+<p>CRISPR-Cas9基因編輯系統主要包含三個重要部分：</p>
+<div class="tw"><table><thead><tr><th>組成</th><th>英文</th><th>功能</th></tr></thead><tbody><tr><td>Cas9蛋白</td><td>Cas9 Nuclease</td><td>負責切割DNA</td></tr><tr><td>引導RNA</td><td>Guide RNA</td><td>引導Cas9尋找特定DNA序列</td></tr><tr><td>PAM序列</td><td>Protospacer Adjacent Motif</td><td>Cas9辨識目標DNA所需的鄰近序列</td></tr></tbody></table></div>
+<p>其基本運作方式：</p>
+<ol><li>設計一段與目標DNA互補的引導RNA。</li><li>引導RNA與Cas9蛋白結合。</li><li>複合體尋找符合條件的DNA目標位置。</li><li>Cas9辨識PAM序列並檢查目標序列。</li><li>Cas9切割DNA雙股。</li><li>細胞利用自身DNA修復機制修補切口。</li></ol>
+<h3>3. DNA修復的兩種主要方式</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/_E8hQHpK6fea8YvXOJ72YT7bLY-BhXYlz-jQ6m1C9-rH9F8ExSr-CrsIfsDBx2GSPBehY_ztuk4ZO8baWfkKG3ys6Ga0O8zZdQYPIp-3UvRpO8PQqQUrNZVi1VhrmljPp87Uhptg1L3w9HpK1o5g1VLYpGKokQf4Y8AdpX2pQbQ?purpose=inline" alt="Applications of CRISPR for musculoskeletal research | Bone &amp; Joint" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Applications of CRISPR for musculoskeletal research | Bone &amp; Joint</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>修復方式</th><th>英文</th><th>主要作用</th><th>常見應用</th></tr></thead><tbody><tr><td>非同源末端接合</td><td>NHEJ</td><td>直接連接DNA斷裂端，可能產生小型插入或缺失</td><td>基因敲除</td></tr><tr><td>同源導向修復</td><td>HDR</td><td>利用同源DNA模板進行修復</td><td>基因精準修改或插入</td></tr></tbody></table></div>
+<p>因此，CRISPR不只是剪斷DNA的工具，也能利用細胞修復機制達到不同的基因修改目的。</p>
+<h2>二、CRISPR發展史第一階段：細菌特殊DNA序列的發現（1980～2001）</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/VzL34uqZ1qsE2RpvmtQVx8Wp45StUELsIbIuOjrYOTfn9EmOVV8uUppLmgWkEemw_3N7uwDya4Uipca-CoSOD9jAJWObkmPmp6c3beqTd4RH-VPY9cWS-ZwyATTfTJxGiVsvfAgTaOjHnuOLhq0_0UYxgKrzIKIGO3n3etT5RWI?purpose=inline" alt="Premio a Francisco Mojica y su tijera de ADN - Quo" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Premio a Francisco Mojica y su tijera de ADN - Quo</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/vQKwXLDSu6f2mUqfJqmxWzo-wQEb4gyCXo8hVE6uZaPAv1ynAe8Fk_m8k7uBMk_XkpQ9eCSOAXmGAlcuLo-pWvf0NQnEOTXGNKCxSlYwaJkKmh77XPByoYiAAWtK2NUnqk8LjhDF8dXVLxKb_ax8DXH-HxBzju6yHiR1W2WzYRI?purpose=inline" alt="Research in Focus | Issue 2 | CONNECT | About | KYUSHU UNIVERSITY" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Research in Focus | Issue 2 | CONNECT | About | KYUSHU UNIVERSITY</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/xQ2uNnuHbogVi_l6sw44fQtYzoKz9sCJyMAxjygtr85drfsZFeIwA9_u-xtnc0QxhraGdk943K9rDTuAOZTeMW8iGoK4HtuRpQsgO13C1QeVFw89cdolpMh3lgNrfk3-zRfr2Vo5cr52GfuJcnvK8ZT0gZm3WCGxGuVwTsdjPSk?purpose=inline" alt="Gut Fungus Suspected in Crohn&#x27;s Disease | Scientific American" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Gut Fungus Suspected in Crohn's Disease | Scientific American</figcaption></figure></div>
+<p>CRISPR的歷史起源於細菌基因組研究。</p>
+<p>當時科學家並不知道這些重複DNA序列具有免疫功能，只是逐漸發現某些細菌具有排列規律的特殊DNA片段。</p>
+<div class="tw"><table><thead><tr><th>年代</th><th>科學家／重要事件</th><th>歷史意義</th></tr></thead><tbody><tr><td>1987年</td><td>日本科學家石野良純（Yoshizumi Ishino）及研究團隊在大腸桿菌中發現特殊重複DNA序列</td><td>CRISPR研究的早期起點</td></tr><tr><td>1989年</td><td>相關DNA序列持續受到研究</td><td>科學家開始注意重複序列的特殊排列</td></tr><tr><td>1993年</td><td>荷蘭科學家Ruud Jansen等人研究細菌基因組中的重複序列</td><td>推進重複序列分類</td></tr><tr><td>2000年</td><td>Francisco Mojica等人系統性研究多種微生物中的類似序列</td><td>發現這類序列廣泛存在於微生物</td></tr><tr><td>2001年</td><td>Jansen等人提出CRISPR名稱，並提出相關Cas基因命名</td><td>CRISPR正式成為科學術語</td></tr></tbody></table></div>
+<h3>1. 1987年：CRISPR序列的早期發現</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/ssdfbK866aOT6WPuCkM0SW9yAB58U8MTA0nbfU281jdr6o3LvG7Q9O-dWSWglD5oPkxjnKSoquSxSA0MRFLWnUUbc-EbgVnsBl_3SyOc04fVk3NVWfiIqUaZIi8g3bDZfD8gJyq8wciiKg8_gzry95yivDBbNwNkr9JW5i9OINk?purpose=inline" alt="CRISPR-Beginn: Herr Ishino und die wunderbare Ahnungslosigkeit" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CRISPR-Beginn: Herr Ishino und die wunderbare Ahnungslosigkeit</figcaption></figure></div>
+<p>1987年，日本大阪大學的石野良純及其研究團隊，在研究大腸桿菌（Escherichia coli）某個基因時，意外發現一段排列特殊的DNA序列。</p>
+<p>這段序列具有：</p>
+<ul><li>重複出現的短DNA片段。</li><li>重複序列之間夾有不同序列。</li><li>整體排列呈現規律性。</li></ul>
+<p>當時尚未了解這些序列的生物學功能。</p>
+<p>這項發現後來被視為CRISPR研究的重要起點。</p>
+<h3>2. 1993年：微生物重複序列研究</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/Ypj3_9oSuMHt0oAm7F_vJ9HoWC1CH07VY0NMGXtYgvrPFICb66UPjlOk9ROhQ6-J97SgaoD2xx3W0CwldswCqh8F4Hn0gNOO7GUYiDhG5ljw_ihchC1Fa981LLbif27rn7VWOH6fa3OVzpORTdkxzN7haBPBJU3AKCuC0w4b4Qo?purpose=inline" alt="CRISPR for the High School Classroom | Springer Nature Link" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CRISPR for the High School Classroom | Springer Nature Link</figcaption></figure></div>
+<p>荷蘭科學家Ruud Jansen及其研究團隊研究細菌基因組中的特殊重複序列，發現不同微生物具有類似的DNA排列模式。</p>
+<p>他們進一步觀察到這些重複序列附近經常存在一群相關基因。</p>
+<p>這些基因後來被稱為Cas基因。</p>
+<h3>3. 2001年：CRISPR正式命名</h3>
+<p>研究者Ruud Jansen等人在2002年正式發表相關命名研究，使用CRISPR作為這類DNA序列的名稱。</p>
+<p>這項命名讓不同國家的研究者能夠以統一術語研究這種特殊的基因組結構。</p>
+<h2>三、CRISPR發展史第二階段：細菌免疫機制的揭開（2002～2011）</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/ziPU9shim_JvVLmhd1GAVfD1SbU4SoI9SIVttzpP59nBc6SNZxH7hjF3uQ5ZO59APYWjx1pC5fCR9MlcaT402bF93Itz8O-CohOpz5oGdM9j4mrL81dgo5ROh5MJjF2-IweXDORZWd_2IiqBQURyo4azYr6tL2r9WnxG7h8z6ws?purpose=inline" alt="CRISPR-Cas adaptive immunity. The three stages of CRISPR-Cas system... | Download Scientific Diagram" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CRISPR-Cas adaptive immunity. The three stages of CRISPR-Cas system... | Download Scientific Diagram</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/j8SzPtb6be33_ha1lubwdUfrvE6Web0OxZWb0_SqGCNC87c3ws9NfxYEuoPRsxvB8k9O52czaG5SzM0AamkunpOr0s88ixuPt1boHOa-3NvtoX6blz3O1XkuOEmr1ks3RraPVNXleg5VXf3oNCiLszwQZmnDFcN1N4Pau3Lgiro?purpose=inline" alt="Bacteriophage T4 adsorbed to Escherichia coli | Amazing microscopic world | JEOL Ltd." referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Bacteriophage T4 adsorbed to Escherichia coli | Amazing microscopic world | JEOL Ltd.</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/NO-MstcwUEGZ2KliJ7Ptw43hynh29NIaYnHvCORXdcdkdynNxqcRLSiGJCKmJAQBCPAbQ-x5KJnJTBrT24KMjQJk2yNQVBCg-BmP5OWm_eu2Ea4nU301VV1NOuQuc4e1TYPOwmb4yYUkbz6IuK_Wrz7MfgUK3m2bjwD8fturaKM?purpose=inline" alt="Streptococcus salivarius subsp. thermophilus - Probiotic Strains - Minsheng Zhongke Jiayi Probiotic Manufacturer" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Streptococcus salivarius subsp. thermophilus - Probiotic Strains - Minsheng Zhongke Jiayi Probiotic Manufacturer</figcaption></figure></div>
+<p>這個階段是CRISPR歷史最重要的基礎研究時期。</p>
+<p>科學家逐漸發現，CRISPR並非毫無功能的DNA重複序列，而是細菌用來抵抗病毒入侵的一種「適應性免疫系統」。</p>
+<h3>1. 重要發展大事記</h3>
+<div class="tw"><table><thead><tr><th>年代</th><th>科學家／重要事件</th><th>歷史意義</th></tr></thead><tbody><tr><td>2002年</td><td>Jansen等人正式提出CRISPR名稱及Cas相關基因命名</td><td>建立統一研究名稱</td></tr><tr><td>2005年</td><td>Mojica、Bolotin及Pourcel等研究團隊發現Spacer與病毒等外來遺傳物質具有關聯</td><td>提出細菌免疫功能的關鍵線索</td></tr><tr><td>2006年</td><td>Makarova等人提出CRISPR可能具有類似免疫防禦的作用</td><td>建立理論模型</td></tr><tr><td>2007年</td><td>Barrangou與Horvath研究團隊證實CRISPR可以使細菌獲得噬菌體抗性</td><td>首次重要實驗證據</td></tr><tr><td>2008年</td><td>Brouns等人證實CRISPR序列可轉錄成RNA，參與病毒辨識</td><td>揭示RNA引導機制</td></tr><tr><td>2008年</td><td>Marraffini與Sontheimer證明部分CRISPR系統以外來DNA為攻擊目標</td><td>確認DNA干擾機制</td></tr><tr><td>2009年</td><td>Hale等人發現部分CRISPR系統可以作用於RNA</td><td>擴大CRISPR作用範圍</td></tr><tr><td>2010年</td><td>Garneau等人證明CRISPR相關蛋白可以切割外來DNA</td><td>推進分子機制研究</td></tr><tr><td>2011年</td><td>Charpentier研究團隊發現tracrRNA在Cas9系統中扮演重要角色</td><td>為Cas9基因編輯工具奠定基礎</td></tr></tbody></table></div>
+<h3>2. 2005年：發現Spacer與病毒DNA的關聯</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/3yEMR7461WQdVR81IN_ysfvkaK1RoB1vBmZWKyoCWbRpHw0b4V-vw2KS_al_KAf66X7Oz5hhp4exQKS0qA56_P6CIA1-P2MQES9rbUKs-xTpCtC7Z6TNkoNhJrXQwKBWgK5W5RKq8Z7jUoW82iXAiUt0g0j6WM6j-ZsyaKDIw9E?purpose=inline" alt="Introduction to CRISPR-Cas technology (Part 3) | by Roohi Bansal | Biotechnology by TSB | Medium" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Introduction to CRISPR-Cas technology (Part 3) | by Roohi Bansal | Biotechnology by TSB | Medium</figcaption></figure></div>
+<p>CRISPR序列中有一種重要結構稱為Spacer（間隔序列）。</p>
+<p>科學家發現，部分Spacer的DNA序列與噬菌體及其他外來遺傳物質的序列相似。</p>
+<p>這帶來一個重要推論：</p>
+<p>細菌可能把曾經入侵的病毒DNA片段保存下來，作為未來辨識病毒的記憶。</p>
+<p>這個概念成為CRISPR適應性免疫理論的基礎。</p>
+<h3>3. 2007年：細菌適應性免疫獲得實驗證實</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/hh3ywCCvrmguC0l9aHWvr3o1OePyQJWJ5f8ikPfETC96q7rMJleVOz7pA5cYvE6B-cmSS3NBnYwOoQWYxfC3eNyY8drAMZBgbyeRxg7YnRta7fefX5j8KK8naJ75a8To761yrOWq_hE-oMbtjfxdGHkJ3IKSK83DptpHlhNtOrg?purpose=inline" alt="16 Innovators to be Inducted as the National Inventors Hall of Fame Class" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>16 Innovators to be Inducted as the National Inventors Hall of Fame Class</figcaption></figure></div>
+<p>2007年，法國研究者Rodolphe Barrangou與Philippe Horvath等人，以嗜熱鏈球菌（Streptococcus thermophilus）進行研究。</p>
+<p>他們發現：</p>
+<ul><li>細菌受到噬菌體攻擊後，可以取得病毒DNA片段。</li><li>這些DNA片段會被加入CRISPR序列。</li><li>細菌因此能夠辨識曾經入侵過的病毒。</li><li>再次遭遇相同病毒時，能夠利用CRISPR-Cas系統抵抗感染。</li></ul>
+<p>這項研究證實CRISPR是細菌的適應性免疫系統。</p>
+<p>其重要意義在於：科學家開始真正理解CRISPR的生物學功能。</p>
+<h3>4. CRISPR天然免疫的三個步驟</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/li_rgv0TQ-Fxd5K48KqHr6ptAteHs22S2NVFZWd3WealnAKUpeB-tO0S4GfvV69JC51i4EgVW_1LyWDVRBeLgT97Ola5arHUdzQz0aW2qAmV1maYDXwwP8AB8Eb_MJQMK5HQQjQC261o9lrxATGGin9YPu-uJRBn0FSL8zLSMqk?purpose=inline" alt="Frontiers | Advances in the application of CRISPR-Cas technology in rapid detection of pathogen nucleic acid" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Frontiers | Advances in the application of CRISPR-Cas technology in rapid detection of pathogen nucleic acid</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>步驟</th><th>英文</th><th>作用</th></tr></thead><tbody><tr><td>第一階段</td><td>Adaptation</td><td>擷取外來DNA片段並儲存為Spacer</td></tr><tr><td>第二階段</td><td>Expression and Processing</td><td>將CRISPR序列轉錄並加工成crRNA</td></tr><tr><td>第三階段</td><td>Interference</td><td>利用crRNA引導Cas蛋白辨識及破壞外來遺傳物質</td></tr></tbody></table></div>
+<p>這套機制有點類似免疫系統的記憶功能。</p>
+<p>細菌可以將過去病毒感染的資訊保存在自己的基因組中，以便下次防禦。</p>
+<h2>四、CRISPR發展史第三階段：CRISPR-Cas9成為基因編輯工具（2011～2013）</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/qlz7bKECySqUQ2P7_jMiazT0-IcNA-hJzOkKzUpRIBXyivQA683JNg-L_cilYt1KSb3fs-nmXfyA3SGUKbVtHLI3bV3gb8Tff-w-Uj9u3HAxlJdQfqZPH-fDcLw-PovoCWbKJ5wTahQrrGiS7IRGe5jYESKk5rNKYeB-MURwtcs?purpose=inline" alt="Jennifer Doudna | Undergraduate Education" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Jennifer Doudna | Undergraduate Education</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/pj-9OIfxzxftRfiZTcTwZmM-LEdBIS96aDsGFOkdO4QkdaUmwYORSnwl6Yx5-L5QoFyGGpQL2HxtYQgU5d7OhmJnW_hUaBmj70IHA6-p2GsB-G50-p9QrlOeb6ymruvdFwnI5cYByO9lZyJQUlMTgU_ymTNHdCi-B-s560JJVGU?purpose=inline" alt="Emmanuelle Charpentier - Gairdner Foundation Award Winner" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Emmanuelle Charpentier - Gairdner Foundation Award Winner</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/kJNANL8fVacaJ8-UrTHAEN4YUwedwqBKJ7rUNX0PHPrHZwjze9mMW9sFo5BYkRFgGLnaBMCYPj_h19EigbMvLUdN85JJwLGj4K7pm8XG0mSeLGMBlBVAWFmi-iXRak_O1P6O69OfIvJb6sta2d_XzTLA0NYpH1vYuFjfeN1zIUs?purpose=inline" alt="CRISPR-Cas9: Transformations in Gene Editing | AmBioTech" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CRISPR-Cas9: Transformations in Gene Editing | AmBioTech</figcaption></figure></div>
+<p>這是CRISPR發展史最關鍵的轉折。</p>
+<p>科學家原本研究的是細菌如何抵抗病毒，後來逐漸發現：</p>
+<p>如果可以人為設計引導RNA，就能讓Cas9蛋白依照指定位置尋找DNA並進行切割。</p>
+<p>這代表CRISPR可能成為一種可程式化的基因編輯工具。</p>
+<h3>1. 2011年：tracrRNA的重要發現</h3>
+<p>法國科學家艾曼紐・夏彭提耶（Emmanuelle Charpentier）及其研究團隊，深入研究化膿性鏈球菌（Streptococcus pyogenes）的CRISPR系統。</p>
+<p>他們發現一種稱為tracrRNA（trans-activating CRISPR RNA）的RNA分子。</p>
+<p>這種RNA與crRNA共同參與Cas9系統的運作。</p>
+<h3>2. 2012年：CRISPR-Cas9基因編輯技術問世</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/35uEvZlTAaisORIN65YXwsQXqSqwPy1QZmZHL0br7jItha0rJdS1T6kAs34PtOSo3rfjzTWlVet09vn6h4jsiSKTJFEpYAGRS4cQdwaHtGE5xJKVHft7GcRi-ZgYpAy8-rZysUl59GqXDxHmgH7aYJzjQ32f_RN2RIvsr7IOo-k?purpose=inline" alt="Cas9 Nuclease, S. pyogenes | NEB" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Cas9 Nuclease, S. pyogenes | NEB</figcaption></figure></div>
+<p>2012年，夏彭提耶與美國科學家珍妮佛・道納（Jennifer Doudna）及其研究團隊發表重要論文。</p>
+<p>他們證明可以利用人工設計的RNA，引導Cas9蛋白在指定DNA位置進行切割。</p>
+<p>另一個重要突破是將原本參與辨識的crRNA與tracrRNA結合，設計成單一引導RNA（sgRNA）。</p>
+<p>這使CRISPR-Cas9成為容易設計及操作的基因編輯工具。</p>
+<p><strong>2012年被普遍視為現代CRISPR基因編輯革命的起點。</strong></p>
+<h3>3. 2013年：CRISPR進入真核細胞基因編輯</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/t8bBPD55gdPq4GkY5iJm-dR5GzVeQPdK97RcDPAN_dDVx1EfCrWRsNCpotTfRNy9QXY9RmU79WiBpQv_XsKrJl4e8euB-3hxC2TN31zR7_JNs9fDhaXRn6RO0JjuKSfiCJklGA1QrhLb4NY4-x6CzHs57SpnJcOxCGWXywdT6_M?purpose=inline" alt="Explained: What are CRISPR-Cas9 genetic scissors?" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Explained: What are CRISPR-Cas9 genetic scissors?</figcaption></figure></div>
+<p>2013年，多個研究團隊分別證明CRISPR-Cas9可以應用於哺乳動物細胞，包括：</p>
+<ul><li>George Church研究團隊。</li><li>Feng Zhang研究團隊。</li><li>Jin-Soo Kim研究團隊。</li></ul>
+<p>這些研究證明CRISPR-Cas9不只可以在細菌中運作，也能應用於動物及人類細胞。</p>
+<p>主要應用開始擴大至：</p>
+<ul><li>遺傳疾病研究。</li><li>癌症基因研究。</li><li>動物疾病模型建立。</li><li>作物基因改良。</li><li>基礎生命科學研究。</li></ul>
+<h2>五、CRISPR發展史第四階段：基因編輯技術快速擴張（2014～2019）</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/P-NAwCTUykQL4vJEzmPepE127sciOQ40_WGX_CiBf5AnvcUY87WPFq-PpH18A6kzpORLrQV5GencfwUPSpTc82rgd8y62RpLXJhB5bCzBh345RPM3OX6K7-v7_waqDfhBGVF_r8aBBiCZKNMoWmez54BE0C5xxkj1s2DjQkKXVU?purpose=inline" alt="Knockout and Knockdown Antibody Validation | Thermo Fisher Scientific - US" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Knockout and Knockdown Antibody Validation | Thermo Fisher Scientific - US</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/aOCReU8hJXyueJn9Vv7NL3YFEEo5JV1UQFqJCsQLm2JB57XwnwGGKBzT1meQu9fhywcWbZ_-nVAK3-jMv7HzFz0q4-Og2oj3V8fquwGhLo8ybYd7ycb934OjPQT-Hzi6sXXSXZQJjuK4oCou6t6JfrjkeTPSPZMIhWaDKrN1YDE?purpose=inline" alt="Frontiers | Base and Prime Editing Technologies for Blood Disorders" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Frontiers | Base and Prime Editing Technologies for Blood Disorders</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/pzSHWfci_qX3Ip1mu0dFbWKlj2Qpl_cQVAHVd-UMcXpsDnVnTNaVpS3Msr0SmBVi-73VZxDGOW4y_1gVTWdw-OC-memJaxjK31j7LV6flpcJOPiNaeKnHaPiYdhJ67F5fqVtFkzedZzUqFlVu6V5jSu11l9sG09Lpct7OmndyuM?purpose=inline" alt="Prime Editing for Human Gene Therapy: Where Are We Now?" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Prime Editing for Human Gene Therapy: Where Are We Now?</figcaption></figure></div>
+<p>CRISPR-Cas9問世後，科學家開始思考如何讓基因修改更加精準。</p>
+<p>傳統Cas9需要切斷DNA雙股，可能造成非預期突變或DNA修復問題。</p>
+<p>因此，研究者陸續發展出不需要雙股DNA斷裂，或能夠更加精準修改DNA的技術。</p>
+<h3>1. 重要發展大事記</h3>
+<div class="tw"><table><thead><tr><th>年代</th><th>重要事件</th><th>歷史意義</th></tr></thead><tbody><tr><td>2014年</td><td>CRISPR技術廣泛應用於動物及植物研究</td><td>基因編輯進入普及期</td></tr><tr><td>2015年</td><td>CRISPR用於人類胚胎研究</td><td>引發胚胎基因編輯倫理討論</td></tr><tr><td>2015年</td><td>高精準Cas9變體研究發展</td><td>降低部分非目標切割</td></tr><tr><td>2016年</td><td>CRISPR表觀遺傳調控工具發展</td><td>不切割DNA也能調控基因</td></tr><tr><td>2016年</td><td>CBE胞嘧啶鹼基編輯技術發表</td><td>可以直接修改特定DNA鹼基</td></tr><tr><td>2017年</td><td>ABE腺嘌呤鹼基編輯技術發表</td><td>擴大精準鹼基修改能力</td></tr><tr><td>2018年</td><td>CRISPR胚胎基因編輯嬰兒事件</td><td>引發全球倫理爭議</td></tr><tr><td>2019年</td><td>先導編輯（Prime Editing）技術發表</td><td>發展更靈活的DNA修改方式</td></tr></tbody></table></div>
+<h3>2. 2016年：鹼基編輯技術（Base Editing）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/Hvx6U383jVeUhpG8cDoeM-sEZUZBM4cZ6ods7SoOCt_XKTwBtzEIyIjhfBZQ9XhlsSTWG42CYdpLFOgqYJ4WSN6zXmwITQ0lJxa11kPTu6dH3T-wReouAwN90iZEiRQ6K5MpIyHnSjtFKVP9x1r14H0gD-8HeksxkD-v4kSXFOo?purpose=inline" alt="DNA Base Editors for Genome Editing | UC Davis Biotechnology Program" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>DNA Base Editors for Genome Editing | UC Davis Biotechnology Program</figcaption></figure></div>
+<p>2016年，David Liu研究團隊發表胞嘧啶鹼基編輯技術（Cytosine Base Editor，CBE）。</p>
+<p>2017年，他們進一步發表腺嘌呤鹼基編輯技術（Adenine Base Editor，ABE）。</p>
+<p>兩項技術的突破在於：</p>
+<p>不必像傳統Cas9一樣切斷DNA雙股，就能直接改變特定DNA鹼基。</p>
+<div class="tw"><table><thead><tr><th>技術</th><th>主要修改</th></tr></thead><tbody><tr><td>CBE</td><td>C·G → T·A</td></tr><tr><td>ABE</td><td>A·T → G·C</td></tr></tbody></table></div>
+<p>這使科學家能夠更精準地修正部分單一鹼基突變。</p>
+<h3>3. 2018年：人類基因編輯嬰兒事件</h3>
+<p>2018年，中國研究者賀建奎宣布利用CRISPR-Cas9技術修改人類胚胎的CCR5基因，並宣稱已有基因編輯嬰兒出生。</p>
+<p>這件事引起國際社會強烈爭議。</p>
+<p>主要問題包括：</p>
+<ul><li>胚胎基因編輯的安全性。</li><li>是否存在非目標突變。</li><li>基因修改是否可能遺傳給下一代。</li><li>是否取得充分的倫理審查。</li><li>是否有合理的醫療必要性。</li></ul>
+<p>這個事件成為基因編輯倫理史的重要分水嶺。</p>
+<h3>4. 2019年：先導編輯（Prime Editing）</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/2S6No_CGRagAwKtskGoyWoJlcDBOVlU3G3N_yAzKx-lu7hVhBIw0_uc2KiHLMBowURPtTnabFza0GTX_aa6cno3WB6Alksi9Q6e8taRWOdk7fosofIf6tfqQd2zdmGMEzJrJEEkRG0j5aVSBm6v8mJWVRFxOnamin-oPnVGWjVE?purpose=inline" alt="Gene Therapy in Cardiovascular Disease: Recent Advances and Future Directions in Science - Professional Heart Daily | American Heart Association" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Gene Therapy in Cardiovascular Disease: Recent Advances and Future Directions in Science - Professional Heart Daily | American Heart Association</figcaption></figure></div>
+<p>2019年，美國科學家David Liu研究團隊發表先導編輯技術。</p>
+<p>其主要組成包括：</p>
+<ul><li>Cas9切口酶（Cas9 nickase）。</li><li>逆轉錄酶（Reverse Transcriptase）。</li><li>先導編輯RNA（pegRNA）。</li></ul>
+<p>先導編輯可以在特定條件下進行：</p>
+<ul><li>DNA鹼基替換。</li><li>小片段DNA插入。</li><li>小片段DNA刪除。</li></ul>
+<p>與傳統雙股DNA切割方式相比，它提供了另一種更靈活的基因修改途徑。</p>
+<h2>六、CRISPR發展史第五階段：諾貝爾獎與臨床治療突破（2020～2024）</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/qDVIe-6hyUqpe7UrMYpSvGOtUx-VEUOiTBACx0lLDbP2iOsFZma7HF1X_aQmnA-xLwYjpyudEOtvYw-jygnCn6ws3WdvjtRn3PuJVj1ruW3UB_08xP-dK-WXpz6nPPvXI4pctdY_RTqh70L_QM7ADfBc9cz6GcwAQk8HFsHIEqo?purpose=inline" alt="Nobel de Química 2020 vai para as criadoras da edição do genoma | Ciência | EL PAÍS Brasil" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Nobel de Química 2020 vai para as criadoras da edição do genoma | Ciência | EL PAÍS Brasil</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/SvEQZMw8WXwTw5YwPk58_OCaqCN-ZeU63kLDKCJAaMQDGNQhrai-Xx8x382N4ukv685wmYDJIX4rfsy8RVOldcX3HetWm4kh8_QZC_sWyU1-L8sbRAAKdqQRNf4TePrVO09_YIf6jSK7jaoZYACejpmkHRk1r7uy7rq7Qo8mWxk?purpose=inline" alt="Gene therapy for polygenic or complex diseases | Biomarker Research | Springer Nature Link" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Gene therapy for polygenic or complex diseases | Biomarker Research | Springer Nature Link</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/CTtoXX6xXmkIlqec-rrP6NI30geH5ULD63M1_FkQMZ9D6e07m65exmf66gVnLbixoZE94JYQYP3yG2XpqjogDRTvkNjCL5t0DX1oR3g7XrJjn0QMNQp4VZlERNAq9vyRnu8oEv7L2rer0lHwkf1SXoCor7gj3fUT35grekPNTlI?purpose=inline" alt="About | Laboratory for Cell and Gene Medicine | Stanford Medicine" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>About | Laboratory for Cell and Gene Medicine | Stanford Medicine</figcaption></figure></div>
+<p>2020年代，CRISPR開始從實驗室研究走向正式醫療應用。</p>
+<p>其中最重要的兩件事：</p>
+<ol><li>CRISPR-Cas9研究獲得諾貝爾化學獎。</li><li>第一種CRISPR基因編輯療法獲得監管機關批准。</li></ol>
+<h3>1. 重要發展大事記</h3>
+<div class="tw"><table><thead><tr><th>年代</th><th>重要事件</th><th>歷史意義</th></tr></thead><tbody><tr><td>2020年</td><td>道納與夏彭提耶獲諾貝爾化學獎</td><td>肯定CRISPR基因編輯的重大貢獻</td></tr><tr><td>2021年</td><td>CRISPR體內基因編輯臨床試驗取得進展</td><td>推進直接在人體內編輯基因</td></tr><tr><td>2021年</td><td>CRISPR診斷技術持續發展</td><td>擴大分子檢測應用</td></tr><tr><td>2022年</td><td>體內CRISPR基因編輯研究公布重要臨床結果</td><td>展現治療遺傳疾病的潛力</td></tr><tr><td>2023年</td><td>英國核准Casgevy</td><td>首次核准CRISPR基因編輯療法</td></tr><tr><td>2023年</td><td>美國FDA核准Casgevy治療鐮刀型紅血球疾病</td><td>CRISPR正式進入美國臨床治療</td></tr><tr><td>2024年</td><td>美國FDA核准Casgevy治療輸血依賴型β地中海型貧血</td><td>擴大適應症</td></tr><tr><td>2024年</td><td>CRISPR技術持續應用於癌症及免疫細胞研究</td><td>推進細胞治療</td></tr></tbody></table></div>
+<h3>2. 2020年：諾貝爾化學獎</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/K6BfSo0VX1MsK1NGR-UUJoYbBegNfagZouST_WBgiYf6-3YJAUTRtjnIwuiUSnL2txk2rioxNFPKXDKAoxN0GnUGx_p8tq38rzgZCX3sFqS0kMNZcdRluO1CnEoGgeRyG6d9enUfkRGR_JbhBT2lReTvfVqmiLs3mM9nzwCGzhI?purpose=inline" alt="Nobel Prize 2020 for Chemistry jointly received by Emmanuelle Charpentier, Jennifer A. Doudna for wo" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Nobel Prize 2020 for Chemistry jointly received by Emmanuelle Charpentier, Jennifer A. Doudna for wo</figcaption></figure></div>
+<p>2020年，瑞典皇家科學院將諾貝爾化學獎頒發給：</p>
+<ul><li>珍妮佛・道納（Jennifer Doudna）。</li><li>艾曼紐・夏彭提耶（Emmanuelle Charpentier）。</li></ul>
+<p>獲獎理由是開發基因組編輯方法。</p>
+<p>這項榮譽象徵CRISPR從基礎微生物學研究，正式成為現代生命科學的重要技術平台。</p>
+<h3>3. 2023年：Casgevy成為第一種獲准的CRISPR療法</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/1zQrFi68X66_3k93Fj2wSBKTJ0o43l41z3mMk1M5kimxXtzHvUgdS8_AjJONOcSa0t11qSy6j_dFyCwH_Web2Dljb5E4YgCWIMgTLIEaFeIgcXQLuPDiAfUQoF9UKWjDiSY1YrKAyA4ITlMisS15Y6QffJlulkaDSMaKHakTSrQ?purpose=inline" alt="New Gene Therapies Are Transformative for People with Sickle Cell Disease and Frequent Vaso-Occlusive Crises" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>New Gene Therapies Are Transformative for People with Sickle Cell Disease and Frequent Vaso-Occlusive Crises</figcaption></figure></div>
+<p>2023年11月16日，英國成為第一個批准CRISPR-Cas9療法的國家。</p>
+<p>2023年12月8日，美國FDA批准Casgevy（exa-cel），用於治療12歲以上、反覆發生血管阻塞危象的鐮刀型紅血球疾病患者。</p>
+<p>2024年1月16日，美國FDA再批准其用於12歲以上的輸血依賴型β地中海型貧血患者。</p>
+<p><strong>Casgevy的作用原理</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/9g325yVBANdr6mn55_OT5_4NWJ3EbCHxCnSfy8Nb8WzOT7a5zu_fj2LT0uUB-0V64nVdO-7tX2TGreIOnUzNBWpW-7d0Tim-0eXb0fc-DxEXxPyMLB8QYX3YTw0qOSS1An6D62W-kwSybGR4LOIbkQXYc06io87Kb3wcLJhDyqM?purpose=inline" alt="Precise Gene Editing&#x27;s Impact on Sickle Cell Disease | IDT" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Precise Gene Editing's Impact on Sickle Cell Disease | IDT</figcaption></figure></div>
+<p>Casgevy並不是直接修復鐮刀型紅血球疾病患者的血紅素基因突變，而是利用CRISPR-Cas9修改患者的造血幹細胞。</p>
+<p>主要流程：</p>
+<ol><li>從患者身上取得造血幹細胞。</li><li>在體外利用CRISPR-Cas9編輯BCL11A基因的紅血球特異性增強子區域。</li><li>降低BCL11A在紅血球中的調控作用。</li><li>促進胎兒血紅素（HbF）生成。</li><li>將編輯後的造血幹細胞移植回患者體內。</li><li>使患者產生較多胎兒血紅素，減少紅血球鐮刀化。</li></ol>
+<p>這項技術的重要性在於，基因編輯不再只是實驗室中的研究工具，而是正式進入遺傳疾病治療。</p>
+<h2>七、CRISPR發展史第六階段：個人化基因編輯與新一代技術（2025～2026）</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/-mSYsbfWi5x8TxngVXRjh4uhnwizRNT8qithLPyG-2nJ14cq-MjO-UyojcRGGXuHLyr2kfBm8MmqjysO7rw5LR5BKJqjmkudWDVh6pwf1N4GLsVebkTvi9MplXGC1evWPwMmnfVAeOHMBd6wWTO2xpMgYi_i_WWeErOnO9H0sUQ?purpose=inline" alt="Interim Results of human Clinical Trial for CRISPR gene editing of PCSK9 - Rapamycin Longevity News" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Interim Results of human Clinical Trial for CRISPR gene editing of PCSK9 - Rapamycin Longevity News</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/a_1Ewvz6KrWNxJDg-rw2zxluMbMTuIFExjLi2eyLHwqYwLGa7k5vf0jLAtEdfnwlrYaKLsHOIBoSRGcXycbC8ZSlzMCD4DP31Bp2FhzwsCPiY6SUfA89dUWS_LGEKiUTteY8eruW6qNSXS7jeHcwruTOqc8tZ0qhvfwgoJP4Q7k?purpose=inline" alt="CRISPR-GPT for agentic automation of gene-editing experiments | Nature Biomedical Engineering" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>CRISPR-GPT for agentic automation of gene-editing experiments | Nature Biomedical Engineering</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/ibwwHIdcu2YksHEz4hHEQE4lo56myP0da0RS1qtEpvF70eMsrN3U6wIDCvmJr8JXVBs142iQMQUvHC7xfsIUVtQ6ATp0lYuI3-lWOSqd7ax71k-blW-Zs00tPheXocnDtMZrItpfYsMngqafU-GeieK6q-em168lIk64luYa9toi2sB5E8oRft5trLyWBPB1?purpose=inline" alt="Gene editing technology in vivo. CRISPR and Cas9 system for Treatment disease" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Gene editing technology in vivo. CRISPR and Cas9 system for Treatment disease</figcaption></figure></div>
+<p>2025年以後，CRISPR研究逐漸從治療特定疾病，朝向依照個別患者的基因突變設計專屬治療。</p>
+<p>這代表基因編輯技術正在朝向個人化醫療發展。</p>
+<h3>1. 2025年：全球首例個人化CRISPR基因編輯治療</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/s7od4gMcGEsy7i1Z8U5jGM16qzY7Nf6eWpTbN5TY3zCF6vLdCZgxTUoIvR8s-7OrVCOBdN8HpoqEuJyzCLyRFwkch4C2Z9H6I-pit93w1FZksVVa3pViEyRvtuGieVoivnBx6NgvV7DVNZJBpowQkNe6wrY5kK4lvjsQJ2A_-70?purpose=inline" alt="Infant’s Diagnosis Sparks Medical Breakthrough: World’s First Personalized Gene Editing Therapy | CHOP Research Institute" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Infant’s Diagnosis Sparks Medical Breakthrough: World’s First Personalized Gene Editing Therapy | CHOP Research Institute</figcaption></figure></div>
+<p>2025年2月，美國費城兒童醫院（CHOP）與賓夕法尼亞大學研究團隊，為一名患有罕見代謝疾病的嬰兒KJ，開發個人化基因編輯療法。</p>
+<p>患者患有CPS1缺乏症（Carbamoyl Phosphate Synthetase 1 Deficiency）。</p>
+<p>這種疾病會使人體無法正常處理蛋白質代謝所產生的氨，造成血液氨濃度過高，可能危及生命。</p>
+<p>研究團隊採用CRISPR鹼基編輯技術：</p>
+<ul><li>根據患者的特定基因突變設計編輯工具。</li><li>利用脂質奈米粒子包覆基因編輯成分。</li><li>將編輯工具送入肝臟細胞。</li><li>修正患者特定的CPS1基因突變。</li></ul>
+<p>2025年2月25日，患者接受首次治療，之後陸續接受追加劑量。</p>
+<p>2025年5月，研究成果正式發表於《新英格蘭醫學雜誌》（New England Journal of Medicine）。</p>
+<p>初期治療結果顯示，患者可以攝取更多蛋白質，並減少部分藥物需求，但仍需要長期追蹤安全性與療效。</p>
+<p>這項突破具有三項重要意義：</p>
+<ol><li>從通用型基因療法走向個人化基因療法。</li><li>展現針對極罕見單基因疾病設計治療的可能性。</li><li>為未來建立可快速修改的個人化基因編輯平台提供範例。</li></ol>
+<h3>2. 2026年：Casgevy擴大兒童治療適應年齡</h3>
+<p>2026年7月1日，美國FDA核准Casgevy擴大適應年齡，讓年滿2歲的鐮刀型紅血球疾病及輸血依賴型β地中海型貧血患者也能使用。</p>
+<p>這使CRISPR療法的臨床應用向更年幼的患者延伸。</p>
+<h3>3. 2025～2026年主要研究方向</h3>
+<div class="tw"><table><thead><tr><th>研究方向</th><th>技術內容</th><th>主要目標</th></tr></thead><tbody><tr><td>個人化基因編輯</td><td>依患者突變設計編輯工具</td><td>治療罕見遺傳疾病</td></tr><tr><td>體內基因編輯</td><td>In vivo Editing</td><td>直接在患者體內修改基因</td></tr><tr><td>鹼基編輯</td><td>Base Editing</td><td>精準修改單一DNA鹼基</td></tr><tr><td>先導編輯</td><td>Prime Editing</td><td>進行更複雜的DNA序列修改</td></tr><tr><td>RNA編輯</td><td>RNA Editing</td><td>修改RNA而不永久改變DNA</td></tr><tr><td>表觀遺傳編輯</td><td>Epigenome Editing</td><td>調控基因開關</td></tr><tr><td>AI基因編輯設計</td><td>AI-guided Editing</td><td>協助設計引導RNA及預測編輯效果</td></tr><tr><td>新型Cas蛋白</td><td>Cas12、Cas13及其他Cas系統</td><td>擴大基因及RNA操作能力</td></tr></tbody></table></div>
+<p>這些方向並非都已成為成熟的臨床治療，有些仍處於基礎研究或臨床試驗階段。</p>
+<h2>八、CRISPR基因編輯技術的主要類型</h2>
+<p>CRISPR發展至今，已經不再只有Cas9一種工具，而是形成多種不同的基因編輯技術。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/YFXFq0CQg69hFWVf4Um5ttbP-80RGLvHMACLGsCXUJKJemj8SIDgMoh3Ys1dT1nKi9UOD7bIw4O2D1s7q72V_-xUozRtUqZpj1vNJXX-kOAQXqZJJnSmW2xM7GfaecNzSCniHhFKmlbiAiXRoH_xIxVGL0PGG9cipMY_vW2A2Xc?purpose=inline" alt="Frontiers | The Potential of CRISPR/Cas9 Gene Editing as a Treatment Strategy for Inherited Diseases" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Frontiers | The Potential of CRISPR/Cas9 Gene Editing as a Treatment Strategy for Inherited Diseases</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/aOCReU8hJXyueJn9Vv7NL3YFEEo5JV1UQFqJCsQLm2JB57XwnwGGKBzT1meQu9fhywcWbZ_-nVAK3-jMv7HzFz0q4-Og2oj3V8fquwGhLo8ybYd7ycb934OjPQT-Hzi6sXXSXZQJjuK4oCou6t6JfrjkeTPSPZMIhWaDKrN1YDE?purpose=inline" alt="Frontiers | Base and Prime Editing Technologies for Blood Disorders" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Frontiers | Base and Prime Editing Technologies for Blood Disorders</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/5o9D7b_jHyNmP2ZiNZwHr4yucCoXv1x-Js-Q_yYpoPQYUvfFQEjCf789UTuyRH6JHkdj2MjUfy7Ra5jnX4xpZQd1w2CI1NtdXAoaDzifdOLM4r2WDXdTq5u9_--tnSYVt26o6S1XrthSYTlA-p7F7mnHGtkym7XUqK0yGq1hJss?purpose=inline" alt="A Prime editor’s complex is made of a nickase, a pegRNA, and a reverse... | Download Scientific Diagram" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>A Prime editor’s complex is made of a nickase, a pegRNA, and a reverse... | Download Scientific Diagram</figcaption></figure></div>
+<h3>1. 主要技術比較</h3>
+<div class="tw"><table><thead><tr><th>技術</th><th>發展年代</th><th>主要功能</th></tr></thead><tbody><tr><td>CRISPR-Cas9</td><td>2012年</td><td>DNA定點切割</td></tr><tr><td>CRISPR-Cas12a</td><td>2015年左右</td><td>DNA定點切割，具有不同辨識及切割特性</td></tr><tr><td>CRISPR-Cas13</td><td>2016年</td><td>針對RNA進行辨識及切割</td></tr><tr><td>CBE鹼基編輯</td><td>2016年</td><td>C轉換為T</td></tr><tr><td>ABE鹼基編輯</td><td>2017年</td><td>A轉換為G</td></tr><tr><td>Prime Editing</td><td>2019年</td><td>執行特定鹼基替換及小片段插入、刪除</td></tr><tr><td>Epigenome Editing</td><td>2010年代起</td><td>不改變DNA序列，調節基因表現</td></tr><tr><td>RNA Editing</td><td>2010年代後期起</td><td>修改RNA序列</td></tr></tbody></table></div>
+<h3>2. 五種重要技術的差異</h3>
+<p><strong>CRISPR-Cas9：DNA剪刀</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/4J_EmbLCS3Y9dS7twRXq6H5pL8OI2pCBLqeOzUw-avzHKrte7oodWX_bhzRymApqthgpI_ri5-Y3c-nQ_jqIWMYUhPyCJ6e8-tmeDNIe3cRzS_d-rSatqGWhKFH2WGzT5AT9jh_OsCudmTHDfafDFC2rV8PK0dlI74UUHy-qmsw?purpose=inline" alt="Checking your browser - reCAPTCHA" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Checking your browser - reCAPTCHA</figcaption></figure></div>
+<p>切斷DNA雙股，利用細胞修復機制修改基因。</p>
+<p><strong>CRISPR-Cas12a：另一種DNA剪刀</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/BYJxkwZDofuANWhgAw3PV9L3wQoAjSdsxZQr74ObZNUXuOGRdy1XR4AzDOez0gfDLDy8rmhxP3bANsWZCmDcoU5773TluSb16dtPVIwtz99q4QIyodb1U8n_vXAek1k0_cU9s5Orpnb8HUnCkdXZPSxRI6AWe9W9naO-fjdxrgA?purpose=inline" alt="Checking your browser - reCAPTCHA" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Checking your browser - reCAPTCHA</figcaption></figure></div>
+<p>具有不同PAM辨識及切割特性，可擴大基因編輯的選擇。</p>
+<p><strong>Base Editing：DNA文字修改器</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/8Z7jXkIIIY2dRulbJvK47s5RbrgV-zo-vPD7sX6cIJ4Zrovy6FqWSzTOs4_TzGx6ckRvAr1ixaAgJnCB6Nzwe-8QCJXAPVY0RlyzqWPDcj_sOIFMj2JkXbPbKlQG_H2FZA6fUQ3R0RE0PoO_Fyyu0amlNLSxv-1wMjJFxmuRTdA?purpose=inline" alt="News: Explainer: What Are Base Editors and How Do They Work? - CRISPR Medicine" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>News: Explainer: What Are Base Editors and How Do They Work? - CRISPR Medicine</figcaption></figure></div>
+<p>直接修改特定鹼基，通常不需要DNA雙股斷裂。</p>
+<p><strong>Prime Editing：DNA精準文字編輯器</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/28TilYMwtd58rA8ql7TfqoQcE9G5thl5NDis97J8WAfl7VqEptNo5guLT3oomt_XdfxMRrJTZ8UjnYXXXi8GES0nbB6LiG-I2N0LglKEmbHr4v3bkYV5dnno0_O4PdNOvKyqbIlDx1xdFGggZcqsbvrZp0Zj7s8N97czx34gguM?purpose=inline" alt="Genom-Editierung: CRISPR/Cas | Gen Suisse" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Genom-Editierung: CRISPR/Cas | Gen Suisse</figcaption></figure></div>
+<p>利用pegRNA及逆轉錄酶進行指定序列修改。</p>
+<p><strong>CRISPR-Cas13：RNA剪刀</strong></p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/0IHa5YJ-rwen38RgCku3W3HgO0oAWj24rtTVDQJHOEc2w3gbFbouqvTVPPdiKxv6cGmoB96-IjfoRmqx_yh2VhrQtWtV_PL5KG6EW8FOAbstkEtc8CieSIEJd6J70IH8DbepVotEsRYRlZuL7AZIxkLDyvFFnvNHHC20X3DYjuQ?purpose=inline" alt="Checking your browser - reCAPTCHA" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Checking your browser - reCAPTCHA</figcaption></figure></div>
+<p>主要作用於RNA，不直接修改DNA基因組。</p>
+<h2>九、CRISPR基因編輯的主要應用領域</h2>
+<h3>1. 醫療與遺傳疾病治療</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/6mh_rNXDTtYWED6nnR2HRY4fQMDV7WtCiTUpk8sM0JN9XhyMOvCuAfzsgyONAQtKCoS4O9PNYVHdEF3qNGYAIYz6o8vpdkvSwIT2IHYKCr9Pl3RfusAGoadhS6YNLZ_CTwEBNY-8RNzevnWKTX0fwmDPsxvrrUPLQ6r4_6V4NRE?purpose=inline" alt="Post Genomic Medicine | PGM" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Post Genomic Medicine | PGM</figcaption></figure></div>
+<p>主要研究疾病：</p>
+<ul><li>鐮刀型紅血球疾病。</li><li>β地中海型貧血。</li><li>遺傳性失明。</li><li>肌肉萎縮症。</li><li>囊腫性纖維化。</li><li>部分遺傳性代謝疾病。</li><li>部分遺傳性免疫疾病。</li></ul>
+<h3>2. 癌症治療</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/amHOXAXcQH0YL2B7xoZgk4wVumkBjU42qsgJj48-XH2KZS7Rc5fWP4ZFRKNS1xBqWYAcRywHlbvBGKd7849yZRWlbpA0rFJWFr8saBkw2JjnCkIxlIQobQvUNWfNxilKRV8CA_4K5QPXTzyKA-YhRUz57D9aJTmNLEMB4sD9Gl4?purpose=inline" alt="El poder de CRISPR/Cas más allá de la investigación" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>El poder de CRISPR/Cas más allá de la investigación</figcaption></figure></div>
+<p>CRISPR可以協助修改免疫細胞的基因，使其具有更好的癌細胞辨識及攻擊能力。</p>
+<p>主要研究方向：</p>
+<ul><li>CAR-T細胞基因改造。</li><li>T細胞免疫功能調整。</li><li>癌細胞抗藥性研究。</li><li>腫瘤免疫逃脫機制研究。</li></ul>
+<h3>3. 農業與食品科技</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/SuiriUgC57jils72um9z_KVqofUxArIlsCX2gSBDtIrmd-G_aWfloPQ17nVqaqc_eVLv7fkZtxj__6b6gsXvy9uEkhD0AcC5qYBGrLr7ywIPbPmFcykBeLAQvSJWcZ4f7mnKtYGDbKDRG0gPSuLLc3Lwjr-g7mbGbvIUAmT1WsI?purpose=inline" alt="Q&amp;A: The evolving debate about using genetically modified crops in a warming world | News | Eco-Business | Asia Pacific" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Q&amp;A: The evolving debate about using genetically modified crops in a warming world | News | Eco-Business | Asia Pacific</figcaption></figure></div>
+<p>CRISPR在農業上的應用包括：</p>
+<ul><li>提高水稻產量。</li><li>培育抗病作物。</li><li>提高作物耐旱能力。</li><li>改善小麥品質。</li><li>延長水果保存期限。</li><li>改善植物營養成分。</li></ul>
+<h3>4. 生物製藥與工業生物科技</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/wonsqunK8cEirn0em6S3LRBe_R0FL2YtwTXeBHCFTHtOLkatyse34uu1QWnJLFAStjd34M2-e1EoaLHfGnceoMiI90JFSm4ROpAfNn5P3LQpmgiKLRwaNHOPQbbF9eaFlAxSrIUzcYRiR4eLjRxTg6vNZjFUPEzdef8_96s-E1w?purpose=inline" alt="Turning cells into manufacturing centers | NSF - U.S. National Science Foundation" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Turning cells into manufacturing centers | NSF - U.S. National Science Foundation</figcaption></figure></div>
+<p>CRISPR也可以用來改造微生物，使其生產：</p>
+<ul><li>胰島素。</li><li>疫苗。</li><li>治療性蛋白質。</li><li>生物燃料。</li><li>工業酵素。</li><li>生物可分解材料。</li></ul>
+<h2>十、CRISPR基因編輯的倫理與安全爭議</h2>
+<p>CRISPR雖然具有革命性，但也伴隨著許多科學、醫療及倫理問題。</p>
+<div class="tw"><table><thead><tr><th>爭議議題</th><th>主要問題</th></tr></thead><tbody><tr><td>脫靶效應</td><td>是否會修改到不希望改變的DNA位置？</td></tr><tr><td>基因修復錯誤</td><td>DNA修復是否產生大型缺失或染色體異常？</td></tr><tr><td>胚胎基因編輯</td><td>是否允許修改人類胚胎？</td></tr><tr><td>生殖系基因編輯</td><td>修改是否會遺傳給下一代？</td></tr><tr><td>基因公平性</td><td>高昂費用是否造成醫療不平等？</td></tr><tr><td>生態風險</td><td>基因驅動是否影響自然生態？</td></tr><tr><td>長期安全性</td><td>基因修改後是否存在長期副作用？</td></tr></tbody></table></div>
+<h3>體細胞編輯與生殖系編輯的差異</h3>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/maHkw5OWbuQDED_8ypOlQ2ktExyUXYRZQzezKP7X1S009w1In1gfqp5pB3k_SX4BexlFfAPXYaQsaXXMWmzh0QQn4ot8Z6BBD3EvrwOeneYCYeAKjzvrmdwk21wrjWDCRmypgEIId8YB3KAAUMxaz9OJc5CvrRusGZPoRyKvesw?purpose=inline" alt="MRM Insights - The long and winding road: Human germline genome editing | MRM" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>MRM Insights - The long and winding road: Human germline genome editing | MRM</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>比較項目</th><th>體細胞基因編輯</th><th>生殖系基因編輯</th></tr></thead><tbody><tr><td>編輯對象</td><td>人體一般細胞</td><td>精子、卵子或胚胎</td></tr><tr><td>是否影響後代</td><td>通常不會</td><td>有可能</td></tr><tr><td>主要目的</td><td>治療患者疾病</td><td>改變可遺傳基因</td></tr><tr><td>臨床發展</td><td>已有核准療法</td><td>臨床應用受到嚴格限制</td></tr><tr><td>倫理爭議</td><td>安全性與公平性</td><td>涉及世代及人類遺傳倫理</td></tr></tbody></table></div>
+<p>目前CRISPR臨床醫療發展的主要方向，是治療患者本人的體細胞，而不是進行可遺傳的人類胚胎基因改造。</p>
+<h2>十一、CRISPR發展史重要科學家</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/qlz7bKECySqUQ2P7_jMiazT0-IcNA-hJzOkKzUpRIBXyivQA683JNg-L_cilYt1KSb3fs-nmXfyA3SGUKbVtHLI3bV3gb8Tff-w-Uj9u3HAxlJdQfqZPH-fDcLw-PovoCWbKJ5wTahQrrGiS7IRGe5jYESKk5rNKYeB-MURwtcs?purpose=inline" alt="Jennifer Doudna | Undergraduate Education" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Jennifer Doudna | Undergraduate Education</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/pj-9OIfxzxftRfiZTcTwZmM-LEdBIS96aDsGFOkdO4QkdaUmwYORSnwl6Yx5-L5QoFyGGpQL2HxtYQgU5d7OhmJnW_hUaBmj70IHA6-p2GsB-G50-p9QrlOeb6ymruvdFwnI5cYByO9lZyJQUlMTgU_ymTNHdCi-B-s560JJVGU?purpose=inline" alt="Emmanuelle Charpentier - Gairdner Foundation Award Winner" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Emmanuelle Charpentier - Gairdner Foundation Award Winner</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/VzL34uqZ1qsE2RpvmtQVx8Wp45StUELsIbIuOjrYOTfn9EmOVV8uUppLmgWkEemw_3N7uwDya4Uipca-CoSOD9jAJWObkmPmp6c3beqTd4RH-VPY9cWS-ZwyATTfTJxGiVsvfAgTaOjHnuOLhq0_0UYxgKrzIKIGO3n3etT5RWI?purpose=inline" alt="Premio a Francisco Mojica y su tijera de ADN - Quo" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Premio a Francisco Mojica y su tijera de ADN - Quo</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>科學家</th><th>主要貢獻</th><th>重要年代</th></tr></thead><tbody><tr><td>石野良純（Yoshizumi Ishino）</td><td>首次發現CRISPR相關重複序列</td><td>1987</td></tr><tr><td>法蘭西斯科・莫希卡（Francisco Mojica）</td><td>CRISPR序列研究及免疫功能線索</td><td>1993～2005</td></tr><tr><td>魯德・楊森（Ruud Jansen）</td><td>CRISPR名稱及Cas相關基因命名</td><td>2002</td></tr><tr><td>羅多夫・巴朗古（Rodolphe Barrangou）</td><td>證明CRISPR具有細菌免疫功能</td><td>2007</td></tr><tr><td>菲利普・霍瓦特（Philippe Horvath）</td><td>細菌CRISPR免疫研究</td><td>2007</td></tr><tr><td>艾曼紐・夏彭提耶（Emmanuelle Charpentier）</td><td>tracrRNA與Cas9研究</td><td>2011～2012</td></tr><tr><td>珍妮佛・道納（Jennifer Doudna）</td><td>開發可程式化CRISPR-Cas9基因編輯工具</td><td>2012</td></tr><tr><td>費登・張（Feng Zhang）</td><td>推進CRISPR在哺乳動物細胞中的應用</td><td>2013</td></tr><tr><td>喬治・丘奇（George Church）</td><td>CRISPR基因組工程研究</td><td>2013</td></tr><tr><td>大衛・劉（David Liu）</td><td>鹼基編輯及先導編輯</td><td>2016～2019</td></tr></tbody></table></div>
+<h2>十二、CRISPR基因編輯發展史完整年表（1987～2026）</h2>
+<p>以下整理整個發展過程的重要節點：</p>
+<div class="tw"><table><thead><tr><th>年代</th><th>重大事件</th></tr></thead><tbody><tr><td>1987</td><td>日本石野良純研究團隊發現CRISPR相關重複序列</td></tr><tr><td>1993</td><td>Mojica開始研究古菌中的特殊重複序列</td></tr><tr><td>2000</td><td>Mojica等人確認CRISPR類序列廣泛存在於微生物</td></tr><tr><td>2002</td><td>CRISPR名稱正式提出，Cas相關基因獲得系統性命名</td></tr><tr><td>2005</td><td>發現Spacer與病毒等外來DNA具有關聯</td></tr><tr><td>2006</td><td>提出CRISPR適應性免疫模型</td></tr><tr><td>2007</td><td>實驗證實CRISPR是細菌免疫系統</td></tr><tr><td>2008</td><td>crRNA的作用及CRISPR對DNA的辨識機制逐漸明確</td></tr><tr><td>2010</td><td>Cas9相關DNA切割功能獲得重要證據</td></tr><tr><td>2011</td><td>發現tracrRNA在Cas9系統中的作用</td></tr><tr><td>2012</td><td>Doudna與Charpentier發展可程式化CRISPR-Cas9基因編輯工具</td></tr><tr><td>2013</td><td>CRISPR-Cas9成功應用於哺乳動物細胞</td></tr><tr><td>2014</td><td>CRISPR技術快速普及</td></tr><tr><td>2015</td><td>人類胚胎基因編輯研究引發倫理討論</td></tr><tr><td>2015</td><td>Cas12a研究發展</td></tr><tr><td>2016</td><td>胞嘧啶鹼基編輯技術發表</td></tr><tr><td>2017</td><td>腺嘌呤鹼基編輯技術發表</td></tr><tr><td>2018</td><td>人類基因編輯嬰兒事件</td></tr><tr><td>2019</td><td>Prime Editing先導編輯技術發表</td></tr><tr><td>2020</td><td>Doudna與Charpentier獲諾貝爾化學獎</td></tr><tr><td>2021</td><td>體內CRISPR基因編輯臨床研究持續進展</td></tr><tr><td>2022</td><td>體內基因編輯臨床成果公布</td></tr><tr><td>2023</td><td>英國及美國批准首種CRISPR基因編輯療法Casgevy</td></tr><tr><td>2024</td><td>美國批准Casgevy用於輸血依賴型β地中海型貧血</td></tr><tr><td>2025</td><td>全球首例個人化CRISPR鹼基編輯治療嬰兒案例公布</td></tr><tr><td>2026</td><td>Casgevy擴大至2歲以上患者，個人化基因治療持續發展</td></tr></tbody></table></div>
+<p>歷史脈絡可參考Broad Institute的CRISPR時間軸及美國國家醫學圖書館的基因編輯技術資料。</p>
+<h2>十三、CRISPR基因編輯的歷史地位與未來發展</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/QcGtGfbucAxXZHEoAO7gSt0OglvbCeFkaIefZVitFUeLA6CuYrIQ6QbYQeRGH0EnSALbLVvxVPg7rnm1KLDRCrOg0cTpREsXynpviI1_4GFu455kVs7_cNcCLSkxPYj-OpIABzYsWD2OXlauu6PnwMuwfyP26BjxtXYKiJpApwE?purpose=inline" alt="Treatment of Genetic Diseases With CRISPR Genome Editing | Genetics and Genomics | JAMA | JAMA Network" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Treatment of Genetic Diseases With CRISPR Genome Editing | Genetics and Genomics | JAMA | JAMA Network</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/nxEUyMeMWzwDm_OM1-DjAv0RePz258A2p_XPeO0TBOW65TDtRwytHk_O_uXgSptBsE5TfQ7iNQerQhlMf_QeKX6v_2UkVmL0Roswxca7AJZo22DD2VUhZLvW-ARkiL9Ot0prEdAPzSmxIwC58GscQRJzVoGgNO5OQ6mkOSzdP2Q?purpose=inline" alt="Tsingke Enables High-Throughput Validation of AI-Designed Proteins and Antibodies" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Tsingke Enables High-Throughput Validation of AI-Designed Proteins and Antibodies</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/xe7G3g-W_Z2llSJHkJ2rbWdXmb6Ha-JE1RK6LnCmlsbdTmRw-P-2zXHuyffidMP3WuWoujDR2MI9xVh5ETjewv2K5JqNT0PKWR46M3UQwERcKfE-3-g6WJfX9LSFqeAtKWezY6ZekHmZd3MkfD4cCZjQ5nT_vCeE6kXAA-yrKb8?purpose=inline" alt="合成生物学三部曲：从基因编辑到人工进化_苏州泓迅生物科技股份有限公司" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>合成生物学三部曲：从基因编辑到人工进化_苏州泓迅生物科技股份有限公司</figcaption></figure></div>
+<p>CRISPR的發展，代表生命科學從「觀察生命」逐步進入「修改生命」的時代。</p>
+<p>未來值得關注的六個方向：</p>
+<ol><li><strong>精準基因治療：</strong> 修正造成疾病的特定基因突變。</li><li><strong>個人化醫療：</strong> 根據患者獨特的遺傳變異設計治療方法。</li><li><strong>AI基因編輯：</strong> 利用人工智慧預測編輯效果及降低脫靶風險。</li><li><strong>癌症免疫治療：</strong> 利用基因編輯提升免疫細胞的治療能力。</li><li><strong>農業基因改良：</strong> 培育抗病、耐旱及高營養價值作物。</li><li><strong>合成生物學：</strong> 結合人工基因組設計，建立新的生物系統。</li></ol>
+<h2>十四、重要參考資料與延伸閱讀</h2>
+<p>以下是值得深入研究CRISPR歷史及技術的權威資料：</p>
+<ol><li><a href="https://www.broadinstitute.org/what-broad/areas-focus/project-spotlight/crispr-timeline" target="_blank" rel="noopener">Broad Institute：CRISPR Timeline</a> — CRISPR發現及技術發展年表。</li><li><a href="https://www.ncbi.nlm.nih.gov/books/NBK447276/" target="_blank" rel="noopener">NCBI：The Basic Science of Genome Editing</a> — 基因編輯的基本原理及CRISPR發展。</li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9377665/" target="_blank" rel="noopener">CRISPR-Cas9: A History of Its Discovery and Ethical Considerations</a> — CRISPR發現史及倫理問題。</li><li><a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease" target="_blank" rel="noopener">FDA：2023年首項CRISPR療法核准公告</a> — Casgevy臨床應用。</li><li><a href="https://www.nih.gov/news-events/news-releases/infant-rare-incurable-disease-first-successfully-receive-personalized-gene-therapy-treatment?stream=top" target="_blank" rel="noopener">NIH：2025年個人化基因編輯治療案例</a> — 全球首例個人化CRISPR治療。</li><li><a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapy-young-children-sickle-cell-disease" target="_blank" rel="noopener">FDA：2026年Casgevy擴大核准公告</a> — CRISPR療法最新臨床發展。</li></ol>
+<h2>十五、CRISPR相關學科的延伸研究順序</h2>
+<p>若要完整掌握CRISPR的科學背景，建議將它放在分子生物學及基因工程的整體發展脈絡中：</p>
+<div class="tw"><table><thead><tr><th>順序</th><th>主題</th><th>核心內容</th></tr></thead><tbody><tr><td>1</td><td>分子生物學發展史</td><td>DNA、RNA、蛋白質</td></tr><tr><td>2</td><td>遺傳學發展史</td><td>基因與染色體</td></tr><tr><td>3</td><td>分子遺傳學發展史</td><td>基因表現與調控</td></tr><tr><td>4</td><td>基因工程發展史</td><td>重組DNA、限制酶及PCR</td></tr><tr><td>5</td><td>基因體學發展史</td><td>人類基因組計畫</td></tr><tr><td>6</td><td>CRISPR-Cas9發展史</td><td>基因編輯基本技術</td></tr><tr><td>7</td><td>鹼基編輯發展史</td><td>CBE與ABE</td></tr><tr><td>8</td><td>Prime Editing發展史</td><td>精準DNA序列修改</td></tr><tr><td>9</td><td>RNA技術發展史</td><td>mRNA、RNA干擾及RNA編輯</td></tr><tr><td>10</td><td>基因治療發展史</td><td>臨床基因治療</td></tr><tr><td>11</td><td>合成生物學發展史</td><td>人工基因組及人工生命系統</td></tr><tr><td>12</td><td>AI生物學發展史</td><td>AI蛋白質設計及AI基因編輯</td></tr></tbody></table></div>
+<p><strong>總結：</strong></p>
+<p>CRISPR最值得注意的歷史轉折，是2007年細菌免疫機制獲得證實、2012年成為可程式化基因編輯工具，以及2023年正式進入核准的臨床治療。</p>
+<p>而2025年個人化基因編輯治療的出現，更顯示未來有機會針對極罕見遺傳疾病，開發患者專屬的治療方法。</p>
+<p>這代表CRISPR不只是分子生物學的一項技術，更是現代醫學、農業科技與合成生物學的重要基礎。</p>
+<footer>內容整理自 ChatGPT 對話筆記。圖片來自原筆記引用的各網站，版權屬原作者所有，頁面以外部連結方式載入，需連網才能顯示。</footer></main></div><div id="lb"><img alt=""></div><script>
+// TOC
+const toc=document.getElementById('toc');
+const heads=[];let grp=null,sub=null;
+document.querySelectorAll('main h2, main h3').forEach((h,i)=>{
+  if(h.closest('header'))return;
+  h.id='s'+i;
+  const a=document.createElement('a');a.href='#s'+i;a.textContent=h.textContent;
+  if(h.tagName==='H2'){
+    grp=document.createElement('div');grp.className='grp';
+    a.className='t2';grp.appendChild(a);
+    sub=document.createElement('div');sub.className='sub';grp.appendChild(sub);
+    toc.appendChild(grp);
+  }else{
+    if(!grp){grp=document.createElement('div');grp.className='grp';sub=document.createElement('div');sub.className='sub';grp.appendChild(sub);toc.appendChild(grp)}
+    a.className='t3';sub.appendChild(a);
+  }
+  heads.push({h,a,grp});
+});
+let curA=null;
+function spy(){
+  let c=null;
+  for(const x of heads){if(x.h.getBoundingClientRect().top<=140)c=x;else break}
+  if(!c)c=heads[0];
+  if(!c||c.a===curA)return;
+  if(curA){curA.classList.remove('cur');curA.closest('.grp').classList.remove('on')}
+  curA=c.a;c.a.classList.add('cur');c.grp.classList.add('on');
+  if(c.a.classList.contains('t3'))c.grp.querySelector('.t2').classList.add('cur');
+  document.querySelectorAll('nav .t2.cur').forEach(e=>{if(e!==c.a&&e!==c.grp.querySelector('.t2'))e.classList.remove('cur')});
+  const r=c.a.getBoundingClientRect(),n=toc.getBoundingClientRect();
+  if(r.top<n.top+40||r.bottom>n.bottom-20)toc.scrollTop+=r.top-n.top-n.height/3;
+}
+let tick=false;
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;spy()})}},{passive:true});
+spy();
+// Lightbox
+const lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+document.addEventListener('click',e=>{const t=e.target;if(t.matches('.g img,figure img')){lbi.src=t.src;lb.classList.add('on')}else if(lb.classList.contains('on')){lb.classList.remove('on')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+</script>
+</body>
+</html>

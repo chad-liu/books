@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>AI 程式設計發展史（History of AI-Assisted Programming）</title>
+<style>
+:root{--bg:#faf8f4;--ink:#23201c;--mute:#6f675d;--line:#e3ddd2;--accent:#8a4b1f;--card:#fff;--tint:#f3ece1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.85 "Noto Serif TC","Source Han Serif TC","PMingLiU",Georgia,serif;-webkit-font-smoothing:antialiased}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;max-width:1180px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:32px 0;font:14px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+nav b{display:block;margin-bottom:10px;color:var(--mute);letter-spacing:.1em;font-weight:600;font-size:12px}
+nav a{display:block;padding:4px 10px;color:var(--mute);text-decoration:none;border-left:2px solid var(--line)}
+nav a:hover{color:var(--accent);border-left-color:var(--accent)}
+nav .t2{font-weight:600;color:var(--ink);margin-top:2px}
+nav .sub{display:none;margin:2px 0 6px}
+nav .grp.on .sub{display:block}
+nav .t3{padding-left:22px;font-size:13px;line-height:1.5}
+nav a.cur{color:var(--accent);border-left-color:var(--accent);background:var(--tint)}
+nav .t2.cur{font-weight:700}
+main{padding:48px 0 96px;min-width:0}
+header.hero{margin-bottom:40px;padding-bottom:28px;border-bottom:2px solid var(--ink)}
+header.hero h1{margin:0 0 12px;font-size:clamp(28px,4.4vw,42px);line-height:1.3;border:0;padding:0}
+header.hero p{margin:0;color:var(--mute);font-size:18px}
+h1{font-size:28px;line-height:1.4;margin:72px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line);scroll-margin-top:16px}
+h2{font-size:22px;line-height:1.45;margin:52px 0 16px;color:var(--accent);scroll-margin-top:16px}
+i{font-family:Georgia,serif}
+h3{font-size:19px;line-height:1.5;margin:36px 0 10px}
+p{margin:0 0 1em}
+ul,ol{margin:0 0 1.1em;padding-left:1.4em}
+li{margin:.2em 0}
+strong{font-weight:700}
+.badge{display:inline-block;margin:-4px 0 10px;padding:1px 10px;background:var(--tint);color:var(--accent);border-radius:99px;font:600 13px/1.8 "Noto Sans TC",sans-serif}
+blockquote{margin:1.2em 0;padding:.4em 1.2em;border-left:4px solid var(--accent);background:var(--tint);font-size:1.08em}
+blockquote p{margin:.4em 0}
+.eq{margin:1em 0;padding:.7em 1em;text-align:center;font:italic 1.35em/1.5 Georgia,"Times New Roman",serif;background:var(--card);border:1px solid var(--line);border-radius:8px}
+table{width:100%;border-collapse:collapse;margin:1.2em 0 1.6em;background:var(--card);font:15.5px/1.6 "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--tint);font-weight:600}
+tr:last-child td{border-bottom:0}
+figure{margin:1.2em 0 1.6em}
+figure img{display:block;max-width:100%;max-height:420px;border-radius:8px;border:1px solid var(--line);background:#eee}
+figcaption{margin-top:6px;font:12.5px/1.5 "Noto Sans TC",sans-serif;color:var(--mute)}
+figcaption a{color:var(--mute)}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:1.2em 0 1.8em}
+.g img{width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#eee;cursor:zoom-in;transition:transform .15s}
+.g img:hover{transform:scale(1.03)}
+a{color:var(--accent)}
+#lb{position:fixed;inset:0;background:rgba(20,16,12,.88);display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out;padding:24px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;border-radius:6px}
+footer{margin-top:80px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font:13px/1.7 "Noto Sans TC",sans-serif}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:0}nav{display:none}body{font-size:16.5px}th,td{padding:8px 9px}}
+@media print{nav{display:none}.layout{display:block}.g img{height:110px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav id="toc"><b>目錄</b></nav>
+<main>
+<header class="hero">
+<h1>AI 程式設計發展史（History of AI-Assisted Programming）</h1>
+<p>AI 程式設計的發展史，是人工智慧從「協助分析程式」，逐漸進步到「自動產生程式碼」，再進一步發展成「能夠規劃、撰寫、測試與修改程式的 AI Agent」的歷史。</p>
+</header>
+<p>早期的程式設計完全依賴人類工程師，後來出現自動程式生成、智慧型程式補全、機器學習程式碼分析，直到今天，人類可以用自然語言描述需求，讓 AI 協助開發完整軟體。</p>
+<p>這段歷史可以分成八個階段：</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/0xN8awRI2nQRyd1R_jvfl0VO0ycc90i6VhfE7fnbFGVVfAXXtXC7ua42W1cYedRlh2AuB8w3hVdYWWeK53NwKZ0tWnmZcAveIdtYDTf6_sFqsxzLqb8d6GURHBTKRI_RrYSEUgkek03f4X7zRHuXnLA-sSBNnhYzKvgsMa0aIew?purpose=inline" alt="The Turbulent Past and Uncertain Future of Artificial Intelligence - IEEE Spectrum" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>The Turbulent Past and Uncertain Future of Artificial Intelligence - IEEE Spectrum</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/zbcHhJBuPfExgfwAU8LNEuxqBypxKaVa71Krcyd0W1GyHKk5AyEEaflcOt-LeOa6KSeQx9a9C9Uod4aStyT7VcjZfdUMqPXoRBvK2p-i_InY45lDoRdvEmhOH58fSD3KTEbj5s1hQJOAJof0q468-5VOjlveRydtLQ9Rwa4C_Pw?purpose=inline" alt="Checkmate, Human: How Computers Got So Good at Chess" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Checkmate, Human: How Computers Got So Good at Chess</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/fEuQRVC8Xt3Uy2A8PhMXOxsLXM6rt-tJS9FtJY4JN6B_Kt8AigT-Mcm95fhBh4YYL-b76rDKuY7ilx9bGY3gHOovXTpfqheIWVQmc2LKwaYCFG7demd_g9tZ02hvLuvqtDLL2A2Mz-5z5TstUgrBGox0G-hmYTyGI1oi8pIigO0?purpose=inline" alt="See what’s new with GitHub Copilot · GitHub" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>See what’s new with GitHub Copilot · GitHub</figcaption></figure></div>
+<h2>一、AI 程式設計發展大事記</h2>
+<h3>第一階段：人工智慧與自動程式設計的萌芽（1950～1960年代）</h3>
+<p>這個階段的主要目標，是讓電腦不只是執行人類輸入的指令，也能協助解決問題、推導邏輯及產生程式。</p>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1950年</td><td>艾倫・圖靈提出機器智慧的討論</td><td>為機器能否展現智慧建立重要思考基礎</td></tr><tr><td>1956年</td><td>達特茅斯人工智慧研討會</td><td>人工智慧（AI）正式成為重要研究領域</td></tr><tr><td>1958年</td><td>LISP 語言誕生</td><td>成為早期 AI 研究的重要程式語言</td></tr><tr><td>1959年</td><td>約翰・麥卡錫推動 AI 研究</td><td>推動符號推理與人工智慧程式設計</td></tr><tr><td>1960年代</td><td>自動定理證明與程式合成研究</td><td>開始探索由電腦自動推導解題步驟</td></tr><tr><td>1966年</td><td>Joseph Weizenbaum 開發 ELIZA</td><td>展現電腦透過文字與人類對話的可能性</td></tr><tr><td>1969年</td><td>SHRDLU 研究計畫開始</td><td>展現自然語言理解與簡單指令執行能力</td></tr></tbody></table></div>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/P6NI-XViGURs2Px2ExNpEMc1zzV6Vc28sPTqTuSN6TkprQo51WZVQ0ch1D08Sm-gzQvsJZ7Yjbgtr0MAFlZwolwbd3zN7mlAhYAGDBNXAsUisHWE2Y-iNYy-VLz5G8kCCImD38b1xRBr5I4V8QSaprigAQkbI2XFaEFBid_ybUM?purpose=inline" alt="Джон Маккарти: открытия и наследие создателя термина «Искусственный интеллект» / Хабр" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Джон Маккарти: открытия и наследие создателя термина «Искусственный интеллект» / Хабр</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/pgcuVSpTdpGDp9dfSpS89HiP231mOnM4Vr3lYuFCHqLmF0joGGBmRbeFJt0oBRxMcqH4vVd3VD6ztFqQyOQdGx3DVHhqHfMrrdsIVpTVZiku0G8oB_rdlDvItMBE1eLjpLWwDkovJmbN0UM2xmTijB4qnenDwTTILa5GX6zovGQ?purpose=inline" alt="自然語言處理NLP 發展簡史" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>自然語言處理NLP 發展簡史</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/YlW8m-LHOu30E6mCtoXjMaldT71_7Cv7GhrOl8yd_eW-83MkzW1T6t6leC42U6N9Mu6G7A-DJEQj59lISCxD7U99RIenG5JvWUmanvoMh-J2ltu369DtafFU4EJ14-GqjerZiR6MCMo7J3YntAaakDE2E3_5TCwlW_Xr9pXzdYY?purpose=inline" alt="Understanding SHRDLU: A Pioneering AI in Language and Reasoning – CryptLabs" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Understanding SHRDLU: A Pioneering AI in Language and Reasoning – CryptLabs</figcaption></figure></div>
+<p><strong>這個階段的重要觀念：</strong></p>
+<ul><li>符號人工智慧：利用邏輯符號與規則模擬人類思考。</li><li>自動推理：讓電腦依照邏輯規則推導答案。</li><li>自動程式合成：研究如何由問題描述產生可執行的程式。</li></ul>
+<p>這個時期的 AI 還不能像今天一樣直接替工程師完成大型軟體，但已經建立了自動化程式設計的理論基礎。</p>
+<h3>第二階段：專家系統與自動程式生成（1970～1980年代）</h3>
+<p>這個階段的 AI 開始利用專業知識與規則，協助人類解決特定領域的問題。</p>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1970年</td><td>PROLOG 語言開始發展</td><td>以邏輯規則及事實進行推理</td></tr><tr><td>1972年</td><td>PROLOG 正式發展</td><td>成為邏輯程式設計的重要代表</td></tr><tr><td>1970年代</td><td>MYCIN 專家系統發展</td><td>展示以知識規則協助專業決策的能力</td></tr><tr><td>1970年代</td><td>程式自動生成研究持續發展</td><td>探索從規格描述產生程式</td></tr><tr><td>1980年代</td><td>專家系統商業化</td><td>AI 開始應用於企業及工業領域</td></tr><tr><td>1983年</td><td>CLIPS 專家系統工具開始發展</td><td>讓知識規則系統更容易建立</td></tr><tr><td>1986年</td><td>神經網路反向傳播方法受到重視</td><td>為後來機器學習與深度學習奠定基礎</td></tr></tbody></table></div>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/rDZbXiGCGXF0DOSJ1v3c0ovXTMDV92h6XOyBngTS_iasPakMSA50-TIFrmgUwK4sDUMQmdkL_RZk5_ajcz4Ec1T70yjnbe-NFlhbIWzcxNSvIXjiLOEGbJPy2wzQ2KJ179fV2uy48_bLOtcVfm6zzGDOzaeTs1ElHzmNXgMN4n8?purpose=inline" alt="医疗专家系统Mycin_mycin系统-CSDN博客" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>医疗专家系统Mycin_mycin系统-CSDN博客</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/uCJBXCY1slqtFZCdSSTlAm7y0J6p7I3YDWVvRpfCASBvwe6cbXMlH7nkLaMQ4_bR_wcNC1LD7D72DIm1rZDvVKk2XGdZjwYeGtYvQD1pITA9vZWVst4ls6hLOmMFzhabjZ18bUBGTE7WLaCciF1ii46IS5J4Bq_WELYGSdOAjCI?purpose=inline" alt="                   -                                              " referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>                   -                                              </figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/yo05zAfzK3ATGlO9AhhTDTLr4cENaa3tVEjuiosadzeuE15Jmzm5J8vigipKN9CaRBj9vXFro8pwmHdqGceR4evutQhiQC4iT6mp5osAZ4vdO-o2igFUZJSJ16Cnozs3zHCV7u7e0RIBOB7XoEy5MOnwh6KPj1e-fcWrvm6kx_4?purpose=inline" alt="Our history | Inria" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Our history | Inria</figcaption></figure></div>
+<p><strong>代表性技術：</strong></p>
+<ol><li>專家系統（Expert System）：把專家的知識轉換成電腦可以執行的規則。</li><li>邏輯程式設計（Logic Programming）：讓電腦根據事實與規則推導結果。</li><li>程式生成（Program Generation）：嘗試讓電腦從較高層次的描述產生程式碼。</li></ol>
+<p>不過，早期專家系統大多只能處理特定問題，無法像現代 AI 一樣理解各種不同的程式需求。</p>
+<h3>第三階段：機器學習與智慧型程式分析（1990～2000年代）</h3>
+<p>這個階段的重大轉變，是 AI 不再只依靠人類事先設定的規則，而是開始從大量資料中學習。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/zbcHhJBuPfExgfwAU8LNEuxqBypxKaVa71Krcyd0W1GyHKk5AyEEaflcOt-LeOa6KSeQx9a9C9Uod4aStyT7VcjZfdUMqPXoRBvK2p-i_InY45lDoRdvEmhOH58fSD3KTEbj5s1hQJOAJof0q468-5VOjlveRydtLQ9Rwa4C_Pw?purpose=inline" alt="Checkmate, Human: How Computers Got So Good at Chess" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Checkmate, Human: How Computers Got So Good at Chess</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/0xN8awRI2nQRyd1R_jvfl0VO0ycc90i6VhfE7fnbFGVVfAXXtXC7ua42W1cYedRlh2AuB8w3hVdYWWeK53NwKZ0tWnmZcAveIdtYDTf6_sFqsxzLqb8d6GURHBTKRI_RrYSEUgkek03f4X7zRHuXnLA-sSBNnhYzKvgsMa0aIew?purpose=inline" alt="The Turbulent Past and Uncertain Future of Artificial Intelligence - IEEE Spectrum" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>The Turbulent Past and Uncertain Future of Artificial Intelligence - IEEE Spectrum</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/f6uhH4f85QHaOoTAi5-T__xppFJ1xKV_qvwe9EUCRQJRkZpQBoeGE6s9zAGfWYbe2GkeZSWy62dvbcJsraKFquID6f6mvyh3wBbgdGh1SKmx-Y6yNRPEp0YOmK3pnUoX6--CC_S2VtD78YMmkCMSnssU6R3_6kaWQCMexHxKlXg?purpose=inline" alt="Eclipse User Interface Guidelines" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Eclipse User Interface Guidelines</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>1990年代</td><td>機器學習逐漸成熟</td><td>電腦開始從資料中學習規律</td></tr><tr><td>1995年</td><td>支援程式開發的智慧型 IDE 功能逐漸普及</td><td>自動補全、語法檢查及除錯工具發展</td></tr><tr><td>1997年</td><td>IBM Deep Blue 擊敗西洋棋世界冠軍卡斯帕洛夫</td><td>展現電腦在特定複雜問題上的強大能力</td></tr><tr><td>1998年</td><td>Java IDE 與程式分析工具發展</td><td>提升大型軟體開發效率</td></tr><tr><td>2001年</td><td>機器學習應用擴大</td><td>AI 開始廣泛應用於分類、預測與模式辨識</td></tr><tr><td>2000年代</td><td>靜態程式分析與自動測試工具成熟</td><td>開始利用自動化技術協助發現程式錯誤</td></tr></tbody></table></div>
+<p><strong>這個階段的主要特色：</strong></p>
+<ul><li>自動補全：根據程式上下文預測可能的程式碼。</li><li>靜態分析：在程式執行之前檢查潛在錯誤。</li><li>自動除錯：協助尋找程式中的問題。</li><li>機器學習：讓電腦從程式碼與使用資料中學習規律。</li></ul>
+<h3>第四階段：深度學習與程式碼智慧化（2010～2019年）</h3>
+<p>這是 AI 程式設計的重要轉折期。深度學習讓電腦開始能夠分析程式碼的結構，並逐漸具備程式碼生成能力。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/ZlRQlR98LBtIsYfM8RjJ-sQlVDRhDSl7puVVGe373IsFr_fbI_BiuSE-ZmT37Cjm4ZXjg53LIFJwqGZRfIEW6y3dsVmSK0QBPi9NQsYgNh_TBIb6JSK77MrwsceP7QFrJ4ROOqUaDGNUrFXD7I8smcYraX4Pe6I3P-oFfRdS6tU?purpose=inline" alt="岐阜大学、AIの認識性能向上　対象物ごとの学習不要に | 日刊工業新聞 電子版" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>岐阜大学、AIの認識性能向上　対象物ごとの学習不要に | 日刊工業新聞 電子版</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/15AAGSPgxE5MDjpJ7WCFK9XCyHmR7veFNCjDuTfSMcsPfNjA6aKQpna0vIokpTNfWEDOWCMyRG-5ohTjFj_gW-qsOOB4_Fjjjkgf6ZQEA3mLCLwxWn0cpygyYnxvZhNbhCcHf3mMD88c-vzXNSKN6NFvbwskz5ZQSdZQJI92mMY?purpose=inline" alt="File:TensorFlow logo.svg - Wikimedia Commons" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>File:TensorFlow logo.svg - Wikimedia Commons</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/B5hlPnBV2Gk5FpDKUbT9ZY3wfPLBVGAWApyFC6PPIJfGREYOllY-hqt2vqM4I0U67y_6oOb83faAzMg45qCZHtquW7Tz7LJroePOJRr-81UTUSjVY-SwxL8Sntm-ve21WZVrHfLOO_AsRyNtWJ2NPo3hHbHIZ4AR6F6_pWYn8CE?purpose=inline" alt="After Google&#x27;s AlphaGo program beats Go champion, what&#x27;s next for AI? - Los Angeles Times" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>After Google's AlphaGo program beats Go champion, what's next for AI? - Los Angeles Times</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>2012年</td><td>AlexNet 在 ImageNet 競賽取得重大突破</td><td>深度學習進入快速發展階段</td></tr><tr><td>2015年</td><td>TensorFlow 開源發布</td><td>推動機器學習與深度學習開發</td></tr><tr><td>2016年</td><td>AlphaGo 擊敗李世乭</td><td>展現深度學習與強化學習的能力</td></tr><tr><td>2017年</td><td>Transformer 架構論文發表</td><td>為大型語言模型與程式碼生成奠定重要基礎</td></tr><tr><td>2018年</td><td>BERT 模型發表</td><td>推動自然語言理解技術</td></tr><tr><td>2019年</td><td>GPT-2 發表</td><td>展現大型語言模型生成文字的能力</td></tr><tr><td>2019年</td><td>CodeBERT 等程式碼理解研究逐漸發展</td><td>AI 開始更深入理解程式碼與自然語言的關係</td></tr></tbody></table></div>
+<p><strong>重要突破：Transformer</strong></p>
+<p>Transformer 是這個時期最重要的技術之一。</p>
+<p>它能夠分析一段文字中不同部分的關聯，因此不只能處理一般文章，也能分析程式碼中變數、函式、語法及上下文之間的關係。</p>
+<p>例如，人類輸入：</p>
+<p>「請寫一個計算兩個數字總和的 Python 函式。」</p>
+<p>AI 可以逐漸學會將這段自然語言轉換成程式碼。</p>
+<h3>第五階段：大型語言模型與 AI 程式助理（2020～2023年）</h3>
+<p>這是 AI 程式設計真正走入一般開發者工作環境的時期。</p>
+<p>大型語言模型（LLM）能夠從大量文字及程式碼中學習，逐漸具備理解程式需求、生成程式碼、解釋錯誤及轉換程式語言的能力。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/6vrwRlWo2HSwO8piSgboWJdVbFdhsJsWAzWhAtHECWKXMPsNFa8hF5U6YsRSBTgOUw-kh2DIC3dlNOs5xd0BGAlQpn7UYAs8PQ0IV50nsV5CDwtyGATXgoLoF0dnqQJf7fbbYoGCWdxIIpRRNfdW-YFFMuX7LIV1IXxwrGQk0Hw?purpose=inline" alt="OpenAI Codex &amp; 22+ AI Code Assistant Tools Sites Like Openai.com/blog/openai-codex" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>OpenAI Codex &amp; 22+ AI Code Assistant Tools Sites Like Openai.com/blog/openai-codex</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/B5OwwlLaK8rGZjZPS5_PsAV-D3peYaBmmD-aSrmHa4k1uyB4AhOsjvsSfMoCrc-0477ro63wAPd_mbZDoKtDQvWVv7SVVaGB2OjsbSR5iqfvUYkvKkO7T9WR5vgvEciOBMlCI_w7KQjGGUiNoG7d7FvLqByd6C9YyuaGDP4UC6I?purpose=inline" alt="GitHub Copilot frequently asked questions" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>GitHub Copilot frequently asked questions</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/TCfQAbUk0rdchP8xX0oyk_u-355G0zva0JWcBHy-VCAnHmNRKpoe9AQv4vKIJufyQmGXvB6imObPG_Ez0ujhY854SJXCttj2R40EOk_pgNIam8V67ZQfxZWpu7XoxOnRGz9xDu18ecGik2f3s8lExQ6bHCXGHGhY7azMfC-F9No?purpose=inline" alt="How to Use ChatGPT Correctly — Inspirit AI" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>How to Use ChatGPT Correctly — Inspirit AI</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>2020年</td><td>OpenAI 發表 GPT-3</td><td>大型語言模型展現依照文字指令完成不同工作的能力</td></tr><tr><td>2021年</td><td>OpenAI 發表 Codex</td><td>專門針對程式碼訓練的模型，可以將自然語言轉換成程式碼</td></tr><tr><td>2021年6月</td><td>GitHub Copilot 技術預覽推出</td><td>AI 開始在程式編輯器中即時建議及補全程式碼</td></tr><tr><td>2022年6月</td><td>GitHub Copilot 正式推出</td><td>AI 程式助理開始成為一般開發者可使用的商業工具</td></tr><tr><td>2022年</td><td>DeepMind 發表 AlphaCode</td><td>AI 在競賽程式設計問題上展現能力</td></tr><tr><td>2022年11月</td><td>ChatGPT 正式推出</td><td>一般使用者可以透過對話要求 AI 撰寫及解釋程式</td></tr><tr><td>2023年3月</td><td>GPT-4 發表</td><td>複雜程式理解、推理及除錯能力進一步提升</td></tr><tr><td>2023年3月</td><td>GitHub 發表 Copilot X 構想</td><td>將 AI 聊天、文件說明及程式碼審查整合到開發流程</td></tr><tr><td>2023年4月</td><td>Amazon CodeWhisperer 正式推出</td><td>雲端與企業開發環境加入 AI 程式助理</td></tr><tr><td>2023年</td><td>Cursor 開始發展</td><td>AI 深度整合至程式編輯器，推動 AI 原生開發環境</td></tr></tbody></table></div>
+<p><strong>這個階段最重要的三項改變：</strong></p>
+<ol><li>從程式碼補全到程式碼生成：AI 不只是預測下一行，也能依照需求撰寫完整函式。</li><li>從程式碼生成到程式解釋：工程師可以詢問 AI 某段程式的用途及錯誤原因。</li><li>從單純編輯器到對話式開發：使用者可以透過自然語言與 AI 討論程式設計。</li></ol>
+<p>例如，使用者只要輸入：</p>
+<p>「請幫我寫一個網頁，可以輸入學生姓名與成績，並自動計算平均分數。」</p>
+<p>AI 就能產生 HTML、CSS 與 JavaScript 程式碼。</p>
+<h3>第六階段：AI 原生開發環境與程式協作（2023～2024年）</h3>
+<p>這個階段的特色，是 AI 不再只是附加在編輯器中的工具，而是逐漸成為整個軟體開發環境的核心。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/xQRNJp6wzSC8GhWGti35dhNkmtfP4QzLjH9nBHhccqLZ4kfMbmx9AR7m0esaCcXmoRUWp8LEf5d7o6LMG-Xi2iUM2uBUk8RjSKOgVioNoRBpK_ShVnRL8TiozT6kObfP07dqJftNBqYlRxq8jLVr3BfnTsKIT5HqqahZc6Sn0gI?purpose=inline" alt="What Is Cursor IDE? Features, Agents, and Limits - Verdent Guides" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>What Is Cursor IDE? Features, Agents, and Limits - Verdent Guides</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/GTiE2AE-ri3vt1m1GHU_nXSZQFJCChic75iZkF04PhO2T2RvDPqG0vB38gTTJn2cEZ4qj9RprwDpsRj9YGJNtHlbrVe3FOFnMZnZDbQnh7ziaSrN33iQdtgisSEa8W5ZZ1zPxew6WsY13WxZc4uV2f28LnKY2QNjliZ-A-UMHFA?purpose=inline" alt="Use chat in VS Code" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Use chat in VS Code</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/mUkI4Ozq40XctVL0e4TlOdTRlSQcL7brcg8uOIXTiGjmK2GCbHJDFgU5C4v9diS7Vxl2ng4BEQ7dBqYa-k-wwS0Y2_pUuM9Un3yW32M7_NXASm7ZGPGvc23UPinYMowjzy0bovx5UwcrsQuFEOO1c-9alrDQDMB-R8DhCrS5Dm0?purpose=inline" alt="Replit — Building Ghostwriter Chat" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Replit — Building Ghostwriter Chat</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>2023年</td><td>GitHub Copilot Chat 推出預覽</td><td>開發者可以透過對話詢問程式問題</td></tr><tr><td>2023年</td><td>Amazon CodeWhisperer 持續擴展</td><td>AI 程式協助整合雲端開發流程</td></tr><tr><td>2023年</td><td>Cursor 發展 AI 原生編輯器</td><td>AI 能理解專案中的多個程式檔案</td></tr><tr><td>2024年</td><td>Claude 3.5 Sonnet 發表</td><td>程式碼生成、分析及視覺理解能力提升</td></tr><tr><td>2024年</td><td>Anthropic 推出 Artifacts</td><td>使用者可在對話環境中檢視及修改生成內容</td></tr><tr><td>2024年</td><td>GitHub Copilot Edits 發展</td><td>AI 開始協助修改多個程式檔案</td></tr><tr><td>2024年</td><td>Replit Agent 推出</td><td>使用者可透過自然語言要求 AI 建立應用程式</td></tr><tr><td>2024年</td><td>Windsurf 編輯器推出</td><td>強調 AI 理解整個專案及連續執行開發任務</td></tr><tr><td>2024年</td><td>MCP（Model Context Protocol）提出</td><td>建立 AI 模型連接外部工具與資料來源的標準化方式</td></tr></tbody></table></div>
+<p><strong>這個階段的重要觀念：</strong></p>
+<ul><li>AI 能夠理解整個程式專案，而不只是單一程式碼片段。</li><li>AI 能夠同時修改多個檔案。</li><li>AI 能夠閱讀錯誤訊息，提出修改建議。</li><li>AI 開始與資料庫、終端機及外部開發工具整合。</li><li>自然語言逐漸成為軟體開發的重要操作介面。</li></ul>
+<p>其中，MCP（Model Context Protocol）尤其值得注意。它讓 AI 可以透過標準化方式連接檔案、資料庫、開發工具及其他外部服務，為後來的 AI Agent 發展建立重要基礎。</p>
+<h3>第七階段：AI Agent 與自主程式開發（2025年）</h3>
+<p>重要轉折</p>
+<p>2025 年是 AI 程式設計從「協助工程師寫程式」進一步走向「AI 自主執行開發任務」的重要階段。</p>
+<p>過去，AI 通常產生一段程式碼，接著由人類複製、貼上及測試。</p>
+<p>現在，AI Agent 可以在授權的環境中讀取專案、修改檔案、執行程式、檢查錯誤，再根據結果繼續修正。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/yvT0YHMv9z3SJjRCU0ao0cQTY9fHBKhE78qO-96tpU5aTIPhUn434rKvAhdV6tFtpwBh2aVRepJc-NUe-sMU3t96xo1k8dIXBpwDP56rOS_RFnwCLzV-WPIkWkYrE51R2-k9v4d3cSTICsk0EV_BGUANsJCPWloaPEomffqZ3LE?purpose=inline" alt="使用 Codex Cloud | CodexGuide" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>使用 Codex Cloud | CodexGuide</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/osnW4XoUnKK0ac4ZPtT4CptuXUi2YweXDhbXaBanGprSDcixTjQ8MtrdmPJbXlXqaUteKeLA9A-OGeX9aBIjOfjQrRlCcq81tPfUym4C8f7kMyM192mcA2JE_fvVP5ysVm3J3G4Do2JIYQJG5QHf-qdWkNwcplquAA3ETvPMdhE?purpose=inline" alt="Hurl で書く、人間にもAIにもやさしいAPI テスト" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Hurl で書く、人間にもAIにもやさしいAPI テスト</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/O3Kx5uHf-_B-twXpi1iZeQOru_Rh78U_JViR5ElciaT94Hp6w4HcSKdhLoLiMgzt42NPJF6gQBkS54g_BuKxXrydqE6UDupSekm8HUa7rq1eIC6cuav_Qhy1OQi3cyV6U-LmZRS5ylkUJm40Hd9j7biIr5IAGAdcERh8IE0E1dc?purpose=inline" alt="GitHub Copilot · agentes en GitHub · GitHub" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>GitHub Copilot · agentes en GitHub · GitHub</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要事件</th><th>發展意義</th></tr></thead><tbody><tr><td>2025年2月</td><td>Anthropic 推出 Claude Code 研究預覽</td><td>AI 能透過終端機操作程式專案</td></tr><tr><td>2025年2月</td><td>Andrej Karpathy 提出 Vibe Coding 一詞</td><td>描述以自然語言及直覺式對話與 AI 協作開發的方式</td></tr><tr><td>2025年2月</td><td>GitHub Copilot Agent Mode 推出預覽</td><td>AI 能夠規劃及執行多步驟程式修改</td></tr><tr><td>2025年4月</td><td>OpenAI 推出 Codex 雲端軟體工程代理服務</td><td>AI 可以在雲端環境執行較長時間的程式開發任務</td></tr><tr><td>2025年5月</td><td>GitHub 推出 Copilot Coding Agent</td><td>AI 能夠處理 GitHub Issue、修改程式並提出 Pull Request</td></tr><tr><td>2025年5月</td><td>OpenAI Codex CLI 開源</td><td>開發者可以在終端機中使用 AI 操作本機程式專案</td></tr><tr><td>2025年6月</td><td>Google 推出 Gemini CLI</td><td>以終端機方式整合 AI 與開發工具</td></tr><tr><td>2025年</td><td>MCP 生態系逐漸擴大</td><td>AI Agent 能連接更多外部工具及服務</td></tr><tr><td>2025年</td><td>多代理人協作模式受到重視</td><td>不同 AI Agent 可以分工處理程式、測試及審查</td></tr></tbody></table></div>
+<p><strong>Vibe Coding 是什麼？</strong></p>
+<p>Vibe Coding 可以翻譯為「氛圍式程式設計」或「直覺式 AI 協作編程」。</p>
+<p>這種方式不要求使用者從頭手寫所有程式，而是先描述想要的功能，再透過與 AI 不斷對話，逐步調整成果。</p>
+<p>例如：</p>
+<ul><li>「幫我製作一個世界歷史時間軸。」</li><li>「增加朝代篩選功能。」</li><li>「加入可以點擊展開的歷史事件。」</li><li>「改成適合平板電腦閱讀的版面。」</li><li>「請檢查程式錯誤並修正。」</li></ul>
+<p>AI 會依照這些要求逐步修改程式。</p>
+<p>不過，Vibe Coding 並不代表不需要懂程式。當系統越複雜，越需要人類檢查程式正確性、資料安全與整體架構。</p>
+<h3>第八階段：多代理人協作與 AI 軟體工程（2026年）</h3>
+<p>新一代發展方向</p>
+<p>2026 年的 AI 程式設計，重點已不只是生成程式碼，而是如何讓多個 AI Agent 分工合作，完成較大型、較複雜的軟體專案。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/HE8ja6vVQzlV8XXKu0--0H10V7AsbPWLJGcdHIolzZiX3hUaNJsEoGuydKqGMZVLpof70s4knaq83JNU0aGs4WFSJ0R2Vfo72_XC2YDh0bUStDmF-4VXoLRGdTXJMroGUdBFy3plQXRhQKr-ijao0KDfGQjVJ7RmUnjycOo5aWM?purpose=inline" alt="Cursor 3: agent-first IDE с паралелни AI агенти [2026]" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Cursor 3: agent-first IDE с паралелни AI агенти [2026]</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/uXNIhiiexOYPOY2Ij9B0MoA1l4aB7t1FxiYoUfu3Uq-XKXDpwi8GV21yJBGJfGpbg1D6Kn3ZHQ81Qgup-eYS-y03IuBjdhYkJqop5BYDeVv2b5OdRoz0_S3bn4m7vP2JnIS5YffpK5nqb6PHSb81JWCLjTRXFH3fBnZhFM9mvHQ?purpose=inline" alt="AI Developer Agents for Production-Grade Autonomous Coding | by Srinivasa Subramanyam Pingali | Medium" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>AI Developer Agents for Production-Grade Autonomous Coding | by Srinivasa Subramanyam Pingali | Medium</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/LQBq98ZjNz3sBuRPfX4CZWg7oWcT4EIInBNHZlKY70lMQ5MblW8rDC27do6k3XU8SiRgb9vMCXFuWPmzOYI5_UpoElXjco55vHtseCMaLvABWQIHXpPs0tk9fTxq2EwML_y95rKfEuYY6XQTtaicxRAYlKKHR8YY0Y6OM2FXDFE?purpose=inline" alt="Use AI to resolve CI test failures with zero guesswork - CircleCI" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Use AI to resolve CI test failures with zero guesswork - CircleCI</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>時間</th><th>重要發展</th><th>發展意義</th></tr></thead><tbody><tr><td>2026年</td><td>AI Agent 多任務協作持續成熟</td><td>多個代理人可以同時處理不同開發工作</td></tr><tr><td>2026年</td><td>AI 自動測試與程式碼審查深化</td><td>AI 不只撰寫程式，也協助驗證與檢查成果</td></tr><tr><td>2026年</td><td>AI 開發環境與雲端電腦整合</td><td>AI 可以在隔離環境中執行完整開發流程</td></tr><tr><td>2026年</td><td>Harness Engineering 受到重視</td><td>開始重視如何設計工具、規則、測試與執行環境，讓 AI Agent 穩定工作</td></tr><tr><td>2026年</td><td>多代理人與工作流程編排發展</td><td>可以安排不同 AI 分別擔任規劃、程式撰寫、測試及審查角色</td></tr></tbody></table></div>
+<p>2026 年的發展可以從 OpenAI Codex 的產品演進觀察：AI 已經從程式碼生成工具，逐漸成為能夠處理較長期、跨檔案軟體工作的工程協作者。</p>
+<p><strong>AI Agent 程式開發的工作流程</strong></p>
+<p><strong>人類提出需求</strong></p>
+<p>例如：建立一套線上學習平台</p>
+<p><strong>AI 規劃任務</strong></p>
+<p>分析功能、設計架構、拆分工作</p>
+<p><strong>Agent A</strong></p>
+<p>前端介面</p>
+<p><strong>Agent B</strong></p>
+<p>資料庫與後端</p>
+<p><strong>Agent C</strong></p>
+<p>測試與除錯</p>
+<p><strong>Agent D</strong></p>
+<p>文件與審查</p>
+<p><strong>整合與驗證</strong></p>
+<p>整合程式、執行測試、修正錯誤</p>
+<p><strong>人類審核與發布</strong></p>
+<p>確認功能、安全性與最終成果</p>
+<p>這種模式與傳統由單一工程師逐行撰寫程式的方式，已經有很大的不同。</p>
+<h2>二、AI 程式設計工具的發展比較</h2>
+<p>AI 程式設計的歷史，也可以透過代表性工具來理解。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/eLjHBMbzNpunLWb5Zp2LEu5ihqSbRBmWja5idXhF7SSh_SPWWVWsrzshQDjB7I0BYfi_3hnAfY6DiOUCu6NQJUsACMKi7wgZjg7kg5RTXRv33uvf-UFmOYPhA-dqW9n0ebpDIyAWOj60dqcmGMigk2Zg2wFXSVAUowReGXDq4D4?purpose=inline" alt="GitHub 코파일럿 AI 코딩 라이선스 구독: Pro/Business 플랜 정품 보장" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>GitHub 코파일럿 AI 코딩 라이선스 구독: Pro/Business 플랜 정품 보장</figcaption></figure></div>
+<p><strong>1. GitHub Copilot（2021）</strong></p>
+<p>程式碼助理</p>
+<p>以即時程式碼補全起家，後來增加對話、程式碼修改及 Agent 功能。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/iIwQvt6lHcQFgj7BguLsxseHBBrUFkMcXG5YNkmFFW4lfJVJx4j903Vj6U7eh4G1RxYAM5rcotiwXgmy1bpDjVeUGauxGKEaWacWqJ6UawIltioycNX9Ru1jiDHQJ6b718nA6kh8GV93DvtXMfEhj4O5IYd7IWQ4fxKOZEoQ6CY?purpose=inline" alt="File:ChatGPT-Logo.svg - Wikimedia Commons" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>File:ChatGPT-Logo.svg - Wikimedia Commons</figcaption></figure></div>
+<p><strong>2. ChatGPT（2022）</strong></p>
+<p>對話式程式設計</p>
+<p>使用自然語言要求 AI 撰寫、解釋、修改及除錯程式。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/VpUBKVJVXV7fNb9cW9lC0WwEL7Ev1STMOU_rUGs7nYGJI1GxggS-Un3YnjzA5gGYQhB5TsMPr_szy4uKNTPoR996TcSkTRzp6q98AszBFPpQTz4JehMRk9sFuSdUZGXAliKMx7PidH8Qz62gY_LIw3fa7y4qecELtwYCHI2tAJw?purpose=inline" alt="Cursor - AI Code Editor Tool for Faster Development &amp; Developers | itirupati.com" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Cursor - AI Code Editor Tool for Faster Development &amp; Developers | itirupati.com</figcaption></figure></div>
+<p><strong>3. Cursor（2023）</strong></p>
+<p>AI 原生編輯器</p>
+<p>將 AI 深度整合至程式編輯器，協助理解專案、修改多個檔案及開發功能。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/QdPhKnVGzBf3tH3MNoJB1oYSkEsVDUvNb7nXlBSmWFoK8m396bdhR09FPEr6Shh0FTpHF-BPsQnhKVMVUlGLoE0FWlcGmb5a9XSbhIFddbS35DUzeVYfm83iJGLIhs9eEy5Txs7es2b4vzbcPhKHaVA7BtMKL6jBp7hDL1I_KrE?purpose=inline" alt="Build AI Apps Instantly with Replit AI | Replit" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Build AI Apps Instantly with Replit AI | Replit</figcaption></figure></div>
+<p><strong>4. Replit Agent（2024）</strong></p>
+<p>自然語言建站</p>
+<p>使用者描述需求，AI 協助建立應用程式、編寫程式及部署。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/KmRG0cWqPVcAHUfKyJkUSKqUubBVk3ifO98Kq1YqYQg2XfEpBX1jD1L1rMMKaF0o4wyNor_XdiiZ15qnWeakr-0r7TLh09vdjQgp0kZaSKxKrYCsuA_KopKOm4RUP0qv9ZD0-x7kIqrAEN_aa1sQ9Pz82YFgbFY0HkE6gp5K8fw?purpose=inline" alt="Anthropic 逾 50 萬行原始碼外洩的警訊：拆解部署烏龍與 AI 時代的內部治理盲區" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Anthropic 逾 50 萬行原始碼外洩的警訊：拆解部署烏龍與 AI 時代的內部治理盲區</figcaption></figure></div>
+<p><strong>5. Claude Code（2025）</strong></p>
+<p>Agent 開發</p>
+<p>能夠閱讀程式專案、操作終端機、修改檔案及執行測試。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/c2zFI940OGngXaTnP1M7m6IHV93bVtdY17cAdejdSNVKKbzcrDy5_bmfQ2hOXi9wp43Oct70G6OHP85-a7OOl7zS1YkaD8ngKTccu1E52NYeZqiEewTXKHh6vl4NwwfW9JHOkRFYlvKN9N1lR5rHdZsOSuFRPwez6B7yJX1pAnI?purpose=inline" alt="🚨 AI News | TestingCatalog (@testingcatalog) on X" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>🚨 AI News | TestingCatalog (@testingcatalog) on X</figcaption></figure></div>
+<p><strong>6. OpenAI Codex（2025）</strong></p>
+<p>雲端軟體工程</p>
+<p>能夠在隔離環境中處理程式開發任務，並行執行不同工作。</p>
+<h2>三、AI 程式設計的六個發展層次</h2>
+<div class="tw"><table><thead><tr><th>層次</th><th>發展方式</th><th>AI 扮演的角色</th></tr></thead><tbody><tr><td>第一層</td><td>智慧型補全</td><td>預測下一段程式碼</td></tr><tr><td>第二層</td><td>程式碼生成</td><td>根據需求撰寫程式</td></tr><tr><td>第三層</td><td>對話式開發</td><td>與人類討論及修改程式</td></tr><tr><td>第四層</td><td>專案級開發</td><td>理解並修改多個程式檔案</td></tr><tr><td>第五層</td><td>Agent 自主開發</td><td>規劃、執行、測試及修正任務</td></tr><tr><td>第六層</td><td>多 Agent 協作</td><td>多個 AI 分工完成軟體專案</td></tr></tbody></table></div>
+<h2>四、傳統程式設計與 AI 程式設計的比較</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/8_P2pQjCq5zr6GrYPxzNvNwQ7m7VT9jc07ym1R8d9Nnj-Eubd9hjb7TBHgpncYVHWPrao_xGdOt-qv3Suri_k0KEVPLhcY-Rwl5o9IK0CY0-J4-62U0YZvoBoFW_ipi-4Lg-mb74fkj0-L97ZwLVC86gOdz03lVfI4pVR_uuspxFPZV76Z1GumpDUxjD_4Ph?purpose=inline" alt="Software Programmer Or Coder Man" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Software Programmer Or Coder Man</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/3owFvLhp0RuBECCf_O5es3TX5U-MV1_DJdq5BVYMrsxyZND3nkcvxtMe_Fdi-A12WMFV3lVbmYG5GKAjGuGs-3glWEcRa8b8N5Qla-_YQQSNE4_p4Zj79U87jnbQbn642EBrYWNyVJzguZzTQAjMQEnDa3DxgYf8lgl72Iqsb_M?purpose=inline" alt="AI-Assisted Software Engineering: A Special Topics Course That Could Become Mainstream | NJIT News" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>AI-Assisted Software Engineering: A Special Topics Course That Could Become Mainstream | NJIT News</figcaption></figure><figure><img src="https://images.openai.com/static-rsc-4/dLijVCyDtrIw5Rxvd4PFmhxdb5Ez_GVWq1lawQ3MA97jBEt9TccG4DdSxyTJAAhAv5amXArMv1QtQwwnkqk1nSq88rLuFjv9Iiox_Ksfxux2PDI4wsQElL6oAk076mC4rmYxpyqBBRNvwyWHjl-ljIyJjUvRso_RZxM7711MqS8?purpose=inline" alt="Context Engineering: How Stateful AI Agents Are Revolutionizing Code Assistance · Expert LinkedIn" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Context Engineering: How Stateful AI Agents Are Revolutionizing Code Assistance · Expert LinkedIn</figcaption></figure></div>
+<div class="tw"><table><thead><tr><th>比較項目</th><th>傳統程式設計</th><th>AI 協作程式設計</th></tr></thead><tbody><tr><td>需求輸入</td><td>由人類分析規格</td><td>可使用自然語言描述</td></tr><tr><td>程式撰寫</td><td>人類逐步編寫</td><td>AI 可生成及修改</td></tr><tr><td>程式除錯</td><td>人類分析錯誤</td><td>AI 協助尋找與修正</td></tr><tr><td>軟體測試</td><td>人類設計及執行</td><td>AI 可協助產生與執行測試</td></tr><tr><td>開發流程</td><td>工程師逐步操作</td><td>人類與 AI 分工合作</td></tr><tr><td>專案管理</td><td>人類規劃與協調</td><td>AI 可協助拆分與執行任務</td></tr><tr><td>品質控制</td><td>人類審查</td><td>AI 初步審查，人類負責把關</td></tr></tbody></table></div>
+<p>AI 並沒有完全取代程式設計師。尤其在大型系統中，需求分析、架構設計、資安、資料正確性與最終品質仍需要人類負責。</p>
+<h2>五、AI 程式設計發展的核心技術</h2>
+<div class="tw"><table><thead><tr><th>技術</th><th>主要功能</th><th>在 AI 程式設計中的角色</th></tr></thead><tbody><tr><td>NLP 自然語言處理</td><td>理解人類語言</td><td>理解使用者的程式需求</td></tr><tr><td>LLM 大型語言模型</td><td>理解與生成文字</td><td>產生程式碼與解釋程式</td></tr><tr><td>Transformer</td><td>分析序列資訊與上下文</td><td>理解程式碼結構及關聯</td></tr><tr><td>RAG 檢索增強生成</td><td>搜尋外部資料再生成答案</td><td>讓 AI 參考文件與專案資料</td></tr><tr><td>Code Execution</td><td>執行程式</td><td>驗證程式能否正常運作</td></tr><tr><td>MCP</td><td>連接外部工具及資料</td><td>讓 AI 使用開發環境與外部服務</td></tr><tr><td>AI Agent</td><td>規劃並執行多步驟任務</td><td>自動完成程式開發工作</td></tr><tr><td>Multi-Agent</td><td>多代理人協作</td><td>分工處理大型軟體專案</td></tr></tbody></table></div>
+<h2>六、AI 程式設計發展史的六大轉折</h2>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/CZMeIgqYileaxhSAkDznlIGpAdC8BrRvmA4QheLQEWUBQO_iPUIQSgxtX0lGQp4vR8wUxj5dOrJaPv7Cg7Z0WTycNqH7Y74vml-PJsbLYMkpLesqJbbjbcmuikzLdlru2hvKrSVpf5xmUeXg6LcNqGYOKmSGhEbT-6eNx6YIi-Q?purpose=inline" alt="The games that helped AI evolve | IBM" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>The games that helped AI evolve | IBM</figcaption></figure></div>
+<p><strong>1950～1980年代：讓機器學會推理</strong></p>
+<p>從符號邏輯、專家系統及自動程式生成開始探索。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/tE2rUe-60O-Yl8LqfNtBZtCCyYn2Y0DNE9PDD0bSaf2CrGJmoNKqdMArUwqJOxox4PzoiRSgLsoPgRILwpOyP_s8Ox77MF2zgb1YOJtbs6jX_Ng8n8CDbS6xoxYw4AUBd4f7w5WpvXC3QCvszneFPvsBTFsJNU3LQgKiwXTeK3-wGCWrPPNDLEUpA_JOMqr2?purpose=inline" alt="Neural Net Computer" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Neural Net Computer</figcaption></figure></div>
+<p><strong>1990～2000年代：讓機器從資料學習</strong></p>
+<p>機器學習、程式碼分析與自動化開發工具逐漸成熟。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/O341eD_JEWJ77iJOdT53t-X0jHJU85EujzPDpQYR_Q-YHINYJAESxCwPkEKdahCzLD9aqX1HMsfaHGqbLoWkFFlCHYSllvLfU1cEkgqsuEuwvKUgIL8UMW55WXVuScC4BCilXoBTCoHOx0y6kexsP8SDxvLqEA0hTQZCoFYw_LM?purpose=inline" alt="What is GPT-3, How Does It Work, and What Does It Actually Do? | by Sciforce | Sciforce | Medium" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>What is GPT-3, How Does It Work, and What Does It Actually Do? | by Sciforce | Sciforce | Medium</figcaption></figure></div>
+<p><strong>2010～2019年：讓機器理解程式碼</strong></p>
+<p>深度學習、Transformer 與程式碼模型推動技術突破。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/fEuQRVC8Xt3Uy2A8PhMXOxsLXM6rt-tJS9FtJY4JN6B_Kt8AigT-Mcm95fhBh4YYL-b76rDKuY7ilx9bGY3gHOovXTpfqheIWVQmc2LKwaYCFG7demd_g9tZ02hvLuvqtDLL2A2Mz-5z5TstUgrBGox0G-hmYTyGI1oi8pIigO0?purpose=inline" alt="See what’s new with GitHub Copilot · GitHub" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>See what’s new with GitHub Copilot · GitHub</figcaption></figure></div>
+<p><strong>2020～2023年：讓 AI 成為程式助理</strong></p>
+<p>Codex、Copilot、ChatGPT 改變程式設計方式。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/6K7Mpy0p5wVZnzyPVY2WG1FxO0cyM1o9G6BQ01M4ldB-2yGZj4_GpWUqnszAlYuZrXbn4N-0ENve3YJ4fFjT64mH2RGDSN4BDv-YSJtp_s-LsMNtGA3G-ew6bRBsBWBwpLxBOpAFhE96KA2YK1y715sLV7hwuz_6F0molwXYOp0?purpose=inline" alt="Enterprise · Cursor" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>Enterprise · Cursor</figcaption></figure></div>
+<p><strong>2023～2024年：讓 AI 參與整個開發環境</strong></p>
+<p>AI 原生編輯器與專案級程式修改逐漸普及。</p>
+<div class="g"><figure><img src="https://images.openai.com/static-rsc-4/YoEz6_ulb_0Uhukbe_CkNkdZ5rhouJS-Rag1NsD7b0KpZVAgzY0rb1Y8vgKJNdPaZhczsg-jvyX-2oiOB9yFDLP28VHOXH-K3Dqapf4cqoqBFokyc4iKDlJo1OT0vX98XC8tqU9OFpbx4GMAi6GhR7B-wdcPl1zFuRCGl8jonwA?purpose=inline" alt="The Microsoft AutoGen Workflow That Changed How I Build AI Agents Forever | by AshokReddy | T3CH | May, 2026 | Medium" referrerpolicy="no-referrer" loading="lazy" onerror="this.closest('figure').style.display='none'"><figcaption>The Microsoft AutoGen Workflow That Changed How I Build AI Agents Forever | by AshokReddy | T3CH | May, 2026 | Medium</figcaption></figure></div>
+<p><strong>2025～2026年：讓 AI 成為軟體工程協作者</strong></p>
+<p>AI Agent、多代理人協作、自動測試及雲端開發成為重要方向。</p>
+<h2>七、延伸研究：AI 程式設計的未來發展</h2>
+<p>未來值得關注的五個方向：</p>
+<ol><li><strong>自然語言程式設計（Natural Language Programming）</strong>：人類以文字或語音描述需求，AI 將其轉換成程式。</li><li><strong>自主軟體工程（Autonomous Software Engineering）</strong>：AI 能獨立完成更多開發、測試及維護工作。</li><li><strong>多代理人協作（Multi-Agent Development）</strong>：不同 AI 分別負責設計、開發、測試與審查。</li><li><strong>自我修復軟體（Self-Healing Software）</strong>：系統能自動發現問題、提出修正並驗證。</li><li><strong>AI 與低程式碼平台結合（AI + Low-Code）</strong>：讓沒有專業程式背景的人也能建立較完整的應用程式。</li></ol>
+<h2>八、參考資料與延伸閱讀</h2>
+<ul><li><a href="https://github.blog/ai-and-ml/github-copilot/inside-github-working-with-the-llms-behind-github-copilot/" target="_blank" rel="noopener">GitHub：Inside GitHub—Working with the LLMs behind Copilot</a>：GitHub Copilot 的起源與技術發展。</li><li><a href="https://github.com/paladini/history-of-ai-assisted-development/blob/main/SOURCES.md" target="_blank" rel="noopener">AI-Assisted Development：歷史資料與官方公告索引</a>：2021 年至今的 AI 程式開發工具發展。</li><li><a href="https://developers.openai.com/blog/openai-for-developers-2025?site_locale=en" target="_blank" rel="noopener">OpenAI：OpenAI for Developers in 2025</a>：Codex、CLI 與 AI 軟體工程的發展。</li><li><a href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener">OpenAI：Introducing the Codex app</a>：多個 AI Agent 協作的發展方向。</li><li><a href="https://agents.anipotts.com/handbook/history/" target="_blank" rel="noopener">How Coding Agents Got Here</a>：2021～2026 年 AI 程式代理工具的演進。</li></ul>
+<p><strong>整體歷史脈絡總結：</strong></p>
+<p><strong>從「人寫程式」到「人指揮 AI 開發程式」</strong></p>
+<p><strong>1950s → 2026</strong></p>
+<ol><li><strong>人類設計規則</strong>：AI 依照人類設定的知識與邏輯運作。</li><li><strong>機器學習</strong>：AI 開始從資料中找出規律。</li><li><strong>深度學習</strong>：AI 開始理解更複雜的資料與程式結構。</li><li><strong>生成式 AI</strong>：AI 能依照需求產生程式碼。</li><li><strong>AI Agent</strong>：AI 能規劃及執行多步驟程式開發工作。</li><li><strong>多 Agent 協作</strong>：人類負責目標與品質，多個 AI 協同完成軟體工程任務。</li></ol>
+<p>這也代表程式設計的門檻正在改變：過去必須先學會程式語法才能開發軟體；現在則可以先學會分析問題、描述需求及驗證成果，再逐步深入程式技術。</p>
+<footer>內容整理自 ChatGPT 對話筆記。圖片來自原筆記引用的各網站，版權屬原作者所有，頁面以外部連結方式載入，需連網才能顯示。</footer></main></div><div id="lb"><img alt=""></div><script>
+// TOC
+const toc=document.getElementById('toc');
+const heads=[];let grp=null,sub=null;
+document.querySelectorAll('main h2, main h3').forEach((h,i)=>{
+  if(h.closest('header'))return;
+  h.id='s'+i;
+  const a=document.createElement('a');a.href='#s'+i;a.textContent=h.textContent;
+  if(h.tagName==='H2'){
+    grp=document.createElement('div');grp.className='grp';
+    a.className='t2';grp.appendChild(a);
+    sub=document.createElement('div');sub.className='sub';grp.appendChild(sub);
+    toc.appendChild(grp);
+  }else{
+    if(!grp){grp=document.createElement('div');grp.className='grp';sub=document.createElement('div');sub.className='sub';grp.appendChild(sub);toc.appendChild(grp)}
+    a.className='t3';sub.appendChild(a);
+  }
+  heads.push({h,a,grp});
+});
+let curA=null;
+function spy(){
+  let c=null;
+  for(const x of heads){if(x.h.getBoundingClientRect().top<=140)c=x;else break}
+  if(!c)c=heads[0];
+  if(!c||c.a===curA)return;
+  if(curA){curA.classList.remove('cur');curA.closest('.grp').classList.remove('on')}
+  curA=c.a;c.a.classList.add('cur');c.grp.classList.add('on');
+  if(c.a.classList.contains('t3'))c.grp.querySelector('.t2').classList.add('cur');
+  document.querySelectorAll('nav .t2.cur').forEach(e=>{if(e!==c.a&&e!==c.grp.querySelector('.t2'))e.classList.remove('cur')});
+  const r=c.a.getBoundingClientRect(),n=toc.getBoundingClientRect();
+  if(r.top<n.top+40||r.bottom>n.bottom-20)toc.scrollTop+=r.top-n.top-n.height/3;
+}
+let tick=false;
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;spy()})}},{passive:true});
+spy();
+// Lightbox
+const lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+document.addEventListener('click',e=>{const t=e.target;if(t.matches('.g img,figure img')){lbi.src=t.src;lb.classList.add('on')}else if(lb.classList.contains('on')){lb.classList.remove('on')}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+</script>
+</body>
+</html>
